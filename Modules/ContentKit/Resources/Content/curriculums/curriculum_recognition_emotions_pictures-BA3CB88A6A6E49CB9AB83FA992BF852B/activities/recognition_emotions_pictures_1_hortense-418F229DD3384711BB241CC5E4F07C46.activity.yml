@@ -8,7 +8,7 @@ uuid: 418F229DD3384711BB241CC5E4F07C46
 name: recognition_emotions_pictures_1_hortense
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-04T15:43:31.724381"
+last_edited_at: "2024-06-24T17:07:03.681582"
 status: published
 
 authors:
@@ -16,15 +16,12 @@ authors:
 
 skills:
   - recognition
-  - recognition/basic_emotions
   - communication
   - communication/verbal_communication
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - pictures
-  - Hortense
+  - hortense
 
 hmi:
   - tablet
@@ -39,8 +36,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-pictures-1_images_1_types-hortense-195c7905-0188-4c1d-a3c9-0aed0199606d
+      icon: emotion_recognition-pictures-1_images_1_types-hortense-195c7905-0188-4c1d-a3c9-0aed0199606d
 
       title: Les émotions en photos
       subtitle: Hortense - 1
@@ -58,8 +54,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-pictures-1_images_1_types-hortense-195c7905-0188-4c1d-a3c9-0aed0199606d
+      icon: emotion_recognition-pictures-1_images_1_types-hortense-195c7905-0188-4c1d-a3c9-0aed0199606d
 
       title: Emotions in pictures
       subtitle: Hortense - 1

@@ -10,22 +10,31 @@ public struct ListenThenDragAndDropToAssociateView: View {
     // MARK: Lifecycle
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
-        guard case let .ipad(type: .audio(name)) = exercise.action else {
-            log.error("Exercise payload is not .dragAndDropToAssociate and/or Exercise does not contain iPad audio action")
-            fatalError("💥 Exercise payload is not .dragAndDropToAssociate and/or Exercise does not contain iPad audio action")
-        }
-
         self.exercise = exercise
         self.exerciseSharedData = data
 
-        _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: AudioPlayer(audioRecording: name)))
+        switch exercise.action {
+            case let .ipad(type: .audio(name)):
+                log.debug("Audio name: \(name)")
+                self.audioData = name
+                AudioPlayer.shared.setAudioData(data: self.audioData)
+                _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: AudioPlayer.shared))
+            case let .ipad(type: .speech(utterance)):
+                log.debug("Speech utterance: \(utterance)")
+                self.audioData = utterance
+                SpeechSynthesizer.shared.setAudioData(data: self.audioData)
+                _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: SpeechSynthesizer.shared))
+            default:
+                log.error("Action not recognized: \(String(describing: exercise.action))")
+                fatalError("💥 Action not recognized: \(String(describing: exercise.action))")
+        }
     }
 
     // MARK: Public
 
     public var body: some View {
         HStack(spacing: 0) {
-            ActionButtonListen(audioPlayer: self.audioPlayer)
+            ActionButtonListen(audioPlayer: self.audioPlayer, audioData: self.audioData)
                 .padding(20)
 
             Divider()
@@ -52,4 +61,5 @@ public struct ListenThenDragAndDropToAssociateView: View {
     private var exercise: Exercise
     private var exerciseSharedData: ExerciseSharedData?
     @StateObject private var audioPlayer: AudioPlayerViewModel
+    private let audioData: String
 }

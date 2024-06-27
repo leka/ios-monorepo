@@ -102,6 +102,7 @@ public extension Curriculum {
     enum Status: String, Decodable {
         case draft
         case published
+        case template
     }
 }
 

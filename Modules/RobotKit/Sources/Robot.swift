@@ -32,6 +32,9 @@ public class Robot {
     public var serialNumber: CurrentValueSubject<String, Never> = CurrentValueSubject("(n/a)")
     public var isCharging: CurrentValueSubject<Bool, Never> = CurrentValueSubject(false)
     public var battery: CurrentValueSubject<Int, Never> = CurrentValueSubject(0)
+    public var negotiatedMTU: CurrentValueSubject<Int, Never> = CurrentValueSubject(0)
+
+    public var magicCard: CurrentValueSubject<MagicCard, Never> = CurrentValueSubject(.none)
 
     // MARK: - Internal properties
 
@@ -39,10 +42,14 @@ public class Robot {
         didSet {
             registerBatteryCharacteristicNotificationCallback()
             registerChargingStatusNotificationCallback()
+            registerNegotiatedMTUNotificationCallback()
+            registerMagicCardsNotificationCallback()
 
             registerOSVersionReadCallback()
             registerSerialNumberReadCallback()
             registerChargingStatusReadCallback()
+            registerNegotiatedMTUReadCallback()
+            registerMagicCardsReadCallback()
 
             self.connectedPeripheral?.discoverAndListenForUpdates()
             self.connectedPeripheral?.readReadOnlyCharacteristics()

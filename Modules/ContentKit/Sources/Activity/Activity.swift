@@ -106,6 +106,7 @@ public extension Activity {
     enum Status: String, Decodable {
         case draft
         case published
+        case template
     }
 }
 

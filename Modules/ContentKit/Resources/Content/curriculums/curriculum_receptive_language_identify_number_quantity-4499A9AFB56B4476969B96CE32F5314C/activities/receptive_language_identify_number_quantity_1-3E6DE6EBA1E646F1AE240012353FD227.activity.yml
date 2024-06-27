@@ -8,7 +8,7 @@ uuid: 3E6DE6EBA1E646F1AE240012353FD227
 name: receptive_language_identify_number_quantity_1
 
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-06-04T13:12:41.235231"
+last_edited_at: "2024-06-24T17:19:36.463255"
 status: published
 
 authors:
@@ -21,13 +21,10 @@ skills:
   - communication/verbal_communication/receptive_language/oral_comprehension
   - counting
   - recognition
-  - recognition/numbers
 
 tags:
-  - one
-  - two
-  - three
-  - four
+  - numbers
+  - quantity
   - digital_constellations
 
 hmi:

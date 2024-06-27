@@ -6,7 +6,7 @@ uuid: BA3CB88A6A6E49CB9AB83FA992BF852B
 name: curriculum_recognition_emotions_pictures
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-04-08T13:19:48.615076"
+last_edited_at: "2024-06-24T16:39:48.844845"
 
 status: published
 
@@ -15,7 +15,6 @@ authors:
 
 skills:
   - recognition
-  - recognition/basic_emotions
   - communication
   - communication/verbal_communication
   - communication/verbal_communication/receptive_language
@@ -24,10 +23,12 @@ hmi:
   - tablet
 
 tags:
-  - emotions
-  - pictures
-  - real_people
-  - Leka_team
+  - ladislas
+  - hortense
+  - yann
+  - lucie
+  - hugo
+  - leka_team
 
 locales:
   - en_US

@@ -6,7 +6,7 @@ uuid: FED25D9B424E42019F03593FE0D65AEE
 name: curriculum_recognition_sounds_animals
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-08T13:19:48.615111"
+last_edited_at: "2024-06-24T16:39:48.842357"
 
 status: published
 
@@ -15,12 +15,10 @@ authors:
 
 skills:
   - recognition
-  - recognition/animals
   - sensory_interaction
 
 tags:
   - animals
-  - sounds
 
 hmi:
   - tablet

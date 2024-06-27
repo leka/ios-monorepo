@@ -8,7 +8,7 @@ uuid: B2E3C40835574DEC8F0FB6DBDF1B0E18
 name: recognition_emotions_drawings_2_zoe
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-04T15:43:31.722943"
+last_edited_at: "2024-06-24T17:07:03.685037"
 status: published
 
 authors:
@@ -16,15 +16,12 @@ authors:
 
 skills:
   - recognition
-  - recognition/basic_emotions
   - communication
   - communication/verbal_communication
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - drawings
-  - Zoe
+  - zoe
   - characters
 
 hmi:
@@ -40,8 +37,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-2_images_1_types-zoe-7b77ed81-845c-4a86-adee-66de91f51352
+      icon: emotion_recognition-drawings-2_images_1_types-zoe-7b77ed81-845c-4a86-adee-66de91f51352
 
       title: Les émotions en dessins
       subtitle: Zoe - 2
@@ -59,8 +55,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-2_images_1_types-zoe-7b77ed81-845c-4a86-adee-66de91f51352
+      icon: emotion_recognition-drawings-2_images_1_types-zoe-7b77ed81-845c-4a86-adee-66de91f51352
 
       title: Emotions in drawings
       subtitle: Zoe - 2

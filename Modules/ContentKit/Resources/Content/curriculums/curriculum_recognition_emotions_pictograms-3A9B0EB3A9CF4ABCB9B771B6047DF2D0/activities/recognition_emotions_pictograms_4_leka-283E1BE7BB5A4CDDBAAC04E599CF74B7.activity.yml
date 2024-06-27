@@ -8,7 +8,7 @@ uuid: 283E1BE7BB5A4CDDBAAC04E599CF74B7
 name: recognition_emotions_pictograms_4_leka
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-04T15:43:31.724381"
+last_edited_at: "2024-06-24T17:07:03.682928"
 status: published
 
 authors:
@@ -16,14 +16,11 @@ authors:
 
 skills:
   - recognition
-  - recognition/basic_emotions
   - communication
   - communication/verbal_communication
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - pictograms
   - leka
 
 hmi:
@@ -39,8 +36,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-pictograms-4_images_1_types-leka-dfe16eaa-e149-4df1-873e-995dc1b1c5b0
+      icon: emotion_recognition-pictograms-4_images_1_types-leka-dfe16eaa-e149-4df1-873e-995dc1b1c5b0
 
       title: Les émotions en pictogrammes
       subtitle: Leka - 4
@@ -58,8 +54,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-pictograms-4_images_1_types-leka-dfe16eaa-e149-4df1-873e-995dc1b1c5b0
+      icon: emotion_recognition-pictograms-4_images_1_types-leka-dfe16eaa-e149-4df1-873e-995dc1b1c5b0
 
       title: Emotions in pictograms
       subtitle: Leka - 4

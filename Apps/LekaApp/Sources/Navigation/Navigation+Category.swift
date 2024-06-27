@@ -8,6 +8,9 @@ extension Navigation {
     enum Category: Hashable, Identifiable, CaseIterable {
         case home
         case search
+        case resourcesFirstSteps
+        case resourcesVideo
+        case resourcesDeepDive
         case curriculums
         case activities
         case stories
@@ -16,11 +19,12 @@ extension Navigation {
         case carereceivers
 
         // ? DEVELOPER_MODE
-        case allActivities
+        case allPublishedActivities
+        case allDraftActivities
+        case allTemplateActivities
         case rasterImageList
         case vectorImageList
         case news
-        case resources
 
         // MARK: Internal
 

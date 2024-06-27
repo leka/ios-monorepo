@@ -8,7 +8,7 @@ uuid: 3E4B57F536824F1087A2E512223EF7E0
 name: super_simon_2_colors
 
 created_at: "2024-05-14T18:06:12.518998"
-last_edited_at: "2024-05-28T10:40:42.968410"
+last_edited_at: "2024-06-24T17:16:46.257628"
 status: published
 
 authors:
@@ -16,10 +16,10 @@ authors:
 
 skills:
   - recognition
-  - recognition/colors
 
 tags:
   - colors
+  - standalone_activity
 
 hmi:
   - tablet_robot

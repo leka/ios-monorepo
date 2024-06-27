@@ -21,6 +21,7 @@ extension Bundle {
 struct MainView: View {
     // MARK: Internal
 
+    @State var isResourcesCollapsed: Bool = true
     @ObservedObject var navigation: Navigation = .shared
     @ObservedObject var authManagerViewModel = AuthManagerViewModel.shared
     @StateObject var viewModel: ViewModel = .init()
@@ -64,6 +65,12 @@ struct MainView: View {
                         CategoryLabel(category: .gamepads)
                     }
 
+                    Section(String(l10n.MainView.Sidebar.sectionResources.characters)) {
+                        CategoryLabel(category: .resourcesFirstSteps)
+                        CategoryLabel(category: .resourcesVideo)
+                        CategoryLabel(category: .resourcesDeepDive)
+                    }
+
                     if self.authManagerViewModel.userAuthenticationState == .loggedIn {
                         Section(String(l10n.MainView.Sidebar.sectionUsers.characters)) {
                             CategoryLabel(category: .caregivers)
@@ -73,11 +80,12 @@ struct MainView: View {
 
                     #if DEVELOPER_MODE
                         Section("Developer Mode") {
-                            CategoryLabel(category: .allActivities)
+                            CategoryLabel(category: .allTemplateActivities)
+                            CategoryLabel(category: .allDraftActivities)
+                            CategoryLabel(category: .allPublishedActivities)
                             CategoryLabel(category: .rasterImageList)
                             CategoryLabel(category: .vectorImageList)
                             CategoryLabel(category: .news)
-                            CategoryLabel(category: .resources)
                         }
                     #endif
 
@@ -95,6 +103,7 @@ struct MainView: View {
                     }
                     .frame(maxWidth: .infinity)
                 }
+                .listStyle(.sidebar)
             }
             // TODO: (@ladislas) remove if not necessary
             // .disabled(navigation.disableUICompletly)
@@ -106,6 +115,15 @@ struct MainView: View {
 
                     case .search:
                         CategorySearchView()
+
+                    case .resourcesFirstSteps:
+                        CategoryResourcesFirstStepsView()
+
+                    case .resourcesVideo:
+                        CategoryResourcesVideosView()
+
+                    case .resourcesDeepDive:
+                        CategoryResourcesDeepDiveView()
 
                     case .curriculums:
                         CategoryCurriculumsView()
@@ -126,8 +144,14 @@ struct MainView: View {
                         CarereceiverList()
 
                     // ? DEVELOPER_MODE
-                    case .allActivities:
-                        AllActivitiesView()
+                    case .allPublishedActivities:
+                        AllPublishedActivitiesView()
+
+                    case .allDraftActivities:
+                        AllDraftActivitiesView()
+
+                    case .allTemplateActivities:
+                        AllTemplateActivitiesView()
 
                     case .rasterImageList:
                         DebugImageListView(images: ContentKit.listRasterImages())
@@ -139,9 +163,6 @@ struct MainView: View {
 
                     case .news:
                         NewsView()
-
-                    case .resources:
-                        ResourcesView()
 
                     case .none:
                         Text(l10n.MainView.Sidebar.CategoryLabel.home)

@@ -13,7 +13,9 @@ extension l10n {
                 static let home = LocalizedString("lekaapp.main_view.sidebar.category_label.home", value: "Home", comment: "The title of the category 'Home'")
                 static let search = LocalizedString("lekaapp.main_view.sidebar.category_label.search", value: "Search", comment: "The title of the category 'Search'")
                 static let news = LocalizedString("lekaapp.main_view.sidebar.category_label.news", value: "News", comment: "The title of the category 'News'")
-                static let resources = LocalizedString("lekaapp.main_view.sidebar.category_label.resources", value: "Resources", comment: "The title of the category 'Resources'")
+                static let resourcesFirstSteps = LocalizedString("lekaapp.main_view.sidebar.category_label.resources_first_steps", value: "First steps", comment: "The title of the resources sub category 'First Steps'")
+                static let resourcesVideo = LocalizedString("lekaapp.main_view.sidebar.category_label.resources_video", value: "Videos", comment: "The title of the resources sub category 'Videos'")
+                static let resourcesDeepDive = LocalizedString("lekaapp.main_view.sidebar.category_label.resources_deep_dive", value: "Deep Dive", comment: "The title of the resources sub category 'DeepDive'")
                 static let curriculums = LocalizedString("lekaapp.main_view.sidebar.category_label.curriculums", value: "Curriculums", comment: "The title of the category 'Curriculums'")
                 static let activities = LocalizedString("lekaapp.main_view.sidebar.category_label.activities", value: "Activities", comment: "The title of the category 'Activities'")
                 static let gamepads = LocalizedString("lekaapp.main_view.sidebar.category_label.gamepads", value: "Gamepads", comment: "The title of the category 'Gamepads'")
@@ -26,6 +28,8 @@ extension l10n {
             static let navigationTitle = LocalizedString("lekaapp.main_view.sidebar.navigation_title", value: "Leka App", comment: "The title of the sidebar")
 
             static let sectionInformation = LocalizedString("lekaapp.main_view.sidebar.section.information", value: "Information", comment: "The title of the section 'Information'")
+
+            static let sectionResources = LocalizedString("lekaapp.main_view.sidebar.section_resources", value: "Resources", comment: "The title of the section 'Resources'")
 
             static let sectionContent = LocalizedString("lekaapp.main_view.sidebar.section.content", value: "Content", comment: "The title of the section 'Content'")
 

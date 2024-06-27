@@ -31,7 +31,6 @@ public extension Curriculum {
 
         skills:
           - spatial_understanding
-          - recognition/animals
           - communication/non_verbal_communication/gestures
 
         tags:

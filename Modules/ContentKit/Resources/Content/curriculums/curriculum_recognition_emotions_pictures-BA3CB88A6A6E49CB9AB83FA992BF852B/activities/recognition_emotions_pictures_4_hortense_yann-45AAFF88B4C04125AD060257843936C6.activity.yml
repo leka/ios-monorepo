@@ -8,7 +8,7 @@ uuid: 45AAFF88B4C04125AD060257843936C6
 name: recognition_emotions_pictures_4_hortense_yann
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-04T15:43:31.720924"
+last_edited_at: "2024-06-24T17:07:03.685037"
 status: published
 
 authors:
@@ -16,16 +16,13 @@ authors:
 
 skills:
   - recognition
-  - recognition/basic_emotions
   - communication
   - communication/verbal_communication
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - pictures
-  - Hortense
-  - Yann
+  - hortense
+  - yann
 
 hmi:
   - tablet
@@ -40,8 +37,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-pictures-4_images_2_types-yann_hortense-a22c67a2-28c8-4cd4-a0e7-aec34e6c564f
+      icon: emotion_recognition-pictures-4_images_2_types-yann_hortense-a22c67a2-28c8-4cd4-a0e7-aec34e6c564f
 
       title: Les émotions en photos
       subtitle: Hortense - Yann - 4
@@ -59,8 +55,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-pictures-4_images_2_types-yann_hortense-a22c67a2-28c8-4cd4-a0e7-aec34e6c564f
+      icon: emotion_recognition-pictures-4_images_2_types-yann_hortense-a22c67a2-28c8-4cd4-a0e7-aec34e6c564f
 
       title: Emotions in pictures
       subtitle: Hortense - Yann - 4

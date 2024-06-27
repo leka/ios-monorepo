@@ -6,7 +6,7 @@ uuid: 173A0E0985D944F9835E2205867121FC
 name: curriculum_recognition_emotions_generalization
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-04-08T13:19:48.615076"
+last_edited_at: "2024-06-24T16:39:48.842134"
 
 status: published
 
@@ -15,7 +15,6 @@ authors:
 
 skills:
   - recognition
-  - recognition/basic_emotions
   - communication
   - communication/verbal_communication
   - communication/verbal_communication/receptive_language
@@ -24,11 +23,18 @@ hmi:
   - tablet
 
 tags:
-  - emotions
-  - drawings
-  - pictures
-  - pictograms
-  - generalization
+  - characters
+  - leka
+  - hugo
+  - louna
+  - zoe
+  - moussa
+  - oscar
+  - ladislas
+  - lucie
+  - yann
+  - hortense
+  - hugo
 
 locales:
   - en_US
@@ -58,7 +64,6 @@ l10n:
       description: |
         Care receivers are exposed to interactive activities that incorporate drawings, pictures of the Leka team, and pictograms depicting emotions such as fear, anger, sadness, joy, and disgust. The goal is to recognize the emotions presented across these different visual supports and touch the corresponding image. This journey not only encourages a deeper understanding of emotions but also cognitive flexibility in recognizing these emotions across various contexts and presentations.
 activities:
-
   - recognition_emotions_generalization_3_images_2_types-699FB7EB68DD41F1BB24DB67B10CE60D
   - recognition_emotions_generalization_3_images_3_types-C21549498D584ECBBE713AD05B4225ED
   - recognition_emotions_generalization_4_images_2_types-DDD78773E4DC4C5BB7A478790096A2CA

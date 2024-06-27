@@ -98,7 +98,8 @@
         "$status": {
             "enum": [
                 "draft",
-                "published"
+                "published",
+                "template"
             ]
         },
         "$l10n": {

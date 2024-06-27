@@ -30,7 +30,6 @@ public extension Activity {
 
     skills:
       - spatial_understanding
-      - recognition/animals
       - communication/non_verbal_communication/gestures
       - communication/verbal_communication/receptive_language
       - association
@@ -63,7 +62,7 @@ public extension Activity {
     l10n:
       - locale: fr_FR
         details:
-          icon: name_of_the_activity-icon-fr_FR.svg
+          icon: placeholder_2
 
           title: Activité d'exemple
           subtitle: pour le développement
@@ -94,7 +93,7 @@ public extension Activity {
 
       - locale: en_US
         details:
-          icon: name_of_the_activity-icon-en_US.svg
+          icon: placeholder_2
 
           title: Sample activity
           subtitle: for development

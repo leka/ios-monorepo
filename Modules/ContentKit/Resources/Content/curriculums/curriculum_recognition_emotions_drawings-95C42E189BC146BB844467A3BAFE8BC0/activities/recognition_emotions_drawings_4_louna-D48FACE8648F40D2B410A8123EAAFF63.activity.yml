@@ -8,7 +8,7 @@ uuid: D48FACE8648F40D2B410A8123EAAFF63
 name: recognition_emotions_drawings_4_louna
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-04T15:43:31.724381"
+last_edited_at: "2024-06-24T17:07:03.681465"
 status: published
 
 authors:
@@ -16,15 +16,12 @@ authors:
 
 skills:
   - recognition
-  - recognition/basic_emotions
   - communication
   - communication/verbal_communication
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - drawings
-  - Louna
+  - louna
   - characters
 
 hmi:
@@ -40,8 +37,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-4_images_1_types-louna-f247c96a-e980-42ca-ae26-71fc6b1667e3
+      icon: emotion_recognition-drawings-4_images_1_types-louna-f247c96a-e980-42ca-ae26-71fc6b1667e3
 
       title: Les émotions en dessins
       subtitle: Louna - 4
@@ -59,8 +55,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-4_images_1_types-louna-f247c96a-e980-42ca-ae26-71fc6b1667e3
+      icon: emotion_recognition-drawings-4_images_1_types-louna-f247c96a-e980-42ca-ae26-71fc6b1667e3
 
       title: Emotions in drawings
       subtitle: Louna - 4

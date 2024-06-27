@@ -37,6 +37,7 @@ public enum BLESpecs {
             public static let screensaverEnable = CBUUID(string: "0x8369")
             public static let softReboot = CBUUID(string: "0x8382")
             public static let hardReboot = CBUUID(string: "0x7282")
+            public static let negotiatedMTU = CBUUID(data: Data("NEGOTIATED_MTU".utf8) + Data([0, 0]))
         }
 
         public static let service = CBUUID(string: "0x7779")
@@ -52,11 +53,10 @@ public enum BLESpecs {
 
     public enum MagicCard {
         public enum Characteristics {
-            public static let id = CBUUID(data: Data("ID".utf8) + Data([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]))
-            public static let language = CBUUID(data: Data("Language".utf8) + Data([0, 0, 0, 0, 0, 0, 0, 0]))
+            public static let idLanguage = CBUUID(data: Data("ID+LANGUAGE".utf8) + Data([0, 0, 0, 0, 0]))
         }
 
-        public static let service = CBUUID(data: Data("Magic Card".utf8 + Data([0, 0, 0, 0, 0, 0])))
+        public static let service = CBUUID(data: Data("MAGIC_CARD".utf8 + Data([0, 0, 0, 0, 0, 0])))
     }
 
     public enum FileExchange {

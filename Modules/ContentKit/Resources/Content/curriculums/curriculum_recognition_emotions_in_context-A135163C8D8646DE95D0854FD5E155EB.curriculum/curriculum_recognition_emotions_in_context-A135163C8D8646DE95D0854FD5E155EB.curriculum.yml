@@ -8,21 +8,18 @@ name: curriculum_recognition_emotions_in_context
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-04-04T15:43:54.314056"
+last_edited_at: "2024-06-24T16:39:48.842158"
 authors:
   - leka
 
 skills:
   - recognition
-  - recognition/basic_emotions
   - empathy
 
 tags:
-  - emotions
-  - context
-  - empathy
   - characters
-  - drawings
+  - thumbs_up
+  - thumbs_down
 
 hmi:
   - tablet

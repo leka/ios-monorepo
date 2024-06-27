@@ -8,7 +8,7 @@ uuid: 18DA1F9028CF447E819507B0A6562F2E
 name: recognition_weather_and_temperatures_hot_and_cold
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-08T13:12:12.648109"
+last_edited_at: "2024-06-24T17:07:03.684563"
 status: published
 
 authors:
@@ -16,12 +16,9 @@ authors:
 
 skills:
   - recognition
-  - recognition/weather_elements
 
 tags:
-  - meteo
-  - temperature
-  - climat
+  - weather_elements
 
 hmi:
   - tablet
@@ -77,7 +74,6 @@ exercises_payload:
 
   exercise_groups:
     - group:
-
         - instructions:
             - locale: fr_FR
               value: Regarde l'image. Fait-il chaud ou froid ?

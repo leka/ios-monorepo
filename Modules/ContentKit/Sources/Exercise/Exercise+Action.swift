@@ -75,6 +75,8 @@ public extension Exercise {
         public enum ActionType: Codable {
             case color(String)
             case image(String)
+            case emoji(String)
+            case sfsymbol(String)
             case audio(String)
             case speech(String)
         }
@@ -100,6 +102,12 @@ public extension Exercise {
                         case let .image(name):
                             try valueContainer.encode("image", forKey: .type)
                             try valueContainer.encode(name, forKey: .value)
+                        case let .emoji(name):
+                            try valueContainer.encode("emoji", forKey: .type)
+                            try valueContainer.encode(name, forKey: .value)
+                        case let .sfsymbol(name):
+                            try valueContainer.encode("sfsymbol", forKey: .type)
+                            try valueContainer.encode(name, forKey: .value)
                         case let .audio(name):
                             try valueContainer.encode("audio", forKey: .type)
                             try valueContainer.encode(name, forKey: .value)
@@ -123,6 +131,12 @@ public extension Exercise {
                         case .speech:
                             log.error("Action Speech not available for robot ")
                             fatalError("💥 Action Speech not available for robot")
+                        case .emoji:
+                            log.error("Action Emoji not available for robot ")
+                            fatalError("💥 Action Emoji not available for robot")
+                        case .sfsymbol:
+                            log.error("Action SFSymbol not available for robot ")
+                            fatalError("💥 Action SFSymbol not available for robot")
                     }
             }
         }

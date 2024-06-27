@@ -8,7 +8,7 @@ uuid: 5FC4C6B028834D5FB10092EB0A92BFFE
 name: recognition_emotions_drawings_4_hugo
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-04T15:43:31.720924"
+last_edited_at: "2024-06-24T17:07:03.681262"
 status: published
 
 authors:
@@ -16,15 +16,12 @@ authors:
 
 skills:
   - recognition
-  - recognition/basic_emotions
   - communication
   - communication/verbal_communication
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - drawings
-  - Hugo
+  - hugo
   - characters
 
 hmi:
@@ -40,8 +37,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-4_images_1_types-hugo-2ddfa5c9-b3b2-43b3-97f2-70fa576b4fc7
+      icon: emotion_recognition-drawings-4_images_1_types-hugo-2ddfa5c9-b3b2-43b3-97f2-70fa576b4fc7
 
       title: Les émotions en dessins
       subtitle: Hugo - 4
@@ -59,8 +55,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-4_images_1_types-hugo-2ddfa5c9-b3b2-43b3-97f2-70fa576b4fc7
+      icon: emotion_recognition-drawings-4_images_1_types-hugo-2ddfa5c9-b3b2-43b3-97f2-70fa576b4fc7
 
       title: Emotions in drawings
       subtitle: Hugo - 4

@@ -497,6 +497,12 @@
                         "state": "new",
                         "value": "Tap Leka"
                     }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Touche Leka"
+                    }
                 }
             }
         },
@@ -509,6 +515,12 @@
                         "state": "new",
                         "value": "\u274c ERROR\nInterface not implemented"
                     }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\u274c ERREUR\nInterface non impl\u00e9ment\u00e9e"
+                    }
                 }
             }
         },
@@ -520,6 +532,12 @@
                     "stringUnit": {
                         "state": "new",
                         "value": "\u274c ERROR\nChoice type not implemented"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\u274c ERREUR\nType non impl\u00e9ment\u00e9"
                     }
                 }
             }

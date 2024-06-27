@@ -1,27 +1,12 @@
-Bienvenue dans la Nouvelle Application Leka !
+### Nouveaux Contenus & Fonctionnalités
 
-Découvrez les nouveautés de la dernière mise à jour :
-
-- Interface Révolutionnaire : Profitez d'une interaction sans faille avec le robot Leka grâce à une expérience utilisateur entièrement repensée.
-- Contenu Éducatif Amélioré : Plongez dans une bibliothèque élargie d'activités, de programmes et d'histoires conçus pour un apprentissage inclusif.
-- Profils Utilisateur Personnalisables : Personnalisez votre parcours avec des profils adaptables pour les professionnels et les personnes accompagnées, simplifiant le suivi des progrès.
-- Technologie Prête pour l'Avenir : Bénéficiez d'une infrastructure d'application robuste qui garantit fiabilité, conception conviviale et préparation aux avancées futures.
-
-Rejoignez-nous dans ce nouveau voyage avec Leka, où la technologie et l'éducation convergent pour créer des expériences éducatives percutantes.
-
-## Mises à Jour & Corrections
-
-/!\ Informations Importantes pour les Utilisateurs Alpha de Leka /!\
-
-- Transition de Compte : Votre compte, ainsi que tous les professionnels et personnes accompagnées, ont été transférés vers notre nouvelle base de données. Connectez-vous en utilisant votre email et mot de passe habituels.
-- Assistance Mot de Passe : Vous avez oublié votre mot de passe ? Réinitialisez-le facilement depuis la page de connexion.
-
-Si vous rencontrez des problèmes ou avez besoin d'aide, contactez-nous à support@leka.io
-
-### Nouveau Contenu & Fonctionnalités
-
-- Nouvelle Catégorie de Recherche: Ajout d'une nouvelle catégorie de recherche pour améliorer la fonctionnalité de recherche de contenu.
+- Nouvelle Catégorie de Recherche : Ajout d'une nouvelle catégorie de recherche pour améliorer la fonctionnalité de recherche de contenu.
+- Vues des Ressources : Introduction de vues pour les ressources et d'une section dédiée aux ressources.
+- Intégration des Tags : Remplacement des compétences par des tags pour une meilleure organisation et recherche.
 
 ### Corrections de Bugs
 
-- Petites Corrections et Améliorations: Mise en œuvre de petites corrections et améliorations générales pour de meilleures performances et stabilité.
+- Correction des Réponses Correctes : Résolution des problèmes de réponses correctes dans les activités.
+- Corrections de Langue et de Traduction : Correction des problèmes spécifiques à la langue et ajout des traductions françaises manquantes.
+- Améliorations de l'Audio et de la Synthèse Vocale : Amélioration de la stabilité du lecteur audio et des fonctionnalités de synthèse vocale.
+- Améliorations de la Stabilité : Correction des plantages et amélioration des performances sur les anciens iPads.

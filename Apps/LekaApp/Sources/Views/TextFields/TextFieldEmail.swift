@@ -28,7 +28,6 @@ struct TextFieldEmail: View {
     // MARK: Internal
 
     @Binding var entry: String
-    @FocusState var focused: Focusable?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -40,28 +39,30 @@ struct TextFieldEmail: View {
                 .textContentType(.emailAddress)
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
-                .onReceive(Just(self.entry)) { newValue in
-                    if self.focused != .email {
-                        self.entry = newValue.trimmingCharacters(in: .whitespaces)
-                    }
+                .focused(self.$focused)
+                .onChange(of: self.entry) { newValue in
+                    self.entry = newValue.trimmingCharacters(in: .whitespaces)
                 }
-                .onAppear { self.focused = .email }
-                .focused(self.$focused, equals: .email)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(self.focused == .email ? .blue : .clear, lineWidth: 1)
+                        .stroke(self.focused ? .blue : .clear, lineWidth: 1)
                 )
 
             Text(l10n.TextFieldEmail.invalidEmailErrorLabel)
                 .font(.footnote)
                 .foregroundStyle(self.isErrorMessageVisible ? .red : .clear)
         }
+        .onAppear {
+            self.focused = true
+        }
     }
 
     // MARK: Private
 
+    @FocusState private var focused: Bool
+
     private var isErrorMessageVisible: Bool {
-        self.entry.isInvalidEmail(checkEmpty: false) && !self.entry.isEmpty && self.focused != .email
+        self.entry.isInvalidEmail(checkEmpty: false) && !self.entry.isEmpty && !self.focused
     }
 }
 

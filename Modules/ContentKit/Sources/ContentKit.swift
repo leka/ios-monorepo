@@ -15,8 +15,14 @@ public enum ContentKit {
 
     public static let allActivities: [Activity] = ContentKit.listAllActivities() ?? []
     public static let allPublishedActivities: [Activity] = ContentKit.listAllPublishedActivities() ?? []
-    public static let allCurriculums: [Curriculum] = ContentKit.listSampleCurriculums() ?? []
+    public static let allDraftActivities: [Activity] = ContentKit.listAllDraftActivities() ?? []
+    public static let allTemplateActivities: [Activity] = ContentKit.listAllTemplateActivities() ?? []
+    public static let allCurriculums: [Curriculum] = ContentKit.listCurriculums() ?? []
     public static let allStories: [Story] = ContentKit.listAllStories() ?? []
+
+    public static var firstStepsResources: CategoryResources = loadResourceYAML(from: "resources_first_steps")
+    public static var videosResources: CategoryResources = loadResourceYAML(from: "resources_videos")
+    public static var deepDiveResources: CategoryResources = loadResourceYAML(from: "resources_deep_dive")
 
     public static func listRasterImages() -> [String] {
         let bundle = Bundle.module
@@ -40,7 +46,7 @@ public enum ContentKit {
 
     // MARK: Private
 
-    private static func listSampleCurriculums() -> [Curriculum]? {
+    private static func listCurriculums() -> [Curriculum]? {
         let bundle = Bundle.module
         let files = bundle.paths(forResourcesOfType: "curriculum.yml", inDirectory: nil)
 
@@ -54,14 +60,12 @@ public enum ContentKit {
                 continue
             }
 
-            let curriculum = try? YAMLDecoder().decode(Curriculum.self, from: data)
-
-            guard let curriculum else {
-                log.error("Error decoding file: \(file)")
-                continue
+            do {
+                let curriculum = try YAMLDecoder().decode(Curriculum.self, from: data)
+                curriculums.append(curriculum)
+            } catch {
+                log.error("Error decoding file: \(file) with error:\n\(error)")
             }
-
-            curriculums.append(curriculum)
         }
 
         return curriculums.sorted { $0.name < $1.name }
@@ -81,21 +85,27 @@ public enum ContentKit {
                 continue
             }
 
-            let activity = try? YAMLDecoder().decode(Activity.self, from: data)
-
-            guard let activity else {
-                log.error("Error decoding file: \(file)")
-                continue
+            do {
+                let activity = try YAMLDecoder().decode(Activity.self, from: data)
+                activities.append(activity)
+            } catch {
+                log.error("Error decoding file: \(file) with error:\n\(error)")
             }
-
-            activities.append(activity)
         }
 
         return activities
     }
 
     private static func listAllPublishedActivities() -> [Activity]? {
-        ContentKit.listAllActivities()?.filter { $0.status == .published }
+        self.allActivities.filter { $0.status == .published }
+    }
+
+    private static func listAllDraftActivities() -> [Activity]? {
+        self.allActivities.filter { $0.status == .draft }
+    }
+
+    private static func listAllTemplateActivities() -> [Activity]? {
+        self.allActivities.filter { $0.status == .template }
     }
 
     private static func listAllStories() -> [Story]? {
@@ -112,16 +122,32 @@ public enum ContentKit {
                 continue
             }
 
-            let story = try? YAMLDecoder().decode(Story.self, from: data)
-
-            guard let story else {
-                log.error("Error decoding file: \(file)")
-                continue
+            do {
+                let story = try YAMLDecoder().decode(Story.self, from: data)
+                stories.append(story)
+            } catch {
+                log.error("Error decoding file: \(file) with error:\n\(error)")
             }
-
-            stories.append(story)
         }
 
         return stories
+    }
+
+    private static func loadResourceYAML(from resourceName: String) -> CategoryResources {
+        let path = ContentKitResources.bundle.path(forResource: resourceName, ofType: ".category.yml")
+        let data = try? String(contentsOfFile: path!, encoding: .utf8)
+
+        guard let data else {
+            log.error("Error reading file")
+            fatalError("💥 Error reading file")
+        }
+
+        do {
+            let info = try YAMLDecoder().decode(CategoryResources.self, from: data)
+            return info
+        } catch {
+            log.error("Error decoding file with error:\n\(error)")
+            fatalError("💥 Error decoding file with error:\n\(error)")
+        }
     }
 }

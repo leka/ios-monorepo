@@ -6,7 +6,7 @@
 # ? See https://pre-commit.com/hooks.html for more hooks
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v4.6.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -31,13 +31,13 @@ repos:
       - id: mixed-line-ending
 
   - repo: https://github.com/realm/SwiftLint
-    rev: 0.54.0
+    rev: 0.55.1
     hooks:
       - id: swiftlint
         entry: swiftlint
 
   - repo: https://github.com/nicklockwood/SwiftFormat
-    rev: 0.53.1
+    rev: 0.54.0
     hooks:
       - id: swiftformat
 
@@ -99,6 +99,18 @@ repos:
         language: python
         additional_dependencies: ["ruamel.yaml"]
         files: skills.yml
+
+      - id: check_yaml_definitions_tags
+        name: Check tags.yml
+        description: |
+          This hook checks tags.yml for:
+            - non unique ids
+            - jtd schema validation
+          It also formats the file and sorts the entries
+        entry: python3 Tools/Hooks/check_yaml_definitions_tags.py
+        language: python
+        additional_dependencies: ["ruamel.yaml"]
+        files: tags.yml
 
       - id: check_yaml_content_activities
         name: Check activity.yml files

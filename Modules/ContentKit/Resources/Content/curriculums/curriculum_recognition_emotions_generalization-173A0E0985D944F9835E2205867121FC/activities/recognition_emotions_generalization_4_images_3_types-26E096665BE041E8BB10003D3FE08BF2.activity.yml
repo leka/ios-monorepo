@@ -8,7 +8,7 @@ uuid: 26E096665BE041E8BB10003D3FE08BF2
 name: recognition_emotions_generalization_4_images_3_types
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-04T15:43:31.717795"
+last_edited_at: "2024-06-24T17:07:03.695853"
 status: published
 
 authors:
@@ -16,29 +16,23 @@ authors:
 
 skills:
   - recognition
-  - recognition/basic_emotions
   - communication
   - communication/verbal_communication
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - generalization
   - characters
-  - pictures
-  - drawings
-  - pictograms
   - leka
-  - Hugo
-  - Louna
-  - Zoé
-  - Moussa
-  - Oscar
-  - Ladislas
-  - Lucie
-  - Yann
-  - Hortense
-  - Hugo
+  - hugo
+  - louna
+  - zoe
+  - moussa
+  - oscar
+  - ladislas
+  - lucie
+  - yann
+  - hortense
+  - hugo
 
 hmi:
   - tablet
@@ -53,8 +47,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-generalization-4_images_3_types-0903663b-d062-434a-aa02-ad139509bd46
+      icon: emotion_recognition-generalization-4_images_3_types-0903663b-d062-434a-aa02-ad139509bd46
 
       title: Généralisation des émotions
       subtitle: Généralisation - 3 types - 4 images
@@ -72,8 +65,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-generalization-4_images_3_types-0903663b-d062-434a-aa02-ad139509bd46
+      icon: emotion_recognition-generalization-4_images_3_types-0903663b-d062-434a-aa02-ad139509bd46
 
       title: Emotions generalization
       subtitle: Generalisation - 3 types - 4 images

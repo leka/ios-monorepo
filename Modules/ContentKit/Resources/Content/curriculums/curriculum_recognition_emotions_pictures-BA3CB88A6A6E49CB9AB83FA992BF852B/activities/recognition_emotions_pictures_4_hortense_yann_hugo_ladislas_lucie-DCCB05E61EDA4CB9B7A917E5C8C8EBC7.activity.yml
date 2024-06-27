@@ -8,7 +8,7 @@ uuid: DCCB05E61EDA4CB9B7A917E5C8C8EBC7
 name: recognition_emotions_pictures_4_hortense_yann_hugo_ladislas_lucie
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-04T15:43:31.716196"
+last_edited_at: "2024-06-24T17:07:03.681465"
 status: published
 
 authors:
@@ -16,19 +16,16 @@ authors:
 
 skills:
   - recognition
-  - recognition/basic_emotions
   - communication
   - communication/verbal_communication
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - pictures
-  - Ladislas
-  - Hortense
-  - Yann
-  - Lucie
-  - Hugo
+  - ladislas
+  - hortense
+  - yann
+  - lucie
+  - hugo
 
 hmi:
   - tablet
@@ -43,8 +40,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-pictures-4_images_1_types-ladislas_lucie_yann_hortense_hugo-46042e54-7d41-4c4c-a40a-0dad3b51b5b0
+      icon: emotion_recognition-pictures-4_images_1_types-ladislas_lucie_yann_hortense_hugo-46042e54-7d41-4c4c-a40a-0dad3b51b5b0
 
       title: Les émotions en photos
       subtitle: Ladislas - Lucie - Yann - Hortense - Hugo - 4
@@ -62,8 +58,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-pictures-4_images_1_types-ladislas_lucie_yann_hortense_hugo-46042e54-7d41-4c4c-a40a-0dad3b51b5b0
+      icon: emotion_recognition-pictures-4_images_1_types-ladislas_lucie_yann_hortense_hugo-46042e54-7d41-4c4c-a40a-0dad3b51b5b0
 
       title: Emotions in pictures
       subtitle: Ladislas - Lucie - Yann - Hortense - Hugo - 4

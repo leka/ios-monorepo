@@ -8,7 +8,7 @@ uuid: E49EEAC175EA487F9BF2C767B46233DC
 name: recognition_emotions_drawings_2_moussa
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-04-04T15:43:31.724381"
+last_edited_at: "2024-06-24T17:07:03.684156"
 status: published
 
 authors:
@@ -16,15 +16,12 @@ authors:
 
 skills:
   - recognition
-  - recognition/basic_emotions
   - communication
   - communication/verbal_communication
   - communication/verbal_communication/receptive_language
 
 tags:
-  - emotions
-  - drawings
-  - Moussa
+  - moussa
   - characters
 
 hmi:
@@ -40,8 +37,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
-        emotion_recognition-drawings-2_images_1_types-moussa-6b25ba9b-7602-473a-ab17-a3c0ccc55342
+      icon: emotion_recognition-drawings-2_images_1_types-moussa-6b25ba9b-7602-473a-ab17-a3c0ccc55342
 
       title: Les émotions en dessins
       subtitle: Moussa - 2
@@ -59,8 +55,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
-        emotion_recognition-drawings-2_images_1_types-moussa-6b25ba9b-7602-473a-ab17-a3c0ccc55342
+      icon: emotion_recognition-drawings-2_images_1_types-moussa-6b25ba9b-7602-473a-ab17-a3c0ccc55342
 
       title: Emotions in drawings
       subtitle: Moussa - 2

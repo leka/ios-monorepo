@@ -12,7 +12,7 @@ extension DanceFreezeView {
         // MARK: Lifecycle
 
         init(selectedAudioRecording: DanceFreeze.Song, motion: Motion, shared: ExerciseSharedData? = nil) {
-            self.audioPlayer = AudioPlayer(audioRecording: selectedAudioRecording.audio)
+            self.audioPlayer = AudioPlayer.shared
             self.audioPlayer.setAudioData(data: selectedAudioRecording.audio)
             self.robotManager = RobotManager()
             self.motionMode = motion

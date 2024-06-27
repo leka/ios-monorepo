@@ -8,7 +8,7 @@ uuid: 6E2F7D56726C419EA534C614F777D934
 name: dance_freeze
 
 created_at: "2024-03-01T14:00:38.160403"
-last_edited_at: "2024-05-02T17:36:24.396983"
+last_edited_at: "2024-06-21T20:42:29.163250"
 status: published
 
 authors:
@@ -20,8 +20,7 @@ skills:
 
 tags:
   - music
-  - movements
-  - dancing
+  - standalone_activity
 
 hmi:
   - robot

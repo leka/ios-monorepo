@@ -62,7 +62,7 @@
             "enum": ["en_US", "fr_FR"]
         },
         "$status": {
-            "enum": ["draft", "published"]
+            "enum": ["draft", "published", "template"]
         },
         "$l10n": {
             "properties": {
