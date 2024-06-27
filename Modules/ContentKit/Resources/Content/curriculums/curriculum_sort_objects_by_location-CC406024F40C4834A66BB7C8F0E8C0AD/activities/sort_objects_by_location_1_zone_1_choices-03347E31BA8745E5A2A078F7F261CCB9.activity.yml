@@ -37,7 +37,7 @@ l10n:
     details:
       icon: recognition_public_places_drag
 
-      title: Classer et placer les objets dans les lieux publics
+      title: Trier les objets par lieux
       subtitle: 1 lieu - 1 objet
 
       short_description: |
