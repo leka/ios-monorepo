@@ -1,0 +1,444 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+list:
+  - id: 0x0001
+    name: magicCardMiscEmergencyStop
+  - id: 0x0002
+    name: magicCardMiscDiceRoll
+  - id: 0x0003
+    name: magicCardColorsVioletPaint
+  - id: 0x0004
+    name: magicCardColorsIndigoPaint
+  - id: 0x0005
+    name: magicCardColorsBluePaint
+  - id: 0x0006
+    name: magicCardColorsGreenPaint
+  - id: 0x0007
+    name: magicCardColorsYellowPaint
+  - id: 0x0008
+    name: magicCardColorsOrangePaint
+  - id: 0x0009
+    name: magicCardColorsRedPaint
+  - id: 0x000A
+    name: magicCardNumbers0Zero
+  - id: 0x000B
+    name: magicCardNumbers1One
+  - id: 0x000C
+    name: magicCardNumbers2Two
+  - id: 0x000D
+    name: magicCardNumbers3Three
+  - id: 0x000E
+    name: magicCardNumbers4Four
+  - id: 0x000F
+    name: magicCardNumbers5Five
+  - id: 0x0010
+    name: magicCardNumbers6Six
+  - id: 0x0011
+    name: magicCardNumbers7Seven
+  - id: 0x0012
+    name: magicCardNumbers8Eight
+  - id: 0x0013
+    name: magicCardNumbers9Nine
+  - id: 0x0014
+    name: magicCardNumbers10Ten
+  - id: 0x0015
+    name: magicCardShapeSquarePlainLine
+  - id: 0x0016
+    name: magicCardShapeCirclePlainLine
+  - id: 0x0017
+    name: magicCardShapeTrianglePlainLine
+  - id: 0x0018
+    name: magicCardShapeStarPlainLine
+  - id: 0x0019
+    name: magicCardActivityMusicQuest
+  - id: 0x001A
+    name: magicCardActivitySuperSimon
+  - id: 0x001B
+    name: magicCardActivityColorQuest
+  - id: 0x001C
+    name: magicCardActivityMusicColoredBoard
+  - id: 0x001D
+    name: magicCardActivityHideAndSeek
+  - id: 0x001E
+    name: magicCardActivityColorsAndSounds
+  - id: 0x001F
+    name: magicCardActivityMagicObjects
+  - id: 0x0020
+    name: magicCardActivityDanceFreeze
+  - id: 0x0021
+    name: magicCardRemoteStandard
+  - id: 0x0022
+    name: magicCardRemoteColoredArrows
+  - id: 0x0023
+    name: magicCardReinforcer1GreenSpin
+  - id: 0x0024
+    name: magicCardReinforcer2VioletGreenBlinkSpin
+  - id: 0x0025
+    name: magicCardReinforcer3FireStatic
+  - id: 0x0026
+    name: magicCardReinforcer4GlittersStatic
+  - id: 0x0027
+    name: magicCardReinforcer5RainbowStatic
+  - id: 0x0028
+    name: magicCardEmotionFearChild
+  - id: 0x0029
+    name: magicCardEmotionDisgustChild
+  - id: 0x002A
+    name: magicCardEmotionAngerChild
+  - id: 0x002B
+    name: magicCardEmotionJoyChild
+  - id: 0x002C
+    name: magicCardEmotionSadnessChild
+  - id: 0x002D
+    name: magicCardEmotionFearLeka
+  - id: 0x002E
+    name: magicCardEmotionDisgustLeka
+  - id: 0x002F
+    name: magicCardEmotionAngerLeka
+  - id: 0x0030
+    name: magicCardEmotionJoyLeka
+  - id: 0x0031
+    name: magicCardEmotionSadnessLeka
+  - id: 0x0032
+    name: magicCardVegetableCarrotOrange
+  - id: 0x0033
+    name: magicCardVegetablePotatoYellow
+  - id: 0x0034
+    name: magicCardVegetableSaladGreen
+  - id: 0x0035
+    name: magicCardVegetableMushroomGrey
+  - id: 0x0036
+    name: magicCardFruitStrawberryRed
+  - id: 0x0037
+    name: magicCardFruitCherryPink
+  - id: 0x0038
+    name: magicCardFruitAppleGreen
+  - id: 0x0039
+    name: magicCardFruitBananaYellow
+  - id: 0x003A
+    name: magicCardFruitGrapesBlack
+  - id: 0x003B
+    name: magicCardMathArithmeticSubtractionSignMinus
+  - id: 0x003C
+    name: magicCardMathArithmeticAdditionSignPlus
+  - id: 0x003D
+    name: robotMiscMissingResource
+  - id: 0x003E
+    name: robotMiscScreenEmptyWhite
+  - id: 0x003F
+    name: robotMiscScreenEmptyBlack
+  - id: 0x0040
+    name: robotMiscChooseActivityFrFR
+  - id: 0x0041
+    name: robotMiscChooseActivityEnUS
+  - id: 0x0042
+    name: robotMiscSplashScreenLarge400
+  - id: 0x0043
+    name: robotMiscSplashScreenMedium300
+  - id: 0x0044
+    name: robotMiscSplashScreenSmall200
+  - id: 0x0045
+    name: robotFaceSmiling
+  - id: 0x0046
+    name: robotFaceSmilingNoCheeks
+  - id: 0x0047
+    name: robotFaceSmilingSlightly
+  - id: 0x0048
+    name: robotFaceNeutral
+  - id: 0x0049
+    name: robotFaceSmilingSmilingEyes
+  - id: 0x004A
+    name: robotFaceHappy
+  - id: 0x004B
+    name: robotFaceTired
+  - id: 0x004C
+    name: robotFaceTiredWithTears
+  - id: 0x004D
+    name: robotFaceSad
+  - id: 0x004E
+    name: robotFaceSadWithTears
+  - id: 0x004F
+    name: robotFaceAfraid
+  - id: 0x0050
+    name: robotFaceAngry
+  - id: 0x0051
+    name: robotFaceDisgusted
+  - id: 0x0052
+    name: robotBatteryEmptyMustBeCharged
+  - id: 0x0053
+    name: robotBatteryChargingEmptyRed
+  - id: 0x0054
+    name: robotBatteryChargingEmptyNoColor
+  - id: 0x0055
+    name: robotBatteryChargingFullGreen
+  - id: 0x0056
+    name: robotBatteryChargingQuarter1Red
+  - id: 0x0057
+    name: robotBatteryChargingQuarter2Red
+  - id: 0x0058
+    name: robotBatteryChargingQuarter3Red
+  - id: 0x0059
+    name: robotBatteryChargingQuarter4Red
+  - id: 0x005A
+    name: robotBatteryChargingQuarter1Orange
+  - id: 0x005B
+    name: robotBatteryChargingQuarter2Orange
+  - id: 0x005C
+    name: robotBatteryChargingQuarter3Orange
+  - id: 0x005D
+    name: robotBatteryChargingQuarter4Orange
+  - id: 0x005E
+    name: robotBatteryChargingQuarter1Yellow
+  - id: 0x005F
+    name: robotBatteryChargingQuarter2Yellow
+  - id: 0x0060
+    name: robotBatteryChargingQuarter3Yellow
+  - id: 0x0061
+    name: robotBatteryChargingQuarter4Yellow
+  - id: 0x0062
+    name: robotBatteryChargingQuarter1Green
+  - id: 0x0063
+    name: robotBatteryChargingQuarter2Green
+  - id: 0x0064
+    name: robotBatteryChargingQuarter3Green
+  - id: 0x0065
+    name: robotBatteryChargingQuarter4Green
+  - id: 0x0066
+    name: drawingFruitAppleGreen
+  - id: 0x0067
+    name: drawingFruitGrapeBlack
+  - id: 0x0068
+    name: drawingFruitPearGreen
+  - id: 0x0069
+    name: drawingFruitStrawberryRed
+  - id: 0x006A
+    name: drawingFruitLemonYellow
+  - id: 0x006B
+    name: drawingFruitCherryRed
+  - id: 0x006C
+    name: drawingFruitBananaYellow
+  - id: 0x006D
+    name: drawingFruitOrangeOrange
+  - id: 0x006E
+    name: drawingVegetableRadishRedWhite
+  - id: 0x006F
+    name: drawingVegetableAvocadoGreen
+  - id: 0x0070
+    name: drawingVegetableEggplantViolet
+  - id: 0x0071
+    name: drawingVegetableCarrotOrange
+  - id: 0x0072
+    name: drawingVegetableTomatoRed
+  - id: 0x0073
+    name: drawingVegetableMushroomBrown
+  - id: 0x0074
+    name: drawingVegetablePumpkinOrange
+  - id: 0x0075
+    name: photoFruitAppleRed
+  - id: 0x0076
+    name: photoFruitGrapeGreen
+  - id: 0x0077
+    name: photoFruitPearYellow
+  - id: 0x0078
+    name: photoFruitStrawberryRed
+  - id: 0x0079
+    name: photoFruitLemonYellow
+  - id: 0x007A
+    name: photoFruitCherryRed
+  - id: 0x007B
+    name: photoFruitBananaYellow
+  - id: 0x007C
+    name: photoFruitOrangeOrange
+  - id: 0x007D
+    name: photoVegetableRadishRedGreen
+  - id: 0x007E
+    name: photoVegetableAvocadoGreen
+  - id: 0x007F
+    name: photoVegetableEggplantViolet
+  - id: 0x0080
+    name: photoVegetableCarrotOrange
+  - id: 0x0081
+    name: photoVegetableTomatoRed
+  - id: 0x0082
+    name: photoVegetableMushroomBrown
+  - id: 0x0083
+    name: photoVegetablePumpkinOrange
+  - id: 0x0084
+    name: pictoAnimalSeaSharkBlue
+  - id: 0x0085
+    name: pictoAnimalSeaCrabRed
+  - id: 0x0086
+    name: pictoAnimalSeaStarfishRed
+  - id: 0x0087
+    name: pictoAnimalSeaSeashellPink
+  - id: 0x0088
+    name: pictoAnimalSeaTurtleGreen
+  - id: 0x0089
+    name: pictoAnimalSeaOrcaBlack
+  - id: 0x008A
+    name: pictoAnimalSeaHippocampusGreen
+  - id: 0x008B
+    name: pictoAnimalSeaOctopusPink
+  - id: 0x008C
+    name: pictoAnimalSeaFishBlue
+  - id: 0x008D
+    name: pictoAnimalSeaJellyfishPink
+  - id: 0x008E
+    name: pictoAnimalSeaWhaleBlue
+  - id: 0x008F
+    name: pictoAnimalSeaShrimpPink
+  - id: 0x0090
+    name: pictoAnimalSeaMantaRayBlue
+  - id: 0x0091
+    name: pictoAnimalSeaDolphinBlue
+  - id: 0x0092
+    name: pictoAnimalSeaMorayEelGreen
+  - id: 0x0093
+    name: pictoAnimalSeaClownfishOrange
+  - id: 0x0094
+    name: pictoAnimalFarmHorseBrown
+  - id: 0x0095
+    name: pictoAnimalFarmRoosterWhite
+  - id: 0x0096
+    name: pictoAnimalFarmDonkeyGray
+  - id: 0x0097
+    name: pictoAnimalFarmSheepWhite
+  - id: 0x0098
+    name: pictoAnimalFarmHenYellow
+  - id: 0x0099
+    name: pictoAnimalFarmGooseBrown
+  - id: 0x009A
+    name: pictoAnimalFarmCowWhite
+  - id: 0x009B
+    name: pictoAnimalFarmCanaryYellow
+  - id: 0x009C
+    name: pictoAnimalFarmGoatBrown
+  - id: 0x009D
+    name: pictoAnimalFarmPigPink
+  - id: 0x009E
+    name: pictoAnimalFarmMallardDuckGreen
+  - id: 0x009F
+    name: pictoAnimalFarmRabbitGray
+  - id: 0x00A0
+    name: pictoAnimalPetsHamsterBrown
+  - id: 0x00A1
+    name: pictoAnimalPetsDogBulldogBrown
+  - id: 0x00A2
+    name: pictoAnimalPetsDogDachshundGray
+  - id: 0x00A3
+    name: pictoAnimalPetsCatGray
+  - id: 0x00A4
+    name: pictoAnimalPetsDogDalmatianWhite
+  - id: 0x00A5
+    name: pictoAnimalPetsDogGoldenRetrieverBrown
+  - id: 0x00A6
+    name: pictoAnimalPetsParrotGreenBlue
+  - id: 0x00A7
+    name: pictoAnimalPetsMouseGray
+  - id: 0x00A8
+    name: pictoAnimalPetsFishBlue
+  - id: 0x00A9
+    name: pictoAnimalPetsTortoiseGreen
+  - id: 0x00AA
+    name: pictoAnimalPetsGoldfishOrange
+  - id: 0x00AB
+    name: pictoAnimalPetsPigeonGray
+  - id: 0x00AC
+    name: pictoFoodFruitsLemonYellow
+  - id: 0x00AD
+    name: pictoFoodFruitsKiwiGreen
+  - id: 0x00AE
+    name: pictoFoodFruitsPineappleOrange
+  - id: 0x00AF
+    name: pictoFoodFruitsWatermelonRed
+  - id: 0x00B0
+    name: pictoFoodFruitsBananaYellow
+  - id: 0x00B1
+    name: pictoFoodFruitsPearYellow
+  - id: 0x00B2
+    name: pictoFoodFruitsStrawberryRed
+  - id: 0x00B3
+    name: pictoFoodFruitsGrapePurple
+  - id: 0x00B4
+    name: pictoFoodFruitsCherryRed
+  - id: 0x00B5
+    name: pictoFoodFruitsAppleGreen
+  - id: 0x00B6
+    name: pictoFoodFruitsAppleRed
+  - id: 0x00B7
+    name: pictoFoodFruitsAppleYellow
+  - id: 0x00B8
+    name: pictoFoodFruitsMelonGreen
+  - id: 0x00B9
+    name: pictoFoodFruitsRaspberryPink
+  - id: 0x00BA
+    name: pictoFoodFruitsOrangeOrange
+  - id: 0x00BB
+    name: pictoFoodVegetablesAvocadoGreen
+  - id: 0x00BC
+    name: pictoFoodVegetablesTomatoRed
+  - id: 0x00BD
+    name: pictoFoodVegetablesCornYellow
+  - id: 0x00BE
+    name: pictoFoodVegetablesEggplantPurple
+  - id: 0x00BF
+    name: pictoFoodVegetablesBroccoliGreen
+  - id: 0x00C0
+    name: pictoFoodVegetablesCarrotOrange
+  - id: 0x00C1
+    name: pictoFoodVegetablesOnionYellow
+  - id: 0x00C2
+    name: pictoFoodVegetablesPotatoYellow1
+  - id: 0x00C3
+    name: pictoFoodVegetablesSaladGreenLight
+  - id: 0x00C4
+    name: pictoFoodVegetablesSaladGreenNormal
+  - id: 0x00C5
+    name: pictoFoodVegetablesSaladGreenDark
+  - id: 0x00C6
+    name: pictoFoodVegetablesPotatoYellowLight
+  - id: 0x00C7
+    name: pictoFoodVegetablesPotatoYellowNormal
+  - id: 0x00C8
+    name: pictoFoodVegetablesMushroomGray
+  - id: 0x00C9
+    name: pictoFoodVegetablesMushroomBrown
+  - id: 0x00CA
+    name: pictoFoodVegetablesMushroomWhite
+  - id: 0x00CB
+    name: pictoFoodVegetablesPumpkinOrange
+  - id: 0x00CC
+    name: pictoFoodVegetablesPepperRed
+  - id: 0x00CD
+    name: pictoFoodVegetablesBeansGreen
+  - id: 0x00CE
+    name: pictoFoodVegetablesPeaGreen
+  - id: 0x00CF
+    name: pictoFoodVegetablesRadishPink
+  - id: 0x00D0
+    name: pictoFoodVegetablesLeekGreen
+  - id: 0x00D1
+    name: pictoFoodVegetablesGarlicWhite
+  - id: 0x00D2
+    name: pictoWeatherSunShiningYellow
+  - id: 0x00D3
+    name: pictoWeatherMoonCrescentShiningWhite
+  - id: 0x00D4
+    name: pictoWeatherSnowFallGray
+  - id: 0x00D5
+    name: pictoWeatherWindLeavesGreen
+  - id: 0x00D6
+    name: pictoWeatherCloudyGray
+  - id: 0x00D7
+    name: pictoWeatherRainyGray
+  - id: 0x00D8
+    name: pictoWeatherCloudySun
+  - id: 0x00D9
+    name: pictoWeatherLightstormGray
+  - id: 0x00DA
+    name: pictoWeatherTemperatureHotRed
+  - id: 0x00DB
+    name: pictoWeatherTemperatureColdBlue
