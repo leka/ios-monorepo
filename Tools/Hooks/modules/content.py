@@ -274,8 +274,28 @@ def find_missing_exercise_assets(
     def recursive_search(data, collected_results, source="choice"):
         """Recursively searches the data structure for missing assets, tracking their source."""
         if isinstance(data, dict):
+            # Special handling for actions
+            if source == "action" :
+                action_data = data
+                if (
+                    isinstance(action_data, dict)
+                    and "type" in action_data
+                    and isinstance(action_data["type"], str)
+                    and "value" in action_data
+                    and isinstance(action_data["value"], dict)
+                ):
+                    type_data = action_data["type"]
+                    value_data = action_data["value"]
+                    if type_data == "ipad" and value_data.get("type") in ["image", "audio"]:
+                        check_and_add_missing_asset(
+                            "action",
+                            value_data["type"],
+                            value_data["value"],
+                            collected_results,
+                        )
+
             # Direct 'type' and 'value' keys indicating a choice
-            if "type" in data and "value" in data and isinstance(data["value"], str):
+            elif "type" in data and "value" in data and isinstance(data["value"], str):
                 if data["type"] in ["image"]:
                     check_and_add_missing_asset(
                         source,
@@ -283,23 +303,6 @@ def find_missing_exercise_assets(
                         data["value"],
                         collected_results,
                     )
-
-            # Special handling for actions
-            elif "action" in data:
-                action_data = data["action"]
-                if (
-                    isinstance(action_data, dict)
-                    and "value" in action_data
-                    and isinstance(action_data["value"], dict)
-                ):
-                    value_data = action_data["value"]
-                    if value_data.get("type") in ["image", "audio"]:
-                        check_and_add_missing_asset(
-                            "action",
-                            value_data["type"],
-                            value_data["value"],
-                            collected_results,
-                        )
 
             # Recursive search within dictionary values, preserving the source for choices
             for key, value in data.items():
