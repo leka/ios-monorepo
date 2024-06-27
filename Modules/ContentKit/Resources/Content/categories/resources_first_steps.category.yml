@@ -50,14 +50,14 @@ content:
           icon: battery.100percent.bolt
           title: Le chargement de Leka
           description: Lorem ipsum
-          value: https://www.youtube.com/watch?v=jpyS5MEiRQ0
+          value: https://www.youtube.com/watch?v=M0v0VzWjIYU
           type: video
       - locale: en_US
         details:
           icon: battery.100percent.bolt
           title: Charging Leka
           description: Lorem ipsum
-          value: https://www.youtube.com/watch?v=jpyS5MEiRQ0
+          value: https://www.youtube.com/watch?v=zYL-eG7Z1d8
           type: video
   - resource:
       - locale: fr_FR
@@ -87,7 +87,7 @@ content:
           icon: book.pages
           title: Magic cards activities
           description: Lorem ipsum
-          value: https://www.youtube.com/watch?v=PyAK9tfBdfY
+          value: https://www.youtube.com/watch?v=97h2uKmJqCc
           type: video
   - resource:
       - locale: fr_FR
