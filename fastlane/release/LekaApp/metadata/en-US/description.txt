@@ -1,11 +1,21 @@
-Discover Leka, the revolutionary app that heralds a new era in assistive technology. Completely redesigned to integrate cutting-edge technology with inclusive and specialized education, this app serves as a link to the Leka robot, an innovative interactive companion designed to assist individuals of all ages with special needs.
+Discover Leka: Revolutionizing Assistive Technology
 
-More than just an educational tool, Leka is a revolutionary addition to the toolkit of professionals, designed to enrich daily practice and provide significant support in care environments. With Leka, professionals have a versatile resource that opens new avenues for engagement, teaching, and connection.
+Welcome to the new Leka App! This revolutionary app heralds a new era in assistive technology, seamlessly integrating cutting-edge technology with inclusive and specialized education. Serving as a vital link to the Leka robot, this innovative interactive companion is designed to assist individuals of all ages with special needs.
+
+More than just an educational tool, Leka is a groundbreaking addition to the toolkit of professionals, enriching daily practice and providing significant support in care environments. With Leka, professionals have a versatile resource that opens new avenues for engagement, teaching, and connection.
 
 Key Features of the Leka App:
 
-- Extensive Educational Library: Explore a vast collection of activities, courses, and stories designed to foster learning and engagement based on users' needs and skills.
-- Advanced Customization: Enjoy customizable user profiles that allow professionals and their charges to tailor their experiences and track progress with ease.
-- Modern Infrastructure: Benefit from a completely revamped app ensuring a user-friendly and reliable experience, prepared for future challenges.
+- Revolutionary Interface: Enjoy seamless interaction with the Leka robot through a completely redesigned user experience.
+- Extensive Educational Library: Explore a vast and expanded collection of activities, curriculums, and stories designed to foster learning and engagement based on users' needs and skills.
+- Advanced Customization: Personalize your journey with adaptable user profiles for caregivers and their charges, simplifying progress tracking and tailoring experiences.
+- Future-Ready Technology: Benefit from a robust app infrastructure ensuring reliability, a user-friendly design, and readiness for future advancements.
 
 Dive into the world of Leka for a transformative journey of discovery, education, and empowerment. Join us in this revolutionary chapter where technology transforms special education, providing an inclusive and engaging learning environment for all. With Leka, every interaction becomes more meaningful and impactful, breaking down barriers and elevating the experience and support for caregivers and care receivers.
+
+/!\ Important Information for Leka Alpha Users /!\
+
+- Account Transition: Your account, along with all caregivers and care receivers, has been transferred to our new database. Log in using your regular email and password.
+- Password Assistance: Forgot your password? Easily reset it from the login page.
+
+If you encounter any issues or need help, contact us at support@leka.io
