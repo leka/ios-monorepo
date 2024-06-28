@@ -328,6 +328,12 @@ public struct ActivityView: View {
                     data: self.viewModel.currentExerciseSharedData
                 )
 
+            case .dragAndDropInOrder:
+                DragAndDropInOrderView(
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
+                )
+
             case .danceFreeze:
                 DanceFreezeView(
                     exercise: self.viewModel.currentExercise,
