@@ -29,7 +29,7 @@ public enum GameplayChoiceState {
 
 // MARK: - GameplayChoiceModelProtocol
 
-protocol GameplayChoiceModelProtocol: Identifiable {
+protocol GameplayChoiceModelProtocol: Identifiable, Equatable {
     associatedtype ChoiceType
 
     var id: String { get }
