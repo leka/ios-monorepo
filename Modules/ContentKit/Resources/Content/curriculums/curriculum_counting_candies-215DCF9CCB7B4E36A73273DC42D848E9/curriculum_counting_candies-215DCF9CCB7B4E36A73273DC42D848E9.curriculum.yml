@@ -31,24 +31,23 @@ l10n:
       icon: counting_candies
 
       title: Dénombrement de bonbons
-      subtitle: Apprendre à compter de 1 à 10
+      subtitle: Apprendre à dénombrer des quantités de 1 à 10
 
       abstract: |
-        Ce curriculum aide à apprendre à compter de 1 à 10 à l'aide de bonbons.
+        Ce parcours a pour objectif l'apprentissage du dénombrement de 1 à 10 en utilisant des supports visuels sous forme de bonbons.
       description: |
-        Ce curriculum est conçu pour aider la personne accompagnée à apprendre à compter de 1 à 10 en utilisant des supports visuels sous forme de bonbons. Il comprend deux activités principales: compter de 1 à 5 et compter de 5 à 10.
+        Ce parcours vise à enseigner aux personnes accompagnées à compter de 1 à 10 et à associer le nombre compté à la quantité correspondante. Les personnes accompagnées apprendront à reconnaître et à compter des bonbons, puis à sélectionner le chiffre correspondant à la quantité observée. Ce parcours permet de renforcer la compréhension des concepts de base de la numération, la reconnaissance des chiffres et l'association entre le comptage et la quantité représentée.
 
   - locale: en_US
     details:
       icon: counting_candies
-
       title: Counting Candies
-      subtitle: Learning to count from 1 to 10
+      subtitle: Learning to count quantities from 1 to 10
 
       abstract: |
-        This curriculum helps to learn counting from 1 to 10 using candies.
+        This curriculum aims to teach counting from 1 to 10 using visual aids in the form of candies.
       description: |
-        This curriculum is designed to help the care receiver learn to count from 1 to 10 using visual aids in the form of candies. It includes two main activities: counting from 1 to 5 and counting from 5 to 10.
+        This curriculum aims to teach care receivers to count from 1 to 10 and to associate the counted number with the corresponding quantity. Care receivers will learn to recognize and count candies, and then select the number that corresponds to the observed quantity. This curriculum helps reinforce the understanding of basic numeracy concepts, number recognition, and the association between counting and the represented quantity.
 
 activities:
   - counting_candies_from_1_to_5-1A3097D58288406EB4835812663D3376
