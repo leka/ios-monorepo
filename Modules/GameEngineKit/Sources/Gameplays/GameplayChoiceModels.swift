@@ -9,7 +9,6 @@ import Foundation
 
 typealias GradingLUT = [Int: [Int: Int]]
 
-// TODO: (@HPezz): Split into several gameplays gradingTables
 let kGradingLUTDefault: GradingLUT = [
     1: [1: 1],
     2: [1: 1, 2: 2],
@@ -17,6 +16,15 @@ let kGradingLUTDefault: GradingLUT = [
     4: [1: 2, 2: 2, 3: 3, 4: 4],
     5: [1: 2, 2: 3, 3: 3, 4: 4, 5: 5],
     6: [1: 3, 2: 3, 3: 4, 4: 4, 5: 5, 6: 6],
+]
+
+let kGradingLUTRightOrder: GradingLUT = [
+    1: [1: 1],
+    2: [2: 4],
+    3: [3: 6],
+    4: [4: 8],
+    5: [5: 10],
+    6: [6: 12],
 ]
 
 // MARK: - GameplayChoiceState
