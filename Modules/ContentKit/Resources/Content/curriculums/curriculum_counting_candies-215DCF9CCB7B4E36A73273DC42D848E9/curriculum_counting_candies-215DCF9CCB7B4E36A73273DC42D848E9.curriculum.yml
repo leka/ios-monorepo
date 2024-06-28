@@ -1,0 +1,54 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 215DCF9CCB7B4E36A73273DC42D848E9
+name: curriculum_counting_candies
+
+status: draft
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-06-21T20:38:22.559016"
+authors:
+  - leka
+
+skills:
+  - counting
+
+tags:
+  - numbers
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: counting_candies
+
+      title: Dénombrement de bonbons
+      subtitle: Apprendre à compter de 1 à 10
+
+      abstract: |
+        Ce curriculum aide à apprendre à compter de 1 à 10 à l'aide de bonbons.
+      description: |
+        Ce curriculum est conçu pour aider la personne accompagnée à apprendre à compter de 1 à 10 en utilisant des supports visuels sous forme de bonbons. Il comprend deux activités principales: compter de 1 à 5 et compter de 5 à 10.
+
+  - locale: en_US
+    details:
+      icon: counting_candies
+
+      title: Counting Candies
+      subtitle: Learning to count from 1 to 10
+
+      abstract: |
+        This curriculum helps to learn counting from 1 to 10 using candies.
+      description: |
+        This curriculum is designed to help the care receiver learn to count from 1 to 10 using visual aids in the form of candies. It includes two main activities: counting from 1 to 5 and counting from 5 to 10.
+
+activities:
+  - counting_candies_from_1_to_5-1A3097D58288406EB4835812663D3376
