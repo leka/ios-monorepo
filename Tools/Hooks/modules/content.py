@@ -15,6 +15,7 @@ from typing import Any, Dict, List, Union
 import ruamel.yaml
 
 from check_yaml_definitions_skills import get_all_skills
+from check_yaml_definitions_robot_assets import get_all_robot_assets_names
 from check_yaml_definitions_tags import get_all_tags  # pylint: disable=import-error
 
 DATE_NOW_TIMESTAMP = ruamel.yaml.scalarstring.DoubleQuotedScalarString(
@@ -259,6 +260,12 @@ def find_missing_exercise_assets(
                 return False
         return True
 
+    def is_robot_asset_missing(asset_basename: str) -> bool:
+        """Checks if a robot asset does not exist."""
+        if asset_basename in get_all_robot_assets_names():
+            return False
+        return True
+
     def check_and_add_missing_asset(
         source: str,
         asset_type: str,
@@ -267,6 +274,18 @@ def find_missing_exercise_assets(
     ):
         """Checks if an asset is missing and adds it to the results if so, including its source."""
         if is_asset_missing(asset_value, asset_type):
+            missing_asset = {"source": source, "type": asset_type, "value": asset_value}
+            if missing_asset not in collected_results:
+                collected_results.append(missing_asset)
+
+    def check_and_add_missing_robot_asset(
+        source: str,
+        asset_type: str,
+        asset_value: str,
+        collected_results: List[Dict[str, Any]],
+    ):
+        """Checks if a robot asset is missing and adds it to the results if so, including its source."""
+        if is_robot_asset_missing(asset_value):
             missing_asset = {"source": source, "type": asset_type, "value": asset_value}
             if missing_asset not in collected_results:
                 collected_results.append(missing_asset)
@@ -288,6 +307,13 @@ def find_missing_exercise_assets(
                     value_data = action_data["value"]
                     if type_data == "ipad" and value_data.get("type") in ["image", "audio"]:
                         check_and_add_missing_asset(
+                            "action",
+                            value_data["type"],
+                            value_data["value"],
+                            collected_results,
+                        )
+                    elif type_data == "robot" and value_data.get("type") in ["image"]:
+                        check_and_add_missing_robot_asset(
                             "action",
                             value_data["type"],
                             value_data["value"],

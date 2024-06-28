@@ -29,8 +29,10 @@ struct ActionButtonRobot: View {
             switch self.actionType {
                 case let .color(value):
                     Robot.shared.shine(.all(in: .init(from: value)))
+                case let .image(name):
+                    let robotAsset = RobotAssets.robotAsset(name: name)!
+                    Robot.shared.display(imageID: robotAsset.id)
                 case .audio,
-                     .image,
                      .emoji,
                      .sfsymbol,
                      .speech:

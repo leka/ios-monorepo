@@ -119,9 +119,9 @@ public extension Exercise {
                     try container.encode("robot", forKey: .type)
                     var valueContainer = container.nestedContainer(keyedBy: CodingKeys.self, forKey: .value)
                     switch robotAction {
-                        case let .image(id):
+                        case let .image(name):
                             try valueContainer.encode("image", forKey: .type)
-                            try valueContainer.encode(id, forKey: .value)
+                            try valueContainer.encode(name, forKey: .value)
                         case let .color(value):
                             try valueContainer.encode("color", forKey: .type)
                             try valueContainer.encode(value, forKey: .value)
