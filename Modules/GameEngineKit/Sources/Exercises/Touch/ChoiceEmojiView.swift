@@ -59,6 +59,10 @@ struct ChoiceEmojiView: View {
                         }
                     }
 
+            // TODO: (@team) Update overlay and animation when this will be used in TTS
+            case .selected:
+                self.circle
+
             case .rightAnswer:
                 self.circle
                     .overlay {

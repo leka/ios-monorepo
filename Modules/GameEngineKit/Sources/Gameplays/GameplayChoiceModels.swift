@@ -23,6 +23,7 @@ let kGradingLUTDefault: GradingLUT = [
 
 public enum GameplayChoiceState {
     case idle
+    case selected
     case rightAnswer
     case wrongAnswer
 }
