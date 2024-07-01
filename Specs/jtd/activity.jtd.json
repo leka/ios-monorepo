@@ -343,6 +343,19 @@
                         }
                     }
                 },
+                "dragAndDropInOrder": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        },
+                        "gameplay": {
+                            "ref": "$exercise/gameplay"
+                        },
+                        "payload": {
+                            "ref": "$exercise/payload/dragAndDropInOrder"
+                        }
+                    }
+                },
                 "danceFreeze": {
                     "properties": {
                         "payload": {
@@ -440,6 +453,7 @@
                 "listenThenDragAndDropToAssociate",
                 "observeThenDragAndDropToAssociate",
                 "robotThenDragAndDropToAssociate",
+                "dragAndDropInOrder",
                 "danceFreeze",
                 "gamepadJoyStickColorPad",
                 "gamepadArrowPadColorPad",
@@ -453,7 +467,8 @@
         "$exercise/gameplay": {
             "enum": [
                 "findTheRightAnswers",
-                "associateCategories"
+                "associateCategories",
+                "findTheRightOrder"
             ]
         },
         "$exercise/action": {
@@ -584,6 +599,22 @@
             "optionalProperties": {
                 "shuffle_choices": {
                     "type": "boolean"
+                }
+            }
+        },
+        "$exercise/payload/dragAndDropInOrder": {
+            "properties": {
+                "choices": {
+                    "elements": {
+                        "properties": {
+                            "type": {
+                                "enum": ["image"]
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        }
+                    }
                 }
             }
         },
