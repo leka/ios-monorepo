@@ -246,6 +246,17 @@ list:
         description: >
           Lorem ipsum
     subtags: []
+  - id: everyday_life
+    l10n:
+      - locale: en_US
+        name: Everyday life
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Vie quotidienne
+        description: >
+          Lorem ipsum
+    subtags: []
   - id: everyday_objects
     l10n:
       - locale: en_US

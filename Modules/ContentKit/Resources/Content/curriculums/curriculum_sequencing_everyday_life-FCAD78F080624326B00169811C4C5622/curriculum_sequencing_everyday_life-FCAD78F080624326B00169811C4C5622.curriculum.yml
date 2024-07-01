@@ -1,0 +1,56 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: FCAD78F080624326B00169811C4C5622
+name: curriculum_sequencing_everyday_life
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-06-28T13:43:13.793797"
+authors:
+  - leka
+
+skills:
+  - association
+  - association/sorting
+  - recognition
+
+tags:
+  - places
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: sequencing_tooth_brushing_1
+      title: Reconnaitre des lieux publics
+      subtitle: En les plaçant dans un panier
+      abstract: |
+        Concentré sur le tri et l'appariement, ce curriculum utilise des fruits et légumes pour développer la reconnaissance et la classification, enrichissant l'interaction avec le monde naturel.
+      description: |
+        Ce curriculum renforce la reconnaissance et le tri des fruits et légumes, guidant les participants à travers une aventure éducative. Ils exploreront la diversité et l'importance de ces aliments.
+
+        À travers des activités variées, les participants affinent leurs compétences d'observation et apprennent à distinguer et reconnaître les caractéristiques uniques des différents types de fruits et légumes.
+
+  - locale: en_US
+    details:
+      icon: recognition_public_places_drag
+      title: Sorting fruits and vegetables
+      subtitle: By placing them in a basket
+      abstract: |
+        Focused on sorting and matching, this curriculum leverages fruits and vegetables to enhance recognition and classification, enriching interaction with the natural world.
+      description: |
+        This curriculum enhances the recognition and sorting of fruits and vegetables, taking participants on an educational journey. They will explore the diversity and importance of these foods.
+
+        Through a variety of activities, participants refine their observation skills and learn to distinguish and recognize the unique characteristics of different types of fruits and vegetables.
+
+activities:
+  - sequencing_everyday_life_tooth_brushing-0CFC700AF1FE476E9A934487A3159FBD.activity
