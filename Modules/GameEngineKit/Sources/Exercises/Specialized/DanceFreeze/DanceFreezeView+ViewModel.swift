@@ -96,7 +96,6 @@ extension DanceFreezeView {
         private var startTimestamp: Date?
         private var chosenSong: String = ""
         private var cancellables: Set<AnyCancellable> = []
-        private let activityCompletionDataManager: ActivityCompletionDataManager = .shared
 
         private func subscribeToAudioPlayerProgress() {
             self.audioPlayer.progress

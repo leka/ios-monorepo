@@ -32,7 +32,6 @@ class ActivityViewViewModel: ObservableObject {
             groupIndex: self.activityManager.currentGroupIndex,
             exerciseIndex: self.activityManager.currentExerciseIndexInCurrentGroup
         )
-//        self.completedExercisesSharedData[self.currentGroupIndex].append(self.currentExerciseSharedData)
 
         self.subscribeToCurrentExerciseSharedDataUpdates()
     }
