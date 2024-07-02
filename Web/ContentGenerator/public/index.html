@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YML Generator</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">YML Generator</h1>
+        <form id="ymlForm">
+            <div id="section1">
+                <h3>Section 1</h3>
+                <!-- <div class="form-group">
+                    <label for="uuid-display">UUID</label>
+                    <textarea id="uuid-display" rows="1" readonly></textarea>
+                </div> -->
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select class="form-control" id="status">
+                        <option value="published">Published</option>
+                        <option value="draft">Draft</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="created_at">Created At</label>
+                    <input type="datetime-local" class="form-control" id="created_at" required>
+                </div>
+                <div class="form-group">
+                    <label for="last_edited_at">Last Edited At</label>
+                    <input type="datetime-local" class="form-control" id="last_edited_at" required>
+                </div>
+                <div class="form-group">
+                    <label for="authors">Authors</label>
+                    <input type="text" class="form-control" id="authors" required>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="showSection('section2')">Next</button>
+            </div>
+
+            <div id="section2" style="display:none;">
+                <h3>Section 2</h3>
+
+                <div class="form-group">
+                    <label for="status">Skills</label>
+                    <select class="form-control" id="status">
+                        <option value="Association">Association</option>
+                        <option value="Association/Sortin">Association/Sortin</option>
+                        <option value="Association/Matching">Association/Matching</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="Tags">Tags</label>
+                    <select class="form-control" id="tags">
+                        <option value="bedroom">Bedroom</option>
+                        <option value="bathroom">Bathroom</option>
+                        <option value="kitchen">Kitchen</option>
+                        <option value="everyday_objects">Everyday Objects</option>
+                        <option value="home_objects">Home Objects</option>
+                    </select>
+                </div>
+                      
+                
+                <div class="form-group">
+                    <label for="hmi">HMI</label>
+                    <select class="form-control" id="hmi">
+                        <option value="tablet">Tablet</option>
+                    </select>
+                
+                </div>
+                <div class="form-group">
+                    <label for="locales">Locales</label>
+                    <select class="form-control" id="locales">
+                        <option value="en_US">English (US)</option>
+                        <option value="fr_FR">French (FR)</option>
+                    </select>
+                </div>
+                
+                <button type="button" class="btn btn-secondary" onclick="showSection('section1')">Back</button>
+                <button type="button" class="btn btn-primary" onclick="showSection('section3')">Next</button>
+            </div>
+
+            <div id="section3" style="display:none;">
+                <h3>Section 3</h3>
+                <div class="form-group">
+                    <label for="activities">Activities</label>
+                    <input type="text" class="form-control" id="activities" required>
+                </div>
+                <button type="button" class="btn btn-secondary" onclick="showSection('section2')">Back</button>
+                <button type="submit" class="btn btn-success">Generate YML</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+uuid: test
+name: test
+status: published
+created_at: 2024-07-02T07:22
+last_edited_at: 2024-07-02T07:22
+authors:
+  - a
+skills:
+  - association
+tags: []
+hmi:
+  - tablet
+locales:
+  - fr_FR
+activities:
+  - a
