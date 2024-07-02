@@ -15,7 +15,8 @@ public struct ChoiceImageView: View {
 
     public init(image: String, size: CGFloat, background: Color? = nil, state: GameplayChoiceState = .idle) {
         guard let image = Bundle.path(forImage: image) else {
-            fatalError("Image not found")
+            log.error("Image not found: \(image)")
+            fatalError("💥️ Image not found: \(image)")
         }
         self.image = image
         self.size = size
