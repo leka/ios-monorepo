@@ -28,9 +28,9 @@ public enum ContentKit {
         let bundle = Bundle.module
         var files: [String] = []
 
-        files.append(contentsOf: bundle.paths(forResourcesOfType: "png", inDirectory: nil))
-        files.append(contentsOf: bundle.paths(forResourcesOfType: "jpg", inDirectory: nil))
-        files.append(contentsOf: bundle.paths(forResourcesOfType: "jpeg", inDirectory: nil))
+        files.append(contentsOf: bundle.filenamesWithoutExtensions(forResourcesOfType: "png", inDirectory: nil))
+        files.append(contentsOf: bundle.filenamesWithoutExtensions(forResourcesOfType: "jpg", inDirectory: nil))
+        files.append(contentsOf: bundle.filenamesWithoutExtensions(forResourcesOfType: "jpeg", inDirectory: nil))
 
         return files.sorted()
     }
@@ -39,7 +39,7 @@ public enum ContentKit {
         let bundle = Bundle.module
         var files: [String] = []
 
-        files.append(contentsOf: bundle.paths(forResourcesOfType: "svg", inDirectory: nil))
+        files.append(contentsOf: bundle.filenamesWithoutExtensions(forResourcesOfType: "svg", inDirectory: nil))
 
         return files.sorted()
     }

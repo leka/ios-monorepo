@@ -30,6 +30,10 @@ public extension String {
         self.fileURL.lastPathComponent
     }
 
+    var filenameWithoutExtension: String {
+        (self.lastPathComponent as NSString).deletingPathExtension
+    }
+
     func containsEmoji() -> Bool {
         contains { $0.isEmoji }
     }
