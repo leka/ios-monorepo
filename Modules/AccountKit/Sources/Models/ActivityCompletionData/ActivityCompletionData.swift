@@ -14,7 +14,6 @@ public struct ActivityCompletionData: Hashable, ActivityCompletionDataDocument {
     public var carereceiverIDs: [String]
     public var startTimestamp: Date?
     public var endTimestamp: Date?
-    public var completionData: String
 
     // MARK: Internal
 
@@ -25,6 +24,5 @@ public struct ActivityCompletionData: Hashable, ActivityCompletionDataDocument {
         case carereceiverIDs = "carereceiver_ids"
         case startTimestamp = "start_timestamp"
         case endTimestamp = "end_timestamp"
-        case completionData = "completion_data"
     }
 }

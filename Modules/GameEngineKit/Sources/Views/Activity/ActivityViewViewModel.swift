@@ -140,8 +140,7 @@ class ActivityViewViewModel: ObservableObject {
             caregiverID: caregiverID ?? "No caregiver found",
             carereceiverIDs: carereceiverIDs,
             startTimestamp: self.startTimestamp,
-            endTimestamp: Date(),
-            completionData: completionDataString
+            endTimestamp: Date()
         )
 
         self.activityManager.saveActivityCompletion(activityCompletionData: activityCompletionData)
