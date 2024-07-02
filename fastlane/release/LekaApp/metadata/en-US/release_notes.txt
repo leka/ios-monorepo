@@ -1,12 +1,9 @@
 ### New Content & Features
 
-- New Search Category: Added a new Search category to enhance content search functionality.
-- Resource Views: Introduced views for resources and a dedicated Resources section.
-- Tag Integration: Replaced skills with tags for better organization and searchability.
+- New Curriculums: Introduced new curriculums including recognizing sports and professions, sorting objects by location, and counting candies.
+- Robot Assets: Added the ability to display images on the robot and search for robot assets by name.
+- Gameplay Enhancements: Added new gameplay features including Find The Right Order and DragAndDropInOrder views.
 
 ### Bug Fixes
 
-- Correct Answer Fix: Resolved issues with correct answers in activities.
-- Language and Translation Fixes: Corrected language-specific issues and added missing French translations.
-- Audio and Speech Improvements: Improved audio player stability and speech synthesis functionality.
-- Stability Enhancements: Fixed crashes and improved performance on older iPads.
+- Localization Fixes: Resolved various localization issues in ContentKit and GEK.

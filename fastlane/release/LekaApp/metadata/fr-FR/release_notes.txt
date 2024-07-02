@@ -1,12 +1,9 @@
 ### Nouveaux Contenus & Fonctionnalités
 
-- Nouvelle Catégorie de Recherche : Ajout d'une nouvelle catégorie de recherche pour améliorer la fonctionnalité de recherche de contenu.
-- Vues des Ressources : Introduction de vues pour les ressources et d'une section dédiée aux ressources.
-- Intégration des Tags : Remplacement des compétences par des tags pour une meilleure organisation et recherche.
+- Nouveaux Programmes: Introduction de nouveaux programmes, y compris la reconnaissance des sports et des professions, le tri des objets par emplacement et le comptage des bonbons.
+- Robot: Ajout de la possibilité d'afficher des images sur le robot et de rechercher les fichiers du robot par nom.
+- Améliorations du Gameplay: Ajout de nouvelles fonctionnalités de gameplay, y compris Find The Right Order et les vues DragAndDropInOrder.
 
 ### Corrections de Bugs
 
-- Correction des Réponses Correctes : Résolution des problèmes de réponses correctes dans les activités.
-- Corrections de Langue et de Traduction : Correction des problèmes spécifiques à la langue et ajout des traductions françaises manquantes.
-- Améliorations de l'Audio et de la Synthèse Vocale : Amélioration de la stabilité du lecteur audio et des fonctionnalités de synthèse vocale.
-- Améliorations de la Stabilité : Correction des plantages et amélioration des performances sur les anciens iPads.
+- Corrections de Localisation: Résolution de divers problèmes de localisation dans ContentKit et GEK.
