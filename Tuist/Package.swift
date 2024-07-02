@@ -20,7 +20,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/gonzalezreal/swift-markdown-ui",
-            exact: "2.3.0"
+            exact: "2.3.1"
         ),
         .package(
             url: "https://github.com/apple/swift-argument-parser",
@@ -40,7 +40,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/apple/swift-log",
-            exact: "1.5.4"
+            exact: "1.6.1"
         ),
         .package(
             url: "https://github.com/mxcl/Version",
@@ -48,11 +48,11 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/firebase/firebase-ios-sdk",
-            exact: "10.27.0"
+            exact: "10.28.1"
         ),
         .package(
             url: "https://github.com/OlehKorchytskyi/Fit",
-            exact: "1.0.1"
+            exact: "1.0.2"
         ),
         .package(
             url: "https://github.com/exyte/SVGView",
@@ -60,7 +60,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/devicekit/DeviceKit",
-            exact: "5.3.0"
+            exact: "5.4.0"
         ),
         .package(
             url: "https://github.com/SvenTiigi/YouTubePlayerKit",
