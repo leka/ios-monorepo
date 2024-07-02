@@ -49,8 +49,6 @@ class GameplaySuperSimon: StatefulGameplayProtocol {
     // MARK: Lifecycle
 
     init(level: SuperSimon.Level) {
-        self.startTimestamp = Date()
-
         let numberOfChoices = switch level {
             case .easy:
                 2
@@ -74,8 +72,6 @@ class GameplaySuperSimon: StatefulGameplayProtocol {
     }
 
     // MARK: Internal
-
-    var startTimestamp: Date?
 
     var state: CurrentValueSubject<ExerciseState, Never> = .init(.idle)
     var gameState: CurrentValueSubject<SuperSimonGameState, Never> = .init(.showingColorSequence)
@@ -122,16 +118,7 @@ class GameplaySuperSimon: StatefulGameplayProtocol {
 
         if self.sequenceIndex == self.completeColorSequence.count {
             let level = evaluateCompletionLevel(allowedTrials: allowedTrials, numberOfTrials: numberOfTrials)
-            let completionPayload = ExerciseCompletionData.SuperSimonExercisePayload(
-                numberOfTrials: self.allowedTrials,
-                numberOfAllowedTrials: self.numberOfTrials
-            ).encodeToString()
-            let completionData = ExerciseCompletionData(
-                startTimestamp: self.startTimestamp,
-                endTimestamp: Date(),
-                payload: completionPayload
-            )
-            self.state.send(.completed(level: level, data: completionData))
+            self.state.send(.completed(level: level))
         } else if self.sequenceIndex == self.currentColorSequence.value.count {
             self.startNextSequence()
         }
