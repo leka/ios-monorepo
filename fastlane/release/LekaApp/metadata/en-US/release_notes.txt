@@ -7,3 +7,4 @@
 ### Bug Fixes
 
 - Localization Fixes: Resolved various localization issues in ContentKit and GEK.
+- New curriculums: Fix typos
