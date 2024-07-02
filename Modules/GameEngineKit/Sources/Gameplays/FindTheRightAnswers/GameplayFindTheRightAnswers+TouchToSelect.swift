@@ -16,6 +16,14 @@ struct GameplayTouchToSelectChoiceModel: GameplayChoiceModelProtocol {
     var state: GameplayChoiceState = .idle
 }
 
+// MARK: Equatable
+
+extension GameplayTouchToSelectChoiceModel: Equatable {
+    static func == (lhs: GameplayTouchToSelectChoiceModel, rhs: GameplayTouchToSelectChoiceModel) -> Bool {
+        lhs.id == rhs.id
+    }
+}
+
 extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayTouchToSelectChoiceModel {
     convenience init(choices: [GameplayTouchToSelectChoiceModel], shuffle: Bool = false, allowedTrials: Int? = nil) {
         self.init()

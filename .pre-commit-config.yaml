@@ -100,6 +100,18 @@ repos:
         additional_dependencies: ["ruamel.yaml"]
         files: skills.yml
 
+      - id: check_yaml_definitions_robot_assets
+        name: Check robot_assets.yml
+        description: |
+          This hook checks robot_assets.yml for:
+            - non unique ids
+            - jtd schema validation
+          It also formats the file and sorts the entries
+        entry: python3 Tools/Hooks/check_yaml_definitions_robot_assets.py
+        language: python
+        additional_dependencies: ["ruamel.yaml"]
+        files: robot_assets.yml
+
       - id: check_yaml_definitions_tags
         name: Check tags.yml
         description: |

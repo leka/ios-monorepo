@@ -49,6 +49,9 @@ public struct Exercise: Decodable {
                  (.robotThenDragAndDropToAssociate, .associateCategories):
                 self.payload = try container.decode(DragAndDropToAssociate.Payload.self, forKey: .payload)
 
+            case (.dragAndDropInOrder, .findTheRightOrder):
+                self.payload = try container.decode(DragAndDropInOrder.Payload.self, forKey: .payload)
+
             case (.danceFreeze, .none):
                 self.payload = try container.decode(DanceFreeze.Payload.self, forKey: .payload)
 

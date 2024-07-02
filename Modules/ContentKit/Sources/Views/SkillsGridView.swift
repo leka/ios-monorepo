@@ -76,7 +76,8 @@ public struct SkillsGridView: View {
 
 extension l10n {
     enum SkillsGridView {
-        static let activityCountLabel = LocalizedStringInterpolation("lekaapp.skills_grid_view.activity_count_label",
+        static let activityCountLabel = LocalizedStringInterpolation("content_kit.skills_grid_view.activity_count_label",
+                                                                     bundle: ContentKitResources.bundle,
                                                                      value: "%d activity",
                                                                      comment: "Activity count label of SkillsGridView")
     }

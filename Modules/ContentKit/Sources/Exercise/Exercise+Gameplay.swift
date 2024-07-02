@@ -8,5 +8,6 @@ public extension Exercise {
     enum Gameplay: String, Codable {
         case findTheRightAnswers
         case associateCategories
+        case findTheRightOrder
     }
 }

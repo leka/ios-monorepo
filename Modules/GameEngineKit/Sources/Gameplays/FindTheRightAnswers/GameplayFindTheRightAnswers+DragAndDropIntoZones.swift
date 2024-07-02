@@ -16,6 +16,14 @@ struct GameplayDragAndDropIntoZonesChoiceModel: GameplayChoiceModelProtocol {
     var state: GameplayChoiceState = .idle
 }
 
+// MARK: Equatable
+
+extension GameplayDragAndDropIntoZonesChoiceModel: Equatable {
+    static func == (lhs: GameplayDragAndDropIntoZonesChoiceModel, rhs: GameplayDragAndDropIntoZonesChoiceModel) -> Bool {
+        lhs.id == rhs.id
+    }
+}
+
 extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayDragAndDropIntoZonesChoiceModel {
     convenience init(choices: [GameplayDragAndDropIntoZonesChoiceModel], allowedTrials: Int? = nil) {
         self.init()

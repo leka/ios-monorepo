@@ -37,6 +37,10 @@ public struct ChoiceImageView: View {
                     }
                     .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 4)
 
+            // TODO: (@team) Update overlay and animation when this will be used in TTS
+            case .selected:
+                self.circle
+
             case .rightAnswer:
                 self.circle
                     .overlay {

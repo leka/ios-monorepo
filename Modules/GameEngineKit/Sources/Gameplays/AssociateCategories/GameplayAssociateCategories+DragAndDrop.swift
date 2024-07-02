@@ -16,6 +16,14 @@ struct GameplayAssociateCategoriesChoiceModel: GameplayChoiceModelProtocol {
     var state: GameplayChoiceState = .idle
 }
 
+// MARK: Equatable
+
+extension GameplayAssociateCategoriesChoiceModel: Equatable {
+    static func == (lhs: GameplayAssociateCategoriesChoiceModel, rhs: GameplayAssociateCategoriesChoiceModel) -> Bool {
+        lhs.id == rhs.id
+    }
+}
+
 extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociateCategoriesChoiceModel {
     convenience init(choices: [GameplayAssociateCategoriesChoiceModel], allowedTrials: Int? = nil) {
         self.init()

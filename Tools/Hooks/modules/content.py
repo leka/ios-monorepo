@@ -15,6 +15,7 @@ from typing import Any, Dict, List, Union
 import ruamel.yaml
 
 from check_yaml_definitions_skills import get_all_skills
+from check_yaml_definitions_robot_assets import get_all_robot_assets_names
 from check_yaml_definitions_tags import get_all_tags  # pylint: disable=import-error
 
 DATE_NOW_TIMESTAMP = ruamel.yaml.scalarstring.DoubleQuotedScalarString(
@@ -259,6 +260,12 @@ def find_missing_exercise_assets(
                 return False
         return True
 
+    def is_robot_asset_missing(asset_basename: str) -> bool:
+        """Checks if a robot asset does not exist."""
+        if asset_basename in get_all_robot_assets_names():
+            return False
+        return True
+
     def check_and_add_missing_asset(
         source: str,
         asset_type: str,
@@ -271,11 +278,50 @@ def find_missing_exercise_assets(
             if missing_asset not in collected_results:
                 collected_results.append(missing_asset)
 
+    def check_and_add_missing_robot_asset(
+        source: str,
+        asset_type: str,
+        asset_value: str,
+        collected_results: List[Dict[str, Any]],
+    ):
+        """Checks if a robot asset is missing and adds it to the results if so, including its source."""
+        if is_robot_asset_missing(asset_value):
+            missing_asset = {"source": source, "type": asset_type, "value": asset_value}
+            if missing_asset not in collected_results:
+                collected_results.append(missing_asset)
+
     def recursive_search(data, collected_results, source="choice"):
         """Recursively searches the data structure for missing assets, tracking their source."""
         if isinstance(data, dict):
+            # Special handling for actions
+            if source == "action" :
+                action_data = data
+                if (
+                    isinstance(action_data, dict)
+                    and "type" in action_data
+                    and isinstance(action_data["type"], str)
+                    and "value" in action_data
+                    and isinstance(action_data["value"], dict)
+                ):
+                    type_data = action_data["type"]
+                    value_data = action_data["value"]
+                    if type_data == "ipad" and value_data.get("type") in ["image", "audio"]:
+                        check_and_add_missing_asset(
+                            "action",
+                            value_data["type"],
+                            value_data["value"],
+                            collected_results,
+                        )
+                    elif type_data == "robot" and value_data.get("type") in ["image"]:
+                        check_and_add_missing_robot_asset(
+                            "action",
+                            value_data["type"],
+                            value_data["value"],
+                            collected_results,
+                        )
+
             # Direct 'type' and 'value' keys indicating a choice
-            if "type" in data and "value" in data and isinstance(data["value"], str):
+            elif "type" in data and "value" in data and isinstance(data["value"], str):
                 if data["type"] in ["image"]:
                     check_and_add_missing_asset(
                         source,
@@ -283,23 +329,6 @@ def find_missing_exercise_assets(
                         data["value"],
                         collected_results,
                     )
-
-            # Special handling for actions
-            elif "action" in data:
-                action_data = data["action"]
-                if (
-                    isinstance(action_data, dict)
-                    and "value" in action_data
-                    and isinstance(action_data["value"], dict)
-                ):
-                    value_data = action_data["value"]
-                    if value_data.get("type") in ["image", "audio"]:
-                        check_and_add_missing_asset(
-                            "action",
-                            value_data["type"],
-                            value_data["value"],
-                            collected_results,
-                        )
 
             # Recursive search within dictionary values, preserving the source for choices
             for key, value in data.items():
