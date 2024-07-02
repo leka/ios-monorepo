@@ -1,9 +1,10 @@
 ### Nouveaux Contenus & Fonctionnalités
 
-- Nouveaux Programmes: Introduction de nouveaux programmes, y compris la reconnaissance des sports et des professions, le tri des objets par emplacement et le comptage des bonbons.
+- Nouveaux Parcours: Introduction de nouveaux parcours, y compris la reconnaissance des sports et des professions, le tri des objets par emplacement et le comptage des bonbons.
 - Robot: Ajout de la possibilité d'afficher des images sur le robot et de rechercher les fichiers du robot par nom.
 - Améliorations du Gameplay: Ajout de nouvelles fonctionnalités de gameplay, y compris Find The Right Order et les vues DragAndDropInOrder.
 
 ### Corrections de Bugs
 
 - Corrections de Localisation: Résolution de divers problèmes de localisation dans ContentKit et GEK.
+- Nouveaux Parcours: Corrections des fautes de frappe
