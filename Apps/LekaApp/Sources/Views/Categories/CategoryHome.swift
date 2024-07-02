@@ -13,6 +13,7 @@ struct CategoryHome: View {
     // MARK: Lifecycle
 
     // TODO: (@team) - do-catch within the init instead of try!
+    // cf GeneralSuggestions_iOS17.swift for suggestion
     init() {
         let fileURL = Bundle.main.url(forResource: "home", withExtension: "yml")!
         let decoder = YAMLDecoder()

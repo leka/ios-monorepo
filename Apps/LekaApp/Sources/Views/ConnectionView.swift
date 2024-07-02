@@ -78,6 +78,15 @@ struct ConnectionView: View {
                 .buttonStyle(.borderedProminent)
             }
             // [] TODO: (@team) - Move to iOS17 support - Update the use of .onChange() modifier.
+            // See below
+            // .onChange(of: self.authManagerViewModel.userAuthenticationState) { oldValue, newValue in
+            //     if newValue == .loggedIn {
+            //         self.caregiverManager.initializeCaregiversListener()
+            //         self.carereceiverManager.initializeCarereceiversListener()
+            //         self.authManagerViewModel.userAction = .none
+            //         self.navigation.fullScreenCoverContent = nil
+            //     }
+            // }
             .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
                 if newValue == .loggedIn {
                     self.caregiverManager.initializeCaregiversListener()

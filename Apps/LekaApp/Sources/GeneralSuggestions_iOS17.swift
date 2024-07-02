@@ -49,3 +49,30 @@
 //     scrollTarget.scrollTo("specificItem")
 // }
 // using .id("specificItem") or anything identifiable other than String
+
+// CategoryHome()
+// Remove try! in init()
+// Maybe create a defaultContentView()
+// or a more native approach via
+// ContentUnavailableView()
+// https://developer.apple.com/documentation/swiftui/contentunavailableview
+// https://www.avanderlee.com/swiftui/contentunavailableview-handling-empty-states/
+// init() {
+//     let fileURL = Bundle.main.url(forResource: "home", withExtension: "yml")!
+//     let decoder = YAMLDecoder()
+//
+//     do {
+//         let data = try Data(contentsOf: fileURL)
+//         let homeContent = try decoder.decode(HomeContent.self, from: data)
+//
+//         if l10n.language == .french {
+//             self.content = homeContent.frFR
+//         } else {
+//             self.content = homeContent.enUS
+//         }
+//     } catch {
+//         print("Error loading or decoding YAML: \(error)")
+//         // default content or show an error message to self.content
+//         self.content = defaultContentView()
+//     }
+// }
