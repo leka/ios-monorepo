@@ -8,7 +8,7 @@ uuid: 55ECB1EFFAA3466CA1704BCFE7AC371E
 name: recognition_sports_drawings_4_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-06-28T12:58:46.005380"
+last_edited_at: "2024-07-02T17:02:00.505903"
 status: published
 
 authors:
@@ -36,7 +36,7 @@ l10n:
     details:
       icon: recognition_sports_touch
 
-      title: Sports en dessins
+      title: Les sports en dessins
       subtitle: 4 images
 
       short_description: |
