@@ -8,7 +8,7 @@ name: curriculum_counting_candies
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-07-01T14:21:25.779345"
+last_edited_at: "2024-07-02T17:02:03.192135"
 authors:
   - leka
 
@@ -51,3 +51,4 @@ l10n:
 
 activities:
   - counting_candies_from_1_to_5-1A3097D58288406EB4835812663D3376
+  - counting_candies_from_5_to_10-1BD7331BDF0D4319B7E71AA64A16A638
