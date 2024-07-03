@@ -8,8 +8,8 @@ uuid: A33F20A81F8F478E8B705F7FAB807965
 name: sequencing_everyday_life_dressing_up
 
 created_at: "2024-03-08T11:49:37.123525"
-last_edited_at: "2024-07-03T15:57:38.490490"
-status: published
+last_edited_at: "2024-07-03T17:09:17.744661"
+status: draft
 
 authors:
   - leka
@@ -36,38 +36,38 @@ l10n:
     details:
       icon: sequencing_tooth_brushing_1
 
-      title: Séquencer les étapes du brossage des dents
-      subtitle: Remettre les étapes dans l'ordre
+      title: L'habillage
+      subtitle: Séquencer les étapes de l'habillage
 
       short_description: |
-        Glisser et déposer les étapes du brossage de dents dans le bon ordre
+        Glisser et déposer les étapes de l'habillage dans le bon ordre
 
       description: |
-        Le participant doit glisser et déposer les étapes du brossage de dents dans le bon ordre pour apprendre la séquence correcte.
+        Le participant doit glisser et déposer les étapes de l'habillage dans le bon ordre pour apprendre la séquence correcte.
 
       instructions: |
-        - Sur l'écran de l'iPad, cinq étapes du brossage de dents sont présentées de manière désordonnée.
+        - Sur l'écran de l'iPad, cinq étapes de l'habillage sont présentées de manière désordonnée.
         - Chaque étape est représentée par une image et/ou un texte.
-        - Encouragez le participant à glisser chaque étape dans la zone correcte pour former la séquence complète du brossage de dents.
+        - Encouragez le participant à glisser chaque étape dans la zone correcte pour former la séquence complète de l'habillage.
         - Après avoir placé chaque étape correctement, Leka lance un renforçateur pour célébrer cette réussite et encourager l'apprentissage.
 
   - locale: en_US
     details:
       icon: sequencing_tooth_brushing_1
 
-      title: Sequence the Steps of Tooth Brushing
-      subtitle: Put the steps in order
+      title: The dressing
+      subtitle: Sequence the Steps of Dressing
 
       short_description: |
-        Drag and drop the steps of tooth brushing in the correct order
+        Drag and drop the steps of dressing in the correct order
 
       description: |
-        The participant should drag and drop the steps of tooth brushing into the correct order to learn the proper sequence.
+        The participant should drag and drop the steps of dressing into the correct order to learn the proper sequence.
 
       instructions: |
-        - On the iPad screen, five steps of tooth brushing are displayed in a jumbled order.
+        - On the iPad screen, five steps of dressing are displayed in a jumbled order.
         - Each step is represented by an image and/or text.
-        - Encourage the participant to drag each step into the correct zone to form the complete sequence of tooth brushing.
+        - Encourage the participant to drag each step into the correct zone to form the complete sequence of dressing.
         - After placing each step correctly, Leka provides a reinforcer to celebrate this success and encourage ongoing learning.
 
 exercises_payload:
