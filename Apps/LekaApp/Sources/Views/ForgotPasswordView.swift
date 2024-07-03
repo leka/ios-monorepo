@@ -25,7 +25,7 @@ struct ForgotPasswordView: View {
         VStack(alignment: .center, spacing: 30) {
             VStack(spacing: 40) {
                 Text(l10n.ForgotPasswordView.title)
-                    .font(.title)
+                    .font(.title2)
 
                 Text(l10n.ForgotPasswordView.contextMessage)
                     .font(.body)
