@@ -141,7 +141,7 @@ extension DragAndDropInOrderView {
             node.scaleForMax(sizeOf: self.biggerSide)
             node.zPosition = 10
             for dropZone in self.dropZoneNodes where node.fullyContains(bounds: dropZone.frame) {
-                node.repositionInside(dropZone: dropZone)
+                node.snapToCenter(dropZone: dropZone)
                 break
             }
             node.isDraggable = false
