@@ -4,8 +4,8 @@
 
 version: 1.0.0
 
-uuid: 0CFC700AF1FE476E9A934487A3159FBD
-name: sequencing_everyday_life_tooth_brushing
+uuid: A33F20A81F8F478E8B705F7FAB807965
+name: sequencing_everyday_life_dressing_up
 
 created_at: "2024-03-08T11:49:37.123525"
 last_edited_at: "2024-07-03T15:57:38.490490"
@@ -36,8 +36,8 @@ l10n:
     details:
       icon: sequencing_tooth_brushing_1
 
-      title: Le brossage des dents
-      subtitle: Séquencer les étapes du brossage des dents
+      title: Séquencer les étapes du brossage des dents
+      subtitle: Remettre les étapes dans l'ordre
 
       short_description: |
         Glisser et déposer les étapes du brossage de dents dans le bon ordre
@@ -47,7 +47,7 @@ l10n:
 
       instructions: |
         - Sur l'écran de l'iPad, cinq étapes du brossage de dents sont présentées de manière désordonnée.
-        - Chaque étape est représentée par une image.
+        - Chaque étape est représentée par une image et/ou un texte.
         - Encouragez le participant à glisser chaque étape dans la zone correcte pour former la séquence complète du brossage de dents.
         - Après avoir placé chaque étape correctement, Leka lance un renforçateur pour célébrer cette réussite et encourager l'apprentissage.
 
@@ -55,8 +55,8 @@ l10n:
     details:
       icon: sequencing_tooth_brushing_1
 
-      title: The Tooth Brushing
-      subtitle: Sequence the Steps of Tooth Brushing
+      title: Sequence the Steps of Tooth Brushing
+      subtitle: Put the steps in order
 
       short_description: |
         Drag and drop the steps of tooth brushing in the correct order
@@ -66,7 +66,7 @@ l10n:
 
       instructions: |
         - On the iPad screen, five steps of tooth brushing are displayed in a jumbled order.
-        - Each step is represented by an image.
+        - Each step is represented by an image and/or text.
         - Encourage the participant to drag each step into the correct zone to form the complete sequence of tooth brushing.
         - After placing each step correctly, Leka provides a reinforcer to celebrate this success and encourage ongoing learning.
 
@@ -86,13 +86,13 @@ exercises_payload:
           gameplay: findTheRightOrder
           payload:
             choices:
-              - value: sequencing_tooth_brushing_1
+              - value: sequencing_dressing_up_1
                 type: image
-              - value: sequencing_tooth_brushing_2
+              - value: sequencing_dressing_up_2
                 type: image
-              - value: sequencing_tooth_brushing_3
+              - value: sequencing_dressing_up_3
                 type: image
-              - value: sequencing_tooth_brushing_4
+              - value: sequencing_dressing_up_4
                 type: image
-              - value: sequencing_tooth_brushing_5
+              - value: sequencing_dressing_up_5
                 type: image
