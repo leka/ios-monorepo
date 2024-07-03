@@ -61,18 +61,13 @@ class DraggableImageAnswerNode: SKSpriteNode {
         let size = image.size
         let rect = CGRect(origin: .zero, size: size)
 
-        UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        let context = UIGraphicsGetCurrentContext()!
-
-        let path = UIBezierPath(roundedRect: rect, cornerRadius: 10 / 57 * size.width)
-        path.addClip()
-        image.draw(in: rect)
-
-        guard let finalImage = UIGraphicsGetImageFromCurrentImageContext() else {
-            fatalError("Failed to create masked image")
+        let renderer = UIGraphicsImageRenderer(size: size)
+        let finalImage = renderer.image { _ in
+            let rect = CGRect(origin: .zero, size: size)
+            let path = UIBezierPath(roundedRect: rect, cornerRadius: 10 / 57 * size.width)
+            path.addClip()
+            image.draw(in: rect)
         }
-
-        UIGraphicsEndImageContext()
 
         let texture = SKTexture(image: finalImage)
         super.init(texture: texture, color: .clear, size: texture.size())
