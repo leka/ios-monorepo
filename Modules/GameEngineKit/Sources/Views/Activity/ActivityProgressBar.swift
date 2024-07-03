@@ -31,7 +31,7 @@ struct ActivityProgressBar: View {
                         )
                         .padding(6)
                         .onChange(of: self.viewModel.currentExerciseSharedData.state) { newState in
-                            if case let .completed(level, _) = newState {
+                            if case let .completed(level) = newState {
                                 withAnimation(.snappy.delay(self.viewModel.delayAfterReinforcerAnimation)) {
                                     self.currentColor = self.completionLevelToColor(level: level)
                                 }
@@ -77,16 +77,13 @@ struct ActivityProgressBar: View {
     }
 
     private func progressBarMarkerColor(group: Int, exercise: Int) -> Color {
-        guard self.viewModel.completedExercisesSharedData.indices.contains(group) else {
-            return .white
+        if let completedExerciseSharedData = self.viewModel.completedExercisesSharedData.first(where: {
+            $0.groupIndex == group
+                && $0.exerciseIndex == exercise
+        }) {
+            self.completionLevelToColor(level: completedExerciseSharedData.completionLevel)
+        } else {
+            .white
         }
-
-        let groupData = self.viewModel.completedExercisesSharedData[group]
-        guard groupData.indices.contains(exercise) else {
-            return .white
-        }
-
-        let completedExerciseSharedData = groupData[exercise]
-        return self.completionLevelToColor(level: completedExerciseSharedData.completionLevel)
     }
 }

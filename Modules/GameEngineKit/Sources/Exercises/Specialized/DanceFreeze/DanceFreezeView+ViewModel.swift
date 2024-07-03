@@ -51,7 +51,7 @@ extension DanceFreezeView {
 
         func completeDanceFreeze() {
             self.isDancing = false
-            self.exercicesSharedData.state = .completed(level: .nonApplicable, data: nil)
+            self.exercicesSharedData.state = .completed(level: .nonApplicable)
             self.robotManager.stopRobot()
             self.audioPlayer.stop()
         }

@@ -90,7 +90,7 @@ extension MelodyView {
                         self.midiPlayer.play()
 
                         DispatchQueue.main.asyncAfter(deadline: .now() + self.midiPlayer.getDuration()) {
-                            self.exercicesSharedData.state = .completed(level: .nonApplicable, data: nil)
+                            self.exercicesSharedData.state = .completed(level: .nonApplicable)
                             self.isMelodyPlaying = false
                             self.showModal = false
                             self.robot.stopLights()

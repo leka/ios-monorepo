@@ -30,7 +30,6 @@ extension GameplayFindTheRightOrder where ChoiceModelType == GameplayDragAndDrop
         self.rightAnswers = choices
         self.choices.send(choices)
         self.state.send(.playing)
-        self.startTimestamp = Date()
 
         if let allowedTrials {
             self.allowedTrials = allowedTrials
@@ -65,16 +64,7 @@ extension GameplayFindTheRightOrder where ChoiceModelType == GameplayDragAndDrop
             }
             if self.isWellSequenced {
                 let level = evaluateCompletionLevel(allowedTrials: allowedTrials, numberOfTrials: numberOfTrials)
-                let completionPayload = ExerciseCompletionData.StandardExercisePayload(
-                    numberOfTrials: self.allowedTrials,
-                    numberOfAllowedTrials: self.numberOfTrials
-                ).encodeToString()
-                let completionData = ExerciseCompletionData(
-                    startTimestamp: self.startTimestamp,
-                    endTimestamp: Date(),
-                    payload: completionPayload
-                )
-                state.send(.completed(level: level, data: completionData))
+                state.send(.completed(level: level))
             }
         }
     }

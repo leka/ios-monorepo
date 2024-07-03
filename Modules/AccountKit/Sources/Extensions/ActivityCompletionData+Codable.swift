@@ -14,7 +14,6 @@ extension ActivityCompletionData: Codable {
         carereceiverIDs = try container.decode([String].self, forKey: .carereceiverIDs)
         startTimestamp = try container.decodeIfPresent(Date.self, forKey: .startTimestamp)
         endTimestamp = try container.decodeIfPresent(Date.self, forKey: .endTimestamp)
-        completionData = try container.decode(String.self, forKey: .completionData)
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -26,6 +25,5 @@ extension ActivityCompletionData: Codable {
         try container.encode(carereceiverIDs, forKey: .carereceiverIDs)
         try container.encodeIfPresent(startTimestamp, forKey: .startTimestamp)
         try container.encodeIfPresent(endTimestamp, forKey: .endTimestamp)
-        try container.encode(completionData, forKey: .completionData)
     }
 }
