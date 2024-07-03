@@ -10,10 +10,12 @@ on:
       - develop
     paths:
       - "**/*.swift"
+      - ".mise.toml"
   pull_request:
     types: [opened, synchronize, reopened]
     paths:
       - "**/*.swift"
+      - ".mise.toml"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -44,7 +46,7 @@ jobs:
 
       - name: tuist generate
         run: |
-          tuist generate -n
+          tuist generate --no-open
 
       - name: tuist test
         run: |
