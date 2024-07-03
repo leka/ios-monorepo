@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import ContentKit
+import DesignKit
 import SpriteKit
 import SwiftUI
 
@@ -30,15 +31,25 @@ extension DragAndDropInOrderView {
 
         // MARK: Private
 
+        private static let dropzoneBackgroundColor: UIColor = .init(
+            light: UIColor.white,
+            dark: UIColor(displayP3Red: 242 / 255, green: 242 / 255, blue: 247 / 255, alpha: 1.0)
+        )
+
         private static func createRoundedRectImage(size: CGSize) -> UIImage {
             let rect = CGRect(origin: .zero, size: size)
+            let cornerRadius: CGFloat = 10 / 57 * size.width
 
             UIGraphicsBeginImageContextWithOptions(size, false, 0)
             let context = UIGraphicsGetCurrentContext()!
 
-            context.setFillColor(UIColor.gray.cgColor)
-            let path = UIBezierPath(roundedRect: rect, cornerRadius: 10)
+            context.setFillColor(self.dropzoneBackgroundColor.cgColor)
+            let path = UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius)
             path.fill()
+
+            context.setStrokeColor(UIColor.gray.cgColor)
+            let borderPath = UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius)
+            borderPath.stroke()
 
             let image = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
