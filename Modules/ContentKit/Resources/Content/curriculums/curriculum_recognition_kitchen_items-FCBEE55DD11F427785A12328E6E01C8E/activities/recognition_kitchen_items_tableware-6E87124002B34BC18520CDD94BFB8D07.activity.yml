@@ -1,0 +1,429 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 6E87124002B34BC18520CDD94BFB8D07
+name: recognition_kitchen_items_tableware
+
+created_at: "2024-03-08T11:49:37.123541"
+last_edited_at: "2024-06-24T17:19:36.463255"
+status: draft
+
+authors:
+  - leka
+
+skills:
+  - recognition
+  - communication
+  - communication/verbal_communication
+  - communication/verbal_communication/receptive_language
+
+tags:
+  - kitchen
+  - everyday_objects
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: kitchen_accessory_teapot
+
+      title: Identifier les objets de la table
+      subtitle: Reconnaitre des objets du quotidien
+      short_description: |
+        Touche l'objet demandé parmi les objets de la table
+
+      description: |
+        La personne accompagnée doit répondre correctement à la question posée concernant les objets de la table.
+
+      instructions: |
+        - Appuyez sur le haut-parleur pour jouer la consigne
+        - Encouragez la personne accompagnée à toucher l'image de l'objet demandé
+        - Quand la réponse est correcte, Leka lance un renforçateur
+
+  - locale: en_US
+    details:
+      icon: kitchen_accessory_teapot
+
+      title: Identify tableware items
+      subtitle: Recognize everyday objects
+      short_description: |
+        Touch the requested item among the tableware
+
+      description: |
+        The care receiver needs to respond correctly to the question about tableware items.
+
+      instructions: |
+        - On the screen, touch the speaker button to make the care receiver hear the instruction
+        - Encourage the care receiver to touch the image of the requested item
+        - When the care receiver touches the right picture, Leka launches a reinforcer
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et suis les instructions
+            - locale: en_US
+              value: Listen and follow instructions
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "le saladier"
+                - locale: en_US
+                  utterance: "the bowl"
+          payload:
+            choices:
+              - value: kitchen_accessory_bowl
+                type: image
+                is_right_answer: true
+              - value: kitchen_accessory_fork
+                type: image
+              - value: kitchen_accessory_glass
+                type: image
+              - value: kitchen_accessory_knife
+                type: image
+              - value: kitchen_accessory_mug_coffee
+                type: image
+              - value: kitchen_accessory_mug_tea
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: la fourchette
+            - locale: en_US
+              value: the fork
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "la fourchette"
+                - locale: en_US
+                  utterance: "the fork"
+          payload:
+            choices:
+              - value: kitchen_accessory_fork
+                type: image
+                is_right_answer: true
+              - value: kitchen_accessory_bowl
+                type: image
+              - value: kitchen_accessory_glass
+                type: image
+              - value: kitchen_accessory_knife
+                type: image
+              - value: kitchen_accessory_mug_coffee
+                type: image
+              - value: kitchen_accessory_mug_tea
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: le verre
+            - locale: en_US
+              value: the glass
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "le verre"
+                - locale: en_US
+                  utterance: "the glass"
+          payload:
+            choices:
+              - value: kitchen_accessory_glass
+                type: image
+                is_right_answer: true
+              - value: kitchen_accessory_bowl
+                type: image
+              - value: kitchen_accessory_fork
+                type: image
+              - value: kitchen_accessory_knife
+                type: image
+              - value: kitchen_accessory_mug_coffee
+                type: image
+              - value: kitchen_accessory_mug_tea
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: le couteau
+            - locale: en_US
+              value: the knife
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "le couteau"
+                - locale: en_US
+                  utterance: "the knife"
+          payload:
+            choices:
+              - value: kitchen_accessory_knife
+                type: image
+                is_right_answer: true
+              - value: kitchen_accessory_bowl
+                type: image
+              - value: kitchen_accessory_fork
+                type: image
+              - value: kitchen_accessory_glass
+                type: image
+              - value: kitchen_accessory_mug_coffee
+                type: image
+              - value: kitchen_accessory_mug_tea
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: la tasse à café
+            - locale: en_US
+              value: the coffee mug
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "la tasse à café"
+                - locale: en_US
+                  utterance: "the coffee mug"
+          payload:
+            choices:
+              - value: kitchen_accessory_mug_coffee
+                type: image
+                is_right_answer: true
+              - value: kitchen_accessory_bowl
+                type: image
+              - value: kitchen_accessory_fork
+                type: image
+              - value: kitchen_accessory_glass
+                type: image
+              - value: kitchen_accessory_knife
+                type: image
+              - value: kitchen_accessory_mug_tea
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: la tasse à thé
+            - locale: en_US
+              value: the tea mug
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "la tasse à thé"
+                - locale: en_US
+                  utterance: "the tea mug"
+          payload:
+            choices:
+              - value: kitchen_accessory_mug_tea
+                type: image
+                is_right_answer: true
+              - value: kitchen_accessory_bowl
+                type: image
+              - value: kitchen_accessory_fork
+                type: image
+              - value: kitchen_accessory_glass
+                type: image
+              - value: kitchen_accessory_knife
+                type: image
+              - value: kitchen_accessory_mug_coffee
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: l'assiette
+            - locale: en_US
+              value: the plate
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "l'assiette"
+                - locale: en_US
+                  utterance: "the plate"
+          payload:
+            choices:
+              - value: kitchen_accessory_plate
+                type: image
+                is_right_answer: true
+              - value: kitchen_accessory_bowl
+                type: image
+              - value: kitchen_accessory_fork
+                type: image
+              - value: kitchen_accessory_glass
+                type: image
+              - value: kitchen_accessory_knife
+                type: image
+              - value: kitchen_accessory_mug_coffee
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: la cuillère
+            - locale: en_US
+              value: the spoon
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "la cuillère"
+                - locale: en_US
+                  utterance: "the spoon"
+          payload:
+            choices:
+              - value: kitchen_accessory_spoon
+                type: image
+                is_right_answer: true
+              - value: kitchen_accessory_bowl
+                type: image
+              - value: kitchen_accessory_fork
+                type: image
+              - value: kitchen_accessory_glass
+                type: image
+              - value: kitchen_accessory_knife
+                type: image
+              - value: kitchen_accessory_mug_coffee
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: la table
+            - locale: en_US
+              value: the table
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "la table"
+                - locale: en_US
+                  utterance: "the table"
+          payload:
+            choices:
+              - value: kitchen_accessory_table
+                type: image
+                is_right_answer: true
+              - value: kitchen_accessory_bowl
+                type: image
+              - value: kitchen_accessory_fork
+                type: image
+              - value: kitchen_accessory_glass
+                type: image
+              - value: kitchen_accessory_knife
+                type: image
+              - value: kitchen_accessory_mug_coffee
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: la vaisselle
+            - locale: en_US
+              value: the tableware
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "la vaisselle"
+                - locale: en_US
+                  utterance: "the tableware"
+          payload:
+            choices:
+              - value: kitchen_accessory_tableware
+                type: image
+                is_right_answer: true
+              - value: kitchen_accessory_bowl
+                type: image
+              - value: kitchen_accessory_fork
+                type: image
+              - value: kitchen_accessory_glass
+                type: image
+              - value: kitchen_accessory_knife
+                type: image
+              - value: kitchen_accessory_mug_coffee
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: la théière
+            - locale: en_US
+              value: the teapot
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "la théière"
+                - locale: en_US
+                  utterance: "the teapot"
+          payload:
+            choices:
+              - value: kitchen_accessory_teapot
+                type: image
+                is_right_answer: true
+              - value: kitchen_accessory_bowl
+                type: image
+              - value: kitchen_accessory_fork
+                type: image
+              - value: kitchen_accessory_glass
+                type: image
+              - value: kitchen_accessory_knife
+                type: image
+              - value: kitchen_accessory_mug_coffee
+                type: image
