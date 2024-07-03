@@ -39,16 +39,21 @@ extension DragAndDropInOrderView {
         private static func createRoundedRectImage(size: CGSize) -> UIImage {
             let rect = CGRect(origin: .zero, size: size)
             let cornerRadius: CGFloat = 10 / 57 * size.width
+            let strokeWidth: CGFloat = 2.0
 
             UIGraphicsBeginImageContextWithOptions(size, false, 0)
             let context = UIGraphicsGetCurrentContext()!
 
+            // ? Fill the background
             context.setFillColor(self.dropzoneBackgroundColor.cgColor)
             let path = UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius)
             path.fill()
 
+            // ? Draw the border to be homogenous around the shape
             context.setStrokeColor(UIColor.gray.cgColor)
-            let borderPath = UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius)
+            context.setLineWidth(strokeWidth)
+            let borderRect = rect.insetBy(dx: strokeWidth / 2, dy: strokeWidth / 2)
+            let borderPath = UIBezierPath(roundedRect: borderRect, cornerRadius: cornerRadius - strokeWidth / 2)
             borderPath.stroke()
 
             let image = UIGraphicsGetImageFromCurrentImageContext()
