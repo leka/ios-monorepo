@@ -59,7 +59,6 @@ class DraggableImageAnswerNode: SKSpriteNode {
         }
 
         let size = image.size
-        let rect = CGRect(origin: .zero, size: size)
 
         let renderer = UIGraphicsImageRenderer(size: size)
         let finalImage = renderer.image { _ in
