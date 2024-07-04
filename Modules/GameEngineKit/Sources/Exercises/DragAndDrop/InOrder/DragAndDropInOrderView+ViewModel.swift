@@ -30,6 +30,10 @@ extension DragAndDropInOrderView {
             self.gameplay.process(choice, dropZoneIndex)
         }
 
+        public func onChoiceDroppedOutOfDropZone(choice: GameplayDragAndDropInOrderChoiceModel) {
+            self.gameplay.cancelChoice(choice)
+        }
+
         // MARK: Internal
 
         @Published var choices: [GameplayDragAndDropInOrderChoiceModel] = []
