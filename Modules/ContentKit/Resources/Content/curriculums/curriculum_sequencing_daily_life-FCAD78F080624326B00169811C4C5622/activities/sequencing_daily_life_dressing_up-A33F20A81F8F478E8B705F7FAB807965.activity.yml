@@ -47,7 +47,7 @@ l10n:
 
       instructions: |
         - Sur l'écran de l'iPad, cinq étapes de l'habillage sont présentées de manière désordonnée.
-        - Chaque étape est représentée par une image et/ou un texte.
+        - Chaque étape est représentée par une image.
         - Encouragez le participant à glisser chaque étape dans la zone correcte pour former la séquence complète de l'habillage.
         - Après avoir placé chaque étape correctement, Leka lance un renforçateur pour célébrer cette réussite et encourager l'apprentissage.
 
@@ -66,7 +66,7 @@ l10n:
 
       instructions: |
         - On the iPad screen, five steps of dressing are displayed in a jumbled order.
-        - Each step is represented by an image and/or text.
+        - Each step is represented by an image.
         - Encourage the participant to drag each step into the correct zone to form the complete sequence of dressing.
         - After placing each step correctly, Leka provides a reinforcer to celebrate this success and encourage ongoing learning.
 
