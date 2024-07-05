@@ -146,11 +146,11 @@ extension DragAndDropInOrderView {
                 node.snapToCenter(dropZone: dropZone)
                 break
             }
-            node.isDraggable = false
             self.onDropAction(node)
         }
 
-        func goodAnswerBehavior(_: DraggableImageAnswerNode) {
+        func goodAnswerBehavior(_ node: DraggableImageAnswerNode) {
+            node.isDraggable = false
             if case .completed = self.viewModel.exercicesSharedData.state {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
                     self.exerciseCompletedBehavior()
@@ -221,10 +221,10 @@ extension DragAndDropInOrderView {
                     where self.playedNode!.fullyContains(bounds: dropZone.frame)
                 {
                     self.viewModel.onChoiceDropped(choice: gameplayChoiceModel!, dropZoneIndex: index)
-                    break
+                    return
                 }
 
-                self.idleBehavior(self.playedNode!)
+                self.viewModel.onChoiceDroppedOutOfDropZone(choice: gameplayChoiceModel!)
             }
         }
 

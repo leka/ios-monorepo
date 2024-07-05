@@ -43,15 +43,11 @@ extension GameplayFindTheRightOrder where ChoiceModelType == GameplayDragAndDrop
             return
         }
 
-        numberOfTrials += 1
-
-        if answers[dropZoneIndex] == nil {
-            answers[dropZoneIndex] = choice
-            updateChoice(choice, state: .selected)
-        }
+        self.handleChoiceDrop(choice: choice, dropZoneIndex: dropZoneIndex)
 
         if answers.count == rightAnswers.count {
             self.isWellSequenced = true
+            self.numberOfTrials += 1
 
             for (index, answer) in rightAnswers.enumerated() {
                 if self.answers[index]?.id == answer.id {
@@ -66,6 +62,53 @@ extension GameplayFindTheRightOrder where ChoiceModelType == GameplayDragAndDrop
                 let level = evaluateCompletionLevel(allowedTrials: allowedTrials, numberOfTrials: numberOfTrials)
                 state.send(.completed(level: level))
             }
+        }
+    }
+
+    func cancelChoice(_ choice: ChoiceModelType) {
+        if let index = answers.first(where: { $0.value == choice }) {
+            answers[index.key] = nil
+        }
+        updateChoice(choice, state: .idle)
+    }
+
+    private func handleChoiceDrop(choice: ChoiceModelType, dropZoneIndex: Int) {
+        if let index = answers.first(where: { $0.value == choice }) {
+            self.handleSelectedChoice(choice: choice, index: index.key, dropZoneIndex: dropZoneIndex)
+        } else {
+            self.handleIdleChoice(choice: choice, dropZoneIndex: dropZoneIndex)
+        }
+    }
+
+    private func isMovable(choice: ChoiceModelType) -> Bool {
+        self.choices.value.first(where: { choice.id == $0.id })!.state != .rightAnswer
+    }
+
+    private func handleSelectedChoice(choice: ChoiceModelType, index: Int, dropZoneIndex: Int) {
+        if answers[dropZoneIndex] == choice {
+            updateChoice(choice, state: .selected)
+        } else if let previousChoice = answers[dropZoneIndex], isMovable(choice: previousChoice) {
+            answers[index] = nil
+            answers[dropZoneIndex] = choice
+            updateChoice(previousChoice, state: .idle)
+            updateChoice(choice, state: .selected)
+        } else {
+            answers[index] = nil
+            answers[dropZoneIndex] = choice
+            updateChoice(choice, state: .selected)
+        }
+    }
+
+    private func handleIdleChoice(choice: ChoiceModelType, dropZoneIndex: Int) {
+        if answers[dropZoneIndex] == nil {
+            answers[dropZoneIndex] = choice
+            updateChoice(choice, state: .selected)
+        } else if let previousChoice = answers[dropZoneIndex], isMovable(choice: previousChoice) {
+            answers[dropZoneIndex] = choice
+            updateChoice(previousChoice, state: .idle)
+            updateChoice(choice, state: .selected)
+        } else {
+            updateChoice(choice, state: .idle)
         }
     }
 }
