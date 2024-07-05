@@ -1,0 +1,98 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 0CFC700AF1FE476E9A934487A3159FBD
+name: sequencing_daily_life_tooth_brushing
+
+created_at: "2024-03-08T11:49:37.123525"
+last_edited_at: "2024-07-03T17:09:17.743018"
+status: draft
+
+authors:
+  - leka
+
+skills:
+  - association
+  - association/ordering
+
+tags:
+  - everyday_life
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: sequencing_daily_life_tooth_brushing
+
+      title: Le brossage des dents
+      subtitle: Séquencer les étapes du brossage des dents
+
+      short_description: |
+        Glisser et déposer les étapes du brossage de dents dans le bon ordre
+
+      description: |
+        Le participant doit glisser et déposer les étapes du brossage de dents dans le bon ordre pour apprendre la séquence correcte.
+
+      instructions: |
+        - Sur l'écran de l'iPad, cinq étapes du brossage de dents sont présentées de manière désordonnée.
+        - Chaque étape est représentée par une image.
+        - Encouragez le participant à glisser chaque étape dans la zone correcte pour former la séquence complète du brossage de dents.
+        - Après avoir placé chaque étape correctement, Leka lance un renforçateur pour célébrer cette réussite et encourager l'apprentissage.
+
+  - locale: en_US
+    details:
+      icon: sequencing_daily_life_tooth_brushing
+
+      title: The Tooth Brushing
+      subtitle: Sequence the Steps of Tooth Brushing
+
+      short_description: |
+        Drag and drop the steps of tooth brushing in the correct order
+
+      description: |
+        The participant should drag and drop the steps of tooth brushing into the correct order to learn the proper sequence.
+
+      instructions: |
+        - On the iPad screen, five steps of tooth brushing are displayed in a jumbled order.
+        - Each step is represented by an image.
+        - Encourage the participant to drag each step into the correct zone to form the complete sequence of tooth brushing.
+        - After placing each step correctly, Leka provides a reinforcer to celebrate this success and encourage ongoing learning.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Remets les étapes dans l'ordre
+            - locale: en_US
+              value: Put the steps in order
+          interface: dragAndDropInOrder
+          gameplay: findTheRightOrder
+          payload:
+            choices:
+              - value: sequencing_tooth_brushing_1
+                type: image
+              - value: sequencing_tooth_brushing_2
+                type: image
+              - value: sequencing_tooth_brushing_3
+                type: image
+              - value: sequencing_tooth_brushing_4
+                type: image
+              - value: sequencing_tooth_brushing_5
+                type: image
