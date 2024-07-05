@@ -8,7 +8,7 @@ uuid: 3E4B57F536824F1087A2E512223EF7E0
 name: super_simon_2_colors
 
 created_at: "2024-05-14T18:06:12.518998"
-last_edited_at: "2024-06-24T17:16:46.257628"
+last_edited_at: "2024-07-05T10:23:49.783310"
 status: published
 
 authors:
@@ -34,7 +34,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: super_simon
+      icon: super_simon_2
       title: Super Simon
       subtitle: 2 Choix de Couleurs
       short_description: |
@@ -48,7 +48,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: super_simon
+      icon: super_simon_2
       title: Super Simon
       subtitle: 2 Color Choices
       short_description: |
