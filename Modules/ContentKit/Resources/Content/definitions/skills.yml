@@ -262,7 +262,7 @@ list:
                   des symboles pour renforcer la communication.
             subskills: []
 
-          - id: communication/augmentative_alternative_communication/caa
+          - id: communication/augmentative_alternative_communication/aac
             l10n:
               - locale: en_US
                 name: Augmentative and Alternative Communication (AAC)
