@@ -125,3 +125,18 @@ content:
     curriculums:
       - curriculum_receptive_language_identify_number_quantity-4499A9AFB56B4476969B96CE32F5314C
       - curriculum_counting_candies-215DCF9CCB7B4E36A73273DC42D848E9
+
+  - id: daily_life
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Vie quotidienne
+          subtitle: Activités pour la vie quotidienne.
+          description: Découvrez des activités pour améliorer les compétences nécessaires à la vie de tous les jours.
+      - locale: en_US
+        details:
+          title: Daily Life
+          subtitle: Activities for daily living.
+          description: Explore activities to enhance essential daily living skills.
+    curriculums:
+      - curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
