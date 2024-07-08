@@ -24,6 +24,7 @@ var projects: [Path] {
 
     let modules: [Path] = [
         "Modules/AccountKit",
+        "Modules/AnalyticsKit",
         "Modules/BLEKit",
         "Modules/ContentKit",
         "Modules/DesignKit",
