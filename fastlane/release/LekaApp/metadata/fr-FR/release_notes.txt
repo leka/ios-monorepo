@@ -1,10 +1,9 @@
 ### Nouveaux Contenus & Fonctionnalités
 
-- Nouveaux Parcours: Introduction de nouveaux parcours, y compris la reconnaissance des sports et des professions, le tri des objets par emplacement et le comptage des bonbons.
-- Robot: Ajout de la possibilité d'afficher des images sur le robot et de rechercher les fichiers du robot par nom.
-- Améliorations du Gameplay: Ajout de nouvelles fonctionnalités de gameplay, y compris Find The Right Order et les vues DragAndDropInOrder.
+- Parcours: Ajout de nouveaux parcours, y compris le séquençage des activités quotidiennes et la catégorisation des activités de la vie quotidienne.
+- Améliorations du Gameplay: Mise à jour des choix pour Glisser Déposer dans l'Ordre avec conformité à l'apparence et ajout d'une fonction d'accrochage au centre.
+- SuperSimon: Mise à jour des icônes pour SuperSimon.
 
 ### Corrections de Bugs
 
-- Corrections de Localisation: Résolution de divers problèmes de localisation dans ContentKit et GEK.
-- Nouveaux Parcours: Corrections des fautes de frappe
+- Corrections de Localisation: Résolution des problèmes de localisation dans ContentKit et GEK.
