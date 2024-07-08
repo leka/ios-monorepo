@@ -34,6 +34,9 @@ let project = Project.app(
             "audio",
         ],
     ],
+    settings: [
+        "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym",
+    ],
     dependencies: [
         .project(target: "AccountKit", path: Path("../../Modules/AccountKit")),
         .project(target: "AnalyticsKit", path: Path("../../Modules/AnalyticsKit")),
