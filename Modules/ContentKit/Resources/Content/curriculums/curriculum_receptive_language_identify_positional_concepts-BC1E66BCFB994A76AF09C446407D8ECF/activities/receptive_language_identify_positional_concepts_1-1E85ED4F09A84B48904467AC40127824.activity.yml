@@ -158,7 +158,7 @@ exercises_payload:
             - locale: fr_FR
               value: Touche la fille sous le lit
             - locale: en_US
-              value: Touch the girl on the bed
+              value: Touch the girl under the bed
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
