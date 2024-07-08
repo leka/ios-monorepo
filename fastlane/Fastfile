@@ -106,7 +106,7 @@ platform :ios do
         ENV['TUIST_PRODUCTION_BUILD'] = 'FALSE'
         ENV['TUIST_FASTLANE_BUILD'] = 'TRUE'
         ENV['TUIST_FASTLANE_APP_NAME'] = app.to_s
-        system('tuist', 'generate', '-n', app.to_s)
+        system('tuist', 'generate', '--no-open', app.to_s)
       end
 
       app_id = "io.leka.apf.app.#{app}"
@@ -216,7 +216,7 @@ platform :ios do
       ENV['TUIST_PRODUCTION_BUILD'] = 'TRUE'
       ENV['TUIST_FASTLANE_BUILD'] = 'TRUE'
       ENV['TUIST_FASTLANE_APP_NAME'] = app.to_s
-      system('tuist', 'generate', '-n', app.to_s)
+      system('tuist', 'generate', '--no-open', app.to_s)
     end
 
     app_id = "io.leka.apf.app.#{app}"

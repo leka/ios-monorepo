@@ -51,19 +51,28 @@ class DraggableImageAnswerNode: SKSpriteNode {
     init(choice: GameplayDragAndDropInOrderChoiceModel, scale: CGFloat = 1, position: CGPoint) {
         self.id = choice.id
 
-        guard let path = Bundle.path(forImage: choice.choice.value) else {
-            fatalError("Image not found")
+        guard let pathImage = Bundle.path(forImage: choice.choice.value),
+              let image = UIImage(named: pathImage)
+        else {
+            log.error("Image not found: \(choice.choice.value)")
+            fatalError("💥️ Image not found: \(choice.choice.value)")
         }
 
-        super.init(texture: SKTexture(image: UIImage(named: path)!), color: .clear, size: CGSize.zero)
+        let size = image.size
 
-        let action = SKAction.setTexture(texture!, resize: true)
-        self.run(action)
+        let renderer = UIGraphicsImageRenderer(size: size)
+        let finalImage = renderer.image { _ in
+            let rect = CGRect(origin: .zero, size: size)
+            let path = UIBezierPath(roundedRect: rect, cornerRadius: 10 / 57 * size.width)
+            path.addClip()
+            image.draw(in: rect)
+        }
+
+        let texture = SKTexture(image: finalImage)
+        super.init(texture: texture, color: .clear, size: texture.size())
 
         self.name = choice.choice.value
-        self.texture = texture
         self.setScale(scale)
-        self.size = size
         self.position = position
         self.defaultPosition = position
     }

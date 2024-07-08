@@ -1,10 +1,9 @@
 ### New Content & Features
 
-- New Curriculums: Introduced new curriculums including recognizing sports and professions, sorting objects by location, and counting candies.
-- Robot Assets: Added the ability to display images on the robot and search for robot assets by name.
-- Gameplay Enhancements: Added new gameplay features including Find The Right Order and DragAndDropInOrder views.
+- Curriculums: Added new curriculums including sequencing daily life and categorization of daily life activities.
+- Gameplay Enhancements: Updated choices for Drag And Drop In Order with appearance conformance and added a snap-to-center function.
+- SuperSimon: Updated icons for SuperSimon.
 
 ### Bug Fixes
 
-- Localization Fixes: Resolved various localization issues in ContentKit and GEK.
-- New curriculums: Fix typos
+- Localization Fixes: Addressed localization issues

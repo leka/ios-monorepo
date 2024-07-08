@@ -18,7 +18,7 @@ extension Navigation {
         case caregivers
         case carereceivers
 
-        // ? DEVELOPER_MODE
+        // ? DEVELOPER_MODE + TESTFLIGHT_BUILD
         case allPublishedActivities
         case allDraftActivities
         case allTemplateActivities

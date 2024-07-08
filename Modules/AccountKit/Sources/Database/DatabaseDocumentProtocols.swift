@@ -25,5 +25,4 @@ public protocol ActivityCompletionDataDocument: DatabaseDocument {
     var carereceiverIDs: [String] { get set }
     var startTimestamp: Date? { get set }
     var endTimestamp: Date? { get set }
-    var completionData: String { get set }
 }

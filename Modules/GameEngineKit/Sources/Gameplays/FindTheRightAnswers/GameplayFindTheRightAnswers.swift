@@ -14,7 +14,6 @@ class GameplayFindTheRightAnswers<ChoiceModelType>: StatefulGameplayProtocol
     var state: CurrentValueSubject<ExerciseState, Never> = .init(.idle)
     var numberOfTrials = 0
     var allowedTrials = 0
-    var startTimestamp: Date?
 
     func updateChoice(_ choice: ChoiceModelType, state: GameplayChoiceState) {
         guard let index = choices.value.firstIndex(where: { $0.id == choice.id }) else {

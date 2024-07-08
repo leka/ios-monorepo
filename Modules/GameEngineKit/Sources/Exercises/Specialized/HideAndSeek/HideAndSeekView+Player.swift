@@ -62,7 +62,7 @@ extension HideAndSeekView {
                     Spacer()
 
                     Button {
-                        self.exercicesSharedData.state = .completed(level: .nonApplicable, data: nil)
+                        self.exercicesSharedData.state = .completed(level: .nonApplicable)
                     } label: {
                         ButtonLabel(String(l10n.HideAndSeekView.Player.foundButtonLabel.characters).uppercased(), color: .cyan)
                     }

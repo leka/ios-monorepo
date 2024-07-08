@@ -78,7 +78,7 @@ struct MainView: View {
                         }
                     }
 
-                    #if DEVELOPER_MODE
+                    #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                         Section("Developer Mode") {
                             CategoryLabel(category: .allTemplateActivities)
                             CategoryLabel(category: .allDraftActivities)
@@ -143,7 +143,7 @@ struct MainView: View {
                     case .carereceivers:
                         CarereceiverList()
 
-                    // ? DEVELOPER_MODE
+                    // ? DEVELOPER_MODE + TESTFLIGHT_BUILD
                     case .allPublishedActivities:
                         AllPublishedActivitiesView()
 

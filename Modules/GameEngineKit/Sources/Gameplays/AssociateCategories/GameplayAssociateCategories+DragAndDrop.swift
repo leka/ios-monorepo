@@ -29,7 +29,6 @@ extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociate
         self.init()
         self.choices.send(choices)
         self.state.send(.playing)
-        self.startTimestamp = Date()
 
         if let allowedTrials {
             self.allowedTrials = allowedTrials
@@ -50,16 +49,7 @@ extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociate
 
         if choices.value.allSatisfy({ $0.state == .rightAnswer }) {
             let level = evaluateCompletionLevel(allowedTrials: allowedTrials, numberOfTrials: numberOfTrials)
-            let completionPayload = ExerciseCompletionData.StandardExercisePayload(
-                numberOfTrials: self.allowedTrials,
-                numberOfAllowedTrials: self.numberOfTrials
-            ).encodeToString()
-            let completionData = ExerciseCompletionData(
-                startTimestamp: self.startTimestamp,
-                endTimestamp: Date(),
-                payload: completionPayload
-            )
-            state.send(.completed(level: level, data: completionData))
+            state.send(.completed(level: level))
         }
     }
 }

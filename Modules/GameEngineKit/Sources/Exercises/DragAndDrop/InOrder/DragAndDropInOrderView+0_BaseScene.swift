@@ -15,9 +15,10 @@ extension DragAndDropInOrderView {
         init(viewModel: ViewModel) {
             self.viewModel = viewModel
             super.init(size: CGSize.zero)
+            self.maxWidthAndHeight = 200 - 5 * CGFloat(viewModel.choices.count)
             self.spacer = size.width / CGFloat(viewModel.choices.count + 1)
-            self.defaultAnswerPosition = CGPoint(x: self.spacer, y: size.height)
-            self.defaultDropZonePosition = CGPoint(x: self.spacer, y: 100)
+            self.defaultAnswerPosition = CGPoint(x: self.spacer, y: size.height - self.padding)
+            self.defaultDropZonePosition = CGPoint(x: self.spacer, y: self.padding)
             self.subscribeToChoicesUpdates()
         }
 
@@ -35,9 +36,10 @@ extension DragAndDropInOrderView {
             removeAllChildren()
             removeAllActions()
 
+            self.maxWidthAndHeight = 200 - 5 * CGFloat(self.viewModel.choices.count)
             self.spacer = size.width / CGFloat(self.viewModel.choices.count + 1)
-            self.defaultAnswerPosition = CGPoint(x: self.spacer, y: size.height)
-            self.defaultDropZonePosition = CGPoint(x: self.spacer, y: 100)
+            self.defaultAnswerPosition = CGPoint(x: self.spacer, y: size.height - self.padding)
+            self.defaultDropZonePosition = CGPoint(x: self.spacer, y: self.padding)
             self.layoutNodes()
         }
 
@@ -80,7 +82,7 @@ extension DragAndDropInOrderView {
                     draggableImageAnswerNode: draggableImageAnswerNode
                 )
                 let dropZoneNode = DropZoneNode(
-                    size: CGSize(width: self.biggerSide, height: self.biggerSide),
+                    size: CGSize(width: self.maxWidthAndHeight, height: self.maxWidthAndHeight),
                     position: self.defaultDropZonePosition
                 )
 
@@ -99,7 +101,7 @@ extension DragAndDropInOrderView {
 
         func normalizeNodesSize(_ nodes: [SKSpriteNode]) {
             for node in nodes {
-                node.scaleForMax(sizeOf: self.biggerSide)
+                node.scaleForMax(sizeOf: self.maxWidthAndHeight)
             }
         }
 
@@ -121,7 +123,7 @@ extension DragAndDropInOrderView {
                 .moveAnimation(.easeOut)
             let group = DispatchGroup()
             group.enter()
-            node.scaleForMax(sizeOf: self.biggerSide)
+            node.scaleForMax(sizeOf: self.maxWidthAndHeight)
             node.run(
                 moveAnimation,
                 completion: {
@@ -138,17 +140,17 @@ extension DragAndDropInOrderView {
         }
 
         func selectedBehavior(_ node: DraggableImageAnswerNode) {
-            node.scaleForMax(sizeOf: self.biggerSide)
+            node.scaleForMax(sizeOf: self.maxWidthAndHeight)
             node.zPosition = 10
             for dropZone in self.dropZoneNodes where node.fullyContains(bounds: dropZone.frame) {
-                node.repositionInside(dropZone: dropZone)
+                node.snapToCenter(dropZone: dropZone)
                 break
             }
-            node.isDraggable = false
             self.onDropAction(node)
         }
 
-        func goodAnswerBehavior(_: DraggableImageAnswerNode) {
+        func goodAnswerBehavior(_ node: DraggableImageAnswerNode) {
+            node.isDraggable = false
             if case .completed = self.viewModel.exercicesSharedData.state {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
                     self.exerciseCompletedBehavior()
@@ -162,7 +164,7 @@ extension DragAndDropInOrderView {
                 SKAction.rotate(byAngle: 0.0, duration: 0.1),
                 SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: 4)), duration: 0.1),
             ])
-            node.scaleForMax(sizeOf: self.biggerSide * 1.1)
+            node.scaleForMax(sizeOf: self.maxWidthAndHeight * 1.1)
             node.run(SKAction.repeatForever(wiggleAnimation))
         }
 
@@ -212,23 +214,24 @@ extension DragAndDropInOrderView {
                     break
                 }
                 self.playedNode = self.selectedNodes[touch]!
-                self.playedNode!.scaleForMax(sizeOf: self.biggerSide)
+                self.playedNode!.scaleForMax(sizeOf: self.maxWidthAndHeight)
                 let gameplayChoiceModel = self.viewModel.choices.first(where: { $0.id == self.playedNode!.id })
 
                 for (index, dropZone) in self.dropZoneNodes.enumerated()
                     where self.playedNode!.fullyContains(bounds: dropZone.frame)
                 {
                     self.viewModel.onChoiceDropped(choice: gameplayChoiceModel!, dropZoneIndex: index)
-                    break
+                    return
                 }
 
-                self.idleBehavior(self.playedNode!)
+                self.viewModel.onChoiceDroppedOutOfDropZone(choice: gameplayChoiceModel!)
             }
         }
 
         // MARK: Private
 
-        private var biggerSide: CGFloat = 140
+        private let padding: CGFloat = 120
+        private var maxWidthAndHeight: CGFloat = .zero
         private var selectedNodes: [UITouch: DraggableImageAnswerNode] = [:]
         private var answerNodes: [DraggableImageAnswerNode] = []
         private var dropZoneNodes: [DropZoneNode] = []
