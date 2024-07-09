@@ -36,6 +36,10 @@ struct WelcomeView: View {
                     ConnectionView()
                 }
                 .buttonStyle(.bordered)
+
+                Button("Crash") {
+                    fatalError("Crash was triggered")
+                }
             }
         }
 //        .navigationDestination(isPresented: self.$navigation.navigateToAccountCreationProcess) {

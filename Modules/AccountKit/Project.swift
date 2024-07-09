@@ -21,6 +21,7 @@ let project = Project.module(
         .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
         .project(target: "UtilsKit", path: Path("../../Modules/UtilsKit")),
         .external(name: "FirebaseAnalytics"),
+        .external(name: "FirebaseCrashlytics"),
         .external(name: "FirebaseAuth"),
         .external(name: "FirebaseAuthCombine-Community"),
         .external(name: "FirebaseFirestore"),

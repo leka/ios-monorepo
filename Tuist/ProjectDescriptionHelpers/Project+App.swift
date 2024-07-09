@@ -15,6 +15,7 @@ public extension Project {
         infoPlist: [String: Plist.Value] = [:],
         settings: SettingsDictionary = [:],
         options: Options = .options(),
+        scripts: [TargetScript] = TargetScript.linters(),
         dependencies: [TargetDependency] = [],
         schemes: [Scheme] = []
     ) -> Project {
@@ -27,7 +28,7 @@ public extension Project {
             infoPlist: .extendingDefault(with: InfoPlist.extendingBase(version: version, with: infoPlist)),
             sources: ["Sources/**"],
             resources: ["Resources/**"],
-            scripts: TargetScript.linters(),
+            scripts: scripts,
             dependencies: dependencies,
             settings: .settings(base: .extendingBase(with: settings)),
             environmentVariables: [

@@ -16,6 +16,22 @@ let kLekaAppVersion: String = {
     return "1.9.0"
 }()
 
+let kGoogleServiceInfoPlistName: String = {
+    if Environment.developerMode.getBoolean(default: true) {
+        return "GoogleServiceInfo+DEV"
+    }
+
+    if Environment.testflightBuild.getBoolean(default: false) {
+        return "GoogleServiceInfo+TESTFLIGHT"
+    }
+
+    if Environment.productionBuild.getBoolean(default: false) {
+        return "GoogleServiceInfo+PROD"
+    }
+
+    return "GoogleServiceInfo+NOT_FOUND"
+}()
+
 let project = Project.app(
     name: "LekaApp",
     version: kLekaAppVersion,
@@ -37,6 +53,38 @@ let project = Project.app(
     settings: [
         "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym",
     ],
+    scripts: TargetScript.linters() + [
+        //        TargetScript.post(path: "../../Tuist/.build/checkouts/firebase-ios-sdk/Crashlytics/run",
+//                          arguments: "-gsp", "./Resources/GoogleFirebase/\(kGoogleServiceInfoPlistName).plist",
+//                          name: "Firebase Crashlytics",
+//                          inputPaths: [
+//                              "${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+//                              "${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+//                              "${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+//                              "$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/\(kGoogleServiceInfoPlistName).plist",
+//                              "$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+//                          ]),
+//        TargetScript.post(script: "cp $(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/\(kGoogleServiceInfoPlistName).plist $(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+//                          name: "Firebase Copy Info.plist"),
+
+        TargetScript.post(tool: "cp",
+                          arguments:
+                          "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/\(kGoogleServiceInfoPlistName).plist",
+                          "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist",
+                          name: "Firebase Copy Info.plist"),
+
+        TargetScript.post(path: "../../Tuist/.build/checkouts/firebase-ios-sdk/Crashlytics/run",
+                          arguments: "",
+                          name: "Firebase Crashlytics",
+                          inputPaths: [
+                              "${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+                              "${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+                              "${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+                              "$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+                              "$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+                          ]),
+
+    ],
     dependencies: [
         .project(target: "AccountKit", path: Path("../../Modules/AccountKit")),
         .project(target: "AnalyticsKit", path: Path("../../Modules/AnalyticsKit")),
@@ -48,5 +96,7 @@ let project = Project.app(
         .external(name: "MarkdownUI"),
         .external(name: "Fit"),
         .external(name: "DeviceKit"),
+//        .external(name: "FirebaseAnalytics"),
+//        .external(name: "FirebaseCrashlytics"),
     ]
 )

@@ -18,30 +18,31 @@ struct LekaApp: App {
     // MARK: Lifecycle
 
     init() {
-        #if PRODUCTION_BUILD
-            log.warning("PRODUCTION_BUILD")
-            let googleServiceInfoPlistName = "GoogleServiceInfo+PROD"
-        #elseif TESTFLIGHT_BUILD
-            log.warning("TESTFLIGHT_BUILD")
-            let googleServiceInfoPlistName = "GoogleServiceInfo+TESTFLIGHT"
-        #elseif DEVELOPER_MODE
-            log.warning("DEVELOPER_MODE")
-            let googleServiceInfoPlistName = "GoogleServiceInfo+DEV"
-        #else
-            log.warning("NO BUILD CONFIGURATION")
-            let googleServiceInfoPlistName = "GoogleServiceInfo+NOT_FOUND"
-        #endif
-
-        guard let googleServiceInfoPlistPath = Bundle.main.path(forResource: googleServiceInfoPlistName, ofType: "plist"),
-              let options = FirebaseOptions(contentsOfFile: googleServiceInfoPlistPath)
-        else {
-            log.critical("\(googleServiceInfoPlistName).plist is missing!")
-            fatalError("\(googleServiceInfoPlistName).plist is missing!")
-        }
-
-        log.warning("Firebase: \(googleServiceInfoPlistName)")
-        log.warning("Firebase options: \(options)")
-        FirebaseApp.configure(options: options)
+//        #if PRODUCTION_BUILD
+//            log.warning("PRODUCTION_BUILD")
+//            let googleServiceInfoPlistName = "GoogleServiceInfo+PROD"
+//        #elseif TESTFLIGHT_BUILD
+//            log.warning("TESTFLIGHT_BUILD")
+//            let googleServiceInfoPlistName = "GoogleServiceInfo+TESTFLIGHT"
+//        #elseif DEVELOPER_MODE
+//            log.warning("DEVELOPER_MODE")
+//            let googleServiceInfoPlistName = "GoogleServiceInfo+DEV"
+//        #else
+//            log.warning("NO BUILD CONFIGURATION")
+//            let googleServiceInfoPlistName = "GoogleServiceInfo+NOT_FOUND"
+//        #endif
+//
+//        guard let googleServiceInfoPlistPath = Bundle.main.path(forResource: googleServiceInfoPlistName, ofType: "plist"),
+//              let options = FirebaseOptions(contentsOfFile: googleServiceInfoPlistPath)
+//        else {
+//            log.critical("\(googleServiceInfoPlistName).plist is missing!")
+//            fatalError("\(googleServiceInfoPlistName).plist is missing!")
+//        }
+//
+//        log.warning("Firebase: \(googleServiceInfoPlistName)")
+//        log.warning("Firebase options: \(options)")
+//        FirebaseApp.configure(options: options)
+        FirebaseApp.configure()
     }
 
     // MARK: Internal
