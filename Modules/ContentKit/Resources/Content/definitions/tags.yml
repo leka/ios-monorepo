@@ -232,18 +232,6 @@ list:
           Lorem ipsum
     subtags: []
 
-  - id: drawings
-    l10n:
-      - locale: en_US
-        name: Drawings
-        description: >
-          Lorem ipsum
-      - locale: fr_FR
-        name: Dessins
-        description: >
-          Lorem ipsum
-    subtags: []
-
   - id: dry
     l10n:
       - locale: en_US
@@ -636,6 +624,18 @@ list:
           Lorem ipsum
       - locale: fr_FR
         name: Besoins physiologiques
+        description: >
+          Lorem ipsum
+    subtags: []
+
+  - id: pictures
+    l10n:
+      - locale: en_US
+        name: Pictures
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Photos
         description: >
           Lorem ipsum
     subtags: []
