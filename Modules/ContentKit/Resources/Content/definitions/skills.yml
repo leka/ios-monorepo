@@ -262,16 +262,16 @@ list:
                   des symboles pour renforcer la communication.
             subskills: []
 
-          - id: communication/augmentative_alternative_communication/aac
+          - id: communication/augmentative_alternative_communication/pcs
             l10n:
               - locale: en_US
-                name: Augmentative and Alternative Communication (AAC)
+                name: Picture Communication Symbols (PCS)
                 description: >
-                  Ability to use augmentative and alternative communication (AAC), a system where people communicate using images (pictograms, symbols, written words, photos, drawings, etc.). They show or exchange images to express themselves.
+                  Ability to use Picture Communication Symbols (PCS), a system where people communicate using images (pictograms, symbols, written words, photos, drawings, etc.). They show or exchange images to express themselves.
               - locale: fr_FR
-                name: Communication Alternative et Augmentée (CAA)
+                name: Symboles de Communication par Images (PCS)
                 description: >
-                  Capacité à utiliser la communication alternative et augmentée (CAA), un système où les gens communiquent en utilisant des images (pictogrammes, symboles, mots écrits, photos, dessins, etc.). Ils montrent ou échangent des images pour s'exprimer.
+                  Capacité à utiliser les Symboles de Communication par Images (PCS), un système où les gens communiquent en utilisant des images (pictogrammes, symboles, mots écrits, photos, dessins, etc.). Ils montrent ou échangent des images pour s'exprimer.
             subskills: []
 
       - id: communication/non_verbal_communication
@@ -401,10 +401,10 @@ list:
           piano et celui d'une guitare).
     subskills: []
 
-  - id: emotional_recognition
+  - id: emotion_recognition
     l10n:
       - locale: en_US
-        name: Emotional Recognition
+        name: Emotion Recognition
         description: >
           The ability to recognize and identify emotions in others through facial expressions.
       - locale: fr_FR
