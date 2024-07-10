@@ -27,6 +27,13 @@ let kGradingLUTRightOrder: GradingLUT = [
     6: [6: 2],
 ]
 
+let kGradingLUTMemory: GradingLUT = [
+    2: [1: 1],
+    4: [1: 1, 2: 4],
+    6: [1: 1, 2: 6, 3: 6],
+    8: [1: 1, 2: 8, 4: 8],
+]
+
 // MARK: - GameplayChoiceState
 
 public enum GameplayChoiceState {

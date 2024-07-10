@@ -9,8 +9,11 @@ import Foundation
 class GameplayAssociateCategories<ChoiceModelType>: StatefulGameplayProtocol
     where ChoiceModelType: GameplayChoiceModelProtocol
 {
-    var choices: CurrentValueSubject<[GameplayAssociateCategoriesChoiceModel], Never> = .init([])
+    var choices: CurrentValueSubject<[ChoiceModelType], Never> = .init([])
     var state: CurrentValueSubject<ExerciseState, Never> = .init(.idle)
+    var isTappable: CurrentValueSubject<Bool, Never> = .init(true)
+    var selectedChoices: [ChoiceModelType] = []
+    var rightAnswers: [ChoiceModelType] = []
     var numberOfTrials = 0
     var allowedTrials = 0
 
@@ -30,8 +33,14 @@ class GameplayAssociateCategories<ChoiceModelType>: StatefulGameplayProtocol
 
     func getNumberOfAllowedTrials(from table: GradingLUT) -> Int {
         let numberOfChoices = self.choices.value.count
-        let numberOfRightAnswers = self.getNumberOfRightAnswers(choices: self.choices.value)
-
-        return table[numberOfChoices]![numberOfRightAnswers]!
+        if let associateChoices = self.choices.value as? [GameplayAssociateCategoriesChoiceModel] {
+            let numberOfRightAnswers = self.getNumberOfRightAnswers(choices: associateChoices)
+            return table[numberOfChoices]![numberOfRightAnswers]!
+        } else if let memoryChoices = self.choices.value as? [GameplayMemoryChoiceModel] {
+            let numberOfCategories = Set(memoryChoices.map(\.choice.category)).count
+            return table[numberOfChoices]![numberOfCategories]!
+        } else {
+            fatalError("Unknown choice type")
+        }
     }
 }

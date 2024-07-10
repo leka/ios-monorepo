@@ -371,6 +371,12 @@ public struct ActivityView: View {
                 DiscoverLekaView(
                     data: self.viewModel.currentExerciseSharedData
                 )
+
+            case .memory:
+                MemoryView(
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
+                )
         }
     }
 

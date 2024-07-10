@@ -52,6 +52,9 @@ public struct Exercise: Decodable {
             case (.dragAndDropInOrder, .findTheRightOrder):
                 self.payload = try container.decode(DragAndDropInOrder.Payload.self, forKey: .payload)
 
+            case (.memory, .associateCategories):
+                self.payload = try container.decode(Memory.Payload.self, forKey: .payload)
+
             case (.danceFreeze, .none):
                 self.payload = try container.decode(DanceFreeze.Payload.self, forKey: .payload)
 

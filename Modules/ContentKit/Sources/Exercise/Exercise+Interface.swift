@@ -28,5 +28,6 @@ public extension Exercise {
         case musicalInstruments
         case melody
         case pairing
+        case memory
     }
 }
