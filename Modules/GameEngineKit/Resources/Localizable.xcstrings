@@ -596,6 +596,24 @@
                 }
             }
         },
+        "game_engine_kit.memory_choice_view.type_unknown_error": {
+            "comment": "MemoryChoiceView type unknown error label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "\u274c ERROR\nChoice type not implemented"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\u274c ERREUR\nType non impl\u00e9ment\u00e9"
+                    }
+                }
+            }
+        },
         "game_engine_kit.robot_then_touch_to_select.button_label": {
             "comment": "Robot then touch to select button label",
             "extractionState": "extracted_with_value",
