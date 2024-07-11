@@ -8,7 +8,7 @@ uuid: 89CEA9FE20624659B1307B633641BC90
 name: discover_leka
 
 created_at: "2024-03-01T14:00:38.160396"
-last_edited_at: "2024-06-21T20:42:29.160495"
+last_edited_at: "2024-07-11T16:31:04.934532"
 status: published
 
 authors:
@@ -16,9 +16,15 @@ authors:
 
 skills:
   - familiarization_with_leka
+  - sensory_interaction
+  - sensory_interaction/visual_interaction
+  - sensory_interaction/tactile_interaction
 
 tags:
   - standalone_activity
+  - sensory_stimulation
+  - robot_colors
+  - robot_movements
 
 hmi:
   - robot

@@ -8,7 +8,7 @@ uuid: 5554CD696BB6492594082C5F8F895A85
 name: gamepad_arrow_pad_color_pad
 
 created_at: "2024-03-04T18:07:12.519606"
-last_edited_at: "2024-04-11T10:09:07.867304"
+last_edited_at: "2024-07-11T16:31:04.921513"
 status: published
 
 authors:
@@ -21,6 +21,7 @@ skills:
 tags:
   - robot_movements
   - robot_colors
+  - sensory_stimulation
 
 hmi:
   - tablet_robot
@@ -85,9 +86,7 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Contrôle Leka avec la télécommande, fais le se déplacer, changer
-                de couleur ou lance le renforçateur de ton choix
+              value: Contrôle Leka avec la télécommande, fais le se déplacer, changer de couleur ou lance le renforçateur de ton choix
             - locale: en_US
-              value: Control Leka with the remote control, make him move, change color
-                or throw the reinforcer of your choice
+              value: Control Leka with the remote control, make him move, change color or throw the reinforcer of your choice
           interface: gamepadArrowPadColorPad

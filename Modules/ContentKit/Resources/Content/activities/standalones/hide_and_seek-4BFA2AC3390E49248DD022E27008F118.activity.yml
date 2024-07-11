@@ -8,7 +8,7 @@ uuid: 4BFA2AC3390E49248DD022E27008F118
 name: hide_and_seek
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-06-21T20:42:29.163250"
+last_edited_at: "2024-07-11T16:31:04.929465"
 status: published
 
 authors:
@@ -18,19 +18,23 @@ skills:
   - gross_motor_skills
   - spatial_understanding
   - sensory_interaction
+  - sensory_interaction/visual_interaction
+  - sensory_interaction/tactile_interaction
   - social_interactions
   - turn_taking
-  - self_regulation
   - inhibition
+  - attention
+  - attention/joint_attention
+
+tags:
+  - standalone_activity
+  - sensory_stimulation
 
 hmi:
   - robot
 
 types:
   - group
-
-tags:
-  - standalone_activity
 
 locales:
   - en_US

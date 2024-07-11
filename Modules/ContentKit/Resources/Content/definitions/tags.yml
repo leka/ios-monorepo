@@ -675,6 +675,17 @@ list:
         description: >
           Lorem ipsum
     subtags: []
+  - id: sensory_stimulation
+    l10n:
+      - locale: en_US
+        name: Sensory stimulation
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Stimulation sensorielle
+        description: >
+          Lorem ipsum
+    subtags: []
   - id: sports
     l10n:
       - locale: en_US
