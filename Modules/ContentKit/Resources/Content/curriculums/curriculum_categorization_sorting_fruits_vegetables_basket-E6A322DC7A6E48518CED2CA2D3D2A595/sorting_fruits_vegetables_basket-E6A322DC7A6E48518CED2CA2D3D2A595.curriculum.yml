@@ -8,18 +8,19 @@ name: sorting_fruits_vegetables_basket
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-06-21T20:38:22.558984"
+last_edited_at: "2024-07-11T15:10:45.686961"
 authors:
   - leka
 
 skills:
   - association
   - association/sorting
-  - association/matching
+  - discrimination
 
 tags:
   - vegetables
   - fruits
+  - food
 
 hmi:
   - tablet

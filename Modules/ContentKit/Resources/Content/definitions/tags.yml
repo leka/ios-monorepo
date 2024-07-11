@@ -15,7 +15,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: alphabet_letters
     l10n:
       - locale: en_US
@@ -27,7 +26,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: animals
     l10n:
       - locale: en_US
@@ -39,7 +37,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: autumn
     l10n:
       - locale: en_US
@@ -51,7 +48,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: bathroom
     l10n:
       - locale: en_US
@@ -63,7 +59,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: beach
     l10n:
       - locale: en_US
@@ -75,7 +70,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: bedroom
     l10n:
       - locale: en_US
@@ -87,7 +81,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: behind
     l10n:
       - locale: en_US
@@ -99,7 +92,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: big
     l10n:
       - locale: en_US
@@ -111,7 +103,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: body_parts
     l10n:
       - locale: en_US
@@ -123,7 +114,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: characters
     l10n:
       - locale: en_US
@@ -135,7 +125,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: clean
     l10n:
       - locale: en_US
@@ -147,7 +136,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: clothes
     l10n:
       - locale: en_US
@@ -159,7 +147,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: cold
     l10n:
       - locale: en_US
@@ -171,7 +158,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: colors
     l10n:
       - locale: en_US
@@ -183,7 +169,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: cooking
     l10n:
       - locale: en_US
@@ -195,7 +180,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: dance
     l10n:
       - locale: en_US
@@ -207,7 +191,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: digital_constellations
     l10n:
       - locale: en_US
@@ -219,7 +202,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: dirty
     l10n:
       - locale: en_US
@@ -231,7 +213,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: dry
     l10n:
       - locale: en_US
@@ -243,7 +224,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: emotions
     l10n:
       - locale: en_US
@@ -255,7 +235,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: everyday_objects
     l10n:
       - locale: en_US
@@ -267,7 +246,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: family_members
     l10n:
       - locale: en_US
@@ -279,7 +257,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: food
     l10n:
       - locale: en_US
@@ -291,7 +268,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: fruits
     l10n:
       - locale: en_US
@@ -303,7 +279,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: garden
     l10n:
       - locale: en_US
@@ -315,7 +290,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: geometric_shapes
     l10n:
       - locale: en_US
@@ -327,7 +301,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: hanna
     l10n:
       - locale: en_US
@@ -339,7 +312,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: holidays
     l10n:
       - locale: en_US
@@ -351,7 +323,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: home_objects
     l10n:
       - locale: en_US
@@ -363,7 +334,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: hortense
     l10n:
       - locale: en_US
@@ -375,7 +345,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: hot
     l10n:
       - locale: en_US
@@ -387,7 +356,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: hugo
     l10n:
       - locale: en_US
@@ -399,7 +367,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: in
     l10n:
       - locale: en_US
@@ -411,7 +378,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: kitchen
     l10n:
       - locale: en_US
@@ -423,7 +389,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: ladislas
     l10n:
       - locale: en_US
@@ -435,7 +400,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: leka_pictograms
     l10n:
       - locale: en_US
@@ -447,7 +411,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: leka_team
     l10n:
       - locale: en_US
@@ -459,7 +422,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: listening
     l10n:
       - locale: en_US
@@ -471,7 +433,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: little
     l10n:
       - locale: en_US
@@ -483,7 +444,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: louna
     l10n:
       - locale: en_US
@@ -495,7 +455,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: lucie
     l10n:
       - locale: en_US
@@ -507,7 +466,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: modes_of_transportation
     l10n:
       - locale: en_US
@@ -519,7 +477,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: mountain
     l10n:
       - locale: en_US
@@ -531,7 +488,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: moussa
     l10n:
       - locale: en_US
@@ -543,7 +499,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: music
     l10n:
       - locale: en_US
@@ -555,7 +510,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: musical_instruments
     l10n:
       - locale: en_US
@@ -567,7 +521,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: next_to
     l10n:
       - locale: en_US
@@ -579,7 +532,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: numbers
     l10n:
       - locale: en_US
@@ -591,7 +543,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: on
     l10n:
       - locale: en_US
@@ -603,7 +554,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: oscar
     l10n:
       - locale: en_US
@@ -615,7 +565,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: physiological_needs
     l10n:
       - locale: en_US
@@ -627,7 +576,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: pictures
     l10n:
       - locale: en_US
@@ -639,7 +587,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: places
     l10n:
       - locale: en_US
@@ -651,7 +598,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: professions
     l10n:
       - locale: en_US
@@ -663,7 +609,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: quantity
     l10n:
       - locale: en_US
@@ -675,7 +620,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: robot_colors
     l10n:
       - locale: en_US
@@ -687,7 +631,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: robot_movements
     l10n:
       - locale: en_US
@@ -699,7 +642,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: school
     l10n:
       - locale: en_US
@@ -711,7 +653,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: sea
     l10n:
       - locale: en_US
@@ -723,7 +664,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: seasons
     l10n:
       - locale: en_US
@@ -735,7 +675,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: sports
     l10n:
       - locale: en_US
@@ -747,7 +686,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: spring
     l10n:
       - locale: en_US
@@ -759,7 +697,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: standalone_activity
     l10n:
       - locale: en_US
@@ -771,7 +708,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: summer
     l10n:
       - locale: en_US
@@ -783,7 +719,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: template
     l10n:
       - locale: en_US
@@ -795,7 +730,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: thumbs_down
     l10n:
       - locale: en_US
@@ -807,7 +741,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: thumbs_up
     l10n:
       - locale: en_US
@@ -819,7 +752,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: under
     l10n:
       - locale: en_US
@@ -831,7 +763,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: vegetables
     l10n:
       - locale: en_US
@@ -843,7 +774,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: weather_elements
     l10n:
       - locale: en_US
@@ -855,7 +785,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: wet
     l10n:
       - locale: en_US
@@ -867,7 +796,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: winter
     l10n:
       - locale: en_US
@@ -879,7 +807,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: yann
     l10n:
       - locale: en_US
@@ -891,7 +818,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-
   - id: zoe
     l10n:
       - locale: en_US

@@ -8,18 +8,23 @@ uuid: FA8702A14D4E4792AEFB6158115C1AAD
 name: recognition_sounds_musical_instruments_drawings_1_image
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-06-21T20:38:08.017788"
+last_edited_at: "2024-07-11T15:09:43.558016"
 status: published
 
 authors:
   - leka
 
 skills:
-  - recognition
+  - association
+  - association/matching
   - sensory_interaction
+  - sensory_interaction/auditory_interaction
+  - attention
 
 tags:
   - musical_instruments
+  - music
+  - listening
 
 hmi:
   - tablet
