@@ -8,7 +8,7 @@ uuid: 651AD9E7F59249EFA3A48F23A78134A2
 name: color_bingo_5
 
 created_at: "2024-03-08T11:09:22.386406"
-last_edited_at: "2024-07-11T15:09:43.558016"
+last_edited_at: "2024-07-11T16:50:34.736034"
 status: published
 
 authors:
@@ -19,8 +19,8 @@ skills:
   - discrimination
   - association
   - association/matching
-  - sensory_interaction/visual_interaction
-  - sensory_interaction
+  - sensory_integration/vision
+  - sensory_integration
 
 tags:
   - colors

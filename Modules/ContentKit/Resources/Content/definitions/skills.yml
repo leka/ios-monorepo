@@ -598,55 +598,55 @@ list:
           Apprendre à se calmer après une émotion forte ou à ne pas réagir de
           manière impulsive.
     subskills: []
-  - id: sensory_interaction
+  - id: sensory_integration
     l10n:
       - locale: en_US
-        name: Sensory interaction
+        name: Sensory integration
         description: >
           Manifests when a care receiver plays with Leka and uses their senses
           to interact. This includes watching Leka's changing colors and lights,
           listening to the sounds or music it produces, and touching and feeling
           Leka by manipulating or playing with it.
       - locale: fr_FR
-        name: Sensorialité
+        name: Intégration sensorielle
         description: >
           Se manifeste quand une personne accompagnée joue avec Leka et utilise
           ses sens pour interagir. Cela inclut regarder les couleurs et lumières
           changeantes de Leka, écouter les sons ou musiques qu'il émet, et
           toucher et ressentir Leka en le manipulant ou en jouant avec lui.
     subskills:
-      - id: sensory_interaction/visual_interaction
+      - id: sensory_integration/vision
         l10n:
           - locale: en_US
-            name: Visual Interaction
+            name: Vision
             description: >
               Manifests when a care receiver observes and responds to the visual stimuli, such as the changing colors and lights of the robot.
           - locale: fr_FR
-            name: Interaction visuelle
+            name: Vue
             description: >
               Se manifeste quand une personne accompagnée observe et réagit aux stimuli visuels, comme les couleurs et lumières changeantes du robot.
         subskills: []
 
-      - id: sensory_interaction/auditory_interaction
+      - id: sensory_integration/hearing
         l10n:
           - locale: en_US
-            name: Auditory Interaction
+            name: Hearing
             description: >
               Manifests when a care receiver listens to and processes sounds or music produced by the iPad.
           - locale: fr_FR
-            name: Interaction auditive
+            name: Ouïe
             description: >
               Se manifeste quand une personne accompagnée écoute et traite les sons ou la musique produits par l'iPad.
         subskills: []
 
-      - id: sensory_interaction/tactile_interaction
+      - id: sensory_integration/touch
         l10n:
           - locale: en_US
-            name: Tactile Interaction
+            name: Touch
             description: >
               Manifests when a care receiver touches and feels the robot, manipulating or playing with its various parts.
           - locale: fr_FR
-            name: Interaction tactile
+            name: Toucher
             description: >
               Se manifeste quand une personne accompagnée touche et ressent le robot, manipule ou jouer avec ses différentes parties.
         subskills: []

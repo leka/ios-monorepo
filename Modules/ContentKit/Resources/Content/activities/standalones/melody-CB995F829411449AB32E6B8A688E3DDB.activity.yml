@@ -20,9 +20,9 @@ skills:
   - discrimination
   - attention
   - attention/sustained_attention
-  - sensory_interaction
-  - sensory_interaction/visual_interaction
-  - sensory_interaction/auditory_interaction
+  - sensory_integration
+  - sensory_integration/vision
+  - sensory_integration/hearing
 
 tags:
   - colors

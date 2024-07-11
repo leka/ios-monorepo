@@ -15,9 +15,9 @@ authors:
 
 skills:
   - relationship_tablet_robot
-  - sensory_interaction/visual_interaction
-  - sensory_interaction/auditory_interaction
-  - sensory_interaction
+  - sensory_integration/vision
+  - sensory_integration/hearing
+  - sensory_integration
 
 tags:
   - colors

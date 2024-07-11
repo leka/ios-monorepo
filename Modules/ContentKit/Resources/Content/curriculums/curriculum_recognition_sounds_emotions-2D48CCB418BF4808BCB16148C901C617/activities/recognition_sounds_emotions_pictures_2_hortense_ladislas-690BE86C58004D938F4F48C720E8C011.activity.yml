@@ -8,7 +8,7 @@ uuid: 690BE86C58004D938F4F48C720E8C011
 name: recognition_sounds_emotions_pictures_2_hortense_ladislas
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-07-11T15:09:43.573664"
+last_edited_at: "2024-07-11T16:50:34.758115"
 status: published
 
 authors:
@@ -17,8 +17,8 @@ authors:
 skills:
   - association
   - association/matching
-  - sensory_interaction
-  - sensory_interaction/auditory_interaction
+  - sensory_integration
+  - sensory_integration/hearing
   - attention
   - emotion_recognition
   - discrimination

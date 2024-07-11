@@ -8,7 +8,7 @@ uuid: BA0F2146BD5A420095F82A4C859D0EE8
 name: recognition_sounds_musical_instruments_drawings_3_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-07-11T15:09:43.561284"
+last_edited_at: "2024-07-11T16:50:34.749312"
 status: published
 
 authors:
@@ -17,8 +17,8 @@ authors:
 skills:
   - association
   - association/matching
-  - sensory_interaction
-  - sensory_interaction/auditory_interaction
+  - sensory_integration
+  - sensory_integration/hearing
   - attention
   - discrimination
 

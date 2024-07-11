@@ -8,7 +8,7 @@ uuid: 9D3DE26C58034D9AA9301EF0FBBD6761
 name: recognition_sounds_animals_drawings_2_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-07-11T15:09:43.578922"
+last_edited_at: "2024-07-11T16:50:34.752955"
 status: published
 
 authors:
@@ -17,8 +17,8 @@ authors:
 skills:
   - association
   - association/matching
-  - sensory_interaction
-  - sensory_interaction/auditory_interaction
+  - sensory_integration
+  - sensory_integration/hearing
   - attention
   - discrimination
 
