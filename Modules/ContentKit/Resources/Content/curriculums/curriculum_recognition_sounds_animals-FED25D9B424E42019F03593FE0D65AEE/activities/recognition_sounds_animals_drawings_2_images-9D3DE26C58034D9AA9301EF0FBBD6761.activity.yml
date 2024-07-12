@@ -8,18 +8,23 @@ uuid: 9D3DE26C58034D9AA9301EF0FBBD6761
 name: recognition_sounds_animals_drawings_2_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-06-24T17:15:16.334173"
+last_edited_at: "2024-07-12T12:48:14.948500"
 status: published
 
 authors:
   - leka
 
 skills:
-  - recognition
-  - sensory_interaction
+  - association
+  - association/matching
+  - sensory_integration
+  - sensory_integration/hearing
+  - attention
+  - discrimination
 
 tags:
   - animals
+  - listening
 
 hmi:
   - tablet

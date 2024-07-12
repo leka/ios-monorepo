@@ -8,19 +8,17 @@ uuid: EA954F037A944DE292CDB070ECC22357
 name: recognition_emotions_pictures_1_yann
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-06-24T17:07:03.698105"
+last_edited_at: "2024-07-12T12:48:14.933551"
 status: published
 
 authors:
   - leka
 
 skills:
-  - recognition
-  - communication
-  - communication/verbal_communication
-  - communication/verbal_communication/receptive_language
+  - emotion_recognition
 
 tags:
+  - emotions
   - yann
 
 hmi:

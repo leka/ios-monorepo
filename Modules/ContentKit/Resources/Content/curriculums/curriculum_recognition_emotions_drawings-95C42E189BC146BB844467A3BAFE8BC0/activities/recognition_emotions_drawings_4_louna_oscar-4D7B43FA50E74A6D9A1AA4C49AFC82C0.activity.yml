@@ -8,20 +8,18 @@ uuid: 4D7B43FA50E74A6D9A1AA4C49AFC82C0
 name: recognition_emotions_drawings_4_louna_oscar
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-06-24T17:07:03.681582"
+last_edited_at: "2024-07-12T12:48:14.929007"
 status: published
 
 authors:
   - leka
 
 skills:
-  - recognition
-  - communication
-  - communication/verbal_communication
-  - communication/verbal_communication/receptive_language
+  - emotion_recognition
 
 tags:
   - characters
+  - emotions
   - oscar
   - louna
 

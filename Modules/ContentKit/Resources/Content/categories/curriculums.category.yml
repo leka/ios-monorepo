@@ -91,18 +91,20 @@ content:
       - curriculum_recognition_sounds_musical_instruments-6A5EF209D00942F4AEEA4AEC6DAC052A
       - curriculum_recognition_sounds_emotions-2D48CCB418BF4808BCB16148C901C617
 
-  - id: miscellaneous
+  - id: theme_recognition
     l10n:
       - locale: fr_FR
         details:
-          title: Divers
-          subtitle: Activités variées pour une expérience ludique et enrichissante.
-          description: Découvrez des activités variées pour une expérience ludique et enrichissante, idéales pour se détendre et s'amuser.
+        title: Reconnaissance par thème
+        subtitle: Activités variées pour une expérience ludique et enrichissante.
+        description: Explorez et apprenez divers concepts à travers des activités de reconnaissance thématique.
+
       - locale: en_US
         details:
-          title: Miscellaneous
-          subtitle: Varied activities for a fun and enriching experience.
-          description: Explore varied activities for a fun and enriching experience, perfect for relaxation and enjoyment.
+        title: Theme Recognition
+        subtitle: Varied activities for a fun and enriching experience.
+        description: Explore and learn various concepts through themed recognition activities.
+
     curriculums:
       - color_bingo-69760D1DA61849E3926E3A939BBEF0CE
       - curriculum_recognition_weather_and_temperatures-1D8E1AB667DB40B199479D731EF96F2E
