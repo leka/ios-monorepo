@@ -8,13 +8,14 @@ name: curriculum_sequencing_daily_life
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-07-07T23:20:40.357254"
+last_edited_at: "2024-07-12T12:48:33.814085"
 authors:
   - leka
 
 skills:
   - association
   - association/ordering
+  - time_and_temporality_understanding
 
 tags:
   - everyday_objects

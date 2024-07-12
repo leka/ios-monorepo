@@ -8,20 +8,18 @@ uuid: D9663D6F1E9F4D228FDCD918317996A3
 name: recognition_emotions_drawings_1_hugo
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-06-24T17:07:03.682928"
+last_edited_at: "2024-07-12T12:48:14.948500"
 status: published
 
 authors:
   - leka
 
 skills:
-  - recognition
-  - communication
-  - communication/verbal_communication
-  - communication/verbal_communication/receptive_language
+  - emotion_recognition
 
 tags:
   - characters
+  - emotions
   - hugo
 
 hmi:
