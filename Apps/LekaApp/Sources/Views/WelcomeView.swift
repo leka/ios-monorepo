@@ -37,8 +37,20 @@ struct WelcomeView: View {
                 }
                 .buttonStyle(.bordered)
 
-                Button("Crash") {
-                    fatalError("Crash was triggered")
+                VStack(spacing: 20) {
+                    Button("Crash - Fatal Error") {
+                        fatalError("Crash was triggered")
+                    }
+
+                    Button("Crash - Nil Optional") {
+                        let optional: String? = nil
+                        _ = optional!
+                    }
+
+                    Button("Crash - Array out of bonds") {
+                        let array = []
+                        _ = array[0]
+                    }
                 }
             }
         }
