@@ -10,6 +10,7 @@ on:
   schedule:
     # Runs at 3:00 UTC every day
     - cron: "0 3 * * *"
+  workflow_dispatch: # nothing to setup here, just to trigger the workflow manually
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
