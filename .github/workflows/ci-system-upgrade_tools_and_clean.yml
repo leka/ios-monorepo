@@ -10,6 +10,7 @@ on:
   schedule:
     # Runs at 3:00 UTC every day
     - cron: "0 3 * * *"
+  workflow_dispatch: # nothing to setup here, just to trigger the workflow manually
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -69,7 +70,6 @@ jobs:
 
       - name: Upgrade bundle
         run: |
-          gem uninstall bundler --all --ignore-dependencies --executables
           gem install --force bundler
 
       - name: tuist clean
