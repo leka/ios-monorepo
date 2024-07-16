@@ -38,7 +38,7 @@ jobs:
   internal_beta_release:
     name: fastlane release beta_internal
     runs-on: [self-hosted, iOS]
-    if: (github.event_name == 'pull_request' && contains(github.event.label.name, 'fastlane:beta')) || (github.event_name == 'push')
+    if: (github.event_name == 'pull_request' && contains(github.event.label.name, 'fastlane:beta')) || (github.event_name == 'push') || (github.event_name == 'workflow_dispatch')
 
     env:
       PR_NUMBER: ${{ github.event.pull_request.number }}
@@ -82,7 +82,7 @@ jobs:
           bundle exec fastlane sync_certificates release:true --verbose
 
       - name: fastlane beta_internal LekaApp
-        if: (github.event_name == 'pull_request' && contains(github.event.label.name, 'LekaApp')) || (github.event_name == 'push')
+        if: (github.event_name == 'pull_request' && contains(github.event.label.name, 'LekaApp')) || (github.event_name == 'push') || (github.event_name == 'workflow_dispatch')
         run: |
           bundle exec fastlane beta_internal targets:LekaApp --verbose
 
