@@ -65,7 +65,6 @@ jobs:
 
       - name: bundle install
         run: |
-          gem uninstall bundler --all --ignore-dependencies --executables
           gem install --force bundler
           bundle install
 
