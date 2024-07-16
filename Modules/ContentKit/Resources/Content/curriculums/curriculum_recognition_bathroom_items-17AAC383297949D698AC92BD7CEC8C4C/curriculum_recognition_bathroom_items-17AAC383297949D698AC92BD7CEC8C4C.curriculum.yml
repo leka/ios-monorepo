@@ -7,7 +7,7 @@ name: curriculum_recognition_bathroom_items
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-07-15T14:52:30.370061"
+last_edited_at: "2024-07-16T15:55:28.088595"
 authors:
   - leka
 
@@ -35,8 +35,10 @@ l10n:
       subtitle: Identifier les produits de toilette, les produits de santé et le mobilier de salle de bain
 
       abstract: |
-        Aimed at enhancing the recognition of toiletry products, health products, and bathroom furniture.
-        This activity encourages the accompanied person to listen carefully to the instructions to recognize bathroom items by selecting the corresponding image on the iPad screen. The introduction to various bathroom items is designed to strengthen the understanding of basic concepts in a fun and interactive way.
+        Ce parcours vise à développer la reconnaissance des produits de toilette, des produits de santé et des meubles de salle de bain.
+
+      description: |
+        Cette activité encourage la personne accompagnée à écouter attentivement les instructions pour reconnaître les articles de salle de bain en sélectionnant l'image correspondante sur l'écran de l'iPad. L'introduction à divers articles de salle de bain est conçue pour renforcer la compréhension des concepts de base de manière ludique et interactive.
 
   - locale: en_US
     details:
@@ -45,10 +47,12 @@ l10n:
       subtitle: Identify Toiletry Products, Health Products, and Bathroom Furniture
 
       abstract: |
-        Aimed at enhancing oral language comprehension regarding toiletry products, health products, and bathroom furniture.
+        This curriculum aims to develop the recognition of toiletry products, health products, and bathroom furniture.
+
+      description: |
         This activity encourages the accompanied person to listen carefully to the instructions to recognize bathroom items by selecting the corresponding image on the iPad screen. The introduction to various bathroom items is designed to strengthen the understanding of basic concepts in a fun and interactive way.
 
 activities:
-  - recognition_bathroom_items_bathroom_furniture-5A9BCAC2BE954E89A9179AFD9034BD7D
   - recognition_bathroom_items_toiletry_products-4B6E4CFBF36841008EC9DDC1E60822EF
   - recognition_bathroom_items_health_products-64D5048EC16A4FF99D13F04D7B1CB71F
+  - recognition_bathroom_items_bathroom_furniture-5A9BCAC2BE954E89A9179AFD9034BD7D
