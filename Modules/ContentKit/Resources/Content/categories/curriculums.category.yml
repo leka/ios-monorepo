@@ -6,8 +6,8 @@ l10n:
   - locale: fr_FR
     details:
       title: Parcours
-      subtitle: Séquences d’activités ciblées pour un apprentissage approfondi et structuré.
-      description: Ensemble d’activités conçues par et pour les professionnels, pour un développement progressif allant de la reconnaissance des émotions à la catégorisation.
+      subtitle: Séquences d'activités ciblées pour un apprentissage approfondi et structuré.
+      description: Ensemble d'activités conçues par et pour les professionnels, pour un développement progressif allant de la reconnaissance des émotions à la catégorisation.
   - locale: en_US
     details:
       title: Curriculums
@@ -95,15 +95,15 @@ content:
     l10n:
       - locale: fr_FR
         details:
-        title: Reconnaissance par thème
-        subtitle: Activités variées pour une expérience ludique et enrichissante.
-        description: Explorez et apprenez divers concepts à travers des activités de reconnaissance thématique.
+          title: Reconnaissance par thème
+          subtitle: Activités variées pour une expérience ludique et enrichissante.
+          description: Explorez et apprenez divers concepts à travers des activités de reconnaissance thématique.
 
       - locale: en_US
         details:
-        title: Theme Recognition
-        subtitle: Varied activities for a fun and enriching experience.
-        description: Explore and learn various concepts through themed recognition activities.
+          title: Theme Recognition
+          subtitle: Varied activities for a fun and enriching experience.
+          description: Explore and learn various concepts through themed recognition activities.
 
     curriculums:
       - color_bingo-69760D1DA61849E3926E3A939BBEF0CE
