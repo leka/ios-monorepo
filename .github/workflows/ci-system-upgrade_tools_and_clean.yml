@@ -69,7 +69,6 @@ jobs:
 
       - name: Upgrade bundle
         run: |
-          gem uninstall bundler --all --ignore-dependencies --executables
           gem install --force bundler
 
       - name: tuist clean
