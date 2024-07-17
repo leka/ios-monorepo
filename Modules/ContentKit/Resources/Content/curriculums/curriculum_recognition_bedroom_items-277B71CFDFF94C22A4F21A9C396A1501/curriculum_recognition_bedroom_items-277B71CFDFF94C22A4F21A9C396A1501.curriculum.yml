@@ -1,0 +1,57 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 277B71CFDFF94C22A4F21A9C396A1501
+name: curriculum_recognition_bedroom_items
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-07-16T15:55:28.088595"
+authors:
+  - leka
+
+skills:
+  - recognition
+  - discrimination
+
+tags:
+  - bedroom
+  - everyday_objects
+  - home_objects
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_bedroom_items
+      title: Reconnaitre les objets de la chambre
+      subtitle: Identifier les objets de la chambre d'enfant et de la chambre d'adulte
+
+      abstract: |
+        Ce parcours vise à développer la reconnaissance des objets de la chambre d'enfant et de la chambre d'adulte.
+
+      description: |
+        Ce parcours encourage le participant à écouter attentivement les instructions pour reconnaître les objets de la chambre en sélectionnant l'image correspondante sur l'écran de l'iPad. L'introduction à divers objets de chambre est conçue pour renforcer la compréhension des concepts de base de manière ludique et interactive.
+
+  - locale: en_US
+    details:
+      icon: recognition_bedroom_items
+      title: Recognize Bedroom Items
+      subtitle: Identify Children's Bedroom and Adult's Bedroom Objects
+
+      abstract: |
+        This curriculum aims to develop the recognition of objects in the children's bedroom and the adult's bedroom.
+
+      description: |
+        This curriculum encourages the care receiver to listen carefully to the instructions to recognize bedroom items by selecting the corresponding image on the iPad screen. The introduction to various bedroom items is designed to strengthen the understanding of basic concepts in a fun and interactive way.
+
+activities:
+  - recognition_bedroom_items_adult_room-DA0E26666CA6480FAEC81115D12AB9CD
+  - recognition_bedroom_items_child_room-6826466C1F7E443087E24C261E778549
