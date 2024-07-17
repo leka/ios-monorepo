@@ -112,6 +112,7 @@ content:
       - curriculum_recognition_professions-92ACC48ED3A041DE959EA5C2E8600441
       - curriculum_recognition_sports-C7F3963541234712A2701C0EB9E2EEAE
       - curriculum_recognition_kitchen_items-FCBEE55DD11F427785A12328E6E01C8E
+      - curriculum_recognition_bathroom_items-17AAC383297949D698AC92BD7CEC8C4C
 
   - id: numeracy_skills
     l10n:
@@ -144,3 +145,4 @@ content:
     curriculums:
       - curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
       - curriculum_recognition_kitchen_items-FCBEE55DD11F427785A12328E6E01C8E
+      - curriculum_recognition_bathroom_items-17AAC383297949D698AC92BD7CEC8C4C
