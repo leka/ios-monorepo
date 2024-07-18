@@ -1,0 +1,231 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: B2D60F93527548ACB2695F1E56B76CAD
+name: counting_flower_petals_from_15_to_20
+
+created_at: "2024-03-04T18:07:12.519229"
+last_edited_at: "2024-07-12T12:48:14.929007"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - counting
+  - attention
+  - discrimination
+
+tags:
+  - numbers
+  - quantity
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: counting_flower_petals
+
+      title: Dénombrement de pétales de fleur
+      subtitle: 15 à 20
+
+      short_description: |
+        Observe l'image à gauche. Compte le nombre de pétales de fleurs.
+
+      description: |
+        Cette activité est conçue pour aider le participant à apprendre à compter de 15 à 20 à l'aide de supports visuels. L'image à gauche affiche un certain nombre de pétales de fleurs, et le participant est encouragée à les compter et à sélectionner le bon nombre.
+
+      instructions: |
+        - Encouragez le participant à observer l'image à gauche.
+        - Encouragez le participant à compter le nombre de pétales de fleurs dans l'image.
+        - Encouragez le participant à appuyer sur le pictogramme correspondant au nombre correct de pétales de fleurs.
+        - Lorsque la réponse est correcte, Leka lance un renforçateur.
+
+  - locale: en_US
+    details:
+      icon: counting_flower_petals
+
+      title: Counting Flower Petals
+      subtitle: 15 to 20
+
+      short Description: |
+        Observe the image on the left. Count the number of flower petals.
+
+      description: |
+        This activity is designed to help the participant learn to count from 15 to 20 using visual aids. The image on the left displays a certain number of flower petals, and the participant is encouraged to count them and select the correct number.
+
+      instructions: |
+
+        - Encourage the participant to observe the image on the left.
+        - Encourage the participant to count the number of flower petals in the image.
+        - Encourage the participant to press the icon corresponding to the correct number of flower petals.
+        - When the answer is correct, Leka will provide a reinforcer.
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Combien de pétales de fleurs vois-tu dans l'image ?
+            - locale: en_US
+              value: How many flower petals do you see in the image?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: enumeration_flower_sixteen
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 18.circle
+                type: sfsymbol
+              - value: 19.circle
+                type: sfsymbol
+              - value: 16.circle
+                type: sfsymbol
+                is_right_answer: true
+              - value: 15.circle
+                type: sfsymbol
+
+        - instructions:
+            - locale: fr_FR
+              value: Combien de pétales de fleurs vois-tu dans l'image ?
+            - locale: en_US
+              value: How many flower petals do you see in the image?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: enumeration_flower_fifteen
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 16.circle
+                type: sfsymbol
+              - value: 17.circle
+                type: sfsymbol
+              - value: 15.circle
+                type: sfsymbol
+                is_right_answer: true
+              - value: 20.circle
+                type: sfsymbol
+
+        - instructions:
+            - locale: fr_FR
+              value: Combien de pétales de fleurs vois-tu dans l'image ?
+            - locale: en_US
+              value: How many flower petals do you see in the image?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: enumeration_flower_seventeen
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 16.circle
+                type: sfsymbol
+              - value: 15.circle
+                type: sfsymbol
+              - value: 17.circle
+                type: sfsymbol
+                is_right_answer: true
+              - value: 19.circle
+                type: sfsymbol
+
+        - instructions:
+            - locale: fr_FR
+              value: Combien de pétales de fleurs vois-tu dans l'image ?
+            - locale: en_US
+              value: How many flower petals do you see in the image?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: enumeration_flower_eighteen
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 16.circle
+                type: sfsymbol
+              - value: 20.circle
+                type: sfsymbol
+              - value: 18.circle
+                type: sfsymbol
+                is_right_answer: true
+              - value: 19.circle
+                type: sfsymbol
+
+        - instructions:
+            - locale: fr_FR
+              value: Combien de pétales de fleurs vois-tu dans l'image ?
+            - locale: en_US
+              value: How many flower petals do you see in the image?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: enumeration_flower_nineteen
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 16.circle
+                type: sfsymbol
+              - value: 18.circle
+                type: sfsymbol
+              - value: 19.circle
+                type: sfsymbol
+                is_right_answer: true
+              - value: 20.circle
+                type: sfsymbol
+
+        - instructions:
+            - locale: fr_FR
+              value: Combien de pétales de fleurs vois-tu dans l'image ?
+            - locale: en_US
+              value: How many flower petals do you see in the image?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: enumeration_flower_twenty
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 15.circle
+                type: sfsymbol
+              - value: 18.circle
+                type: sfsymbol
+              - value: 20.circle
+                type: sfsymbol
+                is_right_answer: true
+              - value: 19.circle
+                type: sfsymbol
