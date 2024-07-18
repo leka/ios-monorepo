@@ -19,7 +19,10 @@ skills:
   - inhibition
   - sensory_integration
   - sensory_integration/vision
+  - sensory_integration/hearing
   - attention
+  - attention/joint_attention
+  - social_interactions
 
 tags:
   - music
