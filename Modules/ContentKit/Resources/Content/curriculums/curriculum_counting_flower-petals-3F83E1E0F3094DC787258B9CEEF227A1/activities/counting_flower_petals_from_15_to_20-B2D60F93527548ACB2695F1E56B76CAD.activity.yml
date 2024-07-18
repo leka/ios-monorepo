@@ -8,8 +8,8 @@ uuid: B2D60F93527548ACB2695F1E56B76CAD
 name: counting_flower_petals_from_15_to_20
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-07-12T12:48:14.929007"
-status: published
+last_edited_at: "2024-07-18T15:03:11.887663"
+status: draft
 
 authors:
   - leka
@@ -60,14 +60,13 @@ l10n:
       title: Counting Flower Petals
       subtitle: 15 to 20
 
-      short Description: |
+      short_description: |
         Observe the image on the left. Count the number of flower petals.
 
       description: |
         This activity is designed to help the participant learn to count from 15 to 20 using visual aids. The image on the left displays a certain number of flower petals, and the participant is encouraged to count them and select the correct number.
 
       instructions: |
-
         - Encourage the participant to observe the image on the left.
         - Encourage the participant to count the number of flower petals in the image.
         - Encourage the participant to press the icon corresponding to the correct number of flower petals.
