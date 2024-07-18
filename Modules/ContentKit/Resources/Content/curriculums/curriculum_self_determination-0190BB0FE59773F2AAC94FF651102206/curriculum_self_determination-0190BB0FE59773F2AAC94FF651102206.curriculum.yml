@@ -1,0 +1,56 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 0190BB0FE59773F2AAC94FF651102206
+name: curriculum_self_determination
+
+status: published
+
+created_at: "2024-07-11T11:31:58.859000"
+last_edited_at: "2024-07-18T17:40:27.477767"
+authors:
+  - leka
+
+skills:
+  - association
+  - association/sorting
+  - recognition
+
+tags:
+  - places
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: self_determination_drag
+      title: Trier des objets par lieux
+      subtitle: Organiser les objets par endroit
+      abstract: |
+        Centré sur le tri et l'appariement, ce curriculum utilise différents objets pour améliorer la reconnaissance et la classification, enrichissant l'interaction avec l'environnement.
+      description: |
+        Ce curriculum renforce la reconnaissance et le tri des objets en fonction de leur lieu, guidant les participants à travers une aventure éducative. Ils exploreront la diversité et l'importance de ces objets.
+
+        À travers des activités variées, les participants affinent leurs compétences d'observation et apprennent à distinguer et reconnaître les caractéristiques uniques des différents types d'objets en fonction de leur emplacement.
+
+  - locale: en_US
+    details:
+      icon: self_determination_drag
+      title: Sorting objects by location
+      subtitle: Organizing objects by place
+      abstract: |
+        Focused on sorting and matching, this curriculum leverages different objects to enhance recognition and classification, enriching interaction with the environment.
+      description: |
+        This curriculum enhances the recognition and sorting of objects based on their location, taking participants on an educational journey. They will explore the diversity and importance of these objects.
+
+        Through a variety of activities, participants refine their observation skills and learn to distinguish and recognize the unique characteristics of different types of objects based on their location.
+
+activities:
+  - drag_and_drop_into_zones_choose_any_answer_2_zones_6_choices-37107E4F1B714F88B7A025B433363266
