@@ -8,7 +8,7 @@ uuid: A4DBB71CC24844418514D9705F651716
 name: counting_flower_petals_from_10_to_15
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-07-18T15:03:11.900844"
+last_edited_at: "2024-07-18T16:22:35.250667"
 status: draft
 
 authors:
@@ -36,7 +36,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon:
+      icon: counting_flower_petals_10_to_15
 
       title: Dénombrement de pétales de fleur
       subtitle: 10 à 15
@@ -55,7 +55,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon:
+      icon: counting_flower_petals_10_to_15
 
       title: Counting Flower Petals
       subtitle: 10 to 15
