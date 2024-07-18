@@ -33,19 +33,19 @@ l10n:
     details:
       icon: counting_flower_petals
 
-      title: Dénombrement de bonbons
+      title: Dénombrement de pétales de fleur
       subtitle: Apprendre à dénombrer des quantités de 10 à 20
 
       abstract: |
-        Ce parcours a pour objectif l'apprentissage du dénombrement de 10 à 20 en utilisant des supports visuels sous forme de pétales de fleurs.
+        Ce parcours a pour objectif l'apprentissage du dénombrement de 10 à 20 en utilisant des supports visuels sous forme de pétales de fleur.
       description: |
-        Ce parcours vise à enseigner aux personnes accompagnées à compter de 10 à 20 et à associer le nombre compté à la quantité correspondante. Les personnes accompagnées apprendront à reconnaître et à compter des pétales de fleurs, puis à sélectionner le chiffre correspondant à la quantité observée. Ce parcours permet de renforcer la compréhension des concepts de base de la numération, la reconnaissance des chiffres et l'association entre le comptage et la quantité représentée.
+        Ce parcours vise à enseigner aux personnes accompagnées à compter de 10 à 20 et à associer le nombre compté à la quantité correspondante. Les personnes accompagnées apprendront à reconnaître et à compter des pétales de fleur, puis à sélectionner le chiffre correspondant à la quantité observée. Ce parcours permet de renforcer la compréhension des concepts de base de la numération, la reconnaissance des chiffres et l'association entre le comptage et la quantité représentée.
 
   - locale: en_US
     details:
       icon: counting_flower_petals
 
-      title: Counting Candies
+      title: Counting Flower Petals
       subtitle: Learning to count quantities from 10 to 20
 
       abstract: |

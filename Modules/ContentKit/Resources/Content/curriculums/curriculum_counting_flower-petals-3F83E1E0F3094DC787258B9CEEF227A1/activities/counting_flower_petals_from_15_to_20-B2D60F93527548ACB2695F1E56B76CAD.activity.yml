@@ -36,7 +36,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: counting_flower_petals
+      icon:
 
       title: Dénombrement de pétales de fleur
       subtitle: 15 à 20
@@ -55,7 +55,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: counting_flower_petals
+      icon:
 
       title: Counting Flower Petals
       subtitle: 15 to 20
