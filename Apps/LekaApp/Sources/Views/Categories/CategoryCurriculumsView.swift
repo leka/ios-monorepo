@@ -59,7 +59,7 @@ struct CategoryCurriculumsView: View {
                                 .padding(.horizontal)
                                 .padding(.horizontal)
 
-                                CurriculumGridView(curriculums: section.curriculums, onActivitySelected: { activity in
+                                CurriculumHorizontalListView(curriculums: section.curriculums, onActivitySelected: { activity in
                                     if self.authManagerViewModel.userAuthenticationState == .loggedIn {
                                         self.navigation.sheetContent = .carereceiverPicker(activity: activity, story: nil)
                                     } else {
