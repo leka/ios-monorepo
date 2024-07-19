@@ -34,6 +34,15 @@ let kGradingLUTMemory: GradingLUT = [
     8: [1: 1, 2: 8, 4: 8],
 ]
 
+let kGradingLUTAnyAnswer: GradingLUT = [
+    1: [1: 1],
+    2: [2: 2],
+    3: [3: 3],
+    4: [4: 4],
+    5: [5: 5],
+    6: [6: 6],
+]
+
 // MARK: - GameplayChoiceState
 
 public enum GameplayChoiceState {
