@@ -9,5 +9,6 @@ public extension Exercise {
         case findTheRightAnswers
         case associateCategories
         case findTheRightOrder
+        case chooseAnyAnswer
     }
 }
