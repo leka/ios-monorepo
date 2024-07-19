@@ -9,6 +9,8 @@ import Foundation
 class GameplayChooseAnyAnswer<ChoiceModelType>: StatefulGameplayProtocol
     where ChoiceModelType: GameplayChoiceModelProtocol
 {
+    typealias GameplayChoiceModelType = ChoiceModelType
+
     var choices: CurrentValueSubject<[ChoiceModelType], Never> = .init([])
     var rightAnswers: [ChoiceModelType] = []
     var state: CurrentValueSubject<ExerciseState, Never> = .init(.idle)

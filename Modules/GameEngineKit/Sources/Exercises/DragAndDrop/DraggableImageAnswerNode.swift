@@ -77,6 +77,26 @@ class DraggableImageAnswerNode: SKSpriteNode {
         self.defaultPosition = position
     }
 
+    init(choice: GameplayChooseAnyAnswerChoiceModel, scale: CGFloat = 1, position: CGPoint) {
+        self.id = choice.id
+
+        guard let path = Bundle.path(forImage: choice.choice.value) else {
+            fatalError("Image not found")
+        }
+
+        super.init(texture: SKTexture(image: UIImage(named: path)!), color: .clear, size: CGSize.zero)
+
+        let action = SKAction.setTexture(texture!, resize: true)
+        self.run(action)
+
+        self.name = choice.choice.value
+        self.texture = texture
+        self.setScale(scale)
+        self.size = size
+        self.position = position
+        self.defaultPosition = position
+    }
+
     @available(*, unavailable)
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")

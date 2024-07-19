@@ -294,9 +294,14 @@ public struct ActivityView: View {
                     data: self.viewModel.currentExerciseSharedData
                 )
 
-            case .dragAndDropIntoZones,
-                 .dragAndDropAnyAnswer:
+            case .dragAndDropIntoZones:
                 DragAndDropIntoZonesView(
+                    exercise: self.viewModel.currentExercise,
+                    data: self.viewModel.currentExerciseSharedData
+                )
+
+            case .dragAndDropAnyAnswer:
+                DragAndDropAnyAnswerView(
                     exercise: self.viewModel.currentExercise,
                     data: self.viewModel.currentExerciseSharedData
                 )
