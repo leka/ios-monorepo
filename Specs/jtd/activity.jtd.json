@@ -215,6 +215,19 @@
                         }
                     }
                 },
+                "dragAndDropAnyAnswer": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        },
+                        "gameplay": {
+                            "ref": "$exercise/gameplay"
+                        },
+                        "payload": {
+                            "ref": "$exercise/payload/dragAndDropAnyAnswer"
+                        }
+                    }
+                },
                 "listenThenDragAndDropIntoZones": {
                     "properties": {
                         "instructions": {
@@ -448,6 +461,7 @@
                 "observeThenDragAndDropToAssociate",
                 "robotThenDragAndDropToAssociate",
                 "dragAndDropInOrder",
+                "dragAndDropAnyAnswer",
                 "danceFreeze",
                 "gamepadJoyStickColorPad",
                 "gamepadArrowPadColorPad",
@@ -463,7 +477,8 @@
             "enum": [
                 "findTheRightAnswers",
                 "associateCategories",
-                "findTheRightOrder"
+                "findTheRightOrder",
+                "chooseAnyAnswer"
             ]
         },
         "$exercise/action": {
@@ -527,6 +542,47 @@
                         "optionalProperties": {
                             "dropZone": {
                                 "enum": ["zoneA", "zoneB"]
+                            }
+                        }
+                    }
+                }
+            },
+            "optionalProperties": {
+                "dropZoneB": {
+                    "properties": {
+                        "type": {
+                            "enum": ["image"]
+                        },
+                        "value": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "shuffle_choices": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "$exercise/payload/dragAndDropAnyAnswer": {
+            "properties": {
+                "dropZoneA": {
+                    "properties": {
+                        "type": {
+                            "enum": ["image"]
+                        },
+                        "value": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "choices": {
+                    "elements": {
+                        "properties": {
+                            "type": {
+                                "enum": ["image"]
+                            },
+                            "value": {
+                                "type": "string"
                             }
                         }
                     }
