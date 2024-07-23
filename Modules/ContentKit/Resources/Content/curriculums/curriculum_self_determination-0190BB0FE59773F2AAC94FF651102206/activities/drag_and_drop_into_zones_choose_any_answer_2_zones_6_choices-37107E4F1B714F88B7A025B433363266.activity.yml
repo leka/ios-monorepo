@@ -75,8 +75,8 @@ exercises_payload:
               value: Glisse tes réponses dans la zone qui te plait
             - locale: en_US
               value: Drag your answers into the area you like
-          interface: dragAndDropIntoZones # dragAndDropAnyAnswer
-          gameplay: findTheRightAnswers # chooseAnyAnswer
+          interface: dragAndDropAnyAnswer
+          gameplay: chooseAnyAnswer
           payload:
             dropZoneA:
               value: dropzone_basket
@@ -103,8 +103,8 @@ exercises_payload:
               value: Glisse tes réponses dans la zone qui te plait
             - locale: en_US
               value: Drag your answers into the area you like
-          interface: dragAndDropIntoZones # dragAndDropAnyAnswer
-          gameplay: findTheRightAnswers # chooseAnyAnswer
+          interface: dragAndDropAnyAnswer
+          gameplay: chooseAnyAnswer
           payload:
             dropZoneA:
               value: dropzone_basket
