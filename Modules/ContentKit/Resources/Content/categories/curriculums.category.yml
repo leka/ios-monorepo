@@ -114,6 +114,7 @@ content:
       - curriculum_recognition_kitchen_items-FCBEE55DD11F427785A12328E6E01C8E
       - curriculum_recognition_bathroom_items-17AAC383297949D698AC92BD7CEC8C4C
       - curriculum_recognition_bedroom_items-277B71CFDFF94C22A4F21A9C396A1501
+      - curriculum_recognition_seaside_holidays-B1BA5597BC594082AECE293AD25CFA89
 
   - id: numeracy_skills
     l10n:
