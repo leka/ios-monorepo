@@ -1,0 +1,56 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 7C75908B86D748A283AA080D40642BE7
+name: curriculum_animal_memory
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-07-12T12:48:33.814098"
+authors:
+  - leka
+
+skills:
+  - memory
+  - memory/short-term_memory
+  - attention
+  - attention/sustained_attention
+  - discrimination
+
+tags:
+  - animals
+
+hmi:
+  - tablet_robot
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: memory_animals_pets
+      title: Memory des animaux
+      subtitle: Améliorer la mémoire et l'attention en s'amusant avec des images d'animaux !
+      abstract: |
+        Ce curriculum est conçu pour améliorer la mémoire à court terme et l'attention à travers des jeux de mémoire avec des images d'animaux. Il commence par des paires simples et augmente progressivement en difficulté.
+      description: |
+        Le curriculum "Memory des animaux" est une série d'activités conçues pour aider les participants à améliorer leur mémoire et leur attention. Chaque activité présente des images d'animaux que les joueurs doivent associer en paires. Les niveaux de difficulté augmentent progressivement, commençant par une seule paire et allant jusqu'à quatre paires, pour offrir un défi croissant et maintenir l'engagement.
+
+  - locale: en_US
+    details:
+      icon: memory_animals_pets
+      title: Animal Memory
+      subtitle: Improve memory and attention while having fun with animal images!
+      abstract: |
+        This curriculum is designed to improve short-term memory and attention through memory games featuring animal images. It starts with simple pairs and gradually increases in difficulty.
+      description: |
+        The "Animal Memory" curriculum is a series of activities aimed at helping participants improve their memory and attention. Each activity features animal images that players must match in pairs. The levels of difficulty gradually increase, starting with a single pair and progressing to four pairs, providing a growing challenge to keep participants engaged.
+
+activities:
+  - animal_memory_1_pair-2719E79159AC439086C952B1A3185727
+  - animal_memory_2_pairs-35AE2B4AC44C43B6B0121AA8E482039F
+  - animal_memory_4_pairs-5EDEA1BEB5EC49F99B2A8DAC320D7970
