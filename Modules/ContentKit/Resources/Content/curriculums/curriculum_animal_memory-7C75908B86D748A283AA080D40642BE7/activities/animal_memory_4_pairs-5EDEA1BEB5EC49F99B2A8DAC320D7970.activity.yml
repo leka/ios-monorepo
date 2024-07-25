@@ -8,7 +8,7 @@ uuid: 5EDEA1BEB5EC49F99B2A8DAC320D7970
 name: animal_memory_4_pairs
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-07-10T10:28:32.196776"
+last_edited_at: "2024-07-25T13:23:48.370917"
 
 status: draft
 
@@ -17,7 +17,7 @@ authors:
 
 skills:
   - memory
-  - memory/short-term_memory
+  - memory/short_term_memory
   - attention
   - attention/sustained_attention
   - discrimination
@@ -41,7 +41,7 @@ l10n:
       icon: memory_animals_pets
 
       title: Memory des animaux
-      subtitle: null
+      subtitle: 4 paires
 
       short_description: |
         Un jeu de mémoire engageant avec des images d'animaux. Trouvez les paires correspondantes pour gagner.
@@ -59,7 +59,7 @@ l10n:
       icon: memory_animals_pets
 
       title: Animal Memory
-      subtitle: null
+      subtitle: 4 pairs
 
       short_description: |
         An engaging memory game featuring animal images. Find the matching pairs to win.

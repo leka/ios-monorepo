@@ -8,13 +8,13 @@ name: curriculum_animal_memory
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-07-12T12:48:33.814098"
+last_edited_at: "2024-07-25T13:25:05.209199"
 authors:
   - leka
 
 skills:
   - memory
-  - memory/short-term_memory
+  - memory/short_term_memory
   - attention
   - attention/sustained_attention
   - discrimination
