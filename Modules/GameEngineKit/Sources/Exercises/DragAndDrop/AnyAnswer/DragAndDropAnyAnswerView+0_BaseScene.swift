@@ -131,7 +131,6 @@ extension DragAndDropAnyAnswerView {
             } else if let dropZoneB, node.fullyContains(bounds: dropZoneB.node.frame) {
                 node.repositionInside(dropZone: dropZoneB.node)
             }
-            node.isDraggable = false
             self.onDropAction(node)
             if case .completed = self.viewModel.exercicesSharedData.state {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
