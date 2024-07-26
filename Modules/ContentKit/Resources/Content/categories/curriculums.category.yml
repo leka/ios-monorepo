@@ -115,8 +115,12 @@ content:
       - curriculum_recognition_bathroom_items-17AAC383297949D698AC92BD7CEC8C4C
       - curriculum_recognition_bedroom_items-277B71CFDFF94C22A4F21A9C396A1501
       - curriculum_recognition_seaside_holidays-B1BA5597BC594082AECE293AD25CFA89
+<<<<<<< HEAD
       - curriculum_animal_memory-7C75908B86D748A283AA080D40642BE7
       - curriculum_recognition_body_parts-80761A1D62BF4C6980BF20E7D9BE52B8
+=======
+      - curriculum_recognition_modes_of_transportation-B20B0721C37644E9A0168481421893F8
+>>>>>>> 1364a596 (lucie/feature/contentkit-curriculum-add-modes_of_transportation)
 
   - id: numeracy_skills
     l10n:
