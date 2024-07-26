@@ -6,9 +6,8 @@ version: 1.0.0
 
 uuid: AE79A7F21F764925848038007F2035C1
 name: recognition_modes_of_transportation_6
-
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-06-20T15:57:25.469674"
+last_edited_at: "2024-07-26T16:01:51.660300"
 
 status: published
 
@@ -38,7 +37,7 @@ l10n:
       icon: recognition_transportation
 
       title: Les moyens de transport
-      subtitle: 1 image
+      subtitle: 6 images
 
       short_description: |
         Une activité amusante où la personne accompagnée apprend à reconnaître et à sélectionner les moyens de transports en écoutant des instructions audio.
@@ -56,7 +55,7 @@ l10n:
       icon: recognition_transportation
 
       title: Transportation Means
-      subtitle: 1 image
+      subtitle: 6 images
 
       short_description: |
         A fun activity where the user learns to recognize and select transportation means by listening to audio instructions.
@@ -103,9 +102,9 @@ exercises_payload:
                 type: image
               - value: pictograms_transportation_moto
                 type: image
-              - value: pictograms_transportation_motor_scooter
+              - value: pictograms_transportation_police_car
                 type: image
-              - value: pictograms_transportation_scooter
+              - value: pictograms_transportation_truck
                 type: image
 
         - instructions:
@@ -121,7 +120,7 @@ exercises_payload:
               type: speech
               value:
                 - locale: fr_FR
-                  utterance: "Le camion de pompiers"
+                  utterance: "Le camion de pompier"
                 - locale: en_US
                   utterance: "The firetruck"
           payload:
@@ -129,15 +128,15 @@ exercises_payload:
               - value: pictograms_transportation_firetruck
                 type: image
                 is_right_answer: true
-              - value: pictograms_transportation_helicopter
-                type: image
-              - value: pictograms_transportation_moto
+              - value: pictograms_transportation_ambulance
                 type: image
               - value: pictograms_transportation_motor_scooter
                 type: image
-              - value: pictograms_transportation_police_car
-                type: image
               - value: pictograms_transportation_sailboat
+                type: image
+              - value: pictograms_transportation_tramway
+                type: image
+              - value: pictograms_transportation_helicopter
                 type: image
 
         - instructions:
@@ -153,7 +152,7 @@ exercises_payload:
               type: speech
               value:
                 - locale: fr_FR
-                  utterance: "L'hélicoptère"
+                  utterance: "L'helicopter"
                 - locale: en_US
                   utterance: "The helicopter"
           payload:
@@ -161,15 +160,15 @@ exercises_payload:
               - value: pictograms_transportation_helicopter
                 type: image
                 is_right_answer: true
-              - value: pictograms_transportation_moto
+              - value: pictograms_transportation_firetruck
                 type: image
-              - value: pictograms_transportation_police_car
-                type: image
-              - value: pictograms_transportation_sailboat
+              - value: pictograms_transportation_tramway
                 type: image
               - value: pictograms_transportation_tractor
                 type: image
-              - value: pictograms_transportation_tramway
+              - value: pictograms_transportation_motor_scooter
+                type: image
+              - value: pictograms_transportation_scooter
                 type: image
 
         - instructions:
@@ -187,21 +186,21 @@ exercises_payload:
                 - locale: fr_FR
                   utterance: "La moto"
                 - locale: en_US
-                  utterance: "The motorcycle"
+                  utterance: "The moto"
           payload:
             choices:
               - value: pictograms_transportation_moto
                 type: image
                 is_right_answer: true
-              - value: pictograms_transportation_motor_scooter
-                type: image
               - value: pictograms_transportation_police_car
                 type: image
               - value: pictograms_transportation_scooter
                 type: image
+              - value: pictograms_transportation_truck
+                type: image
               - value: pictograms_transportation_sailboat
                 type: image
-              - value: pictograms_transportation_truck
+              - value: pictograms_transportation_motor_scooter
                 type: image
 
         - instructions:
@@ -219,53 +218,21 @@ exercises_payload:
                 - locale: fr_FR
                   utterance: "Le scooter"
                 - locale: en_US
-                  utterance: "The motor scooter"
+                  utterance: "The moto scooter"
           payload:
             choices:
               - value: pictograms_transportation_motor_scooter
                 type: image
                 is_right_answer: true
-              - value: pictograms_transportation_scooter
-                type: image
-              - value: pictograms_transportation_police_car
-                type: image
-              - value: pictograms_transportation_sailboat
-                type: image
-              - value: pictograms_transportation_tractor
-                type: image
-              - value: pictograms_transportation_tramway
-                type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
-            - locale: en_US
-              value: Listen and touch the requested object
-          interface: listenThenTouchToSelect
-          gameplay: findTheRightAnswers
-          action:
-            type: ipad
-            value:
-              type: speech
-              value:
-                - locale: fr_FR
-                  utterance: "La trottinette"
-                - locale: en_US
-                  utterance: "The scooter"
-          payload:
-            choices:
-              - value: pictograms_transportation_scooter
-                type: image
-                is_right_answer: true
-              - value: pictograms_transportation_police_car
-                type: image
-              - value: pictograms_transportation_sailboat
+              - value: pictograms_transportation_helicopter
                 type: image
               - value: pictograms_transportation_tractor
                 type: image
               - value: pictograms_transportation_tramway
                 type: image
               - value: pictograms_transportation_truck
+                type: image
+              - value: pictograms_transportation_sailboat
                 type: image
 
         - instructions:
@@ -291,13 +258,13 @@ exercises_payload:
                 is_right_answer: true
               - value: pictograms_transportation_sailboat
                 type: image
-              - value: pictograms_transportation_tractor
-                type: image
-              - value: pictograms_transportation_tramway
-                type: image
               - value: pictograms_transportation_truck
                 type: image
-              - value: pictograms_transportation_ambulance
+              - value: pictograms_transportation_motor_scooter
+                type: image
+              - value: pictograms_transportation_helicopter
+                type: image
+              - value: pictograms_transportation_tractor
                 type: image
 
         - instructions:
@@ -321,15 +288,47 @@ exercises_payload:
               - value: pictograms_transportation_sailboat
                 type: image
                 is_right_answer: true
-              - value: pictograms_transportation_tractor
+              - value: pictograms_transportation_ambulance
+                type: image
+              - value: pictograms_transportation_truck
+                type: image
+              - value: pictograms_transportation_helicopter
+                type: image
+              - value: pictograms_transportation_tramway
+                type: image
+              - value: pictograms_transportation_motor_scooter
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La trotinette"
+                - locale: en_US
+                  utterance: "The scooter"
+          payload:
+            choices:
+              - value: pictograms_transportation_scooter
+                type: image
+                is_right_answer: true
+              - value: pictograms_transportation_moto
+                type: image
+              - value: pictograms_transportation_motor_scooter
                 type: image
               - value: pictograms_transportation_tramway
                 type: image
               - value: pictograms_transportation_truck
                 type: image
-              - value: pictograms_transportation_ambulance
-                type: image
-              - value: pictograms_transportation_firetruck
+              - value: pictograms_transportation_police_car
                 type: image
 
         - instructions:
@@ -355,13 +354,13 @@ exercises_payload:
                 is_right_answer: true
               - value: pictograms_transportation_tramway
                 type: image
-              - value: pictograms_transportation_truck
-                type: image
-              - value: pictograms_transportation_ambulance
+              - value: pictograms_transportation_police_car
                 type: image
               - value: pictograms_transportation_firetruck
                 type: image
-              - value: pictograms_transportation_helicopter
+              - value: pictograms_transportation_motor_scooter
+                type: image
+              - value: pictograms_transportation_sailboat
                 type: image
 
         - instructions:
@@ -387,13 +386,13 @@ exercises_payload:
                 is_right_answer: true
               - value: pictograms_transportation_truck
                 type: image
-              - value: pictograms_transportation_ambulance
+              - value: pictograms_transportation_scooter
+                type: image
+              - value: pictograms_transportation_motor_scooter
                 type: image
               - value: pictograms_transportation_firetruck
                 type: image
-              - value: pictograms_transportation_helicopter
-                type: image
-              - value: pictograms_transportation_moto
+              - value: pictograms_transportation_tractor
                 type: image
 
         - instructions:
@@ -419,11 +418,11 @@ exercises_payload:
                 is_right_answer: true
               - value: pictograms_transportation_ambulance
                 type: image
-              - value: pictograms_transportation_firetruck
-                type: image
               - value: pictograms_transportation_helicopter
                 type: image
-              - value: pictograms_transportation_moto
+              - value: pictograms_transportation_police_car
                 type: image
               - value: pictograms_transportation_motor_scooter
+                type: image
+              - value: pictograms_transportation_scooter
                 type: image
