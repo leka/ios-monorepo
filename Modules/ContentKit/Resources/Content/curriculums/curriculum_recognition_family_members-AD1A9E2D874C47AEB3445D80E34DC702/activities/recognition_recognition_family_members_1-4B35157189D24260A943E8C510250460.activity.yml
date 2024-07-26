@@ -8,7 +8,7 @@ uuid: 4B35157189D24260A943E8C510250460
 name: recognition_recognition_family_members_1
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-06-21T17:23:32.570167"
+last_edited_at: "2024-07-26T13:45:26.613920"
 
 status: published
 
@@ -96,8 +96,6 @@ exercises_payload:
               - value: family_member_baby
                 type: image
                 is_right_answer: true
-              - value: family_member_grandmother
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -120,8 +118,6 @@ exercises_payload:
               - value: family_member_daughter
                 type: image
                 is_right_answer: true
-              - value: family_member_father
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -144,8 +140,6 @@ exercises_payload:
               - value: family_member_son
                 type: image
                 is_right_answer: true
-              - value: family_member_mother
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -168,8 +162,6 @@ exercises_payload:
               - value: family_member_father
                 type: image
                 is_right_answer: true
-              - value: family_member_daughter
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -192,8 +184,6 @@ exercises_payload:
               - value: family_member_mother
                 type: image
                 is_right_answer: true
-              - value: family_member_son
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -216,8 +206,6 @@ exercises_payload:
               - value: family_member_grandfather
                 type: image
                 is_right_answer: true
-              - value: family_member_grandmother
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -240,5 +228,3 @@ exercises_payload:
               - value: family_member_grandmother
                 type: image
                 is_right_answer: true
-              - value: family_member_grandfather
-                type: image
