@@ -64,7 +64,7 @@ public class RobotConnectionViewModel: ObservableObject {
                 guard let self else { return }
                 self.robot.connectedPeripheral = peripheral
                 self.connectedDiscovery = discovery
-                self.selectedDiscovery = nil
+                self.tryToReconnect = true
                 log.info("🔵 BLE - Connected to \(self.robot.name.value)")
             }
             .store(in: &self.cancellables)
@@ -74,6 +74,7 @@ public class RobotConnectionViewModel: ObservableObject {
         log.info("🔵 BLE - Disconnecting from \(self.robot.name.value)")
         self.bleManager.disconnect()
         self.connectedDiscovery = nil
+        self.tryToReconnect = false
     }
 
     // MARK: Internal
@@ -83,6 +84,7 @@ public class RobotConnectionViewModel: ObservableObject {
 
     @Published var connected: Bool = false
     @Published var managerState: CBManagerState = .unknown
+    var tryToReconnect: Bool = false
 
     @Published var connectedDiscovery: RobotDiscoveryModel? {
         didSet {
@@ -124,6 +126,10 @@ public class RobotConnectionViewModel: ObservableObject {
                 self.connectedDiscovery = nil
                 self.robot.connectedPeripheral = nil
                 self.connected = false
+
+                if self.tryToReconnect {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: self.connectToRobot)
+                }
             }
             .store(in: &self.cancellables)
     }
