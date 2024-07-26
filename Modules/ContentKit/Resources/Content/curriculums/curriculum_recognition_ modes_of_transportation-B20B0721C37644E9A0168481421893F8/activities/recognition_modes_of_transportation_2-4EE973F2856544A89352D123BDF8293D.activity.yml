@@ -38,7 +38,6 @@ l10n:
 
       title: Les moyens de transport
       subtitle: 2 images
-
       short_description: |
         Une activité amusante où la personne accompagnée apprend à reconnaître et à sélectionner les moyens de transports en écoutant des instructions audio.
 
@@ -56,7 +55,6 @@ l10n:
 
       title: Transportation Means
       subtitle: 2 images
-
       short_description: |
         A fun activity where the user learns to recognize and select transportation means by listening to audio instructions.
 
@@ -92,6 +90,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The ambulance"
           payload:
+            shuffle_choices: true
             choices:
               - value: pictograms_transportation_ambulance
                 type: image
@@ -116,6 +115,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The firetruck"
           payload:
+            shuffle_choices: true
             choices:
               - value: pictograms_transportation_firetruck
                 type: image
@@ -140,6 +140,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The helicopter"
           payload:
+            shuffle_choices: true
             choices:
               - value: pictograms_transportation_helicopter
                 type: image
@@ -164,6 +165,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The moto"
           payload:
+            shuffle_choices: true
             choices:
               - value: pictograms_transportation_moto
                 type: image
@@ -188,6 +190,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The moto scooter"
           payload:
+            shuffle_choices: true
             choices:
               - value: pictograms_transportation_motor_scooter
                 type: image
@@ -212,6 +215,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The police car"
           payload:
+            shuffle_choices: true
             choices:
               - value: pictograms_transportation_police_car
                 type: image
@@ -236,6 +240,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The sailboat"
           payload:
+            shuffle_choices: true
             choices:
               - value: pictograms_transportation_sailboat
                 type: image
@@ -260,6 +265,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The scooter"
           payload:
+            shuffle_choices: true
             choices:
               - value: pictograms_transportation_scooter
                 type: image
@@ -284,6 +290,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The tractor"
           payload:
+            shuffle_choices: true
             choices:
               - value: pictograms_transportation_tractor
                 type: image
@@ -308,6 +315,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The tramway"
           payload:
+            shuffle_choices: true
             choices:
               - value: pictograms_transportation_tramway
                 type: image
@@ -332,6 +340,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The truck"
           payload:
+            shuffle_choices: true
             choices:
               - value: pictograms_transportation_truck
                 type: image
