@@ -83,6 +83,12 @@ public struct ActivityView: View {
                     self.continueButton
                 }
             }
+
+            if case .validating = self.viewModel.currentExerciseSharedData.state {
+                CountdownView(duration: 10) {
+                    self.viewModel.currentExerciseSharedData.state = .completed(level: .excellent)
+                }
+            }
         }
         .frame(maxWidth: .infinity)
         .background(.lkBackground)

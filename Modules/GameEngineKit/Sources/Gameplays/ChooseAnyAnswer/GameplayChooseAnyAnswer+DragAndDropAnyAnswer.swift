@@ -48,7 +48,8 @@ extension GameplayChooseAnyAnswer where ChoiceModelType == GameplayChooseAnyAnsw
         rightAnswers.removeAll { $0.id == choice.id }
 
         if rightAnswers.isEmpty {
-            state.send(.completed(level: .excellent))
+//            state.send(.completed(level: .excellent))
+            state.send(.validating)
         }
     }
 }
