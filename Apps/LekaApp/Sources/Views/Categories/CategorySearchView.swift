@@ -4,6 +4,7 @@
 
 import ContentKit
 import DesignKit
+import Ifrit
 import LocalizationKit
 import SwiftUI
 
@@ -43,7 +44,7 @@ struct CategorySearchView: View {
             self.activities
         } else {
             self.activities.filter { activity in
-                activity.details.title.normalized().contains(self.searchText.normalized())
+                self.fuse.search(self.searchText.normalized(), in: activity.details.title.normalized())?.score ?? 1 < 0.3
             }
         }
     }
@@ -53,7 +54,7 @@ struct CategorySearchView: View {
             self.skills
         } else {
             self.skills.filter { skill in
-                skill.name.normalized().contains(self.searchText.normalized())
+                self.fuse.search(self.searchText.normalized(), in: skill.name.normalized())?.score ?? 1 < 0.3
             }
         }
     }
@@ -63,7 +64,7 @@ struct CategorySearchView: View {
             self.curriculums
         } else {
             self.curriculums.filter { curriculum in
-                curriculum.name.normalized().contains(self.searchText.normalized())
+                self.fuse.search(self.searchText.normalized(), in: curriculum.name.normalized())?.score ?? 1 < 0.3
             }
         }
     }
@@ -73,6 +74,7 @@ struct CategorySearchView: View {
     private let activities: [Activity] = ContentKit.allPublishedActivities
     private let curriculums: [Curriculum] = ContentKit.allCurriculums
     private let skills: [Skill] = Skills.primarySkillsList
+    private let fuse = Fuse()
 
     @State private var searchText = ""
     @ObservedObject private var navigation: Navigation = .shared
