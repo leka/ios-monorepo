@@ -41,9 +41,13 @@ struct CategorySearchView: View {
 
     var searchActivityResults: [Activity] {
         if self.searchText.isEmpty {
-            self.activities
+            return self.activities
         } else {
-            self.activities.filter { activity in
+            let bestResultSorted = self.activities.sorted { activity1, activity2 in
+                self.fuse.search(self.searchText.normalized(), in: activity1.details.title.normalized())?.score ?? 1 <
+                    self.fuse.search(self.searchText.normalized(), in: activity2.details.title.normalized())?.score ?? 1
+            }
+            return bestResultSorted.filter { activity in
                 self.fuse.search(self.searchText.normalized(), in: activity.details.title.normalized())?.score ?? 1 < 0.3
             }
         }
@@ -51,9 +55,13 @@ struct CategorySearchView: View {
 
     var searchSkillsResults: [Skill] {
         if self.searchText.isEmpty {
-            self.skills
+            return self.skills
         } else {
-            self.skills.filter { skill in
+            let bestResultSorted = self.skills.sorted { skill1, skill2 in
+                self.fuse.search(self.searchText.normalized(), in: skill1.name.normalized())?.score ?? 1 <
+                    self.fuse.search(self.searchText.normalized(), in: skill2.name.normalized())?.score ?? 1
+            }
+            return bestResultSorted.filter { skill in
                 self.fuse.search(self.searchText.normalized(), in: skill.name.normalized())?.score ?? 1 < 0.3
             }
         }
@@ -61,9 +69,13 @@ struct CategorySearchView: View {
 
     var searchCurriculumResults: [Curriculum] {
         if self.searchText.isEmpty {
-            self.curriculums
+            return self.curriculums
         } else {
-            self.curriculums.filter { curriculum in
+            let bestResultSorted = self.curriculums.sorted { curriculum1, curriculum2 in
+                self.fuse.search(self.searchText.normalized(), in: curriculum1.name.normalized())?.score ?? 1 <
+                    self.fuse.search(self.searchText.normalized(), in: curriculum2.name.normalized())?.score ?? 1
+            }
+            return bestResultSorted.filter { curriculum in
                 self.fuse.search(self.searchText.normalized(), in: curriculum.name.normalized())?.score ?? 1 < 0.3
             }
         }
