@@ -1,0 +1,283 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 29A6278A44B941DEA1DFE929640A04C8
+name: recognition_seaside_holidays_3
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2024-06-21T17:46:59.953099"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - holidays
+  - sea
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_seaside_holidays
+
+      title: Les vacances au bord de la mer
+      subtitle: 3 images
+
+      short_description: |
+        Une activité amusante où la personne accompagnée apprend à reconnaître et à sélectionner des objets de vacances à la mer en écoutant des instructions audio.
+
+      description: |
+        Plongez dans l'univers des vacances à la mer avec cette activité interactive. La personne accompagnée appuie sur le bouton de haut-parleur pour écouter une instruction, puis doit toucher l'image correspondante sur l'écran. Cette activité stimule la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide. Par exemple, si l'instruction est "touche la pelle", la personne accompagnée doit trouver et toucher l'image d'une pelle parmi plusieurs options.
+
+      instructions: |
+        - La personne accompagnée doit appuyer sur le haut-parleur pour écouter l'instruction.
+        - Invitez la à trouver l'image correspondant à l'instruction et à la toucher.
+
+  - locale: en_US
+    details:
+      icon: recognition_seaside_holidays
+
+      title: Seaside holidays
+      subtitle: 3 images
+
+      short_description: |
+        A fun activity where the care receiver learns to recognize and select seaside objects by listening to audio instructions.
+
+      description: |
+        Dive into the world of seaside holidays with this interactive activity. The care receiver presses the speaker button to hear an instruction, then must touch the corresponding image on the screen. This activity enhances auditory and visual recognition, comprehension, and quick response skills. For example, if the instruction is "touch the shovel," the care receiver must find and touch the image of a shovel among several options.
+
+      instructions: |
+        - The care receiver should press the speaker to listen to the instruction.
+        - Invite them to find the image that matches the instruction and touch it.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le saut"
+                - locale: en_US
+                  utterance: "The beach bucket"
+          payload:
+            choices:
+              - value: recognition_seaside_holiday_bucket
+                type: image
+                is_right_answer: true
+              - value: recognition_seaside_holiday_shell
+                type: image
+              - value: recognition_seaside_holiday_sunglasses
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La casquette"
+                - locale: en_US
+                  utterance: "The cap"
+          payload:
+            choices:
+              - value: recognition_seaside_holiday_cap
+                type: image
+                is_right_answer: true
+              - value: recognition_seaside_holiday_sunglasses
+                type: image
+              - value: recognition_seaside_holiday_starfish
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le chateau de sable"
+                - locale: en_US
+                  utterance: "The sand castle"
+          payload:
+            choices:
+              - value: recognition_seaside_holiday_sand_castle
+                type: image
+                is_right_answer: true
+              - value: recognition_seaside_holiday_swimsuit_boy
+                type: image
+              - value: recognition_seaside_holiday_sun_cream
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le coquillage"
+                - locale: en_US
+                  utterance: "The shell"
+          payload:
+            choices:
+              - value: recognition_seaside_holiday_shell
+                type: image
+                is_right_answer: true
+              - value: recognition_seaside_holiday_sand_castle
+                type: image
+              - value: recognition_seaside_holiday_swimsuit_girl
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La pelle"
+                - locale: en_US
+                  utterance: "The shovel"
+          payload:
+            choices:
+              - value: recognition_seaside_holiday_shovel
+                type: image
+                is_right_answer: true
+              - value: recognition_seaside_holiday_starfish
+                type: image
+              - value: recognition_seaside_holiday_sun
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "L'étoile de mer"
+                - locale: en_US
+                  utterance: "The starfish"
+          payload:
+            choices:
+              - value: recognition_seaside_holiday_starfish
+                type: image
+                is_right_answer: true
+              - value: recognition_seaside_holiday_sand_castle
+                type: image
+              - value: recognition_seaside_holiday_cap
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La crème solaire"
+                - locale: en_US
+                  utterance: "The sun cream"
+          payload:
+            choices:
+              - value: recognition_seaside_holiday_sun_cream
+                type: image
+                is_right_answer: true
+              - value: recognition_seaside_holiday_sunshade
+                type: image
+              - value: recognition_seaside_holiday_sunglasses
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le soleil"
+                - locale: en_US
+                  utterance: "The sun"
+          payload:
+            choices:
+              - value: recognition_seaside_holiday_sun
+                type: image
+                is_right_answer: true
+              - value: recognition_seaside_holiday_swimsuit_boy
+                type: image
+              - value: recognition_seaside_holiday_sunglasses
+                type: image
