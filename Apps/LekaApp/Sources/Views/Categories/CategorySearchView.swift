@@ -47,9 +47,15 @@ struct CategorySearchView: View {
                 self.fuse.search(self.searchText.normalized(), in: activity1.details.title.normalized())?.score ?? 1 <
                     self.fuse.search(self.searchText.normalized(), in: activity2.details.title.normalized())?.score ?? 1
             }
-            return bestResultSorted.filter { activity in
+            let bestResultFiltered = bestResultSorted.filter { activity in
                 self.fuse.search(self.searchText.normalized(), in: activity.details.title.normalized())?.score ?? 1 < 0.3
             }
+            let bestResultByTag = self.activities.filter { activity in
+                activity.tags.contains { tag in
+                    self.fuse.search(self.searchText.normalized(), in: tag.name.normalized())?.score ?? 1 < 0.3
+                }
+            }
+            return Array(Set(bestResultFiltered + bestResultByTag))
         }
     }
 
@@ -75,17 +81,24 @@ struct CategorySearchView: View {
                 self.fuse.search(self.searchText.normalized(), in: curriculum1.name.normalized())?.score ?? 1 <
                     self.fuse.search(self.searchText.normalized(), in: curriculum2.name.normalized())?.score ?? 1
             }
-            return bestResultSorted.filter { curriculum in
+            let bestResultFiltered = bestResultSorted.filter { curriculum in
                 self.fuse.search(self.searchText.normalized(), in: curriculum.name.normalized())?.score ?? 1 < 0.3
             }
+            let bestResultByTag = self.curriculums.filter { curriculum in
+                curriculum.tags.contains { tag in
+                    self.fuse.search(self.searchText.normalized(), in: tag.name.normalized())?.score ?? 1 < 0.3
+                }
+            }
+            return Array(Set(bestResultFiltered + bestResultByTag))
         }
     }
 
     // MARK: Private
 
     private let activities: [Activity] = ContentKit.allPublishedActivities
-    private let curriculums: [Curriculum] = ContentKit.allCurriculums
+    private let curriculums: [Curriculum] = ContentKit.allPublishedCurriculums
     private let skills: [Skill] = Skills.primarySkillsList
+    private let tags: [Tag] = Tags.primaryTagsList
     private let fuse = Fuse()
 
     @State private var searchText = ""
