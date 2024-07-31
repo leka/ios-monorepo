@@ -2,8 +2,8 @@
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-uuid: B1BA5597BC594082AECE293AD25CFA89
-name: curriculum_recognition_seaside_holidays
+uuid: FB96DF24CDBB463E987E241FDC5BEA17
+name: curriculum_animal_recognition_savannah_animals
 
 created_at: "2024-06-17T17:38:12.804177"
 last_edited_at: "2024-07-19T11:36:03.177171"
@@ -17,8 +17,7 @@ skills:
   - recognition
 
 tags:
-  - holidays
-  - sea
+  - animals
 
 hmi:
   - tablet
@@ -30,27 +29,28 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: recognition_seaside_holidays
-      title: Découvrez les vacances au bord de la mer
-      subtitle: Écoutez et trouvez l'objet !
+      icon: recognition_animals_savannah
+      title: Reconnaissance des animaux de la savane
+      subtitle: Écoute et trouve l'animal !
       abstract: |
-        Une activité amusante où la personne accompagnée apprend à reconnaître et à sélectionner des objets de vacances à la mer en écoutant des instructions audio.
+        Un curriculum complet pour apprendre à reconnaître les animaux de la savane à travers plusieurs activités interactives.
+
       description: |
-        Plongez dans l'univers des vacances à la mer avec ce parcours interactif. La personne accompagnée appuie sur le bouton de haut-parleur pour écouter une instruction, puis doit toucher l'image correspondante sur l'écran. Ce parcours stimule la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide. Par exemple, si l'instruction est "touche la pelle", la personne accompagnée doit trouver et toucher l'image d'une pelle parmi plusieurs options.
+        Ce curriculum propose une série de quatre activités conçues pour aider le participant à reconnaître différents animaux de la savane. Chaque activité utilise des images et des instructions audio pour stimuler la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide.
+
   - locale: en_US
     details:
-      icon: recognition_seaside_holidays
-      title: Explore Seaside Holidays
-      subtitle: Listen and Find the Object!
+      icon: recognition_animals_savannah
+      title: Savannah Animal Recognition
+      subtitle: Listen and find the animal!
       abstract: |
-        A fun activity where the care receiver learns to recognize and select seaside objects by listening to audio instructions.
+        A comprehensive curriculum to learn to recognize savannah animals through various interactive activities.
+
       description: |
-        Dive into the world of seaside holidays with this interactive journey. The care receiver presses the speaker button to hear an instruction, then must touch the corresponding image on the screen. This journey enhances auditory and visual recognition, comprehension, and quick response skills. For example, if the instruction is "touch the shovel," the care receiver must find and touch the image of a shovel among several options.
+        This curriculum offers a series of four activities designed to help the care receiver recognize different savannah animals. Each activity uses images and audio instructions to enhance auditory and visual recognition, as well as comprehension and quick response skills.
 
 activities:
-  - recognition_seaside_holidays_1-E8B904158A0D48E785C398FEEB51F007
-  - recognition_seaside_holidays_2-9C76872851904E75B323FDF5EF2DCFDF
-  - recognition_seaside_holidays_3-29A6278A44B941DEA1DFE929640A04C8
-  - recognition_seaside_holidays_4-D0D6AB694E4D4984895A1887B4C4957C
-  - recognition_seaside_holidays_5-D99071D8358B48668CD1AB55FDA9A2F8
-  - recognition_seaside_holidays_6-4D2170812B8541F481CF1D45FD17BFD7
+  - animal_animal_recognition_savannah_animals_1-945961648A2746688D36698AD0B82F86
+  - animal_animal_recognition_savannah_animals_2-523C95EDD2C84DF9B4800D3E400DC6BF
+  - animal_animal_recognition_savannah_animals_4-F0B3DACF264B4DC09B4C0AF1DBEF1515
+  - animal_animal_recognition_savannah_animals_6-1F29E5D70995475BBDFC87C634626625
