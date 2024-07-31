@@ -4,8 +4,8 @@
 
 version: 1.0.0
 
-uuid: 4719436B24BA4876804DC6A734BA7E76
-name: animal_recognition_sea_animals_1
+uuid: 193DCAB9B7F74DD4B213FA2AF9A84548
+name: animal_recognition_sea_animals_6
 
 created_at: "2024-07-31T10:00:00.000000"
 last_edited_at: "2024-07-31T10:00:00.000000"
@@ -37,7 +37,7 @@ l10n:
       icon: recognition_animals_sea
 
       title: Les animaux de la mer
-      subtitle: 1 image
+      subtitle: 6 images
 
       short_description: |
         Une activité amusante où le participant apprend à reconnaître et à sélectionner des animaux de la mer en écoutant des instructions audio.
@@ -54,7 +54,7 @@ l10n:
       icon: recognition_animals_sea
 
       title: Sea Animals
-      subtitle: 1 image
+      subtitle: 6 images
 
       short_description: |
         A fun activity where the care receiver learns to recognize and select sea animals by listening to audio instructions.
@@ -94,6 +94,16 @@ exercises_payload:
               - value: pictograms-animals-sea-crab_red-003E
                 type: image
                 is_right_answer: true
+              - value: pictograms-animals-sea-dolphin_blue-004A
+                type: image
+              - value: pictograms-animals-sea-fish_orange-004C
+                type: image
+              - value: pictograms-animals-sea-jellyfish_pink-0046
+                type: image
+              - value: pictograms-animals-sea-manta_ray_blue-0049
+                type: image
+              - value: pictograms-animals-sea-octopus_pink-0044
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -116,6 +126,16 @@ exercises_payload:
               - value: pictograms-animals-sea-dolphin_blue-004A
                 type: image
                 is_right_answer: true
+              - value: pictograms-animals-sea-fish_orange-004C
+                type: image
+              - value: pictograms-animals-sea-jellyfish_pink-0046
+                type: image
+              - value: pictograms-animals-sea-manta_ray_blue-0049
+                type: image
+              - value: pictograms-animals-sea-octopus_pink-0044
+                type: image
+              - value: pictograms-animals-sea-orca_black-0042
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -138,6 +158,16 @@ exercises_payload:
               - value: pictograms-animals-sea-fish_orange-004C
                 type: image
                 is_right_answer: true
+              - value: pictograms-animals-sea-jellyfish_pink-0046
+                type: image
+              - value: pictograms-animals-sea-manta_ray_blue-0049
+                type: image
+              - value: pictograms-animals-sea-octopus_pink-0044
+                type: image
+              - value: pictograms-animals-sea-orca_black-0042
+                type: image
+              - value: pictograms-animals-sea-shark_blue-003D
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -160,6 +190,16 @@ exercises_payload:
               - value: pictograms-animals-sea-jellyfish_pink-0046
                 type: image
                 is_right_answer: true
+              - value: pictograms-animals-sea-manta_ray_blue-0049
+                type: image
+              - value: pictograms-animals-sea-octopus_pink-0044
+                type: image
+              - value: pictograms-animals-sea-orca_black-0042
+                type: image
+              - value: pictograms-animals-sea-shark_blue-003D
+                type: image
+              - value: pictograms-animals-sea-shrimp_pink-0048
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -182,6 +222,16 @@ exercises_payload:
               - value: pictograms-animals-sea-manta_ray_blue-0049
                 type: image
                 is_right_answer: true
+              - value: pictograms-animals-sea-octopus_pink-0044
+                type: image
+              - value: pictograms-animals-sea-orca_black-0042
+                type: image
+              - value: pictograms-animals-sea-shark_blue-003D
+                type: image
+              - value: pictograms-animals-sea-shrimp_pink-0048
+                type: image
+              - value: pictograms-animals-sea-whale_blue-0047
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -204,6 +254,16 @@ exercises_payload:
               - value: pictograms-animals-sea-octopus_pink-0044
                 type: image
                 is_right_answer: true
+              - value: pictograms-animals-sea-orca_black-0042
+                type: image
+              - value: pictograms-animals-sea-shark_blue-003D
+                type: image
+              - value: pictograms-animals-sea-shrimp_pink-0048
+                type: image
+              - value: pictograms-animals-sea-whale_blue-0047
+                type: image
+              - value: pictograms-animals-sea-crab_red-003E
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -226,6 +286,16 @@ exercises_payload:
               - value: pictograms-animals-sea-orca_black-0042
                 type: image
                 is_right_answer: true
+              - value: pictograms-animals-sea-shark_blue-003D
+                type: image
+              - value: pictograms-animals-sea-shrimp_pink-0048
+                type: image
+              - value: pictograms-animals-sea-whale_blue-0047
+                type: image
+              - value: pictograms-animals-sea-crab_red-003E
+                type: image
+              - value: pictograms-animals-sea-dolphin_blue-004A
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -248,6 +318,16 @@ exercises_payload:
               - value: pictograms-animals-sea-shark_blue-003D
                 type: image
                 is_right_answer: true
+              - value: pictograms-animals-sea-shrimp_pink-0048
+                type: image
+              - value: pictograms-animals-sea-whale_blue-0047
+                type: image
+              - value: pictograms-animals-sea-crab_red-003E
+                type: image
+              - value: pictograms-animals-sea-dolphin_blue-004A
+                type: image
+              - value: pictograms-animals-sea-fish_orange-004C
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -270,6 +350,16 @@ exercises_payload:
               - value: pictograms-animals-sea-shrimp_pink-0048
                 type: image
                 is_right_answer: true
+              - value: pictograms-animals-sea-whale_blue-0047
+                type: image
+              - value: pictograms-animals-sea-crab_red-003E
+                type: image
+              - value: pictograms-animals-sea-dolphin_blue-004A
+                type: image
+              - value: pictograms-animals-sea-fish_orange-004C
+                type: image
+              - value: pictograms-animals-sea-jellyfish_pink-0046
+                type: image
 
         - instructions:
             - locale: fr_FR
@@ -292,3 +382,13 @@ exercises_payload:
               - value: pictograms-animals-sea-whale_blue-0047
                 type: image
                 is_right_answer: true
+              - value: pictograms-animals-sea-crab_red-003E
+                type: image
+              - value: pictograms-animals-sea-dolphin_blue-004A
+                type: image
+              - value: pictograms-animals-sea-fish_orange-004C
+                type: image
+              - value: pictograms-animals-sea-jellyfish_pink-0046
+                type: image
+              - value: pictograms-animals-sea-manta_ray_blue-0049
+                type: image
