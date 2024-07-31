@@ -1,0 +1,410 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 0977107F2D0B42CD8563FF12EF5EC773
+name: animal_recognition_farm_animals_4
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2024-07-31T12:58:56.293533"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - animals
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_animals_farm
+
+      title: Les animaux de la ferme
+      subtitle: 4 images
+
+      short_description: |
+        Une activité amusante où le participant apprend à reconnaître et à sélectionner des animaux de la ferme en écoutant des instructions audio.
+
+      description: |
+        Découvrez l'univers des animaux de la ferme avec cette activité interactive. Le participant appuie sur le bouton de haut-parleur pour écouter une instruction, puis doit toucher l'image correspondante sur l'écran. Cette activité stimule la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide.
+
+      instructions: |
+        - Le participant doit appuyer sur le haut-parleur pour écouter l'instruction.
+        - Invitez le à trouver l'image correspondant à l'instruction et à la toucher.
+
+  - locale: en_US
+    details:
+      icon: recognition_animals_farm
+
+      title: Farm Animals
+      subtitle: 4 images
+
+      short_description: |
+        A fun activity where the care receiver learns to recognize and select farm animals by listening to audio instructions.
+
+      description: |
+        Explore the world of farm animals with this interactive activity. The care receiver presses the speaker button to listen to an instruction, then needs to touch the corresponding image on the screen. This activity enhances auditory and visual recognition, as well as comprehension and quick response skills.
+
+      instructions: |
+        - The care receiver presses the speaker button to listen to the instruction.
+        - Invite them to find the image corresponding to the instruction and touch it.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le cochon"
+                - locale: en_US
+                  utterance: "The pig"
+          payload:
+            choices:
+              - value: pictograms-animals-farm-pig_pink-0073
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-farm-cow_white-0070
+                type: image
+              - value: pictograms-animals-farm-chicken_yellow-006E
+                type: image
+              - value: pictograms-animals-farm-donkey_gray-006C
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La vache"
+                - locale: en_US
+                  utterance: "The cow"
+          payload:
+            choices:
+              - value: pictograms-animals-farm-cow_white-0070
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-farm-chicken_yellow-006E
+                type: image
+              - value: pictograms-animals-farm-donkey_gray-006C
+                type: image
+              - value: pictograms-animals-farm-duck_green-0075
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La poule"
+                - locale: en_US
+                  utterance: "The chicken"
+          payload:
+            choices:
+              - value: pictograms-animals-farm-chicken_yellow-006E
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-farm-donkey_gray-006C
+                type: image
+              - value: pictograms-animals-farm-duck_green-0075
+                type: image
+              - value: pictograms-animals-farm-goat_brown-0072
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "L'âne"
+                - locale: en_US
+                  utterance: "The donkey"
+          payload:
+            choices:
+              - value: pictograms-animals-farm-donkey_gray-006C
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-farm-duck_green-0075
+                type: image
+              - value: pictograms-animals-farm-goat_brown-0072
+                type: image
+              - value: pictograms-animals-farm-goose_brown-006F
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le canard"
+                - locale: en_US
+                  utterance: "The duck"
+          payload:
+            choices:
+              - value: pictograms-animals-farm-duck_green-0075
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-farm-goat_brown-0072
+                type: image
+              - value: pictograms-animals-farm-goose_brown-006F
+                type: image
+              - value: pictograms-animals-farm-horse_brown-006A
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La chèvre"
+                - locale: en_US
+                  utterance: "The goat"
+          payload:
+            choices:
+              - value: pictograms-animals-farm-goat_brown-0072
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-farm-goose_brown-006F
+                type: image
+              - value: pictograms-animals-farm-horse_brown-006A
+                type: image
+              - value: pictograms-animals-farm-rooster_white-006B
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "L'oie"
+                - locale: en_US
+                  utterance: "The goose"
+          payload:
+            choices:
+              - value: pictograms-animals-farm-goose_brown-006F
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-farm-horse_brown-006A
+                type: image
+              - value: pictograms-animals-farm-rooster_white-006B
+                type: image
+              - value: pictograms-animals-farm-sheep_white-006D
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le cheval"
+                - locale: en_US
+                  utterance: "The horse"
+          payload:
+            choices:
+              - value: pictograms-animals-farm-horse_brown-006A
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-farm-rooster_white-006B
+                type: image
+              - value: pictograms-animals-farm-sheep_white-006D
+                type: image
+              - value: pictograms-animals-farm-swan_white-0074
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le coq"
+                - locale: en_US
+                  utterance: "The rooster"
+          payload:
+            choices:
+              - value: pictograms-animals-farm-rooster_white-006B
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-farm-sheep_white-006D
+                type: image
+              - value: pictograms-animals-farm-swan_white-0074
+                type: image
+              - value: pictograms-animals-farm-bird_yellow-0071
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le mouton"
+                - locale: en_US
+                  utterance: "The sheep"
+          payload:
+            choices:
+              - value: pictograms-animals-farm-sheep_white-006D
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-farm-swan_white-0074
+                type: image
+              - value: pictograms-animals-farm-bird_yellow-0071
+                type: image
+              - value: pictograms-animals-farm-pig_pink-0073
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le cygne"
+                - locale: en_US
+                  utterance: "The swan"
+          payload:
+            choices:
+              - value: pictograms-animals-farm-swan_white-0074
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-farm-bird_yellow-0071
+                type: image
+              - value: pictograms-animals-farm-pig_pink-0073
+                type: image
+              - value: pictograms-animals-farm-cow_white-0070
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "L'oiseau"
+                - locale: en_US
+                  utterance: "The bird"
+          payload:
+            choices:
+              - value: pictograms-animals-farm-bird_yellow-0071
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-farm-pig_pink-0073
+                type: image
+              - value: pictograms-animals-farm-cow_white-0070
+                type: image
+              - value: pictograms-animals-farm-chicken_yellow-006E
+                type: image
