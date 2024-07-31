@@ -1,0 +1,354 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: F0B3DACF264B4DC09B4C0AF1DBEF1515
+name: animal_animal_recognition_savannah_animals_4
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2024-06-21T17:23:32.570167"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - animals
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_animals_savannah
+
+      title: Les animaux de la savane
+      subtitle: 4 images
+
+      short_description: |
+        Une activité amusante où le participant apprend à reconnaître et à sélectionner des animaux de la savane en écoutant des instructions audio.
+
+      description: |
+        Découvrez l'univers des animaux de la savane avec cette activité interactive. Le participant appuie sur le bouton de haut-parleur pour écouter une instruction, puis doit toucher l'image correspondante sur l'écran. Cette activité stimule la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide.
+
+      instructions: |
+        - Le participant doit appuyer sur le haut-parleur pour écouter l'instruction.
+        - Invitez le à trouver l'image correspondant à l'instruction et à la toucher.
+
+  - locale: en_US
+    details:
+      icon: recognition_animals_savannah
+
+      title: Savannah Animals
+      subtitle: 4 images
+
+      short_description: |
+        A fun activity where the care receiver learns to recognize and select savannah animals by listening to audio instructions.
+
+      description: |
+        Explore the world of savannah animals with this interactive activity. The care receiver presses the speaker button to listen to an instruction, then needs to touch the corresponding image on the screen. This activity enhances auditory and visual recognition, as well as comprehension and quick response skills.
+
+      instructions: |
+        - The care receiver presses the speaker button to listen to the instruction.
+        - Invite them to find the image corresponding to the instruction and touch it.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le lion"
+                - locale: en_US
+                  utterance: "The lion"
+          payload:
+            choices:
+              - value: pictograms-animals-savannah-lion_brown-0082
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-savannah-giraffe_yellow-0081
+                type: image
+              - value: pictograms-animals-savannah-hippopotamus_gray-0083
+                type: image
+              - value: pictograms-animals-savannah-hyena_yellow-007D
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La girafe"
+                - locale: en_US
+                  utterance: "The giraffe"
+          payload:
+            choices:
+              - value: pictograms-animals-savannah-giraffe_yellow-0081
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-savannah-lion_brown-0082
+                type: image
+              - value: pictograms-animals-savannah-hippopotamus_gray-0083
+                type: image
+              - value: pictograms-animals-savannah-hyena_yellow-007D
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "L'hippopotame"
+                - locale: en_US
+                  utterance: "The hippopotamus"
+          payload:
+            choices:
+              - value: pictograms-animals-savannah-hippopotamus_gray-0083
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-savannah-jaguar_yellow-0084
+                type: image
+              - value: pictograms-animals-savannah-kangaroo_brown-0078
+                type: image
+              - value: pictograms-animals-savannah-koala_gray-0077
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La hyène"
+                - locale: en_US
+                  utterance: "The hyena"
+          payload:
+            choices:
+              - value: pictograms-animals-savannah-hyena_yellow-007D
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-savannah-kangaroo_brown-0078
+                type: image
+              - value: pictograms-animals-savannah-koala_gray-0077
+                type: image
+              - value: pictograms-animals-savannah-lion_brown-0082
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le jaguar"
+                - locale: en_US
+                  utterance: "The jaguar"
+          payload:
+            choices:
+              - value: pictograms-animals-savannah-jaguar_yellow-0084
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-savannah-koala_gray-0077
+                type: image
+              - value: pictograms-animals-savannah-rhinoceros_gray-007A
+                type: image
+              - value: pictograms-animals-savannah-tiger_orange-007B
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le kangourou"
+                - locale: en_US
+                  utterance: "The kangaroo"
+          payload:
+            choices:
+              - value: pictograms-animals-savannah-kangaroo_brown-0078
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-savannah-rhinoceros_gray-007A
+                type: image
+              - value: pictograms-animals-savannah-tiger_orange-007B
+                type: image
+              - value: pictograms-animals-savannah-zebra_white-007C
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le koala"
+                - locale: en_US
+                  utterance: "The koala"
+          payload:
+            choices:
+              - value: pictograms-animals-savannah-koala_gray-0077
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-savannah-lion_brown-0082
+                type: image
+              - value: pictograms-animals-savannah-hippopotamus_gray-0083
+                type: image
+              - value: pictograms-animals-savannah-giraffe_yellow-0081
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le rhinocéros"
+                - locale: en_US
+                  utterance: "The rhinoceros"
+          payload:
+            choices:
+              - value: pictograms-animals-savannah-rhinoceros_gray-007A
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-savannah-tiger_orange-007B
+                type: image
+              - value: pictograms-animals-savannah-zebra_white-007C
+                type: image
+              - value: pictograms-animals-savannah-lion_brown-0082
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le tigre"
+                - locale: en_US
+                  utterance: "The tiger"
+          payload:
+            choices:
+              - value: pictograms-animals-savannah-tiger_orange-007B
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-savannah-zebra_white-007C
+                type: image
+              - value: pictograms-animals-savannah-lion_brown-0082
+                type: image
+              - value: pictograms-animals-savannah-giraffe_yellow-0081
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le zèbre"
+                - locale: en_US
+                  utterance: "The zebra"
+          payload:
+            choices:
+              - value: pictograms-animals-savannah-zebra_white-007C
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-savannah-lion_brown-0082
+                type: image
+              - value: pictograms-animals-savannah-hippopotamus_gray-0083
+                type: image
+              - value: pictograms-animals-savannah-hyena_yellow-007D
+                type: image
