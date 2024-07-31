@@ -1,0 +1,290 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 3438B5B21B334F9BA8B4A71727B93A14
+name: animal_recognition_insects_2
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2024-07-30T17:23:32.570167"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - animals
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_animals_insects
+
+      title: Les insectes
+      subtitle: 2 images
+
+      short_description: |
+        Une activité amusante où le participant apprend à reconnaître et à sélectionner des insectes en écoutant des instructions audio.
+
+      description: |
+        Découvrez l'univers des insectes avec cette activité interactive. Le participant appuie sur le bouton de haut-parleur pour écouter une instruction, puis doit toucher l'image correspondante sur l'écran. Cette activité stimule la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide.
+
+      instructions: |
+        - Le participant doit appuyer sur le haut-parleur pour écouter l'instruction.
+        - Invitez le à trouver l'image correspondant à l'instruction et à la toucher.
+
+  - locale: en_US
+    details:
+      icon: recognition_animals_insects
+
+      title: Insects
+      subtitle: 2 images
+
+      short_description: |
+        A fun activity where the care receiver learns to recognize and select insects by listening to audio instructions.
+
+      description: |
+        Explore the world of insects with this interactive activity. The care receiver presses the speaker button to listen to an instruction, then needs to touch the corresponding image on the screen. This activity enhances auditory and visual recognition, as well as comprehension and quick response skills.
+
+      instructions: |
+        - The care receiver presses the speaker button to listen to the instruction.
+        - Invite them to find the image corresponding to the instruction and touch it.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La fourmi"
+                - locale: en_US
+                  utterance: "The ant"
+          payload:
+            choices:
+              - value: pictograms-animals-insects-ant_red-0099
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-insects-bee_yellow-0092
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "L'abeille"
+                - locale: en_US
+                  utterance: "The bee"
+          payload:
+            choices:
+              - value: pictograms-animals-insects-bee_yellow-0092
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-insects-dragonfly_purple-0090
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le papillon"
+                - locale: en_US
+                  utterance: "The butterfly"
+          payload:
+            choices:
+              - value: pictograms-animals-insects-butterfly_pink-0095
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-insects-fly_green-0093
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La libellule"
+                - locale: en_US
+                  utterance: "The dragonfly"
+          payload:
+            choices:
+              - value: pictograms-animals-insects-dragonfly_purple-0090
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-insects-grasshopper_green-0091
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La mouche"
+                - locale: en_US
+                  utterance: "The fly"
+          payload:
+            choices:
+              - value: pictograms-animals-insects-fly_green-0093
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-insects-ladybug_red-0094
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le criquet"
+                - locale: en_US
+                  utterance: "The grasshopper"
+          payload:
+            choices:
+              - value: pictograms-animals-insects-grasshopper_green-0091
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-insects-mosquito_orange-0098
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La coccinelle"
+                - locale: en_US
+                  utterance: "The ladybug"
+          payload:
+            choices:
+              - value: pictograms-animals-insects-ladybug_red-0094
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-insects-spider_black-0096
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le moustique"
+                - locale: en_US
+                  utterance: "The mosquito"
+          payload:
+            choices:
+              - value: pictograms-animals-insects-mosquito_orange-0098
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-insects-spider_black-0096
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "L'araignée"
+                - locale: en_US
+                  utterance: "The spider"
+          payload:
+            choices:
+              - value: pictograms-animals-insects-spider_black-0096
+                type: image
+                is_right_answer: true
+              - value: pictograms-animals-insects-ant_red-0099
+                type: image
