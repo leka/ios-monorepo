@@ -1,0 +1,471 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 0C84A385DC1B483494978DDF212B8D2D
+name: animal_recognition_farm_animals_6
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2024-09-09T15:17:42.970600"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+  - discrimination
+
+tags:
+  - animals
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_animals_farm
+
+      title: Les animaux de la ferme
+      subtitle: 6 images
+
+      short_description: |
+        Une activité amusante où le participant apprend à reconnaître et à sélectionner des animaux de la ferme en écoutant des instructions audio.
+
+      description: |
+        Découvrez l'univers des animaux de la ferme avec cette activité interactive. Le participant appuie sur le bouton de haut-parleur pour écouter une instruction, puis doit toucher l'image correspondante sur l'écran. Cette activité stimule la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide.
+
+      instructions: |
+        - Le participant doit appuyer sur le haut-parleur pour écouter l'instruction.
+        - Invitez le à trouver l'image correspondant à l'instruction et à la toucher.
+
+  - locale: en_US
+    details:
+      icon: recognition_animals_farm
+
+      title: Farm Animals
+      subtitle: 6 images
+
+      short_description: |
+        A fun activity where the care receiver learns to recognize and select farm animals by listening to audio instructions.
+
+      description: |
+        Explore the world of farm animals with this interactive activity. The care receiver presses the speaker button to listen to an instruction, then needs to touch the corresponding image on the screen. This activity enhances auditory and visual recognition, as well as comprehension and quick response skills.
+
+      instructions: |
+        - The care receiver presses the speaker button to listen to the instruction.
+        - Invite them to find the image corresponding to the instruction and touch it.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le cochon"
+                - locale: en_US
+                  utterance: "The pig"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animals_farm_pig_pink
+                type: image
+                is_right_answer: true
+              - value: animals_farm_cow_white
+                type: image
+              - value: animals_farm_chicken_yellow
+                type: image
+              - value: animals_farm_donkey_gray
+                type: image
+              - value: animals_farm_duck_brown
+                type: image
+              - value: animals_farm_goat_brown
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La vache"
+                - locale: en_US
+                  utterance: "The cow"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animals_farm_cow_white
+                type: image
+                is_right_answer: true
+              - value: animals_farm_chicken_yellow
+                type: image
+              - value: animals_farm_donkey_gray
+                type: image
+              - value: animals_farm_duck_brown
+                type: image
+              - value: animals_farm_goat_brown
+                type: image
+              - value: animals_farm_goose_brown
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La poule"
+                - locale: en_US
+                  utterance: "The chicken"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animals_farm_chicken_yellow
+                type: image
+                is_right_answer: true
+              - value: animals_farm_donkey_gray
+                type: image
+              - value: animals_farm_duck_brown
+                type: image
+              - value: animals_farm_goat_brown
+                type: image
+              - value: animals_farm_goose_brown
+                type: image
+              - value: animals_farm_horse_brown
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "L'âne"
+                - locale: en_US
+                  utterance: "The donkey"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animals_farm_donkey_gray
+                type: image
+                is_right_answer: true
+              - value: animals_farm_duck_brown
+                type: image
+              - value: animals_farm_goat_brown
+                type: image
+              - value: animals_farm_goose_brown
+                type: image
+              - value: animals_farm_horse_brown
+                type: image
+              - value: animals_farm_rooster_white
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le canard"
+                - locale: en_US
+                  utterance: "The duck"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animals_farm_duck_brown
+                type: image
+                is_right_answer: true
+              - value: animals_farm_goat_brown
+                type: image
+              - value: animals_farm_goose_brown
+                type: image
+              - value: animals_farm_horse_brown
+                type: image
+              - value: animals_farm_rooster_white
+                type: image
+              - value: animals_farm_sheep_white
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La chèvre"
+                - locale: en_US
+                  utterance: "The goat"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animals_farm_goat_brown
+                type: image
+                is_right_answer: true
+              - value: animals_farm_goose_brown
+                type: image
+              - value: animals_farm_horse_brown
+                type: image
+              - value: animals_farm_rooster_white
+                type: image
+              - value: animals_farm_sheep_white
+                type: image
+              - value: animals_farm_swan
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "L'oie"
+                - locale: en_US
+                  utterance: "The goose"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animals_farm_goose_brown
+                type: image
+                is_right_answer: true
+              - value: animals_farm_horse_brown
+                type: image
+              - value: animals_farm_rooster_white
+                type: image
+              - value: animals_farm_sheep_white
+                type: image
+              - value: animals_farm_swan
+                type: image
+              - value: animals_farm_bird_yellow
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le cheval"
+                - locale: en_US
+                  utterance: "The horse"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animals_farm_horse_brown
+                type: image
+                is_right_answer: true
+              - value: animals_farm_rooster_white
+                type: image
+              - value: animals_farm_sheep_white
+                type: image
+              - value: animals_farm_swan
+                type: image
+              - value: animals_farm_bird_yellow
+                type: image
+              - value: animals_farm_pig_pink
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le coq"
+                - locale: en_US
+                  utterance: "The rooster"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animals_farm_rooster_white
+                type: image
+                is_right_answer: true
+              - value: animals_farm_sheep_white
+                type: image
+              - value: animals_farm_swan
+                type: image
+              - value: animals_farm_bird_yellow
+                type: image
+              - value: animals_farm_pig_pink
+                type: image
+              - value: animals_farm_cow_white
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le mouton"
+                - locale: en_US
+                  utterance: "The sheep"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animals_farm_sheep_white
+                type: image
+                is_right_answer: true
+              - value: animals_farm_swan
+                type: image
+              - value: animals_farm_bird_yellow
+                type: image
+              - value: animals_farm_pig_pink
+                type: image
+              - value: animals_farm_cow_white
+                type: image
+              - value: animals_farm_chicken_yellow
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le cygne"
+                - locale: en_US
+                  utterance: "The swan"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animals_farm_swan
+                type: image
+                is_right_answer: true
+              - value: animals_farm_bird_yellow
+                type: image
+              - value: animals_farm_pig_pink
+                type: image
+              - value: animals_farm_cow_white
+                type: image
+              - value: animals_farm_chicken_yellow
+                type: image
+              - value: animals_farm_donkey_gray
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "L'oiseau"
+                - locale: en_US
+                  utterance: "The bird"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animals_farm_bird_yellow
+                type: image
+                is_right_answer: true
+              - value: animals_farm_pig_pink
+                type: image
+              - value: animals_farm_cow_white
+                type: image
+              - value: animals_farm_chicken_yellow
+                type: image
+              - value: animals_farm_donkey_gray
+                type: image
+              - value: animals_farm_duck_brown
+                type: image
