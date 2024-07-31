@@ -18,6 +18,9 @@ public enum ContentKit {
     public static let allDraftActivities: [Activity] = ContentKit.listAllDraftActivities() ?? []
     public static let allTemplateActivities: [Activity] = ContentKit.listAllTemplateActivities() ?? []
     public static let allCurriculums: [Curriculum] = ContentKit.listCurriculums() ?? []
+    public static let allPublishedCurriculums: [Curriculum] = ContentKit.listAllPublishedCurriculums() ?? []
+    public static let allDraftCurriculums: [Curriculum] = ContentKit.listAllDraftCurriculums() ?? []
+    public static let allTemplateCurriculums: [Curriculum] = ContentKit.listAllTemplateCurriculums() ?? []
     public static let allStories: [Story] = ContentKit.listAllStories() ?? []
 
     public static var firstStepsResources: CategoryResources = loadResourceYAML(from: "resources_first_steps")
@@ -106,6 +109,18 @@ public enum ContentKit {
 
     private static func listAllTemplateActivities() -> [Activity]? {
         self.allActivities.filter { $0.status == .template }
+    }
+
+    private static func listAllPublishedCurriculums() -> [Curriculum]? {
+        self.allCurriculums.filter { $0.status == .published }
+    }
+
+    private static func listAllDraftCurriculums() -> [Curriculum]? {
+        self.allCurriculums.filter { $0.status == .draft }
+    }
+
+    private static func listAllTemplateCurriculums() -> [Curriculum]? {
+        self.allCurriculums.filter { $0.status == .template }
     }
 
     private static func listAllStories() -> [Story]? {
