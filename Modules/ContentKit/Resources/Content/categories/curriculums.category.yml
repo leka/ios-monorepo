@@ -118,6 +118,7 @@ content:
       - curriculum_animal_memory-7C75908B86D748A283AA080D40642BE7
       - curriculum_recognition_body_parts-80761A1D62BF4C6980BF20E7D9BE52B8
       - curriculum_recognition_modes_of_transportation-B20B0721C37644E9A0168481421893F8
+      - curriculum_animal_recognition_farm_animals-7D02DB707DD945A38BC65BDD86D2CFEA
 
   - id: numeracy_skills
     l10n:
