@@ -124,8 +124,8 @@ struct ActivityDebugView: View {
                 })
 
                 DisclosureGroup("**Tags**") {
-                    ForEach(self.activity.tags, id: \.self) { skill in
-                        Text(skill)
+                    ForEach(self.activity.tags, id: \.self) { tag in
+                        Text(tag.name)
                     }
                 }
             }

@@ -31,7 +31,8 @@ public struct Curriculum: Decodable, Identifiable {
         self.authors = try container.decode([String].self, forKey: .authors)
         self.skills = try container.decode([String].self, forKey: .skills)
         self.hmi = try container.decode([String].self, forKey: .hmi)
-        self.tags = try container.decode([String].self, forKey: .tags)
+        let tagsIDs = try container.decode([String].self, forKey: .tags)
+        self.tags = tagsIDs.compactMap { Tags.tag(id: $0) }
 
         let localeStrings = try container.decode([String].self, forKey: .locales)
         self.locales = localeStrings.compactMap { Locale(identifier: $0) }
@@ -55,7 +56,7 @@ public struct Curriculum: Decodable, Identifiable {
     public let authors: [String] // TODO: (@ladislas) - implement authors
     public let skills: [String] // TODO: (@ladislas) - implement skills
     public let hmi: [String] // TODO: (@ladislas) - implement hmi
-    public let tags: [String] // TODO: (@ladislas) - implement tags
+    public let tags: [Tag]
 
     public let locales: [Locale]
     public let l10n: [LocalizedDetails]
