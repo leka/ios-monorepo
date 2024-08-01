@@ -1,0 +1,401 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 54A1A7A32EFA4A858C5A1E6AD0D3DA48
+name: recognition_garden_items_4
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2024-06-20T15:57:25.469674"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+  - discrimination
+
+tags:
+  - home_objects
+  - garden
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_garden
+
+      title: Objets de jardin
+      subtitle: 4 images
+
+      short_description: |
+        Une activité amusante où la personne accompagnée apprend à reconnaître et à sélectionner des objets de jardin en écoutant des instructions audio.
+
+      description: |
+        Plongez dans l'univers du jardin avec cette activité interactive. La personne accompagnée appuie sur le bouton de haut-parleur pour écouter une instruction, puis doit toucher l'image correspondante sur l'écran. Cette activité stimule la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide.
+
+      instructions: |
+        - La personne accompagnée doit appuyer sur le haut-parleur pour écouter l'instruction.
+        - Invitez-la à trouver l'image correspondant à l'instruction et à la toucher.
+
+  - locale: en_US
+    details:
+      icon: recognition_garden
+
+      title: Garden objects
+      subtitle: 4 images
+
+      short_description: |
+        A fun activity where the care receiver learns to recognize and select garden objects by listening to audio instructions.
+
+      description: |
+        Dive into the world of the garden with this interactive activity. The care receiver presses the speaker button to hear an instruction, then must touch the corresponding image on the screen. This activity enhances auditory and visual recognition, comprehension, and quick response skills.
+
+      instructions: |
+        - The care receiver should press the speaker to listen to the instruction.
+        - Invite them to find the image that matches the instruction and touch it.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Écoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le tuyau d'arrosage"
+                - locale: en_US
+                  utterance: "The hose"
+          payload:
+            choices:
+              - value: pictograms-objects-garden-hose_blue-00B3
+                type: image
+                is_right_answer: true
+              - value: pictograms-objects-garden-leaf_green-00B6
+                type: image
+              - value: pictograms-objects-garden-mushroom_brown-00B2
+                type: image
+              - value: pictograms-objects-garden-pot_brown-00B4
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Écoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La feuille"
+                - locale: en_US
+                  utterance: "The leaf"
+          payload:
+            choices:
+              - value: pictograms-objects-garden-leaf_green-00B6
+                type: image
+                is_right_answer: true
+              - value: pictograms-objects-garden-rake_red-00B9
+                type: image
+              - value: pictograms-objects-garden-shovel_gray-00AE
+                type: image
+              - value: pictograms-objects-garden-swing_set_green-00B1
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Écoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le champignon"
+                - locale: en_US
+                  utterance: "The mushroom"
+          payload:
+            choices:
+              - value: pictograms-objects-garden-mushroom_brown-00B2
+                type: image
+                is_right_answer: true
+              - value: pictograms-objects-garden-tree_green-00AD
+                type: image
+              - value: pictograms-objects-garden-watering_can_blue-00AB
+                type: image
+              - value: pictograms-objects-garden-wheelbarrow_green-00B5
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Écoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le pot"
+                - locale: en_US
+                  utterance: "The pot"
+          payload:
+            choices:
+              - value: pictograms-objects-garden-pot_brown-00B4
+                type: image
+                is_right_answer: true
+              - value: pictograms-objects-garden-rake_red-00B9
+                type: image
+              - value: pictograms-objects-garden-leaf_green-00B6
+                type: image
+              - value: pictograms-objects-garden-flower_blue-00B7
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Écoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le râteau"
+                - locale: en_US
+                  utterance: "The rake"
+          payload:
+            choices:
+              - value: pictograms-objects-garden-rake_red-00B9
+                type: image
+                is_right_answer: true
+              - value: pictograms-objects-garden-leaf_green-00B6
+                type: image
+              - value: pictograms-objects-garden-pot_brown-00B4
+                type: image
+              - value: pictograms-objects-garden-mushroom_brown-00B2
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Écoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La pelle"
+                - locale: en_US
+                  utterance: "The shovel"
+          payload:
+            choices:
+              - value: pictograms-objects-garden-shovel_gray-00AE
+                type: image
+                is_right_answer: true
+              - value: pictograms-objects-garden-swing_set_green-00B1
+                type: image
+              - value: pictograms-objects-garden-tree_green-00AD
+                type: image
+              - value: pictograms-objects-garden-watering_can_blue-00AB
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Écoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La balançoire"
+                - locale: en_US
+                  utterance: "The swing set"
+          payload:
+            choices:
+              - value: pictograms-objects-garden-swing_set_green-00B1
+                type: image
+                is_right_answer: true
+              - value: pictograms-objects-garden-tree_green-00AD
+                type: image
+              - value: pictograms-objects-garden-watering_can_blue-00AB
+                type: image
+              - value: pictograms-objects-garden-wheelbarrow_green-00B5
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Écoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "L'arbre"
+                - locale: en_US
+                  utterance: "The tree"
+          payload:
+            choices:
+              - value: pictograms-objects-garden-tree_green-00AD
+                type: image
+                is_right_answer: true
+              - value: pictograms-objects-garden-watering_can_blue-00AB
+                type: image
+              - value: pictograms-objects-garden-wheelbarrow_green-00B5
+                type: image
+              - value: pictograms-objects-garden-bucket_green-00B0
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Écoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "L'arrosoir"
+                - locale: en_US
+                  utterance: "The watering can"
+          payload:
+            choices:
+              - value: pictograms-objects-garden-watering_can_blue-00AB
+                type: image
+                is_right_answer: true
+              - value: pictograms-objects-garden-wheelbarrow_green-00B5
+                type: image
+              - value: pictograms-objects-garden-bucket_green-00B0
+                type: image
+              - value: pictograms-objects-garden-flower_blue-00B7
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Écoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La brouette"
+                - locale: en_US
+                  utterance: "The wheelbarrow"
+          payload:
+            choices:
+              - value: pictograms-objects-garden-wheelbarrow_green-00B5
+                type: image
+                is_right_answer: true
+              - value: pictograms-objects-garden-bucket_green-00B0
+                type: image
+              - value: pictograms-objects-garden-flower_blue-00B7
+                type: image
+              - value: pictograms-objects-garden-hose_blue-00B3
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Écoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le seau"
+                - locale: en_US
+                  utterance: "The bucket"
+          payload:
+            choices:
+              - value: pictograms-objects-garden-bucket_green-00B0
+                type: image
+                is_right_answer: true
+              - value: pictograms-objects-garden-flower_blue-00B7
+                type: image
+              - value: pictograms-objects-garden-hose_blue-00B3
+                type: image
+              - value: pictograms-objects-garden-leaf_green-00B6
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Écoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La fleur"
+                - locale: en_US
+                  utterance: "The flower"
+          payload:
+            choices:
+              - value: pictograms-objects-garden-flower_blue-00B7
+                type: image
+                is_right_answer: true
+              - value: pictograms-objects-garden-hose_blue-00B3
+                type: image
+              - value: pictograms-objects-garden-leaf_green-00B6
+                type: image
+              - value: pictograms-objects-garden-mushroom_brown-00B2
+                type: image
