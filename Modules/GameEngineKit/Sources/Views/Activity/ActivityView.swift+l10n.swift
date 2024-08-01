@@ -49,6 +49,13 @@ extension l10n {
                 comment: "The title of the continue button"
             )
 
+            static let finishButton = LocalizedString(
+                "game_engine_kit.activity_view.finish_button",
+                bundle: GameEngineKitResources.bundle,
+                value: "Finish",
+                comment: "The title of the finish button"
+            )
+
             static let hideReinforcerToShowAnswersButton = LocalizedString(
                 "game_engine_kit.activity_view.hide_reinforcer_to_show_answers_button",
                 bundle: GameEngineKitResources.bundle,
@@ -59,4 +66,4 @@ extension l10n {
     }
 }
 
-// swiftlint:enable nesting line_length
+// swiftlint:enable nesting

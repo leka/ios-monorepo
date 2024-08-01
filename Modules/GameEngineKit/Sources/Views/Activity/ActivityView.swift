@@ -2,7 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-// swiftlint:disable cyclomatic_complexity void_function_in_ternary function_body_length
+// swiftlint:disable cyclomatic_complexity void_function_in_ternary function_body_length type_body_length file_length
 
 import AccountKit
 import Combine
@@ -81,6 +81,9 @@ public struct ActivityView: View {
                         self.hideReinforcerToShowAnswersButton
                     }
                     self.continueButton
+                }
+                if case .playing = self.viewModel.currentExerciseSharedData.state {
+                    self.finishButton
                 }
             }
         }
@@ -225,6 +228,21 @@ public struct ActivityView: View {
         .transition(
             .asymmetric(
                 insertion: .opacity.animation(.snappy.delay(self.viewModel.delayAfterReinforcerAnimation)),
+                removal: .identity
+            )
+        )
+    }
+
+    private var finishButton: some View {
+        Button(String(l10n.GameEngineKit.ActivityView.finishButton.characters)) {
+            self.viewModel.currentExerciseSharedData.state = .completed(level: .excellent)
+        }
+        .buttonStyle(.bordered)
+        .tint(.gray)
+        .padding()
+        .transition(
+            .asymmetric(
+                insertion: .opacity.animation(.snappy.delay(2)),
                 removal: .identity
             )
         )
@@ -393,10 +411,10 @@ public struct ActivityView: View {
     }
 }
 
-// swiftlint:enable cyclomatic_complexity void_function_in_ternary function_body_length
-
 #Preview {
     NavigationStack {
         ActivityView(activity: Activity.mock)
     }
 }
+
+// swiftlint:enable cyclomatic_complexity void_function_in_ternary function_body_length type_body_length file_length

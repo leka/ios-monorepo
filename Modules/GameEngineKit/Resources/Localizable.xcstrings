@@ -1,852 +1,870 @@
 {
-    "version": "1.0",
-    "sourceLanguage": "en",
-    "strings": {
-        "game_engine_kit.action_button_observe.button_label": {
-            "comment": "ActionButtonObserve button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Tap to reveal"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Touche pour r\u00e9v\u00e9ler"
-                    }
-                }
-            }
+  "sourceLanguage" : "en",
+  "strings" : {
+    "game_engine_kit.action_button_observe.button_label" : {
+      "comment" : "ActionButtonObserve button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tap to reveal"
+          }
         },
-        "game_engine_kit.action_button_observe.image_unknown_error": {
-            "comment": "ActionButtonObserve button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "\u274c\nImage not found:\n%1$@"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "\u274c\nImage non reconnue :\n%1$@"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.activity_view.continue_button": {
-            "comment": "The title of the continue button",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Continue"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Continuer"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.activity_view.hide_reinforcer_to_show_answers_button": {
-            "comment": "The title of the hide reinforcer to show answers button",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Review answers"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Revoir les r\u00e9ponses"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.activity_view.quit_activity_alert.cancel_button_label": {
-            "comment": "Quit activity alert cancel button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Cancel"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Annuler"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.activity_view.quit_activity_alert.message": {
-            "comment": "Quit activity alert message",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Are you sure you want to quit this activity?"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "\u00cates-vous s\u00fbr de vouloir quitter cette activit\u00e9 ?"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.activity_view.quit_activity_alert.quit_button_label": {
-            "comment": "Quit activity alert quit button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Quit"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Quitter"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.activity_view.quit_activity_alert.title": {
-            "comment": "Quit activity alert title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Leave activity?"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Quitter l'activit\u00e9 ?"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.activity_view.toolbar.dismiss_button": {
-            "comment": "The title of the dismiss button",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Dismiss"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Annuler"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.choice_emoji_view.emoji_error": {
-            "comment": "ChoiceEmojiView emoji error ",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "\u274c\nText is not emoji:\n%1$@"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "\u274c\nCe texte n'est pas un \u00e9moji:\n%1$@"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.choice_image_view.image_unknown_error": {
-            "comment": "ChoiceImageView image unknown error",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "\u274c\nImage not found:\n%1$@"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "\u274c\nImage non reconnue:\n%1$@"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.choice_sf_symbol_view.sf_symbol_unknown_error": {
-            "comment": "ChoiceSFSymbolView SF symbol unknown error label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "\u274c\nSF Symbol not found:\n%1$@"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "\u274c\nSymbole non reconnu:\n%1$@"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.dance_freeze_view.auto_button_label": {
-            "comment": "DanceFreezeView auto button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Play - Auto mode"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Jouer - Mode auto"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.dance_freeze_view.instructions": {
-            "comment": "DanceFreezeView instructions",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Dance with Leka to the music and act like a statue when he stops"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Danse avec Leka au rythme de la musique et fais la statue lorsque elle s'arr\u00eate"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.dance_freeze_view.manual_button_label": {
-            "comment": "DanceFreezeView manual button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Play - Manual mode"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Jouer - Mode manuel"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.dance_freeze_view.motion_selection_title": {
-            "comment": "DanceFreezeView motion selection title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Motion type"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Type de mouvement"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.dance_freeze_view.movement_button_label": {
-            "comment": "DanceFreezeView movement button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Movement"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "D\u00e9placement"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.dance_freeze_view.music_selection_title": {
-            "comment": "DanceFreezeView music selection title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Music selection"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "S\u00e9lection de la musique"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.dance_freeze_view.rotation_button_label": {
-            "comment": "DanceFreezeView rotation button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Rotation"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Rotation"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.discover_leka_view.pause_button_label": {
-            "comment": "DiscoverLekaView pause button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Pause"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Pause"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.discover_leka_view.play_button_label": {
-            "comment": "Discover LekaView play button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Play"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Jouer"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.discover_leka_view.player.instructions": {
-            "comment": "DiscoverLekaView instructions",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "\"Discover Leka\" allows the accompanied person to become familiar with Leka\nbefore even entering into learning Activities and Curriculums.\nThe robot will come to life, taking pauses so that the care receiver can\ntame your new companion!"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "\"D\u00e9couvre Leka\" permet \u00e0 la personne accompagn\u00e9e de se familiariser \u00e0 Leka\navant m\u00eame d'entrer dans les apprentissages des Activit\u00e9s et des Parcours.\nLe robot va s'animer en faisant des pauses afin que\nla personne accompagn\u00e9e puisse apprivoiser son nouveau compagnon !"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.discover_leka_view.stop_button_label": {
-            "comment": "DiscoverLekaView stop button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Stop"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Stop"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.hide_and_seek_view.launcher.instructions": {
-            "comment": "HideAndSeekView Launcher instructions",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Press OK when Leka is hidden"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Appuies sur OK lorsque Leka est cach\u00e9"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.hide_and_seek_view.launcher.ok_button_label": {
-            "comment": "HideAndSeekView Laucher OK button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Ok"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Ok"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.hide_and_seek_view.player.found_button_label": {
-            "comment": "HideAndSeekView Player Found Button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Found!"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Trouv\u00e9 !"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.hide_and_seek_view.player.instructions": {
-            "comment": "HideAndSeekView Player instructions",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Encourage the care receiver to seek Leka.\nYou can throw a reinforcer to give him\na visual and/or audible clue.\nPress FOUND! once the robot found."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Incites la personne accompagn\u00e9e \u00e0 chercher Leka.\nTu peux lancer un renfor\u00e7ateur pour lui donner un indice visuel et/ou sonore.\nAppuies sur \"TROUV\u00c9\" une fois le robot trouv\u00e9."
-                    }
-                }
-            }
-        },
-        "game_engine_kit.led_zone_selector_view.front_label": {
-            "comment": "Label that shows where the front is on the ColorPad",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Front"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Avant"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.melody_view.keyboard_full": {
-            "comment": "MelodyView keyboard full keyboard label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Full keyboard"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Clavier entier"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.melody_view.keyboard_partial": {
-            "comment": "MelodyView partial keyboard label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Partial keyboard"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Clavier partiel"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.melody_view.keyboard_selector_title": {
-            "comment": "MelodyView keyboard selection title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Keyboard type"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Type de clavier"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.melody_view.play_button_label": {
-            "comment": "MelodyView play button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Play"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Jouer"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.melody_view.song_selector_title": {
-            "comment": "MelodyView music selection title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Music selection"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "S\u00e9lection de la musique"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.memory_choice_view.type_unknown_error": {
-            "comment": "MemoryChoiceView type unknown error label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "\u274c ERROR\nChoice type not implemented"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "\u274c ERREUR\nType non impl\u00e9ment\u00e9"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.robot_then_touch_to_select.button_label": {
-            "comment": "Robot then touch to select button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Tap Leka"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Touche Leka"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.story_view.quit_story_alert.cancel_button_label": {
-            "comment": "Quit story alert cancel button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Cancel"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Annuler"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.story_view.quit_story_alert.message": {
-            "comment": "Quit story alert message",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Are you sure you want to quit this activity?"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "\u00cates-vous s\u00fbr de vouloir quitter cette activit\u00e9 ?"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.story_view.quit_story_alert.quit_button_label": {
-            "comment": "Quit story alert quit button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Quit"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Quitter"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.story_view.quit_story_alert.title": {
-            "comment": "Quit story alert title",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Leave story?"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Quitter l'histoire ?"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.success_failure_view.failure_cheering_label": {
-            "comment": "Success and Failure view cheering label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Try again!"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Essaies encore !"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.success_failure_view.quit_button_label": {
-            "comment": "Success and Failure view quit button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Quit"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Quitter"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.success_failure_view.success_cheering_label": {
-            "comment": "Success and Failure view cheering label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Well done, you've succeeded this activity!"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Bien jou\u00e9, tu as r\u00e9ussi l'activit\u00e9 !"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.success_failure_view.success_percentage_label": {
-            "comment": "Success and Failure view success percentage label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "%.0f%% of success!"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "%.0f%% de succ\u00e8s !"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.super_simon.button_label": {
-            "comment": "Super Simon button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Tap Leka"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Touche Leka"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.super_simon.type_unknown_error": {
-            "comment": "Super Simon interface unknown error label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "\u274c ERROR\nInterface not implemented"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "\u274c ERREUR\nInterface non impl\u00e9ment\u00e9e"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.super_simon_choice_view.type_unknown_error": {
-            "comment": "SuperSimonChoiceView type unknown error label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "\u274c ERROR\nChoice type not implemented"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "\u274c ERREUR\nType non impl\u00e9ment\u00e9"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.touch_to_select_choice_view.type_unknown_error": {
-            "comment": "TouchToSelectChoiceView type unknown error label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "\u274c ERROR\nChoice type not implemented"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "\u274c ERREUR\nType non impl\u00e9ment\u00e9"
-                    }
-                }
-            }
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touche pour révéler"
+          }
         }
+      }
+    },
+    "game_engine_kit.action_button_observe.image_unknown_error" : {
+      "comment" : "ActionButtonObserve button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "❌\nImage not found:\n%1$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "❌\nImage non reconnue :\n%1$@"
+          }
+        }
+      }
+    },
+    "game_engine_kit.activity_view.continue_button" : {
+      "comment" : "The title of the continue button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Continue"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer"
+          }
+        }
+      }
+    },
+    "game_engine_kit.activity_view.finish_button" : {
+      "comment" : "The title of the finish button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Finish"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminer"
+          }
+        }
+      }
+    },
+    "game_engine_kit.activity_view.hide_reinforcer_to_show_answers_button" : {
+      "comment" : "The title of the hide reinforcer to show answers button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Review answers"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revoir les réponses"
+          }
+        }
+      }
+    },
+    "game_engine_kit.activity_view.quit_activity_alert.cancel_button_label" : {
+      "comment" : "Quit activity alert cancel button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Cancel"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+          }
+        }
+      }
+    },
+    "game_engine_kit.activity_view.quit_activity_alert.message" : {
+      "comment" : "Quit activity alert message",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Are you sure you want to quit this activity?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Êtes-vous sûr de vouloir quitter cette activité ?"
+          }
+        }
+      }
+    },
+    "game_engine_kit.activity_view.quit_activity_alert.quit_button_label" : {
+      "comment" : "Quit activity alert quit button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Quit"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitter"
+          }
+        }
+      }
+    },
+    "game_engine_kit.activity_view.quit_activity_alert.title" : {
+      "comment" : "Quit activity alert title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Leave activity?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitter l'activité ?"
+          }
+        }
+      }
+    },
+    "game_engine_kit.activity_view.toolbar.dismiss_button" : {
+      "comment" : "The title of the dismiss button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Dismiss"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+          }
+        }
+      }
+    },
+    "game_engine_kit.choice_emoji_view.emoji_error" : {
+      "comment" : "ChoiceEmojiView emoji error ",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "❌\nText is not emoji:\n%1$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "❌\nCe texte n'est pas un émoji:\n%1$@"
+          }
+        }
+      }
+    },
+    "game_engine_kit.choice_image_view.image_unknown_error" : {
+      "comment" : "ChoiceImageView image unknown error",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "❌\nImage not found:\n%1$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "❌\nImage non reconnue:\n%1$@"
+          }
+        }
+      }
+    },
+    "game_engine_kit.choice_sf_symbol_view.sf_symbol_unknown_error" : {
+      "comment" : "ChoiceSFSymbolView SF symbol unknown error label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "❌\nSF Symbol not found:\n%1$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "❌\nSymbole non reconnu:\n%1$@"
+          }
+        }
+      }
+    },
+    "game_engine_kit.dance_freeze_view.auto_button_label" : {
+      "comment" : "DanceFreezeView auto button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Play - Auto mode"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jouer - Mode auto"
+          }
+        }
+      }
+    },
+    "game_engine_kit.dance_freeze_view.instructions" : {
+      "comment" : "DanceFreezeView instructions",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Dance with Leka to the music and act like a statue when he stops"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Danse avec Leka au rythme de la musique et fais la statue lorsque elle s'arrête"
+          }
+        }
+      }
+    },
+    "game_engine_kit.dance_freeze_view.manual_button_label" : {
+      "comment" : "DanceFreezeView manual button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Play - Manual mode"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jouer - Mode manuel"
+          }
+        }
+      }
+    },
+    "game_engine_kit.dance_freeze_view.motion_selection_title" : {
+      "comment" : "DanceFreezeView motion selection title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Motion type"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type de mouvement"
+          }
+        }
+      }
+    },
+    "game_engine_kit.dance_freeze_view.movement_button_label" : {
+      "comment" : "DanceFreezeView movement button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Movement"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Déplacement"
+          }
+        }
+      }
+    },
+    "game_engine_kit.dance_freeze_view.music_selection_title" : {
+      "comment" : "DanceFreezeView music selection title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Music selection"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélection de la musique"
+          }
+        }
+      }
+    },
+    "game_engine_kit.dance_freeze_view.rotation_button_label" : {
+      "comment" : "DanceFreezeView rotation button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Rotation"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rotation"
+          }
+        }
+      }
+    },
+    "game_engine_kit.discover_leka_view.pause_button_label" : {
+      "comment" : "DiscoverLekaView pause button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Pause"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause"
+          }
+        }
+      }
+    },
+    "game_engine_kit.discover_leka_view.play_button_label" : {
+      "comment" : "Discover LekaView play button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Play"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jouer"
+          }
+        }
+      }
+    },
+    "game_engine_kit.discover_leka_view.player.instructions" : {
+      "comment" : "DiscoverLekaView instructions",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "\"Discover Leka\" allows the accompanied person to become familiar with Leka\nbefore even entering into learning Activities and Curriculums.\nThe robot will come to life, taking pauses so that the care receiver can\ntame your new companion!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Découvre Leka\" permet à la personne accompagnée de se familiariser à Leka\navant même d'entrer dans les apprentissages des Activités et des Parcours.\nLe robot va s'animer en faisant des pauses afin que\nla personne accompagnée puisse apprivoiser son nouveau compagnon !"
+          }
+        }
+      }
+    },
+    "game_engine_kit.discover_leka_view.stop_button_label" : {
+      "comment" : "DiscoverLekaView stop button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Stop"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
+          }
+        }
+      }
+    },
+    "game_engine_kit.hide_and_seek_view.launcher.instructions" : {
+      "comment" : "HideAndSeekView Launcher instructions",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Press OK when Leka is hidden"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appuies sur OK lorsque Leka est caché"
+          }
+        }
+      }
+    },
+    "game_engine_kit.hide_and_seek_view.launcher.ok_button_label" : {
+      "comment" : "HideAndSeekView Laucher OK button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Ok"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
+          }
+        }
+      }
+    },
+    "game_engine_kit.hide_and_seek_view.player.found_button_label" : {
+      "comment" : "HideAndSeekView Player Found Button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Found!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trouvé !"
+          }
+        }
+      }
+    },
+    "game_engine_kit.hide_and_seek_view.player.instructions" : {
+      "comment" : "HideAndSeekView Player instructions",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Encourage the care receiver to seek Leka.\nYou can throw a reinforcer to give him\na visual and/or audible clue.\nPress FOUND! once the robot found."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incites la personne accompagnée à chercher Leka.\nTu peux lancer un renforçateur pour lui donner un indice visuel et/ou sonore.\nAppuies sur \"TROUVÉ\" une fois le robot trouvé."
+          }
+        }
+      }
+    },
+    "game_engine_kit.led_zone_selector_view.front_label" : {
+      "comment" : "Label that shows where the front is on the ColorPad",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Front"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avant"
+          }
+        }
+      }
+    },
+    "game_engine_kit.melody_view.keyboard_full" : {
+      "comment" : "MelodyView keyboard full keyboard label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Full keyboard"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clavier entier"
+          }
+        }
+      }
+    },
+    "game_engine_kit.melody_view.keyboard_partial" : {
+      "comment" : "MelodyView partial keyboard label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Partial keyboard"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clavier partiel"
+          }
+        }
+      }
+    },
+    "game_engine_kit.melody_view.keyboard_selector_title" : {
+      "comment" : "MelodyView keyboard selection title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Keyboard type"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type de clavier"
+          }
+        }
+      }
+    },
+    "game_engine_kit.melody_view.play_button_label" : {
+      "comment" : "MelodyView play button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Play"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jouer"
+          }
+        }
+      }
+    },
+    "game_engine_kit.melody_view.song_selector_title" : {
+      "comment" : "MelodyView music selection title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Music selection"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélection de la musique"
+          }
+        }
+      }
+    },
+    "game_engine_kit.memory_choice_view.type_unknown_error" : {
+      "comment" : "MemoryChoiceView type unknown error label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "❌ ERROR\nChoice type not implemented"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "❌ ERREUR\nType non implémenté"
+          }
+        }
+      }
+    },
+    "game_engine_kit.robot_then_touch_to_select.button_label" : {
+      "comment" : "Robot then touch to select button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tap Leka"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touche Leka"
+          }
+        }
+      }
+    },
+    "game_engine_kit.story_view.quit_story_alert.cancel_button_label" : {
+      "comment" : "Quit story alert cancel button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Cancel"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+          }
+        }
+      }
+    },
+    "game_engine_kit.story_view.quit_story_alert.message" : {
+      "comment" : "Quit story alert message",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Are you sure you want to quit this activity?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Êtes-vous sûr de vouloir quitter cette activité ?"
+          }
+        }
+      }
+    },
+    "game_engine_kit.story_view.quit_story_alert.quit_button_label" : {
+      "comment" : "Quit story alert quit button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Quit"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitter"
+          }
+        }
+      }
+    },
+    "game_engine_kit.story_view.quit_story_alert.title" : {
+      "comment" : "Quit story alert title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Leave story?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitter l'histoire ?"
+          }
+        }
+      }
+    },
+    "game_engine_kit.success_failure_view.failure_cheering_label" : {
+      "comment" : "Success and Failure view cheering label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Try again!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Essaies encore !"
+          }
+        }
+      }
+    },
+    "game_engine_kit.success_failure_view.quit_button_label" : {
+      "comment" : "Success and Failure view quit button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Quit"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitter"
+          }
+        }
+      }
+    },
+    "game_engine_kit.success_failure_view.success_cheering_label" : {
+      "comment" : "Success and Failure view cheering label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Well done, you've succeeded this activity!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bien joué, tu as réussi l'activité !"
+          }
+        }
+      }
+    },
+    "game_engine_kit.success_failure_view.success_percentage_label" : {
+      "comment" : "Success and Failure view success percentage label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%.0f%% of success!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%.0f%% de succès !"
+          }
+        }
+      }
+    },
+    "game_engine_kit.super_simon_choice_view.type_unknown_error" : {
+      "comment" : "SuperSimonChoiceView type unknown error label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "❌ ERROR\nChoice type not implemented"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "❌ ERREUR\nType non implémenté"
+          }
+        }
+      }
+    },
+    "game_engine_kit.super_simon.button_label" : {
+      "comment" : "Super Simon button label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tap Leka"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touche Leka"
+          }
+        }
+      }
+    },
+    "game_engine_kit.super_simon.type_unknown_error" : {
+      "comment" : "Super Simon interface unknown error label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "❌ ERROR\nInterface not implemented"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "❌ ERREUR\nInterface non implémentée"
+          }
+        }
+      }
+    },
+    "game_engine_kit.touch_to_select_choice_view.type_unknown_error" : {
+      "comment" : "TouchToSelectChoiceView type unknown error label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "❌ ERROR\nChoice type not implemented"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "❌ ERREUR\nType non implémenté"
+          }
+        }
+      }
     }
+  },
+  "version" : "1.0"
 }

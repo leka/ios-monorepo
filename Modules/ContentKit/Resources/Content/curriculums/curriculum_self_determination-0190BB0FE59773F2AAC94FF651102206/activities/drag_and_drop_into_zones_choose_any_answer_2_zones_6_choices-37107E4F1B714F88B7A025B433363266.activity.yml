@@ -8,7 +8,7 @@ uuid: 37107E4F1B714F88B7A025B433363266
 name: drag_and_drop_into_zones_choose_any_answer_2_zones_6_choices
 
 created_at: "2024-07-11T11:31:58.859000"
-last_edited_at: "2024-07-19T13:26:05.908711"
+last_edited_at: "2024-08-19T19:24:13.984288"
 
 status: draft
 
@@ -75,13 +75,8 @@ exercises_payload:
               value: Glisse tes réponses dans la zone qui te plait
             - locale: en_US
               value: Drag your answers into the area you like
-<<<<<<< HEAD
           interface: dragAndDropAnyAnswer
           gameplay: chooseAnyAnswer
-=======
-          interface: dragAndDropIntoZones # dragAndDropAnyAnswer
-          gameplay: findTheRightAnswers # chooseAnyAnswer
->>>>>>> 6c1da036 (✨ (ContentKit): Add exercise.payload + interface)
           payload:
             dropZoneA:
               value: dropzone_basket
@@ -108,13 +103,8 @@ exercises_payload:
               value: Glisse tes réponses dans la zone qui te plait
             - locale: en_US
               value: Drag your answers into the area you like
-<<<<<<< HEAD
           interface: dragAndDropAnyAnswer
           gameplay: chooseAnyAnswer
-=======
-          interface: dragAndDropIntoZones # dragAndDropAnyAnswer
-          gameplay: findTheRightAnswers # chooseAnyAnswer
->>>>>>> 6c1da036 (✨ (ContentKit): Add exercise.payload + interface)
           payload:
             dropZoneA:
               value: dropzone_basket
