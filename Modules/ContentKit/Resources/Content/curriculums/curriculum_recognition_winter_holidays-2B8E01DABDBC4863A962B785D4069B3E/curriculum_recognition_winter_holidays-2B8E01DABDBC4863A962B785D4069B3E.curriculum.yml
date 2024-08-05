@@ -1,0 +1,58 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 2B8E01DABDBC4863A962B785D4069B3E
+name: curriculum_recognition_winter_holidays
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2024-09-14T18:04:07.112055"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - holidays
+  - mountain
+  - winter
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_winter_holidays
+      title: Reconnaissance des objets d'hiver
+      subtitle: Écoute et trouve l'objet !
+      abstract: |
+        Un curriculum complet pour apprendre à reconnaître les objets d'hiver à travers plusieurs activités interactives.
+
+      description: |
+        Ce curriculum propose une série de quatre activités conçues pour aider le participant à reconnaître différents objets d'hiver. Chaque activité utilise des images et des instructions audio pour stimuler la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide.
+
+  - locale: en_US
+    details:
+      icon: recognition_winter_holidays
+      title: Winter Object Recognition
+      subtitle: Listen and find the object!
+      abstract: |
+        A comprehensive curriculum to learn to recognize winter objects through various interactive activities.
+
+      description: |
+        This curriculum offers a series of four activities designed to help the care receiver recognize different winter objects. Each activity uses images and audio instructions to enhance auditory and visual recognition, comprehension, and quick response skills.
+
+activities:
+  - recognition_winter_holidays_1-9C5A3D5EA2DC47A1905C013133AEF72C
+  - recognition_winter_holidays_2-55885C9A9EC94AC9A6955E2A8322BEAB
+  - recognition_winter_holidays_4-63E772D717F545699C9369FADA2A2CAB
+  - recognition_winter_holidays_6-A0C5C7FF52FA4FEA907ECB784D489A5F
