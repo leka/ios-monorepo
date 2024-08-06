@@ -1,0 +1,583 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 3779DB303E4F46C798AE44FA3486A86D
+name: fruits_and_vegetables_generalization_2
+created_at: "2024-03-08T11:49:37.123541"
+last_edited_at: "2024-07-16T15:57:13.431550"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+  - generalization
+
+tags:
+  - food
+  - vegetables
+  - fruits
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: fruits_and_vegetables_generalization
+
+      title: Généralisation des fruits et légumes
+      subtitle: Avec 3 intrus
+
+      short_description: |
+        Sélectionne les fruits et légumes en touchant l'écran.
+
+      description: |
+        Cette activité de généralisation aide les enfants à reconnaître et à généraliser les fruits et légumes en suivant des instructions simples. Ils doivent toucher les images des fruits et légumes mentionnés, qui peuvent être des photos, des dessins ou des pictogrammes.
+
+      instructions: |
+        Écoutez les instructions et touchez les images correspondantes des fruits et légumes.
+
+  - locale: en_US
+    details:
+      icon: fruits_and_vegetables_generalization
+
+      title: Fruits and Vegetables Generalization
+      subtitle: With 3 intruders
+
+      short_description: |
+        Select the fruits and vegetables by touching the screen.
+
+      description: |
+        This generalization activity helps children recognize and generalize fruits and vegetables by following simple instructions. They need to touch the images of the mentioned fruits and vegetables, which can be photos, drawings, or pictograms.
+
+      instructions: |
+        Listen to the instructions and touch the corresponding images of the fruits and vegetables.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et suis les instructions
+            - locale: en_US
+              value: Listen and follow instructions
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "touche toutes les bananes"
+                - locale: en_US
+                  utterance: "touch all the bananas"
+          payload:
+            choices:
+              - value: drawing-fruit-banana
+                type: image
+                is_right_answer: true
+              - value: photo-fruit-banana
+                type: image
+                is_right_answer: true
+              - value: picto-fruit-banana
+                type: image
+                is_right_answer: true
+              - value: drawing-vegetable-carrot
+                type: image
+              - value: photo-fruit-apple
+                type: image
+              - value: picto-vegetable-tomato
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et suis les instructions
+            - locale: en_US
+              value: Listen and follow instructions
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "touche toutes les pommes"
+                - locale: en_US
+                  utterance: "touch all the apples"
+          payload:
+            choices:
+              - value: drawing-fruit-apple
+                type: image
+                is_right_answer: true
+              - value: photo-fruit-apple
+                type: image
+                is_right_answer: true
+              - value: picto-fruit-apple
+                type: image
+                is_right_answer: true
+              - value: drawing-vegetable-eggplant
+                type: image
+              - value: photo-fruit-orange
+                type: image
+              - value: picto-vegetable-carrot
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et suis les instructions
+            - locale: en_US
+              value: Listen and follow instructions
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "touche toutes les cerises"
+                - locale: en_US
+                  utterance: "touch all the cherries"
+          payload:
+            choices:
+              - value: drawing-fruit-cherry
+                type: image
+                is_right_answer: true
+              - value: photo-fruit-cherry
+                type: image
+                is_right_answer: true
+              - value: picto-fruit-cherry
+                type: image
+                is_right_answer: true
+              - value: drawing-vegetable-mushroom
+                type: image
+              - value: photo-fruit-grape
+                type: image
+              - value: picto-vegetable-pumpkin
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et suis les instructions
+            - locale: en_US
+              value: Listen and follow instructions
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "touche toutes les grapes de raisin"
+                - locale: en_US
+                  utterance: "touch all the grapes"
+          payload:
+            choices:
+              - value: drawing-fruit-grape
+                type: image
+                is_right_answer: true
+              - value: photo-fruit-grape
+                type: image
+                is_right_answer: true
+              - value: picto-fruit-grape
+                type: image
+                is_right_answer: true
+              - value: drawing-vegetable-radish
+                type: image
+              - value: photo-fruit-pear
+                type: image
+              - value: picto-vegetable-tomato
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et suis les instructions
+            - locale: en_US
+              value: Listen and follow instructions
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "touche tous les citrons"
+                - locale: en_US
+                  utterance: "touch all the lemons"
+          payload:
+            choices:
+              - value: drawing-fruit-lemon
+                type: image
+                is_right_answer: true
+              - value: photo-fruit-lemon
+                type: image
+                is_right_answer: true
+              - value: picto-fruit-lemon
+                type: image
+                is_right_answer: true
+              - value: drawing-vegetable-carrot
+                type: image
+              - value: photo-fruit-avocado
+                type: image
+              - value: picto-vegetable-pumpkin
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et suis les instructions
+            - locale: en_US
+              value: Listen and follow instructions
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "touche toutes les oranges"
+                - locale: en_US
+                  utterance: "touch all the oranges"
+          payload:
+            choices:
+              - value: drawing-fruit-orange
+                type: image
+                is_right_answer: true
+              - value: photo-fruit-orange
+                type: image
+                is_right_answer: true
+              - value: picto-fruit-orange
+                type: image
+                is_right_answer: true
+              - value: drawing-vegetable-mushroom
+                type: image
+              - value: photo-fruit-apple
+                type: image
+              - value: picto-vegetable-eggplant
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et suis les instructions
+            - locale: en_US
+              value: Listen and follow instructions
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "touche toutes les poires"
+                - locale: en_US
+                  utterance: "touch all the pears"
+          payload:
+            choices:
+              - value: drawing-fruit-pear
+                type: image
+                is_right_answer: true
+              - value: photo-fruit-pear
+                type: image
+                is_right_answer: true
+              - value: picto-fruit-pear
+                type: image
+                is_right_answer: true
+              - value: drawing-vegetable-carrot
+                type: image
+              - value: photo-fruit-lemon
+                type: image
+              - value: picto-vegetable-avocado
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et suis les instructions
+            - locale: en_US
+              value: Listen and follow instructions
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "touche toutes les fraises"
+                - locale: en_US
+                  utterance: "touch all the strawberries"
+          payload:
+            choices:
+              - value: drawing-fruit-strawberry
+                type: image
+                is_right_answer: true
+              - value: photo-fruit-strawberry
+                type: image
+                is_right_answer: true
+              - value: picto-fruit-strawberry
+                type: image
+                is_right_answer: true
+              - value: drawing-vegetable-eggplant
+                type: image
+              - value: photo-fruit-pear
+                type: image
+              - value: picto-vegetable-mushroom
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et suis les instructions
+            - locale: en_US
+              value: Listen and follow instructions
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "touche tous les avocats"
+                - locale: en_US
+                  utterance: "touch all the avocados"
+          payload:
+            choices:
+              - value: drawing-fruit-avocado
+                type: image
+                is_right_answer: true
+              - value: photo-fruit-avocado
+                type: image
+                is_right_answer: true
+              - value: picto-fruit-avocado
+                type: image
+                is_right_answer: true
+              - value: drawing-vegetable-pumpkin
+                type: image
+              - value: photo-fruit-lemon
+                type: image
+              - value: picto-vegetable-radish
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et suis les instructions
+            - locale: en_US
+              value: Listen and follow instructions
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "touche toutes les carottes"
+                - locale: en_US
+                  utterance: "touch all the carrots"
+          payload:
+            choices:
+              - value: drawing-vegetable-carrot
+                type: image
+                is_right_answer: true
+              - value: photo-vegetable-carrot
+                type: image
+                is_right_answer: true
+              - value: picto-vegetable-carrot
+                type: image
+                is_right_answer: true
+              - value: drawing-fruit-apple
+                type: image
+              - value: photo-vegetable-eggplant
+                type: image
+              - value: picto-fruit-cherry
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et suis les instructions
+            - locale: en_US
+              value: Listen and follow instructions
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "touche toutes les aubergines"
+                - locale: en_US
+                  utterance: "touch all the eggplants"
+          payload:
+            choices:
+              - value: drawing-vegetable-eggplant
+                type: image
+                is_right_answer: true
+              - value: photo-vegetable-eggplant
+                type: image
+                is_right_answer: true
+              - value: picto-vegetable-eggplant
+                type: image
+                is_right_answer: true
+              - value: drawing-fruit-grape
+                type: image
+              - value: photo-vegetable-mushroom
+                type: image
+              - value: picto-fruit-orange
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et suis les instructions
+            - locale: en_US
+              value: Listen and follow instructions
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "touche tous les champignons"
+                - locale: en_US
+                  utterance: "touch all the mushrooms"
+          payload:
+            choices:
+              - value: drawing-vegetable-mushroom
+                type: image
+                is_right_answer: true
+              - value: photo-vegetable-mushroom
+                type: image
+                is_right_answer: true
+              - value: picto-vegetable-mushroom
+                type: image
+                is_right_answer: true
+              - value: drawing-fruit-strawberry
+                type: image
+              - value: photo-vegetable-carrot
+                type: image
+              - value: picto-fruit-apple
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et suis les instructions
+            - locale: en_US
+              value: Listen and follow instructions
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "touche toutes les citrouilles"
+                - locale: en_US
+                  utterance: "touch all the pumpkins"
+          payload:
+            choices:
+              - value: drawing-vegetable-pumpkin
+                type: image
+                is_right_answer: true
+              - value: photo-vegetable-pumpkin
+                type: image
+                is_right_answer: true
+              - value: picto-vegetable-pumpkin
+                type: image
+                is_right_answer: true
+              - value: drawing-fruit-banana
+                type: image
+              - value: photo-vegetable-eggplant
+                type: image
+              - value: picto-fruit-grape
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et suis les instructions
+            - locale: en_US
+              value: Listen and follow instructions
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "touche tous les radis"
+                - locale: en_US
+                  utterance: "touch all the radishes"
+          payload:
+            choices:
+              - value: drawing-vegetable-radish
+                type: image
+                is_right_answer: true
+              - value: photo-vegetable-radish
+                type: image
+                is_right_answer: true
+              - value: picto-vegetable-radish
+                type: image
+                is_right_answer: true
+              - value: drawing-fruit-orange
+                type: image
+              - value: photo-vegetable-mushroom
+                type: image
+              - value: picto-fruit-strawberry
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et suis les instructions
+            - locale: en_US
+              value: Listen and follow instructions
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "touche toutes les tomates"
+                - locale: en_US
+                  utterance: "touch all the tomatoes"
+          payload:
+            choices:
+              - value: drawing-vegetable-tomato
+                type: image
+                is_right_answer: true
+              - value: photo-vegetable-tomato
+                type: image
+                is_right_answer: true
+              - value: picto-vegetable-tomato
+                type: image
+                is_right_answer: true
+              - value: drawing-fruit-cherry
+                type: image
+              - value: photo-vegetable-carrot
+                type: image
+              - value: picto-fruit-avocado
+                type: image
