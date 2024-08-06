@@ -1,0 +1,59 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 5ED0AFBEC4504F6EBA52B26C65ED93CC
+name: curriculum_sort_sweet_and_salty
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-09-17T18:42:14.452464"
+authors:
+  - leka
+
+skills:
+  - association
+  - association/sorting
+  - recognition
+
+tags:
+  - food
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: sort_sweet_and_salty_food
+      title: Trier les aliments sucrés et salés
+      subtitle: Organiser les aliments par goût
+      abstract: |
+        Axé sur le tri et l'appariement, ce curriculum utilise différents aliments pour améliorer la reconnaissance et la classification, enrichissant l'interaction avec l'environnement.
+      description: |
+        Ce curriculum renforce la reconnaissance et le tri des aliments en fonction de leur goût, guidant les participants à travers une aventure éducative. Ils exploreront la diversité et l'importance de ces aliments.
+
+        À travers des activités variées, les participants affinent leurs compétences d'observation et apprennent à distinguer et reconnaître les caractéristiques uniques des différents types d'aliments en fonction de leur goût.
+
+  - locale: en_US
+    details:
+      icon: sort_sweet_and_salty_food
+      title: Sorting sweet and salty foods
+      subtitle: Organizing foods by taste
+      abstract: |
+        Focused on sorting and matching, this curriculum leverages different foods to enhance recognition and classification, enriching interaction with the environment.
+      description: |
+        This curriculum enhances the recognition and sorting of foods based on their taste, taking participants on an educational journey. They will explore the diversity and importance of these foods.
+
+        Through a variety of activities, participants refine their observation skills and learn to distinguish and recognize the unique characteristics of different types of foods based on their taste.
+
+activities:
+  - sort_sweet_and_salty_1_zone_1_choice-FC67913DF57E4CA9896BDAA6EA3AC2F2
+  - sort_sweet_and_salty_1_zone_2_choices-500B42D356C14D59AA2A77C9E1F1537A
+  - sort_sweet_and_salty_2_zones_2_choices-A6325A93AF194ACAAF3744793E5EBD3D
+  - sort_sweet_and_salty_2_zones_4_choices-94EB65070737436AB76591B5FFE2BE92
