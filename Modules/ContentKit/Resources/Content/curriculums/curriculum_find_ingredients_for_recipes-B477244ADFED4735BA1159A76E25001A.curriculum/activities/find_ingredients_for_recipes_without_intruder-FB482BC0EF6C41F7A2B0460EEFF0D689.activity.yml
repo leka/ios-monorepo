@@ -8,7 +8,7 @@ uuid: FB482BC0EF6C41F7A2B0460EEFF0D689
 name: find_ingredients_for_recipes_without_intruder
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-07-16T10:52:19.007715"
+last_edited_at: "2024-08-07T12:12:19.637459"
 status: published
 
 authors:
@@ -45,7 +45,7 @@ l10n:
         Apprenez à identifier les ingrédients nécessaires pour réaliser des recettes en sélectionnant les bons ingrédients.
 
       description: |
-        Ce jeu aide les utilisateurs à apprendre et à identifier les ingrédients corrects nécessaires pour différentes recettes. Chaque exercice présente une liste d'ingrédients parmi lesquels l'utilisateur doit trouver ceux qui sont corrects. C'est un excellent moyen de développer des compétences en association et en identification des aliments.
+        Cette activité aide les utilisateurs à apprendre et à identifier les ingrédients corrects nécessaires pour différentes recettes. Chaque exercice présente une liste d'ingrédients parmi lesquels l'utilisateur doit trouver ceux qui sont corrects. C'est un excellent moyen de développer des compétences en association et en identification des aliments.
 
       instructions: |
         - Encouragez le participant à observer l'image à gauche.
@@ -65,7 +65,7 @@ l10n:
         Learn to identify the necessary ingredients to make recipes by selecting the correct ingredients.
 
       description: |
-        This game helps users learn and identify the correct ingredients needed for various recipes. Each exercise presents a list of ingredients from which the user must find the correct ones. It is a great way to develop skills in association and food identification.
+        This activity helps users learn and identify the correct ingredients needed for various recipes. Each exercise presents a list of ingredients from which the user must find the correct ones. It is a great way to develop skills in association and food identification.
 
       instructions: |
         - Encourage the participant to observe the image on the left.
