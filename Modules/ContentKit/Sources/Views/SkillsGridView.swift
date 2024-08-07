@@ -28,10 +28,7 @@ public struct SkillsGridView: View {
                 }
                 if !filteredActivities.isEmpty {
                     NavigationLink(destination:
-                        ScrollView(showsIndicators: true) {
-                            ActivityGridView(activities: filteredActivities, onStartActivity: self.onActivitySelected)
-                        }
-                        .navigationTitle(skill.name)
+                        SubskillsGridView(subskills: subskills, onActivitySelected: self.onActivitySelected)
                     ) {
                         GroupBox {
                             VStack {
