@@ -23,13 +23,13 @@ content:
           description: Découvrez le tutoriel pour réaliser des bandes velcro et organiser le rangement de vos cartes magiques par thèmes !
           value: magic_card_holder_FR
           type: file
-#      - locale: en_US
-#        details:
-#          icon: book.pages
-#          title: Organizing magic cards
-#          description: Discover the tutorial to make Velcro strips and organize the storage of your magic cards by theme!
-#          value: magic_card_holder_EN
-#          type: file
+      - locale: en_US
+        details:
+          icon: book.pages
+          title: Organizing magic cards
+          description: Discover the tutorial to make Velcro strips and organize the storage of your magic cards by theme!
+          value: magic_card_holder_EN
+          type: file
   - resource:
       - locale: fr_FR
         details:
@@ -38,13 +38,13 @@ content:
           description: Découvrez les 7 étapes pour organiser le déroulement de votre séance avec Leka !
           value: session_FR
           type: file
-#      - locale: en_US
-#        details:
-#          icon: book.pages
-#          title: Session outline
-#          description: Discover the 7 steps to organize your session with Leka!
-#          value: session_EN
-#          type: file
+      - locale: en_US
+        details:
+          icon: book.pages
+          title: Session outline
+          description: Discover the 7 steps to organize your session with Leka!
+          value: session_EN
+          type: file
   - resource:
       - locale: fr_FR
         details:
