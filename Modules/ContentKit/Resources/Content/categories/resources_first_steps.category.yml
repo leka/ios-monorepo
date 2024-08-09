@@ -37,13 +37,13 @@ content:
           description: Découvrez la fiche de chargement de votre robot !
           value: charging_FR
           type: file
-#      - locale: en_US
-#        details:
-#          icon: battery.100percent.bolt
-#          title: Charging Leka
-#          description: Discover the charging sheet for your robot!
-#          value: charging_EN
-#          type: file
+      - locale: en_US
+        details:
+          icon: battery.100percent.bolt
+          title: Charging Leka
+          description: Discover the charging sheet for your robot!
+          value: charging_EN
+          type: file
   - resource:
       - locale: fr_FR
         details:
