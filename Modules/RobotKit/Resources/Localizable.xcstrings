@@ -182,6 +182,24 @@
                 }
             }
         },
+        "robotkit.robot_connect_view.update_button": {
+            "comment": "The title of the update button",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Update"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Mettre \u00e0 jour"
+                    }
+                }
+            }
+        },
         "robotkit.robot_connection_view.bluetooth_off_view.instruction": {
             "comment": "The instruction of the bluetooth off of RobotConnectionErrorsView",
             "extractionState": "extracted_with_value",
