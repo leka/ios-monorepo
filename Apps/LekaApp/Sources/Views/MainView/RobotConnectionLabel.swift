@@ -19,10 +19,16 @@ struct RobotConnectionLabel: View {
                                 closure: {
                                     Robot.shared.randomLight()
                                 })
+                .overlay(alignment: .topTrailing) {
+                    if self.robotNotUpToDate {
+                        Image(systemName: "exclamationmark.circle.fill")
+                            .foregroundStyle(.white, .red)
+                    }
+                }
             self.buttonContent
             Spacer()
         }
-        .padding(.horizontal, 15)
+        .padding(.horizontal, 10)
         .padding(.vertical, 10)
         .background(self.backgroundColor, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
     }
@@ -32,6 +38,19 @@ struct RobotConnectionLabel: View {
     private let backgroundColor: Color = .init(light: UIColor.white, dark: UIColor.systemGray5)
 
     @StateObject private var robotViewModel: ConnectedRobotInformationViewModel = .init()
+
+    private var robotNotUpToDate: Bool {
+        let osVersion = self.robotViewModel.osVersion
+        if osVersion == "(n/a)" || osVersion.isEmpty {
+            return false
+        }
+        let versionIsLatest = osVersion == Robot.kLatestFirmwareVersion
+        if versionIsLatest {
+            return false
+        } else {
+            return true
+        }
+    }
 
     @ViewBuilder
     private var buttonContent: some View {
@@ -43,7 +62,10 @@ struct RobotConnectionLabel: View {
                 Text(self.robotViewModel.name)
                     .font(.subheadline)
 
-                self.robotChargingStatusAndBattery
+                HStack(spacing: 5) {
+                    self.robotOsVersion
+                    self.robotChargingStatusAndBattery
+                }
             }
         } else {
             Text(l10n.RobotConnectionLabel.textNotConnected)
@@ -52,12 +74,14 @@ struct RobotConnectionLabel: View {
         }
     }
 
+    private var robotOsVersion: some View {
+        Text(verbatim: "LekaOS v\(self.robotViewModel.osVersion)")
+            .font(.footnote)
+            .foregroundColor(.gray)
+    }
+
     private var robotChargingStatusAndBattery: some View {
         HStack(spacing: 5) {
-            Text(verbatim: "LekaOS v\(self.robotViewModel.osVersion)")
-                .font(.footnote)
-                .foregroundColor(.gray)
-
             if self.robotViewModel.isCharging {
                 Image(systemName: "bolt.circle.fill")
                     .foregroundColor(.blue)

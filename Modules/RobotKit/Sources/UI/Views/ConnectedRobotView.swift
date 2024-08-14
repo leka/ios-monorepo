@@ -32,7 +32,21 @@ public struct ConnectedRobotView: View {
                         .lineLimit(1)
                         .truncationMode(.tail)
                         .foregroundColor(.secondary)
-                    self.robotChargingStatusAndBattery
+                    HStack {
+                        self.robotOsVersion
+                        self.robotChargingStatusAndBattery
+                    }
+                    if self.robotNotUpToDate {
+                        HStack {
+                            Image(systemName: "exclamationmark.circle.fill")
+                                .foregroundStyle(.white, .red)
+                            Text(l10n.ConnectedRobotView.robotNotUpToDateAlert)
+                                .font(.caption)
+                                .lineLimit(1)
+                                .truncationMode(.tail)
+                                .foregroundColor(.secondary)
+                        }
+                    }
                 }
             }
 
@@ -57,17 +71,34 @@ public struct ConnectedRobotView: View {
 
     @StateObject var connectedRobotInformationViewModel: ConnectedRobotInformationViewModel = .init()
     @StateObject var viewModel: RobotConnectionViewModel
+    @State private var showNotUpToDateAlert: Bool = false
+    private var robotNotUpToDate: Bool {
+        let osVersion = self.connectedRobotInformationViewModel.osVersion
+        if osVersion == "(n/a)" {
+            return false
+        }
+        let versionIsLatest = osVersion == Robot.kLatestFirmwareVersion
+        if versionIsLatest {
+            return false
+        } else {
+            return true
+        }
+    }
 
     @Environment(\.dismiss) var dismiss
 
     // MARK: Private
 
-    private var robotChargingStatusAndBattery: some View {
-        HStack(spacing: 5) {
+    private var robotOsVersion: some View {
+        HStack {
             Text(verbatim: "LekaOS v\(self.connectedRobotInformationViewModel.osVersion)")
                 .font(.footnote)
                 .foregroundColor(.gray)
+        }
+    }
 
+    private var robotChargingStatusAndBattery: some View {
+        HStack(spacing: 5) {
             if self.connectedRobotInformationViewModel.isCharging {
                 Image(systemName: "bolt.circle.fill")
                     .foregroundColor(.blue)
@@ -105,6 +136,13 @@ extension l10n {
             bundle: RobotKitResources.bundle,
             value: "S/N: %1$@",
             comment: "The title of the connected robot view"
+        )
+
+        static let robotNotUpToDateAlert = LocalizedString(
+            "robotkit.connected_robot_view.robot_not_up_to_date_alert",
+            bundle: RobotKitResources.bundle,
+            value: "An update for Leka is available",
+            comment: "Update is available alert"
         )
     }
 }
