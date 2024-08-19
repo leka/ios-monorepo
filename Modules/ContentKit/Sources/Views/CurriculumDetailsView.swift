@@ -56,8 +56,6 @@ public struct CurriculumDetailsView: View {
                     Spacer()
                     Fit(itemSpacing: .viewSpacing(minimum: 15)) {
                         ForEach(self.curriculum.skills, id: \.self) { skill in
-                            let skill = Skills.skill(id: skill)!
-
                             TagView(title: skill.name, systemImage: "info.circle") {
                                 self.selectedSkill = skill
                             }
