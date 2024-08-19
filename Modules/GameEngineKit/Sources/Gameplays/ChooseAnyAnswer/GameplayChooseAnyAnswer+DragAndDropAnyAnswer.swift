@@ -29,7 +29,7 @@ extension GameplayChooseAnyAnswer where ChoiceModelType == GameplayChooseAnyAnsw
         self.init()
         self.rightAnswers = choices
         self.choices.send(choices)
-        self.state.send(.playing)
+        self.state.send(.evaluating)
 
         if let allowedTrials {
             self.allowedTrials = allowedTrials

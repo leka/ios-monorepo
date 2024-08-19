@@ -82,7 +82,7 @@ public struct ActivityView: View {
                     }
                     self.continueButton
                 }
-                if case .playing = self.viewModel.currentExerciseSharedData.state {
+                if case .evaluating = self.viewModel.currentExerciseSharedData.state {
                     self.finishButton
                 }
             }
