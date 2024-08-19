@@ -3,17 +3,15 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
-import Firebase
+import FirebaseAuth
 import FirebaseAuthCombineSwift
 import Foundation
-
-// import LocalizationKit
 
 public class AuthManager {
     // MARK: Lifecycle
 
     private init() {
-        self.auth.addStateDidChangeListener { [weak self] _, user in
+        _ = self.auth.addStateDidChangeListener { [weak self] _, user in
             self?.updateAuthState(for: user)
         }
     }
