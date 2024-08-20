@@ -76,6 +76,11 @@ struct ReAuthenticationView: View {
             .buttonStyle(.borderedProminent)
             .tint(.red)
         }
+        // [] TODO: (@team) - Move to iOS17 support - Update the use of .onChange() modifier.
+        // See below
+        // .onChange(of: self.authManagerViewModel.reAuthenticationSucceeded, initial: false) { oldValue, newValue in
+        //     if newValue { self.dismiss() }
+        // }
         .onChange(of: self.authManagerViewModel.reAuthenticationSucceeded) { success in
             if success {
                 self.dismiss()

@@ -49,6 +49,14 @@ struct AccountCreationView: View {
             .disabled(self.isCreationDisabled || self.authManagerViewModel.isLoading)
             .buttonStyle(.borderedProminent)
         }
+        // [] TODO: (@team) - Move to iOS17 support - Update the use of .onChange() modifier.
+        // See below:
+        // .onChange(of: self.authManagerViewModel.userAuthenticationState) { oldValue, newValue in
+        //     if newValue == .loggedIn {
+        //         self.rootAccountManager.createRootAccount(rootAccount: RootAccount())
+        //         self.isVerificationEmailAlertPresented = true
+        //     }
+        // }
         .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
             if newValue == .loggedIn {
                 self.rootAccountManager.createRootAccount(rootAccount: RootAccount())

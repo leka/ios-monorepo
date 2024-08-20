@@ -13,6 +13,8 @@ extension AvatarPicker {
         let image: String
 
         var body: some View {
+            // [] TODO: (@team) - Replace with proposal below
+            // if self.image.isEmpty {
             if self.image == "" {
                 Image(systemName: "photo.badge.plus")
                     .resizable()

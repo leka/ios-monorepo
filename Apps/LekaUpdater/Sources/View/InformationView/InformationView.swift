@@ -96,6 +96,10 @@ struct InformationView: View {
         }
         .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
         .background(.lkBackground)
+        // [] TODO: (@team) - Move to iOS17 support - Update the use of .onChange() modifier.
+        // .onChange(of: self.isViewVisible, initial: false) { oldValue, newValue in
+        //     if newValue { self.viewModel.onViewReappear() }
+        // }
         .onChange(of: self.isViewVisible) { isVisible in
             if isVisible { self.viewModel.onViewReappear() }
         }

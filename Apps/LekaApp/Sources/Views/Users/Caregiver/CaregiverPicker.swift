@@ -121,6 +121,9 @@ struct CaregiverPicker: View {
     }
 
     private var fiveOrMoreCaregiversView: some View {
+        // TODO: (@team) - Move to iOS17 support - Remove showsIndicators argument and use modifier instead
+        // See below
+        // ScrollView() {
         ScrollView(showsIndicators: false) {
             LazyVGrid(columns: self.columns, spacing: 40) {
                 ForEach(self.caregiverManagerViewModel.caregivers, id: \.id) { caregiver in
@@ -139,6 +142,7 @@ struct CaregiverPicker: View {
                 }
             }
         }
+        // .scrollIndicators(.never)
     }
 }
 

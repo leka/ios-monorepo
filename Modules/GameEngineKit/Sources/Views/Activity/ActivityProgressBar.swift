@@ -30,6 +30,15 @@ struct ActivityProgressBar: View {
                             isCurrentlyPlaying: .constant(isCurrentlyPlaying)
                         )
                         .padding(6)
+                        // [] TODO: (@team) - Move to iOS17 support - Update the use of .onChange() modifier.
+                        // See below
+                        // .onChange(of: self.viewModel.currentExerciseSharedData.state) { oldState, newState in
+                        //     if case let .completed(level, _) = newState {
+                        //         withAnimation(.snappy.delay(self.viewModel.delayAfterReinforcerAnimation)) {
+                        //             self.currentColor = self.completionLevelToColor(level: level)
+                        //         }
+                        //     }
+                        // }
                         .onChange(of: self.viewModel.currentExerciseSharedData.state) { newState in
                             if case let .completed(level) = newState {
                                 withAnimation(.snappy.delay(self.viewModel.delayAfterReinforcerAnimation)) {

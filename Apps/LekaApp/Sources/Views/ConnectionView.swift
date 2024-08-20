@@ -39,9 +39,13 @@ struct ConnectionView: View {
 
                 VStack {
                     TextFieldEmail(entry: self.$viewModel.email)
+                    // TODO: (@team) - Suggestion: Re-enable autofill modifiers for  strong password proposals
+                    // .textContentType(.username)
 
                     VStack {
                         TextFieldPassword(entry: self.$viewModel.password)
+                        // TODO: (@team) - Suggestion: Re-enable autofill modifiers for  strong password proposals
+                        // .textContentType(.password)
 
                         Button(role: .destructive) {
                             self.showResetPassword = true
@@ -73,6 +77,16 @@ struct ConnectionView: View {
                 .disabled(self.isConnectionDisabled || self.authManagerViewModel.isLoading)
                 .buttonStyle(.borderedProminent)
             }
+            // [] TODO: (@team) - Move to iOS17 support - Update the use of .onChange() modifier.
+            // See below
+            // .onChange(of: self.authManagerViewModel.userAuthenticationState) { oldValue, newValue in
+            //     if newValue == .loggedIn {
+            //         self.caregiverManager.initializeCaregiversListener()
+            //         self.carereceiverManager.initializeCarereceiversListener()
+            //         self.authManagerViewModel.userAction = .none
+            //         self.navigation.fullScreenCoverContent = nil
+            //     }
+            // }
             .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
                 if newValue == .loggedIn {
                     self.caregiverManager.initializeCaregiversListener()

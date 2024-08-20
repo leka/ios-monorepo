@@ -6,6 +6,7 @@ import AccountKit
 import AVKit
 import DesignKit
 import LocalizationKit
+import Observation
 import SwiftUI
 
 // MARK: - WelcomeView
@@ -58,6 +59,7 @@ struct WelcomeView: View {
 
     // MARK: Private
 
+    // TODO: (@team) - Move to iOS17 support - Adopt the newObservable Framework
     @ObservedObject private var navigation: Navigation = .shared
     @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()

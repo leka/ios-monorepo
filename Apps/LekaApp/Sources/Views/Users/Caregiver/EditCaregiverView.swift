@@ -62,6 +62,11 @@ struct EditCaregiverView: View {
                         in: ...Date(),
                         displayedComponents: [.date]
                     )
+                    // [] TODO: (@team) - Move to iOS17 support - Update the use of .onChange() modifier.
+                    // See below
+                    // .onChange(of: self.birthdate) {
+                    //     self.viewModel.caregiver.birthdate = self.birthdate
+                    // }
                     .onChange(of: self.birthdate, perform: { _ in
                         self.viewModel.caregiver.birthdate = self.birthdate
                     })

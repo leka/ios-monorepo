@@ -32,6 +32,17 @@ extension ColorPad {
                         .frame(width: CGFloat(self.buttonPressed ? 65 : 0), height: CGFloat(self.buttonPressed ? 65 : 0))
                 )
                 .animation(.easeInOut(duration: 0.2), value: self.buttonPressed ? 65 : 0)
+                // [] TODO: (@team) - Move to iOS17 support - Update the use of .onChange() modifier.
+                // See below
+                // .onChange(of: self.padState) { oldState, newState in
+                //     if newState == .fullyPressed {
+                //         self.buttonPressed = true
+                //         self.robot.shine(self.selectedEar)
+                //     } else {
+                //         self.buttonPressed = false
+                //         self.robot.blacken(self.selectedEar)
+                //     }
+                // }
                 .onChange(of: self.padState) { state in
                     if state == .fullyPressed {
                         self.buttonPressed = true

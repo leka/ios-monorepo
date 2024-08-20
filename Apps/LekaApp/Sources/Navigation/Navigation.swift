@@ -97,11 +97,11 @@ class Navigation: ObservableObject {
     private func subscribeAuthentificationStateUpdates() {
         self.authManager.authenticationStatePublisher
             .receive(on: DispatchQueue.main)
-            .sink {
+            .sink { [weak self] in
                 if case $0 = AuthManager.AuthenticationState.loggedOut {
-                    self.selectedCategory = .home
-                    if self.sheetContent == nil, self.fullScreenCoverContent == nil {
-                        self.fullScreenCoverContent = .welcomeView
+                    self?.selectedCategory = .home
+                    if self?.sheetContent == nil, self?.fullScreenCoverContent == nil {
+                        self?.fullScreenCoverContent = .welcomeView
                     }
                 }
             }

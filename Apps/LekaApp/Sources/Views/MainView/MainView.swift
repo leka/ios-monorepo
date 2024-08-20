@@ -214,15 +214,28 @@ struct MainView: View {
                             self.carereceiverManager.setCurrentCarereceivers(to: carereceivers)
                             self.navigation.currentActivity = activity
                             self.navigation.currentStory = story
-                            if let activity = self.navigation.currentActivity {
+                            // [] TODO: (@team) - Values below are defined but not used
+                            // replace with if let _ = ... or check against nil
+                            // see below
+                            // if self.navigation.currentActivity != nil {
+                            //     self.navigation.fullScreenCoverContent = .activityView(carereceivers: carereceivers)
+                            // } else if self.navigation.currentStory != nil {
+                            //     self.navigation.fullScreenCoverContent = .storyView(carereceivers: carereceivers)
+                            // }
+                            if let _ = self.navigation.currentActivity {
                                 self.navigation.fullScreenCoverContent = .activityView(carereceivers: carereceivers)
-                            } else if let story = self.navigation.currentStory {
+                            } else if let _ = self.navigation.currentStory {
                                 self.navigation.fullScreenCoverContent = .storyView(carereceivers: carereceivers)
                             }
 
                         }, onSkip: {
                             self.navigation.currentActivity = activity
                             self.navigation.currentStory = story
+                            // if self.navigation.currentActivity != nil {
+                            //     self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+                            // } else if self.navigation.currentStory != nil {
+                            //     self.navigation.fullScreenCoverContent = .storyView(carereceivers: [])
+                            // }
                             if let activity = self.navigation.currentActivity {
                                 self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
                             } else if let story = self.navigation.currentStory {
@@ -239,7 +252,9 @@ struct MainView: View {
             }
             self.persistentDataManager.checkInactivity()
         }
-        .onChange(of: self.scenePhase) { newPhase in
+        // [] TODO: (@team) - Move to iOS17 support - Update the use of .onChange() modifier.
+        // Add 2nd argument oldPhase
+        .onChange(of: self.scenePhase) { /* oldPhase, */ newPhase in
             guard self.authManagerViewModel.userAuthenticationState == .loggedIn else {
                 return
             }
@@ -276,7 +291,9 @@ struct MainView: View {
                 self.caregiverManager.setCurrentCaregiver(byID: storedCaregiverID)
             }
         }
-        .onChange(of: self.caregiverManagerViewModel.currentCaregiver) { currentCaregiver in
+        // [] TODO: (@team) - Move to iOS17 support - Update the use of .onChange() modifier.
+        // Add 2nd argument previousCaregiver
+        .onChange(of: self.caregiverManagerViewModel.currentCaregiver) { /* previousCaregiver, */ currentCaregiver in
             if currentCaregiver != nil {
                 self.styleManager.colorScheme = self.caregiverManagerViewModel.currentCaregiver!.colorScheme
                 self.styleManager.accentColor = self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color
