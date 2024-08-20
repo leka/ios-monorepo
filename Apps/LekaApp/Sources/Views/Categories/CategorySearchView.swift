@@ -44,17 +44,29 @@ struct CategorySearchView: View {
             return self.activities
         } else {
             let bestResultSorted = self.activities.sorted { activity1, activity2 in
-                self.fuse.search(self.searchText.normalized(), in: activity1.details.title.normalized())?.score ?? 1 <
-                    self.fuse.search(self.searchText.normalized(), in: activity2.details.title.normalized())?.score ?? 1
+
+                let score1 = self.fuse.search(self.searchText.normalized(), in: activity1.details.title.normalized())?.score ?? 1
+                let score2 = self.fuse.search(self.searchText.normalized(), in: activity2.details.title.normalized())?.score ?? 1
+
+                return score1 < score2
             }
+
             let bestResultFiltered = bestResultSorted.filter { activity in
-                self.fuse.search(self.searchText.normalized(), in: activity.details.title.normalized())?.score ?? 1 < 0.5
+                if let score = self.fuse.search(self.searchText.normalized(), in: activity.details.title.normalized())?.score {
+                    return score < self.tolerance
+                }
+                return false
             }
+
             let bestResultByTag = self.activities.filter { activity in
                 activity.tags.contains { tag in
-                    self.fuse.search(self.searchText.normalized(), in: tag.name.normalized())?.score ?? 1 < 0.5
+                    if let score = self.fuse.search(self.searchText.normalized(), in: tag.name.normalized())?.score {
+                        return score < self.tolerance
+                    }
+                    return false
                 }
             }
+
             return Array(Set(bestResultFiltered + bestResultByTag))
         }
     }
@@ -68,7 +80,10 @@ struct CategorySearchView: View {
                     self.fuse.search(self.searchText.normalized(), in: skill2.name.normalized())?.score ?? 1
             }
             return bestResultSorted.filter { skill in
-                self.fuse.search(self.searchText.normalized(), in: skill.name.normalized())?.score ?? 1 < 0.5
+                if let score = self.fuse.search(self.searchText.normalized(), in: skill.name.normalized())?.score {
+                    return score < self.tolerance
+                }
+                return false
             }
         }
     }
@@ -82,11 +97,17 @@ struct CategorySearchView: View {
                     self.fuse.search(self.searchText.normalized(), in: curriculum2.name.normalized())?.score ?? 1
             }
             let bestResultFiltered = bestResultSorted.filter { curriculum in
-                self.fuse.search(self.searchText.normalized(), in: curriculum.name.normalized())?.score ?? 1 < 0.5
+                if let score = self.fuse.search(self.searchText.normalized(), in: curriculum.name.normalized())?.score {
+                    return score < self.tolerance
+                }
+                return false
             }
             let bestResultByTag = self.curriculums.filter { curriculum in
                 curriculum.tags.contains { tag in
-                    self.fuse.search(self.searchText.normalized(), in: tag.name.normalized())?.score ?? 1 < 0.5
+                    if let score = self.fuse.search(self.searchText.normalized(), in: tag.name.normalized())?.score {
+                        return score < self.tolerance
+                    }
+                    return false
                 }
             }
             return Array(Set(bestResultFiltered + bestResultByTag))
@@ -99,6 +120,7 @@ struct CategorySearchView: View {
     private let curriculums: [Curriculum] = ContentKit.allPublishedCurriculums
     private let skills: [Skill] = Skills.primarySkillsList
     private let tags: [Tag] = Tags.primaryTagsList
+    private let tolerance: Double = 0.5
     private let fuse = Fuse()
 
     @State private var searchText = ""
