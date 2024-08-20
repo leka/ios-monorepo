@@ -48,11 +48,11 @@ struct CategorySearchView: View {
                     self.fuse.search(self.searchText.normalized(), in: activity2.details.title.normalized())?.score ?? 1
             }
             let bestResultFiltered = bestResultSorted.filter { activity in
-                self.fuse.search(self.searchText.normalized(), in: activity.details.title.normalized())?.score ?? 1 < 0.3
+                self.fuse.search(self.searchText.normalized(), in: activity.details.title.normalized())?.score ?? 1 < 0.5
             }
             let bestResultByTag = self.activities.filter { activity in
                 activity.tags.contains { tag in
-                    self.fuse.search(self.searchText.normalized(), in: tag.name.normalized())?.score ?? 1 < 0.3
+                    self.fuse.search(self.searchText.normalized(), in: tag.name.normalized())?.score ?? 1 < 0.5
                 }
             }
             return Array(Set(bestResultFiltered + bestResultByTag))
@@ -68,7 +68,7 @@ struct CategorySearchView: View {
                     self.fuse.search(self.searchText.normalized(), in: skill2.name.normalized())?.score ?? 1
             }
             return bestResultSorted.filter { skill in
-                self.fuse.search(self.searchText.normalized(), in: skill.name.normalized())?.score ?? 1 < 0.3
+                self.fuse.search(self.searchText.normalized(), in: skill.name.normalized())?.score ?? 1 < 0.5
             }
         }
     }
@@ -82,11 +82,11 @@ struct CategorySearchView: View {
                     self.fuse.search(self.searchText.normalized(), in: curriculum2.name.normalized())?.score ?? 1
             }
             let bestResultFiltered = bestResultSorted.filter { curriculum in
-                self.fuse.search(self.searchText.normalized(), in: curriculum.name.normalized())?.score ?? 1 < 0.3
+                self.fuse.search(self.searchText.normalized(), in: curriculum.name.normalized())?.score ?? 1 < 0.5
             }
             let bestResultByTag = self.curriculums.filter { curriculum in
                 curriculum.tags.contains { tag in
-                    self.fuse.search(self.searchText.normalized(), in: tag.name.normalized())?.score ?? 1 < 0.3
+                    self.fuse.search(self.searchText.normalized(), in: tag.name.normalized())?.score ?? 1 < 0.5
                 }
             }
             return Array(Set(bestResultFiltered + bestResultByTag))
