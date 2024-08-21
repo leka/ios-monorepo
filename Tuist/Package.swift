@@ -72,7 +72,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/ukushu/Ifrit",
-            exact: "1.1.1"
+            revision: "e610cdf"
             // exact: "v2.0.3" // TODO: (@ladislas) uncomment when https://github.com/ukushu/Ifrit/issues/7 is fixed
         ),
     ]
