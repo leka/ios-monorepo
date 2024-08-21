@@ -15,7 +15,7 @@ concurrency:
 jobs:
   pre_commit_hooks:
     name: pre-commit hooks
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     strategy:
       fail-fast: false
       matrix:
@@ -27,19 +27,6 @@ jobs:
         with:
           fetch-depth: 2
           lfs: true
-
-      - name: Setup brew
-        run: |
-          echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >> $GITHUB_PATH
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.x"
-          cache: "pip"
-
-      - name: Set up Swift
-        uses: swift-actions/setup-swift@v2
 
       - name: Install pre-commit
         run: |
