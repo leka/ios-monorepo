@@ -47,6 +47,7 @@ identifier_name:
     - rgb
     - rhs
     - rx
+    - tag
     - tx
     - url
     - URL
