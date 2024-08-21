@@ -49,37 +49,7 @@ public struct SearchGridView: View {
                     }
                 }
 
-                HStack(spacing: 20) {
-                    ForEach(Array(self.activities[0..<min(3, self.activities.count)])) { activity in
-                        NavigationLink(destination:
-                            ActivityDetailsView(activity: activity, onStartActivity: self.onStartActivity)
-                        ) {
-                            VStack {
-                                Image(uiImage: activity.details.iconImage)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .clipShape(Circle())
-                                    .frame(width: 120)
-                                    .overlay(
-                                        Circle()
-                                            .stroke(self.styleManager.accentColor!.opacity(0.2), lineWidth: 5)
-                                    )
-                                    .padding(.bottom, 15)
-
-                                Text(activity.details.title)
-                                    .font(.headline)
-                                    .foregroundStyle(Color.primary)
-                                Text(activity.details.subtitle ?? "")
-                                    .font(.body)
-                                    .foregroundStyle(Color.secondary)
-
-                                Spacer()
-                            }
-                        }
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                }
-                .padding(.bottom)
+                ActivityHorizontalListView(activities: self.activities, onActivitySelected: self.onStartActivity)
             }
 
             if !self.curriculums.isEmpty {
@@ -97,35 +67,7 @@ public struct SearchGridView: View {
                     }
                 }
 
-                HStack(spacing: 20) {
-                    ForEach(Array(self.curriculums[0..<min(3, self.curriculums.count)])) { curriculum in
-                        NavigationLink(destination:
-                            CurriculumDetailsView(curriculum: curriculum, onActivitySelected: self.onStartActivity)
-                        ) {
-                            GroupBox {
-                                VStack(spacing: 10) {
-                                    Image(uiImage: curriculum.details.iconImage)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 150)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10 / 57 * 150))
-
-                                    Text(curriculum.details.title)
-                                        .font(.headline)
-                                        .multilineTextAlignment(.center)
-                                        .foregroundStyle(Color.primary)
-
-                                    Text(curriculum.details.subtitle ?? "")
-                                        .font(.body)
-                                        .multilineTextAlignment(.center)
-                                        .foregroundStyle(Color.secondary)
-                                }
-                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            }
-                        }
-                    }
-                }
-                .padding(.bottom)
+                CurriculumHorizontalListView(curriculums: self.curriculums, onActivitySelected: self.onStartActivity)
             }
 
             if !self.skills.isEmpty {
