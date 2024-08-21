@@ -113,8 +113,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ukushu/Ifrit",
       "state" : {
-        "revision" : "6c8a4bc89881e641c1ca8e559d7f41ad030d8561",
-        "version" : "1.1.1"
+        "branch" : "e610cdf",
+        "revision" : "e610cdf4eddec1e76a9c7ae5db37738c7f73150b"
       }
     },
     {
