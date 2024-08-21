@@ -192,7 +192,6 @@ public struct ActivityView: View {
         }
     }
 
-    @ViewBuilder
     private var reinforcerAnimationView: some View {
         LottieView(
             animation: .reinforcer,
@@ -209,7 +208,6 @@ public struct ActivityView: View {
         )
     }
 
-    @ViewBuilder
     private var continueButton: some View {
         Button(String(l10n.GameEngineKit.ActivityView.continueButton.characters)) {
             if self.viewModel.isLastExercise {
@@ -230,7 +228,6 @@ public struct ActivityView: View {
         )
     }
 
-    @ViewBuilder
     private var hideReinforcerToShowAnswersButton: some View {
         Button(String(l10n.GameEngineKit.ActivityView.hideReinforcerToShowAnswersButton.characters)) {
             withAnimation {
