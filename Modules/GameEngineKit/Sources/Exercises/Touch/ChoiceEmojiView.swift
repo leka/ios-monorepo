@@ -20,7 +20,6 @@ struct ChoiceEmojiView: View {
 
     // MARK: Internal
 
-    @ViewBuilder
     var circle: some View {
         Circle()
             .fill(self.choiceBackgroundColor)
