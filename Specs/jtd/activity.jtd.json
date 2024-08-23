@@ -345,6 +345,13 @@
                         }
                     }
                 },
+                "gamepadColorPad": {
+                    "properties": {
+                        "instructions": {
+                            "ref": "$exercise/instructions"
+                        }
+                    }
+                },
                 "gamepadArrowPad": {
                     "properties": {
                         "instructions": {
@@ -451,6 +458,7 @@
                 "danceFreeze",
                 "gamepadJoyStickColorPad",
                 "gamepadArrowPadColorPad",
+                "gamepadColorPad",
                 "gamepadArrowPad",
                 "hideAndSeek",
                 "musicalInstruments",
