@@ -28,7 +28,7 @@ extension GameplayAssociateCategories where ChoiceModelType == GameplayMemoryCho
     convenience init(choices: [GameplayMemoryChoiceModel], allowedTrials: Int? = nil) {
         self.init()
         self.choices.send(choices)
-        self.state.send(.playing)
+        self.state.send(.playing())
 
         if let allowedTrials {
             self.allowedTrials = allowedTrials

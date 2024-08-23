@@ -29,7 +29,7 @@ extension GameplayFindTheRightOrder where ChoiceModelType == GameplayDragAndDrop
         self.init()
         self.rightAnswers = choices
         self.choices.send(choices)
-        self.state.send(.playing)
+        self.state.send(.playing())
 
         if let allowedTrials {
             self.allowedTrials = allowedTrials

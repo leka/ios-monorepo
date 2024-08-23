@@ -6,10 +6,15 @@ import AccountKit
 
 enum ExerciseState: Equatable {
     case idle
-    case playing
+    case playing(type: PlayType = .structured)
     case completed(level: CompletionLevel)
 
     // MARK: Internal
+
+    enum PlayType {
+        case structured
+        case unstructured
+    }
 
     enum CompletionLevel {
         case fail

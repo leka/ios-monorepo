@@ -18,7 +18,7 @@ extension DanceFreezeView {
             self.motionMode = motion
 
             self.exercicesSharedData = shared ?? ExerciseSharedData()
-            self.exercicesSharedData.state = .playing
+            self.exercicesSharedData.state = .playing()
 
             self.subscribeToAudioPlayerProgress()
         }

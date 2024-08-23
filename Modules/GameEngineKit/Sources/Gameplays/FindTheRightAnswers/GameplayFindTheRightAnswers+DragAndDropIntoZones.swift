@@ -29,7 +29,7 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayDragAndDr
         self.init()
         self.choices.send(choices)
         self.rightAnswers = choices.filter { $0.choice.dropZone != .none }
-        self.state.send(.playing)
+        self.state.send(.playing())
 
         if let allowedTrials {
             self.allowedTrials = allowedTrials

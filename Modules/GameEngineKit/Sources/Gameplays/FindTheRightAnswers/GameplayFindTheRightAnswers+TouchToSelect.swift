@@ -29,7 +29,7 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayTouchToSe
         self.init()
         self.choices.send(shuffle ? choices.shuffled() : choices)
         self.rightAnswers = choices.filter(\.choice.isRightAnswer)
-        self.state.send(.playing)
+        self.state.send(.playing())
 
         if let allowedTrials {
             self.allowedTrials = allowedTrials
