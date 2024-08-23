@@ -343,6 +343,9 @@ public struct ActivityView: View {
             case .gamepadArrowPadColorPad:
                 Gamepad.ArrowPadColorPad()
 
+            case .gamepadColorPad:
+                Gamepad.ColorPadView()
+
             case .gamepadArrowPad:
                 ArrowPadView(size: 200, xPosition: 180)
 

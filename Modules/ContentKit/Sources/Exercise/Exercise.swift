@@ -69,6 +69,7 @@ public struct Exercise: Decodable {
 
             case (.gamepadJoyStickColorPad, .none),
                  (.gamepadArrowPadColorPad, .none),
+                 (.gamepadColorPad, .none),
                  (.gamepadArrowPad, .none),
                  (.hideAndSeek, .none),
                  (.pairing, .none):
