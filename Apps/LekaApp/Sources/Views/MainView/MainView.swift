@@ -277,6 +277,8 @@ struct MainView: View {
             }
         }
         .onChange(of: self.caregiverManagerViewModel.currentCaregiver) { currentCaregiver in
+            self.persistentDataManager.lastActiveCaregiverID = currentCaregiver?.id
+            self.persistentDataManager.updateLastActiveTimestamp()
             if currentCaregiver != nil {
                 self.styleManager.colorScheme = self.caregiverManagerViewModel.currentCaregiver!.colorScheme
                 self.styleManager.accentColor = self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color
