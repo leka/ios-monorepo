@@ -56,6 +56,24 @@
                 }
             }
         },
+        "game_engine_kit.activity_view.finish_button": {
+            "comment": "The title of the finish button",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Finish"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Terminer"
+                    }
+                }
+            }
+        },
         "game_engine_kit.activity_view.hide_reinforcer_to_show_answers_button": {
             "comment": "The title of the hide reinforcer to show answers button",
             "extractionState": "extracted_with_value",
