@@ -15,7 +15,7 @@ extension HideAndSeekView {
             _stage = stage
 
             self.exercicesSharedData = shared ?? ExerciseSharedData()
-            self.exercicesSharedData.state = .playing
+            self.exercicesSharedData.state = .playing()
         }
 
         // MARK: Internal
