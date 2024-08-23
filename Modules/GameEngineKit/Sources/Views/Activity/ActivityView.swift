@@ -45,6 +45,7 @@ public struct ActivityView: View {
                 }
             }
             .id(self.viewModel.currentExerciseIndexInCurrentGroup)
+            .disabled(self.viewModel.currentExerciseSharedData.isCompleted)
             .blur(radius: self.blurRadius)
             .opacity(self.opacity)
             .onChange(of: self.viewModel.isReinforcerAnimationVisible) {
