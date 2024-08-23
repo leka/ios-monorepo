@@ -8,7 +8,7 @@ uuid: A9BC9B8ED47F4EA3A1760EFCCCBE0977
 name: recognition_kitchen_items_kitchen_utensils
 
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-07-15T14:51:27.543258"
+last_edited_at: "2024-08-23T14:13:58.960901"
 status: published
 
 authors:
@@ -38,13 +38,13 @@ l10n:
     details:
       icon: curriculum_recognition_kitchen_items
 
-      title: Les ustenciles de cuisine
+      title: Les ustensiles de cuisine
       subtitle: Reconnaitre des objets du quotidien
       short_description: |
-        Touche l'objet demandé parmi les ustenciles de cuisine
+        Touche l'objet demandé parmi les ustensiles de cuisine
 
       description: |
-        La personne accompagnée doit répondre correctement à la question posée concernant les ustenciles de cuisine.
+        La personne accompagnée doit répondre correctement à la question posée concernant les ustensiles de cuisine.
 
       instructions: |
         - Appuyez sur le haut-parleur pour jouer la consigne
