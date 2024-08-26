@@ -15,8 +15,13 @@ extension Gamepad {
                 ForEach(self.colors, id: \.screen) { color in
                     ColorButton(color: color, isPressed: self.selectedColor?.screen == color.screen)
                         .onTapGesture {
-                            self.selectedColor = color
-                            Robot.shared.shine(.all(in: color))
+                            if self.selectedColor?.screen == color.screen {
+                                self.selectedColor = nil
+                                Robot.shared.blacken(.all)
+                            } else {
+                                self.selectedColor = color
+                                Robot.shared.shine(.all(in: color))
+                            }
                         }
                 }
             }
@@ -25,7 +30,7 @@ extension Gamepad {
 
         // MARK: Private
 
-        private let colors: [Robot.Color] = [.black, .red, .blue, .green, .yellow, .purple, .orange, .pink]
+        private let colors: [Robot.Color] = [.white, .red, .blue, .green, .yellow, .purple, .orange, .pink]
         private let columns = Array(repeating: GridItem(), count: 4)
         private let kVerticalSpacing: CGFloat = 60
         private let kButtonSize: CGFloat = 200
@@ -43,11 +48,11 @@ extension Gamepad {
                 Circle()
                     .fill(.white)
                     .frame(width: self.kButtonSize, height: self.kButtonSize)
-                    .shadow(color: self.color.screen, radius: self.isPressed ? 20 : 0)
+                    .shadow(color: self.color.screen != .white ? self.color.screen : .gray.opacity(0.6), radius: self.isPressed ? 20 : 0)
                     .animation(.easeIn(duration: 0.2), value: self.isPressed)
 
                 Circle()
-                    .stroke(self.color.screen, lineWidth: 8)
+                    .stroke(self.color.screen != .white ? self.color.screen : .gray.opacity(0.3), lineWidth: 8)
                     .frame(width: self.kButtonSize, height: self.kButtonSize)
 
                 HStack(spacing: 30) {
