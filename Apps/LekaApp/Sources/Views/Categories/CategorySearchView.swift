@@ -3,10 +3,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import ContentKit
-import DesignKit
-import Ifrit
 import LocalizationKit
 import SwiftUI
+import UtilsKit
 
 // MARK: - CategorySearchView
 
@@ -15,7 +14,7 @@ struct CategorySearchView: View {
 
     var body: some View {
         Group {
-            if self.searchText.isEmpty {
+            if self.query.isEmpty {
                 ScrollView(showsIndicators: true) {
                     SkillsGridView(skills: self.skills, onActivitySelected: { activity in
                         self.navigation.currentActivity = activity
@@ -36,94 +35,86 @@ struct CategorySearchView: View {
                 }
             }
         }
-        .searchable(text: self.$searchText)
+        .searchable(text: self.$query)
     }
 
     var searchActivityResults: [Activity] {
-        if self.searchText.isEmpty {
-            return self.activities
-        } else {
-            let bestResultSorted = self.activities.sorted { activity1, activity2 in
+        var scoredActivities: [(activity: Activity, score: Int)] = []
+        for activity in self.activities {
+            var totalScore = 0
 
-                let score1 = self.fuse.search(self.searchText.normalized(), in: activity1.details.title.normalized())?.score ?? 1
-                let score2 = self.fuse.search(self.searchText.normalized(), in: activity2.details.title.normalized())?.score ?? 1
+            let titleResult = fuzzyMatch(input: activity.details.title, pattern: self.query)
+            totalScore += titleResult.score * self.kTitleWeight
 
-                return score1 < score2
+            let subtitleResult = fuzzyMatch(input: activity.details.subtitle ?? "", pattern: self.query)
+            totalScore += subtitleResult.score * self.kSubtitleWeight
+
+            for tag in activity.tags {
+                let tagResult = fuzzyMatch(input: tag.name, pattern: self.query)
+                totalScore += tagResult.score * self.kTagWeight
             }
-
-            let bestResultFiltered = bestResultSorted.filter { activity in
-                if let score = self.fuse.search(self.searchText.normalized(), in: activity.details.title.normalized())?.score {
-                    return score < self.tolerance
-                }
-                return false
-            }
-
-            let bestResultByTag = self.activities.filter { activity in
-                activity.tags.contains { tag in
-                    if let score = self.fuse.search(self.searchText.normalized(), in: tag.name.normalized())?.score {
-                        return score < self.tolerance
-                    }
-                    return false
-                }
-            }
-
-            return Array(Set(bestResultFiltered + bestResultByTag))
+            scoredActivities.append((activity: activity, score: totalScore))
         }
+
+        var scoredActivitiesFiltered = scoredActivities.filter { $0.score > 0 }.prefix(15)
+        scoredActivitiesFiltered.sort { $0.score > $1.score }
+
+        return scoredActivitiesFiltered.map(\.activity)
     }
 
     var searchSkillsResults: [Skill] {
-        if self.searchText.isEmpty {
-            return self.skills
-        } else {
-            let bestResultSorted = self.skills.sorted { skill1, skill2 in
-                self.fuse.search(self.searchText.normalized(), in: skill1.name.normalized())?.score ?? 1 <
-                    self.fuse.search(self.searchText.normalized(), in: skill2.name.normalized())?.score ?? 1
-            }
-            return bestResultSorted.filter { skill in
-                if let score = self.fuse.search(self.searchText.normalized(), in: skill.name.normalized())?.score {
-                    return score < self.tolerance
-                }
-                return false
-            }
+        var scoredSkill: [(skill: Skill, score: Int)] = []
+        for skill in self.skills {
+            var totalScore = 0
+
+            let titleResult = fuzzyMatch(input: skill.name, pattern: self.query)
+            totalScore += titleResult.score * self.kTitleWeight
+
+            scoredSkill.append((skill: skill, score: totalScore))
         }
+
+        var scoredSkillFiltered = scoredSkill.filter { $0.score > 0 }.prefix(15)
+        scoredSkillFiltered.sort { $0.score > $1.score }
+
+        return scoredSkillFiltered.map(\.skill)
     }
 
     var searchCurriculumResults: [Curriculum] {
-        if self.searchText.isEmpty {
-            return self.curriculums
-        } else {
-            let bestResultSorted = self.curriculums.sorted { curriculum1, curriculum2 in
-                self.fuse.search(self.searchText.normalized(), in: curriculum1.name.normalized())?.score ?? 1 <
-                    self.fuse.search(self.searchText.normalized(), in: curriculum2.name.normalized())?.score ?? 1
+        var scoredCurriculum: [(curriculum: Curriculum, score: Int)] = []
+        for curriculum in self.curriculums {
+            var totalScore = 0
+
+            let titleResult = fuzzyMatch(input: curriculum.details.title, pattern: self.query)
+            totalScore += titleResult.score * self.kTitleWeight
+
+            let subtitleResult = fuzzyMatch(input: curriculum.details.subtitle ?? "", pattern: self.query)
+            totalScore += subtitleResult.score * self.kSubtitleWeight
+
+            for tag in curriculum.tags {
+                let tagResult = fuzzyMatch(input: tag.name, pattern: self.query)
+                totalScore += tagResult.score * self.kTagWeight
             }
-            let bestResultFiltered = bestResultSorted.filter { curriculum in
-                if let score = self.fuse.search(self.searchText.normalized(), in: curriculum.name.normalized())?.score {
-                    return score < self.tolerance
-                }
-                return false
-            }
-            let bestResultByTag = self.curriculums.filter { curriculum in
-                curriculum.tags.contains { tag in
-                    if let score = self.fuse.search(self.searchText.normalized(), in: tag.name.normalized())?.score {
-                        return score < self.tolerance
-                    }
-                    return false
-                }
-            }
-            return Array(Set(bestResultFiltered + bestResultByTag))
+
+            scoredCurriculum.append((curriculum: curriculum, score: totalScore))
         }
+
+        var scoredCurriculumFiltered = scoredCurriculum.filter { $0.score > 0 }.prefix(15)
+        scoredCurriculumFiltered.sort { $0.score > $1.score }
+
+        return scoredCurriculumFiltered.map(\.curriculum)
     }
 
     // MARK: Private
 
+    private let kTitleWeight = 10
+    private let kSubtitleWeight = 3
+    private let kTagWeight = 5
+
     private let activities: [Activity] = ContentKit.allPublishedActivities
     private let curriculums: [Curriculum] = ContentKit.allPublishedCurriculums
     private let skills: [Skill] = Skills.primarySkillsList
-    private let tags: [Tag] = Tags.primaryTagsList
-    private let tolerance: Double = 0.5
-    private let fuse = Fuse()
 
-    @State private var searchText = ""
+    @State private var query = ""
     @ObservedObject private var navigation: Navigation = .shared
 }
 
