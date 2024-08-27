@@ -44,6 +44,5 @@ let project = Project.app(
         .external(name: "MarkdownUI"),
         .external(name: "Fit"),
         .external(name: "DeviceKit"),
-        .external(name: "Ifrit"),
     ]
 )
