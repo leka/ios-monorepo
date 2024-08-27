@@ -8,8 +8,8 @@ uuid: DBA6170077AB4DBABEB05E03932BDC84
 name: gamepad_color_pad
 
 created_at: "2024-03-04T18:07:12.519606"
-last_edited_at: "2024-08-23T15:58:21.099222"
-status: draft
+last_edited_at: "2024-08-27T11:20:12.637600"
+status: published
 
 authors:
   - leka
@@ -35,7 +35,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: placeholder_1
+      icon: gamepad_color_pad
 
       title: Pavé de Couleurs
       subtitle: null
@@ -51,7 +51,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: placeholder_1
+      icon: gamepad_color_pad
 
       title: Color Pad
       subtitle: null
