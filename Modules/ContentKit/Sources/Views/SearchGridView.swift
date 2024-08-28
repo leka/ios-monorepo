@@ -48,6 +48,7 @@ public struct SearchGridView: View {
                         Text(l10n.SearchGridView.seeAllLabel)
                     }
                 }
+                .padding(.horizontal)
 
                 ActivityHorizontalListView(activities: self.activities, onActivitySelected: self.onStartActivity)
             }
@@ -66,6 +67,7 @@ public struct SearchGridView: View {
                         Text(l10n.SearchGridView.seeAllLabel)
                     }
                 }
+                .padding(.horizontal)
 
                 CurriculumHorizontalListView(curriculums: self.curriculums, onActivitySelected: self.onStartActivity)
             }
@@ -76,10 +78,11 @@ public struct SearchGridView: View {
                         .font(.title.bold())
                     Spacer()
                 }
+                .padding(.horizontal)
+
                 SkillsGridView(skills: self.skills, onActivitySelected: self.onStartActivity)
             }
         }
-        .padding(.horizontal)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
