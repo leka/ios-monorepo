@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import Combine
 import ContentKit
 import SpriteKit
 
@@ -95,6 +96,9 @@ class DraggableImageAnswerNode: SKSpriteNode {
         self.size = size
         self.position = position
         self.defaultPosition = position
+        self.isDraggable = choice.interactivity == .editable
+
+        self.subscribeToInteractivityChanges(choice: choice)
     }
 
     @available(*, unavailable)
@@ -107,4 +111,20 @@ class DraggableImageAnswerNode: SKSpriteNode {
     var id: String
     var isDraggable: Bool = true
     var defaultPosition: CGPoint?
+
+    // MARK: Private
+
+    private var cancellables = Set<AnyCancellable>()
+
+    private func subscribeToInteractivityChanges(choice: GameplayChooseAnyAnswerChoiceModel) {
+        choice.interactivityPublisher
+            .sink { [weak self] newInteractivity in
+                self?.handleInteractivityChange(newInteractivity)
+            }
+            .store(in: &self.cancellables)
+    }
+
+    private func handleInteractivityChange(_ interactivity: Interactivity) {
+        self.isDraggable = interactivity == .editable
+    }
 }

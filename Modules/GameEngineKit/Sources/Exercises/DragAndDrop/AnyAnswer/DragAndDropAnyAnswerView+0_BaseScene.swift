@@ -56,11 +56,11 @@ extension DragAndDropAnyAnswerView {
             self.layoutAnswers()
         }
 
-        func exerciseCompletedBehavior() {
-            for node in self.answerNodes {
-                node.isDraggable = false
-            }
-        }
+//        func exerciseCompletedBehavior() {
+//            for node in self.answerNodes {
+//                node.isDraggable = false
+//            }
+//        }
 
         func subscribeToChoicesUpdates() {
             self.viewModel.$choices
@@ -132,11 +132,11 @@ extension DragAndDropAnyAnswerView {
                 node.repositionInside(dropZone: dropZoneB.node)
             }
             self.onDropAction(node)
-            if case .completed = self.viewModel.exercicesSharedData.state {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
-                    self.exerciseCompletedBehavior()
-                }
-            }
+//            if case .completed = self.viewModel.exercicesSharedData.state {
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
+//                    self.exerciseCompletedBehavior()
+//                }
+//            }
         }
 
         func wrongAnswerBehavior(_ node: DraggableImageAnswerNode) {

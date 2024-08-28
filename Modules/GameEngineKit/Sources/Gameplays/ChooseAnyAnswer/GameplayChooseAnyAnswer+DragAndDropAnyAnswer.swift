@@ -3,18 +3,44 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
+import Combine
 import ContentKit
 import Foundation
 
 // MARK: - GameplayChooseAnyAnswerChoiceModel
 
 struct GameplayChooseAnyAnswerChoiceModel: GameplayChoiceModelProtocol {
+    // MARK: Internal
+
     typealias ChoiceType = DragAndDropAnyAnswer.Choice
 
     let id: String = UUID().uuidString
     let choice: ChoiceType
-    var state: GameplayChoiceState = .idle
-    var interactivity: Interactivity = .editable
+
+    var statePublisher: AnyPublisher<GameplayChoiceState, Never> {
+        self.stateSubject.eraseToAnyPublisher()
+    }
+
+    var state: GameplayChoiceState {
+        get { self.stateSubject.value }
+        set { self.stateSubject.send(newValue) }
+    }
+
+    var interactivityPublisher: AnyPublisher<Interactivity, Never> {
+        self.interactivitySubject.eraseToAnyPublisher()
+    }
+
+    var interactivity: Interactivity {
+        get { self.interactivitySubject.value }
+        set { self.interactivitySubject.send(newValue) }
+    }
+
+    // MARK: Private
+
+//    var state: GameplayChoiceState = .idle
+//    var interactivity: Interactivity = .editable
+    private let stateSubject = CurrentValueSubject<GameplayChoiceState, Never>(.idle)
+    private let interactivitySubject = CurrentValueSubject<Interactivity, Never>(.editable)
 }
 
 // MARK: Equatable
