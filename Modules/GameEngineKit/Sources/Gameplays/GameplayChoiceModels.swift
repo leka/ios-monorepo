@@ -52,6 +52,14 @@ public enum GameplayChoiceState {
     case wrongAnswer
 }
 
+// MARK: - Interactivity
+
+enum Interactivity {
+    case editable
+    case locked
+    case clue
+}
+
 // MARK: - GameplayChoiceModelProtocol
 
 protocol GameplayChoiceModelProtocol: Identifiable, Equatable {
@@ -59,5 +67,6 @@ protocol GameplayChoiceModelProtocol: Identifiable, Equatable {
 
     var id: String { get }
     var choice: ChoiceType { get }
-    var state: GameplayChoiceState { get set } // .selected, .idle, .rightAnswer, .wrongAnswer
+    var state: GameplayChoiceState { get set }
+    var interactivity: Interactivity { get set }
 }

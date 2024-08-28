@@ -26,6 +26,7 @@ class GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate: GameplayChoi
     let choice: ChoiceType
     var destination: GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate?
     var state: GameplayChoiceState = .idle
+    var interactivity: Interactivity = .editable
 }
 
 // MARK: Equatable

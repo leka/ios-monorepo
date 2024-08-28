@@ -15,6 +15,7 @@ struct GameplayAssociateCategoriesChoiceModelMemory: GameplayChoiceModelProtocol
     let id: String = UUID().uuidString
     let choice: ChoiceType
     var state: GameplayChoiceState = .idle
+    var interactivity: Interactivity = .editable
 }
 
 // MARK: Equatable

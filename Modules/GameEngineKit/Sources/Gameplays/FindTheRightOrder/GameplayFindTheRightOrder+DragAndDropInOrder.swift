@@ -16,6 +16,7 @@ struct GameplayFindTheRightOrderChoiceModelDragAndDropInOrder: GameplayChoiceMod
     let choice: ChoiceType
     var dropZoneIndex: Int?
     var state: GameplayChoiceState = .idle
+    var interactivity: Interactivity = .editable
 }
 
 // MARK: Equatable

@@ -16,6 +16,7 @@ struct GameplayFindTheRightAnswersChoiceModelDragAndDropIntoZones: GameplayChoic
     let choice: ChoiceType
     var droppedIntoZone: DragAndDropIntoZones.DropZone?
     var state: GameplayChoiceState = .idle
+    var interactivity: Interactivity = .editable
 }
 
 // MARK: Equatable
