@@ -77,11 +77,16 @@ public struct ActivityView: View {
             }
 
             HStack {
-                if case .completed = self.viewModel.currentExerciseSharedData.state {
-                    if self.viewModel.isReinforcerAnimationVisible {
-                        self.hideReinforcerToShowAnswersButton
-                    }
-                    self.continueButton
+                switch self.viewModel.currentExerciseSharedData.state {
+                    case .completed:
+                        if self.viewModel.isReinforcerAnimationVisible {
+                            self.hideReinforcerToShowAnswersButton
+                        }
+                        self.continueButton
+                    case .playing(type: .unstructured):
+                        self.finishButton
+                    default:
+                        EmptyView()
                 }
             }
         }
