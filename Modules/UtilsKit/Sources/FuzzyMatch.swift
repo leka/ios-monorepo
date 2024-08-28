@@ -6,7 +6,7 @@
 // https://github.com/junegunn/fzf/blob/master/src/algo/algo.go
 // junegunn/fzf License: MIT
 
-// swiftlint:disable identifier_name cyclomatic_complexity function_body_length
+// swiftlint:disable identifier_name
 
 import Foundation
 
@@ -21,8 +21,8 @@ public struct Result {
 // MARK: - FuzzyMatch
 
 public func fuzzyMatch(input: String, pattern: String, normalized: Bool = true) -> Result {
-    var _input = normalized ? input.normalized() : input
-    var _pattern = normalized ? pattern.normalized() : pattern
+    let input = normalized ? input.normalized() : input
+    let pattern = normalized ? pattern.normalized() : pattern
 
     let n = input.count
     let m = pattern.count
@@ -32,25 +32,24 @@ public func fuzzyMatch(input: String, pattern: String, normalized: Bool = true) 
     }
 
     if m == 1 {
-        return exactMatchNaive(text: _input, pattern: _pattern)
+        return exactMatchNaive(text: input, pattern: pattern)
     }
 
-    // Phase 1: Matching and bonus calculation
     var pidx = 0
     var lastIDx = 0
     var prevClass: CharClass = .charNonWord
     var bonuses = Array(repeating: Int16(0), count: n)
     var t = Array(repeating: Character(" "), count: n)
 
-    for (idx, char) in _input.enumerated() {
-        let class_ = charClassOf(char)
-        var adjustedChar = char
+    for (idx, char) in input.enumerated() {
+        let currentClass = charClassOf(char)
+        let adjustedChar = char
 
         t[idx] = adjustedChar
-        bonuses[idx] = bonusFor(prevClass, class_)
-        prevClass = class_
+        bonuses[idx] = bonusFor(prevClass, currentClass)
+        prevClass = currentClass
 
-        if pidx < m, adjustedChar == _pattern[_pattern.index(_pattern.startIndex, offsetBy: pidx)] {
+        if pidx < m, adjustedChar == pattern[pattern.index(pattern.startIndex, offsetBy: pidx)] {
             lastIDx = idx
             pidx += 1
         }
@@ -60,7 +59,12 @@ public func fuzzyMatch(input: String, pattern: String, normalized: Bool = true) 
         return Result(start: -1, end: -1, score: 0)
     }
 
-    // Phase 2: Scoring
+    let (maxScore, maxScorePos) = computeScore(lastIDx: lastIDx, bonuses: bonuses, pattern: pattern, m: m, t: t)
+
+    return Result(start: 0, end: maxScorePos + 1, score: Int(maxScore))
+}
+
+private func computeScore(lastIDx: Int, bonuses: [Int16], pattern: String, m: Int, t: [Character]) -> (maxScore: Int16, maxScorePos: Int) {
     let width = lastIDx + 1
     var h = Array(repeating: Int16(0), count: width * m)
     var c = Array(repeating: Int16(0), count: width * m)
@@ -68,63 +72,111 @@ public func fuzzyMatch(input: String, pattern: String, normalized: Bool = true) 
     var maxScorePos = 0
 
     for i in 0..<m {
-        let I = i * width
+        let iW = i * width
         var inGap = false
 
         for j in 0...lastIDx {
             let j0 = j
-            var s1: Int16 = 0
-            var s2: Int16 = 0
-            var consecutive: Int16 = 0
 
-            if j > 0 {
-                if inGap {
-                    s2 = h[I + j0 - 1] + Int16(scoreGapExtension)
-                } else {
-                    s2 = h[I + j0 - 1] + Int16(scoreGapStart)
-                }
-            }
+            let state = State(i: i, j0: j0, iW: iW, width: width, h: h, c: c)
+            let inputs = Inputs(bonuses: bonuses, pattern: pattern, t: t)
 
-            if _pattern[_pattern.index(_pattern.startIndex, offsetBy: i)] == t[j] {
-                var diag: Int16 = 0
-                if i > 0, j0 > 0 {
-                    diag = h[I - width + j0 - 1]
-                }
-                s1 = diag + Int16(scoreMatch)
-                var b = bonuses[j]
+            let (s1, consecutive) = calculateMatchScore(state: state, inputs: inputs)
+            let s2 = calculateGapScore(state: state, inGap: inGap)
 
-                if i > 0, j0 > 0 {
-                    consecutive = c[I - width + j0 - 1] + 1
-                    if b == Int16(bonusBoundary) {
-                        consecutive = 1
-                    } else if consecutive > 1 {
-                        b = max(b, max(Int16(bonusConsecutive), bonuses[j - Int(consecutive) + 1]))
-                    }
-                } else {
-                    consecutive = 1
-                    b *= Int16(bonusFirstCharMultiplier)
-                }
-
-                if s1 + b < s2 {
-                    s1 += bonuses[j]
-                    consecutive = 0
-                } else {
-                    s1 += b
-                }
-            }
-            c[I + j0] = consecutive
+            c[iW + j0] = consecutive
             inGap = s1 < s2
-            let score = max(s1, max(s2, 0))
 
+            let score = max(s1, max(s2, 0))
             if i == m - 1, score > maxScore {
                 maxScore = score
                 maxScorePos = j
             }
-            h[I + j0] = score
+            h[iW + j0] = score
         }
     }
 
-    return Result(start: 0, end: maxScorePos + 1, score: Int(maxScore))
+    return (maxScore, maxScorePos)
+}
+
+// MARK: - State
+
+private struct State {
+    let i: Int
+    let j0: Int
+    let iW: Int
+    let width: Int
+    let h: [Int16]
+    var c: [Int16]
+}
+
+// MARK: - Inputs
+
+private struct Inputs {
+    let bonuses: [Int16]
+    let pattern: String
+    let t: [Character]
+}
+
+private func calculateMatchScore(state: State, inputs: Inputs) -> (Int16, Int16) {
+    var s1: Int16 = 0
+    var consecutive: Int16 = 0
+    let i = state.i
+    let j0 = state.j0
+    let iW = state.iW
+    let width = state.width
+    let h = state.h
+    let c = state.c
+    let bonuses = inputs.bonuses
+    let pattern = inputs.pattern
+    let t = inputs.t
+
+    if pattern[pattern.index(pattern.startIndex, offsetBy: i)] == t[j0] {
+        var diag: Int16 = 0
+        if i > 0, j0 > 0 {
+            diag = h[iW - width + j0 - 1]
+        }
+        s1 = diag + Int16(scoreMatch)
+        var b = bonuses[j0]
+
+        if i > 0, j0 > 0 {
+            consecutive = c[iW - width + j0 - 1] + 1
+            if b == Int16(bonusBoundary) {
+                consecutive = 1
+            } else if consecutive > 1 {
+                b = max(b, max(Int16(bonusConsecutive), bonuses[j0 - Int(consecutive) + 1]))
+            }
+        } else {
+            consecutive = 1
+            b *= Int16(bonusFirstCharMultiplier)
+        }
+
+        if s1 + b < 0 {
+            s1 += bonuses[j0]
+            consecutive = 0
+        } else {
+            s1 += b
+        }
+    }
+
+    return (s1, consecutive)
+}
+
+private func calculateGapScore(state: State, inGap: Bool) -> Int16 {
+    var s2: Int16 = 0
+    let j0 = state.j0
+    let iW = state.iW
+    let h = state.h
+
+    if j0 > 0 {
+        if inGap {
+            s2 = h[iW + j0 - 1] + Int16(scoreGapExtension)
+        } else {
+            s2 = h[iW + j0 - 1] + Int16(scoreGapStart)
+        }
+    }
+
+    return s2
 }
 
 private func exactMatchNaive(text: String, pattern: String) -> Result {
@@ -141,7 +193,7 @@ private func exactMatchNaive(text: String, pattern: String) -> Result {
     var bestBonus: Int16 = -1
 
     for (index, char) in text.enumerated() {
-        var adjustedChar = char
+        let adjustedChar = char
 
         if adjustedChar == pattern[pattern.index(pattern.startIndex, offsetBy: pidx)] {
             bonus = bonusFor(.charNonWord, charClassOf(adjustedChar))
@@ -208,4 +260,4 @@ private let bonusCamel123 = bonusBoundary + scoreGapExtension
 private let bonusConsecutive = -(scoreGapStart + scoreGapExtension)
 private let bonusFirstCharMultiplier = 2
 
-// swiftlint:enable identifier_name cyclomatic_complexity function_body_length
+// swiftlint:enable identifier_name
