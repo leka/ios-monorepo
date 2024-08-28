@@ -41,6 +41,6 @@ extension GameplayChooseAnyAnswer where ChoiceModelType == GameplayChooseAnyAnsw
 
     func process(_ choice: ChoiceModelType, _: DragAndDropAnyAnswer.DropZone) {
         numberOfTrials += 1
-        updateChoice(choice, state: .rightAnswer)
+        updateChoice(choice, state: .selected, interactivity: .editable)
     }
 }
