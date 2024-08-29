@@ -28,7 +28,7 @@ class DraggableImageAnswerNode: SKSpriteNode {
         self.defaultPosition = position
     }
 
-    init(choice: GameplayDragAndDropIntoZonesChoiceModel, scale: CGFloat = 1, position: CGPoint) {
+    init(choice: GameplayFindTheRightAnswersChoiceModelDragAndDropIntoZones, scale: CGFloat = 1, position: CGPoint) {
         self.id = choice.id
 
         guard let path = Bundle.path(forImage: choice.choice.value) else {

@@ -6,9 +6,10 @@ import AccountKit
 import ContentKit
 import Foundation
 
-// MARK: - GameplayDragAndDropIntoZonesChoiceModel
+// MARK: - GameplayFindTheRightAnswersChoiceModelDragAndDropIntoZones
 
-struct GameplayDragAndDropIntoZonesChoiceModel: GameplayChoiceModelProtocol {
+// swiftlint:disable:next type_name
+struct GameplayFindTheRightAnswersChoiceModelDragAndDropIntoZones: GameplayChoiceModelProtocol {
     typealias ChoiceType = DragAndDropIntoZones.Choice
 
     let id: String = UUID().uuidString
@@ -18,14 +19,14 @@ struct GameplayDragAndDropIntoZonesChoiceModel: GameplayChoiceModelProtocol {
 
 // MARK: Equatable
 
-extension GameplayDragAndDropIntoZonesChoiceModel: Equatable {
-    static func == (lhs: GameplayDragAndDropIntoZonesChoiceModel, rhs: GameplayDragAndDropIntoZonesChoiceModel) -> Bool {
+extension GameplayFindTheRightAnswersChoiceModelDragAndDropIntoZones: Equatable {
+    static func == (lhs: GameplayFindTheRightAnswersChoiceModelDragAndDropIntoZones, rhs: GameplayFindTheRightAnswersChoiceModelDragAndDropIntoZones) -> Bool {
         lhs.id == rhs.id
     }
 }
 
-extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayDragAndDropIntoZonesChoiceModel {
-    convenience init(choices: [GameplayDragAndDropIntoZonesChoiceModel], allowedTrials: Int? = nil) {
+extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayFindTheRightAnswersChoiceModelDragAndDropIntoZones {
+    convenience init(choices: [GameplayFindTheRightAnswersChoiceModelDragAndDropIntoZones], allowedTrials: Int? = nil) {
         self.init()
         self.choices.send(choices)
         self.rightAnswers = choices.filter { $0.choice.dropZone != .none }
