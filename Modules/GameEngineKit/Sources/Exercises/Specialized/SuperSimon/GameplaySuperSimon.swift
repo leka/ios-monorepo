@@ -73,6 +73,8 @@ class GameplaySuperSimon: StatefulGameplayProtocol {
 
     // MARK: Internal
 
+    typealias GameplayChoiceModelType = GameplaySuperSimonChoiceModel
+
     var state: CurrentValueSubject<ExerciseState, Never> = .init(.idle)
     var gameState: CurrentValueSubject<SuperSimonGameState, Never> = .init(.showingColorSequence)
     var numberOfTrials: Int = 0

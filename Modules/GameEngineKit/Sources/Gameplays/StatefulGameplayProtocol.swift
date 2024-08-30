@@ -7,6 +7,8 @@ import Combine
 // MARK: - StatefulGameplayProtocol
 
 protocol StatefulGameplayProtocol {
+    associatedtype GameplayChoiceModelType
+
     var state: CurrentValueSubject<ExerciseState, Never> { get }
 
     func evaluateCompletionLevel(allowedTrials: Int, numberOfTrials: Int) -> ExerciseState.CompletionLevel

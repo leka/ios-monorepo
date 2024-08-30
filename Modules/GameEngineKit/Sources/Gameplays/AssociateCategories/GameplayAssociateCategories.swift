@@ -9,6 +9,8 @@ import Foundation
 class GameplayAssociateCategories<ChoiceModelType>: StatefulGameplayProtocol
     where ChoiceModelType: GameplayChoiceModelProtocol
 {
+    typealias GameplayChoiceModelType = ChoiceModelType
+
     var choices: CurrentValueSubject<[ChoiceModelType], Never> = .init([])
     var state: CurrentValueSubject<ExerciseState, Never> = .init(.idle)
     var isTappable: CurrentValueSubject<Bool, Never> = .init(true)
