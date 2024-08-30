@@ -24,7 +24,7 @@ class GameplayAssociateCategories<ChoiceModelType>: StatefulGameplayProtocol
         self.choices.value[index].state = state
     }
 
-    func getNumberOfRightAnswers(choices: [GameplayAssociateCategoriesChoiceModel]) -> Int {
+    func getNumberOfRightAnswers(choices: [GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate]) -> Int {
         let numberOfCategories = Set(choices.map(\.choice.category)).count
         let numberOfCategorizableChoices = choices.map { $0.choice.category != .none }.count
 
@@ -33,7 +33,7 @@ class GameplayAssociateCategories<ChoiceModelType>: StatefulGameplayProtocol
 
     func getNumberOfAllowedTrials(from table: GradingLUT) -> Int {
         let numberOfChoices = self.choices.value.count
-        if let associateChoices = self.choices.value as? [GameplayAssociateCategoriesChoiceModel] {
+        if let associateChoices = self.choices.value as? [GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate] {
             let numberOfRightAnswers = self.getNumberOfRightAnswers(choices: associateChoices)
             return table[numberOfChoices]![numberOfRightAnswers]!
         } else if let memoryChoices = self.choices.value as? [GameplayMemoryChoiceModel] {

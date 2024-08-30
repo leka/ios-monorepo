@@ -15,7 +15,7 @@ extension DragAndDropToAssociateView {
             shuffle: Bool = false,
             shared: ExerciseSharedData? = nil
         ) {
-            let gameplayChoiceModel = choices.map { GameplayAssociateCategoriesChoiceModel(choice: $0) }
+            let gameplayChoiceModel = choices.map { GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate(choice: $0) }
             self.choices = shuffle ? gameplayChoiceModel.shuffled() : gameplayChoiceModel
             self.gameplay = GameplayAssociateCategories(choices: gameplayChoiceModel)
             self.exercicesSharedData = shared ?? ExerciseSharedData()
@@ -27,19 +27,19 @@ extension DragAndDropToAssociateView {
         // MARK: Public
 
         public func onChoiceTapped(
-            choice: GameplayAssociateCategoriesChoiceModel, destination: GameplayAssociateCategoriesChoiceModel
+            choice: GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate, destination: GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate
         ) {
             self.gameplay.process(choice, destination)
         }
 
         // MARK: Internal
 
-        @Published var choices: [GameplayAssociateCategoriesChoiceModel] = []
+        @Published var choices: [GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate] = []
         @ObservedObject var exercicesSharedData: ExerciseSharedData
 
         // MARK: Private
 
-        private let gameplay: GameplayAssociateCategories<GameplayAssociateCategoriesChoiceModel>
+        private let gameplay: GameplayAssociateCategories<GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate>
         private var cancellables: Set<AnyCancellable> = []
 
         private func subscribeToGameplayAssociateCategoriesChoicesUpdates() {

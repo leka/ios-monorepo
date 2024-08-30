@@ -6,9 +6,10 @@ import AccountKit
 import ContentKit
 import Foundation
 
-// MARK: - GameplayAssociateCategoriesChoiceModel
+// MARK: - GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate
 
-struct GameplayAssociateCategoriesChoiceModel: GameplayChoiceModelProtocol {
+// swiftlint:disable:next type_name
+struct GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate: GameplayChoiceModelProtocol {
     typealias ChoiceType = DragAndDropToAssociate.Choice
 
     let id: String = UUID().uuidString
@@ -18,14 +19,14 @@ struct GameplayAssociateCategoriesChoiceModel: GameplayChoiceModelProtocol {
 
 // MARK: Equatable
 
-extension GameplayAssociateCategoriesChoiceModel: Equatable {
-    static func == (lhs: GameplayAssociateCategoriesChoiceModel, rhs: GameplayAssociateCategoriesChoiceModel) -> Bool {
+extension GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate: Equatable {
+    static func == (lhs: GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate, rhs: GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate) -> Bool {
         lhs.id == rhs.id
     }
 }
 
-extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociateCategoriesChoiceModel {
-    convenience init(choices: [GameplayAssociateCategoriesChoiceModel], allowedTrials: Int? = nil) {
+extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate {
+    convenience init(choices: [GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate], allowedTrials: Int? = nil) {
         self.init()
         self.choices.send(choices)
         self.state.send(.playing())

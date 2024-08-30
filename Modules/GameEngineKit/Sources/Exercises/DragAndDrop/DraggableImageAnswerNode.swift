@@ -8,7 +8,7 @@ import SpriteKit
 class DraggableImageAnswerNode: SKSpriteNode {
     // MARK: Lifecycle
 
-    init(choice: GameplayAssociateCategoriesChoiceModel, scale: CGFloat = 1, position: CGPoint) {
+    init(choice: GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate, scale: CGFloat = 1, position: CGPoint) {
         self.id = choice.id
 
         guard let path = Bundle.path(forImage: choice.choice.value) else {
