@@ -48,7 +48,7 @@ class DraggableImageAnswerNode: SKSpriteNode {
         self.defaultPosition = position
     }
 
-    init(choice: GameplayDragAndDropInOrderChoiceModel, scale: CGFloat = 1, position: CGPoint) {
+    init(choice: GameplayFindTheRightOrderChoiceModelDragAndDropInOrder, scale: CGFloat = 1, position: CGPoint) {
         self.id = choice.id
 
         guard let pathImage = Bundle.path(forImage: choice.choice.value),
