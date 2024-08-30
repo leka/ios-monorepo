@@ -28,7 +28,7 @@ class SuperSimonViewViewModel: ObservableObject {
     @Published public var disableRobot: Bool = true
 
     public func onChoiceTapped(choice: GameplaySuperSimonChoiceModel) {
-        self.gameplay.process(choice)
+        self.gameplay.process(choice: choice)
     }
 
     // MARK: Internal

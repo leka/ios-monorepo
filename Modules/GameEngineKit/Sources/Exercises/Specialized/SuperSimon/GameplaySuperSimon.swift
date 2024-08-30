@@ -101,7 +101,7 @@ class GameplaySuperSimon: StatefulGameplayProtocol {
         }
     }
 
-    func process(_ choice: GameplaySuperSimonChoiceModel) {
+    func process(choice: GameplaySuperSimonChoiceModel) {
         self.numberOfTrials += 1
 
         if choice.id == self.currentColorSequence.value[self.sequenceIndex].id {

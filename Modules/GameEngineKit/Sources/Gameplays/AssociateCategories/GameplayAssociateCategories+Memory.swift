@@ -38,7 +38,7 @@ extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociate
         }
     }
 
-    func process(_ choice: ChoiceModelType) {
+    func process(choice: ChoiceModelType) {
         let numberOfCardInCategories = self.choices.value.count / Set(choices.value.map(\.choice.category)).count
         updateChoice(choice, state: .selected)
         self.selectedChoices.append(choice)

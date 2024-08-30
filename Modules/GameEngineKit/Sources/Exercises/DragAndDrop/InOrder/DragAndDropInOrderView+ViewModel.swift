@@ -29,7 +29,7 @@ extension DragAndDropInOrderView {
         public func onChoiceDropped(choice: GameplayFindTheRightOrderChoiceModelDragAndDropInOrder, dropZoneIndex: Int) {
             var newChoice = choice
             newChoice.dropZoneIndex = dropZoneIndex
-            self.gameplay.process(newChoice)
+            self.gameplay.process(choice: newChoice)
         }
 
         public func onChoiceDroppedOutOfDropZone(choice: GameplayFindTheRightOrderChoiceModelDragAndDropInOrder) {

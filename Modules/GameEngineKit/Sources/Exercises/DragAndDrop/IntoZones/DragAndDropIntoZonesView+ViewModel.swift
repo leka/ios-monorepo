@@ -27,7 +27,7 @@ extension DragAndDropIntoZonesView {
         ) {
             var newChoice = choice
             newChoice.droppedIntoZone = dropZone
-            self.gameplay.process(newChoice)
+            self.gameplay.process(choice: newChoice)
         }
 
         // MARK: Internal

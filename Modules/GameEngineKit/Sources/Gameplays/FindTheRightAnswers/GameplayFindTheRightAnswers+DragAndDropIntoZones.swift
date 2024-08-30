@@ -40,7 +40,7 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayFindTheRi
         }
     }
 
-    func process(_ choice: ChoiceModelType) {
+    func process(choice: ChoiceModelType) {
         guard rightAnswers.isNotEmpty else {
             return
         }

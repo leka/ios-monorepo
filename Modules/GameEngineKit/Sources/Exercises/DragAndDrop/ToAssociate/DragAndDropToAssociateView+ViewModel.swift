@@ -31,7 +31,7 @@ extension DragAndDropToAssociateView {
         ) {
             var newChoice = choice
             newChoice.destination = destination
-            self.gameplay.process(newChoice)
+            self.gameplay.process(choice: newChoice)
         }
 
         // MARK: Internal

@@ -11,8 +11,21 @@ protocol StatefulGameplayProtocol {
 
     var state: CurrentValueSubject<ExerciseState, Never> { get }
 
+    func process(choice: GameplayChoiceModelType)
+
     func evaluateCompletionLevel(allowedTrials: Int, numberOfTrials: Int) -> ExerciseState.CompletionLevel
     func getNumberOfAllowedTrials(from table: GradingLUT) -> Int
+}
+
+extension StatefulGameplayProtocol {
+    func process(choice _: GameplayChoiceModelType) {
+        fatalError(
+            """
+            process(choice:) was called but is not implemented.
+            Be sure to provide an implementation for your specific gameplay.
+            """
+        )
+    }
 }
 
 extension StatefulGameplayProtocol {

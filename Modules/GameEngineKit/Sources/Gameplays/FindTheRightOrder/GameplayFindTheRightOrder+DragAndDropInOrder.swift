@@ -40,7 +40,7 @@ extension GameplayFindTheRightOrder where ChoiceModelType == GameplayFindTheRigh
         }
     }
 
-    func process(_ choice: ChoiceModelType) {
+    func process(choice: ChoiceModelType) {
         guard answers.count < rightAnswers.count else {
             return
         }

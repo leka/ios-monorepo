@@ -49,7 +49,7 @@ extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociate
         }
     }
 
-    func process(_ choice: ChoiceModelType) {
+    func process(choice: ChoiceModelType) {
         guard let destination = choice.destination else {
             return
         }
