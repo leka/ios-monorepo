@@ -26,10 +26,12 @@ extension DragAndDropToAssociateView {
 
         // MARK: Public
 
-        public func onChoiceTapped(
+        public func onChoiceDropped(
             choice: GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate, destination: GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate
         ) {
-            self.gameplay.process(choice, destination)
+            var newChoice = choice
+            newChoice.destination = destination
+            self.gameplay.process(newChoice)
         }
 
         // MARK: Internal

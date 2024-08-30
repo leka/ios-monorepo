@@ -212,7 +212,7 @@ extension DragAndDropToAssociateView {
                 guard let choice = viewModel.choices.first(where: { $0.id == playedNode!.id })
                 else { return }
 
-                self.viewModel.onChoiceTapped(choice: choice, destination: destination)
+                self.viewModel.onChoiceDropped(choice: choice, destination: destination)
             }
         }
 
