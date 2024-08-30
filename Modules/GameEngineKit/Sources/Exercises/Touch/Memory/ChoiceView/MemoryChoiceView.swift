@@ -18,7 +18,7 @@ struct MemoryChoiceView: View {
         self.isTappable = isTappable
     }
 
-    init(choice: GameplayMemoryChoiceModel, size: CGFloat, isTappable: Bool = true) {
+    init(choice: GameplayAssociateCategoriesChoiceModelMemory, size: CGFloat, isTappable: Bool = true) {
         self.init(choice: choice.choice, state: choice.state, size: size, isTappable: isTappable)
     }
 

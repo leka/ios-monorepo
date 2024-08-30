@@ -36,7 +36,7 @@ class GameplayAssociateCategories<ChoiceModelType>: StatefulGameplayProtocol
         if let associateChoices = self.choices.value as? [GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate] {
             let numberOfRightAnswers = self.getNumberOfRightAnswers(choices: associateChoices)
             return table[numberOfChoices]![numberOfRightAnswers]!
-        } else if let memoryChoices = self.choices.value as? [GameplayMemoryChoiceModel] {
+        } else if let memoryChoices = self.choices.value as? [GameplayAssociateCategoriesChoiceModelMemory] {
             let numberOfCategories = Set(memoryChoices.map(\.choice.category)).count
             return table[numberOfChoices]![numberOfCategories]!
         } else {
