@@ -22,7 +22,7 @@ class MemoryViewViewModel: ObservableObject {
     // MARK: Public
 
     public func onChoiceTapped(choice: GameplayAssociateCategoriesChoiceModelMemory) {
-        self.gameplay.process(choice)
+        self.gameplay.process(choice: choice)
     }
 
     // MARK: Internal

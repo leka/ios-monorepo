@@ -22,10 +22,12 @@ extension DragAndDropIntoZonesView {
 
         // MARK: Public
 
-        public func onChoiceTapped(
-            choice: GameplayFindTheRightAnswersChoiceModelDragAndDropIntoZones, dropZone: DragAndDropIntoZones.DropZone
+        public func onChoiceDropped(
+            choice: GameplayFindTheRightAnswersChoiceModelDragAndDropIntoZones, into dropZone: DragAndDropIntoZones.DropZone
         ) {
-            self.gameplay.process(choice, dropZone)
+            var newChoice = choice
+            newChoice.droppedIntoZone = dropZone
+            self.gameplay.process(choice: newChoice)
         }
 
         // MARK: Internal

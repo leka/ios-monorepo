@@ -22,7 +22,7 @@ class TouchToSelectViewViewModel: ObservableObject {
     // MARK: Public
 
     public func onChoiceTapped(choice: GameplayFindTheRightAnswersChoiceModelTouchToSelect) {
-        self.gameplay.process(choice)
+        self.gameplay.process(choice: choice)
     }
 
     // MARK: Internal

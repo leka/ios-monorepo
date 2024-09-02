@@ -247,12 +247,12 @@ extension DragAndDropIntoZonesView {
                 let gameplayChoiceModel = self.viewModel.choices.first(where: { $0.id == self.playedNode!.id })
 
                 if self.playedNode!.fullyContains(bounds: self.dropZoneA.node.frame) {
-                    self.viewModel.onChoiceTapped(choice: gameplayChoiceModel!, dropZone: self.dropZoneA.zone)
+                    self.viewModel.onChoiceDropped(choice: gameplayChoiceModel!, into: self.dropZoneA.zone)
                     break
                 }
 
                 if let dropZoneB, self.playedNode!.fullyContains(bounds: dropZoneB.node.frame) {
-                    self.viewModel.onChoiceTapped(choice: gameplayChoiceModel!, dropZone: dropZoneB.zone)
+                    self.viewModel.onChoiceDropped(choice: gameplayChoiceModel!, into: dropZoneB.zone)
                     break
                 }
 

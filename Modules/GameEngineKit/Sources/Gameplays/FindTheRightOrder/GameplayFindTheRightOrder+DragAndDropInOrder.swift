@@ -14,6 +14,7 @@ struct GameplayFindTheRightOrderChoiceModelDragAndDropInOrder: GameplayChoiceMod
 
     let id: String = UUID().uuidString
     let choice: ChoiceType
+    var dropZoneIndex: Int?
     var state: GameplayChoiceState = .idle
 }
 
@@ -39,8 +40,12 @@ extension GameplayFindTheRightOrder where ChoiceModelType == GameplayFindTheRigh
         }
     }
 
-    func process(_ choice: ChoiceModelType, _ dropZoneIndex: Int) {
+    func process(choice: ChoiceModelType) {
         guard answers.count < rightAnswers.count else {
+            return
+        }
+
+        guard let dropZoneIndex = choice.dropZoneIndex else {
             return
         }
 

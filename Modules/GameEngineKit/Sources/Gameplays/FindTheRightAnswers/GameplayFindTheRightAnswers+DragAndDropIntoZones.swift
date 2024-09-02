@@ -14,6 +14,7 @@ struct GameplayFindTheRightAnswersChoiceModelDragAndDropIntoZones: GameplayChoic
 
     let id: String = UUID().uuidString
     let choice: ChoiceType
+    var droppedIntoZone: DragAndDropIntoZones.DropZone?
     var state: GameplayChoiceState = .idle
 }
 
@@ -39,14 +40,14 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayFindTheRi
         }
     }
 
-    func process(_ choice: ChoiceModelType, _ dropZone: DragAndDropIntoZones.DropZone) {
+    func process(choice: ChoiceModelType) {
         guard rightAnswers.isNotEmpty else {
             return
         }
 
         numberOfTrials += 1
 
-        if choice.choice.dropZone == dropZone {
+        if choice.choice.dropZone == choice.droppedIntoZone {
             updateChoice(choice, state: .rightAnswer)
             rightAnswers.removeAll { $0.id == choice.id }
         } else {

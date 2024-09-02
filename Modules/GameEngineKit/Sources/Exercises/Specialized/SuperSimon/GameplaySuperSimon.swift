@@ -73,6 +73,8 @@ class GameplaySuperSimon: StatefulGameplayProtocol {
 
     // MARK: Internal
 
+    typealias GameplayChoiceModelType = GameplaySuperSimonChoiceModel
+
     var state: CurrentValueSubject<ExerciseState, Never> = .init(.idle)
     var gameState: CurrentValueSubject<SuperSimonGameState, Never> = .init(.showingColorSequence)
     var numberOfTrials: Int = 0
@@ -99,7 +101,7 @@ class GameplaySuperSimon: StatefulGameplayProtocol {
         }
     }
 
-    func process(_ choice: GameplaySuperSimonChoiceModel) {
+    func process(choice: GameplaySuperSimonChoiceModel) {
         self.numberOfTrials += 1
 
         if choice.id == self.currentColorSequence.value[self.sequenceIndex].id {
