@@ -9,7 +9,7 @@ struct TTSViewAssociateCategories: View {
         VStack(spacing: 50) {
             Text("Find the right categories: (1/3), (2/5), (4/6)")
                 .font(.title)
-            TTSView()
+//            TTSView()
         }
     }
 }
