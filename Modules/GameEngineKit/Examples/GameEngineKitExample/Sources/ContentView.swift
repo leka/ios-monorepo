@@ -14,22 +14,25 @@ struct ContentView: View {
 
             VStack(spacing: 20) {
                 NavigationLink("Find The Right Answers", destination: {
-                    Text("Find The Right Answers")
-                        .font(.largeTitle)
+                    TTSViewFindTheRightOrder()
+                        .navigationTitle("Find The Right Answers")
+                        .navigationBarTitleDisplayMode(.large)
                 })
                 .tint(.orange)
                 .buttonStyle(.borderedProminent)
 
                 NavigationLink("Find The Right Order", destination: {
-                    Text("Find The Right Order")
-                        .font(.largeTitle)
+                    TTSViewFindTheRightOrder()
+                        .navigationTitle("Find The Right Order")
+                        .navigationBarTitleDisplayMode(.large)
                 })
                 .tint(.green)
                 .buttonStyle(.borderedProminent)
 
                 NavigationLink("Associate Categories", destination: {
-                    Text("Associate Categories")
-                        .font(.largeTitle)
+                    TTSViewAssociateCategories()
+                        .navigationTitle("Associate Categories")
+                        .navigationBarTitleDisplayMode(.large)
                 })
                 .tint(.cyan)
                 .buttonStyle(.borderedProminent)
