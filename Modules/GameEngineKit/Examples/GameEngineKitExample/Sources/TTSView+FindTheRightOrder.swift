@@ -9,7 +9,7 @@ struct TTSViewFindTheRightOrder: View {
         VStack(spacing: 50) {
             Text("Find the right order: 1, 2, 3, 4, 5, 6")
                 .font(.title)
-            TTSView()
+//            TTSView()
         }
     }
 }
