@@ -11,7 +11,7 @@ extension DragAndDropInOrderView {
         // MARK: Lifecycle
 
         init(choices: [DragAndDropInOrder.Choice], shared: ExerciseSharedData? = nil) {
-            let gameplayChoiceModel = choices.map { GameplayDragAndDropInOrderChoiceModel(choice: $0) }
+            let gameplayChoiceModel = choices.map { GameplayFindTheRightOrderChoiceModelDragAndDropInOrder(choice: $0) }
             var randomizedChoices = gameplayChoiceModel.shuffled()
             while randomizedChoices == gameplayChoiceModel {
                 randomizedChoices = gameplayChoiceModel.shuffled()
@@ -26,22 +26,22 @@ extension DragAndDropInOrderView {
 
         // MARK: Public
 
-        public func onChoiceDropped(choice: GameplayDragAndDropInOrderChoiceModel, dropZoneIndex: Int) {
+        public func onChoiceDropped(choice: GameplayFindTheRightOrderChoiceModelDragAndDropInOrder, dropZoneIndex: Int) {
             self.gameplay.process(choice, dropZoneIndex)
         }
 
-        public func onChoiceDroppedOutOfDropZone(choice: GameplayDragAndDropInOrderChoiceModel) {
+        public func onChoiceDroppedOutOfDropZone(choice: GameplayFindTheRightOrderChoiceModelDragAndDropInOrder) {
             self.gameplay.cancelChoice(choice)
         }
 
         // MARK: Internal
 
-        @Published var choices: [GameplayDragAndDropInOrderChoiceModel] = []
+        @Published var choices: [GameplayFindTheRightOrderChoiceModelDragAndDropInOrder] = []
         @ObservedObject var exercicesSharedData: ExerciseSharedData
 
         // MARK: Private
 
-        private let gameplay: GameplayFindTheRightOrder<GameplayDragAndDropInOrderChoiceModel>
+        private let gameplay: GameplayFindTheRightOrder<GameplayFindTheRightOrderChoiceModelDragAndDropInOrder>
         private var cancellables: Set<AnyCancellable> = []
 
         private func subscribeToGameplayDragAndDropChoicesUpdates() {

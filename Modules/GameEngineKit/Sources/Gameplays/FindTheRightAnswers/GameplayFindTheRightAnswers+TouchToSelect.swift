@@ -6,9 +6,10 @@ import AccountKit
 import ContentKit
 import Foundation
 
-// MARK: - GameplayTouchToSelectChoiceModel
+// MARK: - GameplayFindTheRightAnswersChoiceModelTouchToSelect
 
-struct GameplayTouchToSelectChoiceModel: GameplayChoiceModelProtocol {
+// swiftlint:disable:next type_name
+struct GameplayFindTheRightAnswersChoiceModelTouchToSelect: GameplayChoiceModelProtocol {
     typealias ChoiceType = TouchToSelect.Choice
 
     let id: String = UUID().uuidString
@@ -18,14 +19,14 @@ struct GameplayTouchToSelectChoiceModel: GameplayChoiceModelProtocol {
 
 // MARK: Equatable
 
-extension GameplayTouchToSelectChoiceModel: Equatable {
-    static func == (lhs: GameplayTouchToSelectChoiceModel, rhs: GameplayTouchToSelectChoiceModel) -> Bool {
+extension GameplayFindTheRightAnswersChoiceModelTouchToSelect: Equatable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.id == rhs.id
     }
 }
 
-extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayTouchToSelectChoiceModel {
-    convenience init(choices: [GameplayTouchToSelectChoiceModel], shuffle: Bool = false, allowedTrials: Int? = nil) {
+extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayFindTheRightAnswersChoiceModelTouchToSelect {
+    convenience init(choices: [GameplayFindTheRightAnswersChoiceModelTouchToSelect], shuffle: Bool = false, allowedTrials: Int? = nil) {
         self.init()
         self.choices.send(shuffle ? choices.shuffled() : choices)
         self.rightAnswers = choices.filter(\.choice.isRightAnswer)

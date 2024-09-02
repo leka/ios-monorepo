@@ -6,9 +6,10 @@ import AccountKit
 import ContentKit
 import Foundation
 
-// MARK: - GameplayMemoryChoiceModel
+// MARK: - GameplayAssociateCategoriesChoiceModelMemory
 
-struct GameplayMemoryChoiceModel: GameplayChoiceModelProtocol {
+// swiftlint:disable:next type_name
+struct GameplayAssociateCategoriesChoiceModelMemory: GameplayChoiceModelProtocol {
     typealias ChoiceType = Memory.Choice
 
     let id: String = UUID().uuidString
@@ -18,14 +19,14 @@ struct GameplayMemoryChoiceModel: GameplayChoiceModelProtocol {
 
 // MARK: Equatable
 
-extension GameplayMemoryChoiceModel: Equatable {
-    static func == (lhs: GameplayMemoryChoiceModel, rhs: GameplayMemoryChoiceModel) -> Bool {
+extension GameplayAssociateCategoriesChoiceModelMemory: Equatable {
+    static func == (lhs: GameplayAssociateCategoriesChoiceModelMemory, rhs: GameplayAssociateCategoriesChoiceModelMemory) -> Bool {
         lhs.id == rhs.id
     }
 }
 
-extension GameplayAssociateCategories where ChoiceModelType == GameplayMemoryChoiceModel {
-    convenience init(choices: [GameplayMemoryChoiceModel], allowedTrials: Int? = nil) {
+extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociateCategoriesChoiceModelMemory {
+    convenience init(choices: [GameplayAssociateCategoriesChoiceModelMemory], allowedTrials: Int? = nil) {
         self.init()
         self.choices.send(choices)
         self.state.send(.playing())

@@ -8,7 +8,7 @@ import SpriteKit
 class DraggableImageAnswerNode: SKSpriteNode {
     // MARK: Lifecycle
 
-    init(choice: GameplayAssociateCategoriesChoiceModel, scale: CGFloat = 1, position: CGPoint) {
+    init(choice: GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate, scale: CGFloat = 1, position: CGPoint) {
         self.id = choice.id
 
         guard let path = Bundle.path(forImage: choice.choice.value) else {
@@ -28,7 +28,7 @@ class DraggableImageAnswerNode: SKSpriteNode {
         self.defaultPosition = position
     }
 
-    init(choice: GameplayDragAndDropIntoZonesChoiceModel, scale: CGFloat = 1, position: CGPoint) {
+    init(choice: GameplayFindTheRightAnswersChoiceModelDragAndDropIntoZones, scale: CGFloat = 1, position: CGPoint) {
         self.id = choice.id
 
         guard let path = Bundle.path(forImage: choice.choice.value) else {
@@ -48,7 +48,7 @@ class DraggableImageAnswerNode: SKSpriteNode {
         self.defaultPosition = position
     }
 
-    init(choice: GameplayDragAndDropInOrderChoiceModel, scale: CGFloat = 1, position: CGPoint) {
+    init(choice: GameplayFindTheRightOrderChoiceModelDragAndDropInOrder, scale: CGFloat = 1, position: CGPoint) {
         self.id = choice.id
 
         guard let pathImage = Bundle.path(forImage: choice.choice.value),

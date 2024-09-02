@@ -10,7 +10,7 @@ class MemoryViewViewModel: ObservableObject {
     // MARK: Lifecycle
 
     init(choices: [Memory.Choice], shared: ExerciseSharedData? = nil, shuffleChoices: Bool = false) {
-        let gameplayChoiceModel = shuffleChoices ? choices.map { GameplayMemoryChoiceModel(choice: $0) }.shuffled() : choices.map { GameplayMemoryChoiceModel(choice: $0) }
+        let gameplayChoiceModel = shuffleChoices ? choices.map { GameplayAssociateCategoriesChoiceModelMemory(choice: $0) }.shuffled() : choices.map { GameplayAssociateCategoriesChoiceModelMemory(choice: $0) }
         self.gameplay = GameplayAssociateCategories(choices: gameplayChoiceModel)
         self.exercicesSharedData = shared ?? ExerciseSharedData()
 
@@ -21,19 +21,19 @@ class MemoryViewViewModel: ObservableObject {
 
     // MARK: Public
 
-    public func onChoiceTapped(choice: GameplayMemoryChoiceModel) {
+    public func onChoiceTapped(choice: GameplayAssociateCategoriesChoiceModelMemory) {
         self.gameplay.process(choice)
     }
 
     // MARK: Internal
 
     @Published var isTappable: Bool = false
-    @Published var choices: [GameplayMemoryChoiceModel] = []
+    @Published var choices: [GameplayAssociateCategoriesChoiceModelMemory] = []
     @ObservedObject var exercicesSharedData: ExerciseSharedData
 
     // MARK: Private
 
-    private let gameplay: GameplayAssociateCategories<GameplayMemoryChoiceModel>
+    private let gameplay: GameplayAssociateCategories<GameplayAssociateCategoriesChoiceModelMemory>
     private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToGameplaySelectionChoicesUpdates() {
