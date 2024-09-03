@@ -56,6 +56,11 @@ public struct RobotConnectionView: View {
         .onDisappear {
             self.viewModel.stopScanning()
         }
+        .onChange(of: self.scenePhase) { newPhase in
+            if newPhase == .active {
+                self.viewModel.tryToConnectToRobotConnectedInAnotherApp()
+            }
+        }
         .navigationTitle(String(l10n.RobotKit.RobotConnectionView.navigationTitle.characters))
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
@@ -78,6 +83,8 @@ public struct RobotConnectionView: View {
     }
 
     // MARK: Internal
+
+    @Environment(\.scenePhase) var scenePhase
 
     @StateObject var viewModel: RobotConnectionViewModel
 
