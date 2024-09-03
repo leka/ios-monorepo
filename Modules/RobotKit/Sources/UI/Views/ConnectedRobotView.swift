@@ -51,7 +51,7 @@ public struct ConnectedRobotView: View {
             }
 
             VStack {
-                if self.robotNotUpToDate {
+                if self.robotNotUpToDate, self.isNotLekaUpdater {
                     Button {
                         let appURL = URL(string: "LekaUpdater://")
                         let appStoreURL = URL(string: "https://apps.apple.com/app/leka-updater/id6446940960")!
@@ -93,6 +93,10 @@ public struct ConnectedRobotView: View {
 
     @StateObject var connectedRobotInformationViewModel: ConnectedRobotInformationViewModel = .init()
     @StateObject var viewModel: RobotConnectionViewModel
+
+    // swiftlint:disable:next force_cast
+    private let isNotLekaUpdater = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as! String != "LekaUpdater"
+
     @State private var showNotUpToDateAlert: Bool = false
     private var robotNotUpToDate: Bool {
         let osVersion = self.connectedRobotInformationViewModel.osVersion
