@@ -497,9 +497,9 @@ private class StateErrorRobotNotUpToDate: GKState, StateError {}
 
 private class StateErrorRobotUnexpectedDisconnection: GKState, StateError {}
 
-// MARK: - UpdateProcessV150
+// MARK: - UpdateProcessV200
 
-class UpdateProcessV150: UpdateProcessProtocol {
+class UpdateProcessV200: UpdateProcessProtocol {
     // MARK: Lifecycle
 
     init() {
