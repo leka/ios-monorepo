@@ -7,100 +7,109 @@ l10n:
     details:
       title: Premiers Pas
       subtitle: Les Ressources sont les supports que nous mettons à la disposion de l'ensemble des accompagnants.
-      description: Les Ressources donnent les clés d'une utilisation optimale de la solution Leka avec des supports pour organiser ses séances, des guides explicatifs de l'utilisation du robot et de l'application Leka app ainsi que d'autres astuces pour la bonne mise en place de Leka !
+      description: Les ressources donnent les clés d'une utilisation optimale de la solution Leka !
   - locale: en_US
     details:
       title: First Steps
       subtitle: Resources are the tools we provide to all caregivers.
-      description: Resources provide the keys to optimal use of the Leka solution with materials to organize sessions, explanatory guides on using the robot and the Leka app, and other tips for successful Leka implementation!
+      description: Resources provide the keys to optimal use of the Leka solution!
 content:
-  - resource:
+  - id: robot_charging
+    l10n:
       - locale: fr_FR
         details:
-          icon: book.and.wrench
-          title: Le guide d'utilisation
-          description: Le guide vous accompagne dans les premières étapes de mise en route de votre nouvelle solution Leka !
-          value: first_step_FR
-          type: file
+          title: 1 - Le chargement du robot
+          subtitle:
+          description: Apprenez à mettre en charge votre robot !
       - locale: en_US
         details:
-          icon: book.and.wrench
-          title: User guide
-          description: The guide will help you through the first steps of setting up your new Leka solution!
-          value: first_step_EN
-          type: file
-  - resource:
+          title: 1 - Charging the robot
+          subtitle:
+          description: Learn how to charge your robot!
+    resources:
+      - resource:
+          - locale: fr_FR
+            details:
+              icon: battery.100percent.bolt
+              title: La mise en charge
+              value: https://www.youtube.com/watch?v=M0v0VzWjIYU
+              type: video
+          - locale: en_US
+            details:
+              icon: battery.100percent.bolt
+              title: Charging
+              value: https://www.youtube.com/watch?v=zYL-eG7Z1d8
+              type: video
+      - resource:
+          - locale: fr_FR
+            details:
+              icon: battery.100percent.bolt
+              title: La fiche de chargement
+              description: Découvrez la fiche de chargement de votre robot !
+              value: robot_charging_FR
+              type: file
+              illustration: robot_charging
+          - locale: en_US
+            details:
+              icon: battery.100percent.bolt
+              title: The charging sheet
+              description: Discover the charging sheet for your robot!
+              value: robot_charging_EN
+              type: file
+              illustration: robot_charging
+  - id: bluetooth_connection
+    l10n:
       - locale: fr_FR
         details:
-          icon: battery.100percent.bolt
-          title: Le chargement de Leka
-          description: Découvrez la fiche de chargement de votre robot !
-          value: charging_FR
-          type: file
+          title: 2 - La connexion tablette-robot
+          subtitle:
+          description: Découvrez comment connecter l'application Leka à votre robot !
       - locale: en_US
         details:
-          icon: battery.100percent.bolt
-          title: Charging Leka
-          description: Discover the charging sheet for your robot!
-          value: charging_EN
-          type: file
-  - resource:
+          title: 2 - Tablet-robot connection
+          subtitle:
+          description: Discover how to connect the Leka app to your robot!
+    resources:
+      - resource:
+          - locale: fr_FR
+            details:
+              icon: book.and.wrench
+              title: Le guide du Bluetooth
+              description: Découvrez comment connecter l'application à votre robot !
+              value: bluetooth_connection_FR
+              type: file
+              illustration: bluetooth_connection
+          - locale: en_US
+            details:
+              icon: book.and.wrench
+              title: The Bluetooth guide
+              description: Discover how to connect the app to your robot!
+              value: bluetooth_connection_EN
+              type: file
+              illustration: bluetooth_connection
+  - id: emergency_stop
+    l10n:
       - locale: fr_FR
         details:
-          icon: battery.100percent.bolt
-          title: Le chargement de Leka
-          description: Lorem ipsum
-          value: https://www.youtube.com/watch?v=M0v0VzWjIYU
-          type: video
+          title: 3 - Redémarrer le robot
+          subtitle:
+          description: En cas de bug, utilisez la carte Stop pour redémarrer votre robot !
       - locale: en_US
         details:
-          icon: battery.100percent.bolt
-          title: Charging Leka
-          description: Lorem ipsum
-          value: https://www.youtube.com/watch?v=zYL-eG7Z1d8
-          type: video
-  - resource:
-      - locale: fr_FR
-        details:
-          icon: book.pages
-          title: Les activités cartes magiques
-          description: Découvrez nos 10 fiches d'activités à réaliser avec les cartes magiques !
-          value: magic_cards_FR
-          type: file
-      - locale: en_US
-        details:
-          icon: book.pages
-          title: Magic cards activities
-          description: Discover our 10 activity sheets to do with the magic cards!
-          value: magic_cards_EN
-          type: file
-  - resource:
-      - locale: fr_FR
-        details:
-          icon: book.pages
-          title: Les activités cartes magiques
-          description: Lorem ipsum
-          value: https://www.youtube.com/watch?v=PyAK9tfBdfY
-          type: video
-      - locale: en_US
-        details:
-          icon: book.pages
-          title: Magic cards activities
-          description: Lorem ipsum
-          value: https://www.youtube.com/watch?v=97h2uKmJqCc
-          type: video
-  - resource:
-      - locale: fr_FR
-        details:
-          icon: book.pages
-          title: Utilisation de la carte Stop
-          description: Découvrez les deux fonctionnalités de la carte Stop !
-          value: emergency_stop_FR
-          type: file
-#      - locale: en_US
-#        details:
-#          icon: book.pages
-#          title: Using the Stop card
-#          description: Discover the two features of the Stop card!
-#          value: emergency_stop_EN
-#          type: file
+          title: 3 - Restarting the robot
+          subtitle:
+          description: In case of a bug, use the Stop card to restart your robot!
+    resources:
+      - resource:
+          - locale: fr_FR
+            details:
+              icon: book.and.wrench
+              title: L'utilisation de la carte "STOP"
+              value: https://www.youtube.com/watch?v=5rBmfCZtoX8
+              type: video
+          - locale: en_US
+            details:
+              icon: book.and.wrench
+              title: Use of the "STOP" card
+              value: https://www.youtube.com/watch?v=QE5TFLv7RqA
+              type: video

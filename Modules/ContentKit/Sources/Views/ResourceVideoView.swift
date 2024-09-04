@@ -35,7 +35,7 @@ public struct ResourceVideoView: View {
 #Preview {
     NavigationStack {
         ResourceVideoView(
-            resource: ContentKit.videosResources.content.map(\.resource)[0]
+            resource: ContentKit.firstStepsResources.sections[0].resources.map(\.resource)[0]
         )
     }
 }
