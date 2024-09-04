@@ -4,6 +4,7 @@
 
 import CryptoKit
 import Foundation
+import RobotKit
 import Version
 
 // MARK: - RobotUpdateStatus
@@ -51,8 +52,7 @@ class FirmwareManager: ObservableObject {
 
     // MARK: Internal
 
-    // swiftlint:disable:next force_cast
-    let currentVersion = Version(Bundle.main.object(forInfoDictionaryKey: "LEKA_OS_VERSION") as! String)!
+    let currentVersion = Version(Robot.kLatestFirmwareVersion)!
 
     func compareWith(version: Version?) -> RobotUpdateStatus {
         guard let version else {

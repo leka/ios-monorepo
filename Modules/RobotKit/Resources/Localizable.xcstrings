@@ -38,6 +38,24 @@
                 }
             }
         },
+        "robotkit.connected_robot_view.robot_not_up_to_date_alert": {
+            "comment": "Update is available alert",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "An update for Leka is available"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Une mise \u00e0 jour pour Leka est disponible"
+                    }
+                }
+            }
+        },
         "robotkit.connected_robot_view.serial_number_label": {
             "comment": "The title of the connected robot view",
             "extractionState": "extracted_with_value",
@@ -250,6 +268,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Bluetooth non autoris\u00e9"
+                    }
+                }
+            }
+        },
+        "robotkit.robot_discovery_view.robot_not_up_to_date_alert": {
+            "comment": "Update is available alert",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "An update for Leka is available"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Une mise \u00e0 jour pour Leka est disponible"
                     }
                 }
             }

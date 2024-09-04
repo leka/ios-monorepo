@@ -3,7 +3,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import LocalizationKit
 import SwiftUI
+
+// MARK: - RobotDiscoveryView
 
 struct RobotDiscoveryView: View {
     // MARK: Lifecycle
@@ -37,8 +40,19 @@ struct RobotDiscoveryView: View {
 
     @State private var rotation: CGFloat = 0.0
     @State private var inset: CGFloat = 0.0
+    @State private var showNotUpToDateAlert: Bool = false
 
     private var discovery: RobotDiscoveryViewModel
+
+    private var robotNotUpToDate: Bool {
+        let osVersion = self.discovery.osVersion
+        let versionIsLatest = osVersion == "LekaOS \(Robot.kLatestFirmwareVersion)"
+        if versionIsLatest {
+            return false
+        } else {
+            return true
+        }
+    }
 
     // MARK: - Private views
 
@@ -79,6 +93,21 @@ struct RobotDiscoveryView: View {
                 DesignKitAsset.Colors.lekaGreen.swiftUIColor.opacity(self.discovery.status == .connected ? 1.0 : 0.0),
                 in: Circle().inset(by: self.inset)
             )
+            .overlay(alignment: .topTrailing) {
+                if self.robotNotUpToDate {
+                    Button {
+                        self.showNotUpToDateAlert.toggle()
+                    } label: {
+                        Image(systemName: "exclamationmark.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundStyle(.white, .red)
+                    }
+                    .alert(String(l10n.RobotDiscoveryView.robotNotUpToDateAlert.characters), isPresented: self.$showNotUpToDateAlert) {
+                        Button("OK", role: .cancel) {}
+                    }
+                }
+            }
     }
 
     private var robotName: some View {
@@ -111,6 +140,19 @@ struct RobotDiscoveryView: View {
         Text(self.discovery.osVersion)
             .font(.caption)
             .foregroundColor(.gray)
+    }
+}
+
+// MARK: - l10n.RobotDiscoveryView
+
+extension l10n {
+    enum RobotDiscoveryView {
+        static let robotNotUpToDateAlert = LocalizedString(
+            "robotkit.robot_discovery_view.robot_not_up_to_date_alert",
+            bundle: RobotKitResources.bundle,
+            value: "An update for Leka is available",
+            comment: "Update is available alert"
+        )
     }
 }
 
