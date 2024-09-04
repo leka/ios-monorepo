@@ -14,7 +14,7 @@ struct ContentView: View {
 
             VStack(spacing: 20) {
                 NavigationLink("Find The Right Answers", destination: {
-                    TTSViewFindTheRightOrder()
+                    TTSViewFindTheRightAnswers()
                         .navigationTitle("Find The Right Answers")
                         .navigationBarTitleDisplayMode(.large)
                 })
