@@ -112,6 +112,23 @@ public class BLEManager {
         self.didDisconnect.send()
     }
 
+    public func retrieveConnectedRobots() -> [RobotPeripheral] {
+        guard self.centralManager.state == .poweredOn else {
+            return []
+        }
+
+        let connectedPeripherals = self.centralManager.retrieveConnectedPeripherals(withServices: [BLESpecs.AdvertisingData.service])
+
+        guard connectedPeripherals.isEmpty == false else {
+            return []
+        }
+
+        self.connectedRobotPeripheral = RobotPeripheral(peripheral: connectedPeripherals[0])
+        self.didConnect.send(self.connectedRobotPeripheral!)
+
+        return connectedPeripherals.map { RobotPeripheral(peripheral: $0) }
+    }
+
     // MARK: Private
 
     // MARK: - Private variables
@@ -120,21 +137,6 @@ public class BLEManager {
     private var connectedRobotPeripheral: RobotPeripheral?
 
     private var cancellables: Set<AnyCancellable> = []
-
-    private func retrieveConnectedRobots() {
-        guard self.centralManager.state == .poweredOn else {
-            return
-        }
-
-        let connectedPeripherals = self.centralManager.retrieveConnectedPeripherals(withServices: [BLESpecs.AdvertisingData.service])
-
-        guard connectedPeripherals.isEmpty == false else {
-            return
-        }
-
-        self.connectedRobotPeripheral = RobotPeripheral(peripheral: connectedPeripherals[0])
-        self.didConnect.send(self.connectedRobotPeripheral!)
-    }
 
     // MARK: - Private functions
 

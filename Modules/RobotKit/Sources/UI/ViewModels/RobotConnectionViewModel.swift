@@ -76,6 +76,18 @@ public class RobotConnectionViewModel: ObservableObject {
         self.connectedDiscovery = nil
     }
 
+    public func tryToConnectToRobotConnectedInAnotherApp() {
+        let connectedRobots = BLEManager.shared.retrieveConnectedRobots()
+        if connectedRobots.isEmpty || connectedRobots[0].peripheral.state == .connected {
+            return
+        }
+
+        let connectedRobotDiscoveryModel = RobotDiscoveryModel(robotPeripheral: connectedRobots[0], advertisingData: nil, rssi: nil)
+
+        self.select(discovery: connectedRobotDiscoveryModel)
+        self.connectToRobot()
+    }
+
     // MARK: Internal
 
     @Published var robotDiscoveries: [RobotDiscoveryModel] = []

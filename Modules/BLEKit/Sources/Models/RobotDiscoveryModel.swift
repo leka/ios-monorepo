@@ -21,14 +21,14 @@ public struct RobotDiscoveryModel: Identifiable {
         self.osVersion = osVersion
     }
 
-    public init(robotPeripheral: RobotPeripheral, advertisingData: RobotAdvertisingData, rssi: Double?) {
+    public init(robotPeripheral: RobotPeripheral, advertisingData: RobotAdvertisingData?, rssi: Double?) {
         self.robotPeripheral = robotPeripheral
         self.rssi = rssi
         self.id = robotPeripheral.peripheral.id
-        self.name = advertisingData.name
-        self.isCharging = advertisingData.isCharging
-        self.battery = advertisingData.battery
-        self.osVersion = computeVersion(version: advertisingData.osVersion, name: advertisingData.name)
+        self.name = advertisingData?.name ?? robotPeripheral.peripheral.name ?? "Leka"
+        self.isCharging = advertisingData?.isCharging ?? false
+        self.battery = advertisingData?.battery ?? 0
+        self.osVersion = computeVersion(version: advertisingData?.osVersion, name: advertisingData?.name ?? robotPeripheral.peripheral.name ?? "Leka")
     }
 
     // MARK: Public

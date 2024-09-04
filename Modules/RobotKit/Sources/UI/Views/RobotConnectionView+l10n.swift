@@ -50,6 +50,13 @@ extension l10n {
                 value: "Continue",
                 comment: "The title of the continue button"
             )
+
+            static let updateButton = LocalizedString(
+                "robotkit.robot_connect_view.update_button",
+                bundle: RobotKitResources.bundle,
+                value: "Update",
+                comment: "The title of the update button"
+            )
         }
     }
 }
