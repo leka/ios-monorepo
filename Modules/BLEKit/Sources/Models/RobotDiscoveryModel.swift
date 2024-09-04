@@ -11,24 +11,26 @@ public struct RobotDiscoveryModel: Identifiable {
 
     // MARK: - Public functions
 
-    public init(name: String, isCharging: Bool, battery: Int, osVersion: String) {
+    public init(name: String, isCharging: Bool, battery: Int, osVersion: String, isDeepSleeping: Bool = false) {
         self.robotPeripheral = nil
         self.rssi = nil
         self.id = UUID()
         self.name = name
-        self.isCharging = isCharging
-        self.battery = battery
         self.osVersion = osVersion
+        self.battery = battery
+        self.isCharging = isCharging
+        self.isDeepSleeping = isDeepSleeping
     }
 
     public init(robotPeripheral: RobotPeripheral, advertisingData: RobotAdvertisingData?, rssi: Double?) {
         self.robotPeripheral = robotPeripheral
         self.rssi = rssi
         self.id = robotPeripheral.peripheral.id
-        self.name = advertisingData?.name ?? robotPeripheral.peripheral.name ?? "Leka"
-        self.isCharging = advertisingData?.isCharging ?? false
-        self.battery = advertisingData?.battery ?? 0
-        self.osVersion = computeVersion(version: advertisingData?.osVersion, name: advertisingData?.name ?? robotPeripheral.peripheral.name ?? "Leka")
+        self.name = advertisingData.name
+        self.osVersion = computeVersion(version: advertisingData.osVersion, name: advertisingData.name)
+        self.battery = advertisingData.battery
+        self.isCharging = advertisingData.isCharging
+        self.isDeepSleeping = advertisingData.isDeepSleeping ?? false
     }
 
     // MARK: Public
@@ -40,9 +42,10 @@ public struct RobotDiscoveryModel: Identifiable {
 
     public let id: UUID
     public let name: String
-    public let isCharging: Bool
-    public let battery: Int
     public let osVersion: String
+    public let battery: Int
+    public let isCharging: Bool
+    public let isDeepSleeping: Bool
 }
 
 // MARK: Equatable
