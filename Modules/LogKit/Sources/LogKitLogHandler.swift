@@ -111,10 +111,13 @@ public struct LogKitLogHandler: LogHandler {
         line: UInt
     ) {
         var strm = self.stream
-
-        strm.write(
-            "\(self.timestamp()) \(self.prettyLevel(level)) [\(self.label)](\(self.prettyFile(file)):\(line)) \(function) > \(message)\n"
-        )
+        #if targetEnvironment(simulator)
+            print("\(self.timestamp()) \(self.prettyLevel(level)) [\(self.label)](\(self.prettyFile(file)):\(line)) \(function) > \(message)")
+        #else
+            strm.write(
+                "\(self.timestamp()) \(self.prettyLevel(level)) [\(self.label)](\(self.prettyFile(file)):\(line)) \(function) > \(message)\n"
+            )
+        #endif
     }
 
     // MARK: Internal
