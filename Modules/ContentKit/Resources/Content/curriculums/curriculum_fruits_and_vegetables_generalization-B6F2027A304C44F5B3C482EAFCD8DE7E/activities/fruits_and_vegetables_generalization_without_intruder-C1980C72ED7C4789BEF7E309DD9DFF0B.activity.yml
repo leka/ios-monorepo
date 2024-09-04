@@ -8,7 +8,7 @@ uuid: C1980C72ED7C4789BEF7E309DD9DFF0B
 name: fruits_and_vegetables_generalization_without_intruder
 
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-08-06T18:28:19.257755"
+last_edited_at: "2024-09-04T11:39:18.355093"
 status: published
 
 authors:
@@ -90,6 +90,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "touch all the bananas"
           payload:
+            shuffle_choices: true
             choices:
               - value: drawing-fruit-banana
                 type: image
@@ -118,6 +119,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "touch all the apples"
           payload:
+            shuffle_choices: true
             choices:
               - value: drawing-fruit-apple
                 type: image
@@ -146,6 +148,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "touch all the cherries"
           payload:
+            shuffle_choices: true
             choices:
               - value: drawing-fruit-cherry
                 type: image
@@ -174,6 +177,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "touch all the grapes"
           payload:
+            shuffle_choices: true
             choices:
               - value: drawing-fruit-grape
                 type: image
@@ -202,6 +206,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "touch all the lemons"
           payload:
+            shuffle_choices: true
             choices:
               - value: drawing-fruit-lemon
                 type: image
@@ -230,6 +235,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "touch all the oranges"
           payload:
+            shuffle_choices: true
             choices:
               - value: drawing-fruit-orange
                 type: image
@@ -258,6 +264,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "touch all the pears"
           payload:
+            shuffle_choices: true
             choices:
               - value: drawing-fruit-pear
                 type: image
@@ -286,6 +293,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "touch all the strawberries"
           payload:
+            shuffle_choices: true
             choices:
               - value: drawing-fruit-strawberry
                 type: image
@@ -314,6 +322,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "touch all the avocados"
           payload:
+            shuffle_choices: true
             choices:
               - value: drawing-vegetable-avocado
                 type: image
@@ -342,6 +351,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "touch all the carrots"
           payload:
+            shuffle_choices: true
             choices:
               - value: drawing-vegetable-carrot
                 type: image
@@ -370,6 +380,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "touch all the eggplants"
           payload:
+            shuffle_choices: true
             choices:
               - value: drawing-vegetable-eggplant
                 type: image
@@ -398,6 +409,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "touch all the mushrooms"
           payload:
+            shuffle_choices: true
             choices:
               - value: drawing-vegetable-mushroom
                 type: image
@@ -426,6 +438,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "touch all the pumpkins"
           payload:
+            shuffle_choices: true
             choices:
               - value: drawing-vegetable-pumpkin
                 type: image
@@ -454,6 +467,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "touch all the radishes"
           payload:
+            shuffle_choices: true
             choices:
               - value: drawing-vegetable-radish
                 type: image
@@ -482,6 +496,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "touch all the tomatoes"
           payload:
+            shuffle_choices: true
             choices:
               - value: drawing-vegetable-tomato
                 type: image
