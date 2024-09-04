@@ -290,6 +290,24 @@
                 }
             }
         },
+        "robotkit.robot_connection_view.rebooting_deep_sleeping_robot_text": {
+            "comment": "The text of the robot rebooting from deep sleep state",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Leka is booting..."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Leka est en train de d\u00e9marrer..."
+                    }
+                }
+            }
+        },
         "robotkit.robot_discovery_view.robot_not_up_to_date_alert": {
             "comment": "Update is available alert",
             "extractionState": "extracted_with_value",
