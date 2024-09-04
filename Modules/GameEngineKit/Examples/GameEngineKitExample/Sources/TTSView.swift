@@ -2,25 +2,8 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import Combine
 import SwiftUI
-
-// MARK: - TTSViewViewModel
-
-class TTSViewViewModel: ObservableObject {
-    // MARK: Lifecycle
-
-    init(choices: [TTSChoiceModel]) {
-        self.choices = choices
-    }
-
-    // MARK: Internal
-
-    @Published var choices: [TTSChoiceModel]
-
-    func onTappped(choice: TTSChoiceModel) {
-        print("[VM] Tapped: \(choice.id) - \(choice.value.replacingOccurrences(of: "\n", with: " ")) - \(choice.state)")
-    }
-}
 
 // MARK: - TTSChoiceModel
 
@@ -107,6 +90,38 @@ struct TTSChoiceStateBadge: View {
     }
 }
 
+// MARK: - TTSViewViewModel
+
+class TTSViewViewModel: ObservableObject {
+    // MARK: Lifecycle
+
+    init(coordinator: TTSGameplayCoordinatorProtocol) {
+        self.choices = coordinator.uiChoices.value
+        self.coordinator = coordinator
+        self.coordinator.uiChoices
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] choices in
+                self?.choices = choices
+            }
+            .store(in: &self.cancellables)
+    }
+
+    // MARK: Internal
+
+    @Published var choices: [TTSChoiceModel]
+
+    func onTapped(choice: TTSChoiceModel) {
+        log.debug("[VM] \(choice.id) - \(choice.value.replacingOccurrences(of: "\n", with: " ")) - \(choice.state)")
+        self.coordinator.processUserSelection(choice: choice)
+    }
+
+    // MARK: Private
+
+    private var cancellables = Set<AnyCancellable>()
+
+    private let coordinator: TTSGameplayCoordinatorProtocol
+}
+
 // MARK: - TTSView
 
 struct TTSView: View {
@@ -126,7 +141,7 @@ struct TTSView: View {
                 ForEach(self.viewModel.choices[0...2]) { choice in
                     TTSChoiceView(choice: choice)
                         .onTapGesture {
-                            self.viewModel.onTappped(choice: choice)
+                            self.viewModel.onTapped(choice: choice)
                         }
                 }
             }
@@ -135,7 +150,7 @@ struct TTSView: View {
                 ForEach(self.viewModel.choices[3...5]) { choice in
                     TTSChoiceView(choice: choice)
                         .onTapGesture {
-                            self.viewModel.onTappped(choice: choice)
+                            self.viewModel.onTapped(choice: choice)
                         }
                 }
             }
@@ -143,15 +158,26 @@ struct TTSView: View {
     }
 }
 
-#Preview {
-    let choices = [
+// MARK: - TTSEmptyCoordinator
+
+class TTSEmptyCoordinator: TTSGameplayCoordinatorProtocol {
+    var uiChoices = CurrentValueSubject<[TTSChoiceModel], Never>([
         TTSChoiceModel(value: "Choice 1", state: .idle),
         TTSChoiceModel(value: "Choice 2\nSelected", state: .selected),
         TTSChoiceModel(value: "Choice 3\nCorrect", state: .correct),
         TTSChoiceModel(value: "Choice 4\nWrong", state: .wrong),
         TTSChoiceModel(value: "Choice 5"),
         TTSChoiceModel(value: "Choice 6"),
-    ]
+    ])
 
-    return TTSView(viewModel: TTSViewViewModel(choices: choices))
+    func processUserSelection(choice: TTSChoiceModel) {
+        log.debug("\(choice.id) - \(choice.value.replacingOccurrences(of: "\n", with: " ")) - \(choice.state)")
+    }
+}
+
+#Preview {
+    let coordinator = TTSEmptyCoordinator()
+    let viewModel = TTSViewViewModel(coordinator: coordinator)
+
+    return TTSView(viewModel: viewModel)
 }
