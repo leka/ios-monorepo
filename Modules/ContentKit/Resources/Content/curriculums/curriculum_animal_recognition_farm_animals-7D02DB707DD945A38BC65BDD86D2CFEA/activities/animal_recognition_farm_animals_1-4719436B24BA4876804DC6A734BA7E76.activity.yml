@@ -91,7 +91,7 @@ exercises_payload:
                   utterance: "The pig"
           payload:
             choices:
-              - value: pictograms-animals-farm-pig
+              - value: animals_farm_pig_pink
                 type: image
                 is_right_answer: true
 
@@ -113,7 +113,7 @@ exercises_payload:
                   utterance: "The cow"
           payload:
             choices:
-              - value: pictograms-animals-farm-cow
+              - value: animals_farm_cow_white
                 type: image
                 is_right_answer: true
 
@@ -135,7 +135,7 @@ exercises_payload:
                   utterance: "The chicken"
           payload:
             choices:
-              - value: pictograms-animals-farm-chicken
+              - value: animals_farm_chicken_yellow
                 type: image
                 is_right_answer: true
 
@@ -157,7 +157,7 @@ exercises_payload:
                   utterance: "The donkey"
           payload:
             choices:
-              - value: pictograms-animals-farm-donkey
+              - value: animals_farm_donkey_gray
                 type: image
                 is_right_answer: true
 
@@ -179,7 +179,7 @@ exercises_payload:
                   utterance: "The duck"
           payload:
             choices:
-              - value: pictograms-animals-farm-duck
+              - value: animals_farm_duck
                 type: image
                 is_right_answer: true
 
@@ -201,7 +201,7 @@ exercises_payload:
                   utterance: "The goat"
           payload:
             choices:
-              - value: pictograms-animals-farm-goat
+              - value: animals_farm_goat_brown
                 type: image
                 is_right_answer: true
 
@@ -223,7 +223,7 @@ exercises_payload:
                   utterance: "The goose"
           payload:
             choices:
-              - value: pictograms-animals-farm-goose
+              - value: animals_farm_goose_brown
                 type: image
                 is_right_answer: true
 
@@ -245,7 +245,7 @@ exercises_payload:
                   utterance: "The horse"
           payload:
             choices:
-              - value: pictograms-animals-farm-horse
+              - value: animals_farm_horse_brown
                 type: image
                 is_right_answer: true
 
@@ -267,7 +267,7 @@ exercises_payload:
                   utterance: "The rooster"
           payload:
             choices:
-              - value: pictograms-animals-farm-rooster
+              - value: animals_farm_rooster_white
                 type: image
                 is_right_answer: true
 
@@ -289,7 +289,7 @@ exercises_payload:
                   utterance: "The sheep"
           payload:
             choices:
-              - value: pictograms-animals-farm-sheep
+              - value: animals_farm_sheep_white
                 type: image
                 is_right_answer: true
 
@@ -311,7 +311,7 @@ exercises_payload:
                   utterance: "The swan"
           payload:
             choices:
-              - value: pictograms-animals-farm-swan
+              - value: animals_farm_swan
                 type: image
                 is_right_answer: true
 
@@ -333,6 +333,6 @@ exercises_payload:
                   utterance: "The bird"
           payload:
             choices:
-              - value: pictograms-animals-farm-bird
+              - value: animals_farm_bird_yellow
                 type: image
                 is_right_answer: true

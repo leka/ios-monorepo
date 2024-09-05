@@ -91,18 +91,18 @@ exercises_payload:
                   utterance: "The pig"
           payload:
             choices:
-              - value: pictograms-animals-farm-pig
+              - value: animals_farm_pig_pink
                 type: image
                 is_right_answer: true
               - value: pictograms-animals-farm-cow
                 type: image
-              - value: pictograms-animals-farm-chicken
+              - value: animals_farm_chicken_yellow
                 type: image
-              - value: pictograms-animals-farm-donkey
+              - value: animals_farm_donkey_gray
                 type: image
               - value: pictograms-animals-farm-duck
                 type: image
-              - value: pictograms-animals-farm-goat
+              - value: animals_farm_goat_brown
                 type: image
 
         - instructions:
@@ -126,15 +126,15 @@ exercises_payload:
               - value: pictograms-animals-farm-cow
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-farm-chicken
+              - value: animals_farm_chicken_yellow
                 type: image
-              - value: pictograms-animals-farm-donkey
+              - value: animals_farm_donkey_gray
                 type: image
               - value: pictograms-animals-farm-duck
                 type: image
-              - value: pictograms-animals-farm-goat
+              - value: animals_farm_goat_brown
                 type: image
-              - value: pictograms-animals-farm-goose
+              - value: animals_farm_goose_brown
                 type: image
 
         - instructions:
@@ -155,18 +155,18 @@ exercises_payload:
                   utterance: "The chicken"
           payload:
             choices:
-              - value: pictograms-animals-farm-chicken
+              - value: animals_farm_chicken_yellow
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-farm-donkey
+              - value: animals_farm_donkey_gray
                 type: image
               - value: pictograms-animals-farm-duck
                 type: image
-              - value: pictograms-animals-farm-goat
+              - value: animals_farm_goat_brown
                 type: image
-              - value: pictograms-animals-farm-goose
+              - value: animals_farm_goose_brown
                 type: image
-              - value: pictograms-animals-farm-horse
+              - value: animals_farm_horse_brown
                 type: image
 
         - instructions:
@@ -187,18 +187,18 @@ exercises_payload:
                   utterance: "The donkey"
           payload:
             choices:
-              - value: pictograms-animals-farm-donkey
+              - value: animals_farm_donkey_gray
                 type: image
                 is_right_answer: true
               - value: pictograms-animals-farm-duck
                 type: image
-              - value: pictograms-animals-farm-goat
+              - value: animals_farm_goat_brown
                 type: image
-              - value: pictograms-animals-farm-goose
+              - value: animals_farm_goose_brown
                 type: image
-              - value: pictograms-animals-farm-horse
+              - value: animals_farm_horse_brown
                 type: image
-              - value: pictograms-animals-farm-rooster
+              - value: animals_farm_rooster_white
                 type: image
 
         - instructions:
@@ -222,15 +222,15 @@ exercises_payload:
               - value: pictograms-animals-farm-duck
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-farm-goat
+              - value: animals_farm_goat_brown
                 type: image
-              - value: pictograms-animals-farm-goose
+              - value: animals_farm_goose_brown
                 type: image
-              - value: pictograms-animals-farm-horse
+              - value: animals_farm_horse_brown
                 type: image
-              - value: pictograms-animals-farm-rooster
+              - value: animals_farm_rooster_white
                 type: image
-              - value: pictograms-animals-farm-sheep
+              - value: animals_farm_sheep_white
                 type: image
 
         - instructions:
@@ -251,16 +251,16 @@ exercises_payload:
                   utterance: "The goat"
           payload:
             choices:
-              - value: pictograms-animals-farm-goat
+              - value: animals_farm_goat_brown
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-farm-goose
+              - value: animals_farm_goose_brown
                 type: image
-              - value: pictograms-animals-farm-horse
+              - value: animals_farm_horse_brown
                 type: image
-              - value: pictograms-animals-farm-rooster
+              - value: animals_farm_rooster_white
                 type: image
-              - value: pictograms-animals-farm-sheep
+              - value: animals_farm_sheep_white
                 type: image
               - value: pictograms-animals-farm-swan
                 type: image
@@ -283,18 +283,18 @@ exercises_payload:
                   utterance: "The goose"
           payload:
             choices:
-              - value: pictograms-animals-farm-goose
+              - value: animals_farm_goose_brown
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-farm-horse
+              - value: animals_farm_horse_brown
                 type: image
-              - value: pictograms-animals-farm-rooster
+              - value: animals_farm_rooster_white
                 type: image
-              - value: pictograms-animals-farm-sheep
+              - value: animals_farm_sheep_white
                 type: image
               - value: pictograms-animals-farm-swan
                 type: image
-              - value: pictograms-animals-farm-bird
+              - value: animals_farm_bird_yellow
                 type: image
 
         - instructions:
@@ -315,18 +315,18 @@ exercises_payload:
                   utterance: "The horse"
           payload:
             choices:
-              - value: pictograms-animals-farm-horse
+              - value: animals_farm_horse_brown
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-farm-rooster
+              - value: animals_farm_rooster_white
                 type: image
-              - value: pictograms-animals-farm-sheep
+              - value: animals_farm_sheep_white
                 type: image
               - value: pictograms-animals-farm-swan
                 type: image
-              - value: pictograms-animals-farm-bird
+              - value: animals_farm_bird_yellow
                 type: image
-              - value: pictograms-animals-farm-pig
+              - value: animals_farm_pig_pink
                 type: image
 
         - instructions:
@@ -347,16 +347,16 @@ exercises_payload:
                   utterance: "The rooster"
           payload:
             choices:
-              - value: pictograms-animals-farm-rooster
+              - value: animals_farm_rooster_white
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-farm-sheep
+              - value: animals_farm_sheep_white
                 type: image
               - value: pictograms-animals-farm-swan
                 type: image
-              - value: pictograms-animals-farm-bird
+              - value: animals_farm_bird_yellow
                 type: image
-              - value: pictograms-animals-farm-pig
+              - value: animals_farm_pig_pink
                 type: image
               - value: pictograms-animals-farm-cow
                 type: image
@@ -379,18 +379,18 @@ exercises_payload:
                   utterance: "The sheep"
           payload:
             choices:
-              - value: pictograms-animals-farm-sheep
+              - value: animals_farm_sheep_white
                 type: image
                 is_right_answer: true
               - value: pictograms-animals-farm-swan
                 type: image
-              - value: pictograms-animals-farm-bird
+              - value: animals_farm_bird_yellow
                 type: image
-              - value: pictograms-animals-farm-pig
+              - value: animals_farm_pig_pink
                 type: image
               - value: pictograms-animals-farm-cow
                 type: image
-              - value: pictograms-animals-farm-chicken
+              - value: animals_farm_chicken_yellow
                 type: image
 
         - instructions:
@@ -414,15 +414,15 @@ exercises_payload:
               - value: pictograms-animals-farm-swan
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-farm-bird
+              - value: animals_farm_bird_yellow
                 type: image
-              - value: pictograms-animals-farm-pig
+              - value: animals_farm_pig_pink
                 type: image
               - value: pictograms-animals-farm-cow
                 type: image
-              - value: pictograms-animals-farm-chicken
+              - value: animals_farm_chicken_yellow
                 type: image
-              - value: pictograms-animals-farm-donkey
+              - value: animals_farm_donkey_gray
                 type: image
 
         - instructions:
@@ -443,16 +443,16 @@ exercises_payload:
                   utterance: "The bird"
           payload:
             choices:
-              - value: pictograms-animals-farm-bird
+              - value: animals_farm_bird_yellow
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-farm-pig
+              - value: animals_farm_pig_pink
                 type: image
               - value: pictograms-animals-farm-cow
                 type: image
-              - value: pictograms-animals-farm-chicken
+              - value: animals_farm_chicken_yellow
                 type: image
-              - value: pictograms-animals-farm-donkey
+              - value: animals_farm_donkey_gray
                 type: image
               - value: pictograms-animals-farm-duck
                 type: image
