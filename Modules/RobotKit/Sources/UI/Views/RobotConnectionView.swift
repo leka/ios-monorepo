@@ -19,7 +19,10 @@ public struct RobotConnectionView: View {
 
     public var body: some View {
         VStack(spacing: 10) {
-            if self.viewModel.connected {
+            if self.viewModel.connectingToDeepSleepingRobot {
+                ProgressView()
+                Text(l10n.RobotKit.RobotConnectionView.rebootingDeepSleepingRobotText)
+            } else if self.viewModel.connected {
                 ConnectedRobotView(viewModel: self.viewModel)
             } else {
                 switch self.viewModel.managerState {
