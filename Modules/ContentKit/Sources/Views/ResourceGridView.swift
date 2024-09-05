@@ -31,7 +31,7 @@ public struct ResourceGridView: View {
                 }
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
 
     // MARK: Internal
@@ -47,7 +47,7 @@ public struct ResourceGridView: View {
 #Preview {
     NavigationStack {
         ResourceGridView(
-            resources: ContentKit.firstStepsResources.content.map(\.resource)
+            resources: ContentKit.firstStepsResources.sections[0].resources.map(\.resource)
         )
     }
 }

@@ -30,16 +30,32 @@ struct CategoryResourcesDeepDiveView: View {
                 }
             }
             .padding(.horizontal)
+            .padding(.bottom)
 
-            if self.category.content.map(\.resource).filter({ !$0.title.isEmpty }).isEmpty {
-                VStack {
-                    Text(l10n.CategoryResourcesDeepDiveView.emptyLabel)
-                        .font(.title)
-                        .multilineTextAlignment(.center)
+            VStack(alignment: .leading, spacing: 30) {
+                ForEach(self.category.sections, id: \.id) { section in
+                    Section {
+                        VStack(alignment: .leading, spacing: 5) {
+                            VStack(alignment: .leading) {
+                                Text(section.details.title)
+                                    .font(.title2)
+                                    .foregroundStyle(self.styleManager.accentColor!)
+
+                                Text(section.details.description)
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding(.horizontal)
+                            .padding(.horizontal)
+
+                            ResourceGridView(resources: section.resources.map(\.resource))
+
+                            Divider()
+                                .padding(.horizontal)
+                                .padding(.horizontal)
+                        }
+                    }
                 }
-                .padding(.top, 150)
-            } else {
-                ResourceGridView(resources: self.category.content.map(\.resource))
             }
         }
         .navigationTitle(self.category.details.title)
@@ -51,16 +67,6 @@ struct CategoryResourcesDeepDiveView: View {
 
     @ObservedObject private var navigation: Navigation = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
-}
-
-// MARK: - l10n.CategoryResourcesDeepDiveView
-
-extension l10n {
-    enum CategoryResourcesDeepDiveView {
-        static let emptyLabel = LocalizedString("lekaapp.category_resources_deep_dive_view.empty_label",
-                                                value: "No resources yet",
-                                                comment: "Empty label when no resources are available in the grid view.")
-    }
 }
 
 #Preview {

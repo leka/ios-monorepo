@@ -30,8 +30,33 @@ struct CategoryResourcesFirstStepsView: View {
                 }
             }
             .padding(.horizontal)
+            .padding(.bottom)
 
-            ResourceGridView(resources: self.category.content.map(\.resource))
+            VStack(alignment: .leading, spacing: 30) {
+                ForEach(self.category.sections, id: \.id) { section in
+                    Section {
+                        VStack(alignment: .leading, spacing: 5) {
+                            VStack(alignment: .leading) {
+                                Text(section.details.title)
+                                    .font(.title2)
+                                    .foregroundStyle(self.styleManager.accentColor!)
+
+                                Text(section.details.description)
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding(.horizontal)
+                            .padding(.horizontal)
+
+                            ResourceGridView(resources: section.resources.map(\.resource))
+
+                            Divider()
+                                .padding(.horizontal)
+                                .padding(.horizontal)
+                        }
+                    }
+                }
+            }
         }
         .navigationTitle(self.category.details.title)
     }

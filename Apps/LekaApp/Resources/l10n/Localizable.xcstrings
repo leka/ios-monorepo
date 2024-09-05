@@ -1262,24 +1262,6 @@
                 }
             }
         },
-        "lekaapp.category_resources_deep_dive_view.empty_label": {
-            "comment": "Empty label when no resources are available in the grid view.",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "No resources yet"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Ressources non disponibles actuellement"
-                    }
-                }
-            }
-        },
         "lekaapp.category_search_view.browse_skills_title": {
             "comment": "Browse skills title",
             "extractionState": "extracted_with_value",

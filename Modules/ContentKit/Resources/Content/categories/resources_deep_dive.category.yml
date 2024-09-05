@@ -7,56 +7,131 @@ l10n:
     details:
       title: Aller Plus Loin
       subtitle: Les Ressources sont les supports que nous mettons à la disposion de l'ensemble des accompagnants.
-      description: Les Ressources donnent les clés d'une utilisation optimale de la solution Leka avec des supports pour organiser ses séances, des guides explicatifs de l'utilisation du robot et de l'application Leka app ainsi que d'autres astuces pour la bonne mise en place de Leka !
+      description: Les ressources donnent les clés d'une utilisation optimale de la solution Leka !
   - locale: en_US
     details:
       title: Deep Dive
       subtitle: Resources are the tools we provide to all caregivers.
-      description: Resources provide the keys to optimal use of the Leka solution with materials to organize sessions, explanatory guides on using the robot and the Leka app, and other tips for successful Leka implementation!
+      description: Resources provide the keys to optimal use of the Leka solution!
 
 content:
-  - resource:
+  - id: leka_equipment
+    l10n:
       - locale: fr_FR
         details:
-          icon: book.pages
-          title: L’organisation des cartes magiques
-          description: Découvrez le tutoriel pour réaliser des bandes velcro et organiser le rangement de vos cartes magiques par thèmes !
-          value: magic_card_holder_FR
-          type: file
+          title: Le matériel Leka
+          subtitle:
+          description: Les ressources pour comprendre les différents éléments du pack Leka.
       - locale: en_US
         details:
-          icon: book.pages
-          title: Organizing magic cards
-          description: Discover the tutorial to make Velcro strips and organize the storage of your magic cards by theme!
-          value: magic_card_holder_EN
-          type: file
-  - resource:
+          title: Leka equipment
+          subtitle:
+          description: Resources to understand the different elements of the Leka pack.
+    resources:
+      - resource:
+          - locale: fr_FR
+            details:
+              icon: book.pages
+              title: Les accessoires du pack
+              description: Découvrez le contenu du pack Leka !
+              value: accessories_pack_FR
+              type: file
+              illustration: accessories_pack
+          - locale: en_US
+            details:
+              icon: book.pages
+              title: Pack accessories
+              description: Discover what's in the Leka pack!
+              value: accessories_pack_EN
+              type: file
+              illustration: accessories_pack
+      - resource:
+          - locale: fr_FR
+            details:
+              icon: book.pages
+              title: L'inventaire des cartes magiques
+              description: Découvrez toutes les cartes magiques dont vous disposez !
+              value: starter_kit_magic_cards_FR
+              type: file
+              illustration: starter_kit_magic_cards
+          - locale: en_US
+            details:
+              icon: book.pages
+              title: Inventory of magic cards
+              description: Discover all the magic cards you have!
+              value: starter_kit_magic_cards_EN
+              type: file
+              illustration: starter_kit_magic_cards
+  - id: magic_cards
+    l10n:
       - locale: fr_FR
         details:
-          icon: book.pages
-          title: Le déroulé d'une séance
-          description: Découvrez les 7 étapes pour organiser le déroulement de votre séance avec Leka !
-          value: session_FR
-          type: file
+          title: Les cartes magiques
+          subtitle:
+          description: Les ressources pour découvrir les cartes magiques et apprendre à les utiliser !
       - locale: en_US
         details:
-          icon: book.pages
-          title: Session outline
-          description: Discover the 7 steps to organize your session with Leka!
-          value: session_EN
-          type: file
-  - resource:
-      - locale: fr_FR
-        details:
-          icon: book.pages
-          title: Les déplacements avec Leka
-          description: Découvrez les 6 contenants inspirés par nos utilisateurs pour vous déplacer avec Leka !
-          value: moving_with_leka_FR
-          type: file
-#      - locale: en_US
-#        details:
-#          icon: book.pages
-#          title: Moving with Leka
-#          description: Discover the 6 containers inspired by our users to move with Leka!
-#          value: moving_with_leka_EN
-#          type: file
+          title: Magic cards
+          subtitle:
+          description: Resources to discover magic cards and learn how to use them!
+    resources:
+      - resource:
+          - locale: fr_FR
+            details:
+              icon: book.and.wrench
+              title: L'utilisation de la carte "STOP"
+              value: https://www.youtube.com/watch?v=5rBmfCZtoX8
+              type: video
+          - locale: en_US
+            details:
+              icon: book.and.wrench
+              title: Use of the "STOP" card
+              value: https://www.youtube.com/watch?v=QE5TFLv7RqA
+              type: video
+      - resource:
+          - locale: fr_FR
+            details:
+              icon: book.and.wrench
+              title: L'utilisation des cartes magiques
+              value: https://www.youtube.com/watch?v=PyAK9tfBdfY
+              type: video
+          - locale: en_US
+            details:
+              icon: book.and.wrench
+              title: Use of magic cards
+              value: https://www.youtube.com/watch?v=97h2uKmJqCc
+              type: video
+      - resource:
+          - locale: fr_FR
+            details:
+              icon: book.pages
+              title: Les 10 activités autonomes
+              description: Découvrez ce que contient le pack Leka !
+              value: magic_cards_activities_FR
+              type: file
+              illustration: magic_cards_activities
+          - locale: en_US
+            details:
+              icon: book.pages
+              title: The 10 autonomous activities
+              description: Discover what's in the Leka pack!
+              value: magic_cards_activities_EN
+              type: file
+              illustration: magic_cards_activities
+      - resource:
+          - locale: fr_FR
+            details:
+              icon: book.pages
+              title: Le tutoriel bande velcro
+              description: Facilitez l'utilisation des cartes magiques avec la bande velcro !
+              value: magic_cards_holder_FR
+              type: file
+              illustration: magic_cards_holder
+          - locale: en_US
+            details:
+              icon: book.pages
+              title: Inventory of magic cards
+              description: Discover all the magic cards you have!
+              value: magic_cards_holder_EN
+              type: file
+              illustration: magic_cards_holder
