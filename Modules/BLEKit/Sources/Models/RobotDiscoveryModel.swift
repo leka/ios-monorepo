@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import CombineCoreBluetooth
+import Version
 
 // MARK: - RobotDiscoveryModel
 
@@ -58,15 +59,16 @@ extension RobotDiscoveryModel: Equatable {
 
 private func computeVersion(version: String?, name: String) -> String {
     if let version {
-        return "\(version)"
+        let semanticVersion = Version(tolerant: version)!
+        return "\(semanticVersion.major).\(semanticVersion.minor)"
     }
 
     if name == "Leka" {
-        return "1.0.0"
+        return "1.0"
     } else if name.contains("LK-"), name.contains("xx") {
-        return "1.1.0"
+        return "1.1"
     } else if name.contains("LK-") {
-        return "1.2.0"
+        return "1.2"
     } else {
         return "(n/a)"
     }

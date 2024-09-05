@@ -61,7 +61,11 @@ public class ConnectedRobotInformationViewModel: ObservableObject {
         self.robot.osVersion
             .receive(on: DispatchQueue.main)
             .sink {
-                self.osVersion = $0?.description ?? "(n/a)"
+                if let version = $0 {
+                    self.osVersion = "\(version.major).\(version.minor)"
+                } else {
+                    self.osVersion = "(n/a)"
+                }
             }
             .store(in: &self.cancellables)
 
