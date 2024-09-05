@@ -36,6 +36,14 @@ struct ContentView: View {
                 })
                 .tint(.cyan)
                 .buttonStyle(.borderedProminent)
+
+                NavigationLink("Choose Any Answer Up To 3", destination: {
+                    TTSViewChooseAnyAnswerUpToThree()
+                        .navigationTitle("Choose Any Answer Up To 3")
+                        .navigationBarTitleDisplayMode(.large)
+                })
+                .tint(.pink)
+                .buttonStyle(.borderedProminent)
             }
         }
     }
