@@ -8,16 +8,18 @@ import UtilsKit
 public extension RobotDiscoveryViewModel {
     static func mock(
         name: String = "LK-\(String.random(length: 12))",
+        osVersion: String = "1.3",
         battery: Int = Int.random(in: 0...100),
         isCharging: Bool = Bool.random(),
-        osVersion: String = "1.3.0",
+        isDeepSleeping: Bool = Bool.random(),
         status: Status = .unselected
     ) -> RobotDiscoveryViewModel {
         .init(
             name: name,
+            osVersion: osVersion,
             battery: battery,
             isCharging: isCharging,
-            osVersion: osVersion,
+            isDeepSleeping: isDeepSleeping,
             status: status
         )
     }

@@ -57,6 +57,59 @@ struct RobotDiscoveryView: View {
     // MARK: - Private views
 
     private var robotFace: some View {
+        Group {
+            if self.discovery.isDeepSleeping {
+                self.robotFaceSleeping
+            } else {
+                self.robotFaceSimple
+            }
+        }
+    }
+
+    private var robotFaceSleeping: some View {
+        DesignKitAsset.Images.robotFaceSleeping.swiftUIImage
+            .overlay(content: {
+                Circle()
+                    .inset(by: -10)
+                    .stroke(
+                        DesignKitAsset.Colors.lekaGreen.swiftUIColor,
+                        style: StrokeStyle(
+                            lineWidth: 2,
+                            lineCap: .butt,
+                            lineJoin: .round,
+                            dash: [12, 3]
+                        )
+                    )
+                    .opacity(self.discovery.status == .selected ? 1 : 0)
+                    .rotationEffect(.degrees(self.rotation), anchor: .center)
+                    .animation(
+                        Animation
+                            .linear(duration: 15)
+                            .repeatForever(autoreverses: false),
+                        value: self.rotation
+                    )
+                    .onAppear {
+                        self.rotation = 360
+                    }
+            })
+            .overlay(alignment: .topTrailing) {
+                if self.robotNotUpToDate {
+                    Button {
+                        self.showNotUpToDateAlert.toggle()
+                    } label: {
+                        Image(systemName: "exclamationmark.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundStyle(.white, .red)
+                    }
+                    .alert(String(l10n.RobotDiscoveryView.robotNotUpToDateAlert.characters), isPresented: self.$showNotUpToDateAlert) {
+                        Button("OK", role: .cancel) {}
+                    }
+                }
+            }
+    }
+
+    private var robotFaceSimple: some View {
         DesignKitAsset.Images.robotFaceSimple.swiftUIImage
             .overlay(content: {
                 Circle()
