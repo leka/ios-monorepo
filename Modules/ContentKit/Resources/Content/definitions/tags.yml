@@ -231,7 +231,7 @@ list:
         description: >
           Lorem ipsum
       - locale: fr_FR
-        name: Emotions
+        name: Émotions
         description: >
           Lorem ipsum
     subtags: []
@@ -638,7 +638,7 @@ list:
         description: >
           Lorem ipsum
       - locale: fr_FR
-        name: Movements du robot
+        name: Mouvements du robot
         description: >
           Lorem ipsum
     subtags: []
