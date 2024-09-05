@@ -229,22 +229,6 @@ public struct ActivityView: View {
         )
     }
 
-    private var finishButton: some View {
-        Button(String(l10n.GameEngineKit.ActivityView.finishButton.characters)) {
-            // TODO(@macteuts): Move the following out of then View if relevant
-            self.viewModel.currentExerciseSharedData.state = .completed(level: .excellent)
-        }
-        .buttonStyle(.bordered)
-        .tint(.gray)
-        .padding()
-        .transition(
-            .asymmetric(
-                insertion: .opacity.animation(.snappy.delay(2)),
-                removal: .identity
-            )
-        )
-    }
-
     private var hideReinforcerToShowAnswersButton: some View {
         Button(String(l10n.GameEngineKit.ActivityView.hideReinforcerToShowAnswersButton.characters)) {
             withAnimation {
