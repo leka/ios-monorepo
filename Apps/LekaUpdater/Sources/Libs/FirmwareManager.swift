@@ -52,7 +52,7 @@ class FirmwareManager: ObservableObject {
 
     // MARK: Internal
 
-    let currentVersion = Version(Robot.kLatestFirmwareVersion)!
+    let currentVersion = Version(tolerant: Robot.kLatestFirmwareVersion)!
 
     func compareWith(version: Version?) -> RobotUpdateStatus {
         guard let version else {
