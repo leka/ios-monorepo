@@ -23,6 +23,8 @@ class GameplayChooseAnyAnswerUpToThree: GameplayProtocol {
 
     typealias ChoiceType = FindTheRightAnswersChoice
 
+    var exerciseHasBeenTerminated: Bool = false
+
     func process(choice: FindTheRightAnswersChoice) {
         guard var currentChoice = choices.value.first(where: { $0.id == choice.id }) else { return }
 
@@ -41,14 +43,18 @@ class GameplayChooseAnyAnswerUpToThree: GameplayProtocol {
         self.choices.value[index] = currentChoice
 
         if self.answerCount == self.maxAnswers {
-            log.debug("The exercise is completed with 3 selected answers.")
+            log.debug("The exercise is completed with \(self.maxAnswers) selected answers.")
         }
+    }
+
+    func terminateExercise() {
+        self.maxAnswers = self.answerCount
+        log.debug("The exercise is completed with \(self.maxAnswers) selected answers.")
     }
 
     // MARK: Private
 
     private var answerCount = 0
-    private let maxAnswers = 3
-
+    private var maxAnswers = 3
     private let rawChoices: [FindTheRightAnswersChoice]
 }

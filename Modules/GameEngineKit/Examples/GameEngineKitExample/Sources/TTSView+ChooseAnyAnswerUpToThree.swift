@@ -65,9 +65,15 @@ struct TTSViewChooseAnyAnswerUpToThree: View {
     // MARK: Internal
 
     var body: some View {
-        VStack(spacing: 50) {
-            TTSView(viewModel: self.viewModel)
-        }
+        Color.clear
+            .background {
+                VStack(spacing: 50) {
+                    TTSView(viewModel: self.viewModel)
+                }
+            }
+            .overlay(alignment: .bottomTrailing) {
+                self.finishButton
+            }
     }
 
     // MARK: Private
@@ -75,4 +81,19 @@ struct TTSViewChooseAnyAnswerUpToThree: View {
     private var gameplay: GameplayChooseAnyAnswerUpToThree
     private var coordinator: TTSCoordinatorChooseAnyAnswerUpToThree
     private var viewModel: TTSViewViewModel
+
+    private var finishButton: some View {
+        Button(String("Finish")) {
+            self.gameplay.terminateExercise()
+        }
+        .buttonStyle(.bordered)
+        .tint(.gray)
+        .padding()
+        .transition(
+            .asymmetric(
+                insertion: .opacity.animation(.snappy.delay(2)),
+                removal: .identity
+            )
+        )
+    }
 }
