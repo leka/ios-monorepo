@@ -91,18 +91,18 @@ exercises_payload:
                   utterance: "The bear"
           payload:
             choices:
-              - value: pictograms-animals-forest-bear_brown-005E
+              - value: animals_forest_bear_brown
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-forest-bird_robin_red-005B
+              - value: animals_forest_bird_robin_red
                 type: image
-              - value: pictograms-animals-forest-boar_black-005D
+              - value: animals_forest_boar_black
                 type: image
-              - value: pictograms-animals-forest-fox_orange-0064
+              - value: animals_forest_fox_orange
                 type: image
               - value: pictograms-animals-forest-frog_green-0067
                 type: image
-              - value: pictograms-animals-forest-hedgehog_brown-0062
+              - value: animals_forest_hedgehog_brown
                 type: image
 
         - instructions:
@@ -123,18 +123,18 @@ exercises_payload:
                   utterance: "The bird"
           payload:
             choices:
-              - value: pictograms-animals-forest-bird_robin_red-005B
+              - value: animals_forest_bird_robin_red
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-forest-boar_black-005D
+              - value: animals_forest_boar_black
                 type: image
-              - value: pictograms-animals-forest-fox_orange-0064
+              - value: animals_forest_fox_orange
                 type: image
               - value: pictograms-animals-forest-frog_green-0067
                 type: image
-              - value: pictograms-animals-forest-hedgehog_brown-0062
+              - value: animals_forest_hedgehog_brown
                 type: image
-              - value: pictograms-animals-forest-owl_brown-005A
+              - value: animals_forest_owl_brown
                 type: image
 
         - instructions:
@@ -155,18 +155,18 @@ exercises_payload:
                   utterance: "The boar"
           payload:
             choices:
-              - value: pictograms-animals-forest-boar_black-005D
+              - value: animals_forest_boar_black
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-forest-fox_orange-0064
+              - value: animals_forest_fox_orange
                 type: image
               - value: pictograms-animals-forest-frog_green-0067
                 type: image
-              - value: pictograms-animals-forest-hedgehog_brown-0062
+              - value: animals_forest_hedgehog_brown
                 type: image
-              - value: pictograms-animals-forest-owl_brown-005A
+              - value: animals_forest_owl_brown
                 type: image
-              - value: pictograms-animals-forest-rabbit_gray-0061
+              - value: animals_forest_rabbit_gray
                 type: image
 
         - instructions:
@@ -187,16 +187,16 @@ exercises_payload:
                   utterance: "The fox"
           payload:
             choices:
-              - value: pictograms-animals-forest-fox_orange-0064
+              - value: animals_forest_fox_orange
                 type: image
                 is_right_answer: true
               - value: pictograms-animals-forest-frog_green-0067
                 type: image
-              - value: pictograms-animals-forest-hedgehog_brown-0062
+              - value: animals_forest_hedgehog_brown
                 type: image
-              - value: pictograms-animals-forest-owl_brown-005A
+              - value: animals_forest_owl_brown
                 type: image
-              - value: pictograms-animals-forest-rabbit_gray-0061
+              - value: animals_forest_rabbit_gray
                 type: image
               - value: pictograms-animals-forest-snail_brown-0069
                 type: image
@@ -222,11 +222,11 @@ exercises_payload:
               - value: pictograms-animals-forest-frog_green-0067
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-forest-hedgehog_brown-0062
+              - value: animals_forest_hedgehog_brown
                 type: image
-              - value: pictograms-animals-forest-owl_brown-005A
+              - value: animals_forest_owl_brown
                 type: image
-              - value: pictograms-animals-forest-rabbit_gray-0061
+              - value: animals_forest_rabbit_gray
                 type: image
               - value: pictograms-animals-forest-snail_brown-0069
                 type: image
@@ -251,18 +251,18 @@ exercises_payload:
                   utterance: "The hedgehog"
           payload:
             choices:
-              - value: pictograms-animals-forest-hedgehog_brown-0062
+              - value: animals_forest_hedgehog_brown
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-forest-owl_brown-005A
+              - value: animals_forest_owl_brown
                 type: image
-              - value: pictograms-animals-forest-rabbit_gray-0061
+              - value: animals_forest_rabbit_gray
                 type: image
               - value: pictograms-animals-forest-snail_brown-0069
                 type: image
               - value: pictograms-animals-forest-snake_green-0065
                 type: image
-              - value: pictograms-animals-forest-squirrel_orange-005C
+              - value: animals_forest_squirrel_orange
                 type: image
 
         - instructions:
@@ -283,18 +283,18 @@ exercises_payload:
                   utterance: "The owl"
           payload:
             choices:
-              - value: pictograms-animals-forest-owl_brown-005A
+              - value: animals_forest_owl_brown
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-forest-rabbit_gray-0061
+              - value: animals_forest_rabbit_gray
                 type: image
               - value: pictograms-animals-forest-snail_brown-0069
                 type: image
               - value: pictograms-animals-forest-snake_green-0065
                 type: image
-              - value: pictograms-animals-forest-squirrel_orange-005C
+              - value: animals_forest_squirrel_orange
                 type: image
-              - value: pictograms-animals-forest-stag_brown-0060
+              - value: animals_forest_stag_brown
                 type: image
 
         - instructions:
@@ -315,18 +315,18 @@ exercises_payload:
                   utterance: "The rabbit"
           payload:
             choices:
-              - value: pictograms-animals-forest-rabbit_gray-0061
+              - value: animals_forest_rabbit_gray
                 type: image
                 is_right_answer: true
               - value: pictograms-animals-forest-snail_brown-0069
                 type: image
               - value: pictograms-animals-forest-snake_green-0065
                 type: image
-              - value: pictograms-animals-forest-squirrel_orange-005C
+              - value: animals_forest_squirrel_orange
                 type: image
-              - value: pictograms-animals-forest-stag_brown-0060
+              - value: animals_forest_stag_brown
                 type: image
-              - value: pictograms-animals-forest-wolf_gray-005F
+              - value: animals_forest_wolf_gray
                 type: image
 
         - instructions:
@@ -352,13 +352,13 @@ exercises_payload:
                 is_right_answer: true
               - value: pictograms-animals-forest-snake_green-0065
                 type: image
-              - value: pictograms-animals-forest-squirrel_orange-005C
+              - value: animals_forest_squirrel_orange
                 type: image
-              - value: pictograms-animals-forest-stag_brown-0060
+              - value: animals_forest_stag_brown
                 type: image
-              - value: pictograms-animals-forest-wolf_gray-005F
+              - value: animals_forest_wolf_gray
                 type: image
-              - value: pictograms-animals-forest-bear_brown-005E
+              - value: animals_forest_bear_brown
                 type: image
 
         - instructions:
@@ -382,15 +382,15 @@ exercises_payload:
               - value: pictograms-animals-forest-snake_green-0065
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-forest-squirrel_orange-005C
+              - value: animals_forest_squirrel_orange
                 type: image
-              - value: pictograms-animals-forest-stag_brown-0060
+              - value: animals_forest_stag_brown
                 type: image
-              - value: pictograms-animals-forest-wolf_gray-005F
+              - value: animals_forest_wolf_gray
                 type: image
-              - value: pictograms-animals-forest-bear_brown-005E
+              - value: animals_forest_bear_brown
                 type: image
-              - value: pictograms-animals-forest-bird_robin_red-005B
+              - value: animals_forest_bird_robin_red
                 type: image
 
         - instructions:
@@ -411,16 +411,16 @@ exercises_payload:
                   utterance: "The squirrel"
           payload:
             choices:
-              - value: pictograms-animals-forest-squirrel_orange-005C
+              - value: animals_forest_squirrel_orange
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-forest-stag_brown-0060
+              - value: animals_forest_stag_brown
                 type: image
-              - value: pictograms-animals-forest-wolf_gray-005F
+              - value: animals_forest_wolf_gray
                 type: image
-              - value: pictograms-animals-forest-bear_brown-005E
+              - value: animals_forest_bear_brown
                 type: image
-              - value: pictograms-animals-forest-bird_robin_red-005B
+              - value: animals_forest_bird_robin_red
                 type: image
-              - value: pictograms-animals-forest-boar_black-005D
+              - value: animals_forest_boar_black
                 type: image
