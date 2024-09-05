@@ -40,7 +40,7 @@ extension GameplayAssociateCategories where ChoiceModelType == GameplayAssociate
     convenience init(choices: [GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate], allowedTrials: Int? = nil) {
         self.init()
         self.choices.send(choices)
-        self.state.send(.playing())
+        self.state.send(.playing)
 
         if let allowedTrials {
             self.allowedTrials = allowedTrials

@@ -15,7 +15,7 @@ extension MelodyView {
             self.midiPlayer = midiPlayer
             self.defaultScale = selectedSong.song.scale
             self.exercicesSharedData = shared ?? ExerciseSharedData()
-            self.exercicesSharedData.state = .playing()
+            self.exercicesSharedData.state = .playing
             self.setMIDIRecording(midiRecording: selectedSong)
         }
 

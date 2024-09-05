@@ -68,7 +68,7 @@ class GameplaySuperSimon: StatefulGameplayProtocol {
 
         self.allowedTrials = self.getNumberOfAllowedTrials(from: kGradingLUTDefault)
 
-        self.state.send(.playing())
+        self.state.send(.playing)
     }
 
     // MARK: Internal
