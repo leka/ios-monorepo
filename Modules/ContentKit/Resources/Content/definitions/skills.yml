@@ -149,7 +149,7 @@ list:
                 description: >
                   Understanding what people say or write
               - locale: fr_FR
-                name: Langage receptif
+                name: Langage réceptif
                 description: >
                   Comprendre ce que les gens disent ou écrivent.
             subskills:
@@ -679,7 +679,7 @@ list:
           Understanding and knowing how to position oneself in a place, see
           where things are around, and how to move or navigate in that space.
       - locale: fr_FR
-        name: Apprehension de l'espace
+        name: Appréhension de l'espace
         description: >
           Comprendre et savoir comment se situer dans un lieu, voir où les
           choses se trouvent autour de soi, et comment bouger ou se déplacer
@@ -697,7 +697,7 @@ list:
           today is after yesterday and before tomorrow, spring is after winter
           and before summer).
       - locale: fr_FR
-        name: Apprehension du temps et de la temporalité
+        name: Appréhension du temps et de la temporalité
         description: >
           Comprendre le temps et savoir quand les choses arrivent (par exemple,
           le petit-déjeuner a lieu le matin et le diner a lieu le soir). Cela
