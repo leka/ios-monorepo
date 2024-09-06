@@ -8,8 +8,6 @@ import Foundation
 // MARK: - TTSGameplayCoordinatorProtocol
 
 protocol TTSGameplayCoordinatorProtocol {
-    //    associatedtype GameplayType
-
     var uiChoices: CurrentValueSubject<[TTSChoiceModel], Never> { get }
     func processUserSelection(choice: TTSChoiceModel)
 }

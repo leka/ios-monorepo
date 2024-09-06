@@ -14,15 +14,32 @@ struct ContentView: View {
 
             VStack(spacing: 20) {
                 NavigationLink("Find The Right Answers", destination: {
-                    TTSViewFindTheRightAnswers()
+                    let gameplay = GameplayFindTheRightAnswers(choices: TTSCoordinatorFindTheRightAnswers.kDefaultChoices)
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: gameplay)
+                    let viewModel = TTSViewViewModel(coordinator: coordinator)
+
+                    return TTSView(viewModel: viewModel)
                         .navigationTitle("Find The Right Answers")
                         .navigationBarTitleDisplayMode(.large)
                 })
                 .tint(.orange)
                 .buttonStyle(.borderedProminent)
 
+                NavigationLink("Choose Any Answer Up To 3", destination: {
+                    let gameplay = GameplayChooseAnyAnswersUpToThree(choices: TTSCoordinatorChooseAnyAnswersUpToThree.kDefaultChoices)
+                    let coordinator = TTSCoordinatorChooseAnyAnswersUpToThree(gameplay: gameplay)
+                    let viewModel = TTSViewViewModel(coordinator: coordinator)
+
+                    return TTSView(viewModel: viewModel)
+                        .navigationTitle("Choose Any Answer Up To 3")
+                        .navigationBarTitleDisplayMode(.large)
+                })
+                .tint(.pink)
+                .buttonStyle(.borderedProminent)
+
                 NavigationLink("Find The Right Order", destination: {
-                    TTSViewFindTheRightOrder()
+                    Text("Find the right order: 1, 2, 3, 4, 5, 6")
+                        .font(.title)
                         .navigationTitle("Find The Right Order")
                         .navigationBarTitleDisplayMode(.large)
                 })
@@ -30,19 +47,12 @@ struct ContentView: View {
                 .buttonStyle(.borderedProminent)
 
                 NavigationLink("Associate Categories", destination: {
-                    TTSViewAssociateCategories()
+                    Text("Find the right categories: (1/3), (2/5), (4/6)")
+                        .font(.title)
                         .navigationTitle("Associate Categories")
                         .navigationBarTitleDisplayMode(.large)
                 })
                 .tint(.cyan)
-                .buttonStyle(.borderedProminent)
-
-                NavigationLink("Choose Any Answer Up To 3", destination: {
-                    TTSViewChooseAnyAnswerUpToThree()
-                        .navigationTitle("Choose Any Answer Up To 3")
-                        .navigationBarTitleDisplayMode(.large)
-                })
-                .tint(.pink)
                 .buttonStyle(.borderedProminent)
             }
         }

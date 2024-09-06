@@ -7,7 +7,7 @@ import Foundation
 
 // MARK: - GameplayChooseAnyAnswerUpToThree
 
-class GameplayChooseAnyAnswerUpToThree: GameplayProtocol {
+class GameplayChooseAnyAnswersUpToThree: GameplayProtocol {
     // MARK: Lifecycle
 
     init(choices: [FindTheRightAnswersChoice]) {
@@ -45,11 +45,6 @@ class GameplayChooseAnyAnswerUpToThree: GameplayProtocol {
         if self.answerCount == self.maxAnswers {
             log.debug("The exercise is completed with \(self.maxAnswers) selected answers.")
         }
-    }
-
-    func terminateExercise() {
-        self.maxAnswers = self.answerCount
-        log.debug("The exercise is completed with \(self.maxAnswers) selected answers.")
     }
 
     // MARK: Private

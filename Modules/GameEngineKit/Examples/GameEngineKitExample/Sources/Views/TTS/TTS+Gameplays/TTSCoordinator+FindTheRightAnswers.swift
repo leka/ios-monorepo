@@ -5,15 +5,6 @@
 import Combine
 import SwiftUI
 
-let kFindTheRightAnswersChoices: [FindTheRightAnswersChoice] = [
-    FindTheRightAnswersChoice(value: "Choice 1\nCorrect", isRightAnswer: true),
-    FindTheRightAnswersChoice(value: "Choice 2", isRightAnswer: false),
-    FindTheRightAnswersChoice(value: "Choice 3\nCorrect", isRightAnswer: true),
-    FindTheRightAnswersChoice(value: "Choice 4", isRightAnswer: false),
-    FindTheRightAnswersChoice(value: "Choice 5\nCorrect", isRightAnswer: true),
-    FindTheRightAnswersChoice(value: "Choice 6", isRightAnswer: false),
-]
-
 // MARK: - TTSCoordinatorFindTheRightAnswers
 
 class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
@@ -29,12 +20,25 @@ class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
         self.gameplay.choices
             .receive(on: DispatchQueue.main)
             .sink { [weak self] choices in
-                self?.uiChoices.value = choices.map { choice in
+                guard let self else { return }
+
+                self.uiChoices.value = choices.map { choice in
                     TTSChoiceModel(id: choice.id, value: choice.value, state: Self.stateConverter(from: choice.state))
                 }
             }
             .store(in: &self.cancellables)
     }
+
+    // MARK: Public
+
+    public static let kDefaultChoices: [FindTheRightAnswersChoice] = [
+        FindTheRightAnswersChoice(value: "Choice 1\nCorrect", isRightAnswer: true),
+        FindTheRightAnswersChoice(value: "Choice 2", isRightAnswer: false),
+        FindTheRightAnswersChoice(value: "Choice 3\nCorrect", isRightAnswer: true),
+        FindTheRightAnswersChoice(value: "Choice 4", isRightAnswer: false),
+        FindTheRightAnswersChoice(value: "Choice 5\nCorrect", isRightAnswer: true),
+        FindTheRightAnswersChoice(value: "Choice 6", isRightAnswer: false),
+    ]
 
     // MARK: Internal
 
@@ -66,32 +70,10 @@ class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
     }
 }
 
-// MARK: - TTSViewFindTheRightAnswers
-
-struct TTSViewFindTheRightAnswers: View {
-    // MARK: Lifecycle
-
-    init() {
-        self.gameplay = GameplayFindTheRightAnswers(choices: kFindTheRightAnswersChoices)
-        self.coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: self.gameplay)
-        self.viewModel = TTSViewViewModel(coordinator: self.coordinator)
-    }
-
-    // MARK: Internal
-
-    var body: some View {
-        VStack(spacing: 50) {
-            TTSView(viewModel: self.viewModel)
-        }
-    }
-
-    // MARK: Private
-
-    private var gameplay: GameplayFindTheRightAnswers
-    private var coordinator: TTSCoordinatorFindTheRightAnswers
-    private var viewModel: TTSViewViewModel
-}
-
 #Preview {
-    TTSViewFindTheRightAnswers()
+    let gameplay = GameplayFindTheRightAnswers(choices: TTSCoordinatorFindTheRightAnswers.kDefaultChoices)
+    let coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: gameplay)
+    let viewModel = TTSViewViewModel(coordinator: coordinator)
+
+    return TTSView(viewModel: viewModel)
 }
