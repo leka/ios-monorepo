@@ -278,38 +278,6 @@ exercises_payload:
               type: speech
               value:
                 - locale: fr_FR
-                  utterance: "Le koala"
-                - locale: en_US
-                  utterance: "The koala"
-          payload:
-            choices:
-              - value: pictograms-animals-savannah-koala_gray-0077
-                type: image
-                is_right_answer: true
-              - value: pictograms-animals-savannah-rhinoceros_gray-007A
-                type: image
-              - value: pictograms-animals-savannah-tiger_orange-007B
-                type: image
-              - value: pictograms-animals-savannah-zebra_white-007C
-                type: image
-              - value: pictograms-animals-savannah-hippopotamus_gray-0083
-                type: image
-              - value: pictograms-animals-savannah-jaguar_yellow-0084
-                type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Ecoute et touche l'animal demandé
-            - locale: en_US
-              value: Listen and touch the requested animal
-          interface: listenThenTouchToSelect
-          gameplay: findTheRightAnswers
-          action:
-            type: ipad
-            value:
-              type: speech
-              value:
-                - locale: fr_FR
                   utterance: "Le rhinocéros"
                 - locale: en_US
                   utterance: "The rhinoceros"
