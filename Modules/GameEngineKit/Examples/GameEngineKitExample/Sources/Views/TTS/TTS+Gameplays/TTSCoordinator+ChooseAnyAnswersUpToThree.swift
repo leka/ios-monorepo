@@ -31,13 +31,13 @@ class TTSCoordinatorChooseAnyAnswersUpToThree: TTSGameplayCoordinatorProtocol {
 
     // MARK: Public
 
-    public static let kDefaultChoices: [FindTheRightAnswersChoice] = [
-        FindTheRightAnswersChoice(value: "Choice 1\nCorrect", isRightAnswer: true),
-        FindTheRightAnswersChoice(value: "Choice 2", isRightAnswer: false),
-        FindTheRightAnswersChoice(value: "Choice 3\nCorrect", isRightAnswer: true),
-        FindTheRightAnswersChoice(value: "Choice 4", isRightAnswer: false),
-        FindTheRightAnswersChoice(value: "Choice 5\nCorrect", isRightAnswer: true),
-        FindTheRightAnswersChoice(value: "Choice 6", isRightAnswer: false),
+    public static let kDefaultChoices: [ChooseAnyAnswersUpToThreeChoice] = [
+        ChooseAnyAnswersUpToThreeChoice(value: "Choice 1"),
+        ChooseAnyAnswersUpToThreeChoice(value: "Choice 2"),
+        ChooseAnyAnswersUpToThreeChoice(value: "Choice 3"),
+        ChooseAnyAnswersUpToThreeChoice(value: "Choice 4"),
+        ChooseAnyAnswersUpToThreeChoice(value: "Choice 5"),
+        ChooseAnyAnswersUpToThreeChoice(value: "Choice 6"),
     ]
 
     // MARK: Internal
@@ -45,7 +45,7 @@ class TTSCoordinatorChooseAnyAnswersUpToThree: TTSGameplayCoordinatorProtocol {
     private(set) var uiChoices = CurrentValueSubject<[TTSChoiceModel], Never>([])
 
     func processUserSelection(choice: TTSChoiceModel) {
-        log.debug("[CO] \(choice.id) - \(choice.value.replacingOccurrences(of: "\n", with: " ")) - \(choice.state)")
+        log.debug("[CO] \(choice.id) - \(choice.value)) - \(choice.state)")
         guard let correspondingGameChoice = self.gameplay.choices.value.first(where: { $0.id == choice.id }) else { return }
         self.gameplay.process(choice: correspondingGameChoice)
     }
@@ -56,14 +56,12 @@ class TTSCoordinatorChooseAnyAnswersUpToThree: TTSGameplayCoordinatorProtocol {
 
     private var cancellables = Set<AnyCancellable>()
 
-    private static func stateConverter(from state: FindTheRightAnswersChoiceState) -> TTSChoiceState {
+    private static func stateConverter(from state: ChooseAnyAnswersUpToThreeChoiceState) -> TTSChoiceState {
         switch state {
             case .idle:
                 .idle
             case .selected:
                 .selected
-            default:
-                .idle
         }
     }
 }
