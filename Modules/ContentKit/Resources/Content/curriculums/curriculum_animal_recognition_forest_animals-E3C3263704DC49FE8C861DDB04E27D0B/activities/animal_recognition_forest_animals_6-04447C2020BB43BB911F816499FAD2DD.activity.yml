@@ -8,7 +8,7 @@ uuid: 04447C2020BB43BB911F816499FAD2DD
 name: animal_recognition_forest_animals_6
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-06-20T15:57:25.469674"
+last_edited_at: "2024-09-09T16:17:45.84134"
 
 status: published
 
@@ -17,6 +17,7 @@ authors:
 
 skills:
   - recognition
+  - discrimination
 
 tags:
   - animals
@@ -75,9 +76,9 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -90,6 +91,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The bear"
           payload:
+            shuffle_choices: true
             choices:
               - value: animals_forest_bear_brown
                 type: image
@@ -100,16 +102,16 @@ exercises_payload:
                 type: image
               - value: animals_forest_fox_orange
                 type: image
-              - value: pictograms-animals-forest-frog_green-0067
+              - value: animals_forest_frog_green
                 type: image
               - value: animals_forest_hedgehog_brown
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -122,6 +124,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The bird"
           payload:
+            shuffle_choices: true
             choices:
               - value: animals_forest_bird_robin_red
                 type: image
@@ -130,7 +133,7 @@ exercises_payload:
                 type: image
               - value: animals_forest_fox_orange
                 type: image
-              - value: pictograms-animals-forest-frog_green-0067
+              - value: animals_forest_frog_green
                 type: image
               - value: animals_forest_hedgehog_brown
                 type: image
@@ -139,9 +142,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -154,13 +157,14 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The boar"
           payload:
+            shuffle_choices: true
             choices:
               - value: animals_forest_boar_black
                 type: image
                 is_right_answer: true
               - value: animals_forest_fox_orange
                 type: image
-              - value: pictograms-animals-forest-frog_green-0067
+              - value: animals_forest_frog_green
                 type: image
               - value: animals_forest_hedgehog_brown
                 type: image
@@ -171,9 +175,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -186,11 +190,12 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The fox"
           payload:
+            shuffle_choices: true
             choices:
               - value: animals_forest_fox_orange
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-forest-frog_green-0067
+              - value: animals_forest_frog_green
                 type: image
               - value: animals_forest_hedgehog_brown
                 type: image
@@ -198,14 +203,14 @@ exercises_payload:
                 type: image
               - value: animals_forest_rabbit_gray
                 type: image
-              - value: pictograms-animals-forest-snail_brown-0069
+              - value: animals_forest_snail_brown
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -218,8 +223,9 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The frog"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-forest-frog_green-0067
+              - value: animals_forest_frog_green
                 type: image
                 is_right_answer: true
               - value: animals_forest_hedgehog_brown
@@ -228,16 +234,16 @@ exercises_payload:
                 type: image
               - value: animals_forest_rabbit_gray
                 type: image
-              - value: pictograms-animals-forest-snail_brown-0069
+              - value: animals_forest_snail_brown
                 type: image
-              - value: pictograms-animals-forest-snake_green-0065
+              - value: animals_forest_snake_green
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -250,6 +256,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The hedgehog"
           payload:
+            shuffle_choices: true
             choices:
               - value: animals_forest_hedgehog_brown
                 type: image
@@ -258,18 +265,18 @@ exercises_payload:
                 type: image
               - value: animals_forest_rabbit_gray
                 type: image
-              - value: pictograms-animals-forest-snail_brown-0069
+              - value: animals_forest_snail_brown
                 type: image
-              - value: pictograms-animals-forest-snake_green-0065
+              - value: animals_forest_snake_green
                 type: image
               - value: animals_forest_squirrel_orange
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -282,15 +289,16 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The owl"
           payload:
+            shuffle_choices: true
             choices:
               - value: animals_forest_owl_brown
                 type: image
                 is_right_answer: true
               - value: animals_forest_rabbit_gray
                 type: image
-              - value: pictograms-animals-forest-snail_brown-0069
+              - value: animals_forest_snail_brown
                 type: image
-              - value: pictograms-animals-forest-snake_green-0065
+              - value: animals_forest_snake_green
                 type: image
               - value: animals_forest_squirrel_orange
                 type: image
@@ -299,9 +307,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -314,13 +322,14 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The rabbit"
           payload:
+            shuffle_choices: true
             choices:
               - value: animals_forest_rabbit_gray
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-forest-snail_brown-0069
+              - value: animals_forest_snail_brown
                 type: image
-              - value: pictograms-animals-forest-snake_green-0065
+              - value: animals_forest_snake_green
                 type: image
               - value: animals_forest_squirrel_orange
                 type: image
@@ -331,9 +340,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -346,11 +355,12 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The snail"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-forest-snail_brown-0069
+              - value: animals_forest_snail_brown
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-forest-snake_green-0065
+              - value: animals_forest_snake_green
                 type: image
               - value: animals_forest_squirrel_orange
                 type: image
@@ -363,9 +373,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -378,8 +388,9 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The snake"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-forest-snake_green-0065
+              - value: animals_forest_snake_green
                 type: image
                 is_right_answer: true
               - value: animals_forest_squirrel_orange
@@ -395,9 +406,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -410,6 +421,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The squirrel"
           payload:
+            shuffle_choices: true
             choices:
               - value: animals_forest_squirrel_orange
                 type: image
