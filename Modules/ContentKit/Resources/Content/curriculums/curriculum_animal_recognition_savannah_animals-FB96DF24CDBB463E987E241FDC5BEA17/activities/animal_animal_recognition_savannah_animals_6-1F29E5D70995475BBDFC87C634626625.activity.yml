@@ -8,7 +8,7 @@ uuid: 1F29E5D70995475BBDFC87C634626625
 name: animal_animal_recognition_savannah_animals_6
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-06-21T17:23:32.570167"
+last_edited_at: "2024-09-09T15:43:45.806317"
 
 status: published
 
@@ -17,6 +17,7 @@ authors:
 
 skills:
   - recognition
+  - discrimination
 
 tags:
   - animals
@@ -90,19 +91,20 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The lion"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-savannah-lion_brown-0082
+              - value: animals_savannah_lion_brown
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-savannah-giraffe_yellow-0081
+              - value: animals_savannah_giraffe_yellow
                 type: image
-              - value: pictograms-animals-savannah-hippopotamus_gray-0083
+              - value: animals_savannah_hippopotamus_gray
                 type: image
-              - value: pictograms-animals-savannah-hyena_yellow-007D
+              - value: animals_savannah_hyena_yellow
                 type: image
-              - value: pictograms-animals-savannah-jaguar_yellow-0084
+              - value: animals_savannah_jaguar_yellow
                 type: image
-              - value: pictograms-animals-savannah-kangaroo_brown-0078
+              - value: animals_savannah_kangaroo_brown
                 type: image
 
         - instructions:
@@ -122,19 +124,20 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The giraffe"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-savannah-giraffe_yellow-0081
+              - value: animals_savannah_giraffe_yellow
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-savannah-lion_brown-0082
+              - value: animals_savannah_lion_brown
                 type: image
-              - value: pictograms-animals-savannah-hippopotamus_gray-0083
+              - value: animals_savannah_hippopotamus_gray
                 type: image
-              - value: pictograms-animals-savannah-hyena_yellow-007D
+              - value: animals_savannah_hyena_yellow
                 type: image
-              - value: pictograms-animals-savannah-jaguar_yellow-0084
+              - value: animals_savannah_jaguar_yellow
                 type: image
-              - value: pictograms-animals-savannah-kangaroo_brown-0078
+              - value: animals_savannah_kangaroo_brown
                 type: image
 
         - instructions:
@@ -154,19 +157,20 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The hippopotamus"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-savannah-hippopotamus_gray-0083
+              - value: animals_savannah_hippopotamus_gray
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-savannah-jaguar_yellow-0084
+              - value: animals_savannah_jaguar_yellow
                 type: image
-              - value: pictograms-animals-savannah-kangaroo_brown-0078
+              - value: animals_savannah_kangaroo_brown
                 type: image
-              - value: pictograms-animals-savannah-koala_gray-0077
+              - value: animals_savannah_giraffe_yellow
                 type: image
-              - value: pictograms-animals-savannah-lion_brown-0082
+              - value: animals_savannah_lion_brown
                 type: image
-              - value: pictograms-animals-savannah-rhinoceros_gray-007A
+              - value: animals_savannah_rhinoceros_gray
                 type: image
 
         - instructions:
@@ -186,19 +190,20 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The hyena"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-savannah-hyena_yellow-007D
+              - value: animals_savannah_hyena_yellow
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-savannah-kangaroo_brown-0078
+              - value: animals_savannah_kangaroo_brown
                 type: image
-              - value: pictograms-animals-savannah-koala_gray-0077
+              - value: animals_savannah_giraffe_yellow
                 type: image
-              - value: pictograms-animals-savannah-lion_brown-0082
+              - value: animals_savannah_lion_brown
                 type: image
-              - value: pictograms-animals-savannah-jaguar_yellow-0084
+              - value: animals_savannah_jaguar_yellow
                 type: image
-              - value: pictograms-animals-savannah-rhinoceros_gray-007A
+              - value: animals_savannah_rhinoceros_gray
                 type: image
 
         - instructions:
@@ -218,19 +223,20 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The jaguar"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-savannah-jaguar_yellow-0084
+              - value: animals_savannah_jaguar_yellow
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-savannah-koala_gray-0077
+              - value: animals_savannah_giraffe_yellow
                 type: image
-              - value: pictograms-animals-savannah-rhinoceros_gray-007A
+              - value: animals_savannah_rhinoceros_gray
                 type: image
-              - value: pictograms-animals-savannah-tiger_orange-007B
+              - value: animals_savannah_tiger_orange
                 type: image
-              - value: pictograms-animals-savannah-zebra_white-007C
+              - value: animals_savannah_zebra_white
                 type: image
-              - value: pictograms-animals-savannah-hippopotamus_gray-0083
+              - value: animals_savannah_hippopotamus_gray
                 type: image
 
         - instructions:
@@ -250,19 +256,20 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The kangaroo"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-savannah-kangaroo_brown-0078
+              - value: animals_savannah_kangaroo_brown
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-savannah-rhinoceros_gray-007A
+              - value: animals_savannah_rhinoceros_gray
                 type: image
-              - value: pictograms-animals-savannah-tiger_orange-007B
+              - value: animals_savannah_tiger_orange
                 type: image
-              - value: pictograms-animals-savannah-zebra_white-007C
+              - value: animals_savannah_zebra_white
                 type: image
-              - value: pictograms-animals-savannah-koala_gray-0077
+              - value: animals_savannah_giraffe_yellow
                 type: image
-              - value: pictograms-animals-savannah-lion_brown-0082
+              - value: animals_savannah_lion_brown
                 type: image
 
         - instructions:
@@ -282,19 +289,20 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The rhinoceros"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-savannah-rhinoceros_gray-007A
+              - value: animals_savannah_rhinoceros_gray
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-savannah-tiger_orange-007B
+              - value: animals_savannah_tiger_orange
                 type: image
-              - value: pictograms-animals-savannah-zebra_white-007C
+              - value: animals_savannah_zebra_white
                 type: image
-              - value: pictograms-animals-savannah-hippopotamus_gray-0083
+              - value: animals_savannah_hippopotamus_gray
                 type: image
-              - value: pictograms-animals-savannah-jaguar_yellow-0084
+              - value: animals_savannah_jaguar_yellow
                 type: image
-              - value: pictograms-animals-savannah-kangaroo_brown-0078
+              - value: animals_savannah_kangaroo_brown
                 type: image
 
         - instructions:
@@ -314,19 +322,20 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The tiger"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-savannah-tiger_orange-007B
+              - value: animals_savannah_tiger_orange
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-savannah-zebra_white-007C
+              - value: animals_savannah_zebra_white
                 type: image
-              - value: pictograms-animals-savannah-hippopotamus_gray-0083
+              - value: animals_savannah_hippopotamus_gray
                 type: image
-              - value: pictograms-animals-savannah-jaguar_yellow-0084
+              - value: animals_savannah_jaguar_yellow
                 type: image
-              - value: pictograms-animals-savannah-kangaroo_brown-0078
+              - value: animals_savannah_kangaroo_brown
                 type: image
-              - value: pictograms-animals-savannah-koala_gray-0077
+              - value: animals_savannah_giraffe_yellow
                 type: image
 
         - instructions:
@@ -346,17 +355,18 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The zebra"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-savannah-zebra_white-007C
+              - value: animals_savannah_zebra_white
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-savannah-hippopotamus_gray-0083
+              - value: animals_savannah_hippopotamus_gray
                 type: image
-              - value: pictograms-animals-savannah-jaguar_yellow-0084
+              - value: animals_savannah_jaguar_yellow
                 type: image
-              - value: pictograms-animals-savannah-kangaroo_brown-0078
+              - value: animals_savannah_kangaroo_brown
                 type: image
-              - value: pictograms-animals-savannah-koala_gray-0077
+              - value: animals_savannah_giraffe_yellow
                 type: image
-              - value: pictograms-animals-savannah-lion_brown-0082
+              - value: animals_savannah_lion_brown
                 type: image
