@@ -8,7 +8,7 @@ uuid: 0977107F2D0B42CD8563FF12EF5EC773
 name: animal_recognition_farm_animals_4
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-09-02T16:41:52.499047"
+last_edited_at: "2024-09-09T15:17:42.96907"
 
 status: published
 
@@ -17,6 +17,7 @@ authors:
 
 skills:
   - recognition
+  - discrimination
 
 tags:
   - animals
@@ -75,9 +76,9 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -90,6 +91,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The pig"
           payload:
+            shuffle_choices: true
             choices:
               - value: animals_farm_pig_pink
                 type: image
@@ -103,9 +105,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -118,6 +120,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The cow"
           payload:
+            shuffle_choices: true
             choices:
               - value: animals_farm_cow_white
                 type: image
@@ -126,14 +129,14 @@ exercises_payload:
                 type: image
               - value: animals_farm_donkey_gray
                 type: image
-              - value: pictograms-animals-farm-duck
+              - value: animals_farm_duck_brown
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -146,22 +149,23 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The chicken"
           payload:
+            shuffle_choices: true
             choices:
               - value: animals_farm_chicken_yellow
                 type: image
                 is_right_answer: true
               - value: animals_farm_donkey_gray
                 type: image
-              - value: pictograms-animals-farm-duck
+              - value: animals_farm_duck_brown
                 type: image
               - value: animals_farm_goat_brown
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -174,11 +178,12 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The donkey"
           payload:
+            shuffle_choices: true
             choices:
               - value: animals_farm_donkey_gray
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-farm-duck
+              - value: animals_farm_duck_brown
                 type: image
               - value: animals_farm_goat_brown
                 type: image
@@ -187,9 +192,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -202,8 +207,9 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The duck"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-farm-duck
+              - value: animals_farm_duck_brown
                 type: image
                 is_right_answer: true
               - value: animals_farm_goat_brown
@@ -215,9 +221,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -230,6 +236,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The goat"
           payload:
+            shuffle_choices: true
             choices:
               - value: animals_farm_goat_brown
                 type: image
@@ -243,9 +250,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -258,6 +265,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The goose"
           payload:
+            shuffle_choices: true
             choices:
               - value: animals_farm_goose_brown
                 type: image
@@ -271,9 +279,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -286,6 +294,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The horse"
           payload:
+            shuffle_choices: true
             choices:
               - value: animals_farm_horse_brown
                 type: image
@@ -294,14 +303,14 @@ exercises_payload:
                 type: image
               - value: animals_farm_sheep_white
                 type: image
-              - value: pictograms-animals-farm-swan
+              - value: animals_farm_swan
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -314,22 +323,23 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The rooster"
           payload:
+            shuffle_choices: true
             choices:
               - value: animals_farm_rooster_white
                 type: image
                 is_right_answer: true
               - value: animals_farm_sheep_white
                 type: image
-              - value: pictograms-animals-farm-swan
+              - value: animals_farm_swan
                 type: image
               - value: animals_farm_bird_yellow
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -342,11 +352,12 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The sheep"
           payload:
+            shuffle_choices: true
             choices:
               - value: animals_farm_sheep_white
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-farm-swan
+              - value: animals_farm_swan
                 type: image
               - value: animals_farm_bird_yellow
                 type: image
@@ -355,9 +366,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -370,8 +381,9 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The swan"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-farm-swan
+              - value: animals_farm_swan
                 type: image
                 is_right_answer: true
               - value: animals_farm_bird_yellow
@@ -383,9 +395,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'animal demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested animal
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -398,6 +410,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The bird"
           payload:
+            shuffle_choices: true
             choices:
               - value: animals_farm_bird_yellow
                 type: image
