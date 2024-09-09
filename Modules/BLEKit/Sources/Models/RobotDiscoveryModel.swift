@@ -12,7 +12,7 @@ public struct RobotDiscoveryModel: Identifiable {
 
     // MARK: - Public functions
 
-    public init(name: String, isCharging: Bool, battery: Int, osVersion: String, isDeepSleeping: Bool = false) {
+    public init(name: String, osVersion: String, isCharging: Bool, battery: Int, isDeepSleeping: Bool = false) {
         self.robotPeripheral = nil
         self.rssi = nil
         self.id = UUID()
