@@ -11,7 +11,9 @@ struct ActivityTemplateList: View {
     var body: some View {
         List {
             ForEach(self.activities) { activity in
-                NavigationLink(destination: ActivityDetailsView(activity: activity)) {
+                let viewModel = NewActivityViewModel(activity: activity)
+
+                NavigationLink(destination: NewActivityView(viewModel: viewModel)) {
                     Image(uiImage: activity.details.iconImage)
                         .resizable()
                         .scaledToFit()
