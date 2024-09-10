@@ -8,6 +8,57 @@ import DesignKit
 import GameEngineKit
 import SwiftUI
 
+// MARK: - PlaceholderExerciseView
+
+struct PlaceholderExerciseView: View {
+    @State var count = 0
+
+    var body: some View {
+        Text("Placeholder Exercise View")
+
+        Text("Counter: \(self.count)")
+        Button("Press me") {
+            self.count += 1
+        }
+        .buttonStyle(.bordered)
+    }
+}
+
+// MARK: - ExerciseCoordinator
+
+class ExerciseCoordinator {
+    // MARK: Lifecycle
+
+    init(payload: Activity.ExercisesPayload) {
+        self.currentExercise = payload.exerciseGroups.first!.exercises.first!
+    }
+
+    // MARK: Internal
+
+    let currentExercise: Exercise
+
+    @ViewBuilder
+    var execiseView: some View {
+        switch (ui: self.currentExercise.interface, gameplay: self.currentExercise.gameplay) {
+            case (.touchToSelect, .findTheRightAnswers):
+                // swiftlint:disable:next force_cast
+                let ttsPayload = self.currentExercise.payload as! TouchToSelect.Payload
+
+                let gameplayChoices = ttsPayload.choices.map {
+                    FindTheRightAnswersChoice(value: $0.value, isRightAnswer: $0.isRightAnswer)
+                }
+
+                let gameplay = GameplayFindTheRightAnswers(choices: gameplayChoices)
+                let coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: gameplay)
+                let viewModel = TTSViewViewModel(coordinator: coordinator)
+
+                TTSView(viewModel: viewModel)
+            default:
+                PlaceholderExerciseView()
+        }
+    }
+}
+
 // MARK: - NewActivityViewModel
 
 class NewActivityViewModel: ObservableObject {
@@ -15,11 +66,35 @@ class NewActivityViewModel: ObservableObject {
 
     init(activity: Activity) {
         self.activity = activity
+        self.exerciseCoordinator = ExerciseCoordinator(payload: activity.exercisePayload)
     }
 
     // MARK: Internal
 
-    let activity: Activity
+    var activityTitle: String {
+        self.activity.details.title
+    }
+
+    @ViewBuilder
+    var exerciseView: some View {
+        VStack {
+            Button(self.exerciseCoordinator.currentExercise.instructions ?? "Missing instructions") {
+                log.warning("Exercise instructions button tapped")
+            }
+            .buttonStyle(.borderedProminent)
+
+            Spacer()
+
+            self.exerciseCoordinator.execiseView
+
+            Spacer()
+        }
+    }
+
+    // MARK: Private
+
+    private let activity: Activity
+    private let exerciseCoordinator: ExerciseCoordinator
 }
 
 // MARK: - NewActivityView
@@ -38,23 +113,15 @@ public struct NewActivityView: View {
             VStack {
                 VStack(spacing: 15) {
                     Text("Progress bar")
-                    Button("Exercise instructions button") {
-                        log.warning("Exercise instructions button tapped")
-                    }
-                    .buttonStyle(.borderedProminent)
                 }
 
-                VStack {
-                    Spacer()
-                    Text("Exercise Interface")
-                    Spacer()
-                }
+                self.viewModel.exerciseView
             }
         }
         .frame(maxWidth: .infinity)
         .background(.lkBackground)
         .ignoresSafeArea(.all, edges: .bottom)
-        .navigationTitle(self.viewModel.activity.details.title)
+        .navigationTitle(self.viewModel.activityTitle)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -100,7 +167,9 @@ public struct NewActivityView: View {
 
 #Preview {
     NavigationStack {
-        let activity = ContentKit.allTemplateActivities.first!
+        let activity = ContentKit.allTemplateActivities.first(where: {
+            $0.exercisePayload.exerciseGroups.first!.exercises.first!.interface == .touchToSelect
+        })!
         let viewModel = NewActivityViewModel(activity: activity)
         NewActivityView(viewModel: viewModel)
     }
