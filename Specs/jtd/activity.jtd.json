@@ -499,6 +499,9 @@
                         "optionalProperties": {
                             "is_right_answer": {
                                 "type": "boolean"
+                            },
+                            "category": {
+                                "enum": ["catA", "catB", "catC", "catD"]
                             }
                         }
                     }
