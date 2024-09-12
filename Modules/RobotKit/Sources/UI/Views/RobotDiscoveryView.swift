@@ -217,7 +217,7 @@ struct RobotDiscoveryView: View {
     }
 
     private var robotOsVersion: some View {
-        Text(self.discovery.osVersion)
+        Text("LekaOS \(self.discovery.osVersion)")
             .font(.caption)
             .foregroundColor(.gray)
     }

@@ -16,7 +16,7 @@ public struct RobotDiscoveryViewModel: Identifiable {
         self.id = UUID()
         self.name = name
         self.status = status
-        self.osVersion = "LekaOS \(osVersion)"
+        self.osVersion = osVersion
         self.battery = BatteryViewModel(level: battery)
         self.isCharging = isCharging
         self.isDeepSleeping = isDeepSleeping
@@ -26,7 +26,7 @@ public struct RobotDiscoveryViewModel: Identifiable {
         self.id = discovery.id
         self.name = discovery.name
         self.status = status
-        self.osVersion = "LekaOS \(discovery.osVersion)"
+        self.osVersion = discovery.osVersion
         self.battery = BatteryViewModel(level: discovery.battery)
         self.isCharging = discovery.isCharging
         self.isDeepSleeping = discovery.isDeepSleeping
