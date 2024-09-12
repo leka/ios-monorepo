@@ -44,7 +44,7 @@ struct RobotConnectionLabel: View {
         guard let osVersion = Version(tolerant: self.robotViewModel.osVersion) else {
             return false
         }
-        let versionIsLatest = osVersion >= Version(tolerant: Robot.kLatestFirmwareVersion)!
+        let versionIsLatest = osVersion >= Robot.kLatestFirmwareVersion
         if versionIsLatest {
             return false
         } else {

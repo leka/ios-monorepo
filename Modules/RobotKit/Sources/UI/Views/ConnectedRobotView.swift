@@ -103,7 +103,7 @@ public struct ConnectedRobotView: View {
         guard let osVersion = Version(tolerant: self.connectedRobotInformationViewModel.osVersion) else {
             return false
         }
-        let versionIsLatest = osVersion >= Version(tolerant: Robot.kLatestFirmwareVersion)!
+        let versionIsLatest = osVersion >= Robot.kLatestFirmwareVersion
         if versionIsLatest {
             return false
         } else {
