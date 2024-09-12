@@ -7,6 +7,7 @@ import Combine
 import DesignKit
 import LocalizationKit
 import SwiftUI
+import Version
 
 // MARK: - ConnectedRobotView
 
@@ -99,11 +100,10 @@ public struct ConnectedRobotView: View {
 
     @State private var showNotUpToDateAlert: Bool = false
     private var robotNotUpToDate: Bool {
-        let osVersion = self.connectedRobotInformationViewModel.osVersion
-        if osVersion == "(n/a)" {
+        guard let osVersion = Version(tolerant: self.connectedRobotInformationViewModel.osVersion) else {
             return false
         }
-        let versionIsLatest = osVersion == Robot.kLatestFirmwareVersion
+        let versionIsLatest = osVersion >= Version(tolerant: Robot.kLatestFirmwareVersion)!
         if versionIsLatest {
             return false
         } else {

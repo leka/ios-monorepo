@@ -5,6 +5,7 @@
 import DesignKit
 import LocalizationKit
 import SwiftUI
+import Version
 
 // MARK: - RobotDiscoveryView
 
@@ -48,8 +49,10 @@ struct RobotDiscoveryView: View {
     private var discovery: RobotDiscoveryViewModel
 
     private var robotNotUpToDate: Bool {
-        let osVersion = self.discovery.osVersion
-        let versionIsLatest = osVersion == "LekaOS \(Robot.kLatestFirmwareVersion)"
+        guard let osVersion = Version(tolerant: self.discovery.osVersion) else {
+            return false
+        }
+        let versionIsLatest = osVersion >= Version(tolerant: Robot.kLatestFirmwareVersion)!
         if versionIsLatest {
             return false
         } else {
