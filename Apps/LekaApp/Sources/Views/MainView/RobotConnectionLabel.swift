@@ -6,6 +6,7 @@ import DesignKit
 import LocalizationKit
 import RobotKit
 import SwiftUI
+import Version
 
 // MARK: - RobotConnectionLabel
 
@@ -40,11 +41,10 @@ struct RobotConnectionLabel: View {
     @StateObject private var robotViewModel: ConnectedRobotInformationViewModel = .init()
 
     private var robotNotUpToDate: Bool {
-        let osVersion = self.robotViewModel.osVersion
-        if osVersion == "(n/a)" || osVersion.isEmpty {
+        guard let osVersion = Version(tolerant: self.robotViewModel.osVersion) else {
             return false
         }
-        let versionIsLatest = osVersion == Robot.kLatestFirmwareVersion
+        let versionIsLatest = osVersion >= Version(tolerant: Robot.kLatestFirmwareVersion)!
         if versionIsLatest {
             return false
         } else {
