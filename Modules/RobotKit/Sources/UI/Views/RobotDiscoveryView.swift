@@ -52,7 +52,7 @@ struct RobotDiscoveryView: View {
         guard let osVersion = Version(tolerant: self.discovery.osVersion) else {
             return false
         }
-        let versionIsLatest = osVersion >= Version(tolerant: Robot.kLatestFirmwareVersion)!
+        let versionIsLatest = osVersion >= Robot.kLatestFirmwareVersion
         if versionIsLatest {
             return false
         } else {

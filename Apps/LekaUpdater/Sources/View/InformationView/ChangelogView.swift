@@ -19,7 +19,7 @@ struct ChangelogView: View {
     // MARK: Private
 
     private var changelog: LocalizedStringKey {
-        let osVersion = Robot.kLatestFirmwareVersion
+        let osVersion = Robot.kLatestFirmwareVersion.description
         var languageCode: String {
             guard let language = Locale.current.language.languageCode?.identifier else { return "en" }
             return language == "fr" ? "fr" : "en"
