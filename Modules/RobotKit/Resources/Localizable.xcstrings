@@ -308,6 +308,42 @@
                 }
             }
         },
+        "robotkit.robot_discovery_view.close_alert_action": {
+            "comment": "Close alert",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Close"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Fermer"
+                    }
+                }
+            }
+        },
+        "robotkit.robot_discovery_view.open_leka_updater_alert_action": {
+            "comment": "Redirect to LekaUpdater app",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Open LekaUpdater"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Ouvrir LekaUpdater"
+                    }
+                }
+            }
+        },
         "robotkit.robot_discovery_view.robot_not_up_to_date_alert": {
             "comment": "Update is available alert",
             "extractionState": "extracted_with_value",

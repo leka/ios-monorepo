@@ -42,6 +42,9 @@ struct RobotDiscoveryView: View {
     @State private var inset: CGFloat = 0.0
     @State private var showNotUpToDateAlert: Bool = false
 
+    // swiftlint:disable:next force_cast
+    private let isNotLekaUpdater = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as! String != "LekaUpdater"
+
     private var discovery: RobotDiscoveryViewModel
 
     private var robotNotUpToDate: Bool {
@@ -103,7 +106,19 @@ struct RobotDiscoveryView: View {
                             .foregroundStyle(.white, .red)
                     }
                     .alert(String(l10n.RobotDiscoveryView.robotNotUpToDateAlert.characters), isPresented: self.$showNotUpToDateAlert) {
-                        Button("OK", role: .cancel) {}
+                        if self.isNotLekaUpdater {
+                            Button(String(l10n.RobotDiscoveryView.openLekaUpdaterAlertAction.characters)) {
+                                let appURL = URL(string: "LekaUpdater://")
+                                let appStoreURL = URL(string: "https://apps.apple.com/app/leka-updater/id6446940960")!
+
+                                if let appURL, UIApplication.shared.canOpenURL(appURL) {
+                                    UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+                                } else {
+                                    UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
+                                }
+                            }
+                        }
+                        Button(String(l10n.RobotDiscoveryView.closeAlertAction.characters), role: .cancel) {}
                     }
                 }
             }
@@ -157,7 +172,19 @@ struct RobotDiscoveryView: View {
                             .foregroundStyle(.white, .red)
                     }
                     .alert(String(l10n.RobotDiscoveryView.robotNotUpToDateAlert.characters), isPresented: self.$showNotUpToDateAlert) {
-                        Button("OK", role: .cancel) {}
+                        if self.isNotLekaUpdater {
+                            Button(String(l10n.RobotDiscoveryView.openLekaUpdaterAlertAction.characters)) {
+                                let appURL = URL(string: "LekaUpdater://")
+                                let appStoreURL = URL(string: "https://apps.apple.com/app/leka-updater/id6446940960")!
+
+                                if let appURL, UIApplication.shared.canOpenURL(appURL) {
+                                    UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+                                } else {
+                                    UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
+                                }
+                            }
+                        }
+                        Button(String(l10n.RobotDiscoveryView.closeAlertAction.characters), role: .cancel) {}
                     }
                 }
             }
@@ -205,6 +232,20 @@ extension l10n {
             bundle: RobotKitResources.bundle,
             value: "An update for Leka is available",
             comment: "Update is available alert"
+        )
+
+        static let openLekaUpdaterAlertAction = LocalizedString(
+            "robotkit.robot_discovery_view.open_leka_updater_alert_action",
+            bundle: RobotKitResources.bundle,
+            value: "Open LekaUpdater",
+            comment: "Redirect to LekaUpdater app"
+        )
+
+        static let closeAlertAction = LocalizedString(
+            "robotkit.robot_discovery_view.close_alert_action",
+            bundle: RobotKitResources.bundle,
+            value: "Close",
+            comment: "Close alert"
         )
     }
 }
