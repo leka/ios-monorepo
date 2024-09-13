@@ -8,7 +8,7 @@ uuid: 34E696B157354C76B9613F4C7E185BEE
 name: recognition_garden_items_1
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-06-21T17:23:32.570167"
+last_edited_at: "2024-09-13T11:32:12.059621"
 
 status: published
 
@@ -91,8 +91,9 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The hose"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-objects-garden-hose_blue-00B3
+              - value: objects_garden_hose_blue
                 type: image
                 is_right_answer: true
         - instructions:
@@ -108,12 +109,13 @@ exercises_payload:
               type: speech
               value:
                 - locale: fr_FR
-                  utterance: "La feuille"
+                  utterance: "Les feuilles"
                 - locale: en_US
-                  utterance: "The leaf"
+                  utterance: "The leaves"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-objects-garden-leaf_green-00B6
+              - value: objects_garden_leaf_green
                 type: image
                 is_right_answer: true
         - instructions:
@@ -133,8 +135,9 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The mushroom"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-objects-garden-mushroom_brown-00B2
+              - value: objects_garden_mushroom_brown
                 type: image
                 is_right_answer: true
         - instructions:
@@ -154,8 +157,9 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The pot"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-objects-garden-pot_brown-00B4
+              - value: objects_garden_pot_brown
                 type: image
                 is_right_answer: true
         - instructions:
@@ -175,8 +179,9 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The rake"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-objects-garden-rake_red-00B9
+              - value: objects_garden_rake_red
                 type: image
                 is_right_answer: true
         - instructions:
@@ -196,8 +201,9 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The shovel"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-objects-garden-shovel_gray-00AE
+              - value: objects_garden_shovel_gray
                 type: image
                 is_right_answer: true
         - instructions:
@@ -217,8 +223,9 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The swing set"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-objects-garden-swing_set_green-00B1
+              - value: objects_garden_swing_set_green
                 type: image
                 is_right_answer: true
         - instructions:
@@ -238,8 +245,9 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The tree"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-objects-garden-tree_green-00AD
+              - value: objects_garden_tree_green
                 type: image
                 is_right_answer: true
         - instructions:
@@ -259,8 +267,9 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The watering can"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-objects-garden-watering_can_blue-00AB
+              - value: objects_garden_watering_can_blue
                 type: image
                 is_right_answer: true
         - instructions:
@@ -280,8 +289,9 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The wheelbarrow"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-objects-garden-wheelbarrow_green-00B5
+              - value: objects_garden_wheelbarrow_green
                 type: image
                 is_right_answer: true
         - instructions:
@@ -301,8 +311,9 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The bucket"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-objects-garden-bucket_green-00B0
+              - value: objects_garden_bucket_green
                 type: image
                 is_right_answer: true
         - instructions:
@@ -322,7 +333,8 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The flower"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-objects-garden-flower_blue-00B7
+              - value: objects_garden_flower_blue
                 type: image
                 is_right_answer: true
