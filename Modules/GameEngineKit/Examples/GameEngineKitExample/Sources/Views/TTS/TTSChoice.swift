@@ -24,10 +24,10 @@ struct TTSChoiceModel: Identifiable {
 
 // MARK: - TTSChoiceState
 
-enum TTSChoiceState {
+enum TTSChoiceState: Equatable {
     case idle
-    case selected
-    case correct
+    case selected(order: Int? = nil)
+    case correct(order: Int? = nil)
     case wrong
 }
 
@@ -66,13 +66,13 @@ struct TTSChoiceStateBadge: View {
     var body: some View {
         ZStack {
             switch self.state {
-                case .correct:
-                    Image(systemName: "checkmark.circle.fill")
+                case let .correct(order):
+                    Image(systemName: order == nil ? "checkmark.circle.fill" : "\(order!).circle.fill")
                         .font(.largeTitle)
                         .foregroundColor(.green)
                         .position(x: 200, y: 20)
-                case .selected:
-                    Image(systemName: "circle.dotted.circle")
+                case let .selected(order):
+                    Image(systemName: order == nil ? "circle.dotted.circle" : "\(order!).circle.fill")
                         .font(.largeTitle)
                         .foregroundColor(.teal)
                         .position(x: 200, y: 20)

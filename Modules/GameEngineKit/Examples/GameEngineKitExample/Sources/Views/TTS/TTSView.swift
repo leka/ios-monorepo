@@ -47,8 +47,8 @@ struct TTSView: View {
     class TTSEmptyCoordinator: TTSGameplayCoordinatorProtocol {
         var uiChoices = CurrentValueSubject<[TTSChoiceModel], Never>([
             TTSChoiceModel(value: "Choice 1", state: .idle),
-            TTSChoiceModel(value: "Choice 2\nSelected", state: .selected),
-            TTSChoiceModel(value: "Choice 3\nCorrect", state: .correct),
+            TTSChoiceModel(value: "Choice 2\nSelected", state: .selected()),
+            TTSChoiceModel(value: "Choice 3\nCorrect", state: .correct()),
             TTSChoiceModel(value: "Choice 4\nWrong", state: .wrong),
             TTSChoiceModel(value: "Choice 5"),
             TTSChoiceModel(value: "Choice 6"),

@@ -61,9 +61,9 @@ class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
             case .idle:
                 .idle
             case .selected:
-                .selected
+                .selected()
             case .correct:
-                .correct
+                .correct()
             case .wrong:
                 .wrong
         }
