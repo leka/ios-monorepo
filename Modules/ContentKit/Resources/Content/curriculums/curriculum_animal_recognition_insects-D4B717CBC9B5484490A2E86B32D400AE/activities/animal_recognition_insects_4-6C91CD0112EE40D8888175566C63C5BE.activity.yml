@@ -8,7 +8,7 @@ uuid: 6C91CD0112EE40D8888175566C63C5BE
 name: animal_recognition_insects_4
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-07-31T12:58:56.283280"
+last_edited_at: "2024-09-13T10:32:19.566747"
 
 status: published
 
@@ -75,9 +75,9 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'insecte demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested insect
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -90,22 +90,23 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The ant"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-insects-ant_red-0099
+              - value: animals_insects_ant_red
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-insects-bee_yellow-0092
+              - value: animals_insects_bee_yellow
                 type: image
-              - value: pictograms-animals-insects-butterfly_pink-0095
+              - value: animals_insects_butterfly_pink
                 type: image
-              - value: pictograms-animals-insects-fly_green-0093
+              - value: animals_insects_fly_green
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'insecte demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested insect
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -118,22 +119,23 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The bee"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-insects-bee_yellow-0092
+              - value: animals_insects_bee_yellow
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-insects-dragonfly_purple-0090
+              - value: animals_insects_dragonfly_purple
                 type: image
-              - value: pictograms-animals-insects-fly_green-0093
+              - value: animals_insects_fly_green
                 type: image
-              - value: pictograms-animals-insects-grasshopper_green-0091
+              - value: animals_insects_grasshopper_green
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'insecte demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested insect
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -146,22 +148,23 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The butterfly"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-insects-butterfly_pink-0095
+              - value: animals_insects_butterfly_pink
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-insects-fly_green-0093
+              - value: animals_insects_fly_green
                 type: image
-              - value: pictograms-animals-insects-ladybug_red-0094
+              - value: animals_insects_ladybug_red
                 type: image
-              - value: pictograms-animals-insects-mosquito_orange-0098
+              - value: animals_insects_mosquito_orange
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'insecte demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested insect
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -174,22 +177,23 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The dragonfly"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-insects-dragonfly_purple-0090
+              - value: animals_insects_dragonfly_purple
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-insects-grasshopper_green-0091
+              - value: animals_insects_grasshopper_green
                 type: image
-              - value: pictograms-animals-insects-spider_black-0096
+              - value: animals_insects_spider_black
                 type: image
-              - value: pictograms-animals-insects-ant_red-0099
+              - value: animals_insects_ant_red
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'insecte demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested insect
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -202,22 +206,23 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The fly"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-insects-fly_green-0093
+              - value: animals_insects_fly_green
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-insects-ladybug_red-0094
+              - value: animals_insects_ladybug_red
                 type: image
-              - value: pictograms-animals-insects-mosquito_orange-0098
+              - value: animals_insects_mosquito_orange
                 type: image
-              - value: pictograms-animals-insects-spider_black-0096
+              - value: animals_insects_spider_black
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'insecte demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested insect
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -230,22 +235,23 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The grasshopper"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-insects-grasshopper_green-0091
+              - value: animals_insects_grasshopper_green
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-insects-mosquito_orange-0098
+              - value: animals_insects_mosquito_orange
                 type: image
-              - value: pictograms-animals-insects-spider_black-0096
+              - value: animals_insects_spider_black
                 type: image
-              - value: pictograms-animals-insects-ant_red-0099
+              - value: animals_insects_ant_red
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'insecte demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested insect
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -258,22 +264,23 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The ladybug"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-insects-ladybug_red-0094
+              - value: animals_insects_ladybug_red
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-insects-spider_black-0096
+              - value: animals_insects_spider_black
                 type: image
-              - value: pictograms-animals-insects-ant_red-0099
+              - value: animals_insects_ant_red
                 type: image
-              - value: pictograms-animals-insects-bee_yellow-0092
+              - value: animals_insects_bee_yellow
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'insecte demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested insect
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -286,22 +293,23 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The mosquito"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-insects-mosquito_orange-0098
+              - value: animals_insects_mosquito_orange
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-insects-spider_black-0096
+              - value: animals_insects_spider_black
                 type: image
-              - value: pictograms-animals-insects-ant_red-0099
+              - value: animals_insects_ant_red
                 type: image
-              - value: pictograms-animals-insects-fly_green-0093
+              - value: animals_insects_fly_green
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche l'insecte demandé
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested insect
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -314,13 +322,14 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The spider"
           payload:
+            shuffle_choices: true
             choices:
-              - value: pictograms-animals-insects-spider_black-0096
+              - value: animals_insects_spider_black
                 type: image
                 is_right_answer: true
-              - value: pictograms-animals-insects-ladybug_red-0094
+              - value: animals_insects_ladybug_red
                 type: image
-              - value: pictograms-animals-insects-mosquito_orange-0098
+              - value: animals_insects_mosquito_orange
                 type: image
-              - value: pictograms-animals-insects-fly_green-0093
+              - value: animals_insects_fly_green
                 type: image
