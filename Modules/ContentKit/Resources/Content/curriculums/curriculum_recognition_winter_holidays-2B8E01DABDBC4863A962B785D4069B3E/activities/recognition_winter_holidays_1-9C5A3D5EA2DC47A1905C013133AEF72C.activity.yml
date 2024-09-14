@@ -218,9 +218,9 @@ exercises_payload:
               type: speech
               value:
                 - locale: fr_FR
-                  utterance: "L'arbre de Noël"
+                  utterance: "Le sapin"
                 - locale: en_US
-                  utterance: "The Christmas tree"
+                  utterance: "The fir tree"
           payload:
             shuffle_choices: true
             choices:
