@@ -15,7 +15,6 @@ authors:
 skills:
   - association
   - association/matching
-  - discrimination
 
 tags:
   - food
@@ -35,13 +34,13 @@ l10n:
 
       title: Trouver les ingrédients d'une recette
 
-      subtitle: Apprendre à identifier et discriminer les bons ingrédients
+      subtitle: Apprendre à identifier les bons ingrédients
 
       abstract: |
-        Ce curriculum aide les participants à apprendre et à identifier les ingrédients corrects nécessaires pour différentes recettes, avec et sans la présence d'intrus.
+        Ce parcours aide les participants à apprendre et à identifier les ingrédients corrects nécessaires pour différentes recettes, avec et sans la présence d'intrus.
 
       description: |
-        Ce curriculum est conçu pour aider les participants à développer des compétences en association et en discrimination des aliments. À travers des activités, les participants apprendront à identifier les ingrédients nécessaires pour différentes recettes. Certaines activités présenteront des listes d'ingrédients corrects, tandis que d'autres incluront des intrus que les participants devront repérer et éliminer.
+        Ce parcours est conçu pour aider les participants à développer des compétences en association et en discrimination des aliments. À travers des activités, les participants apprendront à identifier les ingrédients nécessaires pour différentes recettes. Certaines activités présenteront des listes d'ingrédients corrects, tandis que d'autres incluront des intrus que les participants devront repérer et éliminer.
 
   - locale: en_US
     details:
@@ -49,7 +48,7 @@ l10n:
 
       title: Find Ingredients for a Recipe
 
-      subtitle: Learn to Identify and Discriminate the Correct Ingredients
+      subtitle: Learn to Identify the Correct Ingredients
 
       abstract: |
         This curriculum helps participants learn and identify the correct ingredients needed for various recipes, both with and without the presence of intruders.

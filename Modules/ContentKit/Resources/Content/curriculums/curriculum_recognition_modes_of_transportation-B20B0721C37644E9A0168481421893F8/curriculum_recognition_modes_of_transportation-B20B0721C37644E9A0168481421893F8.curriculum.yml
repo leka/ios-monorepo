@@ -15,7 +15,6 @@ authors:
 
 skills:
   - recognition
-  - discrimination
 
 tags:
   - modes_of_transportation
@@ -31,23 +30,23 @@ l10n:
   - locale: fr_FR
     details:
       icon: recognition_transportation
-      title: Reconnaissance des moyens de transport
-      subtitle: Activités de reconnaissance et de discrimination
+      title: Les moyens de transport
+      subtitle: Découverte des différents modes de déplacement
 
       abstract: |
-        Un programme conçu pour aider les utilisateurs à reconnaître et à différencier les moyens de transport grâce à des activités interactives.
+        Un parcours conçu pour aider les utilisateurs à reconnaître et à différencier les moyens de transport grâce à des activités interactives.
 
       description: |
-        Ce curriculum offre une série d'activités visant à améliorer la reconnaissance et la discrimination des moyens de transport. À travers des instructions audio et visuelles, les utilisateurs apprendront à identifier les moyens de transport.
+        Ce parcours offre une série d'activités visant à améliorer la reconnaissance et la discrimination des moyens de transport. À travers des instructions audio et visuelles, les utilisateurs apprendront à identifier les moyens de transport.
 
   - locale: en_US
     details:
       icon: recognition_transportation
-      title: Recognition of Transportation Means
-      subtitle: Recognition and Discrimination Activities
+      title: Transportation Means
+      subtitle: Exploring Different Modes of Transportation
 
       abstract: |
-        A program designed to help users recognize and differentiate transportation means through interactive activities.
+        A curriculum designed to help users recognize and differentiate transportation means through interactive activities.
 
       description: |
         This curriculum offers a series of activities aimed at improving the recognition and discrimination of transportation means. Through audio and visual instructions, users will learn to identify transportation means.

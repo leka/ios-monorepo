@@ -8,7 +8,7 @@ name: curriculum_recognition_digital_constellations
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-08-07T12:27:15.554821"
+last_edited_at: "2024-09-17T15:31:43.473496"
 authors:
   - leka
 
@@ -16,7 +16,6 @@ skills:
   - counting
   - attention
   - recognition
-  - discrimination
 
 tags:
   - numbers
@@ -34,7 +33,7 @@ l10n:
     details:
       icon: recognition_digital_constellations
 
-      title: Reconnaître les constellations numériques
+      title: Les constellations numériques
       subtitle: Apprendre à reconnaître les constellations de 1 à 6
 
       abstract: |
@@ -46,7 +45,7 @@ l10n:
     details:
       icon: recognition_digital_constellations
 
-      title: Recognize Numerical Constellations
+      title: Numerical Constellations
       subtitle: Learning to recognize constellations from 1 to 6
 
       abstract: |
