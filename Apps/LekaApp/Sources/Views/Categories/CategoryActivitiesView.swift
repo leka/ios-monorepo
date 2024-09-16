@@ -34,7 +34,7 @@ struct CategoryActivitiesView: View {
                 .padding(.horizontal)
 
                 ActivityGridView(activities: self.category.activities, onStartActivity: { activity in
-                    if self.authManagerViewModel.userAuthenticationState == .loggedIn {
+                    if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
                         self.navigation.sheetContent = .carereceiverPicker(activity: activity, story: nil)
                     } else {
                         self.navigation.currentActivity = activity

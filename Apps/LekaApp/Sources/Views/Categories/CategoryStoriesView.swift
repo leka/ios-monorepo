@@ -34,7 +34,7 @@ struct CategoryStoriesView: View {
                 .padding(.horizontal)
 
                 StoryGridView(stories: self.category.stories, onStartStory: { story in
-                    if self.authManagerViewModel.userAuthenticationState == .loggedIn {
+                    if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
                         self.navigation.sheetContent = .carereceiverPicker(activity: nil, story: story)
                     } else {
                         self.navigation.currentStory = story
