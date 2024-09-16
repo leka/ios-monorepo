@@ -151,6 +151,12 @@ struct SettingsView: View {
                 }
             }
 
+            #if DEVELOPER_MODE || TESTFLIGHT_BUILD
+                Section {
+                    Toggle("Demo mode", isOn: self.$navigation.demoMode)
+                }
+            #endif
+
             Section("Support") {
                 LabeledContent("Version", value: Bundle.version!)
                     .font(.footnote)

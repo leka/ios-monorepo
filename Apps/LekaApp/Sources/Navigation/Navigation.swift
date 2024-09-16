@@ -48,6 +48,7 @@ class Navigation: ObservableObject {
     static let shared = Navigation()
 
     @Published var disableUICompletly: Bool = false
+    @Published var demoMode: Bool = false
     @Published var categories = Category.allCases
 
     @Published var sheetContent: SheetContent?
