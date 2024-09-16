@@ -8,7 +8,7 @@ uuid: 70A14CC4CD394CDBB4886A8DFE4C5CCC
 name: touch_to_select_action_observe
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-06-28T13:28:34.670550"
+last_edited_at: "2024-09-16T15:27:15.658346"
 
 status: template
 
@@ -72,7 +72,7 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Touche les fruits similaires à celui présenter
+              value: Touche les fruits similaires à celui présenté
             - locale: en_US
               value: Tap the same fruits as the one shown
           interface: observeThenTouchToSelect
@@ -95,3 +95,27 @@ exercises_payload:
               - value: pictograms-foods-fruits-banana_yellow-00FB
                 type: image
                 is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche les animaux similaires à celui présenté
+            - locale: en_US
+              value: Tap the same animals as the one shown
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: sfsymbol
+              value: fish
+          payload:
+            choices:
+              - value: fish
+                type: sfsymbol
+                is_right_answer: true
+              - value: cat
+                type: sfsymbol
+              - value: dog
+                type: sfsymbol
+              - value: bird
+                type: sfsymbol
