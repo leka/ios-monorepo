@@ -30,6 +30,9 @@ public extension Exercise {
                         case .image:
                             let image = try valueContainer.decode(String.self, forKey: .value)
                             self = .ipad(type: .image(image))
+                        case .sfsymbol:
+                            let symbol = try valueContainer.decode(String.self, forKey: .value)
+                            self = .ipad(type: .sfsymbol(symbol))
                         case .audio:
                             let audio = try valueContainer.decode(String.self, forKey: .value)
                             self = .ipad(type: .audio(audio))
@@ -84,6 +87,7 @@ public extension Exercise {
         public enum ValueType: String, Codable {
             case color
             case image
+            case sfsymbol
             case audio
             case speech
         }

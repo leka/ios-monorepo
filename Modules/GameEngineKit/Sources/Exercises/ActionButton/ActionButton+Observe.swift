@@ -45,16 +45,23 @@ struct ActionButtonObserve: View {
     // MARK: Lifecycle
 
     init(image: String, imageWasTapped: Binding<Bool>) {
-        guard let image = Bundle.path(forImage: image) else {
-            fatalError("Image not found")
+        if let imagePath = Bundle.path(forImage: image) {
+            self.image = imagePath
+            self.isSFSymbol = false
+        } else if UIImage(systemName: image) != nil {
+            self.image = image
+            self.isSFSymbol = true
+        } else {
+            fatalError("Image not found: \(image)")
         }
-        self.image = image
+
         self._imageWasTapped = imageWasTapped
     }
 
     // MARK: Internal
 
     let image: String
+    let isSFSymbol: Bool
 
     @Binding var imageWasTapped: Bool
 
@@ -76,28 +83,44 @@ struct ActionButtonObserve: View {
         }
         .disabled(self.imageWasTapped)
         .background {
-            if !FileManager.default.fileExists(atPath: self.image) {
-                self.imageNotFound()
-            }
-
-            if self.image.isRasterImageFile {
-                Image(uiImage: UIImage(named: self.image)!)
+            if self.isSFSymbol {
+                Image(systemName: self.image)
                     .resizable()
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .scaledToFit()
+                    .padding(60)
                     .frame(width: 460, height: 460)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .modifier(AnimatableBlur(blurRadius: self.imageWasTapped ? 0 : 20))
-                    .modifier(AnimatableSaturation(saturation: self.imageWasTapped ? 1 : 0))
-            }
-
-            if self.image.isVectorImageFile {
-                SVGView(contentsOf: URL(fileURLWithPath: self.image))
-                    .frame(width: 460, height: 460)
+                    .foregroundStyle(.black)
                     .background(self.choiceBackgroundColor)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .modifier(AnimatableBlur(blurRadius: self.imageWasTapped ? 0 : 20))
                     .modifier(AnimatableSaturation(saturation: self.imageWasTapped ? 1 : 0))
+            } else {
+                if !FileManager.default.fileExists(atPath: self.image) {
+                    self.imageNotFound()
+                }
+
+                if self.image.isRasterImageFile {
+                    Image(uiImage: UIImage(named: self.image)!)
+                        .resizable()
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .scaledToFit()
+                        .frame(width: 460, height: 460)
+                        .background(self.choiceBackgroundColor)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .modifier(AnimatableBlur(blurRadius: self.imageWasTapped ? 0 : 20))
+                        .modifier(AnimatableSaturation(saturation: self.imageWasTapped ? 1 : 0))
+                }
+
+                if self.image.isVectorImageFile {
+                    SVGView(contentsOf: URL(fileURLWithPath: self.image))
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .frame(width: 460, height: 460)
+                        .background(self.choiceBackgroundColor)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .modifier(AnimatableBlur(blurRadius: self.imageWasTapped ? 0 : 20))
+                        .modifier(AnimatableSaturation(saturation: self.imageWasTapped ? 1 : 0))
+                }
             }
         }
     }
@@ -144,14 +167,24 @@ extension l10n {
 }
 
 #Preview {
-    struct ActionObserveButtonContainer: View {
-        @State var imageWasTapped = false
-        var body: some View {
-            ActionButtonObserve(
-                image: "placeholder-observe_then_touch_to_select", imageWasTapped: $imageWasTapped
-            )
+    ScrollView {
+        VStack {
+            HStack {
+                ActionButtonObserve(
+                    image: "4.circle", imageWasTapped: .constant(false)
+                )
+                ActionButtonObserve(
+                    image: "4.circle", imageWasTapped: .constant(true)
+                )
+            }
+            HStack {
+                ActionButtonObserve(
+                    image: "pictograms-foods-fruits-banana_yellow-00FB", imageWasTapped: .constant(false)
+                )
+                ActionButtonObserve(
+                    image: "pictograms-foods-fruits-banana_yellow-00FB", imageWasTapped: .constant(true)
+                )
+            }
         }
     }
-
-    return ActionObserveButtonContainer()
 }

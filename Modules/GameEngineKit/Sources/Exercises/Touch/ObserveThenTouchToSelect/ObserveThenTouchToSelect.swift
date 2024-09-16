@@ -15,17 +15,23 @@ public struct ObserveThenTouchToSelectView: View {
     }
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
-        guard let payload = exercise.payload as? TouchToSelect.Payload,
-              case let .ipad(type: .image(name)) = exercise.action
-        else {
-            log.error("Exercise payload is not .selection and/or Exercise does not contain iPad image action")
-            fatalError("💥 Exercise payload is not .selection and/or Exercise does not contain iPad image action")
+        guard let payload = exercise.payload as? TouchToSelect.Payload else {
+            log.error("Invalid payload type: expected TouchToSelect.Payload, got \(type(of: exercise.payload))")
+            fatalError("💥 Invalid payload type: expected TouchToSelect.Payload, got \(type(of: exercise.payload))")
+        }
+
+        switch exercise.action {
+            case let .ipad(type: .image(name)):
+                self.image = name
+            case let .ipad(type: .sfsymbol(name)):
+                self.image = name
+            default:
+                log.error("Invalid action type: expected iPad image or sfsymbol, got \(String(describing: exercise.action))")
+                fatalError("💥 Invalid action type: expected iPad image or sfsymbol, got \(String(describing: exercise.action))")
         }
 
         _viewModel = StateObject(
             wrappedValue: TouchToSelectViewViewModel(choices: payload.choices, shuffle: payload.shuffleChoices, shared: data))
-
-        self.image = name
     }
 
     // MARK: Public
