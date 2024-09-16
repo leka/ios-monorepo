@@ -30,18 +30,18 @@ l10n:
   - locale: fr_FR
     details:
       icon: recognition_animals_farm
-      title: Reconnaissance des animaux de la ferme
+      title: Les animaux de la ferme
       subtitle: Écoute et trouve l'animal !
       abstract: |
-        Un curriculum complet pour apprendre à reconnaître les animaux de la ferme à travers plusieurs activités interactives.
+        Un parcours complet pour apprendre à reconnaître les animaux de la ferme à travers plusieurs activités interactives.
 
       description: |
-        Ce curriculum propose une série de quatre activités conçues pour aider le participant à reconnaître différents animaux de la ferme. Chaque activité utilise des images et des instructions audio pour stimuler la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide.
+        Ce parcours propose une série de quatre activités conçues pour aider le participant à reconnaître différents animaux de la ferme. Chaque activité utilise des images et des instructions audio pour stimuler la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide.
 
   - locale: en_US
     details:
       icon: recognition_animals_farm
-      title: Farm Animal Recognition
+      title: Farm Animals
       subtitle: Listen and find the animal!
       abstract: |
         A comprehensive curriculum to learn to recognize farm animals through various interactive activities.

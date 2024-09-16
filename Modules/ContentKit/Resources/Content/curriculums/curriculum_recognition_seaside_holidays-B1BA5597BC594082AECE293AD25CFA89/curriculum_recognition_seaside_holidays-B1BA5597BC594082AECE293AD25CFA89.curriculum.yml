@@ -31,19 +31,19 @@ l10n:
   - locale: fr_FR
     details:
       icon: recognition_seaside_holidays
-      title: Découvrez les vacances au bord de la mer
+      title: Les vacances à la mer
       subtitle: Écoutez et trouvez l'objet !
       abstract: |
-        Une activité amusante où la personne accompagnée apprend à reconnaître et à sélectionner des objets de vacances à la mer en écoutant des instructions audio.
+        Une parcours amusant où la personne accompagnée apprend à reconnaître et à sélectionner des objets de vacances à la mer en écoutant des instructions audio.
       description: |
         Plongez dans l'univers des vacances à la mer avec ce parcours interactif. La personne accompagnée appuie sur le bouton de haut-parleur pour écouter une instruction, puis doit toucher l'image correspondante sur l'écran. Ce parcours stimule la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide. Par exemple, si l'instruction est "touche la pelle", la personne accompagnée doit trouver et toucher l'image d'une pelle parmi plusieurs options.
   - locale: en_US
     details:
       icon: recognition_seaside_holidays
-      title: Explore Seaside Holidays
+      title: Seaside Holidays
       subtitle: Listen and Find the Object!
       abstract: |
-        A fun activity where the care receiver learns to recognize and select seaside objects by listening to audio instructions.
+        A fun curriculum where the care receiver learns to recognize and select seaside objects by listening to audio instructions.
       description: |
         Dive into the world of seaside holidays with this interactive journey. The care receiver presses the speaker button to hear an instruction, then must touch the corresponding image on the screen. This journey enhances auditory and visual recognition, comprehension, and quick response skills. For example, if the instruction is "touch the shovel," the care receiver must find and touch the image of a shovel among several options.
 
