@@ -32,18 +32,18 @@ l10n:
   - locale: fr_FR
     details:
       icon: recognition_winter_holidays
-      title: Reconnaissance des objets d'hiver
+      title: Les vacances d'hiver
       subtitle: Écoute et trouve l'objet !
       abstract: |
-        Un curriculum complet pour apprendre à reconnaître les objets d'hiver à travers plusieurs activités interactives.
+        Un parcours complet pour apprendre à reconnaître les objets d'hiver à travers plusieurs activités interactives.
 
       description: |
-        Ce curriculum propose une série de quatre activités conçues pour aider le participant à reconnaître différents objets d'hiver. Chaque activité utilise des images et des instructions audio pour stimuler la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide.
+        Ce parcours propose une série de quatre activités conçues pour aider le participant à reconnaître différents objets d'hiver. Chaque activité utilise des images et des instructions audio pour stimuler la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide.
 
   - locale: en_US
     details:
       icon: recognition_winter_holidays
-      title: Winter Object Recognition
+      title: Winter holidays
       subtitle: Listen and find the object!
       abstract: |
         A comprehensive curriculum to learn to recognize winter objects through various interactive activities.
