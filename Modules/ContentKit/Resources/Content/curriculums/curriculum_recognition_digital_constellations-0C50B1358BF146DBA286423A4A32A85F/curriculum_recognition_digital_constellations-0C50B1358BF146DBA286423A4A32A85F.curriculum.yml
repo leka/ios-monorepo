@@ -1,0 +1,60 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 0C50B1358BF146DBA286423A4A32A85F
+name: curriculum_recognition_digital_constellations
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-08-07T12:27:15.554821"
+authors:
+  - leka
+
+skills:
+  - counting
+  - attention
+  - recognition
+  - discrimination
+
+tags:
+  - numbers
+  - digital_constellations
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_digital_constellations
+
+      title: Reconnaître les constellations numériques
+      subtitle: Apprendre à reconnaître les constellations de 1 à 6
+
+      abstract: |
+        Ce parcours a pour objectif l'apprentissage de la reconnaissance des constellations numériques en utilisant les faces du dé et d'autres objets (pommes, légos, etc.).
+      description: |
+        Ce parcours vise à enseigner aux participants à reconnaître les constellations numériques représentées par les faces d'un dé et d'autres objets disposés sous forme de constellations (comme des pommes ou des légos). Les participants apprendront à associer chaque constellation, qu'elle soit formée par les points sur un dé ou par des objets, avec le chiffre correspondant. Ce parcours permet de renforcer la compréhension des concepts de base de la numération, la reconnaissance des chiffres et l'association entre les constellations et les chiffres correspondants.
+
+  - locale: en_US
+    details:
+      icon: recognition_digital_constellations
+
+      title: Recognize Numerical Constellations
+      subtitle: Learning to recognize constellations from 1 to 6
+
+      abstract: |
+        This curriculum aims to teach the recognition of numerical constellations using dice faces and other objects (apples, legos, etc.).
+      description: |
+        This curriculum aims to teach participants to recognize the numerical constellations represented by the faces of a die and other objects arranged in constellations (such as apples or legos). Participants will learn to associate each constellation, whether formed by the dots on a die or by objects, with the corresponding number. This curriculum helps reinforce the understanding of basic numeracy concepts, number recognition, and the association between constellations and their corresponding numbers.
+
+activities:
+  - recognize_dice_constellations-38D55E8E0967461AA33572A78B6AC0EA
+  - recognize_dice_numbers-A001E852147B47548B634067E6E832A9
+  - recognize_objects_constellations-700B09D55E3B4AB998CEA7028D41EEA7

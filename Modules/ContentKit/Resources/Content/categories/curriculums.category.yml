@@ -145,6 +145,7 @@ content:
       - curriculum_receptive_language_identify_number_quantity-4499A9AFB56B4476969B96CE32F5314C
       - curriculum_counting_candies-215DCF9CCB7B4E36A73273DC42D848E9
       - curriculum_counting_flower_petals-3F83E1E0F3094DC787258B9CEEF227A1
+      - curriculum_recognition_digital_constellations-0C50B1358BF146DBA286423A4A32A85F
 
   - id: daily_life
     l10n:
