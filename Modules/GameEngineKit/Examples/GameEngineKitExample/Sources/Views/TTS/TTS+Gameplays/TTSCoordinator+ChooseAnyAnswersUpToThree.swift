@@ -61,7 +61,7 @@ class TTSCoordinatorChooseAnyAnswersUpToThree: TTSGameplayCoordinatorProtocol {
             case .idle:
                 .idle
             case .selected:
-                .selected
+                .selected()
         }
     }
 }
