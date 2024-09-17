@@ -30,7 +30,7 @@ public struct ResourceFileView: View {
 
                 Image(uiImage: self.resource.illustrationImage)
                     .resizable()
-                    .scaledToFill()
+                    .scaledToFit()
             }
             .aspectRatio(16 / 9, contentMode: .fit)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
