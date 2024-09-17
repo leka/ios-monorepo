@@ -8,7 +8,7 @@ name: curriculum_recognition_sports
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-07-12T12:48:33.814094"
+last_edited_at: "2024-09-17T15:31:43.448047"
 authors:
   - leka
 
@@ -32,7 +32,7 @@ l10n:
   - locale: fr_FR
     details:
       icon: recognition_sports_touch
-      title: Les sports en dessins
+      title: Les sports
       subtitle: Identifier les sports
       abstract: |
         Ce curriculum vise à développer la reconnaissance des sports à travers des représentations dessinées.
@@ -42,7 +42,7 @@ l10n:
   - locale: en_US
     details:
       icon: recognition_sports_touch
-      title: Sports in Drawings
+      title: Sports
       subtitle: Identifying Sports
       abstract: |
         This curriculum aims to develop the recognition of sports through illustrated representations.
