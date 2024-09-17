@@ -7,7 +7,7 @@ version: 1.0.0
 uuid: 3779DB303E4F46C798AE44FA3486A86D
 name: fruits_and_vegetables_generalization_with_3_intruders
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-09-04T11:39:18.288728"
+last_edited_at: "2024-09-17T17:46:36.485479"
 status: published
 
 authors:
@@ -91,20 +91,20 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: drawing-fruit-banana
+              - value: drawing_fruit_banana
                 type: image
                 is_right_answer: true
-              - value: photo-fruit-banana
+              - value: photo_fruit_banana
                 type: image
                 is_right_answer: true
-              - value: picto-fruit-banana
+              - value: picto_fruit_banana
                 type: image
                 is_right_answer: true
-              - value: drawing-vegetable-carrot
+              - value: drawing_vegetable_carrot
                 type: image
-              - value: photo-fruit-apple
+              - value: photo_fruit_apple
                 type: image
-              - value: picto-vegetable-tomato
+              - value: picto_vegetable_tomato
                 type: image
 
         - instructions:
@@ -126,20 +126,20 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: drawing-fruit-apple
+              - value: drawing_fruit_apple
                 type: image
                 is_right_answer: true
-              - value: photo-fruit-apple
+              - value: photo_fruit_apple
                 type: image
                 is_right_answer: true
-              - value: picto-fruit-apple
+              - value: picto_fruit_apple
                 type: image
                 is_right_answer: true
-              - value: drawing-vegetable-eggplant
+              - value: drawing_vegetable_eggplant
                 type: image
-              - value: photo-fruit-orange
+              - value: photo_fruit_orange
                 type: image
-              - value: picto-vegetable-carrot
+              - value: picto_vegetable_carrot
                 type: image
 
         - instructions:
@@ -161,20 +161,20 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: drawing-fruit-cherry
+              - value: drawing_fruit_cherry
                 type: image
                 is_right_answer: true
-              - value: photo-fruit-cherry
+              - value: photo_fruit_cherry
                 type: image
                 is_right_answer: true
-              - value: picto-fruit-cherry
+              - value: picto_fruit_cherry
                 type: image
                 is_right_answer: true
-              - value: drawing-vegetable-mushroom
+              - value: drawing_vegetable_mushroom
                 type: image
-              - value: photo-fruit-grape
+              - value: photo_fruit_grape
                 type: image
-              - value: picto-vegetable-pumpkin
+              - value: picto_vegetable_carrot
                 type: image
 
         - instructions:
@@ -196,20 +196,20 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: drawing-fruit-grape
+              - value: drawing_fruit_grape
                 type: image
                 is_right_answer: true
-              - value: photo-fruit-grape
+              - value: photo_fruit_grape
                 type: image
                 is_right_answer: true
-              - value: picto-fruit-grape
+              - value: picto_fruit_grape
                 type: image
                 is_right_answer: true
-              - value: drawing-vegetable-radish
+              - value: drawing_vegetable_radish
                 type: image
-              - value: photo-fruit-pear
+              - value: photo_fruit_pear
                 type: image
-              - value: picto-vegetable-tomato
+              - value: picto_vegetable_tomato
                 type: image
 
         - instructions:
@@ -231,20 +231,20 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: drawing-fruit-lemon
+              - value: drawing_fruit_lemon
                 type: image
                 is_right_answer: true
-              - value: photo-fruit-lemon
+              - value: photo_fruit_lemon
                 type: image
                 is_right_answer: true
-              - value: picto-fruit-lemon
+              - value: picto_fruit_lemon
                 type: image
                 is_right_answer: true
-              - value: drawing-vegetable-carrot
+              - value: drawing_vegetable_carrot
                 type: image
-              - value: photo-vegetable-avocado
+              - value: photo_vegetable_avocado
                 type: image
-              - value: picto-vegetable-pumpkin
+              - value: picto_fruit_banana
                 type: image
 
         - instructions:
@@ -266,20 +266,20 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: drawing-fruit-orange
+              - value: drawing_fruit_orange
                 type: image
                 is_right_answer: true
-              - value: photo-fruit-orange
+              - value: photo_fruit_orange
                 type: image
                 is_right_answer: true
-              - value: picto-fruit-orange
+              - value: picto_fruit_orange
                 type: image
                 is_right_answer: true
-              - value: drawing-vegetable-mushroom
+              - value: drawing_vegetable_mushroom
                 type: image
-              - value: photo-fruit-apple
+              - value: photo_fruit_apple
                 type: image
-              - value: picto-vegetable-eggplant
+              - value: picto_vegetable_eggplant
                 type: image
 
         - instructions:
@@ -301,20 +301,20 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: drawing-fruit-pear
+              - value: drawing_fruit_pear
                 type: image
                 is_right_answer: true
-              - value: photo-fruit-pear
+              - value: photo_fruit_pear
                 type: image
                 is_right_answer: true
-              - value: picto-fruit-pear
+              - value: picto_fruit_pear
                 type: image
                 is_right_answer: true
-              - value: drawing-vegetable-carrot
+              - value: drawing_vegetable_carrot
                 type: image
-              - value: photo-fruit-lemon
+              - value: photo_fruit_lemon
                 type: image
-              - value: picto-vegetable-avocado
+              - value: picto_vegetable_avocado
                 type: image
 
         - instructions:
@@ -336,20 +336,20 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: drawing-fruit-strawberry
+              - value: drawing_fruit_strawberry
                 type: image
                 is_right_answer: true
-              - value: photo-fruit-strawberry
+              - value: photo_fruit_strawberry
                 type: image
                 is_right_answer: true
-              - value: picto-fruit-strawberry
+              - value: picto_fruit_strawberry
                 type: image
                 is_right_answer: true
-              - value: drawing-vegetable-eggplant
+              - value: drawing_vegetable_eggplant
                 type: image
-              - value: photo-fruit-pear
+              - value: photo_fruit_pear
                 type: image
-              - value: picto-vegetable-mushroom
+              - value: picto_vegetable_mushroom
                 type: image
 
         - instructions:
@@ -371,20 +371,20 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: drawing-vegetable-avocado
+              - value: drawing_vegetable_avocado
                 type: image
                 is_right_answer: true
-              - value: photo-vegetable-avocado
+              - value: photo_vegetable_avocado
                 type: image
                 is_right_answer: true
-              - value: picto-vegetable-avocado
+              - value: picto_vegetable_avocado
                 type: image
                 is_right_answer: true
-              - value: drawing-vegetable-pumpkin
+              - value: drawing_fruit_strawberry
                 type: image
-              - value: photo-fruit-lemon
+              - value: photo_fruit_lemon
                 type: image
-              - value: picto-vegetable-radish
+              - value: picto_vegetable_radish
                 type: image
 
         - instructions:
@@ -406,20 +406,20 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: drawing-vegetable-carrot
+              - value: drawing_vegetable_carrot
                 type: image
                 is_right_answer: true
-              - value: photo-vegetable-carrot
+              - value: photo_vegetable_carrot
                 type: image
                 is_right_answer: true
-              - value: picto-vegetable-carrot
+              - value: picto_vegetable_carrot
                 type: image
                 is_right_answer: true
-              - value: drawing-fruit-apple
+              - value: drawing_fruit_apple
                 type: image
-              - value: photo-vegetable-eggplant
+              - value: photo_vegetable_eggplant
                 type: image
-              - value: picto-fruit-cherry
+              - value: picto_fruit_cherry
                 type: image
 
         - instructions:
@@ -441,20 +441,20 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: drawing-vegetable-eggplant
+              - value: drawing_vegetable_eggplant
                 type: image
                 is_right_answer: true
-              - value: photo-vegetable-eggplant
+              - value: photo_vegetable_eggplant
                 type: image
                 is_right_answer: true
-              - value: picto-vegetable-eggplant
+              - value: picto_vegetable_eggplant
                 type: image
                 is_right_answer: true
-              - value: drawing-fruit-grape
+              - value: drawing_fruit_grape
                 type: image
-              - value: photo-vegetable-mushroom
+              - value: photo_vegetable_mushroom
                 type: image
-              - value: picto-fruit-orange
+              - value: picto_fruit_orange
                 type: image
 
         - instructions:
@@ -476,55 +476,20 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: drawing-vegetable-mushroom
+              - value: drawing_vegetable_mushroom
                 type: image
                 is_right_answer: true
-              - value: photo-vegetable-mushroom
+              - value: photo_vegetable_mushroom
                 type: image
                 is_right_answer: true
-              - value: picto-vegetable-mushroom
+              - value: picto_vegetable_mushroom
                 type: image
                 is_right_answer: true
-              - value: drawing-fruit-strawberry
+              - value: drawing_fruit_strawberry
                 type: image
-              - value: photo-vegetable-carrot
+              - value: photo_vegetable_carrot
                 type: image
-              - value: picto-fruit-apple
-                type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Ecoute et suis les instructions
-            - locale: en_US
-              value: Listen and follow instructions
-          interface: listenThenTouchToSelect
-          gameplay: findTheRightAnswers
-          action:
-            type: ipad
-            value:
-              type: speech
-              value:
-                - locale: fr_FR
-                  utterance: "touche toutes les citrouilles"
-                - locale: en_US
-                  utterance: "touch all the pumpkins"
-          payload:
-            shuffle_choices: true
-            choices:
-              - value: drawing-vegetable-pumpkin
-                type: image
-                is_right_answer: true
-              - value: photo-vegetable-pumpkin
-                type: image
-                is_right_answer: true
-              - value: picto-vegetable-pumpkin
-                type: image
-                is_right_answer: true
-              - value: drawing-fruit-banana
-                type: image
-              - value: photo-vegetable-eggplant
-                type: image
-              - value: picto-fruit-grape
+              - value: picto_fruit_apple
                 type: image
 
         - instructions:
@@ -546,20 +511,20 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: drawing-vegetable-radish
+              - value: drawing_vegetable_radish
                 type: image
                 is_right_answer: true
-              - value: photo-vegetable-radish
+              - value: photo_vegetable_radish
                 type: image
                 is_right_answer: true
-              - value: picto-vegetable-radish
+              - value: picto_vegetable_radish
                 type: image
                 is_right_answer: true
-              - value: drawing-fruit-orange
+              - value: drawing_fruit_orange
                 type: image
-              - value: photo-vegetable-mushroom
+              - value: photo_vegetable_mushroom
                 type: image
-              - value: picto-fruit-strawberry
+              - value: picto_fruit_strawberry
                 type: image
 
         - instructions:
@@ -581,18 +546,18 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: drawing-vegetable-tomato
+              - value: drawing_vegetable_tomato
                 type: image
                 is_right_answer: true
-              - value: photo-vegetable-tomato
+              - value: photo_vegetable_tomato
                 type: image
                 is_right_answer: true
-              - value: picto-vegetable-tomato
+              - value: picto_vegetable_tomato
                 type: image
                 is_right_answer: true
-              - value: drawing-fruit-cherry
+              - value: drawing_fruit_cherry
                 type: image
-              - value: photo-vegetable-carrot
+              - value: photo_vegetable_carrot
                 type: image
-              - value: picto-vegetable-avocado
+              - value: picto_vegetable_avocado
                 type: image
