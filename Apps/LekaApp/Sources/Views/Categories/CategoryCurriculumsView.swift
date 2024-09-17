@@ -41,7 +41,7 @@ struct CategoryCurriculumsView: View {
                         Section {
                             VStack(alignment: .leading, spacing: 5) {
                                 VStack(alignment: .leading) {
-                                    HStack(alignment: .firstTextBaseline) {
+                                    HStack {
                                         HStack(alignment: .center) {
                                             Text(section.details.title)
                                                 .font(.title2)
