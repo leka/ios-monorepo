@@ -20,20 +20,21 @@ extension DanceFreezeView {
                     .padding(.top, 30)
 
                 HStack(spacing: 30) {
-                    GameEngineKitAsset.Exercises.DanceFreeze.imageIllustration.swiftUIImage
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .padding(80)
-
                     VStack(spacing: 0) {
+                        GameEngineKitAsset.Exercises.DanceFreeze.imageIllustration.swiftUIImage
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .padding(80)
                         MotionSelectorView(motion: self.$motion)
-
-                        SongSelectorView(
-                            songs: self.songs,
-                            selectedAudioRecording: self.$selectedAudioRecording
-                        )
                     }
+
+                    SongSelectorView(
+                        songs: self.songs,
+                        selectedAudioRecording: self.$selectedAudioRecording
+                    )
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .padding(20)
 
                 HStack(spacing: 70) {
                     Button {

@@ -85,13 +85,15 @@ extension DanceFreezeView {
                     Image(uiImage: UIImage(named: self.image)!)
                         .resizable()
                         .scaledToFit()
+                        .frame(maxWidth: 100)
                 } else if self.image.isVectorImageFile {
                     SVGView(contentsOf: URL(fileURLWithPath: self.image))
                         .scaledToFit()
+                        .frame(maxWidth: 100)
                 }
                 Text(self.text)
             }
-            .frame(maxHeight: 70)
+            .frame(maxHeight: 150)
         }
     }
 }
