@@ -7,7 +7,7 @@ name: curriculum_recognition_bathroom_items
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-07-16T15:55:28.088595"
+last_edited_at: "2024-09-17T15:31:43.479526"
 authors:
   - leka
 
@@ -31,7 +31,7 @@ l10n:
   - locale: fr_FR
     details:
       icon: curriculum_recognition_bathroom_items
-      title: Reconnaitre les objets de la salle de bain
+      title: Les objets de la salle de bain
       subtitle: Identifier les produits de toilette, les produits de santé et le mobilier de salle de bain
 
       abstract: |
@@ -43,7 +43,7 @@ l10n:
   - locale: en_US
     details:
       icon: curriculum_recognition_bathroom_items
-      title: Recognize Bathroom Items
+      title: Bathroom Items
       subtitle: Identify Toiletry Products, Health Products, and Bathroom Furniture
 
       abstract: |

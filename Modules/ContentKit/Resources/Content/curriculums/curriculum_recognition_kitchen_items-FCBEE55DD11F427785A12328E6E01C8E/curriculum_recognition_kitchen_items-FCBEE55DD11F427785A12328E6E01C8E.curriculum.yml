@@ -7,7 +7,7 @@ name: curriculum_recognition_kitchen_items
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-07-15T14:52:30.370061"
+last_edited_at: "2024-09-17T15:31:43.479526"
 authors:
   - leka
 
@@ -31,7 +31,7 @@ l10n:
   - locale: fr_FR
     details:
       icon: curriculum_recognition_kitchen_items
-      title: Reconnaitre les objets de la cuisine
+      title: Les objets de la cuisine
       subtitle: Identifier les objets de la table, les appareils électroménagers et les ustensiles de cuisine
 
       abstract: |
@@ -43,7 +43,7 @@ l10n:
     details:
       icon: curriculum_recognition_kitchen_items
 
-      title: Recognize Kitchen Objects
+      title: Kitchen Objects
       subtitle: Identify tableware, kitchen appliances, and kitchen utensils
 
       abstract: |

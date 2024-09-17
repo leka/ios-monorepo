@@ -5,7 +5,7 @@
 version: 1.0.0
 
 uuid: 030525AA798F4E0D8EDAFAF3939471F9
-name: recognition_weather_and_temperatures_weather_drawings_4_images
+name: recognition_weather_and_time_meteo_4_images
 
 created_at: "2024-03-04T18:07:12.519229"
 last_edited_at: "2024-07-12T12:48:14.936637"
@@ -16,7 +16,6 @@ authors:
 
 skills:
   - recognition
-  - discrimination
 
 tags:
   - weather_elements
@@ -37,7 +36,7 @@ l10n:
     details:
       icon: recognition_weather_and_temperatures
 
-      title: La météo en dessins
+      title: La météo
       subtitle: 4 images
 
       short_description: |
@@ -55,7 +54,7 @@ l10n:
     details:
       icon: recognition_weather_and_temperatures
 
-      title: The weather in drawings
+      title: The weather
       subtitle: 4 images
 
       short_description: |
