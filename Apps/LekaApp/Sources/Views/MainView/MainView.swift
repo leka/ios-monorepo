@@ -79,13 +79,19 @@ struct MainView: View {
                     }
 
                     #if DEVELOPER_MODE || TESTFLIGHT_BUILD
-                        Section("Developer Mode") {
-                            CategoryLabel(category: .allTemplateActivities)
-                            CategoryLabel(category: .allDraftActivities)
-                            CategoryLabel(category: .allPublishedActivities)
-                            CategoryLabel(category: .rasterImageList)
-                            CategoryLabel(category: .vectorImageList)
-                            CategoryLabel(category: .news)
+                        if !self.navigation.demoMode {
+                            Section("Developer Mode") {
+                                CategoryLabel(category: .allTemplateActivities)
+                                CategoryLabel(category: .allDraftActivities)
+                                CategoryLabel(category: .allPublishedActivities)
+                                CategoryLabel(category: .rasterImageList)
+                                CategoryLabel(category: .vectorImageList)
+                                CategoryLabel(category: .news)
+                            }
+                        } else {
+                            Section("Demo mode") {
+                                CategoryLabel(category: .demo)
+                            }
                         }
                     #endif
 
@@ -163,6 +169,9 @@ struct MainView: View {
 
                     case .news:
                         NewsView()
+
+                    case .demo:
+                        DiscoverLekaView(demoMode: self.navigation.demoMode)
 
                     case .none:
                         Text(l10n.MainView.Sidebar.CategoryLabel.home)

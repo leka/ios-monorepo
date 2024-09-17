@@ -80,6 +80,10 @@ extension MainView {
                 case .vectorImageList:
                     self.title = "Vector Image List"
                     self.systemImage = "photo.circle.fill"
+
+                case .demo:
+                    self.title = "Demo"
+                    self.systemImage = "play.rectangle"
             }
         }
 

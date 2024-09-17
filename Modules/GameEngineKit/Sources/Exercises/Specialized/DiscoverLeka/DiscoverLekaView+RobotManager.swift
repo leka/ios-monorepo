@@ -11,8 +11,9 @@ extension DiscoverLekaView {
     class RobotManager {
         // MARK: Lifecycle
 
-        init(data: ExerciseSharedData) {
+        init(data: ExerciseSharedData, demoMode: Bool = false) {
             self.shared = data
+            self.animations = demoMode ? [.reinforcer, .light] : Animation.allCases
         }
 
         // MARK: Internal
@@ -44,6 +45,7 @@ extension DiscoverLekaView {
         private var animationTime: TimeInterval = 0.0
         private let lightIntensityChangeDuration = 0.05
         private let robot = Robot.shared
+        private var animations: [Animation]
 
         private func runRandomAnimation() {
             guard self.isAnimationRunning, !self.shared.isCompleted else { return }
@@ -55,7 +57,7 @@ extension DiscoverLekaView {
             DispatchQueue.main.asyncAfter(deadline: .now() + randomInterval) {
                 guard self.isAnimationRunning, !self.shared.isCompleted else { return }
                 self.isBreathing = false
-                let currentAnimation = Animation.allCases.randomElement()!
+                let currentAnimation = self.animations.randomElement()!
                 self.play(currentAnimation)
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + currentAnimation.duration()) {

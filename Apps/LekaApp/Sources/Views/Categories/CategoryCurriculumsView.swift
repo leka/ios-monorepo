@@ -60,7 +60,7 @@ struct CategoryCurriculumsView: View {
                                 .padding(.horizontal)
 
                                 CurriculumHorizontalListView(curriculums: section.curriculums, onActivitySelected: { activity in
-                                    if self.authManagerViewModel.userAuthenticationState == .loggedIn {
+                                    if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
                                         self.navigation.sheetContent = .carereceiverPicker(activity: activity, story: nil)
                                     } else {
                                         self.navigation.currentActivity = activity
