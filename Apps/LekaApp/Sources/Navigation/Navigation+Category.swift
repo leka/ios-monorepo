@@ -25,6 +25,7 @@ extension Navigation {
         case rasterImageList
         case vectorImageList
         case news
+        case demo
 
         // MARK: Internal
 
