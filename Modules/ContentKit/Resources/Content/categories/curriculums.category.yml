@@ -15,6 +15,25 @@ l10n:
       description: Curated groups of activities developed with caregivers for stepwise progression in areas like emotion recognition and language skills.
 
 content:
+  - id: daily_life
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Vie quotidienne
+          subtitle: Activités pour la vie quotidienne.
+          description: Découvrez des activités pour améliorer les compétences nécessaires à la vie de tous les jours.
+      - locale: en_US
+        details:
+          title: Daily Life
+          subtitle: Activities for daily living.
+          description: Explore activities to enhance essential daily living skills.
+    curriculums:
+      - curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
+      - curriculum_recognition_kitchen_items-FCBEE55DD11F427785A12328E6E01C8E
+      - curriculum_recognition_bathroom_items-17AAC383297949D698AC92BD7CEC8C4C
+      - curriculum_recognition_bedroom_items-277B71CFDFF94C22A4F21A9C396A1501
+      - curriculum_recognition_basic_physiological_needs-B697FEE9EF7946A2B704673FEEAA0824
+
   - id: emotion_recognition
     l10n:
       - locale: fr_FR
@@ -108,25 +127,6 @@ content:
       - curriculum_counting_candies-215DCF9CCB7B4E36A73273DC42D848E9
       - curriculum_counting_flower_petals-3F83E1E0F3094DC787258B9CEEF227A1
       - curriculum_recognition_digital_constellations-0C50B1358BF146DBA286423A4A32A85F
-
-  - id: daily_life
-    l10n:
-      - locale: fr_FR
-        details:
-          title: Vie quotidienne
-          subtitle: Activités pour la vie quotidienne.
-          description: Découvrez des activités pour améliorer les compétences nécessaires à la vie de tous les jours.
-      - locale: en_US
-        details:
-          title: Daily Life
-          subtitle: Activities for daily living.
-          description: Explore activities to enhance essential daily living skills.
-    curriculums:
-      - curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
-      - curriculum_recognition_kitchen_items-FCBEE55DD11F427785A12328E6E01C8E
-      - curriculum_recognition_bathroom_items-17AAC383297949D698AC92BD7CEC8C4C
-      - curriculum_recognition_bedroom_items-277B71CFDFF94C22A4F21A9C396A1501
-      - curriculum_recognition_basic_physiological_needs-B697FEE9EF7946A2B704673FEEAA0824
 
   - id: ordering_and_sequencing
     l10n:
@@ -261,6 +261,21 @@ content:
     curriculums:
       - sorting_fruits_vegetables_basket-E6A322DC7A6E48518CED2CA2D3D2A595
 
+  - id: social_relations
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Relations sociales
+          subtitle: Apprendre à reconnaître et comprendre les interactions sociales.
+          description: Activités pour aider les personnes à identifier les membres de la famille, les amis et les autres relations sociales, tout en développant des compétences en interaction sociale.
+      - locale: en_US
+        details:
+          title: Social Relations
+          subtitle: Learn to recognize and understand social interactions.
+          description: Activities to help care receivers identify family members, friends, and other social relationships while developing social interaction skills.
+    curriculums:
+      - curriculum_recognition_emotions_in_context-A135163C8D8646DE95D0854FD5E155EB
+
   - id: cooking_and_recipes
     l10n:
       - locale: fr_FR
@@ -276,18 +291,3 @@ content:
     curriculums:
       - curriculum_recognition_kitchen_items-FCBEE55DD11F427785A12328E6E01C8E
       - curriculum_find_ingredients_for_recipes-B477244ADFED4735BA1159A76E25001A
-
-  - id: social_relations
-    l10n:
-      - locale: fr_FR
-        details:
-          title: Relations sociales
-          subtitle: Apprendre à reconnaître et comprendre les interactions sociales.
-          description: Activités pour aider les personnes à identifier les membres de la famille, les amis et les autres relations sociales, tout en développant des compétences en interaction sociale.
-      - locale: en_US
-        details:
-          title: Social Relations
-          subtitle: Learn to recognize and understand social interactions.
-          description: Activities to help care receivers identify family members, friends, and other social relationships while developing social interaction skills.
-    curriculums:
-      - curriculum_recognition_emotions_in_context-A135163C8D8646DE95D0854FD5E155EB
