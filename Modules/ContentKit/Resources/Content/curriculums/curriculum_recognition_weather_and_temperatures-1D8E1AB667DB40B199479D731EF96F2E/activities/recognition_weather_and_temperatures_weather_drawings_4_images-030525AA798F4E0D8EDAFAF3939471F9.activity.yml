@@ -16,7 +16,6 @@ authors:
 
 skills:
   - recognition
-  - discrimination
 
 tags:
   - weather_elements
@@ -37,7 +36,7 @@ l10n:
     details:
       icon: recognition_weather_and_temperatures
 
-      title: La météo en dessins
+      title: La météo
       subtitle: 4 images
 
       short_description: |
@@ -55,7 +54,7 @@ l10n:
     details:
       icon: recognition_weather_and_temperatures
 
-      title: The weather in drawings
+      title: The weather
       subtitle: 4 images
 
       short_description: |

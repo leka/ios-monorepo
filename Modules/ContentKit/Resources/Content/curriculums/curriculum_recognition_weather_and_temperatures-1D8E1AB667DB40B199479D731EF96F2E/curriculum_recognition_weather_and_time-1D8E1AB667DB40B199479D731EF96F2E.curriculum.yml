@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 uuid: 1D8E1AB667DB40B199479D731EF96F2E
-name: curriculum_recognition_weather_and_temperatures
+name: curriculum_recognition_weather_and_time
 
 status: published
 
@@ -14,7 +14,6 @@ authors:
 
 skills:
   - recognition
-  - discrimination
 
 tags:
   - weather_elements
@@ -32,19 +31,19 @@ l10n:
     details:
       icon: recognition_weather_and_temperatures
 
-      title: La météo et les températures en dessins
-      subtitle: Apprendre à identifier et à catégoriser la météo
+      title: La météo et le temps
+      subtitle: Apprendre à identifier la météo et le temps
 
       abstract: |
-        Ce curriculum a pour but de développer la capacité à reconnaître et à comprendre les différentes conditions météorologiques et distinctions de température. À travers des activités interactives, les personnes accompagnées apprennent à associer des images représentatives à leur condition météorologique ou température correspondante.
+        Ce parcours a pour but de développer la capacité à reconnaître et à comprendre les différentes conditions météorologiques et distinctions de température. À travers des activités interactives, les personnes accompagnées apprennent à associer des images représentatives à leur condition météorologique ou température correspondante.
       description: |
-        Chaque activité dans ce curriculum est conçue pour introduire ou renforcer la reconnaissance de la météo à travers des images et des interactions directes sur une tablette. Les participants identifient si un paysage illustre le chaud ou le froid et reconnaissent les conditions météorologiques spécifiques présentées à travers une gamme d'images, enrichissant ainsi leur compréhension de la météo.
+        Chaque activité dans ce parcours est conçue pour introduire ou renforcer la reconnaissance de la météo à travers des images et des interactions directes sur une tablette. Les participants identifient si un paysage illustre le chaud ou le froid et reconnaissent les conditions météorologiques spécifiques présentées à travers une gamme d'images, enrichissant ainsi leur compréhension de la météo.
   - locale: en_US
     details:
       icon: recognition_weather_and_temperatures
 
-      title: Weather and temperatures in drawing
-      subtitle: Learning to identify and categorize weather conditions
+      title: Weather and time
+      subtitle: Learning to identify and weather conditions and time
 
       abstract: |
         This curriculum aims to develop the ability to recognize and understand different weather conditions and temperature distinctions. Through interactive activities, participants learn to associate representative images with their corresponding weather condition or temperature.
@@ -55,3 +54,4 @@ activities:
   - recognition_weather_and_temperatures_hot_and_cold-18DA1F9028CF447E819507B0A6562F2E
   - recognition_weather_and_temperatures_weather_drawings_2_images-900AB87351824FACB2E289F426056034
   - recognition_weather_and_temperatures_weather_drawings_4_images-030525AA798F4E0D8EDAFAF3939471F9
+  - recognition_time_of_day_day_night-7710D57FB7214D4F90246463F20773D1
