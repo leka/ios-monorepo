@@ -261,6 +261,7 @@ content:
           description: Activities to help care receivers identify, classify, and name different fruits and vegetables.
     curriculums:
       - sorting_fruits_vegetables_basket-E6A322DC7A6E48518CED2CA2D3D2A595
+      - curriculum_fruits_and_vegetables_generalization-B6F2027A304C44F5B3C482EAFCD8DE7E
 
   - id: social_relations
     l10n:
@@ -293,3 +294,4 @@ content:
       - curriculum_recognition_kitchen_items-FCBEE55DD11F427785A12328E6E01C8E
       - curriculum_find_ingredients_for_recipes-B477244ADFED4735BA1159A76E25001A
       - sorting_fruits_vegetables_basket-E6A322DC7A6E48518CED2CA2D3D2A595
+      - curriculum_fruits_and_vegetables_generalization-B6F2027A304C44F5B3C482EAFCD8DE7E
