@@ -30,7 +30,7 @@ l10n:
   - locale: fr_FR
     details:
       icon: fruits_and_vegetables_generalization
-      title: Généralisation des Fruits et Légumes
+      title: Généralisation des fruits et légumes
       subtitle: Identifier et généraliser les fruits et légumes
 
       abstract: |
@@ -42,7 +42,7 @@ l10n:
   - locale: en_US
     details:
       icon: fruits_and_vegetables_generalization
-      title: Fruits and Vegetables Generalization
+      title: Fruits and vegetables generalization
       subtitle: Identify and Generalize Fruits and Vegetables
 
       abstract: |
