@@ -163,6 +163,7 @@ content:
       - curriculum_animal_recognition_pets-358521AE2F434D54BFFFA513ED608529
       - curriculum_animal_recognition_savannah_animals-FB96DF24CDBB463E987E241FDC5BEA17
       - curriculum_animal_recognition_sea_animals-ADBEC52B10B0423E96B3F08CEE042752
+      - curriculum_recognition_the_ice_floe-0EAFF8A46A4C4D60A320EBBBF2CC03B8
 
   - id: colors
     l10n:
@@ -260,6 +261,7 @@ content:
           description: Activities to help care receivers identify, classify, and name different fruits and vegetables.
     curriculums:
       - sorting_fruits_vegetables_basket-E6A322DC7A6E48518CED2CA2D3D2A595
+      - curriculum_fruits_and_vegetables_generalization-B6F2027A304C44F5B3C482EAFCD8DE7E
 
   - id: social_relations
     l10n:
@@ -276,18 +278,20 @@ content:
     curriculums:
       - curriculum_recognition_emotions_in_context-A135163C8D8646DE95D0854FD5E155EB
 
-  - id: cooking_and_recipes
+  - id: food_and_cooking
     l10n:
       - locale: fr_FR
         details:
-          title: Cuisine et recettes
-          subtitle: Apprendre à reconnaître les ingrédients et suivre des recettes.
-          description: Activités pour aider les personnes à reconnaître les ingrédients et à participer à la préparation de recettes simples.
+          title: Nourriture et cuisine
+          subtitle: Apprendre à reconnaître divers aliments et l'univers de la cuisine.
+          description: Activités visant à familiariser les participants avec une variété d'aliments, à comprendre leur rôle dans la cuisine, ainsi qu'à explorer les outils utilisés en cuisine.
       - locale: en_US
         details:
-          title: Cooking and Recipes
-          subtitle: Learn to recognize ingredients and follow recipes.
-          description: Activities to help care receivers recognize ingredients and participate in preparing simple recipes.
+          title: Food and Cooking
+          subtitle: Learn to recognize various foods and the world of cooking.
+          description: Activities designed to help participants become familiar with a variety of foods, understand their role in cooking, and explore the tools used in the kitchen.
     curriculums:
       - curriculum_recognition_kitchen_items-FCBEE55DD11F427785A12328E6E01C8E
       - curriculum_find_ingredients_for_recipes-B477244ADFED4735BA1159A76E25001A
+      - sorting_fruits_vegetables_basket-E6A322DC7A6E48518CED2CA2D3D2A595
+      - curriculum_fruits_and_vegetables_generalization-B6F2027A304C44F5B3C482EAFCD8DE7E
