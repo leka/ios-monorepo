@@ -47,6 +47,14 @@ struct CategoryHome: View {
                         .padding(.horizontal)
                 }
 
+                HStack {
+                    Spacer()
+                    Link(self.content.feedbackButton, destination: URL(string: self.content.feedbackLink)!)
+                        .buttonStyle(.borderedProminent)
+                        .font(.headline)
+                    Spacer()
+                }
+
                 Markdown(self.content.intro)
                     .markdownTheme(.gitHub)
 
