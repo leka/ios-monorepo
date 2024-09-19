@@ -72,7 +72,7 @@ categories:
       - animals_turtle
 
   - id: fruits
-    visible: true
+    visible: false
     l10n:
       - locale: fr_FR
         name: Fruits
@@ -92,7 +92,7 @@ categories:
       - fruits_watermelon
 
   - id: vegetables
-    visible: true
+    visible: false
     l10n:
       - locale: fr_FR
         name: Légumes
