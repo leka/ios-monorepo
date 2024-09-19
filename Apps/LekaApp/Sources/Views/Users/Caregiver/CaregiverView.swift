@@ -17,27 +17,43 @@ struct CaregiverView: View {
 
     var body: some View {
         VStack {
-            HStack(spacing: 10) {
-                Image(uiImage: Avatars.iconToUIImage(icon: self.caregiver.avatar))
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .background(DesignKitAsset.Colors.blueGray.swiftUIColor)
-                    .clipShape(Circle())
-                VStack(alignment: .leading, spacing: 0) {
-                    Text(self.caregiver.firstName)
-                        .font(.title)
-                        .lineLimit(1)
-                        .truncationMode(.tail)
-                        .foregroundColor(.primary)
-                    Text(self.caregiver.lastName)
-                        .font(.caption)
-                        .lineLimit(1)
-                        .truncationMode(.tail)
-                        .foregroundColor(.secondary)
+            Button {
+                self.isEditCaregiverViewPresented = true
+            } label: {
+                HStack(spacing: 10) {
+                    Image(uiImage: Avatars.iconToUIImage(icon: self.caregiver.avatar))
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .background(DesignKitAsset.Colors.blueGray.swiftUIColor)
+                        .clipShape(Circle())
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(self.caregiver.firstName)
+                            .font(.title)
+                            .lineLimit(1)
+                            .truncationMode(.tail)
+                            .foregroundColor(.primary)
+                        Text(self.caregiver.lastName)
+                            .font(.caption)
+                            .lineLimit(1)
+                            .truncationMode(.tail)
+                            .foregroundColor(.secondary)
+                        Text(l10n.CaregiverView.editProfileButtonLabel)
+                            .font(.footnote)
+                            .foregroundStyle(self.styleManager.accentColor!)
+                    }
                 }
             }
             .padding()
             .frame(maxHeight: 140)
+            .sheet(isPresented: self.$isEditCaregiverViewPresented) {
+                NavigationStack {
+                    EditCaregiverView(caregiver: self.caregiver)
+                        .navigationBarTitleDisplayMode(.inline)
+                }
+            }
+            .onChange(of: self.caregiverManagerViewModel.caregivers, perform: { _ in
+                self.caregiver = self.caregiverManagerViewModel.caregivers.first(where: { $0.id == self.caregiver.id })!
+            })
 
             Divider()
 
@@ -59,6 +75,8 @@ struct CaregiverView: View {
 
     private let strokeColor: Color = .init(light: UIColor.systemGray3, dark: UIColor.systemGray2)
     @ObservedObject private var styleManager: StyleManager = .shared
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @State private var isEditCaregiverViewPresented = false
 }
 
 // MARK: - l10n.CaregiverView
@@ -68,6 +86,8 @@ struct CaregiverView: View {
 extension l10n {
     enum CaregiverView {
         static let availableSoonLabel = LocalizedString("lekapp.caregiver_view.available_soon_label", value: "Your usage history will soon be available here.", comment: "Temporary content for caregiver monitoring")
+
+        static let editProfileButtonLabel = LocalizedString("lekapp.carereceiver_view.edit_profile_button_label", value: "Edit profile", comment: "The button label of carereceiver profile editor")
     }
 }
 
