@@ -12,21 +12,19 @@ struct ContentView: View {
                 .font(.largeTitle)
                 .padding()
 
-            VStack {
-                HStack(spacing: 20) {
-                    NavigationLink("Find The Right Answers", destination: {
-                        let gameplay = GameplayFindTheRightAnswers(choices: GameplayFindTheRightAnswers.kDefaultChoices)
-                        let coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: gameplay)
-                        let viewModel = TTSViewViewModel(coordinator: coordinator)
+            HStack(spacing: 20) {
+                NavigationLink("Find The Right Answers", destination: {
+                    let gameplay = GameplayFindTheRightAnswers(choices: GameplayFindTheRightAnswers.kDefaultChoices)
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: gameplay)
+                    let viewModel = TTSViewViewModel(coordinator: coordinator)
 
-                        return TTSView(viewModel: viewModel)
-                            .navigationTitle("Find The Right Answers")
-                            .navigationBarTitleDisplayMode(.large)
-                    })
-                    .tint(.orange)
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
-                }
+                    return TTSView(viewModel: viewModel)
+                        .navigationTitle("Find The Right Answers")
+                        .navigationBarTitleDisplayMode(.large)
+                })
+                .tint(.orange)
+                .buttonStyle(.borderedProminent)
+                .frame(maxWidth: .infinity)
 
                 NavigationLink("Find The Right Order", destination: {
                     let gameplay = GameplayFindTheRightOrder(choices: GameplayFindTheRightOrder.kDefaultChoices)
@@ -42,8 +40,11 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity)
 
                 NavigationLink("Associate Categories", destination: {
-                    Text("Find the right categories: (1/3), (2/5), (4/6)")
-                        .font(.title)
+                    let gameplay = GameplayAssociateCategories(choices: GameplayAssociateCategories.kDefaultChoices)
+                    let coordinator = TTSCoordinatorAssociateCategories(gameplay: gameplay)
+                    let viewModel = TTSViewViewModel(coordinator: coordinator)
+
+                    return TTSView(viewModel: viewModel)
                         .navigationTitle("Associate Categories")
                         .navigationBarTitleDisplayMode(.large)
                 })
