@@ -1,17 +1,20 @@
-## Leka Updater v1.4.1
+## Leka Updater v2.0.0
 
-- Fix robot connection view localization - in French, the view was appearing in English
+Introducing a major update with the all-new LekaOS v2.0.0!
 
-## LekaOS v1.4.0
+## What's New
 
-This new version is a complete rewrite of our previous app.
+- Deep Sleep Mode
 
-Thanks to our amazing users and their invaluable feedback, both the user experience and the user interface have been significantly enhanced.
-The design is now more engaging, important information is easily readable, and all the crucial actions are readily accessible.
+  Leka is now even smarter with a new deep sleep feature.
+  This means your Leka can preserve battery life overnight,
+  so you can start the day without worrying about recharging.
 
-And that's not all! This new version includes our latest firmware update, LekaOS v1.4.0, which introduces a host of new features:
+- 4 Ways to Wake Leka Up
 
-- Enhanced Stability: The robot now boasts improved stability during motion, ensuring smoother transitions and steadier movements.
-- Precision in Rotations: We've fine-tuned the robot's rotational movements for greater accuracy and fluidity.
-- Language Support in Autonomous Mode: When the "Dice" card is recognized, the autonomous activities menu is now conveniently displayed in English.
-- Inactivity Timeout: To conserve energy and enhance safety, the robot will automatically exit autonomous mode after 10 minutes of inactivity.
+  - Connect via Leka App to your iPad.
+  - Place Leka on the powered charging base.
+  - Plug or unplug the charging cable when on the base.
+  - Hold a magic card to Leka’s forehead for instant wake-up!
+
+Enjoy longer play sessions and an even more seamless experience with Leka!
