@@ -17,7 +17,7 @@ struct CategoryStoriesView: View {
         VStack {
             ScrollView(showsIndicators: true) {
                 HStack(alignment: .center, spacing: 30) {
-                    Image(systemName: "dice")
+                    Image(systemName: "text.book.closed")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 80, height: 80)
