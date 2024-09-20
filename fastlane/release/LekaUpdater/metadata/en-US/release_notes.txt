@@ -1,17 +1,8 @@
-## Leka Updater v1.4.1
+## Leka Updater v2.0.0
 
-- Fix robot connection view localization - in French, the view was appearing in English
+- New Deep Sleep Mode: The robot is even more energy-efficient thanks to deep sleep mode! You can now use the robot longer before needing to recharge it.
 
-## LekaOS v1.4.0
-
-This new version is a complete rewrite of our previous app.
-
-Thanks to our amazing users and their invaluable feedback, both the user experience and the user interface have been significantly enhanced.
-The design is now more engaging, important information is easily readable, and all the crucial actions are readily accessible.
-
-And that's not all! This new version includes our latest firmware update, LekaOS v1.4.0, which introduces a host of new features:
-
-- Enhanced Stability: The robot now boasts improved stability during motion, ensuring smoother transitions and steadier movements.
-- Precision in Rotations: We've fine-tuned the robot's rotational movements for greater accuracy and fluidity.
-- Language Support in Autonomous Mode: When the "Dice" card is recognized, the autonomous activities menu is now conveniently displayed in English.
-- Inactivity Timeout: To conserve energy and enhance safety, the robot will automatically exit autonomous mode after 10 minutes of inactivity.
+- 3 Ways to Wake Up Your Robot:
+    1️ - By connecting to it
+    2️ - By plugging or unplugging its charger
+    3️ - By using a magic card
