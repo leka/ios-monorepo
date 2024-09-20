@@ -64,11 +64,6 @@ jobs:
         run: |
           echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
 
-      - name: bundle install
-        run: |
-          gem install --force bundler
-          bundle install
-
       - name: tuist install
         run: |
           tuist install
