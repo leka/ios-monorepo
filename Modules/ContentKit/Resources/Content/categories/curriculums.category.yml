@@ -180,6 +180,7 @@ content:
     curriculums:
       - color_bingo-69760D1DA61849E3926E3A939BBEF0CE
       - curriculum_receptive_language_identify_objects_by_color-506EA3B894AE46EBAE4BE4AFFC65233F
+      - super_simon-C6EABAC161CD44C290B32202DFDCDAF6
 
   - id: weather_and_environment
     l10n:
