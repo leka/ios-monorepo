@@ -13,7 +13,6 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  TUIST_TURN_OFF_LINTERS: TRUE
   APP_STORE_CONNECT_API_KEY_CONTENT_RELEASE_APP_STORE: ${{ secrets. APP_STORE_CONNECT_API_KEY_CONTENT_RELEASE_APP_STORE }}
   APP_STORE_CONNECT_ISSUER_ID: ${{ secrets. APP_STORE_CONNECT_ISSUER_ID }}
   APP_STORE_CONNECT_API_KEY_ID_RELEASE_APP_STORE: ${{ secrets. APP_STORE_CONNECT_API_KEY_ID_RELEASE_APP_STORE }}
@@ -49,11 +48,6 @@ jobs:
       - name: Setup mise
         run: |
           echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
-
-      - name: bundle install
-        run: |
-          gem install --force bundler
-          bundle install
 
       - name: tuist install
         run: |

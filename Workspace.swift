@@ -36,24 +36,26 @@ var projects: [Path] {
 
     // MARK: - iOS Examples
 
-    let iOSExamples: [Path] = [
-        "Examples/iOSApp",
-        "Examples/Module",
-    ]
+    let iOSExamples: [Path] = if Environment.generateExamples.getBoolean(default: false) {
+        [
+            "Examples/iOSApp",
+            "Examples/Module",
+        ]
+    } else { [] }
 
     // MARK: - macOS Examples
 
-    let macOSExamples: [Path] = [
-        "Examples/macOSApp",
-        "Examples/macOSCli",
-        "Examples/Module",
-    ]
+    let macOSExamples: [Path] = if Environment.generateExamples.getBoolean(default: false) {
+        [
+            "Examples/macOSApp",
+            "Examples/macOSCli",
+            "Examples/Module",
+        ]
+    } else { [] }
 
     var projects = iOSApps + modules + iOSExamples
 
-    let generateMacOSApps = Environment.generateMacOSApps.getBoolean(default: false)
-
-    if generateMacOSApps {
+    if Environment.generateMacOSApps.getBoolean(default: false) {
         projects = macOSApps + modules + macOSExamples
     }
 

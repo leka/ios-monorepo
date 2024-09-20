@@ -27,8 +27,12 @@ public extension Scheme {
 }
 
 func l10nSchemes(name: String) -> [Scheme] {
-    [
-        .l10nFR(name: name),
-        .l10nEN(name: name),
-    ]
+    if Environment.generateL10nSchemes.getBoolean(default: false) {
+        return [
+            .l10nFR(name: name),
+            .l10nEN(name: name),
+        ]
+    }
+
+    return []
 }
