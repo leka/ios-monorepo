@@ -27,12 +27,13 @@ public struct StoryGridView: View {
                         Image(uiImage: story.details.iconImage)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 250)
+                            .frame(width: 155, height: 200)
+                            .clipShape(RoundedRectangle(cornerRadius: 10 / 57 * 120))
+                            .padding(.bottom)
 
                         Text(story.details.title)
                             .font(.headline)
                             .foregroundStyle(Color.primary)
-                            .padding(.top, -30)
 
                         Text(story.details.subtitle ?? "")
                             .font(.body)
@@ -40,6 +41,7 @@ public struct StoryGridView: View {
 
                         Spacer()
                     }
+                    .padding(.vertical)
                 }
             }
         }

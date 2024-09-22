@@ -28,7 +28,8 @@ public struct StoryDetailsView: View {
                         Image(uiImage: self.story.details.iconImage)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 200)
+                            .frame(width: 155, height: 200)
+                            .clipShape(RoundedRectangle(cornerRadius: 10 / 57 * 120))
 
                         VStack(alignment: .leading, spacing: 8) {
                             Text(self.story.details.title)
