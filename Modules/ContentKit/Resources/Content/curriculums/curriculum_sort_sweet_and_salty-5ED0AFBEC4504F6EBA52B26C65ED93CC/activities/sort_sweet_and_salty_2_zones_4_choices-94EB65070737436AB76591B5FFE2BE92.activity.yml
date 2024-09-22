@@ -1,0 +1,309 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 94EB65070737436AB76591B5FFE2BE92
+name: sort_sweet_and_salty_2_zones_4_choices
+
+created_at: "2024-03-08T11:49:37.123541"
+last_edited_at: "2024-09-18T10:44:59.347240"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - association
+  - association/sorting
+  - recognition
+
+tags:
+  - food
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: sort_sweet_and_salty_food
+
+      title: Trier les aliments sucrés et salés
+      subtitle: 2 zones - 4 aliments
+
+      short_description: |
+        Placer les aliments dans les bonnes zones
+
+      description: |
+        Le participant doit glisser et déposer les aliments dans les zones appropriées (sucrée ou salée).
+
+      instructions: |
+        - Sur l'écran de l'iPad, une ou plusieurs images sont présentées à l'extérieur des zones de dépôt. Chaque image représente un aliment que le participant doit placer dans la zone appropriée (sucrée ou salée).
+        - Encouragez le participant à glisser chaque image dans la zone correcte.
+        - Après avoir placé l'image correctement, Leka lance un renforçateur pour célébrer cette réussite et encourager l'apprentissage.
+
+  - locale: en_US
+    details:
+      icon: sort_sweet_and_salty_food
+
+      title: Sort Sweet and Salty Foods
+      subtitle: 2 zones - 4 food items
+
+      short_description: |
+        Place the foods in the right zones
+
+      description: |
+        The participant should drag and drop foods into the correct zones (sweet or salty).
+
+      instructions: |
+        - On the iPad screen, an image is displayed outside of the drop zones. The image represents a food item that the participant should place into the appropriate zone (sweet or salty).
+        - Encourage the participant to drag the image into the correct zone.
+        - After placing the image correctly, Leka provides a reinforcer to celebrate this success and encourage ongoing learning.
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Place les aliments dans les bonnes zones
+            - locale: en_US
+              value: Place the foods in the right zones
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: drop_zone_sweet
+              type: image
+            dropZoneB:
+              value: drop_zone_salty
+              type: image
+            choices:
+              - value: chocolate_bar
+                type: image
+                dropZone: zoneA
+              - value: leek
+                type: image
+                dropZone: zoneB
+              - value: cookie
+                type: image
+                dropZone: zoneA
+              - value: pepper
+                type: image
+                dropZone: zoneB
+
+        - instructions:
+            - locale: fr_FR
+              value: Place les aliments dans les bonnes zones
+            - locale: en_US
+              value: Place the foods in the right zones
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: drop_zone_sweet
+              type: image
+            dropZoneB:
+              value: drop_zone_salty
+              type: image
+            choices:
+              - value: honey
+                type: image
+                dropZone: zoneA
+              - value: chicken_roast
+                type: image
+                dropZone: zoneB
+              - value: ice_corner_pink
+                type: image
+                dropZone: zoneA
+              - value: hamburger
+                type: image
+                dropZone: zoneB
+
+        - instructions:
+            - locale: fr_FR
+              value: Place les aliments dans les bonnes zones
+            - locale: en_US
+              value: Place the foods in the right zones
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: drop_zone_sweet
+              type: image
+            dropZoneB:
+              value: drop_zone_salty
+              type: image
+            choices:
+              - value: jam_strawberry
+                type: image
+                dropZone: zoneA
+              - value: soup
+                type: image
+                dropZone: zoneB
+              - value: waffles
+                type: image
+                dropZone: zoneA
+              - value: bread
+                type: image
+                dropZone: zoneB
+
+        - instructions:
+            - locale: fr_FR
+              value: Place les aliments dans les bonnes zones
+            - locale: en_US
+              value: Place the foods in the right zones
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: drop_zone_sweet
+              type: image
+            dropZoneB:
+              value: drop_zone_salty
+              type: image
+            choices:
+              - value: chocolate_bar
+                type: image
+                dropZone: zoneA
+              - value: leek
+                type: image
+                dropZone: zoneB
+              - value: cookie
+                type: image
+                dropZone: zoneA
+              - value: pepper
+                type: image
+                dropZone: zoneB
+
+        - instructions:
+            - locale: fr_FR
+              value: Place les aliments dans les bonnes zones
+            - locale: en_US
+              value: Place the foods in the right zones
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: drop_zone_sweet
+              type: image
+            dropZoneB:
+              value: drop_zone_salty
+              type: image
+            choices:
+              - value: croissant
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-meals-baguette-0180
+                type: image
+                dropZone: zoneB
+              - value: donut
+                type: image
+                dropZone: zoneA
+              - value: cheese
+                type: image
+                dropZone: zoneB
+
+        - instructions:
+            - locale: fr_FR
+              value: Place les aliments dans les bonnes zones
+            - locale: en_US
+              value: Place the foods in the right zones
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: drop_zone_sweet
+              type: image
+            dropZoneB:
+              value: drop_zone_salty
+              type: image
+            choices:
+              - value: honey
+                type: image
+                dropZone: zoneA
+              - value: chicken_roast
+                type: image
+                dropZone: zoneB
+              - value: ice_corner_pink
+                type: image
+                dropZone: zoneA
+              - value: hamburger
+                type: image
+                dropZone: zoneB
+
+        - instructions:
+            - locale: fr_FR
+              value: Place les aliments dans les bonnes zones
+            - locale: en_US
+              value: Place the foods in the right zones
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: drop_zone_sweet
+              type: image
+            dropZoneB:
+              value: drop_zone_salty
+              type: image
+            choices:
+              - value: jam_strawberry
+                type: image
+                dropZone: zoneA
+              - value: soup
+                type: image
+                dropZone: zoneB
+              - value: waffles
+                type: image
+                dropZone: zoneA
+              - value: hamburger
+                type: image
+                dropZone: zoneB
+
+        - instructions:
+            - locale: fr_FR
+              value: Place les aliments dans les bonnes zones
+            - locale: en_US
+              value: Place the foods in the right zones
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: drop_zone_sweet
+              type: image
+            dropZoneB:
+              value: drop_zone_salty
+              type: image
+            choices:
+              - value: bread
+                type: image
+                dropZone: zoneB
+              - value: cookie
+                type: image
+                dropZone: zoneA
+              - value: waffles
+                type: image
+                dropZone: zoneA
+              - value: pepper
+                type: image
+                dropZone: zoneB
