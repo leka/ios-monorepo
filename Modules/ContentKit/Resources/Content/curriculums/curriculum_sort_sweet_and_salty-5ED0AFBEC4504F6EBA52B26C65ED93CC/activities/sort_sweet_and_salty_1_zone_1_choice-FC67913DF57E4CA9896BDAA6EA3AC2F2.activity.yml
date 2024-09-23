@@ -8,7 +8,7 @@ uuid: FC67913DF57E4CA9896BDAA6EA3AC2F2
 name: sort_sweet_and_salty_1_zone_1_choice
 
 created_at: "2024-08-06T10:00:00.000000"
-last_edited_at: "2024-09-18T10:44:59.362097"
+last_edited_at: "2024-09-23T10:37:25.250482"
 status: published
 
 authors:
@@ -123,7 +123,7 @@ exercises_payload:
               value: drop_zone_sweet
               type: image
             choices:
-              - value: cookie
+              - value: cookie_sweet_and_salty
                 type: image
                 dropZone: zoneA
 

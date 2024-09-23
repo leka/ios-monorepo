@@ -8,7 +8,7 @@ uuid: A6325A93AF194ACAAF3744793E5EBD3D
 name: sort_sweet_and_salty_2_zones_2_choices
 
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-09-18T10:44:59.347240"
+last_edited_at: "2024-09-23T10:37:25.250482"
 status: published
 
 authors:
@@ -115,7 +115,7 @@ exercises_payload:
               value: drop_zone_salty
               type: image
             choices:
-              - value: cookie
+              - value: cookie_sweet_and_salty
                 type: image
                 dropZone: zoneA
               - value: pepper
