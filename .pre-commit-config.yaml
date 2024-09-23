@@ -146,6 +146,16 @@ repos:
         types: [yaml]
         pass_filenames: false
 
+      - id: check_yaml_content_activities_assets
+        name: Check activity.asset.* files
+        description: |
+          This hook checks activity.asset.* files for:
+            - duplicates
+        entry: python3 Tools/Hooks/check_yaml_content_activities_assets.py
+        language: python
+        pass_filenames: false
+        always_run: true
+
       - id: check_yaml_content_curriculums
         name: Check curriculum.yml files
         description: |
