@@ -8,7 +8,7 @@ uuid: 500B42D356C14D59AA2A77C9E1F1537A
 name: sort_sweet_and_salty_1_zone_2_choices
 
 created_at: "2024-03-08T11:49:37.123525"
-last_edited_at: "2024-09-18T10:44:59.324901"
+last_edited_at: "2024-09-23T10:37:25.250482"
 status: published
 
 authors:
@@ -108,7 +108,7 @@ exercises_payload:
               value: drop_zone_salty
               type: image
             choices:
-              - value: cookie
+              - value: cookie_sweet_and_salty
                 type: image
               - value: pepper
                 type: image
@@ -149,7 +149,7 @@ exercises_payload:
               - value: honey
                 type: image
                 dropZone: zoneA
-              - value: chicken_roast
+              - value: chicken_roast_sweet_and_salty
                 type: image
 
         - instructions:
