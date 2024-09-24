@@ -83,6 +83,7 @@ exercises_payload:
               type: color
               value: green
           payload:
+            shuffle_choices: true
             choices:
               - value: pictograms-objects-school-book_green
                 type: image
@@ -105,6 +106,7 @@ exercises_payload:
               type: image
               value: robotFaceHappy
           payload:
+            shuffle_choices: true
             choices:
               - value: emotion_picto_joy_leka
                 type: image

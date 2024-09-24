@@ -83,6 +83,7 @@ exercises_payload:
               type: image
               value: pictograms-foods-fruits-banana_yellow-00FB
           payload:
+            shuffle_choices: true
             choices:
               - value: pictograms-foods-fruits-banana_yellow-00FB
                 type: image
@@ -109,6 +110,7 @@ exercises_payload:
               type: sfsymbol
               value: fish
           payload:
+            shuffle_choices: true
             choices:
               - value: fish
                 type: sfsymbol

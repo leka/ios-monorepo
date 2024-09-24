@@ -252,9 +252,9 @@ exercises_payload:
               type: speech
               value:
                 - locale: fr_FR
-                  utterance: "le savon solide"
+                  utterance: "le savon"
                 - locale: en_US
-                  utterance: "the solid soap"
+                  utterance: "the soap"
           payload:
             shuffle_choices: true
             choices:

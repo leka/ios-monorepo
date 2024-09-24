@@ -96,6 +96,7 @@ exercises_payload:
               type: color
               value: red
           payload:
+            shuffle_choices: true
             choices:
               - value: red
                 type: color
@@ -116,6 +117,7 @@ exercises_payload:
               type: color
               value: blue
           payload:
+            shuffle_choices: true
             choices:
               - value: blue
                 type: color
@@ -136,6 +138,7 @@ exercises_payload:
               type: color
               value: yellow
           payload:
+            shuffle_choices: true
             choices:
               - value: yellow
                 type: color
@@ -156,6 +159,7 @@ exercises_payload:
               type: color
               value: purple
           payload:
+            shuffle_choices: true
             choices:
               - value: purple
                 type: color
@@ -176,6 +180,7 @@ exercises_payload:
               type: color
               value: green
           payload:
+            shuffle_choices: true
             choices:
               - value: green
                 type: color
@@ -196,6 +201,7 @@ exercises_payload:
               type: color
               value: orange
           payload:
+            shuffle_choices: true
             choices:
               - value: orange
                 type: color

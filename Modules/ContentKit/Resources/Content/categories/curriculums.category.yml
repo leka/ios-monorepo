@@ -71,6 +71,7 @@ content:
       - curriculum_categorization_sort_through-88C512E99B61485D93A7AD8C34ED6A76
       - curriculum_categorization_sort_through_functional_category-64388748AF714B4880B8C7B6DD6D93F3
       - curriculum_sort_objects_by_location-CC406024F40C4834A66BB7C8F0E8C0AD
+      - curriculum_sort_sweet_and_salty-5ED0AFBEC4504F6EBA52B26C65ED93CC
 
   - id: receptive_language
     l10n:
@@ -278,6 +279,7 @@ content:
           description: Activities to help care receivers identify family members, friends, and other social relationships while developing social interaction skills.
     curriculums:
       - curriculum_recognition_emotions_in_context-A135163C8D8646DE95D0854FD5E155EB
+      - curriculum_recognition_family_members-AD1A9E2D874C47AEB3445D80E34DC702
 
   - id: food_and_cooking
     l10n:
@@ -292,7 +294,8 @@ content:
           subtitle: Learn to recognize various foods and the world of cooking.
           description: Activities designed to help participants become familiar with a variety of foods, understand their role in cooking, and explore the tools used in the kitchen.
     curriculums:
-      - curriculum_recognition_kitchen_items-FCBEE55DD11F427785A12328E6E01C8E
       - curriculum_find_ingredients_for_recipes-B477244ADFED4735BA1159A76E25001A
-      - sorting_fruits_vegetables_basket-E6A322DC7A6E48518CED2CA2D3D2A595
+      - curriculum_sort_sweet_and_salty-5ED0AFBEC4504F6EBA52B26C65ED93CC
+      - curriculum_recognition_kitchen_items-FCBEE55DD11F427785A12328E6E01C8E
       - curriculum_fruits_and_vegetables_generalization-B6F2027A304C44F5B3C482EAFCD8DE7E
+      - sorting_fruits_vegetables_basket-E6A322DC7A6E48518CED2CA2D3D2A595
