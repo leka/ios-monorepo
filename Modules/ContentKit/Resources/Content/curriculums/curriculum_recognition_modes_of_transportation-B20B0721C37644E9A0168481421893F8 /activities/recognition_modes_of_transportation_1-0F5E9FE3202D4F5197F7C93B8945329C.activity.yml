@@ -8,7 +8,7 @@ uuid: 0F5E9FE3202D4F5197F7C93B8945329C
 name: recognition_modes_of_transportation_1
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-07-26T16:01:51.660300"
+last_edited_at: "2024-09-06T16:24:11.072857"
 status: published
 
 authors:
@@ -85,13 +85,13 @@ exercises_payload:
               type: speech
               value:
                 - locale: fr_FR
-                  utterance: "L'ambulance"
+                  utterance: "Le vélo"
                 - locale: en_US
-                  utterance: "The ambulance"
+                  utterance: "The bicycle"
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms_transportation_ambulance
+              - value: transportation_bike_blue
                 type: image
                 is_right_answer: true
 
@@ -108,13 +108,13 @@ exercises_payload:
               type: speech
               value:
                 - locale: fr_FR
-                  utterance: "Le camion de pompier"
+                  utterance: "Le bus"
                 - locale: en_US
-                  utterance: "The firetruck"
+                  utterance: "The bus"
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms_transportation_firetruck
+              - value: transportation_bus_red
                 type: image
                 is_right_answer: true
 
@@ -131,13 +131,59 @@ exercises_payload:
               type: speech
               value:
                 - locale: fr_FR
-                  utterance: "L'helicopter"
+                  utterance: "La voiture"
+                - locale: en_US
+                  utterance: "The car"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: transportation_car_blue
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le bateau"
+                - locale: en_US
+                  utterance: "The boat"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: transportation_ferry
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "L'hélicoptère"
                 - locale: en_US
                   utterance: "The helicopter"
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms_transportation_helicopter
+              - value: transportation_helicopter_blue
                 type: image
                 is_right_answer: true
 
@@ -156,12 +202,11 @@ exercises_payload:
                 - locale: fr_FR
                   utterance: "La moto"
                 - locale: en_US
-                  utterance: "The moto"
-
+                  utterance: "The motorcycle"
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms_transportation_moto
+              - value: transportation_moto_blue
                 type: image
                 is_right_answer: true
 
@@ -180,11 +225,11 @@ exercises_payload:
                 - locale: fr_FR
                   utterance: "Le scooter"
                 - locale: en_US
-                  utterance: "The moto scooter"
+                  utterance: "The motor scooter"
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms_transportation_motor_scooter
+              - value: transportation_motor_scooter_pink
                 type: image
                 is_right_answer: true
 
@@ -201,13 +246,13 @@ exercises_payload:
               type: speech
               value:
                 - locale: fr_FR
-                  utterance: "La voiture de police"
+                  utterance: "L'avion"
                 - locale: en_US
-                  utterance: "The police car"
+                  utterance: "The airplane"
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms_transportation_police_car
+              - value: transportation_plane_blue
                 type: image
                 is_right_answer: true
 
@@ -224,13 +269,13 @@ exercises_payload:
               type: speech
               value:
                 - locale: fr_FR
-                  utterance: "Le bateau à voile"
+                  utterance: "La trottinette"
                 - locale: en_US
-                  utterance: "The sailboat"
+                  utterance: "The kick scooter"
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms_transportation_sailboat
+              - value: transportation_kick_scooter
                 type: image
                 is_right_answer: true
 
@@ -247,36 +292,13 @@ exercises_payload:
               type: speech
               value:
                 - locale: fr_FR
-                  utterance: "La trotinette"
+                  utterance: "Le train"
                 - locale: en_US
-                  utterance: "The scooter"
+                  utterance: "The train"
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms_transportation_scooter
-                type: image
-                is_right_answer: true
-
-        - instructions:
-            - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
-            - locale: en_US
-              value: Listen and touch the requested object
-          interface: listenThenTouchToSelect
-          gameplay: findTheRightAnswers
-          action:
-            type: ipad
-            value:
-              type: speech
-              value:
-                - locale: fr_FR
-                  utterance: "Le tracteur"
-                - locale: en_US
-                  utterance: "The tractor"
-          payload:
-            shuffle_choices: true
-            choices:
-              - value: pictograms_transportation_tractor
+              - value: transportation_train
                 type: image
                 is_right_answer: true
 
@@ -299,7 +321,7 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms_transportation_tramway
+              - value: transportation_tramway_red
                 type: image
                 is_right_answer: true
 
@@ -322,6 +344,6 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms_transportation_truck
+              - value: transportation_truck_blue
                 type: image
                 is_right_answer: true

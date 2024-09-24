@@ -8,7 +8,7 @@ uuid: B8FA6D153A764A29811D5B606956CA44
 name: recognition_recognition_family_members_6
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-09-24T14:56:02.848880"
+last_edited_at: "2024-09-24T15:59:20.396364"
 
 status: published
 
@@ -77,9 +77,9 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche la personne demandée
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested person
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -110,9 +110,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche la personne demandée
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested person
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -143,9 +143,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche la personne demandée
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested person
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -176,9 +176,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche la personne demandée
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested person
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -209,9 +209,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche la personne demandée
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested person
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -242,9 +242,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche la personne demandée
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested person
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:
@@ -275,9 +275,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et touche l'objet demandé
+              value: Ecoute et touche la personne demandée
             - locale: en_US
-              value: Listen and touch the requested object
+              value: Listen and touch the requested person
           interface: listenThenTouchToSelect
           gameplay: findTheRightAnswers
           action:

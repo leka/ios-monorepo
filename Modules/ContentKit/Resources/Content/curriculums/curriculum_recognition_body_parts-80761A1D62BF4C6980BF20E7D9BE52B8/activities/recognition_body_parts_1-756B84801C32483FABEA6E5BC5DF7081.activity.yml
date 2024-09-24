@@ -4,11 +4,11 @@
 
 version: 1.0.0
 
-uuid: 3DFED637A5D84B8B8CE1580F2C629BE6
-name: recognition_body_parts_4
+uuid: 756B84801C32483FABEA6E5BC5DF7081
+name: recognition_body_parts_1
 
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-07-16T15:57:13.431550"
+last_edited_at: "2024-09-24T15:59:20.374078"
 status: published
 
 authors:
@@ -36,7 +36,8 @@ l10n:
       icon: recognition_body_parts
 
       title: Les parties du corps
-      subtitle: 4 images
+      subtitle: 1 image
+
       short_description: |
         Touche la partie du corps demandée
 
@@ -53,7 +54,8 @@ l10n:
       icon: recognition_body_parts
 
       title: Body Parts
-      subtitle: 4 images
+      subtitle: 1 image
+
       short_description: |
         Touch the requested body part
 
@@ -94,12 +96,6 @@ exercises_payload:
               - value: body_parts_arm
                 type: image
                 is_right_answer: true
-              - value: body_parts_leg
-                type: image
-              - value: body_parts_ear
-                type: image
-              - value: body_parts_eye
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -123,12 +119,6 @@ exercises_payload:
               - value: body_parts_belly
                 type: image
                 is_right_answer: true
-              - value: body_parts_hand
-                type: image
-              - value: body_parts_face
-                type: image
-              - value: body_parts_foot
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -143,21 +133,15 @@ exercises_payload:
               type: speech
               value:
                 - locale: fr_FR
-                  utterance: "le torse"
+                  utterance: "les épaules"
                 - locale: en_US
-                  utterance: "the chest"
+                  utterance: "the shoulders"
           payload:
             shuffle_choices: true
             choices:
-              - value: body_parts_chest
+              - value: body_parts_shoulders
                 type: image
                 is_right_answer: true
-              - value: body_parts_ear
-                type: image
-              - value: body_parts_mouth
-                type: image
-              - value: body_parts_nose
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -181,12 +165,6 @@ exercises_payload:
               - value: body_parts_ear
                 type: image
                 is_right_answer: true
-              - value: body_parts_nose
-                type: image
-              - value: body_parts_face
-                type: image
-              - value: body_parts_hand
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -210,12 +188,6 @@ exercises_payload:
               - value: body_parts_eye
                 type: image
                 is_right_answer: true
-              - value: body_parts_face
-                type: image
-              - value: body_parts_leg
-                type: image
-              - value: body_parts_chest
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -239,12 +211,6 @@ exercises_payload:
               - value: body_parts_face
                 type: image
                 is_right_answer: true
-              - value: body_parts_eye
-                type: image
-              - value: body_parts_mouth
-                type: image
-              - value: body_parts_nose
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -268,12 +234,6 @@ exercises_payload:
               - value: body_parts_foot
                 type: image
                 is_right_answer: true
-              - value: body_parts_hand
-                type: image
-              - value: body_parts_arm
-                type: image
-              - value: body_parts_ear
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -297,12 +257,6 @@ exercises_payload:
               - value: body_parts_hand
                 type: image
                 is_right_answer: true
-              - value: body_parts_belly
-                type: image
-              - value: body_parts_eye
-                type: image
-              - value: body_parts_leg
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -326,12 +280,6 @@ exercises_payload:
               - value: body_parts_leg
                 type: image
                 is_right_answer: true
-              - value: body_parts_chest
-                type: image
-              - value: body_parts_arm
-                type: image
-              - value: body_parts_mouth
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -355,12 +303,6 @@ exercises_payload:
               - value: body_parts_mouth
                 type: image
                 is_right_answer: true
-              - value: body_parts_nose
-                type: image
-              - value: body_parts_ear
-                type: image
-              - value: body_parts_eye
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -384,9 +326,3 @@ exercises_payload:
               - value: body_parts_nose
                 type: image
                 is_right_answer: true
-              - value: body_parts_mouth
-                type: image
-              - value: body_parts_face
-                type: image
-              - value: body_parts_arm
-                type: image
