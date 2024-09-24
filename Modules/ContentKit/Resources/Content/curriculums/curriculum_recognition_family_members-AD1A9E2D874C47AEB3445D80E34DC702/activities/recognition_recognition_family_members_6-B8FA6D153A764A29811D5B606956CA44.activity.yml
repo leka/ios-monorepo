@@ -8,7 +8,7 @@ uuid: B8FA6D153A764A29811D5B606956CA44
 name: recognition_recognition_family_members_6
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-06-20T15:57:25.469674"
+last_edited_at: "2024-09-24T14:56:02.848880"
 
 status: published
 
@@ -17,7 +17,6 @@ authors:
 
 skills:
   - recognition
-  - discrimination
 
 tags:
   - family_members
@@ -93,6 +92,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The baby"
           payload:
+            shuffle_choices: true
             choices:
               - value: family_member_baby
                 type: image
@@ -125,6 +125,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The daughter"
           payload:
+            shuffle_choices: true
             choices:
               - value: family_member_daughter
                 type: image
@@ -157,6 +158,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The son"
           payload:
+            shuffle_choices: true
             choices:
               - value: family_member_son
                 type: image
@@ -189,6 +191,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The father"
           payload:
+            shuffle_choices: true
             choices:
               - value: family_member_father
                 type: image
@@ -221,6 +224,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The mother"
           payload:
+            shuffle_choices: true
             choices:
               - value: family_member_mother
                 type: image
@@ -253,6 +257,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The grandfather"
           payload:
+            shuffle_choices: true
             choices:
               - value: family_member_grandfather
                 type: image
@@ -285,6 +290,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The grandmother"
           payload:
+            shuffle_choices: true
             choices:
               - value: family_member_grandmother
                 type: image

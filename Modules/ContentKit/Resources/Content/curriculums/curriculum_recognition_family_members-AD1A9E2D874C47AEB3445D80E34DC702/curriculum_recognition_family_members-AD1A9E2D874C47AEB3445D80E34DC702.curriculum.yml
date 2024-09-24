@@ -6,7 +6,7 @@ uuid: AD1A9E2D874C47AEB3445D80E34DC702
 name: curriculum_recognition_family_members
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-07-19T11:36:03.177171"
+last_edited_at: "2024-09-24T14:57:09.969124"
 
 status: published
 
@@ -15,7 +15,6 @@ authors:
 
 skills:
   - recognition
-  - discrimination
 
 tags:
   - family_members
@@ -34,9 +33,9 @@ l10n:
       title: Reconnaissance des membres de la famille
       subtitle: Activités de reconnaissance et de discrimination
       abstract: |
-        Un programme conçu pour aider les utilisateurs à reconnaître et à différencier les membres de la famille grâce à des activités interactives.
+        Un parcours conçu pour aider les utilisateurs à reconnaître et à différencier les membres de la famille grâce à des activités interactives.
       description: |
-        Ce curriculum offre une série d'activités visant à améliorer la reconnaissance et la discrimination des membres de la famille. À travers des instructions audio et visuelles, les utilisateurs apprendront à identifier les membres de la famille.
+        Ce parcours offre une série d'activités visant à améliorer la reconnaissance et la discrimination des membres de la famille. À travers des instructions audio et visuelles, les utilisateurs apprendront à identifier les membres de la famille.
 
   - locale: en_US
     details:
@@ -44,7 +43,7 @@ l10n:
       title: Family Members Recognition
       subtitle: Recognition and Discrimination Activities
       abstract: |
-        A program designed to help users recognize and differentiate family members through interactive activities.
+        A curriculum designed to help users recognize and differentiate family members through interactive activities.
       description: |
         This curriculum provides a series of activities aimed at improving recognition and discrimination of family members. Through audio and visual instructions, users will learn to identify family members.
 
