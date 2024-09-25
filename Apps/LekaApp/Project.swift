@@ -35,14 +35,18 @@ let project = Project.app(
         ],
     ],
     dependencies: [
-        .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
-        .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
         .project(target: "AccountKit", path: Path("../../Modules/AccountKit")),
         .project(target: "ContentKit", path: Path("../../Modules/ContentKit")),
+        .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .project(target: "GameEngineKit", path: Path("../../Modules/GameEngineKit")),
-        .external(name: "Yams"),
-        .external(name: "MarkdownUI"),
-        .external(name: "Fit"),
+        .project(target: "LocalizationKit", path: Path("../../Modules/LocalizationKit")),
+        .project(target: "LogKit", path: Path("../../Modules/LogKit")),
+        .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
+        .project(target: "UtilsKit", path: Path("../../Modules/UtilsKit")),
+
         .external(name: "DeviceKit"),
+        .external(name: "Fit"),
+        .external(name: "MarkdownUI"),
+        .external(name: "Yams"),
     ]
 )
