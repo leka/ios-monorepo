@@ -43,9 +43,10 @@ let project = Project.app(
         .project(target: "LogKit", path: Path("../../Modules/LogKit")),
         .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
         .project(target: "UtilsKit", path: Path("../../Modules/UtilsKit")),
-        .external(name: "Yams"),
-        .external(name: "MarkdownUI"),
-        .external(name: "Fit"),
+
         .external(name: "DeviceKit"),
+        .external(name: "Fit"),
+        .external(name: "MarkdownUI"),
+        .external(name: "Yams"),
     ]
 )

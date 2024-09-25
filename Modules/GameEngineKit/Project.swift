@@ -22,8 +22,9 @@ let project = Project.module(
         .project(target: "LogKit", path: Path("../../Modules/LogKit")),
         .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
         .project(target: "UtilsKit", path: Path("../../Modules/UtilsKit")),
-        .external(name: "SwiftUIJoystick"),
+
         .external(name: "AudioKit"),
         .external(name: "SVGView"),
+        .external(name: "SwiftUIJoystick"),
     ]
 )
