@@ -78,6 +78,7 @@ exercises_payload:
           interface: touchToSelect
           gameplay: associateCategories
           payload:
+            shuffle_choices: true
             choices:
               - value: 🐶
                 type: emoji

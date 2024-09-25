@@ -80,7 +80,7 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quelle est cette émotion ?
+              value: Ecoute le son. Quelle est cette émotion ?
             - locale: en_US
               value: Touch the speaker. What is this emotion?
           interface: listenThenTouchToSelect
@@ -105,7 +105,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quelle est cette émotion ?
+              value: Ecoute le son. Quelle est cette émotion ?
             - locale: en_US
               value: Touch the speaker. What is this emotion?
           interface: listenThenTouchToSelect
@@ -130,7 +130,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quelle est cette émotion ?
+              value: Ecoute le son. Quelle est cette émotion ?
             - locale: en_US
               value: Touch the speaker. What is this emotion?
           interface: listenThenTouchToSelect
@@ -155,7 +155,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quelle est cette émotion ?
+              value: Ecoute le son. Quelle est cette émotion ?
             - locale: en_US
               value: Touch the speaker. What is this emotion?
           interface: listenThenTouchToSelect
@@ -180,7 +180,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quelle est cette émotion ?
+              value: Ecoute le son. Quelle est cette émotion ?
             - locale: en_US
               value: Touch the speaker. What is this emotion?
           interface: listenThenTouchToSelect
@@ -205,7 +205,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quelle est cette émotion ?
+              value: Ecoute le son. Quelle est cette émotion ?
             - locale: en_US
               value: Touch the speaker. What is this emotion?
           interface: listenThenTouchToSelect
@@ -230,7 +230,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quelle est cette émotion ?
+              value: Ecoute le son. Quelle est cette émotion ?
             - locale: en_US
               value: Touch the speaker. What is this emotion?
           interface: listenThenTouchToSelect
@@ -255,7 +255,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quelle est cette émotion ?
+              value: Ecoute le son. Quelle est cette émotion ?
             - locale: en_US
               value: Touch the speaker. What is this emotion?
           interface: listenThenTouchToSelect
@@ -280,7 +280,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quelle est cette émotion ?
+              value: Ecoute le son. Quelle est cette émotion ?
             - locale: en_US
               value: Touch the speaker. What is this emotion?
           interface: listenThenTouchToSelect
@@ -305,7 +305,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quelle est cette émotion ?
+              value: Ecoute le son. Quelle est cette émotion ?
             - locale: en_US
               value: Touch the speaker. What is this emotion?
           interface: listenThenTouchToSelect

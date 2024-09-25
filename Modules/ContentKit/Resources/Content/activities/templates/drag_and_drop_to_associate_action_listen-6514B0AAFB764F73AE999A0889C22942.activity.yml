@@ -87,6 +87,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "put the bananas together"
           payload:
+            shuffle_choices: true
             choices:
               - value: pictograms-foods-fruits-banana_yellow-00FB
                 type: image
@@ -113,6 +114,7 @@ exercises_payload:
               type: audio
               value: sound_animal_duck
           payload:
+            shuffle_choices: true
             choices:
               - value: pictograms-animals-farm-duck_green-0075
                 type: image

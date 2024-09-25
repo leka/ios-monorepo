@@ -43,7 +43,7 @@ l10n:
   - locale: en_US
     details:
       icon: recognition_public_places_drag
-      title: Sorting objects by location
+      title: Sorting Objects By Location
       subtitle: Organizing objects by place
       abstract: |
         Focused on sorting and matching, this curriculum leverages different objects to enhance recognition and classification, enriching interaction with the environment.

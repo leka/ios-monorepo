@@ -8,7 +8,7 @@ uuid: FC67913DF57E4CA9896BDAA6EA3AC2F2
 name: sort_sweet_and_salty_1_zone_1_choice
 
 created_at: "2024-08-06T10:00:00.000000"
-last_edited_at: "2024-09-23T10:37:25.250482"
+last_edited_at: "2024-09-25T11:50:22.700389"
 status: published
 
 authors:
@@ -59,7 +59,7 @@ l10n:
       subtitle: 1 zone - 1 food item
 
       short_description: |
-        Place the foods in the right zones
+        Place the food in the right zone
 
       description: |
         The participant should drag and drop foods into the correct zones (sweet or salty).
@@ -78,9 +78,9 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Place les aliments dans les bonnes zones
+              value: Place l'aliment dans la bonne zone
             - locale: en_US
-              value: Place the foods in the right zones
+              value: Place the food in the right zone
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -95,9 +95,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Place les aliments dans les bonnes zones
+              value: Place l'aliment dans la bonne zone
             - locale: en_US
-              value: Place the foods in the right zones
+              value: Place the food in the right zone
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -112,9 +112,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Place les aliments dans les bonnes zones
+              value: Place l'aliment dans la bonne zone
             - locale: en_US
-              value: Place the foods in the right zones
+              value: Place the food in the right zone
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -129,9 +129,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Place les aliments dans les bonnes zones
+              value: Place l'aliment dans la bonne zone
             - locale: en_US
-              value: Place the foods in the right zones
+              value: Place the food in the right zone
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -146,9 +146,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Place les aliments dans les bonnes zones
+              value: Place l'aliment dans la bonne zone
             - locale: en_US
-              value: Place the foods in the right zones
+              value: Place the food in the right zone
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -163,9 +163,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Place les aliments dans les bonnes zones
+              value: Place l'aliment dans la bonne zone
             - locale: en_US
-              value: Place the foods in the right zones
+              value: Place the food in the right zone
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -180,9 +180,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Place les aliments dans les bonnes zones
+              value: Place l'aliment dans la bonne zone
             - locale: en_US
-              value: Place the foods in the right zones
+              value: Place the food in the right zone
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -197,9 +197,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Place les aliments dans les bonnes zones
+              value: Place l'aliment dans la bonne zone
             - locale: en_US
-              value: Place the foods in the right zones
+              value: Place the food in the right zone
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -214,9 +214,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Place les aliments dans les bonnes zones
+              value: Place l'aliment dans la bonne zone
             - locale: en_US
-              value: Place the foods in the right zones
+              value: Place the food in the right zone
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -231,9 +231,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Place les aliments dans les bonnes zones
+              value: Place l'aliment dans la bonne zone
             - locale: en_US
-              value: Place the foods in the right zones
+              value: Place the food in the right zone
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -248,9 +248,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Place les aliments dans les bonnes zones
+              value: Place l'aliment dans la bonne zone
             - locale: en_US
-              value: Place the foods in the right zones
+              value: Place the food in the right zone
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -265,9 +265,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Place les aliments dans les bonnes zones
+              value: Place l'aliment dans la bonne zone
             - locale: en_US
-              value: Place the foods in the right zones
+              value: Place the food in the right zone
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -282,9 +282,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Place les aliments dans les bonnes zones
+              value: Place l'aliment dans la bonne zone
             - locale: en_US
-              value: Place the foods in the right zones
+              value: Place the food in the right zone
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -299,9 +299,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Place les aliments dans les bonnes zones
+              value: Place l'aliment dans la bonne zone
             - locale: en_US
-              value: Place the foods in the right zones
+              value: Place the food in the right zone
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -316,9 +316,9 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Place les aliments dans les bonnes zones
+              value: Place l'aliment dans la bonne zone
             - locale: en_US
-              value: Place the foods in the right zones
+              value: Place the food in the right zone
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:

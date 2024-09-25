@@ -78,6 +78,7 @@ exercises_payload:
           interface: touchToSelect
           gameplay: findTheRightAnswers
           payload:
+            shuffle_choices: true
             choices:
               - value: 🍉
                 type: emoji

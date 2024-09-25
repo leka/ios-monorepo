@@ -91,6 +91,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The beach bucket"
           payload:
+            shuffle_choices: true
             choices:
               - value: recognition_seaside_holiday_bucket
                 type: image
@@ -115,6 +116,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The cap"
           payload:
+            shuffle_choices: true
             choices:
               - value: recognition_seaside_holiday_cap
                 type: image
@@ -139,6 +141,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The sand castle"
           payload:
+            shuffle_choices: true
             choices:
               - value: recognition_seaside_holiday_sand_castle
                 type: image
@@ -163,6 +166,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The shell"
           payload:
+            shuffle_choices: true
             choices:
               - value: recognition_seaside_holiday_shell
                 type: image
@@ -187,6 +191,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The shovel"
           payload:
+            shuffle_choices: true
             choices:
               - value: recognition_seaside_holiday_shovel
                 type: image
@@ -211,6 +216,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The starfish"
           payload:
+            shuffle_choices: true
             choices:
               - value: recognition_seaside_holiday_starfish
                 type: image
@@ -235,6 +241,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The sun cream"
           payload:
+            shuffle_choices: true
             choices:
               - value: recognition_seaside_holiday_sun_cream
                 type: image
@@ -259,6 +266,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The sun"
           payload:
+            shuffle_choices: true
             choices:
               - value: recognition_seaside_holiday_sun
                 type: image
@@ -283,6 +291,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The sunglasses"
           payload:
+            shuffle_choices: true
             choices:
               - value: recognition_seaside_holiday_sunglasses
                 type: image
@@ -307,6 +316,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The sunshade"
           payload:
+            shuffle_choices: true
             choices:
               - value: recognition_seaside_holiday_sunshade
                 type: image
@@ -331,6 +341,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The boy's swimsuit"
           payload:
+            shuffle_choices: true
             choices:
               - value: recognition_seaside_holiday_swimsuit_boy
                 type: image
@@ -355,6 +366,7 @@ exercises_payload:
                 - locale: en_US
                   utterance: "The girl's swimsuit"
           payload:
+            shuffle_choices: true
             choices:
               - value: recognition_seaside_holiday_swimsuit_girl
                 type: image
