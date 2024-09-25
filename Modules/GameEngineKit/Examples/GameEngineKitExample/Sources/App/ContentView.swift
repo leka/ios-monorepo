@@ -9,11 +9,15 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             Text("Choose your gameplay")
-                .font(.largeTitle)
+                .font(.title)
                 .padding()
 
-            VStack {
+            VStack(spacing: 10) {
                 HStack(spacing: 20) {
+                    Text("TTS")
+                        .font(.title)
+                        .padding()
+
                     NavigationLink("Find The Right Answers", destination: {
                         let gameplay = GameplayFindTheRightAnswers(choices: TTSCoordinatorFindTheRightAnswers.kDefaultChoices)
                         let coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: gameplay)
@@ -25,7 +29,6 @@ struct ContentView: View {
                     })
                     .tint(.orange)
                     .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
 
                     NavigationLink("Choose Any Answer Up To 3", destination: {
                         let gameplay = GameplayChooseAnyAnswersUpToThree(choices: TTSCoordinatorChooseAnyAnswersUpToThree.kDefaultChoices)
@@ -38,7 +41,6 @@ struct ContentView: View {
                     })
                     .tint(.pink)
                     .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
 
                     NavigationLink("Find The Right Order", destination: {
                         let gameplay = GameplayFindTheRightOrder(choices: TTSCoordinatorFindTheRightOrder.kDefaultChoices)
@@ -51,7 +53,6 @@ struct ContentView: View {
                     })
                     .tint(.green)
                     .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
 
                     NavigationLink("Associate Categories", destination: {
                         let gameplay = GameplayAssociateCategories(choices: TTSCoordinatorAssociateCategories.kDefaultChoices)
@@ -64,7 +65,26 @@ struct ContentView: View {
                     })
                     .tint(.cyan)
                     .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
+
+                    Spacer()
+                }
+
+                HStack(spacing: 20) {
+                    Text("DND")
+                        .font(.largeTitle)
+                        .padding()
+
+                    NavigationLink("Drag & Drop Categories", destination: {
+                        let gameplay = GameplayAssociateCategories(choices: DNDCoordinatorAssociateCategories.kDefaultChoices)
+                        let coordinator = DNDCoordinatorAssociateCategories(gameplay: gameplay)
+                        return DNDView(coordinator: coordinator)
+                            .navigationTitle("Drag & Drop Categories")
+                            .navigationBarTitleDisplayMode(.large)
+                    })
+                    .tint(.purple)
+                    .buttonStyle(.borderedProminent)
+
+                    Spacer()
                 }
             }
 
