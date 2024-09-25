@@ -24,7 +24,7 @@ jobs:
   release_app_store:
     if: github.event_name == 'pull_request' && contains(github.event.label.name, 'fastlane:deliver')
     name: fastlane upload_to_app_store
-    runs-on: [self-hosted, iOS]
+    runs-on: [self-hosted, iOS, release]
 
     env:
       PR_NUMBER: ${{ github.event.pull_request.number }}

@@ -36,7 +36,7 @@ env:
 jobs:
   internal_beta_release:
     name: fastlane release beta_internal
-    runs-on: [self-hosted, iOS]
+    runs-on: [self-hosted, iOS, release]
     if: (github.event_name == 'pull_request' && contains(github.event.label.name, 'fastlane:beta')) || (github.event_name == 'push') || (github.event_name == 'workflow_dispatch')
 
     env:
