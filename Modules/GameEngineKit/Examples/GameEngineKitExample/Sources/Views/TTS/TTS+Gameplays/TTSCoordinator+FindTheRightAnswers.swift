@@ -13,41 +13,34 @@ class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
     init(gameplay: GameplayFindTheRightAnswers) {
         self.gameplay = gameplay
 
-        self.uiChoices.value = self.gameplay.choices.value.map { choice in
-            TTSChoiceModel(id: choice.id, value: choice.value, state: Self.stateConverter(from: choice.state))
+        self.uiChoices.value = self.gameplay.choices.map { choice in
+            TTSChoiceModel(id: choice.id, value: choice.value, state: .idle)
         }
-
-        self.gameplay.choices
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] choices in
-                guard let self else { return }
-
-                self.uiChoices.value = choices.map { choice in
-                    TTSChoiceModel(id: choice.id, value: choice.value, state: Self.stateConverter(from: choice.state))
-                }
-            }
-            .store(in: &self.cancellables)
     }
-
-    // MARK: Public
-
-    public static let kDefaultChoices: [FindTheRightAnswersChoice] = [
-        FindTheRightAnswersChoice(value: "Choice 1\nCorrect", isRightAnswer: true),
-        FindTheRightAnswersChoice(value: "Choice 2", isRightAnswer: false),
-        FindTheRightAnswersChoice(value: "Choice 3\nCorrect", isRightAnswer: true),
-        FindTheRightAnswersChoice(value: "Choice 4", isRightAnswer: false),
-        FindTheRightAnswersChoice(value: "Choice 5\nCorrect", isRightAnswer: true),
-        FindTheRightAnswersChoice(value: "Choice 6", isRightAnswer: false),
-    ]
 
     // MARK: Internal
 
     private(set) var uiChoices = CurrentValueSubject<[TTSChoiceModel], Never>([])
 
     func processUserSelection(choice: TTSChoiceModel) {
-        log.debug("[CO] \(choice.id) - \(choice.value.replacingOccurrences(of: "\n", with: " ")) - \(choice.state)")
-        guard let gameplayChoice = self.gameplay.choices.value.first(where: { $0.id == choice.id }) else { return }
-        self.gameplay.process(choice: gameplayChoice)
+        guard let gameplayChoice = self.gameplay.choices.first(where: { $0.id == choice.id }) else { return }
+
+        let results = self.gameplay.process(choices: [gameplayChoice])
+
+        for result in results {
+            guard var uiChoice = self.uiChoices.value.first(where: { $0.id == result.choice.id }) else { continue }
+
+            guard let index = self.uiChoices.value.firstIndex(where: { $0.id == result.choice.id }) else { return }
+
+            if result.isCorrect {
+                uiChoice.state = .correct()
+
+            } else {
+                uiChoice.state = .wrong
+            }
+
+            self.uiChoices.value[index] = uiChoice
+        }
     }
 
     // MARK: Private
@@ -55,23 +48,10 @@ class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
     private var cancellables = Set<AnyCancellable>()
 
     private let gameplay: GameplayFindTheRightAnswers
-
-    private static func stateConverter(from state: FindTheRightAnswersChoiceState) -> TTSChoiceState {
-        switch state {
-            case .idle:
-                .idle
-            case .selected:
-                .selected()
-            case .correct:
-                .correct()
-            case .wrong:
-                .wrong
-        }
-    }
 }
 
 #Preview {
-    let gameplay = GameplayFindTheRightAnswers(choices: TTSCoordinatorFindTheRightAnswers.kDefaultChoices)
+    let gameplay = GameplayFindTheRightAnswers(choices: GameplayFindTheRightAnswers.kDefaultChoices)
     let coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: gameplay)
     let viewModel = TTSViewViewModel(coordinator: coordinator)
 

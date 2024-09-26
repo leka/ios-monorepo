@@ -15,7 +15,7 @@ struct ContentView: View {
             VStack {
                 HStack(spacing: 20) {
                     NavigationLink("Find The Right Answers", destination: {
-                        let gameplay = GameplayFindTheRightAnswers(choices: TTSCoordinatorFindTheRightAnswers.kDefaultChoices)
+                        let gameplay = GameplayFindTheRightAnswers(choices: GameplayFindTheRightAnswers.kDefaultChoices)
                         let coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: gameplay)
                         let viewModel = TTSViewViewModel(coordinator: coordinator)
 

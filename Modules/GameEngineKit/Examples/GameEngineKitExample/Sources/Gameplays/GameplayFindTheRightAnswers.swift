@@ -5,15 +5,6 @@
 import Combine
 import Foundation
 
-// MARK: - FindTheRightAnswersChoiceState
-
-enum FindTheRightAnswersChoiceState {
-    case idle
-    case selected
-    case correct
-    case wrong
-}
-
 // MARK: - FindTheRightAnswersChoice
 
 struct FindTheRightAnswersChoice: Identifiable {
@@ -30,7 +21,6 @@ struct FindTheRightAnswersChoice: Identifiable {
     let id: String
     let value: String
     let isRightAnswer: Bool
-    var state: FindTheRightAnswersChoiceState = .idle
 }
 
 // MARK: - GameplayFindTheRightAnswers
@@ -39,35 +29,33 @@ class GameplayFindTheRightAnswers: GameplayProtocol {
     // MARK: Lifecycle
 
     init(choices: [FindTheRightAnswersChoice]) {
-        self.rawChoices = choices
-        self.choices.value = choices
+        self.choices = choices
     }
 
     // MARK: Public
 
-    public private(set) var choices = CurrentValueSubject<[FindTheRightAnswersChoice], Never>([])
+    public let choices: [FindTheRightAnswersChoice]
 
     // MARK: Internal
 
     typealias ChoiceType = FindTheRightAnswersChoice
 
-    func process(choice: FindTheRightAnswersChoice) {
-        guard var currentChoice = choices.value.first(where: { $0.id == choice.id }) else { return }
-
-        log.debug("[GP] \(currentChoice.id) - \(currentChoice.value.replacingOccurrences(of: "\n", with: " "))")
-
-        if currentChoice.isRightAnswer {
-            currentChoice.state = .correct
-        } else {
-            currentChoice.state = .wrong
+    func process(choices: [FindTheRightAnswersChoice]) -> [(choice: FindTheRightAnswersChoice, isCorrect: Bool)] {
+        choices.map { choice in
+            (choice, choice.isRightAnswer ? true : false)
         }
-
-        guard let index = choices.value.firstIndex(where: { $0.id == choice.id }) else { return }
-
-        self.choices.value[index] = currentChoice
     }
+}
 
-    // MARK: Private
+extension GameplayFindTheRightAnswers {
+    // MARK: Public
 
-    private let rawChoices: [FindTheRightAnswersChoice]
+    public static let kDefaultChoices: [FindTheRightAnswersChoice] = [
+        FindTheRightAnswersChoice(value: "Choice 1\nCorrect", isRightAnswer: true),
+        FindTheRightAnswersChoice(value: "Choice 2", isRightAnswer: false),
+        FindTheRightAnswersChoice(value: "Choice 3\nCorrect", isRightAnswer: true),
+        FindTheRightAnswersChoice(value: "Choice 4", isRightAnswer: false),
+        FindTheRightAnswersChoice(value: "Choice 5\nCorrect", isRightAnswer: true),
+        FindTheRightAnswersChoice(value: "Choice 6", isRightAnswer: false),
+    ]
 }
