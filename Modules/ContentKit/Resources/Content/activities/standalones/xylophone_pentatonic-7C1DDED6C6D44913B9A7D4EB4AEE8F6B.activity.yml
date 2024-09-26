@@ -7,7 +7,7 @@ uuid: 7C1DDED6C6D44913B9A7D4EB4AEE8F6B
 name: xylophone_pentatonic
 
 created_at: "2024-03-01T14:00:38.160396"
-last_edited_at: "2024-07-12T12:48:14.953912"
+last_edited_at: "2024-09-26T15:40:05.123164"
 status: published
 
 authors:
@@ -15,6 +15,9 @@ authors:
 
 skills:
   - relationship_tablet_robot
+  - sensory_integration/vision
+  - sensory_integration/hearing
+  - sensory_integration
 
 tags:
   - colors
@@ -36,7 +39,7 @@ l10n:
     details:
       icon: xylophone_pentatonic
 
-      title: Petit xylophone
+      title: Petit Xylophone
       subtitle: null
 
       short_description: |
@@ -54,7 +57,7 @@ l10n:
     details:
       icon: xylophone_pentatonic
 
-      title: Small xylophone
+      title: Small Xylophone
       subtitle: null
 
       short_description: |

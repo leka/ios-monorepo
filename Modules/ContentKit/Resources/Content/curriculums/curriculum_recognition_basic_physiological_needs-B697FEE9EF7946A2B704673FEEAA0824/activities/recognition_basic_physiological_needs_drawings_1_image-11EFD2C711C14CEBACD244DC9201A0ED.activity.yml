@@ -8,7 +8,7 @@ uuid: 11EFD2C711C14CEBACD244DC9201A0ED
 name: recognition_basic_physiological_needs_drawings_1_image
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-07-12T12:48:14.957415"
+last_edited_at: "2024-09-26T15:40:05.109272"
 status: published
 
 authors:
@@ -17,6 +17,8 @@ authors:
 skills:
   - recognition
   - self_awareness
+  - association
+  - association/matching
 
 tags:
   - characters
