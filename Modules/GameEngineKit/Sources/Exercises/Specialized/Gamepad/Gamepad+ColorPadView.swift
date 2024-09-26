@@ -11,33 +11,54 @@ extension Gamepad {
         // MARK: Internal
 
         var body: some View {
-            LazyVGrid(columns: self.columns, spacing: self.kVerticalSpacing) {
-                ForEach(self.colors, id: \.screen) { color in
-                    ColorButton(color: color, isPressed: self.selectedColor?.screen == color.screen)
-                        .onTapGesture {
-                            if self.selectedColor?.screen == color.screen {
-                                self.selectedColor = nil
-                                Robot.shared.blacken(.all)
-                            } else {
-                                self.selectedColor = color
-                                Robot.shared.shine(.all(in: color))
+            VStack(spacing: 50) {
+                LazyVGrid(columns: self.columns, spacing: self.kHorizontalSpacing) {
+                    ForEach(self.colors, id: \.screen) { color in
+                        ColorButtonLabel(color: color, isPressed: self.selectedColor?.screen == color.screen)
+                            .onTapGesture {
+                                if self.selectedColor?.screen == color.screen {
+                                    self.selectedColor = nil
+                                    Robot.shared.blacken(.all)
+                                } else {
+                                    self.selectedColor = color
+                                    Robot.shared.shine(.all(in: color))
+                                }
                             }
-                        }
+                            .onChange(of: self.reinforcerTriggered) { _ in
+                                if self.reinforcerTriggered {
+                                    self.selectedColor = nil
+                                    Robot.shared.blacken(.all)
+                                    self.reinforcerTriggered = false
+                                }
+                            }
+                    }
+                }
+
+                HStack {
+                    ForEach(Robot.Reinforcer.allCases, id: \.self) { reinforcer in
+                        reinforcer.icon()
+                            .resizable()
+                            .frame(maxWidth: 100, maxHeight: 100)
+                            .onTapGesture {
+                                self.reinforcerTriggered = true
+                                Robot.shared.run(reinforcer)
+                            }
+                    }
                 }
             }
-            .padding()
+            .padding(.horizontal)
         }
 
         // MARK: Private
 
         private let colors: [Robot.Color] = [.white, .red, .blue, .green, .yellow, .purple, .orange, .pink]
         private let columns = Array(repeating: GridItem(), count: 4)
-        private let kVerticalSpacing: CGFloat = 60
-        private let kButtonSize: CGFloat = 200
+        private let kHorizontalSpacing: CGFloat = 20
         @State private var selectedColor: Robot.Color?
+        @State private var reinforcerTriggered: Bool = false
     }
 
-    struct ColorButton: View {
+    struct ColorButtonLabel: View {
         // MARK: Internal
 
         let color: Robot.Color
@@ -68,8 +89,7 @@ extension Gamepad {
 
         // MARK: Private
 
-        private let kVerticalSpacing: CGFloat = 60
-        private let kButtonSize: CGFloat = 200
+        private let kButtonSize: CGFloat = 190
     }
 }
 
