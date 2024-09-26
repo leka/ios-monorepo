@@ -13,7 +13,7 @@ let kLekaAppVersion: String = {
     }
 
     // ? App version
-    return "1.9.0"
+    return "1.10.0"
 }()
 
 let project = Project.app(
