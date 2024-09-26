@@ -5,13 +5,6 @@
 import Combine
 import Foundation
 
-// MARK: - GameplayProtocol
-
-protocol GameplayProtocol {
-    associatedtype ChoiceType: Identifiable
-    func process(choice: ChoiceType)
-}
-
 // MARK: - FindTheRightAnswersChoiceState
 
 enum FindTheRightAnswersChoiceState {
