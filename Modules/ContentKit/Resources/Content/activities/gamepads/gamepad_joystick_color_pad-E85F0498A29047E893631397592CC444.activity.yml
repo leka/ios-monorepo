@@ -8,7 +8,7 @@ uuid: E85F0498A29047E893631397592CC444
 name: gamepad_joystick_color_pad
 
 created_at: "2024-03-04T18:07:12.519606"
-last_edited_at: "2024-07-12T12:48:14.946202"
+last_edited_at: "2024-09-27T00:29:50.410579"
 status: published
 
 authors:
@@ -22,6 +22,7 @@ tags:
   - robot_movements
   - robot_colors
   - sensory_stimulation
+  - gamepad
 
 hmi:
   - tablet_robot

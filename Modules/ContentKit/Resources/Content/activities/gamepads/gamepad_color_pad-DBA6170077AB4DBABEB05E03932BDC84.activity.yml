@@ -8,7 +8,7 @@ uuid: DBA6170077AB4DBABEB05E03932BDC84
 name: gamepad_color_pad
 
 created_at: "2024-03-04T18:07:12.519606"
-last_edited_at: "2024-08-27T11:20:12.637600"
+last_edited_at: "2024-09-27T00:29:50.410579"
 status: published
 
 authors:
@@ -20,6 +20,7 @@ skills:
 tags:
   - robot_colors
   - sensory_stimulation
+  - gamepad
 
 hmi:
   - tablet_robot
