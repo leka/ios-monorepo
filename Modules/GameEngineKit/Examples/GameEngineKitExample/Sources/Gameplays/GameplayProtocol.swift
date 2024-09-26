@@ -6,5 +6,4 @@
 
 protocol GameplayProtocol {
     associatedtype ChoiceType: Identifiable
-    func process(choice: ChoiceType)
 }
