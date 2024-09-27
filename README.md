@@ -18,56 +18,49 @@ To use the repo, simply do the following:
 # clone repo
 git clone https://github.com/leka/ios-monorepo && cd ios-monorepo
 
-# install tuist (https://github.com/tuist/tuist)
-curl -Ls https://install.tuist.io | bash
-
-# install latest version if needed
-tuist update
 
 # install needed tools
-brew upgrade && brew install fastlane swiftlint swift-format
+brew upgrade && brew install ruby node mise pre-commit gh git-lfs
+git lfs install
+mise install
+bundle install
+pre-commit install
+npm install --global git-json-merge
+git config merge.json.driver \"git-json-merge %A %O %B\"
+git config merge.json.name \"custom merge driver for json files\"
 
 # sync provisioning profiles and certificates
-fastlane sync_certificates
+bundle exec fastlane sync_certificates
 
 # pull dependencies
-tuist install
+make fetch
 
 # generate all projects
-tuist generate
-
-# generate specific target/project
-tuist generate LekaApp
+make config
 
 # edit project config
 tuist edit
 ```
 
-See tuist documentation: <https://docs.tuist.io/tutorial/get-started>
+You can also use the default `tuist` commands. See tuist documentation: <https://docs.tuist.io/tutorial/get-started>
 
 ## `TUIST_*` generation option
 
-Tuist allows for "generation-time configuration" (see documentation for more information: https://docs.tuist.io/guides/environment).
+Tuist allows for "generation-time configuration" (see documentation for more information: <https://docs.tuist.io/guides/environment>).
 
 We are leveraging the feature with different options:
 
 - `TUIST_TURN_OFF_LINTERS` - turns off SwiftLint and swift-format, useful for CI or rapid development
+- `TUIST_GENERATE_EXAMPLE_TARGETS` - generate module example targets
 - `TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG` - generates modules as frameworks (instead of static libraries), allowing developers to use more Xcode features such as Canvas to preview SwiftUI Views
-- `TUIST_GENERATE_MAC_OS_APPS` - generates only available macOS applications
 
 Example command:
 
 ```bash
 TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG=TRUE \
-TUIST_GENERATE_MAC_OS_APPS=TRUE \
+TUIST_TURN_OFF_LINTERS=TRUE \
 tuist generate
 ```
-
-## Example projects
-
-Different examples apps/tools (iOS, macOS, cli, module) are available as reference.
-
-For more information, see [`Examples`](./Examples/) directory.
 
 ## License
 

@@ -43,35 +43,10 @@ clean:
 # MARK: - Tools targets
 #
 
-setup:
-	@echo "Setting up dev environment..."
-	@brew update && brew upgrade
-	@brew install swiftformat swiftlint fastlane
-	@brew install tuist --no-quarantine
-
 sync_certificates:
 	@echo "Syncing certificates..."
 	@export FASTLANE_SKIP_UPDATE_CHECK=1
 	@fastlane sync_certificates
-
-git_hooks:
-	@echo "Installing pre-commit hooks..."
-	@brew install pre-commit
-	@pre-commit install
-
-git_tools:
-	@echo "Installing git tools..."
-	@brew install gh git-lfs
-	@git lfs install
-	@brew install node && npm install --global git-json-merge
-	@echo "node and git-json-merge have been installed, please run the following:"
-	@echo "    git config merge.json.driver \"git-json-merge %A %O %B\""
-	@echo "    git config merge.json.name \"custom merge driver for json files\""
-
-format:
-	@echo "Formatting code..."
-	@swiftlint --quiet --fix
-	@swiftformat .
 
 lint:
 	@echo "Linting code..."
@@ -79,11 +54,7 @@ lint:
 	@echo ""
 	@-swiftformat --lint .
 
-ci_test_flight_release:
-	@git checkout main
-	@git pull
-	@git checkout release/testflight-beta
-	@git rebase main
-	@git push --force-with-lease
-	@gh pr edit --add-label "fastlane:rbi $(TEST_FLIGHT_APP_NAME)"
-	@git checkout main
+format:
+	@echo "Formatting code..."
+	@-swiftlint --quiet --fix
+	@-swiftformat .
