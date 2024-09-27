@@ -6,7 +6,7 @@ uuid: AD1A9E2D874C47AEB3445D80E34DC702
 name: curriculum_recognition_family_members
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-09-24T14:57:09.969124"
+last_edited_at: "2024-09-27T13:05:22.469389"
 
 status: published
 
@@ -30,8 +30,8 @@ l10n:
   - locale: fr_FR
     details:
       icon: recognition_family_members
-      title: Reconnaissance des membres de la famille
-      subtitle: Activités de reconnaissance et de discrimination
+      title: Les membres de la famille
+      subtitle: Ecoute et trouve la personne !
       abstract: |
         Un parcours conçu pour aider les utilisateurs à reconnaître et à différencier les membres de la famille grâce à des activités interactives.
       description: |
@@ -40,8 +40,8 @@ l10n:
   - locale: en_US
     details:
       icon: recognition_family_members
-      title: Family Members Recognition
-      subtitle: Recognition and Discrimination Activities
+      title: Family Members
+      subtitle: Listen and Find The Person !
       abstract: |
         A curriculum designed to help users recognize and differentiate family members through interactive activities.
       description: |

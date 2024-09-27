@@ -8,7 +8,7 @@ name: curriculum_receptive_language_identity_familiar_nouns
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-07-12T12:48:33.814058"
+last_edited_at: "2024-09-27T13:05:22.499790"
 authors:
   - julie_tuil
 
@@ -34,7 +34,7 @@ l10n:
       icon: receptive_language_identifying_common_words
 
       title: Identifier des mots courants
-      subtitle: Reconnaissance des mots et leur compréhension
+      subtitle: Reconnaitre des mots et leur compréhension
 
       abstract: |
         Ce curriculum aide les personnes accompagnées à identifier des mots familiers, en utilisant des activités interactives sur l'écran de l'iPad. L'approche est structurée pour faciliter l'apprentissage du langage réceptif, commençant avec des mots courts et simples, et incluant également des mots plus longs et complexes.
@@ -46,7 +46,7 @@ l10n:
       icon: receptive_language_identifying_common_words
 
       title: Identify familiar nouns
-      subtitle: Word recognition and understanding
+      subtitle: Recognizing words and understanding them
 
       abstract: |
         This curriculum assists care receivers in identifying familiar nouns, utilizing interactive activities on the iPad screen. The structure is designed to facilitate receptive language learning, starting with short and simple words, and also including longer and more complex words.

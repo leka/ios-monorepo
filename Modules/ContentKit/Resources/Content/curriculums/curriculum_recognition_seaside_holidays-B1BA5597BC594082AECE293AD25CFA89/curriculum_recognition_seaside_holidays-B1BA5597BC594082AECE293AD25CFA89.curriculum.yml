@@ -6,7 +6,7 @@ uuid: B1BA5597BC594082AECE293AD25CFA89
 name: curriculum_recognition_seaside_holidays
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-07-19T11:36:03.177171"
+last_edited_at: "2024-09-27T13:05:22.480914"
 
 status: published
 
@@ -32,7 +32,7 @@ l10n:
     details:
       icon: recognition_seaside_holidays
       title: Les vacances à la mer
-      subtitle: Écoutez et trouvez l'objet !
+      subtitle: Écoute et trouve l'objet !
       abstract: |
         Une parcours amusant où la personne accompagnée apprend à reconnaître et à sélectionner des objets de vacances à la mer en écoutant des instructions audio.
       description: |

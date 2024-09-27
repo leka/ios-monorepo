@@ -8,7 +8,7 @@ uuid: A1151E7887214352ABB0B12A9861870A
 name: recognition_professions_drawings_3_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-07-12T12:48:14.957415"
+last_edited_at: "2024-09-27T13:03:45.385860"
 status: published
 
 authors:
@@ -37,7 +37,7 @@ l10n:
     details:
       icon: recognition_professions_touch
 
-      title: Les métiers en dessins
+      title: Les métiers
       subtitle: 3 images
 
       short_description: |
@@ -55,7 +55,7 @@ l10n:
     details:
       icon: recognition_professions_touch
 
-      title: Professions in drawings
+      title: Professions
       subtitle: 3 images
 
       short_description: |
