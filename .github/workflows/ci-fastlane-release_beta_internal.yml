@@ -18,6 +18,7 @@ on:
       - "Modules/ContentKit/**"
       - "Tuist/Package.swift"
       - "Tuist/Package.resolved"
+      - "!**/Examples/**/*.swift"
   workflow_dispatch: # nothing to setup here, just to trigger the workflow manually
 
 concurrency:
