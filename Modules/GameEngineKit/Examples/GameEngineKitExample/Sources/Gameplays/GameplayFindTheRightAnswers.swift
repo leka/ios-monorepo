@@ -30,21 +30,39 @@ class GameplayFindTheRightAnswers: GameplayProtocol {
 
     init(choices: [FindTheRightAnswersChoice]) {
         self.choices = choices
+        self.remainingRightAnswers = choices.filter(\.isRightAnswer)
     }
 
     // MARK: Public
 
     public let choices: [FindTheRightAnswersChoice]
+    public var isCompleted = CurrentValueSubject<Bool, Never>(false)
+
+    public func process(choices: [FindTheRightAnswersChoice]) -> [(choice: FindTheRightAnswersChoice, isCorrect: Bool)] {
+        let results = choices.map { choice in
+            self.remainingRightAnswers.removeAll { $0.id == choice.id }
+            return (choice, choice.isRightAnswer ? true : false)
+        }
+
+        if self.remainingRightAnswers.isEmpty {
+            self.isCompleted.send(true)
+        }
+
+        return results
+    }
+
+    public func reset() {
+        self.remainingRightAnswers = self.choices.filter(\.isRightAnswer)
+        self.isCompleted.send(false)
+    }
 
     // MARK: Internal
 
     typealias ChoiceType = FindTheRightAnswersChoice
 
-    func process(choices: [FindTheRightAnswersChoice]) -> [(choice: FindTheRightAnswersChoice, isCorrect: Bool)] {
-        choices.map { choice in
-            (choice, choice.isRightAnswer ? true : false)
-        }
-    }
+    // MARK: Private
+
+    private var remainingRightAnswers: [FindTheRightAnswersChoice]
 }
 
 extension GameplayFindTheRightAnswers {
