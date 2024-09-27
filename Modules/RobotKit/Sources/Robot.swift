@@ -22,7 +22,7 @@ public class Robot {
     // MARK: Public
 
     public static var shared: Robot = .init()
-    public static let kLatestFirmwareVersion: Version = .init(tolerant: "1.4")!
+    public static let kLatestFirmwareVersion: Version = .init(tolerant: "2.0")!
 
     // MARK: - Information
 
