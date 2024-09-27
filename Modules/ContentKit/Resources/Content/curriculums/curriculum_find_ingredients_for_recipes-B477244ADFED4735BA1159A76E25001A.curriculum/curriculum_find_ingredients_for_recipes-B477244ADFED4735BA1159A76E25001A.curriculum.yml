@@ -8,13 +8,12 @@ name: curriculum_find_ingredients_for_recipes
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-07-12T12:48:33.814114"
+last_edited_at: "2024-09-27T13:43:46.474506"
 authors:
   - leka
 
 skills:
-  - association
-  - association/matching
+  - recognition
 
 tags:
   - food

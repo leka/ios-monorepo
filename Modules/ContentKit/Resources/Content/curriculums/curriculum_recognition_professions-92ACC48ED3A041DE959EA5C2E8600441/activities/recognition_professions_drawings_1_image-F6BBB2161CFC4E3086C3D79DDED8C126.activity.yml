@@ -8,16 +8,15 @@ uuid: F6BBB2161CFC4E3086C3D79DDED8C126
 name: recognition_professions_drawings_1_image
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-09-27T13:03:45.368056"
+last_edited_at: "2024-09-27T15:25:22.731150"
 status: published
 
 authors:
   - leka
 
 skills:
-  - recognition
-  - association/matching
   - association
+  - association/logical
 
 tags:
   - professions

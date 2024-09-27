@@ -8,15 +8,14 @@ uuid: FB482BC0EF6C41F7A2B0460EEFF0D689
 name: find_ingredients_for_recipes_without_intruder
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-08-07T12:12:19.637459"
+last_edited_at: "2024-09-27T13:42:08.949530"
 status: published
 
 authors:
   - leka
 
 skills:
-  - association
-  - association/matching
+  - recognition
 
 tags:
   - food
