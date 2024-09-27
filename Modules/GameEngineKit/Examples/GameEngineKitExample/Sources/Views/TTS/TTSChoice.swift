@@ -19,7 +19,7 @@ struct TTSChoiceModel: Identifiable {
 
     let id: String
     let value: String
-    let state: TTSChoiceState
+    var state: TTSChoiceState
 }
 
 // MARK: - TTSChoiceState
