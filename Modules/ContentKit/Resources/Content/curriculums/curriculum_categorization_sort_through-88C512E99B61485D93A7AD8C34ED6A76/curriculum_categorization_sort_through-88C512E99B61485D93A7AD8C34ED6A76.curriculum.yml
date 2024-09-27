@@ -8,19 +8,19 @@ name: curriculum_categorization_sort_through
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-06-21T20:38:22.558988"
+last_edited_at: "2024-07-12T12:48:33.814110"
 authors:
   - leka
 
 skills:
   - association
-  - association/sorting
   - association/matching
 
 tags:
   - clothes
-  - vegetables
+  - food
   - fruits
+  - vegetables
 
 hmi:
   - tablet

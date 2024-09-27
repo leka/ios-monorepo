@@ -4,6 +4,7 @@
 
 import DesignKit
 import LocalizationKit
+import RobotKit
 import SwiftUI
 
 // MARK: - ChangelogView
@@ -18,8 +19,7 @@ struct ChangelogView: View {
     // MARK: Private
 
     private var changelog: LocalizedStringKey {
-        // swiftlint:disable:next force_cast
-        let osVersion = Bundle.main.object(forInfoDictionaryKey: "LEKA_OS_VERSION") as! String
+        let osVersion = Robot.kLatestFirmwareVersion.description
         var languageCode: String {
             guard let language = Locale.current.language.languageCode?.identifier else { return "en" }
             return language == "fr" ? "fr" : "en"

@@ -68,10 +68,12 @@ class GameplaySuperSimon: StatefulGameplayProtocol {
 
         self.allowedTrials = self.getNumberOfAllowedTrials(from: kGradingLUTDefault)
 
-        self.state.send(.playing)
+        self.state.send(.playing())
     }
 
     // MARK: Internal
+
+    typealias GameplayChoiceModelType = GameplaySuperSimonChoiceModel
 
     var state: CurrentValueSubject<ExerciseState, Never> = .init(.idle)
     var gameState: CurrentValueSubject<SuperSimonGameState, Never> = .init(.showingColorSequence)
@@ -99,7 +101,7 @@ class GameplaySuperSimon: StatefulGameplayProtocol {
         }
     }
 
-    func process(_ choice: GameplaySuperSimonChoiceModel) {
+    func process(choice: GameplaySuperSimonChoiceModel) {
         self.numberOfTrials += 1
 
         if choice.id == self.currentColorSequence.value[self.sequenceIndex].id {

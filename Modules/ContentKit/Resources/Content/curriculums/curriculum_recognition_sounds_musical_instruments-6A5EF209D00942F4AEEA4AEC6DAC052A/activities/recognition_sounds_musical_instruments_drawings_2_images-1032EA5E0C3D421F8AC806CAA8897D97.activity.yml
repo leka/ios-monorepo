@@ -8,18 +8,23 @@ uuid: 1032EA5E0C3D421F8AC806CAA8897D97
 name: recognition_sounds_musical_instruments_drawings_2_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-06-21T20:38:08.017940"
+last_edited_at: "2024-07-12T12:48:14.936637"
 status: published
 
 authors:
   - leka
 
 skills:
-  - recognition
-  - sensory_interaction
+  - association
+  - association/matching
+  - sensory_integration
+  - sensory_integration/hearing
+  - attention
 
 tags:
   - musical_instruments
+  - music
+  - listening
 
 hmi:
   - tablet
@@ -76,7 +81,7 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quel est cet instrument de musique ?
+              value: Ecoute le son. Quel est cet instrument de musique ?
             - locale: en_US
               value: Touch the speaker. What is this musical instrument?
           interface: listenThenTouchToSelect
@@ -97,7 +102,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quel est cet instrument de musique ?
+              value: Ecoute le son. Quel est cet instrument de musique ?
             - locale: en_US
               value: Touch the speaker. What is this musical instrument?
           interface: listenThenTouchToSelect
@@ -118,7 +123,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quel est cet instrument de musique ?
+              value: Ecoute le son. Quel est cet instrument de musique ?
             - locale: en_US
               value: Touch the speaker. What is this musical instrument?
           interface: listenThenTouchToSelect
@@ -139,7 +144,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quel est cet instrument de musique ?
+              value: Ecoute le son. Quel est cet instrument de musique ?
             - locale: en_US
               value: Touch the speaker. What is this musical instrument?
           interface: listenThenTouchToSelect
@@ -160,7 +165,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quel est cet instrument de musique ?
+              value: Ecoute le son. Quel est cet instrument de musique ?
             - locale: en_US
               value: Touch the speaker. What is this musical instrument?
           interface: listenThenTouchToSelect
@@ -181,7 +186,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quel est cet instrument de musique ?
+              value: Ecoute le son. Quel est cet instrument de musique ?
             - locale: en_US
               value: Touch the speaker. What is this musical instrument?
           interface: listenThenTouchToSelect
@@ -202,7 +207,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quel est cet instrument de musique ?
+              value: Ecoute le son. Quel est cet instrument de musique ?
             - locale: en_US
               value: Touch the speaker. What is this musical instrument?
           interface: listenThenTouchToSelect
@@ -223,7 +228,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quel est cet instrument de musique ?
+              value: Ecoute le son. Quel est cet instrument de musique ?
             - locale: en_US
               value: Touch the speaker. What is this musical instrument?
           interface: listenThenTouchToSelect
@@ -244,7 +249,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quel est cet instrument de musique ?
+              value: Ecoute le son. Quel est cet instrument de musique ?
             - locale: en_US
               value: Touch the speaker. What is this musical instrument?
           interface: listenThenTouchToSelect
@@ -265,7 +270,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quel est cet instrument de musique ?
+              value: Ecoute le son. Quel est cet instrument de musique ?
             - locale: en_US
               value: Touch the speaker. What is this musical instrument ?
           interface: listenThenTouchToSelect

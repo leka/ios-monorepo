@@ -45,6 +45,7 @@ public struct ActivityView: View {
                 }
             }
             .id(self.viewModel.currentExerciseIndexInCurrentGroup)
+            .disabled(self.viewModel.currentExerciseSharedData.isCompleted)
             .blur(radius: self.blurRadius)
             .opacity(self.opacity)
             .onChange(of: self.viewModel.isReinforcerAnimationVisible) {
@@ -192,7 +193,6 @@ public struct ActivityView: View {
         }
     }
 
-    @ViewBuilder
     private var reinforcerAnimationView: some View {
         LottieView(
             animation: .reinforcer,
@@ -209,7 +209,6 @@ public struct ActivityView: View {
         )
     }
 
-    @ViewBuilder
     private var continueButton: some View {
         Button(String(l10n.GameEngineKit.ActivityView.continueButton.characters)) {
             if self.viewModel.isLastExercise {
@@ -230,7 +229,22 @@ public struct ActivityView: View {
         )
     }
 
-    @ViewBuilder
+    private var finishButton: some View {
+        Button(String(l10n.GameEngineKit.ActivityView.finishButton.characters)) {
+            // TODO(@macteuts): Move the following out of then View if relevant
+            self.viewModel.currentExerciseSharedData.state = .completed(level: .excellent)
+        }
+        .buttonStyle(.bordered)
+        .tint(.gray)
+        .padding()
+        .transition(
+            .asymmetric(
+                insertion: .opacity.animation(.snappy.delay(2)),
+                removal: .identity
+            )
+        )
+    }
+
     private var hideReinforcerToShowAnswersButton: some View {
         Button(String(l10n.GameEngineKit.ActivityView.hideReinforcerToShowAnswersButton.characters)) {
             withAnimation {
@@ -346,6 +360,9 @@ public struct ActivityView: View {
             case .gamepadArrowPadColorPad:
                 Gamepad.ArrowPadColorPad()
 
+            case .gamepadColorPad:
+                Gamepad.ColorPadView()
+
             case .gamepadArrowPad:
                 ArrowPadView(size: 200, xPosition: 180)
 
@@ -369,6 +386,12 @@ public struct ActivityView: View {
 
             case .pairing:
                 DiscoverLekaView(
+                    data: self.viewModel.currentExerciseSharedData
+                )
+
+            case .memory:
+                MemoryView(
+                    exercise: self.viewModel.currentExercise,
                     data: self.viewModel.currentExerciseSharedData
                 )
         }

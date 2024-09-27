@@ -12,9 +12,10 @@ public struct RobotAdvertisingData {
     public init(name: String?, serviceData: Data) {
         let serviceData = AdvertisingServiceData(data: serviceData)
         self.name = name?.nilWhenEmpty ?? "⚠️ NO NAME"
+        self.osVersion = serviceData.osVersion
         self.battery = serviceData.battery
         self.isCharging = serviceData.isCharging
-        self.osVersion = serviceData.osVersion
+        self.isDeepSleeping = serviceData.isDeepSleeping
     }
 
     public init?(advertisementData: AdvertisementData) {
@@ -32,7 +33,8 @@ public struct RobotAdvertisingData {
     // MARK: - Public variables
 
     public let name: String
+    public let osVersion: String?
     public let battery: Int
     public let isCharging: Bool
-    public let osVersion: String?
+    public let isDeepSleeping: Bool?
 }

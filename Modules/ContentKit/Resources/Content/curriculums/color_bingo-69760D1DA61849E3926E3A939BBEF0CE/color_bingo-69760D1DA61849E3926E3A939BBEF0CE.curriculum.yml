@@ -8,16 +8,20 @@ name: color_bingo
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-06-21T20:38:22.559007"
+last_edited_at: "2024-07-12T12:48:33.814098"
 authors:
   - leka
 
 skills:
   - recognition
-  - discrimination
+  - association
+  - association/matching
+  - sensory_integration/vision
+  - sensory_integration
 
 tags:
   - colors
+  - robot_colors
 
 hmi:
   - tablet_robot

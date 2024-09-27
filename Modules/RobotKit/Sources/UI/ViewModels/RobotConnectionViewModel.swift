@@ -56,6 +56,12 @@ public class RobotConnectionViewModel: ObservableObject {
         guard let discovery = selectedDiscovery else {
             return
         }
+
+        if discovery.isDeepSleeping, !self.connectingToDeepSleepingRobot {
+            self.connectToRobotInDeepSleep()
+            return
+        }
+
         self.bleManager.connect(discovery)
             .receive(on: DispatchQueue.main)
             .sink { _ in
@@ -65,9 +71,29 @@ public class RobotConnectionViewModel: ObservableObject {
                 self.robot.connectedPeripheral = peripheral
                 self.connectedDiscovery = discovery
                 self.selectedDiscovery = nil
+                self.connectingToDeepSleepingRobot = false
                 log.info("🔵 BLE - Connected to \(self.robot.name.value)")
             }
             .store(in: &self.cancellables)
+    }
+
+    public func connectToRobotInDeepSleep() {
+        guard let discovery = selectedDiscovery else {
+            return
+        }
+
+        self.connectingToDeepSleepingRobot = true
+
+        self.bleManager.connect(discovery)
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                // nothing to do
+            } receiveValue: { _ in
+                // nothing to do
+            }
+            .store(in: &self.cancellables)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: self.connectToRobot)
     }
 
     public func disconnectFromRobot() {
@@ -76,12 +102,25 @@ public class RobotConnectionViewModel: ObservableObject {
         self.connectedDiscovery = nil
     }
 
+    public func tryToConnectToRobotConnectedInAnotherApp() {
+        let connectedRobots = BLEManager.shared.retrieveConnectedRobots()
+        if connectedRobots.isEmpty || connectedRobots[0].peripheral.state == .connected {
+            return
+        }
+
+        let connectedRobotDiscoveryModel = RobotDiscoveryModel(robotPeripheral: connectedRobots[0], advertisingData: nil, rssi: nil)
+
+        self.select(discovery: connectedRobotDiscoveryModel)
+        self.connectToRobot()
+    }
+
     // MARK: Internal
 
     @Published var robotDiscoveries: [RobotDiscoveryModel] = []
     @Published var selectedDiscovery: RobotDiscoveryModel?
 
     @Published var connected: Bool = false
+    @Published var connectingToDeepSleepingRobot: Bool = false
     @Published var managerState: CBManagerState = .unknown
 
     @Published var connectedDiscovery: RobotDiscoveryModel? {

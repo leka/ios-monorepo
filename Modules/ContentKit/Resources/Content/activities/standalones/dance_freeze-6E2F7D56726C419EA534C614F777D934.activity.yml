@@ -8,7 +8,7 @@ uuid: 6E2F7D56726C419EA534C614F777D934
 name: dance_freeze
 
 created_at: "2024-03-01T14:00:38.160403"
-last_edited_at: "2024-06-21T20:42:29.163250"
+last_edited_at: "2024-07-12T12:48:14.954375"
 status: published
 
 authors:
@@ -17,10 +17,20 @@ authors:
 skills:
   - gross_motor_skills
   - inhibition
+  - sensory_integration
+  - sensory_integration/vision
+  - sensory_integration/hearing
+  - attention
+  - attention/joint_attention
+  - social_interactions
 
 tags:
   - music
   - standalone_activity
+  - dance
+  - sensory_stimulation
+  - robot_movements
+  - robot_colors
 
 hmi:
   - robot

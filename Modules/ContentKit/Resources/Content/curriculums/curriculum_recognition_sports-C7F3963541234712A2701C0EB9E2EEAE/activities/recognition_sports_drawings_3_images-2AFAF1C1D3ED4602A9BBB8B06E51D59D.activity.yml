@@ -8,17 +8,19 @@ uuid: 2AFAF1C1D3ED4602A9BBB8B06E51D59D
 name: recognition_sports_drawings_3_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-07-02T17:02:00.505901"
+last_edited_at: "2024-07-15T12:15:31.092675"
 status: published
 
 authors:
   - leka
 
 skills:
+  - association
+  - association/matching
+
   - recognition
 
 tags:
-  - characters
   - sports
 
 hmi:
@@ -113,7 +115,7 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: sport_accessory_dancing_slippers
+              - value: sport_accessory_dancing_ballet_slippers
                 type: image
                 is_right_answer: true
               - value: sport_accessory_helmet
@@ -139,7 +141,7 @@ exercises_payload:
               - value: sport_accessory_riding_helmet_and_barrier
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_dancing_slippers
+              - value: sport_accessory_dancing_ballet_slippers
                 type: image
               - value: sport_accessory_helmet
                 type: image
@@ -185,7 +187,7 @@ exercises_payload:
               - value: sport_accessory_swimming_cap
                 type: image
                 is_right_answer: true
-              - value: sport_accessory_dancing_slippers
+              - value: sport_accessory_dancing_ballet_slippers
                 type: image
               - value: sport_accessory_judo_kimono
                 type: image
@@ -256,7 +258,7 @@ exercises_payload:
                 is_right_answer: true
               - value: sport_accessory_volleyball_and_net
                 type: image
-              - value: sport_accessory_dancing_slippers
+              - value: sport_accessory_dancing_ballet_slippers
                 type: image
 
         - instructions:

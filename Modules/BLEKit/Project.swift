@@ -18,5 +18,6 @@ let project = Project.module(
         .project(target: "LogKit", path: Path("../../Modules/LogKit")),
         .project(target: "UtilsKit", path: Path("../../Modules/UtilsKit")),
         .external(name: "CombineCoreBluetooth"),
+        .external(name: "Version"),
     ]
 )

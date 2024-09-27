@@ -2,7 +2,6 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import ContentKit
 import Foundation
 import LocalizationKit
 import UIKit
@@ -37,7 +36,8 @@ public struct Activity: Decodable, Identifiable {
         self.skills = skillsIDs.compactMap { Skills.skill(id: $0) }
         self.hmi = try container.decode([String].self, forKey: .hmi)
         self.types = try container.decode([String].self, forKey: .types)
-        self.tags = try container.decode([String].self, forKey: .tags)
+        let tagsIDs = try container.decode([String].self, forKey: .tags)
+        self.tags = tagsIDs.compactMap { Tags.tag(id: $0) }
 
         let localeStrings = try container.decode([String].self, forKey: .locales)
         self.locales = localeStrings.compactMap { Locale(identifier: $0) }
@@ -58,7 +58,7 @@ public struct Activity: Decodable, Identifiable {
     public let skills: [Skill]
     public let hmi: [String] // TODO: (@ladislas) - implement hmi
     public let types: [String] // TODO: (@ladislas) - implement types
-    public let tags: [String] // TODO: (@ladislas) - implement tags
+    public let tags: [Tag]
 
     public let locales: [Locale]
     public let l10n: [LocalizedDetails]

@@ -1,0 +1,100 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 2D4B8496046D4A86ABA77A7EC8720ABA
+name: 0_touch_to_select_2_associate_categories
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2024-09-10T23:14:18.995393"
+
+status: template
+
+authors:
+  - leka
+
+skills: []
+
+tags:
+  - template
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: template_touch_to_select
+
+      title: 0 - Touch To Select
+      subtitle: 2 - Associate Categories
+
+      short_description: |
+        Lorem ipsum
+
+      description: |
+        Lorem ipsum
+
+      instructions: |
+        Lorem ipsum
+
+  - locale: en_US
+    details:
+      icon: template_touch_to_select
+
+      title: 0 - Touch To Select
+      subtitle: 2 - Associate Categories
+
+      short_description: |
+        Lorem ipsum
+
+      description: |
+        Lorem ipsum
+
+      instructions: |
+        Lorem ipsum
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche les emojis qui sont identiques
+            - locale: en_US
+              value: Tap the emojis that are the same
+          interface: touchToSelect
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 🐶
+                type: emoji
+                category: catA
+              - value: 🐶
+                type: emoji
+                category: catA
+              - value: 🐱
+                type: emoji
+                category: catB
+              - value: 🐱
+                type: emoji
+                category: catB
+              - value: 🐷
+                type: emoji
+                category: catC
+              - value: 🐷
+                type: emoji
+                category: catC

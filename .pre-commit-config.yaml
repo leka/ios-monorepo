@@ -31,13 +31,13 @@ repos:
       - id: mixed-line-ending
 
   - repo: https://github.com/realm/SwiftLint
-    rev: 0.55.1
+    rev: 0.57.0
     hooks:
       - id: swiftlint
         entry: swiftlint
 
   - repo: https://github.com/nicklockwood/SwiftFormat
-    rev: 0.54.0
+    rev: 0.54.5
     hooks:
       - id: swiftformat
 
@@ -145,6 +145,16 @@ repos:
         files: .*\.activity\.yml
         types: [yaml]
         pass_filenames: false
+
+      - id: check_yaml_content_activities_assets
+        name: Check activity.asset.* files
+        description: |
+          This hook checks activity.asset.* files for:
+            - duplicates
+        entry: python3 Tools/Hooks/check_yaml_content_activities_assets.py
+        language: python
+        pass_filenames: false
+        always_run: true
 
       - id: check_yaml_content_curriculums
         name: Check curriculum.yml files

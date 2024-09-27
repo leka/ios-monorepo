@@ -13,7 +13,6 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  TUIST_TURN_OFF_LINTERS: TRUE
   APP_STORE_CONNECT_API_KEY_CONTENT_RELEASE_APP_STORE: ${{ secrets. APP_STORE_CONNECT_API_KEY_CONTENT_RELEASE_APP_STORE }}
   APP_STORE_CONNECT_ISSUER_ID: ${{ secrets. APP_STORE_CONNECT_ISSUER_ID }}
   APP_STORE_CONNECT_API_KEY_ID_RELEASE_APP_STORE: ${{ secrets. APP_STORE_CONNECT_API_KEY_ID_RELEASE_APP_STORE }}
@@ -23,9 +22,9 @@ env:
 
 jobs:
   release_app_store:
-    if: contains(github.event.label.name, 'fastlane:deliver')
+    if: github.event_name == 'pull_request' && contains(github.event.label.name, 'fastlane:deliver')
     name: fastlane upload_to_app_store
-    runs-on: [self-hosted, iOS]
+    runs-on: [self-hosted, iOS, release]
 
     env:
       PR_NUMBER: ${{ github.event.pull_request.number }}
@@ -52,8 +51,6 @@ jobs:
 
       - name: bundle install
         run: |
-          gem uninstall bundler --all --ignore-dependencies --executables
-          gem install --force bundler
           bundle install
 
       - name: tuist install

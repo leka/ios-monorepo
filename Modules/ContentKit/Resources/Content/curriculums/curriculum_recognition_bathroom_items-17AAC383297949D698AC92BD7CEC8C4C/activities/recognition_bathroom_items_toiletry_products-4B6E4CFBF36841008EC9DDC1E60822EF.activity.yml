@@ -1,0 +1,339 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 4B6E4CFBF36841008EC9DDC1E60822EF
+name: recognition_bathroom_items_toiletry_products
+
+created_at: "2024-03-08T11:49:37.123541"
+last_edited_at: "2024-07-15T14:51:27.543258"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - bathroom
+  - everyday_objects
+  - home_objects
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: curriculum_recognition_bathroom_items
+
+      title: Les produits de toilette
+      subtitle: Reconnaitre des objets du quotidien
+      short_description: |
+        Touche l'objet demandé parmi les produits de toilette
+
+      description: |
+        La personne accompagnée doit répondre correctement à la question posée concernant les produits de toilette.
+
+      instructions: |
+        - Appuyez sur le haut-parleur pour jouer la consigne
+        - Encouragez la personne accompagnée à toucher l'image de l'objet demandé
+        - Quand la réponse est correcte, Leka lance un renforçateur
+
+  - locale: en_US
+    details:
+      icon: curriculum_recognition_bathroom_items
+
+      title: Toiletry Products
+      subtitle: Recognize Everyday Objects
+      short_description: |
+        Touch the requested item among the toiletry products
+
+      description: |
+        The accompanied person must correctly answer the question about the toiletry products.
+
+      instructions: |
+        - Press the speaker to play the instruction
+        - Encourage the accompanied person to touch the image of the requested object
+        - When the answer is correct, Leka triggers a reinforcement
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "le déodorant"
+                - locale: en_US
+                  utterance: "the deodorant"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: bathroom_accessory_deodorant
+                type: image
+                is_right_answer: true
+              - value: bathroom_accessory_hairbrush
+                type: image
+              - value: bathroom_accessory_perfume
+                type: image
+              - value: bathroom_accessory_nail_clipper
+                type: image
+              - value: bathroom_accessory_tweezers
+                type: image
+              - value: bathroom_accessory_toothbrush
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "la brosse à cheveux"
+                - locale: en_US
+                  utterance: "the hairbrush"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: bathroom_accessory_hairbrush
+                type: image
+                is_right_answer: true
+              - value: bathroom_accessory_deodorant
+                type: image
+              - value: bathroom_accessory_hairdryer
+                type: image
+              - value: bathroom_accessory_perfume
+                type: image
+              - value: bathroom_accessory_solid_soap
+                type: image
+              - value: bathroom_accessory_shaver
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "le sèche-cheveux"
+                - locale: en_US
+                  utterance: "the hairdryer"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: bathroom_accessory_hairdryer
+                type: image
+                is_right_answer: true
+              - value: bathroom_accessory_deodorant
+                type: image
+              - value: bathroom_accessory_hairbrush
+                type: image
+              - value: bathroom_accessory_nail_clipper
+                type: image
+              - value: bathroom_accessory_tampon
+                type: image
+              - value: bathroom_accessory_step_stool
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "le coupe-ongles"
+                - locale: en_US
+                  utterance: "the nail clipper"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: bathroom_accessory_nail_clipper
+                type: image
+                is_right_answer: true
+              - value: bathroom_accessory_deodorant
+                type: image
+              - value: bathroom_accessory_hairbrush
+                type: image
+              - value: bathroom_accessory_perfume
+                type: image
+              - value: bathroom_accessory_solid_soap
+                type: image
+              - value: bathroom_accessory_tweezers
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "le parfum"
+                - locale: en_US
+                  utterance: "the perfume"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: bathroom_accessory_perfume
+                type: image
+                is_right_answer: true
+              - value: bathroom_accessory_deodorant
+                type: image
+              - value: bathroom_accessory_hairbrush
+                type: image
+              - value: bathroom_accessory_nail_clipper
+                type: image
+              - value: bathroom_accessory_tampon
+                type: image
+              - value: bathroom_accessory_toothbrush
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "le savon"
+                - locale: en_US
+                  utterance: "the soap"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: bathroom_accessory_solid_soap
+                type: image
+                is_right_answer: true
+              - value: bathroom_accessory_deodorant
+                type: image
+              - value: bathroom_accessory_hairbrush
+                type: image
+              - value: bathroom_accessory_perfume
+                type: image
+              - value: bathroom_accessory_step_stool
+                type: image
+              - value: bathroom_accessory_shaver
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "le rasoir"
+                - locale: en_US
+                  utterance: "the shaver"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: bathroom_accessory_shaver
+                type: image
+                is_right_answer: true
+              - value: bathroom_accessory_deodorant
+                type: image
+              - value: bathroom_accessory_hairbrush
+                type: image
+              - value: bathroom_accessory_perfume
+                type: image
+              - value: bathroom_accessory_tampon
+                type: image
+              - value: bathroom_accessory_sanitary_towel
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "la serviette hygiénique"
+                - locale: en_US
+                  utterance: "the sanitary towel"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: bathroom_accessory_sanitary_towel
+                type: image
+                is_right_answer: true
+              - value: bathroom_accessory_deodorant
+                type: image
+              - value: bathroom_accessory_hairbrush
+                type: image
+              - value: bathroom_accessory_perfume
+                type: image
+              - value: bathroom_accessory_tampon
+                type: image
+              - value: bathroom_accessory_toothbrush
+                type: image

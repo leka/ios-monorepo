@@ -8,19 +8,17 @@ uuid: F7ADA37ED2154E01971E8CBD581DEFA9
 name: recognition_emotions_pictures_4_hortense_lucie
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-06-24T17:07:03.681845"
+last_edited_at: "2024-07-12T12:48:14.929007"
 status: published
 
 authors:
   - leka
 
 skills:
-  - recognition
-  - communication
-  - communication/verbal_communication
-  - communication/verbal_communication/receptive_language
+  - emotion_recognition
 
 tags:
+  - emotions
   - hortense
   - lucie
 

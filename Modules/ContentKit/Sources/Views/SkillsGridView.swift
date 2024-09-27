@@ -28,25 +28,29 @@ public struct SkillsGridView: View {
                 }
                 if !filteredActivities.isEmpty {
                     NavigationLink(destination:
-                        ScrollView(showsIndicators: true) {
-                            ActivityGridView(activities: filteredActivities, onStartActivity: self.onActivitySelected)
-                        }
-                        .navigationTitle(skill.name)
+                        SubskillsGridView(subskills: subskills, onActivitySelected: self.onActivitySelected)
                     ) {
                         GroupBox {
                             VStack {
                                 Spacer()
+
+                                if let icon = UIImage(named: "\(skill.id).skill.icon.png", in: .module, with: nil) {
+                                    Image(uiImage: icon)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 50)
+                                }
+
                                 Text(skill.name)
-                                    .font(.largeTitle.bold())
+                                    .font(.title3.bold())
                                     .foregroundStyle(.white)
                                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                    .frame(height: 150)
+                                    .frame(height: 80)
 
                                 Text(l10n.SkillsGridView.activityCountLabel(filteredActivities.count))
-                                    .font(.headline)
+                                    .font(.caption.italic())
                                     .foregroundStyle(.white)
                             }
-                            .padding()
                         }
                         .backgroundStyle(self.backgroundColors[index % self.backgroundColors.count].gradient)
                     }
@@ -69,7 +73,8 @@ public struct SkillsGridView: View {
 
     // MARK: Private
 
-    private let columns = Array(repeating: GridItem(), count: 2)
+    private let columns = Array(repeating: GridItem(), count: 3)
+    @ObservedObject private var styleManager: StyleManager = .shared
 }
 
 // MARK: - l10n.SkillsGridView

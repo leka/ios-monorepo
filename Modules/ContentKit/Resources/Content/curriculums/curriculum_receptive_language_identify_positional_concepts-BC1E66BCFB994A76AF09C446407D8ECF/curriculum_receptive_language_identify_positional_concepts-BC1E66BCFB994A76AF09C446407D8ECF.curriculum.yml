@@ -8,7 +8,7 @@ name: curriculum_receptive_language_identify_positional_concepts
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-06-21T20:38:22.558984"
+last_edited_at: "2024-07-12T12:48:33.814108"
 authors:
   - julie_tuil
 
@@ -17,6 +17,7 @@ skills:
   - communication/verbal_communication
   - communication/verbal_communication/receptive_language
   - communication/verbal_communication/receptive_language/oral_comprehension
+
   - spatial_understanding
 
 tags:
@@ -24,6 +25,7 @@ tags:
   - under
   - behind
   - next_to
+  - on
 
 hmi:
   - tablet

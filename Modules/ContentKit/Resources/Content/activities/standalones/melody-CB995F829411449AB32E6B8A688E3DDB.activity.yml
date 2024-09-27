@@ -8,23 +8,27 @@ uuid: CB995F829411449AB32E6B8A688E3DDB
 name: melody
 
 created_at: "2024-03-04T18:07:12.519606"
-last_edited_at: "2024-06-24T17:16:46.245103"
+last_edited_at: "2024-07-12T12:48:14.946202"
 status: published
 
 authors:
   - leka
 
 skills:
-  - recognition
-  - discrimination
+  - association
+  - association/matching
+
   - attention
   - attention/sustained_attention
-  - sensory_interaction
+  - sensory_integration
+  - sensory_integration/vision
+  - sensory_integration/hearing
 
 tags:
   - colors
   - music
   - standalone_activity
+  - sensory_stimulation
 
 hmi:
   - tablet_robot

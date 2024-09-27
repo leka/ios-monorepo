@@ -388,7 +388,7 @@ private class StateWaitingForRobotToReboot: GKState, StateEventProcessor {
                     }
                     if let robotDetected {
                         self.isRobotUpToDate =
-                            Version(robotDetected.osVersion) == globalFirmwareManager.currentVersion
+                            Version(tolerant: robotDetected.osVersion) == globalFirmwareManager.currentVersion
 
                         self.process(event: .robotDetected)
                     }

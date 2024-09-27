@@ -8,7 +8,7 @@ name: curriculum_receptive_language_identify_objects_by_function
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-06-21T20:38:22.559000"
+last_edited_at: "2024-07-12T12:48:33.814085"
 authors:
   - julie_tuil
 
@@ -20,7 +20,6 @@ skills:
 
 tags:
   - everyday_objects
-  - animals
 
 hmi:
   - tablet
@@ -46,7 +45,7 @@ l10n:
     details:
       icon: receptive_language_identifying_objects_by_function
 
-      title: Identify bjects by function
+      title: Identify objects by function
       subtitle: Understanding object usage
 
       abstract: |

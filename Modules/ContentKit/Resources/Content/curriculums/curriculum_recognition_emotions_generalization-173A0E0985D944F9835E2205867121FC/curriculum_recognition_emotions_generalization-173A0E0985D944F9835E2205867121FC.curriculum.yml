@@ -6,7 +6,7 @@ uuid: 173A0E0985D944F9835E2205867121FC
 name: curriculum_recognition_emotions_generalization
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-06-24T16:39:48.842134"
+last_edited_at: "2024-07-12T12:48:33.814098"
 
 status: published
 
@@ -14,27 +14,18 @@ authors:
   - leka
 
 skills:
-  - recognition
-  - communication
-  - communication/verbal_communication
-  - communication/verbal_communication/receptive_language
+  - emotion_recognition
+
+  - generalization
+
+tags:
+  - emotions
+  - leka_pictograms
+  - characters
+  - pictures
 
 hmi:
   - tablet
-
-tags:
-  - characters
-  - leka
-  - hugo
-  - louna
-  - zoe
-  - moussa
-  - oscar
-  - ladislas
-  - lucie
-  - yann
-  - hortense
-  - hugo
 
 locales:
   - en_US

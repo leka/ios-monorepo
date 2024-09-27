@@ -8,7 +8,7 @@ uuid: 6440FE2E15DD45D9B4B242541A5617F8
 name: sort_objects_by_location_2_zones_4_choices
 
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-07-01T14:21:23.222507"
+last_edited_at: "2024-09-26T15:40:05.110970"
 status: published
 
 authors:
@@ -17,7 +17,6 @@ authors:
 skills:
   - association
   - association/sorting
-  - recognition
 
 tags:
   - places
@@ -86,64 +85,6 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: public_spaces_school
-              type: image
-            dropZoneB:
-              value: public_spaces_cinema
-              type: image
-            choices:
-              - value: public_spaces_accessory_pencil_case
-                type: image
-                dropZone: zoneA
-              - value: public_spaces_accessory_popcorn
-                type: image
-                dropZone: zoneB
-              - value: public_spaces_accessory_bag
-                type: image
-                dropZone: zoneA
-              - value: public_spaces_accessory_seat
-                type: image
-                dropZone: zoneB
-
-        - instructions:
-            - locale: fr_FR
-              value: Place les objets au bon endroit
-            - locale: en_US
-              value: Put the objects in the right place
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            shuffle_choices: true
-            dropZoneA:
-              value: public_spaces_school
-              type: image
-            dropZoneB:
-              value: public_spaces_cinema
-              type: image
-            choices:
-              - value: public_spaces_accessory_pencil_case
-                type: image
-                dropZone: zoneA
-              - value: public_spaces_accessory_popcorn
-                type: image
-                dropZone: zoneB
-              - value: public_spaces_accessory_bag
-                type: image
-                dropZone: zoneA
-              - value: public_spaces_accessory_seat
-                type: image
-                dropZone: zoneB
-
-        - instructions:
-            - locale: fr_FR
-              value: Place les objets au bon endroit
-            - locale: en_US
-              value: Put the objects in the right place
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            shuffle_choices: true
-            dropZoneA:
               value: public_spaces_theater
               type: image
             dropZoneB:
@@ -231,22 +172,22 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: public_spaces_theater
-              type: image
-            dropZoneB:
               value: public_spaces_cinema
               type: image
+            dropZoneB:
+              value: public_spaces_swimmingpool
+              type: image
             choices:
-              - value: public_spaces_accessory_light
-                type: image
-                dropZone: zoneA
               - value: public_spaces_accessory_popcorn
                 type: image
+                dropZone: zoneA
+              - value: public_spaces_accessory_swimming_goggles
+                type: image
                 dropZone: zoneB
-              - value: public_spaces_accessory_gloves
+              - value: public_spaces_accessory_seat
                 type: image
                 dropZone: zoneA
-              - value: public_spaces_accessory_seat
+              - value: public_spaces_accessory_swimsuit
                 type: image
                 dropZone: zoneB
 
@@ -260,21 +201,21 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: public_spaces_museum
+              value: public_spaces_cinema
               type: image
             dropZoneB:
-              value: public_spaces_swimmingpool
+              value: public_spaces_museum
               type: image
             choices:
+              - value: public_spaces_accessory_popcorn
+                type: image
+                dropZone: zoneA
               - value: public_spaces_accessory_masterpiece
                 type: image
-                dropZone: zoneA
-              - value: public_spaces_accessory_swimming_goggles
-                type: image
                 dropZone: zoneB
-              - value: public_spaces_accessory_guide_post
+              - value: public_spaces_accessory_seat
                 type: image
                 dropZone: zoneA
-              - value: public_spaces_accessory_swimsuit
+              - value: public_spaces_accessory_guide_post
                 type: image
                 dropZone: zoneB

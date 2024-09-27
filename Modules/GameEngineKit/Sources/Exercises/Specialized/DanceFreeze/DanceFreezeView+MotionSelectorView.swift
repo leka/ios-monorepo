@@ -71,8 +71,6 @@ extension DanceFreezeView {
                     }
                 }
             }
-            .padding(.vertical, 15)
-            .padding(.horizontal, 40)
         }
 
         // MARK: Private

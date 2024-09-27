@@ -1,0 +1,83 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: DBA6170077AB4DBABEB05E03932BDC84
+name: gamepad_color_pad
+
+created_at: "2024-03-04T18:07:12.519606"
+last_edited_at: "2024-09-27T00:29:50.410579"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - sensory_integration
+  - sensory_integration/vision
+  - relationship_tablet_robot
+
+tags:
+  - robot_colors
+  - sensory_stimulation
+  - gamepad
+
+hmi:
+  - tablet_robot
+
+types:
+  - one_on_one
+  - group
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: gamepad_color_pad
+
+      title: Pavé de Couleurs
+      subtitle: null
+
+      short_description: |
+        Colorez Leka de la couleur de votre choix en appuyant sur les boutons de couleur
+
+      description: |
+        Le pavé de couleurs permet de modifier la couleur du robot en temps réel. Il est composé de 6 boutons de couleurs différentes. Il pourra vous permettre de travailler la reconnaissance des couleurs avec Leka ou encore de créer des activités de reconnaissance personnalisées avec des objets colorés de votre structure.
+
+      instructions: |
+        - Pour modifier la couleur du robot, appuyez sur l'un des boutons de couleur.
+
+  - locale: en_US
+    details:
+      icon: gamepad_color_pad
+
+      title: Color Pad
+      subtitle: null
+
+      short_description: |
+        Color Leka with the color of your choice by pressing the color buttons
+
+      description: |
+        The color pad allows you to change the color of the robot in real time. It consists of 6 buttons of different colors. It will allow you to work on color recognition with Leka or create personalized recognition activities with colored objects from your structure
+
+      instructions: |
+        - To change the color of the robot, press one of the color buttons.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Change la couleur de Leka en appuyant sur les boutons de couleur
+            - locale: en_US
+              value: Change Leka's color by pressing the color buttons
+          interface: gamepadColorPad

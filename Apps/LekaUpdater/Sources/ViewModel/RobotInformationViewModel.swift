@@ -49,8 +49,12 @@ class RobotInformationViewModel: ObservableObject {
     private func subscribeToRobotOsVersionUpdates() {
         Robot.shared.osVersion
             .receive(on: DispatchQueue.main)
-            .sink { robotOsVersion in
-                self.robotOsVersion = robotOsVersion?.description ?? "(n/a)"
+            .sink {
+                if let version = $0 {
+                    self.robotOsVersion = "\(version.major).\(version.minor)"
+                } else {
+                    self.robotOsVersion = "(n/a)"
+                }
             }
             .store(in: &self.cancellables)
     }

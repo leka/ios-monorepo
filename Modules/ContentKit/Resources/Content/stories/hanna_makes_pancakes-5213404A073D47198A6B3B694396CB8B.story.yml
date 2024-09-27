@@ -8,7 +8,7 @@ uuid: 5213404A073D47198A6B3B694396CB8B
 name: hanna_makes_pancakes
 
 created_at: "2024-03-31T23:33:50.987548"
-last_edited_at: "2024-06-21T20:31:46.829058"
+last_edited_at: "2024-09-27T00:29:52.482960"
 status: published
 
 authors:
@@ -20,8 +20,11 @@ skills:
 
 tags:
   - hanna
-  - leka
+  - leka_pictograms
+  - robot_movements
+  - robot_colors
   - cooking
+  - story
 
 hmi:
   - tablet

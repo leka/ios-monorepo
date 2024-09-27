@@ -8,21 +8,19 @@ uuid: 602ADEF84FE342D48A14F4FDEE1B721C
 name: recognition_emotions_drawings_4_moussa
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-06-24T17:07:03.681845"
+last_edited_at: "2024-07-12T12:48:14.929969"
 status: published
 
 authors:
   - leka
 
 skills:
-  - recognition
-  - communication
-  - communication/verbal_communication
-  - communication/verbal_communication/receptive_language
+  - emotion_recognition
 
 tags:
-  - moussa
   - characters
+  - emotions
+  - moussa
 
 hmi:
   - tablet

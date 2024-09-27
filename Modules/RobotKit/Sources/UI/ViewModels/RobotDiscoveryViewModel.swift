@@ -11,23 +11,25 @@ public struct RobotDiscoveryViewModel: Identifiable {
     // MARK: Lifecycle
 
     init(
-        name: String, battery: Int, isCharging: Bool, osVersion: String, status: Status = .unselected
+        name: String, osVersion: String, battery: Int, isCharging: Bool, isDeepSleeping: Bool, status: Status = .unselected
     ) {
         self.id = UUID()
         self.name = name
         self.status = status
-        self.isCharging = isCharging
-        self.osVersion = "LekaOS \(osVersion)"
+        self.osVersion = osVersion
         self.battery = BatteryViewModel(level: battery)
+        self.isCharging = isCharging
+        self.isDeepSleeping = isDeepSleeping
     }
 
     init(discovery: RobotDiscoveryModel, status: Status = .unselected) {
         self.id = discovery.id
         self.name = discovery.name
         self.status = status
-        self.isCharging = discovery.isCharging
-        self.osVersion = "LekaOS \(discovery.osVersion)"
+        self.osVersion = discovery.osVersion
         self.battery = BatteryViewModel(level: discovery.battery)
+        self.isCharging = discovery.isCharging
+        self.isDeepSleeping = discovery.isDeepSleeping
     }
 
     // MARK: Public
@@ -41,9 +43,10 @@ public struct RobotDiscoveryViewModel: Identifiable {
     public let id: UUID
     public let name: String
     public let status: Status
-    public let isCharging: Bool
     public let osVersion: String
     public let battery: BatteryViewModel
+    public let isCharging: Bool
+    public let isDeepSleeping: Bool
 }
 
 // MARK: Equatable
@@ -51,7 +54,7 @@ public struct RobotDiscoveryViewModel: Identifiable {
 extension RobotDiscoveryViewModel: Equatable {
     public static func == (lhs: RobotDiscoveryViewModel, rhs: RobotDiscoveryViewModel) -> Bool {
         lhs.id == rhs.id
-            && lhs.isCharging == rhs.isCharging
             && lhs.battery == rhs.battery
+            && lhs.isCharging == rhs.isCharging
     }
 }

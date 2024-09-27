@@ -1,0 +1,404 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 193DCAB9B7F74DD4B213FA2AF9A84548
+name: animal_recognition_sea_animals_6
+
+created_at: "2024-07-31T10:00:00.000000"
+last_edited_at: "2024-09-26T15:40:05.152916"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - animals
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_animals_sea
+
+      title: Les animaux de la mer
+      subtitle: 6 images
+
+      short_description: |
+        Une activité amusante où le participant apprend à reconnaître et à sélectionner des animaux de la mer en écoutant des instructions audio.
+
+      description: |
+        Découvrez l'univers des animaux de la mer avec cette activité interactive. Le participant appuie sur le bouton de haut-parleur pour écouter une instruction, puis doit toucher l'image correspondante sur l'écran. Cette activité stimule la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide.
+
+      instructions: |
+        - Le participant doit appuyer sur le haut-parleur pour écouter l'instruction.
+        - Invitez le à trouver l'image correspondant à l'instruction et à la toucher.
+
+  - locale: en_US
+    details:
+      icon: recognition_animals_sea
+
+      title: Sea Animals
+      subtitle: 6 images
+
+      short_description: |
+        A fun activity where the care receiver learns to recognize and select sea animals by listening to audio instructions.
+
+      description: |
+        Explore the world of sea animals with this interactive activity. The care receiver presses the speaker button to listen to an instruction, then needs to touch the corresponding image on the screen. This activity enhances auditory and visual recognition, as well as comprehension and quick response skills.
+
+      instructions: |
+        - The care receiver presses the speaker button to listen to the instruction.
+        - Invite them to find the image corresponding to the instruction and touch it.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le crabe"
+                - locale: en_US
+                  utterance: "The crab"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animals_sea_crab_red
+                type: image
+                is_right_answer: true
+              - value: animals_sea_dolphin_blue
+                type: image
+              - value: animals_sea_fish_blue
+                type: image
+              - value: animals_sea_jellyfish_pink
+                type: image
+              - value: animals_sea_manta_ray_blue
+                type: image
+              - value: animals_sea_octopus_pink
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le dauphin"
+                - locale: en_US
+                  utterance: "The dolphin"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animals_sea_dolphin_blue
+                type: image
+                is_right_answer: true
+              - value: animals_sea_fish_blue
+                type: image
+              - value: animals_sea_jellyfish_pink
+                type: image
+              - value: animals_sea_manta_ray_blue
+                type: image
+              - value: animals_sea_octopus_pink
+                type: image
+              - value: animals_sea_orca_black
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le poisson"
+                - locale: en_US
+                  utterance: "The fish"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animals_sea_fish_blue
+                type: image
+                is_right_answer: true
+              - value: animals_sea_jellyfish_pink
+                type: image
+              - value: animals_sea_manta_ray_blue
+                type: image
+              - value: animals_sea_octopus_pink
+                type: image
+              - value: animals_sea_orca_black
+                type: image
+              - value: animals_sea_shark_blue
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La méduse"
+                - locale: en_US
+                  utterance: "The jellyfish"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animals_sea_jellyfish_pink
+                type: image
+                is_right_answer: true
+              - value: animals_sea_manta_ray_blue
+                type: image
+              - value: animals_sea_octopus_pink
+                type: image
+              - value: animals_sea_orca_black
+                type: image
+              - value: animals_sea_shark_blue
+                type: image
+              - value: animals_sea_shrimp_pink
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La raie"
+                - locale: en_US
+                  utterance: "The ray"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animals_sea_manta_ray_blue
+                type: image
+                is_right_answer: true
+              - value: animals_sea_octopus_pink
+                type: image
+              - value: animals_sea_orca_black
+                type: image
+              - value: animals_sea_shark_blue
+                type: image
+              - value: animals_sea_shrimp_pink
+                type: image
+              - value: animals_sea_whale_blue
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le poulpe"
+                - locale: en_US
+                  utterance: "The octopus"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animals_sea_octopus_pink
+                type: image
+                is_right_answer: true
+              - value: animals_sea_orca_black
+                type: image
+              - value: animals_sea_shark_blue
+                type: image
+              - value: animals_sea_shrimp_pink
+                type: image
+              - value: animals_sea_whale_blue
+                type: image
+              - value: animals_sea_crab_red
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "L'orque"
+                - locale: en_US
+                  utterance: "The orca"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animals_sea_orca_black
+                type: image
+                is_right_answer: true
+              - value: animals_sea_shark_blue
+                type: image
+              - value: animals_sea_shrimp_pink
+                type: image
+              - value: animals_sea_whale_blue
+                type: image
+              - value: animals_sea_crab_red
+                type: image
+              - value: animals_sea_dolphin_blue
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le requin"
+                - locale: en_US
+                  utterance: "The shark"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animals_sea_shark_blue
+                type: image
+                is_right_answer: true
+              - value: animals_sea_shrimp_pink
+                type: image
+              - value: animals_sea_whale_blue
+                type: image
+              - value: animals_sea_crab_red
+                type: image
+              - value: animals_sea_dolphin_blue
+                type: image
+              - value: animals_sea_fish_blue
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La crevette"
+                - locale: en_US
+                  utterance: "The shrimp"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animals_sea_shrimp_pink
+                type: image
+                is_right_answer: true
+              - value: animals_sea_whale_blue
+                type: image
+              - value: animals_sea_crab_red
+                type: image
+              - value: animals_sea_dolphin_blue
+                type: image
+              - value: animals_sea_fish_blue
+                type: image
+              - value: animals_sea_jellyfish_pink
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'animal demandé
+            - locale: en_US
+              value: Listen and touch the requested animal
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La baleine"
+                - locale: en_US
+                  utterance: "The whale"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animals_sea_whale_blue
+                type: image
+                is_right_answer: true
+              - value: animals_sea_crab_red
+                type: image
+              - value: animals_sea_dolphin_blue
+                type: image
+              - value: animals_sea_fish_blue
+                type: image
+              - value: animals_sea_jellyfish_pink
+                type: image
+              - value: animals_sea_manta_ray_blue
+                type: image

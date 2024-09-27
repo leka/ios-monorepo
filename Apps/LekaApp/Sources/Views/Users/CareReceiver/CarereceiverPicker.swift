@@ -94,7 +94,7 @@ struct CarereceiverPicker: View {
         case skip
     }
 
-    private let columns = Array(repeating: GridItem(), count: 4)
+    private let columns = Array(repeating: GridItem(spacing: -20), count: 4)
 
     @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
     @ObservedObject private var navigation: Navigation = .shared
@@ -118,7 +118,7 @@ struct CarereceiverPicker: View {
     }
 
     private var oneToFourCarereceiversView: some View {
-        HStack(spacing: 40) {
+        HStack(spacing: 30) {
             ForEach(self.carereceiverManagerViewModel.carereceivers, id: \.id) { carereceiver in
                 let isCarereceiverSelected = self.selectedCarereceiver.contains(where: { $0.id == carereceiver.id })
                 CarereceiverAvatarCell(carereceiver: carereceiver, isSelected: isCarereceiverSelected)
@@ -138,10 +138,11 @@ struct CarereceiverPicker: View {
 
     private var fiveOrMoreCarereceiversView: some View {
         ScrollView(showsIndicators: true) {
-            LazyVGrid(columns: self.columns, spacing: 40) {
+            LazyVGrid(columns: self.columns, spacing: 15) {
                 ForEach(self.carereceiverManagerViewModel.carereceivers) { carereceiver in
                     let isCarereceiverSelected = self.selectedCarereceiver.contains(where: { $0.id == carereceiver.id })
                     CarereceiverAvatarCell(carereceiver: carereceiver, isSelected: isCarereceiverSelected)
+                        .frame(maxWidth: 110)
                         .onTapGesture {
                             withAnimation(.default) {
                                 if let carereceiverIndex = self.selectedCarereceiver.firstIndex(of: carereceiver) {

@@ -8,7 +8,7 @@ uuid: A7584D692B23422BB12683FA7BE393BE
 name: color_bingo_4
 
 created_at: "2024-03-08T11:09:22.386489"
-last_edited_at: "2024-06-21T20:38:08.018095"
+last_edited_at: "2024-07-12T12:48:14.946202"
 status: published
 
 authors:
@@ -16,10 +16,14 @@ authors:
 
 skills:
   - recognition
-  - discrimination
+  - association
+  - association/matching
+  - sensory_integration/vision
+  - sensory_integration
 
 tags:
   - colors
+  - robot_colors
 
 hmi:
   - tablet_robot

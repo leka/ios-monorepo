@@ -6,7 +6,7 @@ uuid: 6A5EF209D00942F4AEEA4AEC6DAC052A
 name: curriculum_recognition_sounds_musical_instruments
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-06-21T20:38:22.558988"
+last_edited_at: "2024-07-12T12:48:33.814058"
 
 status: published
 
@@ -14,11 +14,16 @@ authors:
   - leka
 
 skills:
-  - recognition
-  - sensory_interaction
+  - association
+  - association/matching
+  - sensory_integration
+  - sensory_integration/hearing
+  - attention
 
 tags:
   - musical_instruments
+  - music
+  - listening
 
 hmi:
   - tablet

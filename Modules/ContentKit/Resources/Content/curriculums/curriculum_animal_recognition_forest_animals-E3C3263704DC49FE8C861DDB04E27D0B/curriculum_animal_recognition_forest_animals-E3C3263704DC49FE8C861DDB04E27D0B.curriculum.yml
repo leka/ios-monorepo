@@ -1,0 +1,56 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: E3C3263704DC49FE8C861DDB04E27D0B
+name: curriculum_animal_recognition_forest_animals
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2024-07-19T11:36:03.177171"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - animals
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_animals_forest
+      title: Les animaux de la forêt
+      subtitle: Écoute et trouve l'animal !
+      abstract: |
+        Un parcours complet pour apprendre à reconnaître les animaux de la forêt à travers plusieurs activités interactives.
+
+      description: |
+        Ce parcours propose une série de quatre activités conçues pour aider le participant à reconnaître différents animaux de la forêt. Chaque activité utilise des images et des instructions audio pour stimuler la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide.
+
+  - locale: en_US
+    details:
+      icon: recognition_animals_forest
+      title: Forest Animals
+      subtitle: Listen and find the animal!
+      abstract: |
+        A comprehensive curriculum to learn to recognize forest animals through various interactive activities.
+
+      description: |
+        This curriculum offers a series of four activities designed to help the care receiver recognize different forest animals. Each activity uses images and audio instructions to enhance auditory and visual recognition, as well as comprehension and quick response skills.
+
+activities:
+  - animal_recognition_forest_animals_1-3A4F8EBF04424890B2EBF25DA6EC531A
+  - animal_recognition_forest_animals_2-AFF0A81CEC734DABA7656B61B6F967A3
+  - animal_recognition_forest_animals_4-DF875617328749248EA4641BEFA3278E
+  - animal_recognition_forest_animals_6-04447C2020BB43BB911F816499FAD2DD

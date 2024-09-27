@@ -149,7 +149,7 @@ list:
                 description: >
                   Understanding what people say or write
               - locale: fr_FR
-                name: Langage receptif
+                name: Langage réceptif
                 description: >
                   Comprendre ce que les gens disent ou écrivent.
             subskills:
@@ -262,21 +262,16 @@ list:
                   des symboles pour renforcer la communication.
             subskills: []
 
-          - id: communication/augmentative_alternative_communication/pecs
+          - id: communication/augmentative_alternative_communication/pcs
             l10n:
               - locale: en_US
-                name: PECS (picture exchange communication system)
+                name: Picture Communication Symbols (PCS)
                 description: >
-                  Ability to use PECS, a system where people communicate using
-                  images (pictograms, symbols, written words, photos, drawings,
-                  etc.). They show or exchange images to express themselves.
+                  Ability to use Picture Communication Symbols (PCS), a system where people communicate using images (pictograms, symbols, written words, photos, drawings, etc.). They show or exchange images to express themselves.
               - locale: fr_FR
-                name: PECS (picture exchange communication system)
+                name: Symboles de Communication par Images (PCS)
                 description: >
-                  Capacité à utiliser le PECS, un système où les gens
-                  communiquent en utilisant des images (pictogrammes, symboles,
-                  mots écrits, photos, dessins, etc.). Ils montrent ou échangent
-                  des images pour s'exprimer.
+                  Capacité à utiliser les Symboles de Communication par Images (PCS), un système où les gens communiquent en utilisant des images (pictogrammes, symboles, mots écrits, photos, dessins, etc.). Ils montrent ou échangent des images pour s'exprimer.
             subskills: []
 
       - id: communication/non_verbal_communication
@@ -404,6 +399,17 @@ list:
           quelle est la différence entre une pomme et une orange en les
           regardant ou entendre la différence entre des sons, comme le son d'un
           piano et celui d'une guitare).
+    subskills: []
+  - id: emotion_recognition
+    l10n:
+      - locale: en_US
+        name: Emotion Recognition
+        description: >
+          The ability to recognize and identify emotions in others through facial expressions.
+      - locale: fr_FR
+        name: Reconnaissance des émotions
+        description: >
+          La capacité à reconnaître et identifier les émotions chez les autres à travers les expressions faciales.
     subskills: []
   - id: empathy
     l10n:
@@ -567,6 +573,17 @@ list:
           Comprendre le lien de causalité entre tablette et robot. Comprendre
           qu'en touchant la tablette, cela fait bouger ou changer le robot Leka.
     subskills: []
+  - id: self_awareness
+    l10n:
+      - locale: en_US
+        name: Self-awareness
+        description: >
+          The ability to recognize and understand one's own emotions, physical sensations, and physiological needs. This includes being aware of feelings, identifying areas of pain, and understanding physical states such as tiredness or well-being.
+      - locale: fr_FR
+        name: Conscience de soi
+        description: >
+          La capacité à reconnaître et comprendre ses propres émotions, sensations physiques et besoins physiologiques. Cela inclut la conscience des sentiments, l'identification des zones de douleur et la compréhension des états physiques tels que la fatigue ou le bien-être.
+    subskills: []
   - id: self_regulation
     l10n:
       - locale: en_US
@@ -581,25 +598,59 @@ list:
           Apprendre à se calmer après une émotion forte ou à ne pas réagir de
           manière impulsive.
     subskills: []
-  - id: sensory_interaction
+  - id: sensory_integration
     l10n:
       - locale: en_US
-        name: Sensory interaction
+        name: Sensory integration
         description: >
-          Manifests when a care receiver plays with the robot and uses their senses
-          to
-          interact. This includes watching Leka's changing colors and lights,
-          listening to the sounds or music it produces, and touching and feeling
-          Leka by manipulating or playing with it.
+          Sensory integration is the brain's process of organizing and interpreting sensory information from various sources to produce appropriate,
+          coordinated responses. It enables effective interaction with the environment by combining inputs from different senses.
+          Proper sensory integration is crucial for motor skills, behavior, and learning. Therapeutic interventions can enhance sensory integration
+          in individuals with sensory processing challenges.
       - locale: fr_FR
-        name: Sensorialité
+        name: Intégration sensorielle
         description: >
-          Se manifeste quand une personne accompagnée joue avec le robot et utilise
-          ses sens
-          pour interagir. Cela inclut regarder les couleurs et lumières
-          changeantes de Leka, écouter les sons ou musiques qu'il émet, et
-          toucher et ressentir Leka en le manipulant ou en jouant avec lui.
-    subskills: []
+          L'intégration sensorielle est le processus par lequel le cerveau organise et interprète les informations sensorielles provenant de diverses sources
+          pour produire des réponses appropriées et coordonnées. Elle permet une interaction efficace avec l'environnement en combinant les apports de différents sens.
+          Une bonne intégration sensorielle est essentielle pour les compétences motrices, le comportement et l'apprentissage.
+          Les interventions thérapeutiques peuvent améliorer l'intégration sensorielle chez les individus ayant des difficultés de traitement sensoriel.
+    subskills:
+      - id: sensory_integration/vision
+        l10n:
+          - locale: en_US
+            name: Vision
+            description: >
+              Manifests when a care receiver observes and responds to the visual stimuli, such as the changing colors and lights of the robot.
+          - locale: fr_FR
+            name: Vue
+            description: >
+              Se manifeste quand une personne accompagnée observe et réagit aux stimuli visuels, comme les couleurs et lumières changeantes du robot.
+        subskills: []
+
+      - id: sensory_integration/hearing
+        l10n:
+          - locale: en_US
+            name: Hearing
+            description: >
+              Manifests when a care receiver listens to and processes sounds or music produced by the iPad.
+          - locale: fr_FR
+            name: Ouïe
+            description: >
+              Se manifeste quand une personne accompagnée écoute et traite les sons ou la musique produits par l'iPad.
+        subskills: []
+
+      - id: sensory_integration/touch
+        l10n:
+          - locale: en_US
+            name: Touch
+            description: >
+              Manifests when a care receiver touches and feels the robot, manipulating or playing with its various parts.
+          - locale: fr_FR
+            name: Toucher
+            description: >
+              Se manifeste quand une personne accompagnée touche et ressent le robot, manipule ou jouer avec ses différentes parties.
+        subskills: []
+
   - id: social_interactions
     l10n:
       - locale: en_US
@@ -628,7 +679,7 @@ list:
           Understanding and knowing how to position oneself in a place, see
           where things are around, and how to move or navigate in that space.
       - locale: fr_FR
-        name: Apprehension de l'espace
+        name: Appréhension de l'espace
         description: >
           Comprendre et savoir comment se situer dans un lieu, voir où les
           choses se trouvent autour de soi, et comment bouger ou se déplacer
@@ -646,7 +697,7 @@ list:
           today is after yesterday and before tomorrow, spring is after winter
           and before summer).
       - locale: fr_FR
-        name: Apprehension du temps et de la temporalité
+        name: Appréhension du temps et de la temporalité
         description: >
           Comprendre le temps et savoir quand les choses arrivent (par exemple,
           le petit-déjeuner a lieu le matin et le diner a lieu le soir). Cela

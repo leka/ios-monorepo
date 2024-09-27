@@ -41,7 +41,7 @@ struct CategoryCurriculumsView: View {
                         Section {
                             VStack(alignment: .leading, spacing: 5) {
                                 VStack(alignment: .leading) {
-                                    HStack(alignment: .firstTextBaseline) {
+                                    HStack {
                                         HStack(alignment: .center) {
                                             Text(section.details.title)
                                                 .font(.title2)
@@ -59,8 +59,8 @@ struct CategoryCurriculumsView: View {
                                 .padding(.horizontal)
                                 .padding(.horizontal)
 
-                                CurriculumGridView(curriculums: section.curriculums, onActivitySelected: { activity in
-                                    if self.authManagerViewModel.userAuthenticationState == .loggedIn {
+                                CurriculumHorizontalListView(curriculums: section.curriculums, onActivitySelected: { activity in
+                                    if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
                                         self.navigation.sheetContent = .carereceiverPicker(activity: activity, story: nil)
                                     } else {
                                         self.navigation.currentActivity = activity

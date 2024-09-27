@@ -50,6 +50,20 @@ extension l10n {
                 value: "Continue",
                 comment: "The title of the continue button"
             )
+
+            static let updateButton = LocalizedString(
+                "robotkit.robot_connect_view.update_button",
+                bundle: RobotKitResources.bundle,
+                value: "Update",
+                comment: "The title of the update button"
+            )
+
+            static let rebootingDeepSleepingRobotText = LocalizedString(
+                "robotkit.robot_connection_view.rebooting_deep_sleeping_robot_text",
+                bundle: RobotKitResources.bundle,
+                value: "Leka is booting...",
+                comment: "The text of the robot rebooting from deep sleep state"
+            )
         }
     }
 }

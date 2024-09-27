@@ -1,0 +1,328 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 756B84801C32483FABEA6E5BC5DF7081
+name: recognition_body_parts_1
+
+created_at: "2024-03-08T11:49:37.123541"
+last_edited_at: "2024-09-24T15:59:20.374078"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - body_parts
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_body_parts
+
+      title: Les parties du corps
+      subtitle: 1 image
+
+      short_description: |
+        Touche la partie du corps demandée
+
+      description: |
+        Le participant doit répondre correctement à la question posée concernant les parties du corps.
+
+      instructions: |
+        - Appuyez sur le haut-parleur pour jouer la consigne
+        - Encouragez le participant à toucher l'image demandée
+        - Quand la réponse est correcte, Leka lance un renforçateur
+
+  - locale: en_US
+    details:
+      icon: recognition_body_parts
+
+      title: Body Parts
+      subtitle: 1 image
+
+      short_description: |
+        Touch the requested body part
+
+      description: |
+        The participant must correctly answer the question about the body parts.
+
+      instructions: |
+        - Press the speaker to play the instruction
+        - Encourage the participant to touch the requested image
+        - When the answer is correct, Leka will initiate a reinforcer
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la partie du corps demandée
+            - locale: en_US
+              value: Listen and touch the requested body part
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "le bras"
+                - locale: en_US
+                  utterance: "the arm"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: body_parts_arm
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la partie du corps demandée
+            - locale: en_US
+              value: Listen and touch the requested body part
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "le ventre"
+                - locale: en_US
+                  utterance: "the belly"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: body_parts_belly
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la partie du corps demandée
+            - locale: en_US
+              value: Listen and touch the requested body part
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "les épaules"
+                - locale: en_US
+                  utterance: "the shoulders"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: body_parts_shoulders
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la partie du corps demandée
+            - locale: en_US
+              value: Listen and touch the requested body part
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "l'oreille"
+                - locale: en_US
+                  utterance: "the ear"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: body_parts_ear
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la partie du corps demandée
+            - locale: en_US
+              value: Listen and touch the requested body part
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "l'œil"
+                - locale: en_US
+                  utterance: "the eye"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: body_parts_eye
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la partie du corps demandée
+            - locale: en_US
+              value: Listen and touch the requested body part
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "le visage"
+                - locale: en_US
+                  utterance: "the face"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: body_parts_face
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la partie du corps demandée
+            - locale: en_US
+              value: Listen and touch the requested body part
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "le pied"
+                - locale: en_US
+                  utterance: "the foot"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: body_parts_foot
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la partie du corps demandée
+            - locale: en_US
+              value: Listen and touch the requested body part
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "la main"
+                - locale: en_US
+                  utterance: "the hand"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: body_parts_hand
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la partie du corps demandée
+            - locale: en_US
+              value: Listen and touch the requested body part
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "la jambe"
+                - locale: en_US
+                  utterance: "the leg"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: body_parts_leg
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la partie du corps demandée
+            - locale: en_US
+              value: Listen and touch the requested body part
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "la bouche"
+                - locale: en_US
+                  utterance: "the mouth"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: body_parts_mouth
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la partie du corps demandée
+            - locale: en_US
+              value: Listen and touch the requested body part
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "le nez"
+                - locale: en_US
+                  utterance: "the nose"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: body_parts_nose
+                type: image
+                is_right_answer: true

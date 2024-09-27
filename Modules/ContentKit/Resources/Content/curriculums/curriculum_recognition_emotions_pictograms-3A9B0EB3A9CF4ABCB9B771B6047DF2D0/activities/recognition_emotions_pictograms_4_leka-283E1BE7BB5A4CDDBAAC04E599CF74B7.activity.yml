@@ -8,20 +8,18 @@ uuid: 283E1BE7BB5A4CDDBAAC04E599CF74B7
 name: recognition_emotions_pictograms_4_leka
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-06-24T17:07:03.682928"
+last_edited_at: "2024-07-12T12:48:14.954375"
 status: published
 
 authors:
   - leka
 
 skills:
-  - recognition
-  - communication
-  - communication/verbal_communication
-  - communication/verbal_communication/receptive_language
+  - emotion_recognition
 
 tags:
-  - leka
+  - leka_pictograms
+  - emotions
 
 hmi:
   - tablet

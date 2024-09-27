@@ -3,9 +3,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import ContentKit
-import DesignKit
 import LocalizationKit
 import SwiftUI
+import UtilsKit
 
 // MARK: - CategorySearchView
 
@@ -14,7 +14,7 @@ struct CategorySearchView: View {
 
     var body: some View {
         Group {
-            if self.searchText.isEmpty {
+            if self.query.isEmpty {
                 ScrollView(showsIndicators: true) {
                     SkillsGridView(skills: self.skills, onActivitySelected: { activity in
                         self.navigation.currentActivity = activity
@@ -35,46 +35,86 @@ struct CategorySearchView: View {
                 }
             }
         }
-        .searchable(text: self.$searchText)
+        .searchable(text: self.$query)
     }
 
     var searchActivityResults: [Activity] {
-        if self.searchText.isEmpty {
-            self.activities
-        } else {
-            self.activities.filter { activity in
-                activity.details.title.normalized().contains(self.searchText.normalized())
+        var scoredActivities: [(activity: Activity, score: Int)] = []
+        for activity in self.activities {
+            var totalScore = 0
+
+            let titleResult = fuzzyMatch(input: activity.details.title, pattern: self.query)
+            totalScore += titleResult.score * self.kTitleWeight
+
+            let subtitleResult = fuzzyMatch(input: activity.details.subtitle ?? "", pattern: self.query)
+            totalScore += subtitleResult.score * self.kSubtitleWeight
+
+            for tag in activity.tags {
+                let tagResult = fuzzyMatch(input: tag.name, pattern: self.query)
+                totalScore += tagResult.score * self.kTagWeight
             }
+            scoredActivities.append((activity: activity, score: totalScore))
         }
+
+        var scoredActivitiesFiltered = scoredActivities.filter { $0.score > 0 }.prefix(15)
+        scoredActivitiesFiltered.sort { $0.score > $1.score }
+
+        return scoredActivitiesFiltered.map(\.activity)
     }
 
     var searchSkillsResults: [Skill] {
-        if self.searchText.isEmpty {
-            self.skills
-        } else {
-            self.skills.filter { skill in
-                skill.name.normalized().contains(self.searchText.normalized())
-            }
+        var scoredSkill: [(skill: Skill, score: Int)] = []
+        for skill in self.skills {
+            var totalScore = 0
+
+            let titleResult = fuzzyMatch(input: skill.name, pattern: self.query)
+            totalScore += titleResult.score * self.kTitleWeight
+
+            scoredSkill.append((skill: skill, score: totalScore))
         }
+
+        var scoredSkillFiltered = scoredSkill.filter { $0.score > 0 }.prefix(15)
+        scoredSkillFiltered.sort { $0.score > $1.score }
+
+        return scoredSkillFiltered.map(\.skill)
     }
 
     var searchCurriculumResults: [Curriculum] {
-        if self.searchText.isEmpty {
-            self.curriculums
-        } else {
-            self.curriculums.filter { curriculum in
-                curriculum.name.normalized().contains(self.searchText.normalized())
+        var scoredCurriculum: [(curriculum: Curriculum, score: Int)] = []
+        for curriculum in self.curriculums {
+            var totalScore = 0
+
+            let titleResult = fuzzyMatch(input: curriculum.details.title, pattern: self.query)
+            totalScore += titleResult.score * self.kTitleWeight
+
+            let subtitleResult = fuzzyMatch(input: curriculum.details.subtitle ?? "", pattern: self.query)
+            totalScore += subtitleResult.score * self.kSubtitleWeight
+
+            for tag in curriculum.tags {
+                let tagResult = fuzzyMatch(input: tag.name, pattern: self.query)
+                totalScore += tagResult.score * self.kTagWeight
             }
+
+            scoredCurriculum.append((curriculum: curriculum, score: totalScore))
         }
+
+        var scoredCurriculumFiltered = scoredCurriculum.filter { $0.score > 0 }.prefix(15)
+        scoredCurriculumFiltered.sort { $0.score > $1.score }
+
+        return scoredCurriculumFiltered.map(\.curriculum)
     }
 
     // MARK: Private
 
+    private let kTitleWeight = 10
+    private let kSubtitleWeight = 3
+    private let kTagWeight = 5
+
     private let activities: [Activity] = ContentKit.allPublishedActivities
-    private let curriculums: [Curriculum] = ContentKit.allCurriculums
+    private let curriculums: [Curriculum] = ContentKit.allPublishedCurriculums
     private let skills: [Skill] = Skills.primarySkillsList
 
-    @State private var searchText = ""
+    @State private var query = ""
     @ObservedObject private var navigation: Navigation = .shared
 }
 

@@ -8,31 +8,22 @@ uuid: 6E345E56197B457D8115445A2A3A8B0E
 name: recognition_emotions_generalization_6_images_3_types
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-06-24T17:07:03.695853"
+last_edited_at: "2024-07-12T12:48:14.944032"
 status: published
 
 authors:
   - leka
 
 skills:
-  - recognition
-  - communication
-  - communication/verbal_communication
-  - communication/verbal_communication/receptive_language
+  - emotion_recognition
+
+  - generalization
 
 tags:
+  - emotions
+  - leka_pictograms
   - characters
-  - leka
-  - hugo
-  - louna
-  - zoe
-  - moussa
-  - oscar
-  - ladislas
-  - lucie
-  - yann
-  - hortense
-  - hugo
+  - pictures
 
 hmi:
   - tablet

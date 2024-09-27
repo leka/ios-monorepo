@@ -1,0 +1,57 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: A1006027902E44C0B38BC3D3BAEDD4F6
+name: curriculum_recognition_garden_items
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2024-08-01T16:13:40.63918"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - home_objects
+  - garden
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_garden
+      title: Les objets du jardin
+      subtitle: Écoute et trouve l'objet !
+      abstract: |
+        Un parcours complet pour apprendre à reconnaître les objets de jardin à travers plusieurs activités interactives.
+
+      description: |
+        Ce parcours propose une série de quatre activités conçues pour aider le participant à reconnaître différents objets de jardin. Chaque activité utilise des images et des instructions audio pour stimuler la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide.
+
+  - locale: en_US
+    details:
+      icon: recognition_garden
+      title: Garden objects
+      subtitle: Listen and find the object!
+      abstract: |
+        A comprehensive curriculum to learn to recognize garden objects through various interactive activities.
+
+      description: |
+        This curriculum offers a series of four activities designed to help the care receiver recognize different garden objects. Each activity uses images and audio instructions to enhance auditory and visual recognition, as well as comprehension and quick response skills.
+
+activities:
+  - recognition_garden_items_1-34E696B157354C76B9613F4C7E185BEE
+  - recognition_garden_items_2-479F70F09C9D4934844A0C0663B21648
+  - recognition_garden_items_4-54A1A7A32EFA4A858C5A1E6AD0D3DA48
+  - recognition_garden_items_6-B5BEA82CDC7743FD905D5DA788E90C28

@@ -1,0 +1,56 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 358521AE2F434D54BFFFA513ED608529
+name: curriculum_animal_recognition_pets
+
+created_at: "2024-07-31T17:38:12.804177"
+last_edited_at: "2024-07-31T17:23:32.570167"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - animals
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_animals_pets
+      title: Les animaux de compagnie
+      subtitle: Écoute et trouve l'animal !
+      abstract: |
+        Un parcours complet pour apprendre à reconnaître les animaux de compagnie à travers plusieurs activités interactives.
+
+      description: |
+        Ce parcours propose une série de quatre activités conçues pour aider le participant à reconnaître différents animaux de compagnie. Chaque activité utilise des images et des instructions audio pour stimuler la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide.
+
+  - locale: en_US
+    details:
+      icon: recognition_animals_pets
+      title: Pets
+      subtitle: Listen and find the animal!
+      abstract: |
+        A comprehensive curriculum to learn to recognize pet animals through various interactive activities.
+
+      description: |
+        This curriculum offers a series of four activities designed to help the care receiver recognize different pet animals. Each activity uses images and audio instructions to enhance auditory and visual recognition, as well as comprehension and quick response skills.
+
+activities:
+  - animal_recognition_pets_1-03C46293135143BF81BA579682B9E78C
+  - animal_recognition_pets_2-898A7ACFEDE24C3EBF437CC74935A570
+  - animal_recognition_pets_4-882A7422D3FA47DAB39D8FF40D90D89E
+  - animal_recognition_pets_6-926BFE00F78F47AB986F6969DC3BCDFE

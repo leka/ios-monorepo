@@ -8,7 +8,7 @@ uuid: 60C133CB19F94BA0864DFA9BF6E7F696
 name: hanna_at_the_beach
 
 created_at: "2024-03-31T23:33:50.987548"
-last_edited_at: "2024-06-21T20:31:46.829060"
+last_edited_at: "2024-09-27T00:29:52.482967"
 status: published
 
 authors:
@@ -18,11 +18,14 @@ skills:
   - familiarization_with_leka
 
 tags:
+  - leka_pictograms
+  - robot_movements
+  - robot_colors
   - hanna
-  - leka
   - beach
   - holidays
   - sea
+  - story
 
 hmi:
   - tablet

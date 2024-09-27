@@ -8,20 +8,18 @@ uuid: A703772398514DB298DDEF6435D787CD
 name: recognition_emotions_drawings_1_zoe
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-06-24T17:07:03.698105"
+last_edited_at: "2024-07-12T12:48:14.929969"
 status: published
 
 authors:
   - leka
 
 skills:
-  - recognition
-  - communication
-  - communication/verbal_communication
-  - communication/verbal_communication/receptive_language
+  - emotion_recognition
 
 tags:
   - characters
+  - emotions
   - zoe
 
 hmi:

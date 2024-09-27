@@ -8,25 +8,22 @@ import SwiftUI
 
 // MARK: - DiscoverLekaView
 
-struct DiscoverLekaView: View {
+public struct DiscoverLekaView: View {
     // MARK: Lifecycle
 
-    init() {
+    public init(demoMode: Bool = false) {
         self.shared = ExerciseSharedData()
-        self.robotManager = RobotManager(data: ExerciseSharedData())
+        self.robotManager = RobotManager(data: ExerciseSharedData(), demoMode: demoMode)
     }
 
-    init(data: ExerciseSharedData? = nil) {
+    init(data: ExerciseSharedData? = nil, demoMode: Bool = false) {
         self.shared = data
-        self.robotManager = RobotManager(data: data!)
+        self.robotManager = RobotManager(data: data!, demoMode: demoMode)
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    let robotManager: RobotManager
-    let shared: ExerciseSharedData?
-
-    var body: some View {
+    public var body: some View {
         VStack {
             Text(l10n.DiscoverLekaView.instructions)
                 .font(.headline)
@@ -67,6 +64,11 @@ struct DiscoverLekaView: View {
             self.hasStarted = false
         }
     }
+
+    // MARK: Internal
+
+    let robotManager: RobotManager
+    let shared: ExerciseSharedData?
 
     // MARK: Private
 

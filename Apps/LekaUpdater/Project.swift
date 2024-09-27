@@ -20,7 +20,6 @@ let project = Project.app(
     name: "LekaUpdater",
     version: kLekaUpdaterVersion,
     infoPlist: [
-        "LEKA_OS_VERSION": "1.4.0",
         "UISupportedInterfaceOrientations": ["UIInterfaceOrientationPortrait"],
         "UISupportedInterfaceOrientations~ipad": [
             "UIInterfaceOrientationPortrait",
@@ -41,9 +40,9 @@ let project = Project.app(
         ],
     ],
     dependencies: [
-        .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .project(target: "BLEKit", path: Path("../../Modules/BLEKit")),
-        .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
+        .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .project(target: "LocalizationKit", path: Path("../../Modules/LocalizationKit")),
+        .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
     ]
 )

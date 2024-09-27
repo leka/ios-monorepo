@@ -17,7 +17,7 @@ struct CategoryStoriesView: View {
         VStack {
             ScrollView(showsIndicators: true) {
                 HStack(alignment: .center, spacing: 30) {
-                    Image(systemName: "dice")
+                    Image(systemName: "text.book.closed")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 80, height: 80)
@@ -34,7 +34,7 @@ struct CategoryStoriesView: View {
                 .padding(.horizontal)
 
                 StoryGridView(stories: self.category.stories, onStartStory: { story in
-                    if self.authManagerViewModel.userAuthenticationState == .loggedIn {
+                    if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
                         self.navigation.sheetContent = .carereceiverPicker(activity: nil, story: story)
                     } else {
                         self.navigation.currentStory = story

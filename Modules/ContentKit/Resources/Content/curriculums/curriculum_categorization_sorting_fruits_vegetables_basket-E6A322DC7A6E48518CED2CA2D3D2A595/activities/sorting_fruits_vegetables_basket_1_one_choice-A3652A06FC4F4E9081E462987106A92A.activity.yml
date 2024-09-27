@@ -8,7 +8,7 @@ uuid: A3652A06FC4F4E9081E462987106A92A
 name: sorting_fruits_vegetables_basket_1_one_choice
 
 created_at: "2024-03-08T11:49:37.123525"
-last_edited_at: "2024-06-21T20:38:08.021118"
+last_edited_at: "2024-07-12T12:48:14.946202"
 status: published
 
 authors:
@@ -21,6 +21,7 @@ skills:
 tags:
   - vegetables
   - fruits
+  - food
 
 hmi:
   - tablet

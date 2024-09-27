@@ -8,19 +8,23 @@ uuid: D91BDA161F8E455CA8A71881F1D2E923
 name: gamepad_arrow_pad_big
 
 created_at: "2024-03-04T18:07:12.518998"
-last_edited_at: "2024-04-11T10:09:07.867304"
+last_edited_at: "2024-09-27T00:29:50.410579"
 status: published
 
 authors:
   - leka
 
 skills:
-  - sensory_interaction
+  - sensory_integration
+  - sensory_integration/vision
   - gross_motor_skills
+  - relationship_tablet_robot
 
 tags:
   - robot_movements
   - robot_colors
+  - sensory_stimulation
+  - gamepad
 
 hmi:
   - tablet_robot
@@ -81,9 +85,7 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Appuie sur une des flèches pour téléguider Leka dans la direction
-                de ton choix
+              value: Appuie sur une des flèches pour téléguider Leka dans la direction de ton choix
             - locale: en_US
-              value: Press one of the arrows to remotely guide Leka in the direction
-                of your choice
+              value: Press one of the arrows to remotely guide Leka in the direction of your choice
           interface: gamepadArrowPad

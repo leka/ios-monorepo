@@ -6,30 +6,32 @@ import AccountKit
 import ContentKit
 import Foundation
 
-// MARK: - GameplayDragAndDropIntoZonesChoiceModel
+// MARK: - GameplayFindTheRightAnswersChoiceModelDragAndDropIntoZones
 
-struct GameplayDragAndDropIntoZonesChoiceModel: GameplayChoiceModelProtocol {
+// swiftlint:disable:next type_name
+struct GameplayFindTheRightAnswersChoiceModelDragAndDropIntoZones: GameplayChoiceModelProtocol {
     typealias ChoiceType = DragAndDropIntoZones.Choice
 
     let id: String = UUID().uuidString
     let choice: ChoiceType
+    var droppedIntoZone: DragAndDropIntoZones.DropZone?
     var state: GameplayChoiceState = .idle
 }
 
 // MARK: Equatable
 
-extension GameplayDragAndDropIntoZonesChoiceModel: Equatable {
-    static func == (lhs: GameplayDragAndDropIntoZonesChoiceModel, rhs: GameplayDragAndDropIntoZonesChoiceModel) -> Bool {
+extension GameplayFindTheRightAnswersChoiceModelDragAndDropIntoZones: Equatable {
+    static func == (lhs: GameplayFindTheRightAnswersChoiceModelDragAndDropIntoZones, rhs: GameplayFindTheRightAnswersChoiceModelDragAndDropIntoZones) -> Bool {
         lhs.id == rhs.id
     }
 }
 
-extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayDragAndDropIntoZonesChoiceModel {
-    convenience init(choices: [GameplayDragAndDropIntoZonesChoiceModel], allowedTrials: Int? = nil) {
+extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayFindTheRightAnswersChoiceModelDragAndDropIntoZones {
+    convenience init(choices: [GameplayFindTheRightAnswersChoiceModelDragAndDropIntoZones], allowedTrials: Int? = nil) {
         self.init()
         self.choices.send(choices)
         self.rightAnswers = choices.filter { $0.choice.dropZone != .none }
-        self.state.send(.playing)
+        self.state.send(.playing())
 
         if let allowedTrials {
             self.allowedTrials = allowedTrials
@@ -38,14 +40,14 @@ extension GameplayFindTheRightAnswers where ChoiceModelType == GameplayDragAndDr
         }
     }
 
-    func process(_ choice: ChoiceModelType, _ dropZone: DragAndDropIntoZones.DropZone) {
+    func process(choice: ChoiceModelType) {
         guard rightAnswers.isNotEmpty else {
             return
         }
 
         numberOfTrials += 1
 
-        if choice.choice.dropZone == dropZone {
+        if choice.choice.dropZone == choice.droppedIntoZone {
             updateChoice(choice, state: .rightAnswer)
             rightAnswers.removeAll { $0.id == choice.id }
         } else {

@@ -8,20 +8,18 @@ uuid: A5D3673F3D9643B29EF6F7C5CBAE73CA
 name: recognition_emotions_drawings_1_louna
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-06-24T17:07:03.695853"
+last_edited_at: "2024-07-12T12:48:14.933551"
 status: published
 
 authors:
   - leka
 
 skills:
-  - recognition
-  - communication
-  - communication/verbal_communication
-  - communication/verbal_communication/receptive_language
+  - emotion_recognition
 
 tags:
   - characters
+  - emotions
   - louna
 
 hmi:

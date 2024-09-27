@@ -5,26 +5,26 @@
 
 // swiftformat:disable acronyms
 
-import PackageDescription
+@preconcurrency import PackageDescription
 
 let package = Package(
     name: "GlobalProjectDependencies",
     dependencies: [
         .package(
             url: "https://github.com/jpsim/Yams",
-            exact: "5.1.2"
+            exact: "5.1.3"
         ),
         .package(
             url: "https://github.com/airbnb/lottie-ios",
-            exact: "4.4.3"
+            exact: "4.5.0"
         ),
         .package(
             url: "https://github.com/gonzalezreal/swift-markdown-ui",
-            exact: "2.3.1"
+            exact: "2.4.0"
         ),
         .package(
             url: "https://github.com/apple/swift-argument-parser",
-            exact: "1.3.0"
+            exact: "1.5.0"
         ),
         .package(
             url: "https://github.com/StarryInternet/CombineCoreBluetooth",
@@ -48,7 +48,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/firebase/firebase-ios-sdk",
-            exact: "10.28.1"
+            exact: "11.2.0"
         ),
         .package(
             url: "https://github.com/OlehKorchytskyi/Fit",
@@ -64,7 +64,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/SvenTiigi/YouTubePlayerKit",
-            exact: "1.8.0"
+            exact: "1.9.0"
         ),
         .package(
             url: "https://github.com/lukepistrol/SFSymbolsMacro",

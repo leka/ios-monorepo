@@ -18,23 +18,19 @@ public struct ResourceFileView: View {
 
     public var body: some View {
         GroupBox(label: Label(self.resource.title, systemImage: self.resource.icon)) {
-            HStack {
-                Image(systemName: self.resource.icon)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 50, height: 50)
-                    .foregroundColor(.accentColor)
-                    .padding()
-
-                Spacer()
-
-                VStack {
-                    Text(self.resource.description)
+            VStack {
+                if let description = self.resource.description {
+                    Text(description)
                         .font(.body)
                         .multilineTextAlignment(.leading)
                         .foregroundStyle(Color.secondary)
-                    Spacer()
                 }
+
+                Spacer()
+
+                Image(uiImage: self.resource.illustrationImage)
+                    .resizable()
+                    .scaledToFit()
             }
             .aspectRatio(16 / 9, contentMode: .fit)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -60,7 +56,7 @@ public struct ResourceFileView: View {
 #Preview {
     NavigationStack {
         ResourceFileView(
-            resource: ContentKit.firstStepsResources.content.map(\.resource)[0]
+            resource: ContentKit.firstStepsResources.sections[0].resources.map(\.resource)[0]
         )
     }
 }

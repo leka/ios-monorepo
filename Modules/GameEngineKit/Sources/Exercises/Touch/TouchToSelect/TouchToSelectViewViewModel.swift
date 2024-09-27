@@ -11,7 +11,7 @@ class TouchToSelectViewViewModel: ObservableObject {
 
     init(choices: [TouchToSelect.Choice], shuffle: Bool = false, shared: ExerciseSharedData? = nil) {
         self.gameplay = GameplayFindTheRightAnswers(
-            choices: choices.map { GameplayTouchToSelectChoiceModel(choice: $0) }, shuffle: shuffle
+            choices: choices.map { GameplayFindTheRightAnswersChoiceModelTouchToSelect(choice: $0) }, shuffle: shuffle
         )
         self.exercicesSharedData = shared ?? ExerciseSharedData()
 
@@ -21,18 +21,18 @@ class TouchToSelectViewViewModel: ObservableObject {
 
     // MARK: Public
 
-    public func onChoiceTapped(choice: GameplayTouchToSelectChoiceModel) {
-        self.gameplay.process(choice)
+    public func onChoiceTapped(choice: GameplayFindTheRightAnswersChoiceModelTouchToSelect) {
+        self.gameplay.process(choice: choice)
     }
 
     // MARK: Internal
 
-    @Published var choices: [GameplayTouchToSelectChoiceModel] = []
+    @Published var choices: [GameplayFindTheRightAnswersChoiceModelTouchToSelect] = []
     @ObservedObject var exercicesSharedData: ExerciseSharedData
 
     // MARK: Private
 
-    private let gameplay: GameplayFindTheRightAnswers<GameplayTouchToSelectChoiceModel>
+    private let gameplay: GameplayFindTheRightAnswers<GameplayFindTheRightAnswersChoiceModelTouchToSelect>
     private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToGameplaySelectionChoicesUpdates() {

@@ -23,10 +23,12 @@ public extension Exercise {
         case superSimon
         case gamepadJoyStickColorPad
         case gamepadArrowPadColorPad
+        case gamepadColorPad
         case gamepadArrowPad
         case hideAndSeek
         case musicalInstruments
         case melody
         case pairing
+        case memory
     }
 }

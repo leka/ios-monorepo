@@ -50,7 +50,7 @@ extension DanceFreezeView {
         func randomSwitch() {
             if case .completed = self.viewModel.exercicesSharedData.state { return }
             if self.viewModel.progress < 1.0 {
-                let rand = Double.random(in: 2..<10)
+                let rand = Double.random(in: 1..<(self.viewModel.isDancing ? 10 : 3))
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + rand) {
                     if case .completed = self.viewModel.exercicesSharedData.state { return }

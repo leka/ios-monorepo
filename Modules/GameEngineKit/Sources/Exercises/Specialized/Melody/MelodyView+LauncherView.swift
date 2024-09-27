@@ -16,17 +16,18 @@ extension MelodyView {
         var body: some View {
             VStack(spacing: 50) {
                 HStack(spacing: 30) {
-                    GameEngineKitAsset.Exercises.Melody.imageIllustration.swiftUIImage
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .padding(80)
+                    VStack(spacing: 20) {
+                        GameEngineKitAsset.Exercises.Melody.imageIllustration.swiftUIImage
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
 
-                    VStack(spacing: 0) {
                         KeyboardModeView(keyboard: self.$keyboard)
-
-                        SongSelectorView(songs: self.songs, selectedMidiRecording: self.$selectedSong)
                     }
+
+                    SongSelectorView(songs: self.songs, selectedMidiRecording: self.$selectedSong)
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .padding(20)
 
                 Button {
                     self.mode = .selectionConfirmed

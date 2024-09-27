@@ -1,9 +1,22 @@
-### New Content & Features
+### New Activities
 
-- Curriculums: Added new curriculums including sequencing daily life and categorization of daily life activities.
-- Gameplay Enhancements: Updated choices for Drag And Drop In Order with appearance conformance and added a snap-to-center function.
-- SuperSimon: Updated icons for SuperSimon.
+- New Memory Game: Introduced a new Memory game template to enhance gameplay variety.
+- New ColorPad Gamepad Interface: Added the ColorPad interface to enrich the gamepad experience.
+
+### New Curriculums
+
+- New Curriculums Added: Introduced several new curriculums focusing on recognition and categorization skills. Topics include Animals (Farm, Forest, Sea, Insects, Pets), Household Items (Kitchen, Bathroom, Bedroom, Garden), Body Parts, Modes of Transportation, Counting Activities, and Sorting Sweet and Salty Foods.
+
+### Improvements
+
+- Improved Search Functionality: Implemented fuzzy search and tag search to enhance content discovery.
+- User Interface Enhancements: Updated UI elements in curriculums (now with horizontal scrolling), Dance Freeze and Melody launchers, Gamepad category, resources section, feedback form, and story icons for a better user experience.
+- Robot Firmware Update Handling: Improved firmware update process, including highlighting outdated robot versions and enabling reconnection to robots in deep sleep mode.
+- Caregiver Editing: Enabled editing of caregiver information directly within the caregiver section.
 
 ### Bug Fixes
 
-- Localization Fixes: Addressed localization issues
+- Content Corrections: Fixed typos and formatting issues in various content files to improve readability and accuracy.
+- Caregiver Editing Bug: Resolved an issue where editing caregiver details could disrupt sidebar navigation.
+- Resource Scaling Issue: Fixed a problem affecting the scaling of file resources within the content kit.
+- Robot Update Bug: Corrected an issue where robots did not display as updated even after a successful firmware update.

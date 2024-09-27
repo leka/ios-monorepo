@@ -8,20 +8,18 @@ uuid: 6467C269389743B0B4846CB900E9DC2A
 name: recognition_emotions_drawings_4_louna_zoe
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-06-24T17:07:03.682928"
+last_edited_at: "2024-07-12T12:48:14.946202"
 status: published
 
 authors:
   - leka
 
 skills:
-  - recognition
-  - communication
-  - communication/verbal_communication
-  - communication/verbal_communication/receptive_language
+  - emotion_recognition
 
 tags:
   - characters
+  - emotions
   - zoe
   - louna
 

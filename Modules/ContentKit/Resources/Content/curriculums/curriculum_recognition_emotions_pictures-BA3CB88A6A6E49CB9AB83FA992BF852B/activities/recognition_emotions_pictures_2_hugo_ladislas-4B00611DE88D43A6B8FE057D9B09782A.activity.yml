@@ -8,20 +8,17 @@ uuid: 4B00611DE88D43A6B8FE057D9B09782A
 name: recognition_emotions_pictures_2_hugo_ladislas
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-06-24T17:07:03.681262"
+last_edited_at: "2024-07-12T12:48:14.936637"
 status: published
 
 authors:
   - leka
 
 skills:
-  - recognition
-  - communication
-  - communication/verbal_communication
-  - communication/verbal_communication/receptive_language
+  - emotion_recognition
 
 tags:
-  - hugo
+  - emotions
   - ladislas
 
 hmi:

@@ -37,6 +37,7 @@ extension MelodyView {
                             GameEngineKitAsset.Exercises.Melody.iconKeyboardPartial.swiftUIImage
                                 .resizable()
                                 .scaledToFit()
+                                .frame(width: 130)
                             Text(l10n.MelodyView.partialKeyboardLabel)
                                 .foregroundStyle(self.keyboard == .partial ? self.styleManager.accentColor! : .primary)
                         }
@@ -58,6 +59,7 @@ extension MelodyView {
                             GameEngineKitAsset.Exercises.Melody.iconKeyboardFull.swiftUIImage
                                 .resizable()
                                 .scaledToFit()
+                                .frame(width: 130)
                             Text(l10n.MelodyView.fullKeyboardLabel)
                                 .foregroundStyle(self.keyboard == .full ? self.styleManager.accentColor! : .primary)
                         }
@@ -69,8 +71,6 @@ extension MelodyView {
                     }
                 }
             }
-            .padding(.vertical, 15)
-            .padding(.horizontal, 40)
         }
 
         // MARK: Private

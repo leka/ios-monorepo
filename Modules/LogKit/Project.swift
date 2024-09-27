@@ -16,6 +16,7 @@ let project = Project.module(
     ],
     dependencies: [
         .project(target: "UtilsKit", path: Path("../../Modules/UtilsKit")),
+
         .external(name: "Logging"),
     ]
 )

@@ -8,7 +8,7 @@ uuid: 1A3097D58288406EB4835812663D3376
 name: counting_candies_from_1_to_5
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-07-01T14:21:23.222507"
+last_edited_at: "2024-07-12T12:48:14.929007"
 status: published
 
 authors:
@@ -16,9 +16,11 @@ authors:
 
 skills:
   - counting
+  - attention
 
 tags:
   - numbers
+  - quantity
 
 hmi:
   - tablet

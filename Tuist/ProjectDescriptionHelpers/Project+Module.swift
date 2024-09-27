@@ -45,20 +45,24 @@ public extension Project {
             dependencies: dependencies
         )
 
-        let exampleTargets = examples.compactMap { example in
-            Target.target(
-                name: example.name,
-                destinations: destinations,
-                product: .app,
-                bundleId: "io.leka.apf.app.example.\(example.name)",
-                deploymentTargets: deploymentTargets,
-                infoPlist: .extendingDefault(with: InfoPlist.extendingBase(version: "1.0.0", with: infoPlist)),
-                sources: ["Examples/\(example.name)/Sources/**"],
-                resources: ["Examples/\(example.name)/Resources/**"],
-                scripts: TargetScript.linters(),
-                dependencies: [.target(name: name)] + example.dependencies,
-                settings: .settings(base: .extendingBase(with: settings))
-            )
+        let exampleTargets: [Target] = if Environment.generateExampleTargets.getBoolean(default: false) {
+            examples.compactMap { example in
+                Target.target(
+                    name: example.name,
+                    destinations: destinations,
+                    product: .app,
+                    bundleId: "io.leka.apf.app.example.\(example.name)",
+                    deploymentTargets: deploymentTargets,
+                    infoPlist: .extendingDefault(with: InfoPlist.extendingBase(version: "1.0.0", with: infoPlist)),
+                    sources: ["Examples/\(example.name)/Sources/**"],
+                    resources: ["Examples/\(example.name)/Resources/**"],
+                    scripts: TargetScript.linters(),
+                    dependencies: [.target(name: name)] + example.dependencies,
+                    settings: .settings(base: .extendingBase(with: settings))
+                )
+            }
+        } else {
+            []
         }
 
         return Project(

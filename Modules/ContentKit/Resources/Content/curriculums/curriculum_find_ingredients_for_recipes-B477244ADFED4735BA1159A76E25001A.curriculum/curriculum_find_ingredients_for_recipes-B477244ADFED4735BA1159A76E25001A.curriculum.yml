@@ -1,0 +1,61 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: B477244ADFED4735BA1159A76E25001A
+name: curriculum_find_ingredients_for_recipes
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-07-12T12:48:33.814114"
+authors:
+  - leka
+
+skills:
+  - association
+  - association/matching
+
+tags:
+  - food
+  - cooking
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: find_ingredients_for_recipe
+
+      title: Trouver les ingrédients d'une recette
+
+      subtitle: Apprendre à identifier les bons ingrédients
+
+      abstract: |
+        Ce parcours aide les participants à apprendre et à identifier les ingrédients corrects nécessaires pour différentes recettes, avec et sans la présence d'intrus.
+
+      description: |
+        Ce parcours est conçu pour aider les participants à développer des compétences en association et en discrimination des aliments. À travers des activités, les participants apprendront à identifier les ingrédients nécessaires pour différentes recettes. Certaines activités présenteront des listes d'ingrédients corrects, tandis que d'autres incluront des intrus que les participants devront repérer et éliminer.
+
+  - locale: en_US
+    details:
+      icon: find_ingredients_for_recipe
+
+      title: Find Ingredients for a Recipe
+
+      subtitle: Learn to Identify the Correct Ingredients
+
+      abstract: |
+        This curriculum helps participants learn and identify the correct ingredients needed for various recipes, both with and without the presence of intruders.
+
+      description: |
+        This curriculum is designed to help participants develop skills in association and food discrimination. Through various activities, participants will learn to identify the necessary ingredients for different recipes. Some activities will present lists of correct ingredients, while others will include intruders that participants must spot and eliminate.
+
+activities:
+  - find_ingredients_for_recipes_without_intruder-FB482BC0EF6C41F7A2B0460EEFF0D689
+  - find_ingredients_for_recipes_with_one_intruder-79AAFFF840284DEA9D62119AB44B4796

@@ -8,15 +8,17 @@ name: curriculum_counting_candies
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-07-02T17:02:03.192135"
+last_edited_at: "2024-07-12T12:48:33.814085"
 authors:
   - leka
 
 skills:
   - counting
+  - attention
 
 tags:
   - numbers
+  - quantity
 
 hmi:
   - tablet

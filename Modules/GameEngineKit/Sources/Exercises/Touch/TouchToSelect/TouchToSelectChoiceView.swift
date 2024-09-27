@@ -18,7 +18,7 @@ struct TouchToSelectChoiceView: View {
         self.isTappable = isTappable
     }
 
-    init(choice: GameplayTouchToSelectChoiceModel, size: CGFloat, isTappable: Bool = true) {
+    init(choice: GameplayFindTheRightAnswersChoiceModelTouchToSelect, size: CGFloat, isTappable: Bool = true) {
         self.init(choice: choice.choice, state: choice.state, size: size, isTappable: isTappable)
     }
 

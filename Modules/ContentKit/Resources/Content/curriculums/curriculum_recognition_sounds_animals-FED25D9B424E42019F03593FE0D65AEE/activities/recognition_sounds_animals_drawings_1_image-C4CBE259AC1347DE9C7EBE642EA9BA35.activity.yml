@@ -8,18 +8,22 @@ uuid: C4CBE259AC1347DE9C7EBE642EA9BA35
 name: recognition_sounds_animals_drawings_1_image
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-06-24T17:07:03.695853"
+last_edited_at: "2024-07-12T12:48:14.954375"
 status: published
 
 authors:
   - leka
 
 skills:
-  - recognition
-  - sensory_interaction
+  - association
+  - association/matching
+  - sensory_integration
+  - sensory_integration/hearing
+  - attention
 
 tags:
   - animals
+  - listening
 
 hmi:
   - tablet
@@ -76,7 +80,7 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quel est cet animal ?
+              value: Ecoute le son. Quel est cet animal ?
             - locale: en_US
               value: Touch the speaker. What is this animal ?
           interface: listenThenTouchToSelect
@@ -95,7 +99,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quel est cet animal ?
+              value: Ecoute le son. Quel est cet animal ?
             - locale: en_US
               value: Touch the speaker. What is this animal ?
           interface: listenThenTouchToSelect
@@ -114,7 +118,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quel est cet animal ?
+              value: Ecoute le son. Quel est cet animal ?
             - locale: en_US
               value: Touch the speaker. What is this animal ?
           interface: listenThenTouchToSelect
@@ -133,7 +137,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quel est cet animal ?
+              value: Ecoute le son. Quel est cet animal ?
             - locale: en_US
               value: Touch the speaker. What is this animal ?
           interface: listenThenTouchToSelect
@@ -152,7 +156,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quel est cet animal ?
+              value: Ecoute le son. Quel est cet animal ?
             - locale: en_US
               value: Touch the speaker. What is this animal ?
           interface: listenThenTouchToSelect
@@ -171,7 +175,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quel est cet animal ?
+              value: Ecoute le son. Quel est cet animal ?
             - locale: en_US
               value: Touch the speaker. What is this animal ?
           interface: listenThenTouchToSelect
@@ -190,7 +194,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quel est cet animal ?
+              value: Ecoute le son. Quel est cet animal ?
             - locale: en_US
               value: Touch the speaker. What is this animal ?
           interface: listenThenTouchToSelect
@@ -209,7 +213,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quel est cet animal ?
+              value: Ecoute le son. Quel est cet animal ?
             - locale: en_US
               value: Touch the speaker. What is this animal ?
           interface: listenThenTouchToSelect
@@ -228,7 +232,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quel est cet animal ?
+              value: Ecoute le son. Quel est cet animal ?
             - locale: en_US
               value: Touch the speaker. What is this animal ?
           interface: listenThenTouchToSelect
@@ -247,7 +251,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quel est cet animal ?
+              value: Ecoute le son. Quel est cet animal ?
             - locale: en_US
               value: Touch the speaker. What is this animal ?
           interface: listenThenTouchToSelect
@@ -266,7 +270,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quel est cet animal ?
+              value: Ecoute le son. Quel est cet animal ?
             - locale: en_US
               value: Touch the speaker. What is this animal ?
           interface: listenThenTouchToSelect
@@ -285,7 +289,7 @@ exercises_payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touche le haut-parleur. Quel est cet animal ?
+              value: Ecoute le son. Quel est cet animal ?
             - locale: en_US
               value: Touch the speaker. What is this animal ?
           interface: listenThenTouchToSelect

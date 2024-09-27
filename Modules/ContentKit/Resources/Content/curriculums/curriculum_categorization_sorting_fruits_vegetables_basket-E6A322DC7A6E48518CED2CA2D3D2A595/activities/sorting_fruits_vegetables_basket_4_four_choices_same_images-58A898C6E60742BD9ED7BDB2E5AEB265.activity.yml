@@ -8,7 +8,7 @@ uuid: 58A898C6E60742BD9ED7BDB2E5AEB265
 name: sorting_fruits_vegetables_basket_4_four_choices_same_images
 
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-06-21T20:38:08.019032"
+last_edited_at: "2024-07-12T12:48:14.929007"
 status: published
 
 authors:
@@ -16,11 +16,12 @@ authors:
 
 skills:
   - association
-  - association/matching
+  - association/sorting
 
 tags:
   - vegetables
   - fruits
+  - food
 
 hmi:
   - tablet

@@ -37,25 +37,14 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-  - id: basic_emotions
+  - id: autumn
     l10n:
       - locale: en_US
-        name: Basic emotions
+        name: Autumn
         description: >
           Lorem ipsum
       - locale: fr_FR
-        name: Emotions de base
-        description: >
-          Lorem ipsum
-    subtags: []
-  - id: basic_physiological_needs
-    l10n:
-      - locale: en_US
-        name: Basic physiological needs
-        description: >
-          Lorem ipsum
-      - locale: fr_FR
-        name: Besoins physiologiques de base
+        name: Automne
         description: >
           Lorem ipsum
     subtags: []
@@ -224,17 +213,6 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-  - id: drawings
-    l10n:
-      - locale: en_US
-        name: Drawings
-        description: >
-          Lorem ipsum
-      - locale: fr_FR
-        name: Dessins
-        description: >
-          Lorem ipsum
-    subtags: []
   - id: dry
     l10n:
       - locale: en_US
@@ -243,6 +221,17 @@ list:
           Lorem ipsum
       - locale: fr_FR
         name: Sec
+        description: >
+          Lorem ipsum
+    subtags: []
+  - id: emotions
+    l10n:
+      - locale: en_US
+        name: Emotions
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Émotions
         description: >
           Lorem ipsum
     subtags: []
@@ -287,6 +276,28 @@ list:
           Lorem ipsum
       - locale: fr_FR
         name: Fruits
+        description: >
+          Lorem ipsum
+    subtags: []
+  - id: gamepad
+    l10n:
+      - locale: en_US
+        name: Gamepad
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Manette
+        description: >
+          Lorem ipsum
+    subtags: []
+  - id: garden
+    l10n:
+      - locale: en_US
+        name: Garden
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Jardin
         description: >
           Lorem ipsum
     subtags: []
@@ -400,14 +411,14 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-  - id: leka
+  - id: leka_pictograms
     l10n:
       - locale: en_US
-        name: Leka
+        name: Leka pictograms
         description: >
           Lorem ipsum
       - locale: fr_FR
-        name: Leka
+        name: Pictogrammes de Leka
         description: >
           Lorem ipsum
     subtags: []
@@ -466,6 +477,28 @@ list:
         description: >
           Lorem ipsum
     subtags: []
+  - id: modes_of_transportation
+    l10n:
+      - locale: en_US
+        name: Modes of Transportation
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Moyens de transport
+        description: >
+          Lorem ipsum
+    subtags: []
+  - id: mountain
+    l10n:
+      - locale: en_US
+        name: Mountain
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Montagne
+        description: >
+          Lorem ipsum
+    subtags: []
   - id: moussa
     l10n:
       - locale: en_US
@@ -521,6 +554,17 @@ list:
         description: >
           Lorem ipsum
     subtags: []
+  - id: on
+    l10n:
+      - locale: en_US
+        name: On
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Sur
+        description: >
+          Lorem ipsum
+    subtags: []
   - id: oscar
     l10n:
       - locale: en_US
@@ -540,6 +584,17 @@ list:
           Lorem ipsum
       - locale: fr_FR
         name: Besoins physiologiques
+        description: >
+          Lorem ipsum
+    subtags: []
+  - id: pictures
+    l10n:
+      - locale: en_US
+        name: Pictures
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Photos
         description: >
           Lorem ipsum
     subtags: []
@@ -594,7 +649,7 @@ list:
         description: >
           Lorem ipsum
       - locale: fr_FR
-        name: Movements du robot
+        name: Mouvements du robot
         description: >
           Lorem ipsum
     subtags: []
@@ -631,14 +686,14 @@ list:
         description: >
           Lorem ipsum
     subtags: []
-  - id: self_awareness
+  - id: sensory_stimulation
     l10n:
       - locale: en_US
-        name: Self-awareness
+        name: Sensory stimulation
         description: >
           Lorem ipsum
       - locale: fr_FR
-        name: Conscience de soi
+        name: Stimulation sensorielle
         description: >
           Lorem ipsum
     subtags: []
@@ -653,6 +708,17 @@ list:
         description: >
           Lorem ipsum
     subtags: []
+  - id: spring
+    l10n:
+      - locale: en_US
+        name: Spring
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Printemps
+        description: >
+          Lorem ipsum
+    subtags: []
   - id: standalone_activity
     l10n:
       - locale: en_US
@@ -661,6 +727,28 @@ list:
           Lorem ipsum
       - locale: fr_FR
         name: Activité autonome
+        description: >
+          Lorem ipsum
+    subtags: []
+  - id: story
+    l10n:
+      - locale: en_US
+        name: Story
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Histoire
+        description: >
+          Lorem ipsum
+    subtags: []
+  - id: summer
+    l10n:
+      - locale: en_US
+        name: Summer
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Été
         description: >
           Lorem ipsum
     subtags: []
@@ -738,6 +826,17 @@ list:
           Lorem ipsum
       - locale: fr_FR
         name: Mouillé
+        description: >
+          Lorem ipsum
+    subtags: []
+  - id: winter
+    l10n:
+      - locale: en_US
+        name: Winter
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Hiver
         description: >
           Lorem ipsum
     subtags: []

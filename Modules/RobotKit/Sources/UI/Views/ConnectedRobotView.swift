@@ -7,6 +7,7 @@ import Combine
 import DesignKit
 import LocalizationKit
 import SwiftUI
+import Version
 
 // MARK: - ConnectedRobotView
 
@@ -32,23 +33,59 @@ public struct ConnectedRobotView: View {
                         .lineLimit(1)
                         .truncationMode(.tail)
                         .foregroundColor(.secondary)
-                    self.robotChargingStatusAndBattery
+                    HStack {
+                        self.robotOsVersion
+                        self.robotChargingStatusAndBattery
+                    }
+                    if self.robotNotUpToDate {
+                        HStack {
+                            Image(systemName: "exclamationmark.circle.fill")
+                                .foregroundStyle(.white, .red)
+                            Text(l10n.ConnectedRobotView.robotNotUpToDateAlert)
+                                .font(.caption)
+                                .lineLimit(1)
+                                .truncationMode(.tail)
+                                .foregroundColor(.secondary)
+                        }
+                    }
                 }
             }
 
-            Button {
-                let animation = Animation.easeOut(duration: 0.5)
-                withAnimation(animation) {
-                    self.viewModel.disconnectFromRobot()
+            VStack {
+                if self.robotNotUpToDate, self.isNotLekaUpdater {
+                    Button {
+                        let appURL = URL(string: "LekaUpdater://")
+                        let appStoreURL = URL(string: "https://apps.apple.com/app/leka-updater/id6446940960")!
+
+                        if let appURL, UIApplication.shared.canOpenURL(appURL) {
+                            UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+                        } else {
+                            UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
+                        }
+                    } label: {
+                        HStack {
+                            Image(systemName: "arrow.triangle.2.circlepath")
+                            Text(l10n.RobotKit.RobotConnectionView.updateButton)
+                        }
+                        .frame(minWidth: 200)
+                    }
+                    .buttonStyle(.borderedProminent)
                 }
-            } label: {
-                HStack {
-                    Image(systemName: "xmark.circle")
-                    Text(l10n.RobotKit.RobotConnectionView.disconnectButton)
+
+                Button {
+                    let animation = Animation.easeOut(duration: 0.5)
+                    withAnimation(animation) {
+                        self.viewModel.disconnectFromRobot()
+                    }
+                } label: {
+                    HStack {
+                        Image(systemName: "xmark.circle")
+                        Text(l10n.RobotKit.RobotConnectionView.disconnectButton)
+                    }
+                    .frame(minWidth: 200)
                 }
-                .frame(minWidth: 200)
+                .buttonStyle(.borderedProminent)
             }
-            .buttonStyle(.borderedProminent)
         }
         .navigationTitle(String(l10n.ConnectedRobotView.navigationTitle.characters))
     }
@@ -58,16 +95,36 @@ public struct ConnectedRobotView: View {
     @StateObject var connectedRobotInformationViewModel: ConnectedRobotInformationViewModel = .init()
     @StateObject var viewModel: RobotConnectionViewModel
 
+    // swiftlint:disable:next force_cast
+    private let isNotLekaUpdater = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as! String != "LekaUpdater"
+
+    @State private var showNotUpToDateAlert: Bool = false
+    private var robotNotUpToDate: Bool {
+        guard let osVersion = Version(tolerant: self.connectedRobotInformationViewModel.osVersion) else {
+            return false
+        }
+        let versionIsLatest = osVersion >= Robot.kLatestFirmwareVersion
+        if versionIsLatest {
+            return false
+        } else {
+            return true
+        }
+    }
+
     @Environment(\.dismiss) var dismiss
 
     // MARK: Private
 
-    private var robotChargingStatusAndBattery: some View {
-        HStack(spacing: 5) {
+    private var robotOsVersion: some View {
+        HStack {
             Text(verbatim: "LekaOS v\(self.connectedRobotInformationViewModel.osVersion)")
                 .font(.footnote)
                 .foregroundColor(.gray)
+        }
+    }
 
+    private var robotChargingStatusAndBattery: some View {
+        HStack(spacing: 5) {
             if self.connectedRobotInformationViewModel.isCharging {
                 Image(systemName: "bolt.circle.fill")
                     .foregroundColor(.blue)
@@ -105,6 +162,13 @@ extension l10n {
             bundle: RobotKitResources.bundle,
             value: "S/N: %1$@",
             comment: "The title of the connected robot view"
+        )
+
+        static let robotNotUpToDateAlert = LocalizedString(
+            "robotkit.connected_robot_view.robot_not_up_to_date_alert",
+            bundle: RobotKitResources.bundle,
+            value: "An update for Leka is available",
+            comment: "Update is available alert"
         )
     }
 }

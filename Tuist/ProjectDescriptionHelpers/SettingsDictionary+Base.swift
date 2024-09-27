@@ -22,6 +22,8 @@ extension SettingsDictionary {
             ],
         ]
 
+        settings = settings.betaFeature_enableExplicitModules(true)
+
         if Environment.developerMode.getBoolean(default: true) {
             settings = settings.otherSwiftFlags(["-D", "DEVELOPER_MODE"])
         }

@@ -8,19 +8,23 @@ uuid: E85F0498A29047E893631397592CC444
 name: gamepad_joystick_color_pad
 
 created_at: "2024-03-04T18:07:12.519606"
-last_edited_at: "2024-04-11T10:09:07.867304"
+last_edited_at: "2024-09-27T00:29:50.410579"
 status: published
 
 authors:
   - leka
 
 skills:
-  - sensory_interaction
+  - sensory_integration
+  - sensory_integration/vision
   - gross_motor_skills
+  - relationship_tablet_robot
 
 tags:
   - robot_movements
   - robot_colors
+  - sensory_stimulation
+  - gamepad
 
 hmi:
   - tablet_robot
@@ -87,9 +91,7 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Contrôle Leka avec la télécommande, fais le se déplacer, changer
-                de couleur ou lance le renforçateur de ton choix
+              value: Contrôle Leka avec la télécommande, fais le se déplacer, changer de couleur ou lance le renforçateur de ton choix
             - locale: en_US
-              value: Control Leka with the remote control, make him move, change color
-                or throw the reinforcer of your choice
+              value: Control Leka with the remote control, make him move, change color or throw the reinforcer of your choice
           interface: gamepadJoyStickColorPad

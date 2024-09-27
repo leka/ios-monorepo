@@ -8,18 +8,23 @@ uuid: 3E4B57F536824F1087A2E512223EF7E0
 name: super_simon_2_colors
 
 created_at: "2024-05-14T18:06:12.518998"
-last_edited_at: "2024-07-05T10:23:49.783310"
+last_edited_at: "2024-07-12T12:48:14.954375"
 status: published
 
 authors:
   - leka
 
 skills:
-  - recognition
+  - memory
+  - memory/short_term_memory
+  - attention
+  - attention/sustained_attention
 
 tags:
   - colors
   - standalone_activity
+  - robot_colors
+  - sensory_stimulation
 
 hmi:
   - tablet_robot

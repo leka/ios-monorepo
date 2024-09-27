@@ -6,30 +6,32 @@ import AccountKit
 import ContentKit
 import Foundation
 
-// MARK: - GameplayDragAndDropInOrderChoiceModel
+// MARK: - GameplayFindTheRightOrderChoiceModelDragAndDropInOrder
 
-struct GameplayDragAndDropInOrderChoiceModel: GameplayChoiceModelProtocol {
+// swiftlint:disable:next type_name
+struct GameplayFindTheRightOrderChoiceModelDragAndDropInOrder: GameplayChoiceModelProtocol {
     typealias ChoiceType = DragAndDropInOrder.Choice
 
     let id: String = UUID().uuidString
     let choice: ChoiceType
+    var dropZoneIndex: Int?
     var state: GameplayChoiceState = .idle
 }
 
 // MARK: Equatable
 
-extension GameplayDragAndDropInOrderChoiceModel: Equatable {
-    static func == (lhs: GameplayDragAndDropInOrderChoiceModel, rhs: GameplayDragAndDropInOrderChoiceModel) -> Bool {
+extension GameplayFindTheRightOrderChoiceModelDragAndDropInOrder: Equatable {
+    static func == (lhs: GameplayFindTheRightOrderChoiceModelDragAndDropInOrder, rhs: GameplayFindTheRightOrderChoiceModelDragAndDropInOrder) -> Bool {
         lhs.id == rhs.id
     }
 }
 
-extension GameplayFindTheRightOrder where ChoiceModelType == GameplayDragAndDropInOrderChoiceModel {
-    convenience init(choices: [GameplayDragAndDropInOrderChoiceModel], allowedTrials: Int? = nil) {
+extension GameplayFindTheRightOrder where ChoiceModelType == GameplayFindTheRightOrderChoiceModelDragAndDropInOrder {
+    convenience init(choices: [GameplayFindTheRightOrderChoiceModelDragAndDropInOrder], allowedTrials: Int? = nil) {
         self.init()
         self.rightAnswers = choices
         self.choices.send(choices)
-        self.state.send(.playing)
+        self.state.send(.playing())
 
         if let allowedTrials {
             self.allowedTrials = allowedTrials
@@ -38,8 +40,12 @@ extension GameplayFindTheRightOrder where ChoiceModelType == GameplayDragAndDrop
         }
     }
 
-    func process(_ choice: ChoiceModelType, _ dropZoneIndex: Int) {
+    func process(choice: ChoiceModelType) {
         guard answers.count < rightAnswers.count else {
+            return
+        }
+
+        guard let dropZoneIndex = choice.dropZoneIndex else {
             return
         }
 
