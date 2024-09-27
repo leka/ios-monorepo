@@ -45,6 +45,7 @@ class GameplayFindTheRightOrder: GameplayProtocol {
 
     public private(set) var choices = CurrentValueSubject<[FindTheRightOrderChoice], Never>([])
     public let rawChoices: [FindTheRightOrderChoice]
+    public var isCompleted = CurrentValueSubject<Bool, Never>(false)
 
     // MARK: Internal
 
@@ -70,6 +71,7 @@ class GameplayFindTheRightOrder: GameplayProtocol {
         }
         if self.isCorrectOrder {
             log.debug("Exercise completed")
+            self.isCompleted.send(true)
         }
 
         return correctSelectedOrder
