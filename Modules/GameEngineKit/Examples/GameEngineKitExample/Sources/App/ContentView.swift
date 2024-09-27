@@ -26,19 +26,6 @@ struct ContentView: View {
                     .tint(.orange)
                     .buttonStyle(.borderedProminent)
                     .frame(maxWidth: .infinity)
-
-                    NavigationLink("Choose Any Answer Up To 3", destination: {
-                        let gameplay = GameplayChooseAnyAnswersUpToThree(choices: TTSCoordinatorChooseAnyAnswersUpToThree.kDefaultChoices)
-                        let coordinator = TTSCoordinatorChooseAnyAnswersUpToThree(gameplay: gameplay)
-                        let viewModel = TTSViewViewModel(coordinator: coordinator)
-
-                        return TTSView(viewModel: viewModel)
-                            .navigationTitle("Choose Any Answer Up To 3")
-                            .navigationBarTitleDisplayMode(.large)
-                    })
-                    .tint(.pink)
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
                 }
 
                 NavigationLink("Find The Right Order", destination: {
