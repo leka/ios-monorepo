@@ -8,7 +8,7 @@ name: curriculum_receptive_language_ing_verbs
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-07-12T12:48:33.814110"
+last_edited_at: "2024-09-27T13:05:22.487193"
 authors:
   - julie_tuil
 
@@ -34,7 +34,7 @@ l10n:
       icon: receptive_language_identifying_actions
 
       title: Identifier des actions en cours
-      subtitle: Compréhension des actions
+      subtitle: Comprendre des actions
 
       abstract: |
         Ce curriculum aide les personnes accompagnées à identifier des actions en cours. À travers des activités interactives sur l'écran de l'iPad, les personnes accompagnées sont encouragées à écouter des consignes orales et à reconnaître l'action représentée.
@@ -45,7 +45,7 @@ l10n:
       icon: receptive_language_identifying_actions
 
       title: Identify -ing Verbs
-      subtitle: Understanding Ongoing Actions
+      subtitle: Understanding actions
 
       abstract: |
         This curriculum assists care receivers in identifying ongoing actions. Through interactive activities on the iPad screen, care receivers are prompted to listen to oral instructions and recognize the action being portrayed.

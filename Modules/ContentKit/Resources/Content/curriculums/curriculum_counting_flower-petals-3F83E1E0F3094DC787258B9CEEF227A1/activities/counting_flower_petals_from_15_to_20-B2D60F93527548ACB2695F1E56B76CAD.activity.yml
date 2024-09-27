@@ -8,7 +8,7 @@ uuid: B2D60F93527548ACB2695F1E56B76CAD
 name: counting_flower_petals_from_15_to_20
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-09-26T17:06:54.905653"
+last_edited_at: "2024-09-27T13:03:45.364752"
 status: published
 
 authors:
@@ -37,7 +37,7 @@ l10n:
     details:
       icon: counting_flower_petals_15_to_20
 
-      title: Dénombrement de pétales de fleur
+      title: Compter des pétales de fleurs
       subtitle: 15 à 20
 
       short_description: |

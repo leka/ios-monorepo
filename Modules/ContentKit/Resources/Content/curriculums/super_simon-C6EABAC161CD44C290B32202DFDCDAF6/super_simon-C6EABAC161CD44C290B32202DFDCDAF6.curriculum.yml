@@ -8,7 +8,7 @@ name: super_simon
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-09-19T16:07:10.614518"
+last_edited_at: "2024-09-27T13:05:22.501280"
 authors:
   - leka
 
@@ -34,7 +34,7 @@ l10n:
     details:
       icon: super_simon
       title: Super Simon
-      subtitle: Parcours avec 3 niveaux de séquences lumineuses
+      subtitle: Travailler la mémoire et l'attention
       abstract: |
         Un parcours basé sur le jeu Super Simon, où il faut mémoriser et reproduire des séquences lumineuses avec différents niveaux de difficulté.
       description: |
@@ -46,7 +46,7 @@ l10n:
     details:
       icon: super_simon
       title: Super Simon
-      subtitle: Course with 3 levels of light sequences
+      subtitle: Improving memory and attention
       abstract: |
         A course based on the Super Simon game, where the goal is to memorize and reproduce light sequences with increasing difficulty.
       description: |

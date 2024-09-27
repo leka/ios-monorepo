@@ -6,7 +6,7 @@ uuid: B6F2027A304C44F5B3C482EAFCD8DE7E
 name: curriculum_fruits_and_vegetables_generalization
 status: published
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-08-06T18:24:47.550849"
+last_edited_at: "2024-09-27T13:05:22.474250"
 authors:
   - leka
 
@@ -31,7 +31,7 @@ l10n:
     details:
       icon: fruits_and_vegetables_generalization
       title: Généralisation des fruits et légumes
-      subtitle: Identifier et généraliser les fruits et légumes
+      subtitle: Combiner dessins, photos and pictogrammes
 
       abstract: |
         Ce parcours vise à développer la reconnaissance et la généralisation des fruits et légumes chez les enfants.
@@ -43,7 +43,7 @@ l10n:
     details:
       icon: fruits_and_vegetables_generalization
       title: Fruits and vegetables generalization
-      subtitle: Identify and generalize fruits and vegetables
+      subtitle: Combining Drawings, Pictures, and Pictograms
 
       abstract: |
         This curriculum aims to develop the recognition and generalization of fruits and vegetables in children.

@@ -8,7 +8,7 @@ name: curriculum_counting_flower_petals
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-07-18T15:04:11.561134"
+last_edited_at: "2024-09-27T13:05:22.501280"
 authors:
   - leka
 
@@ -32,7 +32,7 @@ l10n:
     details:
       icon: counting_flower_petals
 
-      title: Dénombrement de pétales de fleur
+      title: Compter des pétales de fleurs
       subtitle: Apprendre à dénombrer des quantités de 10 à 20
 
       abstract: |

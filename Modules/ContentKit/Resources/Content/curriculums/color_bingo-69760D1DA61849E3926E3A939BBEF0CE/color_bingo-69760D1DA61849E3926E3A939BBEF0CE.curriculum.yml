@@ -8,7 +8,7 @@ name: color_bingo
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-07-12T12:48:33.814098"
+last_edited_at: "2024-09-27T13:05:22.485128"
 authors:
   - leka
 
@@ -35,7 +35,7 @@ l10n:
     details:
       icon: color_bingo
       title: Loto des Couleurs
-      subtitle: Reconnaissance des couleurs entre Leka et la tablette
+      subtitle: Trouve la couleur de Leka !
       abstract: |
         Leka s'allume dans une couleur. La personne accompagnée doit toucher la même couleur sur l'écran de l'iPad.
       description: |
@@ -49,7 +49,7 @@ l10n:
     details:
       icon: color_bingo
       title: Color Bingo
-      subtitle: Color recognition between Leka and the tablet
+      subtitle: Find Leka's color!
       abstract: |
         Leka lights up in a color. The care receiver must touch the same color on the iPad screen.
       description: |
