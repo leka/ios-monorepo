@@ -8,7 +8,7 @@ uuid: E06E4960B14047609C48C1E0DD6D61F2
 name: recognition_basic_physiological_needs_drawings_4_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-09-27T15:25:22.743770"
+last_edited_at: "2024-09-27T17:51:11.976979"
 status: published
 
 authors:
@@ -40,7 +40,7 @@ l10n:
     details:
       icon: recognition_basic_physiological_needs
 
-      title: Les besoins physiologiques primaires
+      title: Les besoins physiologiques
       subtitle: 4 images - Oscar
 
       short_description: |
@@ -58,7 +58,7 @@ l10n:
     details:
       icon: recognition_basic_physiological_needs
 
-      title: Primary physiological needs
+      title: Physiological needs
       subtitle: 4 images - Oscar
 
       short_description: |

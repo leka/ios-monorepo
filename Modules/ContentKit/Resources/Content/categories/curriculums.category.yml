@@ -7,12 +7,12 @@ l10n:
     details:
       title: Parcours
       subtitle: Séquences d'activités ciblées pour un apprentissage approfondi et structuré.
-      description: Ensemble d'activités conçues par et pour les professionnels, pour un développement progressif allant de la reconnaissance des émotions à la catégorisation.
+      description: Ensemble d'activités conçues par et pour les professionnels, pour un développement progressif.
   - locale: en_US
     details:
       title: Curriculums
       subtitle: Targeted sequences of activities for structured, in-depth learning.
-      description: Curated groups of activities developed with caregivers for stepwise progression in areas like emotion recognition and language skills.
+      description: Curated groups of activities developed with caregivers for stepwise progression.
 
 content:
   - id: daily_life
@@ -40,12 +40,12 @@ content:
         details:
           title: Reconnaissance des émotions
           subtitle: Apprendre à identifier et exprimer ses émotions.
-          description: Découvrez des activités pour aider les personnes accompagnées à reconnaître et exprimer leurs émotions, pour une meilleure communication et compréhension.
+          description: Découvrez des activités pour aider les personnes accompagnées à reconnaître et exprimer leurs émotions.
       - locale: en_US
         details:
           title: Emotion Recognition
           subtitle: Learn to identify and express emotions.
-          description: Explore activities to help care receivers recognize and express their emotions, for improved communication and understanding.
+          description: Explore activities to help care receivers recognize and express their emotions.
     curriculums:
       - curriculum_recognition_emotions_pictures-BA3CB88A6A6E49CB9AB83FA992BF852B
       - curriculum_recognition_emotions_drawings-95C42E189BC146BB844467A3BAFE8BC0
@@ -79,12 +79,12 @@ content:
         details:
           title: Langage réceptif
           subtitle: Comprendre et interpréter les mots et les phrases.
-          description: Découvrez des activités pour aider les personnes accompagnées à comprendre et interpréter les mots et les phrases, pour une meilleure communication et interaction.
+          description: Découvrez des activités pour aider les personnes accompagnées à comprendre et interpréter les mots et les phrases.
       - locale: en_US
         details:
           title: Receptive Language
           subtitle: Understand and interpret words and phrases.
-          description: Explore activities to help care receivers understand and interpret words and phrases, for improved communication and interaction.
+          description: Explore activities to help care receivers understand and interpret words and phrases.
     curriculums:
       - curriculum_receptive_language_identity_familiar_nouns-1607BEA72CC14285AB709C567E1BE5E7
       - curriculum_receptive_language_ing_verbs-2B927C344CA94CD993DDB7AC4C7F46FD
@@ -100,12 +100,12 @@ content:
         details:
           title: Reconnaissance des sons
           subtitle: Identifier et associer les sons à des objets et des actions.
-          description: Découvrez des activités pour aider les personnes accompagnées à identifier et associer les sons à des objets et des actions, pour une meilleure compréhension et interaction.
+          description: Découvrez des activités pour aider les personnes accompagnées à identifier et associer les sons à des objets et des actions.
       - locale: en_US
         details:
           title: Sound Recognition
           subtitle: Identify and associate sounds with objects and actions.
-          description: Explore activities to help care receivers identify and associate sounds with objects and actions, for improved understanding and interaction.
+          description: Explore activities to help care receivers identify and associate sounds with objects and actions.
     curriculums:
       - curriculum_recognition_sounds_emotions-2D48CCB418BF4808BCB16148C901C617
       - curriculum_recognition_sounds_musical_instruments-6A5EF209D00942F4AEEA4AEC6DAC052A
@@ -135,12 +135,12 @@ content:
         details:
           title: Ordonner et séquencer
           subtitle: Apprendre à classer des objets par ordre ou séquence.
-          description: Activités pour aider les personnes à ordonner des objets par taille, séquence ou chronologie, afin de développer des compétences d'organisation et de logique.
+          description: Découvrez des activités pour aider les personnes à ordonner des objets par taille, séquence ou chronologie.
       - locale: en_US
         details:
           title: Ordering and Sequencing
           subtitle: Learn to organize objects by order or sequence.
-          description: Activities to help care receivers organize objects by size, sequence, or chronology to develop organizational and logical skills.
+          description: Discover activities to help people sort objects by size, sequence, or chronology.
     curriculums:
       - curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
 
@@ -150,12 +150,12 @@ content:
         details:
           title: Les animaux
           subtitle: Apprendre à reconnaître les animaux et leur environnement.
-          description: Activités pour aider les personnes à identifier les animaux et à comprendre leurs habitats.
+          description: Découvrez des activités pour aider les personnes à identifier les animaux.
       - locale: en_US
         details:
           title: Animals
           subtitle: Learn to recognize animals and their environment.
-          description: Activities to help care receivers identify animals and understand their habitats.
+          description: Discover activities to help care receivers identify animals.
     curriculums:
       - curriculum_animal_memory-7C75908B86D748A283AA080D40642BE7
       - curriculum_animal_recognition_farm_animals-7D02DB707DD945A38BC65BDD86D2CFEA
@@ -189,12 +189,12 @@ content:
         details:
           title: Météo et environnement
           subtitle: Apprendre à reconnaître les éléments de la météo et de l'environnement.
-          description: Activités pour aider les personnes à identifier et comprendre les éléments de la météo et de la nature.
+          description: Découvrez des activités pour aider les personnes à identifier et comprendre les éléments de la météo et de la nature.
       - locale: en_US
         details:
           title: Weather and Environment
           subtitle: Learn to recognize weather elements and the environment.
-          description: Activities to help care receivers identify and understand weather elements and nature.
+          description: Discover activities to help care receivers identify and understand weather elements and nature.
     curriculums:
       - curriculum_recognition_weather_and_time-1D8E1AB667DB40B199479D731EF96F2E
       - curriculum_recognition_seaside_holidays-B1BA5597BC594082AECE293AD25CFA89
@@ -208,12 +208,12 @@ content:
         details:
           title: Corps humain et besoins physiologiques
           subtitle: Apprendre à connaître son corps et ses besoins essentiels.
-          description: Activités pour aider les personnes à reconnaître les parties du corps et à comprendre les besoins physiologiques.
+          description: Découvrez des activités pour aider les personnes à reconnaître les parties du corps et à comprendre les besoins physiologiques.
       - locale: en_US
         details:
           title: Human Body and Physiological Needs
           subtitle: Learn about the human body and basic needs.
-          description: Activities to help care receivers recognize body parts and understand basic physiological needs.
+          description: Discover activities to help care receivers recognize body parts and understand basic physiological needs.
     curriculums:
       - curriculum_recognition_body_parts-80761A1D62BF4C6980BF20E7D9BE52B8
       - curriculum_recognition_basic_physiological_needs-B697FEE9EF7946A2B704673FEEAA0824
@@ -223,13 +223,13 @@ content:
       - locale: fr_FR
         details:
           title: Métiers et sports
-          subtitle: Apprendre à reconnaître les métiers et les sports.
-          description: Activités pour aider les personnes à identifier différents métiers et sports.
+          subtitle: Découvrez des activités pour explorer les outils des métiers et les équipements des sports.
+          description: Activités pour aider les personnes à identifier différents métiers et sports, ainsi que leurs outils et accessoires.
       - locale: en_US
         details:
           title: Professions and Sports
-          subtitle: Learn to recognize professions and sports.
-          description: Activities to help care receivers identify different professions and sports.
+          subtitle: Discover activities to explore the tools of professions and the equipment of sports.
+          description: Activities to help people identify different professions and sports, as well as their tools and accessories.
     curriculums:
       - curriculum_recognition_professions-92ACC48ED3A041DE959EA5C2E8600441
       - curriculum_recognition_sports-C7F3963541234712A2701C0EB9E2EEAE
@@ -240,12 +240,12 @@ content:
         details:
           title: Moyens de transport
           subtitle: Apprendre à reconnaître les différents moyens de transport.
-          description: Activités pour aider les personnes à identifier les moyens de transport et leurs usages.
+          description: Découvrez des activités pour aider les personnes à identifier les moyens de transport et leurs usages.
       - locale: en_US
         details:
           title: Modes of Transportation
           subtitle: Learn to recognize different modes of transportation.
-          description: Activities to help care receivers identify modes of transportation and their uses.
+          description: Discover activities to help care receivers identify modes of transportation and their uses.
     curriculums:
       - curriculum_recognition_modes_of_transportation-B20B0721C37644E9A0168481421893F8
 
@@ -255,12 +255,12 @@ content:
         details:
           title: Fruits et légumes
           subtitle: Apprendre à reconnaître les fruits et légumes.
-          description: Activités pour aider les personnes à identifier, classer et nommer différents fruits et légumes.
+          description: Découvrez des activités pour aider les personnes à identifier, classer et nommer différents fruits et légumes.
       - locale: en_US
         details:
           title: Fruits and Vegetables
           subtitle: Learn to recognize fruits and vegetables.
-          description: Activities to help care receivers identify, classify, and name different fruits and vegetables.
+          description: Discover activities to help care receivers identify, classify, and name different fruits and vegetables.
     curriculums:
       - sorting_fruits_vegetables_basket-E6A322DC7A6E48518CED2CA2D3D2A595
       - curriculum_fruits_and_vegetables_generalization-B6F2027A304C44F5B3C482EAFCD8DE7E
@@ -271,12 +271,12 @@ content:
         details:
           title: Relations sociales
           subtitle: Apprendre à reconnaître et comprendre les interactions sociales.
-          description: Activités pour aider les personnes à identifier les membres de la famille, les amis et les autres relations sociales, tout en développant des compétences en interaction sociale.
+          description: Découvrez des activités pour aider les personnes à identifier les membres de la famille, les amis et les autres relations sociales, tout en développant des compétences en interaction sociale.
       - locale: en_US
         details:
           title: Social Relations
           subtitle: Learn to recognize and understand social interactions.
-          description: Activities to help care receivers identify family members, friends, and other social relationships while developing social interaction skills.
+          description: Discover activities to help care receivers identify family members, friends, and other social relationships while developing social interaction skills.
     curriculums:
       - curriculum_recognition_emotions_in_context-A135163C8D8646DE95D0854FD5E155EB
       - curriculum_recognition_family_members-AD1A9E2D874C47AEB3445D80E34DC702
@@ -287,12 +287,12 @@ content:
         details:
           title: Nourriture et cuisine
           subtitle: Apprendre à reconnaître divers aliments et l'univers de la cuisine.
-          description: Activités visant à familiariser les participants avec une variété d'aliments, à comprendre leur rôle dans la cuisine, ainsi qu'à explorer les outils utilisés en cuisine.
+          description: Découvrez des activités visant à familiariser les participants avec une variété d'aliments, à comprendre leur rôle dans la cuisine, ainsi qu'à explorer les outils utilisés en cuisine.
       - locale: en_US
         details:
           title: Food and Cooking
           subtitle: Learn to recognize various foods and the world of cooking.
-          description: Activities designed to help participants become familiar with a variety of foods, understand their role in cooking, and explore the tools used in the kitchen.
+          description: Discover activities designed to help participants become familiar with a variety of foods, understand their role in cooking, and explore the tools used in the kitchen.
     curriculums:
       - curriculum_find_ingredients_for_recipes-B477244ADFED4735BA1159A76E25001A
       - curriculum_sort_sweet_and_salty-5ED0AFBEC4504F6EBA52B26C65ED93CC

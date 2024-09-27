@@ -6,7 +6,7 @@ uuid: 3A9B0EB3A9CF4ABCB9B771B6047DF2D0
 name: curriculum_recognition_emotions_pictograms
 
 created_at: "2024-03-28T15:12:35.579066"
-last_edited_at: "2024-07-12T12:48:33.814094"
+last_edited_at: "2024-09-27T17:53:03.471349"
 
 status: published
 
@@ -33,7 +33,7 @@ l10n:
       icon: emotion_recognition_pictograms
 
       title: Les émotions en pictogrammes
-      subtitle: Décoder les émotions avec Leka
+      subtitle: Reconnaitre les émotions à travers des pictogrammes de Leka
 
       abstract: |
         Ce parcours éducatif est conçu pour aider les personnes accompagnées à identifier et comprendre différentes émotions représentées par des pictogrammes de Leka, couvrant la peur, la colère, la tristesse, la joie et le dégoût. En utilisant des pictogrammes pour exprimer des émotions, ce parcours vise à renforcer la reconnaissance des émotions et la communication émotionnelle de manière visuelle et intuitive.
@@ -44,7 +44,7 @@ l10n:
       icon: emotion_recognition_pictograms
 
       title: Emotions in pictograms
-      subtitle: Decoding Emotions with Leka
+      subtitle: Recognize emotions through Leka's pictograms
 
       abstract: |
         This educational journey is designed to assist participants in identifying and understanding different emotions represented by Leka's pictograms, covering fear, anger, sadness, joy, and disgust. By using pictograms to express emotions, this path aims to strengthen emotion recognition and emotional communication in a visual and intuitive way.

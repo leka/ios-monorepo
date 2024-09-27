@@ -6,13 +6,13 @@ l10n:
   - locale: fr_FR
     details:
       title: Manettes de jeu
-      subtitle: Contrôle intuitif et ludique de notre robot Leka pour les personnes accompagnées.
-      description: Activez notre robot Leka avec des télécommandes simples et amusantes, idéales pour motiver avant ou après les séances de travail.
+      subtitle: Contrôle interactif et amusant du robot Leka pour les personnes accompagnées.
+      description: Manipulez le robot Leka avec des manettes interactives et amusantes.
   - locale: en_US
     details:
       title: Gamepads
-      subtitle: Intuitive and playful control of our Leka robot for care receivers.
-      description: Operate our Leka robot with easy and engaging remotes, perfect for engaging and rewarding care receivers around work sessions.
+      subtitle: Interactive and fun control of the Leka robot for accompanied individuals.
+      description: Operate the Leka robot with interactive and fun gamepads.
 
 content:
   - gamepad_arrow_pad_big-D91BDA161F8E455CA8A71881F1D2E923

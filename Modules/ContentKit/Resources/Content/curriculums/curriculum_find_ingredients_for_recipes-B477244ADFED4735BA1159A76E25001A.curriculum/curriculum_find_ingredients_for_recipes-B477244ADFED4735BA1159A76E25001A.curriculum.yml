@@ -8,7 +8,7 @@ name: curriculum_find_ingredients_for_recipes
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-09-27T13:43:46.474506"
+last_edited_at: "2024-09-27T17:53:03.471349"
 authors:
   - leka
 
@@ -33,7 +33,7 @@ l10n:
 
       title: Trouver les ingrédients d'une recette
 
-      subtitle: Apprendre à identifier les bons ingrédients
+      subtitle: Apprendre les ingrédients d'une recette
 
       abstract: |
         Ce parcours aide les participants à apprendre et à identifier les ingrédients corrects nécessaires pour différentes recettes, avec et sans la présence d'intrus.
@@ -47,7 +47,7 @@ l10n:
 
       title: Find Ingredients for a Recipe
 
-      subtitle: Learn to Identify the Correct Ingredients
+      subtitle: Learn the Ingredients of a Recipe
 
       abstract: |
         This curriculum helps participants learn and identify the correct ingredients needed for various recipes, both with and without the presence of intruders.

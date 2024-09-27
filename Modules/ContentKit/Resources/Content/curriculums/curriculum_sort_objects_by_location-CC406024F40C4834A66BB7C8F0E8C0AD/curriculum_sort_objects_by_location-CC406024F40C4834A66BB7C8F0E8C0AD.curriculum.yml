@@ -8,7 +8,7 @@ name: curriculum_sort_objects_by_location
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-09-26T15:41:55.563144"
+last_edited_at: "2024-09-27T17:53:03.474902"
 authors:
   - leka
 
@@ -30,12 +30,12 @@ l10n:
   - locale: fr_FR
     details:
       icon: recognition_public_places_drag
-      title: Trier des objets par lieux
+      title: Trier des objets par lieu
       subtitle: Organiser les objets par endroit
       abstract: |
-        Centré sur le tri et l'appariement, ce curriculum utilise différents objets pour améliorer la reconnaissance et la classification, enrichissant l'interaction avec l'environnement.
+        Centré sur le tri et l'appariement, ce parcours utilise différents objets pour améliorer la reconnaissance et la classification, enrichissant l'interaction avec l'environnement.
       description: |
-        Ce curriculum renforce la reconnaissance et le tri des objets en fonction de leur lieu, guidant les participants à travers une aventure éducative. Ils exploreront la diversité et l'importance de ces objets.
+        Ce parcours renforce la reconnaissance et le tri des objets en fonction de leur lieu, guidant les participants à travers une aventure éducative. Ils exploreront la diversité et l'importance de ces objets.
 
         À travers des activités variées, les participants affinent leurs compétences d'observation et apprennent à distinguer et reconnaître les caractéristiques uniques des différents types d'objets en fonction de leur emplacement.
 

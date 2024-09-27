@@ -8,7 +8,7 @@ name: curriculum_receptive_language_identify_number_quantity
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-07-12T12:48:33.814108"
+last_edited_at: "2024-09-27T17:53:03.463714"
 authors:
   - julie_tuil
 
@@ -36,10 +36,10 @@ l10n:
       icon: receptive_language_quantities
 
       title: Identifier la quantité numérique
-      subtitle: Comprendre et répondre aux quantités numériques
+      subtitle: Comprendre une consigne orale
 
       abstract: |
-        Visant à renforcer la compréhension du langage oral concernant les nombres et les quantités, ce curriculum propose une activité interactive pour apprendre à identifier les quantités numériques de un à quatre.
+        Visant à renforcer la compréhension du langage oral concernant les nombres et les quantités, ce parcours propose une activité interactive pour apprendre à identifier les quantités numériques de un à quatre.
       description: |
         Cette activité unique sur "Identifier la quantité numérique" encourage la personne accompagnée à écouter attentivement les instructions pour reconnaître la quantité numérique demandée, en choisissant l'image correspondante sur l'écran de l'iPad. L'introduction aux quantités de un à quatre a pour but de renforcer la compréhension des concepts numériques de base de manière ludique et interactive.
 
@@ -48,7 +48,7 @@ l10n:
       icon: receptive_language_quantities
 
       title: Identify Number Quantity
-      subtitle: Understanding and Responding to Number Quantities
+      subtitle: Understand an oral instruction
 
       abstract: |
         Designed to bolster oral language comprehension regarding numbers and quantities, this curriculum introduces an interactive activity for learning to identify numerical quantities from one to four.
