@@ -18,7 +18,6 @@ on:
       - "Modules/ContentKit/**"
       - "Tuist/Package.swift"
       - "Tuist/Package.resolved"
-      - "fastlane/Fastfile" # TODO: (@ladislas) remove this line after test
   workflow_dispatch: # nothing to setup here, just to trigger the workflow manually
 
 concurrency:
