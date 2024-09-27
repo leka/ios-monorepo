@@ -8,15 +8,13 @@ name: curriculum_recognition_sports
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-09-17T15:31:43.448047"
+last_edited_at: "2024-09-27T15:25:31.988665"
 authors:
   - leka
 
 skills:
   - association
-  - association/matching
-
-  - recognition
+  - association/logical
 
 tags:
   - sports

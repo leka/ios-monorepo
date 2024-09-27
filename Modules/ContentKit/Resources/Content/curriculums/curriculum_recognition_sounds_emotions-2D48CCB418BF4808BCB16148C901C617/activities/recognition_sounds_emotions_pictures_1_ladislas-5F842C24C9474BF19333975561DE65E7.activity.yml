@@ -8,7 +8,7 @@ uuid: 5F842C24C9474BF19333975561DE65E7
 name: recognition_sounds_emotions_pictures_1_ladislas
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-07-12T12:48:14.929969"
+last_edited_at: "2024-09-27T15:25:22.724657"
 status: published
 
 authors:
@@ -16,7 +16,7 @@ authors:
 
 skills:
   - association
-  - association/matching
+  - association/logical
   - sensory_integration
   - sensory_integration/hearing
   - attention

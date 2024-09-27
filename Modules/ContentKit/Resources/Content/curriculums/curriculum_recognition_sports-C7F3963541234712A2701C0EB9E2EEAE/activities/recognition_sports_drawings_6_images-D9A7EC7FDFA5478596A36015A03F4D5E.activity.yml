@@ -8,7 +8,7 @@ uuid: D9A7EC7FDFA5478596A36015A03F4D5E
 name: recognition_sports_drawings_6_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-09-27T13:03:45.374284"
+last_edited_at: "2024-09-27T15:25:22.743770"
 status: published
 
 authors:
@@ -16,9 +16,7 @@ authors:
 
 skills:
   - association
-  - association/matching
-
-  - recognition
+  - association/logical
 
 tags:
   - sports

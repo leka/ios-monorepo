@@ -6,7 +6,7 @@ uuid: 6A5EF209D00942F4AEEA4AEC6DAC052A
 name: curriculum_recognition_sounds_musical_instruments
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-07-12T12:48:33.814058"
+last_edited_at: "2024-09-27T15:25:31.988529"
 
 status: published
 
@@ -15,7 +15,7 @@ authors:
 
 skills:
   - association
-  - association/matching
+  - association/logical
   - sensory_integration
   - sensory_integration/hearing
   - attention
