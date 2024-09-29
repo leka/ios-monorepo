@@ -13,91 +13,68 @@ class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
     init(gameplay: GameplayFindTheRightOrder) {
         self.gameplay = gameplay
 
-        self.uiChoices.value = self.gameplay.choices.value.map { choice in
-            TTSChoiceModel(id: choice.id, value: choice.value, state: Self.stateConverter(from: choice.state))
+        self.uiChoices.value = self.gameplay.orderedChoices.map { choice in
+            TTSChoiceModel(id: choice.id, value: choice.value, state: .idle)
         }
-
-        self.gameplay.choices
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] choices in
-                guard let self else { return }
-
-                self.uiChoices.value = choices.map { choice in
-                    TTSChoiceModel(id: choice.id, value: choice.value, state: Self.stateConverter(from: choice.state))
-                }
-            }
-            .store(in: &self.cancellables)
     }
-
-    // MARK: Public
-
-    public static let kDefaultChoices: [FindTheRightOrderChoice] = [
-        FindTheRightOrderChoice(value: "1rst choice"),
-        FindTheRightOrderChoice(value: "2nd choice"),
-        FindTheRightOrderChoice(value: "3rd choice"),
-        FindTheRightOrderChoice(value: "4th choice"),
-        FindTheRightOrderChoice(value: "5th choice"),
-        FindTheRightOrderChoice(value: "6th choice"),
-    ]
 
     // MARK: Internal
 
     private(set) var uiChoices = CurrentValueSubject<[TTSChoiceModel], Never>([])
 
     func processUserSelection(choice: TTSChoiceModel) {
-        log.debug("[CO] \(choice.id) - \(choice.value.replacingOccurrences(of: "\n", with: " ")) - \(choice.state)")
-        guard var gameplayChoice = self.gameplay.choices.value.first(where: { $0.id == choice.id }) else { return }
+        guard !self.choiceAlreadySelected(choice: choice) else { return }
 
-        self.selectedOrder[self.currentOrderIndex] = gameplayChoice
-        gameplayChoice.state = .selected(order: self.currentOrderIndex + 1)
-        self.currentOrderIndex += 1
+        self.select(choice: choice)
 
-        self.gameplay.updateChoice(choice: gameplayChoice)
+        if self.currentOrderedChoices.count == self.uiChoices.value.count {
+            _ = self.gameplay.process(choices: self.currentOrderedChoices.map {
+                FindTheRightOrderChoice(id: $0.id, value: $0.value)
+            })
 
-        if self.selectedOrder.count == self.gameplay.choices.value.count {
-            self.currentOrderIndex = 0
-            let correctSelectedOrder = self.gameplay.evaluateOrder(selectedOrder: self.selectedOrder)
-            if correctSelectedOrder.count == self.gameplay.choices.value.count {
-                for (index, choice) in self.gameplay.rawChoices.enumerated() {
+            if self.gameplay.isCompleted.value {
+                for (indice, choice) in self.uiChoices.value.enumerated() {
                     var choice = choice
-                    choice.state = .correct(order: index + 1)
-                    self.gameplay.updateChoice(choice: choice)
+                    choice.state = .correct(order: indice + 1)
+                    self.uiChoices.value[indice] = choice
                 }
             } else {
-                self.selectedOrder.removeAll()
-                for choice in self.gameplay.choices.value {
-                    var choice = choice
+                self.uiChoices.value = self.uiChoices.value.map {
+                    var choice = $0
                     choice.state = .idle
-                    self.gameplay.updateChoice(choice: choice)
+                    return choice
                 }
             }
+
+            self.currentOrderedChoices.removeAll()
         }
     }
 
     // MARK: Private
 
-    private var cancellables = Set<AnyCancellable>()
+    private var currentOrderedChoices: [TTSChoiceModel] = []
 
-    private var currentOrderIndex: Int = 0
     private let gameplay: GameplayFindTheRightOrder
-    private var selectedOrder: [Int: FindTheRightOrderChoice] = [:]
 
-    private static func stateConverter(from state: FindTheRightOrderChoiceState) -> TTSChoiceState {
-        switch state {
-            case .idle:
-                .idle
-            case let .selected(order):
-                .selected(order: order)
-            case let .correct(order):
-                .correct(order: order)
-            case .wrong:
-                .wrong
-        }
+    private var currentOrderedChoicesIndex: Int {
+        self.currentOrderedChoices.count
+    }
+
+    private func choiceAlreadySelected(choice: TTSChoiceModel) -> Bool {
+        self.currentOrderedChoices.contains(where: { $0.id == choice.id })
+    }
+
+    private func select(choice: TTSChoiceModel) {
+        guard let index = self.uiChoices.value.firstIndex(where: { $0.id == choice.id }) else { return }
+
+        self.currentOrderedChoices.append(choice)
+
+        self.uiChoices.value[index].state = .selected(order: self.currentOrderedChoicesIndex)
     }
 }
 
 #Preview {
-    let gameplay = GameplayFindTheRightOrder(choices: TTSCoordinatorFindTheRightOrder.kDefaultChoices)
+    let gameplay = GameplayFindTheRightOrder(choices: GameplayFindTheRightOrder.kDefaultChoices)
     let coordinator = TTSCoordinatorFindTheRightOrder(gameplay: gameplay)
     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
