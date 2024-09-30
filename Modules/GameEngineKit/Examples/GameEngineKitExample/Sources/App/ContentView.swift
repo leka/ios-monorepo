@@ -29,7 +29,7 @@ struct ContentView: View {
                 }
 
                 NavigationLink("Find The Right Order", destination: {
-                    let gameplay = GameplayFindTheRightOrder(choices: TTSCoordinatorFindTheRightOrder.kDefaultChoices)
+                    let gameplay = GameplayFindTheRightOrder(choices: GameplayFindTheRightOrder.kDefaultChoices)
                     let coordinator = TTSCoordinatorFindTheRightOrder(gameplay: gameplay)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
