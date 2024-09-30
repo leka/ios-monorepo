@@ -5,6 +5,90 @@
 import Combine
 import SwiftUI
 
+// MARK: - TTSChoiceModel
+
+struct TTSChoiceModel: Identifiable {
+    // MARK: Lifecycle
+
+    init(id: String = UUID().uuidString, view: some View = EmptyView()) {
+        self.id = id
+        self.view = AnyView(view)
+    }
+
+    // MARK: Internal
+
+    let id: String
+    let view: AnyView
+}
+
+// MARK: - UIChoices
+
+struct UIChoices {
+    // MARK: Internal
+
+    static let zero = UIChoices(choices: [])
+
+    var choices: [TTSChoiceModel]
+
+    var choiceSize: CGFloat {
+        TTSGridSize(rawValue: self.choices.count).choiceSize
+    }
+
+    // MARK: Private
+
+    // swiftlint:disable identifier_name
+
+    private enum TTSGridSize: Int {
+        case one = 1
+        case two
+        case three
+        case four
+        case five
+        case six
+        case none
+
+        // MARK: Lifecycle
+
+        init(rawValue: Int) {
+            switch rawValue {
+                case 1:
+                    self = .one
+                case 2:
+                    self = .two
+                case 3:
+                    self = .three
+                case 4:
+                    self = .four
+                case 5:
+                    self = .five
+                case 6:
+                    self = .six
+                default:
+                    self = .none
+            }
+        }
+
+        // MARK: Internal
+
+        var choiceSize: CGFloat {
+            switch self {
+                case .one,
+                     .two:
+                    300
+                case .three:
+                    280
+                case .four,
+                     .five,
+                     .six,
+                     .none:
+                    240
+            }
+        }
+    }
+
+    // swiftlint:enable identifier_name
+}
+
 // MARK: - TTSView
 
 struct TTSView: View {
@@ -22,7 +106,7 @@ struct TTSView: View {
         VStack(spacing: 100) {
             HStack(spacing: 100) {
                 ForEach(self.viewModel.choices[0...2]) { choice in
-                    TTSChoiceView(choice: choice)
+                    choice.view
                         .onTapGesture {
                             self.viewModel.onTapped(choice: choice)
                         }
@@ -31,7 +115,7 @@ struct TTSView: View {
 
             HStack(spacing: 100) {
                 ForEach(self.viewModel.choices[3...5]) { choice in
-                    TTSChoiceView(choice: choice)
+                    choice.view
                         .onTapGesture {
                             self.viewModel.onTapped(choice: choice)
                         }
@@ -45,17 +129,20 @@ struct TTSView: View {
     // MARK: - TTSEmptyCoordinator
 
     class TTSEmptyCoordinator: TTSGameplayCoordinatorProtocol {
-        var uiChoices = CurrentValueSubject<[TTSChoiceModel], Never>([
-            TTSChoiceModel(value: "Choice 1", state: .idle),
-            TTSChoiceModel(value: "Choice 2\nSelected", state: .selected()),
-            TTSChoiceModel(value: "Choice 3\nCorrect", state: .correct()),
-            TTSChoiceModel(value: "Choice 4\nWrong", state: .wrong),
-            TTSChoiceModel(value: "Choice 5"),
-            TTSChoiceModel(value: "Choice 6"),
-        ])
+        var uiChoices = CurrentValueSubject<UIChoices, Never>(UIChoices(choices: [
+            TTSChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 1", type: .text, size: 240, state: .idle)),
+            TTSChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 2", type: .text,
+                                                                              size: 240, state: .idle)),
+            TTSChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 3\nCorrect", type: .text,
+                                                                              size: 240, state: .correct)),
+            TTSChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "exclamationmark.triangle.fill", type: .sfsymbol,
+                                                                              size: 240, state: .wrong)),
+            TTSChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 5", type: .text, size: 240, state: .idle)),
+            TTSChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 6", type: .text, size: 240, state: .idle)),
+        ]))
 
         func processUserSelection(choice: TTSChoiceModel) {
-            log.debug("\(choice.id) - \(choice.value.replacingOccurrences(of: "\n", with: " ")) - \(choice.state)")
+            log.debug("\(choice.id)")
         }
     }
 

@@ -22,7 +22,7 @@ struct TTSThenValidateView: View {
         VStack(spacing: 100) {
             HStack(spacing: 100) {
                 ForEach(self.viewModel.choices[0...2]) { choice in
-                    TTSChoiceView(choice: choice)
+                    choice.view
                         .onTapGesture {
                             self.viewModel.onChoiceTapped(choice: choice)
                         }
@@ -31,7 +31,7 @@ struct TTSThenValidateView: View {
 
             HStack(spacing: 100) {
                 ForEach(self.viewModel.choices[3...5]) { choice in
-                    TTSChoiceView(choice: choice)
+                    choice.view
                         .onTapGesture {
                             self.viewModel.onChoiceTapped(choice: choice)
                         }
@@ -51,17 +51,20 @@ struct TTSThenValidateView: View {
     // MARK: - TTSEmptyCoordinator
 
     class TTSEmptyCoordinator: TTSThenValidateGameplayCoordinatorProtocol {
-        var uiChoices = CurrentValueSubject<[TTSChoiceModel], Never>([
-            TTSChoiceModel(value: "Choice 1", state: .idle),
-            TTSChoiceModel(value: "Choice 2\nSelected", state: .selected()),
-            TTSChoiceModel(value: "Choice 3\nCorrect", state: .correct()),
-            TTSChoiceModel(value: "Choice 4\nWrong", state: .wrong),
-            TTSChoiceModel(value: "Choice 5"),
-            TTSChoiceModel(value: "Choice 6"),
-        ])
+        var uiChoices = CurrentValueSubject<UIChoices, Never>(UIChoices(choices: [
+            TTSChoiceModel(view: FindTheRightAnswersChoiceView(value: "Choice 1", type: .text, size: TTSGridSize.six.choiceSize, state: .idle)),
+            TTSChoiceModel(view: FindTheRightAnswersChoiceView(value: "Choice 2\nSelected", type: .text,
+                                                               size: TTSGridSize.six.choiceSize, state: .selected)),
+            TTSChoiceModel(view: FindTheRightAnswersChoiceView(value: "Choice 3\nCorrect", type: .text,
+                                                               size: TTSGridSize.six.choiceSize, state: .correct)),
+            TTSChoiceModel(view: FindTheRightAnswersChoiceView(value: "exclamationmark.triangle.fill", type: .sfsymbol,
+                                                               size: TTSGridSize.six.choiceSize, state: .wrong)),
+            TTSChoiceModel(view: FindTheRightAnswersChoiceView(value: "Choice 5", type: .text, size: TTSGridSize.six.choiceSize, state: .idle)),
+            TTSChoiceModel(view: FindTheRightAnswersChoiceView(value: "Choice 6", type: .text, size: TTSGridSize.six.choiceSize, state: .idle)),
+        ]))
 
         func processUserSelection(choice: TTSChoiceModel) {
-            log.debug("\(choice.id) - \(choice.value.replacingOccurrences(of: "\n", with: " ")) - \(choice.state)")
+            log.debug("\(choice.id)")
         }
 
         func validateUserSelection() {
