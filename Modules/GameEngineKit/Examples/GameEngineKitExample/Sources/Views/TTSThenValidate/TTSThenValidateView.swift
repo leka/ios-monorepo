@@ -52,15 +52,15 @@ struct TTSThenValidateView: View {
 
     class TTSEmptyCoordinator: TTSThenValidateGameplayCoordinatorProtocol {
         var uiChoices = CurrentValueSubject<UIChoices, Never>(UIChoices(choices: [
-            TTSChoiceModel(view: FindTheRightAnswersChoiceView(value: "Choice 1", type: .text, size: TTSGridSize.six.choiceSize, state: .idle)),
-            TTSChoiceModel(view: FindTheRightAnswersChoiceView(value: "Choice 2\nSelected", type: .text,
-                                                               size: TTSGridSize.six.choiceSize, state: .selected)),
-            TTSChoiceModel(view: FindTheRightAnswersChoiceView(value: "Choice 3\nCorrect", type: .text,
-                                                               size: TTSGridSize.six.choiceSize, state: .correct)),
-            TTSChoiceModel(view: FindTheRightAnswersChoiceView(value: "exclamationmark.triangle.fill", type: .sfsymbol,
-                                                               size: TTSGridSize.six.choiceSize, state: .wrong)),
-            TTSChoiceModel(view: FindTheRightAnswersChoiceView(value: "Choice 5", type: .text, size: TTSGridSize.six.choiceSize, state: .idle)),
-            TTSChoiceModel(view: FindTheRightAnswersChoiceView(value: "Choice 6", type: .text, size: TTSGridSize.six.choiceSize, state: .idle)),
+            TTSChoiceModel(view: TTSThenValidateCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 1", type: .text, size: 240, state: .idle)),
+            TTSChoiceModel(view: TTSThenValidateCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 2\nSelected", type: .text,
+                                                                                          size: 240, state: .selected)),
+            TTSChoiceModel(view: TTSThenValidateCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 3\nCorrect", type: .text,
+                                                                                          size: 240, state: .correct)),
+            TTSChoiceModel(view: TTSThenValidateCoordinatorFindTheRightAnswers.ChoiceView(value: "exclamationmark.triangle.fill", type: .sfsymbol,
+                                                                                          size: 240, state: .wrong)),
+            TTSChoiceModel(view: TTSThenValidateCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 5", type: .text, size: 240, state: .idle)),
+            TTSChoiceModel(view: TTSThenValidateCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 6", type: .text, size: 240, state: .idle)),
         ]))
 
         func processUserSelection(choice: TTSChoiceModel) {

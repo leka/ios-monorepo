@@ -11,12 +11,12 @@ class TTSThenValidateViewViewModel: ObservableObject {
     // MARK: Lifecycle
 
     init(coordinator: TTSThenValidateGameplayCoordinatorProtocol) {
-        self.choices = coordinator.uiChoices.value
+        self.choices = coordinator.uiChoices.value.choices
         self.coordinator = coordinator
         self.coordinator.uiChoices
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] choices in
-                self?.choices = choices
+            .sink { [weak self] uiChoices in
+                self?.choices = uiChoices.choices
             }
             .store(in: &self.cancellables)
     }

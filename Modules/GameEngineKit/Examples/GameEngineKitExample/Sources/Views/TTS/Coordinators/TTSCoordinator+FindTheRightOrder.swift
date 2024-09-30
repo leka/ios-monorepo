@@ -13,36 +13,45 @@ class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
     init(gameplay: GameplayFindTheRightOrder) {
         self.gameplay = gameplay
 
-        self.uiChoices.value = self.gameplay.orderedChoices.map { choice in
-            TTSChoiceModel(id: choice.id, value: choice.value, state: .idle)
+        self.uiChoices.value.choices = self.gameplay.orderedChoices.map { choice in
+            let view = ChoiceView(value: choice.value,
+                                  type: choice.type,
+                                  size: self.uiChoices.value.choiceSize,
+                                  state: .idle)
+            return TTSChoiceModel(id: choice.id, view: view)
         }
     }
 
     // MARK: Internal
 
-    private(set) var uiChoices = CurrentValueSubject<[TTSChoiceModel], Never>([])
+    private(set) var uiChoices = CurrentValueSubject<UIChoices, Never>(.zero)
 
     func processUserSelection(choice: TTSChoiceModel) {
-        guard !self.choiceAlreadySelected(choice: choice) else { return }
+        guard let gameplayChoice = self.gameplay.orderedChoices.first(where: { $0.id == choice.id }),
+              !self.choiceAlreadySelected(choice: gameplayChoice) else { return }
 
-        self.select(choice: choice)
+        self.select(choice: gameplayChoice)
 
-        if self.currentOrderedChoices.count == self.uiChoices.value.count {
-            _ = self.gameplay.process(choices: self.currentOrderedChoices.map {
-                FindTheRightOrderChoice(id: $0.id, value: $0.value)
-            })
+        if self.currentOrderedChoices.count == self.uiChoices.value.choices.count {
+            _ = self.gameplay.process(choices: self.currentOrderedChoices)
 
             if self.gameplay.isCompleted.value {
-                for (indice, choice) in self.uiChoices.value.enumerated() {
-                    var choice = choice
-                    choice.state = .correct(order: indice + 1)
-                    self.uiChoices.value[indice] = choice
+                for (indice, choice) in self.gameplay.orderedChoices.enumerated() {
+                    let view = ChoiceView(value: choice.value,
+                                          type: choice.type,
+                                          size: self.uiChoices.value.choiceSize,
+                                          state: .correct(order: indice + 1))
+
+                    self.uiChoices.value.choices[indice] = TTSChoiceModel(id: choice.id, view: view)
                 }
             } else {
-                self.uiChoices.value = self.uiChoices.value.map {
-                    var choice = $0
-                    choice.state = .idle
-                    return choice
+                self.gameplay.orderedChoices.enumerated().forEach { index, choice in
+                    let view = ChoiceView(value: choice.value,
+                                          type: choice.type,
+                                          size: self.uiChoices.value.choiceSize,
+                                          state: .idle)
+
+                    self.uiChoices.value.choices[index] = TTSChoiceModel(id: choice.id, view: view)
                 }
             }
 
@@ -52,7 +61,7 @@ class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
 
     // MARK: Private
 
-    private var currentOrderedChoices: [TTSChoiceModel] = []
+    private var currentOrderedChoices: [FindTheRightOrderChoice] = []
 
     private let gameplay: GameplayFindTheRightOrder
 
@@ -60,16 +69,76 @@ class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
         self.currentOrderedChoices.count
     }
 
-    private func choiceAlreadySelected(choice: TTSChoiceModel) -> Bool {
+    private func choiceAlreadySelected(choice: FindTheRightOrderChoice) -> Bool {
         self.currentOrderedChoices.contains(where: { $0.id == choice.id })
     }
 
-    private func select(choice: TTSChoiceModel) {
-        guard let index = self.uiChoices.value.firstIndex(where: { $0.id == choice.id }) else { return }
+    private func select(choice: FindTheRightOrderChoice) {
+        guard let index = self.uiChoices.value.choices.firstIndex(where: { $0.id == choice.id }) else { return }
 
         self.currentOrderedChoices.append(choice)
 
-        self.uiChoices.value[index].state = .selected(order: self.currentOrderedChoicesIndex)
+        let view = ChoiceView(value: choice.value,
+                              type: choice.type,
+                              size: self.uiChoices.value.choiceSize,
+                              state: .selected(order: self.currentOrderedChoicesIndex))
+
+        self.uiChoices.value.choices[index] = TTSChoiceModel(id: choice.id, view: view)
+    }
+}
+
+extension TTSCoordinatorFindTheRightOrder {
+    enum State {
+        case idle
+        case selected(order: Int)
+        case correct(order: Int)
+    }
+
+    struct ChoiceView: View {
+        // MARK: Lifecycle
+
+        init(value: String, type: ChoiceType, size: CGFloat, state: State) {
+            self.value = value
+            self.type = type
+            self.size = size
+            self.state = state
+        }
+
+        // MARK: Internal
+
+        var body: some View {
+            switch self.state {
+                case let .correct(order):
+                    TTSChoiceView(value: self.value, type: self.type, size: self.size)
+                        .overlay {
+                            Image(systemName: "\(order).circle.fill")
+                                .resizable()
+                                .frame(width: self.size, height: self.size)
+                                .opacity(1)
+                                .font(.largeTitle)
+                                .foregroundColor(.green)
+                        }
+                case let .selected(order):
+                    TTSChoiceView(value: self.value, type: self.type, size: self.size)
+                        .overlay {
+                            Image(systemName: "\(order).circle.fill")
+                                .resizable()
+                                .frame(width: self.size, height: self.size)
+                                .opacity(0.4)
+                                .font(.largeTitle)
+                                .foregroundColor(.blue)
+                        }
+                case .idle:
+                    TTSChoiceView(value: self.value, type: self.type, size: self.size)
+            }
+        }
+
+        // MARK: Private
+
+        private let value: String
+        private let type: ChoiceType
+        private let size: CGFloat
+        private let state: State
     }
 }
 
