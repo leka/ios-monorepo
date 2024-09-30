@@ -6,7 +6,7 @@ uuid: ADBEC52B10B0423E96B3F08CEE042752
 name: curriculum_animal_recognition_sea_animals
 
 created_at: "2024-07-31T10:00:00.000000"
-last_edited_at: "2024-09-27T13:05:22.476768"
+last_edited_at: "2024-09-27T17:53:03.457882"
 
 status: published
 
@@ -33,10 +33,10 @@ l10n:
       title: Les animaux de la mer
       subtitle: Écoute et trouve l'animal !
       abstract: |
-        Un curriculum complet pour apprendre à reconnaître les animaux de la mer à travers plusieurs activités interactives.
+        Un parcours complet pour apprendre à reconnaître les animaux de la mer à travers plusieurs activités interactives.
 
       description: |
-        Ce curriculum propose une série de quatre activités conçues pour aider le participant à reconnaître différents animaux de la mer. Chaque activité utilise des images et des instructions audio pour stimuler la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide.
+        Ce parcours propose une série de quatre activités conçues pour aider le participant à reconnaître différents animaux de la mer. Chaque activité utilise des images et des instructions audio pour stimuler la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide.
 
   - locale: en_US
     details:

@@ -7,7 +7,7 @@ name: curriculum_recognition_body_parts
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-09-27T13:05:22.497303"
+last_edited_at: "2024-09-27T17:53:03.474902"
 authors:
   - leka
 
@@ -32,9 +32,9 @@ l10n:
       title: Les parties du corps
       subtitle: Reconnaître les parties du corps humain
       abstract: |
-        Ce curriculum aide les participants à reconnaître et nommer les différentes parties du corps humain.
+        Ce parcours aide les participants à reconnaître et nommer les différentes parties du corps humain.
       description: |
-        Le curriculum est conçu pour aider les participants à apprendre les parties du corps humain par le biais d'exercices interactifs. Les participants devront écouter les consignes et toucher les images correspondantes pour identifier correctement les différentes parties du corps.
+        Le parcours est conçu pour aider les participants à apprendre les parties du corps humain par le biais d'exercices interactifs. Les participants devront écouter les consignes et toucher les images correspondantes pour identifier correctement les différentes parties du corps.
 
   - locale: en_US
     details:

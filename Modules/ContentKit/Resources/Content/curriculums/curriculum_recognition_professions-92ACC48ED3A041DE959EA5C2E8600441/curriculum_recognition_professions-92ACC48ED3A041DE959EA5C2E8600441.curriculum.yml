@@ -8,7 +8,7 @@ name: curriculum_recognition_professions
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-09-27T15:25:31.988529"
+last_edited_at: "2024-09-27T17:53:03.471349"
 authors:
   - leka
 
@@ -31,9 +31,9 @@ l10n:
     details:
       icon: recognition_professions_touch
       title: Les métiers
-      subtitle: Identifier les métiers
+      subtitle: Associer un métier à ses outils
       abstract: |
-        Ce curriculum vise à développer la reconnaissance des professions à travers des représentations dessinées.
+        Ce parcours vise à développer la reconnaissance des professions à travers des représentations dessinées.
       description: |
         À travers des activités interactives présentées sur l'écran de l'iPad, les personnes accompagnées sont encouragées à observer attentivement des images de personnages pratiquant diverses professions. L'objectif est de reconnaître le métier représenté et de sélectionner les outils et le matériel correspondant à ce métier.
 
@@ -41,7 +41,7 @@ l10n:
     details:
       icon: recognition_professions_touch
       title: Professions
-      subtitle: Identifying Professions
+      subtitle: Match a profession with its tools
       abstract: |
         This curriculum aims to develop the recognition of professions through illustrated representations.
       description: |

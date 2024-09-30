@@ -6,7 +6,7 @@ uuid: BA3CB88A6A6E49CB9AB83FA992BF852B
 name: curriculum_recognition_emotions_pictures
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-07-12T12:48:33.814085"
+last_edited_at: "2024-09-27T17:53:03.463714"
 
 status: published
 
@@ -39,10 +39,10 @@ l10n:
       icon: emotion_recognition_pictures
 
       title: Les émotions en photos
-      subtitle: Comprendre les émotions à travers des expressions réelles
+      subtitle: Reconnaitre les émotions à travers des expressions réelles
 
       abstract: |
-        Ce curriculum aide les personnes accompagnées à identifier et à comprendre différentes émotions à travers des photos de personnes réelles, notamment de l'équipe Leka. En se concentrant sur des expressions faciales, ce parcours vise à renforcer la reconnaissance des émotions et la communication émotionnelle.
+        Ce parcours aide les personnes accompagnées à identifier et à comprendre différentes émotions à travers des photos de personnes réelles, notamment de l'équipe Leka. En se concentrant sur des expressions faciales, ce parcours vise à renforcer la reconnaissance des émotions et la communication émotionnelle.
       description: |
         À travers des activités interactives sur l'écran de l'iPad, les personnes accompagnées sont invitées à observer attentivement des photos de membres de l'équipe Leka exprimant diverses émotions. L'objectif est d'identifier l'émotion affichée et de toucher l'image correspondante. Ces activités encouragent une meilleure compréhension et interprétation des émotions, améliorant ainsi la capacité des personnes accompagnées à exprimer leurs propres émotions et à reconnaître celles d'autrui.
   - locale: en_US
@@ -50,8 +50,7 @@ l10n:
       icon: emotion_recognition_pictures
 
       title: Emotions in pictures
-      subtitle: Understanding Emotions through Real Expressions
-
+      subtitle: Recognize Emotions through Real Expressions
       abstract: |
         This curriculum assists care receivers in identifying and understanding different emotions through pictures of real people, including the Leka team. By focusing on facial expressions, this journey aims to enhance emotion recognition and emotional communication.
       description: |
