@@ -8,7 +8,7 @@ uuid: 700B09D55E3B4AB998CEA7028D41EEA7
 name: recognize_objects_constellations
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-09-27T15:25:22.743770"
+last_edited_at: "2024-09-30T09:54:28.786138"
 status: published
 
 authors:
@@ -125,14 +125,14 @@ exercises_payload:
                 type: image
               - value: quantity_rabbit_two
                 type: image
-              - value: quantity_lego_two
-                type: image
                 is_right_answer: true
               - value: quantity_lego_one
                 type: image
+              - value: quantity_fork_three
+                type: image
               - value: quantity_tshirt_five
                 type: image
-              - value: quantity_tshirt_one
+              - value: quantity_book_four
                 type: image
 
         - instructions:
