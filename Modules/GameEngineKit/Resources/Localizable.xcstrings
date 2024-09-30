@@ -447,7 +447,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Appuies sur OK lorsque Leka est cach\u00e9"
+                        "value": "Appuie sur OK lorsque Leka est cach\u00e9"
                     }
                 }
             }
@@ -501,7 +501,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Incites la personne accompagn\u00e9e \u00e0 chercher Leka.\nTu peux lancer un renfor\u00e7ateur pour lui donner un indice visuel et/ou sonore.\nAppuies sur \"TROUV\u00c9\" une fois le robot trouv\u00e9."
+                        "value": "Incite la personne accompagn\u00e9e \u00e0 chercher Leka.\nTu peux lancer un renfor\u00e7ateur pour lui donner un indice visuel et/ou sonore.\nAppuie sur \"TROUV\u00c9\" une fois le robot trouv\u00e9."
                     }
                 }
             }
