@@ -7,9 +7,11 @@ import SwiftUI
 public extension RootAccount {
     init(
         id: String = "",
-        rootOwnerUid: String = ""
+        rootOwnerUid: String = "",
+        library: Library = Library()
     ) {
         self.id = id
         self.rootOwnerUid = rootOwnerUid
+        self.library = library
     }
 }

@@ -12,12 +12,14 @@ public struct RootAccount: AccountDocument {
     @ServerTimestamp public var createdAt: Date?
     @ServerTimestamp public var lastEditedAt: Date?
     public var rootOwnerUid: String
+    public var library: Library
 
     // MARK: Internal
 
     enum CodingKeys: String, CodingKey {
         case id = "uuid"
         case rootOwnerUid = "root_owner_uid"
+        case library
         case createdAt = "created_at"
         case lastEditedAt = "last_edited_at"
     }
