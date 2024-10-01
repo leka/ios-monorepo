@@ -128,6 +128,42 @@
                 }
             }
         },
+        "content_kit.curriculum_details_view.see_less_label": {
+            "comment": "See less button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "See less"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Voir moins"
+                    }
+                }
+            }
+        },
+        "content_kit.curriculum_details_view.see_more_label": {
+            "comment": "See more button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "See more"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Voir plus"
+                    }
+                }
+            }
+        },
         "content_kit.curriculum_details_view.skills_section_title": {
             "comment": "CurriculumDetailsView 'skills' section title",
             "extractionState": "extracted_with_value",

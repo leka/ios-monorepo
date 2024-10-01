@@ -92,11 +92,25 @@ public struct CurriculumDetailsView: View {
                         .padding()
                     })
                 }
-            }
 
-            Section(String(l10n.CurriculumDetailsView.descriptionSectionTitle.characters)) {
-                Markdown(self.curriculum.details.description)
-                    .markdownTheme(.gitHub)
+                VStack {
+                    if self.isDescriptionExpanded {
+                        Markdown(self.curriculum.details.description)
+                            .markdownTheme(.gitHub)
+                    }
+
+                    HStack {
+                        Spacer()
+
+                        Button {
+                            self.isDescriptionExpanded.toggle()
+                        } label: {
+                            Text(self.isDescriptionExpanded ? "See less" : "See more")
+                                .font(.subheadline)
+                                .foregroundColor(.blue)
+                        }
+                    }
+                }
             }
 
             Section(String(l10n.CurriculumDetailsView.activitiesSectionTitle.characters)) {
@@ -120,6 +134,7 @@ public struct CurriculumDetailsView: View {
 
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
+    @State private var isDescriptionExpanded = false
 }
 
 // MARK: - l10n.CurriculumDetailsView
