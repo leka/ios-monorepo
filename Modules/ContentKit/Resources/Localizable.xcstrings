@@ -2,6 +2,24 @@
     "version": "1.0",
     "sourceLanguage": "en",
     "strings": {
+        "content_kit.activity_details_view.activity_label": {
+            "comment": "ActivityDetailsView's content type description label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Activity"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Activit\u00e9"
+                    }
+                }
+            }
+        },
         "content_kit.activity_details_view.authors_section_title": {
             "comment": "ActivityDetailsView 'authors' section title",
             "extractionState": "extracted_with_value",
@@ -106,6 +124,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Auteurs"
+                    }
+                }
+            }
+        },
+        "content_kit.curriculum_details_view.curriculum_label": {
+            "comment": "CurriculumDetailsView's content type description label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Curriculum"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Parcours"
                     }
                 }
             }

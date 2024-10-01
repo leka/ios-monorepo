@@ -32,9 +32,20 @@ public struct ActivityDetailsView: View {
                             .clipShape(Circle())
 
                         VStack(alignment: .leading, spacing: 8) {
-                            Text(self.activity.details.title)
-                                .font(.largeTitle)
-                                .bold()
+                            HStack(alignment: .center) {
+                                Text(self.activity.details.title)
+                                    .font(.largeTitle)
+                                    .bold()
+
+                                Spacer()
+
+                                VStack {
+                                    Image(systemName: "dice")
+                                        .font(.title3)
+                                    Text(l10n.ActivityDetailsView.activityLabel)
+                                        .font(.caption)
+                                }
+                            }
 
                             if let subtitle = self.activity.details.subtitle {
                                 Text(subtitle)
@@ -136,6 +147,11 @@ public struct ActivityDetailsView: View {
 
 extension l10n {
     enum ActivityDetailsView {
+        static let activityLabel = LocalizedString("content_kit.activity_details_view.activity_label",
+                                                   bundle: ContentKitResources.bundle,
+                                                   value: "Activity",
+                                                   comment: "ActivityDetailsView's content type description label")
+
         static let skillsSectionTitle = LocalizedString("content_kit.activity_details_view.skills_section_title",
                                                         bundle: ContentKitResources.bundle,
                                                         value: "Skills",
