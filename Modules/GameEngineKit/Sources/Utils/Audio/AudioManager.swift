@@ -19,9 +19,20 @@ public class AudioManager: NSObject {
 
     // MARK: Public
 
-    public enum AudioType {
-        case file
-        case speech
+    public enum AudioType: Equatable, CustomStringConvertible {
+        case file(name: String)
+        case speech(text: String)
+
+        // MARK: Public
+
+        public var description: String {
+            switch self {
+                case let .file(name):
+                    "File (\(name))"
+                case let .speech(text):
+                    "Speech (\"\(text)\")"
+            }
+        }
     }
 
     public enum State: Equatable {
@@ -44,52 +55,56 @@ public class AudioManager: NSObject {
     public private(set) var state = CurrentValueSubject<AudioManager.State, Never>(.stopped)
 
     public func play(file: String) {
-        if case .playing = self.state.value {
-            log.debug("Audio is already playing")
+        if case let .playing(currentType) = self.state.value {
+            log.debug("Audio is already playing: \(currentType)")
             return
         }
 
-        if case let .paused(type) = self.state.value {
-            switch type {
-                case .file:
-                    guard let player = self.audioPlayer else {
-                        return
-                    }
-                    log.debug("Resuming audio playback")
-                    player.play()
-                    self.state.send(.playing(type: .file))
-                    return
-                case .speech:
-                    return
-            }
+        let type = AudioType.file(name: file)
+
+        if case let .paused(currentType) = self.state.value, currentType != type {
+            return
         }
+
+        if case let .paused(currentType) = self.state.value, currentType == type {
+            guard let player = self.audioPlayer else { return }
+            log.debug("Resuming audio playback")
+            player.play()
+            self.state.send(.playing(type: type))
+            return
+        }
+
+        self.stop()
 
         log.debug("Playing audio: \(file)")
         self.setAudioPlayerData(file: file)
         guard let player = self.audioPlayer else { return }
         player.play()
-        self.state.send(.playing(type: .file))
+        self.state.send(.playing(type: type))
     }
 
     public func speak(text: String) {
-        if case .playing = self.state.value {
-            log.debug("Audio is already playing")
+        if case let .playing(currentType) = self.state.value {
+            log.debug("Audio is already playing: \(currentType)")
             return
         }
 
-        if case let .paused(type) = self.state.value {
-            switch type {
-                case .file:
-                    return
-                case .speech:
-                    log.debug("Resuming speech playback")
-                    if self.speechSynthesizer.isPaused {
-                        log.debug("Resuming speech playback")
-                        self.speechSynthesizer.continueSpeaking()
-                    }
-                    return
-            }
+        let type = AudioType.speech(text: text)
+
+        if case let .paused(currentType) = self.state.value, currentType != type {
+            return
         }
+
+        if case let .paused(currentType) = self.state.value, currentType == type {
+            log.debug("Resuming speech playback")
+            if self.speechSynthesizer.isPaused {
+                self.speechSynthesizer.continueSpeaking()
+            }
+            self.state.send(.playing(type: type))
+            return
+        }
+
+        self.stop()
 
         self.setSpeechSynthetizerData(text: text)
 
@@ -100,8 +115,9 @@ public class AudioManager: NSObject {
             return utterance
         }
 
+        log.debug("Speaking text: \(text)")
         self.speechSynthesizer.speak(utterance)
-        self.state.send(.playing(type: .speech))
+        self.state.send(.playing(type: type))
     }
 
     public func pause() {
@@ -174,13 +190,13 @@ public class AudioManager: NSObject {
         Timer.publish(every: 0.1, on: .main, in: .default)
             .autoconnect()
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { _ in
+            .sink { _ in
                 guard let player = self.audioPlayer else { return }
 
                 self.progress.send(Progress(currentTime: player.currentTime,
                                             duration: player.duration,
                                             percentage: CGFloat(player.currentTime / player.duration)))
-            })
+            }
             .store(in: &self.cancellables)
     }
 
@@ -208,8 +224,6 @@ public class AudioManager: NSObject {
 
 extension AudioManager: AVAudioPlayerDelegate {
     public func audioPlayerDidFinishPlaying(_: AVAudioPlayer, successfully _: Bool) {
-        log.debug("Audio playback finished")
-
         guard let player = self.audioPlayer else { return }
 
         self.stop()
@@ -271,18 +285,26 @@ class AudioManagerViewModel: ObservableObject {
                     .buttonStyle(.borderedProminent)
                     .tint(.green)
 
+                    Button("Play piano") {
+                        audioManager.play(file: "piano")
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(.mint)
+
                     Button("Say \"Hello, Worlds!\"") {
                         audioManager.speak(text: "Hello, world!")
                     }
                     .buttonStyle(.borderedProminent)
                     .tint(.teal)
 
-                    Button("Say \"What a wonderful world!\"") {
-                        audioManager.speak(text: "What a wonderful world!")
+                    Button("Say \"My name is Leka, I'm a robot\"") {
+                        audioManager.speak(text: "My name is Leka, I'm a robot")
                     }
                     .buttonStyle(.borderedProminent)
                     .tint(.cyan)
+                }
 
+                HStack {
                     Button("Pause") {
                         audioManager.pause()
                     }
@@ -296,8 +318,36 @@ class AudioManagerViewModel: ObservableObject {
                     .tint(.red)
                 }
 
-                Text("State: \(viewModel.state)")
-                Text("Progress: \(viewModel.progress)")
+                HStack {
+                    Circle()
+                        .frame(width: 100, height: 100)
+                        .overlay(Text("🥁️"))
+                        .foregroundColor(.green)
+                        .opacity(viewModel.state == .playing(type: .file(name: "drums")) ? 1.0 : 0.2)
+
+                    Circle()
+                        .frame(width: 100, height: 100)
+                        .overlay(Text("🎹"))
+                        .foregroundColor(.mint)
+                        .opacity(viewModel.state == .playing(type: .file(name: "piano")) ? 1.0 : 0.2)
+
+                    Circle()
+                        .frame(width: 100, height: 100)
+                        .overlay(Text("👋️"))
+                        .foregroundColor(.teal)
+                        .opacity(viewModel.state == .playing(type: .speech(text: "Hello, world!")) ? 1.0 : 0.2)
+
+                    Circle()
+                        .frame(width: 100, height: 100)
+                        .overlay(Text("🤖️"))
+                        .foregroundColor(.cyan)
+                        .opacity(viewModel.state == .playing(type: .speech(text: "My name is Leka, I'm a robot")) ? 1.0 : 0.2)
+                }
+
+                VStack {
+                    Text("State: \(viewModel.state)")
+                    Text("Progress: \(viewModel.progress)")
+                }
             }
         }
     }
