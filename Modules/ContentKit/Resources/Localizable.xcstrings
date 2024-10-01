@@ -498,6 +498,24 @@
                 }
             }
         },
+        "content_kit.activity_list_view.start_activity_button_label": {
+            "comment": "Start activity button label on ActivityListView",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Start"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Démarrer"
+                    }
+                }
+            }
+        },
         "content_kit.activity_details_view.activity_label": {
             "comment": "ActivityDetailsView's content type description label",
             "extractionState": "extracted_with_value",

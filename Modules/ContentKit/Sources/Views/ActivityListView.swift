@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import LocalizationKit
 import SwiftUI
 
 // MARK: - ActivityListView
@@ -23,7 +24,7 @@ public struct ActivityListView: View {
                 NavigationLink(destination:
                     ActivityDetailsView(activity: activity, onStartActivity: self.onStartActivity)
                 ) {
-                    HStack(spacing: 30) {
+                    HStack(alignment: .center, spacing: 30) {
                         Image(uiImage: activity.details.iconImage)
                             .resizable()
                             .scaledToFit()
@@ -57,8 +58,16 @@ public struct ActivityListView: View {
                                 .scaledToFit()
                                 .frame(width: 50)
                                 .padding(.horizontal)
-                                .padding(.bottom)
                         }
+
+                        Button {
+                            self.onStartActivity?(activity)
+                        } label: {
+                            Image(systemName: "play.circle")
+                                .font(.system(size: 24))
+                                .contentShape(Rectangle())
+                        }
+                        .tint(.lkGreen)
                     }
                     .frame(maxWidth: .infinity, maxHeight: 120)
                     .contentShape(Rectangle())
@@ -78,6 +87,17 @@ public struct ActivityListView: View {
 
     private let columns = Array(repeating: GridItem(), count: 3)
     @ObservedObject private var styleManager: StyleManager = .shared
+}
+
+// MARK: - l10n.ActivityListView
+
+extension l10n {
+    enum ActivityListView {
+        static let startActivityButtonLabel = LocalizedString("content_kit.activity_list_view.start_activity_button_label",
+                                                              bundle: ContentKitResources.bundle,
+                                                              value: "Start",
+                                                              comment: "Start activity button label on ActivityListView")
+    }
 }
 
 #Preview {
