@@ -7,9 +7,11 @@ import SwiftUI
 public extension RootAccount {
     init(
         id: String = "",
-        rootOwnerUid: String = ""
+        rootOwnerUid: String = "",
+        savedActivities: [SavedActivity] = []
     ) {
         self.id = id
         self.rootOwnerUid = rootOwnerUid
+        self.savedActivities = savedActivities
     }
 }
