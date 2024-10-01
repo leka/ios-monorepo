@@ -60,9 +60,10 @@ public struct ActivityListView: View {
                                 .padding(.bottom)
                         }
                     }
+                    .frame(maxWidth: .infinity, maxHeight: 120)
+                    .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
-                .frame(maxHeight: 120)
             }
         }
         .padding()
