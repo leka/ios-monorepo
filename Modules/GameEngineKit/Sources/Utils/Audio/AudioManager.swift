@@ -4,7 +4,7 @@
 
 import AVFAudio
 import Combine
-import Foundation
+import LocalizationKit
 import SwiftUI
 
 // MARK: - AudioManager
@@ -14,8 +14,7 @@ public class AudioManager: NSObject {
 
     override private init() {
         super.init()
-        self.audioPlayer = AVAudioPlayer()
-        self.audioPlayer?.delegate = self
+        self.speechSynthesizer.delegate = self
     }
 
     // MARK: Public
@@ -27,7 +26,7 @@ public class AudioManager: NSObject {
 
     public enum State: Equatable {
         case playing(type: AudioType)
-        case paused
+        case paused(whilePlaying: AudioType)
         case stopped
     }
 
@@ -45,11 +44,24 @@ public class AudioManager: NSObject {
     public private(set) var state = CurrentValueSubject<AudioManager.State, Never>(.stopped)
 
     public func play(file: String) {
-        if !(self.audioPlayer?.isPlaying ?? false), self.state.value == .paused {
-            log.debug("Resuming audio playback")
-            self.audioPlayer?.play()
-            self.state.send(.playing(type: .file))
+        if case .playing = self.state.value {
+            log.debug("Audio is already playing")
             return
+        }
+
+        if case let .paused(type) = self.state.value {
+            switch type {
+                case .file:
+                    guard let player = self.audioPlayer else {
+                        return
+                    }
+                    log.debug("Resuming audio playback")
+                    player.play()
+                    self.state.send(.playing(type: .file))
+                    return
+                case .speech:
+                    return
+            }
         }
 
         log.debug("Playing audio: \(file)")
@@ -59,18 +71,55 @@ public class AudioManager: NSObject {
         self.state.send(.playing(type: .file))
     }
 
-    public func speak(text _: String) {
+    public func speak(text: String) {
+        if case .playing = self.state.value {
+            log.debug("Audio is already playing")
+            return
+        }
+
+        if case let .paused(type) = self.state.value {
+            switch type {
+                case .file:
+                    return
+                case .speech:
+                    log.debug("Resuming speech playback")
+                    if self.speechSynthesizer.isPaused {
+                        log.debug("Resuming speech playback")
+                        self.speechSynthesizer.continueSpeaking()
+                    }
+                    return
+            }
+        }
+
+        self.setSpeechSynthetizerData(text: text)
+
+        var utterance: AVSpeechUtterance {
+            let utterance = AVSpeechUtterance(string: self.speechSentence)
+            utterance.rate = 0.40
+            utterance.voice = self.speechVoice
+            return utterance
+        }
+
+        self.speechSynthesizer.speak(utterance)
         self.state.send(.playing(type: .speech))
     }
 
     public func pause() {
-        guard let player = self.audioPlayer else { return }
+        guard case let .playing(audioType) = self.state.value else { return }
 
-        if player.isPlaying {
-            log.debug("Pausing audio playback")
-            self.audioPlayer?.pause()
-            self.state.send(.paused)
+        switch audioType {
+            case .file:
+                guard let player = self.audioPlayer else { return }
+
+                if player.isPlaying {
+                    log.debug("Pausing audio playback")
+                    self.audioPlayer?.pause()
+                }
+            case .speech:
+                self.speechSynthesizer.pauseSpeaking(at: .immediate)
         }
+
+        self.state.send(.paused(whilePlaying: audioType))
     }
 
     public func stop() {
@@ -81,11 +130,16 @@ public class AudioManager: NSObject {
         self.cancellables.removeAll()
 
         self.audioPlayer?.stop()
+        self.speechSynthesizer.stopSpeaking(at: .immediate)
     }
 
     // MARK: Private
 
     private var audioPlayer: AVAudioPlayer?
+
+    private var speechSynthesizer = AVSpeechSynthesizer()
+    private var speechVoice: AVSpeechSynthesisVoice?
+    private var speechSentence: String = ""
 
     private var cancellables: Set<AnyCancellable> = []
 
@@ -129,6 +183,25 @@ public class AudioManager: NSObject {
             })
             .store(in: &self.cancellables)
     }
+
+    private func setSpeechSynthetizerData(text: String) {
+        switch l10n.language {
+            case .french:
+                self.speechVoice = AVSpeechSynthesisVoice(language: "fr-FR")
+            case .english:
+                self.speechVoice = AVSpeechSynthesisVoice(language: "en-US")
+            default:
+                self.speechVoice = AVSpeechSynthesisVoice(language: "en-US")
+        }
+
+        if l10n.language == .french {
+            self.speechSentence = text.replacingOccurrences(of: "Leka", with: "Léka")
+            self.speechSentence = self.speechSentence.replacingOccurrences(of: "sent-il", with: "sentil")
+            self.speechSentence = self.speechSentence.replacingOccurrences(of: "sent-elle", with: "sentelle")
+        } else {
+            self.speechSentence = text
+        }
+    }
 }
 
 // MARK: AVAudioPlayerDelegate
@@ -147,6 +220,14 @@ extension AudioManager: AVAudioPlayerDelegate {
     }
 }
 
+// MARK: AVSpeechSynthesizerDelegate
+
+extension AudioManager: AVSpeechSynthesizerDelegate {
+    public func speechSynthesizer(_: AVSpeechSynthesizer, didFinish _: AVSpeechUtterance) {
+        self.stop()
+    }
+}
+
 // MARK: - AudioManagerViewModel
 
 class AudioManagerViewModel: ObservableObject {
@@ -155,10 +236,7 @@ class AudioManagerViewModel: ObservableObject {
     init() {
         self.audioManager.progress
             .receive(on: DispatchQueue.main)
-            .sink {
-                log.debug("Progress received: \(self.progress)")
-                self.progress = $0
-            }
+            .sink { self.progress = $0 }
             .store(in: &self.cancellables)
 
         self.audioManager.state
@@ -185,7 +263,7 @@ class AudioManagerViewModel: ObservableObject {
         var audioManager: AudioManager = .shared
 
         var body: some View {
-            VStack {
+            VStack(spacing: 40) {
                 HStack {
                     Button("Play drums") {
                         audioManager.play(file: "drums")
@@ -193,11 +271,17 @@ class AudioManagerViewModel: ObservableObject {
                     .buttonStyle(.borderedProminent)
                     .tint(.green)
 
-                    Button("Speak now") {
+                    Button("Say \"Hello, Worlds!\"") {
                         audioManager.speak(text: "Hello, world!")
                     }
                     .buttonStyle(.borderedProminent)
                     .tint(.teal)
+
+                    Button("Say \"What a wonderful world!\"") {
+                        audioManager.speak(text: "What a wonderful world!")
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(.cyan)
 
                     Button("Pause") {
                         audioManager.pause()
@@ -211,12 +295,12 @@ class AudioManagerViewModel: ObservableObject {
                     .buttonStyle(.borderedProminent)
                     .tint(.red)
                 }
-                .padding(.bottom)
 
                 Text("State: \(viewModel.state)")
                 Text("Progress: \(viewModel.progress)")
             }
         }
     }
+
     return PreviewWrapper()
 }
