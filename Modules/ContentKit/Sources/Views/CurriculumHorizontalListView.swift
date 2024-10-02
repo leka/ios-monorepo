@@ -25,35 +25,7 @@ public struct CurriculumHorizontalListView: View {
                     NavigationLink(destination:
                         CurriculumDetailsView(curriculum: curriculum, onActivitySelected: self.onActivitySelected)
                     ) {
-                        GroupBox {
-                            VStack(spacing: 10) {
-                                Image(uiImage: curriculum.details.iconImage)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 150, height: 150)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10 / 57 * 150))
-                                    .fixedSize(horizontal: false, vertical: true)
-
-                                Text(curriculum.details.title)
-                                    .font(.headline)
-                                    .multilineTextAlignment(.center)
-                                    .foregroundStyle(Color.primary)
-                                    .fixedSize(horizontal: false, vertical: true)
-
-                                Text(curriculum.details.subtitle ?? "")
-                                    .font(.body)
-                                    .multilineTextAlignment(.center)
-                                    .foregroundStyle(Color.secondary)
-                                    .fixedSize(horizontal: false, vertical: true)
-
-                                Spacer()
-
-                                Button(String(l10n.CurriculumHorizontalListView.buttonLabel.characters)) {}
-                                    .buttonStyle(.bordered)
-                                    .allowsHitTesting(false)
-                            }
-                            .frame(width: 280)
-                        }
+                        CurriculumGroupboxView(curriculum: curriculum)
                     }
                 }
             }
@@ -71,17 +43,6 @@ public struct CurriculumHorizontalListView: View {
     private let columns = Array(repeating: GridItem(), count: 3)
     private let rows = [GridItem()]
     @ObservedObject private var styleManager: StyleManager = .shared
-}
-
-// MARK: - l10n.CurriculumHorizontalListView
-
-extension l10n {
-    enum CurriculumHorizontalListView {
-        static let buttonLabel = LocalizedString("content_kit.curriculum_grid_view.button_label",
-                                                 bundle: ContentKitResources.bundle,
-                                                 value: "Discover",
-                                                 comment: "Discover button label of CurriculumGridView ")
-    }
 }
 
 #Preview {
