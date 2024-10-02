@@ -11,9 +11,7 @@ public struct ListenThenTouchToSelectView: View {
 
     public init(choices: [TouchToSelect.Choice], audioRecording: String, shuffle: Bool = false) {
         _viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices, shuffle: shuffle))
-        self.audioData = audioRecording
-        AudioPlayer.shared.setAudioData(data: self.audioData)
-        _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: AudioPlayer.shared))
+        self.audioData = .file(name: audioRecording)
     }
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
@@ -27,15 +25,9 @@ public struct ListenThenTouchToSelectView: View {
 
         switch exercise.action {
             case let .ipad(type: .audio(name)):
-                log.debug("Audio name: \(name)")
-                self.audioData = name
-                AudioPlayer.shared.setAudioData(data: self.audioData)
-                _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: AudioPlayer.shared))
+                self.audioData = .file(name: name)
             case let .ipad(type: .speech(utterance)):
-                log.debug("Speech utterance: \(utterance)")
-                self.audioData = utterance
-                SpeechSynthesizer.shared.setAudioData(data: self.audioData)
-                _audioPlayer = StateObject(wrappedValue: AudioPlayerViewModel(player: SpeechSynthesizer.shared))
+                self.audioData = .speech(text: utterance)
             default:
                 log.error("Action not recognized: \(String(describing: exercise.action))")
                 fatalError("💥 Action not recognized: \(String(describing: exercise.action))")
@@ -45,11 +37,12 @@ public struct ListenThenTouchToSelectView: View {
     // MARK: Public
 
     public var body: some View {
-        let interface = Interface(rawValue: viewModel.choices.count)
-
         HStack(spacing: 0) {
-            ActionButtonListen(audioPlayer: self.audioPlayer, audioData: self.audioData)
+            ActionButtonListen(audio: self.audioData)
                 .padding(20)
+                .simultaneousGesture(TapGesture().onEnded {
+                    self.audioHasBeenPlayed = true
+                })
 
             Divider()
                 .opacity(0.4)
@@ -58,58 +51,10 @@ public struct ListenThenTouchToSelectView: View {
 
             Spacer()
 
-            switch interface {
-                case .oneChoice:
-                    OneChoiceView(viewModel: self.viewModel, isTappable: self.audioPlayer.state == .finishedPlaying)
-                        .onTapGestureIf(self.audioPlayer.state == .finishedPlaying) {
-                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
-                        }
-                        .animation(.easeOut(duration: 0.3), value: self.audioPlayer.state == .finishedPlaying)
-                        .grayscale(self.audioPlayer.state == .finishedPlaying ? 0.0 : 1.0)
-
-                case .twoChoices:
-                    TwoChoicesView(viewModel: self.viewModel, isTappable: self.audioPlayer.state == .finishedPlaying)
-                        .onTapGestureIf(self.audioPlayer.state == .finishedPlaying) {
-                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
-                        }
-                        .animation(.easeOut(duration: 0.3), value: self.audioPlayer.state == .finishedPlaying)
-                        .grayscale(self.audioPlayer.state == .finishedPlaying ? 0.0 : 1.0)
-
-                case .threeChoices:
-                    ThreeChoicesView(viewModel: self.viewModel, isTappable: self.audioPlayer.state == .finishedPlaying)
-                        .onTapGestureIf(self.audioPlayer.state == .finishedPlaying) {
-                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
-                        }
-                        .animation(.easeOut(duration: 0.3), value: self.audioPlayer.state == .finishedPlaying)
-                        .grayscale(self.audioPlayer.state == .finishedPlaying ? 0.0 : 1.0)
-
-                case .fourChoices:
-                    FourChoicesView(viewModel: self.viewModel, isTappable: self.audioPlayer.state == .finishedPlaying)
-                        .onTapGestureIf(self.audioPlayer.state == .finishedPlaying) {
-                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
-                        }
-                        .animation(.easeOut(duration: 0.3), value: self.audioPlayer.state == .finishedPlaying)
-                        .grayscale(self.audioPlayer.state == .finishedPlaying ? 0.0 : 1.0)
-
-                case .fiveChoices:
-                    FiveChoicesView(viewModel: self.viewModel, isTappable: self.audioPlayer.state == .finishedPlaying)
-                        .onTapGestureIf(self.audioPlayer.state == .finishedPlaying) {
-                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
-                        }
-                        .animation(.easeOut(duration: 0.3), value: self.audioPlayer.state == .finishedPlaying)
-                        .grayscale(self.audioPlayer.state == .finishedPlaying ? 0.0 : 1.0)
-
-                case .sixChoices:
-                    SixChoicesView(viewModel: self.viewModel, isTappable: self.audioPlayer.state == .finishedPlaying)
-                        .onTapGestureIf(self.audioPlayer.state == .finishedPlaying) {
-                            self.viewModel.onChoiceTapped(choice: self.viewModel.choices[0])
-                        }
-                        .animation(.easeOut(duration: 0.3), value: self.audioPlayer.state == .finishedPlaying)
-                        .grayscale(self.audioPlayer.state == .finishedPlaying ? 0.0 : 1.0)
-
-                default:
-                    ProgressView()
-            }
+            self.currentInterface
+                .animation(.easeOut(duration: 0.3), value: self.audioHasBeenPlayed)
+                .disabled(!self.audioHasBeenPlayed)
+                .grayscale(self.audioHasBeenPlayed ? 0 : 1)
 
             Spacer()
         }
@@ -129,6 +74,49 @@ public struct ListenThenTouchToSelectView: View {
     // MARK: Private
 
     @StateObject private var viewModel: TouchToSelectViewViewModel
-    @StateObject private var audioPlayer: AudioPlayerViewModel
-    private let audioData: String
+    private let audioData: AudioManager.AudioType
+
+    @State private var audioHasBeenPlayed: Bool = false
+
+    @ViewBuilder
+    private var currentInterface: some View {
+        let interface = Interface(rawValue: viewModel.choices.count)
+        switch interface {
+            case .oneChoice:
+                OneChoiceView(viewModel: self.viewModel, isTappable: true)
+
+            case .twoChoices:
+                TwoChoicesView(viewModel: self.viewModel, isTappable: true)
+
+            case .threeChoices:
+                ThreeChoicesView(viewModel: self.viewModel, isTappable: true)
+
+            case .fourChoices:
+                FourChoicesView(viewModel: self.viewModel, isTappable: true)
+
+            case .fiveChoices:
+                FiveChoicesView(viewModel: self.viewModel, isTappable: true)
+
+            case .sixChoices:
+                SixChoicesView(viewModel: self.viewModel, isTappable: true)
+
+            default:
+                EmptyView()
+        }
+    }
+}
+
+#Preview {
+    let choices: [TouchToSelect.Choice] = [
+        TouchToSelect.Choice(value: "red", type: .color, isRightAnswer: false),
+        TouchToSelect.Choice(value: "blue", type: .color, isRightAnswer: false),
+        TouchToSelect.Choice(value: "green", type: .color, isRightAnswer: false),
+        TouchToSelect.Choice(value: "yellow", type: .color, isRightAnswer: false),
+        TouchToSelect.Choice(value: "purple", type: .color, isRightAnswer: false),
+        TouchToSelect.Choice(value: "lightBlue", type: .color, isRightAnswer: true),
+    ]
+
+    return ListenThenTouchToSelectView(
+        choices: choices, audioRecording: "drums"
+    )
 }
