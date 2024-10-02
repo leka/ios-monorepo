@@ -32,9 +32,27 @@ public struct CurriculumDetailsView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 10 / 57 * 120))
 
                         VStack(alignment: .leading, spacing: 8) {
-                            Text(self.curriculum.details.title)
-                                .font(.largeTitle)
-                                .bold()
+                            HStack(alignment: .center) {
+                                Text(self.curriculum.details.title)
+                                    .font(.largeTitle)
+                                    .bold()
+
+                                Spacer()
+
+                                VStack {
+                                    Image(systemName: "graduationcap")
+                                        .font(.title3)
+                                    Text(l10n.CurriculumDetailsView.curriculumLabel)
+                                        .font(.caption)
+                                }
+
+                                VStack {
+                                    Text(self.curriculum.activities.count.description)
+                                        .font(.title3)
+                                    Text(l10n.CurriculumDetailsView.activitiesSectionTitle)
+                                        .font(.caption)
+                                }
+                            }
 
                             if let subtitle = self.curriculum.details.subtitle {
                                 Text(subtitle)
@@ -92,11 +110,25 @@ public struct CurriculumDetailsView: View {
                         .padding()
                     })
                 }
-            }
 
-            Section(String(l10n.CurriculumDetailsView.descriptionSectionTitle.characters)) {
-                Markdown(self.curriculum.details.description)
-                    .markdownTheme(.gitHub)
+                VStack {
+                    if self.isDescriptionExpanded {
+                        Markdown(self.curriculum.details.description)
+                            .markdownTheme(.gitHub)
+                    }
+
+                    HStack {
+                        Spacer()
+
+                        Button(self.isDescriptionExpanded ?
+                            String(l10n.CurriculumDetailsView.seeLessLabel.characters) :
+                            String(l10n.CurriculumDetailsView.seeMoreLabel.characters))
+                        {
+                            self.isDescriptionExpanded.toggle()
+                        }
+                        .foregroundColor(self.styleManager.accentColor!)
+                    }
+                }
             }
 
             Section(String(l10n.CurriculumDetailsView.activitiesSectionTitle.characters)) {
@@ -120,12 +152,29 @@ public struct CurriculumDetailsView: View {
 
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
+    @State private var isDescriptionExpanded = false
+    @ObservedObject private var styleManager: StyleManager = .shared
 }
 
 // MARK: - l10n.CurriculumDetailsView
 
 extension l10n {
     enum CurriculumDetailsView {
+        static let curriculumLabel = LocalizedString("content_kit.curriculum_details_view.curriculum_label",
+                                                     bundle: ContentKitResources.bundle,
+                                                     value: "Curriculum",
+                                                     comment: "CurriculumDetailsView's content type description label")
+
+        static let seeMoreLabel = LocalizedString("content_kit.curriculum_details_view.see_more_label",
+                                                  bundle: ContentKitResources.bundle,
+                                                  value: "See more",
+                                                  comment: "See more button label")
+
+        static let seeLessLabel = LocalizedString("content_kit.curriculum_details_view.see_less_label",
+                                                  bundle: ContentKitResources.bundle,
+                                                  value: "See less",
+                                                  comment: "See less button label")
+
         static let skillsSectionTitle = LocalizedString("content_kit.curriculum_details_view.skills_section_title",
                                                         bundle: ContentKitResources.bundle,
                                                         value: "Skills",
