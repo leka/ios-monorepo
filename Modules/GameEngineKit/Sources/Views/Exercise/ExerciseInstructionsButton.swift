@@ -8,97 +8,114 @@ import SwiftUI
 // MARK: - ExerciseInstructionsButton
 
 struct ExerciseInstructionsButton: View {
-    @StateObject var speaker = AudioPlayerViewModel(player: SpeechSynthesizer.shared)
-    @State var instructions: String
+    // MARK: Lifecycle
 
-    var body: some View {
-        Button(self.instructions.trimmingCharacters(in: .whitespacesAndNewlines)) {
-            self.speaker.setAudioData(data: self.instructions)
-            self.speaker.play()
-        }
-        .buttonStyle(StepInstructions_ButtonStyle(state: self.speaker.state))
+    init(instructions: String) {
+        self.instructions = .speech(text: instructions)
     }
-}
 
-// MARK: - StepInstructions_ButtonStyle
-
-struct StepInstructions_ButtonStyle: ButtonStyle {
     // MARK: Internal
 
-    let state: AudioPlayerState
-
-    func makeBody(configuration: Self.Configuration) -> some View {
-        HStack(spacing: 0) {
-            Spacer()
-            configuration.label
-                .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
-                .font(.system(size: 22, weight: .regular))
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 85)
-            Spacer()
+    var body: some View {
+        Button(self.instructions.value.trimmingCharacters(in: .whitespacesAndNewlines)) {
+            self.audioManager.play(self.instructions)
         }
-        .frame(maxWidth: 640)
-        .frame(height: 85, alignment: .center)
-        .background(self.backgroundGradient)
-        .overlay(self.buttonStroke)
-        .overlay(self.speachIndicator)
-        .clipShape(
-            RoundedRectangle(
-                cornerRadius: 10,
-                style: .circular
-            )
-        )
-        .shadow(
-            color: .black.opacity(0.1),
-            radius: self.state == .playing ? 0 : 4, x: 0, y: self.state == .playing ? 1 : 4
-        )
-        .scaleEffect(self.state == .playing ? 0.98 : 1)
-        .disabled(self.state == .playing)
-        .animation(.easeOut(duration: 0.2), value: self.state == .playing)
+        .buttonStyle(self.buttonStyle)
     }
 
     // MARK: Private
 
-    private var backgroundGradient: some View {
-        ZStack {
-            Color.white
-            LinearGradient(
-                gradient: Gradient(colors: [.black.opacity(0.1), .black.opacity(0.0), .black.opacity(0.0)]),
-                startPoint: .top, endPoint: .center
-            )
-            .opacity(self.state == .playing ? 1 : 0)
-        }
-    }
+    @StateObject private var audioManagerViewModel = AudioManagerViewModel()
 
-    private var buttonStroke: some View {
-        RoundedRectangle(
-            cornerRadius: 10,
-            style: .circular
-        )
-        .fill(
-            .clear,
-            strokeBorder: LinearGradient(
-                gradient: Gradient(colors: [.black.opacity(0.2), .black.opacity(0.05)]),
-                startPoint: .bottom,
-                endPoint: .top
-            ),
-            lineWidth: 4
-        )
-        .opacity(self.state == .playing ? 0.5 : 0)
-    }
+    private let audioManager = AudioManager.shared
+    private let instructions: AudioManager.AudioType
 
-    private var speachIndicator: some View {
-        HStack {
-            Spacer()
-            DesignKitAsset.Images.personTalking.swiftUIImage
-                .resizable()
-                .renderingMode(.template)
-                .aspectRatio(contentMode: .fit)
-                .foregroundColor(
-                    self.state == .playing
-                        ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : DesignKitAsset.Colors.darkGray.swiftUIColor
+    private var buttonStyle: AnyButtonStyle {
+        var backgroundGradient: some View {
+            ZStack {
+                Color.white
+                LinearGradient(
+                    gradient: Gradient(colors: [.black.opacity(0.1), .black.opacity(0.0), .black.opacity(0.0)]),
+                    startPoint: .top, endPoint: .center
                 )
-                .padding(10)
+                .opacity(self.isPlaying ? 1 : 0)
+            }
+        }
+
+        var buttonStroke: some View {
+            RoundedRectangle(
+                cornerRadius: 10,
+                style: .circular
+            )
+            .fill(
+                .clear,
+                strokeBorder: LinearGradient(
+                    gradient: Gradient(colors: [.black.opacity(0.2), .black.opacity(0.05)]),
+                    startPoint: .bottom,
+                    endPoint: .top
+                ),
+                lineWidth: 4
+            )
+            .opacity(self.isPlaying ? 0.5 : 0)
+        }
+
+        var speachIndicator: some View {
+            HStack {
+                Spacer()
+                DesignKitAsset.Images.personTalking.swiftUIImage
+                    .resizable()
+                    .renderingMode(.template)
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundColor(
+                        self.isPlaying
+                            ? DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor : DesignKitAsset.Colors.darkGray.swiftUIColor
+                    )
+                    .padding(10)
+            }
+        }
+
+        return AnyButtonStyle { configuration in
+            AnyView(
+                HStack(spacing: 0) {
+                    Spacer()
+                    configuration.label
+                        .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
+                        .font(.system(size: 22, weight: .regular))
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 85)
+                    Spacer()
+                }
+                .frame(maxWidth: 640)
+                .frame(height: 85, alignment: .center)
+                .background(backgroundGradient)
+                .overlay(buttonStroke)
+                .overlay(speachIndicator)
+                .clipShape(
+                    RoundedRectangle(
+                        cornerRadius: 10,
+                        style: .circular
+                    )
+                )
+                .shadow(
+                    color: .black.opacity(0.1),
+                    radius: self.isPlaying ? 0 : 4, x: 0, y: self.isPlaying ? 1 : 4
+                )
+                .scaleEffect(self.isPlaying ? 0.98 : 1)
+                .disabled(self.isPlaying)
+                .animation(.easeOut(duration: 0.2), value: self.isPlaying)
+            )
         }
     }
+
+    private var isPlaying: Bool {
+        if case let .playing(audio) = self.audioManagerViewModel.state, audio == self.instructions {
+            true
+        } else {
+            false
+        }
+    }
+}
+
+#Preview {
+    ExerciseInstructionsButton(instructions: "Instructions")
 }
