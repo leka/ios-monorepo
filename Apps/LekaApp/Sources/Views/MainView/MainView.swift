@@ -185,8 +185,7 @@ struct MainView: View {
                             .navigationTitle("Personal Library - Curriculums")
 
                     case .personalLibraryActivities:
-                        Text("Activities")
-                            .navigationTitle("Personal Library - Activities")
+                        PersonalLibraryActivitiesView(viewModel: self.rootAccountViewModel)
 
                     case .personalLibraryStories:
                         Text("Stories")
@@ -325,6 +324,7 @@ struct MainView: View {
     @ObservedObject private var styleManager: StyleManager = .shared
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
 
     private var persistentDataManager: PersistentDataManager = .shared
     private var caregiverManager: CaregiverManager = .shared
