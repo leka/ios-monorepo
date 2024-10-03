@@ -2,6 +2,24 @@
     "version": "1.0",
     "sourceLanguage": "en",
     "strings": {
+        "content_kit.activity_details_view.activity_label": {
+            "comment": "ActivityDetailsView's content type description label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Activity"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Activit\u00e9"
+                    }
+                }
+            }
+        },
         "content_kit.activity_details_view.authors_section_title": {
             "comment": "ActivityDetailsView 'authors' section title",
             "extractionState": "extracted_with_value",
@@ -69,7 +87,25 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Compétences"
+                        "value": "Comp\u00e9tences"
+                    }
+                }
+            }
+        },
+        "content_kit.activity_list_view.start_activity_button_label": {
+            "comment": "Start activity button label on ActivityListView",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Start"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "D\u00e9marrer"
                     }
                 }
             }
@@ -87,7 +123,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Activités"
+                        "value": "Activit\u00e9s"
                     }
                 }
             }
@@ -110,6 +146,24 @@
                 }
             }
         },
+        "content_kit.curriculum_details_view.curriculum_label": {
+            "comment": "CurriculumDetailsView's content type description label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Curriculum"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Parcours"
+                    }
+                }
+            }
+        },
         "content_kit.curriculum_details_view.description_section_title": {
             "comment": "CurriculumDetailsView 'description' section title",
             "extractionState": "extracted_with_value",
@@ -128,6 +182,42 @@
                 }
             }
         },
+        "content_kit.curriculum_details_view.see_less_label": {
+            "comment": "See less button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "See less"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Voir moins"
+                    }
+                }
+            }
+        },
+        "content_kit.curriculum_details_view.see_more_label": {
+            "comment": "See more button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "See more"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Voir plus"
+                    }
+                }
+            }
+        },
         "content_kit.curriculum_details_view.skills_section_title": {
             "comment": "CurriculumDetailsView 'skills' section title",
             "extractionState": "extracted_with_value",
@@ -141,7 +231,66 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Compétences"
+                        "value": "Comp\u00e9tences"
+                    }
+                }
+            }
+        },
+        "content_kit.curriculum_groupbox_view.activity_count_label": {
+            "comment": "Activity count label of CurriculumGroupboxView",
+            "localizations": {
+                "en": {
+                    "variations": {
+                        "plural": {
+                            "one": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activity"
+                                }
+                            },
+                            "other": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activities"
+                                }
+                            }
+                        }
+                    }
+                },
+                "fr": {
+                    "variations": {
+                        "plural": {
+                            "one": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activit\u00e9"
+                                }
+                            },
+                            "other": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activit\u00e9s"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "content_kit.curriculum_groupbox_view.curriculum_label": {
+            "comment": "CurriculumDetailsView's content type description label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Curriculum"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Parcours"
                     }
                 }
             }
@@ -159,7 +308,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Démarrer l'activité"
+                        "value": "D\u00e9marrer l'activit\u00e9"
                     }
                 }
             }
@@ -177,7 +326,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Démarrer l'histoire"
+                        "value": "D\u00e9marrer l'histoire"
                     }
                 }
             }
@@ -195,7 +344,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Activités"
+                        "value": "Activit\u00e9s"
                     }
                 }
             }
@@ -231,7 +380,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Désolé ! Aucun résultat trouvé."
+                        "value": "D\u00e9sol\u00e9 ! Aucun r\u00e9sultat trouv\u00e9."
                     }
                 }
             }
@@ -267,7 +416,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Compétences"
+                        "value": "Comp\u00e9tences"
                     }
                 }
             }
@@ -299,13 +448,13 @@
                             "one": {
                                 "stringUnit": {
                                     "state": "translated",
-                                    "value": "%d activité"
+                                    "value": "%d activit\u00e9"
                                 }
                             },
                             "other": {
                                 "stringUnit": {
                                     "state": "translated",
-                                    "value": "%d activités"
+                                    "value": "%d activit\u00e9s"
                                 }
                             }
                         }
@@ -380,156 +529,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Compétences"
-                    }
-                }
-            }
-        },
-        "content_kit.curriculum_groupbox_view.curriculum_label": {
-            "comment": "CurriculumDetailsView's content type description label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Curriculum"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Parcours"
-                    }
-                }
-            }
-        },
-        "content_kit.curriculum_groupbox_view.activity_count_label": {
-            "comment": "Activity count label of CurriculumGroupboxView",
-            "localizations": {
-                "en": {
-                    "variations": {
-                        "plural": {
-                            "one": {
-                                "stringUnit": {
-                                    "state": "translated",
-                                    "value": "%d activity"
-                                }
-                            },
-                            "other": {
-                                "stringUnit": {
-                                    "state": "translated",
-                                    "value": "%d activities"
-                                }
-                            }
-                        }
-                    }
-                },
-                "fr": {
-                    "variations": {
-                        "plural": {
-                            "one": {
-                                "stringUnit": {
-                                    "state": "translated",
-                                    "value": "%d activité"
-                                }
-                            },
-                            "other": {
-                                "stringUnit": {
-                                    "state": "translated",
-                                    "value": "%d activités"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "content_kit.curriculum_details_view.see_more_label": {
-            "comment": "See more button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "See more"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Voir plus"
-                    }
-                }
-            }
-        },
-        "content_kit.curriculum_details_view.see_less_label": {
-            "comment": "See less button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "See less"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Voir moins"
-                    }
-                }
-            }
-        },
-        "content_kit.curriculum_details_view.curriculum_label": {
-            "comment": "CurriculumDetailsView's content type description label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Curriculum"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Parcours"
-                    }
-                }
-            }
-        },
-        "content_kit.activity_list_view.start_activity_button_label": {
-            "comment": "Start activity button label on ActivityListView",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Start"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Démarrer"
-                    }
-                }
-            }
-        },
-        "content_kit.activity_details_view.activity_label": {
-            "comment": "ActivityDetailsView's content type description label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Activity"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Activité"
+                        "value": "Comp\u00e9tences"
                     }
                 }
             }

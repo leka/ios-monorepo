@@ -1,0 +1,451 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 0F1D5AB85369452A98DAC2118FBB3E7C
+name: alphabet_recognition_4
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2024-09-09T15:17:42.96907"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - alphabet_letters
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: alphabet_recognition
+
+      title: Les lettres de l'alphabet
+      subtitle: 4 images
+
+      short_description: |
+        Une activité amusante où le participant apprend à reconnaître et à sélectionner les lettres de l'alphabet en écoutant des instructions audio.
+
+      description: |
+        Découvrez l'alphabet avec cette activité interactive. Le participant appuie sur le bouton de haut-parleur pour écouter une instruction, puis doit toucher l'image correspondante sur l'écran. Cette activité stimule la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide.
+
+      instructions: |
+        - Le participant doit appuyer sur le haut-parleur pour écouter l'instruction.
+        - Invitez le à trouver l'image correspondant à l'instruction et à la toucher.
+
+  - locale: en_US
+    details:
+      icon: alphabet_recognition
+
+      title: Alphabet letters
+      subtitle: 4 images
+
+      short_description: |
+        A fun activity where the care receiver learns to recognize and select Alphabet letters by listening to audio instructions.
+
+      description: |
+        Explore the Alphabet with this interactive activity. The care receiver presses the speaker button to listen to an instruction, then needs to touch the corresponding image on the screen. This activity enhances auditory and visual recognition, as well as comprehension and quick response skills.
+
+      instructions: |
+        - The care receiver presses the speaker button to listen to the instruction.
+        - Invite them to find the image corresponding to the instruction and touch it.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la lettre demandée
+            - locale: en_US
+              value: Listen and touch the requested letter
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "a"
+                - locale: en_US
+                  utterance: "a"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: a.circle.fill
+                type: sfsymbol
+                is_right_answer: true
+              - value: p.circle.fill
+                type: sfsymbol
+              - value: k.circle.fill
+                type: sfsymbol
+              - value: t.circle.fill
+                type: sfsymbol
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la lettre demandée
+            - locale: en_US
+              value: Listen and touch the requested letter
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "b"
+                - locale: en_US
+                  utterance: "b"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: b.circle.fill
+                type: sfsymbol
+                is_right_answer: true
+              - value: q.circle.fill
+                type: sfsymbol
+              - value: x.circle.fill
+                type: sfsymbol
+              - value: o.circle.fill
+                type: sfsymbol
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la lettre demandée
+            - locale: en_US
+              value: Listen and touch the requested letter
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "c"
+                - locale: en_US
+                  utterance: "c"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: c.circle.fill
+                type: sfsymbol
+                is_right_answer: true
+              - value: r.circle.fill
+                type: sfsymbol
+              - value: n.circle.fill
+                type: sfsymbol
+              - value: l.circle.fill
+                type: sfsymbol
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la lettre demandée
+            - locale: en_US
+              value: Listen and touch the requested letter
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "d"
+                - locale: en_US
+                  utterance: "d"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: d.circle.fill
+                type: sfsymbol
+                is_right_answer: true
+              - value: z.circle.fill
+                type: sfsymbol
+              - value: e.circle.fill
+                type: sfsymbol
+              - value: v.circle.fill
+                type: sfsymbol
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la lettre demandée
+            - locale: en_US
+              value: Listen and touch the requested letter
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "e"
+                - locale: en_US
+                  utterance: "e"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: e.circle.fill
+                type: sfsymbol
+                is_right_answer: true
+              - value: g.circle.fill
+                type: sfsymbol
+              - value: u.circle.fill
+                type: sfsymbol
+              - value: j.circle.fill
+                type: sfsymbol
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la lettre demandée
+            - locale: en_US
+              value: Listen and touch the requested letter
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "f"
+                - locale: en_US
+                  utterance: "f"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: f.circle.fill
+                type: sfsymbol
+                is_right_answer: true
+              - value: i.circle.fill
+                type: sfsymbol
+              - value: y.circle.fill
+                type: sfsymbol
+              - value: h.circle.fill
+                type: sfsymbol
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la lettre demandée
+            - locale: en_US
+              value: Listen and touch the requested letter
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "g"
+                - locale: en_US
+                  utterance: "g"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: g.circle.fill
+                type: sfsymbol
+                is_right_answer: true
+              - value: m.circle.fill
+                type: sfsymbol
+              - value: f.circle.fill
+                type: sfsymbol
+              - value: p.circle.fill
+                type: sfsymbol
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la lettre demandée
+            - locale: en_US
+              value: Listen and touch the requested letter
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "h"
+                - locale: en_US
+                  utterance: "h"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: h.circle.fill
+                type: sfsymbol
+                is_right_answer: true
+              - value: d.circle.fill
+                type: sfsymbol
+              - value: w.circle.fill
+                type: sfsymbol
+              - value: o.circle.fill
+                type: sfsymbol
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la lettre demandée
+            - locale: en_US
+              value: Listen and touch the requested letter
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "i"
+                - locale: en_US
+                  utterance: "i"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: i.circle.fill
+                type: sfsymbol
+                is_right_answer: true
+              - value: x.circle.fill
+                type: sfsymbol
+              - value: r.circle.fill
+                type: sfsymbol
+              - value: k.circle.fill
+                type: sfsymbol
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la lettre demandée
+            - locale: en_US
+              value: Listen and touch the requested letter
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "j"
+                - locale: en_US
+                  utterance: "j"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: j.circle.fill
+                type: sfsymbol
+                is_right_answer: true
+              - value: v.circle.fill
+                type: sfsymbol
+              - value: b.circle.fill
+                type: sfsymbol
+              - value: n.circle.fill
+                type: sfsymbol
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la lettre demandée
+            - locale: en_US
+              value: Listen and touch the requested letter
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "k"
+                - locale: en_US
+                  utterance: "k"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: k.circle.fill
+                type: sfsymbol
+                is_right_answer: true
+              - value: t.circle.fill
+                type: sfsymbol
+              - value: z.circle.fill
+                type: sfsymbol
+              - value: s.circle.fill
+                type: sfsymbol
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la lettre demandée
+            - locale: en_US
+              value: Listen and touch the requested letter
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "l"
+                - locale: en_US
+                  utterance: "l"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: l.circle.fill
+                type: sfsymbol
+                is_right_answer: true
+              - value: u.circle.fill
+                type: sfsymbol
+              - value: y.circle.fill
+                type: sfsymbol
+              - value: q.circle.fill
+                type: sfsymbol
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche la lettre demandée
+            - locale: en_US
+              value: Listen and touch the requested letter
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "m"
+                - locale: en_US
+                  utterance: "m"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: m.circle.fill
+                type: sfsymbol
+                is_right_answer: true
+              - value: s.circle.fill
+                type: sfsymbol
+              - value: a.circle.fill
+                type: sfsymbol
+              - value: q.circle.fill
+                type: sfsymbol
