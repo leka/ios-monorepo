@@ -65,19 +65,5 @@ disabled_rules:
 
 excluded:
   - Tuist/.build
-  - Examples/Module/Derived
-  - Examples/iOSApp/Derived
-  - Modules/GameEngineKit/Derived
-  - Modules/BLEKit/Derived
-  - Modules/LogKit/Derived
-  - Modules/DesignKit/Derived
-  - Modules/LocalizationKit/Derived
-  - Modules/UtilsKit/Derived
-  - Modules/ContentKit/Derived
-  - Modules/AnalyticsKit/Derived
-  - Modules/RobotKit/Derived
-  - Modules/AccountKit/Derived
-  - Apps/LekaApp/Derived
-  - Apps/LekaUpdater/Derived
 
 reporter: "emoji"
