@@ -9,6 +9,7 @@ extension MainView {
     struct CategoryLabel: View {
         // MARK: Lifecycle
 
+        // swiftlint:disable cyclomatic_complexity body_length
         init(category: Navigation.Category) {
             self.category = category
 
@@ -84,8 +85,26 @@ extension MainView {
                 case .demo:
                     self.title = "Demo"
                     self.systemImage = "play.rectangle"
+
+                case .personalLibraryCurriculums:
+                    self.title = "Personal Library - Curriculums"
+                    self.systemImage = "graduationcap.fill"
+
+                case .personalLibraryActivities:
+                    self.title = "Personal Library - Activities"
+                    self.systemImage = "dice.fill"
+
+                case .personalLibraryStories:
+                    self.title = "Personal Library - Stories"
+                    self.systemImage = "text.book.closed.fill"
+
+                case .personalLibraryGamepads:
+                    self.title = "Personal Library - Gamepads"
+                    self.systemImage = "gamecontroller.fill"
             }
         }
+
+        // swiftlint:enable cyclomatic_complexity body_length
 
         // MARK: Internal
 
