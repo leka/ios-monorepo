@@ -5,9 +5,9 @@
 import Combine
 import SwiftUI
 
-// MARK: - TTSChoiceModel
+// MARK: - TTSViewUIChoiceModel
 
-struct TTSChoiceModel: Identifiable {
+struct TTSViewUIChoiceModel: Identifiable {
     // MARK: Lifecycle
 
     init(id: String = UUID().uuidString, view: some View = EmptyView()) {
@@ -21,17 +21,17 @@ struct TTSChoiceModel: Identifiable {
     let view: AnyView
 }
 
-// MARK: - UIChoices
+// MARK: - TTSViewUIChoicesWrapper
 
-struct UIChoices {
+struct TTSViewUIChoicesWrapper {
     // MARK: Internal
 
-    static let zero = UIChoices(choices: [])
+    static let zero = TTSViewUIChoicesWrapper(choices: [])
 
-    var choices: [TTSChoiceModel]
+    var choices: [TTSViewUIChoiceModel]
 
     var choiceSize: CGFloat {
-        TTSGridSize(rawValue: self.choices.count).choiceSize
+        TTSGridSize(self.choices.count).choiceSize
     }
 
     // MARK: Private
@@ -49,7 +49,7 @@ struct UIChoices {
 
         // MARK: Lifecycle
 
-        init(rawValue: Int) {
+        init(_ rawValue: Int) {
             switch rawValue {
                 case 1:
                     self = .one
@@ -129,19 +129,19 @@ struct TTSView: View {
     // MARK: - TTSEmptyCoordinator
 
     class TTSEmptyCoordinator: TTSGameplayCoordinatorProtocol {
-        var uiChoices = CurrentValueSubject<UIChoices, Never>(UIChoices(choices: [
-            TTSChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 1", type: .text, size: 240, state: .idle)),
-            TTSChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 2", type: .text,
-                                                                              size: 240, state: .idle)),
-            TTSChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 3\nCorrect", type: .text,
-                                                                              size: 240, state: .correct)),
-            TTSChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "exclamationmark.triangle.fill", type: .sfsymbol,
-                                                                              size: 240, state: .wrong)),
-            TTSChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 5", type: .text, size: 240, state: .idle)),
-            TTSChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 6", type: .text, size: 240, state: .idle)),
+        var uiChoices = CurrentValueSubject<TTSViewUIChoicesWrapper, Never>(TTSViewUIChoicesWrapper(choices: [
+            TTSViewUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 1", type: .text, size: 240, state: .idle)),
+            TTSViewUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 2", type: .text,
+                                                                                    size: 240, state: .idle)),
+            TTSViewUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 3\nCorrect", type: .text,
+                                                                                    size: 240, state: .correct)),
+            TTSViewUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "exclamationmark.triangle.fill", type: .sfsymbol,
+                                                                                    size: 240, state: .wrong)),
+            TTSViewUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 5", type: .text, size: 240, state: .idle)),
+            TTSViewUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 6", type: .text, size: 240, state: .idle)),
         ]))
 
-        func processUserSelection(choice: TTSChoiceModel) {
+        func processUserSelection(choice: TTSViewUIChoiceModel) {
             log.debug("\(choice.id)")
         }
     }

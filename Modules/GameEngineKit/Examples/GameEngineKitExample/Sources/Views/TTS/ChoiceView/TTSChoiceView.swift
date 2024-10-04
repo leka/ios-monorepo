@@ -30,7 +30,7 @@ struct TTSChoiceView: View {
         Group {
             switch self.type {
                 case .sfsymbol:
-                    SFSymbolView(value: self.value, size: self.size)
+                    TTSChoiceViewSFSymbol(value: self.value, size: self.size)
                         .overlay(
                             Circle()
                                 .fill(self.isTappable ? .clear : .white.opacity(0.6))
@@ -38,7 +38,7 @@ struct TTSChoiceView: View {
                         .animation(.easeOut(duration: 0.3), value: self.isTappable)
 
                 case .text:
-                    TextView(value: self.value, size: self.size)
+                    TTSChoiceViewText(value: self.value, size: self.size)
                         .overlay(
                             Circle()
                                 .fill(self.isTappable ? .clear : .white.opacity(0.6))

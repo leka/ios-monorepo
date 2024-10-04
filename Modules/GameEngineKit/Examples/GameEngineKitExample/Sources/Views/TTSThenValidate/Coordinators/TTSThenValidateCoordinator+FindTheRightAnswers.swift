@@ -19,15 +19,15 @@ class TTSThenValidateCoordinatorFindTheRightAnswers: TTSThenValidateGameplayCoor
                                   type: choice.type,
                                   size: self.uiChoices.value.choiceSize,
                                   state: .idle)
-            return TTSChoiceModel(id: choice.id, view: view)
+            return TTSViewUIChoiceModel(id: choice.id, view: view)
         }
     }
 
     // MARK: Internal
 
-    private(set) var uiChoices = CurrentValueSubject<UIChoices, Never>(.zero)
+    private(set) var uiChoices = CurrentValueSubject<TTSViewUIChoicesWrapper, Never>(.zero)
 
-    func processUserSelection(choice: TTSChoiceModel) {
+    func processUserSelection(choice: TTSViewUIChoiceModel) {
         self.currentChoices.append(choice)
 
         guard let index = self.uiChoices.value.choices.firstIndex(where: { $0.id == choice.id }) else { return }
@@ -37,7 +37,7 @@ class TTSThenValidateCoordinatorFindTheRightAnswers: TTSThenValidateGameplayCoor
                               size: self.uiChoices.value.choiceSize,
                               state: .selected)
 
-        self.uiChoices.value.choices[index] = TTSChoiceModel(id: choice.id, view: view)
+        self.uiChoices.value.choices[index] = TTSViewUIChoiceModel(id: choice.id, view: view)
     }
 
     func validateUserSelection() {
@@ -55,7 +55,7 @@ class TTSThenValidateCoordinatorFindTheRightAnswers: TTSThenValidateGameplayCoor
                                   size: self.uiChoices.value.choiceSize,
                                   state: result.isCorrect ? .correct : .wrong)
 
-            self.uiChoices.value.choices[index] = TTSChoiceModel(id: result.choice.id, view: view)
+            self.uiChoices.value.choices[index] = TTSViewUIChoiceModel(id: result.choice.id, view: view)
         }
 
         self.resetCurrentChoices()
@@ -64,7 +64,7 @@ class TTSThenValidateCoordinatorFindTheRightAnswers: TTSThenValidateGameplayCoor
     // MARK: Private
 
     private let gameplay: GameplayFindTheRightAnswers
-    private var currentChoices: [TTSChoiceModel] = []
+    private var currentChoices: [TTSViewUIChoiceModel] = []
     private var cancellables = Set<AnyCancellable>()
 
     private func resetCurrentChoices() {

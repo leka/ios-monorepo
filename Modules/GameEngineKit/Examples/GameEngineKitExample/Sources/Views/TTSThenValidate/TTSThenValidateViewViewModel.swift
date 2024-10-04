@@ -23,9 +23,9 @@ class TTSThenValidateViewViewModel: ObservableObject {
 
     // MARK: Internal
 
-    @Published var choices: [TTSChoiceModel]
+    @Published var choices: [TTSViewUIChoiceModel]
 
-    func onChoiceTapped(choice: TTSChoiceModel) {
+    func onChoiceTapped(choice: TTSViewUIChoiceModel) {
         self.coordinator.processUserSelection(choice: choice)
     }
 

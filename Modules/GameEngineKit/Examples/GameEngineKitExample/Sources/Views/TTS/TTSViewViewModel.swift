@@ -23,9 +23,9 @@ class TTSViewViewModel: ObservableObject {
 
     // MARK: Internal
 
-    @Published var choices: [TTSChoiceModel]
+    @Published var choices: [TTSViewUIChoiceModel]
 
-    func onTapped(choice: TTSChoiceModel) {
+    func onTapped(choice: TTSViewUIChoiceModel) {
         self.coordinator.processUserSelection(choice: choice)
     }
 

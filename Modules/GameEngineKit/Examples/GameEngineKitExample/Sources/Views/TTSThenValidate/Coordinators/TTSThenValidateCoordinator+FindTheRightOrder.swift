@@ -18,15 +18,15 @@ class TTSThenValidateCoordinatorFindTheRightOrder: TTSThenValidateGameplayCoordi
                                   type: choice.type,
                                   size: self.uiChoices.value.choiceSize,
                                   state: .idle)
-            return TTSChoiceModel(id: choice.id, view: view)
+            return TTSViewUIChoiceModel(id: choice.id, view: view)
         }
     }
 
     // MARK: Internal
 
-    private(set) var uiChoices = CurrentValueSubject<UIChoices, Never>(.zero)
+    private(set) var uiChoices = CurrentValueSubject<TTSViewUIChoicesWrapper, Never>(.zero)
 
-    func processUserSelection(choice: TTSChoiceModel) {
+    func processUserSelection(choice: TTSViewUIChoiceModel) {
         guard let gameplayChoice = self.gameplay.orderedChoices.first(where: { $0.id == choice.id }),
               !self.choiceAlreadySelected(choice: gameplayChoice) else { return }
 
@@ -44,7 +44,7 @@ class TTSThenValidateCoordinatorFindTheRightOrder: TTSThenValidateGameplayCoordi
                                           size: self.uiChoices.value.choiceSize,
                                           state: .correct(order: indice + 1))
 
-                    self.uiChoices.value.choices[indice] = TTSChoiceModel(id: choice.id, view: view)
+                    self.uiChoices.value.choices[indice] = TTSViewUIChoiceModel(id: choice.id, view: view)
                 }
             } else {
                 self.gameplay.orderedChoices.enumerated().forEach { index, choice in
@@ -53,7 +53,7 @@ class TTSThenValidateCoordinatorFindTheRightOrder: TTSThenValidateGameplayCoordi
                                           size: self.uiChoices.value.choiceSize,
                                           state: .idle)
 
-                    self.uiChoices.value.choices[index] = TTSChoiceModel(id: choice.id, view: view)
+                    self.uiChoices.value.choices[index] = TTSViewUIChoiceModel(id: choice.id, view: view)
                 }
             }
 
@@ -85,7 +85,7 @@ class TTSThenValidateCoordinatorFindTheRightOrder: TTSThenValidateGameplayCoordi
                               size: self.uiChoices.value.choiceSize,
                               state: .selected(order: self.currentOrderedChoicesIndex))
 
-        self.uiChoices.value.choices[index] = TTSChoiceModel(id: choice.id, view: view)
+        self.uiChoices.value.choices[index] = TTSViewUIChoiceModel(id: choice.id, view: view)
     }
 }
 
