@@ -10,15 +10,17 @@ import Foundation
 struct FindTheRightOrderChoice: Identifiable, Equatable {
     // MARK: Lifecycle
 
-    init(id: String = UUID().uuidString, value: String) {
+    init(id: String = UUID().uuidString, value: String, type: ChoiceType = .text) {
         self.id = id
         self.value = value
+        self.type = type
     }
 
     // MARK: Internal
 
     let id: String
     let value: String
+    let type: ChoiceType
 
     static func == (lhs: FindTheRightOrderChoice, rhs: FindTheRightOrderChoice) -> Bool {
         lhs.id == rhs.id

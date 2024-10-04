@@ -10,16 +10,18 @@ import Foundation
 struct FindTheRightAnswersChoice: Identifiable {
     // MARK: Lifecycle
 
-    init(id: String = UUID().uuidString, value: String, isRightAnswer: Bool) {
+    init(id: String = UUID().uuidString, value: String, isRightAnswer: Bool, type: ChoiceType = .text) {
         self.id = id
         self.value = value
         self.isRightAnswer = isRightAnswer
+        self.type = type
     }
 
     // MARK: Internal
 
     let id: String
     let value: String
+    let type: ChoiceType
     let isRightAnswer: Bool
 }
 
@@ -72,8 +74,8 @@ extension GameplayFindTheRightAnswers {
         FindTheRightAnswersChoice(value: "Choice 1\nCorrect", isRightAnswer: true),
         FindTheRightAnswersChoice(value: "Choice 2", isRightAnswer: false),
         FindTheRightAnswersChoice(value: "Choice 3\nCorrect", isRightAnswer: true),
-        FindTheRightAnswersChoice(value: "Choice 4", isRightAnswer: false),
+        FindTheRightAnswersChoice(value: "checkmark.seal.fill", isRightAnswer: true, type: .sfsymbol),
         FindTheRightAnswersChoice(value: "Choice 5\nCorrect", isRightAnswer: true),
-        FindTheRightAnswersChoice(value: "Choice 6", isRightAnswer: false),
+        FindTheRightAnswersChoice(value: "exclamationmark.triangle.fill", isRightAnswer: false, type: .sfsymbol),
     ]
 }
