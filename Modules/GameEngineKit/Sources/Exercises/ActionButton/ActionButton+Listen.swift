@@ -7,13 +7,19 @@ import DesignKit
 import SwiftUI
 
 struct ActionButtonListen: View {
-    @ObservedObject var audioPlayer: AudioPlayerViewModel
-    let audioData: String
+    // MARK: Lifecycle
+
+    init(audio: AudioManager.AudioType) {
+        self.audio = audio
+    }
+
+    // MARK: Internal
+
+    let audio: AudioManager.AudioType
 
     var body: some View {
         Button {
-            self.audioPlayer.setAudioData(data: self.audioData)
-            self.audioPlayer.play()
+            self.audioManager.play(self.audio)
         } label: {
             Image(systemName: "speaker.2")
                 .font(.system(size: 100, weight: .medium))
@@ -21,20 +27,39 @@ struct ActionButtonListen: View {
                 .padding(40)
         }
         .frame(width: 200)
-        .disabled(self.audioPlayer.state == .playing)
-        .buttonStyle(ActionButtonStyle(progress: self.audioPlayer.progress))
-        .scaleEffect(self.audioPlayer.state == .playing ? 1.0 : 0.8, anchor: .center)
+        .disabled(self.isPlaying)
+        .buttonStyle(ActionButtonStyle(progress: self.isPlaying ? self.audioManagerViewModel.progress.percentage : 0))
+        .scaleEffect(self.isPlaying ? 1.0 : 0.8, anchor: .center)
         .shadow(
             color: .accentColor.opacity(0.2),
-            radius: self.audioPlayer.state == .playing ? 6 : 3, x: 0, y: 3
+            radius: self.isPlaying ? 6 : 3, x: 0, y: 3
         )
-        .animation(.spring(response: 0.3, dampingFraction: 0.45), value: self.audioPlayer.state == .playing)
+        .animation(.spring(response: 0.3, dampingFraction: 0.45), value: self.isPlaying)
         .onDisappear {
-            self.audioPlayer.stop()
+            self.audioManager.stop()
+        }
+    }
+
+    // MARK: Private
+
+    @StateObject private var audioManagerViewModel = AudioManagerViewModel()
+
+    private let audioManager = AudioManager.shared
+
+    private var isPlaying: Bool {
+        if case let .playing(audio) = self.audioManagerViewModel.state, audio == self.audio {
+            true
+        } else {
+            false
         }
     }
 }
 
 #Preview {
-    ActionButtonListen(audioPlayer: AudioPlayerViewModel(player: AudioPlayer.shared), audioData: "drums")
+    HStack {
+        ActionButtonListen(audio: .file(name: "piano"))
+        ActionButtonListen(audio: .speech(text: "Hello, World!"))
+        ActionButtonListen(audio: .file(name: "drums"))
+        ActionButtonListen(audio: .speech(text: "My name is Leka"))
+    }
 }
