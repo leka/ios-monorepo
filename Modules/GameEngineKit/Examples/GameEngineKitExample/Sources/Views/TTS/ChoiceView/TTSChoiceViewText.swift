@@ -27,7 +27,6 @@ struct TTSChoiceViewText: View {
                 Text(self.value)
                     .multilineTextAlignment(.center)
                     .bold()
-                    .badge(10)
             }
             .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 4)
     }
