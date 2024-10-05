@@ -22,4 +22,5 @@ SCRIPT_PATH=$(realpath "$0")
 SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
 ROOT_DIR=$(realpath "$SCRIPT_DIR/..")
 
-swiftlint --config $ROOT_DIR/.swiftlint.yml --reporter xcode
+echo "Linting directory: $(pwd)"
+swiftlint --config $ROOT_DIR/.swiftlint.yml --reporter xcode --use-alternative-excluding
