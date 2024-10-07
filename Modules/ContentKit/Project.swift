@@ -18,6 +18,7 @@ let project = Project.module(
         ),
     ],
     dependencies: [
+        .project(target: "AccountKit", path: Path("../../Modules/AccountKit")),
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .project(target: "LocalizationKit", path: Path("../../Modules/LocalizationKit")),
         .project(target: "LogKit", path: Path("../../Modules/LogKit")),
