@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import Fit
 import LocalizationKit
@@ -116,6 +117,31 @@ public struct ActivityDetailsView: View {
             }
         }
         .toolbar {
+//            ToolbarItem {
+//                Button {
+//                    let CGID: String = self.caregiverManagerViewModel.currentCaregiver?.id ?? ""
+//                    let savedActivity = SavedActivity(
+//                        id: self.activity.uuid,
+//                        caregiverID: CGID
+//                    )
+//                    if self.rootAccountViewModel.isActivitySaved(activityID: self.activity.uuid) {
+//                        self.rootAccountViewModel.removeSavedActivity(activityID: self.activity.uuid)
+//                    } else {
+//                        self.rootAccountViewModel.addSavedActivity(savedActivity)
+//                    }
+//                } label: {
+//                    if self.rootAccountViewModel.isActivitySaved(activityID: self.activity.uuid) {
+//                        Image(systemName: "trash")
+//                        Text("Remove Activity")
+//                    } else {
+//                        Image(systemName: "square.and.arrow.down")
+//                        Text("Save Activity")
+//                    }
+//                }
+//                .buttonStyle(.bordered)
+//                .tint(self.rootAccountViewModel.isActivitySaved(activityID: self.activity.uuid) ? .red : .purple)
+//            }
+
             ToolbarItem {
                 Button {
                     self.onStartActivity?(self.activity)
@@ -141,6 +167,8 @@ public struct ActivityDetailsView: View {
 
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
+//    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
+//    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 }
 
 // MARK: - l10n.ActivityDetailsView

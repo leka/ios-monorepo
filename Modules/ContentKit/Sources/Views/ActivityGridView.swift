@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import SwiftUI
 
@@ -22,6 +23,32 @@ public struct ActivityGridView: View {
             ForEach(self.activities) { activity in
                 NavigationLink(destination:
                     ActivityDetailsView(activity: activity, onStartActivity: self.onStartActivity)
+                        .toolbar {
+                            ToolbarItem {
+                                Button {
+                                    let CGID: String = self.caregiverManagerViewModel.currentCaregiver?.id ?? ""
+                                    let savedActivity = SavedActivity(
+                                        id: activity.uuid,
+                                        caregiverID: CGID
+                                    )
+                                    if self.rootAccountViewModel.isActivitySaved(activityID: activity.uuid) {
+                                        self.rootAccountViewModel.removeSavedActivity(activityID: activity.uuid)
+                                    } else {
+                                        self.rootAccountViewModel.addSavedActivity(savedActivity)
+                                    }
+                                } label: {
+                                    if self.rootAccountViewModel.isActivitySaved(activityID: activity.uuid) {
+                                        Image(systemName: "trash")
+                                        Text("Remove Activity")
+                                    } else {
+                                        Image(systemName: "square.and.arrow.down")
+                                        Text("Save Activity")
+                                    }
+                                }
+                                .buttonStyle(.bordered)
+                                .tint(self.rootAccountViewModel.isActivitySaved(activityID: activity.uuid) ? .red : .purple)
+                            }
+                        }
                 ) {
                     VStack {
                         Image(uiImage: activity.details.iconImage)
@@ -60,6 +87,8 @@ public struct ActivityGridView: View {
 
     private let columns = Array(repeating: GridItem(), count: 3)
     @ObservedObject private var styleManager: StyleManager = .shared
+    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 }
 
 #Preview {
