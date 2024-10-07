@@ -8,10 +8,21 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
-      - id: trailing-whitespace
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-symlinks
+      - id: detect-private-key
       - id: end-of-file-fixer
         exclude_types: [json]
         exclude: '(.*\.xcstrings|\.xcassets|\.svg)'
+      - id: forbid-submodules
+      - id: mixed-line-ending
+      - id: no-commit-to-branch
+        args: [--branch, main, --branch, develop]
+      - id: trailing-whitespace
       - id: check-yaml
         exclude: exercise_templates.yml
       - id: check-json
@@ -23,12 +34,6 @@ repos:
         types: [file]
         files: \.(json|xcstrings)$
         exclude: '(\.vscode/settings\.json|\.jtd\.json$|.*\.xcassets/.*|.*\.colorset/.*|\.animation\.lottie\.json$)'
-      - id: check-added-large-files
-      - id: check-executables-have-shebangs
-      - id: check-shebang-scripts-are-executable
-      - id: detect-private-key
-      - id: forbid-submodules
-      - id: mixed-line-ending
 
   - repo: https://github.com/realm/SwiftLint
     rev: 0.57.0
