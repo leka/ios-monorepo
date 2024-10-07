@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -69,6 +70,25 @@ public struct ActivityListView: View {
                         }
 
                         Button {
+                            let currentCaregiverID: String = self.caregiverManagerViewModel.currentCaregiver?.id ?? ""
+                            if self.rootAccountViewModel.isActivitySaved(activityID: activity.uuid) {
+                                self.rootAccountViewModel.removeSavedActivity(activityID: activity.uuid)
+                            } else {
+                                self.rootAccountViewModel.addSavedActivity(
+                                    activityID: activity.uuid,
+                                    caregiverID: currentCaregiverID
+                                )
+                            }
+                        } label: {
+                            if self.rootAccountViewModel.isActivitySaved(activityID: activity.uuid) {
+                                Image(systemName: "trash")
+                            } else {
+                                Image(systemName: "plus")
+                            }
+                        }
+                        .tint(self.rootAccountViewModel.isActivitySaved(activityID: activity.uuid) ? .red : self.styleManager.accentColor!)
+
+                        Button {
                             self.onStartActivity?(activity)
                         } label: {
                             Image(systemName: "play.circle")
@@ -108,6 +128,9 @@ public struct ActivityListView: View {
 
     private let columns = Array(repeating: GridItem(), count: 3)
     @ObservedObject private var styleManager: StyleManager = .shared
+
+    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 }
 
 // MARK: - l10n.ActivityListView
