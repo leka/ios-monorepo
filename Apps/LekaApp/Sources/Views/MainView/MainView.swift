@@ -88,6 +88,13 @@ struct MainView: View {
                                 CategoryLabel(category: .vectorImageList)
                                 CategoryLabel(category: .news)
                             }
+
+                            Section("Library") {
+                                CategoryLabel(category: .libraryCurriculums)
+                                CategoryLabel(category: .libraryActivities)
+                                CategoryLabel(category: .libraryStories)
+                                CategoryLabel(category: .libraryGamepads)
+                            }
                         } else {
                             Section("Demo mode") {
                                 CategoryLabel(category: .demo)
@@ -172,6 +179,22 @@ struct MainView: View {
 
                     case .demo:
                         DiscoverLekaView(demoMode: self.navigation.demoMode)
+
+                    case .libraryCurriculums:
+                        Text("Curriculums")
+                            .navigationTitle("Curriculums")
+
+                    case .libraryActivities:
+                        Text("Activities")
+                            .navigationTitle("Activities")
+
+                    case .libraryStories:
+                        Text("Stories")
+                            .navigationTitle("Stories")
+
+                    case .libraryGamepads:
+                        Text("Gamepads")
+                            .navigationTitle("Gamepads")
 
                     case .none:
                         Text(l10n.MainView.Sidebar.CategoryLabel.home)
