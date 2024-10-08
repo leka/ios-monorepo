@@ -8,6 +8,8 @@ import SwiftUI
 // MARK: - TextFieldDefault
 
 struct TextFieldDefault: View {
+    // MARK: Internal
+
     let label: String
     @Binding var entry: String
 
@@ -18,8 +20,18 @@ struct TextFieldDefault: View {
             TextField("", text: self.$entry)
                 .textFieldStyle(.roundedBorder)
                 .autocorrectionDisabled()
+                .focused(self.$focused)
+                .onChange(of: self.focused) { focused in
+                    if !focused {
+                        self.entry = self.entry.trimLeadingAndTrailingWhitespaces()
+                    }
+                }
         }
     }
+
+    // MARK: Private
+
+    @FocusState private var focused: Bool
 }
 
 #Preview {
