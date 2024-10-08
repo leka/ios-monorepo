@@ -32,6 +32,12 @@ struct EditCarereceiverView: View {
                             .autocorrectionDisabled()
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
+                            .focused(self.$focused)
+                            .onChange(of: self.focused) { focused in
+                                if !focused {
+                                    self.modifiedCarereceiver.username = self.modifiedCarereceiver.username.trimLeadingAndTrailingWhitespaces()
+                                }
+                            }
                     }
                 }
 
@@ -64,6 +70,8 @@ struct EditCarereceiverView: View {
 
     @State private var isAvatarPickerPresented: Bool = false
     var carereceiverManager: CarereceiverManager = .shared
+
+    @FocusState private var focused: Bool
 
     private var avatarPickerButton: some View {
         Button {
