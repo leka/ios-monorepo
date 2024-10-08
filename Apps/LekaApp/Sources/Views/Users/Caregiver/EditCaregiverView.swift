@@ -65,13 +65,17 @@ struct EditCaregiverView: View {
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
                             .onChange(of: self.viewModel.caregiver.email) { newValue in
-                                self.isWhitespacesErrorMessageVisible = newValue.containsInvalidCharacters()
+                                withAnimation {
+                                    self.isWhitespacesErrorMessageVisible = newValue.containsInvalidCharacters()
+                                }
                             }
                     }
                 } footer: {
-                    Text("Email cannot contain spaces or line breaks")
-                        .font(.footnote)
-                        .foregroundStyle(self.isWhitespacesErrorMessageVisible ? .red : .clear)
+                    if self.isWhitespacesErrorMessageVisible {
+                        Text("Email cannot contain spaces or line breaks")
+                            .font(.footnote)
+                            .foregroundStyle(.red)
+                    }
                 }
 
                 Section {
