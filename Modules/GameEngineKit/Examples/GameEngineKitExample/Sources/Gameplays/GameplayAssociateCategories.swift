@@ -54,7 +54,7 @@ class GameplayAssociateCategories: GameplayProtocol {
         var results = [(AssociateCategoriesChoice, Bool)]()
 
         for category in choices {
-            let categoryGroups = Dictionary(grouping: category.filter { $0.category != nil }, by: { $0.category })
+            let categoryGroups = Dictionary(grouping: category, by: { $0.category })
             for (_, categoryChoices) in categoryGroups {
                 if categoryChoices.count > 1 {
                     categoryChoices.forEach { choice in
@@ -73,7 +73,7 @@ class GameplayAssociateCategories: GameplayProtocol {
     }
 
     public func reset() {
-        let categoryGroups = Dictionary(grouping: choices.filter { $0.category != nil }, by: { $0.category })
+        let categoryGroups = Dictionary(grouping: choices, by: { $0.category })
         self.remainingRightAnswers = categoryGroups.values
             .filter { $0.count > 1 }
             .flatMap { $0 }
@@ -93,11 +93,11 @@ extension GameplayAssociateCategories {
     // MARK: Public
 
     public static let kDefaultChoices: [AssociateCategoriesChoice] = [
-        AssociateCategoriesChoice(value: "Category A", category: .categoryA),
+        AssociateCategoriesChoice(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
         AssociateCategoriesChoice(value: "car.rear.fill", category: .categoryC, type: .sfsymbol),
-        AssociateCategoriesChoice(value: "Category B", category: .categoryB),
+        AssociateCategoriesChoice(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
         AssociateCategoriesChoice(value: "car.rear.fill", category: .categoryC, type: .sfsymbol),
-        AssociateCategoriesChoice(value: "Category A", category: .categoryA),
-        AssociateCategoriesChoice(value: "No category", category: nil),
+        AssociateCategoriesChoice(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
+        AssociateCategoriesChoice(value: "Maison", category: nil, type: .text),
     ]
 }

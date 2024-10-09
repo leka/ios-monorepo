@@ -8,6 +8,7 @@ import SwiftUI
 // MARK: - ChoiceType
 
 enum ChoiceType {
+    case image
     case sfsymbol
     case text
 }
@@ -44,6 +45,8 @@ struct TTSChoiceView: View {
                                 .fill(self.isTappable ? .clear : .white.opacity(0.6))
                         )
                         .animation(.easeOut(duration: 0.3), value: self.isTappable)
+                default:
+                    EmptyView()
             }
         }
         .contentShape(Circle())
