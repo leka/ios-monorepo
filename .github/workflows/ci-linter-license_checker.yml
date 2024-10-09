@@ -25,10 +25,10 @@ jobs:
           lfs: false
 
       - name: Install deno
-        uses: denoland/setup-deno@v1
+        uses: denoland/setup-deno@v2
         with:
           deno-version: vx.x.x
 
       - name: Check licenses in all files
         run: |
-          deno run --allow-read https://deno.land/x/license_checker@v3.2.2/main.ts
+          deno run --allow-read jsr:@kt3k/license-checker@3.3.1/main
