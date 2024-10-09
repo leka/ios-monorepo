@@ -5,9 +5,9 @@
 import SpriteKit
 import SwiftUI
 
-// MARK: - DNDAnswerNode
+// MARK: - DnDAnswerNode
 
-class DNDAnswerNode: SKSpriteNode {
+class DnDAnswerNode: SKSpriteNode {
     // MARK: Lifecycle
 
     init(id: String, value: String, type: ChoiceType, size: CGSize) {
@@ -64,24 +64,24 @@ class DNDAnswerNode: SKSpriteNode {
     private var label: SKLabelNode!
 }
 
-// MARK: - DNDUIChoices
+// MARK: - DnDUIChoices
 
-struct DNDUIChoices {
+struct DnDUIChoices {
     // MARK: Internal
 
-    static let zero = DNDUIChoices(choices: [])
+    static let zero = DnDUIChoices(choices: [])
 
-    var choices: [DNDAnswerNode]
+    var choices: [DnDAnswerNode]
 
     var choiceSize: CGSize {
-        DNDGridSize(self.choices.count).choiceSize
+        DnDGridSize(self.choices.count).choiceSize
     }
 
     // MARK: Private
 
     // swiftlint:disable identifier_name
 
-    private enum DNDGridSize: Int {
+    private enum DnDGridSize: Int {
         case one = 1
         case two
         case three

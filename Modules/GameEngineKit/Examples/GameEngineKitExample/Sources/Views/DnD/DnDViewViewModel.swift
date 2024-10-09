@@ -5,12 +5,12 @@
 import Combine
 import SwiftUI
 
-// MARK: - DNDViewViewModel
+// MARK: - DnDViewViewModel
 
-class DNDViewViewModel: ObservableObject {
+class DnDViewViewModel: ObservableObject {
     // MARK: Lifecycle
 
-    init(coordinator: DNDCoordinatorAssociateCategories) {
+    init(coordinator: DnDCoordinatorAssociateCategories) {
         self.choices = coordinator.uiChoices.value.choices
         self.coordinator = coordinator
         self.coordinator.uiChoices
@@ -23,16 +23,16 @@ class DNDViewViewModel: ObservableObject {
 
     // MARK: Public
 
-    public func onTouch(_ event: DNDTouchEvent, choice: DNDAnswerNode, destination: DNDAnswerNode? = nil) {
+    public func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDAnswerNode? = nil) {
         self.coordinator.onTouch(event, choice: choice, destination: destination)
     }
 
     // MARK: Internal
 
-    @Published var choices: [DNDAnswerNode] = []
+    @Published var choices: [DnDAnswerNode] = []
 
     // MARK: Private
 
-    private let coordinator: DNDCoordinatorAssociateCategories
+    private let coordinator: DnDCoordinatorAssociateCategories
     private var cancellables: Set<AnyCancellable> = []
 }

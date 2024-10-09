@@ -61,16 +61,16 @@ struct ContentView: View {
                 }
 
                 HStack(spacing: 20) {
-                    Text("DND")
+                    Text("DnD")
                         .font(.largeTitle)
                         .padding()
 
                     NavigationLink("Drag & Drop Categories", destination: {
                         let gameplay = GameplayAssociateCategories(choices: GameplayAssociateCategories.kDefaultChoices)
-                        let coordinator = DNDCoordinatorAssociateCategories(gameplay: gameplay)
-                        let viewModel = DNDViewViewModel(coordinator: coordinator)
+                        let coordinator = DnDCoordinatorAssociateCategories(gameplay: gameplay)
+                        let viewModel = DnDViewViewModel(coordinator: coordinator)
 
-                        return DNDView(viewModel: viewModel)
+                        return DnDView(viewModel: viewModel)
                             .navigationTitle("Drag & Drop Categories")
                             .navigationBarTitleDisplayMode(.large)
                     })

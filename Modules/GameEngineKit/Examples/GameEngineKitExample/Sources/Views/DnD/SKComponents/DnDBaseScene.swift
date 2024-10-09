@@ -5,11 +5,11 @@
 import Combine
 import SpriteKit
 
-extension DNDView {
-    class DNDBaseScene: SKScene {
+extension DnDView {
+    class DnDBaseScene: SKScene {
         // MARK: Lifecycle
 
-        init(viewModel: DNDViewViewModel) {
+        init(viewModel: DnDViewViewModel) {
             self.viewModel = viewModel
             super.init(size: CGSize.zero)
         }
@@ -21,7 +21,7 @@ extension DNDView {
 
         // MARK: Internal
 
-        var viewModel: DNDViewViewModel
+        var viewModel: DnDViewViewModel
         var spacer: CGFloat = .zero
         var defaultPosition: CGPoint = .zero
         var initialNodeX: CGFloat = .zero
@@ -64,7 +64,7 @@ extension DNDView {
                 return
             }
             let location = touch.location(in: self)
-            if let node = atPoint(location) as? DNDAnswerNode {
+            if let node = atPoint(location) as? DnDAnswerNode {
                 for choice in self.viewModel.choices where node.id == choice.id && node.isDraggable {
                     selectedNodes[touch] = node
                     self.viewModel.onTouch(.began, choice: node)
@@ -96,8 +96,8 @@ extension DNDView {
 
         // MARK: Private
 
-        private var selectedNodes: [UITouch: DNDAnswerNode] = [:]
-        private var dropDestinations: [DNDAnswerNode] = []
+        private var selectedNodes: [UITouch: DnDAnswerNode] = [:]
+        private var dropDestinations: [DnDAnswerNode] = []
         private var cancellables: Set<AnyCancellable> = []
     }
 }

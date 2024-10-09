@@ -5,12 +5,12 @@
 import SpriteKit
 import SwiftUI
 
-// MARK: - DNDView
+// MARK: - DnDView
 
-public struct DNDView: View {
+public struct DnDView: View {
     // MARK: Lifecycle
 
-    init(viewModel: DNDViewViewModel) {
+    init(viewModel: DnDViewViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
 
@@ -28,11 +28,11 @@ public struct DNDView: View {
 
     // MARK: Private
 
-    @StateObject private var viewModel: DNDViewViewModel
+    @StateObject private var viewModel: DnDViewViewModel
     @State private var scene: SKScene = .init()
 
     private func makeScene(size: CGSize) -> SKScene {
-        guard let finalScene = scene as? DNDBaseScene else {
+        guard let finalScene = scene as? DnDBaseScene else {
             return SKScene()
         }
         finalScene.size = size
@@ -44,7 +44,7 @@ public struct DNDView: View {
             case 6:
                 SixChoicesScene(viewModel: self.viewModel)
             default:
-                DNDBaseScene(viewModel: self.viewModel)
+                DnDBaseScene(viewModel: self.viewModel)
         }
     }
 }

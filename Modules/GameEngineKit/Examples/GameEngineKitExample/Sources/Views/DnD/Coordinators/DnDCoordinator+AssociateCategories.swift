@@ -7,24 +7,24 @@ import SpriteKit
 import SwiftUI
 import UtilsKit
 
-// MARK: - DNDCoordinatorAssociateCategories
+// MARK: - DnDCoordinatorAssociateCategories
 
-class DNDCoordinatorAssociateCategories: DNDGameplayCoordinatorProtocol {
+class DnDCoordinatorAssociateCategories: DnDGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
     init(gameplay: GameplayAssociateCategories) {
         self.gameplay = gameplay
 
         self.uiChoices.value.choices = gameplay.choices.map { choice in
-            DNDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiChoices.value.choiceSize)
+            DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiChoices.value.choiceSize)
         }
     }
 
     // MARK: Internal
 
-    private(set) var uiChoices = CurrentValueSubject<DNDUIChoices, Never>(.zero)
+    private(set) var uiChoices = CurrentValueSubject<DnDUIChoices, Never>(.zero)
 
-    func onTouch(_ event: DNDTouchEvent, choice: DNDAnswerNode, destination: DNDAnswerNode? = nil) {
+    func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDAnswerNode? = nil) {
         switch event {
             case .began:
                 self.updateChoiceState(for: self.gameplay.choices.first(where: { $0.id == choice.id })!, to: .selected)
@@ -44,7 +44,7 @@ class DNDCoordinatorAssociateCategories: DNDGameplayCoordinatorProtocol {
     private var currentlySelectedChoices: [[AssociateCategoriesChoice]] = []
     private var alreadyValidatedChoices: [[AssociateCategoriesChoice]] = []
 
-    private func processUserDropOnDestination(choice: DNDAnswerNode, destination: DNDAnswerNode) {
+    private func processUserDropOnDestination(choice: DnDAnswerNode, destination: DnDAnswerNode) {
         guard let sourceChoice = self.gameplay.choices.first(where: { $0.id == choice.id }),
               let destinationChoice = self.gameplay.choices.first(where: { $0.id == destination.id }),
               !self.choiceAlreadySelected(choice: sourceChoice) else { return }
@@ -102,7 +102,7 @@ class DNDCoordinatorAssociateCategories: DNDGameplayCoordinatorProtocol {
     }
 }
 
-extension DNDCoordinatorAssociateCategories {
+extension DnDCoordinatorAssociateCategories {
     enum State: Equatable {
         case idle
         case selected
@@ -110,7 +110,7 @@ extension DNDCoordinatorAssociateCategories {
         case wrong
     }
 
-    private func updateUINodeState(node: DNDAnswerNode, state: State) {
+    private func updateUINodeState(node: DnDAnswerNode, state: State) {
         switch state {
             case .idle:
                 self.moveNodeBackToInitialPosition(node)
@@ -146,7 +146,7 @@ extension DNDCoordinatorAssociateCategories {
         node.removeAllActions()
     }
 
-    private func moveNodeBackToInitialPosition(_ node: DNDAnswerNode) {
+    private func moveNodeBackToInitialPosition(_ node: DnDAnswerNode) {
         let moveAnimation = SKAction.move(to: node.initialPosition ?? .zero, duration: 0.25)
         node.run(
             moveAnimation,

@@ -4,8 +4,8 @@
 
 import SwiftUI
 
-extension DNDView {
-    class SixChoicesScene: DNDBaseScene {
+extension DnDView {
+    class SixChoicesScene: DnDBaseScene {
         override func setFirstAnswerPosition() {
             spacer = 2 * size.width / CGFloat(self.viewModel.choices.count)
             initialNodeX = (size.width / 2) - spacer
