@@ -212,9 +212,12 @@ struct SettingsView: View {
     @ObservedObject private var styleManager: StyleManager = .shared
     @ObservedObject private var navigation = Navigation.shared
 
+    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
+
     private func reset() {
         self.caregiverManager.resetData()
         self.carereceiverManager.resetData()
+        self.rootAccountViewModel.resetData()
         self.styleManager.accentColor = DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
         self.styleManager.colorScheme = .light
     }
