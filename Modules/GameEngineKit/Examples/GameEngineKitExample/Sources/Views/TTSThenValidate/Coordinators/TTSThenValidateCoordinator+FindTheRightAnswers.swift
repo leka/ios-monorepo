@@ -95,31 +95,13 @@ extension TTSThenValidateCoordinatorFindTheRightAnswers {
         var body: some View {
             switch self.state {
                 case .correct:
-                    TTSChoiceView(value: self.value, type: self.type, size: self.size)
-                        .overlay {
-                            Image(systemName: "checkmark.circle.fill")
-                                .font(.largeTitle)
-                                .foregroundColor(.green)
-                                .position(x: 200, y: 20)
-                        }
+                    TTSChoiceViewDefaultCorrect(value: self.value, type: self.type, size: self.size)
                 case .selected:
-                    TTSChoiceView(value: self.value, type: self.type, size: self.size)
-                        .overlay {
-                            Image(systemName: "circle.dotted.circle")
-                                .font(.largeTitle)
-                                .foregroundColor(.teal)
-                                .position(x: 200, y: 20)
-                        }
+                    TTSChoiceViewDefaultSelected(value: self.value, type: self.type, size: self.size)
                 case .wrong:
-                    TTSChoiceView(value: self.value, type: self.type, size: self.size)
-                        .overlay {
-                            Image(systemName: "xmark.circle.fill")
-                                .font(.largeTitle)
-                                .foregroundColor(.red)
-                                .position(x: 200, y: 20)
-                        }
+                    TTSChoiceViewDefaultWrong(value: self.value, type: self.type, size: self.size)
                 case .idle:
-                    TTSChoiceView(value: self.value, type: self.type, size: self.size)
+                    TTSChoiceViewDefaultIdle(value: self.value, type: self.type, size: self.size)
             }
         }
 

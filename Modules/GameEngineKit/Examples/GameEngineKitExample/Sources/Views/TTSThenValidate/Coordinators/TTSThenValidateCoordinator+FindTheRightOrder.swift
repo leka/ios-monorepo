@@ -131,7 +131,7 @@ extension TTSThenValidateCoordinatorFindTheRightOrder {
                                 .foregroundColor(.blue)
                         }
                 case .idle:
-                    TTSChoiceView(value: self.value, type: self.type, size: self.size)
+                    TTSChoiceViewDefaultIdle(value: self.value, type: self.type, size: self.size)
             }
         }
 

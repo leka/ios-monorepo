@@ -102,27 +102,11 @@ extension TTSCoordinatorAssociateCategories {
         var body: some View {
             switch self.state {
                 case .correct:
-                    TTSChoiceView(value: self.value, type: self.type, size: self.size)
-                        .overlay {
-                            Image(systemName: "checkmark.circle.fill")
-                                .resizable()
-                                .frame(width: self.size, height: self.size)
-                                .opacity(1)
-                                .font(.largeTitle)
-                                .foregroundColor(.green)
-                        }
+                    TTSChoiceViewDefaultCorrect(value: self.value, type: self.type, size: self.size)
                 case .selected:
-                    TTSChoiceView(value: self.value, type: self.type, size: self.size)
-                        .overlay {
-                            Image(systemName: "circle.dotted.circle.fill")
-                                .resizable()
-                                .frame(width: self.size, height: self.size)
-                                .opacity(0.4)
-                                .font(.largeTitle)
-                                .foregroundColor(.blue)
-                        }
+                    TTSChoiceViewDefaultSelected(value: self.value, type: self.type, size: self.size)
                 case .idle:
-                    TTSChoiceView(value: self.value, type: self.type, size: self.size)
+                    TTSChoiceViewDefaultIdle(value: self.value, type: self.type, size: self.size)
             }
         }
 
