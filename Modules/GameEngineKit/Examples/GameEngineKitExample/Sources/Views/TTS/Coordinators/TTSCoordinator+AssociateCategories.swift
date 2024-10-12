@@ -31,11 +31,16 @@ class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
             return
         }
 
-        self.selectedChoices.append(gameplayChoice)
+        guard !self.selectedChoices.contains(where: { $0.id == gameplayChoice.id }) else {
+            self.selectedChoices.removeAll { $0.id == gameplayChoice.id }
+            self.updateChoiceState(for: gameplayChoice, to: .idle)
+            return
+        }
 
-        if self.selectedChoices.count <= 1 {
-            self.updateChoiceState(for: gameplayChoice, to: .selected)
-        } else {
+        self.selectedChoices.append(gameplayChoice)
+        self.updateChoiceState(for: gameplayChoice, to: .selected)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
             let results = self.gameplay.process(choices: [self.selectedChoices])
             let categoryGroupSize = self.gameplay.choices.filter { $0.category == gameplayChoice.category }.count
 
@@ -47,10 +52,6 @@ class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
                     self.selectedChoices.removeAll()
                     if self.gameplay.isCompleted.value {
                         print("Exercise completed !!!!")
-                    }
-                } else {
-                    self.selectedChoices.forEach { choice in
-                        self.updateChoiceState(for: choice, to: .selected)
                     }
                 }
             } else {
