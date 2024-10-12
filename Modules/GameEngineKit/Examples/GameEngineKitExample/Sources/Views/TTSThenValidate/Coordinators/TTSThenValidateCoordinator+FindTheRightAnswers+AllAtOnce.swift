@@ -28,14 +28,22 @@ class TTSThenValidateCoordinatorFindTheRightAnswersAllAtOnce: TTSThenValidateGam
     private(set) var uiChoices = CurrentValueSubject<TTSViewUIChoicesWrapper, Never>(.zero)
 
     func processUserSelection(choice: TTSViewUIChoiceModel) {
-        self.currentChoices.append(choice)
+        var choiceState: State {
+            if let index = currentChoices.firstIndex(where: { $0.id == choice.id }) {
+                self.currentChoices.remove(at: index)
+                return .idle
+            } else {
+                self.currentChoices.append(choice)
+                return .selected
+            }
+        }
 
         guard let index = self.uiChoices.value.choices.firstIndex(where: { $0.id == choice.id }) else { return }
 
         let view = ChoiceView(value: self.gameplay.choices[index].value,
                               type: self.gameplay.choices[index].type,
                               size: self.uiChoices.value.choiceSize,
-                              state: .selected)
+                              state: choiceState)
 
         self.uiChoices.value.choices[index] = TTSViewUIChoiceModel(id: choice.id, view: view)
     }
