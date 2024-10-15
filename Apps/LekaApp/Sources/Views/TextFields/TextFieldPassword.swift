@@ -46,9 +46,6 @@ struct TextFieldPassword: View {
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
                 .focused(self.$focused)
-                .onChange(of: self.entry) { newValue in
-                    self.entry = newValue.trimmingCharacters(in: .whitespaces)
-                }
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
                         .stroke(self.focused ? .blue : .clear, lineWidth: 1)

@@ -70,6 +70,12 @@ struct CreateCaregiverView: View {
                             .autocorrectionDisabled()
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
+                            .focused(self.$focused)
+                            .onChange(of: self.focused) { focused in
+                                if !focused {
+                                    self.newCaregiver.firstName = self.newCaregiver.firstName.trimLeadingAndTrailingWhitespaces()
+                                }
+                            }
                     }
                     LabeledContent(String(l10n.CaregiverCreation.caregiverLastNameLabel.characters)) {
                         TextField("", text: self.$newCaregiver.lastName, prompt: self.placeholderLastName)
@@ -78,6 +84,12 @@ struct CreateCaregiverView: View {
                             .autocorrectionDisabled()
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
+                            .focused(self.$focused)
+                            .onChange(of: self.focused) { focused in
+                                if !focused {
+                                    self.newCaregiver.lastName = self.newCaregiver.lastName.trimLeadingAndTrailingWhitespaces()
+                                }
+                            }
                     }
                     LabeledContent(String(l10n.CaregiverCreation.caregiverEmailLabel.characters)) {
                         TextField("", text: self.$newCaregiver.email, prompt: self.placeholderEmail)
@@ -86,7 +98,14 @@ struct CreateCaregiverView: View {
                             .autocorrectionDisabled()
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
+                            .onChange(of: self.newCaregiver.email) { newValue in
+                                self.isWhitespacesErrorMessageVisible = newValue.containsInvalidCharacters()
+                            }
                     }
+                } footer: {
+                    Text("Email cannot contain spaces or line breaks")
+                        .font(.footnote)
+                        .foregroundStyle(self.isWhitespacesErrorMessageVisible ? .red : .clear)
                 }
 
                 Section {
@@ -142,6 +161,9 @@ struct CreateCaregiverView: View {
 
     @State private var isCaregiverCreated: Bool = false
     @StateObject private var viewModel = CreateCaregiverViewModel()
+
+    @FocusState private var focused: Bool
+    @State private var isWhitespacesErrorMessageVisible = false
 
     @State private var newCaregiver = Caregiver()
     @State private var isAvatarPickerPresented: Bool = false

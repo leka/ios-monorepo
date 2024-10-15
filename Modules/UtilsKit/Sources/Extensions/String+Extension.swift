@@ -52,6 +52,14 @@ public extension String {
         return predicate.evaluate(with: self) && !self.isEmpty
     }
 
+    func trimLeadingAndTrailingWhitespaces() -> String {
+        self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    func containsInvalidCharacters() -> Bool {
+        self.contains { $0.isWhitespace }
+    }
+
     func isInvalidEmail(checkEmpty: Bool = true) -> Bool {
         guard checkEmpty else {
             return !self.isValidEmail()
