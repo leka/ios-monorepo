@@ -40,25 +40,37 @@ class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
         self.selectedChoices.append(gameplayChoice)
         self.updateChoiceState(for: gameplayChoice, to: .selected)
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-            let results = self.gameplay.process(choices: [self.selectedChoices])
-            let categoryGroupSize = self.gameplay.choices.filter { $0.category == gameplayChoice.category }.count
+        guard self.selectedChoices.count > 1 else {
+            return
+        }
 
-            if results.allSatisfy(\.correctCategory) {
-                if self.selectedChoices.count == categoryGroupSize {
-                    self.selectedChoices.forEach { choice in
+        let results = self.gameplay.process(choices: [self.selectedChoices])
+        let categoryGroupSize = self.gameplay.choices.filter { $0.category == gameplayChoice.category }.count
+
+        let choicesToProcess = self.selectedChoices
+
+        if results.allSatisfy(\.correctCategory) {
+            log.debug("Correct category")
+            if self.selectedChoices.count == categoryGroupSize {
+                self.selectedChoices.removeAll()
+                log.debug("Category completed")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    choicesToProcess.forEach { choice in
                         self.updateChoiceState(for: choice, to: .correct)
                     }
-                    self.selectedChoices.removeAll()
-                    if self.gameplay.isCompleted.value {
-                        print("Exercise completed !!!!")
-                    }
                 }
-            } else {
-                self.selectedChoices.forEach { choice in
+
+                if self.gameplay.isCompleted.value {
+                    log.info("Exercise completed")
+                }
+            }
+        } else {
+            log.debug("Incorrect category")
+            self.selectedChoices.removeAll()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                choicesToProcess.forEach { choice in
                     self.updateChoiceState(for: choice, to: .idle)
                 }
-                self.selectedChoices.removeAll()
             }
         }
     }
