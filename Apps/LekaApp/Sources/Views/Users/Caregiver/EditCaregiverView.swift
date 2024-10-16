@@ -72,7 +72,7 @@ struct EditCaregiverView: View {
                     }
                 } footer: {
                     if self.isWhitespacesErrorMessageVisible {
-                        Text("Email cannot contain spaces or line breaks")
+                        Text(String(l10n.CaregiverCreation.emailWhitespacesErrorMessage.characters))
                             .font(.footnote)
                             .foregroundStyle(.red)
                     }

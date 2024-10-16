@@ -103,7 +103,7 @@ struct CreateCaregiverView: View {
                             }
                     }
                 } footer: {
-                    Text("Email cannot contain spaces or line breaks")
+                    Text(String(l10n.CaregiverCreation.emailWhitespacesErrorMessage.characters))
                         .font(.footnote)
                         .foregroundStyle(self.isWhitespacesErrorMessageVisible ? .red : .clear)
                 }
@@ -222,6 +222,8 @@ extension l10n {
         static let caregiverPlaceholderEmail = LocalizedString("lekaapp.caregiver_creation.caregiver_placeholder_email", value: "optional", comment: "Caregiver creation caregiver placeholder email textfield")
 
         static let caregiverBirthdateLabel = LocalizedString("lekaapp.caregiver_creation.caregiver_birthdate_label", value: "Birthdate", comment: "Caregiver creation caregiver birthdate textfield label")
+
+        static let emailWhitespacesErrorMessage = LocalizedString("lekaapp.caregiver_creation.email_whitespaces_error_message", value: "Email cannot contain spaces or line breaks", comment: "Error message when whitespaces or linebreaks detected in email textfield")
 
         static let professionLabel = LocalizedString("lekaapp.caregiver_creation.profession_label", value: "Profession(s)", comment: "Caregiver creation profession label above profession selection button")
 

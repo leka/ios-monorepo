@@ -686,6 +686,24 @@
                 }
             }
         },
+        "lekaapp.caregiver_creation.email_whitespaces_error_message": {
+            "comment": "Error message when whitespaces or linebreaks detected in email textfield",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Email cannot contain spaces or line breaks"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "L\u2019e-mail ne doit pas contenir d\u2019espaces ou de sauts de ligne"
+                    }
+                }
+            }
+        },
         "lekaapp.caregiver_creation.profession_label": {
             "comment": "Caregiver creation profession label above profession selection button",
             "extractionState": "extracted_with_value",
