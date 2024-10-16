@@ -78,6 +78,19 @@ struct ContentView: View {
                     .buttonStyle(.borderedProminent)
                     .frame(maxWidth: .infinity)
 
+                    NavigationLink("Drag & Drop With Zones", destination: {
+                        let gameplay = GameplayAssociateCategories(choices: GameplayAssociateCategories.kDefaultChoicesWithZones)
+                        let coordinator = DnDCoordinatorWithZones(gameplay: gameplay)
+                        let viewModel = DnDViewWithZones.ViewModel(coordinator: coordinator)
+
+                        return DnDViewWithZones(viewModel: viewModel)
+                            .navigationTitle("Drag & Drop With Zones")
+                            .navigationBarTitleDisplayMode(.large)
+                    })
+                    .tint(.yellow)
+                    .buttonStyle(.borderedProminent)
+                    .frame(maxWidth: .infinity)
+
                     Spacer()
                 }
             }
