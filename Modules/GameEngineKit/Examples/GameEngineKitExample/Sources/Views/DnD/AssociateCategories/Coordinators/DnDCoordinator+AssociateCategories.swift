@@ -66,13 +66,11 @@ class DnDCoordinatorAssociateCategories: DnDGameplayCoordinatorProtocol {
             self.alreadyValidatedChoices = self.currentlySelectedChoices
 
             if self.gameplay.isCompleted.value {
-                log.debug("Exercise completed !!!!")
+                log.debug("Exercise completed")
             }
         } else {
             self.handleIncorrectChoice(sourceChoice)
         }
-
-        print(self.alreadyValidatedChoices.description.replacingOccurrences(of: ")),", with: ")),\n"))
     }
 
     private func updateChoiceState(for choice: AssociateCategoriesChoice, to state: State) {

@@ -68,14 +68,15 @@ struct ContentView: View {
                     NavigationLink("Drag & Drop Categories", destination: {
                         let gameplay = GameplayAssociateCategories(choices: GameplayAssociateCategories.kDefaultChoices)
                         let coordinator = DnDCoordinatorAssociateCategories(gameplay: gameplay)
-                        let viewModel = DnDViewViewModel(coordinator: coordinator)
+                        let viewModel = DnDViewAssociateCategories.ViewModel(coordinator: coordinator)
 
-                        return DnDView(viewModel: viewModel)
+                        return DnDViewAssociateCategories(viewModel: viewModel)
                             .navigationTitle("Drag & Drop Categories")
                             .navigationBarTitleDisplayMode(.large)
                     })
                     .tint(.purple)
                     .buttonStyle(.borderedProminent)
+                    .frame(maxWidth: .infinity)
 
                     Spacer()
                 }

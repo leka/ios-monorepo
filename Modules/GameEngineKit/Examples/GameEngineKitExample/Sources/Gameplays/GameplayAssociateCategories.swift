@@ -94,9 +94,9 @@ extension GameplayAssociateCategories {
 
     public static let kDefaultChoices: [AssociateCategoriesChoice] = [
         AssociateCategoriesChoice(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
-        AssociateCategoriesChoice(value: "car.rear.fill", category: .categoryC, type: .sfsymbol),
+        AssociateCategoriesChoice(value: "car.rear.fill", category: .categoryB, type: .sfsymbol),
         AssociateCategoriesChoice(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
-        AssociateCategoriesChoice(value: "car.rear.fill", category: .categoryC, type: .sfsymbol),
+        AssociateCategoriesChoice(value: "car.rear.fill", category: .categoryB, type: .sfsymbol),
         AssociateCategoriesChoice(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
         AssociateCategoriesChoice(value: "Maison", category: nil, type: .text),
     ]

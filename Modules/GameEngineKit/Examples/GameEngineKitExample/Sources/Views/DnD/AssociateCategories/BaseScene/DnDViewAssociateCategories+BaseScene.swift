@@ -5,11 +5,11 @@
 import Combine
 import SpriteKit
 
-extension DnDView {
-    class DnDBaseScene: SKScene {
+extension DnDViewAssociateCategories {
+    class BaseScene: SKScene {
         // MARK: Lifecycle
 
-        init(viewModel: DnDViewViewModel) {
+        init(viewModel: ViewModel) {
             self.viewModel = viewModel
             super.init(size: CGSize.zero)
         }
@@ -21,7 +21,7 @@ extension DnDView {
 
         // MARK: Internal
 
-        var viewModel: DnDViewViewModel
+        var viewModel: ViewModel
         var spacer: CGFloat = .zero
         var defaultPosition: CGPoint = .zero
         var initialNodeX: CGFloat = .zero
@@ -42,8 +42,18 @@ extension DnDView {
             for (index, choice) in self.viewModel.choices.enumerated() {
                 choice.initialPosition = self.setInitialPosition(index)
                 choice.position = choice.initialPosition!
-                addChild(choice)
+                self.bindNodesToSafeArea([choice])
                 self.dropDestinations.append(choice)
+
+                addChild(choice)
+            }
+        }
+
+        func bindNodesToSafeArea(_ nodes: [SKSpriteNode], limit: CGFloat = 80) {
+            let xRange = SKRange(lowerLimit: 0, upperLimit: size.width - limit)
+            let yRange = SKRange(lowerLimit: 0, upperLimit: size.height - limit)
+            for node in nodes {
+                node.constraints = [SKConstraint.positionX(xRange, y: yRange)]
             }
         }
 
