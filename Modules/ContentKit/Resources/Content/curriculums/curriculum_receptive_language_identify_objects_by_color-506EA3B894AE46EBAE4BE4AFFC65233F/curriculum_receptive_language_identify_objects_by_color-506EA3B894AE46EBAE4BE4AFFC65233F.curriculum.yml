@@ -8,7 +8,7 @@ name: curriculum_receptive_language_identify_objects_by_color
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-07-12T12:48:33.814058"
+last_edited_at: "2024-09-27T17:53:03.474902"
 authors:
   - julie_tuil
 
@@ -34,19 +34,19 @@ l10n:
       icon: receptive_language_identifying_objects_by_color
 
       title: Identifier des objets par couleur
-      subtitle: Reconnaissance des couleurs
+      subtitle: Comprendre une consigne orale
 
       abstract: |
-        Destiné à améliorer la compréhension du langage oral, ce curriculum guide les personnes accompagnées à identifier des objets par leur couleur. À travers une série d'activités ciblées, les participants écoutent des consignes orales et touchent l'image correspondante sur l'écran de l'iPad.
+        Destiné à améliorer la compréhension du langage oral, ce parcours guide les personnes accompagnées à identifier des objets par leur couleur. À travers une série d'activités ciblées, les participants écoutent des consignes orales et touchent l'image correspondante sur l'écran de l'iPad.
       description: |
-        "Identifier des objets par couleur" implique les personnes accompagnées dans un apprentissage interactif, où il est nécessaire d'écouter attentivement et de répondre à des questions sur la couleur des objets. Ce curriculum, concentré sur la reconnaissance des couleurs, vise à renforcer la compréhension du langage oral et la capacité de suivre des instructions verbales. Chaque activité introduit des objets colorés, avec une complexité croissante pour défier et engager les participants.
+        "Identifier des objets par couleur" implique les personnes accompagnées dans un apprentissage interactif, où il est nécessaire d'écouter attentivement et de répondre à des questions sur la couleur des objets. Ce parcours, concentré sur la reconnaissance des couleurs, vise à renforcer la compréhension du langage oral et la capacité de suivre des instructions verbales. Chaque activité introduit des objets colorés, avec une complexité croissante pour défier et engager les participants.
 
   - locale: en_US
     details:
       icon: receptive_language_identifying_objects_by_color
 
       title: Identify Objects by Color
-      subtitle: Color Recognition
+      subtitle: Understand an oral instruction
 
       abstract: |
         Aimed at enhancing oral language comprehension, this curriculum assists care receivers in identifying objects by their color. Through targeted activities, participants listen to oral instructions and touch the corresponding image on the iPad screen.

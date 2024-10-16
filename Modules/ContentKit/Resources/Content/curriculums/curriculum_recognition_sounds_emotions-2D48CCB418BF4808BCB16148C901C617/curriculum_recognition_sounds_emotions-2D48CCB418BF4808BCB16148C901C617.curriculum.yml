@@ -6,7 +6,7 @@ uuid: 2D48CCB418BF4808BCB16148C901C617
 name: curriculum_recognition_sounds_emotions
 
 created_at: "2024-03-28T15:12:35.579066"
-last_edited_at: "2024-07-12T12:48:33.814108"
+last_edited_at: "2024-09-27T17:53:03.471349"
 
 status: published
 
@@ -15,7 +15,7 @@ authors:
 
 skills:
   - association
-  - association/matching
+  - association/logical
   - sensory_integration
   - sensory_integration/hearing
   - attention
@@ -40,19 +40,19 @@ l10n:
       icon: emotion_recognition_sounds
 
       title: Sons des émotions
-      subtitle: Identifier les émotions à travers des sons
+      subtitle: Identifier les émotions à travers leur son
 
       abstract: |
-        Ce curriculum est conçu pour aider les personnes accompagnées à reconnaître différentes émotions à travers des sons. À l'aide de l'iPad, les participants découvrent comment les variations sonores peuvent refléter des états émotionnels variés, en écoutant et en associant ces sons aux expressions des personnes Ladislas, Hortense et Lucie.
+        Ce parcours est conçu pour aider les personnes accompagnées à reconnaître différentes émotions à travers des sons. À l'aide de l'iPad, les participants découvrent comment les variations sonores peuvent refléter des états émotionnels variés, en écoutant et en associant ces sons aux expressions des personnes Ladislas, Hortense et Lucie.
       description: |
-        À travers une série d'activités interactives, ce curriculum invite les personnes accompagnées à écouter attentivement des sons exprimant différentes émotions et à identifier l'émotion correspondante en choisissant parmi les images des personnes Ladislas, Hortense et Lucie exprimant ces émotions. L'objectif est de développer la capacité à reconnaître et à comprendre les émotions à travers les indices auditifs, renforçant ainsi la compréhension sociale et émotionnelle.
+        À travers une série d'activités interactives, ce parcours invite les personnes accompagnées à écouter attentivement des sons exprimant différentes émotions et à identifier l'émotion correspondante en choisissant parmi les images des personnes Ladislas, Hortense et Lucie exprimant ces émotions. L'objectif est de développer la capacité à reconnaître et à comprendre les émotions à travers les indices auditifs, renforçant ainsi la compréhension sociale et émotionnelle.
 
   - locale: en_US
     details:
       icon: emotion_recognition_sounds
 
       title: Emotions sounds
-      subtitle: Identifying Emotions Through Sounds
+      subtitle: Identify emotions through their sound
 
       abstract: |
         This curriculum aims to assist care receivers in recognizing different emotions through sounds. Using the iPad, participants learn how sound variations can reflect various emotional states by listening and matching these sounds to expressions of people Ladislas, Hortense, and Lucie.

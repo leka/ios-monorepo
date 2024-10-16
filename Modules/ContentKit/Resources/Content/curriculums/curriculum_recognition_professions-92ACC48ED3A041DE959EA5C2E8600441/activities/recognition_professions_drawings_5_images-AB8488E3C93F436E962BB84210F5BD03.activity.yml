@@ -8,16 +8,15 @@ uuid: AB8488E3C93F436E962BB84210F5BD03
 name: recognition_professions_drawings_5_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-07-12T12:48:14.957415"
+last_edited_at: "2024-09-27T15:25:22.747420"
 status: published
 
 authors:
   - leka
 
 skills:
-  - recognition
-  - association/matching
   - association
+  - association/logical
 
 tags:
   - professions
@@ -37,7 +36,7 @@ l10n:
     details:
       icon: recognition_professions_touch
 
-      title: Les métiers en dessins
+      title: Les métiers
       subtitle: 5 images
 
       short_description: |
@@ -55,7 +54,7 @@ l10n:
     details:
       icon: recognition_professions_touch
 
-      title: Professions in drawings
+      title: Professions
       subtitle: 5 images
 
       short_description: |

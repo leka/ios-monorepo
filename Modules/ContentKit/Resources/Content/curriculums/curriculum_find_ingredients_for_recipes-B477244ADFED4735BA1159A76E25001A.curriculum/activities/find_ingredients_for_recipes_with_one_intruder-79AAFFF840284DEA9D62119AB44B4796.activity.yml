@@ -8,15 +8,14 @@ uuid: 79AAFFF840284DEA9D62119AB44B4796
 name: find_ingredients_for_recipes_with_one_intruder
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-08-07T11:56:53.610310"
+last_edited_at: "2024-09-27T13:42:08.971033"
 status: published
 
 authors:
   - leka
 
 skills:
-  - association
-  - association/matching
+  - recognition
 
 tags:
   - food

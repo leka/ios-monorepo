@@ -8,7 +8,7 @@ name: curriculum_receptive_language_identify_positional_concepts
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-07-12T12:48:33.814108"
+last_edited_at: "2024-09-27T17:53:03.444743"
 authors:
   - julie_tuil
 
@@ -40,10 +40,10 @@ l10n:
       icon: receptive_language_positions
 
       title: Identifier les concepts positionnels
-      subtitle: Compréhension des prépositions et des relations spatiales
+      subtitle: Comprendre une consigne orale
 
       abstract: |
-        Ce curriculum vise à développer la compréhension du langage oral à travers l'identification des concepts positionnels. Les personnes accompagnées apprennent à répondre à des consignes indiquant des positions relatives, telles que sur, sous, et derrière, à travers des activités interactives sur l'écran de l'iPad.
+        Ce parcours vise à développer la compréhension du langage oral à travers l'identification des concepts positionnels. Les personnes accompagnées apprennent à répondre à des consignes indiquant des positions relatives, telles que sur, sous, et derrière, à travers des activités interactives sur l'écran de l'iPad.
       description: |
         "Identifier les concepts positionnels" engage les personnes accompagnées dans un apprentissage interactif focalisé sur la compréhension et l'application des prépositions et des relations spatiales. Les activités encouragent l'écoute attentive des instructions orales et la sélection de l'image correspondante, renforçant la capacité à interpréter et à répondre à des questions sur la position des objets. Chaque tâche est conçue pour défier et soutenir les personnes accompagnées dans leur compréhension des concepts spatiaux.
   - locale: en_US
@@ -51,7 +51,7 @@ l10n:
       icon: receptive_language_positions
 
       title: Identify Positional Concepts
-      subtitle: Understanding Prepositions and Spatial Relationships
+      subtitle: Understand an oral instruction
 
       abstract: |
         Aimed at enhancing oral language comprehension, this curriculum focuses on identifying positional concepts. Care receivers learn to respond to instructions indicating relative positions, such as on, under, and behind, through interactive activities on the iPad screen.

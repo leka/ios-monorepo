@@ -8,7 +8,7 @@ name: curriculum_receptive_language_identify_opposites
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-07-12T12:48:33.814108"
+last_edited_at: "2024-09-27T17:53:03.453431"
 authors:
   - julie_tuil
 
@@ -41,20 +41,20 @@ l10n:
       icon: receptive_language_differentiate
 
       title: Identifier des contraires
-      subtitle: Reconnaissance des opposés
+      subtitle: Comprendre une consigne orale
 
       abstract: |
-        Destiné à améliorer la compréhension du langage oral, ce curriculum aide les personnes accompagnées à identifier des paires d'opposés tels que propre/sale, chaud/froid, petit/grand, et sec/mouillé. À travers des activités interactives, les personnes accompagnées écoutent des consignes orales et sélectionnent l'image correspondante sur l'écran de l'iPad.
+        Destiné à améliorer la compréhension du langage oral, ce parcours aide les personnes accompagnées à identifier des paires d'opposés tels que propre/sale, chaud/froid, petit/grand, et sec/mouillé. À travers des activités interactives, les personnes accompagnées écoutent des consignes orales et sélectionnent l'image correspondante sur l'écran de l'iPad.
 
       description: |
-        "Identifier des contraires" engage les personnes accompagnées dans un processus d'apprentissage interactif, exigeant une écoute attentive et une réponse aux questions sur des paires d'opposés. Centré sur la reconnaissance des opposés, ce curriculum vise à renforcer la compréhension du langage oral et la capacité à suivre des instructions verbales. Les activités proposées visent à défier et engager les personnes accompagnées, renforçant leur compréhension des concepts opposés à travers des exemples visuels interactifs et clairs.
+        "Identifier des contraires" engage les personnes accompagnées dans un processus d'apprentissage interactif, exigeant une écoute attentive et une réponse aux questions sur des paires d'opposés. Centré sur la reconnaissance des opposés, ce parcours vise à renforcer la compréhension du langage oral et la capacité à suivre des instructions verbales. Les activités proposées visent à défier et engager les personnes accompagnées, renforçant leur compréhension des concepts opposés à travers des exemples visuels interactifs et clairs.
 
   - locale: en_US
     details:
       icon: receptive_language_differentiate
 
       title: Identify Opposites
-      subtitle: Recognizing Opposites
+      subtitle: Understand an oral instruction
 
       abstract: |
         Aimed at enhancing oral language comprehension, this curriculum assists care receivers in identifying pairs of opposites such as clean/dirty, hot/cold, little/big, and wet/dry. Through interactive activities, care receivers listen to oral instructions and select the matching image on the iPad screen.

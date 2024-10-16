@@ -6,7 +6,7 @@ uuid: FED25D9B424E42019F03593FE0D65AEE
 name: curriculum_recognition_sounds_animals
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-07-12T12:48:33.814058"
+last_edited_at: "2024-09-27T17:53:03.448315"
 
 status: published
 
@@ -15,7 +15,7 @@ authors:
 
 skills:
   - association
-  - association/matching
+  - association/logical
   - sensory_integration
   - sensory_integration/hearing
   - attention
@@ -37,19 +37,19 @@ l10n:
       icon: recognition_sounds_animals
 
       title: Sons des animaux
-      subtitle: Identifier les animaux à partir de leurs sons
+      subtitle: Identifier les animaux à travers leur son
 
       abstract: |
-        Ce curriculum vise à développer la reconnaissance des sons émis par différents animaux. À travers des activités interactives sur l'écran de l'iPad, les personnes accompagnées apprennent à associer des sons à l'image correspondante de l'animal.
+        Ce parcours vise à développer la reconnaissance des sons émis par différents animaux. À travers des activités interactives sur l'écran de l'iPad, les personnes accompagnées apprennent à associer des sons à l'image correspondante de l'animal.
       description: |
-        Chaque activité de ce curriculum est conçue pour aider les personnes accompagnées à identifier les sons spécifiques des animaux en écoutant des enregistrements sonores. En touchant le haut-parleur sur l'écran de l'iPad, ils entendent le son d'un animal et doivent ensuite choisir parmi plusieurs images celle qui correspond au son entendu. Le nombre d'images varie pour ajuster la difficulté de l'exercice, allant d'une seule image pour les tâches plus simples à six images pour les défis plus complexes.
+        Chaque activité de ce parcours est conçue pour aider les personnes accompagnées à identifier les sons spécifiques des animaux en écoutant des enregistrements sonores. En touchant le haut-parleur sur l'écran de l'iPad, ils entendent le son d'un animal et doivent ensuite choisir parmi plusieurs images celle qui correspond au son entendu. Le nombre d'images varie pour ajuster la difficulté de l'exercice, allant d'une seule image pour les tâches plus simples à six images pour les défis plus complexes.
 
   - locale: en_US
     details:
       icon: recognition_sounds_animals
 
       title: Animal sounds
-      subtitle: Identifying animals by their sounds
+      subtitle: Identify animals through their sound
 
       abstract: |
         This curriculum is designed to enhance the recognition of sounds made by different animals. Through interactive activities on the iPad screen, care receivers learn to match sounds to the corresponding animal image.

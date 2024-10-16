@@ -40,8 +40,10 @@ struct TextFieldEmail: View {
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
                 .focused(self.$focused)
-                .onChange(of: self.entry) { newValue in
-                    self.entry = newValue.trimmingCharacters(in: .whitespaces)
+                .onChange(of: self.focused) { focused in
+                    if !focused {
+                        self.entry = self.entry.trimLeadingAndTrailingWhitespaces()
+                    }
                 }
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)

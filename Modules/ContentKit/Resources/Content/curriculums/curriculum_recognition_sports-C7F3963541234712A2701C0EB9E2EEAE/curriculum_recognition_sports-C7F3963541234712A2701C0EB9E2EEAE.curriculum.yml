@@ -8,15 +8,13 @@ name: curriculum_recognition_sports
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-09-17T15:31:43.448047"
+last_edited_at: "2024-09-27T17:53:03.463714"
 authors:
   - leka
 
 skills:
   - association
-  - association/matching
-
-  - recognition
+  - association/logical
 
 tags:
   - sports
@@ -33,9 +31,9 @@ l10n:
     details:
       icon: recognition_sports_touch
       title: Les sports
-      subtitle: Identifier les sports
+      subtitle: Associer un sport à ses accessoires
       abstract: |
-        Ce curriculum vise à développer la reconnaissance des sports à travers des représentations dessinées.
+        Ce parcours vise à développer la reconnaissance des sports à travers des représentations dessinées.
       description: |
         À travers des activités interactives présentées sur l'écran de l'iPad, les participants sont encouragés à observer attentivement des images de personnages pratiquant divers sports. L'objectif est de reconnaître le sport représenté et de sélectionner les objets et équipements correspondants. Cette approche ludique et visuelle permet de renforcer les capacités d'observation et de reconnaissance des sports.
 
@@ -43,7 +41,7 @@ l10n:
     details:
       icon: recognition_sports_touch
       title: Sports
-      subtitle: Identifying Sports
+      subtitle: Match a sport with its accessories
       abstract: |
         This curriculum aims to develop the recognition of sports through illustrated representations.
       description: |

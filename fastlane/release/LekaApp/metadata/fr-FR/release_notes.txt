@@ -1,22 +1,13 @@
 ### Nouvelles Activités
 
-- Nouveau Jeu de Mémoire : Introduction d'un nouveau modèle de jeu de mémoire pour enrichir la variété de gameplay.
-- Nouvelle Interface Pavé Coloré : Ajout de l'interface Pavé Coloré pour améliorer l'expérience du manette.
-
-### Nouveaux Parcours
-
-- Nouveaux Parcours Ajoutés : Introduction de plusieurs nouveaux parcours axés sur les compétences de reconnaissance et de catégorisation. Les thèmes incluent les Animaux (Ferme, Forêt, Mer, Insectes, Animaux de compagnie), les Objets Ménagers (Cuisine, Salle de Bain, Chambre, Jardin), les Parties du Corps, les Modes de Transport, les Activités de Comptage et le Tri des Aliments Sucrés et Salés.
+- Nouvelles Compétences d'Association/Logique Ajoutées : Introduction de nouvelles compétences axées sur l'association et la pensée logique.
 
 ### Améliorations
 
-- Fonctionnalité de Recherche Améliorée : Mise en place de la recherche floue et par tags pour améliorer la découverte de contenu.
-- Améliorations de l'Interface Utilisateur : Mise à jour des éléments UI dans les parcours (désormais avec défilement horizontal), les lanceurs de Dance Freeze et Melody, la catégorie Gamepad, la section des ressources, le formulaire de feedback et les icônes des histoires pour une meilleure expérience utilisateur.
-- Gestion de la Mise à Jour du Firmware du Robot : Amélioration du processus de mise à jour du firmware, incluant la mise en évidence des versions obsolètes du robot et la possibilité de se reconnecter aux robots en mode veille profonde.
-- Édition des Informations du Soignant : Possibilité de modifier les informations du soignant directement dans la section correspondante.
+- Accès aux Activités Amélioré : Les utilisateurs peuvent désormais lancer des activités directement depuis la liste des curriculums.
+- Icônes Mises à Jour : Icônes mises à jour pour les curriculums pour un aspect plus moderne.
 
 ### Corrections de Bugs
 
-- Corrections de Contenu : Correction de fautes de frappe et de problèmes de formatage dans divers fichiers de contenu pour améliorer la lisibilité et l'exactitude.
-- Bug d'Édition du Soignant : Résolution d'un problème où la modification des détails du soignant pouvait perturber la navigation dans la barre latérale.
-- Problème d'Échelle des Ressources : Correction d'un problème affectant l'échelle des ressources de fichiers dans le kit de contenu.
-- Bug de Mise à Jour du Robot : Correction d'un problème où les robots n'apparaissaient pas comme mis à jour même après une mise à jour du firmware réussie.
+- Corrections de Contenu : Correction de fautes de frappe et amélioration des descriptions.
+- Corrections d'Assets : Correction des assets dans de certaines activités.

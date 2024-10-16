@@ -12,15 +12,14 @@ extension DanceFreezeView {
         // MARK: Lifecycle
 
         init(selectedAudioRecording: DanceFreeze.Song, motion: Motion, shared: ExerciseSharedData? = nil) {
-            self.audioPlayer = AudioPlayer.shared
-            self.audioPlayer.setAudioData(data: selectedAudioRecording.audio)
+            self.audioData = .file(name: selectedAudioRecording.audio)
             self.robotManager = RobotManager()
             self.motionMode = motion
 
             self.exercicesSharedData = shared ?? ExerciseSharedData()
             self.exercicesSharedData.state = .playing()
 
-            self.subscribeToAudioPlayerProgress()
+            self.subscribeToAudioManagerProgress()
         }
 
         // MARK: Public
@@ -34,12 +33,12 @@ extension DanceFreezeView {
                 return
             }
 
-            if self.audioPlayer.state.value == .playing {
-                self.audioPlayer.pause()
+            if case .playing = self.audioManager.state.value {
+                self.audioManager.pause()
                 self.isDancing = false
                 self.robotManager.freeze()
             } else {
-                self.audioPlayer.play()
+                self.audioManager.play(self.audioData)
                 self.isDancing = true
                 self.robotDance()
             }
@@ -53,22 +52,23 @@ extension DanceFreezeView {
             self.isDancing = false
             self.exercicesSharedData.state = .completed(level: .nonApplicable)
             self.robotManager.stopRobot()
-            self.audioPlayer.stop()
+            self.audioManager.stop()
         }
 
         // MARK: Private
 
         private var robotManager: RobotManager
-        private var audioPlayer: AudioPlayer
+        private var audioManager: AudioManager = .shared
+        private let audioData: AudioManager.AudioType
         private var motionMode: Motion = .rotation
         private var cancellables: Set<AnyCancellable> = []
 
-        private func subscribeToAudioPlayerProgress() {
-            self.audioPlayer.progress
+        private func subscribeToAudioManagerProgress() {
+            self.audioManager.progress
                 .receive(on: DispatchQueue.main)
                 .sink { [weak self] in
                     guard let self else { return }
-                    self.progress = $0
+                    self.progress = $0.percentage
                     if self.progress == 1 {
                         self.completeDanceFreeze()
                     }

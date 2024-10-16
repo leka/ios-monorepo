@@ -64,7 +64,6 @@ disabled_rules:
   - closure_parameter_position
 
 excluded:
-  - Tuist/Dependencies
-  - ./*/Derived
+  - Tuist/.build
 
 reporter: "emoji"

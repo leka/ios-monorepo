@@ -8,7 +8,7 @@ uuid: 659278115279467190B097830E94F250
 name: recognition_sports_drawings_5_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-07-15T12:15:31.142709"
+last_edited_at: "2024-09-27T15:25:22.747324"
 status: published
 
 authors:
@@ -16,9 +16,7 @@ authors:
 
 skills:
   - association
-  - association/matching
-
-  - recognition
+  - association/logical
 
 tags:
   - sports
@@ -38,7 +36,7 @@ l10n:
     details:
       icon: recognition_sports_touch
 
-      title: Les sports en dessins
+      title: Les sports
       subtitle: 5 images
 
       short_description: |
@@ -56,7 +54,7 @@ l10n:
     details:
       icon: recognition_sports_touch
 
-      title: Sports in drawings
+      title: Sports
       subtitle: 5 images
 
       short_description: |

@@ -61,6 +61,20 @@ list:
               alphabétique).
         subskills: []
 
+      - id: association/logical
+        l10n:
+          - locale: en_US
+            name: Logical Association
+            description: >
+              Connecting related elements based on logical relationships, such as matching
+              objects, sounds, or images with their corresponding functions or contexts.
+          - locale: fr_FR
+            name: Association logique
+            description: >
+              Relier des éléments en fonction de relations logiques, comme associer des objets,
+              des sons ou des images à leurs fonctions ou contextes correspondants.
+        subskills: []
+
   - id: attention
     l10n:
       - locale: en_US

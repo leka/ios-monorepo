@@ -6,7 +6,7 @@ uuid: 95C42E189BC146BB844467A3BAFE8BC0
 name: curriculum_recognition_emotions_drawings
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-07-12T12:48:33.814110"
+last_edited_at: "2024-09-27T17:53:03.464505"
 
 status: published
 
@@ -38,10 +38,10 @@ l10n:
       icon: emotion_recognition_drawings
 
       title: Les émotions en dessins
-      subtitle: Comprendre les émotions à travers des dessins
+      subtitle: Reconnaitre les émotions à travers des dessins
 
       abstract: |
-        Ce curriculum est conçu pour aider les personnes accompagnées à identifier et à comprendre différentes émotions à travers des dessins de personnages. En se focalisant sur une variété de personnages et d'émotions, ce programme vise à renforcer la reconnaissance des émotions de base et la communication émotionnelle.
+        Ce parcours est conçu pour aider les personnes accompagnées à identifier et à comprendre différentes émotions à travers des dessins de personnages. En se focalisant sur une variété de personnages et d'émotions, ce programme vise à renforcer la reconnaissance des émotions de base et la communication émotionnelle.
       description: |
         À travers une série d'activités interactives sur l'écran de l'iPad, les personnes accompagnées sont encouragées à observer attentivement des illustrations de personnages exprimant diverses émotions. L'objectif est d'identifier l'émotion représentée et de toucher l'image correspondante. Ces activités visent à promouvoir une meilleure compréhension des émotions, améliorant ainsi la capacité des personnes accompagnées à communiquer leurs propres émotions et à reconnaître celles des autres.
   - locale: en_US
@@ -49,7 +49,7 @@ l10n:
       icon: emotion_recognition_drawings
 
       title: Emotions in drawings
-      subtitle: Understanding emotions through drawings
+      subtitle: Recognize emotions through drawings
 
       abstract: |
         This curriculum is designed to assist care receivers in identifying and understanding different emotions through drawings of characters. Focusing on a variety of characters and emotions, this program aims to enhance basic emotion recognition and emotional communication.

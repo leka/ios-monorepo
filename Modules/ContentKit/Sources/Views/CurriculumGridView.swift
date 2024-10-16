@@ -24,32 +24,7 @@ public struct CurriculumGridView: View {
                 NavigationLink(destination:
                     CurriculumDetailsView(curriculum: curriculum, onActivitySelected: self.onActivitySelected)
                 ) {
-                    GroupBox {
-                        VStack(spacing: 10) {
-                            Image(uiImage: curriculum.details.iconImage)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 150)
-                                .clipShape(RoundedRectangle(cornerRadius: 10 / 57 * 150))
-
-                            Text(curriculum.details.title)
-                                .font(.headline)
-                                .multilineTextAlignment(.center)
-                                .foregroundStyle(Color.primary)
-
-                            Text(curriculum.details.subtitle ?? "")
-                                .font(.body)
-                                .multilineTextAlignment(.center)
-                                .foregroundStyle(Color.secondary)
-
-                            Spacer()
-
-                            Button(String(l10n.CurriculumGridView.buttonLabel.characters)) {}
-                                .buttonStyle(.bordered)
-                                .allowsHitTesting(false)
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    }
+                    CurriculumGroupboxView(curriculum: curriculum)
                 }
             }
         }
@@ -65,17 +40,6 @@ public struct CurriculumGridView: View {
 
     private let columns = Array(repeating: GridItem(), count: 3)
     @ObservedObject private var styleManager: StyleManager = .shared
-}
-
-// MARK: - l10n.CurriculumGridView
-
-extension l10n {
-    enum CurriculumGridView {
-        static let buttonLabel = LocalizedString("content_kit.curriculum_grid_view.button_label",
-                                                 bundle: ContentKitResources.bundle,
-                                                 value: "Discover",
-                                                 comment: "Discover button label of CurriculumGridView ")
-    }
 }
 
 #Preview {

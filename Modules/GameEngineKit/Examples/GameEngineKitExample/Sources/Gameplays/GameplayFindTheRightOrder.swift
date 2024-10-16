@@ -5,30 +5,26 @@
 import Combine
 import Foundation
 
-// MARK: - FindTheRightOrderChoiceState
-
-enum FindTheRightOrderChoiceState {
-    case idle
-    case selected(order: Int)
-    case correct(order: Int)
-    case wrong
-}
-
 // MARK: - FindTheRightOrderChoice
 
-struct FindTheRightOrderChoice: Identifiable {
+struct FindTheRightOrderChoice: Identifiable, Equatable {
     // MARK: Lifecycle
 
-    init(id: String = UUID().uuidString, value: String) {
+    init(id: String = UUID().uuidString, value: String, type: ChoiceType = .text) {
         self.id = id
         self.value = value
+        self.type = type
     }
 
     // MARK: Internal
 
     let id: String
     let value: String
-    var state: FindTheRightOrderChoiceState = .idle
+    let type: ChoiceType
+
+    static func == (lhs: FindTheRightOrderChoice, rhs: FindTheRightOrderChoice) -> Bool {
+        lhs.id == rhs.id
+    }
 }
 
 // MARK: - GameplayFindTheRightOrder
@@ -37,50 +33,42 @@ class GameplayFindTheRightOrder: GameplayProtocol {
     // MARK: Lifecycle
 
     init(choices: [FindTheRightOrderChoice]) {
-        self.rawChoices = choices
-        self.choices.value = choices.shuffled()
+        self.orderedChoices = choices
     }
 
     // MARK: Public
 
-    public private(set) var choices = CurrentValueSubject<[FindTheRightOrderChoice], Never>([])
-    public let rawChoices: [FindTheRightOrderChoice]
+    public private(set) var orderedChoices: [FindTheRightOrderChoice]
+
+    public var isCompleted = CurrentValueSubject<Bool, Never>(false)
 
     // MARK: Internal
 
     typealias ChoiceType = FindTheRightOrderChoice
 
-    func process(choice _: FindTheRightOrderChoice) {
-        // Nothing to do
-    }
+    func process(choices: [FindTheRightOrderChoice]) -> [(choice: FindTheRightOrderChoice, correctPosition: Bool)] {
+        if self.orderedChoices == choices {
+            self.isCompleted.send(true)
+            return self.orderedChoices.map { (choice: $0, correctPosition: true) }
+        }
 
-    func evaluateOrder(selectedOrder: [Int: FindTheRightOrderChoice]) -> [Int: FindTheRightOrderChoice] {
-        var correctSelectedOrder = selectedOrder
-        self.isCorrectOrder = true
-
-        for (index, answer) in self.rawChoices.enumerated() {
-            var choice = answer
-            if selectedOrder[index]?.id == choice.id {
-                choice.state = .correct(order: index + 1)
+        return self.orderedChoices.enumerated().map { index, choice in
+            if self.orderedChoices[index] == choice {
+                (choice: choice, correctPosition: true)
             } else {
-                choice.state = .idle
-                self.isCorrectOrder = false
-                correctSelectedOrder[index] = nil
+                (choice: choice, correctPosition: false)
             }
         }
-        if self.isCorrectOrder {
-            log.debug("Exercise completed")
-        }
-
-        return correctSelectedOrder
     }
+}
 
-    func updateChoice(choice: FindTheRightOrderChoice) {
-        guard let index = choices.value.firstIndex(where: { $0.id == choice.id }) else { return }
-        self.choices.value[index] = choice
-    }
-
-    // MARK: Private
-
-    private var isCorrectOrder = false
+extension GameplayFindTheRightOrder {
+    public static let kDefaultChoices: [FindTheRightOrderChoice] = [
+        FindTheRightOrderChoice(value: "1st choice"),
+        FindTheRightOrderChoice(value: "2nd choice"),
+        FindTheRightOrderChoice(value: "3rd choice"),
+        FindTheRightOrderChoice(value: "4th choice"),
+        FindTheRightOrderChoice(value: "5th choice"),
+        FindTheRightOrderChoice(value: "6th choice"),
+    ]
 }

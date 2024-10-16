@@ -70,6 +70,12 @@ struct CreateCaregiverView: View {
                             .autocorrectionDisabled()
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
+                            .focused(self.$focused)
+                            .onChange(of: self.focused) { focused in
+                                if !focused {
+                                    self.newCaregiver.firstName = self.newCaregiver.firstName.trimLeadingAndTrailingWhitespaces()
+                                }
+                            }
                     }
                     LabeledContent(String(l10n.CaregiverCreation.caregiverLastNameLabel.characters)) {
                         TextField("", text: self.$newCaregiver.lastName, prompt: self.placeholderLastName)
@@ -78,6 +84,12 @@ struct CreateCaregiverView: View {
                             .autocorrectionDisabled()
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
+                            .focused(self.$focused)
+                            .onChange(of: self.focused) { focused in
+                                if !focused {
+                                    self.newCaregiver.lastName = self.newCaregiver.lastName.trimLeadingAndTrailingWhitespaces()
+                                }
+                            }
                     }
                     LabeledContent(String(l10n.CaregiverCreation.caregiverEmailLabel.characters)) {
                         TextField("", text: self.$newCaregiver.email, prompt: self.placeholderEmail)
@@ -86,7 +98,14 @@ struct CreateCaregiverView: View {
                             .autocorrectionDisabled()
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
+                            .onChange(of: self.newCaregiver.email) { newValue in
+                                self.isWhitespacesErrorMessageVisible = newValue.containsInvalidCharacters()
+                            }
                     }
+                } footer: {
+                    Text(String(l10n.CaregiverCreation.emailWhitespacesErrorMessage.characters))
+                        .font(.footnote)
+                        .foregroundStyle(self.isWhitespacesErrorMessageVisible ? .red : .clear)
                 }
 
                 Section {
@@ -142,6 +161,9 @@ struct CreateCaregiverView: View {
 
     @State private var isCaregiverCreated: Bool = false
     @StateObject private var viewModel = CreateCaregiverViewModel()
+
+    @FocusState private var focused: Bool
+    @State private var isWhitespacesErrorMessageVisible = false
 
     @State private var newCaregiver = Caregiver()
     @State private var isAvatarPickerPresented: Bool = false
@@ -200,6 +222,8 @@ extension l10n {
         static let caregiverPlaceholderEmail = LocalizedString("lekaapp.caregiver_creation.caregiver_placeholder_email", value: "optional", comment: "Caregiver creation caregiver placeholder email textfield")
 
         static let caregiverBirthdateLabel = LocalizedString("lekaapp.caregiver_creation.caregiver_birthdate_label", value: "Birthdate", comment: "Caregiver creation caregiver birthdate textfield label")
+
+        static let emailWhitespacesErrorMessage = LocalizedString("lekaapp.caregiver_creation.email_whitespaces_error_message", value: "Email cannot contain spaces or line breaks", comment: "Error message when whitespaces or linebreaks detected in email textfield")
 
         static let professionLabel = LocalizedString("lekaapp.caregiver_creation.profession_label", value: "Profession(s)", comment: "Caregiver creation profession label above profession selection button")
 

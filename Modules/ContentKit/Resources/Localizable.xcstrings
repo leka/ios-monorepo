@@ -2,6 +2,24 @@
     "version": "1.0",
     "sourceLanguage": "en",
     "strings": {
+        "content_kit.activity_details_view.activity_label": {
+            "comment": "ActivityDetailsView's content type description label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Activity"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Activit\u00e9"
+                    }
+                }
+            }
+        },
         "content_kit.activity_details_view.authors_section_title": {
             "comment": "ActivityDetailsView 'authors' section title",
             "extractionState": "extracted_with_value",
@@ -74,6 +92,24 @@
                 }
             }
         },
+        "content_kit.activity_list_view.start_activity_button_label": {
+            "comment": "Start activity button label on ActivityListView",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Start"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "D\u00e9marrer"
+                    }
+                }
+            }
+        },
         "content_kit.curriculum_details_view.activities_section_title": {
             "comment": "CurriculumDetailsView 'activities' section title",
             "extractionState": "extracted_with_value",
@@ -110,6 +146,24 @@
                 }
             }
         },
+        "content_kit.curriculum_details_view.curriculum_label": {
+            "comment": "CurriculumDetailsView's content type description label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Curriculum"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Parcours"
+                    }
+                }
+            }
+        },
         "content_kit.curriculum_details_view.description_section_title": {
             "comment": "CurriculumDetailsView 'description' section title",
             "extractionState": "extracted_with_value",
@@ -124,6 +178,42 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Description"
+                    }
+                }
+            }
+        },
+        "content_kit.curriculum_details_view.see_less_label": {
+            "comment": "See less button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "See less"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Voir moins"
+                    }
+                }
+            }
+        },
+        "content_kit.curriculum_details_view.see_more_label": {
+            "comment": "See more button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "See more"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Voir plus"
                     }
                 }
             }
@@ -146,20 +236,61 @@
                 }
             }
         },
-        "content_kit.curriculum_grid_view.button_label": {
-            "comment": "Discover button label of CurriculumGridView ",
+        "content_kit.curriculum_groupbox_view.activity_count_label": {
+            "comment": "Activity count label of CurriculumGroupboxView",
+            "localizations": {
+                "en": {
+                    "variations": {
+                        "plural": {
+                            "one": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activity"
+                                }
+                            },
+                            "other": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activities"
+                                }
+                            }
+                        }
+                    }
+                },
+                "fr": {
+                    "variations": {
+                        "plural": {
+                            "one": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activit\u00e9"
+                                }
+                            },
+                            "other": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activit\u00e9s"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "content_kit.curriculum_groupbox_view.curriculum_label": {
+            "comment": "CurriculumDetailsView's content type description label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Discover"
+                        "value": "Curriculum"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "D\u00e9couvrir"
+                        "value": "Parcours"
                     }
                 }
             }

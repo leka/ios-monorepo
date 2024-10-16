@@ -6,7 +6,7 @@ uuid: 6A5EF209D00942F4AEEA4AEC6DAC052A
 name: curriculum_recognition_sounds_musical_instruments
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-07-12T12:48:33.814058"
+last_edited_at: "2024-09-27T17:53:03.448315"
 
 status: published
 
@@ -15,7 +15,7 @@ authors:
 
 skills:
   - association
-  - association/matching
+  - association/logical
   - sensory_integration
   - sensory_integration/hearing
   - attention
@@ -38,19 +38,19 @@ l10n:
       icon: recognition_sounds_musical_instruments
 
       title: Sons des instruments de musique
-      subtitle: Identifier les instruments de musique par leurs sons
+      subtitle: Identifier les instruments de musique à travers leur son
 
       abstract: |
-        Ce curriculum est conçu pour développer la reconnaissance des sons produits par différents instruments de musique. À travers des activités interactives sur l'écran de l'iPad, les personnes accompagnées apprennent à associer des sons à l'image correspondante de l'instrument.
+        Ce parcours est conçu pour développer la reconnaissance des sons produits par différents instruments de musique. À travers des activités interactives sur l'écran de l'iPad, les personnes accompagnées apprennent à associer des sons à l'image correspondante de l'instrument.
       description: |
-        Chaque activité dans ce curriculum aide les personnes accompagnées à identifier les sons spécifiques des instruments de musique en écoutant des enregistrements audio. En touchant l'icône du haut-parleur sur l'écran de l'iPad, elles entendent le son d'un instrument et doivent ensuite choisir parmi plusieurs images celle qui correspond au son entendu. L'approche pédagogique vise à enrichir la compréhension auditive tout en rendant l'apprentissage amusant et interactif.
+        Chaque activité dans ce parcours aide les personnes accompagnées à identifier les sons spécifiques des instruments de musique en écoutant des enregistrements audio. En touchant l'icône du haut-parleur sur l'écran de l'iPad, elles entendent le son d'un instrument et doivent ensuite choisir parmi plusieurs images celle qui correspond au son entendu. L'approche pédagogique vise à enrichir la compréhension auditive tout en rendant l'apprentissage amusant et interactif.
 
   - locale: en_US
     details:
       icon: recognition_sounds_musical_instruments
 
       title: Musical instruments sounds
-      subtitle: Identifying musical instruments by their sounds
+      subtitle: Identify musical instruments through their sound
 
       abstract: |
         This curriculum is aimed at enhancing the recognition of sounds produced by various musical instruments. Through interactive activities on the iPad screen, care receivers learn to match sounds to the corresponding instrument image.
