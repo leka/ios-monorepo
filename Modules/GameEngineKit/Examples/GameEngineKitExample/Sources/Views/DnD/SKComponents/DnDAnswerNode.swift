@@ -26,22 +26,27 @@ class DnDAnswerNode: SKSpriteNode {
 
                 super.init(texture: SKTexture(image: image), color: .clear, size: size)
             case .text:
-                super.init(texture: nil, color: .clear, size: size)
+                let tempNode = SKNode()
 
-                self.circle = SKShapeNode(circleOfRadius: size.width / 2)
-                self.circle.fillColor = .white
-                self.circle.strokeColor = .black
-                self.circle.lineWidth = 0.5
-                self.circle.zPosition = -1
-                self.circle.position = CGPoint(x: 0, y: 0)
-                self.addChild(self.circle)
+                let circle = SKShapeNode(circleOfRadius: size.width / 2)
+                circle.fillColor = .white
+                circle.strokeColor = .black
+                circle.lineWidth = 0.5
+                circle.zPosition = -1
+                circle.position = CGPoint(x: 0, y: 0)
+                tempNode.addChild(circle)
 
-                self.label = SKLabelNode(text: value)
-                self.label.fontSize = 18
-                self.label.fontColor = .black
-                self.label.position = CGPoint(x: 0, y: -10)
-                self.label.zPosition = -1
-                self.addChild(self.label)
+                let label = SKLabelNode(text: value)
+                label.fontSize = 20
+                label.fontName = "AvenirNext-Bold"
+                label.fontColor = .black
+                label.position = CGPoint(x: 0, y: -10)
+                label.zPosition = 0
+                tempNode.addChild(label)
+
+                let texture = SKView().texture(from: tempNode)
+
+                super.init(texture: texture, color: .clear, size: size)
         }
         self.name = value
         self.zPosition = 10
@@ -57,11 +62,6 @@ class DnDAnswerNode: SKSpriteNode {
     let id: String
     var initialPosition: CGPoint?
     var isDraggable = true
-
-    // MARK: Private
-
-    private var circle: SKShapeNode!
-    private var label: SKLabelNode!
 }
 
 // MARK: - DnDUIChoices
