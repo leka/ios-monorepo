@@ -1,0 +1,305 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 5E9C3E7866BC47E8931701F244459AF6
+name: recognition_halloween_1
+
+created_at: "2024-07-31T17:38:12.804177"
+last_edited_at: "2024-10-18T12:12:33.262303"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - autumn
+  - festivities
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: halloween
+
+      title: Halloween
+      subtitle: 1 image
+
+      short_description: |
+        Une activité amusante où le participant apprend à reconnaître et à sélectionner des objets d'Halloween en écoutant des instructions audio.
+
+      description: |
+        Découvrez l'univers des objets d'Halloween avec cette activité interactive. Le participant appuie sur le bouton de haut-parleur pour écouter une instruction, puis doit toucher l'image correspondante sur l'écran. Cette activité stimule la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide.
+
+      instructions: |
+        - Le participant doit appuyer sur le haut-parleur pour écouter l'instruction.
+        - Invitez-le à trouver l'image correspondant à l'instruction et à la toucher.
+
+  - locale: en_US
+    details:
+      icon: halloween
+
+      title: Halloween
+      subtitle: 1 image
+
+      short_description: |
+        A fun activity where the care receiver learns to recognize and select Halloween-themed objects by listening to audio instructions.
+
+      description: |
+        Discover the world of Halloween objects with this interactive activity. The care receiver presses the speaker button to listen to an instruction, then needs to touch the corresponding image on the screen. This activity enhances auditory and visual recognition, as well as comprehension and quick response skills.
+
+      instructions: |
+        - The care receiver presses the speaker button to listen to the instruction.
+        - Invite them to find the image corresponding to the instruction and touch it.
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La chauve-souris"
+                - locale: en_US
+                  utterance: "The bat"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: halloween_bat
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le balai"
+                - locale: en_US
+                  utterance: "The broom"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: halloween_broom
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La bougie"
+                - locale: en_US
+                  utterance: "The candle"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: halloween_candle
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le fantôme"
+                - locale: en_US
+                  utterance: "The ghost"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: halloween_ghost
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La tombe"
+                - locale: en_US
+                  utterance: "The gravestone"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: halloween_grave
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le chapeau de sorcière"
+                - locale: en_US
+                  utterance: "The witch hat"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: halloween_witch_hat
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "L'araignée"
+                - locale: en_US
+                  utterance: "The spider"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: halloween_spider_black
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La toile d'araignée'"
+                - locale: en_US
+                  utterance: "The spider web"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: halloween_spider_web
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La tête de mort'"
+                - locale: en_US
+                  utterance: "The skull"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: halloween_skull
+                type: image
+                is_right_answer: true
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La citrouille'"
+                - locale: en_US
+                  utterance: "The pumpkin"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: halloween_pumpkin
+                type: image
+                is_right_answer: true
