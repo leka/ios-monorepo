@@ -108,16 +108,8 @@ extension TTSCoordinatorFindTheRightOrder {
 
         var body: some View {
             switch self.state {
-                case let .correct(order):
-                    TTSChoiceView(value: self.value, type: self.type, size: self.size)
-                        .overlay {
-                            Image(systemName: "\(order).circle.fill")
-                                .resizable()
-                                .frame(width: self.size, height: self.size)
-                                .opacity(1)
-                                .font(.largeTitle)
-                                .foregroundColor(.green)
-                        }
+                case .correct:
+                    TTSChoiceViewDefaultCorrect(value: self.value, type: self.type, size: self.size)
                 case let .selected(order):
                     TTSChoiceView(value: self.value, type: self.type, size: self.size)
                         .overlay {
@@ -129,7 +121,7 @@ extension TTSCoordinatorFindTheRightOrder {
                                 .foregroundColor(.blue)
                         }
                 case .idle:
-                    TTSChoiceView(value: self.value, type: self.type, size: self.size)
+                    TTSChoiceViewDefaultIdle(value: self.value, type: self.type, size: self.size)
             }
         }
 

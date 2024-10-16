@@ -28,14 +28,22 @@ class TTSThenValidateCoordinatorFindTheRightAnswersAllAtOnce: TTSThenValidateGam
     private(set) var uiChoices = CurrentValueSubject<TTSViewUIChoicesWrapper, Never>(.zero)
 
     func processUserSelection(choice: TTSViewUIChoiceModel) {
-        self.currentChoices.append(choice)
+        var choiceState: State {
+            if let index = currentChoices.firstIndex(where: { $0.id == choice.id }) {
+                self.currentChoices.remove(at: index)
+                return .idle
+            } else {
+                self.currentChoices.append(choice)
+                return .selected
+            }
+        }
 
         guard let index = self.uiChoices.value.choices.firstIndex(where: { $0.id == choice.id }) else { return }
 
         let view = ChoiceView(value: self.gameplay.choices[index].value,
                               type: self.gameplay.choices[index].type,
                               size: self.uiChoices.value.choiceSize,
-                              state: .selected)
+                              state: choiceState)
 
         self.uiChoices.value.choices[index] = TTSViewUIChoiceModel(id: choice.id, view: view)
     }
@@ -112,31 +120,13 @@ extension TTSThenValidateCoordinatorFindTheRightAnswersAllAtOnce {
         var body: some View {
             switch self.state {
                 case .correct:
-                    TTSChoiceView(value: self.value, type: self.type, size: self.size)
-                        .overlay {
-                            Image(systemName: "checkmark.circle.fill")
-                                .font(.largeTitle)
-                                .foregroundColor(.green)
-                                .position(x: 200, y: 20)
-                        }
+                    TTSChoiceViewDefaultCorrect(value: self.value, type: self.type, size: self.size)
                 case .selected:
-                    TTSChoiceView(value: self.value, type: self.type, size: self.size)
-                        .overlay {
-                            Image(systemName: "circle.dotted.circle")
-                                .font(.largeTitle)
-                                .foregroundColor(.teal)
-                                .position(x: 200, y: 20)
-                        }
+                    TTSChoiceViewDefaultSelected(value: self.value, type: self.type, size: self.size)
                 case .wrong:
-                    TTSChoiceView(value: self.value, type: self.type, size: self.size)
-                        .overlay {
-                            Image(systemName: "xmark.circle.fill")
-                                .font(.largeTitle)
-                                .foregroundColor(.red)
-                                .position(x: 200, y: 20)
-                        }
+                    TTSChoiceViewDefaultWrong(value: self.value, type: self.type, size: self.size)
                 case .idle:
-                    TTSChoiceView(value: self.value, type: self.type, size: self.size)
+                    TTSChoiceViewDefaultIdle(value: self.value, type: self.type, size: self.size)
             }
         }
 

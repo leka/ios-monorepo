@@ -31,33 +31,46 @@ class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
             return
         }
 
+        guard !self.selectedChoices.contains(where: { $0.id == gameplayChoice.id }) else {
+            self.selectedChoices.removeAll { $0.id == gameplayChoice.id }
+            self.updateChoiceState(for: gameplayChoice, to: .idle)
+            return
+        }
+
         self.selectedChoices.append(gameplayChoice)
+        self.updateChoiceState(for: gameplayChoice, to: .selected)
 
-        if self.selectedChoices.count <= 1 {
-            self.updateChoiceState(for: gameplayChoice, to: .selected)
-        } else {
-            let results = self.gameplay.process(choices: [self.selectedChoices])
-            let categoryGroupSize = self.gameplay.choices.filter { $0.category == gameplayChoice.category }.count
+        guard self.selectedChoices.count > 1 else {
+            return
+        }
 
-            if results.allSatisfy(\.correctCategory) {
-                if self.selectedChoices.count == categoryGroupSize {
-                    self.selectedChoices.forEach { choice in
+        let results = self.gameplay.process(choices: [self.selectedChoices])
+        let categoryGroupSize = self.gameplay.choices.filter { $0.category == gameplayChoice.category }.count
+
+        let choicesToProcess = self.selectedChoices
+
+        if results.allSatisfy(\.correctCategory) {
+            log.debug("Correct category")
+            if self.selectedChoices.count == categoryGroupSize {
+                self.selectedChoices.removeAll()
+                log.debug("Category completed")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    choicesToProcess.forEach { choice in
                         self.updateChoiceState(for: choice, to: .correct)
                     }
-                    self.selectedChoices.removeAll()
-                    if self.gameplay.isCompleted.value {
-                        print("Exercise completed !!!!")
-                    }
-                } else {
-                    self.selectedChoices.forEach { choice in
-                        self.updateChoiceState(for: choice, to: .selected)
-                    }
                 }
-            } else {
-                self.selectedChoices.forEach { choice in
+
+                if self.gameplay.isCompleted.value {
+                    log.info("Exercise completed")
+                }
+            }
+        } else {
+            log.debug("Incorrect category")
+            self.selectedChoices.removeAll()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                choicesToProcess.forEach { choice in
                     self.updateChoiceState(for: choice, to: .idle)
                 }
-                self.selectedChoices.removeAll()
             }
         }
     }
@@ -102,27 +115,11 @@ extension TTSCoordinatorAssociateCategories {
         var body: some View {
             switch self.state {
                 case .correct:
-                    TTSChoiceView(value: self.value, type: self.type, size: self.size)
-                        .overlay {
-                            Image(systemName: "checkmark.circle.fill")
-                                .resizable()
-                                .frame(width: self.size, height: self.size)
-                                .opacity(1)
-                                .font(.largeTitle)
-                                .foregroundColor(.green)
-                        }
+                    TTSChoiceViewDefaultCorrect(value: self.value, type: self.type, size: self.size)
                 case .selected:
-                    TTSChoiceView(value: self.value, type: self.type, size: self.size)
-                        .overlay {
-                            Image(systemName: "circle.dotted.circle.fill")
-                                .resizable()
-                                .frame(width: self.size, height: self.size)
-                                .opacity(0.4)
-                                .font(.largeTitle)
-                                .foregroundColor(.blue)
-                        }
+                    TTSChoiceViewDefaultSelected(value: self.value, type: self.type, size: self.size)
                 case .idle:
-                    TTSChoiceView(value: self.value, type: self.type, size: self.size)
+                    TTSChoiceViewDefaultIdle(value: self.value, type: self.type, size: self.size)
             }
         }
 
