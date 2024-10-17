@@ -7,9 +7,9 @@ import SpriteKit
 import SwiftUI
 import UtilsKit
 
-// MARK: - DnDGridWithZonesCoordinator
+// MARK: - DnDGridWithZonesCoordinatorAssociateCategories
 
-class DnDGridWithZonesCoordinator {
+class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
     init(gameplay: GameplayAssociateCategories) {
@@ -28,7 +28,7 @@ class DnDGridWithZonesCoordinator {
 
     // MARK: Internal
 
-    var uiDropZones: [DnDDropZoneNode] = []
+    private(set) var uiDropZones: [DnDDropZoneNode] = []
     private(set) var uiChoices = CurrentValueSubject<DnDUIChoices, Never>(.zero)
 
     func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDDropZoneNode? = nil) {
@@ -99,7 +99,7 @@ class DnDGridWithZonesCoordinator {
     }
 }
 
-extension DnDGridWithZonesCoordinator {
+extension DnDGridWithZonesCoordinatorAssociateCategories {
     enum State: Equatable {
         case idle
         case selected

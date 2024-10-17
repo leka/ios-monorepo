@@ -67,7 +67,7 @@ struct ContentView: View {
 
                     NavigationLink("Drag & Drop Categories", destination: {
                         let gameplay = GameplayAssociateCategories(choices: GameplayAssociateCategories.kDefaultChoices)
-                        let coordinator = DnDGridCoordinator(gameplay: gameplay)
+                        let coordinator = DnDGridCoordinatorAssociateCategories(gameplay: gameplay)
                         let viewModel = DnDGridViewModel(coordinator: coordinator)
 
                         return DnDGridView(viewModel: viewModel)
@@ -80,7 +80,7 @@ struct ContentView: View {
 
                     NavigationLink("Drag & Drop With Zones", destination: {
                         let gameplay = GameplayAssociateCategories(choices: GameplayAssociateCategories.kDefaultChoicesWithZones)
-                        let coordinator = DnDGridWithZonesCoordinator(gameplay: gameplay)
+                        let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(gameplay: gameplay)
                         let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 
                         return DnDGridWithZonesView(viewModel: viewModel)
