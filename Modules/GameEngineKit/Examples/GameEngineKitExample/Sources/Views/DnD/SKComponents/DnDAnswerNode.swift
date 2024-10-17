@@ -12,6 +12,7 @@ class DnDAnswerNode: SKSpriteNode {
 
     init(id: String, value: String, type: ChoiceType, size: CGSize) {
         self.id = id
+        self.type = type
         switch type {
             case .image:
                 guard let path = Bundle.path(forImage: value), let image = UIImage(named: path) else {
@@ -19,35 +20,38 @@ class DnDAnswerNode: SKSpriteNode {
                 }
 
                 super.init(texture: SKTexture(image: image), color: .clear, size: size)
+
             case .sfsymbol:
                 guard let image = UIImage(systemName: value, withConfiguration: UIImage.SymbolConfiguration(pointSize: size.height)) else {
                     fatalError("SFSymbol not found")
                 }
 
                 super.init(texture: SKTexture(image: image), color: .clear, size: size)
+
             case .text:
-                let tempNode = SKNode()
+                super.init(texture: nil, color: .clear, size: size)
 
                 let circle = SKShapeNode(circleOfRadius: size.width / 2)
+
                 circle.fillColor = .white
                 circle.strokeColor = .black
                 circle.lineWidth = 0.5
                 circle.zPosition = -1
                 circle.position = CGPoint(x: 0, y: 0)
-                tempNode.addChild(circle)
+
+                self.addChild(circle)
 
                 let label = SKLabelNode(text: value)
+
                 label.fontSize = 20
                 label.fontName = "AvenirNext-Bold"
                 label.fontColor = .black
                 label.position = CGPoint(x: 0, y: -10)
                 label.zPosition = 0
-                tempNode.addChild(label)
 
-                let texture = SKView().texture(from: tempNode)
-
-                super.init(texture: texture, color: .clear, size: size)
+                self.addChild(label)
         }
+
         self.name = value
         self.zPosition = 10
     }
@@ -60,6 +64,7 @@ class DnDAnswerNode: SKSpriteNode {
     // MARK: Internal
 
     let id: String
+    let type: ChoiceType
     var initialPosition: CGPoint?
     var isDraggable = true
 }

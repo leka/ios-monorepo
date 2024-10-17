@@ -6,14 +6,37 @@ import SpriteKit
 
 class DnDShadowNode: SKSpriteNode {
     init(node: DnDAnswerNode) {
-        super.init(texture: node.texture, color: node.color, size: node.size)
+        switch node.type {
+            case .text:
+                super.init(texture: nil, color: .clear, size: node.size)
 
-        blendMode = SKBlendMode.alpha
-        colorBlendFactor = 1.0
-        color = .black
-        alpha = 0.15
-        setScale(node.xScale)
-        position = node.position
+                let shadowNode = SKShapeNode(circleOfRadius: node.size.width / 2)
+
+                shadowNode.fillColor = .black
+                shadowNode.strokeColor = .clear
+                shadowNode.alpha = 0.15
+                shadowNode.position = node.position
+                shadowNode.zPosition = -1
+
+                self.addChild(shadowNode)
+
+            case .sfsymbol,
+                 .image:
+                super.init(texture: nil, color: .clear, size: node.size)
+
+                let shadowTexture = node.texture?.copy() as? SKTexture
+                let shadowNode = SKSpriteNode(texture: shadowTexture)
+
+                shadowNode.color = .black
+                shadowNode.colorBlendFactor = 1.0
+                shadowNode.alpha = 0.15
+                shadowNode.blendMode = .alpha
+                shadowNode.size = node.size
+                shadowNode.position = node.position
+                shadowNode.zPosition = -1
+
+                self.addChild(shadowNode)
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
