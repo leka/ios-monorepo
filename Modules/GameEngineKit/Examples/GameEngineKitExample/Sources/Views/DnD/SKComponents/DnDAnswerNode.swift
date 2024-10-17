@@ -12,6 +12,7 @@ class DnDAnswerNode: SKSpriteNode {
 
     init(id: String, value: String, type: ChoiceType, size: CGSize) {
         self.id = id
+        self.type = type
         switch type {
             case .image:
                 guard let path = Bundle.path(forImage: value), let image = UIImage(named: path) else {
@@ -19,30 +20,38 @@ class DnDAnswerNode: SKSpriteNode {
                 }
 
                 super.init(texture: SKTexture(image: image), color: .clear, size: size)
+
             case .sfsymbol:
                 guard let image = UIImage(systemName: value, withConfiguration: UIImage.SymbolConfiguration(pointSize: size.height)) else {
                     fatalError("SFSymbol not found")
                 }
 
                 super.init(texture: SKTexture(image: image), color: .clear, size: size)
+
             case .text:
                 super.init(texture: nil, color: .clear, size: size)
 
-                self.circle = SKShapeNode(circleOfRadius: size.width / 2)
-                self.circle.fillColor = .white
-                self.circle.strokeColor = .black
-                self.circle.lineWidth = 0.5
-                self.circle.zPosition = -1
-                self.circle.position = CGPoint(x: 0, y: 0)
-                self.addChild(self.circle)
+                let circle = SKShapeNode(circleOfRadius: size.width / 2)
 
-                self.label = SKLabelNode(text: value)
-                self.label.fontSize = 18
-                self.label.fontColor = .black
-                self.label.position = CGPoint(x: 0, y: -10)
-                self.label.zPosition = -1
-                self.addChild(self.label)
+                circle.fillColor = .white
+                circle.strokeColor = .black
+                circle.lineWidth = 0.5
+                circle.zPosition = -1
+                circle.position = CGPoint(x: 0, y: 0)
+
+                self.addChild(circle)
+
+                let label = SKLabelNode(text: value)
+
+                label.fontSize = 20
+                label.fontName = "AvenirNext-Bold"
+                label.fontColor = .black
+                label.position = CGPoint(x: 0, y: -10)
+                label.zPosition = 0
+
+                self.addChild(label)
         }
+
         self.name = value
         self.zPosition = 10
     }
@@ -55,13 +64,9 @@ class DnDAnswerNode: SKSpriteNode {
     // MARK: Internal
 
     let id: String
+    let type: ChoiceType
     var initialPosition: CGPoint?
     var isDraggable = true
-
-    // MARK: Private
-
-    private var circle: SKShapeNode!
-    private var label: SKLabelNode!
 }
 
 // MARK: - DnDUIChoices

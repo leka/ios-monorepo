@@ -94,9 +94,20 @@ extension GameplayAssociateCategories {
 
     public static let kDefaultChoices: [AssociateCategoriesChoice] = [
         AssociateCategoriesChoice(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
-        AssociateCategoriesChoice(value: "car.rear.fill", category: .categoryC, type: .sfsymbol),
+        AssociateCategoriesChoice(value: "car.rear.fill", category: .categoryB, type: .sfsymbol),
         AssociateCategoriesChoice(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
-        AssociateCategoriesChoice(value: "car.rear.fill", category: .categoryC, type: .sfsymbol),
+        AssociateCategoriesChoice(value: "car.rear.fill", category: .categoryB, type: .sfsymbol),
+        AssociateCategoriesChoice(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
+        AssociateCategoriesChoice(value: "Maison", category: nil, type: .text),
+    ]
+
+    public static let kDefaultChoicesWithZones: [AssociateCategoriesChoice] = [
+        AssociateCategoriesChoice(value: "sun", category: .categoryA, type: .text),
+        AssociateCategoriesChoice(value: "car", category: .categoryB, type: .text),
+        AssociateCategoriesChoice(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
+        AssociateCategoriesChoice(value: "car.rear.fill", category: .categoryB, type: .sfsymbol),
+        AssociateCategoriesChoice(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
+        AssociateCategoriesChoice(value: "car.rear.fill", category: .categoryB, type: .sfsymbol),
         AssociateCategoriesChoice(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
         AssociateCategoriesChoice(value: "Maison", category: nil, type: .text),
     ]

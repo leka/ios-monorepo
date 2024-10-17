@@ -5,12 +5,12 @@
 import Combine
 import SwiftUI
 
-// MARK: - DnDViewViewModel
+// MARK: - DnDGridViewModel
 
-class DnDViewViewModel: ObservableObject {
+class DnDGridViewModel: ObservableObject {
     // MARK: Lifecycle
 
-    init(coordinator: DnDCoordinatorAssociateCategories) {
+    init(coordinator: DnDGridGameplayCoordinatorProtocol) {
         self.choices = coordinator.uiChoices.value.choices
         self.coordinator = coordinator
         self.coordinator.uiChoices
@@ -33,6 +33,6 @@ class DnDViewViewModel: ObservableObject {
 
     // MARK: Private
 
-    private let coordinator: DnDCoordinatorAssociateCategories
+    private let coordinator: DnDGridGameplayCoordinatorProtocol
     private var cancellables: Set<AnyCancellable> = []
 }

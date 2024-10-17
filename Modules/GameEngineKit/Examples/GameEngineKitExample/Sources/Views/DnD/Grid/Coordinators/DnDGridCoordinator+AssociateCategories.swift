@@ -7,9 +7,9 @@ import SpriteKit
 import SwiftUI
 import UtilsKit
 
-// MARK: - DnDCoordinatorAssociateCategories
+// MARK: - DnDGridCoordinatorAssociateCategories
 
-class DnDCoordinatorAssociateCategories: DnDGameplayCoordinatorProtocol {
+class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
     init(gameplay: GameplayAssociateCategories) {
@@ -66,13 +66,11 @@ class DnDCoordinatorAssociateCategories: DnDGameplayCoordinatorProtocol {
             self.alreadyValidatedChoices = self.currentlySelectedChoices
 
             if self.gameplay.isCompleted.value {
-                log.debug("Exercise completed !!!!")
+                log.debug("Exercise completed")
             }
         } else {
             self.handleIncorrectChoice(sourceChoice)
         }
-
-        print(self.alreadyValidatedChoices.description.replacingOccurrences(of: ")),", with: ")),\n"))
     }
 
     private func updateChoiceState(for choice: AssociateCategoriesChoice, to state: State) {
@@ -102,7 +100,7 @@ class DnDCoordinatorAssociateCategories: DnDGameplayCoordinatorProtocol {
     }
 }
 
-extension DnDCoordinatorAssociateCategories {
+extension DnDGridCoordinatorAssociateCategories {
     enum State: Equatable {
         case idle
         case selected
