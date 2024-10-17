@@ -7,31 +7,24 @@ import SpriteKit
 import SwiftUI
 import UtilsKit
 
-// MARK: - DnDCoordinatorWithZones
+// MARK: - DnDGridCoordinatorAssociateCategories
 
-class DnDCoordinatorWithZones {
+class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
     init(gameplay: GameplayAssociateCategories) {
         self.gameplay = gameplay
 
-        self.uiDropZones = gameplay.choices[0...1].map { dropzone in
-            self.currentlySelectedChoices.append([dropzone])
-            self.alreadyValidatedChoices.append([dropzone])
-            return DnDDropZoneNode(id: dropzone.id, value: dropzone.value, type: dropzone.type, position: .zero)
-        }
-
-        self.uiChoices.value.choices = gameplay.choices[2...].map { choice in
+        self.uiChoices.value.choices = gameplay.choices.map { choice in
             DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiChoices.value.choiceSize)
         }
     }
 
     // MARK: Internal
 
-    var uiDropZones: [DnDDropZoneNode] = []
     private(set) var uiChoices = CurrentValueSubject<DnDUIChoices, Never>(.zero)
 
-    func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDDropZoneNode? = nil) {
+    func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDAnswerNode? = nil) {
         switch event {
             case .began:
                 self.updateChoiceState(for: self.gameplay.choices.first(where: { $0.id == choice.id })!, to: .selected)
@@ -40,28 +33,36 @@ class DnDCoordinatorWithZones {
                     self.updateChoiceState(for: self.gameplay.choices.first(where: { $0.id == choice.id })!, to: .idle)
                     return
                 }
-
                 self.processUserDropOnDestination(choice: choice, destination: destination)
         }
     }
 
     // MARK: Private
 
+    private var cancellables = Set<AnyCancellable>()
     private let gameplay: GameplayAssociateCategories
     private var currentlySelectedChoices: [[AssociateCategoriesChoice]] = []
     private var alreadyValidatedChoices: [[AssociateCategoriesChoice]] = []
 
-    private func processUserDropOnDestination(choice: DnDAnswerNode, destination: DnDDropZoneNode) {
+    private func processUserDropOnDestination(choice: DnDAnswerNode, destination: DnDAnswerNode) {
         guard let sourceChoice = self.gameplay.choices.first(where: { $0.id == choice.id }),
               let destinationChoice = self.gameplay.choices.first(where: { $0.id == destination.id }),
-              let categoryIndex = getIndexOf(destination: destinationChoice),
               !self.choiceAlreadySelected(choice: sourceChoice) else { return }
 
-        self.currentlySelectedChoices[categoryIndex].append(sourceChoice)
+        if let categoryIndex = getIndexOf(destination: destinationChoice) {
+            self.currentlySelectedChoices[categoryIndex].append(sourceChoice)
+        } else {
+            self.currentlySelectedChoices.append([destinationChoice, sourceChoice])
+        }
+
         let results = self.gameplay.process(choices: self.currentlySelectedChoices)
 
-        if results.first(where: { $0.choice.id == sourceChoice.id })?.correctCategory == true {
+        if results.allSatisfy(\.correctCategory) {
             self.updateChoiceState(for: sourceChoice, to: .correct)
+            if self.getIndexOf(destination: destinationChoice) == nil {
+                self.updateChoiceState(for: destinationChoice, to: .correct)
+            }
+
             self.alreadyValidatedChoices = self.currentlySelectedChoices
 
             if self.gameplay.isCompleted.value {
@@ -75,7 +76,7 @@ class DnDCoordinatorWithZones {
     private func updateChoiceState(for choice: AssociateCategoriesChoice, to state: State) {
         guard let index = self.gameplay.choices.firstIndex(where: { $0.id == choice.id }) else { return }
 
-        self.updateUINodeState(node: self.uiChoices.value.choices[index - 2], state: state)
+        self.updateUINodeState(node: self.uiChoices.value.choices[index], state: state)
     }
 
     private func choiceAlreadySelected(choice: AssociateCategoriesChoice) -> Bool {
@@ -99,7 +100,7 @@ class DnDCoordinatorWithZones {
     }
 }
 
-extension DnDCoordinatorWithZones {
+extension DnDGridCoordinatorAssociateCategories {
     enum State: Equatable {
         case idle
         case selected
@@ -117,7 +118,7 @@ extension DnDCoordinatorWithZones {
             case .correct:
                 node.isDraggable = false
                 node.scale(to: CGSize(width: node.size.width * 0.75, height: node.size.height * 0.75))
-                node.zPosition = 10
+                node.zPosition = 0
                 self.onDropAction(node)
             case .wrong:
                 node.isDraggable = false

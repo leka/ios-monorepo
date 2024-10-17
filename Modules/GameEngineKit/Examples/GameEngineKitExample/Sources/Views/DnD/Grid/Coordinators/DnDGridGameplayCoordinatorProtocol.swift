@@ -5,9 +5,7 @@
 import Combine
 import Foundation
 
-// MARK: - DnDGameplayCoordinatorProtocol
-
-protocol DnDGameplayCoordinatorProtocol {
+protocol DnDGridGameplayCoordinatorProtocol {
     var uiChoices: CurrentValueSubject<DnDUIChoices, Never> { get }
     func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDAnswerNode?)
 }

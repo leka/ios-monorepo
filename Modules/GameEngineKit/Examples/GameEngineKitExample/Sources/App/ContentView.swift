@@ -67,10 +67,10 @@ struct ContentView: View {
 
                     NavigationLink("Drag & Drop Categories", destination: {
                         let gameplay = GameplayAssociateCategories(choices: GameplayAssociateCategories.kDefaultChoices)
-                        let coordinator = DnDCoordinatorAssociateCategories(gameplay: gameplay)
-                        let viewModel = DnDViewAssociateCategories.ViewModel(coordinator: coordinator)
+                        let coordinator = DnDGridCoordinator(gameplay: gameplay)
+                        let viewModel = DnDGridViewModel(coordinator: coordinator)
 
-                        return DnDViewAssociateCategories(viewModel: viewModel)
+                        return DnDGridView(viewModel: viewModel)
                             .navigationTitle("Drag & Drop Categories")
                             .navigationBarTitleDisplayMode(.large)
                     })
@@ -80,10 +80,10 @@ struct ContentView: View {
 
                     NavigationLink("Drag & Drop With Zones", destination: {
                         let gameplay = GameplayAssociateCategories(choices: GameplayAssociateCategories.kDefaultChoicesWithZones)
-                        let coordinator = DnDCoordinatorWithZones(gameplay: gameplay)
-                        let viewModel = DnDViewWithZones.ViewModel(coordinator: coordinator)
+                        let coordinator = DnDGridWithZonesCoordinator(gameplay: gameplay)
+                        let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 
-                        return DnDViewWithZones(viewModel: viewModel)
+                        return DnDGridWithZonesView(viewModel: viewModel)
                             .navigationTitle("Drag & Drop With Zones")
                             .navigationBarTitleDisplayMode(.large)
                     })
