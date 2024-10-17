@@ -23,6 +23,7 @@ concurrency:
 
 env:
   TUIST_TURN_OFF_LINTERS: TRUE
+  TUIST_GENERATE_EXAMPLE_TARGETS: TRUE
   TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG: FALSE
 
 jobs:
@@ -48,6 +49,7 @@ jobs:
       - name: tuist install
         run: |
           TUIST_TURN_OFF_LINTERS=${{ env.TUIST_TURN_OFF_LINTERS }} \
+          TUIST_GENERATE_EXAMPLE_TARGETS=${{ env.TUIST_GENERATE_EXAMPLE_TARGETS }} \
           TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG=${{ env.TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG }} \
           TUIST_DEVELOPER_MODE=${{ matrix.TUIST_DEVELOPER_MODE }} \
           tuist install
@@ -55,6 +57,7 @@ jobs:
       - name: tuist generate
         run: |
           TUIST_TURN_OFF_LINTERS=${{ env.TUIST_TURN_OFF_LINTERS }} \
+          TUIST_GENERATE_EXAMPLE_TARGETS=${{ env.TUIST_GENERATE_EXAMPLE_TARGETS }} \
           TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG=${{ env.TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG }} \
           TUIST_DEVELOPER_MODE=${{ matrix.TUIST_DEVELOPER_MODE }} \
           tuist generate --no-open
@@ -62,6 +65,7 @@ jobs:
       - name: tuist build
         run: |
           TUIST_TURN_OFF_LINTERS=${{ env.TUIST_TURN_OFF_LINTERS }} \
+          TUIST_GENERATE_EXAMPLE_TARGETS=${{ env.TUIST_GENERATE_EXAMPLE_TARGETS }} \
           TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG=${{ env.TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG }} \
           TUIST_DEVELOPER_MODE=${{ matrix.TUIST_DEVELOPER_MODE }} \
           tuist build
