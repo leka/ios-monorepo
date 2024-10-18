@@ -44,23 +44,21 @@ struct ActionButtonRobot: View {
                 self.robotWasTapped = true
             }
         } label: {
-            VStack {
-                Image(uiImage: DesignKitAsset.Images.robotFaceSimple.image)
-                    .resizable()
-                    .frame(width: 200, height: 200)
-                    .padding()
-
-                Button(String(l10n.ActionButtonRobot.buttonLabel.characters)) {}
-                    .font(.title)
-                    .opacity(self.robotWasTapped ? 0.0 : 1.0)
-                    .buttonStyle(.bordered)
-                    .allowsHitTesting(false)
-                    .tint(nil)
-            }
+            Image(uiImage: DesignKitAsset.Images.robotFaceAction.image)
+                .resizable()
+                .frame(width: 130, height: 130)
+                .padding(10)
         }
+        .frame(width: 200)
         .disabled(self.robotWasTapped)
         .opacity(self.robotWasTapped ? 0.3 : 1.0)
+        .buttonStyle(ActionButtonStyle(progress: 0.0))
+        .animation(.spring(response: 0.3, dampingFraction: 0.45), value: self.robotWasTapped)
         .scaleEffect(self.robotWasTapped ? 0.95 : 1.0, anchor: .center)
+        .shadow(
+            color: .accentColor.opacity(0.2),
+            radius: self.robotWasTapped ? 6 : 3, x: 0, y: 3
+        )
     }
 }
 
@@ -79,10 +77,14 @@ extension l10n {
     struct ActionRobotButtonContainer: View {
         @State var robotWasTapped = false
         var body: some View {
-            ActionButtonRobot(
-                actionType: .color("red"),
-                robotWasTapped: $robotWasTapped
-            )
+            HStack {
+                ActionButtonRobot(
+                    actionType: .color("red"),
+                    robotWasTapped: $robotWasTapped
+                )
+
+                ActionButtonListen(audio: .speech(text: "Hello"))
+            }
         }
     }
 
