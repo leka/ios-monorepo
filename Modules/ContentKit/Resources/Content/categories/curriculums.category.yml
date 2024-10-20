@@ -294,8 +294,22 @@ content:
           subtitle: Learn to recognize various foods and the world of cooking.
           description: Discover activities designed to help participants become familiar with a variety of foods, understand their role in cooking, and explore the tools used in the kitchen.
     curriculums:
-      - curriculum_find_ingredients_for_recipes-B477244ADFED4735BA1159A76E25001A
       - curriculum_sort_sweet_and_salty-5ED0AFBEC4504F6EBA52B26C65ED93CC
       - curriculum_recognition_kitchen_items-FCBEE55DD11F427785A12328E6E01C8E
       - curriculum_fruits_and_vegetables_generalization-B6F2027A304C44F5B3C482EAFCD8DE7E
       - sorting_fruits_vegetables_basket-E6A322DC7A6E48518CED2CA2D3D2A595
+
+  - id: festivities
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Festivités
+          subtitle: Célébrez les fêtes avec des activités ludiques.
+          description: Découvrez des activités thématiques pour accompagner les personnes lors des différentes festivités, comme Halloween, Noël, Pâques, et bien d'autres.
+      - locale: en_US
+        details:
+          title: Festivities
+          subtitle: Celebrate holidays with fun activities.
+          description: Explore themed activities to engage care receivers during various celebrations, such as Halloween, Christmas, Easter, and more.
+    curriculums:
+      - curriculum_recognition_halloween-DD01FCFF7BCB4A44A78BF7C813CE8DF5
