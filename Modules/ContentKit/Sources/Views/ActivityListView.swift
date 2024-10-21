@@ -126,22 +126,10 @@ public struct ActivityListView: View {
         }
     }
 
-    private let columns = Array(repeating: GridItem(), count: 3)
     @ObservedObject private var styleManager: StyleManager = .shared
 
     @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
-}
-
-// MARK: - l10n.ActivityListView
-
-extension l10n {
-    enum ActivityListView {
-        static let startActivityButtonLabel = LocalizedString("content_kit.activity_list_view.start_activity_button_label",
-                                                              bundle: ContentKitResources.bundle,
-                                                              value: "Start",
-                                                              comment: "Start activity button label on ActivityListView")
-    }
 }
 
 #Preview {

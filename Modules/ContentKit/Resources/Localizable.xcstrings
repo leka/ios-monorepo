@@ -92,24 +92,6 @@
                 }
             }
         },
-        "content_kit.activity_list_view.start_activity_button_label": {
-            "comment": "Start activity button label on ActivityListView",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Start"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "D\u00e9marrer"
-                    }
-                }
-            }
-        },
         "content_kit.curriculum_details_view.activities_section_title": {
             "comment": "CurriculumDetailsView 'activities' section title",
             "extractionState": "extracted_with_value",
