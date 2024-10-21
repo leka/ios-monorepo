@@ -1,13 +1,7 @@
-### Nouvelles Activités
+### Nouveau Curriculum
 
-- Nouvelles Compétences d'Association/Logique Ajoutées : Introduction de nouvelles compétences axées sur l'association et la pensée logique.
+- Curriculum d'Halloween : Introduction d'un nouveau curriculum sur le thème d'Halloween pour célébrer la saison et engager les utilisateurs avec du contenu festif.
 
 ### Améliorations
 
-- Accès aux Activités Amélioré : Les utilisateurs peuvent désormais lancer des activités directement depuis la liste des curriculums.
-- Icônes Mises à Jour : Icônes mises à jour pour les curriculums pour un aspect plus moderne.
-
-### Corrections de Bugs
-
-- Corrections de Contenu : Correction de fautes de frappe et amélioration des descriptions.
-- Corrections d'Assets : Correction des assets dans de certaines activités.
+- Mises à Jour de l'Interface Utilisateur : Mise à jour du libellé du bouton d'action du robot pour une meilleure clarté et convivialité.

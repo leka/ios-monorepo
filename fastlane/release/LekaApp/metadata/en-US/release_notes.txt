@@ -1,12 +1,7 @@
-### New Activities
+### New Curriculum
 
-- New Association/Logical Skills Added: Introduced new skills focusing on association and logical thinking.
+- Halloween Curriculum: Introduced a new Halloween-themed curriculum to celebrate the season and engage users with festive content.
 
 ### Improvements
 
-- Improved Activity Access: Users can now launch activities directly from the curriculum list.
-- Updated Icons: Refreshed icons for curriculums for a more modern look
-### Bug Fixes
-
-- Content Corrections: Fixed typos and improved descriptions across various content files to enhance clarity.
-- Asset Fixes: Corrected assets in activities.
+- User Interface Updates: Updated the label of the robot action button for better clarity and usability.

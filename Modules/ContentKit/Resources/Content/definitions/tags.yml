@@ -257,6 +257,17 @@ list:
         description: >
           Lorem ipsum
     subtags: []
+  - id: festivities
+    l10n:
+      - locale: en_US
+        name: Festivities
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Festivités
+        description: >
+          Lorem ipsum
+    subtags: []
   - id: food
     l10n:
       - locale: en_US

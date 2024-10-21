@@ -5,12 +5,12 @@
 import SpriteKit
 import SwiftUI
 
-// MARK: - DnDView
+// MARK: - DnDGridWithZonesView
 
-public struct DnDView: View {
+public struct DnDGridWithZonesView: View {
     // MARK: Lifecycle
 
-    init(viewModel: DnDViewViewModel) {
+    init(viewModel: DnDGridWithZonesViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
 
@@ -21,30 +21,21 @@ public struct DnDView: View {
             SpriteView(scene: self.makeScene(size: proxy.size), options: [.allowsTransparency])
                 .frame(width: proxy.size.width, height: proxy.size.height)
                 .onAppear {
-                    self.scene = self.getScene(for: self.viewModel.choices.count, size: proxy.size)
+                    self.scene = DnDGridWithZonesBaseScene(viewModel: self.viewModel)
                 }
         }
     }
 
     // MARK: Private
 
-    @StateObject private var viewModel: DnDViewViewModel
+    @StateObject private var viewModel: DnDGridWithZonesViewModel
     @State private var scene: SKScene = .init()
 
     private func makeScene(size: CGSize) -> SKScene {
-        guard let finalScene = scene as? DnDBaseScene else {
+        guard let finalScene = scene as? DnDGridWithZonesBaseScene else {
             return SKScene()
         }
         finalScene.size = size
         return finalScene
-    }
-
-    private func getScene(for choiceCount: Int, size _: CGSize) -> SKScene {
-        switch choiceCount {
-            case 6:
-                SixChoicesScene(viewModel: self.viewModel)
-            default:
-                DnDBaseScene(viewModel: self.viewModel)
-        }
     }
 }
