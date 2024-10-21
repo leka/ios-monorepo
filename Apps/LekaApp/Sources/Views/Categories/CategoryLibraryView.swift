@@ -17,7 +17,7 @@ struct CategoryLibraryView: View {
                     Text("Curriculums")
                         .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.curriculums.characters))
                 case .libraryStories:
-                    Text("Stories")
+                    LibraryStoriesView(viewModel: self.rootAccountViewModel)
                         .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.stories.characters))
                 case .libraryGamepads:
                     Text("Gamepads")
