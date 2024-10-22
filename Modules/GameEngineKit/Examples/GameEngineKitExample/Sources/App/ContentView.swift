@@ -60,9 +60,9 @@ struct ContentView: View {
                     NavigationLink("Memory", destination: {
                         let gameplay = GameplayAssociateCategories(choices: GameplayAssociateCategories.kDefaultChoices)
                         let coordinator = MemoryCoordinatorAssociateCategories(gameplay: gameplay)
-                        let viewModel = TTSViewViewModel(coordinator: coordinator)
+                        let viewModel = NewMemoryViewViewModel(coordinator: coordinator)
 
-                        return TTSView(viewModel: viewModel)
+                        return NewMemoryView(viewModel: viewModel)
                             .navigationTitle("Memory")
                             .navigationBarTitleDisplayMode(.large)
                     })

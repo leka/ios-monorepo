@@ -7,7 +7,7 @@ import SwiftUI
 
 // MARK: - MemoryCoordinatorAssociateCategories
 
-class MemoryCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
+class MemoryCoordinatorAssociateCategories: MemoryGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
     init(gameplay: GameplayAssociateCategories) {
@@ -18,15 +18,15 @@ class MemoryCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
                                   type: choice.type,
                                   size: self.uiChoices.value.choiceSize,
                                   state: .idle)
-            return TTSViewUIChoiceModel(id: choice.id, view: view)
+            return MemoryViewUIChoiceModel(id: choice.id, view: view)
         }
     }
 
     // MARK: Internal
 
-    private(set) var uiChoices = CurrentValueSubject<TTSViewUIChoicesWrapper, Never>(.zero)
+    private(set) var uiChoices = CurrentValueSubject<MemoryViewUIChoicesWrapper, Never>(.zero)
 
-    func processUserSelection(choice: TTSViewUIChoiceModel) {
+    func processUserSelection(choice: MemoryViewUIChoiceModel) {
         guard let gameplayChoice = self.gameplay.choices.first(where: { $0.id == choice.id }) else {
             return
         }
@@ -85,7 +85,7 @@ class MemoryCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
                               size: self.uiChoices.value.choiceSize,
                               state: state)
 
-        self.uiChoices.value.choices[index] = TTSViewUIChoiceModel(id: choice.id, view: view)
+        self.uiChoices.value.choices[index] = MemoryViewUIChoiceModel(id: choice.id, view: view)
     }
 }
 
@@ -130,7 +130,7 @@ extension MemoryCoordinatorAssociateCategories {
 #Preview {
     let gameplay = GameplayAssociateCategories(choices: GameplayAssociateCategories.kDefaultChoices)
     let coordinator = MemoryCoordinatorAssociateCategories(gameplay: gameplay)
-    let viewModel = TTSViewViewModel(coordinator: coordinator)
+    let viewModel = NewMemoryViewViewModel(coordinator: coordinator)
 
-    return TTSView(viewModel: viewModel)
+    return NewMemoryView(viewModel: viewModel)
 }
