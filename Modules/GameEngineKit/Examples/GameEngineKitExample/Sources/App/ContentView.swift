@@ -57,6 +57,19 @@ struct ContentView: View {
                     .buttonStyle(.borderedProminent)
                     .frame(maxWidth: .infinity)
 
+                    NavigationLink("Memory", destination: {
+                        let gameplay = GameplayAssociateCategories(choices: GameplayAssociateCategories.kDefaultChoices)
+                        let coordinator = MemoryCoordinatorAssociateCategories(gameplay: gameplay)
+                        let viewModel = NewMemoryViewViewModel(coordinator: coordinator)
+
+                        return NewMemoryView(viewModel: viewModel)
+                            .navigationTitle("Memory")
+                            .navigationBarTitleDisplayMode(.large)
+                    })
+                    .tint(.cyan)
+                    .buttonStyle(.borderedProminent)
+                    .frame(maxWidth: .infinity)
+
                     Spacer()
                 }
 
