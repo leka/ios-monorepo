@@ -4,14 +4,16 @@
 
 import SwiftUI
 
-public extension RootAccount {
+public extension SavedCurriculum {
     init(
-        id: String = "",
+        id: String? = nil,
         rootOwnerUid: String = "",
-        library: Library = Library()
+        caregiverID: String
     ) {
         self.id = id
         self.rootOwnerUid = rootOwnerUid
-        self.library = library
+        self.caregiverID = caregiverID
+        self.createdAt = nil
+        self.lastEditedAt = nil
     }
 }

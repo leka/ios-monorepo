@@ -97,6 +97,45 @@ public class DatabaseOperations {
         return subject.eraseToAnyPublisher()
     }
 
+    public func getCurrentRootAccount() -> AnyPublisher<RootAccount, Error> {
+        let subject = PassthroughSubject<RootAccount, Error>()
+
+        guard let currentUserID = Auth.auth().currentUser?.uid else {
+            subject.send(completion: .failure(DatabaseError.customError("User not authenticated")))
+            return subject.eraseToAnyPublisher()
+        }
+
+        if let existingListener = listenerRegistrations["ROOT_ACCOUNTS_\(currentUserID)"] {
+            existingListener.remove()
+            self.listenerRegistrations.removeValue(forKey: "ROOT_ACCOUNTS_\(currentUserID)")
+        }
+
+        let listener = self.database.collection(DatabaseCollection.rootAccounts.rawValue)
+            .whereField("root_owner_uid", isEqualTo: currentUserID)
+            .addSnapshotListener { querySnapshot, error in
+                if let error {
+                    log.error("\(error.localizedDescription)")
+                    subject.send(completion: .failure(error))
+                } else if let querySnapshot, let document = querySnapshot.documents.first {
+                    do {
+                        let rootAccount = try document.data(as: RootAccount.self)
+                        log.info("Root account document fetched successfully for user \(currentUserID). 🎉")
+                        subject.send(rootAccount)
+                    } catch {
+                        log.error("\(error.localizedDescription)")
+                        subject.send(completion: .failure(error))
+                    }
+                } else {
+                    log.error("Root account document not found for user \(currentUserID).")
+                    subject.send(completion: .failure(DatabaseError.documentNotFound))
+                }
+            }
+
+        self.listenerRegistrations["ROOT_ACCOUNTS_\(currentUserID)"] = listener
+
+        return subject.eraseToAnyPublisher()
+    }
+
     public func clearAllListeners() {
         for (_, registration) in self.listenerRegistrations {
             registration.remove()
