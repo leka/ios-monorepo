@@ -7,7 +7,7 @@ import SwiftUI
 
 // MARK: - DnDAnswerNode
 
-class DnDAnswerNode: SKSpriteNode {
+public class DnDAnswerNode: SKSpriteNode {
     // MARK: Lifecycle
 
     init(id: String, value: String, type: ChoiceType, size: CGSize) {
@@ -71,7 +71,7 @@ class DnDAnswerNode: SKSpriteNode {
 
 // MARK: - DnDUIChoices
 
-struct DnDUIChoices {
+public struct DnDUIChoices {
     // MARK: Internal
 
     static let zero = DnDUIChoices(choices: [])

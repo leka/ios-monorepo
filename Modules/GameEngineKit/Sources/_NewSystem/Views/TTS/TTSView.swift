@@ -7,7 +7,7 @@ import SwiftUI
 
 // MARK: - TTSViewUIChoiceModel
 
-struct TTSViewUIChoiceModel: Identifiable {
+public struct TTSViewUIChoiceModel: Identifiable {
     // MARK: Lifecycle
 
     init(id: String = UUID().uuidString, view: some View = EmptyView()) {
@@ -15,15 +15,18 @@ struct TTSViewUIChoiceModel: Identifiable {
         self.view = AnyView(view)
     }
 
+    // MARK: Public
+
+    public let id: String
+
     // MARK: Internal
 
-    let id: String
     let view: AnyView
 }
 
 // MARK: - TTSViewUIChoicesWrapper
 
-struct TTSViewUIChoicesWrapper {
+public struct TTSViewUIChoicesWrapper {
     // MARK: Internal
 
     static let zero = TTSViewUIChoicesWrapper(choices: [])
@@ -91,18 +94,16 @@ struct TTSViewUIChoicesWrapper {
 
 // MARK: - TTSView
 
-struct TTSView: View {
+public struct TTSView: View {
     // MARK: Lifecycle
 
-    init(viewModel: TTSViewViewModel) {
+    public init(viewModel: TTSViewViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    @StateObject var viewModel: TTSViewViewModel
-
-    var body: some View {
+    public var body: some View {
         VStack(spacing: 100) {
             HStack(spacing: 100) {
                 ForEach(self.viewModel.choices[0...2]) { choice in
@@ -123,6 +124,10 @@ struct TTSView: View {
             }
         }
     }
+
+    // MARK: Private
+
+    @StateObject private var viewModel: TTSViewViewModel
 }
 
 #Preview {

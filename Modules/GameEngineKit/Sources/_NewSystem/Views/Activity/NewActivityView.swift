@@ -5,7 +5,6 @@
 import Combine
 import ContentKit
 import DesignKit
-import GameEngineKit
 import SwiftUI
 
 // MARK: - PlaceholderExerciseView
@@ -45,10 +44,10 @@ class ExerciseCoordinator {
                 let ttsPayload = self.currentExercise.payload as! TouchToSelect.Payload
 
                 let gameplayChoices = ttsPayload.choices.map {
-                    FindTheRightAnswersChoice(value: $0.value, isRightAnswer: $0.isRightAnswer)
+                    NewGameplayFindTheRightAnswersChoice(value: $0.value, isRightAnswer: $0.isRightAnswer)
                 }
 
-                let gameplay = GameplayFindTheRightAnswers(choices: gameplayChoices)
+                let gameplay = NewGameplayFindTheRightAnswers(choices: gameplayChoices)
                 let coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: gameplay)
                 let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -61,10 +60,10 @@ class ExerciseCoordinator {
 
 // MARK: - NewActivityViewModel
 
-class NewActivityViewModel: ObservableObject {
+public class NewActivityViewModel: ObservableObject {
     // MARK: Lifecycle
 
-    init(activity: Activity) {
+    public init(activity: Activity) {
         self.activity = activity
         self.exerciseCoordinator = ExerciseCoordinator(payload: activity.exercisePayload)
     }
@@ -102,7 +101,7 @@ class NewActivityViewModel: ObservableObject {
 public struct NewActivityView: View {
     // MARK: Lifecycle
 
-    init(viewModel: NewActivityViewModel) {
+    public init(viewModel: NewActivityViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
 

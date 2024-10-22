@@ -10,7 +10,7 @@ import SwiftUI
 public struct DnDGridWithZonesView: View {
     // MARK: Lifecycle
 
-    init(viewModel: DnDGridWithZonesViewModel) {
+    public init(viewModel: DnDGridWithZonesViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
 

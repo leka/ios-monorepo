@@ -7,10 +7,10 @@ import SwiftUI
 
 // MARK: - DnDGridWithZonesViewViewModel
 
-class DnDGridWithZonesViewModel: ObservableObject {
+public class DnDGridWithZonesViewModel: ObservableObject {
     // MARK: Lifecycle
 
-    init(coordinator: DnDGridWithZonesGameplayCoordinatorProtocol) {
+    public init(coordinator: DnDGridWithZonesGameplayCoordinatorProtocol) {
         self.choices = coordinator.uiChoices.value.choices
         self.dropzones = coordinator.uiDropZones
         self.coordinator = coordinator
@@ -22,16 +22,14 @@ class DnDGridWithZonesViewModel: ObservableObject {
             .store(in: &self.cancellables)
     }
 
-    // MARK: Public
-
-    public func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDDropZoneNode? = nil) {
-        self.coordinator.onTouch(event, choice: choice, destination: destination)
-    }
-
     // MARK: Internal
 
     @Published var choices: [DnDAnswerNode] = []
     @Published var dropzones: [DnDDropZoneNode] = []
+
+    func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDDropZoneNode? = nil) {
+        self.coordinator.onTouch(event, choice: choice, destination: destination)
+    }
 
     // MARK: Private
 

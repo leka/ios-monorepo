@@ -7,10 +7,10 @@ import SwiftUI
 
 // MARK: - MemoryViewViewModel
 
-class NewMemoryViewViewModel: ObservableObject {
+public class NewMemoryViewViewModel: ObservableObject {
     // MARK: Lifecycle
 
-    init(coordinator: MemoryGameplayCoordinatorProtocol) {
+    public init(coordinator: MemoryGameplayCoordinatorProtocol) {
         self.choices = coordinator.uiChoices.value.choices
         self.coordinator = coordinator
         self.coordinator.uiChoices

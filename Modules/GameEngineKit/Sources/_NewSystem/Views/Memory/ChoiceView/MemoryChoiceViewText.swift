@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct MemoryChoiceViewText: View {
+struct NewMemoryChoiceViewText: View {
     // MARK: Lifecycle
 
     init(value: String, size: CGFloat) {
@@ -41,7 +41,7 @@ struct MemoryChoiceViewText: View {
 
 #Preview {
     VStack(spacing: 50) {
-        MemoryChoiceViewText(value: "Maison", size: 200)
-        MemoryChoiceViewText(value: "Chien", size: 200)
+        NewMemoryChoiceViewText(value: "Maison", size: 200)
+        NewMemoryChoiceViewText(value: "Chien", size: 200)
     }
 }

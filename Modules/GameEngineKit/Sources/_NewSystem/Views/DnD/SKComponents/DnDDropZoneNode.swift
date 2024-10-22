@@ -7,7 +7,7 @@ import SwiftUI
 
 // MARK: - DnDDropZoneNode
 
-class DnDDropZoneNode: SKSpriteNode {
+public class DnDDropZoneNode: SKSpriteNode {
     // MARK: Lifecycle
 
     init(id: String, value: String, type: ChoiceType, position: CGPoint) {

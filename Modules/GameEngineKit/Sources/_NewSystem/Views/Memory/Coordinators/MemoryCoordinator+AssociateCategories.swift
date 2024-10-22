@@ -7,10 +7,10 @@ import SwiftUI
 
 // MARK: - MemoryCoordinatorAssociateCategories
 
-class MemoryCoordinatorAssociateCategories: MemoryGameplayCoordinatorProtocol {
+public class MemoryCoordinatorAssociateCategories: MemoryGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    init(gameplay: GameplayAssociateCategories) {
+    public init(gameplay: NewGameplayAssociateCategories) {
         self.gameplay = gameplay
 
         self.uiChoices.value.choices = self.gameplay.choices.map { choice in
@@ -22,11 +22,11 @@ class MemoryCoordinatorAssociateCategories: MemoryGameplayCoordinatorProtocol {
         }
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    private(set) var uiChoices = CurrentValueSubject<MemoryViewUIChoicesWrapper, Never>(.zero)
+    public private(set) var uiChoices = CurrentValueSubject<MemoryViewUIChoicesWrapper, Never>(.zero)
 
-    func processUserSelection(choice: MemoryViewUIChoiceModel) {
+    public func processUserSelection(choice: MemoryViewUIChoiceModel) {
         guard let gameplayChoice = self.gameplay.choices.first(where: { $0.id == choice.id }) else {
             return
         }
@@ -74,10 +74,10 @@ class MemoryCoordinatorAssociateCategories: MemoryGameplayCoordinatorProtocol {
     // MARK: Private
 
     private var cancellables = Set<AnyCancellable>()
-    private let gameplay: GameplayAssociateCategories
-    private var selectedChoices: [AssociateCategoriesChoice] = []
+    private let gameplay: NewGameplayAssociateCategories
+    private var selectedChoices: [NewGameplayAssociateCategoriesChoice] = []
 
-    private func updateChoiceState(for choice: AssociateCategoriesChoice, to state: State) {
+    private func updateChoiceState(for choice: NewGameplayAssociateCategoriesChoice, to state: State) {
         guard let index = self.gameplay.choices.firstIndex(where: { $0.id == choice.id }) else { return }
 
         let view = ChoiceView(value: choice.value,
@@ -112,9 +112,9 @@ extension MemoryCoordinatorAssociateCategories {
             switch self.state {
                 case .correct,
                      .selected:
-                    MemoryChoiceViewDefaultSelectedOrCorrect(value: self.value, type: self.type, size: self.size)
+                    NewMemoryChoiceViewDefaultSelectedOrCorrect(value: self.value, type: self.type, size: self.size)
                 case .idle:
-                    MemoryChoiceViewDefaultIdle(value: self.value, type: self.type, size: self.size)
+                    NewMemoryChoiceViewDefaultIdle(value: self.value, type: self.type, size: self.size)
             }
         }
 
@@ -128,7 +128,7 @@ extension MemoryCoordinatorAssociateCategories {
 }
 
 #Preview {
-    let gameplay = GameplayAssociateCategories(choices: GameplayAssociateCategories.kDefaultChoices)
+    let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoices)
     let coordinator = MemoryCoordinatorAssociateCategories(gameplay: gameplay)
     let viewModel = NewMemoryViewViewModel(coordinator: coordinator)
 

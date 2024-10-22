@@ -7,10 +7,10 @@ import SwiftUI
 
 // MARK: - TTSCoordinatorAssociateCategories
 
-class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
+public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    init(gameplay: GameplayAssociateCategories) {
+    public init(gameplay: NewGameplayAssociateCategories) {
         self.gameplay = gameplay
 
         self.uiChoices.value.choices = self.gameplay.choices.map { choice in
@@ -22,11 +22,11 @@ class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
         }
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    private(set) var uiChoices = CurrentValueSubject<TTSViewUIChoicesWrapper, Never>(.zero)
+    public private(set) var uiChoices = CurrentValueSubject<TTSViewUIChoicesWrapper, Never>(.zero)
 
-    func processUserSelection(choice: TTSViewUIChoiceModel) {
+    public func processUserSelection(choice: TTSViewUIChoiceModel) {
         guard let gameplayChoice = self.gameplay.choices.first(where: { $0.id == choice.id }) else {
             return
         }
@@ -78,10 +78,10 @@ class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
     // MARK: Private
 
     private var cancellables = Set<AnyCancellable>()
-    private let gameplay: GameplayAssociateCategories
-    private var selectedChoices: [AssociateCategoriesChoice] = []
+    private let gameplay: NewGameplayAssociateCategories
+    private var selectedChoices: [NewGameplayAssociateCategoriesChoice] = []
 
-    private func updateChoiceState(for choice: AssociateCategoriesChoice, to state: State) {
+    private func updateChoiceState(for choice: NewGameplayAssociateCategoriesChoice, to state: State) {
         guard let index = self.gameplay.choices.firstIndex(where: { $0.id == choice.id }) else { return }
 
         let view = ChoiceView(value: choice.value,
@@ -133,7 +133,7 @@ extension TTSCoordinatorAssociateCategories {
 }
 
 #Preview {
-    let gameplay = GameplayAssociateCategories(choices: GameplayAssociateCategories.kDefaultChoices)
+    let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoices)
     let coordinator = TTSCoordinatorAssociateCategories(gameplay: gameplay)
     let viewModel = TTSViewViewModel(coordinator: coordinator)
 

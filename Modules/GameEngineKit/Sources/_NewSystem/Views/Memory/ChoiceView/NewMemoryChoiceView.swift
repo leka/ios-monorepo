@@ -5,9 +5,9 @@
 import ContentKit
 import SwiftUI
 
-// MARK: - MemoryChoiceView
+// MARK: - NewMemoryChoiceView
 
-struct MemoryChoiceView: View {
+struct NewMemoryChoiceView: View {
     // MARK: Lifecycle
 
     init(value: String, type: ChoiceType, size: CGFloat, isTappable: Bool = true) {
@@ -23,11 +23,11 @@ struct MemoryChoiceView: View {
         Group {
             switch self.type {
                 case .image:
-                    MemoryChoiceViewImage(value: self.value, size: self.size)
+                    NewMemoryChoiceViewImage(value: self.value, size: self.size)
                 case .sfsymbol:
-                    MemoryChoiceViewSFSymbol(value: self.value, size: self.size)
+                    NewMemoryChoiceViewSFSymbol(value: self.value, size: self.size)
                 case .text:
-                    MemoryChoiceViewText(value: self.value, size: self.size)
+                    NewMemoryChoiceViewText(value: self.value, size: self.size)
             }
         }
         .contentShape(RoundedRectangle(cornerRadius: 10))
@@ -41,9 +41,9 @@ struct MemoryChoiceView: View {
     private var isTappable = true
 }
 
-// MARK: - MemoryChoiceViewDefaultIdle
+// MARK: - NewMemoryChoiceViewDefaultIdle
 
-struct MemoryChoiceViewDefaultIdle: View {
+struct NewMemoryChoiceViewDefaultIdle: View {
     // MARK: Lifecycle
 
     init(value: String, type: ChoiceType, size: CGFloat) {
@@ -61,7 +61,7 @@ struct MemoryChoiceViewDefaultIdle: View {
         ZStack {
             MemoryCardBackView(size: self.size)
                 .rotation3DEffect(Angle(degrees: self.degreeCardBack), axis: (x: self.nearZeroFloat, y: 1, z: self.nearZeroFloat))
-            MemoryChoiceView(value: self.value, type: self.type, size: self.size)
+            NewMemoryChoiceView(value: self.value, type: self.type, size: self.size)
                 .rotation3DEffect(Angle(degrees: self.degreeCardFront), axis: (x: self.nearZeroFloat, y: 1, z: self.nearZeroFloat))
         }
         .onAppear {
@@ -83,9 +83,10 @@ struct MemoryChoiceViewDefaultIdle: View {
     private let nearZeroFloat: CGFloat = 0.0001
 }
 
-// MARK: - MemoryChoiceViewDefaultSelectedOrCorrect
+// MARK: - NewMemoryChoiceViewDefaultSelectedOrCorrect
 
-struct MemoryChoiceViewDefaultSelectedOrCorrect: View {
+// swiftlint:disable:next type_name
+struct NewMemoryChoiceViewDefaultSelectedOrCorrect: View {
     // MARK: Lifecycle
 
     init(value: String, type: ChoiceType, size: CGFloat) {
@@ -103,7 +104,7 @@ struct MemoryChoiceViewDefaultSelectedOrCorrect: View {
         ZStack {
             MemoryCardBackView(size: self.size)
                 .rotation3DEffect(Angle(degrees: self.degreeCardBack), axis: (x: self.nearZeroFloat, y: 1, z: self.nearZeroFloat))
-            MemoryChoiceView(value: self.value, type: self.type, size: self.size)
+            NewMemoryChoiceView(value: self.value, type: self.type, size: self.size)
                 .rotation3DEffect(Angle(degrees: self.degreeCardFront), axis: (x: self.nearZeroFloat, y: 1, z: self.nearZeroFloat))
         }
         .onAppear {
@@ -128,13 +129,13 @@ struct MemoryChoiceViewDefaultSelectedOrCorrect: View {
 #Preview {
     VStack(spacing: 40) {
         HStack(spacing: 40) {
-            MemoryChoiceViewDefaultIdle(value: "Idle", type: .text, size: 200)
-            MemoryChoiceViewDefaultSelectedOrCorrect(value: "Correct", type: .text, size: 200)
+            NewMemoryChoiceViewDefaultIdle(value: "Idle", type: .text, size: 200)
+            NewMemoryChoiceViewDefaultSelectedOrCorrect(value: "Correct", type: .text, size: 200)
         }
 
         HStack(spacing: 40) {
-            MemoryChoiceViewDefaultIdle(value: "dog", type: .sfsymbol, size: 200)
-            MemoryChoiceViewDefaultSelectedOrCorrect(value: "Correct", type: .text, size: 200)
+            NewMemoryChoiceViewDefaultIdle(value: "dog", type: .sfsymbol, size: 200)
+            NewMemoryChoiceViewDefaultSelectedOrCorrect(value: "Correct", type: .text, size: 200)
         }
     }
 }

@@ -7,7 +7,7 @@ import SwiftUI
 
 // MARK: - MemoryViewUIChoiceModel
 
-struct MemoryViewUIChoiceModel: Identifiable {
+public struct MemoryViewUIChoiceModel: Identifiable {
     // MARK: Lifecycle
 
     init(id: String = UUID().uuidString, view: some View = EmptyView()) {
@@ -15,15 +15,18 @@ struct MemoryViewUIChoiceModel: Identifiable {
         self.view = AnyView(view)
     }
 
+    // MARK: Public
+
+    public let id: String
+
     // MARK: Internal
 
-    let id: String
     let view: AnyView
 }
 
 // MARK: - MemoryViewUIChoicesWrapper
 
-struct MemoryViewUIChoicesWrapper {
+public struct MemoryViewUIChoicesWrapper {
     // MARK: Internal
 
     static let zero = MemoryViewUIChoicesWrapper(choices: [])
@@ -91,18 +94,16 @@ struct MemoryViewUIChoicesWrapper {
 
 // MARK: - NewMemoryView
 
-struct NewMemoryView: View {
+public struct NewMemoryView: View {
     // MARK: Lifecycle
 
-    init(viewModel: NewMemoryViewViewModel) {
+    public init(viewModel: NewMemoryViewViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    @StateObject var viewModel: NewMemoryViewViewModel
-
-    var body: some View {
+    public var body: some View {
         VStack(spacing: 100) {
             HStack(spacing: 100) {
                 ForEach(self.viewModel.choices[0...2]) { choice in
@@ -123,4 +124,8 @@ struct NewMemoryView: View {
             }
         }
     }
+
+    // MARK: Private
+
+    @StateObject private var viewModel: NewMemoryViewViewModel
 }

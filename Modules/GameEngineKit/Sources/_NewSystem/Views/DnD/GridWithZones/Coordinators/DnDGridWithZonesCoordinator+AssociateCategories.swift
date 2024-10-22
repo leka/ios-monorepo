@@ -9,10 +9,11 @@ import UtilsKit
 
 // MARK: - DnDGridWithZonesCoordinatorAssociateCategories
 
-class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGameplayCoordinatorProtocol {
+// swiftlint:disable:next type_name
+public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    init(gameplay: GameplayAssociateCategories) {
+    public init(gameplay: NewGameplayAssociateCategories) {
         self.gameplay = gameplay
 
         self.uiDropZones = gameplay.choices[0...1].map { dropzone in
@@ -26,12 +27,12 @@ class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGameplayCo
         }
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    private(set) var uiDropZones: [DnDDropZoneNode] = []
-    private(set) var uiChoices = CurrentValueSubject<DnDUIChoices, Never>(.zero)
+    public private(set) var uiDropZones: [DnDDropZoneNode] = []
+    public private(set) var uiChoices = CurrentValueSubject<DnDUIChoices, Never>(.zero)
 
-    func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDDropZoneNode? = nil) {
+    public func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDDropZoneNode? = nil) {
         switch event {
             case .began:
                 self.updateChoiceState(for: self.gameplay.choices.first(where: { $0.id == choice.id })!, to: .selected)
@@ -47,9 +48,9 @@ class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGameplayCo
 
     // MARK: Private
 
-    private let gameplay: GameplayAssociateCategories
-    private var currentlySelectedChoices: [[AssociateCategoriesChoice]] = []
-    private var alreadyValidatedChoices: [[AssociateCategoriesChoice]] = []
+    private let gameplay: NewGameplayAssociateCategories
+    private var currentlySelectedChoices: [[NewGameplayAssociateCategoriesChoice]] = []
+    private var alreadyValidatedChoices: [[NewGameplayAssociateCategoriesChoice]] = []
 
     private func processUserDropOnDestination(choice: DnDAnswerNode, destination: DnDDropZoneNode) {
         guard let sourceChoice = self.gameplay.choices.first(where: { $0.id == choice.id }),
@@ -72,21 +73,21 @@ class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGameplayCo
         }
     }
 
-    private func updateChoiceState(for choice: AssociateCategoriesChoice, to state: State) {
+    private func updateChoiceState(for choice: NewGameplayAssociateCategoriesChoice, to state: State) {
         guard let index = self.gameplay.choices.firstIndex(where: { $0.id == choice.id }) else { return }
 
         self.updateUINodeState(node: self.uiChoices.value.choices[index - 2], state: state)
     }
 
-    private func choiceAlreadySelected(choice: AssociateCategoriesChoice) -> Bool {
+    private func choiceAlreadySelected(choice: NewGameplayAssociateCategoriesChoice) -> Bool {
         self.alreadyValidatedChoices.contains(where: { $0.contains(where: { $0.id == choice.id }) })
     }
 
-    private func getIndexOf(destination: AssociateCategoriesChoice) -> Int? {
+    private func getIndexOf(destination: NewGameplayAssociateCategoriesChoice) -> Int? {
         self.alreadyValidatedChoices.firstIndex(where: { $0.contains(where: { $0.id == destination.id }) })
     }
 
-    private func handleIncorrectChoice(_ choice: AssociateCategoriesChoice) {
+    private func handleIncorrectChoice(_ choice: NewGameplayAssociateCategoriesChoice) {
         let categoryChoices = self.gameplay.choices.filter { $0.category == choice.category }
 
         if categoryChoices.count > 1 {

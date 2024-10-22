@@ -5,7 +5,7 @@
 import LocalizationKit
 import SwiftUI
 
-struct MemoryChoiceViewEmoji: View {
+struct NewMemoryChoiceViewEmoji: View {
     // MARK: Lifecycle
 
     init(value: String, size: CGFloat) {
@@ -55,7 +55,7 @@ struct MemoryChoiceViewEmoji: View {
 
 #Preview {
     VStack(spacing: 50) {
-        MemoryChoiceViewEmoji(value: "🌨️", size: 200)
-        MemoryChoiceViewEmoji(value: "☀️", size: 200)
+        NewMemoryChoiceViewEmoji(value: "🌨️", size: 200)
+        NewMemoryChoiceViewEmoji(value: "☀️", size: 200)
     }
 }

@@ -7,10 +7,10 @@ import SwiftUI
 
 // MARK: - TTSViewViewModel
 
-class TTSViewViewModel: ObservableObject {
+public class TTSViewViewModel: ObservableObject {
     // MARK: Lifecycle
 
-    init(coordinator: TTSGameplayCoordinatorProtocol) {
+    public init(coordinator: TTSGameplayCoordinatorProtocol) {
         self.choices = coordinator.uiChoices.value.choices
         self.coordinator = coordinator
         self.coordinator.uiChoices

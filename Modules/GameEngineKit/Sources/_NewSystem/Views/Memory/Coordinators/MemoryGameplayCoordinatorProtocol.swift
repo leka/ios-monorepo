@@ -7,7 +7,7 @@ import Foundation
 
 // MARK: - MemoryGameplayCoordinatorProtocol
 
-protocol MemoryGameplayCoordinatorProtocol {
+public protocol MemoryGameplayCoordinatorProtocol {
     var uiChoices: CurrentValueSubject<MemoryViewUIChoicesWrapper, Never> { get }
     func processUserSelection(choice: MemoryViewUIChoiceModel)
 }

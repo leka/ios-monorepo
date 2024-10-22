@@ -9,10 +9,10 @@ import UtilsKit
 
 // MARK: - DnDGridCoordinatorAssociateCategories
 
-class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorProtocol {
+public class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    init(gameplay: GameplayAssociateCategories) {
+    public init(gameplay: NewGameplayAssociateCategories) {
         self.gameplay = gameplay
 
         self.uiChoices.value.choices = gameplay.choices.map { choice in
@@ -20,11 +20,11 @@ class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorProtocol 
         }
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    private(set) var uiChoices = CurrentValueSubject<DnDUIChoices, Never>(.zero)
+    public private(set) var uiChoices = CurrentValueSubject<DnDUIChoices, Never>(.zero)
 
-    func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDAnswerNode? = nil) {
+    public func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDAnswerNode? = nil) {
         switch event {
             case .began:
                 self.updateChoiceState(for: self.gameplay.choices.first(where: { $0.id == choice.id })!, to: .selected)
@@ -40,9 +40,9 @@ class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorProtocol 
     // MARK: Private
 
     private var cancellables = Set<AnyCancellable>()
-    private let gameplay: GameplayAssociateCategories
-    private var currentlySelectedChoices: [[AssociateCategoriesChoice]] = []
-    private var alreadyValidatedChoices: [[AssociateCategoriesChoice]] = []
+    private let gameplay: NewGameplayAssociateCategories
+    private var currentlySelectedChoices: [[NewGameplayAssociateCategoriesChoice]] = []
+    private var alreadyValidatedChoices: [[NewGameplayAssociateCategoriesChoice]] = []
 
     private func processUserDropOnDestination(choice: DnDAnswerNode, destination: DnDAnswerNode) {
         guard let sourceChoice = self.gameplay.choices.first(where: { $0.id == choice.id }),
@@ -73,21 +73,21 @@ class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorProtocol 
         }
     }
 
-    private func updateChoiceState(for choice: AssociateCategoriesChoice, to state: State) {
+    private func updateChoiceState(for choice: NewGameplayAssociateCategoriesChoice, to state: State) {
         guard let index = self.gameplay.choices.firstIndex(where: { $0.id == choice.id }) else { return }
 
         self.updateUINodeState(node: self.uiChoices.value.choices[index], state: state)
     }
 
-    private func choiceAlreadySelected(choice: AssociateCategoriesChoice) -> Bool {
+    private func choiceAlreadySelected(choice: NewGameplayAssociateCategoriesChoice) -> Bool {
         self.alreadyValidatedChoices.contains(where: { $0.contains(where: { $0.id == choice.id }) })
     }
 
-    private func getIndexOf(destination: AssociateCategoriesChoice) -> Int? {
+    private func getIndexOf(destination: NewGameplayAssociateCategoriesChoice) -> Int? {
         self.alreadyValidatedChoices.firstIndex(where: { $0.contains(where: { $0.id == destination.id }) })
     }
 
-    private func handleIncorrectChoice(_ choice: AssociateCategoriesChoice) {
+    private func handleIncorrectChoice(_ choice: NewGameplayAssociateCategoriesChoice) {
         let categoryChoices = self.gameplay.choices.filter { $0.category == choice.category }
 
         if categoryChoices.count > 1 {

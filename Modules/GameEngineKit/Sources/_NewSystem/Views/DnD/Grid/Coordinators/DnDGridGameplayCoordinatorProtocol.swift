@@ -5,7 +5,7 @@
 import Combine
 import Foundation
 
-protocol DnDGridGameplayCoordinatorProtocol {
+public protocol DnDGridGameplayCoordinatorProtocol {
     var uiChoices: CurrentValueSubject<DnDUIChoices, Never> { get }
     func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDAnswerNode?)
 }

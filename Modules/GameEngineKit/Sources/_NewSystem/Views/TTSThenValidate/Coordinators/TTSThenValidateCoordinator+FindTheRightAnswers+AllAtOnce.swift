@@ -11,7 +11,7 @@ import SwiftUI
 class TTSThenValidateCoordinatorFindTheRightAnswersAllAtOnce: TTSThenValidateGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    init(gameplay: GameplayFindTheRightAnswers) {
+    init(gameplay: NewGameplayFindTheRightAnswers) {
         self.gameplay = gameplay
 
         self.uiChoices.value.choices = self.gameplay.choices.map { choice in
@@ -88,7 +88,7 @@ class TTSThenValidateCoordinatorFindTheRightAnswersAllAtOnce: TTSThenValidateGam
 
     // MARK: Private
 
-    private let gameplay: GameplayFindTheRightAnswers
+    private let gameplay: NewGameplayFindTheRightAnswers
     private var currentChoices: [TTSViewUIChoiceModel] = []
     private var cancellables = Set<AnyCancellable>()
 
@@ -140,7 +140,7 @@ extension TTSThenValidateCoordinatorFindTheRightAnswersAllAtOnce {
 }
 
 #Preview {
-    let gameplay = GameplayFindTheRightAnswers(choices: GameplayFindTheRightAnswers.kDefaultChoices)
+    let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
     let coordinator = TTSThenValidateCoordinatorFindTheRightAnswersAllAtOnce(gameplay: gameplay)
     let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
 

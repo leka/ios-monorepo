@@ -7,10 +7,11 @@ import SwiftUI
 
 // MARK: - TTSThenValidateCoordinatorFindTheRightOrder
 
+// swiftlint:disable:next type_name
 class TTSThenValidateCoordinatorFindTheRightOrder: TTSThenValidateGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    init(gameplay: GameplayFindTheRightOrder) {
+    init(gameplay: NewGameplayFindTheRightOrder) {
         self.gameplay = gameplay
 
         self.uiChoices.value.choices = self.gameplay.orderedChoices.map { choice in
@@ -63,19 +64,19 @@ class TTSThenValidateCoordinatorFindTheRightOrder: TTSThenValidateGameplayCoordi
 
     // MARK: Private
 
-    private var currentOrderedChoices: [FindTheRightOrderChoice] = []
+    private var currentOrderedChoices: [NewGameplayFindTheRightOrderChoice] = []
 
-    private let gameplay: GameplayFindTheRightOrder
+    private let gameplay: NewGameplayFindTheRightOrder
 
     private var currentOrderedChoicesIndex: Int {
         self.currentOrderedChoices.count
     }
 
-    private func choiceAlreadySelected(choice: FindTheRightOrderChoice) -> Bool {
+    private func choiceAlreadySelected(choice: NewGameplayFindTheRightOrderChoice) -> Bool {
         self.currentOrderedChoices.contains(where: { $0.id == choice.id })
     }
 
-    private func select(choice: FindTheRightOrderChoice) {
+    private func select(choice: NewGameplayFindTheRightOrderChoice) {
         guard let index = self.uiChoices.value.choices.firstIndex(where: { $0.id == choice.id }) else { return }
 
         self.currentOrderedChoices.append(choice)
@@ -145,7 +146,7 @@ extension TTSThenValidateCoordinatorFindTheRightOrder {
 }
 
 #Preview {
-    let gameplay = GameplayFindTheRightOrder(choices: GameplayFindTheRightOrder.kDefaultChoices)
+    let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultChoices)
     let coordinator = TTSThenValidateCoordinatorFindTheRightOrder(gameplay: gameplay)
     let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
 

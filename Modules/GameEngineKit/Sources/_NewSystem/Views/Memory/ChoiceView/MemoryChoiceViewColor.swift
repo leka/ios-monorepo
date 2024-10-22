@@ -5,7 +5,7 @@
 import RobotKit
 import SwiftUI
 
-struct MemoryChoiceViewColor: View {
+struct NewMemoryChoiceViewColor: View {
     // MARK: Lifecycle
 
     init(value: String, size: CGFloat) {
@@ -33,8 +33,8 @@ struct MemoryChoiceViewColor: View {
 
 #Preview {
     VStack(spacing: 50) {
-        MemoryChoiceViewColor(value: "red", size: 200)
-        MemoryChoiceViewColor(value: "blue", size: 200)
-        MemoryChoiceViewColor(value: "white", size: 200)
+        NewMemoryChoiceViewColor(value: "red", size: 200)
+        NewMemoryChoiceViewColor(value: "blue", size: 200)
+        NewMemoryChoiceViewColor(value: "white", size: 200)
     }
 }

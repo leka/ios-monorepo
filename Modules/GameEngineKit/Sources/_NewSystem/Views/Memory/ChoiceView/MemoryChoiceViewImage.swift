@@ -6,7 +6,7 @@ import LocalizationKit
 import SVGView
 import SwiftUI
 
-struct MemoryChoiceViewImage: View {
+struct NewMemoryChoiceViewImage: View {
     // MARK: Lifecycle
 
     init(value: String, size: CGFloat, background: Color? = nil) {
@@ -89,25 +89,25 @@ struct MemoryChoiceViewImage: View {
                     Text("ContentKit")
                         .font(.caption)
                 }
-                MemoryChoiceViewImage(value: pngImagePathFromContentKit, size: 200)
+                NewMemoryChoiceViewImage(value: pngImagePathFromContentKit, size: 200)
             }
 
             HStack(spacing: 70) {
                 Text("PNG")
                     .font(.largeTitle)
-                MemoryChoiceViewImage(value: pngImagePath, size: 200)
+                NewMemoryChoiceViewImage(value: pngImagePath, size: 200)
             }
 
             HStack(spacing: 70) {
                 Text("JPG")
                     .font(.largeTitle)
-                MemoryChoiceViewImage(value: jpgImagePath, size: 200)
+                NewMemoryChoiceViewImage(value: jpgImagePath, size: 200)
             }
 
             HStack(spacing: 70) {
                 Text("SVG")
                     .font(.largeTitle)
-                MemoryChoiceViewImage(value: svgImagePath, size: 200)
+                NewMemoryChoiceViewImage(value: svgImagePath, size: 200)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

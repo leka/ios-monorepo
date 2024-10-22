@@ -7,7 +7,7 @@ import SwiftUI
 
 // MARK: - ChoiceType
 
-enum ChoiceType {
+public enum ChoiceType {
     case image
     case sfsymbol
     case text

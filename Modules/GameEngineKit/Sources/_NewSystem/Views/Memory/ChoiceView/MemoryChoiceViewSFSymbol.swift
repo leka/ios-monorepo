@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct MemoryChoiceViewSFSymbol: View {
+struct NewMemoryChoiceViewSFSymbol: View {
     // MARK: Lifecycle
 
     init(value: String, size: CGFloat) {
@@ -57,7 +57,7 @@ struct MemoryChoiceViewSFSymbol: View {
 
 #Preview {
     VStack(spacing: 50) {
-        MemoryChoiceViewSFSymbol(value: "🌨️", size: 200)
-        MemoryChoiceViewSFSymbol(value: "☀️", size: 200)
+        NewMemoryChoiceViewSFSymbol(value: "🌨️", size: 200)
+        NewMemoryChoiceViewSFSymbol(value: "☀️", size: 200)
     }
 }

@@ -7,10 +7,10 @@ import SwiftUI
 
 // MARK: - TTSCoordinatorFindTheRightOrder
 
-class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
+public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    init(gameplay: GameplayFindTheRightOrder) {
+    public init(gameplay: NewGameplayFindTheRightOrder) {
         self.gameplay = gameplay
 
         self.uiChoices.value.choices = self.gameplay.orderedChoices.map { choice in
@@ -22,11 +22,11 @@ class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
         }
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    private(set) var uiChoices = CurrentValueSubject<TTSViewUIChoicesWrapper, Never>(.zero)
+    public private(set) var uiChoices = CurrentValueSubject<TTSViewUIChoicesWrapper, Never>(.zero)
 
-    func processUserSelection(choice: TTSViewUIChoiceModel) {
+    public func processUserSelection(choice: TTSViewUIChoiceModel) {
         guard let gameplayChoice = self.gameplay.orderedChoices.first(where: { $0.id == choice.id }),
               !self.choiceAlreadySelected(choice: gameplayChoice) else { return }
 
@@ -61,19 +61,19 @@ class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
 
     // MARK: Private
 
-    private var currentOrderedChoices: [FindTheRightOrderChoice] = []
+    private var currentOrderedChoices: [NewGameplayFindTheRightOrderChoice] = []
 
-    private let gameplay: GameplayFindTheRightOrder
+    private let gameplay: NewGameplayFindTheRightOrder
 
     private var currentOrderedChoicesIndex: Int {
         self.currentOrderedChoices.count
     }
 
-    private func choiceAlreadySelected(choice: FindTheRightOrderChoice) -> Bool {
+    private func choiceAlreadySelected(choice: NewGameplayFindTheRightOrderChoice) -> Bool {
         self.currentOrderedChoices.contains(where: { $0.id == choice.id })
     }
 
-    private func select(choice: FindTheRightOrderChoice) {
+    private func select(choice: NewGameplayFindTheRightOrderChoice) {
         guard let index = self.uiChoices.value.choices.firstIndex(where: { $0.id == choice.id }) else { return }
 
         self.currentOrderedChoices.append(choice)
@@ -135,7 +135,7 @@ extension TTSCoordinatorFindTheRightOrder {
 }
 
 #Preview {
-    let gameplay = GameplayFindTheRightOrder(choices: GameplayFindTheRightOrder.kDefaultChoices)
+    let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultChoices)
     let coordinator = TTSCoordinatorFindTheRightOrder(gameplay: gameplay)
     let viewModel = TTSViewViewModel(coordinator: coordinator)
 

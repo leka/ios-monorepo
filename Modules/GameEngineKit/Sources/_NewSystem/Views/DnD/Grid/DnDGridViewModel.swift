@@ -7,10 +7,10 @@ import SwiftUI
 
 // MARK: - DnDGridViewModel
 
-class DnDGridViewModel: ObservableObject {
+public class DnDGridViewModel: ObservableObject {
     // MARK: Lifecycle
 
-    init(coordinator: DnDGridGameplayCoordinatorProtocol) {
+    public init(coordinator: DnDGridGameplayCoordinatorProtocol) {
         self.choices = coordinator.uiChoices.value.choices
         self.coordinator = coordinator
         self.coordinator.uiChoices
