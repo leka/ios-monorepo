@@ -19,7 +19,7 @@ struct ContentView: View {
                         .padding()
 
                     NavigationLink("Find The Right Answers", destination: {
-                        let gameplay = GameplayFindTheRightAnswers(choices: GameplayFindTheRightAnswers.kDefaultChoices)
+                        let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
                         let coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: gameplay)
                         let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -32,7 +32,7 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity)
 
                     NavigationLink("Find The Right Order", destination: {
-                        let gameplay = GameplayFindTheRightOrder(choices: GameplayFindTheRightOrder.kDefaultChoices)
+                        let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultChoices)
                         let coordinator = TTSCoordinatorFindTheRightOrder(gameplay: gameplay)
                         let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -45,7 +45,7 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity)
 
                     NavigationLink("Associate Categories", destination: {
-                        let gameplay = GameplayAssociateCategories(choices: GameplayAssociateCategories.kDefaultChoices)
+                        let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoices)
                         let coordinator = TTSCoordinatorAssociateCategories(gameplay: gameplay)
                         let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -58,7 +58,7 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity)
 
                     NavigationLink("Memory", destination: {
-                        let gameplay = GameplayAssociateCategories(choices: GameplayAssociateCategories.kDefaultChoices)
+                        let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoices)
                         let coordinator = MemoryCoordinatorAssociateCategories(gameplay: gameplay)
                         let viewModel = NewMemoryViewViewModel(coordinator: coordinator)
 
@@ -79,7 +79,7 @@ struct ContentView: View {
                         .padding()
 
                     NavigationLink("Drag & Drop Categories", destination: {
-                        let gameplay = GameplayAssociateCategories(choices: GameplayAssociateCategories.kDefaultChoices)
+                        let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoices)
                         let coordinator = DnDGridCoordinatorAssociateCategories(gameplay: gameplay)
                         let viewModel = DnDGridViewModel(coordinator: coordinator)
 
@@ -92,7 +92,7 @@ struct ContentView: View {
                     .frame(maxWidth: .infinity)
 
                     NavigationLink("Drag & Drop With Zones", destination: {
-                        let gameplay = GameplayAssociateCategories(choices: GameplayAssociateCategories.kDefaultChoicesWithZones)
+                        let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoicesWithZones)
                         let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(gameplay: gameplay)
                         let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 
