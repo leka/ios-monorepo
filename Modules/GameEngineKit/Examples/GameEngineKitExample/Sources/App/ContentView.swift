@@ -74,6 +74,82 @@ struct ContentView: View {
                 }
 
                 HStack(spacing: 20) {
+                    Text("Action Then TTS")
+                        .font(.title)
+                        .padding()
+
+                    NavigationLink("Observe Image Then Find The Right Answers", destination: {
+                        let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
+                        let coordinator = ActionThenTTSCoordinatorFindTheRightAnswers(gameplay: gameplay,
+                                                                                      action: .ipad(type: .image("sport_dance_player_man")))
+                        let viewModel = ActionThenTTSViewViewModel(coordinator: coordinator)
+
+                        return ActionThenTTSView(viewModel: viewModel)
+                            .navigationTitle("Observe Image Then Find The Right Answers")
+                            .navigationBarTitleDisplayMode(.large)
+                    })
+                    .tint(.cyan)
+                    .buttonStyle(.borderedProminent)
+                    .frame(maxWidth: .infinity)
+
+                    NavigationLink("Observe SFSymbol Then Find The Right Answers", destination: {
+                        let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
+                        let coordinator = ActionThenTTSCoordinatorFindTheRightAnswers(gameplay: gameplay, action: .ipad(type: .sfsymbol("star")))
+                        let viewModel = ActionThenTTSViewViewModel(coordinator: coordinator)
+
+                        return ActionThenTTSView(viewModel: viewModel)
+                            .navigationTitle("Observe SFSymbol Then Find The Right Answers")
+                            .navigationBarTitleDisplayMode(.large)
+                    })
+                    .tint(.cyan)
+                    .buttonStyle(.borderedProminent)
+                    .frame(maxWidth: .infinity)
+
+                    NavigationLink("Listen Audio Then Find The Right Answers", destination: {
+                        let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
+                        let coordinator = ActionThenTTSCoordinatorFindTheRightAnswers(gameplay: gameplay,
+                                                                                      action: .ipad(type: .audio("sound_animal_duck")))
+                        let viewModel = ActionThenTTSViewViewModel(coordinator: coordinator)
+
+                        return ActionThenTTSView(viewModel: viewModel)
+                            .navigationTitle("Listen Audio Then Find The Right Answers")
+                            .navigationBarTitleDisplayMode(.large)
+                    })
+                    .tint(.cyan)
+                    .buttonStyle(.borderedProminent)
+                    .frame(maxWidth: .infinity)
+
+                    NavigationLink("Listen Speech Then Find The Right Answers", destination: {
+                        let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
+                        let coordinator = ActionThenTTSCoordinatorFindTheRightAnswers(gameplay: gameplay,
+                                                                                      action: .ipad(type: .speech("Correct answer")))
+                        let viewModel = ActionThenTTSViewViewModel(coordinator: coordinator)
+
+                        return ActionThenTTSView(viewModel: viewModel)
+                            .navigationTitle("Listen Speech Then Find The Right Answers")
+                            .navigationBarTitleDisplayMode(.large)
+                    })
+                    .tint(.cyan)
+                    .buttonStyle(.borderedProminent)
+                    .frame(maxWidth: .infinity)
+
+                    NavigationLink("Robot Then Find The Right Answers", destination: {
+                        let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
+                        let coordinator = ActionThenTTSCoordinatorFindTheRightAnswers(gameplay: gameplay, action: .robot(type: .color("red")))
+                        let viewModel = ActionThenTTSViewViewModel(coordinator: coordinator)
+
+                        return ActionThenTTSView(viewModel: viewModel)
+                            .navigationTitle("Robot Then Find The Right Answers")
+                            .navigationBarTitleDisplayMode(.large)
+                    })
+                    .tint(.cyan)
+                    .buttonStyle(.borderedProminent)
+                    .frame(maxWidth: .infinity)
+
+                    Spacer()
+                }
+
+                HStack(spacing: 20) {
                     Text("DnD")
                         .font(.largeTitle)
                         .padding()
