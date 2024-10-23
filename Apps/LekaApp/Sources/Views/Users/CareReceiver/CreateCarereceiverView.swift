@@ -80,6 +80,14 @@ struct CreateCarereceiverView: View {
                     }
                 }
 
+                Section {
+                    LabeledContent(String(l10n.ReinforcerPicker.header.characters)) {
+                        ReinforcerPicker(carereceiver: self.$newCarereceiver)
+                    }
+                } footer: {
+                    Text(l10n.ReinforcerPicker.description)
+                }
+
                 Button(String(l10n.CarereceiverCreation.createProfileButtonLabel.characters)) {
                     if self.newCarereceiver.avatar.isEmpty {
                         self.newCarereceiver.avatar = Avatars.categories.first!.avatars.randomElement()!
