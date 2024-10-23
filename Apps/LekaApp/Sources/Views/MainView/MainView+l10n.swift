@@ -34,6 +34,12 @@ extension l10n {
             static let sectionContent = LocalizedString("lekaapp.main_view.sidebar.section.content", value: "Content", comment: "The title of the section 'Content'")
 
             static let sectionUsers = LocalizedString("lekaapp.main_view.sidebar.section.monitoring", value: "Users", comment: "The title of the section 'Users'")
+
+            static let sectionLibrary = LocalizedString("lekaapp.main_view.sidebar.section.library", value: "Library", comment: "The title of the section 'Library'")
+        }
+
+        enum DetailView {
+            static let disconnectedLibraryMessage = LocalizedString("lekaapp.main_view.detailView.disconnected_library_message", value: "Log in to your account to access your personal library.", comment: "The message to invite users to connect to display the Library")
         }
     }
 }
