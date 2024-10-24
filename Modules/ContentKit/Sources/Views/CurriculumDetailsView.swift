@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import Fit
 import LocalizationKit
@@ -140,6 +141,28 @@ public struct CurriculumDetailsView: View {
                 }
             }
         }
+        .toolbar {
+            ToolbarItem {
+                Button {
+                    let currentCaregiverID: String = self.caregiverManagerViewModel.currentCaregiver?.id ?? ""
+                    if self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) {
+                        self.rootAccountViewModel.removeSavedCurriculum(curriculumID: self.curriculum.uuid)
+                    } else {
+                        self.rootAccountViewModel.addSavedCurriculum(
+                            curriculumID: self.curriculum.uuid,
+                            caregiverID: currentCaregiverID
+                        )
+                    }
+                } label: {
+                    if self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) {
+                        Image(systemName: "trash")
+                    } else {
+                        Image(systemName: "plus")
+                    }
+                }
+                .tint(self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) ? .red : self.styleManager.accentColor!)
+            }
+        }
     }
 
     // MARK: Internal
@@ -154,6 +177,9 @@ public struct CurriculumDetailsView: View {
     @State private var selectedSkill: Skill?
     @State private var isDescriptionExpanded = false
     @ObservedObject private var styleManager: StyleManager = .shared
+
+    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 }
 
 // MARK: - l10n.CurriculumDetailsView
