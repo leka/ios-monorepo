@@ -77,6 +77,7 @@ struct ConnectionView: View {
                 if newValue == .loggedIn {
                     self.caregiverManager.initializeCaregiversListener()
                     self.carereceiverManager.initializeCarereceiversListener()
+                    self.rootAccountManager.initializeRootAccountListener()
                     self.authManagerViewModel.userAction = .none
                     self.navigation.fullScreenCoverContent = nil
                 }
@@ -99,6 +100,7 @@ struct ConnectionView: View {
     @State private var showResetPassword: Bool = false
 
     private var authManager: AuthManager = .shared
+    private var rootAccountManager: RootAccountManager = .shared
     private var caregiverManager: CaregiverManager = .shared
     private var carereceiverManager: CarereceiverManager = .shared
 

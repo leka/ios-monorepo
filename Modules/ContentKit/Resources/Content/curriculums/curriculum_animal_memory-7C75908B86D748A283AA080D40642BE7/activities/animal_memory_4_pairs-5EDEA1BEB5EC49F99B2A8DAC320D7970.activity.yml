@@ -8,7 +8,7 @@ uuid: 5EDEA1BEB5EC49F99B2A8DAC320D7970
 name: animal_memory_4_pairs
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-09-27T13:42:08.963598"
+last_edited_at: "2024-10-23T10:11:48.975255"
 
 status: published
 
@@ -90,63 +90,28 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms_animals_cat_gray
+              - value: animal_memory_farm_cow_white
                 type: image
                 category: catA
-              - value: pictograms_animals_cat_gray
+              - value: animal_memory_farm_cow_white
                 type: image
                 category: catA
-              - value: pictograms_animals_dog_golden_retriever
+              - value: animal_memory_farm_pig_pink
                 type: image
                 category: catB
-              - value: pictograms_animals_dog_golden_retriever
+              - value: animal_memory_farm_pig_pink
                 type: image
                 category: catB
-              - value: pictograms_animals_fish_blue
+              - value: animal_memory_farm_rooster_white
                 type: image
                 category: catC
-              - value: pictograms_animals_fish_blue
+              - value: animal_memory_farm_rooster_white
                 type: image
                 category: catC
-              - value: pictograms_animals_hamster
+              - value: animal_memory_forest_bear_brown
                 type: image
                 category: catD
-              - value: pictograms_animals_hamster
-                type: image
-                category: catD
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche les cartes pour les retourner et trouve les paires identiques
-            - locale: en_US
-              value: Tap the cards to flip them and find the identical pairs
-          interface: memory
-          gameplay: associateCategories
-          payload:
-            shuffle_choices: true
-            choices:
-              - value: pictograms_animals_mouse
-                type: image
-                category: catA
-              - value: pictograms_animals_mouse
-                type: image
-                category: catA
-              - value: pictograms_animals_parrot
-                type: image
-                category: catB
-              - value: pictograms_animals_parrot
-                type: image
-                category: catB
-              - value: pictograms_animals_peacock
-                type: image
-                category: catC
-              - value: pictograms_animals_peacock
-                type: image
-                category: catC
-              - value: pictograms_animals_pigeon
-                type: image
-                category: catD
-              - value: pictograms_animals_pigeon
+              - value: animal_memory_forest_bear_brown
                 type: image
                 category: catD
 
@@ -160,27 +125,132 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: pictograms_animals_rabbit_gray
+              - value: animal_memory_farm_rooster_white
                 type: image
                 category: catA
-              - value: pictograms_animals_rabbit_gray
+              - value: animal_memory_farm_rooster_white
                 type: image
                 category: catA
-              - value: pictograms_animals_turtle
+              - value: animal_memory_forest_bear_brown
                 type: image
                 category: catB
-              - value: pictograms_animals_turtle
+              - value: animal_memory_forest_bear_brown
                 type: image
                 category: catB
-              - value: pictograms_animals_cat_gray
+              - value: animal_memory_forest_frog_green
                 type: image
                 category: catC
-              - value: pictograms_animals_cat_gray
+              - value: animal_memory_forest_frog_green
                 type: image
                 category: catC
-              - value: pictograms_animals_dog_golden_retriever
+              - value: animal_memory_forest_snail_brown
                 type: image
                 category: catD
-              - value: pictograms_animals_dog_golden_retriever
+              - value: animal_memory_forest_snail_brown
+                type: image
+                category: catD
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche les cartes pour les retourner et trouve les paires identiques
+            - locale: en_US
+              value: Tap the cards to flip them and find the identical pairs
+          interface: memory
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animal_memory_forest_squirrel_orange
+                type: image
+                category: catA
+              - value: animal_memory_forest_squirrel_orange
+                type: image
+                category: catA
+              - value: animal_memory_pets_dog_golden_retriever_brown
+                type: image
+                category: catB
+              - value: animal_memory_pets_dog_golden_retriever_brown
+                type: image
+                category: catB
+              - value: animal_memory_pets_fish_blue
+                type: image
+                category: catC
+              - value: animal_memory_pets_fish_blue
+                type: image
+                category: catC
+              - value: animal_memory_pets_rabbit_gray
+                type: image
+                category: catD
+              - value: animal_memory_pets_rabbit_gray
+                type: image
+                category: catD
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche les cartes pour les retourner et trouve les paires identiques
+            - locale: en_US
+              value: Tap the cards to flip them and find the identical pairs
+          interface: memory
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animal_memory_savannah_elephant_gray
+                type: image
+                category: catA
+              - value: animal_memory_savannah_elephant_gray
+                type: image
+                category: catA
+              - value: animal_memory_savannah_giraffe_yellow
+                type: image
+                category: catB
+              - value: animal_memory_savannah_giraffe_yellow
+                type: image
+                category: catB
+              - value: animal_memory_savannah_tiger_orange
+                type: image
+                category: catC
+              - value: animal_memory_savannah_tiger_orange
+                type: image
+                category: catC
+              - value: animal_memory_sea_crab_red
+                type: image
+                category: catD
+              - value: animal_memory_sea_crab_red
+                type: image
+                category: catD
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche les cartes pour les retourner et trouve les paires identiques
+            - locale: en_US
+              value: Tap the cards to flip them and find the identical pairs
+          interface: memory
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: animal_memory_sea_whale_blue
+                type: image
+                category: catA
+              - value: animal_memory_sea_whale_blue
+                type: image
+                category: catA
+              - value: animal_memory_pets_dog_golden_retriever_brown
+                type: image
+                category: catB
+              - value: animal_memory_pets_dog_golden_retriever_brown
+                type: image
+                category: catB
+              - value: animal_memory_savannah_tiger_orange
+                type: image
+                category: catC
+              - value: animal_memory_savannah_tiger_orange
+                type: image
+                category: catC
+              - value: animal_memory_sea_crab_red
+                type: image
+                category: catD
+              - value: animal_memory_sea_crab_red
                 type: image
                 category: catD

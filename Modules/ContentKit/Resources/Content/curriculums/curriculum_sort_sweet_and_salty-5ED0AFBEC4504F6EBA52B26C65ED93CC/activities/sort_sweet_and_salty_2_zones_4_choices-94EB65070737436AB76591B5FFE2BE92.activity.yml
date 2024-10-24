@@ -8,7 +8,7 @@ uuid: 94EB65070737436AB76591B5FFE2BE92
 name: sort_sweet_and_salty_2_zones_4_choices
 
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-09-26T15:40:05.110970"
+last_edited_at: "2024-10-23T10:11:48.942555"
 status: published
 
 authors:
@@ -85,22 +85,22 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: drop_zone_sweet
+              value: sweet_and_salty_drop_zone_sweet
               type: image
             dropZoneB:
-              value: drop_zone_salty
+              value: sweet_and_salty_drop_zone_salty
               type: image
             choices:
-              - value: chocolate_bar
+              - value: sweet_and_salty_chocolate_bar
                 type: image
                 dropZone: zoneA
-              - value: leek
+              - value: sweet_and_salty_leek
                 type: image
                 dropZone: zoneB
-              - value: cookie_sweet_and_salty
+              - value: sweet_and_salty_cookie
                 type: image
                 dropZone: zoneA
-              - value: pepper
+              - value: sweet_and_salty_pepper
                 type: image
                 dropZone: zoneB
 
@@ -114,22 +114,22 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: drop_zone_sweet
+              value: sweet_and_salty_drop_zone_sweet
               type: image
             dropZoneB:
-              value: drop_zone_salty
+              value: sweet_and_salty_drop_zone_salty
               type: image
             choices:
-              - value: honey
+              - value: sweet_and_salty_honey
                 type: image
                 dropZone: zoneA
-              - value: chicken_roast_sweet_and_salty
+              - value: sweet_and_salty_chicken_roast
                 type: image
                 dropZone: zoneB
-              - value: ice_corner_pink
+              - value: sweet_and_salty_ice_corner_pink
                 type: image
                 dropZone: zoneA
-              - value: hamburger
+              - value: sweet_and_salty_hamburger
                 type: image
                 dropZone: zoneB
 
@@ -143,22 +143,22 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: drop_zone_sweet
+              value: sweet_and_salty_drop_zone_sweet
               type: image
             dropZoneB:
-              value: drop_zone_salty
+              value: sweet_and_salty_drop_zone_salty
               type: image
             choices:
-              - value: jam_strawberry
+              - value: sweet_and_salty_jam_strawberry
                 type: image
                 dropZone: zoneA
-              - value: soup
+              - value: sweet_and_salty_soup
                 type: image
                 dropZone: zoneB
-              - value: waffles
+              - value: sweet_and_salty_waffles
                 type: image
                 dropZone: zoneA
-              - value: bread
+              - value: sweet_and_salty_bread
                 type: image
                 dropZone: zoneB
 
@@ -172,22 +172,22 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: drop_zone_sweet
+              value: sweet_and_salty_drop_zone_sweet
               type: image
             dropZoneB:
-              value: drop_zone_salty
+              value: sweet_and_salty_drop_zone_salty
               type: image
             choices:
-              - value: chocolate_bar
+              - value: sweet_and_salty_chocolate_bar
                 type: image
                 dropZone: zoneA
-              - value: leek
+              - value: sweet_and_salty_leek
                 type: image
                 dropZone: zoneB
-              - value: cookie_sweet_and_salty
+              - value: sweet_and_salty_cookie
                 type: image
                 dropZone: zoneA
-              - value: pepper
+              - value: sweet_and_salty_pepper
                 type: image
                 dropZone: zoneB
 
@@ -201,22 +201,22 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: drop_zone_sweet
+              value: sweet_and_salty_drop_zone_sweet
               type: image
             dropZoneB:
-              value: drop_zone_salty
+              value: sweet_and_salty_drop_zone_salty
               type: image
             choices:
-              - value: croissant
+              - value: sweet_and_salty_croissant
                 type: image
                 dropZone: zoneA
-              - value: pictograms-foods-meals-baguette-0180
+              - value: sweet_and_salty_bread
                 type: image
                 dropZone: zoneB
-              - value: donut
+              - value: sweet_and_salty_donut
                 type: image
                 dropZone: zoneA
-              - value: cheese
+              - value: sweet_and_salty_cheese
                 type: image
                 dropZone: zoneB
 
@@ -230,22 +230,22 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: drop_zone_sweet
+              value: sweet_and_salty_drop_zone_sweet
               type: image
             dropZoneB:
-              value: drop_zone_salty
+              value: sweet_and_salty_drop_zone_salty
               type: image
             choices:
-              - value: honey
+              - value: sweet_and_salty_honey
                 type: image
                 dropZone: zoneA
-              - value: chicken_roast_sweet_and_salty
+              - value: sweet_and_salty_chicken_roast
                 type: image
                 dropZone: zoneB
-              - value: ice_corner_pink
+              - value: sweet_and_salty_ice_corner_pink
                 type: image
                 dropZone: zoneA
-              - value: hamburger
+              - value: sweet_and_salty_hamburger
                 type: image
                 dropZone: zoneB
 
@@ -259,22 +259,22 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: drop_zone_sweet
+              value: sweet_and_salty_drop_zone_sweet
               type: image
             dropZoneB:
-              value: drop_zone_salty
+              value: sweet_and_salty_drop_zone_salty
               type: image
             choices:
-              - value: jam_strawberry
+              - value: sweet_and_salty_jam_strawberry
                 type: image
                 dropZone: zoneA
-              - value: soup
+              - value: sweet_and_salty_soup
                 type: image
                 dropZone: zoneB
-              - value: waffles
+              - value: sweet_and_salty_waffles
                 type: image
                 dropZone: zoneA
-              - value: hamburger
+              - value: sweet_and_salty_hamburger
                 type: image
                 dropZone: zoneB
 
@@ -288,21 +288,21 @@ exercises_payload:
           payload:
             shuffle_choices: true
             dropZoneA:
-              value: drop_zone_sweet
+              value: sweet_and_salty_drop_zone_sweet
               type: image
             dropZoneB:
-              value: drop_zone_salty
+              value: sweet_and_salty_drop_zone_salty
               type: image
             choices:
-              - value: bread
+              - value: sweet_and_salty_bread
                 type: image
                 dropZone: zoneB
-              - value: cookie_sweet_and_salty
+              - value: sweet_and_salty_cookie
                 type: image
                 dropZone: zoneA
-              - value: waffles
+              - value: sweet_and_salty_waffles
                 type: image
                 dropZone: zoneA
-              - value: pepper
+              - value: sweet_and_salty_pepper
                 type: image
                 dropZone: zoneB

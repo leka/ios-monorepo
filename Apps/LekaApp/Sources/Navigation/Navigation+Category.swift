@@ -26,6 +26,10 @@ extension Navigation {
         case vectorImageList
         case news
         case demo
+        case libraryCurriculums
+        case libraryActivities
+        case libraryStories
+        case libraryGamepads
 
         // MARK: Internal
 
