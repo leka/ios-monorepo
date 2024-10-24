@@ -1,7 +1,13 @@
-### Nouveau Curriculum
+### Nouvelles Fonctionnalités
 
-- Curriculum d'Halloween : Introduction d'un nouveau curriculum sur le thème d'Halloween pour célébrer la saison et engager les utilisateurs avec du contenu festif.
+- Sélecteur de Renforçateur lors de la Création du Bénéficiaire de Soins : Les utilisateurs peuvent désormais sélectionner un renforçateur lors de la création d'un bénéficiaire de soins, personnalisant ainsi l'expérience.
 
 ### Améliorations
 
-- Mises à Jour de l'Interface Utilisateur : Mise à jour du libellé du bouton d'action du robot pour une meilleure clarté et convivialité.
+- Mode Automatique de Dance Freeze : Amélioration du comportement du mode automatique dans l'activité Dance Freeze pour une expérience plus fluide.
+- Mises à Jour de l'Interface Utilisateur : Actualisation de l'icône du bouton d'action du robot et amélioration de l'interface utilisateur dans diverses sections.
+
+### Corrections de Bugs
+
+- Correction du Lien de Ressource : Mise à jour d'un lien mort dans la ressource vidéo "Carte Stop".
+- Assets du Curriculum : Correction de problèmes avec les assets dans les curriculums pour assurer un affichage correct.

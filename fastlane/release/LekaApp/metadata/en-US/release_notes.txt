@@ -1,7 +1,13 @@
-### New Curriculum
+### New Features
 
-- Halloween Curriculum: Introduced a new Halloween-themed curriculum to celebrate the season and engage users with festive content.
+- Reinforcer Picker in Care Receiver Creation: Users can now select a reinforcer when creating a care receiver, personalizing the experience.
 
 ### Improvements
 
-- User Interface Updates: Updated the label of the robot action button for better clarity and usability.
+- Dance Freeze Auto Mode: Improved the auto mode behavior in the Dance Freeze activity for a smoother experience.
+- User Interface Updates: Updated the robot action button icon and improved the overall UI in various sections.
+
+### Bug Fixes
+
+- Resource Link Fix: Updated a dead link in the "Stop Card" video resource.
+- Curriculum Assets: Fixed issues with assets in curriculums to ensure proper display.
