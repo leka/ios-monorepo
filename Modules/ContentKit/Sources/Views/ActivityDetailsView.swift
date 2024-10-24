@@ -117,25 +117,27 @@ public struct ActivityDetailsView: View {
             }
         }
         .toolbar {
-            ToolbarItem {
-                Button {
-                    let currentCaregiverID: String = self.caregiverManagerViewModel.currentCaregiver?.id ?? ""
-                    if self.rootAccountViewModel.isActivitySaved(activityID: self.activity.uuid) {
-                        self.rootAccountViewModel.removeSavedActivity(activityID: self.activity.uuid)
-                    } else {
-                        self.rootAccountViewModel.addSavedActivity(
-                            activityID: self.activity.uuid,
-                            caregiverID: currentCaregiverID
-                        )
+            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                ToolbarItem {
+                    Button {
+                        //                    let currentCaregiverID: String = self.caregiverManagerViewModel.currentCaregiver?.id ?? ""
+                        if self.rootAccountViewModel.isActivitySaved(activityID: self.activity.uuid) {
+                            self.rootAccountViewModel.removeSavedActivity(activityID: self.activity.uuid)
+                        } else {
+                            self.rootAccountViewModel.addSavedActivity(
+                                activityID: self.activity.uuid,
+                                caregiverID: currentCaregiverID
+                            )
+                        }
+                    } label: {
+                        if self.rootAccountViewModel.isActivitySaved(activityID: self.activity.uuid) {
+                            Image(systemName: "trash")
+                        } else {
+                            Image(systemName: "plus")
+                        }
                     }
-                } label: {
-                    if self.rootAccountViewModel.isActivitySaved(activityID: self.activity.uuid) {
-                        Image(systemName: "trash")
-                    } else {
-                        Image(systemName: "plus")
-                    }
+                    .tint(self.rootAccountViewModel.isActivitySaved(activityID: self.activity.uuid) ? .red : self.styleManager.accentColor!)
                 }
-                .tint(self.rootAccountViewModel.isActivitySaved(activityID: self.activity.uuid) ? .red : self.styleManager.accentColor!)
             }
 
             ToolbarItem {
