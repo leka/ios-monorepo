@@ -24,7 +24,7 @@ public struct ActivityListView: View {
                 NavigationLink(destination:
                     ActivityDetailsView(activity: activity, onStartActivity: self.onStartActivity)
                 ) {
-                    HStack(alignment: .center, spacing: 30) {
+                    HStack(alignment: .center) {
                         Image(uiImage: activity.details.iconImage)
                             .resizable()
                             .scaledToFit()
@@ -52,12 +52,20 @@ public struct ActivityListView: View {
 
                         Spacer()
 
+                        if let gestureIconUIImage = ContentKit.getGestureIconUIImage(for: activity) {
+                            IconImageView(image: gestureIconUIImage)
+                        }
+
+                        if let earFocusIconUIImage = ContentKit.getFocusIconUIImage(for: activity, ofType: .ears) {
+                            IconImageView(image: earFocusIconUIImage)
+                        }
+
+                        if let robotFocusIconUIImage = ContentKit.getFocusIconUIImage(for: activity, ofType: .robot) {
+                            IconImageView(image: robotFocusIconUIImage)
+                        }
+
                         if let templateIconUIImage = ContentKit.getTemplateIconUIImage(for: activity) {
-                            Image(uiImage: templateIconUIImage)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 50)
-                                .padding(.horizontal)
+                            IconImageView(image: templateIconUIImage)
                         }
 
                         Button {
@@ -68,6 +76,7 @@ public struct ActivityListView: View {
                                 .contentShape(Rectangle())
                         }
                         .tint(.lkGreen)
+                        .padding(.horizontal, 5)
                     }
                     .frame(maxWidth: .infinity, maxHeight: 120)
                     .contentShape(Rectangle())
@@ -84,6 +93,18 @@ public struct ActivityListView: View {
     let onStartActivity: ((Activity) -> Void)?
 
     // MARK: Private
+
+    private struct IconImageView: View {
+        let image: UIImage?
+
+        var body: some View {
+            Image(uiImage: self.image ?? UIImage())
+                .resizable()
+                .scaledToFit()
+                .frame(width: 50)
+                .padding(.horizontal, 5)
+        }
+    }
 
     private let columns = Array(repeating: GridItem(), count: 3)
     @ObservedObject private var styleManager: StyleManager = .shared
