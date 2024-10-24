@@ -89,7 +89,7 @@ struct MainView: View {
                                 CategoryLabel(category: .news)
                             }
 
-                            Section("Library") {
+                            Section(String(l10n.MainView.Sidebar.sectionLibrary.characters)) {
                                 CategoryLabel(category: .libraryCurriculums)
                                 CategoryLabel(category: .libraryActivities)
                                 CategoryLabel(category: .libraryStories)
@@ -181,20 +181,16 @@ struct MainView: View {
                         DiscoverLekaView(demoMode: self.navigation.demoMode)
 
                     case .libraryCurriculums:
-                        Text("Curriculums")
-                            .navigationTitle("Curriculums")
+                        CategoryLibraryView(category: .libraryCurriculums)
 
                     case .libraryActivities:
-                        Text("Activities")
-                            .navigationTitle("Activities")
+                        CategoryLibraryView(category: .libraryActivities)
 
                     case .libraryStories:
-                        Text("Stories")
-                            .navigationTitle("Stories")
+                        CategoryLibraryView(category: .libraryStories)
 
                     case .libraryGamepads:
-                        Text("Gamepads")
-                            .navigationTitle("Gamepads")
+                        CategoryLibraryView(category: .libraryGamepads)
 
                     case .none:
                         Text(l10n.MainView.Sidebar.CategoryLabel.home)
@@ -325,6 +321,7 @@ struct MainView: View {
     @ObservedObject private var styleManager: StyleManager = .shared
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
 
     private var persistentDataManager: PersistentDataManager = .shared
     private var caregiverManager: CaregiverManager = .shared

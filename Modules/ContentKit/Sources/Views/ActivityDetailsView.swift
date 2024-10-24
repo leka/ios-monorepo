@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import Fit
 import LocalizationKit
@@ -116,6 +117,29 @@ public struct ActivityDetailsView: View {
             }
         }
         .toolbar {
+            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                ToolbarItem {
+                    Button {
+                        //                    let currentCaregiverID: String = self.caregiverManagerViewModel.currentCaregiver?.id ?? ""
+                        if self.rootAccountViewModel.isActivitySaved(activityID: self.activity.uuid) {
+                            self.rootAccountViewModel.removeSavedActivity(activityID: self.activity.uuid)
+                        } else {
+                            self.rootAccountViewModel.addSavedActivity(
+                                activityID: self.activity.uuid,
+                                caregiverID: currentCaregiverID
+                            )
+                        }
+                    } label: {
+                        if self.rootAccountViewModel.isActivitySaved(activityID: self.activity.uuid) {
+                            Image(systemName: "trash")
+                        } else {
+                            Image(systemName: "plus")
+                        }
+                    }
+                    .tint(self.rootAccountViewModel.isActivitySaved(activityID: self.activity.uuid) ? .red : self.styleManager.accentColor!)
+                }
+            }
+
             ToolbarItem {
                 Button {
                     self.onStartActivity?(self.activity)
@@ -141,6 +165,11 @@ public struct ActivityDetailsView: View {
 
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
+
+    @ObservedObject private var styleManager: StyleManager = .shared
+
+    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 }
 
 // MARK: - l10n.ActivityDetailsView

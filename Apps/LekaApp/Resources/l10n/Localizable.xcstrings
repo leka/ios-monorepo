@@ -1676,6 +1676,24 @@
                 }
             }
         },
+        "lekaapp.main_view.detailView.disconnected_library_message": {
+            "comment": "The message to invite users to connect to display the Library",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Log in to your account to access your personal library."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Connectez-vous \u00e0 votre compte pour acc\u00e9der \u00e0 votre biblioth\u00e8que personnelle."
+                    }
+                }
+            }
+        },
         "lekaapp.main_view.sidebar.category_label.activities": {
             "comment": "The title of the category 'Activities'",
             "extractionState": "extracted_with_value",
@@ -1960,6 +1978,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Informations"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.section.library": {
+            "comment": "The title of the section 'Library'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Library"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Biblioth\u00e8que"
                     }
                 }
             }
