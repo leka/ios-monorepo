@@ -149,19 +149,21 @@ public struct ActionThenTTSView: View {
             VStack(spacing: 40) {
                 HStack(spacing: 40) {
                     ForEach(self.viewModel.choices[0...2]) { choice in
-                        choice.view
-                            .onTapGesture {
-                                self.viewModel.onTapped(choice: choice)
-                            }
+                        Button {
+                            self.viewModel.onTapped(choice: choice)
+                        } label: {
+                            choice.view
+                        }
                     }
                 }
 
                 HStack(spacing: 40) {
                     ForEach(self.viewModel.choices[3...5]) { choice in
-                        choice.view
-                            .onTapGesture {
-                                self.viewModel.onTapped(choice: choice)
-                            }
+                        Button {
+                            self.viewModel.onTapped(choice: choice)
+                        } label: {
+                            choice.view
+                        }
                     }
                 }
             }
