@@ -25,6 +25,17 @@ public extension ContentKit {
                     return payload.choices.count
                 } else if let payload = exercise.payload as? DragAndDropToAssociate.Payload {
                     return payload.choices.count
+                } else if let payload = exercise.payload as? SuperSimon.Payload {
+                    switch payload.level {
+                        case .easy:
+                            return 2
+                        case .medium:
+                            return 4
+                        case .hard:
+                            return 6
+                    }
+                } else if let payload = exercise.payload as? Memory.Payload {
+                    return payload.choices.count
                 } else {
                     return nil
                 }
@@ -34,7 +45,7 @@ public extension ContentKit {
         return uniqueChoiceCounts.count == 1 ? uniqueChoiceCounts.first : nil
     }
 
-    // swiftlint:disable cyclomatic_complexity body_length
+    // swiftlint:disable cyclomatic_complexity line_length function_body_length
     private static func getTemplateIcon(for activity: Activity) -> String {
         let interface = self.getInterface(for: activity)
         let choiceNumber = self.getNumberOfChoices(for: activity)
@@ -43,7 +54,12 @@ public extension ContentKit {
                  .listenThenTouchToSelect,
                  .observeThenTouchToSelect,
                  .robotThenTouchToSelect,
-                 .dragAndDropToAssociate:
+                 .dragAndDropToAssociate,
+                 .listenThenDragAndDropToAssociate,
+                 .observeThenDragAndDropToAssociate,
+                 .robotThenDragAndDropToAssociate,
+                 .superSimon,
+                 .memory:
                 switch choiceNumber {
                     case 1:
                         return "template_TouchToSelectOne"
@@ -57,10 +73,21 @@ public extension ContentKit {
                         return "template_TouchToSelectFive"
                     case 6:
                         return "template_TouchToSelectSix"
+                    case 7:
+                        return "template_TouchToSelectSeven"
+                    case 8:
+                        return "template_TouchToSelectEight"
+                    case 9:
+                        return "template_TouchToSelectNine"
+                    case 10:
+                        return "template_TouchToSelectTen"
                     default:
                         return ""
                 }
-            case .dragAndDropIntoZones:
+            case .dragAndDropIntoZones,
+                 .listenThenDragAndDropIntoZones,
+                 .observeThenDragAndDropIntoZones,
+                 .robotThenDragAndDropIntoZones:
                 guard let payload = activity.exercisePayload.exerciseGroups[0].exercises[0].payload as? DragAndDropIntoZones.Payload else { return "" }
                 if payload.dropZoneB != nil {
                     switch choiceNumber {
@@ -101,5 +128,5 @@ public extension ContentKit {
                 return ""
         }
     }
-    // swiftlint:enable cyclomatic_complexity body_length
+    // swiftlint:enable cyclomatic_complexity line_length function_body_length
 }
