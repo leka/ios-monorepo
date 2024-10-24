@@ -38,6 +38,24 @@
                 }
             }
         },
+        "game_engine_kit.action_button_view.observe_button.image_unknown_error": {
+            "comment": "ObserveButton button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "\u274c\nImage not found:\n%1$@"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\u274c\nImage non reconnue :\n%1$@"
+                    }
+                }
+            }
+        },
         "game_engine_kit.activity_view.continue_button": {
             "comment": "The title of the continue button",
             "extractionState": "extracted_with_value",

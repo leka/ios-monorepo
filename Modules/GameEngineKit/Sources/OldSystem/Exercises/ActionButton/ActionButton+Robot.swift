@@ -46,6 +46,8 @@ struct ActionButtonRobot: View {
         } label: {
             Image(uiImage: DesignKitAsset.Images.robotFaceAction.image)
                 .resizable()
+                .renderingMode(.template)
+                .foregroundStyle(self.styleManager.accentColor!)
                 .frame(width: 130, height: 130)
                 .padding(10)
         }
@@ -60,6 +62,10 @@ struct ActionButtonRobot: View {
             radius: self.robotWasTapped ? 6 : 3, x: 0, y: 3
         )
     }
+
+    // MARK: Private
+
+    @StateObject private var styleManager: StyleManager = .shared
 }
 
 // MARK: - l10n.ActionButtonRobot
