@@ -14,7 +14,7 @@ struct CategoryLibraryView: View {
         if self.authManagerViewModel.userAuthenticationState == .loggedIn {
             switch self.category {
                 case .libraryCurriculums:
-                    Text("Curriculums")
+                    LibraryCurriculumsView(viewModel: self.rootAccountViewModel)
                         .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.curriculums.characters))
                 case .libraryStories:
                     LibraryStoriesView(viewModel: self.rootAccountViewModel)
