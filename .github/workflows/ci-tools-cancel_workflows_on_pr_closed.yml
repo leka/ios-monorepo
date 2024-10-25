@@ -2,11 +2,11 @@
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-name: Cancel Workflows on PR Close
+name: Cancel Workflows on PR Close or Label
 
 on:
   pull_request:
-    types: [closed]
+    types: [closed, labeled]
 
 jobs:
   cancel-workflows:
@@ -15,14 +15,41 @@ jobs:
       actions: write
       pull-requests: read
     steps:
-      - name: Cancel Running Workflows Based on Commit SHA
+      - name: Cancel Running Workflows Based on Event
         uses: actions/github-script@v7
         with:
           script: |
-            const prNumber = context.payload.pull_request.number;
-            const prHeadSha = context.payload.pull_request.head.sha;
             const { owner, repo } = context.repo;
+            const eventName = context.eventName;
+            const action = context.payload.action;
             const currentRunId = context.runId;
+
+            let prNumber;
+            let prHeadSha;
+
+            if (eventName === 'pull_request' && action === 'closed') {
+              // Event triggered by PR closure
+              prNumber = context.payload.pull_request.number;
+              prHeadSha = context.payload.pull_request.head.sha;
+              console.log(`Triggered by pull_request 'closed' event for PR #${prNumber}`);
+            } else if (eventName === 'pull_request' && action === 'labeled') {
+              // Event triggered by label addition
+              prNumber = context.payload.pull_request.number;
+              const labelName = context.payload.label.name;
+              console.log(`Triggered by pull_request 'labeled' event for PR #${prNumber}`);
+              console.log(`Label added: "${labelName}"`);
+
+              // Check if the label matches the one we're interested in
+              if (labelName !== '🛑️ cancel workflows') {
+                console.log('Label does not match. Exiting.');
+                return;
+              }
+
+              prHeadSha = context.payload.pull_request.head.sha;
+            } else {
+              console.log('Unsupported event type or action. Exiting.');
+              return;
+            }
 
             console.log(`PR Number: ${prNumber}`);
             console.log(`PR Head SHA: ${prHeadSha}`);
@@ -56,7 +83,7 @@ jobs:
               console.log(runInfo.join('\n'));
             });
 
-            // Cancel runs associated with the closed PR based on head SHA, excluding the current run
+            // Cancel runs associated with the PR's head SHA, excluding the current run
             for (const run of runs) {
               if (run.id !== currentRunId && run.head_sha === prHeadSha) {
                 try {
