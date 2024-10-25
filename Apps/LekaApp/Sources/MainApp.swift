@@ -3,9 +3,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
+import AppUpdately
+import Combine
 import ContentKit
 import DesignKit
 import FirebaseCore
+import LocalizationKit
 import LogKit
 import SwiftUI
 
@@ -73,11 +76,50 @@ struct LekaApp: App {
                 }
             }
             .animation(.default, value: self.showMainView)
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                    self.showMainView = true
+            #if PRODUCTION_BUILD
+                .onAppear {
+                    var cancellable: AnyCancellable?
+                    cancellable = UpdateStatusFetcher().fetch { result in
+                        defer { cancellable?.cancel() }
+                        guard let status = try? result.get() else { return }
+
+                        switch status {
+                            case .upToDate,
+                                 .newerVersion:
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                    self.showMainView = true
+                                }
+                            case .updateAvailable:
+                                self.showingUpdateAlert = true
+                        }
+                    }
                 }
-            }
+                .alert(isPresented: self.$showingUpdateAlert) {
+                    Alert(
+                        title: Text(l10n.MainApp.UpdateAlert.title),
+                        message: Text(l10n.MainApp.UpdateAlert.message),
+                        primaryButton: .default(Text(l10n.MainApp.UpdateAlert.action), action: {
+                            if let url = URL(string: "https://apps.apple.com/app/leka/id6446940339") {
+                                UIApplication.shared.open(url)
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                self.showMainView = true
+                            }
+                        }),
+                        secondaryButton: .cancel {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                self.showMainView = true
+                            }
+                        }
+                    )
+                }
+            #else
+                .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            self.showMainView = true
+                        }
+                    }
+            #endif
         }
     }
 
@@ -85,6 +127,7 @@ struct LekaApp: App {
 
     @State private var loaderOpacity: Double = 1.0
     @State private var showMainView: Bool = false
+    @State private var showingUpdateAlert: Bool = false
 }
 
 // MARK: - LoadingView
@@ -109,6 +152,22 @@ struct LoadingView: View {
             )
     }
 }
+
+// MARK: - l10n.MainApp
+
+// swiftlint:disable nesting
+
+extension l10n {
+    enum MainApp {
+        enum UpdateAlert {
+            static let title = LocalizedString("lekaapp.main_app.update_alert.title", value: "New update available", comment: "The title of the alert to inform the user that an update is available")
+            static let message = LocalizedString("lekaapp.main_app.update_alert.message", value: "Enjoy new features by updating to the latest version of Leka!", comment: "The message of the alert to inform the user that an update is available")
+            static let action = LocalizedString("lekaapp.main_app.update_alert.action", value: "Update now", comment: "The action button of the alert to inform the user that an update is available")
+        }
+    }
+}
+
+// swiftlint:enable nesting
 
 #Preview {
     LoadingView()
