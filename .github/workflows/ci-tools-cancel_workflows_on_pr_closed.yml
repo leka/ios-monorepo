@@ -9,6 +9,7 @@ on:
     types: [closed]
   issue_comment:
     types: [created]
+  workflow_dispatch: # nothing to setup here, just to trigger the workflow manually
 
 jobs:
   cancel-workflows:
