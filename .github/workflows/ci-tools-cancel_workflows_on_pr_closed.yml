@@ -1,3 +1,7 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
 name: Cancel Workflows on PR Close
 
 on:
@@ -8,33 +12,44 @@ jobs:
   cancel-workflows:
     runs-on: ubuntu-latest
     permissions:
-      actions: write  # Ensure we have permission to cancel workflows
+      actions: write
+      pull-requests: read
     steps:
-      - name: Cancel Running Workflows
+      - name: Cancel Running Workflows Based on Commit SHA
         uses: actions/github-script@v7
         with:
           script: |
             const prNumber = context.payload.pull_request.number;
+            const prHeadSha = context.payload.pull_request.head.sha;
             const { owner, repo } = context.repo;
-            const currentRunId = context.runId;  // Get current workflow run ID
+            const currentRunId = context.runId;
 
-            // Fetch all in-progress workflow runs triggered by pull requests
-            const runs = await github.paginate(
-              github.rest.actions.listWorkflowRunsForRepo,
-              {
+            console.log(`PR Number: ${prNumber}`);
+            console.log(`PR Head SHA: ${prHeadSha}`);
+            console.log(`Current Run ID: ${currentRunId}`);
+
+            // Fetch all in-progress and queued workflow runs
+            const statuses = ['in_progress', 'queued'];
+            let runs = [];
+
+            for (const status of statuses) {
+              const response = await github.rest.actions.listWorkflowRunsForRepo({
                 owner,
                 repo,
-                event: 'pull_request',
-                status: 'in_progress',
-              }
-            );
+                status,
+              });
+              runs = runs.concat(response.data.workflow_runs);
+            }
 
-            // Cancel runs associated with the closed PR, excluding the current run
+            console.log(`Total in-progress or queued runs: ${runs.length}`);
+
+            runs.forEach(run => {
+              console.log(`Run ID: ${run.id}, Head SHA: ${run.head_sha}, Event: ${run.event}, Status: ${run.status}`);
+            });
+
+            // Cancel runs associated with the closed PR based on head SHA, excluding the current run
             for (const run of runs) {
-              if (
-                run.id !== currentRunId &&  // Exclude current run
-                run.pull_requests.some(pr => pr.number === prNumber)
-              ) {
+              if (run.id !== currentRunId && run.head_sha === prHeadSha) {
                 await github.rest.actions.cancelWorkflowRun({
                   owner,
                   repo,
