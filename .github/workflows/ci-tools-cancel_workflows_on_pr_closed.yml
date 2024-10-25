@@ -1,0 +1,45 @@
+name: Cancel Workflows on PR Close
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  cancel-workflows:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write  # Ensure we have permission to cancel workflows
+    steps:
+      - name: Cancel Running Workflows
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const { owner, repo } = context.repo;
+            const currentRunId = context.runId;  // Get current workflow run ID
+
+            // Fetch all in-progress workflow runs triggered by pull requests
+            const runs = await github.paginate(
+              github.rest.actions.listWorkflowRunsForRepo,
+              {
+                owner,
+                repo,
+                event: 'pull_request',
+                status: 'in_progress',
+              }
+            );
+
+            // Cancel runs associated with the closed PR, excluding the current run
+            for (const run of runs) {
+              if (
+                run.id !== currentRunId &&  // Exclude current run
+                run.pull_requests.some(pr => pr.number === prNumber)
+              ) {
+                await github.rest.actions.cancelWorkflowRun({
+                  owner,
+                  repo,
+                  run_id: run.id,
+                });
+                console.log(`Cancelled workflow run: ${run.id}`);
+              }
+            }
