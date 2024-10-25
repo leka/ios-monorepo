@@ -7,26 +7,26 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - ActivityListView
+// MARK: - StoryListView
 
-public struct ActivityListView: View {
+public struct StoryListView: View {
     // MARK: Lifecycle
 
-    public init(activities: [Activity]? = nil, onStartActivity: ((Activity) -> Void)?) {
-        self.activities = activities ?? []
-        self.onStartActivity = onStartActivity
+    public init(stories: [Story]? = nil, onStartStory: ((Story) -> Void)?) {
+        self.stories = stories ?? []
+        self.onStartStory = onStartStory
     }
 
     // MARK: Public
 
     public var body: some View {
         LazyVStack(alignment: .leading, spacing: 20) {
-            ForEach(self.activities) { activity in
+            ForEach(self.stories) { story in
                 NavigationLink(destination:
-                    ActivityDetailsView(activity: activity, onStartActivity: self.onStartActivity)
+                    StoryDetailsView(story: story, onStartStory: self.onStartStory)
                 ) {
-                    HStack(alignment: .center) {
-                        Image(uiImage: activity.details.iconImage)
+                    HStack(alignment: .center, spacing: 30) {
+                        Image(uiImage: story.details.iconImage)
                             .resizable()
                             .scaledToFit()
                             .clipShape(Circle())
@@ -38,12 +38,12 @@ public struct ActivityListView: View {
 
                         VStack(alignment: .leading) {
                             HStack {
-                                Text(activity.details.title)
+                                Text(story.details.title)
                                     .font(.headline)
                                     .frame(alignment: .leading)
                             }
 
-                            if let subtitle = activity.details.subtitle {
+                            if let subtitle = story.details.subtitle {
                                 Text(subtitle)
                                     .font(.subheadline)
                                     .frame(alignment: .leading)
@@ -53,51 +53,34 @@ public struct ActivityListView: View {
 
                         Spacer()
 
-                        if let gestureIconUIImage = ContentKit.getGestureIconUIImage(for: activity) {
-                            IconImageView(image: gestureIconUIImage)
-                        }
-
-                        if let earFocusIconUIImage = ContentKit.getFocusIconUIImage(for: activity, ofType: .ears) {
-                            IconImageView(image: earFocusIconUIImage)
-                        }
-
-                        if let robotFocusIconUIImage = ContentKit.getFocusIconUIImage(for: activity, ofType: .robot) {
-                            IconImageView(image: robotFocusIconUIImage)
-                        }
-
-                        if let templateIconUIImage = ContentKit.getTemplateIconUIImage(for: activity) {
-                            IconImageView(image: templateIconUIImage)
-                        }
-
                         if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                             Button {
-                                if self.rootAccountViewModel.isActivitySaved(activityID: activity.uuid) {
-                                    self.rootAccountViewModel.removeSavedActivity(activityID: activity.uuid)
+                                if self.rootAccountViewModel.isStorySaved(storyID: story.uuid) {
+                                    self.rootAccountViewModel.removeSavedStory(storyID: story.uuid)
                                 } else {
-                                    self.rootAccountViewModel.addSavedActivity(
-                                        activityID: activity.uuid,
+                                    self.rootAccountViewModel.addSavedStory(
+                                        storyID: story.uuid,
                                         caregiverID: currentCaregiverID
                                     )
                                 }
                             } label: {
-                                if self.rootAccountViewModel.isActivitySaved(activityID: activity.uuid) {
+                                if self.rootAccountViewModel.isStorySaved(storyID: story.uuid) {
                                     Image(systemName: "trash")
                                 } else {
                                     Image(systemName: "plus")
                                 }
                             }
-                            .tint(self.rootAccountViewModel.isActivitySaved(activityID: activity.uuid) ? .red : self.styleManager.accentColor!)
+                            .tint(self.rootAccountViewModel.isStorySaved(storyID: story.uuid) ? .red : self.styleManager.accentColor!)
                         }
 
                         Button {
-                            self.onStartActivity?(activity)
+                            self.onStartStory?(story)
                         } label: {
                             Image(systemName: "play.circle")
                                 .font(.system(size: 24))
                                 .contentShape(Rectangle())
                         }
                         .tint(.lkGreen)
-                        .padding(.horizontal, 5)
                     }
                     .frame(maxWidth: .infinity, maxHeight: 120)
                     .contentShape(Rectangle())
@@ -110,22 +93,10 @@ public struct ActivityListView: View {
 
     // MARK: Internal
 
-    let activities: [Activity]
-    let onStartActivity: ((Activity) -> Void)?
+    let stories: [Story]
+    let onStartStory: ((Story) -> Void)?
 
     // MARK: Private
-
-    private struct IconImageView: View {
-        let image: UIImage?
-
-        var body: some View {
-            Image(uiImage: self.image ?? UIImage())
-                .resizable()
-                .scaledToFit()
-                .frame(width: 50)
-                .padding(.horizontal, 5)
-        }
-    }
 
     @ObservedObject private var styleManager: StyleManager = .shared
 
@@ -139,10 +110,10 @@ public struct ActivityListView: View {
     } detail: {
         NavigationStack {
             ScrollView {
-                ActivityListView(
-                    activities: ContentKit.allActivities,
-                    onStartActivity: { _ in
-                        print("Activity Started")
+                StoryListView(
+                    stories: ContentKit.allStories,
+                    onStartStory: { _ in
+                        print("Story Started")
                     }
                 )
             }

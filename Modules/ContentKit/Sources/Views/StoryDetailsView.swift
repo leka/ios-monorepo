@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import Fit
 import LocalizationKit
@@ -108,6 +109,27 @@ public struct StoryDetailsView: View {
         }
         .toolbar {
             ToolbarItem {
+                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                    Button {
+                        if self.rootAccountViewModel.isStorySaved(storyID: self.story.uuid) {
+                            self.rootAccountViewModel.removeSavedStory(storyID: self.story.uuid)
+                        } else {
+                            self.rootAccountViewModel.addSavedStory(
+                                storyID: self.story.uuid,
+                                caregiverID: currentCaregiverID
+                            )
+                        }
+                    } label: {
+                        if self.rootAccountViewModel.isStorySaved(storyID: self.story.uuid) {
+                            Image(systemName: "trash")
+                        } else {
+                            Image(systemName: "plus")
+                        }
+                    }
+                    .tint(self.rootAccountViewModel.isStorySaved(storyID: self.story.uuid) ? .red : self.styleManager.accentColor!)
+                }
+            }
+            ToolbarItem {
                 Button {
                     self.onStartStory?(self.story)
                 } label: {
@@ -132,6 +154,11 @@ public struct StoryDetailsView: View {
 
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
+
+    @ObservedObject private var styleManager: StyleManager = .shared
+
+    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 }
 
 // MARK: - l10n.StoryDetailsView
