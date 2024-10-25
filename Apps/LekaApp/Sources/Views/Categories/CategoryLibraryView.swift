@@ -20,7 +20,7 @@ struct CategoryLibraryView: View {
                     LibraryStoriesView(viewModel: self.rootAccountViewModel)
                         .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.stories.characters))
                 case .libraryGamepads:
-                    Text("Gamepads")
+                    LibraryGamepadsView()
                         .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.gamepads.characters))
                 default:
                     LibraryActivitiesView(viewModel: self.rootAccountViewModel)
