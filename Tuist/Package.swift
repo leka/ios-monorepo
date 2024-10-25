@@ -44,7 +44,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/mxcl/Version",
-            exact: "2.0.1"
+            exact: "2.1.0"
         ),
         .package(
             url: "https://github.com/firebase/firebase-ios-sdk",
@@ -60,7 +60,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/devicekit/DeviceKit",
-            exact: "5.4.0"
+            exact: "5.5.0"
         ),
         .package(
             url: "https://github.com/SvenTiigi/YouTubePlayerKit",
@@ -68,7 +68,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/lukepistrol/SFSymbolsMacro",
-            exact: "0.5.2"
+            exact: "0.5.3"
         ),
         .package(
             url: "https://github.com/AvdLee/AppUpdately",
