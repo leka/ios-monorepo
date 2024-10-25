@@ -31,7 +31,9 @@ struct CategoryActivitiesView: View {
                             .foregroundStyle(.secondary)
                     }
                 }
-                .padding(.horizontal)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 30)
+                .padding(.bottom)
 
                 ActivityGridView(activities: self.category.activities, onStartActivity: { activity in
                     if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {

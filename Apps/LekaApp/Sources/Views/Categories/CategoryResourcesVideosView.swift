@@ -29,7 +29,8 @@ struct CategoryResourcesVideosView: View {
                         .foregroundStyle(.secondary)
                 }
             }
-            .padding(.horizontal)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 30)
             .padding(.bottom)
 
             Spacer()

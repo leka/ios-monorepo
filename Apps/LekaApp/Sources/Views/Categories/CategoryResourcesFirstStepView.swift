@@ -29,7 +29,8 @@ struct CategoryResourcesFirstStepsView: View {
                         .foregroundStyle(.secondary)
                 }
             }
-            .padding(.horizontal)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 30)
             .padding(.bottom)
 
             VStack(alignment: .leading, spacing: 30) {
