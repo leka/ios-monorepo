@@ -2,6 +2,8 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
+import DesignKit
 import LocalizationKit
 import SwiftUI
 
@@ -27,6 +29,26 @@ public struct CurriculumGroupboxView: View {
                         .foregroundStyle(Color.secondary)
 
                     Spacer()
+
+                    if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                        Button {
+                            if self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) {
+                                self.rootAccountViewModel.removeSavedCurriculum(curriculumID: self.curriculum.uuid)
+                            } else {
+                                self.rootAccountViewModel.addSavedCurriculum(
+                                    curriculumID: self.curriculum.uuid,
+                                    caregiverID: currentCaregiverID
+                                )
+                            }
+                        } label: {
+                            if self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) {
+                                Image(systemName: "trash")
+                            } else {
+                                Image(systemName: "plus")
+                            }
+                        }
+                        .tint(self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) ? .red : self.styleManager.accentColor!)
+                    }
                 }
 
                 VStack(spacing: 10) {
@@ -72,6 +94,11 @@ public struct CurriculumGroupboxView: View {
     // MARK: Private
 
     private let curriculum: Curriculum
+
+    @ObservedObject private var styleManager: StyleManager = .shared
+
+    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 }
 
 // MARK: - l10n.CurriculumGroupboxView
