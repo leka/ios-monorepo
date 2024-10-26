@@ -53,25 +53,27 @@ public struct StoryListView: View {
 
                         Spacer()
 
-                        if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                            Button {
-                                if self.rootAccountViewModel.isStorySaved(storyID: story.uuid) {
-                                    self.rootAccountViewModel.removeSavedStory(storyID: story.uuid)
-                                } else {
-                                    self.rootAccountViewModel.addSavedStory(
-                                        storyID: story.uuid,
-                                        caregiverID: currentCaregiverID
-                                    )
+                        #if DEVELOPER_MODE || TESTFLIGHT_BUILD
+                            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                                Button {
+                                    if self.rootAccountViewModel.isStorySaved(storyID: story.uuid) {
+                                        self.rootAccountViewModel.removeSavedStory(storyID: story.uuid)
+                                    } else {
+                                        self.rootAccountViewModel.addSavedStory(
+                                            storyID: story.uuid,
+                                            caregiverID: currentCaregiverID
+                                        )
+                                    }
+                                } label: {
+                                    if self.rootAccountViewModel.isStorySaved(storyID: story.uuid) {
+                                        Image(systemName: "trash")
+                                    } else {
+                                        Image(systemName: "plus")
+                                    }
                                 }
-                            } label: {
-                                if self.rootAccountViewModel.isStorySaved(storyID: story.uuid) {
-                                    Image(systemName: "trash")
-                                } else {
-                                    Image(systemName: "plus")
-                                }
+                                .tint(self.rootAccountViewModel.isStorySaved(storyID: story.uuid) ? .red : self.styleManager.accentColor!)
                             }
-                            .tint(self.rootAccountViewModel.isStorySaved(storyID: story.uuid) ? .red : self.styleManager.accentColor!)
-                        }
+                        #endif
 
                         Button {
                             self.onStartStory?(story)

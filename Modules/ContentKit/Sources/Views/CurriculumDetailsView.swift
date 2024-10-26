@@ -142,28 +142,30 @@ public struct CurriculumDetailsView: View {
             }
         }
         .toolbar {
-            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                ToolbarItem {
-                    Button {
-                        let currentCaregiverID: String = self.caregiverManagerViewModel.currentCaregiver?.id ?? ""
-                        if self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) {
-                            self.rootAccountViewModel.removeSavedCurriculum(curriculumID: self.curriculum.uuid)
-                        } else {
-                            self.rootAccountViewModel.addSavedCurriculum(
-                                curriculumID: self.curriculum.uuid,
-                                caregiverID: currentCaregiverID
-                            )
+            #if DEVELOPER_MODE || TESTFLIGHT_BUILD
+                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                    ToolbarItem {
+                        Button {
+                            let currentCaregiverID: String = self.caregiverManagerViewModel.currentCaregiver?.id ?? ""
+                            if self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) {
+                                self.rootAccountViewModel.removeSavedCurriculum(curriculumID: self.curriculum.uuid)
+                            } else {
+                                self.rootAccountViewModel.addSavedCurriculum(
+                                    curriculumID: self.curriculum.uuid,
+                                    caregiverID: currentCaregiverID
+                                )
+                            }
+                        } label: {
+                            if self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) {
+                                Image(systemName: "trash")
+                            } else {
+                                Image(systemName: "plus")
+                            }
                         }
-                    } label: {
-                        if self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) {
-                            Image(systemName: "trash")
-                        } else {
-                            Image(systemName: "plus")
-                        }
+                        .tint(self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) ? .red : self.styleManager.accentColor!)
                     }
-                    .tint(self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) ? .red : self.styleManager.accentColor!)
                 }
-            }
+            #endif
         }
     }
 
