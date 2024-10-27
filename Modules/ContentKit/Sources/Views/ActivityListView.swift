@@ -68,26 +68,27 @@ public struct ActivityListView: View {
                         if let templateIconUIImage = ContentKit.getTemplateIconUIImage(for: activity) {
                             IconImageView(image: templateIconUIImage)
                         }
-
-                        if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                            Button {
-                                if self.rootAccountViewModel.isActivitySaved(activityID: activity.uuid) {
-                                    self.rootAccountViewModel.removeSavedActivity(activityID: activity.uuid)
-                                } else {
-                                    self.rootAccountViewModel.addSavedActivity(
-                                        activityID: activity.uuid,
-                                        caregiverID: currentCaregiverID
-                                    )
+                        #if DEVELOPER_MODE || TESTFLIGHT_BUILD
+                            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                                Button {
+                                    if self.rootAccountViewModel.isActivitySaved(activityID: activity.uuid) {
+                                        self.rootAccountViewModel.removeSavedActivity(activityID: activity.uuid)
+                                    } else {
+                                        self.rootAccountViewModel.addSavedActivity(
+                                            activityID: activity.uuid,
+                                            caregiverID: currentCaregiverID
+                                        )
+                                    }
+                                } label: {
+                                    if self.rootAccountViewModel.isActivitySaved(activityID: activity.uuid) {
+                                        Image(systemName: "trash")
+                                    } else {
+                                        Image(systemName: "plus")
+                                    }
                                 }
-                            } label: {
-                                if self.rootAccountViewModel.isActivitySaved(activityID: activity.uuid) {
-                                    Image(systemName: "trash")
-                                } else {
-                                    Image(systemName: "plus")
-                                }
+                                .tint(self.rootAccountViewModel.isActivitySaved(activityID: activity.uuid) ? .red : self.styleManager.accentColor!)
                             }
-                            .tint(self.rootAccountViewModel.isActivitySaved(activityID: activity.uuid) ? .red : self.styleManager.accentColor!)
-                        }
+                        #endif
 
                         Button {
                             self.onStartActivity?(activity)

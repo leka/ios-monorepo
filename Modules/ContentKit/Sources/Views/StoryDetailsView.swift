@@ -108,27 +108,29 @@ public struct StoryDetailsView: View {
             }
         }
         .toolbar {
-            ToolbarItem {
-                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                    Button {
-                        if self.rootAccountViewModel.isStorySaved(storyID: self.story.uuid) {
-                            self.rootAccountViewModel.removeSavedStory(storyID: self.story.uuid)
-                        } else {
-                            self.rootAccountViewModel.addSavedStory(
-                                storyID: self.story.uuid,
-                                caregiverID: currentCaregiverID
-                            )
+            #if DEVELOPER_MODE || TESTFLIGHT_BUILD
+                ToolbarItem {
+                    if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                        Button {
+                            if self.rootAccountViewModel.isStorySaved(storyID: self.story.uuid) {
+                                self.rootAccountViewModel.removeSavedStory(storyID: self.story.uuid)
+                            } else {
+                                self.rootAccountViewModel.addSavedStory(
+                                    storyID: self.story.uuid,
+                                    caregiverID: currentCaregiverID
+                                )
+                            }
+                        } label: {
+                            if self.rootAccountViewModel.isStorySaved(storyID: self.story.uuid) {
+                                Image(systemName: "trash")
+                            } else {
+                                Image(systemName: "plus")
+                            }
                         }
-                    } label: {
-                        if self.rootAccountViewModel.isStorySaved(storyID: self.story.uuid) {
-                            Image(systemName: "trash")
-                        } else {
-                            Image(systemName: "plus")
-                        }
+                        .tint(self.rootAccountViewModel.isStorySaved(storyID: self.story.uuid) ? .red : self.styleManager.accentColor!)
                     }
-                    .tint(self.rootAccountViewModel.isStorySaved(storyID: self.story.uuid) ? .red : self.styleManager.accentColor!)
                 }
-            }
+            #endif
             ToolbarItem {
                 Button {
                     self.onStartStory?(self.story)
