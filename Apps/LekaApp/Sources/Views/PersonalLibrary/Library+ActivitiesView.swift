@@ -19,10 +19,19 @@ struct LibraryActivitiesView: View {
     // MARK: Internal
 
     var body: some View {
-        ScrollView(showsIndicators: true) {
-            ActivityListView(activities: self.activities) { activity in
-                self.navigation.currentActivity = activity
-                self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+        if self.activities.isEmpty {
+            Text("""
+                Your haven't saved any activity yet.
+                Tap the \(Image(systemName: "ellipsis.circle")) button on any activity to add it here.
+                You can then remove them from the Library using the same button.
+                """)
+            .multilineTextAlignment(.center)
+        } else {
+            ScrollView(showsIndicators: true) {
+                ActivityListView(activities: self.activities) { activity in
+                    self.navigation.currentActivity = activity
+                    self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+                }
             }
         }
     }
