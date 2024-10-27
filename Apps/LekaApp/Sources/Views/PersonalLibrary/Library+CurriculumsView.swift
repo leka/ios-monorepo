@@ -17,9 +17,18 @@ struct LibraryCurriculumsView: View {
     // MARK: Internal
 
     var body: some View {
-        ScrollView(showsIndicators: true) {
-            CurriculumGridView(curriculums: self.curriculums) { _ in
-                // Nothing to do
+        if self.curriculums.isEmpty {
+            Text("""
+                Your haven't saved any curriculum yet.
+                Tap the \(Image(systemName: "ellipsis.circle")) button on any curriculum to add it here.
+                You can then remove them from the Library using the same button.
+                """)
+            .multilineTextAlignment(.center)
+        } else {
+            ScrollView(showsIndicators: true) {
+                CurriculumGridView(curriculums: self.curriculums) { _ in
+                    // Nothing to do
+                }
             }
         }
     }
