@@ -19,10 +19,19 @@ struct LibraryStoriesView: View {
     // MARK: Internal
 
     var body: some View {
-        ScrollView(showsIndicators: true) {
-            StoryListView(stories: self.stories) { story in
-                self.navigation.currentStory = story
-                self.navigation.fullScreenCoverContent = .storyView(carereceivers: [])
+        if self.stories.isEmpty {
+            Text("""
+                Your haven't saved any story yet.
+                Tap the \(Image(systemName: "ellipsis.circle")) button on any story to add it here.
+                You can then remove them from the Library using the same button.
+                """)
+            .multilineTextAlignment(.center)
+        } else {
+            ScrollView(showsIndicators: true) {
+                StoryListView(stories: self.stories) { story in
+                    self.navigation.currentStory = story
+                    self.navigation.fullScreenCoverContent = .storyView(carereceivers: [])
+                }
             }
         }
     }
