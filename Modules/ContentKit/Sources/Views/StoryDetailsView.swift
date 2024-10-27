@@ -109,28 +109,37 @@ public struct StoryDetailsView: View {
         }
         .toolbar {
             #if DEVELOPER_MODE || TESTFLIGHT_BUILD
-                ToolbarItem {
-                    if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                        Button {
+                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                    ToolbarItem {
+                        Menu {
                             if self.rootAccountViewModel.isStorySaved(storyID: self.story.uuid) {
-                                self.rootAccountViewModel.removeSavedStory(storyID: self.story.uuid)
+                                Button(role: .destructive) {
+                                    self.rootAccountViewModel.removeSavedStory(storyID: self.story.uuid)
+                                } label: {
+                                    Label("Remove Story", systemImage: "trash")
+                                }
                             } else {
-                                self.rootAccountViewModel.addSavedStory(
-                                    storyID: self.story.uuid,
-                                    caregiverID: currentCaregiverID
-                                )
+                                Button {
+                                    self.rootAccountViewModel.addSavedStory(
+                                        storyID: self.story.uuid,
+                                        caregiverID: currentCaregiverID
+                                    )
+                                } label: {
+                                    Label("Add Story", systemImage: "plus")
+                                }
                             }
                         } label: {
-                            if self.rootAccountViewModel.isStorySaved(storyID: self.story.uuid) {
-                                Image(systemName: "trash")
-                            } else {
-                                Image(systemName: "plus")
+                            Button {
+                                // Nothing to do
+                            } label: {
+                                Image(systemName: "ellipsis")
                             }
+                            .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
                         }
-                        .tint(self.rootAccountViewModel.isStorySaved(storyID: self.story.uuid) ? .red : self.styleManager.accentColor!)
                     }
                 }
             #endif
+
             ToolbarItem {
                 Button {
                     self.onStartStory?(self.story)
