@@ -145,24 +145,31 @@ public struct CurriculumDetailsView: View {
             #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                     ToolbarItem {
-                        Button {
-                            let currentCaregiverID: String = self.caregiverManagerViewModel.currentCaregiver?.id ?? ""
+                        Menu {
                             if self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) {
-                                self.rootAccountViewModel.removeSavedCurriculum(curriculumID: self.curriculum.uuid)
+                                Button(role: .destructive) {
+                                    self.rootAccountViewModel.removeSavedCurriculum(curriculumID: self.curriculum.uuid)
+                                } label: {
+                                    Label("Remove Curriculum", systemImage: "trash")
+                                }
                             } else {
-                                self.rootAccountViewModel.addSavedCurriculum(
-                                    curriculumID: self.curriculum.uuid,
-                                    caregiverID: currentCaregiverID
-                                )
+                                Button {
+                                    self.rootAccountViewModel.addSavedCurriculum(
+                                        curriculumID: self.curriculum.uuid,
+                                        caregiverID: currentCaregiverID
+                                    )
+                                } label: {
+                                    Label("Add Curriculum", systemImage: "plus")
+                                }
                             }
                         } label: {
-                            if self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) {
-                                Image(systemName: "trash")
-                            } else {
-                                Image(systemName: "plus")
+                            Button {
+                                // Nothing to do
+                            } label: {
+                                Image(systemName: "ellipsis")
                             }
+                            .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
                         }
-                        .tint(self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) ? .red : self.styleManager.accentColor!)
                     }
                 }
             #endif
