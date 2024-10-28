@@ -125,7 +125,7 @@ public struct ActivityDetailsView: View {
                                 Button(role: .destructive) {
                                     self.rootAccountViewModel.removeSavedActivity(activityID: self.activity.uuid)
                                 } label: {
-                                    Label("Remove Activity", systemImage: "trash")
+                                    Label("Delete from Library", systemImage: "trash")
                                 }
                             } else {
                                 Button {
@@ -134,7 +134,7 @@ public struct ActivityDetailsView: View {
                                         caregiverID: currentCaregiverID
                                     )
                                 } label: {
-                                    Label("Add Activity", systemImage: "plus")
+                                    Label("Add to Library", systemImage: "plus")
                                 }
                             }
                         } label: {

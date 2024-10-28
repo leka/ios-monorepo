@@ -60,7 +60,7 @@ public struct StoryListView: View {
                                         Button(role: .destructive) {
                                             self.rootAccountViewModel.removeSavedStory(storyID: story.uuid)
                                         } label: {
-                                            Label("Remove Story", systemImage: "trash")
+                                            Label("Delete from Library", systemImage: "trash")
                                         }
                                     } else {
                                         Button {
@@ -69,7 +69,7 @@ public struct StoryListView: View {
                                                 caregiverID: currentCaregiverID
                                             )
                                         } label: {
-                                            Label("Add Story", systemImage: "plus")
+                                            Label("Add to Library", systemImage: "plus")
                                         }
                                     }
                                 } label: {

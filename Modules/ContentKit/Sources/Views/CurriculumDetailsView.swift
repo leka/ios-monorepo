@@ -150,7 +150,7 @@ public struct CurriculumDetailsView: View {
                                 Button(role: .destructive) {
                                     self.rootAccountViewModel.removeSavedCurriculum(curriculumID: self.curriculum.uuid)
                                 } label: {
-                                    Label("Remove Curriculum", systemImage: "trash")
+                                    Label("Delete from Library", systemImage: "trash")
                                 }
                             } else {
                                 Button {
@@ -159,7 +159,7 @@ public struct CurriculumDetailsView: View {
                                         caregiverID: currentCaregiverID
                                     )
                                 } label: {
-                                    Label("Add Curriculum", systemImage: "plus")
+                                    Label("Add to Library", systemImage: "plus")
                                 }
                             }
                         } label: {
