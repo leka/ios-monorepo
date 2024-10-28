@@ -71,26 +71,24 @@ public struct ActivityListView: View {
 
                         #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                             if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                                Menu {
-                                    if self.rootAccountViewModel.isActivitySaved(activityID: activity.uuid) {
-                                        Button(role: .destructive) {
-                                            self.rootAccountViewModel.removeSavedActivity(activityID: activity.uuid)
-                                        } label: {
-                                            Label("Delete from Library", systemImage: "trash")
+                                Button {} label: {
+                                    Menu {
+                                        if self.rootAccountViewModel.isActivitySaved(activityID: activity.uuid) {
+                                            Button(role: .destructive) {
+                                                self.rootAccountViewModel.removeSavedActivity(activityID: activity.uuid)
+                                            } label: {
+                                                Label("Delete from Library", systemImage: "trash")
+                                            }
+                                        } else {
+                                            Button {
+                                                self.rootAccountViewModel.addSavedActivity(
+                                                    activityID: activity.uuid,
+                                                    caregiverID: currentCaregiverID
+                                                )
+                                            } label: {
+                                                Label("Add to Library", systemImage: "plus")
+                                            }
                                         }
-                                    } else {
-                                        Button {
-                                            self.rootAccountViewModel.addSavedActivity(
-                                                activityID: activity.uuid,
-                                                caregiverID: currentCaregiverID
-                                            )
-                                        } label: {
-                                            Label("Add to Library", systemImage: "plus")
-                                        }
-                                    }
-                                } label: {
-                                    Button {
-                                        // Nothing to do
                                     } label: {
                                         Image(systemName: "ellipsis")
                                     }
