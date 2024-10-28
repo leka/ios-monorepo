@@ -32,23 +32,31 @@ public struct CurriculumGroupboxView: View {
 
                     #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                         if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                            Button {
-                                if self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) {
-                                    self.rootAccountViewModel.removeSavedCurriculum(curriculumID: self.curriculum.uuid)
-                                } else {
-                                    self.rootAccountViewModel.addSavedCurriculum(
-                                        curriculumID: self.curriculum.uuid,
-                                        caregiverID: currentCaregiverID
-                                    )
+                            Button {}
+                                label: {
+                                    Menu {
+                                        if self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) {
+                                            Button(role: .destructive) {
+                                                self.rootAccountViewModel.removeSavedCurriculum(curriculumID: self.curriculum.uuid)
+                                            } label: {
+                                                Label("Delete from Library", systemImage: "trash")
+                                            }
+                                        } else {
+                                            Button {
+                                                self.rootAccountViewModel.addSavedCurriculum(
+                                                    curriculumID: self.curriculum.uuid,
+                                                    caregiverID: currentCaregiverID
+                                                )
+                                            } label: {
+                                                Label("Add to Library", systemImage: "plus")
+                                            }
+                                        }
+                                    } label: {
+                                        Image(systemName: "ellipsis")
+                                            .bold()
+                                    }
+                                    .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
                                 }
-                            } label: {
-                                if self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) {
-                                    Image(systemName: "trash")
-                                } else {
-                                    Image(systemName: "plus")
-                                }
-                            }
-                            .tint(self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) ? .red : self.styleManager.accentColor!)
                         }
                     #endif
                 }
@@ -74,19 +82,25 @@ public struct CurriculumGroupboxView: View {
 
                     Spacer()
 
-                    HStack(alignment: .center) {
-                        Spacer()
+                    ZStack {
+                        HStack {
+                            Image(systemName: "checkmark.circle.fill")
+                                .font(.title3)
+                                .foregroundStyle(Color.secondary)
+                                .opacity(self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) ? 1 : 0)
+
+                            Spacer()
+
+                            Image(systemName: "chevron.right")
+                                .font(.title3)
+                                .foregroundStyle(Color.secondary)
+                        }
 
                         Text(l10n.CurriculumGroupboxView.activityCountLabel(self.curriculum.activities.count))
                             .font(.caption.bold())
                             .foregroundStyle(Color.secondary)
-
-                        Spacer()
-
-                        Image(systemName: "chevron.right")
-                            .font(.title3)
-                            .foregroundStyle(Color.secondary)
                     }
+                    .frame(maxWidth: .infinity)
                 }
             }
             .frame(width: 280)

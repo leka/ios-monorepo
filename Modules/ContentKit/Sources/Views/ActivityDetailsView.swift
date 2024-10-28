@@ -120,23 +120,32 @@ public struct ActivityDetailsView: View {
             #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                     ToolbarItem {
-                        Button {
+                        Menu {
                             if self.rootAccountViewModel.isActivitySaved(activityID: self.activity.uuid) {
-                                self.rootAccountViewModel.removeSavedActivity(activityID: self.activity.uuid)
+                                Button(role: .destructive) {
+                                    self.rootAccountViewModel.removeSavedActivity(activityID: self.activity.uuid)
+                                } label: {
+                                    Label("Delete from Library", systemImage: "trash")
+                                }
                             } else {
-                                self.rootAccountViewModel.addSavedActivity(
-                                    activityID: self.activity.uuid,
-                                    caregiverID: currentCaregiverID
-                                )
+                                Button {
+                                    self.rootAccountViewModel.addSavedActivity(
+                                        activityID: self.activity.uuid,
+                                        caregiverID: currentCaregiverID
+                                    )
+                                } label: {
+                                    Label("Add to Library", systemImage: "plus")
+                                }
                             }
                         } label: {
-                            if self.rootAccountViewModel.isActivitySaved(activityID: self.activity.uuid) {
-                                Image(systemName: "trash")
-                            } else {
-                                Image(systemName: "plus")
+                            Button {
+                                // Nothing to do
+                            } label: {
+                                Image(systemName: "ellipsis")
+                                    .bold()
                             }
+                            .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
                         }
-                        .tint(self.rootAccountViewModel.isActivitySaved(activityID: self.activity.uuid) ? .red : self.styleManager.accentColor!)
                     }
                 }
             #endif
