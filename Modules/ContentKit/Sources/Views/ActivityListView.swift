@@ -91,6 +91,7 @@ public struct ActivityListView: View {
                                         }
                                     } label: {
                                         Image(systemName: "ellipsis")
+                                            .bold()
                                     }
                                     .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
                                 }

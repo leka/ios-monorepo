@@ -76,6 +76,7 @@ public struct StoryListView: View {
                                             }
                                         } label: {
                                             Image(systemName: "ellipsis")
+                                                .bold()
                                         }
                                         .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
                                     }

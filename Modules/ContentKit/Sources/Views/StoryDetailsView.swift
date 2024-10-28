@@ -133,6 +133,7 @@ public struct StoryDetailsView: View {
                                 // Nothing to do
                             } label: {
                                 Image(systemName: "ellipsis")
+                                    .bold()
                             }
                             .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
                         }

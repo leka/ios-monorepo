@@ -53,6 +53,7 @@ public struct CurriculumGroupboxView: View {
                                         }
                                     } label: {
                                         Image(systemName: "ellipsis")
+                                            .bold()
                                     }
                                     .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
                                 }
