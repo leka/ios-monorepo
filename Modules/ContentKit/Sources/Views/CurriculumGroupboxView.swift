@@ -81,19 +81,25 @@ public struct CurriculumGroupboxView: View {
 
                     Spacer()
 
-                    HStack(alignment: .center) {
-                        Spacer()
+                    ZStack {
+                        HStack {
+                            Image(systemName: "checkmark.circle.fill")
+                                .font(.title3)
+                                .foregroundStyle(Color.secondary)
+                                .opacity(self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) ? 1 : 0)
+
+                            Spacer()
+
+                            Image(systemName: "chevron.right")
+                                .font(.title3)
+                                .foregroundStyle(Color.secondary)
+                        }
 
                         Text(l10n.CurriculumGroupboxView.activityCountLabel(self.curriculum.activities.count))
                             .font(.caption.bold())
                             .foregroundStyle(Color.secondary)
-
-                        Spacer()
-
-                        Image(systemName: "chevron.right")
-                            .font(.title3)
-                            .foregroundStyle(Color.secondary)
                     }
+                    .frame(maxWidth: .infinity)
                 }
             }
             .frame(width: 280)
