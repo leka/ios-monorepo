@@ -32,31 +32,30 @@ public struct CurriculumGroupboxView: View {
 
                     #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                         if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                            Menu {
-                                if self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) {
-                                    Button(role: .destructive) {
-                                        self.rootAccountViewModel.removeSavedCurriculum(curriculumID: self.curriculum.uuid)
+                            Button {}
+                                label: {
+                                    Menu {
+                                        if self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) {
+                                            Button(role: .destructive) {
+                                                self.rootAccountViewModel.removeSavedCurriculum(curriculumID: self.curriculum.uuid)
+                                            } label: {
+                                                Label("Delete from Library", systemImage: "trash")
+                                            }
+                                        } else {
+                                            Button {
+                                                self.rootAccountViewModel.addSavedCurriculum(
+                                                    curriculumID: self.curriculum.uuid,
+                                                    caregiverID: currentCaregiverID
+                                                )
+                                            } label: {
+                                                Label("Add to Library", systemImage: "plus")
+                                            }
+                                        }
                                     } label: {
-                                        Label("Delete from Library", systemImage: "trash")
+                                        Image(systemName: "ellipsis")
                                     }
-                                } else {
-                                    Button {
-                                        self.rootAccountViewModel.addSavedCurriculum(
-                                            curriculumID: self.curriculum.uuid,
-                                            caregiverID: currentCaregiverID
-                                        )
-                                    } label: {
-                                        Label("Add to Library", systemImage: "plus")
-                                    }
+                                    .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
                                 }
-                            } label: {
-                                Button {
-                                    // Nothing to do
-                                } label: {
-                                    Image(systemName: "ellipsis")
-                                }
-                                .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
-                            }
                         }
                     #endif
                 }
