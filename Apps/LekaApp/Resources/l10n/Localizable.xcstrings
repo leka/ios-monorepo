@@ -1550,6 +1550,78 @@
                 }
             }
         },
+        "lekaapp.empty_library_placedholder_view.button_instruction": {
+            "comment": "Instruction suffix",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "button on any activity, curriculum, or story to add them to your Library."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "dans n'importe quelle activit\u00e9, parcours ou histoire pour les ajouter \u00e0 votre Biblioth\u00e8que."
+                    }
+                }
+            }
+        },
+        "lekaapp.empty_library_placedholder_view.library_is_empty": {
+            "comment": "Empty library title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Your Library is Empty"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Votre Biblioth\u00e8que est vide"
+                    }
+                }
+            }
+        },
+        "lekaapp.empty_library_placedholder_view.remove_items": {
+            "comment": "Removal instruction",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "You can remove items from your Library using the same button."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Vous pouvez supprimer des \u00e9l\u00e9ments de votre Biblioth\u00e8que en utilisant le m\u00eame bouton."
+                    }
+                }
+            }
+        },
+        "lekaapp.empty_library_placedholder_view.tap_the": {
+            "comment": "Instruction prefix",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Tap the"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Appuyez sur le bouton"
+                    }
+                }
+            }
+        },
         "lekaapp.forgot_password_view.context_message": {
             "comment": "Forgot Password View context message",
             "extractionState": "extracted_with_value",

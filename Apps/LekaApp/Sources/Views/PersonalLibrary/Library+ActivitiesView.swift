@@ -20,12 +20,7 @@ struct LibraryActivitiesView: View {
 
     var body: some View {
         if self.activities.isEmpty {
-            Text("""
-                Your haven't saved any activity yet.
-                Tap the \(Image(systemName: "ellipsis.circle")) button on any activity to add it here.
-                You can then remove them from the Library using the same button.
-                """)
-            .multilineTextAlignment(.center)
+            EmptyLibraryPlaceholderView(icon: .activities)
         } else {
             ScrollView(showsIndicators: true) {
                 ActivityListView(activities: self.activities) { activity in

@@ -20,12 +20,7 @@ struct LibraryStoriesView: View {
 
     var body: some View {
         if self.stories.isEmpty {
-            Text("""
-                Your haven't saved any story yet.
-                Tap the \(Image(systemName: "ellipsis.circle")) button on any story to add it here.
-                You can then remove them from the Library using the same button.
-                """)
-            .multilineTextAlignment(.center)
+            EmptyLibraryPlaceholderView(icon: .stories)
         } else {
             ScrollView(showsIndicators: true) {
                 StoryListView(stories: self.stories) { story in
