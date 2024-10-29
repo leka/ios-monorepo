@@ -1856,6 +1856,78 @@
                 }
             }
         },
+        "lekaapp.main_view.sidebar.category_label.library_activities": {
+            "comment": "The title of the category 'Library Activities'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Activities"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Activit\u00e9s"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.library_curriculums": {
+            "comment": "The title of the category 'Library Curriculums'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Curriculums"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Parcours"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.library_gamepads": {
+            "comment": "The title of the category 'Library Gamepads'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Gamepads"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Manettes"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.library_stories": {
+            "comment": "The title of the category 'Library Stories'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Stories"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Histoires"
+                    }
+                }
+            }
+        },
         "lekaapp.main_view.sidebar.category_label.news": {
             "comment": "The title of the category 'News'",
             "extractionState": "extracted_with_value",

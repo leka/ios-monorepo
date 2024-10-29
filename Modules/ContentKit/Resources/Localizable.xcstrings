@@ -277,6 +277,42 @@
                 }
             }
         },
+        "content_kit.library_menu_actions.add_to_library_button_label": {
+            "comment": "Add to library button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Add to Library"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Ajouter \u00e0 la Biblioth\u00e8que"
+                    }
+                }
+            }
+        },
+        "content_kit.library_menu_actions.remove_from_library_button_label": {
+            "comment": "Remove from library button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Delete from Library"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Supprimer de la Biblioth\u00e8que"
+                    }
+                }
+            }
+        },
         "content_kit.sample_activity_list_view.start_activity_button_label": {
             "comment": "Start activity button label on Sample Activity List view",
             "extractionState": "extracted_with_value",
