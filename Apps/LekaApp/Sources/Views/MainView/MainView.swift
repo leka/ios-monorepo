@@ -328,5 +328,4 @@ struct MainView: View {
 
 #Preview {
     MainView()
-        .previewInterfaceOrientation(.landscapeLeft)
 }
