@@ -37,13 +37,13 @@ public extension SettingsDictionary {
         }
 
         if Environment.fastlaneBuild.getBoolean(default: false) {
-            let app = Environment.fastlaneAppName.getString(default: "")
+            let bundleId = Environment.fastlaneMatchAppBundleId.getString(default: "")
 
-            guard app != "" else {
+            guard bundleId != "" else {
                 fatalError("You must provide a certificate app name")
             }
 
-            settings = settings.manualCodeSigning(identity: "Apple Distribution", provisioningProfileSpecifier: "match AppStore io.leka.apf.app.\(app)")
+            settings = settings.manualCodeSigning(identity: "Apple Distribution", provisioningProfileSpecifier: "match AppStore \(bundleId)")
         } else {
             settings = settings.manualCodeSigning(provisioningProfileSpecifier: "match Development io.leka.apf.*")
         }
