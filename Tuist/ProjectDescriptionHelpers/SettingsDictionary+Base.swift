@@ -6,7 +6,7 @@
 
 import ProjectDescription
 
-extension SettingsDictionary {
+public extension SettingsDictionary {
     static var base: SettingsDictionary {
         var settings: SettingsDictionary = [
             "DEVELOPMENT_TEAM": "GKQJXACKX7",

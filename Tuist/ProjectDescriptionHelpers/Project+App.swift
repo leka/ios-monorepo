@@ -10,6 +10,7 @@ public extension Project {
     static func app(
         name: String,
         version: String = "1.0.0",
+        bundleId: String? = nil,
         deploymentTargets: DeploymentTargets = .iOS("16.6"),
         destinations: Destinations = [.iPad, .macWithiPadDesign],
         infoPlist: [String: Plist.Value] = [:],
@@ -22,7 +23,7 @@ public extension Project {
             name: name,
             destinations: destinations,
             product: .app,
-            bundleId: "io.leka.apf.app.\(name)",
+            bundleId: bundleId ?? "io.leka.apf.app.\(name)",
             deploymentTargets: deploymentTargets,
             infoPlist: .extendingDefault(with: InfoPlist.extendingBase(version: version, with: infoPlist)),
             sources: ["Sources/**"],

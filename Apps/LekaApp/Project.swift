@@ -7,25 +7,48 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
 
-let kLekaAppVersion: String = {
-    guard Environment.productionBuild.getBoolean(default: false) else {
-        return "999.999.999"
-    }
+let kLekaAppVersion: String = if Environment.productionBuild.getBoolean(default: false) {
+    "1.13.0"
+} else {
+    "99.00.00"
+}
 
-    // ? App version
-    return "1.13.0"
-}()
+let kLekaAppBundleName: String = if Environment.productionBuild.getBoolean(default: false) {
+    "Leka"
+} else {
+    "Leka Beta"
+}
+
+let kLekaAppBundleIdentifier: String = if Environment.productionBuild.getBoolean(default: false) {
+    "io.leka.apf.app.LekaApp"
+} else {
+    "io.leka.apf.app.LekaApp.beta"
+}
+
+let kLekaAppBundleURLSchemes: String = if Environment.productionBuild.getBoolean(default: false) {
+    "LekaApp"
+} else {
+    "LekaAppBeta"
+}
+
+let kLekaAppIconName: String = if Environment.productionBuild.getBoolean(default: false) {
+    "AppIcon"
+} else {
+    "AppIconBeta"
+}
 
 let project = Project.app(
     name: "LekaApp",
     version: kLekaAppVersion,
+    bundleId: kLekaAppBundleIdentifier,
     infoPlist: [
         "LSApplicationCategoryType": "public.app-category.education",
+        "CFBundleName": "\(kLekaAppBundleName)",
         "CFBundleURLTypes": [
             [
                 "CFBundleTypeRole": "Editor",
-                "CFBundleURLName": "io.leka.apf.app.LekaApp",
-                "CFBundleURLSchemes": ["LekaApp"],
+                "CFBundleURLName": "\(kLekaAppBundleIdentifier)",
+                "CFBundleURLSchemes": ["\(kLekaAppBundleURLSchemes)"],
             ],
         ],
         "LSApplicationQueriesSchemes": ["LekaUpdater"],
@@ -34,6 +57,9 @@ let project = Project.app(
             "audio",
         ],
     ],
+    settings: SettingsDictionary.extendingBase(with: [
+        "ASSETCATALOG_COMPILER_APPICON_NAME": "\(kLekaAppIconName)",
+    ]),
     dependencies: [
         .project(target: "AccountKit", path: Path("../../Modules/AccountKit")),
         .project(target: "ContentKit", path: Path("../../Modules/ContentKit")),
