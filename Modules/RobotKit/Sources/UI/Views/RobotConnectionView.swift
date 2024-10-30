@@ -83,6 +83,7 @@ public struct RobotConnectionView: View {
                 .opacity(self.viewModel.connected ? 0 : 1)
             }
         }
+        .interactiveDismissDisabled(self.viewModel.connectingToRebootingRobot)
     }
 
     // MARK: Internal
