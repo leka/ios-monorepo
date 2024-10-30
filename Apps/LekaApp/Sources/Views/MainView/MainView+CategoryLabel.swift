@@ -9,7 +9,7 @@ extension MainView {
     struct CategoryLabel: View {
         // MARK: Lifecycle
 
-        // swiftlint:disable cyclomatic_complexity body_length
+        // swiftlint:disable cyclomatic_complexity function_body_length
 
         init(category: Navigation.Category) {
             self.category = category
@@ -43,8 +43,8 @@ extension MainView {
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.curriculums.characters)
                     self.systemImage = "graduationcap"
 
-                case .activities:
-                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.activities.characters)
+                case .educationalGames:
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.educationalGames.characters)
                     self.systemImage = "dice"
 
                 case .stories:
@@ -54,6 +54,18 @@ extension MainView {
                 case .gamepads:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.gamepads.characters)
                     self.systemImage = "gamecontroller"
+
+                case .libraryCurriculums:
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.libraryCurriculums.characters)
+                    self.systemImage = "graduationcap.fill"
+
+                case .libraryActivities:
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.libraryActivities.characters)
+                    self.systemImage = "dice.fill"
+
+                case .libraryStories:
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.stories.characters)
+                    self.systemImage = "text.book.closed.fill"
 
                 case .caregivers:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.caregivers.characters)
@@ -86,22 +98,10 @@ extension MainView {
                 case .demo:
                     self.title = "Demo"
                     self.systemImage = "play.rectangle"
-
-                case .libraryCurriculums:
-                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.curriculums.characters)
-                    self.systemImage = "graduationcap.fill"
-
-                case .libraryActivities:
-                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.activities.characters)
-                    self.systemImage = "dice.fill"
-
-                case .libraryStories:
-                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.stories.characters)
-                    self.systemImage = "text.book.closed.fill"
             }
         }
 
-        // swiftlint:enable cyclomatic_complexity body_length
+        // swiftlint:enable cyclomatic_complexity function_body_length
 
         // MARK: Internal
 
@@ -117,5 +117,5 @@ extension MainView {
 }
 
 #Preview {
-    MainView.CategoryLabel(category: .activities)
+    MainView.CategoryLabel(category: .educationalGames)
 }

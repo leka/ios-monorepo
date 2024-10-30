@@ -15,13 +15,13 @@ struct CategoryLibraryView: View {
             switch self.category {
                 case .libraryCurriculums:
                     LibraryCurriculumsView(viewModel: self.rootAccountViewModel)
-                        .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.curriculums.characters))
+                        .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.libraryCurriculums.characters))
                 case .libraryStories:
                     LibraryStoriesView(viewModel: self.rootAccountViewModel)
-                        .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.stories.characters))
+                        .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.libraryStories.characters))
                 default:
                     LibraryActivitiesView(viewModel: self.rootAccountViewModel)
-                        .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.activities.characters))
+                        .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.libraryActivities.characters))
             }
         } else {
             Text(String(l10n.MainView.DetailView.disconnectedLibraryMessage.characters))
@@ -34,5 +34,5 @@ struct CategoryLibraryView: View {
 }
 
 #Preview {
-    CategoryLibraryView(category: .activities)
+    CategoryLibraryView(category: .educationalGames)
 }
