@@ -29,7 +29,6 @@ extension Navigation {
         case libraryCurriculums
         case libraryActivities
         case libraryStories
-        case libraryGamepads
 
         // MARK: Internal
 

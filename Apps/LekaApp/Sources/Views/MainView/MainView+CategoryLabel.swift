@@ -98,10 +98,6 @@ extension MainView {
                 case .libraryStories:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.stories.characters)
                     self.systemImage = "text.book.closed.fill"
-
-                case .libraryGamepads:
-                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.gamepads.characters)
-                    self.systemImage = "gamecontroller.fill"
             }
         }
 

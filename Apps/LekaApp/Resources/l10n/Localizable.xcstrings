@@ -1964,24 +1964,6 @@
                 }
             }
         },
-        "lekaapp.main_view.sidebar.category_label.library_gamepads": {
-            "comment": "The title of the category 'Library Gamepads'",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Gamepads"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Manettes"
-                    }
-                }
-            }
-        },
         "lekaapp.main_view.sidebar.category_label.library_stories": {
             "comment": "The title of the category 'Library Stories'",
             "extractionState": "extracted_with_value",
