@@ -93,7 +93,6 @@ struct MainView: View {
                                 CategoryLabel(category: .libraryCurriculums)
                                 CategoryLabel(category: .libraryActivities)
                                 CategoryLabel(category: .libraryStories)
-                                CategoryLabel(category: .libraryGamepads)
                             }
                         } else {
                             Section("Demo mode") {
@@ -188,9 +187,6 @@ struct MainView: View {
 
                     case .libraryStories:
                         CategoryLibraryView(category: .libraryStories)
-
-                    case .libraryGamepads:
-                        CategoryLibraryView(category: .libraryGamepads)
 
                     case .none:
                         Text(l10n.MainView.Sidebar.CategoryLabel.home)
