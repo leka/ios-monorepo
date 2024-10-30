@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK: - ActivitiesView
 
-struct CategoryActivitiesView: View {
+struct CategoryEducationalGamesView: View {
     // MARK: Internal
 
     var body: some View {
@@ -50,7 +50,7 @@ struct CategoryActivitiesView: View {
 
     // MARK: Private
 
-    private let category: CategoryActivities = .shared
+    private let category: CategoryEducationalGames = .shared
 
     @ObservedObject private var styleManager: StyleManager = .shared
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
@@ -61,6 +61,6 @@ struct CategoryActivitiesView: View {
     NavigationSplitView {
         Text("Sidebar")
     } detail: {
-        CategoryActivitiesView()
+        CategoryEducationalGamesView()
     }
 }

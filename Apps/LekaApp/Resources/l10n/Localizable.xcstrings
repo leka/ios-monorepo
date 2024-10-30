@@ -1820,24 +1820,6 @@
                 }
             }
         },
-        "lekaapp.main_view.sidebar.category_label.activities": {
-            "comment": "The title of the category 'Activities'",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Activities"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Activit\u00e9s"
-                    }
-                }
-            }
-        },
         "lekaapp.main_view.sidebar.category_label.caregivers": {
             "comment": "The title of the category 'Caregivers'",
             "extractionState": "extracted_with_value",
@@ -1888,6 +1870,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Parcours"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.educational_games": {
+            "comment": "The title of the category 'Educational Games'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Educational Games"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Jeux \u00c9ducatifs"
                     }
                 }
             }

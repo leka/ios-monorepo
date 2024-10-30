@@ -60,7 +60,7 @@ struct MainView: View {
 
                     Section(String(l10n.MainView.Sidebar.sectionContent.characters)) {
                         CategoryLabel(category: .curriculums)
-                        CategoryLabel(category: .activities)
+                        CategoryLabel(category: .educationalGames)
                         CategoryLabel(category: .stories)
                         CategoryLabel(category: .gamepads)
                     }
@@ -142,8 +142,8 @@ struct MainView: View {
                     case .curriculums:
                         CategoryCurriculumsView()
 
-                    case .activities:
-                        CategoryActivitiesView()
+                    case .educationalGames:
+                        CategoryEducationalGamesView()
 
                     case .stories:
                         CategoryStoriesView()

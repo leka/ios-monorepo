@@ -12,7 +12,7 @@ extension Navigation {
 
         // ? Content
         case curriculums
-        case activities
+        case educationalGames
         case stories
         case gamepads
 
