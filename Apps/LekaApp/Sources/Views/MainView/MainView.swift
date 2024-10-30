@@ -65,17 +65,25 @@ struct MainView: View {
                         CategoryLabel(category: .gamepads)
                     }
 
-                    Section(String(l10n.MainView.Sidebar.sectionResources.characters)) {
-                        CategoryLabel(category: .resourcesFirstSteps)
-                        CategoryLabel(category: .resourcesVideo)
-                        CategoryLabel(category: .resourcesDeepDive)
-                    }
+                    #if DEVELOPER_MODE || TESTFLIGHT_BUILD
+                        Section(String(l10n.MainView.Sidebar.sectionLibrary.characters)) {
+                            CategoryLabel(category: .libraryCurriculums)
+                            CategoryLabel(category: .libraryActivities)
+                            CategoryLabel(category: .libraryStories)
+                        }
+                    #endif
 
                     if self.authManagerViewModel.userAuthenticationState == .loggedIn {
                         Section(String(l10n.MainView.Sidebar.sectionUsers.characters)) {
                             CategoryLabel(category: .caregivers)
                             CategoryLabel(category: .carereceivers)
                         }
+                    }
+
+                    Section(String(l10n.MainView.Sidebar.sectionResources.characters)) {
+                        CategoryLabel(category: .resourcesFirstSteps)
+                        CategoryLabel(category: .resourcesVideo)
+                        CategoryLabel(category: .resourcesDeepDive)
                     }
 
                     #if DEVELOPER_MODE || TESTFLIGHT_BUILD
@@ -87,12 +95,6 @@ struct MainView: View {
                                 CategoryLabel(category: .rasterImageList)
                                 CategoryLabel(category: .vectorImageList)
                                 CategoryLabel(category: .news)
-                            }
-
-                            Section(String(l10n.MainView.Sidebar.sectionLibrary.characters)) {
-                                CategoryLabel(category: .libraryCurriculums)
-                                CategoryLabel(category: .libraryActivities)
-                                CategoryLabel(category: .libraryStories)
                             }
                         } else {
                             Section("Demo mode") {
