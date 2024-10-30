@@ -19,10 +19,14 @@ struct LibraryActivitiesView: View {
     // MARK: Internal
 
     var body: some View {
-        ScrollView(showsIndicators: true) {
-            ActivityListView(activities: self.activities) { activity in
-                self.navigation.currentActivity = activity
-                self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+        if self.activities.isEmpty {
+            EmptyLibraryPlaceholderView(icon: .activities)
+        } else {
+            ScrollView(showsIndicators: true) {
+                ActivityListView(activities: self.activities) { activity in
+                    self.navigation.currentActivity = activity
+                    self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+                }
             }
         }
     }

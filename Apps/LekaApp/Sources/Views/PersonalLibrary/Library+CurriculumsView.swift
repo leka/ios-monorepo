@@ -17,9 +17,13 @@ struct LibraryCurriculumsView: View {
     // MARK: Internal
 
     var body: some View {
-        ScrollView(showsIndicators: true) {
-            CurriculumGridView(curriculums: self.curriculums) { _ in
-                // Nothing to do
+        if self.curriculums.isEmpty {
+            EmptyLibraryPlaceholderView(icon: .curriculums)
+        } else {
+            ScrollView(showsIndicators: true) {
+                CurriculumGridView(curriculums: self.curriculums) { _ in
+                    // Nothing to do
+                }
             }
         }
     }

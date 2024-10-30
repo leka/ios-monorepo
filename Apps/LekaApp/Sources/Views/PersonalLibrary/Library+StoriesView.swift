@@ -19,10 +19,14 @@ struct LibraryStoriesView: View {
     // MARK: Internal
 
     var body: some View {
-        ScrollView(showsIndicators: true) {
-            StoryListView(stories: self.stories) { story in
-                self.navigation.currentStory = story
-                self.navigation.fullScreenCoverContent = .storyView(carereceivers: [])
+        if self.stories.isEmpty {
+            EmptyLibraryPlaceholderView(icon: .stories)
+        } else {
+            ScrollView(showsIndicators: true) {
+                StoryListView(stories: self.stories) { story in
+                    self.navigation.currentStory = story
+                    self.navigation.fullScreenCoverContent = .storyView(carereceivers: [])
+                }
             }
         }
     }
