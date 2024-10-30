@@ -73,14 +73,16 @@ public struct RobotConnectionView: View {
                     Text(l10n.RobotKit.RobotConnectionView.closeButton)
                 }
             }
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    self.viewModel.connectToRobot()
-                } label: {
-                    Text(l10n.RobotKit.RobotConnectionView.connectButton)
+            if !self.viewModel.connectingToRebootingRobot {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        self.viewModel.connectToRobot()
+                    } label: {
+                        Text(l10n.RobotKit.RobotConnectionView.connectButton)
+                    }
+                    .disabled(self.viewModel.selectedDiscovery == nil)
+                    .opacity(self.viewModel.connected ? 0 : 1)
                 }
-                .disabled(self.viewModel.selectedDiscovery == nil)
-                .opacity(self.viewModel.connected ? 0 : 1)
             }
         }
         .interactiveDismissDisabled(self.viewModel.connectingToRebootingRobot)
