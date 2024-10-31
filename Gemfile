@@ -6,6 +6,6 @@ source 'https://rubygems.org'
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-gem 'fastlane', '~>2.219.0'
+gem 'fastlane', '~>2.225.0'
 
 gem 'rubocop'

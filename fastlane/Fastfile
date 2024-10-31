@@ -18,6 +18,7 @@ GIT_BASE_REF = ENV.fetch('BASE_REF', 'develop')
 
 RELEASE_BUNDLE_IDS = [
   'io.leka.apf.app.LekaApp',
+  'io.leka.apf.app.LekaApp.beta',
   'io.leka.apf.app.LekaUpdater'
 ].freeze
 
@@ -98,7 +99,11 @@ platform :ios do
     UI.important apps.to_s
 
     apps.each do |app|
-      UI.header "Step: Generate, build & upload target: #{app}"
+      app_bundle_id = "io.leka.apf.app.#{app}.beta"
+      app_xcodeproj = "#{ROOT_DIR}/Apps/#{app}/#{app}.xcodeproj"
+
+      UI.header "Step: Generate, build & upload target: #{app} / #{app_bundle_id} / #{app_xcodeproj}"
+
       Dir.chdir('..') do
         ENV['TUIST_TURN_OFF_LINTERS'] = 'TRUE'
         ENV['TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG'] = 'FALSE'
@@ -108,12 +113,9 @@ platform :ios do
         ENV['TUIST_TESTFLIGHT_BUILD'] = 'TRUE'
         ENV['TUIST_PRODUCTION_BUILD'] = 'FALSE'
         ENV['TUIST_FASTLANE_BUILD'] = 'TRUE'
-        ENV['TUIST_FASTLANE_APP_NAME'] = app.to_s
+        ENV['TUIST_FASTLANE_MATCH_APP_BUNDLE_ID'] = app_bundle_id.to_s
         system('tuist', 'generate', '--no-open', '--no-binary-cache', app.to_s)
       end
-
-      app_id = "io.leka.apf.app.#{app}"
-      app_xcodeproj = "#{ROOT_DIR}/Apps/#{app}/#{app}.xcodeproj"
 
       begin
         if ENV['CI']
@@ -146,12 +148,12 @@ platform :ios do
 
         UI.header 'Step: Create verson and new build number'
 
-        latest_build_number = latest_testflight_build_number(app_identifier: app_id.to_s).to_s
+        latest_build_number = latest_testflight_build_number(app_identifier: app_bundle_id.to_s).to_s
         new_build_number = create_new_build_number(latest_build_number: latest_build_number)
         version_number = get_version_number(xcodeproj: app_xcodeproj.to_s)
         build_date = Time.new.strftime('%Y_%m_%d')
 
-        UI.important "Next release for: #{app}"
+        UI.important "Next release for: #{app_bundle_id}"
         UI.important "Version number: #{version_number}"
         UI.important "Build number: #{new_build_number}"
 
@@ -175,20 +177,21 @@ platform :ios do
           export_method: 'app-store',
           export_options: {
             provisioningProfiles: {
-              "io.leka.apf.app.#{app}" => "match AppStore io.leka.apf.app.#{app}"
+              app_bundle_id.to_s => "match AppStore #{app_bundle_id}"
             }
           },
           workspace: 'ios-monorepo.xcworkspace',
           scheme: app,
           output_directory: './.build',
-          output_name: "#{build_date}-#{app}-v#{version_number}-#{new_build_number}"
+          output_name: "#{build_date}-#{app}-beta-v#{version_number}-#{new_build_number}"
         )
 
         upload_to_testflight(
-          app_identifier: app_id.to_s,
+          app_identifier: app_bundle_id.to_s,
+          ipa: "./.build/#{build_date}-#{app}-beta-v#{version_number}-#{new_build_number}.ipa",
           skip_waiting_for_build_processing: true,
           distribute_external: false,
-          groups: %w[LekaTeam ClubExpert],
+          groups: %w[LekaTeam],
           changelog: testflight_changelog
         )
       ensure
