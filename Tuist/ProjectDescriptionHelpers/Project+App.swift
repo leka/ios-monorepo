@@ -15,6 +15,7 @@ public extension Project {
         destinations: Destinations = [.iPad, .macWithiPadDesign],
         infoPlist: [String: Plist.Value] = [:],
         settings: SettingsDictionary = [:],
+        launchArguments: [LaunchArgument] = [],
         options: Options = .options(),
         dependencies: [TargetDependency] = [],
         schemes: [Scheme] = []
@@ -33,7 +34,8 @@ public extension Project {
             settings: .settings(base: .extendingBase(with: settings)),
             environmentVariables: [
                 "IDEPreferLogStreaming": "YES",
-            ]
+            ],
+            launchArguments: launchArguments
         )
 
         let testTarget = Target.target(
