@@ -22,7 +22,7 @@ public struct RobotConnectionView: View {
             if self.viewModel.connectingToRebootingRobot {
                 ProgressView()
                 Text(l10n.RobotKit.RobotConnectionView.rebootingDeepSleepingRobotText)
-            } else if self.viewModel.connected {
+            } else if self.robotViewModel.isConnected {
                 ConnectedRobotView(viewModel: self.viewModel)
             } else {
                 switch self.viewModel.managerState {
@@ -81,7 +81,7 @@ public struct RobotConnectionView: View {
                         Text(l10n.RobotKit.RobotConnectionView.connectButton)
                     }
                     .disabled(self.viewModel.selectedDiscovery == nil)
-                    .opacity(self.viewModel.connected ? 0 : 1)
+                    .opacity(self.robotViewModel.isConnected ? 0 : 1)
                 }
             }
         }
@@ -93,10 +93,11 @@ public struct RobotConnectionView: View {
     @Environment(\.scenePhase) var scenePhase
 
     @StateObject var viewModel: RobotConnectionViewModel
-
     @Environment(\.dismiss) var dismiss
 
     // MARK: Private
+
+    @StateObject private var robotViewModel: ConnectedRobotInformationViewModel = .init()
 
     private let columns: [GridItem] = [
         GridItem(),
