@@ -38,6 +38,42 @@
                 }
             }
         },
+        "robotkit.connected_robot_view.rename_alert_button_label": {
+            "comment": "The button label of the alert when renaming the robot",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Reboot"
+                    }
+                }
+            }
+        },
+        "robotkit.connected_robot_view.rename_alert_message": {
+            "comment": "The message of the alert when renaming the robot",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Your robot need to reboot to be renamed, please reconnect after the reboot"
+                    }
+                }
+            }
+        },
+        "robotkit.connected_robot_view.rename_alert_title": {
+            "comment": "The title of the alert when renaming the robot",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Warning"
+                    }
+                }
+            }
+        },
         "robotkit.connected_robot_view.robot_not_up_to_date_alert": {
             "comment": "Update is available alert",
             "extractionState": "extracted_with_value",

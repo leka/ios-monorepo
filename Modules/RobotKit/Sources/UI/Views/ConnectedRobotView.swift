@@ -126,9 +126,9 @@ public struct ConnectedRobotView: View {
         })
         .alert(isPresented: self.$triggerRebootAlertPresented) {
             Alert(
-                title: Text(self.waitingForRebootAlertPresented ? "Wait for reboot" : "Warning"),
-                message: Text("Your robot will reboot to set the new name"),
-                primaryButton: .default(Text("Reboot"), action: {
+                title: Text(l10n.ConnectedRobotView.renameAlertTitle),
+                message: Text(l10n.ConnectedRobotView.renameAlertMessage),
+                primaryButton: .default(Text(l10n.ConnectedRobotView.renameAlertButtonLabel), action: {
                     self.isEditingName = false
                     self.rename(in: self.currentRobotName)
                 }),
@@ -237,6 +237,27 @@ extension l10n {
             bundle: RobotKitResources.bundle,
             value: "An update for Leka is available",
             comment: "Update is available alert"
+        )
+
+        static let renameAlertTitle = LocalizedString(
+            "robotkit.connected_robot_view.rename_alert_title",
+            bundle: RobotKitResources.bundle,
+            value: "Warning",
+            comment: "The title of the alert when renaming the robot"
+        )
+
+        static let renameAlertMessage = LocalizedString(
+            "robotkit.connected_robot_view.rename_alert_message",
+            bundle: RobotKitResources.bundle,
+            value: "Your robot need to reboot to be renamed, please reconnect after the reboot",
+            comment: "The message of the alert when renaming the robot"
+        )
+
+        static let renameAlertButtonLabel = LocalizedString(
+            "robotkit.connected_robot_view.rename_alert_button_label",
+            bundle: RobotKitResources.bundle,
+            value: "Reboot",
+            comment: "The button label of the alert when renaming the robot"
         )
     }
 }
