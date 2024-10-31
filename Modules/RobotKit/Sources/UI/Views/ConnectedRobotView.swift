@@ -130,7 +130,8 @@ public struct ConnectedRobotView: View {
                 message: Text(l10n.ConnectedRobotView.renameAlertMessage),
                 primaryButton: .default(Text(l10n.ConnectedRobotView.renameAlertButtonLabel), action: {
                     self.isEditingName = false
-                    self.rename(in: self.currentRobotName)
+                    self.connectedRobotInformationViewModel.robot.rename(in: self.currentRobotName)
+                    self.dismiss()
                 }),
                 secondaryButton: .cancel()
             )
@@ -196,22 +197,6 @@ public struct ConnectedRobotView: View {
                 .foregroundColor(.gray)
                 .monospacedDigit()
         }
-    }
-
-    private func rename(in name: String) {
-        let dataName = name.data(using: .utf8)!
-        let robotNameCharacteristic = CharacteristicModelWriteOnly(
-            characteristicUUID: BLESpecs.Config.Characteristics.robotName,
-            serviceUUID: BLESpecs.Config.service,
-            onWrite: {
-                self.connectedRobotInformationViewModel.robot.reboot()
-                self.viewModel.connectedDiscovery = nil
-                self.viewModel.selectedDiscovery = nil
-                self.dismiss()
-            }
-        )
-
-        self.connectedRobotInformationViewModel.robot.connectedPeripheral?.send(dataName, forCharacteristic: robotNameCharacteristic)
     }
 }
 
