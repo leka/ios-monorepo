@@ -46,9 +46,9 @@ public struct ConnectedRobotView: View {
                                     .lineLimit(1)
                                     .truncationMode(.tail)
                                     .foregroundColor(.primary)
-                                Image(systemName: "pencil.circle.fill")
-                                    .foregroundColor(.gray)
-                                    .font(.title)
+                                Image(systemName: "pencil.circle")
+                                    .foregroundColor(self.styleManager.accentColor!)
+                                    .font(.title2)
                             }
                             .onTapGesture {
                                 self.isEditingName = true
@@ -139,6 +139,7 @@ public struct ConnectedRobotView: View {
 
     // MARK: Internal
 
+    @StateObject private var styleManager: StyleManager = .shared
     @StateObject var connectedRobotInformationViewModel: ConnectedRobotInformationViewModel = .init()
     @StateObject var viewModel: RobotConnectionViewModel
     @State private var currentRobotName: String = ""
