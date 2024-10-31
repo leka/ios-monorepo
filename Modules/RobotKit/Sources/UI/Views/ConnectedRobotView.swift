@@ -131,7 +131,6 @@ public struct ConnectedRobotView: View {
                 primaryButton: .default(Text("Reboot"), action: {
                     self.isEditingName = false
                     self.rename(in: self.currentRobotName)
-                    self.waitingForRebootAlertPresented = true
                 }),
                 secondaryButton: .cancel()
             )
@@ -145,7 +144,6 @@ public struct ConnectedRobotView: View {
     @State private var currentRobotName: String = ""
     @State private var isEditingName: Bool = false
     @State private var triggerRebootAlertPresented: Bool = false
-    @State private var waitingForRebootAlertPresented: Bool = false
 
     // swiftlint:disable:next force_cast
     private let isNotLekaUpdater = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as! String != "LekaUpdater"
@@ -205,10 +203,10 @@ public struct ConnectedRobotView: View {
             characteristicUUID: BLESpecs.Config.Characteristics.robotName,
             serviceUUID: BLESpecs.Config.service,
             onWrite: {
-                self.viewModel.selectedDiscovery = self.viewModel.connectedDiscovery
-                self.viewModel.connectingToRebootingRobot = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: self.viewModel.connectToRobot)
                 self.connectedRobotInformationViewModel.robot.reboot()
+                self.viewModel.connectedDiscovery = nil
+                self.viewModel.selectedDiscovery = nil
+                self.dismiss()
             }
         )
 
