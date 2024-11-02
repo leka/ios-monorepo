@@ -220,6 +220,7 @@ struct SettingsView: View {
         self.rootAccountViewModel.resetData()
         self.styleManager.accentColor = DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
         self.styleManager.colorScheme = .light
+        AnalyticsManager.shared.clearDefaultEventParameters()
     }
 
     private var errorAlertTitle: String {
