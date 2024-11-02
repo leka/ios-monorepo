@@ -22,14 +22,18 @@ public class AnalyticsManager {
         Analytics.logEvent(name, parameters: parameters)
     }
 
-    public func setUserProperty(value: String, forName name: String) {
-        Analytics.setUserProperty(value, forName: name)
-    }
-
     public func logScreenView(screenName: String, screenClass: String? = nil) {
         Analytics.logEvent(AnalyticsEventScreenView, parameters: [
             AnalyticsParameterScreenName: screenName,
             AnalyticsParameterScreenClass: screenClass ?? screenName,
         ])
+    }
+
+    public func setDefaultEventParameters(_ parameters: [String: Any]?) {
+        Analytics.setDefaultEventParameters(parameters)
+    }
+
+    public func clearDefaultEventParameters() {
+        self.setDefaultEventParameters(nil)
     }
 }
