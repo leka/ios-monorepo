@@ -141,6 +141,9 @@ public struct CurriculumDetailsView: View {
                 }
             }
         }
+        .onAppear {
+            AnalyticsManager.shared.logScreenView(screenName: "view_curriculum_details_view")
+        }
         .toolbar {
             #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
