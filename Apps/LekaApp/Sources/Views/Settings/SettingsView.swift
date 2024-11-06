@@ -95,6 +95,7 @@ struct SettingsView: View {
                     {
                         Button(role: .destructive) {
                             self.dismiss()
+                            AnalyticsManager.shared.logEvent(name: "sign_out")
                             self.authManager.signOut()
                             self.persistentDataManager.clearUserData()
                             self.reset()
