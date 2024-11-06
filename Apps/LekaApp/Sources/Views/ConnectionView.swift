@@ -78,6 +78,7 @@ struct ConnectionView: View {
                     self.caregiverManager.initializeCaregiversListener()
                     self.carereceiverManager.initializeCarereceiversListener()
                     self.rootAccountManager.initializeRootAccountListener()
+                    AnalyticsManager.shared.logLoginEvent()
                     self.authManagerViewModel.userAction = .none
                     self.navigation.fullScreenCoverContent = nil
                 }

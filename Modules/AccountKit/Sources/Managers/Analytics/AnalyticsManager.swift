@@ -36,4 +36,14 @@ public class AnalyticsManager {
     public func clearDefaultEventParameters() {
         self.setDefaultEventParameters(nil)
     }
+
+    // Recommended events methods
+
+    public func logLoginEvent() {
+        Analytics.logEvent(AnalyticsEventLogin, parameters: nil)
+    }
+
+    public func logSignUpEvent() {
+        Analytics.logEvent(AnalyticsEventSignUp, parameters: nil)
+    }
 }
