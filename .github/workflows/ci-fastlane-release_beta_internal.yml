@@ -66,9 +66,10 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: vendor/bundle
-          key: ${{ runner.name }}-${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          key: ${{ runner.os }}-gems-${{ runner.name }}-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
-            ${{ runner.name }}-${{ runner.os }}-gems-
+            ${{ runner.os }}-gems-${{ runner.name }}-
+            ${{ runner.os }}-gems-
 
       - name: bundle install
         run: |
