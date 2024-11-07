@@ -38,10 +38,8 @@ struct LekaApp: App {
 
         // ? Enable Firebase Analytics DebugView for TestFlight/Developer mode
         #if TESTFLIGHT_BUILD || DEVELOPER_MODE
-            var args = ProcessInfo.processInfo.arguments
-            args.append("-FIRDebugEnabled")
-            args.append("-FIRAnalyticsDebugEnabled")
-            ProcessInfo.processInfo.setValue(args, forKey: "arguments")
+            UserDefaults.standard.set(true, forKey: "/google/firebase/debug_mode")
+            UserDefaults.standard.set(true, forKey: "/google/measurement/debug_mode")
         #endif
 
         guard let googleServiceInfoPlistPath = Bundle.main.path(forResource: googleServiceInfoPlistName, ofType: "plist"),
@@ -53,6 +51,7 @@ struct LekaApp: App {
 
         log.warning("Firebase: \(googleServiceInfoPlistName)")
         log.warning("Firebase options: \(options)")
+
         FirebaseApp.configure(options: options)
     }
 
