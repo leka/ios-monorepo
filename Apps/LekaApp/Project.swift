@@ -37,22 +37,6 @@ let kLekaAppIconName: String = if Environment.productionBuild.getBoolean(default
     "AppIconBeta"
 }
 
-let kLekaAppLaunchArguments: [LaunchArgument] = if Environment.productionBuild.getBoolean(default: false) {
-    [
-        .launchArgument(name: "-FIRDebugEnabled", isEnabled: false),
-        .launchArgument(name: "-FIRDebugDisabled", isEnabled: true),
-        .launchArgument(name: "-FIRAnalyticsDebugEnabled", isEnabled: false),
-        .launchArgument(name: "-FIRAnalyticsDebugDisabled", isEnabled: true),
-    ]
-} else {
-    [
-        .launchArgument(name: "-FIRDebugEnabled", isEnabled: true),
-        .launchArgument(name: "-FIRDebugDisabled", isEnabled: false),
-        .launchArgument(name: "-FIRAnalyticsDebugEnabled", isEnabled: true),
-        .launchArgument(name: "-FIRAnalyticsDebugDisabled", isEnabled: false),
-    ]
-}
-
 let project = Project.app(
     name: "LekaApp",
     version: kLekaAppVersion,
@@ -76,7 +60,6 @@ let project = Project.app(
     settings: SettingsDictionary.extendingBase(with: [
         "ASSETCATALOG_COMPILER_APPICON_NAME": "\(kLekaAppIconName)",
     ]),
-    launchArguments: kLekaAppLaunchArguments,
     dependencies: [
         .project(target: "AccountKit", path: Path("../../Modules/AccountKit")),
         .project(target: "ContentKit", path: Path("../../Modules/ContentKit")),

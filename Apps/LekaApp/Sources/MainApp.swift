@@ -21,6 +21,7 @@ struct LekaApp: App {
     // MARK: Lifecycle
 
     init() {
+        // ? Set GoogleService-Info.plist based on the build configuration
         #if PRODUCTION_BUILD
             log.warning("PRODUCTION_BUILD")
             let googleServiceInfoPlistName = "GoogleServiceInfo+PROD"
@@ -33,6 +34,14 @@ struct LekaApp: App {
         #else
             log.warning("NO BUILD CONFIGURATION")
             let googleServiceInfoPlistName = "GoogleServiceInfo+NOT_FOUND"
+        #endif
+
+        // ? Enable Firebase Analytics DebugView for TestFlight/Developer mode
+        #if TESTFLIGHT_BUILD || DEVELOPER_MODE
+            var args = ProcessInfo.processInfo.arguments
+            args.append("-FIRDebugEnabled")
+            args.append("-FIRAnalyticsDebugEnabled")
+            ProcessInfo.processInfo.setValue(args, forKey: "arguments")
         #endif
 
         guard let googleServiceInfoPlistPath = Bundle.main.path(forResource: googleServiceInfoPlistName, ofType: "plist"),
