@@ -26,28 +26,28 @@ public class CaregiverManagerViewModel: ObservableObject {
     private let caregiverManager = CaregiverManager.shared
 
     private func subscribeToManager() {
-        self.caregiverManager.caregiversPublisher
+        self.caregiverManager.caregiverList
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] fetchedCaregivers in
                 self?.caregivers = fetchedCaregivers
             })
             .store(in: &self.cancellables)
 
-        self.caregiverManager.currentCaregiverPublisher
+        self.caregiverManager.currentCaregiver
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] caregiver in
                 self?.currentCaregiver = caregiver
             })
             .store(in: &self.cancellables)
 
-        self.caregiverManager.isLoadingPublisher
+        self.caregiverManager.isLoading
             .receive(on: DispatchQueue.main)
             .sink { [weak self] isLoading in
                 self?.isLoading = isLoading
             }
             .store(in: &self.cancellables)
 
-        self.caregiverManager.fetchErrorPublisher
+        self.caregiverManager.fetchError
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] error in
                 self?.handleError(error)
