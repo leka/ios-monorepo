@@ -142,7 +142,7 @@ public struct CurriculumDetailsView: View {
             }
         }
         .onAppear {
-            AnalyticsManager.shared.logScreenView(screenName: "view_curriculum_details_view")
+            AnalyticsManager.shared.logEventScreenView(screenName: "view_curriculum_details_view")
         }
         .toolbar {
             #if DEVELOPER_MODE || TESTFLIGHT_BUILD

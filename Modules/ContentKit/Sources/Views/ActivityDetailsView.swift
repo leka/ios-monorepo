@@ -117,7 +117,7 @@ public struct ActivityDetailsView: View {
             }
         }
         .onAppear {
-            AnalyticsManager.shared.logScreenView(screenName: "view_activity_details_view")
+            AnalyticsManager.shared.logEventScreenView(screenName: "view_activity_details_view")
         }
         .toolbar {
             #if DEVELOPER_MODE || TESTFLIGHT_BUILD
