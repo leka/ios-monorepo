@@ -155,6 +155,13 @@ public struct ActivityView: View {
         .onAppear {
             Robot.shared.stop()
             UIApplication.shared.isIdleTimerDisabled = true
+
+            AnalyticsManager.shared
+                .logEventActivityStart(
+                    id: self.viewModel.currentActivity.id,
+                    name: self.viewModel.currentActivity.name,
+                    carereceiverIDs: self.carereceiverManager.currentCarereceivers.value.compactMap(\.id).joined(separator: ",")
+                )
         }
         .onDisappear {
             Robot.shared.stop()
@@ -173,6 +180,8 @@ public struct ActivityView: View {
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
     @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
+
+    private var carereceiverManager: CarereceiverManager = .shared
 
     @State private var isAlertPresented: Bool = false
 
@@ -214,6 +223,13 @@ public struct ActivityView: View {
             if self.viewModel.isLastExercise {
                 self.viewModel.scorePanelEnabled ? self.viewModel.moveToActivityEnd() : self.dismiss()
                 self.saveActivityCompletion()
+
+                AnalyticsManager.shared
+                    .logEventActivityEnd(
+                        id: self.viewModel.currentActivity.id,
+                        name: self.viewModel.currentActivity.name,
+                        carereceiverIDs: self.carereceiverManager.currentCarereceivers.value.compactMap(\.id).joined(separator: ",")
+                    )
             } else {
                 self.viewModel.moveToNextExercise()
             }

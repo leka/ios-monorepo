@@ -42,8 +42,6 @@ public class AnalyticsManager {
         self.setDefaultEventParameters(nil)
     }
 
-    // Recommended events methods
-
     public func logEventLogin() {
         Analytics.logEvent(AnalyticsEventLogin, parameters: nil)
     }
@@ -54,5 +52,21 @@ public class AnalyticsManager {
 
     public func logEventSignUp() {
         Analytics.logEvent(AnalyticsEventSignUp, parameters: nil)
+    }
+
+    public func logEventActivityStart(id: String, name: String, carereceiverIDs: String) {
+        Analytics.logEvent("activity_start", parameters: [
+            "activity_id": id,
+            "activity_name": name,
+            "carereceiver_ids": carereceiverIDs,
+        ])
+    }
+
+    public func logEventActivityEnd(id: String, name: String, carereceiverIDs: String) {
+        Analytics.logEvent("activity_end", parameters: [
+            "activity_id": id,
+            "activity_name": name,
+            "carereceiver_ids": carereceiverIDs,
+        ])
     }
 }
