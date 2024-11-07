@@ -44,11 +44,11 @@ public class AnalyticsManager {
 
     // Recommended events methods
 
-    public func logLoginEvent() {
+    public func logEventLogin() {
         Analytics.logEvent(AnalyticsEventLogin, parameters: nil)
     }
 
-    public func logSignUpEvent() {
+    public func logEventSignUp() {
         Analytics.logEvent(AnalyticsEventSignUp, parameters: nil)
     }
 }
