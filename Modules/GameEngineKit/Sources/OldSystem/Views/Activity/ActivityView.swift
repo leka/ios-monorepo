@@ -155,6 +155,7 @@ public struct ActivityView: View {
         .onAppear {
             Robot.shared.stop()
             UIApplication.shared.isIdleTimerDisabled = true
+            self.logActivityAnalytics(event: "activity_start")
         }
         .onDisappear {
             Robot.shared.stop()
@@ -173,6 +174,8 @@ public struct ActivityView: View {
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
     @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
+
+    private var carereceiverManager: CarereceiverManager = .shared
 
     @State private var isAlertPresented: Bool = false
 
@@ -214,6 +217,7 @@ public struct ActivityView: View {
             if self.viewModel.isLastExercise {
                 self.viewModel.scorePanelEnabled ? self.viewModel.moveToActivityEnd() : self.dismiss()
                 self.saveActivityCompletion()
+                self.logActivityAnalytics(event: "activity_end")
             } else {
                 self.viewModel.moveToNextExercise()
             }
@@ -401,6 +405,16 @@ public struct ActivityView: View {
         let caregiverID = self.caregiverManagerViewModel.currentCaregiver?.id
         let carereceiverIDs = self.carereceiverManagerViewModel.currentCarereceivers.compactMap(\.id)
         self.viewModel.saveActivityCompletion(caregiverID: caregiverID, carereceiverIDs: carereceiverIDs)
+    }
+
+    private func logActivityAnalytics(event: String) {
+        let carereceiverIDs = self.carereceiverManager.currentCarereceivers.value.compactMap(\.id)
+        let carereceiverIDsString = carereceiverIDs.joined(separator: ",")
+        AnalyticsManager.shared.logEvent(name: event, parameters: [
+            "activity_id": self.viewModel.currentActivity.id,
+            "activity_name": self.viewModel.currentActivity.name,
+            "carereceiver_ids": carereceiverIDsString,
+        ])
     }
 }
 
