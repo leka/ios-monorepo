@@ -48,6 +48,10 @@ public class AnalyticsManager {
         Analytics.logEvent(AnalyticsEventLogin, parameters: nil)
     }
 
+    public func logEventLogout() {
+        Analytics.logEvent("logout", parameters: nil)
+    }
+
     public func logEventSignUp() {
         Analytics.logEvent(AnalyticsEventSignUp, parameters: nil)
     }

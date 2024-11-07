@@ -95,10 +95,10 @@ struct SettingsView: View {
                     {
                         Button(role: .destructive) {
                             self.dismiss()
-                            AnalyticsManager.shared.logEvent(name: "sign_out")
                             self.authManager.signOut()
                             self.persistentDataManager.clearUserData()
                             self.reset()
+                            AnalyticsManager.shared.logEventLogout()
                         } label: {
                             Text(l10n.SettingsView.AccountSection.LogOut.alertButtonLabel)
                         }
