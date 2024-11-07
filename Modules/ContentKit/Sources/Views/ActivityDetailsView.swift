@@ -116,6 +116,9 @@ public struct ActivityDetailsView: View {
                     .markdownTheme(.gitHub)
             }
         }
+        .onAppear {
+            AnalyticsManager.shared.logEventScreenView(screenName: "view_activity_details_view")
+        }
         .toolbar {
             #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {

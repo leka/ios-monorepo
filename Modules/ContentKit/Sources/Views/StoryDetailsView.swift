@@ -107,6 +107,9 @@ public struct StoryDetailsView: View {
                     .markdownTheme(.gitHub)
             }
         }
+        .onAppear {
+            AnalyticsManager.shared.logEventScreenView(screenName: "view_story_details_view")
+        }
         .toolbar {
             #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {

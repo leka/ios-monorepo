@@ -127,67 +127,67 @@ struct MainView: View {
                     case .home:
                         CategoryHome()
                             .onAppear {
-                                AnalyticsManager.shared.logScreenView(screenName: "view_category_home")
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_home")
                             }
 
                     case .search:
                         CategorySearchView()
                             .onAppear {
-                                AnalyticsManager.shared.logScreenView(screenName: "view_category_search")
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_search")
                             }
 
                     case .resourcesFirstSteps:
                         CategoryResourcesFirstStepsView()
                             .onAppear {
-                                AnalyticsManager.shared.logScreenView(screenName: "view_category_resources_first_steps")
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_resources_first_steps")
                             }
 
                     case .resourcesVideo:
                         CategoryResourcesVideosView()
                             .onAppear {
-                                AnalyticsManager.shared.logScreenView(screenName: "view_category_resources_video")
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_resources_video")
                             }
 
                     case .resourcesDeepDive:
                         CategoryResourcesDeepDiveView()
                             .onAppear {
-                                AnalyticsManager.shared.logScreenView(screenName: "view_category_resources_deep_dive")
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_resources_deep_dive")
                             }
 
                     case .curriculums:
                         CategoryCurriculumsView()
                             .onAppear {
-                                AnalyticsManager.shared.logScreenView(screenName: "view_catergory_curriculums")
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_catergory_curriculums")
                             }
 
                     case .educationalGames:
                         CategoryEducationalGamesView()
                             .onAppear {
-                                AnalyticsManager.shared.logScreenView(screenName: "view_category_educational_games")
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_educational_games")
                             }
 
                     case .stories:
                         CategoryStoriesView()
                             .onAppear {
-                                AnalyticsManager.shared.logScreenView(screenName: "view_category_stories")
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_stories")
                             }
 
                     case .gamepads:
                         CategoryGamepadsView()
                             .onAppear {
-                                AnalyticsManager.shared.logScreenView(screenName: "view_category_gamepads")
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_gamepads")
                             }
 
                     case .caregivers:
                         CaregiverList()
                             .onAppear {
-                                AnalyticsManager.shared.logScreenView(screenName: "view_category_caregivers")
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_caregivers")
                             }
 
                     case .carereceivers:
                         CarereceiverList()
                             .onAppear {
-                                AnalyticsManager.shared.logScreenView(screenName: "view_category_carereceivers")
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_carereceivers")
                             }
 
                     // ? DEVELOPER_MODE + TESTFLIGHT_BUILD
@@ -217,19 +217,19 @@ struct MainView: View {
                     case .libraryCurriculums:
                         CategoryLibraryView(category: .libraryCurriculums)
                             .onAppear {
-                                AnalyticsManager.shared.logScreenView(screenName: "view_category_library_curriculums")
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_library_curriculums")
                             }
 
                     case .libraryActivities:
                         CategoryLibraryView(category: .libraryActivities)
                             .onAppear {
-                                AnalyticsManager.shared.logScreenView(screenName: "view_category_library_activities")
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_library_activities")
                             }
 
                     case .libraryStories:
                         CategoryLibraryView(category: .libraryStories)
                             .onAppear {
-                                AnalyticsManager.shared.logScreenView(screenName: "view_category_library_stories")
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_library_stories")
                             }
 
                     case .none:

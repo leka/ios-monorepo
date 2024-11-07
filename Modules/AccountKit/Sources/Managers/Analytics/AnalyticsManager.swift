@@ -22,14 +22,37 @@ public class AnalyticsManager {
         Analytics.logEvent(name, parameters: parameters)
     }
 
-    public func setUserProperty(value: String, forName name: String) {
-        Analytics.setUserProperty(value, forName: name)
+    public func logEventScreenView(screenName: String, screenClass: String? = nil) {
+        var params: [String: Any] = [
+            AnalyticsParameterScreenName: screenName,
+        ]
+
+        if let screenClass {
+            params[AnalyticsParameterScreenClass] = screenClass
+        }
+
+        Analytics.logEvent(AnalyticsEventScreenView, parameters: params)
     }
 
-    public func logScreenView(screenName: String, screenClass: String? = nil) {
-        Analytics.logEvent(AnalyticsEventScreenView, parameters: [
-            AnalyticsParameterScreenName: screenName,
-            AnalyticsParameterScreenClass: screenClass ?? screenName,
-        ])
+    public func setDefaultEventParameters(_ parameters: [String: Any]?) {
+        Analytics.setDefaultEventParameters(parameters)
+    }
+
+    public func clearDefaultEventParameters() {
+        self.setDefaultEventParameters(nil)
+    }
+
+    // Recommended events methods
+
+    public func logEventLogin() {
+        Analytics.logEvent(AnalyticsEventLogin, parameters: nil)
+    }
+
+    public func logEventLogout() {
+        Analytics.logEvent("logout", parameters: nil)
+    }
+
+    public func logEventSignUp() {
+        Analytics.logEvent(AnalyticsEventSignUp, parameters: nil)
     }
 }
