@@ -6,6 +6,34 @@
 
 import ProjectDescription
 
+// MARK: - App
+
+public struct App: Sendable {
+    // MARK: Lifecycle
+
+    public init(
+        version: String,
+        bundleId: String,
+        name: String,
+        urlSchemes: String,
+        appIcon: String
+    ) {
+        self.version = version
+        self.bundleId = bundleId
+        self.name = name
+        self.urlSchemes = urlSchemes
+        self.appIcon = appIcon
+    }
+
+    // MARK: Public
+
+    public let version: String
+    public let bundleId: String
+    public let name: String
+    public let urlSchemes: String
+    public let appIcon: String
+}
+
 public extension Project {
     static func app(
         name: String,
