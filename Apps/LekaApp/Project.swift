@@ -7,48 +7,38 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
 
-let kLekaAppVersion: String = if Environment.productionBuild.getBoolean(default: false) {
-    "1.13.0"
+let kLekaApp: App = if Environment.productionBuild.getBoolean(
+    default: false
+) {
+    .init(
+        version: "1.13.0",
+        bundleId: "io.leka.apf.app.LekaApp",
+        name: "Leka",
+        urlSchemes: "LekaApp",
+        appIcon: "AppIcon"
+    )
 } else {
-    "99.00.00"
-}
-
-let kLekaAppBundleName: String = if Environment.productionBuild.getBoolean(default: false) {
-    "Leka"
-} else {
-    "Leka Beta"
-}
-
-let kLekaAppBundleIdentifier: String = if Environment.productionBuild.getBoolean(default: false) {
-    "io.leka.apf.app.LekaApp"
-} else {
-    "io.leka.apf.app.LekaApp.beta"
-}
-
-let kLekaAppBundleURLSchemes: String = if Environment.productionBuild.getBoolean(default: false) {
-    "LekaApp"
-} else {
-    "LekaAppBeta"
-}
-
-let kLekaAppIconName: String = if Environment.productionBuild.getBoolean(default: false) {
-    "AppIcon"
-} else {
-    "AppIconBeta"
+    .init(
+        version: "99.00.00",
+        bundleId: "io.leka.apf.app.LekaApp.beta",
+        name: "Leka Beta",
+        urlSchemes: "LekaAppBeta",
+        appIcon: "AppIconBeta"
+    )
 }
 
 let project = Project.app(
     name: "LekaApp",
-    version: kLekaAppVersion,
-    bundleId: kLekaAppBundleIdentifier,
+    version: kLekaApp.version,
+    bundleId: kLekaApp.bundleId,
     infoPlist: [
         "LSApplicationCategoryType": "public.app-category.education",
-        "CFBundleName": "\(kLekaAppBundleName)",
+        "CFBundleName": "\(kLekaApp.name)",
         "CFBundleURLTypes": [
             [
                 "CFBundleTypeRole": "Editor",
-                "CFBundleURLName": "\(kLekaAppBundleIdentifier)",
-                "CFBundleURLSchemes": ["\(kLekaAppBundleURLSchemes)"],
+                "CFBundleURLName": "\(kLekaApp.bundleId)",
+                "CFBundleURLSchemes": ["\(kLekaApp.urlSchemes)"],
             ],
         ],
         "LSApplicationQueriesSchemes": ["LekaUpdater"],
@@ -56,9 +46,10 @@ let project = Project.app(
             "bluetooth-central",
             "audio",
         ],
+        "FirebaseAutomaticScreenReportingEnabled": "NO",
     ],
     settings: SettingsDictionary.extendingBase(with: [
-        "ASSETCATALOG_COMPILER_APPICON_NAME": "\(kLekaAppIconName)",
+        "ASSETCATALOG_COMPILER_APPICON_NAME": "\(kLekaApp.appIcon)",
     ]),
     dependencies: [
         .project(target: "AccountKit", path: Path("../../Modules/AccountKit")),
