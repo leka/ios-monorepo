@@ -46,6 +46,7 @@ let project = Project.app(
             "bluetooth-central",
             "audio",
         ],
+        "FirebaseAutomaticScreenReportingEnabled": "NO",
     ],
     settings: SettingsDictionary.extendingBase(with: [
         "ASSETCATALOG_COMPILER_APPICON_NAME": "\(kLekaApp.appIcon)",
