@@ -87,4 +87,25 @@ public class AnalyticsManager {
             "carereceiver_ids": carereceiverIDs,
         ])
     }
+
+    public func logEventSelectContent(
+        type: ContentType,
+        id: String,
+        name: String,
+        origin: ContentOrigin,
+        additionalParameters: [String: Any]? = nil
+    ) {
+        var parameters: [String: Any] = [
+            AnalyticsParameterContentType: type.rawValue,
+            AnalyticsParameterItemID: id,
+            AnalyticsParameterItemName: name,
+            "content_origin": origin.rawValue,
+        ]
+
+        if let additionalParameters {
+            parameters.merge(additionalParameters) { _, new in new }
+        }
+
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: parameters)
+    }
 }
