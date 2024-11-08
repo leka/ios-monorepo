@@ -23,7 +23,7 @@ struct LibraryActivitiesView: View {
             EmptyLibraryPlaceholderView(icon: .activities)
         } else {
             ScrollView(showsIndicators: true) {
-                ActivityListView(activities: self.activities) { activity in
+                LibraryActivityListView(activities: self.activities) { activity in
                     self.navigation.currentActivity = activity
                     self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
                 }

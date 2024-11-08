@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - ActivityListView
 
-public struct ActivityListView: View {
+public struct LibraryActivityListView: View {
     // MARK: Lifecycle
 
     public init(activities: [Activity]? = nil, onStartActivity: ((Activity) -> Void)?) {
@@ -29,7 +29,7 @@ public struct ActivityListView: View {
                                 type: .activity,
                                 id: activity.id,
                                 name: activity.name,
-                                origin: .generalLibrary
+                                origin: .personalLibrary
                             )
                         }
                 ) {
@@ -156,7 +156,7 @@ public struct ActivityListView: View {
     } detail: {
         NavigationStack {
             ScrollView {
-                ActivityListView(
+                LibraryActivityListView(
                     activities: ContentKit.allActivities,
                     onStartActivity: { _ in
                         print("Activity Started")
