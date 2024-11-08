@@ -80,11 +80,17 @@ public class AnalyticsManager {
         ])
     }
 
-    public func logEventActivityEnd(id: String, name: String, carereceiverIDs: String) {
+    public func logEventActivityEnd(
+        id: String,
+        name: String,
+        carereceiverIDs: String,
+        completion: String? = "completed"
+    ) {
         Analytics.logEvent("activity_end", parameters: [
             "activity_id": id,
             "activity_name": name,
             "carereceiver_ids": carereceiverIDs,
+            "activity_completion": completion!,
         ])
     }
 
