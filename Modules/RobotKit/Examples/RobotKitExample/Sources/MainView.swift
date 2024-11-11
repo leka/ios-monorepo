@@ -19,7 +19,9 @@ struct MainView: View {
                     Text("Connect robot")
                 }
                 .fullScreenCover(isPresented: self.$presentRobotConnection) {
-                    RobotConnectionView(viewModel: RobotConnectionViewModel())
+                    NavigationStack {
+                        RobotConnectionView(viewModel: RobotConnectionViewModel())
+                    }
                 }
 
                 NavigationLink(

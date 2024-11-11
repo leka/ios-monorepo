@@ -22,12 +22,42 @@ public struct ConnectedRobotView: View {
                         DesignKitAsset.Colors.lekaGreen.swiftUIColor,
                         in: Circle().inset(by: -20.0)
                     )
+
                 VStack(alignment: .leading, spacing: 5) {
-                    Text(self.connectedRobotInformationViewModel.name)
-                        .font(.title)
-                        .lineLimit(1)
-                        .truncationMode(.tail)
-                        .foregroundColor(.primary)
+                    VStack {
+                        if self.isEditingName {
+                            TextField("Enter new name", text: self.$currentRobotName, onCommit: {
+                                self.triggerRebootAlertPresented = true
+                                self.focusedNameEdition = false
+                                self.isEditingName = false
+                            })
+                            .font(.title)
+                            .lineLimit(1)
+                            .truncationMode(.tail)
+                            .foregroundColor(.primary)
+                            .textFieldStyle(.roundedBorder)
+                            .autocorrectionDisabled()
+                            .focused(self.$focusedNameEdition)
+                            .frame(maxWidth: 300)
+                        } else {
+                            HStack {
+                                Text(self.connectedRobotInformationViewModel.name)
+                                    .font(.title)
+                                    .lineLimit(1)
+                                    .truncationMode(.tail)
+                                    .foregroundColor(.primary)
+                                Image(systemName: "pencil.circle")
+                                    .foregroundColor(self.styleManager.accentColor!)
+                                    .font(.title2)
+                            }
+                            .onTapGesture {
+                                self.isEditingName = true
+                                self.currentRobotName = self.connectedRobotInformationViewModel.name
+                                self.focusedNameEdition = true
+                            }
+                        }
+                    }
+
                     Text(l10n.ConnectedRobotView.serialNumberLabel(self.connectedRobotInformationViewModel.serialNumber))
                         .font(.caption)
                         .lineLimit(1)
@@ -88,17 +118,41 @@ public struct ConnectedRobotView: View {
             }
         }
         .navigationTitle(String(l10n.ConnectedRobotView.navigationTitle.characters))
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .contentShape(Rectangle())
+        .simultaneousGesture(TapGesture().onEnded {
+            self.focusedNameEdition = false
+            self.isEditingName = false
+        })
+        .alert(isPresented: self.$triggerRebootAlertPresented) {
+            Alert(
+                title: Text(l10n.ConnectedRobotView.renameAlertTitle),
+                message: Text(l10n.ConnectedRobotView.renameAlertMessage),
+                primaryButton: .default(Text(l10n.ConnectedRobotView.renameAlertButtonLabel), action: {
+                    self.isEditingName = false
+                    self.connectedRobotInformationViewModel.robot.rename(in: self.currentRobotName)
+                    self.dismiss()
+                }),
+                secondaryButton: .cancel()
+            )
+        }
     }
 
     // MARK: Internal
 
+    @StateObject private var styleManager: StyleManager = .shared
     @StateObject var connectedRobotInformationViewModel: ConnectedRobotInformationViewModel = .init()
     @StateObject var viewModel: RobotConnectionViewModel
+    @State private var currentRobotName: String = ""
+    @State private var isEditingName: Bool = false
+    @State private var triggerRebootAlertPresented: Bool = false
 
     // swiftlint:disable:next force_cast
     private let isNotLekaUpdater = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as! String != "LekaUpdater"
 
+    @FocusState private var focusedNameEdition: Bool
     @State private var showNotUpToDateAlert: Bool = false
+
     private var robotNotUpToDate: Bool {
         guard let osVersion = Version(tolerant: self.connectedRobotInformationViewModel.osVersion) else {
             return false
@@ -169,6 +223,27 @@ extension l10n {
             bundle: RobotKitResources.bundle,
             value: "An update for Leka is available",
             comment: "Update is available alert"
+        )
+
+        static let renameAlertTitle = LocalizedString(
+            "robotkit.connected_robot_view.rename_alert_title",
+            bundle: RobotKitResources.bundle,
+            value: "Warning",
+            comment: "The title of the alert when renaming the robot"
+        )
+
+        static let renameAlertMessage = LocalizedString(
+            "robotkit.connected_robot_view.rename_alert_message",
+            bundle: RobotKitResources.bundle,
+            value: "Your robot need to reboot to be renamed, please reconnect after the reboot",
+            comment: "The message of the alert when renaming the robot"
+        )
+
+        static let renameAlertButtonLabel = LocalizedString(
+            "robotkit.connected_robot_view.rename_alert_button_label",
+            bundle: RobotKitResources.bundle,
+            value: "Reboot",
+            comment: "The button label of the alert when renaming the robot"
         )
     }
 }
