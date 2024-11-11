@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -22,8 +23,20 @@ public struct CurriculumHorizontalListView: View {
         ScrollView(.horizontal) {
             HStack(alignment: .firstTextBaseline) {
                 ForEach(self.curriculums) { curriculum in
-                    NavigationLink(destination:
-                        CurriculumDetailsView(curriculum: curriculum, onActivitySelected: self.onActivitySelected)
+                    NavigationLink(
+                        destination:
+                        CurriculumDetailsView(
+                            curriculum: curriculum,
+                            onActivitySelected: self.onActivitySelected
+                        )
+                        .onAppear {
+                            AnalyticsManager.shared.logEventSelectContent(
+                                type: .curriculum,
+                                id: curriculum.id,
+                                name: curriculum.name,
+                                origin: .generalLibrary
+                            )
+                        }
                     ) {
                         CurriculumGroupboxView(curriculum: curriculum)
                     }

@@ -14,6 +14,24 @@ public class AnalyticsManager {
 
     // MARK: Public
 
+    public enum ContentType: String {
+        case curriculum
+        case activity
+        case educationalGame = "educational_game"
+        case story
+        case gamepad
+        case resource
+    }
+
+    public enum ContentOrigin: String {
+        case generalLibrary = "general_library"
+        case personalLibrary = "personal_library"
+        case searchResults = "search_results"
+        case resourcesFirstSteps = "resources_first_steps"
+        case resourcesVideos = "resources_videos"
+        case resourcesDeepDive = "resources_deep_dive"
+    }
+
     public static let shared = AnalyticsManager()
 
     // MARK: Public Methods
@@ -68,5 +86,26 @@ public class AnalyticsManager {
             "activity_name": name,
             "carereceiver_ids": carereceiverIDs,
         ])
+    }
+
+    public func logEventSelectContent(
+        type: ContentType,
+        id: String,
+        name: String,
+        origin: ContentOrigin,
+        additionalParameters: [String: Any]? = nil
+    ) {
+        var parameters: [String: Any] = [
+            AnalyticsParameterContentType: type.rawValue,
+            AnalyticsParameterItemID: id,
+            AnalyticsParameterItemName: name,
+            "content_origin": origin.rawValue,
+        ]
+
+        if let additionalParameters {
+            parameters.merge(additionalParameters) { _, new in new }
+        }
+
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: parameters)
     }
 }

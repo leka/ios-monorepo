@@ -24,6 +24,14 @@ public struct StoryListView: View {
             ForEach(self.stories) { story in
                 NavigationLink(destination:
                     StoryDetailsView(story: story, onStartStory: self.onStartStory)
+                        .onAppear {
+                            AnalyticsManager.shared.logEventSelectContent(
+                                type: .story,
+                                id: story.id,
+                                name: story.name,
+                                origin: .personalLibrary
+                            )
+                        }
                 ) {
                     HStack(alignment: .center, spacing: 30) {
                         Image(uiImage: story.details.iconImage)
