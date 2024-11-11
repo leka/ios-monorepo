@@ -1,13 +1,17 @@
 ### New Features
 
-- Reinforcer Picker in Care Receiver Creation: Users can now select a reinforcer when creating a care receiver, personalizing the experience.
+- Robot Renaming: You can now rename your robot directly within the app for a more personalized experience.
 
 ### Improvements
 
-- Dance Freeze Auto Mode: Improved the auto mode behavior in the Dance Freeze activity for a smoother experience.
-- User Interface Updates: Updated the robot action button icon and improved the overall UI in various sections.
+- Update Alerts: The app will now notify you when a new update is available, ensuring you always have the latest features and improvements.
+- User Interface Enhancements: Updated gesture icons for a better visual experience, reorganized sidebar content for easier navigation, and renamed the "Activities" section to "Educational Games" for clarity.
 
 ### Bug Fixes
 
-- Resource Link Fix: Updated a dead link in the "Stop Card" video resource.
-- Curriculum Assets: Fixed issues with assets in curriculums to ensure proper display.
+- Resource Link Fix: Fixed a broken video link in the Resources section.
+- Robot Connection Display Bug: Resolved an issue where the robot connection status was not displayed correctly.
+
+### Other
+
+- App Performance and Analytics: Implemented behind-the-scenes improvements to enhance app performance and gather user feedback for future updates.
