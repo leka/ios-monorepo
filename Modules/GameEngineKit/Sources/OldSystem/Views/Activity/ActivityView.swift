@@ -146,7 +146,7 @@ public struct ActivityView: View {
                         id: self.viewModel.currentActivity.id,
                         name: self.viewModel.currentActivity.name,
                         carereceiverIDs: self.carereceiverManager.currentCarereceivers.value.compactMap(\.id).joined(separator: ","),
-                        completion: "Abandoned"
+                        reason: .userExited
                     )
                 self.dismiss()
             })
@@ -235,7 +235,8 @@ public struct ActivityView: View {
                     .logEventActivityEnd(
                         id: self.viewModel.currentActivity.id,
                         name: self.viewModel.currentActivity.name,
-                        carereceiverIDs: self.carereceiverManager.currentCarereceivers.value.compactMap(\.id).joined(separator: ",")
+                        carereceiverIDs: self.carereceiverManager.currentCarereceivers.value.compactMap(\.id).joined(separator: ","),
+                        reason: .userCompleted
                     )
             } else {
                 self.viewModel.moveToNextExercise()

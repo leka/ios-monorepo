@@ -32,6 +32,11 @@ public class AnalyticsManager {
         case resourcesDeepDive = "resources_deep_dive"
     }
 
+    public enum ActivityEndReason: String {
+        case userCompleted = "user_completed"
+        case userExited = "user_exited"
+    }
+
     public static let shared = AnalyticsManager()
 
     // MARK: Public Methods
@@ -84,13 +89,13 @@ public class AnalyticsManager {
         id: String,
         name: String,
         carereceiverIDs: String,
-        completion: String? = "completed"
+        reason: ActivityEndReason
     ) {
         Analytics.logEvent("activity_end", parameters: [
             "activity_id": id,
             "activity_name": name,
             "carereceiver_ids": carereceiverIDs,
-            "activity_completion": completion!,
+            "activity_end_reason": reason.rawValue,
         ])
     }
 
