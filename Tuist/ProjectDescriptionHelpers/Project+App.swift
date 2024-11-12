@@ -6,14 +6,44 @@
 
 import ProjectDescription
 
+// MARK: - App
+
+public struct App: Sendable {
+    // MARK: Lifecycle
+
+    public init(
+        version: String,
+        bundleId: String,
+        name: String,
+        urlSchemes: String,
+        appIcon: String
+    ) {
+        self.version = version
+        self.bundleId = bundleId
+        self.name = name
+        self.urlSchemes = urlSchemes
+        self.appIcon = appIcon
+    }
+
+    // MARK: Public
+
+    public let version: String
+    public let bundleId: String
+    public let name: String
+    public let urlSchemes: String
+    public let appIcon: String
+}
+
 public extension Project {
     static func app(
         name: String,
         version: String = "1.0.0",
+        bundleId: String? = nil,
         deploymentTargets: DeploymentTargets = .iOS("16.6"),
         destinations: Destinations = [.iPad, .macWithiPadDesign],
         infoPlist: [String: Plist.Value] = [:],
         settings: SettingsDictionary = [:],
+        launchArguments: [LaunchArgument] = [],
         options: Options = .options(),
         dependencies: [TargetDependency] = [],
         schemes: [Scheme] = []
@@ -22,7 +52,7 @@ public extension Project {
             name: name,
             destinations: destinations,
             product: .app,
-            bundleId: "io.leka.apf.app.\(name)",
+            bundleId: bundleId ?? "io.leka.apf.app.\(name)",
             deploymentTargets: deploymentTargets,
             infoPlist: .extendingDefault(with: InfoPlist.extendingBase(version: version, with: infoPlist)),
             sources: ["Sources/**"],
@@ -32,7 +62,8 @@ public extension Project {
             settings: .settings(base: .extendingBase(with: settings)),
             environmentVariables: [
                 "IDEPreferLogStreaming": "YES",
-            ]
+            ],
+            launchArguments: launchArguments
         )
 
         let testTarget = Target.target(

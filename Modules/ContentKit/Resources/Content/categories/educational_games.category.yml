@@ -5,14 +5,15 @@
 l10n:
   - locale: fr_FR
     details:
-      title: Activités
-      subtitle: Activités indépendantes, captivantes et prêtes à l’emploi pour les personnes accompagnées.
-      description: Découvrez des activités clé en main comme Color Bingo, Dance Freeze et Cache-Cache, parfaites pour se détendre et s'amuser après le travail.
+      title: Jeux éducatifs
+      subtitle: Jeux éducatifs indépendants, captivants et prêts à l'emploi pour les personnes accompagnées.
+      description: Découvrez des jeux éducatifs clé en main comme Color Bingo, Dance Freeze et Cache-Cache, parfaits pour se détendre et s'amuser après le travail.
   - locale: en_US
     details:
-      title: Activities
-      subtitle: Engaging and ready-to-use standalone activities for care receivers.
+      title: Educational Games
+      subtitle: Engaging and ready-to-use standalone educational games for care receivers.
       description: Explore instant favorites like Color Bingo, Dance Freeze, and Hide And Seek, ideal for relaxation and fun after work sessions.
+
 
 content:
   - discover_leka-89CEA9FE20624659B1307B633641BC90

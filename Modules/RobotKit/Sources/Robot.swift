@@ -65,8 +65,29 @@ public class Robot {
         stopMotion()
     }
 
+    public func rename(in name: String) {
+        let dataName = name.data(using: .utf8)!
+        let robotNameCharacteristic = CharacteristicModelWriteOnly(
+            characteristicUUID: BLESpecs.Config.Characteristics.robotName,
+            serviceUUID: BLESpecs.Config.service,
+            onWrite: {
+                self.reboot()
+            }
+        )
+
+        self.connectedPeripheral?.send(dataName, forCharacteristic: robotNameCharacteristic)
+    }
+
     public func reboot() {
         log.trace("🤖 REBOOT 💫")
+        let data = Data([1])
+
+        let rebootCharacteristic = CharacteristicModelWriteOnly(
+            characteristicUUID: BLESpecs.Monitoring.Characteristics.hardReboot,
+            serviceUUID: BLESpecs.Monitoring.service
+        )
+
+        self.connectedPeripheral?.send(data, forCharacteristic: rebootCharacteristic)
     }
 
     // MARK: - Magic Cards

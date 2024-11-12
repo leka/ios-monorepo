@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import SwiftUI
 
@@ -22,6 +23,14 @@ public struct StoryGridView: View {
             ForEach(self.stories) { story in
                 NavigationLink(destination:
                     StoryDetailsView(story: story, onStartStory: self.onStartStory)
+                        .onAppear {
+                            AnalyticsManager.shared.logEventSelectContent(
+                                type: .story,
+                                id: story.id,
+                                name: story.name,
+                                origin: .generalLibrary
+                            )
+                        }
                 ) {
                     VStack(spacing: 0) {
                         Image(uiImage: story.details.iconImage)

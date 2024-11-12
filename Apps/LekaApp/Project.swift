@@ -7,25 +7,38 @@
 import ProjectDescription
 import ProjectDescriptionHelpers
 
-let kLekaAppVersion: String = {
-    guard Environment.productionBuild.getBoolean(default: false) else {
-        return "999.999.999"
-    }
-
-    // ? App version
-    return "1.13.0"
-}()
+let kLekaApp: App = if Environment.productionBuild.getBoolean(
+    default: false
+) {
+    .init(
+        version: "1.14.0",
+        bundleId: "io.leka.apf.app.LekaApp",
+        name: "Leka",
+        urlSchemes: "LekaApp",
+        appIcon: "AppIcon"
+    )
+} else {
+    .init(
+        version: "99.00.00",
+        bundleId: "io.leka.apf.app.LekaApp.beta",
+        name: "Leka Beta",
+        urlSchemes: "LekaAppBeta",
+        appIcon: "AppIconBeta"
+    )
+}
 
 let project = Project.app(
     name: "LekaApp",
-    version: kLekaAppVersion,
+    version: kLekaApp.version,
+    bundleId: kLekaApp.bundleId,
     infoPlist: [
         "LSApplicationCategoryType": "public.app-category.education",
+        "CFBundleName": "\(kLekaApp.name)",
         "CFBundleURLTypes": [
             [
                 "CFBundleTypeRole": "Editor",
-                "CFBundleURLName": "io.leka.apf.app.LekaApp",
-                "CFBundleURLSchemes": ["LekaApp"],
+                "CFBundleURLName": "\(kLekaApp.bundleId)",
+                "CFBundleURLSchemes": ["\(kLekaApp.urlSchemes)"],
             ],
         ],
         "LSApplicationQueriesSchemes": ["LekaUpdater"],
@@ -33,7 +46,11 @@ let project = Project.app(
             "bluetooth-central",
             "audio",
         ],
+        "FirebaseAutomaticScreenReportingEnabled": "NO",
     ],
+    settings: SettingsDictionary.extendingBase(with: [
+        "ASSETCATALOG_COMPILER_APPICON_NAME": "\(kLekaApp.appIcon)",
+    ]),
     dependencies: [
         .project(target: "AccountKit", path: Path("../../Modules/AccountKit")),
         .project(target: "ContentKit", path: Path("../../Modules/ContentKit")),
@@ -44,6 +61,7 @@ let project = Project.app(
         .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
         .project(target: "UtilsKit", path: Path("../../Modules/UtilsKit")),
 
+        .external(name: "AppUpdately"),
         .external(name: "DeviceKit"),
         .external(name: "Fit"),
         .external(name: "MarkdownUI"),

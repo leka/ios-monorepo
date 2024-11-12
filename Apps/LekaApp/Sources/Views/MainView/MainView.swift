@@ -60,22 +60,30 @@ struct MainView: View {
 
                     Section(String(l10n.MainView.Sidebar.sectionContent.characters)) {
                         CategoryLabel(category: .curriculums)
-                        CategoryLabel(category: .activities)
+                        CategoryLabel(category: .educationalGames)
                         CategoryLabel(category: .stories)
                         CategoryLabel(category: .gamepads)
                     }
 
-                    Section(String(l10n.MainView.Sidebar.sectionResources.characters)) {
-                        CategoryLabel(category: .resourcesFirstSteps)
-                        CategoryLabel(category: .resourcesVideo)
-                        CategoryLabel(category: .resourcesDeepDive)
-                    }
+                    #if DEVELOPER_MODE || TESTFLIGHT_BUILD
+                        Section(String(l10n.MainView.Sidebar.sectionLibrary.characters)) {
+                            CategoryLabel(category: .libraryCurriculums)
+                            CategoryLabel(category: .libraryActivities)
+                            CategoryLabel(category: .libraryStories)
+                        }
+                    #endif
 
                     if self.authManagerViewModel.userAuthenticationState == .loggedIn {
                         Section(String(l10n.MainView.Sidebar.sectionUsers.characters)) {
                             CategoryLabel(category: .caregivers)
                             CategoryLabel(category: .carereceivers)
                         }
+                    }
+
+                    Section(String(l10n.MainView.Sidebar.sectionResources.characters)) {
+                        CategoryLabel(category: .resourcesFirstSteps)
+                        CategoryLabel(category: .resourcesVideo)
+                        CategoryLabel(category: .resourcesDeepDive)
                     }
 
                     #if DEVELOPER_MODE || TESTFLIGHT_BUILD
@@ -87,13 +95,6 @@ struct MainView: View {
                                 CategoryLabel(category: .rasterImageList)
                                 CategoryLabel(category: .vectorImageList)
                                 CategoryLabel(category: .news)
-                            }
-
-                            Section("Library") {
-                                CategoryLabel(category: .libraryCurriculums)
-                                CategoryLabel(category: .libraryActivities)
-                                CategoryLabel(category: .libraryStories)
-                                CategoryLabel(category: .libraryGamepads)
                             }
                         } else {
                             Section("Demo mode") {
@@ -125,36 +126,69 @@ struct MainView: View {
                 switch self.navigation.selectedCategory {
                     case .home:
                         CategoryHome()
+                            .onAppear {
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_home")
+                            }
 
                     case .search:
                         CategorySearchView()
+                            .onAppear {
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_search")
+                            }
 
                     case .resourcesFirstSteps:
                         CategoryResourcesFirstStepsView()
+                            .onAppear {
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_resources_first_steps")
+                            }
 
                     case .resourcesVideo:
                         CategoryResourcesVideosView()
+                            .onAppear {
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_resources_video")
+                            }
 
                     case .resourcesDeepDive:
                         CategoryResourcesDeepDiveView()
+                            .onAppear {
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_resources_deep_dive")
+                            }
 
                     case .curriculums:
                         CategoryCurriculumsView()
+                            .onAppear {
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_catergory_curriculums")
+                            }
 
-                    case .activities:
-                        CategoryActivitiesView()
+                    case .educationalGames:
+                        CategoryEducationalGamesView()
+                            .onAppear {
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_educational_games")
+                            }
 
                     case .stories:
                         CategoryStoriesView()
+                            .onAppear {
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_stories")
+                            }
 
                     case .gamepads:
                         CategoryGamepadsView()
+                            .onAppear {
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_gamepads")
+                            }
 
                     case .caregivers:
                         CaregiverList()
+                            .onAppear {
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_caregivers")
+                            }
 
                     case .carereceivers:
                         CarereceiverList()
+                            .onAppear {
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_carereceivers")
+                            }
 
                     // ? DEVELOPER_MODE + TESTFLIGHT_BUILD
                     case .allPublishedActivities:
@@ -181,20 +215,22 @@ struct MainView: View {
                         DiscoverLekaView(demoMode: self.navigation.demoMode)
 
                     case .libraryCurriculums:
-                        Text("Curriculums")
-                            .navigationTitle("Curriculums")
+                        CategoryLibraryView(category: .libraryCurriculums)
+                            .onAppear {
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_library_curriculums")
+                            }
 
                     case .libraryActivities:
-                        Text("Activities")
-                            .navigationTitle("Activities")
+                        CategoryLibraryView(category: .libraryActivities)
+                            .onAppear {
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_library_activities")
+                            }
 
                     case .libraryStories:
-                        Text("Stories")
-                            .navigationTitle("Stories")
-
-                    case .libraryGamepads:
-                        Text("Gamepads")
-                            .navigationTitle("Gamepads")
+                        CategoryLibraryView(category: .libraryStories)
+                            .onAppear {
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_library_stories")
+                            }
 
                     case .none:
                         Text(l10n.MainView.Sidebar.CategoryLabel.home)
@@ -325,6 +361,7 @@ struct MainView: View {
     @ObservedObject private var styleManager: StyleManager = .shared
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
 
     private var persistentDataManager: PersistentDataManager = .shared
     private var caregiverManager: CaregiverManager = .shared
@@ -333,5 +370,4 @@ struct MainView: View {
 
 #Preview {
     MainView()
-        .previewInterfaceOrientation(.landscapeLeft)
 }

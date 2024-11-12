@@ -15,11 +15,15 @@ public class CarereceiverManager {
 
     public static let shared = CarereceiverManager()
 
+    public var carereceiverList = CurrentValueSubject<[Carereceiver], Never>([])
+    public var currentCarereceivers = CurrentValueSubject<[Carereceiver], Never>([])
+    public var fetchError = PassthroughSubject<Error, Never>()
+
     public func initializeCarereceiversListener() {
         self.dbOps.observeAll(from: .carereceivers)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
-                    self?.fetchErrorSubject.send(error)
+                    self?.fetchError.send(error)
                 }
             }, receiveValue: { [weak self] fetchedCarereceivers in
                 self?.carereceiverList.send(fetchedCarereceivers)
@@ -49,7 +53,7 @@ public class CarereceiverManager {
         self.dbOps.update(data: carereceiver, in: .carereceivers)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
-                    self.fetchErrorSubject.send(error)
+                    self.fetchError.send(error)
                 }
             }, receiveValue: {
                 // Nothing to do
@@ -61,7 +65,7 @@ public class CarereceiverManager {
         self.dbOps.delete(from: .carereceivers, documentID: documentID)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
-                    self.fetchErrorSubject.send(error)
+                    self.fetchError.send(error)
                 }
             }, receiveValue: {
                 // Nothing to do
@@ -81,25 +85,8 @@ public class CarereceiverManager {
         self.cancellables.removeAll()
     }
 
-    // MARK: Internal
-
-    var carereceiversPublisher: AnyPublisher<[Carereceiver], Never> {
-        self.carereceiverList.eraseToAnyPublisher()
-    }
-
-    var currentCarereceiversPublisher: AnyPublisher<[Carereceiver], Never> {
-        self.currentCarereceivers.eraseToAnyPublisher()
-    }
-
-    var fetchErrorPublisher: AnyPublisher<Error, Never> {
-        self.fetchErrorSubject.eraseToAnyPublisher()
-    }
-
     // MARK: Private
 
-    private var carereceiverList = CurrentValueSubject<[Carereceiver], Never>([])
-    private var currentCarereceivers = CurrentValueSubject<[Carereceiver], Never>([])
-    private var fetchErrorSubject = PassthroughSubject<Error, Never>()
     private let dbOps = DatabaseOperations.shared
     private var cancellables = Set<AnyCancellable>()
 }

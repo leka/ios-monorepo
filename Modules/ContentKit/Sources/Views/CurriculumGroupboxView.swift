@@ -2,6 +2,8 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
+import DesignKit
 import LocalizationKit
 import SwiftUI
 
@@ -27,6 +29,36 @@ public struct CurriculumGroupboxView: View {
                         .foregroundStyle(Color.secondary)
 
                     Spacer()
+
+                    #if DEVELOPER_MODE || TESTFLIGHT_BUILD
+                        if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                            Button {}
+                                label: {
+                                    Menu {
+                                        if self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) {
+                                            Button(role: .destructive) {
+                                                self.rootAccountViewModel.removeSavedCurriculum(curriculumID: self.curriculum.uuid)
+                                            } label: {
+                                                Label(String(l10n.Library.MenuActions.removeFromlibraryButtonLabel.characters), systemImage: "trash")
+                                            }
+                                        } else {
+                                            Button {
+                                                self.rootAccountViewModel.addSavedCurriculum(
+                                                    curriculumID: self.curriculum.uuid,
+                                                    caregiverID: currentCaregiverID
+                                                )
+                                            } label: {
+                                                Label(String(l10n.Library.MenuActions.addTolibraryButtonLabel.characters), systemImage: "plus")
+                                            }
+                                        }
+                                    } label: {
+                                        Image(systemName: "ellipsis")
+                                            .bold()
+                                    }
+                                    .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
+                                }
+                        }
+                    #endif
                 }
 
                 VStack(spacing: 10) {
@@ -50,19 +82,25 @@ public struct CurriculumGroupboxView: View {
 
                     Spacer()
 
-                    HStack(alignment: .center) {
-                        Spacer()
+                    ZStack {
+                        HStack {
+                            Image(systemName: "checkmark.circle.fill")
+                                .font(.title3)
+                                .foregroundStyle(Color.secondary)
+                                .opacity(self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) ? 1 : 0)
+
+                            Spacer()
+
+                            Image(systemName: "chevron.right")
+                                .font(.title3)
+                                .foregroundStyle(Color.secondary)
+                        }
 
                         Text(l10n.CurriculumGroupboxView.activityCountLabel(self.curriculum.activities.count))
                             .font(.caption.bold())
                             .foregroundStyle(Color.secondary)
-
-                        Spacer()
-
-                        Image(systemName: "chevron.right")
-                            .font(.title3)
-                            .foregroundStyle(Color.secondary)
                     }
+                    .frame(maxWidth: .infinity)
                 }
             }
             .frame(width: 280)
@@ -72,6 +110,11 @@ public struct CurriculumGroupboxView: View {
     // MARK: Private
 
     private let curriculum: Curriculum
+
+    @ObservedObject private var styleManager: StyleManager = .shared
+
+    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 }
 
 // MARK: - l10n.CurriculumGroupboxView

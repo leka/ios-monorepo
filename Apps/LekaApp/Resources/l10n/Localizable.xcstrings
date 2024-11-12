@@ -1550,6 +1550,78 @@
                 }
             }
         },
+        "lekaapp.empty_library_placedholder_view.button_instruction": {
+            "comment": "Instruction suffix",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "button on any activity, curriculum, or story to add them to your Library."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "dans n'importe quelle activit\u00e9, parcours ou histoire pour les ajouter \u00e0 votre Biblioth\u00e8que."
+                    }
+                }
+            }
+        },
+        "lekaapp.empty_library_placedholder_view.library_is_empty": {
+            "comment": "Empty library title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Your Library is Empty"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Votre Biblioth\u00e8que est vide"
+                    }
+                }
+            }
+        },
+        "lekaapp.empty_library_placedholder_view.remove_items": {
+            "comment": "Removal instruction",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "You can remove items from your Library using the same button."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Vous pouvez supprimer des \u00e9l\u00e9ments de votre Biblioth\u00e8que en utilisant le m\u00eame bouton."
+                    }
+                }
+            }
+        },
+        "lekaapp.empty_library_placedholder_view.tap_the": {
+            "comment": "Instruction prefix",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Tap the"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Appuyez sur le bouton"
+                    }
+                }
+            }
+        },
         "lekaapp.forgot_password_view.context_message": {
             "comment": "Forgot Password View context message",
             "extractionState": "extracted_with_value",
@@ -1676,20 +1748,74 @@
                 }
             }
         },
-        "lekaapp.main_view.sidebar.category_label.activities": {
-            "comment": "The title of the category 'Activities'",
+        "lekaapp.main_app.update_alert.action": {
+            "comment": "The action button of the alert to inform the user that an update is available",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Activities"
+                        "value": "Update now"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Activit\u00e9s"
+                        "value": "Mettre \u00e0 jour maintenant"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_app.update_alert.message": {
+            "comment": "The message of the alert to inform the user that an update is available",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Enjoy new features by updating to the latest version of Leka!"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Profitez des nouvelles fonctionnalit\u00e9s en t\u00e9l\u00e9chargeant la nouvelle mise \u00e0 jour de l\u2019app Leka !"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_app.update_alert.title": {
+            "comment": "The title of the alert to inform the user that an update is available",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "New update available"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Nouvelle mise \u00e0 jour disponible"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.detailView.disconnected_library_message": {
+            "comment": "The message to invite users to connect to display the Library",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Log in to your account to access your personal library."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Connectez-vous \u00e0 votre compte pour acc\u00e9der \u00e0 votre biblioth\u00e8que personnelle."
                     }
                 }
             }
@@ -1748,6 +1874,24 @@
                 }
             }
         },
+        "lekaapp.main_view.sidebar.category_label.educational_games": {
+            "comment": "The title of the category 'Educational Games'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Educational Games"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Jeux \u00c9ducatifs"
+                    }
+                }
+            }
+        },
         "lekaapp.main_view.sidebar.category_label.gamepads": {
             "comment": "The title of the category 'Gamepads'",
             "extractionState": "extracted_with_value",
@@ -1780,6 +1924,60 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Accueil"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.library_activities": {
+            "comment": "The title of the category 'Library Activities'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Activities"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Activit\u00e9s"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.library_curriculums": {
+            "comment": "The title of the category 'Library Curriculums'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Curriculums"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Parcours"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.library_stories": {
+            "comment": "The title of the category 'Library Stories'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Stories"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Histoires"
                     }
                 }
             }
@@ -1960,6 +2158,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Informations"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.section.library": {
+            "comment": "The title of the section 'Library'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Library"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Biblioth\u00e8que"
                     }
                 }
             }

@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import Fit
 import LocalizationKit
@@ -115,7 +116,43 @@ public struct ActivityDetailsView: View {
                     .markdownTheme(.gitHub)
             }
         }
+        .onAppear {
+            AnalyticsManager.shared.logEventScreenView(screenName: "view_activity_details_view")
+        }
         .toolbar {
+            #if DEVELOPER_MODE || TESTFLIGHT_BUILD
+                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                    ToolbarItem {
+                        Menu {
+                            if self.rootAccountViewModel.isActivitySaved(activityID: self.activity.uuid) {
+                                Button(role: .destructive) {
+                                    self.rootAccountViewModel.removeSavedActivity(activityID: self.activity.uuid)
+                                } label: {
+                                    Label(String(l10n.Library.MenuActions.removeFromlibraryButtonLabel.characters), systemImage: "trash")
+                                }
+                            } else {
+                                Button {
+                                    self.rootAccountViewModel.addSavedActivity(
+                                        activityID: self.activity.uuid,
+                                        caregiverID: currentCaregiverID
+                                    )
+                                } label: {
+                                    Label(String(l10n.Library.MenuActions.addTolibraryButtonLabel.characters), systemImage: "plus")
+                                }
+                            }
+                        } label: {
+                            Button {
+                                // Nothing to do
+                            } label: {
+                                Image(systemName: "ellipsis")
+                                    .bold()
+                            }
+                            .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
+                        }
+                    }
+                }
+            #endif
+
             ToolbarItem {
                 Button {
                     self.onStartActivity?(self.activity)
@@ -141,6 +178,11 @@ public struct ActivityDetailsView: View {
 
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
+
+    @ObservedObject private var styleManager: StyleManager = .shared
+
+    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 }
 
 // MARK: - l10n.ActivityDetailsView

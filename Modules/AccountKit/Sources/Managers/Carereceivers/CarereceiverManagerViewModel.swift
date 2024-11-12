@@ -25,21 +25,21 @@ public class CarereceiverManagerViewModel: ObservableObject {
     private let carereceiverManager = CarereceiverManager.shared
 
     private func subscribeToManager() {
-        self.carereceiverManager.carereceiversPublisher
+        self.carereceiverManager.carereceiverList
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] fetchedCarereceivers in
                 self?.carereceivers = fetchedCarereceivers
             })
             .store(in: &self.cancellables)
 
-        self.carereceiverManager.currentCarereceiversPublisher
+        self.carereceiverManager.currentCarereceivers
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] fetchedCarereceivers in
                 self?.currentCarereceivers = fetchedCarereceivers
             })
             .store(in: &self.cancellables)
 
-        self.carereceiverManager.fetchErrorPublisher
+        self.carereceiverManager.fetchError
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] error in
                 self?.handleError(error)

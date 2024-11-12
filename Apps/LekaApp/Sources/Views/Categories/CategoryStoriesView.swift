@@ -31,7 +31,9 @@ struct CategoryStoriesView: View {
                             .foregroundStyle(.secondary)
                     }
                 }
-                .padding(.horizontal)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 30)
+                .padding(.bottom)
 
                 StoryGridView(stories: self.category.stories, onStartStory: { story in
                     if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {

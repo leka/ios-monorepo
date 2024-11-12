@@ -19,10 +19,10 @@ public struct RobotConnectionView: View {
 
     public var body: some View {
         VStack(spacing: 10) {
-            if self.viewModel.connectingToDeepSleepingRobot {
+            if self.viewModel.connectingToRebootingRobot {
                 ProgressView()
                 Text(l10n.RobotKit.RobotConnectionView.rebootingDeepSleepingRobotText)
-            } else if self.viewModel.connected {
+            } else if self.robotViewModel.isConnected {
                 ConnectedRobotView(viewModel: self.viewModel)
             } else {
                 switch self.viewModel.managerState {
@@ -73,16 +73,19 @@ public struct RobotConnectionView: View {
                     Text(l10n.RobotKit.RobotConnectionView.closeButton)
                 }
             }
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    self.viewModel.connectToRobot()
-                } label: {
-                    Text(l10n.RobotKit.RobotConnectionView.connectButton)
+            if !self.viewModel.connectingToRebootingRobot {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        self.viewModel.connectToRobot()
+                    } label: {
+                        Text(l10n.RobotKit.RobotConnectionView.connectButton)
+                    }
+                    .disabled(self.viewModel.selectedDiscovery == nil)
+                    .opacity(self.robotViewModel.isConnected ? 0 : 1)
                 }
-                .disabled(self.viewModel.selectedDiscovery == nil)
-                .opacity(self.viewModel.connected ? 0 : 1)
             }
         }
+        .interactiveDismissDisabled(self.viewModel.connectingToRebootingRobot)
     }
 
     // MARK: Internal
@@ -90,10 +93,11 @@ public struct RobotConnectionView: View {
     @Environment(\.scenePhase) var scenePhase
 
     @StateObject var viewModel: RobotConnectionViewModel
-
     @Environment(\.dismiss) var dismiss
 
     // MARK: Private
+
+    @StateObject private var robotViewModel: ConnectedRobotInformationViewModel = .init()
 
     private let columns: [GridItem] = [
         GridItem(),

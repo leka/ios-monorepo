@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import SwiftUI
 
@@ -22,6 +23,14 @@ public struct GamepadGridView: View {
             ForEach(self.gamepads) { activity in
                 NavigationLink(destination:
                     ActivityDetailsView(activity: activity, onStartActivity: self.onStartGamepad)
+                        .onAppear {
+                            AnalyticsManager.shared.logEventSelectContent(
+                                type: .gamepad,
+                                id: activity.id,
+                                name: activity.name,
+                                origin: .generalLibrary
+                            )
+                        }
                 ) {
                     VStack {
                         Image(uiImage: activity.details.iconImage)

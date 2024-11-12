@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import Fit
 import LocalizationKit
@@ -140,6 +141,43 @@ public struct CurriculumDetailsView: View {
                 }
             }
         }
+        .onAppear {
+            AnalyticsManager.shared.logEventScreenView(screenName: "view_curriculum_details_view")
+        }
+        .toolbar {
+            #if DEVELOPER_MODE || TESTFLIGHT_BUILD
+                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                    ToolbarItem {
+                        Menu {
+                            if self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) {
+                                Button(role: .destructive) {
+                                    self.rootAccountViewModel.removeSavedCurriculum(curriculumID: self.curriculum.uuid)
+                                } label: {
+                                    Label(String(l10n.Library.MenuActions.removeFromlibraryButtonLabel.characters), systemImage: "trash")
+                                }
+                            } else {
+                                Button {
+                                    self.rootAccountViewModel.addSavedCurriculum(
+                                        curriculumID: self.curriculum.uuid,
+                                        caregiverID: currentCaregiverID
+                                    )
+                                } label: {
+                                    Label(String(l10n.Library.MenuActions.addTolibraryButtonLabel.characters), systemImage: "plus")
+                                }
+                            }
+                        } label: {
+                            Button {
+                                // Nothing to do
+                            } label: {
+                                Image(systemName: "ellipsis")
+                                    .bold()
+                            }
+                            .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
+                        }
+                    }
+                }
+            #endif
+        }
     }
 
     // MARK: Internal
@@ -154,6 +192,9 @@ public struct CurriculumDetailsView: View {
     @State private var selectedSkill: Skill?
     @State private var isDescriptionExpanded = false
     @ObservedObject private var styleManager: StyleManager = .shared
+
+    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 }
 
 // MARK: - l10n.CurriculumDetailsView

@@ -2,7 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-// swiftlint:disable cyclomatic_complexity void_function_in_ternary function_body_length
+// swiftlint:disable cyclomatic_complexity void_function_in_ternary function_body_length type_body_length
 
 import AccountKit
 import Combine
@@ -141,6 +141,13 @@ public struct ActivityView: View {
             })
             Button(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.quitButtonLabel.characters), role: .destructive, action: {
                 self.saveActivityCompletion()
+                AnalyticsManager.shared
+                    .logEventActivityEnd(
+                        id: self.viewModel.currentActivity.id,
+                        name: self.viewModel.currentActivity.name,
+                        carereceiverIDs: self.carereceiverManager.currentCarereceivers.value.compactMap(\.id).joined(separator: ","),
+                        reason: .userExited
+                    )
                 self.dismiss()
             })
         } message: {
@@ -155,6 +162,13 @@ public struct ActivityView: View {
         .onAppear {
             Robot.shared.stop()
             UIApplication.shared.isIdleTimerDisabled = true
+
+            AnalyticsManager.shared
+                .logEventActivityStart(
+                    id: self.viewModel.currentActivity.id,
+                    name: self.viewModel.currentActivity.name,
+                    carereceiverIDs: self.carereceiverManager.currentCarereceivers.value.compactMap(\.id).joined(separator: ",")
+                )
         }
         .onDisappear {
             Robot.shared.stop()
@@ -173,6 +187,8 @@ public struct ActivityView: View {
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
     @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
+
+    private var carereceiverManager: CarereceiverManager = .shared
 
     @State private var isAlertPresented: Bool = false
 
@@ -214,6 +230,14 @@ public struct ActivityView: View {
             if self.viewModel.isLastExercise {
                 self.viewModel.scorePanelEnabled ? self.viewModel.moveToActivityEnd() : self.dismiss()
                 self.saveActivityCompletion()
+
+                AnalyticsManager.shared
+                    .logEventActivityEnd(
+                        id: self.viewModel.currentActivity.id,
+                        name: self.viewModel.currentActivity.name,
+                        carereceiverIDs: self.carereceiverManager.currentCarereceivers.value.compactMap(\.id).joined(separator: ","),
+                        reason: .userCompleted
+                    )
             } else {
                 self.viewModel.moveToNextExercise()
             }
@@ -404,7 +428,7 @@ public struct ActivityView: View {
     }
 }
 
-// swiftlint:enable cyclomatic_complexity void_function_in_ternary function_body_length
+// swiftlint:enable cyclomatic_complexity void_function_in_ternary function_body_length type_body_length
 
 #Preview {
     NavigationStack {

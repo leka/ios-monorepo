@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import DesignKit
 import Fit
 import LocalizationKit
@@ -106,7 +107,43 @@ public struct StoryDetailsView: View {
                     .markdownTheme(.gitHub)
             }
         }
+        .onAppear {
+            AnalyticsManager.shared.logEventScreenView(screenName: "view_story_details_view")
+        }
         .toolbar {
+            #if DEVELOPER_MODE || TESTFLIGHT_BUILD
+                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                    ToolbarItem {
+                        Menu {
+                            if self.rootAccountViewModel.isStorySaved(storyID: self.story.uuid) {
+                                Button(role: .destructive) {
+                                    self.rootAccountViewModel.removeSavedStory(storyID: self.story.uuid)
+                                } label: {
+                                    Label(String(l10n.Library.MenuActions.removeFromlibraryButtonLabel.characters), systemImage: "trash")
+                                }
+                            } else {
+                                Button {
+                                    self.rootAccountViewModel.addSavedStory(
+                                        storyID: self.story.uuid,
+                                        caregiverID: currentCaregiverID
+                                    )
+                                } label: {
+                                    Label(String(l10n.Library.MenuActions.addTolibraryButtonLabel.characters), systemImage: "plus")
+                                }
+                            }
+                        } label: {
+                            Button {
+                                // Nothing to do
+                            } label: {
+                                Image(systemName: "ellipsis")
+                                    .bold()
+                            }
+                            .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
+                        }
+                    }
+                }
+            #endif
+
             ToolbarItem {
                 Button {
                     self.onStartStory?(self.story)
@@ -132,6 +169,11 @@ public struct StoryDetailsView: View {
 
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
+
+    @ObservedObject private var styleManager: StyleManager = .shared
+
+    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 }
 
 // MARK: - l10n.StoryDetailsView
