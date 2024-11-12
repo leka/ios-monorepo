@@ -148,9 +148,12 @@ platform :ios do
 
         UI.header 'Step: Create verson and new build number'
 
-        latest_build_number = latest_testflight_build_number(app_identifier: app_bundle_id.to_s).to_s
-        new_build_number = create_new_build_number(latest_build_number: latest_build_number)
         version_number = get_version_number(xcodeproj: app_xcodeproj.to_s)
+        latest_build_number = latest_testflight_build_number(
+          app_identifier: app_bundle_id.to_s,
+          version: version_number
+        ).to_s
+        new_build_number = create_new_build_number(latest_build_number: latest_build_number)
         build_date = Time.new.strftime('%Y_%m_%d')
 
         UI.important "Next release for: #{app_bundle_id}"
@@ -263,9 +266,12 @@ platform :ios do
 
       UI.header 'Step: Create verson and new build number'
 
-      latest_build_number = latest_testflight_build_number(app_identifier: app_bundle_id.to_s).to_s
-      new_build_number = create_new_build_number(latest_build_number: latest_build_number)
       version_number = get_version_number(xcodeproj: app_xcodeproj.to_s)
+      latest_build_number = latest_testflight_build_number(
+        app_identifier: app_bundle_id.to_s,
+        version: version_number
+      ).to_s
+      new_build_number = create_new_build_number(latest_build_number: latest_build_number)
       build_date = Time.new.strftime('%Y_%m_%d')
 
       UI.important "Next release for: #{app_bundle_id}"
