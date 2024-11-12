@@ -57,6 +57,17 @@ public class Robot {
         }
     }
 
+    public static func mock(name: String = "Mock Robot", serialNumber: String = "1234567890", osVersion: Version = .init(tolerant: "1.0")!, battery: Int = 100, isCharging: Bool = false) -> Robot {
+        let robot = Robot()
+        robot.name.send(name)
+        robot.serialNumber.send(serialNumber)
+        robot.osVersion.send(osVersion)
+        robot.isConnected.send(true)
+        robot.battery.send(battery)
+        robot.isCharging.send(isCharging)
+        return robot
+    }
+
     // MARK: - General
 
     public func stop() {
