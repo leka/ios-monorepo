@@ -60,6 +60,7 @@ struct CarereceiverPicker: View {
             ToolbarItemGroup(placement: .bottomBar) {
                 Button {
                     self.action = .skip
+                    AnalyticsManager.shared.logEventCarereceiverSkipSelect()
                     self.dismiss()
                 } label: {
                     Text(l10n.CarereceiverPicker.skipButtonLabel)
