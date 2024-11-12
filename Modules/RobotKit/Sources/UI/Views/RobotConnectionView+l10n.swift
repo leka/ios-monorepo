@@ -37,25 +37,11 @@ extension l10n {
                 comment: "The title of the connect button"
             )
 
-            static let disconnectButton = LocalizedString(
-                "robotkit.robot_connect_view.disconnect_button",
-                bundle: RobotKitResources.bundle,
-                value: "Disconnect",
-                comment: "The title of the disconnect button"
-            )
-
             static let continueButton = LocalizedString(
                 "robotkit.robot_connect_view.continue_button",
                 bundle: RobotKitResources.bundle,
                 value: "Continue",
                 comment: "The title of the continue button"
-            )
-
-            static let updateButton = LocalizedString(
-                "robotkit.robot_connect_view.update_button",
-                bundle: RobotKitResources.bundle,
-                value: "Update",
-                comment: "The title of the update button"
             )
 
             static let rebootingDeepSleepingRobotText = LocalizedString(

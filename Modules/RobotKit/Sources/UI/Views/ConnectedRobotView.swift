@@ -32,39 +32,11 @@ public struct ConnectedRobotView: View {
                     )
 
                 VStack(alignment: .leading, spacing: 5) {
-                    VStack {
-                        if self.isEditingName {
-                            TextField("Enter new name", text: self.$currentRobotName, onCommit: {
-                                self.triggerRebootAlertPresented = true
-                                self.focusedNameEdition = false
-                                self.isEditingName = false
-                            })
-                            .font(.title)
-                            .lineLimit(1)
-                            .truncationMode(.tail)
-                            .foregroundColor(.primary)
-                            .textFieldStyle(.roundedBorder)
-                            .autocorrectionDisabled()
-                            .focused(self.$focusedNameEdition)
-                            .frame(maxWidth: 300)
-                        } else {
-                            HStack {
-                                Text(self.connectedRobotInformationViewModel.name)
-                                    .font(.title)
-                                    .lineLimit(1)
-                                    .truncationMode(.tail)
-                                    .foregroundColor(.primary)
-                                Image(systemName: "pencil.circle")
-                                    .foregroundColor(self.styleManager.accentColor!)
-                                    .font(.title2)
-                            }
-                            .onTapGesture {
-                                self.isEditingName = true
-                                self.currentRobotName = self.connectedRobotInformationViewModel.name
-                                self.focusedNameEdition = true
-                            }
-                        }
-                    }
+                    Text(self.connectedRobotInformationViewModel.name)
+                        .font(.title)
+                        .lineLimit(1)
+                        .truncationMode(.tail)
+                        .foregroundColor(.primary)
 
                     Text(l10n.ConnectedRobotView.serialNumberLabel(self.connectedRobotInformationViewModel.serialNumber))
                         .font(.caption)
@@ -101,14 +73,27 @@ public struct ConnectedRobotView: View {
                             UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
                         }
                     } label: {
-                        HStack {
-                            Image(systemName: "arrow.triangle.2.circlepath")
-                            Text(l10n.RobotKit.RobotConnectionView.updateButton)
-                        }
+                        Label(
+                            String(l10n.ConnectedRobotView.updateButton.characters),
+                            systemImage: "arrow.triangle.2.circlepath"
+                        )
                         .frame(minWidth: 200)
                     }
-                    .buttonStyle(.borderedProminent)
+                    .buttonStyle(.bordered)
+                    .tint(.green)
+                    .padding(.bottom)
                 }
+
+                Button {
+                    self.presentAlertRenameRobot = true
+                } label: {
+                    Label(
+                        String(l10n.ConnectedRobotView.renameButton.characters),
+                        systemImage: "pencil.circle"
+                    )
+                    .frame(minWidth: 200)
+                }
+                .buttonStyle(.bordered)
 
                 Button {
                     let animation = Animation.easeOut(duration: 0.5)
@@ -116,33 +101,47 @@ public struct ConnectedRobotView: View {
                         BLEManager.shared.disconnect()
                     }
                 } label: {
-                    HStack {
+                    Label {
+                        Text(l10n.ConnectedRobotView.disconnectButton)
+                    } icon: {
                         Image(systemName: "xmark.circle")
-                        Text(l10n.RobotKit.RobotConnectionView.disconnectButton)
                     }
                     .frame(minWidth: 200)
+                    .foregroundColor(.red)
                 }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.bordered)
             }
         }
         .navigationTitle(String(l10n.ConnectedRobotView.navigationTitle.characters))
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .contentShape(Rectangle())
-        .simultaneousGesture(TapGesture().onEnded {
-            self.focusedNameEdition = false
-            self.isEditingName = false
-        })
-        .alert(isPresented: self.$triggerRebootAlertPresented) {
-            Alert(
-                title: Text(l10n.ConnectedRobotView.renameAlertTitle),
-                message: Text(l10n.ConnectedRobotView.renameAlertMessage),
-                primaryButton: .default(Text(l10n.ConnectedRobotView.renameAlertButtonLabel), action: {
-                    self.isEditingName = false
-                    self.connectedRobotInformationViewModel.robot.rename(in: self.currentRobotName)
-                    self.dismiss()
-                }),
-                secondaryButton: .cancel()
+        .alert(
+            String(l10n.ConnectedRobotView.renameAlertTitle.characters),
+            isPresented: self.$presentAlertRenameRobot
+        ) {
+            TextField(
+                String(l10n.ConnectedRobotView.renameAlertTextFieldPlaceholder.characters),
+                text: self.$newRobotName
             )
+            .autocorrectionDisabled()
+
+            Button(
+                String(l10n.ConnectedRobotView.renameAlertButtonLabel.characters),
+                role: .destructive
+            ) {
+                Robot.shared.rename(in: self.newRobotName)
+                self.dismiss()
+            }
+            .disabled(self.newRobotName.isEmpty)
+
+            Button(
+                String(l10n.ConnectedRobotView.renameAlertCancelButtonLabel.characters),
+                role: .cancel
+            ) {
+                self.newRobotName = ""
+            }
+        } message: {
+            Text(l10n.ConnectedRobotView.renameAlertMessage)
         }
     }
 
@@ -155,9 +154,8 @@ public struct ConnectedRobotView: View {
     // MARK: Private
 
     @StateObject private var styleManager: StyleManager = .shared
-    @State private var currentRobotName: String = ""
-    @State private var isEditingName: Bool = false
-    @State private var triggerRebootAlertPresented: Bool = false
+    @State private var newRobotName: String = ""
+    @State private var presentAlertRenameRobot: Bool = false
 
     // swiftlint:disable:next force_cast
     private let isNotLekaUpdater = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as! String != "LekaUpdater"
@@ -215,7 +213,7 @@ extension l10n {
         static let navigationTitle = LocalizedString(
             "robotkit.connected_robot_view.navigation_title",
             bundle: RobotKitResources.bundle,
-            value: "You are connected",
+            value: "Connected Device",
             comment: "The title of the connected robot view"
         )
 
@@ -233,25 +231,60 @@ extension l10n {
             comment: "Update is available alert"
         )
 
+        static let updateButton = LocalizedString(
+            "robotkit.robot_connect_view.update_button",
+            bundle: RobotKitResources.bundle,
+            value: "Update",
+            comment: "The title of the update button"
+        )
+
+        static let renameButton = LocalizedString(
+            "robotkit.connected_robot_view.rename_button",
+            bundle: RobotKitResources.bundle,
+            value: "Rename",
+            comment: "The title of the rename button"
+        )
+
+        static let disconnectButton = LocalizedString(
+            "robotkit.robot_connect_view.disconnect_button",
+            bundle: RobotKitResources.bundle,
+            value: "Disconnect",
+            comment: "The title of the disconnect button"
+        )
+
         static let renameAlertTitle = LocalizedString(
             "robotkit.connected_robot_view.rename_alert_title",
             bundle: RobotKitResources.bundle,
-            value: "Warning",
+            value: "Rename Device",
             comment: "The title of the alert when renaming the robot"
         )
 
         static let renameAlertMessage = LocalizedString(
             "robotkit.connected_robot_view.rename_alert_message",
             bundle: RobotKitResources.bundle,
-            value: "Your robot need to reboot to be renamed, please reconnect after the reboot",
+            value: "Renaming requires a quick device restart to apply changes.",
             comment: "The message of the alert when renaming the robot"
+        )
+
+        static let renameAlertTextFieldPlaceholder = LocalizedString(
+            "robotkit.connected_robot_view.rename_alert_text_field_placeholder",
+            bundle: RobotKitResources.bundle,
+            value: "New device name",
+            comment: "The placeholder of the text field when renaming the robot"
         )
 
         static let renameAlertButtonLabel = LocalizedString(
             "robotkit.connected_robot_view.rename_alert_button_label",
             bundle: RobotKitResources.bundle,
-            value: "Reboot",
+            value: "Rename & Restart",
             comment: "The button label of the alert when renaming the robot"
+        )
+
+        static let renameAlertCancelButtonLabel = LocalizedString(
+            "robotkit.connected_robot_view.rename_alert_cancel_button_label",
+            bundle: RobotKitResources.bundle,
+            value: "Cancel",
+            comment: "The cancel button label of the alert when renaming the robot"
         )
     }
 }
@@ -260,7 +293,7 @@ extension l10n {
     Text("Preview")
         .sheet(isPresented: .constant(true)) {
             NavigationStack {
-                ConnectedRobotView(robot: Robot.mock())
+                ConnectedRobotView(robot: Robot.mock(osVersion: .init(1, 0, 0)))
                     .navigationBarTitleDisplayMode(.inline)
             }
         }
