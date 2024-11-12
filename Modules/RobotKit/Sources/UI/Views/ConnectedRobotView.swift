@@ -12,6 +12,14 @@ import Version
 // MARK: - ConnectedRobotView
 
 public struct ConnectedRobotView: View {
+    // MARK: Lifecycle
+
+    init(robot: Robot) {
+        _connectedRobotInformationViewModel = StateObject(
+            wrappedValue: .init(robot: robot)
+        )
+    }
+
     // MARK: Public
 
     public var body: some View {
@@ -105,7 +113,7 @@ public struct ConnectedRobotView: View {
                 Button {
                     let animation = Animation.easeOut(duration: 0.5)
                     withAnimation(animation) {
-                        self.viewModel.disconnectFromRobot()
+                        BLEManager.shared.disconnect()
                     }
                 } label: {
                     HStack {
@@ -140,9 +148,13 @@ public struct ConnectedRobotView: View {
 
     // MARK: Internal
 
+    @StateObject var connectedRobotInformationViewModel: ConnectedRobotInformationViewModel
+
+    @Environment(\.dismiss) var dismiss
+
+    // MARK: Private
+
     @StateObject private var styleManager: StyleManager = .shared
-    @StateObject var connectedRobotInformationViewModel: ConnectedRobotInformationViewModel = .init()
-    @StateObject var viewModel: RobotConnectionViewModel
     @State private var currentRobotName: String = ""
     @State private var isEditingName: Bool = false
     @State private var triggerRebootAlertPresented: Bool = false
@@ -164,10 +176,6 @@ public struct ConnectedRobotView: View {
             return true
         }
     }
-
-    @Environment(\.dismiss) var dismiss
-
-    // MARK: Private
 
     private var robotOsVersion: some View {
         HStack {
@@ -249,11 +257,10 @@ extension l10n {
 }
 
 #Preview {
-    let viewModel: RobotConnectionViewModel = .mock()
-    return Text("Preview")
+    Text("Preview")
         .sheet(isPresented: .constant(true)) {
             NavigationStack {
-                ConnectedRobotView(viewModel: viewModel)
+                ConnectedRobotView(robot: Robot.mock())
                     .navigationBarTitleDisplayMode(.inline)
             }
         }

@@ -8,7 +8,8 @@ import SwiftUI
 public class ConnectedRobotInformationViewModel: ObservableObject {
     // MARK: Lifecycle
 
-    public init() {
+    public init(robot: Robot = .shared) {
+        self.robot = robot
         self.getRobotInformation()
     }
 
@@ -31,7 +32,7 @@ public class ConnectedRobotInformationViewModel: ObservableObject {
 
     // MARK: Internal
 
-    let robot = Robot.shared
+    let robot: Robot
 
     // MARK: Private
 
