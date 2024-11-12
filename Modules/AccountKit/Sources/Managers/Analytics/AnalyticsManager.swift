@@ -77,6 +77,14 @@ public class AnalyticsManager {
         Analytics.logEvent(AnalyticsEventSignUp, parameters: nil)
     }
 
+    public func logEventCaregiverSelect() {
+        Analytics.logEvent("caregiver_select", parameters: nil)
+    }
+
+    public func logEventCarereceiverSkipSelect() {
+        Analytics.logEvent("carereceiver_skip_select", parameters: nil)
+    }
+
     public func logEventActivityStart(id: String, name: String, carereceiverIDs: String) {
         Analytics.logEvent("activity_start", parameters: [
             "activity_id": id,
