@@ -38,7 +38,7 @@ struct RobotConnectionLabel: View {
 
     private let backgroundColor: Color = .init(light: UIColor.white, dark: UIColor.systemGray5)
 
-    @StateObject private var robotViewModel: ConnectedRobotInformationViewModel = .init()
+    @StateObject private var robotViewModel: ConnectedRobotInformationViewModel = .init(robot: Robot.shared)
 
     private var robotNotUpToDate: Bool {
         guard let osVersion = Version(tolerant: self.robotViewModel.osVersion) else {

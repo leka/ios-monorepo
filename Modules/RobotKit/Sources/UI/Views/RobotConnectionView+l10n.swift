@@ -37,13 +37,6 @@ extension l10n {
                 comment: "The title of the connect button"
             )
 
-            static let disconnectButton = LocalizedString(
-                "robotkit.robot_connect_view.disconnect_button",
-                bundle: RobotKitResources.bundle,
-                value: "Disconnect",
-                comment: "The title of the disconnect button"
-            )
-
             static let continueButton = LocalizedString(
                 "robotkit.robot_connect_view.continue_button",
                 bundle: RobotKitResources.bundle,
@@ -51,18 +44,11 @@ extension l10n {
                 comment: "The title of the continue button"
             )
 
-            static let updateButton = LocalizedString(
-                "robotkit.robot_connect_view.update_button",
+            static let restartingDeepSleepRobotText = LocalizedString(
+                "robotkit.robot_connection_view.restart_deep_sleep_robot_text",
                 bundle: RobotKitResources.bundle,
-                value: "Update",
-                comment: "The title of the update button"
-            )
-
-            static let rebootingDeepSleepingRobotText = LocalizedString(
-                "robotkit.robot_connection_view.rebooting_deep_sleeping_robot_text",
-                bundle: RobotKitResources.bundle,
-                value: "Leka is booting...",
-                comment: "The text of the robot rebooting from deep sleep state"
+                value: "Leka is restarting from deep sleep state...",
+                comment: "The text of the robot restarting from deep sleep state"
             )
         }
     }

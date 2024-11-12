@@ -19,11 +19,11 @@ public struct RobotConnectionView: View {
 
     public var body: some View {
         VStack(spacing: 10) {
-            if self.viewModel.connectingToRebootingRobot {
+            if self.viewModel.connectingToRestartingRobot {
                 ProgressView()
-                Text(l10n.RobotKit.RobotConnectionView.rebootingDeepSleepingRobotText)
+                Text(l10n.RobotKit.RobotConnectionView.restartingDeepSleepRobotText)
             } else if self.robotViewModel.isConnected {
-                ConnectedRobotView(viewModel: self.viewModel)
+                ConnectedRobotView(robot: self.robotViewModel.robot)
             } else {
                 switch self.viewModel.managerState {
                     case .poweredOn:
@@ -73,7 +73,7 @@ public struct RobotConnectionView: View {
                     Text(l10n.RobotKit.RobotConnectionView.closeButton)
                 }
             }
-            if !self.viewModel.connectingToRebootingRobot {
+            if !self.viewModel.connectingToRestartingRobot {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         self.viewModel.connectToRobot()
@@ -85,7 +85,7 @@ public struct RobotConnectionView: View {
                 }
             }
         }
-        .interactiveDismissDisabled(self.viewModel.connectingToRebootingRobot)
+        .interactiveDismissDisabled(self.viewModel.connectingToRestartingRobot)
     }
 
     // MARK: Internal
@@ -97,7 +97,8 @@ public struct RobotConnectionView: View {
 
     // MARK: Private
 
-    @StateObject private var robotViewModel: ConnectedRobotInformationViewModel = .init()
+    @StateObject private var robotViewModel: ConnectedRobotInformationViewModel = .init(
+        robot: .shared)
 
     private let columns: [GridItem] = [
         GridItem(),

@@ -27,13 +27,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "You are connected"
+                        "value": "Connected Device"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Vous \u00eates connect\u00e9s"
+                        "value": "Appareil Connect\u00e9"
                     }
                 }
             }
@@ -45,7 +45,31 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Reboot"
+                        "value": "Rename & Restart"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Renommer & Red\u00e9marrer"
+                    }
+                }
+            }
+        },
+        "robotkit.connected_robot_view.rename_alert_cancel_button_label": {
+            "comment": "The cancel button label of the alert when renaming the robot",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Cancel"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Annuler"
                     }
                 }
             }
@@ -57,7 +81,31 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Your robot need to reboot to be renamed, please reconnect after the reboot"
+                        "value": "Renaming requires a quick device restart to apply changes."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Le changement de nom n\u00e9cessite un red\u00e9marrage rapide de l'appareil pour appliquer les modifications."
+                    }
+                }
+            }
+        },
+        "robotkit.connected_robot_view.rename_alert_text_field_placeholder": {
+            "comment": "The placeholder of the text field when renaming the robot",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "New device name"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Nouveau nom de l\u2019appareil"
                     }
                 }
             }
@@ -69,7 +117,31 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Warning"
+                        "value": "Rename Device"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Renommer l'appareil"
+                    }
+                }
+            }
+        },
+        "robotkit.connected_robot_view.rename_button": {
+            "comment": "The title of the rename button",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Rename"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Renommer"
                     }
                 }
             }
@@ -326,20 +398,20 @@
                 }
             }
         },
-        "robotkit.robot_connection_view.rebooting_deep_sleeping_robot_text": {
-            "comment": "The text of the robot rebooting from deep sleep state",
+        "robotkit.robot_connection_view.restart_deep_sleep_robot_text": {
+            "comment": "The text of the robot restarting from deep sleep state",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Leka is booting..."
+                        "value": "Leka is restarting from deep sleep state..."
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Leka est en train de d\u00e9marrer..."
+                        "value": "Leka red\u00e9marre depuis l'\u00e9tat de veille profonde..."
                     }
                 }
             }
