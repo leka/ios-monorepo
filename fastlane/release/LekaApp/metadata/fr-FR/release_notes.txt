@@ -1,13 +1,17 @@
 ### Nouvelles Fonctionnalités
 
-- Sélecteur de Renforçateur lors de la Création du Bénéficiaire de Soins : Les utilisateurs peuvent désormais sélectionner un renforçateur lors de la création d'un bénéficiaire de soins, personnalisant ainsi l'expérience.
+- Renommage du Robot : Vous pouvez désormais renommer votre robot directement depuis l'application pour une expérience plus personnalisée.
 
 ### Améliorations
 
-- Mode Automatique de Dance Freeze : Amélioration du comportement du mode automatique dans l'activité Dance Freeze pour une expérience plus fluide.
-- Mises à Jour de l'Interface Utilisateur : Actualisation de l'icône du bouton d'action du robot et amélioration de l'interface utilisateur dans diverses sections.
+- Alertes de Mise à Jour : L'application vous notifiera lorsqu'une nouvelle mise à jour est disponible, vous assurant ainsi de toujours bénéficier des dernières fonctionnalités et améliorations.
+- Améliorations de l'Interface Utilisateur : Mise à jour des icônes de gestes pour une meilleure expérience visuelle, réorganisation du contenu de la barre latérale pour une navigation plus facile, et renommage de la section "Activités" en "Jeux Éducatifs" pour plus de clarté.
 
 ### Corrections de Bugs
 
-- Correction du Lien de Ressource : Mise à jour d'un lien mort dans la ressource vidéo "Carte Stop".
-- Assets du Curriculum : Correction de problèmes avec les assets dans les curriculums pour assurer un affichage correct.
+- Correction de Lien de Ressource : Correction d'un lien vidéo cassé dans la section Ressources.
+- Bug d'Affichage de la Connexion du Robot : Résolution d'un problème où le statut de connexion du robot n'était pas affiché correctement.
+
+### Autre
+
+- Performances de l'Application et Analytics : Mise en place d'améliorations en arrière-plan pour optimiser les performances de l'application et recueillir des retours utilisateurs pour les futures mises à jour.
