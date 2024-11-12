@@ -19,9 +19,9 @@ public struct RobotConnectionView: View {
 
     public var body: some View {
         VStack(spacing: 10) {
-            if self.viewModel.connectingToRebootingRobot {
+            if self.viewModel.connectingToRestartingRobot {
                 ProgressView()
-                Text(l10n.RobotKit.RobotConnectionView.rebootingDeepSleepingRobotText)
+                Text(l10n.RobotKit.RobotConnectionView.restartingDeepSleepRobotText)
             } else if self.robotViewModel.isConnected {
                 ConnectedRobotView(robot: self.robotViewModel.robot)
             } else {
@@ -73,7 +73,7 @@ public struct RobotConnectionView: View {
                     Text(l10n.RobotKit.RobotConnectionView.closeButton)
                 }
             }
-            if !self.viewModel.connectingToRebootingRobot {
+            if !self.viewModel.connectingToRestartingRobot {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         self.viewModel.connectToRobot()
@@ -85,7 +85,7 @@ public struct RobotConnectionView: View {
                 }
             }
         }
-        .interactiveDismissDisabled(self.viewModel.connectingToRebootingRobot)
+        .interactiveDismissDisabled(self.viewModel.connectingToRestartingRobot)
     }
 
     // MARK: Internal

@@ -398,20 +398,20 @@
                 }
             }
         },
-        "robotkit.robot_connection_view.rebooting_deep_sleeping_robot_text": {
-            "comment": "The text of the robot rebooting from deep sleep state",
+        "robotkit.robot_connection_view.restart_deep_sleep_robot_text": {
+            "comment": "The text of the robot restarting from deep sleep state",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Leka is booting..."
+                        "value": "Leka is restarting from deep sleep state..."
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Leka est en train de d\u00e9marrer..."
+                        "value": "Leka red\u00e9marre depuis l'\u00e9tat de veille profonde..."
                     }
                 }
             }
