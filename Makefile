@@ -28,7 +28,7 @@ config:
 	@TUIST_TURN_OFF_LINTERS=$(TURN_OFF_LINTERS) 												\
 	 TUIST_GENERATE_EXAMPLE_TARGETS=$(GENERATE_EXAMPLE_TARGETS) 								\
 	 TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG=$(GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG) \
-	 tuist generate
+	 tuist generate --no-binary-cache
 
 build:
 	@echo "Building project..."
