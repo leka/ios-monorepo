@@ -8,14 +8,19 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 let project = Project.module(
-    name: "AnalyticsKit",
+    name: "FirebaseKit",
     examples: [
         ModuleExample(
-            name: "AnalyticsKitExample"
+            name: "FirebaseKitExample"
         ),
     ],
     dependencies: [
-        .project(target: "FirebaseKit", path: Path("../../Modules/FirebaseKit")),
         .project(target: "LogKit", path: Path("../../Modules/LogKit")),
+
+        .external(name: "FirebaseAnalytics"),
+        .external(name: "FirebaseAuth"),
+        .external(name: "FirebaseAuthCombine-Community"),
+        .external(name: "FirebaseFirestore"),
+        .external(name: "FirebaseFirestoreCombine-Community"),
     ]
 )

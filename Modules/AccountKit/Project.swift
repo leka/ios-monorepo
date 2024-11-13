@@ -17,15 +17,12 @@ let project = Project.module(
     dependencies: [
         .project(target: "AnalyticsKit", path: Path("../../Modules/AnalyticsKit")),
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
+        .project(target: "FirebaseKit", path: Path("../../Modules/FirebaseKit")),
         .project(target: "LocalizationKit", path: Path("../../Modules/LocalizationKit")),
         .project(target: "LogKit", path: Path("../../Modules/LogKit")),
         .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
         .project(target: "UtilsKit", path: Path("../../Modules/UtilsKit")),
 
-        .external(name: "FirebaseAuth"),
-        .external(name: "FirebaseAuthCombine-Community"),
-        .external(name: "FirebaseFirestore"),
-        .external(name: "FirebaseFirestoreCombine-Community"),
         .external(name: "Version"),
         .external(name: "Yams"),
     ]

@@ -8,7 +8,7 @@ import AppUpdately
 import Combine
 import ContentKit
 import DesignKit
-import FirebaseCore
+import FirebaseKit
 import LocalizationKit
 import LogKit
 import SwiftUI
@@ -43,17 +43,7 @@ struct LekaApp: App {
             UserDefaults.standard.set(true, forKey: "/google/measurement/debug_mode")
         #endif
 
-        guard let googleServiceInfoPlistPath = Bundle.main.path(forResource: googleServiceInfoPlistName, ofType: "plist"),
-              let options = FirebaseOptions(contentsOfFile: googleServiceInfoPlistPath)
-        else {
-            log.critical("\(googleServiceInfoPlistName).plist is missing!")
-            fatalError("\(googleServiceInfoPlistName).plist is missing!")
-        }
-
-        log.warning("Firebase: \(googleServiceInfoPlistName)")
-        log.warning("Firebase options: \(options)")
-
-        FirebaseApp.configure(options: options)
+        FirebaseKit.shared.configure(with: googleServiceInfoPlistName)
     }
 
     // MARK: Internal
