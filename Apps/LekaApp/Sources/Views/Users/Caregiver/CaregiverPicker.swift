@@ -50,6 +50,7 @@ struct CaregiverPicker: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     self.caregiverManager.setCurrentCaregiver(to: self.selectedCaregiver!)
+                    AnalyticsManager.shared.logEventCaregiverSelect()
                     self.dismiss()
                 } label: {
                     Text(l10n.CaregiverPicker.selectButtonLabel)

@@ -57,7 +57,7 @@ public class RobotConnectionViewModel: ObservableObject {
             return
         }
 
-        if discovery.isDeepSleeping, !self.connectingToRebootingRobot {
+        if discovery.isDeepSleeping, !self.connectingToRestartingRobot {
             self.connectToRobotInDeepSleep()
             return
         }
@@ -71,7 +71,7 @@ public class RobotConnectionViewModel: ObservableObject {
                 self.robot.connectedPeripheral = peripheral
                 self.connectedDiscovery = discovery
                 self.selectedDiscovery = nil
-                self.connectingToRebootingRobot = false
+                self.connectingToRestartingRobot = false
                 log.info("🔵 BLE - Connected to \(self.robot.name.value)")
             }
             .store(in: &self.cancellables)
@@ -82,7 +82,7 @@ public class RobotConnectionViewModel: ObservableObject {
             return
         }
 
-        self.connectingToRebootingRobot = true
+        self.connectingToRestartingRobot = true
 
         self.bleManager.connect(discovery)
             .receive(on: DispatchQueue.main)
@@ -120,7 +120,7 @@ public class RobotConnectionViewModel: ObservableObject {
     @Published var selectedDiscovery: RobotDiscoveryModel?
 
     @Published var connected: Bool = false
-    @Published var connectingToRebootingRobot: Bool = false
+    @Published var connectingToRestartingRobot: Bool = false
     @Published var managerState: CBManagerState = .unknown
 
     @Published var connectedDiscovery: RobotDiscoveryModel? {
