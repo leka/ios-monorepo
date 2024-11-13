@@ -15,7 +15,8 @@ let project = Project.module(
         ),
     ],
     dependencies: [
-        .project(target: "AccountKit", path: Path("../../Modules/AccountKit")),
         .project(target: "LogKit", path: Path("../../Modules/LogKit")),
+
+        .external(name: "FirebaseAnalytics"),
     ]
 )
