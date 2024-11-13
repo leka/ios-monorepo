@@ -154,7 +154,9 @@ struct SettingsView: View {
 
             #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                 Section {
-                    Toggle("Demo mode", isOn: self.$navigation.demoMode)
+                    Toggle("Demo Mode", isOn: self.$navigation.demoMode)
+                } header: {
+                    Text("Developer / TestFlight Options")
                 }
             #endif
 
