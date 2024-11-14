@@ -87,8 +87,7 @@ public class AnalyticsManager {
 
     public func logEventActivityStart(id: String, name: String, carereceiverIDs: String) {
         Analytics.logEvent("activity_start", parameters: [
-            "activity_id": id,
-            "activity_name": name,
+            "activity_id": "\(name)-\(id)",
             "carereceiver_ids": carereceiverIDs,
         ])
     }
@@ -100,8 +99,7 @@ public class AnalyticsManager {
         reason: ActivityEndReason
     ) {
         Analytics.logEvent("activity_end", parameters: [
-            "activity_id": id,
-            "activity_name": name,
+            "activity_id": "\(name)-\(id)",
             "carereceiver_ids": carereceiverIDs,
             "activity_end_reason": reason.rawValue,
         ])
