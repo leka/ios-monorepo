@@ -249,10 +249,19 @@ struct MainView: View {
                 switch content {
                     case .welcomeView:
                         WelcomeView()
+                            .onAppear {
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_welcome")
+                            }
                     case let .activityView(carereceivers):
                         ActivityView(activity: self.navigation.currentActivity!, reinforcer: carereceivers.first?.reinforcer ?? .rainbow)
+                            .onAppear {
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_activity")
+                            }
                     case let .storyView(carereceivers):
                         StoryView(story: self.navigation.currentStory!)
+                            .onAppear {
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_story")
+                            }
                 }
             }
         }
@@ -264,18 +273,33 @@ struct MainView: View {
                     case .robotConnection:
                         RobotConnectionView(viewModel: RobotConnectionViewModel())
                             .navigationBarTitleDisplayMode(.inline)
+                            .onAppear {
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_robot_connection")
+                            }
                     case .settings:
                         SettingsView()
                             .navigationBarTitleDisplayMode(.inline)
+                            .onAppear {
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_settings")
+                            }
                     case .editCaregiver:
                         EditCaregiverView(caregiver: self.caregiverManagerViewModel.currentCaregiver!)
                             .navigationBarTitleDisplayMode(.inline)
+                            .onAppear {
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_edit_caregiver")
+                            }
                     case .createCaregiver:
                         CreateCaregiverView()
                             .navigationBarTitleDisplayMode(.inline)
+                            .onAppear {
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_create_caregiver")
+                            }
                     case .caregiverPicker:
                         CaregiverPicker()
                             .navigationBarTitleDisplayMode(.inline)
+                            .onAppear {
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_caregiver_picker")
+                            }
                     case let .carereceiverPicker(activity, story):
                         CarereceiverPicker(onDismiss: {
                             // nothing to do
@@ -299,6 +323,9 @@ struct MainView: View {
                             }
                         })
                         .navigationBarTitleDisplayMode(.inline)
+                        .onAppear {
+                            AnalyticsManager.shared.logEventScreenView(screenName: "view_carereceiver_picker")
+                        }
                 }
             }
         }
@@ -307,6 +334,9 @@ struct MainView: View {
                 return
             }
             self.persistentDataManager.checkInactivity()
+        }
+        .onAppear {
+            AnalyticsManager.shared.logEventScreenView(screenName: "view_main_navigation_split_view")
         }
         .onChange(of: self.scenePhase) { newPhase in
             guard self.authManagerViewModel.userAuthenticationState == .loggedIn else {
