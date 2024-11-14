@@ -115,9 +115,8 @@ public class AnalyticsManager {
         additionalParameters: [String: Any]? = nil
     ) {
         var parameters: [String: Any] = [
+            AnalyticsParameterItemID: "\(name)-\(id)",
             AnalyticsParameterContentType: type.rawValue,
-            AnalyticsParameterItemID: id,
-            AnalyticsParameterItemName: name,
             "content_origin": origin.rawValue,
         ]
 
