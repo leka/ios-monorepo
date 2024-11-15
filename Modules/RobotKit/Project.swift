@@ -15,6 +15,7 @@ let project = Project.module(
         ),
     ],
     dependencies: [
+        .project(target: "AnalyticsKit", path: Path("../../Modules/AnalyticsKit")),
         .project(target: "BLEKit", path: Path("../../Modules/BLEKit")),
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .project(target: "LocalizationKit", path: Path("../../Modules/LocalizationKit")),
