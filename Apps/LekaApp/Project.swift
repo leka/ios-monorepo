@@ -11,7 +11,7 @@ let kLekaApp: App = if Environment.productionBuild.getBoolean(
     default: false
 ) {
     .init(
-        version: "1.14.1",
+        version: "1.14.2",
         bundleId: "io.leka.apf.app.LekaApp",
         name: "Leka",
         urlSchemes: "LekaApp",
@@ -53,8 +53,10 @@ let project = Project.app(
     ]),
     dependencies: [
         .project(target: "AccountKit", path: Path("../../Modules/AccountKit")),
+        .project(target: "AnalyticsKit", path: Path("../../Modules/AnalyticsKit")),
         .project(target: "ContentKit", path: Path("../../Modules/ContentKit")),
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
+        .project(target: "FirebaseKit", path: Path("../../Modules/FirebaseKit")),
         .project(target: "GameEngineKit", path: Path("../../Modules/GameEngineKit")),
         .project(target: "LocalizationKit", path: Path("../../Modules/LocalizationKit")),
         .project(target: "LogKit", path: Path("../../Modules/LogKit")),

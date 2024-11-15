@@ -5,6 +5,7 @@
 // swiftlint:disable cyclomatic_complexity void_function_in_ternary function_body_length type_body_length
 
 import AccountKit
+import AnalyticsKit
 import Combine
 import ContentKit
 import DesignKit

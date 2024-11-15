@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
+import AnalyticsKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -52,6 +53,7 @@ struct AccountCreationView: View {
         .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
             if newValue == .loggedIn {
                 self.rootAccountManager.createRootAccount(rootAccount: RootAccount())
+                self.rootAccountManager.initializeRootAccountListener()
                 self.isVerificationEmailAlertPresented = true
             }
         }
