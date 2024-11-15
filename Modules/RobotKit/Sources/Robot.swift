@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AnalyticsKit
 import BLEKit
 import Combine
 import Foundation
@@ -77,6 +78,7 @@ public class Robot {
     }
 
     public func rename(in name: String) {
+        let previousName = self.name.value
         let dataName = name.data(using: .utf8)!
         let robotNameCharacteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.Config.Characteristics.robotName,
@@ -87,6 +89,15 @@ public class Robot {
         )
 
         self.connectedPeripheral?.send(dataName, forCharacteristic: robotNameCharacteristic)
+
+        AnalyticsManager.shared.logEventRobotRename(
+            previousName: previousName,
+            newName: name,
+            serialNumber: self.serialNumber.value,
+            osVersion: self.osVersion.value?.description ?? "Unknown version",
+            isCharging: self.isCharging.value,
+            batteryLevel: self.battery.value
+        )
     }
 
     public func reboot() {

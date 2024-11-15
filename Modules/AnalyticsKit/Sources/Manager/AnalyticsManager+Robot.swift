@@ -43,6 +43,7 @@ public extension AnalyticsManager {
         ])
     }
 
+    // swiftlint:disable:next function_parameter_count
     func logEventRobotRename(
         previousName: String,
         newName: String,
