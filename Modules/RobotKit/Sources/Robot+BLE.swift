@@ -15,13 +15,8 @@ extension Robot {
                 self.connectedPeripheral = $0
                 self.isConnected.send(true)
                 self.name.send($0.peripheral.name ?? "(n/a)")
-                AnalyticsManager.shared.logEventRobotConnect(
-                    robotName: self.name.value,
-                    serialNumber: self.serialNumber.value,
-                    osVersion: self.osVersion.value?.description ?? "(n/a)",
-                    isCharging: self.isCharging.value,
-                    batteryLevel: self.battery.value
-                )
+
+                self.subscribeToConntectedPeripheralFullyInitialized()
             }
             .store(in: &cancellables)
 
@@ -30,6 +25,7 @@ extension Robot {
             .sink {
                 self.connectedPeripheral = nil
                 self.isConnected.send(false)
+
                 AnalyticsManager.shared.logEventRobotDisconnect(
                     robotName: self.name.value,
                     serialNumber: self.serialNumber.value,
@@ -39,5 +35,28 @@ extension Robot {
                 )
             }
             .store(in: &cancellables)
+    }
+
+    private func subscribeToConntectedPeripheralFullyInitialized() {
+        Just(())
+            .combineLatest(self.name)
+            .combineLatest(self.osVersion).dropFirst()
+            .combineLatest(self.serialNumber).dropFirst()
+            .combineLatest(self.isCharging).dropFirst()
+            .combineLatest(self.battery).dropFirst()
+            .combineLatest(self.negotiatedMTU).dropFirst()
+            .first()
+            .sink { [weak self] _ in
+                guard let self else { return }
+
+                AnalyticsManager.shared.logEventRobotConnect(
+                    robotName: self.name.value,
+                    serialNumber: self.serialNumber.value,
+                    osVersion: self.osVersion.value?.description ?? "0.0.0",
+                    isCharging: self.isCharging.value,
+                    batteryLevel: self.battery.value
+                )
+            }
+            .store(in: &self.cancellables)
     }
 }
