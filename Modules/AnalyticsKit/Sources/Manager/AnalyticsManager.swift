@@ -32,11 +32,6 @@ public class AnalyticsManager {
         case resourcesDeepDive = "resources_deep_dive"
     }
 
-    public enum ActivityEndReason: String {
-        case userCompleted = "user_completed"
-        case userExited = "user_exited"
-    }
-
     public static let shared = AnalyticsManager()
 
     // MARK: Public Methods
@@ -63,46 +58,6 @@ public class AnalyticsManager {
 
     public func clearDefaultEventParameters() {
         self.setDefaultEventParameters(nil)
-    }
-
-    public func logEventLogin() {
-        Analytics.logEvent(AnalyticsEventLogin, parameters: nil)
-    }
-
-    public func logEventLogout() {
-        Analytics.logEvent("logout", parameters: nil)
-    }
-
-    public func logEventSignUp() {
-        Analytics.logEvent(AnalyticsEventSignUp, parameters: nil)
-    }
-
-    public func logEventCaregiverSelect() {
-        Analytics.logEvent("caregiver_select", parameters: nil)
-    }
-
-    public func logEventCarereceiverSkipSelect() {
-        Analytics.logEvent("carereceiver_skip_select", parameters: nil)
-    }
-
-    public func logEventActivityStart(id: String, name: String, carereceiverIDs: String) {
-        Analytics.logEvent("activity_start", parameters: [
-            "activity_id": "\(name)-\(id)",
-            "carereceiver_ids": carereceiverIDs,
-        ])
-    }
-
-    public func logEventActivityEnd(
-        id: String,
-        name: String,
-        carereceiverIDs: String,
-        reason: ActivityEndReason
-    ) {
-        Analytics.logEvent("activity_end", parameters: [
-            "activity_id": "\(name)-\(id)",
-            "carereceiver_ids": carereceiverIDs,
-            "activity_end_reason": reason.rawValue,
-        ])
     }
 
     public func logEventSelectContent(

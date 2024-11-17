@@ -108,8 +108,6 @@ public class BLEManager {
         if self.centralManager.state == .poweredOn {
             self.centralManager.cancelPeripheralConnection(connectedPeripheral)
         }
-
-        self.didDisconnect.send()
     }
 
     public func retrieveConnectedRobots() -> [RobotPeripheral] {
