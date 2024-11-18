@@ -29,6 +29,8 @@ public class FirebaseKit {
         log.warning("Firebase: \(plist)")
         log.warning("Firebase options: \(options)")
 
+        FirebaseConfiguration.shared.setLoggerLevel(.min)
+
         FirebaseApp.configure(options: options)
     }
 
