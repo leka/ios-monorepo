@@ -158,7 +158,7 @@ struct MainView: View {
                     case .curriculums:
                         CategoryCurriculumsView()
                             .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_catergory_curriculums")
+                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_curriculums")
                             }
 
                     case .educationalGames:

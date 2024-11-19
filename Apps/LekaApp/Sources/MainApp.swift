@@ -15,38 +15,31 @@ import SwiftUI
 
 let log = LogKit.createLoggerFor(app: "LekaApp")
 
-// MARK: - LekaApp
+// MARK: - AppDelegate
 
-@main
-struct LekaApp: App {
-    // MARK: Lifecycle
-
-    init() {
-        // ? Set GoogleService-Info.plist based on the build configuration
-        #if PRODUCTION_BUILD
-            log.warning("PRODUCTION_BUILD")
-            let googleServiceInfoPlistName = "GoogleServiceInfo+PROD"
-        #elseif TESTFLIGHT_BUILD
-            log.warning("TESTFLIGHT_BUILD")
-            let googleServiceInfoPlistName = "GoogleServiceInfo+TESTFLIGHT"
-        #elseif DEVELOPER_MODE
-            log.warning("DEVELOPER_MODE")
-            let googleServiceInfoPlistName = "GoogleServiceInfo+DEV"
-        #else
-            log.warning("NO BUILD CONFIGURATION")
-            let googleServiceInfoPlistName = "GoogleServiceInfo+NOT_FOUND"
-        #endif
-
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_: UIApplication,
+                     didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool
+    {
         // ? Enable Firebase Analytics DebugView for TestFlight/Developer mode
         #if TESTFLIGHT_BUILD || DEVELOPER_MODE
             UserDefaults.standard.set(true, forKey: "/google/firebase/debug_mode")
             UserDefaults.standard.set(true, forKey: "/google/measurement/debug_mode")
         #endif
 
-        FirebaseKit.shared.configure(with: googleServiceInfoPlistName)
-    }
+        FirebaseKit.shared.configure()
 
+        return true
+    }
+}
+
+// MARK: - LekaApp
+
+@main
+struct LekaApp: App {
     // MARK: Internal
+
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
     @Environment(\.colorScheme) var colorScheme
 

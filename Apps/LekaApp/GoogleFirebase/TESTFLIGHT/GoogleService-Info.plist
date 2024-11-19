@@ -9,11 +9,11 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>io.leka.apf.app.LekaApp</string>
+	<string>io.leka.apf.app.LekaApp.beta</string>
 	<key>PROJECT_ID</key>
 	<string>leka-app-testflight</string>
 	<key>STORAGE_BUCKET</key>
-	<string>leka-app-testflight.appspot.com</string>
+	<string>leka-app-testflight.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:475526070863:ios:2ff136669d4c3b5639203a</string>
+	<string>1:475526070863:ios:b0a000ff6e20892d39203a</string>
 </dict>
 </plist>

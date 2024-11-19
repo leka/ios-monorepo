@@ -11,7 +11,7 @@ let kLekaApp: App = if Environment.productionBuild.getBoolean(
     default: false
 ) {
     .init(
-        version: "1.14.3",
+        version: "1.14.4",
         bundleId: "io.leka.apf.app.LekaApp",
         name: "Leka",
         urlSchemes: "LekaApp",
@@ -25,6 +25,18 @@ let kLekaApp: App = if Environment.productionBuild.getBoolean(
         urlSchemes: "LekaAppBeta",
         appIcon: "AppIconBeta"
     )
+}
+
+let kLekaAppFirebaseInfoPlistPath: ResourceFileElement = if Environment.productionBuild.getBoolean(
+    default: false
+) {
+    "GoogleFirebase/PROD/GoogleService-Info.plist"
+} else if Environment.testflightBuild.getBoolean(
+    default: false
+) {
+    "GoogleFirebase/TESTFLIGHT/GoogleService-Info.plist"
+} else {
+    "GoogleFirebase/DEV/GoogleService-Info.plist"
 }
 
 let project = Project.app(
@@ -46,8 +58,9 @@ let project = Project.app(
             "bluetooth-central",
             "audio",
         ],
-        "FirebaseAutomaticScreenReportingEnabled": "NO",
+        "FirebaseAutomaticScreenReportingEnabled": false,
     ],
+    resources: [kLekaAppFirebaseInfoPlistPath],
     settings: SettingsDictionary.extendingBase(with: [
         "ASSETCATALOG_COMPILER_APPICON_NAME": "\(kLekaApp.appIcon)",
     ]),
