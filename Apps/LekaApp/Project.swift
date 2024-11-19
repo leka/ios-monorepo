@@ -27,6 +27,18 @@ let kLekaApp: App = if Environment.productionBuild.getBoolean(
     )
 }
 
+let kLekaAppFirebaseInfoPlistPath: ResourceFileElement = if Environment.productionBuild.getBoolean(
+    default: false
+) {
+    "GoogleFirebase/PROD/GoogleService-Info.plist"
+} else if Environment.testflightBuild.getBoolean(
+    default: false
+) {
+    "GoogleFirebase/TESTFLIGHT/GoogleService-Info.plist"
+} else {
+    "GoogleFirebase/DEV/GoogleService-Info.plist"
+}
+
 let project = Project.app(
     name: "LekaApp",
     version: kLekaApp.version,
@@ -48,6 +60,7 @@ let project = Project.app(
         ],
         "FirebaseAutomaticScreenReportingEnabled": "NO",
     ],
+    resources: [kLekaAppFirebaseInfoPlistPath],
     settings: SettingsDictionary.extendingBase(with: [
         "ASSETCATALOG_COMPILER_APPICON_NAME": "\(kLekaApp.appIcon)",
     ]),

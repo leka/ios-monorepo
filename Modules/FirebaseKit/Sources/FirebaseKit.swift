@@ -18,21 +18,8 @@ public class FirebaseKit {
 
     public static let shared = FirebaseKit()
 
-    public func configure(with plist: String) {
-        guard let plistPath = Bundle.main.path(forResource: plist, ofType: "plist"),
-              let options = FirebaseOptions(contentsOfFile: plistPath)
-        else {
-            log.critical("\(plist).plist is missing!")
-            fatalError("\(plist).plist is missing!")
-        }
-
-        log.warning("Firebase: \(plist)")
-        log.warning("Firebase options: \(options)")
-
+    public func configure() {
         FirebaseConfiguration.shared.setLoggerLevel(.min)
-
-        FirebaseApp.configure(options: options)
+        FirebaseApp.configure()
     }
-
-    // MARK: Private
 }
