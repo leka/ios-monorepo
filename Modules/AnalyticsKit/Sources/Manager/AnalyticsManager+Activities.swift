@@ -12,8 +12,8 @@ public extension AnalyticsManager {
 
     func logEventActivityStart(id: String, name: String, carereceiverIDs: String) {
         Analytics.logEvent("activity_start", parameters: [
-            "activity_id": "\(name)-\(id)",
-            "carereceiver_ids": carereceiverIDs,
+            "lk_activity_id": "\(name)-\(id)",
+            "lk_carereceiver_ids": carereceiverIDs,
         ])
     }
 
@@ -24,9 +24,9 @@ public extension AnalyticsManager {
         reason: ActivityEndReason
     ) {
         Analytics.logEvent("activity_end", parameters: [
-            "activity_id": "\(name)-\(id)",
-            "carereceiver_ids": carereceiverIDs,
-            "activity_end_reason": reason.rawValue,
+            "lk_activity_id": "\(name)-\(id)",
+            "lk_carereceiver_ids": carereceiverIDs,
+            "lk_activity_end_reason": reason.rawValue,
         ])
     }
 }

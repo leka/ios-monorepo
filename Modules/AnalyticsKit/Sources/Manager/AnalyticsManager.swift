@@ -70,7 +70,7 @@ public class AnalyticsManager {
         var parameters: [String: Any] = [
             AnalyticsParameterItemID: "\(name)-\(id)",
             AnalyticsParameterContentType: type.rawValue,
-            "content_origin": origin.rawValue,
+            "lk_content_origin": origin.rawValue,
         ]
 
         if let additionalParameters {

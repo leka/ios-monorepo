@@ -19,11 +19,11 @@ public extension AnalyticsManager {
         batteryLevel: Int
     ) {
         Analytics.logEvent(RobotEvent.connect.rawValue, parameters: [
-            "robot_name": robotName,
-            "serial_number": serialNumber,
-            "os_version": osVersion,
-            "is_charging": isCharging,
-            "battery_level": batteryLevel,
+            "lk_robot_name": robotName,
+            "lk_serial_number": serialNumber,
+            "lk_os_version": osVersion,
+            "lk_is_charging": isCharging,
+            "lk_battery_level": batteryLevel,
         ])
     }
 
@@ -35,11 +35,11 @@ public extension AnalyticsManager {
         batteryLevel: Int
     ) {
         Analytics.logEvent(RobotEvent.disconnect.rawValue, parameters: [
-            "robot_name": robotName,
-            "serial_number": serialNumber,
-            "os_version": osVersion,
-            "is_charging": isCharging,
-            "battery_level": batteryLevel,
+            "lk_robot_name": robotName,
+            "lk_serial_number": serialNumber,
+            "lk_os_version": osVersion,
+            "lk_is_charging": isCharging,
+            "lk_battery_level": batteryLevel,
         ])
     }
 
@@ -53,12 +53,12 @@ public extension AnalyticsManager {
         batteryLevel: Int
     ) {
         Analytics.logEvent(RobotEvent.rename.rawValue, parameters: [
-            "previous_name": previousName,
-            "robot_name": newName,
-            "serial_number": serialNumber,
-            "os_version": osVersion,
-            "is_charging": isCharging,
-            "battery_level": batteryLevel,
+            "lk_previous_name": previousName,
+            "lk_robot_name": newName,
+            "lk_serial_number": serialNumber,
+            "lk_os_version": osVersion,
+            "lk_is_charging": isCharging,
+            "lk_battery_level": batteryLevel,
         ])
     }
 }
