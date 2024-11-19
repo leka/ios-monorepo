@@ -6,7 +6,7 @@ import FirebaseAnalytics
 
 public extension AnalyticsManager {
     enum ActivityEndReason: String {
-        case userCompleted = "user_completed"
+        case activityCompleted = "activity_completed"
         case userExited = "user_exited"
     }
 

@@ -237,7 +237,7 @@ public struct ActivityView: View {
                         id: self.viewModel.currentActivity.id,
                         name: self.viewModel.currentActivity.name,
                         carereceiverIDs: self.carereceiverManager.currentCarereceivers.value.compactMap(\.id).joined(separator: ","),
-                        reason: .userCompleted
+                        reason: .activityCompleted
                     )
             } else {
                 self.viewModel.moveToNextExercise()
