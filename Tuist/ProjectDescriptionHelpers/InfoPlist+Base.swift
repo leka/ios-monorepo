@@ -13,7 +13,7 @@ public extension InfoPlist {
             "CFBundleVersion": "\(version)",
             "UIMainStoryboardFile": "",
             "UILaunchStoryboardName": "LaunchScreen",
-            "ITSAppUsesNonExemptEncryption": "NO",
+            "ITSAppUsesNonExemptEncryption": false,
             "CFBundleLocalizations": [
                 "fr",
                 "en",
@@ -23,7 +23,7 @@ public extension InfoPlist {
             "UIBackgroundModes": [
                 "bluetooth-central",
             ],
-            "UIRequiresFullScreen": "true",
+            "UIRequiresFullScreen": true,
             "UISupportedInterfaceOrientations": [
                 "UIInterfaceOrientationLandscapeRight",
                 "UIInterfaceOrientationLandscapeLeft",
