@@ -52,8 +52,12 @@ public class AnalyticsManager {
         Analytics.logEvent(AnalyticsEventScreenView, parameters: params)
     }
 
-    public func setDefaultEventParameters(_ parameters: [String: Any]?) {
-        Analytics.setDefaultEventParameters(parameters)
+    public func setDefaultEventParameterRootOwnerUid(_ id: String?) {
+        self.setDefaultEventParameters(["lk_default_root_owner_uid": id ?? "(lk_not_set)"])
+    }
+
+    public func setDefaultEventParameterCaregiverUid(_ id: String?) {
+        self.setDefaultEventParameters(["lk_default_caregiver_uid": id ?? "(lk_not_set)"])
     }
 
     public func clearDefaultEventParameters() {
@@ -78,5 +82,11 @@ public class AnalyticsManager {
         }
 
         Analytics.logEvent(AnalyticsEventSelectContent, parameters: parameters)
+    }
+
+    // MARK: Private
+
+    private func setDefaultEventParameters(_ parameters: [String: Any]?) {
+        Analytics.setDefaultEventParameters(parameters)
     }
 }
