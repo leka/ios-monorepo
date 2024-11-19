@@ -58,7 +58,7 @@ let project = Project.app(
             "bluetooth-central",
             "audio",
         ],
-        "FirebaseAutomaticScreenReportingEnabled": "NO",
+        "FirebaseAutomaticScreenReportingEnabled": false,
     ],
     resources: [kLekaAppFirebaseInfoPlistPath],
     settings: SettingsDictionary.extendingBase(with: [
