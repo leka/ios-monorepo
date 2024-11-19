@@ -2,6 +2,8 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AnalyticsKit
+import Combine
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -20,9 +22,27 @@ public struct ResourceVideoView: View {
 
     public var body: some View {
         GroupBox(label: Label(self.resource.title, systemImage: self.resource.icon)) {
-            YouTubePlayerView(YouTubePlayer(stringLiteral: self.resource.value))
+            let player = YouTubePlayer(stringLiteral: self.resource.value)
+
+            YouTubePlayerView(player)
                 .aspectRatio(16 / 9, contentMode: .fit)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .onAppear {
+                    self.cancellable = player.playbackStatePublisher
+                        .sink { state in
+                            if state == .playing {
+                                AnalyticsManager.logEventSelectContent(
+                                    type: .resourceVideo,
+                                    id: self.resource.id.uuidString,
+                                    name: self.resource.title,
+                                    origin: .resources
+                                )
+                            }
+                        }
+                }
+                .onDisappear {
+                    self.cancellable?.cancel()
+                }
         }
         .padding()
     }
@@ -30,6 +50,10 @@ public struct ResourceVideoView: View {
     // MARK: Internal
 
     let resource: Category.Resource
+
+    // MARK: Private
+
+    @State private var cancellable: AnyCancellable?
 }
 
 #Preview {

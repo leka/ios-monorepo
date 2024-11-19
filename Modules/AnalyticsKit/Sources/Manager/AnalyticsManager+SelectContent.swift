@@ -11,16 +11,15 @@ public extension AnalyticsManager {
         case educationalGame = "educational_game"
         case story
         case gamepad
-        case resource
+        case resourceFile
+        case resourceVideo
     }
 
     enum ContentOrigin: String {
         case generalLibrary = "general_library"
         case personalLibrary = "personal_library"
         case searchResults = "search_results"
-        case resourcesFirstSteps = "resources_first_steps"
-        case resourcesVideos = "resources_videos"
-        case resourcesDeepDive = "resources_deep_dive"
+        case resources
     }
 }
 
