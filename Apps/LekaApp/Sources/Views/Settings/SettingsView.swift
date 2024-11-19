@@ -172,6 +172,7 @@ struct SettingsView: View {
                         ) {
                             self.dismiss()
                             self.authManager.deleteCurrentUser()
+                            AnalyticsManager.logEventAccountDelete()
                         }
                     } message: {
                         Text(l10n.SettingsView.AccountSection.DeleteAccount.alertMessage)
