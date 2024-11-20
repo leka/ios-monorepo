@@ -68,6 +68,7 @@ let project = Project.app(
         .project(target: "AccountKit", path: Path("../../Modules/AccountKit")),
         .project(target: "AnalyticsKit", path: Path("../../Modules/AnalyticsKit")),
         .project(target: "ContentKit", path: Path("../../Modules/ContentKit")),
+        .project(target: "CrashlyticsKit", path: Path("../../Modules/CrashlyticsKit")),
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .project(target: "FirebaseKit", path: Path("../../Modules/FirebaseKit")),
         .project(target: "GameEngineKit", path: Path("../../Modules/GameEngineKit")),

@@ -27,6 +27,7 @@ var projects: [Path] {
         "Modules/AnalyticsKit",
         "Modules/BLEKit",
         "Modules/ContentKit",
+        "Modules/CrashlyticsKit",
         "Modules/DesignKit",
         "Modules/FirebaseKit",
         "Modules/GameEngineKit",

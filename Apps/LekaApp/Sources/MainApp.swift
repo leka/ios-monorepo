@@ -7,6 +7,7 @@ import AnalyticsKit
 import AppUpdately
 import Combine
 import ContentKit
+import CrashlyticsKit
 import DesignKit
 import FirebaseKit
 import LocalizationKit
