@@ -37,6 +37,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct LekaApp: App {
+    // MARK: Lifecycle
+
+    init() {
+        AnalyticsManager.shared.clearDefaultEventParameters()
+    }
+
     // MARK: Internal
 
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
