@@ -11,6 +11,7 @@ import DesignKit
 import FirebaseKit
 import LocalizationKit
 import LogKit
+import PerformanceKit
 import SwiftUI
 
 let log = LogKit.createLoggerFor(app: "LekaApp")
