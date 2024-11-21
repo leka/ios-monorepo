@@ -16,15 +16,18 @@ public extension AnalyticsManager {
         serialNumber: String,
         osVersion: String,
         isCharging: Bool,
-        batteryLevel: Int
+        batteryLevel: Int,
+        parameters: [String: Any] = [:]
     ) {
-        Analytics.logEvent(RobotEvent.connect.rawValue, parameters: [
+        let params: [String: Any] = [
             "lk_robot_name": robotName,
             "lk_serial_number": serialNumber,
             "lk_os_version": osVersion,
             "lk_is_charging": isCharging,
             "lk_battery_level": batteryLevel,
-        ])
+        ].merging(parameters) { _, new in new }
+
+        Analytics.logEvent(RobotEvent.connect.rawValue, parameters: params)
     }
 
     func logEventRobotDisconnect(
@@ -32,15 +35,18 @@ public extension AnalyticsManager {
         serialNumber: String,
         osVersion: String,
         isCharging: Bool,
-        batteryLevel: Int
+        batteryLevel: Int,
+        parameters: [String: Any] = [:]
     ) {
-        Analytics.logEvent(RobotEvent.disconnect.rawValue, parameters: [
+        let params: [String: Any] = [
             "lk_robot_name": robotName,
             "lk_serial_number": serialNumber,
             "lk_os_version": osVersion,
             "lk_is_charging": isCharging,
             "lk_battery_level": batteryLevel,
-        ])
+        ].merging(parameters) { _, new in new }
+
+        Analytics.logEvent(RobotEvent.disconnect.rawValue, parameters: params)
     }
 
     // swiftlint:disable:next function_parameter_count
@@ -50,15 +56,18 @@ public extension AnalyticsManager {
         serialNumber: String,
         osVersion: String,
         isCharging: Bool,
-        batteryLevel: Int
+        batteryLevel: Int,
+        parameters: [String: Any] = [:]
     ) {
-        Analytics.logEvent(RobotEvent.rename.rawValue, parameters: [
+        let params: [String: Any] = [
             "lk_previous_name": previousName,
             "lk_robot_name": newName,
             "lk_serial_number": serialNumber,
             "lk_os_version": osVersion,
             "lk_is_charging": isCharging,
             "lk_battery_level": batteryLevel,
-        ])
+        ].merging(parameters) { _, new in new }
+
+        Analytics.logEvent(RobotEvent.rename.rawValue, parameters: params)
     }
 }

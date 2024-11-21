@@ -10,23 +10,28 @@ public extension AnalyticsManager {
         case userExited = "user_exited"
     }
 
-    func logEventActivityStart(id: String, name: String, carereceiverIDs: String) {
-        Analytics.logEvent("activity_start", parameters: [
+    func logEventActivityStart(id: String, name: String, carereceiverIDs: String, parameters: [String: Any] = [:]) {
+        let params: [String: Any] = [
             "lk_activity_id": "\(name)-\(id)",
             "lk_carereceiver_ids": carereceiverIDs,
-        ])
+        ].merging(parameters) { _, new in new }
+
+        Analytics.logEvent("activity_start", parameters: params)
     }
 
     func logEventActivityEnd(
         id: String,
         name: String,
         carereceiverIDs: String,
-        reason: ActivityEndReason
+        reason: ActivityEndReason,
+        parameters: [String: Any] = [:]
     ) {
-        Analytics.logEvent("activity_end", parameters: [
+        let params: [String: Any] = [
             "lk_activity_id": "\(name)-\(id)",
             "lk_carereceiver_ids": carereceiverIDs,
             "lk_activity_end_reason": reason.rawValue,
-        ])
+        ].merging(parameters) { _, new in new }
+
+        Analytics.logEvent("activity_end", parameters: params)
     }
 }

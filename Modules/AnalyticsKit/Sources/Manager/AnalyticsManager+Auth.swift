@@ -5,19 +5,27 @@
 import FirebaseAnalytics
 
 public extension AnalyticsManager {
-    func logEventLogin() {
-        Analytics.logEvent(AnalyticsEventLogin, parameters: nil)
+    func logEventLogin(parameters: [String: Any] = [:]) {
+        let params: [String: Any] = [:].merging(parameters) { _, new in new }
+
+        Analytics.logEvent(AnalyticsEventLogin, parameters: params)
     }
 
-    func logEventLogout() {
-        Analytics.logEvent("logout", parameters: nil)
+    func logEventLogout(parameters: [String: Any] = [:]) {
+        let params: [String: Any] = [:].merging(parameters) { _, new in new }
+
+        Analytics.logEvent("logout", parameters: params)
     }
 
-    func logEventSignUp() {
-        Analytics.logEvent(AnalyticsEventSignUp, parameters: nil)
+    func logEventSignUp(parameters: [String: Any] = [:]) {
+        let params: [String: Any] = [:].merging(parameters) { _, new in new }
+
+        Analytics.logEvent(AnalyticsEventSignUp, parameters: params)
     }
 
-    func logEventSkipAuthentication() {
-        Analytics.logEvent("skip_authentication", parameters: nil)
+    func logEventSkipAuthentication(parameters: [String: Any] = [:]) {
+        let params: [String: Any] = [:].merging(parameters) { _, new in new }
+
+        Analytics.logEvent("skip_authentication", parameters: params)
     }
 }

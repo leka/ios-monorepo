@@ -6,10 +6,10 @@ import FirebaseAnalytics
 import SwiftUI
 
 public extension AnalyticsManager {
-    func logEventScreenView(screenName: String, screenClass: String? = nil) {
+    func logEventScreenView(screenName: String, screenClass: String? = nil, parameters: [String: Any] = [:]) {
         var params: [String: Any] = [
             AnalyticsParameterScreenName: screenName,
-        ]
+        ].merging(parameters) { _, new in new }
 
         if let screenClass {
             params[AnalyticsParameterScreenClass] = screenClass
@@ -20,11 +20,10 @@ public extension AnalyticsManager {
 }
 
 public extension View {
-    func logEventScreenView(screenName: String, screenClass: String? = nil) -> some View {
+    func logEventScreenView(screenName: String, screenClass: String? = nil, parameters: [String: Any] = [:]) -> some View {
         let screenClass = screenClass ?? String(describing: type(of: self))
         return self.onAppear {
-            log.debug("logEventScreenView: \(screenName) - \(screenClass)")
-            AnalyticsManager.shared.logEventScreenView(screenName: screenName, screenClass: screenClass)
+            AnalyticsManager.shared.logEventScreenView(screenName: screenName, screenClass: screenClass, parameters: parameters)
         }
     }
 }
