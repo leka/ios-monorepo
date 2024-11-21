@@ -100,35 +100,12 @@ struct LekaApp: App {
                                 self.appUpdateStatus.isUpdateAvailable = false
                             }
                         case .updateAvailable:
-                            self.showingUpdateAlert = true
-                            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                self.showMainView = true
                                 self.appUpdateStatus.isUpdateAvailable = true
                             }
                     }
                 }
-            }
-            .alert(isPresented: self.$showingUpdateAlert) {
-                Alert(
-                    title: Text(l10n.MainApp.UpdateAlert.title),
-                    message: Text(l10n.MainApp.UpdateAlert.message),
-                    primaryButton: .default(Text(l10n.MainApp.UpdateAlert.action), action: {
-                        AnalyticsManager.shared
-                            .logEventAppUpdateOpenAppStore()
-                        if let url = URL(string: "https://apps.apple.com/app/leka/id6446940339") {
-                            UIApplication.shared.open(url)
-                        }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                            self.showMainView = true
-                        }
-                    }),
-                    secondaryButton: .cancel {
-                        AnalyticsManager.shared
-                            .logEventAppUpdateSkip()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                            self.showMainView = true
-                        }
-                    }
-                )
             }
         }
     }
@@ -162,22 +139,6 @@ struct LoadingView: View {
             )
     }
 }
-
-// MARK: - l10n.MainApp
-
-// swiftlint:disable nesting
-
-extension l10n {
-    enum MainApp {
-        enum UpdateAlert {
-            static let title = LocalizedString("lekaapp.main_app.update_alert.title", value: "New update available", comment: "The title of the alert to inform the user that an update is available")
-            static let message = LocalizedString("lekaapp.main_app.update_alert.message", value: "Enjoy new features by updating to the latest version of Leka!", comment: "The message of the alert to inform the user that an update is available")
-            static let action = LocalizedString("lekaapp.main_app.update_alert.action", value: "Update now", comment: "The action button of the alert to inform the user that an update is available")
-        }
-    }
-}
-
-// swiftlint:enable nesting
 
 #Preview {
     LoadingView()

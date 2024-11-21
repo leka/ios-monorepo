@@ -12,6 +12,7 @@ import LocalizationKit
 import RobotKit
 import SwiftUI
 
+// swiftlint:disable type_body_length
 extension Bundle {
     static var version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     static var buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
@@ -119,6 +120,23 @@ struct MainView: View {
                     .frame(maxWidth: .infinity)
                 }
                 .listStyle(.sidebar)
+            }
+            .alert(isPresented: self.$showingUpdateAlert) {
+                Alert(
+                    title: Text(l10n.MainView.UpdateAlert.title),
+                    message: Text(l10n.MainView.UpdateAlert.message),
+                    primaryButton: .default(Text(l10n.MainView.UpdateAlert.action), action: {
+                        AnalyticsManager.shared
+                            .logEventAppUpdateOpenAppStore()
+                        if let url = URL(string: "https://apps.apple.com/app/leka/id6446940339") {
+                            UIApplication.shared.open(url)
+                        }
+                    }),
+                    secondaryButton: .cancel {
+                        AnalyticsManager.shared
+                            .logEventAppUpdateSkip()
+                    }
+                )
             }
             // TODO: (@ladislas) remove if not necessary
             // .disabled(navigation.disableUICompletly)
@@ -300,6 +318,11 @@ struct MainView: View {
                             .onAppear {
                                 AnalyticsManager.shared.logEventScreenView(screenName: "view_caregiver_picker")
                             }
+                            .onDisappear {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                    self.showingUpdateAlert = true
+                                }
+                            }
                     case let .carereceiverPicker(activity, story):
                         CarereceiverPicker(onDismiss: {
                             // nothing to do
@@ -393,11 +416,16 @@ struct MainView: View {
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
     @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
+    @StateObject var appUpdateStatus: LekaApp.UpdateStatus = .shared
+
+    @State private var showingUpdateAlert: Bool = false
 
     private var persistentDataManager: PersistentDataManager = .shared
     private var caregiverManager: CaregiverManager = .shared
     private var carereceiverManager: CarereceiverManager = .shared
 }
+
+// swiftlint:enable type_body_length
 
 #Preview {
     MainView()
