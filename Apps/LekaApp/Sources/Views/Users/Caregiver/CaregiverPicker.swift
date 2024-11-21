@@ -50,8 +50,14 @@ struct CaregiverPicker: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    self.caregiverManager.setCurrentCaregiver(to: self.selectedCaregiver!)
-                    AnalyticsManager.shared.logEventCaregiverSelect()
+                    guard let selectedCaregiver = self.selectedCaregiver else {
+                        return
+                    }
+
+                    self.caregiverManager.setCurrentCaregiver(to: selectedCaregiver)
+
+                    AnalyticsManager.shared.logEventCaregiverSelect(id: selectedCaregiver.id)
+
                     self.dismiss()
                 } label: {
                     Text(l10n.CaregiverPicker.selectButtonLabel)

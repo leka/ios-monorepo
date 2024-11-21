@@ -37,6 +37,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct LekaApp: App {
+    // MARK: Lifecycle
+
+    init() {
+        AnalyticsManager.shared.clearDefaultEventParameters()
+    }
+
     // MARK: Internal
 
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
@@ -91,6 +97,8 @@ struct LekaApp: App {
                         title: Text(l10n.MainApp.UpdateAlert.title),
                         message: Text(l10n.MainApp.UpdateAlert.message),
                         primaryButton: .default(Text(l10n.MainApp.UpdateAlert.action), action: {
+                            AnalyticsManager.shared
+                                .logEventAppUpdateOpenAppStore()
                             if let url = URL(string: "https://apps.apple.com/app/leka/id6446940339") {
                                 UIApplication.shared.open(url)
                             }
@@ -99,6 +107,8 @@ struct LekaApp: App {
                             }
                         }),
                         secondaryButton: .cancel {
+                            AnalyticsManager.shared
+                                .logEventAppUpdateSkip()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                                 self.showMainView = true
                             }

@@ -5,8 +5,10 @@
 import FirebaseAnalytics
 
 public extension AnalyticsManager {
-    func logEventCaregiverSelect() {
-        Analytics.logEvent("caregiver_select", parameters: nil)
+    func logEventCaregiverSelect(id: String?) {
+        Analytics.logEvent("caregiver_select", parameters: [
+            "lk_caregiver_id": id ?? "(lk_not_set)",
+        ])
     }
 
     func logEventCarereceiverSkipSelect() {
