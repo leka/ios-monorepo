@@ -2846,6 +2846,42 @@
                 }
             }
         },
+        "lekaapp.settings_view.app_update_section.button_label": {
+            "comment": "Update app button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Update now"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Mettre \u00e0 jour"
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.app_update_section.title": {
+            "comment": "Update app section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "A new update is available!"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Une nouvelle mise \u00e0 jour est disponible !"
+                    }
+                }
+            }
+        },
         "lekaapp.settings_view.change_language_section.button_label": {
             "comment": "Change app language button label",
             "extractionState": "extracted_with_value",

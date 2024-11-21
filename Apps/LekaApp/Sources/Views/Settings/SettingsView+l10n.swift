@@ -187,6 +187,20 @@ extension l10n {
             )
         }
 
+        enum AppUpdateSection {
+            static let title = LocalizedString(
+                "lekaapp.settings_view.app_update_section.title",
+                value: "A new update is available!",
+                comment: "Update app section title"
+            )
+
+            static let buttonLabel = LocalizedString(
+                "lekaapp.settings_view.app_update_section.button_label",
+                value: "Update now",
+                comment: "Update app button label"
+            )
+        }
+
         enum ChangeLanguageSection {
             static let buttonLabel = LocalizedString(
                 "lekaapp.settings_view.change_language_section.button_label",
