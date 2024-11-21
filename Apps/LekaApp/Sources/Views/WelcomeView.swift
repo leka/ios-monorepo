@@ -39,7 +39,6 @@ struct WelcomeView: View {
                 .buttonStyle(.bordered)
             }
         }
-//        .navigationDestination(isPresented: self.$navigation.navigateToAccountCreationProcess) {
         .fullScreenCover(isPresented: self.$navigation.navigateToAccountCreationProcess) {
             AccountCreationProcess.CarouselView()
                 .navigationBarBackButtonHidden()
