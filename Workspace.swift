@@ -32,6 +32,7 @@ var projects: [Path] {
         "Modules/GameEngineKit",
         "Modules/LocalizationKit",
         "Modules/LogKit",
+        "Modules/PerformanceKit",
         "Modules/RobotKit",
         "Modules/UtilsKit",
     ]
