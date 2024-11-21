@@ -1748,60 +1748,6 @@
                 }
             }
         },
-        "lekaapp.main_app.update_alert.action": {
-            "comment": "The action button of the alert to inform the user that an update is available",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Update now"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Mettre \u00e0 jour maintenant"
-                    }
-                }
-            }
-        },
-        "lekaapp.main_app.update_alert.message": {
-            "comment": "The message of the alert to inform the user that an update is available",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Enjoy new features by updating to the latest version of Leka!"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Profitez des nouvelles fonctionnalit\u00e9s en t\u00e9l\u00e9chargeant la nouvelle mise \u00e0 jour de l\u2019app Leka !"
-                    }
-                }
-            }
-        },
-        "lekaapp.main_app.update_alert.title": {
-            "comment": "The title of the alert to inform the user that an update is available",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "New update available"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Nouvelle mise \u00e0 jour disponible"
-                    }
-                }
-            }
-        },
         "lekaapp.main_view.detailView.disconnected_library_message": {
             "comment": "The message to invite users to connect to display the Library",
             "extractionState": "extracted_with_value",
@@ -2212,6 +2158,60 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Ressources"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.update_alert.action": {
+            "comment": "The action button of the alert to inform the user that an update is available",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Update now"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Mettre \u00e0 jour maintenant"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.update_alert.message": {
+            "comment": "The message of the alert to inform the user that an update is available",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Enjoy new features by updating to the latest version of Leka!"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Profitez des nouvelles fonctionnalit\u00e9s en t\u00e9l\u00e9chargeant la nouvelle mise \u00e0 jour de l\u2019app Leka !"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.update_alert.title": {
+            "comment": "The title of the alert to inform the user that an update is available",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "New update available"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Nouvelle mise \u00e0 jour disponible"
                     }
                 }
             }
@@ -2842,6 +2842,42 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Erreur de d\u00e9connexion"
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.app_update_section.button_label": {
+            "comment": "Update app button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Update now"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Mettre \u00e0 jour"
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.app_update_section.title": {
+            "comment": "Update app section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "A new update is available!"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Une nouvelle mise \u00e0 jour est disponible !"
                     }
                 }
             }

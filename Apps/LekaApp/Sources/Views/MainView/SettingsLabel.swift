@@ -12,11 +12,24 @@ import SwiftUI
 struct SettingsLabel: View {
     // MARK: Internal
 
+    @StateObject var appUpdateStatus: LekaApp.UpdateStatus = .shared
+
     var body: some View {
         Label(String(l10n.SettingsLabel.buttonLabel.characters), systemImage: "gear")
             .frame(width: 200, height: 44)
             .background(self.backgroundColor, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
             .contentShape(Rectangle())
+            .overlay(
+                Text("!")
+                    .font(.body)
+                    .padding(10)
+                    .foregroundStyle(.white)
+                    .frame(width: 25, height: 25)
+                    .background(.red)
+                    .clipShape(.circle)
+                    .offset(x: 95, y: -20)
+                    .opacity(self.appUpdateStatus.isUpdateAvailable ? 1 : 0)
+            )
     }
 
     // MARK: Private

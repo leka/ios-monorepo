@@ -23,6 +23,38 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
+            if self.appUpdateStatus.isUpdateAvailable {
+                Section {
+                    VStack(alignment: .center) {
+                        HStack(spacing: 20) {
+                            LekaAppAsset.Assets.lekaLogoStripes.swiftUIImage
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 60, height: 60)
+                            Text(l10n.SettingsView.AppUpdateSection.title)
+                                .font(.title2.bold())
+                                .fixedSize(horizontal: false, vertical: true)
+                                .multilineTextAlignment(.center)
+
+                            Text("🎉")
+                                .font(.title2)
+                        }
+
+                        Button {
+                            if let url = URL(string: "https://apps.apple.com/app/leka/id6446940339") {
+                                UIApplication.shared.open(url)
+                            }
+                        } label: {
+                            Text(l10n.SettingsView.AppUpdateSection.buttonLabel)
+                                .frame(maxWidth: 300)
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(.green)
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+            }
+
             if self.authManagerViewModel.userAuthenticationState == .loggedIn {
                 Section {
                     Button {
@@ -216,6 +248,7 @@ struct SettingsView: View {
     @ObservedObject private var styleManager: StyleManager = .shared
     @ObservedObject private var navigation = Navigation.shared
 
+    @StateObject var appUpdateStatus: LekaApp.UpdateStatus = .shared
     @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
 
     private func reset() {
