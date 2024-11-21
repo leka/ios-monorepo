@@ -74,54 +74,48 @@ struct LekaApp: App {
                 }
             }
             .animation(.default, value: self.showMainView)
-            #if PRODUCTION_BUILD
-                .onAppear {
-                    var cancellable: AnyCancellable?
-                    cancellable = UpdateStatusFetcher().fetch { result in
-                        defer { cancellable?.cancel() }
-                        guard let status = try? result.get() else { return }
+            .onAppear {
+                var cancellable: AnyCancellable?
+                cancellable = UpdateStatusFetcher().fetch { result in
+                    defer { cancellable?.cancel() }
+                    guard let status = try? result.get() else {
+                        return
+                    }
 
-                        switch status {
-                            case .upToDate,
-                                 .newerVersion:
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                    self.showMainView = true
-                                }
-                            case .updateAvailable:
-                                self.showingUpdateAlert = true
-                        }
+                    switch status {
+                        case .upToDate,
+                             .newerVersion:
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                self.showMainView = true
+                            }
+                        case .updateAvailable:
+                            self.showingUpdateAlert = true
                     }
                 }
-                .alert(isPresented: self.$showingUpdateAlert) {
-                    Alert(
-                        title: Text(l10n.MainApp.UpdateAlert.title),
-                        message: Text(l10n.MainApp.UpdateAlert.message),
-                        primaryButton: .default(Text(l10n.MainApp.UpdateAlert.action), action: {
-                            AnalyticsManager.shared
-                                .logEventAppUpdateOpenAppStore()
-                            if let url = URL(string: "https://apps.apple.com/app/leka/id6446940339") {
-                                UIApplication.shared.open(url)
-                            }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                self.showMainView = true
-                            }
-                        }),
-                        secondaryButton: .cancel {
-                            AnalyticsManager.shared
-                                .logEventAppUpdateSkip()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                self.showMainView = true
-                            }
+            }
+            .alert(isPresented: self.$showingUpdateAlert) {
+                Alert(
+                    title: Text(l10n.MainApp.UpdateAlert.title),
+                    message: Text(l10n.MainApp.UpdateAlert.message),
+                    primaryButton: .default(Text(l10n.MainApp.UpdateAlert.action), action: {
+                        AnalyticsManager.shared
+                            .logEventAppUpdateOpenAppStore()
+                        if let url = URL(string: "https://apps.apple.com/app/leka/id6446940339") {
+                            UIApplication.shared.open(url)
                         }
-                    )
-                }
-            #else
-                .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                            self.showMainView = true
+                        }
+                    }),
+                    secondaryButton: .cancel {
+                        AnalyticsManager.shared
+                            .logEventAppUpdateSkip()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                             self.showMainView = true
                         }
                     }
-            #endif
+                )
+            }
         }
     }
 
