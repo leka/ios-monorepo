@@ -16,9 +16,9 @@ public class AnalyticsManager {
 
     public static let shared = AnalyticsManager()
 
-    // MARK: Public Methods
+    // MARK: Private
 
-    public func logEvent(name: String, parameters: [String: Any]? = nil) {
+    private func logEvent(name: String, parameters: [String: Any]? = nil) {
         Analytics.logEvent(name, parameters: parameters)
     }
 }

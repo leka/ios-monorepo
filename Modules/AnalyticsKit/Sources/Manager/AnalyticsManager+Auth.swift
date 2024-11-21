@@ -16,4 +16,8 @@ public extension AnalyticsManager {
     func logEventSignUp() {
         Analytics.logEvent(AnalyticsEventSignUp, parameters: nil)
     }
+
+    func logEventSkipAuthentication() {
+        Analytics.logEvent("skip_authentication", parameters: nil)
+    }
 }

@@ -47,7 +47,7 @@ struct WelcomeView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(String(l10n.WelcomeView.skipStepButton.characters)) {
-                    AnalyticsManager.shared.logEvent(name: "skip_authentication")
+                    AnalyticsManager.shared.logEventSkipAuthentication()
                     self.dismiss()
                 }
             }
