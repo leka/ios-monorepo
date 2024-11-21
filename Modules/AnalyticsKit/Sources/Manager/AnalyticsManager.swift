@@ -21,16 +21,4 @@ public class AnalyticsManager {
     public func logEvent(name: String, parameters: [String: Any]? = nil) {
         Analytics.logEvent(name, parameters: parameters)
     }
-
-    public func logEventScreenView(screenName: String, screenClass: String? = nil) {
-        var params: [String: Any] = [
-            AnalyticsParameterScreenName: screenName,
-        ]
-
-        if let screenClass {
-            params[AnalyticsParameterScreenClass] = screenClass
-        }
-
-        Analytics.logEvent(AnalyticsEventScreenView, parameters: params)
-    }
 }
