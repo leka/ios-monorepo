@@ -79,6 +79,10 @@ struct LekaApp: App {
                 cancellable = UpdateStatusFetcher().fetch { result in
                     defer { cancellable?.cancel() }
                     guard let status = try? result.get() else {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            self.showMainView = true
+                            self.appUpdateStatus.isUpdateAvailable = false
+                        }
                         return
                     }
 
