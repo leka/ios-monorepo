@@ -45,10 +45,16 @@ struct LekaApp: App {
 
     // MARK: Internal
 
+    class UpdateStatus: ObservableObject {
+        static let shared = UpdateStatus()
+
+        @Published var isUpdateAvailable: Bool = false
+    }
+
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
     @Environment(\.colorScheme) var colorScheme
-
+    @StateObject var appUpdateStatus: UpdateStatus = .shared
     @ObservedObject var styleManager: StyleManager = .shared
 
     var body: some Scene {
@@ -91,9 +97,13 @@ struct LekaApp: App {
                              .newerVersion:
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                                 self.showMainView = true
+                                self.appUpdateStatus.isUpdateAvailable = false
                             }
                         case .updateAvailable:
                             self.showingUpdateAlert = true
+                            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                                self.appUpdateStatus.isUpdateAvailable = true
+                            }
                     }
                 }
             }
