@@ -34,4 +34,8 @@ public extension AnalyticsManager {
 
         Self.logEvent(.accountDelete, parameters: params)
     }
+
+    static func setUserPropertyUserIsLoggedIn(value: Bool) {
+        Self.setUserProperty(value: value.description, name: "user_is_logged_in")
+    }
 }
