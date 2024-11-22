@@ -30,7 +30,7 @@ public struct CurriculumHorizontalListView: View {
                             onActivitySelected: self.onActivitySelected
                         )
                         .onAppear {
-                            AnalyticsManager.shared.logEventSelectContent(
+                            AnalyticsManager.logEventSelectContent(
                                 type: .curriculum,
                                 id: curriculum.id,
                                 name: curriculum.name,

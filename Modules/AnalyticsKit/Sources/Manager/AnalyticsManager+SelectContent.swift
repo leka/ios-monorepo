@@ -25,23 +25,19 @@ public extension AnalyticsManager {
 }
 
 public extension AnalyticsManager {
-    func logEventSelectContent(
+    static func logEventSelectContent(
         type: ContentType,
         id: String,
         name: String,
         origin: ContentOrigin,
-        additionalParameters: [String: Any]? = nil
+        parameters: [String: Any] = [:]
     ) {
-        var parameters: [String: Any] = [
+        let params: [String: Any] = [
             AnalyticsParameterItemID: "\(name)-\(id)",
             AnalyticsParameterContentType: type.rawValue,
             "lk_content_origin": origin.rawValue,
-        ]
+        ].merging(parameters) { _, new in new }
 
-        if let additionalParameters {
-            parameters.merge(additionalParameters) { _, new in new }
-        }
-
-        Analytics.logEvent(AnalyticsEventSelectContent, parameters: parameters)
+        Self.logEvent(name: AnalyticsEventSelectContent, parameters: params)
     }
 }

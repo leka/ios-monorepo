@@ -24,7 +24,7 @@ public struct GamepadGridView: View {
                 NavigationLink(destination:
                     ActivityDetailsView(activity: activity, onStartActivity: self.onStartGamepad)
                         .onAppear {
-                            AnalyticsManager.shared.logEventSelectContent(
+                            AnalyticsManager.logEventSelectContent(
                                 type: .gamepad,
                                 id: activity.id,
                                 name: activity.name,

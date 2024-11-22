@@ -40,7 +40,7 @@ struct LekaApp: App {
     // MARK: Lifecycle
 
     init() {
-        AnalyticsManager.shared.clearDefaultEventParameters()
+        AnalyticsManager.clearDefaultEventParameters()
     }
 
     // MARK: Internal

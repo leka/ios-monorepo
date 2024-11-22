@@ -11,54 +11,63 @@ public extension AnalyticsManager {
         case rename = "robot_rename"
     }
 
-    func logEventRobotConnect(
+    static func logEventRobotConnect(
         robotName: String,
         serialNumber: String,
         osVersion: String,
         isCharging: Bool,
-        batteryLevel: Int
+        batteryLevel: Int,
+        parameters: [String: Any] = [:]
     ) {
-        Analytics.logEvent(RobotEvent.connect.rawValue, parameters: [
+        let params: [String: Any] = [
             "lk_robot_name": robotName,
             "lk_serial_number": serialNumber,
             "lk_os_version": osVersion,
             "lk_is_charging": isCharging,
             "lk_battery_level": batteryLevel,
-        ])
+        ].merging(parameters) { _, new in new }
+
+        Self.logEvent(name: RobotEvent.connect.rawValue, parameters: params)
     }
 
-    func logEventRobotDisconnect(
+    static func logEventRobotDisconnect(
         robotName: String,
         serialNumber: String,
         osVersion: String,
         isCharging: Bool,
-        batteryLevel: Int
+        batteryLevel: Int,
+        parameters: [String: Any] = [:]
     ) {
-        Analytics.logEvent(RobotEvent.disconnect.rawValue, parameters: [
+        let params: [String: Any] = [
             "lk_robot_name": robotName,
             "lk_serial_number": serialNumber,
             "lk_os_version": osVersion,
             "lk_is_charging": isCharging,
             "lk_battery_level": batteryLevel,
-        ])
+        ].merging(parameters) { _, new in new }
+
+        Self.logEvent(name: RobotEvent.disconnect.rawValue, parameters: params)
     }
 
     // swiftlint:disable:next function_parameter_count
-    func logEventRobotRename(
+    static func logEventRobotRename(
         previousName: String,
         newName: String,
         serialNumber: String,
         osVersion: String,
         isCharging: Bool,
-        batteryLevel: Int
+        batteryLevel: Int,
+        parameters: [String: Any] = [:]
     ) {
-        Analytics.logEvent(RobotEvent.rename.rawValue, parameters: [
+        let params: [String: Any] = [
             "lk_previous_name": previousName,
             "lk_robot_name": newName,
             "lk_serial_number": serialNumber,
             "lk_os_version": osVersion,
             "lk_is_charging": isCharging,
             "lk_battery_level": batteryLevel,
-        ])
+        ].merging(parameters) { _, new in new }
+
+        Self.logEvent(name: RobotEvent.rename.rawValue, parameters: params)
     }
 }

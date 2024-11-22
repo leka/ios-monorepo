@@ -109,7 +109,7 @@ public struct StoryDetailsView: View {
             }
         }
         .onAppear {
-            AnalyticsManager.shared.logEventScreenView(screenName: "view_story_details_view")
+            AnalyticsManager.logEventScreenView(screenName: "view_story_details_view")
         }
         .toolbar {
             #if DEVELOPER_MODE || TESTFLIGHT_BUILD

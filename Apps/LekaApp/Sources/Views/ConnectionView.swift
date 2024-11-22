@@ -79,7 +79,7 @@ struct ConnectionView: View {
                     self.caregiverManager.initializeCaregiversListener()
                     self.carereceiverManager.initializeCarereceiversListener()
                     self.rootAccountManager.initializeRootAccountListener()
-                    AnalyticsManager.shared.logEventLogin()
+                    AnalyticsManager.logEventLogin()
                     self.authManagerViewModel.userAction = .none
                     self.navigation.fullScreenCoverContent = nil
                 }
