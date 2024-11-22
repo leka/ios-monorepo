@@ -122,11 +122,11 @@ struct MainView: View {
                 }
                 .listStyle(.sidebar)
             }
-            .alert(isPresented: self.$showingUpdateAlert) {
+            .alert(isPresented: self.$showingAppUpdateAlert) {
                 Alert(
-                    title: Text(l10n.MainView.UpdateAlert.title),
-                    message: Text(l10n.MainView.UpdateAlert.message),
-                    primaryButton: .default(Text(l10n.MainView.UpdateAlert.action), action: {
+                    title: Text(l10n.MainView.AppUpdateAlert.title),
+                    message: Text(l10n.MainView.AppUpdateAlert.message),
+                    primaryButton: .default(Text(l10n.MainView.AppUpdateAlert.action), action: {
                         AnalyticsManager.logEventAppUpdateOpenAppStore()
                         if let url = URL(string: "https://apps.apple.com/app/leka/id6446940339") {
                             UIApplication.shared.open(url)
@@ -317,8 +317,11 @@ struct MainView: View {
                             }
                             .onDisappear {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                    if self.appUpdateStatus.isUpdateAvailable {
-                                        self.showingUpdateAlert = true
+                                    switch self.appUpdateStatus.status {
+                                        case .updateAvailable:
+                                            self.showingAppUpdateAlert = true
+                                        default:
+                                            break
                                     }
                                 }
                             }
@@ -417,7 +420,7 @@ struct MainView: View {
     @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
     @StateObject var appUpdateStatus: LekaApp.UpdateStatus = .shared
 
-    @State private var showingUpdateAlert: Bool = false
+    @State private var showingAppUpdateAlert: Bool = false
 
     private var persistentDataManager: PersistentDataManager = .shared
     private var caregiverManager: CaregiverManager = .shared

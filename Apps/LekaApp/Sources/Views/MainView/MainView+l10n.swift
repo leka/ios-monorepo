@@ -45,10 +45,10 @@ extension l10n {
             static let disconnectedLibraryMessage = LocalizedString("lekaapp.main_view.detailView.disconnected_library_message", value: "Log in to your account to access your personal library.", comment: "The message to invite users to connect to display the Library")
         }
 
-        enum UpdateAlert {
-            static let title = LocalizedString("lekaapp.main_view.update_alert.title", value: "New update available", comment: "The title of the alert to inform the user that an update is available")
-            static let message = LocalizedString("lekaapp.main_view.update_alert.message", value: "Enjoy new features by updating to the latest version of Leka!", comment: "The message of the alert to inform the user that an update is available")
-            static let action = LocalizedString("lekaapp.main_view.update_alert.action", value: "Update now", comment: "The action button of the alert to inform the user that an update is available")
+        enum AppUpdateAlert {
+            static let title = LocalizedString("lekaapp.main_view.app_update_alert.title", value: "New update available", comment: "The title of the alert to inform the user that an update is available")
+            static let message = LocalizedString("lekaapp.main_view.app_update_alert.message", value: "Enjoy new features by updating to the latest version of Leka!", comment: "The message of the alert to inform the user that an update is available")
+            static let action = LocalizedString("lekaapp.main_view.app_update_alert.action", value: "Update now", comment: "The action button of the alert to inform the user that an update is available")
         }
     }
 }

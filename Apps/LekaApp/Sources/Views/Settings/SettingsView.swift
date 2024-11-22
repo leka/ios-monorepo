@@ -23,7 +23,7 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
-            if self.appUpdateStatus.isUpdateAvailable {
+            if case .updateAvailable = self.appUpdateStatus.status {
                 Section {
                     VStack(alignment: .center) {
                         HStack(spacing: 20) {

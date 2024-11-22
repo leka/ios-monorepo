@@ -70,10 +70,6 @@ let package = Package(
             url: "https://github.com/lukepistrol/SFSymbolsMacro",
             exact: "0.5.3"
         ),
-        .package(
-            url: "https://github.com/AvdLee/AppUpdately",
-            branch: "main"
-        ),
     ]
 )
 
