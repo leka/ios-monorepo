@@ -25,7 +25,7 @@ public extension AnalyticsManager {
 }
 
 public extension AnalyticsManager {
-    func logEventSelectContent(
+    static func logEventSelectContent(
         type: ContentType,
         id: String,
         name: String,
@@ -38,6 +38,6 @@ public extension AnalyticsManager {
             "lk_content_origin": origin.rawValue,
         ].merging(parameters) { _, new in new }
 
-        self.logEvent(name: AnalyticsEventSelectContent, parameters: params)
+        Self.logEvent(name: AnalyticsEventSelectContent, parameters: params)
     }
 }

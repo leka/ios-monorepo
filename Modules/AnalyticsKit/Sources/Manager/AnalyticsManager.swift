@@ -18,7 +18,7 @@ public class AnalyticsManager {
 
     // MARK: Internal
 
-    func logEvent(name: String, parameters: [String: Any] = [:]) {
+    static func logEvent(name: String, parameters: [String: Any] = [:]) {
         Analytics.logEvent(name, parameters: parameters)
     }
 }

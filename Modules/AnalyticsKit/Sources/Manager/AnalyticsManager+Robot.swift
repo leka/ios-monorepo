@@ -11,7 +11,7 @@ public extension AnalyticsManager {
         case rename = "robot_rename"
     }
 
-    func logEventRobotConnect(
+    static func logEventRobotConnect(
         robotName: String,
         serialNumber: String,
         osVersion: String,
@@ -27,10 +27,10 @@ public extension AnalyticsManager {
             "lk_battery_level": batteryLevel,
         ].merging(parameters) { _, new in new }
 
-        self.logEvent(name: RobotEvent.connect.rawValue, parameters: params)
+        Self.logEvent(name: RobotEvent.connect.rawValue, parameters: params)
     }
 
-    func logEventRobotDisconnect(
+    static func logEventRobotDisconnect(
         robotName: String,
         serialNumber: String,
         osVersion: String,
@@ -46,11 +46,11 @@ public extension AnalyticsManager {
             "lk_battery_level": batteryLevel,
         ].merging(parameters) { _, new in new }
 
-        self.logEvent(name: RobotEvent.disconnect.rawValue, parameters: params)
+        Self.logEvent(name: RobotEvent.disconnect.rawValue, parameters: params)
     }
 
     // swiftlint:disable:next function_parameter_count
-    func logEventRobotRename(
+    static func logEventRobotRename(
         previousName: String,
         newName: String,
         serialNumber: String,
@@ -68,6 +68,6 @@ public extension AnalyticsManager {
             "lk_battery_level": batteryLevel,
         ].merging(parameters) { _, new in new }
 
-        self.logEvent(name: RobotEvent.rename.rawValue, parameters: params)
+        Self.logEvent(name: RobotEvent.rename.rawValue, parameters: params)
     }
 }

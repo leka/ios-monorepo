@@ -142,13 +142,12 @@ public struct ActivityView: View {
             })
             Button(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.quitButtonLabel.characters), role: .destructive, action: {
                 self.saveActivityCompletion()
-                AnalyticsManager.shared
-                    .logEventActivityEnd(
-                        id: self.viewModel.currentActivity.id,
-                        name: self.viewModel.currentActivity.name,
-                        carereceiverIDs: self.carereceiverManager.currentCarereceivers.value.compactMap(\.id).joined(separator: ","),
-                        reason: .userExited
-                    )
+                AnalyticsManager.logEventActivityEnd(
+                    id: self.viewModel.currentActivity.id,
+                    name: self.viewModel.currentActivity.name,
+                    carereceiverIDs: self.carereceiverManager.currentCarereceivers.value.compactMap(\.id).joined(separator: ","),
+                    reason: .userExited
+                )
                 self.dismiss()
             })
         } message: {
@@ -164,12 +163,11 @@ public struct ActivityView: View {
             Robot.shared.stop()
             UIApplication.shared.isIdleTimerDisabled = true
 
-            AnalyticsManager.shared
-                .logEventActivityStart(
-                    id: self.viewModel.currentActivity.id,
-                    name: self.viewModel.currentActivity.name,
-                    carereceiverIDs: self.carereceiverManager.currentCarereceivers.value.compactMap(\.id).joined(separator: ",")
-                )
+            AnalyticsManager.logEventActivityStart(
+                id: self.viewModel.currentActivity.id,
+                name: self.viewModel.currentActivity.name,
+                carereceiverIDs: self.carereceiverManager.currentCarereceivers.value.compactMap(\.id).joined(separator: ",")
+            )
         }
         .onDisappear {
             Robot.shared.stop()
@@ -189,14 +187,14 @@ public struct ActivityView: View {
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
     @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
 
-    private var carereceiverManager: CarereceiverManager = .shared
-
     @State private var isAlertPresented: Bool = false
 
     @State private var opacity: Double = 1
     @State private var blurRadius: CGFloat = 0
     @State private var showScoreView: Bool = false
     @State private var isInfoSheetPresented: Bool = false
+
+    private var carereceiverManager: CarereceiverManager = .shared
 
     private let robot = Robot.shared
     private let reinforcer: Robot.Reinforcer
@@ -232,13 +230,12 @@ public struct ActivityView: View {
                 self.viewModel.scorePanelEnabled ? self.viewModel.moveToActivityEnd() : self.dismiss()
                 self.saveActivityCompletion()
 
-                AnalyticsManager.shared
-                    .logEventActivityEnd(
-                        id: self.viewModel.currentActivity.id,
-                        name: self.viewModel.currentActivity.name,
-                        carereceiverIDs: self.carereceiverManager.currentCarereceivers.value.compactMap(\.id).joined(separator: ","),
-                        reason: .activityCompleted
-                    )
+                AnalyticsManager.logEventActivityEnd(
+                    id: self.viewModel.currentActivity.id,
+                    name: self.viewModel.currentActivity.name,
+                    carereceiverIDs: self.carereceiverManager.currentCarereceivers.value.compactMap(\.id).joined(separator: ","),
+                    reason: .activityCompleted
+                )
             } else {
                 self.viewModel.moveToNextExercise()
             }

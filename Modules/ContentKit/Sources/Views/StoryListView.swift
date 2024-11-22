@@ -26,7 +26,7 @@ public struct StoryListView: View {
                 NavigationLink(destination:
                     StoryDetailsView(story: story, onStartStory: self.onStartStory)
                         .onAppear {
-                            AnalyticsManager.shared.logEventSelectContent(
+                            AnalyticsManager.logEventSelectContent(
                                 type: .story,
                                 id: story.id,
                                 name: story.name,

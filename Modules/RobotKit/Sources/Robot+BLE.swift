@@ -26,7 +26,7 @@ extension Robot {
                 self.connectedPeripheral = nil
                 self.isConnected.send(false)
 
-                AnalyticsManager.shared.logEventRobotDisconnect(
+                AnalyticsManager.logEventRobotDisconnect(
                     robotName: self.name.value,
                     serialNumber: self.serialNumber.value,
                     osVersion: self.osVersion.value?.description ?? "(n/a)",
@@ -49,7 +49,7 @@ extension Robot {
             .sink { [weak self] _ in
                 guard let self else { return }
 
-                AnalyticsManager.shared.logEventRobotConnect(
+                AnalyticsManager.logEventRobotConnect(
                     robotName: self.name.value,
                     serialNumber: self.serialNumber.value,
                     osVersion: self.osVersion.value?.description ?? "0.0.0",

@@ -94,7 +94,7 @@ public class CaregiverManager {
 
     public func setCurrentCaregiver(to caregiver: Caregiver) {
         self.currentCaregiver.send(caregiver)
-        AnalyticsManager.shared.setDefaultEventParameterCaregiverUid(caregiver.id)
+        AnalyticsManager.setDefaultEventParameterCaregiverUid(caregiver.id)
     }
 
     public func setCurrentCaregiver(byID id: String) {
@@ -102,12 +102,12 @@ public class CaregiverManager {
             return
         }
         self.currentCaregiver.send(currentCaregiver)
-        AnalyticsManager.shared.setDefaultEventParameterCaregiverUid(currentCaregiver.id)
+        AnalyticsManager.setDefaultEventParameterCaregiverUid(currentCaregiver.id)
     }
 
     public func resetCurrentCaregiver() {
         self.currentCaregiver.send(nil)
-        AnalyticsManager.shared.setDefaultEventParameterCaregiverUid(nil)
+        AnalyticsManager.setDefaultEventParameterCaregiverUid(nil)
     }
 
     public func resetData() {
@@ -116,7 +116,7 @@ public class CaregiverManager {
         self.dbOps.clearAllListeners()
         self.cancellables.forEach { $0.cancel() }
         self.cancellables.removeAll()
-        AnalyticsManager.shared.setDefaultEventParameterCaregiverUid(nil)
+        AnalyticsManager.setDefaultEventParameterCaregiverUid(nil)
     }
 
     // MARK: Private

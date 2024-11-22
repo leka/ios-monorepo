@@ -90,7 +90,7 @@ public class Robot {
 
         self.connectedPeripheral?.send(dataName, forCharacteristic: robotNameCharacteristic)
 
-        AnalyticsManager.shared.logEventRobotRename(
+        AnalyticsManager.logEventRobotRename(
             previousName: previousName,
             newName: name,
             serialNumber: self.serialNumber.value,

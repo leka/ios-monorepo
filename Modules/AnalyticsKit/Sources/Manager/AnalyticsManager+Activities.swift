@@ -10,16 +10,16 @@ public extension AnalyticsManager {
         case userExited = "user_exited"
     }
 
-    func logEventActivityStart(id: String, name: String, carereceiverIDs: String, parameters: [String: Any] = [:]) {
+    static func logEventActivityStart(id: String, name: String, carereceiverIDs: String, parameters: [String: Any] = [:]) {
         let params: [String: Any] = [
             "lk_activity_id": "\(name)-\(id)",
             "lk_carereceiver_ids": carereceiverIDs,
         ].merging(parameters) { _, new in new }
 
-        self.logEvent(name: "activity_start", parameters: params)
+        Self.logEvent(name: "activity_start", parameters: params)
     }
 
-    func logEventActivityEnd(
+    static func logEventActivityEnd(
         id: String,
         name: String,
         carereceiverIDs: String,
@@ -32,6 +32,6 @@ public extension AnalyticsManager {
             "lk_activity_end_reason": reason.rawValue,
         ].merging(parameters) { _, new in new }
 
-        self.logEvent(name: "activity_end", parameters: params)
+        Self.logEvent(name: "activity_end", parameters: params)
     }
 }

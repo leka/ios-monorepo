@@ -26,7 +26,7 @@ public struct ActivityListView: View {
                 NavigationLink(destination:
                     ActivityDetailsView(activity: activity, onStartActivity: self.onStartActivity)
                         .onAppear {
-                            AnalyticsManager.shared.logEventSelectContent(
+                            AnalyticsManager.logEventSelectContent(
                                 type: .activity,
                                 id: activity.id,
                                 name: activity.name,
