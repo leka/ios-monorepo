@@ -5,12 +5,6 @@
 import FirebaseAnalytics
 
 public extension AnalyticsManager {
-    enum RobotEvent: String {
-        case connect = "robot_connect"
-        case disconnect = "robot_disconnect"
-        case rename = "robot_rename"
-    }
-
     static func logEventRobotConnect(
         robotName: String,
         serialNumber: String,
@@ -27,7 +21,7 @@ public extension AnalyticsManager {
             "lk_battery_level": batteryLevel,
         ].merging(parameters) { _, new in new }
 
-        Self.logEvent(name: RobotEvent.connect.rawValue, parameters: params)
+        Self.logEvent(.robotConnect, parameters: params)
     }
 
     static func logEventRobotDisconnect(
@@ -46,7 +40,7 @@ public extension AnalyticsManager {
             "lk_battery_level": batteryLevel,
         ].merging(parameters) { _, new in new }
 
-        Self.logEvent(name: RobotEvent.disconnect.rawValue, parameters: params)
+        Self.logEvent(.robotDisconnect, parameters: params)
     }
 
     // swiftlint:disable:next function_parameter_count
@@ -68,6 +62,6 @@ public extension AnalyticsManager {
             "lk_battery_level": batteryLevel,
         ].merging(parameters) { _, new in new }
 
-        Self.logEvent(name: RobotEvent.rename.rawValue, parameters: params)
+        Self.logEvent(.robotRename, parameters: params)
     }
 }

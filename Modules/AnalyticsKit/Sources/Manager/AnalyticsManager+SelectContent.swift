@@ -37,6 +37,6 @@ public extension AnalyticsManager {
             "lk_content_origin": origin.rawValue,
         ].merging(parameters) { _, new in new }
 
-        Self.logEvent(name: AnalyticsEventSelectContent, parameters: params)
+        Self.logEvent(.selectContent, parameters: params)
     }
 }

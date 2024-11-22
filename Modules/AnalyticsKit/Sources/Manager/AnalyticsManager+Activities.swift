@@ -16,7 +16,7 @@ public extension AnalyticsManager {
             "lk_carereceiver_ids": carereceiverIDs,
         ].merging(parameters) { _, new in new }
 
-        Self.logEvent(name: "activity_start", parameters: params)
+        Self.logEvent(.activityStart, parameters: params)
     }
 
     static func logEventActivityEnd(
@@ -32,6 +32,6 @@ public extension AnalyticsManager {
             "lk_activity_end_reason": reason.rawValue,
         ].merging(parameters) { _, new in new }
 
-        Self.logEvent(name: "activity_end", parameters: params)
+        Self.logEvent(.activityEnd, parameters: params)
     }
 }

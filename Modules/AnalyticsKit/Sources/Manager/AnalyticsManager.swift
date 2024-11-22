@@ -88,7 +88,7 @@ public class AnalyticsManager {
         }
     }
 
-    static func logEvent(name: String, parameters: [String: Any] = [:]) {
-        Analytics.logEvent(name, parameters: parameters)
+    static func logEvent(_ event: Event, parameters: [String: Any] = [:]) {
+        Analytics.logEvent(event.name, parameters: parameters)
     }
 }

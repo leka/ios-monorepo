@@ -10,12 +10,12 @@ public extension AnalyticsManager {
             "lk_caregiver_id": id ?? "(lk_not_set)",
         ].merging(parameters) { _, new in new }
 
-        Self.logEvent(name: "caregiver_select", parameters: params)
+        Self.logEvent(.caregiverSelect, parameters: params)
     }
 
     static func logEventCarereceiverSkipSelect(parameters: [String: Any] = [:]) {
         let params: [String: Any] = [:].merging(parameters) { _, new in new }
 
-        Self.logEvent(name: "carereceiver_skip_select", parameters: params)
+        Self.logEvent(.carereceiverSkipSelect, parameters: params)
     }
 }
