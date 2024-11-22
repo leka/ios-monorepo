@@ -319,7 +319,9 @@ struct MainView: View {
                             }
                             .onDisappear {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                    self.showingUpdateAlert = true
+                                    if self.appUpdateStatus.isUpdateAvailable {
+                                        self.showingUpdateAlert = true
+                                    }
                                 }
                             }
                     case let .carereceiverPicker(activity, story):
