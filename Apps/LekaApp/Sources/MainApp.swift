@@ -4,7 +4,6 @@
 
 import AccountKit
 import AnalyticsKit
-import AppUpdately
 import Combine
 import ContentKit
 import DesignKit
@@ -12,6 +11,7 @@ import FirebaseKit
 import LocalizationKit
 import LogKit
 import SwiftUI
+import UtilsKit
 
 let log = LogKit.createLoggerFor(app: "LekaApp")
 
@@ -48,7 +48,7 @@ struct LekaApp: App {
     class UpdateStatus: ObservableObject {
         static let shared = UpdateStatus()
 
-        @Published var isUpdateAvailable: Bool = false
+        @Published var status: UpdateStatusFetcher.Status = .upToDate
     }
 
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
@@ -87,23 +87,14 @@ struct LekaApp: App {
                     guard let status = try? result.get() else {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                             self.showMainView = true
-                            self.appUpdateStatus.isUpdateAvailable = false
+                            self.appUpdateStatus.status = .upToDate
                         }
                         return
                     }
 
-                    switch status {
-                        case .upToDate,
-                             .newerVersion:
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                self.showMainView = true
-                                self.appUpdateStatus.isUpdateAvailable = false
-                            }
-                        case .updateAvailable:
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                self.showMainView = true
-                                self.appUpdateStatus.isUpdateAvailable = true
-                            }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        self.showMainView = true
+                        self.appUpdateStatus.status = status
                     }
                 }
             }

@@ -28,7 +28,12 @@ struct SettingsLabel: View {
                     .background(.red)
                     .clipShape(.circle)
                     .offset(x: 95, y: -20)
-                    .opacity(self.appUpdateStatus.isUpdateAvailable ? 1 : 0)
+                    .opacity({
+                        if case .updateAvailable = self.appUpdateStatus.status {
+                            return 1.0
+                        }
+                        return 0.0
+                    }())
             )
     }
 
