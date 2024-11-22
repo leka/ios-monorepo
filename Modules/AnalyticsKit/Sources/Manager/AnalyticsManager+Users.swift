@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import FirebaseAnalytics
+import Foundation
 
 public extension AnalyticsManager {
     static func logEventCaregiverSelect(id: String?, parameters: [String: Any] = [:]) {
@@ -17,5 +18,11 @@ public extension AnalyticsManager {
         let params: [String: Any] = [:].merging(parameters) { _, new in new }
 
         Self.logEvent(.carereceiverSkipSelect, parameters: params)
+    }
+
+    static func setUserPropertyCaregiverProfessions(values: [String]) {
+        let professions = values.joined(separator: ",")
+
+        Self.setUserProperty(value: professions, name: "caregiver_professions")
     }
 }
