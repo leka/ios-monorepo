@@ -33,6 +33,7 @@ extension Robot {
                     isCharging: self.isCharging.value,
                     batteryLevel: self.battery.value
                 )
+                AnalyticsManager.setUserPropertyUserRobotIsConnected(value: false)
             }
             .store(in: &cancellables)
     }
@@ -56,6 +57,7 @@ extension Robot {
                     isCharging: self.isCharging.value,
                     batteryLevel: self.battery.value
                 )
+                AnalyticsManager.setUserPropertyUserRobotIsConnected(value: true)
             }
             .store(in: &self.cancellables)
     }
