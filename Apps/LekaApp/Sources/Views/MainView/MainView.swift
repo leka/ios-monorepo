@@ -13,6 +13,7 @@ import RobotKit
 import SwiftUI
 
 // swiftlint:disable type_body_length
+
 extension Bundle {
     static var version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     static var buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
@@ -138,8 +139,6 @@ struct MainView: View {
                     }
                 )
             }
-            // TODO: (@ladislas) remove if not necessary
-            // .disabled(navigation.disableUICompletly)
         } detail: {
             NavigationStack(path: self.$navigation.path) {
                 switch self.navigation.selectedCategory {
@@ -275,7 +274,7 @@ struct MainView: View {
                             .onAppear {
                                 AnalyticsManager.shared.logEventScreenView(screenName: "view_activity")
                             }
-                    case let .storyView(carereceivers):
+                    case .storyView:
                         StoryView(story: self.navigation.currentStory!)
                             .onAppear {
                                 AnalyticsManager.shared.logEventScreenView(screenName: "view_story")
@@ -330,18 +329,18 @@ struct MainView: View {
                             self.carereceiverManager.setCurrentCarereceivers(to: carereceivers)
                             self.navigation.currentActivity = activity
                             self.navigation.currentStory = story
-                            if let activity = self.navigation.currentActivity {
+                            if self.navigation.currentActivity != nil {
                                 self.navigation.fullScreenCoverContent = .activityView(carereceivers: carereceivers)
-                            } else if let story = self.navigation.currentStory {
+                            } else if self.navigation.currentStory != nil {
                                 self.navigation.fullScreenCoverContent = .storyView(carereceivers: carereceivers)
                             }
 
                         }, onSkip: {
                             self.navigation.currentActivity = activity
                             self.navigation.currentStory = story
-                            if let activity = self.navigation.currentActivity {
+                            if self.navigation.currentActivity != nil {
                                 self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
-                            } else if let story = self.navigation.currentStory {
+                            } else if self.navigation.currentStory != nil {
                                 self.navigation.fullScreenCoverContent = .storyView(carereceivers: [])
                             }
                         })
