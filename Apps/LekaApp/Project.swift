@@ -75,8 +75,6 @@ let project = Project.app(
         .project(target: "LogKit", path: Path("../../Modules/LogKit")),
         .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
         .project(target: "UtilsKit", path: Path("../../Modules/UtilsKit")),
-
-        .external(name: "AppUpdately"),
         .external(name: "DeviceKit"),
         .external(name: "Fit"),
         .external(name: "MarkdownUI"),
