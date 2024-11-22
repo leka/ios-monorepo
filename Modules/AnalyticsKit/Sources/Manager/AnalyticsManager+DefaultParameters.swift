@@ -17,9 +17,7 @@ public extension AnalyticsManager {
         self.setDefaultEventParameters(nil)
     }
 
-    // MARK: Private
-
-    private static func setDefaultEventParameters(_ parameters: [String: Any]?) {
+    static func setDefaultEventParameters(_ parameters: [String: Any]?) {
         Analytics.setDefaultEventParameters(parameters)
     }
 }
