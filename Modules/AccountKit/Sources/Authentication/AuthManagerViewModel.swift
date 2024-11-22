@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AnalyticsKit
 import Combine
 import Foundation
 import LocalizationKit
@@ -100,10 +101,12 @@ public class AuthManagerViewModel: ObservableObject {
                     self.showActionRequestAlert = true
                 }
                 self.resetErrorMessage()
+                AnalyticsManager.setUserPropertyUserIsLoggedIn(value: true)
             case .loggedOut:
                 self.resetState()
+                AnalyticsManager.setUserPropertyUserIsLoggedIn(value: false)
             case .unknown:
-                break
+                AnalyticsManager.setUserPropertyUserIsLoggedIn(value: false)
         }
     }
 

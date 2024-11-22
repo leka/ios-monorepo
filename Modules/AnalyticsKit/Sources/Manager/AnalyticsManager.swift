@@ -87,4 +87,8 @@ public class AnalyticsManager {
     static func logEvent(_ event: Event, parameters: [String: Any] = [:]) {
         Analytics.logEvent(event.name, parameters: parameters)
     }
+
+    static func setUserProperty(value: String, name: String) {
+        Analytics.setUserProperty(value, forName: name)
+    }
 }
