@@ -5,19 +5,15 @@
 import FirebaseAnalytics
 
 public extension AnalyticsManager {
-    static func setDefaultEventParameterRootOwnerUid(_ id: String?) {
-        self.setDefaultEventParameters(["lk_default_root_owner_uid": id ?? "(lk_not_set)"])
+    static func setDefaultEventParameterRootOwnerUid(_ uid: String?) {
+        setDefaultEventParameter(for: .rootOwnerUid(uid))
     }
 
-    static func setDefaultEventParameterCaregiverUid(_ id: String?) {
-        self.setDefaultEventParameters(["lk_default_caregiver_uid": id ?? "(lk_not_set)"])
+    static func setDefaultEventParameterCaregiverUid(_ uid: String?) {
+        setDefaultEventParameter(for: .caregiverUid(uid))
     }
 
     static func clearDefaultEventParameters() {
-        self.setDefaultEventParameters(nil)
-    }
-
-    static func setDefaultEventParameters(_ parameters: [String: Any]?) {
-        Analytics.setDefaultEventParameters(parameters)
+        Analytics.setDefaultEventParameters(nil)
     }
 }
