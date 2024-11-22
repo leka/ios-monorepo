@@ -8,34 +8,34 @@ public extension AnalyticsManager {
     static func logEventLogin(parameters: [String: Any] = [:]) {
         let params: [String: Any] = [:].merging(parameters) { _, new in new }
 
-        Self.logEvent(.login, parameters: params)
+        logEvent(.login, parameters: params)
     }
 
     static func logEventLogout(parameters: [String: Any] = [:]) {
         let params: [String: Any] = [:].merging(parameters) { _, new in new }
 
-        Self.logEvent(.logout, parameters: params)
+        logEvent(.logout, parameters: params)
     }
 
     static func logEventSignUp(parameters: [String: Any] = [:]) {
         let params: [String: Any] = [:].merging(parameters) { _, new in new }
 
-        Self.logEvent(.signup, parameters: params)
+        logEvent(.signup, parameters: params)
     }
 
     static func logEventSkipAuthentication(parameters: [String: Any] = [:]) {
         let params: [String: Any] = [:].merging(parameters) { _, new in new }
 
-        Self.logEvent(.skipAuthentication, parameters: params)
+        logEvent(.skipAuthentication, parameters: params)
     }
 
     static func logEventAccountDelete(parameters: [String: Any] = [:]) {
         let params: [String: Any] = [:].merging(parameters) { _, new in new }
 
-        Self.logEvent(.accountDelete, parameters: params)
+        logEvent(.accountDelete, parameters: params)
     }
 
     static func setUserPropertyUserIsLoggedIn(value: Bool) {
-        Self.setUserProperty(value: value.description, name: "user_is_logged_in")
+        setUserProperty(value: value.description, name: "user_is_logged_in")
     }
 }

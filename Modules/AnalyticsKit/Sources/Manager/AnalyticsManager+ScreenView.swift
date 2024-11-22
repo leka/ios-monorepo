@@ -15,7 +15,7 @@ public extension AnalyticsManager {
             params[AnalyticsParameterScreenClass] = screenClass
         }
 
-        Self.logEvent(.screenView, parameters: params)
+        logEvent(.screenView, parameters: params)
     }
 }
 

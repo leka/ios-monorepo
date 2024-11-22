@@ -21,7 +21,7 @@ public extension AnalyticsManager {
             "lk_battery_level": batteryLevel,
         ].merging(parameters) { _, new in new }
 
-        Self.logEvent(.robotConnect, parameters: params)
+        logEvent(.robotConnect, parameters: params)
     }
 
     static func logEventRobotDisconnect(
@@ -40,7 +40,7 @@ public extension AnalyticsManager {
             "lk_battery_level": batteryLevel,
         ].merging(parameters) { _, new in new }
 
-        Self.logEvent(.robotDisconnect, parameters: params)
+        logEvent(.robotDisconnect, parameters: params)
     }
 
     // swiftlint:disable:next function_parameter_count
@@ -62,10 +62,10 @@ public extension AnalyticsManager {
             "lk_battery_level": batteryLevel,
         ].merging(parameters) { _, new in new }
 
-        Self.logEvent(.robotRename, parameters: params)
+        logEvent(.robotRename, parameters: params)
     }
 
     static func setUserPropertyUserRobotIsConnected(value: Bool) {
-        Self.setUserProperty(value: value.description, name: "robot_is_connected")
+        setUserProperty(value: value.description, name: "robot_is_connected")
     }
 }

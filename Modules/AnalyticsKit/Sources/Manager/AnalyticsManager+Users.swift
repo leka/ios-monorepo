@@ -11,18 +11,18 @@ public extension AnalyticsManager {
             "lk_caregiver_id": id ?? "(lk_not_set)",
         ].merging(parameters) { _, new in new }
 
-        Self.logEvent(.caregiverSelect, parameters: params)
+        logEvent(.caregiverSelect, parameters: params)
     }
 
     static func logEventCarereceiverSkipSelect(parameters: [String: Any] = [:]) {
         let params: [String: Any] = [:].merging(parameters) { _, new in new }
 
-        Self.logEvent(.carereceiverSkipSelect, parameters: params)
+        logEvent(.carereceiverSkipSelect, parameters: params)
     }
 
     static func setUserPropertyCaregiverProfessions(values: [String]) {
         let professions = values.joined(separator: ",")
 
-        Self.setUserProperty(value: professions, name: "caregiver_professions")
+        setUserProperty(value: professions, name: "caregiver_professions")
     }
 }

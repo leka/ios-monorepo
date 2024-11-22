@@ -14,6 +14,11 @@ public class AnalyticsManager {
 
     // MARK: Internal
 
+    enum DefaultEventParamters {
+        case rootOwnerUid(String?)
+        case caregiverUid(String?)
+    }
+
     enum Event {
         case activityStart
         case activityEnd
@@ -90,5 +95,14 @@ public class AnalyticsManager {
 
     static func setUserProperty(value: String, name: String) {
         Analytics.setUserProperty(value, forName: name)
+    }
+
+    static func setDefaultEventParameter(for parameter: DefaultEventParamters) {
+        switch parameter {
+            case let .rootOwnerUid(uid):
+                Analytics.setDefaultEventParameters(["root_owner_uid": uid ?? "(lk_not_set)"])
+            case let .caregiverUid(uid):
+                Analytics.setDefaultEventParameters(["caregiver_uid": uid ?? "(lk_not_set)"])
+        }
     }
 }
