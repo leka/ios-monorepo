@@ -49,6 +49,7 @@ identifier_name:
     - rx
     - tag
     - tx
+    - uid
     - url
     - URL
 
