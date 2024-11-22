@@ -140,7 +140,6 @@ public extension Category {
     enum ResourceType: String, Codable {
         case file
         case video
-        case link
     }
 
     struct ResourcePayload: Codable {

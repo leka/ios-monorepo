@@ -28,4 +28,10 @@ public extension AnalyticsManager {
 
         Self.logEvent(name: "skip_authentication", parameters: params)
     }
+
+    static func logEventAccountDelete(parameters: [String: Any] = [:]) {
+        let params: [String: Any] = [:].merging(parameters) { _, new in new }
+
+        Self.logEvent(name: "account_delete", parameters: params)
+    }
 }
