@@ -12,10 +12,6 @@ public class AnalyticsManager {
         // Nothing to do
     }
 
-    // MARK: Public
-
-    public static let shared = AnalyticsManager()
-
     // MARK: Internal
 
     static func logEvent(name: String, parameters: [String: Any] = [:]) {
