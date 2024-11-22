@@ -8,24 +8,24 @@ public extension AnalyticsManager {
     func logEventLogin(parameters: [String: Any] = [:]) {
         let params: [String: Any] = [:].merging(parameters) { _, new in new }
 
-        Analytics.logEvent(AnalyticsEventLogin, parameters: params)
+        self.logEvent(name: AnalyticsEventLogin, parameters: params)
     }
 
     func logEventLogout(parameters: [String: Any] = [:]) {
         let params: [String: Any] = [:].merging(parameters) { _, new in new }
 
-        Analytics.logEvent("logout", parameters: params)
+        self.logEvent(name: "logout", parameters: params)
     }
 
     func logEventSignUp(parameters: [String: Any] = [:]) {
         let params: [String: Any] = [:].merging(parameters) { _, new in new }
 
-        Analytics.logEvent(AnalyticsEventSignUp, parameters: params)
+        self.logEvent(name: AnalyticsEventSignUp, parameters: params)
     }
 
     func logEventSkipAuthentication(parameters: [String: Any] = [:]) {
         let params: [String: Any] = [:].merging(parameters) { _, new in new }
 
-        Analytics.logEvent("skip_authentication", parameters: params)
+        self.logEvent(name: "skip_authentication", parameters: params)
     }
 }

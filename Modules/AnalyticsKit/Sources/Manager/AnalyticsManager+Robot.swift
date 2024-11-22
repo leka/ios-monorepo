@@ -27,7 +27,7 @@ public extension AnalyticsManager {
             "lk_battery_level": batteryLevel,
         ].merging(parameters) { _, new in new }
 
-        Analytics.logEvent(RobotEvent.connect.rawValue, parameters: params)
+        self.logEvent(name: RobotEvent.connect.rawValue, parameters: params)
     }
 
     func logEventRobotDisconnect(
@@ -46,7 +46,7 @@ public extension AnalyticsManager {
             "lk_battery_level": batteryLevel,
         ].merging(parameters) { _, new in new }
 
-        Analytics.logEvent(RobotEvent.disconnect.rawValue, parameters: params)
+        self.logEvent(name: RobotEvent.disconnect.rawValue, parameters: params)
     }
 
     // swiftlint:disable:next function_parameter_count
@@ -68,6 +68,6 @@ public extension AnalyticsManager {
             "lk_battery_level": batteryLevel,
         ].merging(parameters) { _, new in new }
 
-        Analytics.logEvent(RobotEvent.rename.rawValue, parameters: params)
+        self.logEvent(name: RobotEvent.rename.rawValue, parameters: params)
     }
 }

@@ -12,7 +12,7 @@ public extension AnalyticsManager {
             "new_version": newVersion,
         ].merging(parameters) { _, new in new }
 
-        Analytics.logEvent("app_update_skip", parameters: params)
+        self.logEvent(name: "app_update_skip", parameters: params)
     }
 
     // TODO: (@ladislas) add real versions
@@ -22,6 +22,6 @@ public extension AnalyticsManager {
             "new_version": newVersion,
         ].merging(parameters) { _, new in new }
 
-        Analytics.logEvent("app_update_open_app_store", parameters: params)
+        self.logEvent(name: "app_update_open_app_store", parameters: params)
     }
 }
