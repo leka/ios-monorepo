@@ -12,6 +12,12 @@ public class AnalyticsManager {
         // Nothing to do
     }
 
+    // MARK: Public
+
+    public static func setUserID(_ userID: String?) {
+        Analytics.setUserID(userID)
+    }
+
     // MARK: Internal
 
     enum DefaultEventParamters {
