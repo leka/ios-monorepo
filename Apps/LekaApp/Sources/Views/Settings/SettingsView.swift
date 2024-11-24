@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
-import AnalyticsKit
 import DesignKit
 import DeviceKit
 import LocalizationKit
@@ -131,7 +130,6 @@ struct SettingsView: View {
                             self.authManager.signOut()
                             self.persistentDataManager.clearUserData()
                             self.reset()
-                            AnalyticsManager.logEventLogout()
                         } label: {
                             Text(l10n.SettingsView.AccountSection.LogOut.alertButtonLabel)
                         }
@@ -172,7 +170,6 @@ struct SettingsView: View {
                         ) {
                             self.dismiss()
                             self.authManager.deleteCurrentUser()
-                            AnalyticsManager.logEventAccountDelete()
                         }
                     } message: {
                         Text(l10n.SettingsView.AccountSection.DeleteAccount.alertMessage)
@@ -258,7 +255,6 @@ struct SettingsView: View {
         self.rootAccountViewModel.resetData()
         self.styleManager.accentColor = DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
         self.styleManager.colorScheme = .light
-        AnalyticsManager.clearDefaultEventParameters()
     }
 
     private var errorAlertTitle: String {
