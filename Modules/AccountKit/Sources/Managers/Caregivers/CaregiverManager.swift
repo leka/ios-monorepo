@@ -93,8 +93,16 @@ public class CaregiverManager {
     }
 
     public func setCurrentCaregiver(to caregiver: Caregiver) {
+        let previousCaregiverID: String? = self.currentCaregiver.value?.id
         self.currentCaregiver.send(caregiver)
-        AnalyticsManager.setDefaultEventParameterCaregiverUid(caregiver.id)
+
+        guard let caregiverID = caregiver.id else {
+            log.error("Caregiver ID is nil")
+            return
+        }
+
+        AnalyticsManager.logEventCaregiverSelect(from: previousCaregiverID, to: caregiverID)
+        AnalyticsManager.setDefaultEventParameterCaregiverUid(caregiverID)
         AnalyticsManager.setUserPropertyCaregiverProfessions(values: caregiver.professions)
     }
 
