@@ -100,9 +100,9 @@ public class AnalyticsManager {
     static func setDefaultEventParameter(for parameter: DefaultEventParamters) {
         switch parameter {
             case let .rootOwnerUid(uid):
-                Analytics.setDefaultEventParameters(["lk_default_root_owner_uid": uid ?? "(lk_not_set)"])
+                Analytics.setDefaultEventParameters(["lk_default_root_owner_uid": uid ?? NSNull()])
             case let .caregiverUid(uid):
-                Analytics.setDefaultEventParameters(["lk_default_caregiver_id": uid ?? "(lk_not_set)"])
+                Analytics.setDefaultEventParameters(["lk_default_caregiver_id": uid ?? NSNull()])
         }
     }
 }
