@@ -12,12 +12,6 @@ public class AnalyticsManager {
         // Nothing to do
     }
 
-    // MARK: Public
-
-    public static func setUserID(_ userID: String?) {
-        Analytics.setUserID(userID)
-    }
-
     // MARK: Internal
 
     enum DefaultEventParamters {
@@ -99,7 +93,7 @@ public class AnalyticsManager {
         Analytics.logEvent(event.name, parameters: parameters)
     }
 
-    static func setUserProperty(value: String, name: String) {
+    static func setUserProperty(value: String, forName name: String) {
         Analytics.setUserProperty(value, forName: name)
     }
 

@@ -19,10 +19,4 @@ public extension AnalyticsManager {
 
         logEvent(.carereceiverSkipSelect, parameters: params)
     }
-
-    static func setUserPropertyCaregiverProfessions(values: [String]) {
-        let professions = values.joined(separator: ",")
-
-        setUserProperty(value: professions, name: "caregiver_professions")
-    }
 }

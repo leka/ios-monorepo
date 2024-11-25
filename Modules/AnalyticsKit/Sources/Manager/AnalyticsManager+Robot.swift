@@ -64,8 +64,4 @@ public extension AnalyticsManager {
 
         logEvent(.robotRename, parameters: params)
     }
-
-    static func setUserPropertyUserRobotIsConnected(value: Bool) {
-        setUserProperty(value: value.description, name: "robot_is_connected")
-    }
 }
