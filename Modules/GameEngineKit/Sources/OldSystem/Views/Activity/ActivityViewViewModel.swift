@@ -89,7 +89,7 @@ class ActivityViewViewModel: ObservableObject {
     }
 
     var delayAfterReinforcerAnimation: Double {
-        self.isReinforcerAnimationEnabled ? 5 : 0.5
+        self.isReinforcerAnimationEnabled ? 3.5 : 0.5
     }
 
     var isProgressBarVisible: Bool {
