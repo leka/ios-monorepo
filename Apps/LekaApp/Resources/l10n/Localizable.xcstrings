@@ -51,7 +51,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Minimum 12 caract\u00e8res, sans espaces"
+                        "value": "Minimum 12 caractères, sans espaces"
                     }
                 }
             }
@@ -87,7 +87,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Processus de cr\u00e9ation de compte"
+                        "value": "Processus de création de compte"
                     }
                 }
             }
@@ -99,13 +99,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Let's start! \ud83d\udc49"
+                        "value": "Let's start! 👉"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Commen\u00e7ons ! \ud83d\udc49"
+                        "value": "Commençons ! 👉"
                     }
                 }
             }
@@ -123,7 +123,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nous allons maintenant vous guider\n\u00e0 travers la cr\u00e9ation de votre compte\net les diff\u00e9rentes \u00e9tapes.\nPr\u00eat(e)?"
+                        "value": "Nous allons maintenant vous guider\nà travers la création de votre compte\net les différentes étapes.\nPrêt(e)?"
                     }
                 }
             }
@@ -135,13 +135,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Welcome to our account creation process! \ud83d\udc4b"
+                        "value": "Welcome to our account creation process! 👋"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Bienvenue dans notre processus de cr\u00e9ation de compte ! \ud83d\udc4b"
+                        "value": "Bienvenue dans notre processus de création de compte ! 👋"
                     }
                 }
             }
@@ -159,7 +159,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Cr\u00e9er"
+                        "value": "Créer"
                     }
                 }
             }
@@ -177,7 +177,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Tout d'abord, cr\u00e9ons votre profil en tant qu'accompagnant."
+                        "value": "Tout d'abord, créons votre profil en tant qu'accompagnant."
                     }
                 }
             }
@@ -195,7 +195,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Passer cette \u00e9tape"
+                        "value": "Passer cette étape"
                     }
                 }
             }
@@ -213,7 +213,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u00c9tape 1 - Profil de l'accompagnant"
+                        "value": "Étape 1 - Profil de l'accompagnant"
                     }
                 }
             }
@@ -231,7 +231,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Cr\u00e9er"
+                        "value": "Créer"
                     }
                 }
             }
@@ -249,7 +249,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nous allons maintenant cr\u00e9er un profil\nprofil de personne accompagn\u00e9e."
+                        "value": "Nous allons maintenant créer un profil\nprofil de personne accompagnée."
                     }
                 }
             }
@@ -267,7 +267,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Passer cette \u00e9tape"
+                        "value": "Passer cette étape"
                     }
                 }
             }
@@ -285,7 +285,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u00c9tape 2 - Profil de la personne accompagn\u00e9e"
+                        "value": "Étape 2 - Profil de la personne accompagnée"
                     }
                 }
             }
@@ -297,13 +297,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Let's go! \ud83d\ude80"
+                        "value": "Let's go! 🚀"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Allons-y ! \ud83d\ude80"
+                        "value": "Allons-y ! 🚀"
                     }
                 }
             }
@@ -321,7 +321,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Vous voil\u00e0 pr\u00eat !\nVous pouvez maintenant d\u00e9couvrir l'appli Leka et approfondir notre contenu \u00e9ducatif !"
+                        "value": "Vous voilà prêt !\nVous pouvez maintenant découvrir l'appli Leka et approfondir notre contenu éducatif !"
                     }
                 }
             }
@@ -333,13 +333,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "\ud83c\udf89 Congratulations! \ud83d\udc4f"
+                        "value": "🎉 Congratulations! 👏"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\ud83c\udf89 F\u00e9licitations ! \ud83d\udc4f"
+                        "value": "🎉 Félicitations ! 👏"
                     }
                 }
             }
@@ -375,7 +375,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Cr\u00e9er un compte"
+                        "value": "Créer un compte"
                     }
                 }
             }
@@ -411,7 +411,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Un email a \u00e9t\u00e9 envoy\u00e9 \u00e0 l'adresse indiqu\u00e9e. Veuillez cliquer sur le lien pour confirmer votre adresse e-mail."
+                        "value": "Un email a été envoyé à l'adresse indiquée. Veuillez cliquer sur le lien pour confirmer votre adresse e-mail."
                     }
                 }
             }
@@ -447,7 +447,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nous avons rencontr\u00e9 un probl\u00e8me lors de la cr\u00e9ation de votre compte. Veuillez r\u00e9essayer. "
+                        "value": "Nous avons rencontré un problème lors de la création de votre compte. Veuillez réessayer. "
                     }
                 }
             }
@@ -483,7 +483,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "S\u00e9lectionner"
+                        "value": "Sélectionner"
                     }
                 }
             }
@@ -573,7 +573,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Pr\u00e9nom"
+                        "value": "Prénom"
                     }
                 }
             }
@@ -681,7 +681,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Cr\u00e9er le profil"
+                        "value": "Créer le profil"
                     }
                 }
             }
@@ -699,7 +699,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "L\u2019e-mail ne doit pas contenir d\u2019espaces ou de sauts de ligne"
+                        "value": "L’e-mail ne doit pas contenir d’espaces ou de sauts de ligne"
                     }
                 }
             }
@@ -735,7 +735,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Cr\u00e9er un profil d'accompagnant"
+                        "value": "Créer un profil d'accompagnant"
                     }
                 }
             }
@@ -753,7 +753,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Cr\u00e9er un profil"
+                        "value": "Créer un profil"
                     }
                 }
             }
@@ -771,7 +771,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Cr\u00e9er votre premier profil accompagnant"
+                        "value": "Créer votre premier profil accompagnant"
                     }
                 }
             }
@@ -789,7 +789,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Aucun profil d'accompagnant n'a \u00e9t\u00e9 cr\u00e9\u00e9 pour le moment."
+                        "value": "Aucun profil d'accompagnant n'a été créé pour le moment."
                     }
                 }
             }
@@ -807,7 +807,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Acc\u00e9dez et modifiez les profils des professionnels et accompagnants, visualisez les statistiques et l'historique d'utilisation."
+                        "value": "Accédez et modifiez les profils des professionnels et accompagnants, visualisez les statistiques et l'historique d'utilisation."
                     }
                 }
             }
@@ -825,7 +825,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "G\u00e9rez les profils et suivez les activit\u00e9s des accompagnants."
+                        "value": "Gérez les profils et suivez les activités des accompagnants."
                     }
                 }
             }
@@ -861,7 +861,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Cr\u00e9er votre premier profil Accompagnant"
+                        "value": "Créer votre premier profil Accompagnant"
                     }
                 }
             }
@@ -879,7 +879,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Aucun profil d'accompagnant n'a \u00e9t\u00e9 cr\u00e9\u00e9 pour le moment."
+                        "value": "Aucun profil d'accompagnant n'a été créé pour le moment."
                     }
                 }
             }
@@ -915,7 +915,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Cr\u00e9er un profil"
+                        "value": "Créer un profil"
                     }
                 }
             }
@@ -933,7 +933,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "S\u00e9lectionner"
+                        "value": "Sélectionner"
                     }
                 }
             }
@@ -951,7 +951,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "S\u00e9lectionner votre profil "
+                        "value": "Sélectionner votre profil "
                     }
                 }
             }
@@ -1041,7 +1041,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Cr\u00e9er le profil"
+                        "value": "Créer le profil"
                     }
                 }
             }
@@ -1059,7 +1059,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Cr\u00e9er un profil de personne accompagn\u00e9e"
+                        "value": "Créer un profil de personne accompagnée"
                     }
                 }
             }
@@ -1077,7 +1077,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Cr\u00e9er un profil"
+                        "value": "Créer un profil"
                     }
                 }
             }
@@ -1095,7 +1095,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Cr\u00e9er votre premier profil de personne accompagn\u00e9e"
+                        "value": "Créer votre premier profil de personne accompagnée"
                     }
                 }
             }
@@ -1113,7 +1113,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Aucun profil de personne accompagn\u00e9e n'a \u00e9t\u00e9 cr\u00e9\u00e9 pour le moment."
+                        "value": "Aucun profil de personne accompagnée n'a été créé pour le moment."
                     }
                 }
             }
@@ -1131,7 +1131,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Modifiez les profils des personnes accompagn\u00e9es, suivez leur progression et acc\u00e9dez \u00e0 l'historique de leur activit\u00e9 pour un suivi personnalis\u00e9."
+                        "value": "Modifiez les profils des personnes accompagnées, suivez leur progression et accédez à l'historique de leur activité pour un suivi personnalisé."
                     }
                 }
             }
@@ -1149,7 +1149,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Suivi d\u00e9taill\u00e9 et gestion des profils des personnes accompagn\u00e9es."
+                        "value": "Suivi détaillé et gestion des profils des personnes accompagnées."
                     }
                 }
             }
@@ -1167,7 +1167,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Personnes accompagn\u00e9es"
+                        "value": "Personnes accompagnées"
                     }
                 }
             }
@@ -1203,7 +1203,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Aller \u00e0 la section Personnes Accompagn\u00e9es"
+                        "value": "Aller à la section Personnes Accompagnées"
                     }
                 }
             }
@@ -1221,7 +1221,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Aucun profil de personne accompagn\u00e9e n'a \u00e9t\u00e9 cr\u00e9\u00e9 pour le moment.\nVous pouvez en cr\u00e9er un en vous rendant dans la section Personnes Accompagn\u00e9es"
+                        "value": "Aucun profil de personne accompagnée n'a été créé pour le moment.\nVous pouvez en créer un en vous rendant dans la section Personnes Accompagnées"
                     }
                 }
             }
@@ -1239,7 +1239,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "S\u00e9lectionner"
+                        "value": "Sélectionner"
                     }
                 }
             }
@@ -1275,7 +1275,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Avec qui faites vous cette activit\u00e9 ?"
+                        "value": "Avec qui faites vous cette activité ?"
                     }
                 }
             }
@@ -1293,7 +1293,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Parcourir les comp\u00e9tences"
+                        "value": "Parcourir les compétences"
                     }
                 }
             }
@@ -1311,7 +1311,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Pour des raisons de s\u00e9curit\u00e9, les modifications de l'e-mail ou du mot de passe doivent \u00eatre trait\u00e9es par notre \u00e9quipe support.\nVeuillez nous contacter \u00e0\nsupport@leka.io\net nous serons heureux de vous aider \u00e0 mettre \u00e0 jour les informations de votre compte."
+                        "value": "Pour des raisons de sécurité, les modifications de l'e-mail ou du mot de passe doivent être traitées par notre équipe support.\nVeuillez nous contacter à\nsupport@leka.io\net nous serons heureux de vous aider à mettre à jour les informations de votre compte."
                     }
                 }
             }
@@ -1329,7 +1329,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Mot de passe oubli\u00e9 ?"
+                        "value": "Mot de passe oublié ?"
                     }
                 }
             }
@@ -1365,7 +1365,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Mot de passe oubli\u00e9 ?"
+                        "value": "Mot de passe oublié ?"
                     }
                 }
             }
@@ -1383,7 +1383,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nous avons rencontr\u00e9 un probl\u00e8me lors de la connexion \u00e0 votre compte. Veuillez r\u00e9essayer. "
+                        "value": "Nous avons rencontré un problème lors de la connexion à votre compte. Veuillez réessayer. "
                     }
                 }
             }
@@ -1419,7 +1419,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Th\u00e8me de couleur"
+                        "value": "Thème de couleur"
                     }
                 }
             }
@@ -1473,7 +1473,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u00c9diter mon profil"
+                        "value": "Éditer mon profil"
                     }
                 }
             }
@@ -1527,7 +1527,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u00c9diter le profil"
+                        "value": "Éditer le profil"
                     }
                 }
             }
@@ -1563,7 +1563,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "dans n'importe quelle activit\u00e9, parcours ou histoire pour les ajouter \u00e0 votre Biblioth\u00e8que."
+                        "value": "dans n'importe quelle activité, parcours ou histoire pour les ajouter à votre Bibliothèque."
                     }
                 }
             }
@@ -1581,7 +1581,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Votre Biblioth\u00e8que est vide"
+                        "value": "Votre Bibliothèque est vide"
                     }
                 }
             }
@@ -1599,7 +1599,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Vous pouvez supprimer des \u00e9l\u00e9ments de votre Biblioth\u00e8que en utilisant le m\u00eame bouton."
+                        "value": "Vous pouvez supprimer des éléments de votre Bibliothèque en utilisant le même bouton."
                     }
                 }
             }
@@ -1635,7 +1635,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Pour des raisons de s\u00e9curit\u00e9, nous n\u2019avons pas acc\u00e8s \u00e0 votre mot de passe et ne pouvons donc pas vous le fournir.\n\nCependant, vous pouvez changer votre mot de passe apr\u00e8s avoir rempli votre adresse e-mail ci-dessous.\n\nVous recevrez ensuite un e-mail vous permettant d\u2019en choisir un nouveau."
+                        "value": "Pour des raisons de sécurité, nous n’avons pas accès à votre mot de passe et ne pouvons donc pas vous le fournir.\n\nCependant, vous pouvez changer votre mot de passe après avoir rempli votre adresse e-mail ci-dessous.\n\nVous recevrez ensuite un e-mail vous permettant d’en choisir un nouveau."
                     }
                 }
             }
@@ -1671,7 +1671,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "R\u00e9initialiser le mot de passe"
+                        "value": "Réinitialiser le mot de passe"
                     }
                 }
             }
@@ -1689,7 +1689,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nous avons rencontr\u00e9 un probl\u00e8me lors de l'envoi d'un e-mail pour changer votre mot de passe. \nVeuillez r\u00e9essayer. \n\nSi le probl\u00e8me persiste, contactez notre \u00e9quipe d'assistance pour obtenir de l'aide."
+                        "value": "Nous avons rencontré un problème lors de l'envoi d'un e-mail pour changer votre mot de passe. \nVeuillez réessayer. \n\nSi le problème persiste, contactez notre équipe d'assistance pour obtenir de l'aide."
                     }
                 }
             }
@@ -1707,7 +1707,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "L'e-mail de changement de mot de passe a \u00e9t\u00e9 envoy\u00e9 avec succ\u00e8s.\nVeuillez v\u00e9rifier votre bo\u00eete de r\u00e9ception."
+                        "value": "L'e-mail de changement de mot de passe a été envoyé avec succès.\nVeuillez vérifier votre boîte de réception."
                     }
                 }
             }
@@ -1761,7 +1761,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Mettre \u00e0 jour maintenant"
+                        "value": "Mettre à jour maintenant"
                     }
                 }
             }
@@ -1779,7 +1779,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Profitez des nouvelles fonctionnalit\u00e9s en t\u00e9l\u00e9chargeant la nouvelle mise \u00e0 jour de l\u2019app Leka !"
+                        "value": "Profitez des nouvelles fonctionnalités en téléchargeant la nouvelle mise à jour de l’app Leka !"
                     }
                 }
             }
@@ -1797,7 +1797,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nouvelle mise \u00e0 jour disponible"
+                        "value": "Nouvelle mise à jour disponible"
                     }
                 }
             }
@@ -1815,7 +1815,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Connectez-vous \u00e0 votre compte pour acc\u00e9der \u00e0 votre biblioth\u00e8que personnelle."
+                        "value": "Connectez-vous à votre compte pour accéder à votre bibliothèque personnelle."
                     }
                 }
             }
@@ -1851,7 +1851,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Personnes Accompagn\u00e9es"
+                        "value": "Personnes Accompagnées"
                     }
                 }
             }
@@ -1887,7 +1887,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Jeux \u00c9ducatifs"
+                        "value": "Jeux Éducatifs"
                     }
                 }
             }
@@ -1941,7 +1941,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Activit\u00e9s"
+                        "value": "Activités"
                     }
                 }
             }
@@ -1995,7 +1995,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nouveaut\u00e9s"
+                        "value": "Nouveautés"
                     }
                 }
             }
@@ -2013,7 +2013,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "S\u00e9lectionnez une cat\u00e9gorie"
+                        "value": "Sélectionnez une catégorie"
                     }
                 }
             }
@@ -2067,7 +2067,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Vid\u00e9os"
+                        "value": "Vidéos"
                     }
                 }
             }
@@ -2175,7 +2175,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Biblioth\u00e8que"
+                        "value": "Bibliothèque"
                     }
                 }
             }
@@ -2265,7 +2265,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nouveaut\u00e9s"
+                        "value": "Nouveautés"
                     }
                 }
             }
@@ -2301,7 +2301,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Autre (pr\u00e9ciser)"
+                        "value": "Autre (préciser)"
                     }
                 }
             }
@@ -2319,7 +2319,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "S\u00e9lectionner"
+                        "value": "Sélectionner"
                     }
                 }
             }
@@ -2373,7 +2373,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nous vous enverrons un e-mail avec un lien pour r\u00e9initialiser votre mot de passe.\nEs-tu sur de vouloir continuer?"
+                        "value": "Nous vous enverrons un e-mail avec un lien pour réinitialiser votre mot de passe.\nEs-tu sur de vouloir continuer?"
                     }
                 }
             }
@@ -2391,7 +2391,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u00cates-vous s\u00fbr de vouloir r\u00e9initialiser votre mot de passe\u00a0?"
+                        "value": "Êtes-vous sûr de vouloir réinitialiser votre mot de passe ?"
                     }
                 }
             }
@@ -2427,7 +2427,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Veuillez entrer votre mot de passe pour confirmer que vous souhaitez\nsupprimer d\u00e9finitivement votre compte.\n\nUne fois votre compte supprim\u00e9, vous ne pourrez plus revenir en arri\u00e8re.\n\n**Toutes vos donn\u00e9es seront perdues \u00e0 jamais.**\n*\u00cates-vous s\u00fbr(e) de vous ?*"
+                        "value": "Veuillez entrer votre mot de passe pour confirmer que vous souhaitez\nsupprimer définitivement votre compte.\n\nUne fois votre compte supprimé, vous ne pourrez plus revenir en arrière.\n\n**Toutes vos données seront perdues à jamais.**\n*Êtes-vous sûr(e) de vous ?*"
                     }
                 }
             }
@@ -2445,7 +2445,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Mot de Passe Oubli\u00e9 ?"
+                        "value": "Mot de Passe Oublié ?"
                     }
                 }
             }
@@ -2463,7 +2463,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "L'authentification a \u00e9chou\u00e9. Veuillez v\u00e9rifier votre mot de passe."
+                        "value": "L'authentification a échoué. Veuillez vérifier votre mot de passe."
                     }
                 }
             }
@@ -2481,7 +2481,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "R\u00e9initialiser le mot de passe"
+                        "value": "Réinitialiser le mot de passe"
                     }
                 }
             }
@@ -2517,7 +2517,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Le renfor\u00e7ateur est un effet lumineux r\u00e9p\u00e9titif du robot que vous pourrez actionner pour r\u00e9compenser le comportement de l'utilisateur. Si votre robot est connect\u00e9, vous pouvez tester les renfor\u00e7ateurs avant d'en choisir un."
+                        "value": "Le renforçateur est un effet lumineux répétitif du robot que vous pourrez actionner pour récompenser le comportement de l'utilisateur. Si votre robot est connecté, vous pouvez tester les renforçateurs avant d'en choisir un."
                     }
                 }
             }
@@ -2535,7 +2535,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Choix du renfor\u00e7ateur"
+                        "value": "Choix du renforçateur"
                     }
                 }
             }
@@ -2553,7 +2553,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Connect\u00e9 \u00e0"
+                        "value": "Connecté à"
                     }
                 }
             }
@@ -2571,7 +2571,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Connectez-vous \u00e0 votre Leka"
+                        "value": "Connectez-vous à votre Leka"
                     }
                 }
             }
@@ -2589,7 +2589,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "R\u00e9glages"
+                        "value": "Réglages"
                     }
                 }
             }
@@ -2643,7 +2643,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u00cates-vous s\u00fbr(e) de vouloir supprimer votre compte ?\nCette action est irr\u00e9versible."
+                        "value": "Êtes-vous sûr(e) de vouloir supprimer votre compte ?\nCette action est irréversible."
                     }
                 }
             }
@@ -2697,7 +2697,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nous avons rencontr\u00e9 un probl\u00e8me lors de la suppression de votre compte. Veuillez r\u00e9essayer. \nSi le probl\u00e8me persiste, contactez notre \u00e9quipe d'assistance pour obtenir de l'aide."
+                        "value": "Nous avons rencontré un problème lors de la suppression de votre compte. Veuillez réessayer. \nSi le problème persiste, contactez notre équipe d'assistance pour obtenir de l'aide."
                     }
                 }
             }
@@ -2733,7 +2733,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Se Connecter / Cr\u00e9er un Compte"
+                        "value": "Se Connecter / Créer un Compte"
                     }
                 }
             }
@@ -2751,7 +2751,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Se d\u00e9connecter"
+                        "value": "Se déconnecter"
                     }
                 }
             }
@@ -2769,7 +2769,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u00cates-vous s\u00fbr de vouloir vous d\u00e9connecter?\nVous devrez saisir votre email et votre mot de passe pour vous reconnecter."
+                        "value": "Êtes-vous sûr de vouloir vous déconnecter?\nVous devrez saisir votre email et votre mot de passe pour vous reconnecter."
                     }
                 }
             }
@@ -2787,7 +2787,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Confirmer La D\u00e9connexion"
+                        "value": "Confirmer La Déconnexion"
                     }
                 }
             }
@@ -2805,7 +2805,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Se D\u00e9connecter"
+                        "value": "Se Déconnecter"
                     }
                 }
             }
@@ -2823,7 +2823,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nous avons rencontr\u00e9 un probl\u00e8me lors de votre d\u00e9connexion. Veuillez r\u00e9essayer. \nSi le probl\u00e8me persiste, contactez notre \u00e9quipe d'assistance pour obtenir de l'aide."
+                        "value": "Nous avons rencontré un problème lors de votre déconnexion. Veuillez réessayer. \nSi le problème persiste, contactez notre équipe d'assistance pour obtenir de l'aide."
                     }
                 }
             }
@@ -2841,7 +2841,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Erreur de d\u00e9connexion"
+                        "value": "Erreur de déconnexion"
                     }
                 }
             }
@@ -2859,7 +2859,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Mettre \u00e0 jour"
+                        "value": "Mettre à jour"
                     }
                 }
             }
@@ -2877,7 +2877,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Une nouvelle mise \u00e0 jour est disponible !"
+                        "value": "Une nouvelle mise à jour est disponible !"
                     }
                 }
             }
@@ -2949,7 +2949,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u00cates-vous s\u00fbr de vouloir changer votre mot de passe ?"
+                        "value": "Êtes-vous sûr de vouloir changer votre mot de passe ?"
                     }
                 }
             }
@@ -2985,7 +2985,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Nous avons rencontr\u00e9 un probl\u00e8me lors de l'envoi de l'e-mail. Veuillez r\u00e9essayer plus tard ou contacter le support si le probl\u00e8me persiste."
+                        "value": "Nous avons rencontré un problème lors de l'envoi de l'e-mail. Veuillez réessayer plus tard ou contacter le support si le problème persiste."
                     }
                 }
             }
@@ -3003,7 +3003,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u00c9chec de l'Envoi de l'Email"
+                        "value": "Échec de l'Envoi de l'Email"
                     }
                 }
             }
@@ -3039,7 +3039,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Un email a \u00e9t\u00e9 envoy\u00e9 \u00e0 l'adresse indiqu\u00e9e. Veuillez cliquer sur le lien pour confirmer votre adresse e-mail."
+                        "value": "Un email a été envoyé à l'adresse indiquée. Veuillez cliquer sur le lien pour confirmer votre adresse e-mail."
                     }
                 }
             }
@@ -3057,7 +3057,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "E-mail Envoy\u00e9"
+                        "value": "E-mail Envoyé"
                     }
                 }
             }
@@ -3093,7 +3093,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "R\u00e9glages"
+                        "value": "Réglages"
                     }
                 }
             }
@@ -3129,7 +3129,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Cr\u00e9er un compte"
+                        "value": "Créer un compte"
                     }
                 }
             }
@@ -3165,7 +3165,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Passer cette \u00e9tape"
+                        "value": "Passer cette étape"
                     }
                 }
             }
@@ -3183,7 +3183,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Cr\u00e9er votre premier profil Accompagnant"
+                        "value": "Créer votre premier profil Accompagnant"
                     }
                 }
             }
@@ -3201,7 +3201,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Votre historique d'utilisation sera bient\u00f4t disponible ici."
+                        "value": "Votre historique d'utilisation sera bientôt disponible ici."
                     }
                 }
             }
@@ -3219,7 +3219,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Votre historique d'utilisation sera bient\u00f4t disponible ici."
+                        "value": "Votre historique d'utilisation sera bientôt disponible ici."
                     }
                 }
             }
@@ -3237,7 +3237,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u00c9diter le profil"
+                        "value": "Éditer le profil"
                     }
                 }
             }
@@ -3255,7 +3255,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u00c9diter le profil"
+                        "value": "Éditer le profil"
                     }
                 }
             }
@@ -3273,7 +3273,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Se Connecter ou Cr\u00e9er un Compte"
+                        "value": "Se Connecter ou Créer un Compte"
                     }
                 }
             }
@@ -3291,7 +3291,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Vous utilisez Leka sans \u00eatre connect\u00e9 !"
+                        "value": "Vous utilisez Leka sans être connecté !"
                     }
                 }
             }
@@ -3309,7 +3309,25 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "S\u00e9lectionner un Accompagnant"
+                        "value": "Sélectionner un Accompagnant"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.app_update_alert.reminder": {
+            "comment": "The action button of the alert to inform the user that an os update is available",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Remind me later"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Me le rappeler plus tard"
                     }
                 }
             }

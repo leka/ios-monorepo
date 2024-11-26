@@ -132,8 +132,8 @@ struct MainView: View {
                             UIApplication.shared.open(url)
                         }
                     }),
-                    secondaryButton: .cancel {
-                        AnalyticsManager.logEventAppUpdateSkip()
+                    secondaryButton: .cancel(Text(l10n.MainView.AppUpdateAlert.reminder)) {
+                        AnalyticsManager.logEventAppUpdateRemindLater()
                     }
                 )
             }

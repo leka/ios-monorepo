@@ -49,6 +49,7 @@ extension l10n {
             static let title = LocalizedString("lekaapp.main_view.app_update_alert.title", value: "New update available", comment: "The title of the alert to inform the user that an update is available")
             static let message = LocalizedString("lekaapp.main_view.app_update_alert.message", value: "Enjoy new features by updating to the latest version of Leka!", comment: "The message of the alert to inform the user that an update is available")
             static let action = LocalizedString("lekaapp.main_view.app_update_alert.action", value: "Update now", comment: "The action button of the alert to inform the user that an update is available")
+            static let reminder = LocalizedString("lekaapp.main_view.app_update_alert.reminder", value: "Remind me later", comment: "The action button of the alert to inform the user that an os update is available")
         }
     }
 }
