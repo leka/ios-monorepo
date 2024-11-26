@@ -93,16 +93,16 @@ public class AnalyticsManager {
         Analytics.logEvent(event.name, parameters: parameters)
     }
 
-    static func setUserProperty(value: String, name: String) {
+    static func setUserProperty(value: String, forName name: String) {
         Analytics.setUserProperty(value, forName: name)
     }
 
     static func setDefaultEventParameter(for parameter: DefaultEventParamters) {
         switch parameter {
             case let .rootOwnerUid(uid):
-                Analytics.setDefaultEventParameters(["root_owner_uid": uid ?? "(lk_not_set)"])
+                Analytics.setDefaultEventParameters(["lk_default_root_owner_uid": uid ?? NSNull()])
             case let .caregiverUid(uid):
-                Analytics.setDefaultEventParameters(["caregiver_uid": uid ?? "(lk_not_set)"])
+                Analytics.setDefaultEventParameters(["lk_default_caregiver_id": uid ?? NSNull()])
         }
     }
 }

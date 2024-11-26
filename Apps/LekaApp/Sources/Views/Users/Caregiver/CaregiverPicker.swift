@@ -56,8 +56,6 @@ struct CaregiverPicker: View {
 
                     self.caregiverManager.setCurrentCaregiver(to: selectedCaregiver)
 
-                    AnalyticsManager.logEventCaregiverSelect(id: selectedCaregiver.id)
-
                     self.dismiss()
                 } label: {
                     Text(l10n.CaregiverPicker.selectButtonLabel)

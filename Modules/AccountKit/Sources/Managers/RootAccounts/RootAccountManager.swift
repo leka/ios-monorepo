@@ -26,7 +26,6 @@ public class RootAccountManager {
             }, receiveValue: { [weak self] rootAccount in
                 guard let self else { return }
                 self.currentRootAccount.send(rootAccount)
-                AnalyticsManager.setDefaultEventParameterRootOwnerUid(rootAccount.rootOwnerUid)
             })
             .store(in: &self.cancellables)
     }
@@ -200,7 +199,6 @@ public class RootAccountManager {
         self.dbOps.clearAllListeners()
         self.cancellables.forEach { $0.cancel() }
         self.cancellables.removeAll()
-        AnalyticsManager.setDefaultEventParameterRootOwnerUid(nil)
     }
 
     // MARK: Internal

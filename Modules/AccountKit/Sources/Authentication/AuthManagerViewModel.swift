@@ -101,12 +101,10 @@ public class AuthManagerViewModel: ObservableObject {
                     self.showActionRequestAlert = true
                 }
                 self.resetErrorMessage()
-                AnalyticsManager.setUserPropertyUserIsLoggedIn(value: true)
             case .loggedOut:
                 self.resetState()
-                AnalyticsManager.setUserPropertyUserIsLoggedIn(value: false)
             case .unknown:
-                AnalyticsManager.setUserPropertyUserIsLoggedIn(value: false)
+                self.resetState()
         }
     }
 
