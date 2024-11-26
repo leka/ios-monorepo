@@ -26,6 +26,9 @@ public class AnalyticsManager {
         case appUpdateRemindLater
         case appUpdateOpenAppStore
 
+        case osUpdateRemindLater
+        case osUpdateOpenSettings
+
         case login
         case logout
         case signup
@@ -56,6 +59,11 @@ public class AnalyticsManager {
                     "app_update_remind_later"
                 case .appUpdateOpenAppStore:
                     "app_update_open_app_store"
+
+                case .osUpdateRemindLater:
+                    "os_update_remind_later"
+                case .osUpdateOpenSettings:
+                    "os_update_open_settings"
 
                 case .login:
                     AnalyticsEventLogin // ? "login"
