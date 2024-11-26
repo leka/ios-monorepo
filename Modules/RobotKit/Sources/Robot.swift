@@ -17,6 +17,7 @@ public class Robot {
     // MARK: Lifecycle
 
     private init() {
+        AnalyticsManager.setUserPropertyUserRobotIsConnected(value: false)
         subscribeToBLEConnectionUpdates()
     }
 
@@ -37,8 +38,6 @@ public class Robot {
     public var negotiatedMTU: CurrentValueSubject<Int, Never> = CurrentValueSubject(0)
 
     public var magicCard: CurrentValueSubject<MagicCard, Never> = CurrentValueSubject(.none)
-
-    // MARK: - Internal properties
 
     public var connectedPeripheral: RobotPeripheral? {
         didSet {
