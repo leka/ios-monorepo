@@ -137,6 +137,21 @@ struct MainView: View {
                     }
                 )
             }
+            .alert(isPresented: self.$showingOSUpdateAlert) {
+                Alert(
+                    title: Text(l10n.MainView.OSUpdateAlert.title),
+                    message: Text(l10n.MainView.OSUpdateAlert.message),
+                    primaryButton: .default(Text(l10n.MainView.OSUpdateAlert.action), action: {
+                        AnalyticsManager.logEventOSUpdateOpenSettings()
+                        if let url = URL(string: UIApplication.openSettingsURLString) {
+                            UIApplication.shared.open(url)
+                        }
+                    }),
+                    secondaryButton: .cancel(Text(l10n.MainView.OSUpdateAlert.reminder)) {
+                        AnalyticsManager.logEventOSUpdateRemindLater()
+                    }
+                )
+            }
         } detail: {
             NavigationStack(path: self.$navigation.path) {
                 switch self.navigation.selectedCategory {
@@ -317,11 +332,13 @@ struct MainView: View {
                             }
                             .onDisappear {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                    switch self.appUpdateStatus.status {
+                                    switch self.updateStatus.status {
                                         case .updateAvailable:
                                             self.showingAppUpdateAlert = true
                                         default:
-                                            break
+                                            if self.updateStatus.isOSUpdateAvailable {
+                                                self.showingOSUpdateAlert = true
+                                            }
                                     }
                                 }
                             }
@@ -418,9 +435,10 @@ struct MainView: View {
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
     @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
-    @StateObject var appUpdateStatus: LekaApp.UpdateStatus = .shared
+    @StateObject var updateStatus: LekaApp.UpdateStatus = .shared
 
     @State private var showingAppUpdateAlert: Bool = false
+    @State private var showingOSUpdateAlert: Bool = false
 
     private var persistentDataManager: PersistentDataManager = .shared
     private var caregiverManager: CaregiverManager = .shared
