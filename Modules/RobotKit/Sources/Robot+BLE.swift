@@ -16,7 +16,7 @@ extension Robot {
                 self.isConnected.send(true)
                 self.name.send($0.peripheral.name ?? "(n/a)")
 
-                self.subscribeToConntectedPeripheralFullyInitialized()
+                self.subscribeToConnectedPeripheralFullyInitialized()
             }
             .store(in: &cancellables)
 
@@ -38,7 +38,7 @@ extension Robot {
             .store(in: &cancellables)
     }
 
-    private func subscribeToConntectedPeripheralFullyInitialized() {
+    private func subscribeToConnectedPeripheralFullyInitialized() {
         Just(())
             .combineLatest(self.name)
             .combineLatest(self.osVersion).dropFirst()
