@@ -7,6 +7,7 @@ import AnalyticsKit
 import Combine
 import ContentKit
 import DesignKit
+import DeviceKit
 import FirebaseKit
 import LocalizationKit
 import LogKit
@@ -49,12 +50,13 @@ struct LekaApp: App {
         static let shared = UpdateStatus()
 
         @Published var status: UpdateStatusFetcher.Status = .upToDate
+        @Published var isOSUpdateAvailable: Bool = false
     }
 
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
     @Environment(\.colorScheme) var colorScheme
-    @StateObject var appUpdateStatus: UpdateStatus = .shared
+    @StateObject var updateStatus: UpdateStatus = .shared
     @ObservedObject var styleManager: StyleManager = .shared
 
     var body: some Scene {
@@ -87,15 +89,29 @@ struct LekaApp: App {
                     guard let status = try? result.get() else {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                             self.showMainView = true
-                            self.appUpdateStatus.status = .upToDate
+                            self.updateStatus.status = .upToDate
                         }
                         return
                     }
 
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                         self.showMainView = true
-                        self.appUpdateStatus.status = status
+                        self.updateStatus.status = status
                     }
+                }
+
+                switch Device.current {
+                    case .iPad5,
+                         .iPadPro9Inch:
+                        self.updateStatus.isOSUpdateAvailable = false
+                    case .iPad6:
+                        if Device.current.systemVersion!.compare("17.7.2") == .orderedAscending {
+                            self.updateStatus.isOSUpdateAvailable = true
+                        }
+                    default:
+                        if Device.current.systemVersion!.compare("18.1.1") == .orderedAscending {
+                            self.updateStatus.isOSUpdateAvailable = true
+                        }
                 }
             }
         }
