@@ -61,8 +61,9 @@ public class CaregiverManager {
                     .setFailureType(to: Error.self)
                     .eraseToAnyPublisher()
             }
-            .handleEvents(receiveOutput: { [weak self] _ in
+            .handleEvents(receiveOutput: { [weak self] newCaregiver in
                 self?.initializeCaregiversListener()
+                AnalyticsManager.logEventCaregiverCreate(id: newCaregiver.id!)
             })
             .eraseToAnyPublisher()
     }
