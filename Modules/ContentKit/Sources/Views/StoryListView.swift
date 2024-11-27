@@ -25,14 +25,13 @@ public struct StoryListView: View {
             ForEach(self.stories) { story in
                 NavigationLink(destination:
                     StoryDetailsView(story: story, onStartStory: self.onStartStory)
-                        .onAppear {
-                            AnalyticsManager.logEventSelectContent(
-                                type: .story,
-                                id: story.id,
-                                name: story.name,
-                                origin: .personalLibrary
-                            )
-                        }
+                        .logEventScreenView(
+                            screenName: "story_details",
+                            context: .splitView,
+                            parameters: [
+                                "lk_story_id": "\(story.name)-\(story.id)",
+                            ]
+                        )
                 ) {
                     HStack(alignment: .center, spacing: 30) {
                         Image(uiImage: story.details.iconImage)
@@ -103,6 +102,14 @@ public struct StoryListView: View {
                     }
                     .frame(maxWidth: .infinity, maxHeight: 120)
                     .contentShape(Rectangle())
+                    .simultaneousGesture(TapGesture().onEnded {
+                        AnalyticsManager.logEventSelectContent(
+                            type: .story,
+                            id: story.id,
+                            name: story.name,
+                            origin: .personalLibrary
+                        )
+                    })
                 }
                 .buttonStyle(.plain)
             }

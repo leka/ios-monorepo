@@ -194,6 +194,13 @@ public struct ActivityView: View {
         }
         .sheet(isPresented: self.$isInfoSheetPresented) {
             ActivityDetailsView(activity: self.viewModel.currentActivity)
+                .logEventScreenView(
+                    screenName: "activity_details",
+                    context: .sheet,
+                    parameters: [
+                        "lk_activity_id": "\(self.viewModel.currentActivity.name)-\(self.viewModel.currentActivity.id)",
+                    ]
+                )
         }
         .fullScreenCover(isPresented: self.$viewModel.isCurrentActivityCompleted) {
             self.endOfActivityScoreView

@@ -189,9 +189,6 @@ extension l10n {
                 CreateCarereceiverView(onClose: {
                     print("Care receiver creation canceled")
                 })
-//                , onCreated: {
-//                    print("Carereceiver \($0.username) created")
-//                })
             }
         }
 }

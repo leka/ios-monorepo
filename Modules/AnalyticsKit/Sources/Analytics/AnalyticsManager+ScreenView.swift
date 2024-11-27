@@ -23,30 +23,20 @@ public extension AnalyticsManager {
         case sheet
         case fullScreenCover
         case context(String)
-        case none
-        case additionalInfo(String)
 
         // MARK: Internal
 
         var description: String {
             switch self {
                 case .splitView:
-                    "main_splitview"
+                    "splitview"
                 case .sheet:
-                    "main_sheet"
+                    "sheet"
                 case .fullScreenCover:
-                    "main_fullscreen"
+                    "fullscreen"
                 case let .context(value):
                     "\(value)"
-                case .none:
-                    "none"
-                case let .additionalInfo(value):
-                    "\(value)"
             }
-        }
-
-        static func + (lhs: Self, rhs: Self) -> ScreenViewContext {
-            .additionalInfo("\(lhs.description)-\(rhs.description)")
         }
     }
 }
@@ -57,8 +47,8 @@ struct AnalyticsLogScreenViewViewModifier: ViewModifier {
     // MARK: Lifecycle
 
     init(
-        screenName: String,
         screenClass: String,
+        screenName: String,
         context: AnalyticsManager.ScreenViewContext? = nil,
         parameters: [String: Any] = [:]
     ) {
@@ -70,43 +60,40 @@ struct AnalyticsLogScreenViewViewModifier: ViewModifier {
 
     // MARK: Internal
 
-    let screenName: String
     let screenClass: String
+    let screenName: String
     let context: AnalyticsManager.ScreenViewContext?
     let parameters: [String: Any]
 
     func body(content: Content) -> some View {
         content
             .onAppear {
-                let screenName = "\(screenName)"
                 let params: [String: Any] = [
                     "lk_context": context?.description ?? NSNull(),
                 ].merging(self.parameters) { _, new in new }
 
-                AnalyticsManager.logEventScreenView(screenName: screenName, screenClass: self.screenClass, parameters: self.parameters)
+                AnalyticsManager.logEventScreenView(screenName: self.screenName, screenClass: self.screenClass, parameters: params)
             }
     }
 }
 
 public extension View {
     func logEventScreenView(
-        screenName: String,
-        context: AnalyticsManager.ScreenViewContext?,
         screenClass: String? = nil,
+        screenName: String,
+        context: AnalyticsManager.ScreenViewContext? = nil,
         parameters: [String: Any] = [:]
     ) -> some View {
         self.modifier(
             AnalyticsLogScreenViewViewModifier(
-                screenName: screenName,
                 screenClass: screenClass ?? String(describing: type(of: self)),
+                screenName: screenName,
                 context: context,
                 parameters: parameters
             )
         )
     }
 }
-
-// MARK: - MyCustomView
 
 #Preview {
     struct MyCustomView: View {

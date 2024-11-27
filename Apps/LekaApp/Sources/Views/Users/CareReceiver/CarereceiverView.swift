@@ -59,6 +59,7 @@ struct CarereceiverView: View {
             .sheet(isPresented: self.$isEditCarereceiverViewPresented) {
                 NavigationStack {
                     EditCarereceiverView(modifiedCarereceiver: self.$carereceiver)
+                        .logEventScreenView(screenName: "carereceiver_edit", context: .sheet)
                         .navigationBarTitleDisplayMode(.inline)
                 }
             }

@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
-import AnalyticsKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -35,6 +34,7 @@ struct CaregiverPicker: View {
         .sheet(isPresented: self.$isCaregiverCreationPresented) {
             NavigationStack {
                 CreateCaregiverView()
+                    .logEventScreenView(screenName: "caregiver_create", context: .sheet)
                     .navigationBarTitleDisplayMode(.inline)
             }
         }

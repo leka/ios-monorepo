@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
-import AnalyticsKit
 import DesignKit
 import Fit
 import LocalizationKit
@@ -116,9 +115,6 @@ public struct ActivityDetailsView: View {
                 Markdown(self.activity.details.instructions)
                     .markdownTheme(.gitHub)
             }
-        }
-        .onAppear {
-            AnalyticsManager.logEventScreenView(screenName: "view_activity_details_view")
         }
         .toolbar {
             #if DEVELOPER_MODE || TESTFLIGHT_BUILD
