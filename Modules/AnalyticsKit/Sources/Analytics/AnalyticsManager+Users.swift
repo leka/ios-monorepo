@@ -23,6 +23,14 @@ public extension AnalyticsManager {
         logEvent(.caregiverCreate, parameters: params)
     }
 
+    static func logEventCaregiverEdit(caregiver: String, parameters: [String: Any] = [:]) {
+        let params: [String: Any] = [
+            "lk_caregiver_id_edited": caregiver,
+        ].merging(parameters) { _, new in new }
+
+        logEvent(.caregiverEdit, parameters: params)
+    }
+
     static func logEventCarereceiverSkipSelect(parameters: [String: Any] = [:]) {
         let params: [String: Any] = [:].merging(parameters) { _, new in new }
 

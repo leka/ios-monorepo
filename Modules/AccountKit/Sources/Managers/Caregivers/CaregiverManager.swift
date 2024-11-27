@@ -4,6 +4,7 @@
 
 import AnalyticsKit
 import Combine
+import Foundation
 
 public class CaregiverManager {
     // MARK: Lifecycle

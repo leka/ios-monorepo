@@ -42,6 +42,7 @@ public class AnalyticsManager {
 
         case caregiverCreate
         case caregiverSelect
+        case caregiverEdit
 
         case carereceiverSkipSelect
 
@@ -87,6 +88,8 @@ public class AnalyticsManager {
                     "caregiver_create"
                 case .caregiverSelect:
                     "caregiver_select"
+                case .caregiverEdit:
+                    "caregiver_edit"
 
                 case .carereceiverSkipSelect:
                     "carereceiver_skip_select"
