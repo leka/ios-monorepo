@@ -76,8 +76,12 @@ public class CaregiverManager {
                 if case let .failure(error) = completion {
                     self.fetchError.send(error)
                 }
-            }, receiveValue: { _ in
-                // Nothing to do
+            }, receiveValue: { [weak self] updatedCaregiver in
+                guard let self else { return }
+                guard updatedCaregiver.id == self.currentCaregiver.value?.id else { return }
+                self.setCurrentCaregiver(to: updatedCaregiver)
+                AnalyticsManager.logEventCaregiverEdit(caregiver: updatedCaregiver.id!)
+                log.info("Caregiver successfully updated.")
             })
             .store(in: &self.cancellables)
     }
