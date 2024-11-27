@@ -40,7 +40,9 @@ public class AnalyticsManager {
 
         case selectContent
 
+        case caregiverCreate
         case caregiverSelect
+
         case carereceiverSkipSelect
 
         // MARK: Internal
@@ -81,8 +83,11 @@ public class AnalyticsManager {
                 case .selectContent:
                     AnalyticsEventSelectContent // ? "select_content"
 
+                case .caregiverCreate:
+                    "caregiver_create"
                 case .caregiverSelect:
                     "caregiver_select"
+
                 case .carereceiverSkipSelect:
                     "carereceiver_skip_select"
             }
