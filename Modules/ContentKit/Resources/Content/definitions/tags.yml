@@ -125,6 +125,17 @@ list:
         description: >
           Lorem ipsum
     subtags: []
+  - id: christmas
+    l10n:
+      - locale: en_US
+        name: Christmas
+        description: >
+          Lorem ipsum
+      - locale: fr_FR
+        name: Noël
+        description: >
+          Lorem ipsum
+    subtags: []
   - id: clean
     l10n:
       - locale: en_US
