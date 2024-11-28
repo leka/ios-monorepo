@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AnalyticsKit
 import Combine
 
 public class CarereceiverManager {
@@ -42,8 +43,10 @@ public class CarereceiverManager {
                     .setFailureType(to: Error.self)
                     .eraseToAnyPublisher()
             }
-            .handleEvents(receiveOutput: { [weak self] _ in
+            .handleEvents(receiveOutput: { [weak self] newCarereceiver in
                 self?.initializeCarereceiversListener()
+                AnalyticsManager.logEventCarereceiverCreate(id: newCarereceiver.id!)
+                log.info("Carereceiver \(newCarereceiver.id!) successfully created.")
             })
             .eraseToAnyPublisher()
     }
