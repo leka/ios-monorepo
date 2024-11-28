@@ -15,6 +15,25 @@ l10n:
       description: Curated groups of activities developed with caregivers for stepwise progression.
 
 content:
+  - id: festivities_and_holidays
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Festivités et vacances
+          subtitle: Célébrez les fêtes et les vacances avec des activités ludiques.
+          description: Découvrez des activités thématiques pour accompagner les personnes lors des différentes festivités, comme Halloween, Noël, Pâques, mais également pour préparer les vacances.
+      - locale: en_US
+        details:
+          title: Festivities and holidays
+          subtitle: Celebrate festivities and holidays with fun activities.
+          description: Explore themed activities to engage care receivers during various celebrations, such as Halloween, Christmas, Easter, but also to prepare for the holidays..
+    curriculums:
+      - curriculum_christmas_memory-EFC444BBDEF24E08813FF472FFA5365D
+      - curriculum_recognition_christmas-DA8D769CC7C643CFA0484FAE4B22D1F7
+      - curriculum_recognition_winter_holidays-2B8E01DABDBC4863A962B785D4069B3E
+      - curriculum_recognition_halloween-DD01FCFF7BCB4A44A78BF7C813CE8DF5
+      - curriculum_recognition_seaside_holidays-B1BA5597BC594082AECE293AD25CFA89
+
   - id: daily_life
     l10n:
       - locale: fr_FR
@@ -298,20 +317,3 @@ content:
       - curriculum_recognition_kitchen_items-FCBEE55DD11F427785A12328E6E01C8E
       - curriculum_fruits_and_vegetables_generalization-B6F2027A304C44F5B3C482EAFCD8DE7E
       - sorting_fruits_vegetables_basket-E6A322DC7A6E48518CED2CA2D3D2A595
-
-  - id: festivities_and_holidays
-    l10n:
-      - locale: fr_FR
-        details:
-          title: Festivités et vacances
-          subtitle: Célébrez les fêtes et les vacances avec des activités ludiques.
-          description: Découvrez des activités thématiques pour accompagner les personnes lors des différentes festivités, comme Halloween, Noël, Pâques, mais également pour préparer les vacances.
-      - locale: en_US
-        details:
-          title: Festivities and holidays
-          subtitle: Celebrate festivities and holidays with fun activities.
-          description: Explore themed activities to engage care receivers during various celebrations, such as Halloween, Christmas, Easter, but also to prepare for the holidays..
-    curriculums:
-      - curriculum_recognition_halloween-DD01FCFF7BCB4A44A78BF7C813CE8DF5
-      - curriculum_recognition_winter_holidays-2B8E01DABDBC4863A962B785D4069B3E
-      - curriculum_recognition_seaside_holidays-B1BA5597BC594082AECE293AD25CFA89
