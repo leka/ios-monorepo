@@ -5,43 +5,43 @@
 import FirebaseAnalytics
 
 public extension AnalyticsManager {
-    // TODO: (@ladislas) add real versions
-    static func logEventAppUpdateRemindLater(currentVersion: String = "(lk_not_set)", newVersion: String = "(lk_not_set)", parameters: [String: Any] = [:]) {
-        let params: [String: Any] = [
-            "current_version": currentVersion,
-            "new_version": newVersion,
-        ].merging(parameters) { _, new in new }
-
-        logEvent(.appUpdateRemindLater, parameters: params)
+    enum AppUpdateAlertResponseAction: String {
+        case remindLater = "remind_later"
+        case openAppStore = "open_app_store"
     }
 
-    // TODO: (@ladislas) add real versions
-    static func logEventAppUpdateOpenAppStore(currentVersion: String = "(lk_not_set)", newVersion: String = "(lk_not_set)", parameters: [String: Any] = [:]) {
+    static func logEventAppUpdateAlertResponse(
+        _ action: AppUpdateAlertResponseAction,
+        currentVersion _: String = "", // TODO: (@ladislas) add current/new versions
+        newVersion _: String = "",
+        parameters: [String: Any] = [:]
+    ) {
         let params: [String: Any] = [
-            "current_version": currentVersion,
-            "new_version": newVersion,
+            "lk_app_version_current": NSNull(),
+            "lk_app_version_update": NSNull(),
+            "lk_response_action": action.rawValue,
         ].merging(parameters) { _, new in new }
 
-        logEvent(.appUpdateOpenAppStore, parameters: params)
+        logEvent(.appUpdateAlertResponse, parameters: params)
     }
 
-    // TODO: (@ladislas) add real versions
-    static func logEventOSUpdateRemindLater(currentVersion: String = "(lk_not_set)", newVersion: String = "(lk_not_set)", parameters: [String: Any] = [:]) {
-        let params: [String: Any] = [
-            "current_version": currentVersion,
-            "new_version": newVersion,
-        ].merging(parameters) { _, new in new }
-
-        logEvent(.osUpdateRemindLater, parameters: params)
+    enum OSUpdateAlertResponseAction: String {
+        case remindLater = "remind_later"
+        case openSettings = "open_settings"
     }
 
-    // TODO: (@ladislas) add real versions
-    static func logEventOSUpdateOpenSettings(currentVersion: String = "(lk_not_set)", newVersion: String = "(lk_not_set)", parameters: [String: Any] = [:]) {
+    static func logEventOSUpdateAlertResponse(
+        _ action: OSUpdateAlertResponseAction,
+        currentVersion _: String = "", // TODO: (@ladislas) add current/new versions
+        newVersion _: String = "",
+        parameters: [String: Any] = [:]
+    ) {
         let params: [String: Any] = [
-            "current_version": currentVersion,
-            "new_version": newVersion,
+            "lk_os_version_current": NSNull(),
+            "lk_os_version_update": NSNull(),
+            "lk_response_action": action.rawValue,
         ].merging(parameters) { _, new in new }
 
-        logEvent(.osUpdateOpenSettings, parameters: params)
+        logEvent(.osUpdateAlertResponse, parameters: params)
     }
 }

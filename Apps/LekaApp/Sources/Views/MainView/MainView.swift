@@ -127,13 +127,13 @@ struct MainView: View {
                     title: Text(l10n.MainView.AppUpdateAlert.title),
                     message: Text(l10n.MainView.AppUpdateAlert.message),
                     primaryButton: .default(Text(l10n.MainView.AppUpdateAlert.action), action: {
-                        AnalyticsManager.logEventAppUpdateOpenAppStore()
+                        AnalyticsManager.logEventAppUpdateAlertResponse(.openAppStore)
                         if let url = URL(string: "https://apps.apple.com/app/leka/id6446940339") {
                             UIApplication.shared.open(url)
                         }
                     }),
                     secondaryButton: .cancel(Text(l10n.MainView.AppUpdateAlert.reminder)) {
-                        AnalyticsManager.logEventAppUpdateRemindLater()
+                        AnalyticsManager.logEventAppUpdateAlertResponse(.remindLater)
                     }
                 )
             }
@@ -142,13 +142,13 @@ struct MainView: View {
                     title: Text(l10n.MainView.OSUpdateAlert.title),
                     message: Text(l10n.MainView.OSUpdateAlert.message),
                     primaryButton: .default(Text(l10n.MainView.OSUpdateAlert.action), action: {
-                        AnalyticsManager.logEventOSUpdateOpenSettings()
+                        AnalyticsManager.logEventOSUpdateAlertResponse(.openSettings)
                         if let url = URL(string: UIApplication.openSettingsURLString) {
                             UIApplication.shared.open(url)
                         }
                     }),
                     secondaryButton: .cancel(Text(l10n.MainView.OSUpdateAlert.reminder)) {
-                        AnalyticsManager.logEventOSUpdateRemindLater()
+                        AnalyticsManager.logEventOSUpdateAlertResponse(.remindLater)
                     }
                 )
             }
