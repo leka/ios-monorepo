@@ -1,0 +1,56 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: DA8D769CC7C643CFA0484FAE4B22D1F7
+name: curriculum_recognition_christmas
+
+created_at: "2024-07-31T17:38:12.804177"
+last_edited_at: "2024-11-28T09:41:13.587302"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - christmas
+  - festivities
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_christmas
+      title: Noël
+      subtitle: Écoute et trouve l'objet !
+      abstract: |
+        Un parcours complet pour apprendre à reconnaître les objets de Noël à travers plusieurs activités interactives.
+
+      description: |
+        Ce parcours propose une série de trois activités conçues pour aider le participant à reconnaître différents objets de Noël. Chaque activité utilise des images et des instructions audio pour stimuler la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide.
+
+  - locale: en_US
+    details:
+      icon: recognition_christmas
+      title: Christmas
+      subtitle: Listen and find the object!
+      abstract: |
+        A comprehensive curriculum to learn to recognize Christmas objects through various interactive activities.
+
+      description: |
+        This curriculum offers a series of three activities designed to help the care receiver recognize different Christmas objects. Each activity uses images and audio instructions to enhance auditory and visual recognition, as well as comprehension and quick response skills.
+
+activities:
+  - recognition_christmas_1-6000423931E84518BD3A840B7D2FE172
+  - recognition_christmas_2-217B5F97C81D4E638C9E5BE8877B9C2C
+  - recognition_christmas_4-B89D47C18A774535AA355539709E912D

@@ -1,0 +1,249 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: B89D47C18A774535AA355539709E912D
+name: recognition_christmas_4
+
+created_at: "2024-07-31T17:38:12.804177"
+last_edited_at: "2024-11-28T09:38:25.281901"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - christmas
+  - festivities
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_christmas
+
+      title: Noël
+      subtitle: 4 images
+
+      short_description: |
+        Une activité amusante où le participant apprend à reconnaître et à sélectionner des objets de Noël en écoutant des instructions audio.
+
+      description: |
+        Découvrez l'univers des objets de Noël avec cette activité interactive. Le participant appuie sur le bouton de haut-parleur pour écouter une instruction, puis doit toucher l'image correspondante sur l'écran. Cette activité stimule la reconnaissance auditive et visuelle, ainsi que les capacités de compréhension et de réponse rapide.
+
+      instructions: |
+        - Le participant doit appuyer sur le haut-parleur pour écouter l'instruction.
+        - Invitez-le à trouver l'image correspondant à l'instruction et à la toucher.
+
+  - locale: en_US
+    details:
+      icon: recognition_christmas
+
+      title: Christmas
+      subtitle: 4 images
+
+      short_description: |
+        A fun activity where the care receiver learns to recognize and select Christmas-themed objects by listening to audio instructions.
+
+      description: |
+        Discover the world of Christmas objects with this interactive activity. The care receiver presses the speaker button to listen to an instruction, then needs to touch the corresponding image on the screen. This activity enhances auditory and visual recognition, as well as comprehension and quick response skills.
+
+      instructions: |
+        - The care receiver presses the speaker button to listen to the instruction.
+        - Invite them to find the image corresponding to the instruction and touch it.
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La boule de Noël"
+                - locale: en_US
+                  utterance: "The Christmas ball"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: christmas_recognition_christmas_ball
+                type: image
+                is_right_answer: true
+              - value: christmas_recognition_christmas_wreath
+                type: image
+              - value: christmas_recognition_christmas_garland
+                type: image
+              - value: christmas_recognition_christmas_gift
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le biscuit de Noël"
+                - locale: en_US
+                  utterance: "The christmas biscuit"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: christmas_recognition_christmas_candle
+                type: image
+              - value: christmas_recognition_christmas_biscuit
+                type: image
+                is_right_answer: true
+              - value: christmas_recognition_christmas_sock
+                type: image
+              - value: christmas_recognition_christmas_tree
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "La cheminée"
+                - locale: en_US
+                  utterance: "The chimney"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: christmas_recognition_christmas_chimney
+                type: image
+                is_right_answer: true
+              - value: christmas_recognition_christmas_garland
+                type: image
+              - value: christmas_recognition_christmas_hat
+                type: image
+              - value: christmas_recognition_christmas_wreath
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le cadeau de Noël"
+                - locale: en_US
+                  utterance: "The Christmas gift"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: christmas_recognition_christmas_gift
+                type: image
+                is_right_answer: true
+              - value: christmas_recognition_christmas_hat
+                type: image
+              - value: christmas_recognition_christmas_garland
+                type: image
+              - value: christmas_recognition_christmas_sock
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Le houx'"
+                - locale: en_US
+                  utterance: "The holly"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: christmas_recognition_christmas_holly
+                type: image
+                is_right_answer: true
+              - value: christmas_recognition_christmas_sock
+                type: image
+              - value: christmas_recognition_christmas_tree
+                type: image
+              - value: christmas_recognition_christmas_gift
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Ecoute et touche l'objet demandé
+            - locale: en_US
+              value: Listen and touch the requested object
+          interface: listenThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "L'étoile de Noël'"
+                - locale: en_US
+                  utterance: "The Christmas star"
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: christmas_recognition_christmas_star
+                type: image
+                is_right_answer: true
+              - value: christmas_recognition_christmas_tree
+                type: image
+              - value: christmas_recognition_christmas_garland
+                type: image
+              - value: christmas_recognition_christmas_ball
+                type: image
