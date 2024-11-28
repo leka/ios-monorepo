@@ -44,6 +44,9 @@ public class AnalyticsManager {
         case caregiverSelect
         case caregiverEdit
 
+        case carereceiverCreate
+        case carereceiverEdit
+        case carereceiversSelect
         case carereceiverSkipSelect
 
         // MARK: Internal
@@ -91,6 +94,12 @@ public class AnalyticsManager {
                 case .caregiverEdit:
                     "caregiver_edit"
 
+                case .carereceiverCreate:
+                    "carereceiver_create"
+                case .carereceiverEdit:
+                    "carereceiver_edit"
+                case .carereceiversSelect:
+                    "carereceivers_select"
                 case .carereceiverSkipSelect:
                     "carereceiver_skip_select"
             }
