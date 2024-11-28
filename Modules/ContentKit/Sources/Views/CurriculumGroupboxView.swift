@@ -109,12 +109,12 @@ public struct CurriculumGroupboxView: View {
 
     // MARK: Private
 
-    private let curriculum: Curriculum
-
     @ObservedObject private var styleManager: StyleManager = .shared
 
     @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+
+    private let curriculum: Curriculum
 }
 
 // MARK: - l10n.CurriculumGroupboxView

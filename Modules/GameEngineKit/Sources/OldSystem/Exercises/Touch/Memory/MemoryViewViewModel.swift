@@ -27,9 +27,10 @@ class MemoryViewViewModel: ObservableObject {
 
     // MARK: Internal
 
+    @ObservedObject var exercicesSharedData: ExerciseSharedData
+
     @Published var isTappable: Bool = false
     @Published var choices: [GameplayAssociateCategoriesChoiceModelMemory] = []
-    @ObservedObject var exercicesSharedData: ExerciseSharedData
 
     // MARK: Private
 

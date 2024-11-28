@@ -20,6 +20,7 @@ let project = Project.module(
         .external(name: "FirebaseAnalytics"),
         .external(name: "FirebaseAuth"),
         .external(name: "FirebaseAuthCombine-Community"),
+        .external(name: "FirebaseCore"),
         .external(name: "FirebaseCrashlytics"),
         .external(name: "FirebaseFirestore"),
         .external(name: "FirebaseFirestoreCombine-Community"),

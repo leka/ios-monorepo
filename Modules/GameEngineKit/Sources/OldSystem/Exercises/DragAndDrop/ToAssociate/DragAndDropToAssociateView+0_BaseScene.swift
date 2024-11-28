@@ -32,6 +32,66 @@ extension DragAndDropToAssociateView {
         var initialNodeX: CGFloat = .zero
         var verticalSpacing: CGFloat = .zero
 
+        override func didMove(to _: SKView) {
+            self.reset()
+        }
+
+        // overriden Touches states
+        override func touchesBegan(_ touches: Set<UITouch>, with _: UIEvent?) {
+            for touch in touches {
+                let location = touch.location(in: self)
+                if let node = atPoint(location) as? DraggableImageAnswerNode {
+                    for choice in self.viewModel
+                        .choices where node.id == choice.id && node.isDraggable
+                    {
+                        selectedNodes[touch] = node
+                        onDragAnimation(node)
+                        node.zPosition += 100
+                    }
+                }
+            }
+        }
+
+        override func touchesMoved(_ touches: Set<UITouch>, with _: UIEvent?) {
+            for touch in touches {
+                let location = touch.location(in: self)
+                if let node = selectedNodes[touch] {
+                    let bounds: CGRect = view!.bounds
+                    if node.fullyContains(location: location, bounds: bounds) {
+                        node.position = location
+                    } else {
+                        self.wrongAnswerBehavior(node)
+                    }
+                }
+            }
+        }
+
+        override func touchesEnded(_ touches: Set<UITouch>, with _: UIEvent?) {
+            for touch in touches {
+                guard self.selectedNodes.keys.contains(touch) else {
+                    break
+                }
+                self.playedNode = self.selectedNodes[touch]!
+                self.playedNode!.scaleForMax(sizeOf: self.biggerSide)
+
+                guard let destinationNode = dropDestinations.first(where: {
+                    $0.frame.contains(touch.location(in: self)) && $0.id != playedNode!.id
+                })
+                else {
+                    self.wrongAnswerBehavior(self.playedNode!)
+                    break
+                }
+                self.playedDestination = destinationNode
+
+                guard let destination = viewModel.choices.first(where: { $0.id == destinationNode.id })
+                else { return }
+                guard let choice = viewModel.choices.first(where: { $0.id == playedNode!.id })
+                else { return }
+
+                self.viewModel.onChoiceDropped(choice: choice, destination: destination)
+            }
+        }
+
         func reset() {
             backgroundColor = .clear
             removeAllChildren()
@@ -154,66 +214,6 @@ extension DragAndDropToAssociateView {
             node.zRotation = 0
             node.removeAllActions()
             self.selectedNodes = [:]
-        }
-
-        override func didMove(to _: SKView) {
-            self.reset()
-        }
-
-        // overriden Touches states
-        override func touchesBegan(_ touches: Set<UITouch>, with _: UIEvent?) {
-            for touch in touches {
-                let location = touch.location(in: self)
-                if let node = atPoint(location) as? DraggableImageAnswerNode {
-                    for choice in self.viewModel
-                        .choices where node.id == choice.id && node.isDraggable
-                    {
-                        selectedNodes[touch] = node
-                        onDragAnimation(node)
-                        node.zPosition += 100
-                    }
-                }
-            }
-        }
-
-        override func touchesMoved(_ touches: Set<UITouch>, with _: UIEvent?) {
-            for touch in touches {
-                let location = touch.location(in: self)
-                if let node = selectedNodes[touch] {
-                    let bounds: CGRect = view!.bounds
-                    if node.fullyContains(location: location, bounds: bounds) {
-                        node.position = location
-                    } else {
-                        self.wrongAnswerBehavior(node)
-                    }
-                }
-            }
-        }
-
-        override func touchesEnded(_ touches: Set<UITouch>, with _: UIEvent?) {
-            for touch in touches {
-                guard self.selectedNodes.keys.contains(touch) else {
-                    break
-                }
-                self.playedNode = self.selectedNodes[touch]!
-                self.playedNode!.scaleForMax(sizeOf: self.biggerSide)
-
-                guard let destinationNode = dropDestinations.first(where: {
-                    $0.frame.contains(touch.location(in: self)) && $0.id != playedNode!.id
-                })
-                else {
-                    self.wrongAnswerBehavior(self.playedNode!)
-                    break
-                }
-                self.playedDestination = destinationNode
-
-                guard let destination = viewModel.choices.first(where: { $0.id == destinationNode.id })
-                else { return }
-                guard let choice = viewModel.choices.first(where: { $0.id == playedNode!.id })
-                else { return }
-
-                self.viewModel.onChoiceDropped(choice: choice, destination: destination)
-            }
         }
 
         // MARK: Private

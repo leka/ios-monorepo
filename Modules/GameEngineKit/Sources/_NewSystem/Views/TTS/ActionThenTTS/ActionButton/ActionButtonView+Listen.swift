@@ -43,6 +43,7 @@ extension ActionButtonView {
         // MARK: Private
 
         @StateObject private var audioManagerViewModel = AudioManagerViewModel()
+
         private let audioManager = AudioManager.shared
 
         private var isPlaying: Bool {

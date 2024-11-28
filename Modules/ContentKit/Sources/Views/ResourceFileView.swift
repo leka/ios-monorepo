@@ -51,9 +51,9 @@ public struct ResourceFileView: View {
 
     // MARK: Internal
 
-    let resource: Category.Resource
-
     @State var isPresented: Bool = false
+
+    let resource: Category.Resource
 
     // MARK: Private
 

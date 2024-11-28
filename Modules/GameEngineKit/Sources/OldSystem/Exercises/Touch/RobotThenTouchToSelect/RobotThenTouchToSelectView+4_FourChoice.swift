@@ -10,6 +10,7 @@ extension RobotThenTouchToSelectView {
         // MARK: Internal
 
         @ObservedObject var viewModel: TouchToSelectViewViewModel
+
         let isTappable: Bool
 
         var body: some View {

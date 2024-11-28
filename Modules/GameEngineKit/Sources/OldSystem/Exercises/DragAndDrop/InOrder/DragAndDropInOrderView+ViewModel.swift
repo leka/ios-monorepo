@@ -38,8 +38,9 @@ extension DragAndDropInOrderView {
 
         // MARK: Internal
 
-        @Published var choices: [GameplayFindTheRightOrderChoiceModelDragAndDropInOrder] = []
         @ObservedObject var exercicesSharedData: ExerciseSharedData
+
+        @Published var choices: [GameplayFindTheRightOrderChoiceModelDragAndDropInOrder] = []
 
         // MARK: Private
 

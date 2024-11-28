@@ -74,9 +74,9 @@ public struct ListenThenTouchToSelectView: View {
     // MARK: Private
 
     @StateObject private var viewModel: TouchToSelectViewViewModel
-    private let audioData: AudioManager.AudioType
-
     @State private var audioHasBeenPlayed: Bool = false
+
+    private let audioData: AudioManager.AudioType
 
     @ViewBuilder
     private var currentInterface: some View {

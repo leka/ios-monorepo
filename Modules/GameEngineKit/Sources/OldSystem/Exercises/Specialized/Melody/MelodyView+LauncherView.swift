@@ -11,6 +11,7 @@ extension MelodyView {
         @Binding var selectedSong: MidiRecordingPlayer.Song
         @Binding var mode: Stage
         @Binding var keyboard: KeyboardType
+
         let songs: [MidiRecordingPlayer.Song]
 
         var body: some View {

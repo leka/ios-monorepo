@@ -166,8 +166,6 @@ public struct StoryDetailsView: View {
 
     // MARK: Private
 
-    private let story: Story
-
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
 
@@ -175,6 +173,8 @@ public struct StoryDetailsView: View {
 
     @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+
+    private let story: Story
 }
 
 // MARK: - l10n.StoryDetailsView

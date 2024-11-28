@@ -70,6 +70,7 @@ extension AccountCreationProcess {
         @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
         @State private var isCaregiverCreationPresented: Bool = false
+
         private let caregiverManager: CaregiverManager = .shared
     }
 }

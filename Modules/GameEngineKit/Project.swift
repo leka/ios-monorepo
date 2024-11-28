@@ -25,6 +25,7 @@ let project = Project.module(
         .project(target: "UtilsKit", path: Path("../../Modules/UtilsKit")),
 
         .external(name: "AudioKit"),
+        .external(name: "Lottie"),
         .external(name: "SVGView"),
         .external(name: "SwiftUIJoystick"),
     ]

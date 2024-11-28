@@ -56,12 +56,12 @@ public struct DanceFreezeView: View {
 
     // MARK: Private
 
-    private let data: ExerciseSharedData?
-    private let songs: [DanceFreeze.Song]
-
     @State private var mode = Stage.waitingForSelection
     @State private var motion: Motion = .rotation
     @State private var selectedAudioRecording: DanceFreeze.Song
+
+    private let data: ExerciseSharedData?
+    private let songs: [DanceFreeze.Song]
 }
 
 #Preview {

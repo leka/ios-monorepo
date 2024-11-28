@@ -20,9 +20,9 @@ extension ActionButtonView {
 
         // MARK: Internal
 
-        let actionType: Exercise.Action.ActionType
-
         @State var robotWasTapped: Bool = false
+
+        let actionType: Exercise.Action.ActionType
 
         var body: some View {
             Button {

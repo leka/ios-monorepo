@@ -69,9 +69,9 @@ struct RobotDiscoveryView: View {
 
     // MARK: Private
 
-    private var discovery: RobotDiscoveryModel
-
     // MARK: - Environment variables
 
     @EnvironmentObject private var robotListViewModel: RobotListViewModel
+
+    private var discovery: RobotDiscoveryModel
 }

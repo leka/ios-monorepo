@@ -20,6 +20,7 @@ extension MusicalInstrumentView {
         // MARK: Internal
 
         @ObservedObject var xyloPlayer: MIDIPlayer
+
         let tilesSpacing: CGFloat
         let tileNumber: Int
         let tileColors: [Robot.Color] = [.pink, .red, .orange, .yellow, .green, .lightBlue, .blue, .purple]

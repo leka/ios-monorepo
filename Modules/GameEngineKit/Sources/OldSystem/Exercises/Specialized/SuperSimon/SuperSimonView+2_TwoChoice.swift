@@ -10,6 +10,7 @@ extension SuperSimonView {
         // MARK: Internal
 
         @ObservedObject var viewModel: SuperSimonViewViewModel
+
         let isTappable: Bool
 
         var body: some View {

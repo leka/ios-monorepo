@@ -11,6 +11,7 @@ extension DanceFreezeView {
         @Binding var mode: Stage
         @Binding var motion: Motion
         @Binding var selectedAudioRecording: DanceFreeze.Song
+
         let songs: [DanceFreeze.Song]
 
         var body: some View {

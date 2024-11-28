@@ -34,6 +34,7 @@ struct MusicalInstrumentView: View {
     // MARK: Internal
 
     @StateObject var midiPlayer: MIDIPlayer
+
     let instrument: MIDIInstrument
     let scale: MIDIScale
 

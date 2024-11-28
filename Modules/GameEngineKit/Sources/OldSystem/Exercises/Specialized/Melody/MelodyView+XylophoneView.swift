@@ -88,6 +88,7 @@ public extension MelodyView {
 
         struct KeyboardModeModifier: ViewModifier {
             @Environment(\.colorScheme) var colorScheme
+
             var isPartial: Bool
             var isDisabled: Bool
 
