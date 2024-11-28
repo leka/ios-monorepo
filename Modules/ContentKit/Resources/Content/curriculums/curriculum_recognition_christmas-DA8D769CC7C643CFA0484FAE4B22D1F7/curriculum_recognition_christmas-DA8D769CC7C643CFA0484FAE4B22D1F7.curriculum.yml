@@ -6,7 +6,7 @@ uuid: DA8D769CC7C643CFA0484FAE4B22D1F7
 name: curriculum_recognition_christmas
 
 created_at: "2024-07-31T17:38:12.804177"
-last_edited_at: "2024-07-31T17:23:32.570167"
+last_edited_at: "2024-11-28T09:41:13.587302"
 
 status: published
 
@@ -30,7 +30,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: christmas
+      icon: recognition_christmas
       title: Noël
       subtitle: Écoute et trouve l'objet !
       abstract: |
@@ -41,7 +41,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: christmas
+      icon: recognition_christmas
       title: Christmas
       subtitle: Listen and find the object!
       abstract: |

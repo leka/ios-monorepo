@@ -8,7 +8,7 @@ uuid: 217B5F97C81D4E638C9E5BE8877B9C2C
 name: recognition_christmas_2
 
 created_at: "2024-07-31T17:38:12.804177"
-last_edited_at: "2024-10-18T12:12:33.262303"
+last_edited_at: "2024-11-28T09:38:25.356794"
 
 status: published
 
@@ -35,7 +35,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: christmas
+      icon: recognition_christmas
 
       title: Noël
       subtitle: 2 images
@@ -52,7 +52,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: christmas
+      icon: recognition_christmas
 
       title: Christmas
       subtitle: 2 images
