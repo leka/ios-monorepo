@@ -78,6 +78,8 @@ public class CarereceiverManager {
 
     public func setCurrentCarereceivers(to carereceivers: [Carereceiver]) {
         self.currentCarereceivers.send(carereceivers)
+        let carereceiverIDs = carereceivers.compactMap(\.id)
+        AnalyticsManager.logEventCarereceiversSelect(carereceivers: carereceiverIDs)
     }
 
     public func resetData() {
