@@ -22,7 +22,7 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
-            if case .updateAvailable = self.appUpdateStatus.status {
+            if case .appUpdateAvailable = UpdateManager.shared.appUpdateStatus {
                 Section {
                     VStack(alignment: .center) {
                         HStack(spacing: 20) {
@@ -246,7 +246,6 @@ struct SettingsView: View {
     @ObservedObject private var styleManager: StyleManager = .shared
     @ObservedObject private var navigation = Navigation.shared
 
-    @StateObject var appUpdateStatus: LekaApp.UpdateStatus = .shared
     @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
 
     private func reset() {

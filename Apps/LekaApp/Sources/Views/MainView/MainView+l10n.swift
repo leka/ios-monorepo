@@ -49,6 +49,14 @@ extension l10n {
             static let title = LocalizedString("lekaapp.main_view.app_update_alert.title", value: "New update available", comment: "The title of the alert to inform the user that an update is available")
             static let message = LocalizedString("lekaapp.main_view.app_update_alert.message", value: "Enjoy new features by updating to the latest version of Leka!", comment: "The message of the alert to inform the user that an update is available")
             static let action = LocalizedString("lekaapp.main_view.app_update_alert.action", value: "Update now", comment: "The action button of the alert to inform the user that an update is available")
+            static let reminder = LocalizedString("lekaapp.main_view.app_update_alert.reminder", value: "Remind me later", comment: "The action button of the alert to inform the user that an os update is available")
+        }
+
+        enum OSUpdateAlert {
+            static let title = LocalizedString("lekaapp.main_view.os_update_alert.title", value: "Update your iPad to the Latest iPadOS Version", comment: "The title of the alert to inform the user that an os update is available")
+            static let message = LocalizedString("lekaapp.main_view.os_update_alert.message", value: "A new version of iPadOS is available! Update now to enjoy enhanced performance, security, and compatibility with the latest features of our app.", comment: "The message of the alert to inform the user that an os update is available")
+            static let action = LocalizedString("lekaapp.main_view.os_update_alert.action", value: "Update now", comment: "The action button of the alert to inform the user that an os update is available")
+            static let reminder = LocalizedString("lekaapp.main_view.os_update_alert.reminder", value: "Remind me later", comment: "The action button of the alert to inform the user that an os update is available")
         }
     }
 }

@@ -7,6 +7,7 @@ import AnalyticsKit
 import Combine
 import ContentKit
 import DesignKit
+import DeviceKit
 import FirebaseKit
 import LocalizationKit
 import LogKit
@@ -33,6 +34,15 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
 }
 
+// MARK: - UpdateManager
+
+class UpdateManager: ObservableObject {
+    static let shared = UpdateManager()
+
+    @Published var appUpdateStatus: UpdateStatusFetcher.Status = .upToDate
+    @Published var osUpdateStatus: UpdateStatusFetcher.Status = .upToDate
+}
+
 // MARK: - LekaApp
 
 @main
@@ -45,16 +55,10 @@ struct LekaApp: App {
 
     // MARK: Internal
 
-    class UpdateStatus: ObservableObject {
-        static let shared = UpdateStatus()
-
-        @Published var status: UpdateStatusFetcher.Status = .upToDate
-    }
-
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
     @Environment(\.colorScheme) var colorScheme
-    @StateObject var appUpdateStatus: UpdateStatus = .shared
+    @StateObject var updateManager: UpdateManager = .shared
     @ObservedObject var styleManager: StyleManager = .shared
 
     var body: some Scene {
@@ -87,15 +91,29 @@ struct LekaApp: App {
                     guard let status = try? result.get() else {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                             self.showMainView = true
-                            self.appUpdateStatus.status = .upToDate
+                            UpdateManager.shared.appUpdateStatus = .upToDate
                         }
                         return
                     }
 
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                         self.showMainView = true
-                        self.appUpdateStatus.status = status
+                        UpdateManager.shared.appUpdateStatus = status
                     }
+                }
+
+                switch Device.current {
+                    case .iPad5,
+                         .iPadPro9Inch:
+                        UpdateManager.shared.osUpdateStatus = .upToDate
+                    case .iPad6:
+                        if Device.current.systemVersion!.compare("17.7.2") == .orderedAscending {
+                            UpdateManager.shared.osUpdateStatus = .osUpdateAvailable
+                        }
+                    default:
+                        if Device.current.systemVersion!.compare("18.1.1") == .orderedAscending {
+                            UpdateManager.shared.osUpdateStatus = .osUpdateAvailable
+                        }
                 }
             }
         }

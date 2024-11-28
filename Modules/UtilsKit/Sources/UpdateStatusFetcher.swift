@@ -39,7 +39,8 @@ public struct UpdateStatusFetcher {
     public enum Status: Equatable {
         case newerVersion
         case upToDate
-        case updateAvailable(version: String, storeURL: URL)
+        case appUpdateAvailable(version: String, storeURL: URL)
+        case osUpdateAvailable
         case underMinimumOsVersion
     }
 
@@ -116,7 +117,7 @@ public struct UpdateStatusFetcher {
             case .orderedSame:
                 return UpdateStatusFetcher.Status.upToDate
             case .orderedAscending:
-                return UpdateStatusFetcher.Status.updateAvailable(version: appMetadata.version, storeURL: appMetadata.trackViewURL)
+                return UpdateStatusFetcher.Status.appUpdateAvailable(version: appMetadata.version, storeURL: appMetadata.trackViewURL)
         }
     }
 }
