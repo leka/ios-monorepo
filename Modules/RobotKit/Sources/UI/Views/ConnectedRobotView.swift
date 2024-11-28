@@ -157,11 +157,11 @@ public struct ConnectedRobotView: View {
     @State private var newRobotName: String = ""
     @State private var presentAlertRenameRobot: Bool = false
 
-    // swiftlint:disable:next force_cast
-    private let isNotLekaUpdater = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as! String != "LekaUpdater"
-
     @FocusState private var focusedNameEdition: Bool
     @State private var showNotUpToDateAlert: Bool = false
+
+    // swiftlint:disable:next force_cast
+    private let isNotLekaUpdater = Bundle.main.infoDictionary?[kCFBundleNameKey as String] as! String != "LekaUpdater"
 
     private var robotNotUpToDate: Bool {
         guard let osVersion = Version(tolerant: self.connectedRobotInformationViewModel.osVersion) else {

@@ -96,6 +96,9 @@ struct ChoiceEmojiView: View {
 
     // MARK: Private
 
+    @State private var animationPercent: CGFloat = .zero
+    @State private var overlayOpacity: CGFloat = .zero
+
     private let choiceBackgroundColor: Color = .init(
         light: .white,
         dark: UIColor(displayP3Red: 242 / 255, green: 242 / 255, blue: 247 / 255, alpha: 1.0)
@@ -105,9 +108,6 @@ struct ChoiceEmojiView: View {
     private let size: CGFloat
     private let state: GameplayChoiceState
     private let kOverLayScaleFactor: CGFloat = 1.08
-
-    @State private var animationPercent: CGFloat = .zero
-    @State private var overlayOpacity: CGFloat = .zero
 }
 
 // MARK: - l10n.ChoiceEmojiView

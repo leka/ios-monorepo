@@ -64,9 +64,10 @@ public struct ActivityHorizontalListView: View {
 
     // MARK: Private
 
+    @ObservedObject private var styleManager: StyleManager = .shared
+
     private let columns = Array(repeating: GridItem(), count: 3)
     private let rows = [GridItem()]
-    @ObservedObject private var styleManager: StyleManager = .shared
 }
 
 #Preview {

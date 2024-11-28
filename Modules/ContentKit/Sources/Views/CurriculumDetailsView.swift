@@ -187,8 +187,6 @@ public struct CurriculumDetailsView: View {
 
     // MARK: Private
 
-    private let curriculum: Curriculum
-
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
     @State private var isDescriptionExpanded = false
@@ -196,6 +194,8 @@ public struct CurriculumDetailsView: View {
 
     @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+
+    private let curriculum: Curriculum
 }
 
 // MARK: - l10n.CurriculumDetailsView

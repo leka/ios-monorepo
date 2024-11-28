@@ -50,9 +50,9 @@ public struct RobotThenDragAndDropToAssociateView: View {
 
     // MARK: Private
 
+    @State private var robotWasTapped = false
+
     private let actionType: Exercise.Action.ActionType
     private var exercise: Exercise
     private var exerciseSharedData: ExerciseSharedData?
-
-    @State private var robotWasTapped = false
 }

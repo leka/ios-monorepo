@@ -33,8 +33,9 @@ class SuperSimonViewViewModel: ObservableObject {
 
     // MARK: Internal
 
-    @Published var choices: [GameplaySuperSimonChoiceModel] = []
     @ObservedObject var exercicesSharedData: ExerciseSharedData
+
+    @Published var choices: [GameplaySuperSimonChoiceModel] = []
 
     func onRobotTapped() {
         self.gameplay.playColorSequence()

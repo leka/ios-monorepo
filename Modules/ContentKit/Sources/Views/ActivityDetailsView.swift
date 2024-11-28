@@ -175,8 +175,6 @@ public struct ActivityDetailsView: View {
 
     // MARK: Private
 
-    private let activity: Activity
-
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
 
@@ -184,6 +182,8 @@ public struct ActivityDetailsView: View {
 
     @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+
+    private let activity: Activity
 }
 
 // MARK: - l10n.ActivityDetailsView

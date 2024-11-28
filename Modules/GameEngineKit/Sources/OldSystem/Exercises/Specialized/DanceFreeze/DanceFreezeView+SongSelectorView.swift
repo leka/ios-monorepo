@@ -19,12 +19,13 @@ extension DanceFreezeView {
 
         // MARK: Internal
 
+        @Binding var selectedAudioRecording: DanceFreeze.Song
+
         let columns = [
             GridItem(.flexible(), alignment: .topLeading),
             GridItem(.flexible(), alignment: .topLeading),
         ]
 
-        @Binding var selectedAudioRecording: DanceFreeze.Song
         let songs: [DanceFreeze.Song]
 
         var body: some View {

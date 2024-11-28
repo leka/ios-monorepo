@@ -27,8 +27,9 @@ class TouchToSelectViewViewModel: ObservableObject {
 
     // MARK: Internal
 
-    @Published var choices: [GameplayFindTheRightAnswersChoiceModelTouchToSelect] = []
     @ObservedObject var exercicesSharedData: ExerciseSharedData
+
+    @Published var choices: [GameplayFindTheRightAnswersChoiceModelTouchToSelect] = []
 
     // MARK: Private
 

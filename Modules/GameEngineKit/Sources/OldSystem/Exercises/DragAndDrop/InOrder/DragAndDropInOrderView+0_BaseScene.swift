@@ -31,6 +31,60 @@ extension DragAndDropInOrderView {
 
         var viewModel: ViewModel
 
+        override func didMove(to _: SKView) {
+            self.reset()
+        }
+
+        // overriden Touches states
+        override func touchesBegan(_ touches: Set<UITouch>, with _: UIEvent?) {
+            for touch in touches {
+                let location = touch.location(in: self)
+                if let node = atPoint(location) as? DraggableImageAnswerNode {
+                    for choice in self.viewModel.choices
+                        where node.id == choice.id && node.isDraggable
+                    {
+                        selectedNodes[touch] = node
+                        onDragAnimation(node)
+                        node.zPosition += 100
+                    }
+                }
+            }
+        }
+
+        override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+            for touch in touches {
+                let location = touch.location(in: self)
+                if let node = selectedNodes[touch] {
+                    let bounds: CGRect = view!.bounds
+                    if node.fullyContains(location: location, bounds: bounds) {
+                        node.position = location
+                    } else {
+                        self.touchesEnded(touches, with: event)
+                    }
+                }
+            }
+        }
+
+        override func touchesEnded(_ touches: Set<UITouch>, with _: UIEvent?) {
+            for touch in touches {
+                guard self.selectedNodes.keys.contains(touch) else {
+                    break
+                }
+                self.playedNode = self.selectedNodes[touch]!
+                self.playedNode!.scaleForMax(sizeOf: self.maxWidthAndHeight)
+                let gameplayChoiceModel = self.viewModel.choices.first(where: { $0.id == self.playedNode!.id })
+
+                for (index, dropZone) in self.dropZoneNodes.enumerated()
+                    where self.playedNode!.fullyContains(bounds: dropZone.frame)
+                {
+                    self.viewModel.onChoiceDropped(choice: gameplayChoiceModel!, dropZoneIndex: index)
+                    return
+                }
+
+                self.viewModel.onChoiceDroppedOutOfDropZone(choice: gameplayChoiceModel!)
+            }
+        }
+
         func reset() {
             backgroundColor = .clear
             removeAllChildren()
@@ -172,60 +226,6 @@ extension DragAndDropInOrderView {
             node.zRotation = 0
             node.removeAllActions()
             self.selectedNodes = [:]
-        }
-
-        override func didMove(to _: SKView) {
-            self.reset()
-        }
-
-        // overriden Touches states
-        override func touchesBegan(_ touches: Set<UITouch>, with _: UIEvent?) {
-            for touch in touches {
-                let location = touch.location(in: self)
-                if let node = atPoint(location) as? DraggableImageAnswerNode {
-                    for choice in self.viewModel.choices
-                        where node.id == choice.id && node.isDraggable
-                    {
-                        selectedNodes[touch] = node
-                        onDragAnimation(node)
-                        node.zPosition += 100
-                    }
-                }
-            }
-        }
-
-        override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-            for touch in touches {
-                let location = touch.location(in: self)
-                if let node = selectedNodes[touch] {
-                    let bounds: CGRect = view!.bounds
-                    if node.fullyContains(location: location, bounds: bounds) {
-                        node.position = location
-                    } else {
-                        self.touchesEnded(touches, with: event)
-                    }
-                }
-            }
-        }
-
-        override func touchesEnded(_ touches: Set<UITouch>, with _: UIEvent?) {
-            for touch in touches {
-                guard self.selectedNodes.keys.contains(touch) else {
-                    break
-                }
-                self.playedNode = self.selectedNodes[touch]!
-                self.playedNode!.scaleForMax(sizeOf: self.maxWidthAndHeight)
-                let gameplayChoiceModel = self.viewModel.choices.first(where: { $0.id == self.playedNode!.id })
-
-                for (index, dropZone) in self.dropZoneNodes.enumerated()
-                    where self.playedNode!.fullyContains(bounds: dropZone.frame)
-                {
-                    self.viewModel.onChoiceDropped(choice: gameplayChoiceModel!, dropZoneIndex: index)
-                    return
-                }
-
-                self.viewModel.onChoiceDroppedOutOfDropZone(choice: gameplayChoiceModel!)
-            }
         }
 
         // MARK: Private

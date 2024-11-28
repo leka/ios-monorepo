@@ -101,6 +101,9 @@ public struct ChoiceImageView: View {
 
     // MARK: Private
 
+    @State private var animationPercent: CGFloat = .zero
+    @State private var overlayOpacity: CGFloat = .zero
+
     private let background: Color
 
     private let choiceBackgroundColor: Color = .init(
@@ -112,9 +115,6 @@ public struct ChoiceImageView: View {
     private let size: CGFloat
     private let state: GameplayChoiceState
     private let kOverLayScaleFactor: CGFloat = 1.08
-
-    @State private var animationPercent: CGFloat = .zero
-    @State private var overlayOpacity: CGFloat = .zero
 
     private func imageNotFound() -> some View {
         Text(l10n.ChoiceImageView.imageUnknownError(self.image))

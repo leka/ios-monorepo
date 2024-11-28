@@ -97,8 +97,9 @@ public struct SubskillsGridView: View {
 
     // MARK: Private
 
-    private let columns = Array(repeating: GridItem(), count: 2)
     @ObservedObject private var styleManager: StyleManager = .shared
+
+    private let columns = Array(repeating: GridItem(), count: 2)
 }
 
 #Preview {

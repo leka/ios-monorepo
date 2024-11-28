@@ -49,6 +49,7 @@ struct CreateCaregiverView: View {
     // MARK: Internal
 
     @Environment(\.dismiss) var dismiss
+
     var onClose: (() -> Void)?
 
     var caregiverManager: CaregiverManager = .shared

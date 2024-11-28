@@ -20,6 +20,7 @@ extension MelodyView {
         // MARK: Internal
 
         @Binding var selectedMidiRecording: MidiRecordingPlayer.Song
+
         let songs: [MidiRecordingPlayer.Song]
 
         let columns = [

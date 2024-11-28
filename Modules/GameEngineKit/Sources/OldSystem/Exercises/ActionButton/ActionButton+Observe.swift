@@ -60,10 +60,10 @@ struct ActionButtonObserve: View {
 
     // MARK: Internal
 
+    @Binding var imageWasTapped: Bool
+
     let image: String
     let isSFSymbol: Bool
-
-    @Binding var imageWasTapped: Bool
 
     var body: some View {
         Button {

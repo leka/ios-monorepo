@@ -22,6 +22,7 @@ struct ProfessionPicker: View {
 
     @Environment(\.dismiss) var dismiss
     @State var selectedProfessions: Set<Profession> = []
+
     let selectedProfessionsIDs: [String]
     let onCancel: (() -> Void)?
     let onSelect: (([String]) -> Void)?
