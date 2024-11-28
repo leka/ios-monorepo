@@ -94,6 +94,7 @@ let project = Project.app(
         .external(name: "DeviceKit"),
         .external(name: "Fit"),
         .external(name: "MarkdownUI"),
+        .external(name: "Version"),
         .external(name: "Yams"),
     ],
     scripts: [

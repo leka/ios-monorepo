@@ -79,7 +79,7 @@ public extension Project {
             scripts: TargetScript.linters(),
             dependencies: [
                 .target(name: "\(name)"),
-            ]
+            ] + dependencies
         )
 
         return Project(
