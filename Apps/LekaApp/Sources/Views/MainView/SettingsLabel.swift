@@ -12,8 +12,6 @@ import SwiftUI
 struct SettingsLabel: View {
     // MARK: Internal
 
-    @StateObject var appUpdateStatus: LekaApp.UpdateStatus = .shared
-
     var body: some View {
         Label(String(l10n.SettingsLabel.buttonLabel.characters), systemImage: "gear")
             .frame(width: 200, height: 44)
@@ -29,7 +27,7 @@ struct SettingsLabel: View {
                     .clipShape(.circle)
                     .offset(x: 95, y: -20)
                     .opacity({
-                        if case .updateAvailable = self.appUpdateStatus.status {
+                        if case .appUpdateAvailable = UpdateManager.shared.appUpdateStatus {
                             return 1.0
                         }
                         return 0.0

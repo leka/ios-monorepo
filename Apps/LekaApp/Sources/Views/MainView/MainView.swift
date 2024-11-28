@@ -332,13 +332,10 @@ struct MainView: View {
                             }
                             .onDisappear {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                    switch self.updateStatus.status {
-                                        case .updateAvailable:
-                                            self.showingAppUpdateAlert = true
-                                        default:
-                                            if self.updateStatus.isOSUpdateAvailable {
-                                                self.showingOSUpdateAlert = true
-                                            }
+                                    if case .appUpdateAvailable = UpdateManager.shared.appUpdateStatus {
+                                        self.showingAppUpdateAlert = true
+                                    } else if case .osUpdateAvailable = UpdateManager.shared.osUpdateStatus {
+                                        self.showingOSUpdateAlert = true
                                     }
                                 }
                             }
@@ -435,7 +432,6 @@ struct MainView: View {
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
     @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
-    @StateObject var updateStatus: LekaApp.UpdateStatus = .shared
 
     @State private var showingAppUpdateAlert: Bool = false
     @State private var showingOSUpdateAlert: Bool = false
