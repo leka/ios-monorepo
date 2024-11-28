@@ -1,0 +1,58 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: EFC444BBDEF24E08813FF472FFA5365D
+name: curriculum_christmas_memory
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-09-27T17:53:03.457882"
+authors:
+  - leka
+
+skills:
+  - memory
+  - memory/short_term_memory
+  - attention
+  - attention/sustained_attention
+  - association
+  - association/matching
+
+tags:
+  - christmas
+  - festivities
+
+hmi:
+  - tablet_robot
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: memory_christmas
+      title: Memory de Noël
+      subtitle: Travailler la mémoire et l'attention
+      abstract: |
+        Ce parcours est conçu pour améliorer la mémoire à court terme et l'attention à travers des jeux de mémoire avec des images d'objets de Noël. Il commence par des paires simples et augmente progressivement en difficulté.
+      description: |
+        Le parcours "Memory de Noël" est une série d'activités conçues pour aider les participants à améliorer leur mémoire et leur attention. Chaque activité présente des images d'objets de Noël que les joueurs doivent associer en paires. Les niveaux de difficulté augmentent progressivement, commençant par une seule paire et allant jusqu'à quatre paires, pour offrir un défi croissant et maintenir l'engagement.
+
+  - locale: en_US
+    details:
+      icon: memory_christmas
+      title: Christmas Memory
+      subtitle: Improving memory and attention
+      abstract: |
+        This curriculum is designed to improve short-term memory and attention through memory games featuring Christmas item images. It starts with simple pairs and gradually increases in difficulty.
+      description: |
+        The "Christmas Memory" curriculum is a series of activities aimed at helping participants improve their memory and attention. Each activity features Christmas items images that players must match in pairs. The levels of difficulty gradually increase, starting with a single pair and progressing to four pairs, providing a growing challenge to keep participants engaged.
+
+activities:
+  - christmas_memory_1_pair-670413A9FFAB479B90B60E7806CB9CB4
+  - christmas_memory_2_pairs-AB70B78D8F204726B164C8769F57A5D7
+  - christmas_memory_4_pairs-8877724C99E64F59941FB568E313982A
