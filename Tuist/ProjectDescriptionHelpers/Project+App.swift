@@ -59,9 +59,14 @@ public extension Project {
             infoPlist: .extendingDefault(with: InfoPlist.extendingBase(version: version, with: infoPlist)),
             sources: ["Sources/**"],
             resources: .resources(["Resources/**"] + resources),
-            scripts: TargetScript.linters() + scripts, // Combine default scripts with custom scripts
+            scripts: TargetScript.linters() + scripts,
+            // Combine default scripts with custom scripts
             dependencies: dependencies,
-            settings: .settings(base: .extendingBase(with: settings)),
+            settings:
+            .settings(base:
+                .extendingBase(with: settings)
+                    .merging(SettingsDictionary.manualCodeSigning)
+            ),
             environmentVariables: [
                 "IDEPreferLogStreaming": "YES",
             ],
