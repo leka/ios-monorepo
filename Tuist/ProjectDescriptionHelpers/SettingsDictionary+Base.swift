@@ -49,6 +49,8 @@ public extension SettingsDictionary {
                 fatalError("You must provide a certificate app name")
             }
 
+            print("🔐 Using Fastlane match for code signing for bundle id: \(bundleId)")
+
             settings = settings.manualCodeSigning(identity: "Apple Distribution", provisioningProfileSpecifier: "match AppStore \(bundleId)")
         } else {
             settings = settings.manualCodeSigning(provisioningProfileSpecifier: "match Development io.leka.apf.*")
