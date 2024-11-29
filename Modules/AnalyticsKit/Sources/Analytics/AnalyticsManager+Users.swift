@@ -10,7 +10,7 @@ public extension AnalyticsManager {
 
     static func logEventCaregiverCreate(id: String, parameters: [String: Any] = [:]) {
         let params: [String: Any] = [
-            "lk_caregiver_id_new": id,
+            "lk_caregiver_id_created": id,
         ].merging(parameters) { _, new in new }
 
         logEvent(.caregiverCreate, parameters: params)
@@ -27,7 +27,7 @@ public extension AnalyticsManager {
     static func logEventCaregiverSelect(from previous: String?, to new: String, parameters: [String: Any] = [:]) {
         let params: [String: Any] = [
             "lk_caregiver_id_previous": previous ?? NSNull(),
-            "lk_caregiver_id_new": new,
+            "lk_caregiver_id_selected": new,
         ].merging(parameters) { _, new in new }
 
         logEvent(.caregiverSelect, parameters: params)
@@ -37,7 +37,7 @@ public extension AnalyticsManager {
 
     static func logEventCarereceiverCreate(id: String, parameters: [String: Any] = [:]) {
         let params: [String: Any] = [
-            "lk_carereceiver_id_new": id,
+            "lk_carereceiver_id_created": id,
         ].merging(parameters) { _, new in new }
 
         logEvent(.carereceiverCreate, parameters: params)
@@ -55,7 +55,7 @@ public extension AnalyticsManager {
         let carereceiversString = carereceivers.joined(separator: ",")
 
         let params: [String: Any] = [
-            "lk_carereceivers_ids_new": carereceiversString,
+            "lk_carereceivers_ids_selected": carereceiversString,
         ].merging(parameters) { _, new in new }
 
         logEvent(.carereceiversSelect, parameters: params)
