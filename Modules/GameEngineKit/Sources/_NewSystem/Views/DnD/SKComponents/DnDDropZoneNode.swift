@@ -60,6 +60,27 @@ public class DnDDropZoneNode: SKSpriteNode {
         self.zPosition = 10
     }
 
+    init(node: DnDAnswerNode, position: CGPoint = .zero) {
+        self.id = node.id
+        switch node.type {
+            case .text:
+                let image = DnDDropZoneNode.createRoundedRectImage(size: node.size)
+                let texture = SKTexture(image: image)
+
+                super.init(texture: texture, color: .clear, size: node.size)
+                self.position = position
+
+            case .sfsymbol,
+                 .image:
+                let image = DnDDropZoneNode.createRoundedRectImage(size: node.size)
+                let texture = SKTexture(image: image)
+
+                super.init(texture: texture, color: .clear, size: node.size)
+                self.position = position
+        }
+        self.position = position
+    }
+
     @available(*, unavailable)
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -70,4 +91,34 @@ public class DnDDropZoneNode: SKSpriteNode {
     let id: String
     var initialPosition: CGPoint?
     var isDraggable = true
+
+    // MARK: Private
+
+    private static let dropzoneBackgroundColor: UIColor = .init(
+        light: UIColor.white,
+        dark: UIColor(displayP3Red: 242 / 255, green: 242 / 255, blue: 247 / 255, alpha: 1.0)
+    )
+
+    private static func createRoundedRectImage(size: CGSize) -> UIImage {
+        let rect = CGRect(origin: .zero, size: size)
+        let cornerRadius: CGFloat = 10 / 57 * size.width
+        let strokeWidth: CGFloat = 2.0
+
+        let renderer = UIGraphicsImageRenderer(size: size)
+        let image = renderer.image { context in
+            let context = context.cgContext
+
+            context.setFillColor(self.dropzoneBackgroundColor.cgColor)
+            let path = UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius)
+            path.fill()
+
+            context.setStrokeColor(UIColor.gray.cgColor)
+            context.setLineWidth(strokeWidth)
+            let borderRect = rect.insetBy(dx: strokeWidth / 2, dy: strokeWidth / 2)
+            let borderPath = UIBezierPath(roundedRect: borderRect, cornerRadius: cornerRadius - strokeWidth / 2)
+            borderPath.stroke()
+        }
+
+        return image
+    }
 }
