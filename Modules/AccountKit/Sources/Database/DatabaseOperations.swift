@@ -143,8 +143,8 @@ public class DatabaseOperations {
         self.listenerRegistrations.removeAll()
     }
 
-    public func update(data: some DatabaseDocument, in collection: DatabaseCollection) -> AnyPublisher<Void, Error> {
-        Future<Void, Error> { promise in
+    public func update<T: DatabaseDocument>(data: T, in collection: DatabaseCollection) -> AnyPublisher<T, Error> {
+        Future<T, Error> { promise in
             let docRef = self.database.collection(collection.rawValue).document(data.id!)
 
             do {
@@ -154,7 +154,7 @@ public class DatabaseOperations {
                         promise(.failure(DatabaseError.customError(error.localizedDescription)))
                     } else {
                         log.info("Document \(String(describing: data.id!)) updated successfully in \(collection.rawValue). 🎉")
-                        promise(.success(()))
+                        promise(.success(data))
                     }
                 }
             } catch {
