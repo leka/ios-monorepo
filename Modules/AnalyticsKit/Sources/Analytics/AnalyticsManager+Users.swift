@@ -35,6 +35,32 @@ public extension AnalyticsManager {
 
     // MARK: - Carereceiver
 
+    static func logEventCarereceiverCreate(id: String, parameters: [String: Any] = [:]) {
+        let params: [String: Any] = [
+            "lk_carereceiver_id_new": id,
+        ].merging(parameters) { _, new in new }
+
+        logEvent(.carereceiverCreate, parameters: params)
+    }
+
+    static func logEventCarereceiverEdit(carereceivers: String, parameters: [String: Any] = [:]) {
+        let params: [String: Any] = [
+            "lk_carereceiver_id_edited": carereceivers,
+        ].merging(parameters) { _, new in new }
+
+        logEvent(.carereceiverEdit, parameters: params)
+    }
+
+    static func logEventCarereceiversSelect(carereceivers: [String], parameters: [String: Any] = [:]) {
+        let carereceiversString = carereceivers.joined(separator: ",")
+
+        let params: [String: Any] = [
+            "lk_carereceivers_ids_new": carereceiversString,
+        ].merging(parameters) { _, new in new }
+
+        logEvent(.carereceiversSelect, parameters: params)
+    }
+
     static func logEventCarereceiverSkipSelect(parameters: [String: Any] = [:]) {
         let params: [String: Any] = [:].merging(parameters) { _, new in new }
 

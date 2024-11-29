@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AnalyticsKit
 import Combine
 
 public class CarereceiverManager {
@@ -42,8 +43,10 @@ public class CarereceiverManager {
                     .setFailureType(to: Error.self)
                     .eraseToAnyPublisher()
             }
-            .handleEvents(receiveOutput: { [weak self] _ in
+            .handleEvents(receiveOutput: { [weak self] newCarereceiver in
                 self?.initializeCarereceiversListener()
+                AnalyticsManager.logEventCarereceiverCreate(id: newCarereceiver.id!)
+                log.info("Carereceiver \(newCarereceiver.id!) successfully created.")
             })
             .eraseToAnyPublisher()
     }
@@ -55,8 +58,10 @@ public class CarereceiverManager {
                 if case let .failure(error) = completion {
                     self.fetchError.send(error)
                 }
-            }, receiveValue: { _ in
-                // Nothing to do
+            }, receiveValue: { [weak self] updatedCarereceiver in
+                guard let self else { return }
+                AnalyticsManager.logEventCarereceiverEdit(carereceivers: updatedCarereceiver.id!)
+                log.info("Carereceiver \(updatedCarereceiver.id!) successfully updated.")
             })
             .store(in: &self.cancellables)
     }
@@ -75,6 +80,8 @@ public class CarereceiverManager {
 
     public func setCurrentCarereceivers(to carereceivers: [Carereceiver]) {
         self.currentCarereceivers.send(carereceivers)
+        let carereceiverIDs = carereceivers.compactMap(\.id)
+        AnalyticsManager.logEventCarereceiversSelect(carereceivers: carereceiverIDs)
     }
 
     public func resetData() {
