@@ -4,6 +4,7 @@
 
 import AnalyticsKit
 import Combine
+import Foundation
 
 public class CaregiverManager {
     // MARK: Lifecycle
@@ -61,8 +62,9 @@ public class CaregiverManager {
                     .setFailureType(to: Error.self)
                     .eraseToAnyPublisher()
             }
-            .handleEvents(receiveOutput: { [weak self] _ in
+            .handleEvents(receiveOutput: { [weak self] newCaregiver in
                 self?.initializeCaregiversListener()
+                AnalyticsManager.logEventCaregiverCreate(id: newCaregiver.id!)
             })
             .eraseToAnyPublisher()
     }
@@ -74,8 +76,12 @@ public class CaregiverManager {
                 if case let .failure(error) = completion {
                     self.fetchError.send(error)
                 }
-            }, receiveValue: { _ in
-                // Nothing to do
+            }, receiveValue: { [weak self] updatedCaregiver in
+                guard let self else { return }
+                guard updatedCaregiver.id == self.currentCaregiver.value?.id else { return }
+                self.setCurrentCaregiver(to: updatedCaregiver)
+                AnalyticsManager.logEventCaregiverEdit(caregiver: updatedCaregiver.id!)
+                log.info("Caregiver successfully updated.")
             })
             .store(in: &self.cancellables)
     }
@@ -107,10 +113,13 @@ public class CaregiverManager {
     }
 
     public func setCurrentCaregiver(byID id: String) {
+        let previousCaregiverID: String? = self.currentCaregiver.value?.id
         guard let currentCaregiver = self.caregiverList.value.first(where: { $0.id == id }) else {
             return
         }
         self.currentCaregiver.send(currentCaregiver)
+
+        AnalyticsManager.logEventCaregiverSelect(from: previousCaregiverID, to: currentCaregiver.id!)
         AnalyticsManager.setDefaultEventParameterCaregiverUid(currentCaregiver.id)
         AnalyticsManager.setUserPropertyCaregiverProfessions(values: currentCaregiver.professions)
     }

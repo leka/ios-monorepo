@@ -6,6 +6,24 @@ import FirebaseAnalytics
 import Foundation
 
 public extension AnalyticsManager {
+    // MARK: - Caregiver
+
+    static func logEventCaregiverCreate(id: String, parameters: [String: Any] = [:]) {
+        let params: [String: Any] = [
+            "lk_caregiver_id_new": id,
+        ].merging(parameters) { _, new in new }
+
+        logEvent(.caregiverCreate, parameters: params)
+    }
+
+    static func logEventCaregiverEdit(caregiver: String, parameters: [String: Any] = [:]) {
+        let params: [String: Any] = [
+            "lk_caregiver_id_edited": caregiver,
+        ].merging(parameters) { _, new in new }
+
+        logEvent(.caregiverEdit, parameters: params)
+    }
+
     static func logEventCaregiverSelect(from previous: String?, to new: String, parameters: [String: Any] = [:]) {
         let params: [String: Any] = [
             "lk_caregiver_id_previous": previous ?? NSNull(),
@@ -14,6 +32,8 @@ public extension AnalyticsManager {
 
         logEvent(.caregiverSelect, parameters: params)
     }
+
+    // MARK: - Carereceiver
 
     static func logEventCarereceiverSkipSelect(parameters: [String: Any] = [:]) {
         let params: [String: Any] = [:].merging(parameters) { _, new in new }
