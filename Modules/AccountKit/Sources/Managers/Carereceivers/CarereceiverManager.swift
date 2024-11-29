@@ -55,7 +55,7 @@ public class CarereceiverManager {
                 if case let .failure(error) = completion {
                     self.fetchError.send(error)
                 }
-            }, receiveValue: {
+            }, receiveValue: { _ in
                 // Nothing to do
             })
             .store(in: &self.cancellables)
