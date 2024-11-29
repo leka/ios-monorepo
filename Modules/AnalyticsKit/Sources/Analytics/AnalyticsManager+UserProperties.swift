@@ -7,6 +7,7 @@ import FirebaseAnalytics
 public extension AnalyticsManager {
     static func setUserID(_ userID: String?) {
         Analytics.setUserID(userID)
+        CrashlyticsManager.setUserID(userID)
     }
 
     static func setUserPropertyUserIsLoggedIn(value: Bool) {
