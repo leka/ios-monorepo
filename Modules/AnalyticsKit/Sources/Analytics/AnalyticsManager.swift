@@ -4,6 +4,8 @@
 
 import Combine
 import FirebaseAnalytics
+import Foundation
+import Logging
 
 public class AnalyticsManager {
     // MARK: Lifecycle
@@ -89,11 +91,99 @@ public class AnalyticsManager {
         }
     }
 
+    struct AnalyticsError {
+        // MARK: Lifecycle
+
+        init(domain: Domain, code: Int, message: String) {
+            self.domain = domain
+            self.code = code
+            self.message = "\(message)"
+        }
+
+        // MARK: Internal
+
+        enum Domain: String {
+            case event
+            case userProperty
+        }
+
+        let message: Logger.Message
+        let domain: Domain
+        let code: Int
+
+        var error: NSError {
+            NSError(
+                domain: "app.leka.error.analytics.\(self.domain)",
+                code: self.code,
+                userInfo: [NSLocalizedDescriptionKey: self.message.description]
+            )
+        }
+    }
+
     static func logEvent(_ event: Event, parameters: [String: Any] = [:]) {
+        if event.name.isEmpty {
+            let error = AnalyticsError(domain: .event, code: 0, message: "Event name is empty: \(event)")
+            log.error(error.message)
+            CrashlyticsManager.recordError(error.error)
+        }
+
+        if event.name.count > 40 {
+            let error = AnalyticsError(domain: .event, code: 1, message: "Event name is too long: \(event) - (\(event.name.count) characters)")
+            log.error(error.message)
+            CrashlyticsManager.recordError(error.error)
+        }
+
+        let kAuthorizedKeys: [String] = ["screen_class", "screen_name", "content_type", "item_id"]
+
+        for (key, value) in parameters {
+            if key.isEmpty {
+                let error = AnalyticsError(domain: .event, code: 2, message: "Event parameter key is empty: \(event)")
+                log.error(error.message)
+                CrashlyticsManager.recordError(error.error)
+            }
+
+            if key.count > 40 {
+                let error = AnalyticsError(domain: .event, code: 3, message: "Event parameter key too long: \(event) - \(key) - (\(key.count) characters)")
+                log.error(error.message)
+                CrashlyticsManager.recordError(error.error)
+            }
+
+            if "\(value)".count > 100 {
+                let error = AnalyticsError(domain: .event, code: 4, message: "Event parameter value too long: \(event) - \(key) - \(value) - (\("\(value)".count) characters)")
+                log.error(error.message)
+                CrashlyticsManager.recordError(error.error)
+            }
+
+            if !key.starts(with: "lk_"), !kAuthorizedKeys.contains(key) {
+                let error = AnalyticsError(domain: .event, code: 5, message: "Event parameter key missing prefix 'lk_': \(event) - \(key)")
+                log.error(error.message)
+                CrashlyticsManager.recordError(error.error)
+                CrashlyticsManager.recordError(error.error)
+            }
+        }
+
         Analytics.logEvent(event.name, parameters: parameters)
     }
 
     static func setUserProperty(value: String, forName name: String) {
+        if name.isEmpty {
+            let error = AnalyticsError(domain: .userProperty, code: 0, message: "User property name is empty")
+            log.error(error.message)
+            CrashlyticsManager.recordError(error.error)
+        }
+
+        if name.count > 24 {
+            let error = AnalyticsError(domain: .userProperty, code: 1, message: "User property name is too long: \(name) - (\(name.count) characters)")
+            log.error(error.message)
+            CrashlyticsManager.recordError(error.error)
+        }
+
+        if value.count > 36 {
+            let error = AnalyticsError(domain: .userProperty, code: 2, message: "User property value is too long: \(name) - \(value) - (\(value.count) characters)")
+            log.error(error.message)
+            CrashlyticsManager.recordError(error.error)
+        }
+
         Analytics.setUserProperty(value, forName: name)
     }
 
