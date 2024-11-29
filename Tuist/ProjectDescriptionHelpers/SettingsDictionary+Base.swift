@@ -36,6 +36,12 @@ public extension SettingsDictionary {
             settings = settings.otherSwiftFlags(["-D", "PRODUCTION_BUILD"])
         }
 
+        return settings
+    }
+
+    static var manualCodeSigning: SettingsDictionary {
+        var settings: SettingsDictionary = [:]
+
         if Environment.fastlaneBuild.getBoolean(default: false) {
             let bundleId = Environment.fastlaneMatchAppBundleId.getString(default: "")
 
