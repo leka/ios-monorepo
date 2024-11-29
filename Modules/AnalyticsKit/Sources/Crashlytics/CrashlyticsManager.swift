@@ -13,7 +13,7 @@ public class CrashlyticsManager {
         Crashlytics.crashlytics().setCustomValue(value, forKey: key)
     }
 
-    public static func setUserID(_ userID: String) {
+    public static func setUserID(_ userID: String?) {
         Crashlytics.crashlytics().setUserID(userID)
     }
 

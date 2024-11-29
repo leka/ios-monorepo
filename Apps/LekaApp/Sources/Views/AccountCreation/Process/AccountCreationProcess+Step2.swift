@@ -46,6 +46,7 @@ extension AccountCreationProcess {
                             self.selectedTab = .carereceiverCreation
                         }
                     })
+                    .logEventScreenView(screenName: "caregiver_create", context: .context("account_creation_sheet"))
                     .navigationBarTitleDisplayMode(.inline)
                     .interactiveDismissDisabled()
                 }

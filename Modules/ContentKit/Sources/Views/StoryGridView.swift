@@ -23,14 +23,13 @@ public struct StoryGridView: View {
             ForEach(self.stories) { story in
                 NavigationLink(destination:
                     StoryDetailsView(story: story, onStartStory: self.onStartStory)
-                        .onAppear {
-                            AnalyticsManager.logEventSelectContent(
-                                type: .story,
-                                id: story.id,
-                                name: story.name,
-                                origin: .generalLibrary
-                            )
-                        }
+                        .logEventScreenView(
+                            screenName: "story_details",
+                            context: .splitView,
+                            parameters: [
+                                "lk_story_id": "\(story.name)-\(story.id)",
+                            ]
+                        )
                 ) {
                     VStack(spacing: 0) {
                         Image(uiImage: story.details.iconImage)
@@ -52,6 +51,14 @@ public struct StoryGridView: View {
                     }
                     .padding(.vertical)
                 }
+                .simultaneousGesture(TapGesture().onEnded {
+                    AnalyticsManager.logEventSelectContent(
+                        type: .story,
+                        id: story.id,
+                        name: story.name,
+                        origin: .generalLibrary
+                    )
+                })
             }
         }
     }

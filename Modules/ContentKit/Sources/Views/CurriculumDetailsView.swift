@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
-import AnalyticsKit
 import DesignKit
 import Fit
 import LocalizationKit
@@ -141,9 +140,6 @@ public struct CurriculumDetailsView: View {
                     )
                 }
             }
-        }
-        .onAppear {
-            AnalyticsManager.logEventScreenView(screenName: "view_curriculum_details_view")
         }
         .toolbar {
             #if DEVELOPER_MODE || TESTFLIGHT_BUILD

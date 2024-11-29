@@ -23,14 +23,14 @@ public struct GamepadGridView: View {
             ForEach(self.gamepads) { activity in
                 NavigationLink(destination:
                     ActivityDetailsView(activity: activity, onStartActivity: self.onStartGamepad)
-                        .onAppear {
-                            AnalyticsManager.logEventSelectContent(
-                                type: .gamepad,
-                                id: activity.id,
-                                name: activity.name,
-                                origin: .generalLibrary
-                            )
-                        }
+                        .logEventScreenView(
+                            screenName: "activity_details",
+                            context: .splitView,
+                            parameters: [
+                                "lk_activity_id": "\(activity.name)-\(activity.id)",
+                            ]
+                        )
+
                 ) {
                     VStack {
                         Image(uiImage: activity.details.iconImage)
@@ -46,6 +46,15 @@ public struct GamepadGridView: View {
                         Spacer()
                     }
                 }
+                .simultaneousGesture(TapGesture().onEnded {
+                    log.debug("Gamepad selected: \(activity.name)")
+                    AnalyticsManager.logEventSelectContent(
+                        type: .gamepad,
+                        id: activity.id,
+                        name: activity.name,
+                        origin: .generalLibrary
+                    )
+                })
             }
         }
     }

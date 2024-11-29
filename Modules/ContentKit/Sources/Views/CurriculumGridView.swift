@@ -23,23 +23,26 @@ public struct CurriculumGridView: View {
     public var body: some View {
         LazyVGrid(columns: self.columns) {
             ForEach(self.curriculums) { curriculum in
-                NavigationLink(
-                    destination:
-                    CurriculumDetailsView(
-                        curriculum: curriculum,
-                        onActivitySelected: self.onActivitySelected
-                    )
-                    .onAppear {
-                        AnalyticsManager.logEventSelectContent(
-                            type: .curriculum,
-                            id: curriculum.id,
-                            name: curriculum.name,
-                            origin: .personalLibrary
+                NavigationLink(destination:
+                    CurriculumDetailsView(curriculum: curriculum, onActivitySelected: self.onActivitySelected)
+                        .logEventScreenView(
+                            screenName: "curriculum_details",
+                            context: .splitView,
+                            parameters: [
+                                "lk_curriculum_id": "\(curriculum.name)-\(curriculum.id)",
+                            ]
                         )
-                    }
                 ) {
                     CurriculumGroupboxView(curriculum: curriculum)
                 }
+                .simultaneousGesture(TapGesture().onEnded {
+                    AnalyticsManager.logEventSelectContent(
+                        type: .curriculum,
+                        id: curriculum.id,
+                        name: curriculum.name,
+                        origin: .personalLibrary
+                    )
+                })
             }
         }
         .padding()
