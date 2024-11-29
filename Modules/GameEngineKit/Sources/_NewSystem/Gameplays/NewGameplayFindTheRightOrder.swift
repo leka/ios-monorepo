@@ -56,7 +56,7 @@ public class NewGameplayFindTheRightOrder: GameplayProtocol {
         }
 
         return self.orderedChoices.enumerated().map { index, choice in
-            if self.orderedChoices[index] == choice {
+            if choices[index] == choice {
                 (choice: choice, correctPosition: true)
             } else {
                 (choice: choice, correctPosition: false)
