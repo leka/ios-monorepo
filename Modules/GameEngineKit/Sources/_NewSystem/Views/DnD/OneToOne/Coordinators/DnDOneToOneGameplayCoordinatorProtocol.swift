@@ -6,7 +6,7 @@ import Combine
 import Foundation
 
 // swiftlint:disable:next type_name
-public protocol DnDGridWithCorrespondingZonesGameplayCoordinatorProtocol {
+public protocol DnDOneToOneGameplayCoordinatorProtocol {
     var uiChoices: CurrentValueSubject<DnDUIChoices, Never> { get }
     var uiDropZones: [DnDDropZoneNode] { get }
     func setAlreadyOrderedNodes()

@@ -6,10 +6,10 @@ import ContentKit
 import SpriteKit
 import SwiftUI
 
-class DnDGridWithCorrespondingZonesBaseScene: SKScene {
+class DnDOneToOneBaseScene: SKScene {
     // MARK: Lifecycle
 
-    init(viewModel: DnDGridWithCorrespondingZonesViewModel) {
+    init(viewModel: DnDOneToOneViewModel) {
         self.viewModel = viewModel
         super.init(size: CGSize.zero)
     }
@@ -136,7 +136,7 @@ class DnDGridWithCorrespondingZonesBaseScene: SKScene {
 
     private var spacer: CGFloat = .zero
     private var maxWidthAndHeight: CGFloat = .zero
-    private var viewModel: DnDGridWithCorrespondingZonesViewModel
+    private var viewModel: DnDOneToOneViewModel
     private var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
     private var selectedNodes: [UITouch: DnDAnswerNode] = [:]
     private var dropZonesNodes: [DnDDropZoneNode] = []

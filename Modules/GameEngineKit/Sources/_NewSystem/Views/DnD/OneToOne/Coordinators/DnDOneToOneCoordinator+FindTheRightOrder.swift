@@ -7,10 +7,10 @@ import SpriteKit
 import SwiftUI
 import UtilsKit
 
-// MARK: - DnDGridWithCorrespondingZonesCoordinatorFindTheRightOrder
+// MARK: - DnDOneToOneCoordinatorFindTheRightOrder
 
 // swiftlint:disable:next type_name
-public class DnDGridWithCorrespondingZonesCoordinatorFindTheRightOrder: DnDGridWithCorrespondingZonesGameplayCoordinatorProtocol {
+public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
     public init(gameplay: NewGameplayFindTheRightOrder) {
@@ -69,7 +69,7 @@ public class DnDGridWithCorrespondingZonesCoordinatorFindTheRightOrder: DnDGridW
               let destinationIndex = self.uiDropZones.firstIndex(where: { $0.id == destination.id }),
               !self.choiceAlreadySelected(choice: sourceChoice) else { return }
 
-        self.select(choice: sourceChoice, dropZoneIndex: destinationIndex)
+        self.order(choice: sourceChoice, dropZoneIndex: destinationIndex)
         if self.currentOrderedChoices.doesNotContain(.zero) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                 let results = self.gameplay.process(choices: self.currentOrderedChoices)
@@ -97,7 +97,7 @@ public class DnDGridWithCorrespondingZonesCoordinatorFindTheRightOrder: DnDGridW
         self.alreadyValidatedChoices.contains(where: { $0.id == choice.id })
     }
 
-    private func select(choice: NewGameplayFindTheRightOrderChoice, dropZoneIndex: Int) {
+    private func order(choice: NewGameplayFindTheRightOrderChoice, dropZoneIndex: Int) {
         let previousChoice = self.currentOrderedChoices[dropZoneIndex]
         if let index = self.currentOrderedChoices.firstIndex(where: { $0 == choice }) {
             if previousChoice == .zero {
@@ -132,7 +132,7 @@ public class DnDGridWithCorrespondingZonesCoordinatorFindTheRightOrder: DnDGridW
     }
 }
 
-extension DnDGridWithCorrespondingZonesCoordinatorFindTheRightOrder {
+extension DnDOneToOneCoordinatorFindTheRightOrder {
     enum State: Equatable {
         case idle
         case selected

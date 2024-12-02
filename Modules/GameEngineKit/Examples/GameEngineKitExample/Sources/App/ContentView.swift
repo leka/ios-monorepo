@@ -180,13 +180,13 @@ struct ContentView: View {
                     .buttonStyle(.borderedProminent)
                     .frame(maxWidth: .infinity)
 
-                    NavigationLink("Drag & Drop With Corresponding Zones In Right Order", destination: {
+                    NavigationLink("Drag & Drop One To One In Right Order", destination: {
                         let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultChoicesWithZones)
-                        let coordinator = DnDGridWithCorrespondingZonesCoordinatorFindTheRightOrder(gameplay: gameplay)
-                        let viewModel = DnDGridWithCorrespondingZonesViewModel(coordinator: coordinator)
+                        let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(gameplay: gameplay)
+                        let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
 
-                        return DnDGridWithCorrespondingZonesView(viewModel: viewModel)
-                            .navigationTitle("Drag & Drop With Corresponding Zones In Right Order")
+                        return DnDOneToOneView(viewModel: viewModel)
+                            .navigationTitle("Drag & Drop One To One In Right Order")
                             .navigationBarTitleDisplayMode(.large)
                     })
                     .tint(.red)

@@ -5,12 +5,12 @@
 import Combine
 import SwiftUI
 
-// MARK: - DnDGridWithCorrespondingZonesViewModel
+// MARK: - DnDOneToOneViewModel
 
-public class DnDGridWithCorrespondingZonesViewModel: ObservableObject {
+public class DnDOneToOneViewModel: ObservableObject {
     // MARK: Lifecycle
 
-    public init(coordinator: DnDGridWithCorrespondingZonesGameplayCoordinatorProtocol) {
+    public init(coordinator: DnDOneToOneGameplayCoordinatorProtocol) {
         self.choices = coordinator.uiChoices.value.choices
         self.dropzones = coordinator.uiDropZones
         self.coordinator = coordinator
@@ -37,6 +37,6 @@ public class DnDGridWithCorrespondingZonesViewModel: ObservableObject {
 
     // MARK: Private
 
-    private let coordinator: DnDGridWithCorrespondingZonesGameplayCoordinatorProtocol
+    private let coordinator: DnDOneToOneGameplayCoordinatorProtocol
     private var cancellables: Set<AnyCancellable> = []
 }

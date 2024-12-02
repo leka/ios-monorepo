@@ -5,12 +5,12 @@
 import SpriteKit
 import SwiftUI
 
-// MARK: - DnDGridWithCorrespondingZonesView
+// MARK: - DnDOneToOneView
 
-public struct DnDGridWithCorrespondingZonesView: View {
+public struct DnDOneToOneView: View {
     // MARK: Lifecycle
 
-    public init(viewModel: DnDGridWithCorrespondingZonesViewModel) {
+    public init(viewModel: DnDOneToOneViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
 
@@ -21,18 +21,18 @@ public struct DnDGridWithCorrespondingZonesView: View {
             SpriteView(scene: self.makeScene(size: proxy.size), options: [.allowsTransparency])
                 .frame(width: proxy.size.width, height: proxy.size.height)
                 .onAppear {
-                    self.scene = DnDGridWithCorrespondingZonesBaseScene(viewModel: self.viewModel)
+                    self.scene = DnDOneToOneBaseScene(viewModel: self.viewModel)
                 }
         }
     }
 
     // MARK: Private
 
-    @StateObject private var viewModel: DnDGridWithCorrespondingZonesViewModel
+    @StateObject private var viewModel: DnDOneToOneViewModel
     @State private var scene: SKScene = .init()
 
     private func makeScene(size: CGSize) -> SKScene {
-        guard let finalScene = scene as? DnDGridWithCorrespondingZonesBaseScene else {
+        guard let finalScene = scene as? DnDOneToOneBaseScene else {
             return SKScene()
         }
         finalScene.size = size
