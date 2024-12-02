@@ -40,54 +40,68 @@ def compute_sha(id_value, sha_length=4):
     return sha
 
 
-def validate_and_update_sha(data, file, sha_length=4):
+def validate_and_update_sha(entry, shas_set, sha_length=4, file=None):
     """
-    Validate and update the sha for each entry in the list.
+    Validate and update the sha for a single entry.
     Adds sha if missing or incorrect.
-    Returns a tuple (modified, sha_duplicates).
+    Returns True if modified, False otherwise.
+    Also updates shas_set with the sha.
     """
     modified = False
-    shas = []
+    id_value = entry.get("id", "")
+    expected_sha = compute_sha(id_value, sha_length=sha_length)
+    current_sha = entry.get("sha", None)
 
-    for item in data.get("list", []):
-        id_value = item.get("id", "")
-        expected_sha = compute_sha(id_value, sha_length=sha_length)
-        current_sha = item.get("sha", None)
+    if current_sha != expected_sha:
+        # Update the sha
+        entry["sha"] = expected_sha
+        modified = True
+        if file:
+            print(f"🔧 Updated sha for id '{id_value}' to '{expected_sha}' in {file}.")
 
-        if current_sha != expected_sha:
-            # Update the sha
-            item["sha"] = expected_sha
+    # Check for duplicate shas
+    if expected_sha in shas_set:
+        return modified, expected_sha  # Duplicate found
+    shas_set.add(expected_sha)
+    return modified, None  # No duplicate
+
+
+def process_entries(entries, shas_set, sha_length=4, file=None):
+    """
+    Recursively process a list of entries and their subskills.
+    Returns a tuple (modified, duplicate_shas).
+    """
+    modified = False
+    duplicate_shas = set()
+
+    # Sort entries by id
+    sorted_entries = sort_list_by_id(entries)
+    if sorted_entries != entries:
+        entries[:] = sorted_entries
+        modified = True
+        if file:
+            print(f"📂 Sorted entries in {file} by 'id'.")
+
+    for entry in entries:
+        # Validate and update sha
+        entry_modified, duplicate_sha = validate_and_update_sha(
+            entry, shas_set, sha_length=sha_length, file=file
+        )
+        if entry_modified:
             modified = True
+        if duplicate_sha:
+            duplicate_shas.add(duplicate_sha)
 
-        shas.append(expected_sha)
+        # Recursively process subskills
+        if "subskills" in entry and isinstance(entry["subskills"], list):
+            sub_modified, sub_duplicates = process_entries(
+                entry["subskills"], shas_set, sha_length=sha_length, file=file
+            )
+            if sub_modified:
+                modified = True
+            duplicate_shas.update(sub_duplicates)
 
-    # Check for sha collisions
-    unique_shas = set(shas)
-    sha_duplicates = set()
-
-    if len(unique_shas) != len(shas):
-        # Find duplicates
-        seen = set()
-        for sha in shas:
-            if sha in seen:
-                sha_duplicates.add(sha)
-            else:
-                seen.add(sha)
-
-    return modified, sha_duplicates
-
-
-def validate_and_sort(data, file):
-    """
-    Sort the list by id and return whether the data was modified.
-    """
-    sorted_list = sort_list_by_id(data.get("list", []))
-    if sorted_list != data.get("list", []):
-        data["list"] = sorted_list
-        dump_yaml(file, data)
-        print(f"📂 Sorted entries in {file} by 'id'.")
-        return True
-    return False
+    return modified, duplicate_shas
 
 
 def is_definition_list_valid(file, sha_length=4):
@@ -98,13 +112,28 @@ def is_definition_list_valid(file, sha_length=4):
     file_is_valid = True
     data = load_yaml(file)
     modified = False
+    duplicate_shas = set()
+    shas_set = set()
 
-    # Sort the list by id
-    if validate_and_sort(data, file):
-        modified = True
+    # Process the main list and all subskills
+    if "list" in data and isinstance(data["list"], list):
+        list_modified, list_duplicates = process_entries(
+            data["list"], shas_set, sha_length=sha_length, file=file
+        )
+        if list_modified:
+            modified = True
+        duplicate_shas.update(list_duplicates)
 
     # Check for duplicate ids
-    ids = [item["id"] for item in data.get("list", [])]
+    ids = []
+
+    def collect_ids(entries):
+        for entry in entries:
+            ids.append(entry["id"])
+            if "subskills" in entry and isinstance(entry["subskills"], list):
+                collect_ids(entry["subskills"])
+
+    collect_ids(data.get("list", []))
     duplicate_ids = find_duplicate_ids(ids)
     if duplicate_ids:
         file_is_valid = False
@@ -112,22 +141,18 @@ def is_definition_list_valid(file, sha_length=4):
         for duplicate_id in duplicate_ids:
             print(f"   - {duplicate_id}")
 
-    # Validate and update shas
-    sha_modified, sha_duplicates = validate_and_update_sha(data, file, sha_length=sha_length)
-    if sha_modified:
-        dump_yaml(file, data)
-        print(f"📝 Updated shas in {file}.")
-        modified = True
-
-    # If any modifications were made (sorting or sha updates), mark the file as invalid
-    if modified:
-        file_is_valid = False
-
-    # Check for sha collisions
-    if sha_duplicates:
+    # If any shas were duplicated
+    if duplicate_shas:
         file_is_valid = False
         print(f"\n❌ There are sha collisions in {file}:")
-        for sha in sha_duplicates:
+        for sha in duplicate_shas:
             print(f"   - {sha}")
+
+    # If modifications were made, dump the updated YAML
+    if modified:
+        dump_yaml(file, data)
+        print(f"📝 Updated shas in {file}.")
+        file_is_valid = False
+        print(f"\n⚠️  Changes were made to {file}. Please review and re-commit.")
 
     return file_is_valid
