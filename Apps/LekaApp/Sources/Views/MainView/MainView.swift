@@ -293,11 +293,15 @@ struct MainView: View {
                             .logEventScreenView(screenName: "caregiver_picker", context: .sheet)
                             .navigationBarTitleDisplayMode(.inline)
                             .onDisappear {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                    if case .appUpdateAvailable = UpdateManager.shared.appUpdateStatus {
-                                        self.showingAppUpdateAlert = true
-                                    } else if case .osUpdateAvailable = UpdateManager.shared.osUpdateStatus {
-                                        self.showingOSUpdateAlert = true
+                                if !self.updateAlertHasBeenShown {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                        if case .appUpdateAvailable = UpdateManager.shared.appUpdateStatus {
+                                            self.showingAppUpdateAlert = true
+                                            self.updateAlertHasBeenShown = true
+                                        } else if case .osUpdateAvailable = UpdateManager.shared.osUpdateStatus {
+                                            self.showingOSUpdateAlert = true
+                                            self.updateAlertHasBeenShown = true
+                                        }
                                     }
                                 }
                             }
@@ -392,6 +396,7 @@ struct MainView: View {
 
     @State private var showingAppUpdateAlert: Bool = false
     @State private var showingOSUpdateAlert: Bool = false
+    @State private var updateAlertHasBeenShown: Bool = false
 
     private var persistentDataManager: PersistentDataManager = .shared
     private var caregiverManager: CaregiverManager = .shared
