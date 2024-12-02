@@ -31,6 +31,9 @@
                 "id": {
                     "type": "string"
                 },
+                "sha": {
+                    "type": "string"
+                },
                 "l10n": {
                     "elements": {
                         "ref": "$l10n"

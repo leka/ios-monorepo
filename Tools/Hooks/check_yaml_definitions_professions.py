@@ -19,10 +19,10 @@ def check_profession_definitions(file):
     """Check profession definitions"""
     file_is_valid = True
 
-    if is_jtd_schema_compliant(file, JTD_SCHEMA) is False:
+    if not is_jtd_schema_compliant(file, JTD_SCHEMA):
         file_is_valid = False
 
-    if is_definition_list_valid(file) is False:
+    if not is_definition_list_valid(file):
         file_is_valid = False
 
     return file_is_valid
@@ -37,7 +37,7 @@ def main():
     for file in files:
         file_is_valid = check_profession_definitions(file)
 
-        if file_is_valid is False:
+        if not file_is_valid:
             must_fail = True
 
     if must_fail:
