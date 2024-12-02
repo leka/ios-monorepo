@@ -31,6 +31,9 @@
                 "id": {
                     "type": "string"
                 },
+                "sha": {
+                    "type": "string"
+                },
                 "visible": {
                     "type": "boolean"
                 },
