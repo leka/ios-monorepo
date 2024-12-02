@@ -70,7 +70,9 @@ public class CaregiverManager {
     }
 
     public func updateCaregiver(caregiver: inout Caregiver) {
+        let oldCaregiver = self.currentCaregiver.value
         caregiver.lastEditedAt = nil
+
         self.dbOps.update(data: caregiver, in: .caregivers)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
@@ -78,10 +80,22 @@ public class CaregiverManager {
                 }
             }, receiveValue: { [weak self] updatedCaregiver in
                 guard let self else { return }
-                guard updatedCaregiver.id == self.currentCaregiver.value?.id else { return }
-                self.setCurrentCaregiver(to: updatedCaregiver)
-                AnalyticsManager.logEventCaregiverEdit(caregiver: updatedCaregiver.id!)
-                log.info("Caregiver successfully updated.")
+
+                if updatedCaregiver.id == oldCaregiver?.id {
+                    self.setCurrentCaregiver(to: updatedCaregiver)
+                }
+
+                guard let oldCaregiver else {
+                    log.info("No previous caregiver to compare; skipping analytics log.")
+                    return
+                }
+                let changes = self.diff(from: oldCaregiver)
+                if !changes.isEmpty {
+                    AnalyticsManager.logEventCaregiverEdit(caregiver: updatedCaregiver.id!, parameters: changes)
+                    log.info("Caregiver successfully updated and changes logged.")
+                } else {
+                    log.info("No changes detected; skipping analytics log.")
+                }
             })
             .store(in: &self.cancellables)
     }
