@@ -5,6 +5,7 @@
 version: 1.0.0
 list:
   - id: aurore_kiesler
+    sha: d53f
     visible: true
     name: Aurore Kiesler
     website: https://www.autismes-aujourdhui.fr/
@@ -24,6 +25,7 @@ list:
           She is the one you should contact if you have any questions!
 
   - id: hanna_and_nagib
+    sha: 49b3
     visible: true
     name: Hanna & Nagib
     website: ""
@@ -44,6 +46,7 @@ list:
           Since then, they have become integral members of the Leka family, helping us improve our robot to assist other children.
           Hanna and Nagib have particularly helped create the story between Hanna and Leka.
   - id: julie_tuil
+    sha: a088
     visible: true
     name: Julie Tuil
     website: https://www.julietuil.com/
@@ -61,6 +64,7 @@ list:
           Julie Tuil is an autism specialist in France with over 20 years of experience. She offers training and programs based on Applied Behavior Analysis (ABA) to support autistic children and their families, focusing on enhancing communication and behavior management.
 
   - id: leka
+    sha: 808d
     visible: true
     name: Leka
     website: https://leka.io

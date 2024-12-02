@@ -5,6 +5,7 @@
 version: 1.0.0
 list:
   - id: aba_therapist
+    sha: '7536'
     l10n:
       - locale: fr_FR
         name: Intervenant(e) en ABA
@@ -16,6 +17,7 @@ list:
           A specialist who applies the principles of Applied Behavior Analysis (ABA) to assess and intervene in individuals with autism spectrum disorders and other behavioral issues.
 
   - id: behavior_analyst
+    sha: 02a1
     l10n:
       - locale: fr_FR
         name: Analyste du comportement
@@ -27,6 +29,7 @@ list:
           A professional specialized in the study of human behavior, using analysis techniques to understand and modify problematic behaviors.
 
   - id: behavioral_therapist
+    sha: '7183'
     l10n:
       - locale: fr_FR
         name: Thérapeute Comportemental
@@ -38,6 +41,7 @@ list:
           The Behavioral Therapist assists individuals with behavioral challenges, employing techniques to improve communication, social skills, and behavior.
 
   - id: care_assistant
+    sha: 047b
     l10n:
       - locale: fr_FR
         name: Auxiliaire de vie
@@ -49,6 +53,7 @@ list:
           The Care Assistant provides support to individuals in need of care, assisting with daily tasks and contributing to their comfort and health.
 
   - id: caregiver
+    sha: fd2c
     l10n:
       - locale: fr_FR
         name: Aide-soignant(e)
@@ -60,6 +65,7 @@ list:
           The caregiver assists dependent individuals in daily life activities, playing an essential role in maintaining their well-being.
 
   - id: child_psychiatrist
+    sha: 499c
     l10n:
       - locale: fr_FR
         name: Pédopsychiatre
@@ -71,6 +77,7 @@ list:
           The child psychiatrist diagnoses and treats mental and emotional disorders in children and adolescents.
 
   - id: clinical_director
+    sha: 3ee5
     l10n:
       - locale: fr_FR
         name: Directeur(trice) clinique
@@ -82,6 +89,7 @@ list:
           Responsible for the clinical and administrative supervision of a care unit or health facility, ensuring the quality of care and compliance with professional standards.
 
   - id: coordinator
+    sha: b1ba
     l10n:
       - locale: fr_FR
         name: Coordinateur
@@ -93,6 +101,7 @@ list:
           The Coordinator acts as a liaison between different teams and services, facilitating communication and collaboration to achieve common goals and optimize processes.
 
   - id: deputy_director
+    sha: 398a
     l10n:
       - locale: fr_FR
         name: Directeur Adjoint
@@ -104,6 +113,7 @@ list:
           The deputy director assists the director in management and leadership, taking on specific responsibilities and contributing to the implementation of the overall strategy.
 
   - id: director
+    sha: 235a
     l10n:
       - locale: fr_FR
         name: Directeur
@@ -115,6 +125,7 @@ list:
           The director manages and leads an institution or service, developing strategies, overseeing operations, and providing leadership and direction to the team.
 
   - id: doctor
+    sha: 1f01
     l10n:
       - locale: fr_FR
         name: Médecin
@@ -126,6 +137,7 @@ list:
           The doctor diagnoses and treats illnesses, playing a key role in the medical follow-up of individuals with disabilities.
 
   - id: early_childhood_educator
+    sha: 83a0
     l10n:
       - locale: fr_FR
         name: Éducateur(trice) de jeunes enfants
@@ -137,6 +149,7 @@ list:
           This professional supports the development of young children by creating a nurturing and stimulating environment.
 
   - id: educational_and_social_assistant
+    sha: 077b
     l10n:
       - locale: fr_FR
         name: Accompagnant Éducatif et Social
@@ -148,6 +161,7 @@ list:
           The educational and social assistant supports individuals facing difficulties or vulnerabilities, providing them with assistance in their education and social integration.
 
   - id: educational_and_social_support_worker
+    sha: 99bf
     l10n:
       - locale: fr_FR
         name: Travailleur social éducatif
@@ -159,6 +173,7 @@ list:
           The educational social worker helps individuals facing social difficulties to overcome their challenges and integrate into society.
 
   - id: educational_monitor
+    sha: 5f63
     l10n:
       - locale: fr_FR
         name: Moniteur(trice) éducatif(ve)
@@ -170,6 +185,7 @@ list:
           The educational monitor supervises educational and recreational activities for various groups, often within an institutional setting.
 
   - id: educational_support_for_students_with_disabilities
+    sha: 71ae
     l10n:
       - locale: fr_FR
         name: Auxiliaire de vie scolaire pour élèves en situation de handicap
@@ -181,6 +197,7 @@ list:
           This professional accompanies students with disabilities in their educational journey, facilitating their access to education and learning.
 
   - id: health_manager
+    sha: dad5
     l10n:
       - locale: fr_FR
         name: Cadre de santé
@@ -192,6 +209,7 @@ list:
           The health manager oversees clinical and administrative aspects in healthcare facilities, ensuring care coordination and the management of human and material resources.
 
   - id: inclusive_education_specialist
+    sha: 3b95
     l10n:
       - locale: fr_FR
         name: Spécialiste de l'Éducation Inclusive
@@ -203,6 +221,7 @@ list:
           The inclusive education specialist is an expert in adapting curricula and teaching strategies to include students of all abilities.
 
   - id: medical_psychological_assistant
+    sha: '6951'
     l10n:
       - locale: fr_FR
         name: Aide Médico Psychologique
@@ -214,6 +233,7 @@ list:
           The medical psychological assistant supports individuals with psychological disorders or disabilities, providing daily support and contributing to their psychological well-being.
 
   - id: nurse
+    sha: 285f
     l10n:
       - locale: fr_FR
         name: Infirmier(ère)
@@ -225,6 +245,7 @@ list:
           The nurse provides daily medical care and supports patients in managing their health on a day-to-day basis.
 
   - id: nursery_assistant
+    sha: 22d0
     l10n:
       - locale: fr_FR
         name: Auxiliaire de Puériculture
@@ -236,6 +257,7 @@ list:
           The nursery assistant works with young children, providing their daily care, stimulating their development, and contributing to their well-being in early childhood care settings.
 
   - id: nursery_nurse
+    sha: '7285'
     l10n:
       - locale: fr_FR
         name: Infirmier(ère) de Puériculture
@@ -247,6 +269,7 @@ list:
           A nursery nurse specializes in caring for infants and young children, contributing to their development and health within a nursing care framework.
 
   - id: occupational_therapist
+    sha: '5343'
     l10n:
       - locale: fr_FR
         name: Ergothérapeute
@@ -258,6 +281,7 @@ list:
           The occupational therapist assists disabled individuals in regaining autonomy and comfort in daily activities, adapting the environment and tools.
 
   - id: personal_care_assistant_for_dependence_and_disability
+    sha: f4d9
     l10n:
       - locale: fr_FR
         name: Assistant(e) de vie aux familles pour dépendance et handicap
@@ -269,6 +293,7 @@ list:
           This assistant supports families in caring for dependent or disabled members, facilitating daily life.
 
   - id: physiotherapist
+    sha: fe53
     l10n:
       - locale: fr_FR
         name: Kinésithérapeute
@@ -280,6 +305,7 @@ list:
           The physiotherapist performs manual therapies and exercises to restore mobility and alleviate pain.
 
   - id: psychiatrist
+    sha: f465
     l10n:
       - locale: fr_FR
         name: Psychiatre
@@ -291,6 +317,7 @@ list:
           The psychiatrist diagnoses and treats mental disorders. They often work with patients with special needs, providing medical assessment, care, and personalized treatment plans.
 
   - id: psychologist
+    sha: 487b
     l10n:
       - locale: fr_FR
         name: Psychologue
@@ -302,6 +329,7 @@ list:
           The psychologist assesses and supports mental health, providing specialized assistance in educational and therapeutic contexts.
 
   - id: psychomotor_therapist
+    sha: 724d
     l10n:
       - locale: fr_FR
         name: Psychomotricien(ne)
@@ -313,6 +341,7 @@ list:
           The psychomotor therapist works with individuals having psychomotor disorders, using various therapeutic techniques.
 
   - id: psychotherapist
+    sha: 8ecb
     l10n:
       - locale: fr_FR
         name: Psychologue comportementaliste
@@ -323,6 +352,7 @@ list:
         description: |
           A psychologist specializing in the use of behavioral and cognitive therapies to treat various psychological and behavioral disorders.
   - id: rehabilitation_counselor
+    sha: fcc2
     l10n:
       - locale: fr_FR
         name: Conseiller en Réadaptation
@@ -334,6 +364,7 @@ list:
           The rehabilitation counselor works with individuals with disabilities to achieve their personal, career, and independent living goals.
 
   - id: remedial_education_therapist
+    sha: '2960'
     l10n:
       - locale: fr_FR
         name: Orthopédagogue
@@ -345,6 +376,7 @@ list:
           The remedial education therapist designs and implements educational support programs for individuals with learning difficulties, aiming to enhance their skills and academic performance.
 
   - id: service_manager
+    sha: b14f
     l10n:
       - locale: fr_FR
         name: Chef de service
@@ -356,6 +388,7 @@ list:
           The service manager is responsible for the daily management of a specific service, ensuring the quality of services provided and the well-being of the team.
 
   - id: social_life_assistant
+    sha: fe20
     l10n:
       - locale: fr_FR
         name: Assistant(e) de Vie Sociale
@@ -367,6 +400,7 @@ list:
           The social life assistant supports individuals in situations of fragility or dependency with daily activities, promoting their well-being and social integration.
 
   - id: socio_cultural_animator
+    sha: 21cc
     l10n:
       - locale: fr_FR
         name: Animateur(trice) socio-culturel(le)
@@ -378,6 +412,7 @@ list:
           The socio-cultural animator organizes leisure and entertainment activities that promote social bonding and individual fulfillment.
 
   - id: special_education_teacher
+    sha: 589b
     l10n:
       - locale: fr_FR
         name: Enseignant(e) Spécialisé(e)
@@ -389,6 +424,7 @@ list:
           The special education teacher specifically works with children who have a wide range of disabilities, adapting teaching methods and educational content to meet their unique needs.
 
   - id: special_educator
+    sha: 68f3
     l10n:
       - locale: fr_FR
         name: Éducateur(trice) spécialisé(e)
@@ -400,6 +436,7 @@ list:
           Specialized educators work with individuals facing difficulties, disabilities, or risk of exclusion, to promote their social integration.
 
   - id: speech_language_therapist
+    sha: c491
     l10n:
       - locale: fr_FR
         name: Orthophoniste
@@ -411,6 +448,7 @@ list:
           The speech therapist treats speech and language disorders, developing personalized rehabilitation programs.
 
   - id: sports_trainer
+    sha: 5a29
     l10n:
       - locale: fr_FR
         name: Éducateur(trice) sportif(tive)
@@ -422,6 +460,7 @@ list:
           The sports trainer designs and oversees training programs to improve physical fitness, often tailored to the specific needs of individuals with disabilities or in rehabilitation.
 
   - id: teacher
+    sha: 4a82
     l10n:
       - locale: fr_FR
         name: Enseignant(e)
@@ -433,6 +472,7 @@ list:
           A teacher imparts knowledge and skills according to educational programs, often adapting their approach for students with special needs.
 
   - id: toy_librarian
+    sha: 63bb
     l10n:
       - locale: fr_FR
         name: Ludothécaire
@@ -444,6 +484,7 @@ list:
           The toy librarian manages a toy library, offering a variety of games and toys, and promotes children's development and learning through play, while supporting families and educators.
 
   - id: workshop_monitor
+    sha: bb73
     l10n:
       - locale: fr_FR
         name: Moniteur(trice) d'atelier
