@@ -24,8 +24,12 @@ struct LibraryActivitiesView: View {
         } else {
             ScrollView(showsIndicators: true) {
                 LibraryActivityListView(activities: self.activities) { activity in
-                    self.navigation.currentActivity = activity
-                    self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+                    if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
+                        self.navigation.sheetContent = .carereceiverPicker(activity: activity, story: nil)
+                    } else {
+                        self.navigation.currentActivity = activity
+                        self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+                    }
                 }
             }
         }
@@ -35,6 +39,7 @@ struct LibraryActivitiesView: View {
 
     @ObservedObject private var navigation: Navigation = .shared
     @ObservedObject private var viewModel: RootAccountManagerViewModel
+    @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
 
     private var activities: [Activity] {
         self.viewModel.savedActivities.compactMap { savedActivity in
