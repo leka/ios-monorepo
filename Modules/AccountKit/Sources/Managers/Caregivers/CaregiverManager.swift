@@ -109,7 +109,10 @@ public class CaregiverManager {
 
         AnalyticsManager.logEventCaregiverSelect(from: previousCaregiverID, to: caregiverID)
         AnalyticsManager.setDefaultEventParameterCaregiverUid(caregiverID)
-        AnalyticsManager.setUserPropertyCaregiverProfessions(values: caregiver.professions)
+        AnalyticsManager
+            .setUserPropertyCaregiverProfessions(
+                values: caregiver.professions.compactMap { Professions.profession(for: $0)?.sha }
+            )
     }
 
     public func setCurrentCaregiver(byID id: String) {
@@ -121,7 +124,9 @@ public class CaregiverManager {
 
         AnalyticsManager.logEventCaregiverSelect(from: previousCaregiverID, to: currentCaregiver.id!)
         AnalyticsManager.setDefaultEventParameterCaregiverUid(currentCaregiver.id)
-        AnalyticsManager.setUserPropertyCaregiverProfessions(values: currentCaregiver.professions)
+        AnalyticsManager.setUserPropertyCaregiverProfessions(
+            values: currentCaregiver.professions.compactMap { Professions.profession(for: $0)?.sha }
+        )
     }
 
     public func resetCurrentCaregiver() {
