@@ -24,8 +24,12 @@ struct LibraryStoriesView: View {
         } else {
             ScrollView(showsIndicators: true) {
                 StoryListView(stories: self.stories) { story in
-                    self.navigation.currentStory = story
-                    self.navigation.fullScreenCoverContent = .storyView(carereceivers: [])
+                    if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
+                        self.navigation.sheetContent = .carereceiverPicker(activity: nil, story: story)
+                    } else {
+                        self.navigation.currentStory = story
+                        self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+                    }
                 }
             }
         }
@@ -35,6 +39,7 @@ struct LibraryStoriesView: View {
 
     @ObservedObject private var navigation: Navigation = .shared
     @ObservedObject private var viewModel: RootAccountManagerViewModel
+    @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
 
     private var stories: [Story] {
         self.viewModel.savedStories.compactMap { savedStories in
