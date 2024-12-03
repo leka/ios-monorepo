@@ -9,7 +9,6 @@ import UtilsKit
 
 // MARK: - DnDOneToOneCoordinatorFindTheRightOrder
 
-// swiftlint:disable:next type_name
 public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
@@ -24,6 +23,8 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
             DnDDropZoneNode(node: node)
         }
 
+        self.uiChoices.value.choices.shuffle()
+
         self.currentOrderedChoices = Array(repeating: .zero, count: gameplay.orderedChoices.count)
         self.alreadyValidatedChoices = Array(repeating: .zero, count: gameplay.orderedChoices.count)
     }
@@ -34,8 +35,9 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
     public private(set) var uiChoices = CurrentValueSubject<DnDUIChoices, Never>(.zero)
 
     public func setAlreadyOrderedNodes() {
-        self.gameplay.orderedChoices.enumerated().forEach { index, choice in
+        self.gameplay.orderedChoices.forEach { choice in
             if choice.alreadyOrdered {
+                guard let index = self.uiDropZones.firstIndex(where: { $0.id == choice.id }) else { return }
                 self.updateChoiceState(for: choice, to: .correct(order: index))
                 self.currentOrderedChoices[index] = choice
                 self.alreadyValidatedChoices[index] = choice
@@ -88,7 +90,7 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
     }
 
     private func updateChoiceState(for choice: NewGameplayFindTheRightOrderChoice, to state: State) {
-        guard let index = self.gameplay.orderedChoices.firstIndex(where: { $0.id == choice.id }) else { return }
+        guard let index = self.uiChoices.value.choices.firstIndex(where: { $0.id == choice.id }) else { return }
 
         self.updateUINodeState(node: self.uiChoices.value.choices[index], state: state)
     }
