@@ -67,7 +67,8 @@ class DnDOneToOneBaseScene: SKScene {
         removeAllChildren()
         removeAllActions()
 
-        self.setFirstAnswerPosition()
+        self.spacer = size.width / CGFloat(self.viewModel.choices.count + 1)
+
         self.layoutChoices()
         self.layoutDropzones()
         self.viewModel.setAlreadyOrderedNodes()
@@ -83,12 +84,9 @@ class DnDOneToOneBaseScene: SKScene {
         for (index, choice) in self.viewModel.choices.enumerated() {
             choice.initialPosition = self.setInitialPosition(index)
             choice.position = choice.initialPosition!
-
-            let shadowChoice = DnDShadowNode(node: choice)
-
-            self.bindNodesToSafeArea([choice, shadowChoice])
             self.answerNodes.append(choice)
 
+            let shadowChoice = DnDShadowNode(node: choice)
             addChild(shadowChoice)
             addChild(choice)
         }
@@ -97,45 +95,22 @@ class DnDOneToOneBaseScene: SKScene {
     func layoutDropzones() {
         for (index, dropzone) in self.viewModel.dropzones.enumerated() {
             dropzone.position = self.setInitialDropZonePosition(index)
-
-            self.bindNodesToSafeArea([dropzone])
             self.dropZonesNodes.append(dropzone)
-
             addChild(dropzone)
         }
     }
 
-    func bindNodesToSafeArea(_ nodes: [SKSpriteNode], limit: CGFloat = 80) {
-        let xRange = SKRange(lowerLimit: 0, upperLimit: size.width - limit)
-        let yRange = SKRange(lowerLimit: 0, upperLimit: size.height - limit)
-        for node in nodes {
-            node.constraints = [SKConstraint.positionX(xRange, y: yRange)]
-        }
-    }
-
-    func normalizeNodesSize(_ nodes: [SKSpriteNode]) {
-        for node in nodes {
-            node.scaleForMax(sizeOf: self.maxWidthAndHeight)
-        }
-    }
-
-    func setFirstAnswerPosition() {
-        self.spacer = size.width / CGFloat(self.viewModel.choices.count + 1)
-        self.maxWidthAndHeight = 200 - 5 * CGFloat(self.viewModel.choices.count)
-    }
-
     func setInitialPosition(_ index: Int) -> CGPoint {
-        CGPoint(x: self.spacer * CGFloat(index + 1), y: size.height - 120)
+        CGPoint(x: self.spacer * CGFloat(index + 1), y: size.height - self.viewModel.choices[0].size.height * 0.8)
     }
 
     func setInitialDropZonePosition(_ index: Int) -> CGPoint {
-        CGPoint(x: self.spacer * CGFloat(index + 1), y: 120)
+        CGPoint(x: self.spacer * CGFloat(index + 1), y: self.viewModel.choices[0].size.height * 0.8)
     }
 
     // MARK: Private
 
     private var spacer: CGFloat = .zero
-    private var maxWidthAndHeight: CGFloat = .zero
     private var viewModel: DnDOneToOneViewModel
     private var expectedItemsNodes: [String: [SKSpriteNode]] = [:]
     private var selectedNodes: [UITouch: DnDAnswerNode] = [:]
