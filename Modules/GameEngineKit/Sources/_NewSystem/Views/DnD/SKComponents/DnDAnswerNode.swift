@@ -19,37 +19,57 @@ public class DnDAnswerNode: SKSpriteNode {
                     fatalError("Image not found")
                 }
 
-                super.init(texture: SKTexture(image: image), color: .clear, size: size)
+                let renderer = UIGraphicsImageRenderer(size: size)
+                let finalImage = renderer.image { _ in
+                    let rect = CGRect(origin: .zero, size: size)
+                    let path = UIBezierPath(roundedRect: rect, cornerRadius: 10 / 57 * size.width)
+                    path.addClip()
+                    image.draw(in: rect)
+                }
+
+                let texture = SKTexture(image: finalImage)
+                super.init(texture: texture, color: .clear, size: texture.size())
 
             case .sfsymbol:
-                guard let image = UIImage(systemName: value, withConfiguration: UIImage.SymbolConfiguration(pointSize: size.height)) else {
+                guard let image = UIImage(systemName: value, withConfiguration: UIImage.SymbolConfiguration(pointSize: size.height * 3)) else {
                     fatalError("SFSymbol not found")
                 }
 
-                super.init(texture: SKTexture(image: image), color: .clear, size: size)
+                super.init(texture: SKTexture(image: image), color: .clear, size: CGSize(width: size.width * 0.8, height: size.height * 0.8))
 
             case .text:
-                super.init(texture: nil, color: .clear, size: size)
+                let rectSize = CGSize(width: size.width, height: size.height)
+                let renderer = UIGraphicsImageRenderer(size: rectSize)
+                let finalImage = renderer.image { _ in
+                    let rect = CGRect(origin: .zero, size: rectSize)
 
-                let circle = SKShapeNode(circleOfRadius: size.width / 2)
+                    let path = UIBezierPath(roundedRect: rect, cornerRadius: 10 / 57 * size.width)
+                    path.addClip()
 
-                circle.fillColor = .white
-                circle.strokeColor = .black
-                circle.lineWidth = 0.5
-                circle.zPosition = -1
-                circle.position = CGPoint(x: 0, y: 0)
+                    UIColor.white.setFill()
+                    path.fill()
 
-                self.addChild(circle)
+                    UIColor.gray.setStroke()
+                    let strokeWidth: CGFloat = 2
+                    let borderRect = rect.insetBy(dx: strokeWidth / 2, dy: strokeWidth / 2)
+                    let borderPath = UIBezierPath(roundedRect: borderRect, cornerRadius: 10 / 57 * size.width)
+                    borderPath.stroke()
 
-                let label = SKLabelNode(text: value)
+                    let paragraphStyle = NSMutableParagraphStyle()
+                    paragraphStyle.alignment = .center
 
-                label.fontSize = 20
-                label.fontName = "AvenirNext-Bold"
-                label.fontColor = .black
-                label.position = CGPoint(x: 0, y: -10)
-                label.zPosition = 0
+                    let attributes: [NSAttributedString.Key: Any] = [
+                        .font: UIFont(name: "AvenirNext-Bold", size: 20) ?? UIFont.systemFont(ofSize: 20),
+                        .foregroundColor: UIColor.black,
+                        .paragraphStyle: paragraphStyle,
+                    ]
 
-                self.addChild(label)
+                    let textRect = rect.insetBy(dx: 10, dy: (rect.height - 20) / 2)
+                    (value as NSString).draw(in: textRect, withAttributes: attributes)
+                }
+
+                let texture = SKTexture(image: finalImage)
+                super.init(texture: texture, color: .clear, size: texture.size())
         }
 
         self.name = value
