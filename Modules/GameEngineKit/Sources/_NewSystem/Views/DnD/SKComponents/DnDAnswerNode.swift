@@ -98,8 +98,8 @@ public struct DnDUIChoices {
 
     var choices: [DnDAnswerNode]
 
-    var choiceSize: CGSize {
-        DnDGridSize(self.choices.count).choiceSize
+    func choiceSize(for choiceNumber: Int) -> CGSize {
+        DnDGridSize(choiceNumber).choiceSize
     }
 
     // MARK: Private
@@ -142,14 +142,15 @@ public struct DnDUIChoices {
             switch self {
                 case .one,
                      .two:
+                    CGSize(width: 220, height: 220)
+                case .three,
+                     .four:
                     CGSize(width: 200, height: 200)
-                case .three:
-                    CGSize(width: 180, height: 180)
-                case .four,
-                     .five,
-                     .six,
+                case .five:
+                    CGSize(width: 160, height: 160)
+                case .six,
                      .none:
-                    CGSize(width: 140, height: 140)
+                    CGSize(width: 150, height: 150)
             }
         }
     }

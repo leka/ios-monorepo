@@ -16,7 +16,7 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
         self.gameplay = gameplay
 
         self.uiChoices.value.choices = gameplay.orderedChoices.map { choice in
-            DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiChoices.value.choiceSize)
+            DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiChoices.value.choiceSize(for: gameplay.orderedChoices.count))
         }
 
         self.uiDropZones = self.uiChoices.value.choices.map { node in
