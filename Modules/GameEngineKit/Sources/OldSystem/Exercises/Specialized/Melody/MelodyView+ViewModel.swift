@@ -22,6 +22,7 @@ extension MelodyView {
         // MARK: Public
 
         @ObservedObject public var exercicesSharedData: ExerciseSharedData
+
         @Published public var progress: CGFloat = 0.0
         @Published public var isNotTappable: Bool = true
         @Published public var showModal: Bool = false

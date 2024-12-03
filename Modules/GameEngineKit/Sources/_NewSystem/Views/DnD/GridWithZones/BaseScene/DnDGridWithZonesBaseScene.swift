@@ -25,6 +25,43 @@ class DnDGridWithZonesBaseScene: SKScene {
         self.reset()
     }
 
+    // MARK: - Touch Interaction
+
+    override func touchesBegan(_ touches: Set<UITouch>, with _: UIEvent?) {
+        guard let touch = touches.first else {
+            return
+        }
+        let location = touch.location(in: self)
+        if let node = atPoint(location) as? DnDAnswerNode {
+            for choice in self.viewModel.choices where node.id == choice.id && node.isDraggable {
+                selectedNodes[touch] = node
+                self.viewModel.onTouch(.began, choice: node)
+            }
+        }
+    }
+
+    override func touchesMoved(_ touches: Set<UITouch>, with _: UIEvent?) {
+        guard let touch = touches.first else {
+            return
+        }
+        let location = touch.location(in: self)
+        if let node = selectedNodes[touch] {
+            node.position = location
+        }
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with _: UIEvent?) {
+        guard let touch = touches.first,
+              let playedNode = self.selectedNodes[touch]
+        else {
+            return
+        }
+
+        self.viewModel.onTouch(.ended, choice: playedNode, destination: self.dropZonesNodes.first(where: {
+            $0.frame.contains(touch.location(in: self))
+        }))
+    }
+
     func reset() {
         backgroundColor = .clear
         removeAllChildren()
@@ -81,43 +118,6 @@ class DnDGridWithZonesBaseScene: SKScene {
             addChild(dropzone)
             self.dropZonesNodes.append(dropzone)
         }
-    }
-
-    // MARK: - Touch Interaction
-
-    override func touchesBegan(_ touches: Set<UITouch>, with _: UIEvent?) {
-        guard let touch = touches.first else {
-            return
-        }
-        let location = touch.location(in: self)
-        if let node = atPoint(location) as? DnDAnswerNode {
-            for choice in self.viewModel.choices where node.id == choice.id && node.isDraggable {
-                selectedNodes[touch] = node
-                self.viewModel.onTouch(.began, choice: node)
-            }
-        }
-    }
-
-    override func touchesMoved(_ touches: Set<UITouch>, with _: UIEvent?) {
-        guard let touch = touches.first else {
-            return
-        }
-        let location = touch.location(in: self)
-        if let node = selectedNodes[touch] {
-            node.position = location
-        }
-    }
-
-    override func touchesEnded(_ touches: Set<UITouch>, with _: UIEvent?) {
-        guard let touch = touches.first,
-              let playedNode = self.selectedNodes[touch]
-        else {
-            return
-        }
-
-        self.viewModel.onTouch(.ended, choice: playedNode, destination: self.dropZonesNodes.first(where: {
-            $0.frame.contains(touch.location(in: self))
-        }))
     }
 
     // MARK: Private

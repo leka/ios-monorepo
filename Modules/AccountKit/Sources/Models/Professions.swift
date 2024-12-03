@@ -68,6 +68,8 @@ public struct Profession: Codable, Identifiable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(String.self, forKey: .id)
 
+        self.sha = try container.decode(String.self, forKey: .sha)
+
         self.l10n = try container.decode([Profession.Localization].self, forKey: .l10n)
 
         let availableLocales = self.l10n.map(\.locale)
@@ -83,6 +85,7 @@ public struct Profession: Codable, Identifiable {
     // MARK: Public
 
     public let id: String
+    public let sha: String
     public let name: String
     public let description: String
 

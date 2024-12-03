@@ -61,7 +61,7 @@ struct CarereceiverPicker: View {
             ToolbarItemGroup(placement: .bottomBar) {
                 Button {
                     self.action = .skip
-                    AnalyticsManager.shared.logEventCarereceiverSkipSelect()
+                    AnalyticsManager.logEventCarereceiverSkipSelect()
                     self.dismiss()
                 } label: {
                     Text(l10n.CarereceiverPicker.skipButtonLabel)
@@ -96,12 +96,12 @@ struct CarereceiverPicker: View {
         case skip
     }
 
-    private let columns = Array(repeating: GridItem(spacing: -20), count: 4)
-
     @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
     @ObservedObject private var navigation: Navigation = .shared
     @State private var selectedCarereceiver: [Carereceiver]
     @State private var action: ActionType?
+
+    private let columns = Array(repeating: GridItem(spacing: -20), count: 4)
 
     private var noCarereceiverView: some View {
         VStack {

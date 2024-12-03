@@ -16,7 +16,7 @@ extension Robot {
                 self.isConnected.send(true)
                 self.name.send($0.peripheral.name ?? "(n/a)")
 
-                self.subscribeToConntectedPeripheralFullyInitialized()
+                self.subscribeToConnectedPeripheralFullyInitialized()
             }
             .store(in: &cancellables)
 
@@ -26,18 +26,19 @@ extension Robot {
                 self.connectedPeripheral = nil
                 self.isConnected.send(false)
 
-                AnalyticsManager.shared.logEventRobotDisconnect(
+                AnalyticsManager.logEventRobotDisconnect(
                     robotName: self.name.value,
                     serialNumber: self.serialNumber.value,
                     osVersion: self.osVersion.value?.description ?? "(n/a)",
                     isCharging: self.isCharging.value,
                     batteryLevel: self.battery.value
                 )
+                AnalyticsManager.setUserPropertyUserRobotIsConnected(value: false)
             }
             .store(in: &cancellables)
     }
 
-    private func subscribeToConntectedPeripheralFullyInitialized() {
+    private func subscribeToConnectedPeripheralFullyInitialized() {
         Just(())
             .combineLatest(self.name)
             .combineLatest(self.osVersion).dropFirst()
@@ -49,13 +50,14 @@ extension Robot {
             .sink { [weak self] _ in
                 guard let self else { return }
 
-                AnalyticsManager.shared.logEventRobotConnect(
+                AnalyticsManager.logEventRobotConnect(
                     robotName: self.name.value,
                     serialNumber: self.serialNumber.value,
                     osVersion: self.osVersion.value?.description ?? "0.0.0",
                     isCharging: self.isCharging.value,
                     batteryLevel: self.battery.value
                 )
+                AnalyticsManager.setUserPropertyUserRobotIsConnected(value: true)
             }
             .store(in: &self.cancellables)
     }

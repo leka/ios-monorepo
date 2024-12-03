@@ -7,6 +7,45 @@
 
 @preconcurrency import PackageDescription
 
+#if TUIST
+    @preconcurrency import ProjectDescription
+    @preconcurrency import ProjectDescriptionHelpers
+
+    let packageSettings: PackageSettings = if Environment.generateModulesAsFrameworksForDebug.getBoolean(default: false) {
+        .init(
+            productTypes: [
+                "cmark-gfm": .framework,
+                "cmark": .framework,
+                "CYaml": .framework,
+                "FBLPromises": .framework,
+                "Firebase": .framework,
+                "FirebaseAppCheckInterop": .framework,
+                "FirebaseCore": .framework,
+                "FirebaseCoreExtension": .framework,
+                "FirebaseCoreInternal": .framework,
+                "Fit": .framework,
+                "GoogleUtilities-AppDelegateSwizzler": .framework,
+                "GoogleUtilities-Environment": .framework,
+                "GoogleUtilities-Logger": .framework,
+                "GoogleUtilities-Network": .framework,
+                "GoogleUtilities-NSData": .framework,
+                "GoogleUtilities-Reachability": .framework,
+                "GoogleUtilities-UserDefaults": .framework,
+                "Logging": .framework,
+                "Lottie": .framework,
+                "MarkdownUI": .framework,
+                "nanopb": .framework,
+                "NetworkImage": .framework,
+                "third-party-IsAppEncrypted": .framework,
+                "Version": .framework,
+                "Yams": .framework,
+            ]
+        )
+    } else {
+        .init()
+    }
+#endif
+
 let package = Package(
     name: "GlobalProjectDependencies",
     dependencies: [
@@ -69,10 +108,6 @@ let package = Package(
         .package(
             url: "https://github.com/lukepistrol/SFSymbolsMacro",
             exact: "0.5.3"
-        ),
-        .package(
-            url: "https://github.com/AvdLee/AppUpdately",
-            branch: "main"
         ),
     ]
 )

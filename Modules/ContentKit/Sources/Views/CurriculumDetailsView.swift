@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
-import AnalyticsKit
 import DesignKit
 import Fit
 import LocalizationKit
@@ -142,9 +141,6 @@ public struct CurriculumDetailsView: View {
                 }
             }
         }
-        .onAppear {
-            AnalyticsManager.shared.logEventScreenView(screenName: "view_curriculum_details_view")
-        }
         .toolbar {
             #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
@@ -187,8 +183,6 @@ public struct CurriculumDetailsView: View {
 
     // MARK: Private
 
-    private let curriculum: Curriculum
-
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
     @State private var isDescriptionExpanded = false
@@ -196,6 +190,8 @@ public struct CurriculumDetailsView: View {
 
     @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+
+    private let curriculum: Curriculum
 }
 
 // MARK: - l10n.CurriculumDetailsView

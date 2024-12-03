@@ -12,6 +12,8 @@ import LocalizationKit
 import RobotKit
 import SwiftUI
 
+// swiftlint:disable type_body_length
+
 extension Bundle {
     static var version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     static var buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
@@ -120,76 +122,82 @@ struct MainView: View {
                 }
                 .listStyle(.sidebar)
             }
-            // TODO: (@ladislas) remove if not necessary
-            // .disabled(navigation.disableUICompletly)
+            .alert(isPresented: self.$showingAppUpdateAlert) {
+                Alert(
+                    title: Text(l10n.MainView.AppUpdateAlert.title),
+                    message: Text(l10n.MainView.AppUpdateAlert.message),
+                    primaryButton: .default(Text(l10n.MainView.AppUpdateAlert.action), action: {
+                        AnalyticsManager.logEventAppUpdateAlertResponse(.openAppStore)
+                        if let url = URL(string: "https://apps.apple.com/app/leka/id6446940339") {
+                            UIApplication.shared.open(url)
+                        }
+                    }),
+                    secondaryButton: .cancel(Text(l10n.MainView.AppUpdateAlert.reminder)) {
+                        AnalyticsManager.logEventAppUpdateAlertResponse(.remindLater)
+                    }
+                )
+            }
+            .alert(isPresented: self.$showingOSUpdateAlert) {
+                Alert(
+                    title: Text(l10n.MainView.OSUpdateAlert.title),
+                    message: Text(l10n.MainView.OSUpdateAlert.message),
+                    primaryButton: .default(Text(l10n.MainView.OSUpdateAlert.action), action: {
+                        AnalyticsManager.logEventOSUpdateAlertResponse(.openSettings)
+                        if let url = URL(string: UIApplication.openSettingsURLString) {
+                            UIApplication.shared.open(url)
+                        }
+                    }),
+                    secondaryButton: .cancel(Text(l10n.MainView.OSUpdateAlert.reminder)) {
+                        AnalyticsManager.logEventOSUpdateAlertResponse(.remindLater)
+                    }
+                )
+            }
         } detail: {
             NavigationStack(path: self.$navigation.path) {
                 switch self.navigation.selectedCategory {
                     case .home:
                         CategoryHome()
-                            .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_home")
-                            }
+                            .logEventScreenView(screenName: "home", context: .splitView)
 
                     case .search:
                         CategorySearchView()
-                            .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_search")
-                            }
+                            .logEventScreenView(screenName: "search", context: .splitView)
 
                     case .resourcesFirstSteps:
                         CategoryResourcesFirstStepsView()
-                            .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_resources_first_steps")
-                            }
+                            .logEventScreenView(screenName: "resources_first_steps", context: .splitView)
 
                     case .resourcesVideo:
                         CategoryResourcesVideosView()
-                            .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_resources_video")
-                            }
+                            .logEventScreenView(screenName: "resources_video", context: .splitView)
 
                     case .resourcesDeepDive:
                         CategoryResourcesDeepDiveView()
-                            .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_resources_deep_dive")
-                            }
+                            .logEventScreenView(screenName: "resources_deep_dive", context: .splitView)
 
                     case .curriculums:
                         CategoryCurriculumsView()
-                            .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_curriculums")
-                            }
+                            .logEventScreenView(screenName: "curriculums", context: .splitView)
 
                     case .educationalGames:
                         CategoryEducationalGamesView()
-                            .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_educational_games")
-                            }
+                            .logEventScreenView(screenName: "educational_games", context: .splitView)
 
                     case .stories:
                         CategoryStoriesView()
-                            .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_stories")
-                            }
+                            .logEventScreenView(screenName: "stories", context: .splitView)
 
                     case .gamepads:
                         CategoryGamepadsView()
-                            .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_gamepads")
-                            }
+                            .logEventScreenView(screenName: "gamepads", context: .splitView)
 
                     case .caregivers:
                         CaregiverList()
-                            .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_caregivers")
-                            }
+                            .logEventScreenView(screenName: "caregivers", context: .splitView)
 
                     case .carereceivers:
                         CarereceiverList()
-                            .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_carereceivers")
-                            }
+                            .logEventScreenView(screenName: "carereceivers", context: .splitView)
 
                     // ? DEVELOPER_MODE + TESTFLIGHT_BUILD
                     case .allPublishedActivities:
@@ -217,21 +225,15 @@ struct MainView: View {
 
                     case .libraryCurriculums:
                         CategoryLibraryView(category: .libraryCurriculums)
-                            .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_library_curriculums")
-                            }
+                            .logEventScreenView(screenName: "library_curriculums", context: .splitView)
 
                     case .libraryActivities:
                         CategoryLibraryView(category: .libraryActivities)
-                            .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_library_activities")
-                            }
+                            .logEventScreenView(screenName: "library_activities", context: .splitView)
 
                     case .libraryStories:
                         CategoryLibraryView(category: .libraryStories)
-                            .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_category_library_stories")
-                            }
+                            .logEventScreenView(screenName: "library_stories", context: .splitView)
 
                     case .none:
                         Text(l10n.MainView.Sidebar.CategoryLabel.home)
@@ -249,19 +251,15 @@ struct MainView: View {
                 switch content {
                     case .welcomeView:
                         WelcomeView()
-                            .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_welcome")
-                            }
+                            .logEventScreenView(screenName: "welcome", context: .fullScreenCover)
+
                     case let .activityView(carereceivers):
                         ActivityView(activity: self.navigation.currentActivity!, reinforcer: carereceivers.first?.reinforcer ?? .rainbow)
-                            .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_activity")
-                            }
-                    case let .storyView(carereceivers):
+                            .logEventScreenView(screenName: "activity", context: .fullScreenCover)
+
+                    case .storyView:
                         StoryView(story: self.navigation.currentStory!)
-                            .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_story")
-                            }
+                            .logEventScreenView(screenName: "story", context: .fullScreenCover)
                 }
             }
         }
@@ -272,33 +270,40 @@ struct MainView: View {
                 switch content {
                     case .robotConnection:
                         RobotConnectionView(viewModel: RobotConnectionViewModel())
+                            .logEventScreenView(screenName: "robot_connection", context: .sheet)
                             .navigationBarTitleDisplayMode(.inline)
-                            .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_robot_connection")
-                            }
+
                     case .settings:
                         SettingsView()
+                            .logEventScreenView(screenName: "settings", context: .sheet)
                             .navigationBarTitleDisplayMode(.inline)
-                            .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_settings")
-                            }
+
                     case .editCaregiver:
                         EditCaregiverView(caregiver: self.caregiverManagerViewModel.currentCaregiver!)
+                            .logEventScreenView(screenName: "caregiver_edit", context: .sheet)
                             .navigationBarTitleDisplayMode(.inline)
-                            .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_edit_caregiver")
-                            }
+
                     case .createCaregiver:
                         CreateCaregiverView()
+                            .logEventScreenView(screenName: "caregiver_create", context: .sheet)
                             .navigationBarTitleDisplayMode(.inline)
-                            .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_create_caregiver")
-                            }
+
                     case .caregiverPicker:
                         CaregiverPicker()
+                            .logEventScreenView(screenName: "caregiver_picker", context: .sheet)
                             .navigationBarTitleDisplayMode(.inline)
-                            .onAppear {
-                                AnalyticsManager.shared.logEventScreenView(screenName: "view_caregiver_picker")
+                            .onDisappear {
+                                if !self.updateAlertHasBeenShown {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                        if case .appUpdateAvailable = UpdateManager.shared.appUpdateStatus {
+                                            self.showingAppUpdateAlert = true
+                                            self.updateAlertHasBeenShown = true
+                                        } else if case .osUpdateAvailable = UpdateManager.shared.osUpdateStatus {
+                                            self.showingOSUpdateAlert = true
+                                            self.updateAlertHasBeenShown = true
+                                        }
+                                    }
+                                }
                             }
                     case let .carereceiverPicker(activity, story):
                         CarereceiverPicker(onDismiss: {
@@ -307,25 +312,23 @@ struct MainView: View {
                             self.carereceiverManager.setCurrentCarereceivers(to: carereceivers)
                             self.navigation.currentActivity = activity
                             self.navigation.currentStory = story
-                            if let activity = self.navigation.currentActivity {
+                            if self.navigation.currentActivity != nil {
                                 self.navigation.fullScreenCoverContent = .activityView(carereceivers: carereceivers)
-                            } else if let story = self.navigation.currentStory {
+                            } else if self.navigation.currentStory != nil {
                                 self.navigation.fullScreenCoverContent = .storyView(carereceivers: carereceivers)
                             }
 
                         }, onSkip: {
                             self.navigation.currentActivity = activity
                             self.navigation.currentStory = story
-                            if let activity = self.navigation.currentActivity {
+                            if self.navigation.currentActivity != nil {
                                 self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
-                            } else if let story = self.navigation.currentStory {
+                            } else if self.navigation.currentStory != nil {
                                 self.navigation.fullScreenCoverContent = .storyView(carereceivers: [])
                             }
                         })
+                        .logEventScreenView(screenName: "carereceiver_picker", context: .sheet)
                         .navigationBarTitleDisplayMode(.inline)
-                        .onAppear {
-                            AnalyticsManager.shared.logEventScreenView(screenName: "view_carereceiver_picker")
-                        }
                 }
             }
         }
@@ -334,9 +337,6 @@ struct MainView: View {
                 return
             }
             self.persistentDataManager.checkInactivity()
-        }
-        .onAppear {
-            AnalyticsManager.shared.logEventScreenView(screenName: "view_main_navigation_split_view")
         }
         .onChange(of: self.scenePhase) { newPhase in
             guard self.authManagerViewModel.userAuthenticationState == .loggedIn else {
@@ -394,10 +394,16 @@ struct MainView: View {
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
     @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
 
+    @State private var showingAppUpdateAlert: Bool = false
+    @State private var showingOSUpdateAlert: Bool = false
+    @State private var updateAlertHasBeenShown: Bool = false
+
     private var persistentDataManager: PersistentDataManager = .shared
     private var caregiverManager: CaregiverManager = .shared
     private var carereceiverManager: CarereceiverManager = .shared
 }
+
+// swiftlint:enable type_body_length
 
 #Preview {
     MainView()

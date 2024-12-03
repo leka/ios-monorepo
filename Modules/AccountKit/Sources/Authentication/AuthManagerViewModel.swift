@@ -103,7 +103,7 @@ public class AuthManagerViewModel: ObservableObject {
             case .loggedOut:
                 self.resetState()
             case .unknown:
-                break
+                self.resetState()
         }
     }
 

@@ -85,10 +85,12 @@ private func makeFrameworkTargets(
 )
     -> [Target]
 {
-    var product: Product = .staticLibrary
-
-    if Environment.generateModulesAsFrameworksForDebug.getBoolean(default: false) {
-        product = .framework
+    let product: Product = if Environment.generateModulesAsFrameworksForDebug.getBoolean(
+        default: false
+    ) {
+        .framework
+    } else {
+        .staticFramework
     }
 
     let module = Target.target(

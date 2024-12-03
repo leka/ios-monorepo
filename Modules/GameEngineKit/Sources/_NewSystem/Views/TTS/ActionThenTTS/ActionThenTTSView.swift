@@ -77,8 +77,8 @@ public struct ActionThenTTSViewUIChoicesWrapper {
 
         func choiceSize(for action: Exercise.Action?) -> CGFloat {
             switch action {
-                case .ipad(type: .image(_)),
-                     .ipad(type: .sfsymbol(_)):
+                case .ipad(type: .image),
+                     .ipad(type: .sfsymbol):
                     switch self {
                         case .one,
                              .two,

@@ -36,8 +36,9 @@ extension DragAndDropToAssociateView {
 
         // MARK: Internal
 
-        @Published var choices: [GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate] = []
         @ObservedObject var exercicesSharedData: ExerciseSharedData
+
+        @Published var choices: [GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate] = []
 
         // MARK: Private
 

@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
-import AnalyticsKit
 import DesignKit
 import Fit
 import LocalizationKit
@@ -117,9 +116,6 @@ public struct ActivityDetailsView: View {
                     .markdownTheme(.gitHub)
             }
         }
-        .onAppear {
-            AnalyticsManager.shared.logEventScreenView(screenName: "view_activity_details_view")
-        }
         .toolbar {
             #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
@@ -175,8 +171,6 @@ public struct ActivityDetailsView: View {
 
     // MARK: Private
 
-    private let activity: Activity
-
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
 
@@ -184,6 +178,8 @@ public struct ActivityDetailsView: View {
 
     @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+
+    private let activity: Activity
 }
 
 // MARK: - l10n.ActivityDetailsView

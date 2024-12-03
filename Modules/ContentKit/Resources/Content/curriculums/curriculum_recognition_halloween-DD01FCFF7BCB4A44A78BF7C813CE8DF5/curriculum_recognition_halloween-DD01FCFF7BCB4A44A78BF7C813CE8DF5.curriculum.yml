@@ -6,7 +6,7 @@ uuid: DD01FCFF7BCB4A44A78BF7C813CE8DF5
 name: curriculum_recognition_halloween
 
 created_at: "2024-07-31T17:38:12.804177"
-last_edited_at: "2024-07-31T17:23:32.570167"
+last_edited_at: "2024-11-27T17:53:57.109987"
 
 status: published
 
@@ -32,7 +32,7 @@ l10n:
     details:
       icon: halloween
       title: Halloween
-      subtitle: Écoute et trouve l'animal ou l'objet !
+      subtitle: Écoute et trouve l'objet !
       abstract: |
         Un parcours complet pour apprendre à reconnaître les objets d'Halloween à travers plusieurs activités interactives.
 
@@ -43,7 +43,7 @@ l10n:
     details:
       icon: halloween
       title: Halloween
-      subtitle: Listen and find the animal or object!
+      subtitle: Listen and find the object!
       abstract: |
         A comprehensive curriculum to learn to recognize Halloween objects through various interactive activities.
 

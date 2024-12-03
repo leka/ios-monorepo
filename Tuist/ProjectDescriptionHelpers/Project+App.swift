@@ -47,6 +47,7 @@ public extension Project {
         launchArguments: [LaunchArgument] = [],
         options: Options = .options(),
         dependencies: [TargetDependency] = [],
+        scripts: [TargetScript] = [], // New `scripts` parameter
         schemes: [Scheme] = []
     ) -> Project {
         let mainTarget = Target.target(
@@ -58,9 +59,14 @@ public extension Project {
             infoPlist: .extendingDefault(with: InfoPlist.extendingBase(version: version, with: infoPlist)),
             sources: ["Sources/**"],
             resources: .resources(["Resources/**"] + resources),
-            scripts: TargetScript.linters(),
+            scripts: TargetScript.linters() + scripts,
+            // Combine default scripts with custom scripts
             dependencies: dependencies,
-            settings: .settings(base: .extendingBase(with: settings)),
+            settings:
+            .settings(base:
+                .extendingBase(with: settings)
+                    .merging(SettingsDictionary.manualCodeSigning)
+            ),
             environmentVariables: [
                 "IDEPreferLogStreaming": "YES",
             ],
@@ -78,7 +84,7 @@ public extension Project {
             scripts: TargetScript.linters(),
             dependencies: [
                 .target(name: "\(name)"),
-            ]
+            ] + dependencies
         )
 
         return Project(

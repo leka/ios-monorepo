@@ -5,6 +5,7 @@
 version: 1.0.0
 list:
   - id: association
+    sha: 8cbb
     l10n:
       - locale: en_US
         name: Association
@@ -17,7 +18,22 @@ list:
           Créer des liens logiques entre des éléments qui semblent différents et
           trouver des relations entre eux.
     subskills:
+      - id: association/logical
+        sha: f4ec
+        l10n:
+          - locale: en_US
+            name: Logical Association
+            description: >
+              Connecting related elements based on logical relationships, such as matching
+              objects, sounds, or images with their corresponding functions or contexts.
+          - locale: fr_FR
+            name: Association logique
+            description: >
+              Relier des éléments en fonction de relations logiques, comme associer des objets,
+              des sons ou des images à leurs fonctions ou contextes correspondants.
+        subskills: []
       - id: association/matching
+        sha: 03db
         l10n:
           - locale: en_US
             name: Matching
@@ -31,22 +47,8 @@ list:
               très similaires, (par exemple, mettre ensemble deux chaussettes
               identiques).
         subskills: []
-
-      - id: association/sorting
-        l10n:
-          - locale: en_US
-            name: Sorting
-            description: >
-              Putting things into groups based on what they have in common (for
-              example, sorting fruits by color)
-          - locale: fr_FR
-            name: Trier
-            description: >
-              Mettre des choses en groupes selon ce qu'elles ont en commun, (par
-              exemple, trier des fruits par couleur)
-        subskills: []
-
       - id: association/ordering
+        sha: e84d
         l10n:
           - locale: en_US
             name: Ordering
@@ -60,22 +62,23 @@ list:
               petit au plus grand, par ordre chronologique ou par ordre
               alphabétique).
         subskills: []
-
-      - id: association/logical
+      - id: association/sorting
+        sha: '0405'
         l10n:
           - locale: en_US
-            name: Logical Association
+            name: Sorting
             description: >
-              Connecting related elements based on logical relationships, such as matching
-              objects, sounds, or images with their corresponding functions or contexts.
+              Putting things into groups based on what they have in common (for
+              example, sorting fruits by color)
           - locale: fr_FR
-            name: Association logique
+            name: Trier
             description: >
-              Relier des éléments en fonction de relations logiques, comme associer des objets,
-              des sons ou des images à leurs fonctions ou contextes correspondants.
+              Mettre des choses en groupes selon ce qu'elles ont en commun, (par
+              exemple, trier des fruits par couleur)
         subskills: []
 
   - id: attention
+    sha: d027
     l10n:
       - locale: en_US
         name: Attention
@@ -90,32 +93,8 @@ list:
           exemple, écouter quelqu'un qui parle sans être distrait par d'autres
           choses autour).
     subskills:
-      - id: attention/sustained_attention
-        l10n:
-          - locale: en_US
-            name: Sustained attention
-            description: >
-              Ability to stay focused on one thing for a long time.
-          - locale: fr_FR
-            name: Attention soutenue
-            description: >
-              Capacité à rester concentré sur une chose pendant longtemps.
-        subskills: []
-
-      - id: attention/transition
-        l10n:
-          - locale: en_US
-            name: Transition between two activities
-            description: >
-              Ability to refocus quickly after a change in activity.
-          - locale: fr_FR
-            name: Transition entre deux activités
-            description: >
-              Capacité à se reconcentrer rapidement après un changement
-              d'activité
-        subskills: []
-
       - id: attention/joint_attention
+        sha: 4d85
         l10n:
           - locale: en_US
             name: Joint attention
@@ -130,8 +109,34 @@ list:
               (par exemple, regarder un objet que quelqu'un montre ou écouter
               une histoire ensemble).
         subskills: []
+      - id: attention/sustained_attention
+        sha: '0741'
+        l10n:
+          - locale: en_US
+            name: Sustained attention
+            description: >
+              Ability to stay focused on one thing for a long time.
+          - locale: fr_FR
+            name: Attention soutenue
+            description: >
+              Capacité à rester concentré sur une chose pendant longtemps.
+        subskills: []
+      - id: attention/transition
+        sha: '8881'
+        l10n:
+          - locale: en_US
+            name: Transition between two activities
+            description: >
+              Ability to refocus quickly after a change in activity.
+          - locale: fr_FR
+            name: Transition entre deux activités
+            description: >
+              Capacité à se reconcentrer rapidement après un changement
+              d'activité
+        subskills: []
 
   - id: communication
+    sha: 60c5
     l10n:
       - locale: en_US
         name: Communication
@@ -144,93 +149,8 @@ list:
           La communication est le processus d'échange d'informations entre des
           individus, impliquant la transmission et la réception de messages.
     subskills:
-      - id: communication/verbal_communication
-        l10n:
-          - locale: en_US
-            name: Verbal communication
-            description: >
-              Use of spoken or written words to express or receive messages.
-          - locale: fr_FR
-            name: Communication verbale
-            description: >
-              Utilisation de mots, parlés ou écrits, pour exprimer ou recevoir
-              des messages.
-        subskills:
-          - id: communication/verbal_communication/receptive_language
-            l10n:
-              - locale: en_US
-                name: Receptive language
-                description: >
-                  Understanding what people say or write
-              - locale: fr_FR
-                name: Langage réceptif
-                description: >
-                  Comprendre ce que les gens disent ou écrivent.
-            subskills:
-              - id: >-
-                  communication/verbal_communication/receptive_language/oral_comprehension
-                l10n:
-                  - locale: en_US
-                    name: Oral comprehension
-                    description: >
-                      Understanding the words people say.
-                  - locale: fr_FR
-                    name: Compréhension orale
-                    description: >
-                      Comprendre les mots que les gens disent.
-                subskills: []
-
-              - id: >-
-                  communication/verbal_communication/receptive_language/written_comprehension
-                l10n:
-                  - locale: en_US
-                    name: Written comprehension (reading)
-                    description: >
-                      Understanding written words in books or elsewhere.
-                  - locale: fr_FR
-                    name: Compréhension écrite (lecture)
-                    description: >
-                      Comprendre les mots écrits dans les livres ou ailleurs.
-                subskills: []
-
-          - id: communication/verbal_communication/expressive_language
-            l10n:
-              - locale: en_US
-                name: Expressive language
-                description: >
-                  Ability to speak or write to express messages.
-              - locale: fr_FR
-                name: Langage expressif
-                description: >
-                  Pouvoir parler ou écrire pour exprimer des messages.
-            subskills:
-              - id: >-
-                  communication/verbal_communication/expressive_language/oral_expression
-                l10n:
-                  - locale: en_US
-                    name: Oral expression (speech)
-                    description: >
-                      Using words to express oneself.
-                  - locale: fr_FR
-                    name: Expression orale (parole)
-                    description: >
-                      Utiliser des mots pour s'exprimer.
-                subskills: []
-
-              - id: >-
-                  communication/verbal_communication/expressive_language/written_expression
-                l10n:
-                  - locale: en_US
-                    name: Written comprehension (reading)
-                    description: >
-                      Writing words to express oneself.
-                  - locale: fr_FR
-                    name: Expression écrite (écriture)
-                    description: >
-                      Ecrire des mots pour s'exprimer.
-                subskills: []
-
       - id: communication/augmentative_alternative_communication
+        sha: 0b39
         l10n:
           - locale: en_US
             name: Augmentative and alternative communication
@@ -243,23 +163,8 @@ list:
               Méthodes alternatives pour communiquer quand la communication
               verbale est difficile ou n'est pas possible.
         subskills:
-          - id: communication/augmentative_alternative_communication/sign_language
-            l10n:
-              - locale: en_US
-                name: Sign language
-                description: >
-                  Ability to use sign language to communicate. This involves
-                  making signs with hands and using facial expressions to
-                  express ideas without speaking.
-              - locale: fr_FR
-                name: Langage des signes
-                description: >
-                  Capacité à utiliser la langue des signes pour communiquer.
-                  Cela implique de faire des signes avec les mains et d'utiliser
-                  des expressions faciales pour exprimer des idées sans parler.
-            subskills: []
-
           - id: communication/augmentative_alternative_communication/makaton
+            sha: 4a77
             l10n:
               - locale: en_US
                 name: Makaton
@@ -275,8 +180,8 @@ list:
                   parole est bien présente et est complétée par des signes et
                   des symboles pour renforcer la communication.
             subskills: []
-
           - id: communication/augmentative_alternative_communication/pcs
+            sha: adab
             l10n:
               - locale: en_US
                 name: Picture Communication Symbols (PCS)
@@ -287,8 +192,25 @@ list:
                 description: >
                   Capacité à utiliser les Symboles de Communication par Images (PCS), un système où les gens communiquent en utilisant des images (pictogrammes, symboles, mots écrits, photos, dessins, etc.). Ils montrent ou échangent des images pour s'exprimer.
             subskills: []
+          - id: communication/augmentative_alternative_communication/sign_language
+            sha: 3c30
+            l10n:
+              - locale: en_US
+                name: Sign language
+                description: >
+                  Ability to use sign language to communicate. This involves
+                  making signs with hands and using facial expressions to
+                  express ideas without speaking.
+              - locale: fr_FR
+                name: Langage des signes
+                description: >
+                  Capacité à utiliser la langue des signes pour communiquer.
+                  Cela implique de faire des signes avec les mains et d'utiliser
+                  des expressions faciales pour exprimer des idées sans parler.
+            subskills: []
 
       - id: communication/non_verbal_communication
+        sha: '7932'
         l10n:
           - locale: en_US
             name: Non verbal communication
@@ -301,48 +223,8 @@ list:
               Moyens de communication qui ne font pas usage de mots parlés ou
               écrits.
         subskills:
-          - id: communication/non_verbal_communication/gestures
-            l10n:
-              - locale: en_US
-                name: Gestures
-                description: >
-                  Moving hands and arms to show things without speaking.
-              - locale: fr_FR
-                name: Gestes
-                description: >
-                  Bouger les mains et les bras pour montrer des choses sans
-                  parler.
-            subskills: []
-
-          - id: communication/non_verbal_communication/pointing
-            l10n:
-              - locale: en_US
-                name: Pointing
-                description: >
-                  Using a finger to indicate something or someone without using
-                  words.
-              - locale: fr_FR
-                name: Pointage
-                description: >
-                  Utiliser un doigt pour montrer quelque chose ou quelqu'un sans
-                  utiliser de mots.
-            subskills: []
-
-          - id: communication/non_verbal_communication/gaze
-            l10n:
-              - locale: en_US
-                name: Gaze
-                description: >
-                  Looking at things or people with eyes to show what one thinks
-                  or feels without saying words.
-              - locale: fr_FR
-                name: Regard
-                description: >
-                  Regarder des choses ou des personnes avec les yeux pour
-                  montrer ce qu'on pense ou ce qu'on ressent sans dire des mots.
-            subskills: []
-
           - id: communication/non_verbal_communication/facial_expressions
+            sha: '4647'
             l10n:
               - locale: en_US
                 name: Facial expressions
@@ -355,20 +237,49 @@ list:
                   Faire des expressions différentes avec son visage pour montrer
                   comment on se sent, comme sourire quand on est content.
             subskills: []
-
-          - id: communication/non_verbal_communication/vocalizations
+          - id: communication/non_verbal_communication/gaze
+            sha: fdde
             l10n:
               - locale: en_US
-                name: Vocalizations
+                name: Gaze
                 description: >
-                  Making sounds that are not real words.
+                  Looking at things or people with eyes to show what one thinks
+                  or feels without saying words.
               - locale: fr_FR
-                name: Vocalises
+                name: Regard
                 description: >
-                  Faire des sons qui ne sont pas de vrais mots.
+                  Regarder des choses ou des personnes avec les yeux pour
+                  montrer ce qu'on pense ou ce qu'on ressent sans dire des mots.
             subskills: []
-
+          - id: communication/non_verbal_communication/gestures
+            sha: cff8
+            l10n:
+              - locale: en_US
+                name: Gestures
+                description: >
+                  Moving hands and arms to show things without speaking.
+              - locale: fr_FR
+                name: Gestes
+                description: >
+                  Bouger les mains et les bras pour montrer des choses sans
+                  parler.
+            subskills: []
+          - id: communication/non_verbal_communication/pointing
+            sha: 2e5d
+            l10n:
+              - locale: en_US
+                name: Pointing
+                description: >
+                  Using a finger to indicate something or someone without using
+                  words.
+              - locale: fr_FR
+                name: Pointage
+                description: >
+                  Utiliser un doigt pour montrer quelque chose ou quelqu'un sans
+                  utiliser de mots.
+            subskills: []
           - id: communication/non_verbal_communication/smiles
+            sha: ca96
             l10n:
               - locale: en_US
                 name: Smiles
@@ -381,8 +292,114 @@ list:
                   Faire des sourires pour manifester de la joie, de
                   l'approbation ou toute sorte d'émotion agréable
             subskills: []
+          - id: communication/non_verbal_communication/vocalizations
+            sha: 85d3
+            l10n:
+              - locale: en_US
+                name: Vocalizations
+                description: >
+                  Making sounds that are not real words.
+              - locale: fr_FR
+                name: Vocalises
+                description: >
+                  Faire des sons qui ne sont pas de vrais mots.
+            subskills: []
+
+      - id: communication/verbal_communication
+        sha: '7254'
+        l10n:
+          - locale: en_US
+            name: Verbal communication
+            description: >
+              Use of spoken or written words to express or receive messages.
+          - locale: fr_FR
+            name: Communication verbale
+            description: >
+              Utilisation de mots, parlés ou écrits, pour exprimer ou recevoir
+              des messages.
+        subskills:
+          - id: communication/verbal_communication/expressive_language
+            sha: 4b7c
+            l10n:
+              - locale: en_US
+                name: Expressive language
+                description: >
+                  Ability to speak or write to express messages.
+              - locale: fr_FR
+                name: Langage expressif
+                description: >
+                  Pouvoir parler ou écrire pour exprimer des messages.
+            subskills:
+              - id: >-
+                  communication/verbal_communication/expressive_language/oral_expression
+                sha: f1bd
+                l10n:
+                  - locale: en_US
+                    name: Oral expression (speech)
+                    description: >
+                      Using words to express oneself.
+                  - locale: fr_FR
+                    name: Expression orale (parole)
+                    description: >
+                      Utiliser des mots pour s'exprimer.
+                subskills: []
+
+              - id: >-
+                  communication/verbal_communication/expressive_language/written_expression
+                sha: aec6
+                l10n:
+                  - locale: en_US
+                    name: Written comprehension (reading)
+                    description: >
+                      Writing words to express oneself.
+                  - locale: fr_FR
+                    name: Expression écrite (écriture)
+                    description: >
+                      Ecrire des mots pour s'exprimer.
+                subskills: []
+
+          - id: communication/verbal_communication/receptive_language
+            sha: 0dd9
+            l10n:
+              - locale: en_US
+                name: Receptive language
+                description: >
+                  Understanding what people say or write
+              - locale: fr_FR
+                name: Langage réceptif
+                description: >
+                  Comprendre ce que les gens disent ou écrivent.
+            subskills:
+              - id: >-
+                  communication/verbal_communication/receptive_language/oral_comprehension
+                sha: 97d1
+                l10n:
+                  - locale: en_US
+                    name: Oral comprehension
+                    description: >
+                      Understanding the words people say.
+                  - locale: fr_FR
+                    name: Compréhension orale
+                    description: >
+                      Comprendre les mots que les gens disent.
+                subskills: []
+
+              - id: >-
+                  communication/verbal_communication/receptive_language/written_comprehension
+                sha: fd12
+                l10n:
+                  - locale: en_US
+                    name: Written comprehension (reading)
+                    description: >
+                      Understanding written words in books or elsewhere.
+                  - locale: fr_FR
+                    name: Compréhension écrite (lecture)
+                    description: >
+                      Comprendre les mots écrits dans les livres ou ailleurs.
+                subskills: []
 
   - id: counting
+    sha: 4ac3
     l10n:
       - locale: en_US
         name: Counting
@@ -398,6 +415,7 @@ list:
           compter combien de pommes sont dans un panier).
     subskills: []
   - id: discrimination
+    sha: 8f07
     l10n:
       - locale: en_US
         name: Discrimination
@@ -415,6 +433,7 @@ list:
           piano et celui d'une guitare).
     subskills: []
   - id: emotion_recognition
+    sha: 5d0a
     l10n:
       - locale: en_US
         name: Emotion Recognition
@@ -426,6 +445,7 @@ list:
           La capacité à reconnaître et identifier les émotions chez les autres à travers les expressions faciales.
     subskills: []
   - id: empathy
+    sha: e541
     l10n:
       - locale: en_US
         name: Empathy
@@ -441,6 +461,7 @@ list:
           pourquoi il est triste et d'être capable de se mettre à sa place).
     subskills: []
   - id: familiarization_with_leka
+    sha: 008d
     l10n:
       - locale: en_US
         name: Familiarization with Leka
@@ -455,6 +476,7 @@ list:
           Leka.
     subskills: []
   - id: fine_motor_skills
+    sha: '6856'
     l10n:
       - locale: en_US
         name: Fine motor skills
@@ -474,6 +496,7 @@ list:
           ou utiliser des outils comme des ciseaux ou des crayons.
     subskills: []
   - id: generalization
+    sha: '5429'
     l10n:
       - locale: en_US
         name: Generalization
@@ -491,6 +514,7 @@ list:
           même s'ils sont de différentes couleurs ou formes).
     subskills: []
   - id: gross_motor_skills
+    sha: d31d
     l10n:
       - locale: en_US
         name: Gross motor skills
@@ -504,6 +528,7 @@ list:
           que marcher, courir, sauter et lancer des choses.
     subskills: []
   - id: inhibition
+    sha: '1e41'
     l10n:
       - locale: en_US
         name: Inhibition
@@ -519,6 +544,7 @@ list:
           mon tour, même si j'en ai très envie).
     subskills: []
   - id: memory
+    sha: 81c5
     l10n:
       - locale: en_US
         name: Memory
@@ -529,7 +555,25 @@ list:
         description: >
           Capacité de stocker, garder et se souvenir des informations.
     subskills:
+      - id: memory/long_term_memory
+        sha: e02d
+        l10n:
+          - locale: en_US
+            name: Long-term memory
+            description: >
+              Ability to store and retrieve information over a long period,
+              ranging from a few minutes to a lifetime. It includes personal
+              memories, acquired knowledge, skills, and experiences.
+          - locale: fr_FR
+            name: Mémoire long terme
+            description: >
+              Capacité de stocker et de récupérer des informations sur une
+              longue période, allant de quelques minutes à toute une vie. Elle
+              inclut des souvenirs personnels, des connaissances acquises, des
+              compétences, et des expériences.
+        subskills: []
       - id: memory/short_term_memory
+        sha: 7a9d
         l10n:
           - locale: en_US
             name: Short-term memory
@@ -546,24 +590,8 @@ list:
               séquence de couleurs que l'on vient d'observer).
         subskills: []
 
-      - id: memory/long_term_memory
-        l10n:
-          - locale: en_US
-            name: Long-term memory
-            description: >
-              Ability to store and retrieve information over a long period,
-              ranging from a few minutes to a lifetime. It includes personal
-              memories, acquired knowledge, skills, and experiences.
-          - locale: fr_FR
-            name: Mémoire long terme
-            description: >
-              Capacité de stocker et de récupérer des informations sur une
-              longue période, allant de quelques minutes à toute une vie. Elle
-              inclut des souvenirs personnels, des connaissances acquises, des
-              compétences, et des expériences.
-        subskills: []
-
   - id: recognition
+    sha: '2029'
     l10n:
       - locale: en_US
         name: Recognition
@@ -575,6 +603,7 @@ list:
           La capacité à voir et à identifier différentes choses.
     subskills: []
   - id: relationship_tablet_robot
+    sha: '8314'
     l10n:
       - locale: en_US
         name: Relationship between tablet and robot
@@ -588,6 +617,7 @@ list:
           qu'en touchant la tablette, cela fait bouger ou changer le robot Leka.
     subskills: []
   - id: self_awareness
+    sha: b979
     l10n:
       - locale: en_US
         name: Self-awareness
@@ -599,6 +629,7 @@ list:
           La capacité à reconnaître et comprendre ses propres émotions, sensations physiques et besoins physiologiques. Cela inclut la conscience des sentiments, l'identification des zones de douleur et la compréhension des états physiques tels que la fatigue ou le bien-être.
     subskills: []
   - id: self_regulation
+    sha: 84b5
     l10n:
       - locale: en_US
         name: Self-regulation
@@ -613,6 +644,7 @@ list:
           manière impulsive.
     subskills: []
   - id: sensory_integration
+    sha: 5abd
     l10n:
       - locale: en_US
         name: Sensory integration
@@ -629,7 +661,32 @@ list:
           Une bonne intégration sensorielle est essentielle pour les compétences motrices, le comportement et l'apprentissage.
           Les interventions thérapeutiques peuvent améliorer l'intégration sensorielle chez les individus ayant des difficultés de traitement sensoriel.
     subskills:
+      - id: sensory_integration/hearing
+        sha: 5ce1
+        l10n:
+          - locale: en_US
+            name: Hearing
+            description: >
+              Manifests when a care receiver listens to and processes sounds or music produced by the iPad.
+          - locale: fr_FR
+            name: Ouïe
+            description: >
+              Se manifeste quand une personne accompagnée écoute et traite les sons ou la musique produits par l'iPad.
+        subskills: []
+      - id: sensory_integration/touch
+        sha: '8260'
+        l10n:
+          - locale: en_US
+            name: Touch
+            description: >
+              Manifests when a care receiver touches and feels the robot, manipulating or playing with its various parts.
+          - locale: fr_FR
+            name: Toucher
+            description: >
+              Se manifeste quand une personne accompagnée touche et ressent le robot, manipule ou jouer avec ses différentes parties.
+        subskills: []
       - id: sensory_integration/vision
+        sha: f21e
         l10n:
           - locale: en_US
             name: Vision
@@ -641,31 +698,8 @@ list:
               Se manifeste quand une personne accompagnée observe et réagit aux stimuli visuels, comme les couleurs et lumières changeantes du robot.
         subskills: []
 
-      - id: sensory_integration/hearing
-        l10n:
-          - locale: en_US
-            name: Hearing
-            description: >
-              Manifests when a care receiver listens to and processes sounds or music produced by the iPad.
-          - locale: fr_FR
-            name: Ouïe
-            description: >
-              Se manifeste quand une personne accompagnée écoute et traite les sons ou la musique produits par l'iPad.
-        subskills: []
-
-      - id: sensory_integration/touch
-        l10n:
-          - locale: en_US
-            name: Touch
-            description: >
-              Manifests when a care receiver touches and feels the robot, manipulating or playing with its various parts.
-          - locale: fr_FR
-            name: Toucher
-            description: >
-              Se manifeste quand une personne accompagnée touche et ressent le robot, manipule ou jouer avec ses différentes parties.
-        subskills: []
-
   - id: social_interactions
+    sha: 89d4
     l10n:
       - locale: en_US
         name: Social interactions
@@ -686,6 +720,7 @@ list:
           première personne.
     subskills: []
   - id: spatial_understanding
+    sha: 55c5
     l10n:
       - locale: en_US
         name: Spatial understanding
@@ -700,6 +735,7 @@ list:
           dans cet espace.
     subskills: []
   - id: time_and_temporality_understanding
+    sha: 9bac
     l10n:
       - locale: en_US
         name: Time and temporality understanding
@@ -721,6 +757,7 @@ list:
           le printemps est après l'hiver et avant l'été).
     subskills: []
   - id: turn_taking
+    sha: a3c7
     l10n:
       - locale: en_US
         name: Turn taking

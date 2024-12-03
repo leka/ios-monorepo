@@ -126,13 +126,13 @@ struct EditCaregiverView: View {
     @FocusState private var focused: Bool
     @State private var isWhitespacesErrorMessageVisible = false
 
-    private var caregiverManager: CaregiverManager = .shared
-
     @StateObject private var viewModel: EditCaregiverViewViewModel
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     @ObservedObject private var styleManager: StyleManager = .shared
     @State private var birthdate: Date
+
+    private var caregiverManager: CaregiverManager = .shared
 
     private var placeholderFirstName = Text(String(l10n.CaregiverCreation.caregiverPlaceholderFirstName.characters))
 

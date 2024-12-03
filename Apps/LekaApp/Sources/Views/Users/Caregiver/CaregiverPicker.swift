@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
-import AnalyticsKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -35,6 +34,7 @@ struct CaregiverPicker: View {
         .sheet(isPresented: self.$isCaregiverCreationPresented) {
             NavigationStack {
                 CreateCaregiverView()
+                    .logEventScreenView(screenName: "caregiver_create", context: .sheet)
                     .navigationBarTitleDisplayMode(.inline)
             }
         }
@@ -50,8 +50,12 @@ struct CaregiverPicker: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    self.caregiverManager.setCurrentCaregiver(to: self.selectedCaregiver!)
-                    AnalyticsManager.shared.logEventCaregiverSelect()
+                    guard let selectedCaregiver = self.selectedCaregiver else {
+                        return
+                    }
+
+                    self.caregiverManager.setCurrentCaregiver(to: selectedCaregiver)
+
                     self.dismiss()
                 } label: {
                     Text(l10n.CaregiverPicker.selectButtonLabel)

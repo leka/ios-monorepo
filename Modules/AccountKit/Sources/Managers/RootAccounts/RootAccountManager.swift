@@ -2,7 +2,6 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import AnalyticsKit
 import Combine
 
 public class RootAccountManager {
@@ -26,7 +25,6 @@ public class RootAccountManager {
             }, receiveValue: { [weak self] rootAccount in
                 guard let self else { return }
                 self.currentRootAccount.send(rootAccount)
-                AnalyticsManager.shared.setDefaultEventParameters(["root_owner_uid": rootAccount.rootOwnerUid])
             })
             .store(in: &self.cancellables)
     }
@@ -200,7 +198,6 @@ public class RootAccountManager {
         self.dbOps.clearAllListeners()
         self.cancellables.forEach { $0.cancel() }
         self.cancellables.removeAll()
-        AnalyticsManager.shared.setDefaultEventParameters(["root_owner_uid": "no_id"])
     }
 
     // MARK: Internal

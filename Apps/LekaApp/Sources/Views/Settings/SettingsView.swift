@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
-import AnalyticsKit
 import DesignKit
 import DeviceKit
 import LocalizationKit
@@ -23,6 +22,38 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
+            if case .appUpdateAvailable = UpdateManager.shared.appUpdateStatus {
+                Section {
+                    VStack(alignment: .center) {
+                        HStack(spacing: 20) {
+                            LekaAppAsset.Assets.lekaLogoStripes.swiftUIImage
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 60, height: 60)
+                            Text(l10n.SettingsView.AppUpdateSection.title)
+                                .font(.title2.bold())
+                                .fixedSize(horizontal: false, vertical: true)
+                                .multilineTextAlignment(.center)
+
+                            Text("🎉")
+                                .font(.title2)
+                        }
+
+                        Button {
+                            if let url = URL(string: "https://apps.apple.com/app/leka/id6446940339") {
+                                UIApplication.shared.open(url)
+                            }
+                        } label: {
+                            Text(l10n.SettingsView.AppUpdateSection.buttonLabel)
+                                .frame(maxWidth: 300)
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(.green)
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+            }
+
             if self.authManagerViewModel.userAuthenticationState == .loggedIn {
                 Section {
                     Button {
@@ -99,7 +130,6 @@ struct SettingsView: View {
                             self.authManager.signOut()
                             self.persistentDataManager.clearUserData()
                             self.reset()
-                            AnalyticsManager.shared.logEventLogout()
                         } label: {
                             Text(l10n.SettingsView.AccountSection.LogOut.alertButtonLabel)
                         }
@@ -224,7 +254,6 @@ struct SettingsView: View {
         self.rootAccountViewModel.resetData()
         self.styleManager.accentColor = DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
         self.styleManager.colorScheme = .light
-        AnalyticsManager.shared.clearDefaultEventParameters()
     }
 
     private var errorAlertTitle: String {

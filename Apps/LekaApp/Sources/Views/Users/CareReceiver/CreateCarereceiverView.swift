@@ -50,6 +50,7 @@ struct CreateCarereceiverView: View {
     // MARK: Internal
 
     @Environment(\.dismiss) var dismiss
+
     var onClose: (() -> Void)?
 
     var carereceiverManager: CarereceiverManager = .shared
@@ -188,9 +189,6 @@ extension l10n {
                 CreateCarereceiverView(onClose: {
                     print("Care receiver creation canceled")
                 })
-//                , onCreated: {
-//                    print("Carereceiver \($0.username) created")
-//                })
             }
         }
 }

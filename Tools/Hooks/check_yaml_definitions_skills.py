@@ -7,10 +7,9 @@
 
 import sys
 
-from modules.definitions import find_duplicate_ids, sort_list_by_id
+from modules.definitions import find_duplicate_ids, sort_list_by_id, is_definition_list_valid
 from modules.utils import get_files
 from modules.yaml import load_yaml, is_jtd_schema_compliant, dump_yaml
-
 
 JTD_SCHEMA = "Specs/jtd/skills.jtd.json"
 SKILLS_FILE = "Modules/ContentKit/Resources/Content/definitions/skills.yml"
@@ -37,20 +36,13 @@ def check_skills_definitions(file):
     """Check skills definitions"""
     file_is_valid = True
 
-    if is_jtd_schema_compliant(file, JTD_SCHEMA) is False:
+    # Check JTD schema compliance
+    if not is_jtd_schema_compliant(file, JTD_SCHEMA):
         file_is_valid = False
 
-    data = load_yaml(file)
-
-    if sorted_list := sort_list_by_id(data["list"]):
-        data["list"] = sorted_list
-        dump_yaml(file, data)
-
-    if duplicate_ids := find_duplicate_ids(get_all_skills()):
+    # Validate definition list (includes sha handling)
+    if not is_definition_list_valid(file):
         file_is_valid = False
-        print(f"\n❌ There are duplicate ids in {file}")
-        for duplicate_id in duplicate_ids:
-            print(f"   - {duplicate_id}")
 
     return file_is_valid
 
@@ -62,9 +54,12 @@ def main():
     must_fail = False
 
     for file in files:
+        if file != SKILLS_FILE:
+            continue
+
         file_is_valid = check_skills_definitions(file)
 
-        if file_is_valid is False:
+        if not file_is_valid:
             must_fail = True
 
     if must_fail:

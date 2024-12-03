@@ -19,15 +19,6 @@
       }
     },
     {
-      "identity" : "appupdately",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/AvdLee/AppUpdately",
-      "state" : {
-        "branch" : "main",
-        "revision" : "697c19e356241dcd097adde7f51398bdf18bf1ca"
-      }
-    },
-    {
       "identity" : "audiokit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AudioKit/AudioKit",

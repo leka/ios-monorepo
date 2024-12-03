@@ -1748,7 +1748,7 @@
                 }
             }
         },
-        "lekaapp.main_app.update_alert.action": {
+        "lekaapp.main_view.app_update_alert.action": {
             "comment": "The action button of the alert to inform the user that an update is available",
             "extractionState": "extracted_with_value",
             "localizations": {
@@ -1766,7 +1766,7 @@
                 }
             }
         },
-        "lekaapp.main_app.update_alert.message": {
+        "lekaapp.main_view.app_update_alert.message": {
             "comment": "The message of the alert to inform the user that an update is available",
             "extractionState": "extracted_with_value",
             "localizations": {
@@ -1784,7 +1784,25 @@
                 }
             }
         },
-        "lekaapp.main_app.update_alert.title": {
+        "lekaapp.main_view.app_update_alert.reminder": {
+            "comment": "The action button of the alert to inform the user that an os update is available",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Remind me later"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Me le rappeler plus tard"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.app_update_alert.title": {
             "comment": "The title of the alert to inform the user that an update is available",
             "extractionState": "extracted_with_value",
             "localizations": {
@@ -1816,6 +1834,78 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Connectez-vous \u00e0 votre compte pour acc\u00e9der \u00e0 votre biblioth\u00e8que personnelle."
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.os_update_alert.action": {
+            "comment": "The action button of the alert to inform the user that an os update is available",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Update now"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Mettre \u00e0 jour maintenant"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.os_update_alert.message": {
+            "comment": "The message of the alert to inform the user that an os update is available",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "A new version of iPadOS is available! Update now to enjoy enhanced performance, security, and compatibility with the latest features of our app."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Une nouvelle version d'iPadOS est disponible ! Mettez \u00e0 jour d\u00e8s maintenant pour profiter de meilleures performances, d\u2019une s\u00e9curit\u00e9 renforc\u00e9e et d\u2019une compatibilit\u00e9 optimale avec les derni\u00e8res fonctionnalit\u00e9s de notre application."
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.os_update_alert.reminder": {
+            "comment": "The action button of the alert to inform the user that an os update is available",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Remind me later"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Me le rappeler plus tard"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.os_update_alert.title": {
+            "comment": "The title of the alert to inform the user that an os update is available",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Update your iPad to the Latest iPadOS Version"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Mettez \u00e0 jour votre iPad vers la derni\u00e8re version d'iPadOS"
                     }
                 }
             }
@@ -2842,6 +2932,42 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Erreur de d\u00e9connexion"
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.app_update_section.button_label": {
+            "comment": "Update app button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Update now"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Mettre \u00e0 jour"
+                    }
+                }
+            }
+        },
+        "lekaapp.settings_view.app_update_section.title": {
+            "comment": "Update app section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "A new update is available!"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Une nouvelle mise \u00e0 jour est disponible !"
                     }
                 }
             }

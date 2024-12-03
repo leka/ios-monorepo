@@ -73,17 +73,56 @@ public struct ActivityView: View {
             }
 
             if self.viewModel.isReinforcerAnimationVisible {
-                self.reinforcerAnimationView
+                LottieView(
+                    animation: .reinforcer,
+                    speed: 0.2
+                )
+                .frame(maxWidth: .infinity)
+                .transition(
+                    .asymmetric(
+                        insertion: .opacity.animation(.snappy.delay(0.75)),
+                        removal: .identity
+                    )
+                )
+                .onAppear {
+                    self.robot.run(self.reinforcer)
+                }
+
+                if case .completed = self.viewModel.currentExerciseSharedData.state, self.viewModel.isReinforcerAnimationVisible {
+                    VStack(spacing: 30) {
+                        Spacer()
+
+                        Button {
+                            self.continueExercise()
+                        } label: {
+                            ContinueButtonLabel()
+                        }
+
+                        Button(String(l10n.GameEngineKit.ActivityView.hideReinforcerToShowAnswersButton.characters)) {
+                            withAnimation {
+                                self.viewModel.isReinforcerAnimationVisible = false
+                            }
+                        }
+                        .buttonStyle(.bordered)
+                        .padding(.bottom, 50)
+                    }
                     .frame(maxWidth: .infinity)
+                    .transition(
+                        .asymmetric(
+                            insertion: .opacity.animation(.snappy.delay(self.viewModel.delayAfterReinforcerAnimation)),
+                            removal: .identity
+                        )
+                    )
+                }
             }
 
-            HStack {
-                if case .completed = self.viewModel.currentExerciseSharedData.state {
-                    if self.viewModel.isReinforcerAnimationVisible {
-                        self.hideReinforcerToShowAnswersButton
-                    }
-                    self.continueButton
+            if case .completed = self.viewModel.currentExerciseSharedData.state, !self.viewModel.isReinforcerAnimationVisible {
+                Button(String(l10n.GameEngineKit.ActivityView.continueButton.characters)) {
+                    self.continueExercise()
                 }
+                .buttonStyle(.borderedProminent)
+                .tint(.green)
+                .padding()
             }
         }
         .frame(maxWidth: .infinity)
@@ -142,13 +181,12 @@ public struct ActivityView: View {
             })
             Button(String(l10n.GameEngineKit.ActivityView.QuitActivityAlert.quitButtonLabel.characters), role: .destructive, action: {
                 self.saveActivityCompletion()
-                AnalyticsManager.shared
-                    .logEventActivityEnd(
-                        id: self.viewModel.currentActivity.id,
-                        name: self.viewModel.currentActivity.name,
-                        carereceiverIDs: self.carereceiverManager.currentCarereceivers.value.compactMap(\.id).joined(separator: ","),
-                        reason: .userExited
-                    )
+                AnalyticsManager.logEventActivityEnd(
+                    id: self.viewModel.currentActivity.id,
+                    name: self.viewModel.currentActivity.name,
+                    carereceiverIDs: self.carereceiverManager.currentCarereceivers.value.compactMap(\.id).joined(separator: ","),
+                    reason: .userExited
+                )
                 self.dismiss()
             })
         } message: {
@@ -156,6 +194,13 @@ public struct ActivityView: View {
         }
         .sheet(isPresented: self.$isInfoSheetPresented) {
             ActivityDetailsView(activity: self.viewModel.currentActivity)
+                .logEventScreenView(
+                    screenName: "activity_details",
+                    context: .sheet,
+                    parameters: [
+                        "lk_activity_id": "\(self.viewModel.currentActivity.name)-\(self.viewModel.currentActivity.id)",
+                    ]
+                )
         }
         .fullScreenCover(isPresented: self.$viewModel.isCurrentActivityCompleted) {
             self.endOfActivityScoreView
@@ -164,12 +209,11 @@ public struct ActivityView: View {
             Robot.shared.stop()
             UIApplication.shared.isIdleTimerDisabled = true
 
-            AnalyticsManager.shared
-                .logEventActivityStart(
-                    id: self.viewModel.currentActivity.id,
-                    name: self.viewModel.currentActivity.name,
-                    carereceiverIDs: self.carereceiverManager.currentCarereceivers.value.compactMap(\.id).joined(separator: ",")
-                )
+            AnalyticsManager.logEventActivityStart(
+                id: self.viewModel.currentActivity.id,
+                name: self.viewModel.currentActivity.name,
+                carereceiverIDs: self.carereceiverManager.currentCarereceivers.value.compactMap(\.id).joined(separator: ",")
+            )
         }
         .onDisappear {
             Robot.shared.stop()
@@ -189,14 +233,14 @@ public struct ActivityView: View {
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
     @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
 
-    private var carereceiverManager: CarereceiverManager = .shared
-
     @State private var isAlertPresented: Bool = false
 
     @State private var opacity: Double = 1
     @State private var blurRadius: CGFloat = 0
     @State private var showScoreView: Bool = false
     @State private var isInfoSheetPresented: Bool = false
+
+    private var carereceiverManager: CarereceiverManager = .shared
 
     private let robot = Robot.shared
     private let reinforcer: Robot.Reinforcer
@@ -208,82 +252,6 @@ public struct ActivityView: View {
         } else {
             FailureView(percentage: self.viewModel.activityCompletionSuccessPercentage)
         }
-    }
-
-    private var reinforcerAnimationView: some View {
-        LottieView(
-            animation: .reinforcer,
-            speed: 0.2
-        )
-        .onAppear {
-            self.robot.run(self.reinforcer)
-        }
-        .transition(
-            .asymmetric(
-                insertion: .opacity.animation(.snappy.delay(0.75)),
-                removal: .identity
-            )
-        )
-    }
-
-    private var continueButton: some View {
-        Button(String(l10n.GameEngineKit.ActivityView.continueButton.characters)) {
-            if self.viewModel.isLastExercise {
-                self.viewModel.scorePanelEnabled ? self.viewModel.moveToActivityEnd() : self.dismiss()
-                self.saveActivityCompletion()
-
-                AnalyticsManager.shared
-                    .logEventActivityEnd(
-                        id: self.viewModel.currentActivity.id,
-                        name: self.viewModel.currentActivity.name,
-                        carereceiverIDs: self.carereceiverManager.currentCarereceivers.value.compactMap(\.id).joined(separator: ","),
-                        reason: .userCompleted
-                    )
-            } else {
-                self.viewModel.moveToNextExercise()
-            }
-        }
-        .buttonStyle(.borderedProminent)
-        .tint(.green)
-        .padding()
-        .transition(
-            .asymmetric(
-                insertion: .opacity.animation(.snappy.delay(self.viewModel.delayAfterReinforcerAnimation)),
-                removal: .identity
-            )
-        )
-    }
-
-    private var finishButton: some View {
-        Button(String(l10n.GameEngineKit.ActivityView.finishButton.characters)) {
-            // TODO(@macteuts): Move the following out of then View if relevant
-            self.viewModel.currentExerciseSharedData.state = .completed(level: .excellent)
-        }
-        .buttonStyle(.bordered)
-        .tint(.gray)
-        .padding()
-        .transition(
-            .asymmetric(
-                insertion: .opacity.animation(.snappy.delay(2)),
-                removal: .identity
-            )
-        )
-    }
-
-    private var hideReinforcerToShowAnswersButton: some View {
-        Button(String(l10n.GameEngineKit.ActivityView.hideReinforcerToShowAnswersButton.characters)) {
-            withAnimation {
-                self.viewModel.isReinforcerAnimationVisible = false
-            }
-        }
-        .buttonStyle(.bordered)
-        .padding()
-        .transition(
-            .asymmetric(
-                insertion: .opacity.animation(.snappy.delay(self.viewModel.delayAfterReinforcerAnimation)),
-                removal: .identity
-            )
-        )
     }
 
     @ViewBuilder
@@ -419,6 +387,22 @@ public struct ActivityView: View {
                     exercise: self.viewModel.currentExercise,
                     data: self.viewModel.currentExerciseSharedData
                 )
+        }
+    }
+
+    private func continueExercise() {
+        if self.viewModel.isLastExercise {
+            self.viewModel.scorePanelEnabled ? self.viewModel.moveToActivityEnd() : self.dismiss()
+            self.saveActivityCompletion()
+
+            AnalyticsManager.logEventActivityEnd(
+                id: self.viewModel.currentActivity.id,
+                name: self.viewModel.currentActivity.name,
+                carereceiverIDs: self.carereceiverManager.currentCarereceivers.value.compactMap(\.id).joined(separator: ","),
+                reason: .activityCompleted
+            )
+        } else {
+            self.viewModel.moveToNextExercise()
         }
     }
 

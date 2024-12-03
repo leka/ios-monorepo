@@ -56,6 +56,13 @@ public struct StoryView: View {
         }
         .sheet(isPresented: self.$isInfoSheetPresented) {
             StoryDetailsView(story: self.viewModel.currentStory)
+                .logEventScreenView(
+                    screenName: "story_details",
+                    context: .sheet,
+                    parameters: [
+                        "lk_story_id": "\(self.viewModel.currentStory.name)-\(self.viewModel.currentStory.id)",
+                    ]
+                )
         }
         .onAppear {
             Robot.shared.stop()

@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AnalyticsKit
 import QuickLook
 import SwiftUI
 
@@ -37,6 +38,12 @@ public struct ResourceFileView: View {
         }
         .onTapGesture {
             self.url = ContentKitResources.bundle.url(forResource: self.resource.value, withExtension: "resource.pdf")
+            AnalyticsManager.logEventSelectContent(
+                type: .resourceFile,
+                id: self.resource.id.uuidString,
+                name: self.resource.title,
+                origin: .resources
+            )
         }
         .quickLookPreview(self.$url)
         .padding()
@@ -44,9 +51,9 @@ public struct ResourceFileView: View {
 
     // MARK: Internal
 
-    let resource: Category.Resource
-
     @State var isPresented: Bool = false
+
+    let resource: Category.Resource
 
     // MARK: Private
 

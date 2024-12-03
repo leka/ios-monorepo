@@ -62,6 +62,7 @@ jobs:
       - name: Setup mise
         run: |
           echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
+          mise install
 
       - uses: actions/cache@v4
         with:

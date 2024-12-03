@@ -39,7 +39,6 @@ struct WelcomeView: View {
                 .buttonStyle(.bordered)
             }
         }
-//        .navigationDestination(isPresented: self.$navigation.navigateToAccountCreationProcess) {
         .fullScreenCover(isPresented: self.$navigation.navigateToAccountCreationProcess) {
             AccountCreationProcess.CarouselView()
                 .navigationBarBackButtonHidden()
@@ -47,7 +46,7 @@ struct WelcomeView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(String(l10n.WelcomeView.skipStepButton.characters)) {
-                    AnalyticsManager.shared.logEvent(name: "skip_authentication")
+                    AnalyticsManager.logEventSkipAuthentication()
                     self.dismiss()
                 }
             }

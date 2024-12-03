@@ -46,6 +46,7 @@ extension AccountCreationProcess {
                             self.selectedTab = .carereceiverCreation
                         }
                     })
+                    .logEventScreenView(screenName: "caregiver_create", context: .context("account_creation_sheet"))
                     .navigationBarTitleDisplayMode(.inline)
                     .interactiveDismissDisabled()
                 }
@@ -70,6 +71,7 @@ extension AccountCreationProcess {
         @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
         @State private var isCaregiverCreationPresented: Bool = false
+
         private let caregiverManager: CaregiverManager = .shared
     }
 }

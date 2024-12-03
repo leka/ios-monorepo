@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AnalyticsKit
 import DesignKit
 import SwiftUI
 
@@ -23,6 +24,13 @@ public struct ActivityHorizontalListView: View {
                 ForEach(self.activities) { activity in
                     NavigationLink(destination:
                         ActivityDetailsView(activity: activity, onStartActivity: self.onActivitySelected)
+                            .logEventScreenView(
+                                screenName: "activity_details",
+                                context: .splitView,
+                                parameters: [
+                                    "lk_activity_id": "\(activity.name)-\(activity.id)",
+                                ]
+                            )
                     ) {
                         VStack(spacing: 10) {
                             Image(uiImage: activity.details.iconImage)
@@ -51,6 +59,14 @@ public struct ActivityHorizontalListView: View {
                         }
                         .frame(width: 280)
                     }
+                    .simultaneousGesture(TapGesture().onEnded {
+                        AnalyticsManager.logEventSelectContent(
+                            type: .activity,
+                            id: activity.id,
+                            name: activity.name,
+                            origin: .generalLibrary
+                        )
+                    })
                 }
             }
         }
@@ -64,9 +80,10 @@ public struct ActivityHorizontalListView: View {
 
     // MARK: Private
 
+    @ObservedObject private var styleManager: StyleManager = .shared
+
     private let columns = Array(repeating: GridItem(), count: 3)
     private let rows = [GridItem()]
-    @ObservedObject private var styleManager: StyleManager = .shared
 }
 
 #Preview {

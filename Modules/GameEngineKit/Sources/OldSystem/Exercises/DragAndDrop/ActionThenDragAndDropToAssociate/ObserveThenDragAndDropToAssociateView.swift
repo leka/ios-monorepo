@@ -48,9 +48,9 @@ public struct ObserveThenDragAndDropToAssociateView: View {
 
     // MARK: Private
 
+    @State private var imageWasTapped = false
+
     private let image: String
     private var exercise: Exercise
     private var exerciseSharedData: ExerciseSharedData?
-
-    @State private var imageWasTapped = false
 }

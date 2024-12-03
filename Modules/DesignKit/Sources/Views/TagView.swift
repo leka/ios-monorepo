@@ -36,11 +36,11 @@ public struct TagView: View {
 
     // MARK: Private
 
+    @ObservedObject private var styleManager: StyleManager = .shared
+
     private let title: String
     private let systemImage: String
     private let action: (() -> Void)?
-
-    @ObservedObject private var styleManager: StyleManager = .shared
 }
 
 #Preview {

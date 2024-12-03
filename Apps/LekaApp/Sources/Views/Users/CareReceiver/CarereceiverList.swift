@@ -79,6 +79,7 @@ struct CarereceiverList: View {
             .sheet(isPresented: self.$isCarereceiverCreationPresented) {
                 NavigationStack {
                     CreateCarereceiverView()
+                        .logEventScreenView(screenName: "carereceiver_create", context: .sheet)
                         .navigationBarTitleDisplayMode(.inline)
                 }
             }

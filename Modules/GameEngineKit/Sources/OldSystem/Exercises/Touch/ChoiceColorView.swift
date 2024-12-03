@@ -78,13 +78,13 @@ struct ChoiceColorView: View {
 
     // MARK: Private
 
+    @State private var animationPercent: CGFloat = .zero
+    @State private var overlayOpacity: CGFloat = .zero
+
     private let color: Robot.Color
     private let size: CGFloat
     private let state: GameplayChoiceState
     private let kOverLayScaleFactor: CGFloat = 1.08
-
-    @State private var animationPercent: CGFloat = .zero
-    @State private var overlayOpacity: CGFloat = .zero
 }
 
 #Preview {

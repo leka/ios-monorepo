@@ -24,14 +24,13 @@ public struct ActivityGridView: View {
             ForEach(self.activities) { activity in
                 NavigationLink(destination:
                     ActivityDetailsView(activity: activity, onStartActivity: self.onStartActivity)
-                        .onAppear {
-                            AnalyticsManager.shared.logEventSelectContent(
-                                type: .educationalGame,
-                                id: activity.id,
-                                name: activity.name,
-                                origin: .generalLibrary
-                            )
-                        }
+                        .logEventScreenView(
+                            screenName: "activity_details",
+                            context: .splitView,
+                            parameters: [
+                                "lk_activity_id": "\(activity.name)-\(activity.id)",
+                            ]
+                        )
                 ) {
                     VStack {
                         Image(uiImage: activity.details.iconImage)
@@ -56,6 +55,14 @@ public struct ActivityGridView: View {
                     }
                     .padding(.vertical)
                 }
+                .simultaneousGesture(TapGesture().onEnded {
+                    AnalyticsManager.logEventSelectContent(
+                        type: .educationalGame,
+                        id: activity.id,
+                        name: activity.name,
+                        origin: .generalLibrary
+                    )
+                })
             }
         }
         .padding()
@@ -68,8 +75,9 @@ public struct ActivityGridView: View {
 
     // MARK: Private
 
-    private let columns = Array(repeating: GridItem(), count: 3)
     @ObservedObject private var styleManager: StyleManager = .shared
+
+    private let columns = Array(repeating: GridItem(), count: 3)
 }
 
 #Preview {

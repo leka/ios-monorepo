@@ -20,6 +20,7 @@ struct AvatarPicker: View {
 
     @Environment(\.dismiss) var dismiss
     @State var selectedAvatar: String = ""
+
     let onCancel: (() -> Void)?
     let onSelect: ((String) -> Void)?
 

@@ -47,8 +47,10 @@ identifier_name:
     - rgb
     - rhs
     - rx
+    - sha
     - tag
     - tx
+    - uid
     - url
     - URL
 

@@ -35,37 +35,6 @@ class DnDGridBaseScene: SKScene {
         self.layoutChoices()
     }
 
-    // MARK: - Node Layout
-
-    func layoutChoices() {
-        for (index, choice) in self.viewModel.choices.enumerated() {
-            choice.initialPosition = self.setInitialPosition(index)
-            choice.position = choice.initialPosition!
-            self.bindNodesToSafeArea([choice])
-            self.dropDestinations.append(choice)
-
-            addChild(choice)
-        }
-    }
-
-    func bindNodesToSafeArea(_ nodes: [SKSpriteNode], limit: CGFloat = 80) {
-        let xRange = SKRange(lowerLimit: 0, upperLimit: size.width - limit)
-        let yRange = SKRange(lowerLimit: 0, upperLimit: size.height - limit)
-        for node in nodes {
-            node.constraints = [SKConstraint.positionX(xRange, y: yRange)]
-        }
-    }
-
-    // MARK: - Answer Positioning
-
-    func setFirstAnswerPosition() {
-        fatalError("setFirstAnswerPosition() must be implemented in the sub-scene")
-    }
-
-    func setInitialPosition(_: Int) -> CGPoint {
-        fatalError("setNextAnswerPosition(_ index:) must be implemented in the sub-scene")
-    }
-
     // MARK: - Touch Interaction
 
     override func touchesBegan(_ touches: Set<UITouch>, with _: UIEvent?) {
@@ -101,6 +70,37 @@ class DnDGridBaseScene: SKScene {
         self.viewModel.onTouch(.ended, choice: playedNode, destination: self.dropDestinations.first(where: {
             $0.frame.contains(touch.location(in: self)) && $0.id != playedNode.id
         }))
+    }
+
+    // MARK: - Node Layout
+
+    func layoutChoices() {
+        for (index, choice) in self.viewModel.choices.enumerated() {
+            choice.initialPosition = self.setInitialPosition(index)
+            choice.position = choice.initialPosition!
+            self.bindNodesToSafeArea([choice])
+            self.dropDestinations.append(choice)
+
+            addChild(choice)
+        }
+    }
+
+    func bindNodesToSafeArea(_ nodes: [SKSpriteNode], limit: CGFloat = 80) {
+        let xRange = SKRange(lowerLimit: 0, upperLimit: size.width - limit)
+        let yRange = SKRange(lowerLimit: 0, upperLimit: size.height - limit)
+        for node in nodes {
+            node.constraints = [SKConstraint.positionX(xRange, y: yRange)]
+        }
+    }
+
+    // MARK: - Answer Positioning
+
+    func setFirstAnswerPosition() {
+        fatalError("setFirstAnswerPosition() must be implemented in the sub-scene")
+    }
+
+    func setInitialPosition(_: Int) -> CGPoint {
+        fatalError("setNextAnswerPosition(_ index:) must be implemented in the sub-scene")
     }
 
     // MARK: Private

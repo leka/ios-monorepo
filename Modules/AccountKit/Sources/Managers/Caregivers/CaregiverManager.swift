@@ -4,6 +4,7 @@
 
 import AnalyticsKit
 import Combine
+import Foundation
 
 public class CaregiverManager {
     // MARK: Lifecycle
@@ -61,8 +62,9 @@ public class CaregiverManager {
                     .setFailureType(to: Error.self)
                     .eraseToAnyPublisher()
             }
-            .handleEvents(receiveOutput: { [weak self] _ in
+            .handleEvents(receiveOutput: { [weak self] newCaregiver in
                 self?.initializeCaregiversListener()
+                AnalyticsManager.logEventCaregiverCreate(id: newCaregiver.id!)
             })
             .eraseToAnyPublisher()
     }
@@ -74,8 +76,12 @@ public class CaregiverManager {
                 if case let .failure(error) = completion {
                     self.fetchError.send(error)
                 }
-            }, receiveValue: { _ in
-                // Nothing to do
+            }, receiveValue: { [weak self] updatedCaregiver in
+                guard let self else { return }
+                guard updatedCaregiver.id == self.currentCaregiver.value?.id else { return }
+                self.setCurrentCaregiver(to: updatedCaregiver)
+                AnalyticsManager.logEventCaregiverEdit(caregiver: updatedCaregiver.id!)
+                log.info("Caregiver successfully updated.")
             })
             .store(in: &self.cancellables)
     }
@@ -93,31 +99,48 @@ public class CaregiverManager {
     }
 
     public func setCurrentCaregiver(to caregiver: Caregiver) {
+        let previousCaregiverID: String? = self.currentCaregiver.value?.id
         self.currentCaregiver.send(caregiver)
-        AnalyticsManager.shared.setDefaultEventParameters(
-            ["caregiver_id": caregiver.id ?? "no_id"]
-        )
+
+        guard let caregiverID = caregiver.id else {
+            log.error("Caregiver ID is nil")
+            return
+        }
+
+        AnalyticsManager.logEventCaregiverSelect(from: previousCaregiverID, to: caregiverID)
+        AnalyticsManager.setDefaultEventParameterCaregiverUid(caregiverID)
+        AnalyticsManager
+            .setUserPropertyCaregiverProfessions(
+                values: caregiver.professions.compactMap { Professions.profession(for: $0)?.sha }
+            )
     }
 
     public func setCurrentCaregiver(byID id: String) {
-        self.currentCaregiver.send(self.caregiverList.value.first { $0.id == id })
-        AnalyticsManager.shared.setDefaultEventParameters(
-            ["caregiver_id": id]
+        let previousCaregiverID: String? = self.currentCaregiver.value?.id
+        guard let currentCaregiver = self.caregiverList.value.first(where: { $0.id == id }) else {
+            return
+        }
+        self.currentCaregiver.send(currentCaregiver)
+
+        AnalyticsManager.logEventCaregiverSelect(from: previousCaregiverID, to: currentCaregiver.id!)
+        AnalyticsManager.setDefaultEventParameterCaregiverUid(currentCaregiver.id)
+        AnalyticsManager.setUserPropertyCaregiverProfessions(
+            values: currentCaregiver.professions.compactMap { Professions.profession(for: $0)?.sha }
         )
     }
 
     public func resetCurrentCaregiver() {
         self.currentCaregiver.send(nil)
-        AnalyticsManager.shared.setDefaultEventParameters(["caregiver_id": "no_id"])
+        AnalyticsManager.setDefaultEventParameterCaregiverUid(nil)
+        AnalyticsManager.setUserPropertyCaregiverProfessions(values: [])
     }
 
     public func resetData() {
-        self.currentCaregiver.send(nil)
+        self.resetCurrentCaregiver()
         self.caregiverList.send([])
         self.dbOps.clearAllListeners()
         self.cancellables.forEach { $0.cancel() }
         self.cancellables.removeAll()
-        AnalyticsManager.shared.setDefaultEventParameters(["caregiver_id": "no_id"])
     }
 
     // MARK: Private

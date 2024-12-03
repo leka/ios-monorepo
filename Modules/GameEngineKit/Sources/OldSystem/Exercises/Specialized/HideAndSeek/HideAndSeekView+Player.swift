@@ -38,6 +38,7 @@ extension HideAndSeekView {
 
         @Binding var stage: HideAndSeekStage
         @ObservedObject var exercicesSharedData: ExerciseSharedData
+
         let robotManager = RobotManager()
 
         var body: some View {

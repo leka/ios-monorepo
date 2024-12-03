@@ -32,8 +32,9 @@ extension DragAndDropIntoZonesView {
 
         // MARK: Internal
 
-        @Published var choices: [GameplayFindTheRightAnswersChoiceModelDragAndDropIntoZones] = []
         @ObservedObject var exercicesSharedData: ExerciseSharedData
+
+        @Published var choices: [GameplayFindTheRightAnswersChoiceModelDragAndDropIntoZones] = []
 
         // MARK: Private
 

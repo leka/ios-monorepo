@@ -11,7 +11,7 @@ let kLekaApp: App = if Environment.productionBuild.getBoolean(
     default: false
 ) {
     .init(
-        version: "1.14.4",
+        version: "1.15.0",
         bundleId: "io.leka.apf.app.LekaApp",
         name: "Leka",
         urlSchemes: "LekaApp",
@@ -26,6 +26,19 @@ let kLekaApp: App = if Environment.productionBuild.getBoolean(
         appIcon: "AppIconBeta"
     )
 }
+
+let crashlyticsRunScript: TargetScript = .post(
+    path: "../../Tuist/.build/checkouts/firebase-ios-sdk/Crashlytics/run",
+    name: "Upload dSYMs",
+    inputPaths: [
+        "${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+        "${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+        "${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+        "$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+        "$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+    ],
+    basedOnDependencyAnalysis: false
+)
 
 let kLekaAppFirebaseInfoPlistPath: ResourceFileElement = if Environment.productionBuild.getBoolean(
     default: false
@@ -63,6 +76,8 @@ let project = Project.app(
     resources: [kLekaAppFirebaseInfoPlistPath],
     settings: SettingsDictionary.extendingBase(with: [
         "ASSETCATALOG_COMPILER_APPICON_NAME": "\(kLekaApp.appIcon)",
+        "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym",
+        "STRIP_DEBUG_SYMBOLS": "$(inherited)",
     ]),
     dependencies: [
         .project(target: "AccountKit", path: Path("../../Modules/AccountKit")),
@@ -76,10 +91,13 @@ let project = Project.app(
         .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
         .project(target: "UtilsKit", path: Path("../../Modules/UtilsKit")),
 
-        .external(name: "AppUpdately"),
         .external(name: "DeviceKit"),
         .external(name: "Fit"),
         .external(name: "MarkdownUI"),
+        .external(name: "Version"),
         .external(name: "Yams"),
+    ],
+    scripts: [
+        crashlyticsRunScript,
     ]
 )

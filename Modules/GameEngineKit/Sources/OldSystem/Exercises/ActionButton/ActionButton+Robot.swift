@@ -20,9 +20,9 @@ struct ActionButtonRobot: View {
 
     // MARK: Internal
 
-    let actionType: Exercise.Action.ActionType
-
     @Binding var robotWasTapped: Bool
+
+    let actionType: Exercise.Action.ActionType
 
     var body: some View {
         Button {
