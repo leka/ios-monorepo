@@ -1,17 +1,21 @@
-### Nouvelles Fonctionnalités
+## Nouvelles Fonctionnalités
 
 - Renommage du Robot : Vous pouvez désormais renommer votre robot directement depuis l'application pour une expérience plus personnalisée.
+- Curriculums de Noël : Introduction de nouveaux curriculums sur le thème de Noël, y compris "Mémory de Noël" et "Reconnaissance d'Objets de Noël", pour célébrer la saison festive.
 
-### Améliorations
+## Améliorations
 
-- Alertes de Mise à Jour : L'application vous notifiera lorsqu'une nouvelle mise à jour est disponible, vous assurant ainsi de toujours bénéficier des dernières fonctionnalités et améliorations.
-- Améliorations de l'Interface Utilisateur : Mise à jour des icônes de gestes pour une meilleure expérience visuelle, réorganisation du contenu de la barre latérale pour une navigation plus facile, et renommage de la section "Activités" en "Jeux Éducatifs" pour plus de clarté.
+- Alertes de Mise à Jour : L'application vérifie désormais les mises à jour de l'application et du système d'exploitation, vous notifiant lorsqu'une nouvelle mise à jour est disponible. Les alertes de mise à jour ont été améliorées pour n'apparaître qu'une seule fois par session, et un indicateur de mise à jour a été ajouté aux paramètres.
+- Améliorations de l'Interface Utilisateur : Mise à jour des icônes de gestes pour une meilleure expérience visuelle, réorganisation du contenu de la barre latérale pour une navigation plus facile, renommage de la section "Activités" en "Jeux Éducatifs" pour plus de clarté, et amélioration de l'expérience du bouton "Continuer" dans les activités pour un gameplay plus fluide.
+- Performances de l'Application et Analyses : Amélioration du suivi des analyses et des performances avec la mise en œuvre de Crashlytics et du Performance Manager pour améliorer la stabilité de l'application et recueillir les commentaires des utilisateurs pour de futures mises à jour.
 
-### Corrections de Bugs
+## Corrections de Bugs
 
+- Correction de l'Alerte de Mise à Jour : Résolution d'un problème où les alertes de mise à jour étaient affichées de manière répétée.
+- Correction de Bug de Navigation : Correction d'un bug de navigation lorsque le statut de mise à jour rencontrait une erreur.
 - Correction de Lien de Ressource : Correction d'un lien vidéo cassé dans la section Ressources.
 - Bug d'Affichage de la Connexion du Robot : Résolution d'un problème où le statut de connexion du robot n'était pas affiché correctement.
 
-### Autre
+## Autre
 
-- Performances de l'Application et Analytics : Mise en place d'améliorations en arrière-plan pour optimiser les performances de l'application et recueillir des retours utilisateurs pour les futures mises à jour.
+- Connexions Sécurisées : Mise en place de Firebase App Check pour renforcer la sécurité des connexions au sein de l'application.
