@@ -39,7 +39,7 @@ struct AccountCreationView: View {
             .disableAutocorrection(true)
 
             Button {
-                self.submitForm()
+                self.showConsentView = true
             } label: {
                 Text(String(l10n.AccountCreationView.connectionButton.characters))
                     .loadingIndicator(
@@ -52,7 +52,8 @@ struct AccountCreationView: View {
         }
         .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
             if newValue == .loggedIn {
-                self.rootAccountManager.createRootAccount(rootAccount: RootAccount())
+                let rootAccount = RootAccount(consentInfo: [self.userConsentInfo!])
+                self.rootAccountManager.createRootAccount(rootAccount: rootAccount)
                 self.rootAccountManager.initializeRootAccountListener()
                 self.isVerificationEmailAlertPresented = true
             }
@@ -71,6 +72,18 @@ struct AccountCreationView: View {
                       self.navigation.navigateToAccountCreationProcess = true
                   })
         }
+        .sheet(isPresented: self.$showConsentView) {
+            ConsentView(
+                onCancel: {
+                    self.showConsentView = false
+                },
+                onAccept: {
+                    self.userConsentInfo = ConsentInfo(policyVersion: "1.0.0")
+                    self.showConsentView = false
+                    self.submitForm()
+                }
+            )
+        }
     }
 
     // MARK: Private
@@ -81,6 +94,8 @@ struct AccountCreationView: View {
     @ObservedObject private var navigation: Navigation = .shared
 
     @State private var isVerificationEmailAlertPresented: Bool = false
+    @State private var showConsentView: Bool = false
+    @State private var userConsentInfo: ConsentInfo?
 
     private var authManager = AuthManager.shared
     private var rootAccountManager = RootAccountManager.shared
