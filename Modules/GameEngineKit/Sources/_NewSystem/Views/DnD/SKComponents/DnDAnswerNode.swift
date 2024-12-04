@@ -13,65 +13,16 @@ public class DnDAnswerNode: SKSpriteNode {
     init(id: String, value: String, type: ChoiceType, size: CGSize) {
         self.id = id
         self.type = type
-        switch type {
-            case .image:
-                guard let path = Bundle.path(forImage: value), let image = UIImage(named: path) else {
-                    fatalError("Image not found")
-                }
-
-                let renderer = UIGraphicsImageRenderer(size: size)
-                let finalImage = renderer.image { _ in
-                    let rect = CGRect(origin: .zero, size: size)
-                    let path = UIBezierPath(roundedRect: rect, cornerRadius: 10 / 57 * size.width)
-                    path.addClip()
-                    image.draw(in: rect)
-                }
-
-                let texture = SKTexture(image: finalImage)
-                super.init(texture: texture, color: .clear, size: texture.size())
-
-            case .sfsymbol:
-                guard let image = UIImage(systemName: value, withConfiguration: UIImage.SymbolConfiguration(pointSize: size.height * 3)) else {
-                    fatalError("SFSymbol not found")
-                }
-
-                super.init(texture: SKTexture(image: image), color: .clear, size: CGSize(width: size.width * 0.8, height: size.height * 0.8))
-
+        let texture: SKTexture = switch type {
             case .text:
-                let rectSize = CGSize(width: size.width, height: size.height)
-                let renderer = UIGraphicsImageRenderer(size: rectSize)
-                let finalImage = renderer.image { _ in
-                    let rect = CGRect(origin: .zero, size: rectSize)
-
-                    let path = UIBezierPath(roundedRect: rect, cornerRadius: 10 / 57 * size.width)
-                    path.addClip()
-
-                    UIColor.white.setFill()
-                    path.fill()
-
-                    UIColor.gray.setStroke()
-                    let strokeWidth: CGFloat = 2
-                    let borderRect = rect.insetBy(dx: strokeWidth / 2, dy: strokeWidth / 2)
-                    let borderPath = UIBezierPath(roundedRect: borderRect, cornerRadius: 10 / 57 * size.width)
-                    borderPath.stroke()
-
-                    let paragraphStyle = NSMutableParagraphStyle()
-                    paragraphStyle.alignment = .center
-
-                    let attributes: [NSAttributedString.Key: Any] = [
-                        .font: UIFont(name: "AvenirNext-Bold", size: 20) ?? UIFont.systemFont(ofSize: 20),
-                        .foregroundColor: UIColor.black,
-                        .paragraphStyle: paragraphStyle,
-                    ]
-
-                    let textRect = rect.insetBy(dx: 10, dy: (rect.height - 20) / 2)
-                    (value as NSString).draw(in: textRect, withAttributes: attributes)
-                }
-
-                let texture = SKTexture(image: finalImage)
-                super.init(texture: texture, color: .clear, size: texture.size())
+                Self.createTextTexture(value: value, size: size)
+            case .image:
+                Self.createImageTexture(value: value, size: size)
+            case .sfsymbol:
+                Self.createSFSymbolTexture(value: value, size: size)
         }
 
+        super.init(texture: texture, color: .clear, size: texture.size())
         self.name = value
         self.zPosition = 10
     }
@@ -87,6 +38,75 @@ public class DnDAnswerNode: SKSpriteNode {
     let type: ChoiceType
     var initialPosition: CGPoint?
     var isDraggable = true
+
+    // MARK: Private
+
+    private static let cornerRadiusFactor: CGFloat = 10 / 57
+    private static let sizeFactorSFSymbol: CGFloat = 0.6
+}
+
+extension DnDAnswerNode {
+    private static func createImageTexture(value: String, size: CGSize) -> SKTexture {
+        guard let path = Bundle.path(forImage: value),
+              let image = UIImage(named: path)
+        else {
+            fatalError("Image not found")
+        }
+
+        let renderer = UIGraphicsImageRenderer(size: size)
+        let finalImage = renderer.image { _ in
+            let rect = CGRect(origin: .zero, size: size)
+            let path = UIBezierPath(roundedRect: rect, cornerRadius: cornerRadiusFactor * size.width)
+            path.addClip()
+            image.draw(in: rect)
+        }
+
+        return SKTexture(image: finalImage)
+    }
+
+    private static func createSFSymbolTexture(value: String, size: CGSize) -> SKTexture {
+        guard let image = UIImage(systemName: value,
+                                  withConfiguration: UIImage.SymbolConfiguration(pointSize: size.height * sizeFactorSFSymbol))
+        else {
+            fatalError("SFSymbol not found")
+        }
+
+        return SKTexture(image: image)
+    }
+
+    private static func createTextTexture(value: String, size: CGSize) -> SKTexture {
+        let rectSize = CGSize(width: size.width, height: size.height)
+        let renderer = UIGraphicsImageRenderer(size: rectSize)
+        let finalImage = renderer.image { _ in
+            let rect = CGRect(origin: .zero, size: rectSize)
+
+            let path = UIBezierPath(roundedRect: rect, cornerRadius: cornerRadiusFactor * size.width)
+            path.addClip()
+
+            UIColor.white.setFill()
+            path.fill()
+
+            UIColor.gray.setStroke()
+            let strokeWidth: CGFloat = 2
+            let borderRect = rect.insetBy(dx: strokeWidth / 2, dy: strokeWidth / 2)
+            let borderPath = UIBezierPath(roundedRect: borderRect, cornerRadius: cornerRadiusFactor * size.width)
+            borderPath.stroke()
+
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
+
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: UIFont(name: "AvenirNext-Bold", size: 20) ?? UIFont.systemFont(ofSize: 20),
+                .foregroundColor: UIColor.black,
+                .paragraphStyle: paragraphStyle,
+            ]
+
+            let textRect = rect.insetBy(dx: 10, dy: (rect.height - 20) / 2)
+            (value as NSString).draw(in: textRect, withAttributes: attributes)
+        }
+
+        return SKTexture(image: finalImage)
+    }
 }
 
 // MARK: - DnDUIChoices
