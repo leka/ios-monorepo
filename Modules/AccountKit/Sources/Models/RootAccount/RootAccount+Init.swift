@@ -8,10 +8,12 @@ public extension RootAccount {
     init(
         id: String = "",
         rootOwnerUid: String = "",
-        library: Library = Library()
+        library: Library = Library(),
+        consentInfo: [ConsentInfo] = []
     ) {
         self.id = id
         self.rootOwnerUid = rootOwnerUid
         self.library = library
+        self.consentInfo = consentInfo
     }
 }

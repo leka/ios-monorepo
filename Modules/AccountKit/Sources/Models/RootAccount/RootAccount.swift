@@ -13,6 +13,7 @@ public struct RootAccount: AccountDocument {
     @ServerTimestamp public var lastEditedAt: Date?
     public var rootOwnerUid: String
     public var library: Library
+    public var consentInfo: [ConsentInfo]
 
     // MARK: Internal
 
@@ -20,6 +21,7 @@ public struct RootAccount: AccountDocument {
         case id = "uuid"
         case rootOwnerUid = "root_owner_uid"
         case library
+        case consentInfo = "consent_info"
         case createdAt = "created_at"
         case lastEditedAt = "last_edited_at"
     }
