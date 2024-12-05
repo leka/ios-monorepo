@@ -28,10 +28,19 @@ jobs:
           fetch-depth: 2
           lfs: true
 
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/pre-commit
+          key: ${{ runner.os }}-pre-commit-${{ runner.name }}-${{ hashFiles('.pre-commit-config.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pre-commit-${{ runner.name }}-
+            ${{ runner.os }}-pre-commit-
+
       - name: Run pre-commit hooks --all-files
         if: matrix.files == 'all_files'
         run: |
           pre-commit run --show-diff-on-failure --color=always --all-files
+          pre-commit gc
 
       - name: Run pre-commit hooks --files
         if: matrix.files == 'changed_files'
