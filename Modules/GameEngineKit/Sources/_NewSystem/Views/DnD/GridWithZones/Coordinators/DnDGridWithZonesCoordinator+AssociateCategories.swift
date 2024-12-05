@@ -23,7 +23,7 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
         }
 
         self.uiChoices.value.choices = gameplay.choices[2...].map { choice in
-            DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiChoices.value.choiceSize)
+            DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiChoices.value.choiceSize(for: gameplay.choices.count))
         }
     }
 

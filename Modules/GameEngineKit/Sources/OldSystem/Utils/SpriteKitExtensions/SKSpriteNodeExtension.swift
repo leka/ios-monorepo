@@ -25,7 +25,20 @@ extension SKSpriteNode {
         let newY = max(dropZoneFrame.minY + size.height / 2,
                        min(position.y, dropZoneFrame.maxY - size.height / 2))
 
-        position = CGPoint(x: newX, y: newY)
+        let targetPosition = CGPoint(x: newX, y: newY)
+
+        let moveToCenter = SKAction.move(to: targetPosition, duration: 0.2)
+        moveToCenter.timingMode = .easeInEaseOut
+
+        run(
+            moveToCenter,
+            completion: {
+                self.position = targetPosition
+                self.zRotation = 0
+                self.zPosition = 10
+                self.removeAllActions()
+            }
+        )
     }
 
     func fullyContains(bounds: CGRect) -> Bool {

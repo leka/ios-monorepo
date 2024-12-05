@@ -13,45 +13,16 @@ public class DnDAnswerNode: SKSpriteNode {
     init(id: String, value: String, type: ChoiceType, size: CGSize) {
         self.id = id
         self.type = type
-        switch type {
-            case .image:
-                guard let path = Bundle.path(forImage: value), let image = UIImage(named: path) else {
-                    fatalError("Image not found")
-                }
-
-                super.init(texture: SKTexture(image: image), color: .clear, size: size)
-
-            case .sfsymbol:
-                guard let image = UIImage(systemName: value, withConfiguration: UIImage.SymbolConfiguration(pointSize: size.height)) else {
-                    fatalError("SFSymbol not found")
-                }
-
-                super.init(texture: SKTexture(image: image), color: .clear, size: size)
-
+        let texture: SKTexture = switch type {
             case .text:
-                super.init(texture: nil, color: .clear, size: size)
-
-                let circle = SKShapeNode(circleOfRadius: size.width / 2)
-
-                circle.fillColor = .white
-                circle.strokeColor = .black
-                circle.lineWidth = 0.5
-                circle.zPosition = -1
-                circle.position = CGPoint(x: 0, y: 0)
-
-                self.addChild(circle)
-
-                let label = SKLabelNode(text: value)
-
-                label.fontSize = 20
-                label.fontName = "AvenirNext-Bold"
-                label.fontColor = .black
-                label.position = CGPoint(x: 0, y: -10)
-                label.zPosition = 0
-
-                self.addChild(label)
+                Self.createTextTexture(value: value, size: size)
+            case .image:
+                Self.createImageTexture(value: value, size: size)
+            case .sfsymbol:
+                Self.createSFSymbolTexture(value: value, size: size)
         }
 
+        super.init(texture: texture, color: .clear, size: texture.size())
         self.name = value
         self.zPosition = 10
     }
@@ -67,6 +38,75 @@ public class DnDAnswerNode: SKSpriteNode {
     let type: ChoiceType
     var initialPosition: CGPoint?
     var isDraggable = true
+
+    // MARK: Private
+
+    private static let cornerRadiusFactor: CGFloat = 10 / 57
+    private static let sizeFactorSFSymbol: CGFloat = 0.6
+}
+
+extension DnDAnswerNode {
+    private static func createImageTexture(value: String, size: CGSize) -> SKTexture {
+        guard let path = Bundle.path(forImage: value),
+              let image = UIImage(named: path)
+        else {
+            fatalError("Image not found")
+        }
+
+        let renderer = UIGraphicsImageRenderer(size: size)
+        let finalImage = renderer.image { _ in
+            let rect = CGRect(origin: .zero, size: size)
+            let path = UIBezierPath(roundedRect: rect, cornerRadius: cornerRadiusFactor * size.width)
+            path.addClip()
+            image.draw(in: rect)
+        }
+
+        return SKTexture(image: finalImage)
+    }
+
+    private static func createSFSymbolTexture(value: String, size: CGSize) -> SKTexture {
+        guard let image = UIImage(systemName: value,
+                                  withConfiguration: UIImage.SymbolConfiguration(pointSize: size.height * sizeFactorSFSymbol))
+        else {
+            fatalError("SFSymbol not found")
+        }
+
+        return SKTexture(image: image)
+    }
+
+    private static func createTextTexture(value: String, size: CGSize) -> SKTexture {
+        let rectSize = CGSize(width: size.width, height: size.height)
+        let renderer = UIGraphicsImageRenderer(size: rectSize)
+        let finalImage = renderer.image { _ in
+            let rect = CGRect(origin: .zero, size: rectSize)
+
+            let path = UIBezierPath(roundedRect: rect, cornerRadius: cornerRadiusFactor * size.width)
+            path.addClip()
+
+            UIColor.white.setFill()
+            path.fill()
+
+            UIColor.gray.setStroke()
+            let strokeWidth: CGFloat = 2
+            let borderRect = rect.insetBy(dx: strokeWidth / 2, dy: strokeWidth / 2)
+            let borderPath = UIBezierPath(roundedRect: borderRect, cornerRadius: cornerRadiusFactor * size.width)
+            borderPath.stroke()
+
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
+
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: UIFont(name: "AvenirNext-Bold", size: 20) ?? UIFont.systemFont(ofSize: 20),
+                .foregroundColor: UIColor.black,
+                .paragraphStyle: paragraphStyle,
+            ]
+
+            let textRect = rect.insetBy(dx: 10, dy: (rect.height - 20) / 2)
+            (value as NSString).draw(in: textRect, withAttributes: attributes)
+        }
+
+        return SKTexture(image: finalImage)
+    }
 }
 
 // MARK: - DnDUIChoices
@@ -78,8 +118,8 @@ public struct DnDUIChoices {
 
     var choices: [DnDAnswerNode]
 
-    var choiceSize: CGSize {
-        DnDGridSize(self.choices.count).choiceSize
+    func choiceSize(for choiceNumber: Int) -> CGSize {
+        DnDGridSize(choiceNumber).choiceSize
     }
 
     // MARK: Private
@@ -122,14 +162,15 @@ public struct DnDUIChoices {
             switch self {
                 case .one,
                      .two:
+                    CGSize(width: 220, height: 220)
+                case .three,
+                     .four:
                     CGSize(width: 200, height: 200)
-                case .three:
-                    CGSize(width: 180, height: 180)
-                case .four,
-                     .five,
-                     .six,
+                case .five:
+                    CGSize(width: 160, height: 160)
+                case .six,
                      .none:
-                    CGSize(width: 140, height: 140)
+                    CGSize(width: 150, height: 150)
             }
         }
     }

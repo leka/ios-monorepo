@@ -16,7 +16,7 @@ public class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorPr
         self.gameplay = gameplay
 
         self.uiChoices.value.choices = gameplay.choices.map { choice in
-            DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiChoices.value.choiceSize)
+            DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiChoices.value.choiceSize(for: gameplay.choices.count))
         }
     }
 
