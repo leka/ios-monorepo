@@ -21,9 +21,15 @@ struct LibraryCurriculumsView: View {
             EmptyLibraryPlaceholderView(icon: .curriculums)
         } else {
             ScrollView(showsIndicators: true) {
-                CurriculumGridView(curriculums: self.curriculums) { _ in
-                    // Nothing to do
-                }
+                CurriculumGridView(curriculums: self.curriculums, onActivitySelected: {
+                    activity in
+                    if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
+                        self.navigation.sheetContent = .carereceiverPicker(activity: activity, story: nil)
+                    } else {
+                        self.navigation.currentActivity = activity
+                        self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+                    }
+                })
             }
         }
     }
@@ -32,6 +38,7 @@ struct LibraryCurriculumsView: View {
 
     @ObservedObject private var navigation: Navigation = .shared
     @ObservedObject private var viewModel: RootAccountManagerViewModel
+    @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
 
     private var curriculums: [Curriculum] {
         self.viewModel.savedCurriculums.compactMap { savedCurriculums in

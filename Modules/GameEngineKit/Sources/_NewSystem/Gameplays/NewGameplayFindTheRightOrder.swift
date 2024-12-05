@@ -10,10 +10,11 @@ import Foundation
 public struct NewGameplayFindTheRightOrderChoice: Identifiable, Equatable {
     // MARK: Lifecycle
 
-    public init(id: String = UUID().uuidString, value: String, type: ChoiceType = .text) {
+    public init(id: String = UUID().uuidString, value: String, type: ChoiceType = .text, alreadyOrdered: Bool = false) {
         self.id = id
         self.value = value
         self.type = type
+        self.alreadyOrdered = alreadyOrdered
     }
 
     // MARK: Public
@@ -26,8 +27,11 @@ public struct NewGameplayFindTheRightOrderChoice: Identifiable, Equatable {
 
     // MARK: Internal
 
+    static let zero = NewGameplayFindTheRightOrderChoice(value: "")
+
     let value: String
     let type: ChoiceType
+    let alreadyOrdered: Bool
 }
 
 // MARK: - NewGameplayFindTheRightOrder
@@ -56,7 +60,7 @@ public class NewGameplayFindTheRightOrder: GameplayProtocol {
         }
 
         return self.orderedChoices.enumerated().map { index, choice in
-            if self.orderedChoices[index] == choice {
+            if choices[index] == choice {
                 (choice: choice, correctPosition: true)
             } else {
                 (choice: choice, correctPosition: false)
@@ -73,5 +77,13 @@ public extension NewGameplayFindTheRightOrder {
         NewGameplayFindTheRightOrderChoice(value: "4th choice"),
         NewGameplayFindTheRightOrderChoice(value: "5th choice"),
         NewGameplayFindTheRightOrderChoice(value: "6th choice"),
+    ]
+
+    static let kDefaultImageChoicesWithZones: [NewGameplayFindTheRightOrderChoice] = [
+        NewGameplayFindTheRightOrderChoice(value: "sequencing_dressing_up_1", type: .image, alreadyOrdered: true),
+        NewGameplayFindTheRightOrderChoice(value: "sequencing_dressing_up_2", type: .image, alreadyOrdered: false),
+        NewGameplayFindTheRightOrderChoice(value: "sequencing_dressing_up_3", type: .image, alreadyOrdered: false),
+        NewGameplayFindTheRightOrderChoice(value: "sequencing_dressing_up_4", type: .image, alreadyOrdered: true),
+        NewGameplayFindTheRightOrderChoice(value: "sequencing_dressing_up_5", type: .image, alreadyOrdered: false),
     ]
 }

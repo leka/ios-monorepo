@@ -180,6 +180,19 @@ struct ContentView: View {
                     .buttonStyle(.borderedProminent)
                     .frame(maxWidth: .infinity)
 
+                    NavigationLink("Drag & Drop One To One In Right Order", destination: {
+                        let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultImageChoicesWithZones)
+                        let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(gameplay: gameplay)
+                        let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
+
+                        return DnDOneToOneView(viewModel: viewModel)
+                            .navigationTitle("Drag & Drop One To One In Right Order")
+                            .navigationBarTitleDisplayMode(.large)
+                    })
+                    .tint(.red)
+                    .buttonStyle(.borderedProminent)
+                    .frame(maxWidth: .infinity)
+
                     Spacer()
                 }
             }
