@@ -425,6 +425,9 @@
                             "ref": "$exercise/payload/memory"
                         }
                     }
+                },
+                "colorMusicPad": {
+                    "properties": {}
                 }
             }
         },
@@ -464,7 +467,8 @@
                 "musicalInstruments",
                 "melody",
                 "pairing",
-                "memory"
+                "memory",
+                "colorMusicPad"
             ]
         },
         "$exercise/gameplay": {

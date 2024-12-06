@@ -2,6 +2,7 @@
 
 - Robot Renaming: You can now rename your robot directly within the app for a more personalized experience.
 - Christmas Curriculums: Introduced new Christmas-themed curriculums, including "Christmas Memory" and "Christmas Objects Recognition," to celebrate the festive season.
+- Color Music Pad: You ask, we listen! We brought back Music Color Pad from Leka Alpha
 
 ## Improvements
 

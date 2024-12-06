@@ -2,6 +2,7 @@
 
 - Renommage du Robot : Vous pouvez désormais renommer votre robot directement depuis l'application pour une expérience plus personnalisée.
 - Curriculums de Noël : Introduction de nouveaux curriculums sur le thème de Noël, y compris "Mémory de Noël" et "Reconnaissance d'Objets de Noël", pour célébrer la saison festive.
+- Pavé Musical Coloré : Beaucoup nous l'on demandé, voici donc le Piano Coloré de Leka Alpha disponible pour tous
 
 ## Améliorations
 
