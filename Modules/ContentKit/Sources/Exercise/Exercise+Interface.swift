@@ -30,5 +30,6 @@ public extension Exercise {
         case melody
         case pairing
         case memory
+        case colorMusicPad
     }
 }

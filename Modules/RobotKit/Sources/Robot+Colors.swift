@@ -71,6 +71,8 @@ public extension Robot {
             case purple
             case pink
             case yellow
+            case mint
+            case lightPink
 
             // MARK: Public
 
@@ -96,6 +98,10 @@ public extension Robot {
                         .pink
                     case .yellow:
                         .yellow
+                    case .mint:
+                        .mint
+                    case .lightPink:
+                        .lightPink
                 }
             }
         }
@@ -118,6 +124,9 @@ public extension Robot.Color {
     static let purple: Robot.Color = .init(robot: 20, 0, 80, screen: 173, 73, 247)
     static let pink: Robot.Color = .init(robot: 255, 0, 127, screen: 252, 103, 178)
     static let yellow: Robot.Color = .init(robot: 255, 255, 0, screen: 251, 232, 0)
+
+    static let mint: Robot.Color = .init(robot: 0, 255, 150, screen: 173, 235, 179)
+    static let lightPink: Robot.Color = .init(robot: 255, 0, 255, screen: 218, 177, 218)
 }
 
 // swiftlint:enable nesting identifier_name line_length

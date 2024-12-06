@@ -7,6 +7,7 @@ import AudioKit
 enum MIDIScale: String {
     case majorPentatonic
     case majorHeptatonic
+    case majorPentatonicDoubleOctave
 
     // MARK: Internal
 
@@ -16,6 +17,8 @@ enum MIDIScale: String {
                 [24, 26, 28, 31, 33]
             case .majorHeptatonic:
                 [24, 26, 28, 29, 31, 33, 35, 36]
+            case .majorPentatonicDoubleOctave:
+                [24, 26, 28, 31, 33, 36, 38, 40, 43, 45]
         }
     }
 }
