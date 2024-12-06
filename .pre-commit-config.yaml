@@ -35,20 +35,23 @@ repos:
         files: \.(json|xcstrings)$
         exclude: '(\.vscode/settings\.json|\.jtd\.json$|.*\.xcassets/.*|.*\.colorset/.*|\.animation\.lottie\.json$)'
 
-  - repo: https://github.com/realm/SwiftLint
-    rev: 0.57.1
-    hooks:
-      - id: swiftlint
-        entry: swiftlint
-        args: ["--use-alternative-excluding"]
-
-  - repo: https://github.com/nicklockwood/SwiftFormat
-    rev: 0.55.3
-    hooks:
-      - id: swiftformat
-
   - repo: local
     hooks:
+      - id: swiftlint
+        name: SwiftLint
+        description: "Check Swift files for issues with SwiftLint"
+        entry: "swiftlint --quiet"
+        language: system
+        types: [swift]
+        args: ["--use-alternative-excluding"]
+
+      - id: swiftformat
+        name: SwiftFormat
+        description: "Check swift files for formatting issues with SwiftFormat"
+        entry: swiftformat
+        language: system
+        types: [swift]
+
       - id: check_xcstrings
         name: Check .xcstrings files for stale entries and unusual characters
         description: This hook checks .xcstrings files for stale entries and unusual characters
