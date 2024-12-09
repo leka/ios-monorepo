@@ -7,14 +7,23 @@ import SwiftUI
 
 // MARK: - SavedActivity
 
-public struct Library: DatabaseDocument, Hashable {
+public struct Library: Hashable {
+    // MARK: Lifecycle
+
+    public init(
+        savedActivities: [SavedActivity] = [],
+        savedCurriculums: [SavedCurriculum] = [],
+        savedStories: [SavedStory] = [],
+        savedGamepads: [SavedGamepad] = []
+    ) {
+        self.savedActivities = savedActivities
+        self.savedCurriculums = savedCurriculums
+        self.savedStories = savedStories
+        self.savedGamepads = savedGamepads
+    }
+
     // MARK: Public
 
-    @ServerTimestamp public var createdAt: Date?
-    @ServerTimestamp public var lastEditedAt: Date?
-
-    public var id: String?
-    public var rootOwnerUid: String
     public var savedActivities: [SavedActivity]
     public var savedCurriculums: [SavedCurriculum]
     public var savedStories: [SavedStory]
@@ -23,13 +32,9 @@ public struct Library: DatabaseDocument, Hashable {
     // MARK: Internal
 
     enum CodingKeys: String, CodingKey {
-        case id = "uuid"
-        case rootOwnerUid = "root_owner_uid"
         case savedActivities = "saved_activities"
         case savedCurriculums = "saved_curriculums"
         case savedStories = "saved_stories"
         case savedGamepads = "saved_gamepads"
-        case createdAt = "created_at"
-        case lastEditedAt = "last_edited_at"
     }
 }

@@ -65,7 +65,7 @@ public class RootAccountManager {
             return
         }
 
-        let savedActivity = SavedActivity(id: activityID, rootOwnerUid: rootAccount.rootOwnerUid, caregiverID: caregiverID)
+        let savedActivity = SavedActivity(id: activityID, caregiverID: caregiverID)
 
         guard !rootAccount.library.savedActivities.contains(where: { $0.id == activityID }) else {
             log.info("\(activityID) is already saved.")
@@ -99,7 +99,7 @@ public class RootAccountManager {
             return
         }
 
-        let savedCurriculum = SavedCurriculum(id: curriculumID, rootOwnerUid: rootAccount.rootOwnerUid, caregiverID: caregiverID)
+        let savedCurriculum = SavedCurriculum(id: curriculumID, caregiverID: caregiverID)
 
         guard !rootAccount.library.savedCurriculums.contains(where: { $0.id == curriculumID }) else {
             log.info("\(curriculumID) is already saved.")
@@ -133,7 +133,7 @@ public class RootAccountManager {
             return
         }
 
-        let savedStory = SavedStory(id: storyID, rootOwnerUid: rootAccount.rootOwnerUid, caregiverID: caregiverID)
+        let savedStory = SavedStory(id: storyID, caregiverID: caregiverID)
 
         guard !rootAccount.library.savedStories.contains(where: { $0.id == storyID }) else {
             log.info("\(storyID) is already saved.")
@@ -167,7 +167,7 @@ public class RootAccountManager {
             return
         }
 
-        let savedGamepad = SavedGamepad(id: gamepadID, rootOwnerUid: rootAccount.rootOwnerUid, caregiverID: caregiverID)
+        let savedGamepad = SavedGamepad(id: gamepadID, caregiverID: caregiverID)
 
         guard !rootAccount.library.savedGamepads.contains(where: { $0.id == gamepadID }) else {
             log.info("\(gamepadID) is already saved.")
