@@ -41,17 +41,20 @@ l10n:
     details:
       icon: color_music_pad
 
-      title: Pavé musical coloré
+      title: Pavé Musical Coloré
       subtitle: null
 
       short_description: |
-        Jouer de la musique avec Leka sur des larges touches colorées.
+        Jouer de la musique en touchant l'écran coloré (principe de cause à effet).
 
       description: |
-        Lorem Ipsum
+        L'activité du pad musical coloré permet à la personne de jouer de la musique en touchant librement n'importe quelle partie de l'écran de l'iPad.
+        Chaque pression sur l'écran colore Leka de la même couleur que la zone touchée. Cette activité favorise la compréhension du lien
+        de cause à effet entre la tablette et le robot tout en offrant une expérience sensorielle riche et immersive.
 
       instructions: |
-        Lorem Ipsum
+        - Encourager la personne à toucher différentes parties de l'écran de l'iPad pour produire des sons et des couleurs.
+        - Inciter la personne à observer comment Leka change de couleur pour correspondre à la zone touchée sur l'écran.
 
   - locale: en_US
     details:
@@ -61,13 +64,16 @@ l10n:
       subtitle: null
 
       short_description: |
-        Play music with Leka on large colored keys.
+        Play music by touching the colorful screen (cause-and-effect principle).
 
       description: |
-        Lorem Ipsum
+        The color music pad activity allows the person to play music by freely touching any part of the iPad screen.
+        Each press on the screen colors Leka in the same color as the touched area. This activity promotes the understanding
+        of the cause-and-effect relationship between the tablet and the robot while offering a rich and immersive sensory experience.
 
       instructions: |
-        Lorem Ipsum
+        - Encourage the care receiver to touch different parts of the iPad screen to produce sounds and colors.
+        - Encourage the care receiver to observe how Leka changes color to match the touched area on the screen.
 
 exercises_payload:
   options:
