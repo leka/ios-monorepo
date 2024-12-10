@@ -4,6 +4,7 @@
 
 import Combine
 import SwiftUI
+import Version
 
 public class RootAccountManagerViewModel: ObservableObject {
     // MARK: Lifecycle
@@ -14,6 +15,7 @@ public class RootAccountManagerViewModel: ObservableObject {
 
     // MARK: Public
 
+    @Published public var latestConsentInfo: ConsentInfo?
     @Published public var savedActivities: [SavedActivity] = []
     @Published public var savedCurriculums: [SavedCurriculum] = []
     @Published public var savedStories: [SavedStory] = []
@@ -87,15 +89,27 @@ public class RootAccountManagerViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private let rootAccountManager = RootAccountManager.shared
 
+    private func getLatestConsentInfo(from consentInfo: [ConsentInfo]) -> ConsentInfo? {
+        consentInfo.max(by: { consent1, consent2 in
+            let version1 = Version(tolerant: consent1.policyVersion) ?? Version("0.0.0")!
+            let version2 = Version(tolerant: consent2.policyVersion) ?? Version("0.0.0")!
+            return version1 < version2
+        })
+    }
+
     private func subscribeToManager() {
         self.rootAccountManager.currentRootAccountPublisher
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] rootAccount in
-                guard let library = rootAccount?.library else { return }
-                self?.savedActivities = library.savedActivities
-                self?.savedCurriculums = library.savedCurriculums
-                self?.savedStories = library.savedStories
-                self?.savedGamepads = library.savedGamepads
+                guard let self, let rootAccount else { return }
+
+                let library = rootAccount.library
+                self.savedActivities = library.savedActivities
+                self.savedCurriculums = library.savedCurriculums
+                self.savedStories = library.savedStories
+                self.savedGamepads = library.savedGamepads
+
+                self.latestConsentInfo = self.getLatestConsentInfo(from: rootAccount.consentInfo)
             })
             .store(in: &self.cancellables)
 
