@@ -1,22 +1,4 @@
 ## New Features
 
-- Robot Renaming: You can now rename your robot directly within the app for a more personalized experience.
-- Christmas Curriculums: Introduced new Christmas-themed curriculums, including "Christmas Memory" and "Christmas Objects Recognition," to celebrate the festive season.
 - Color Music Pad: You ask, we listen! We brought back Music Color Pad from Leka Alpha
-
-## Improvements
-
-- Update Alerts: The app now checks for both app and OS updates, notifying you when a new update is available. Update alerts have been improved to appear only once per session, and an update indicator has been added to the settings.
-- User Interface Enhancements: Updated gesture icons for a better visual experience, reorganized sidebar content for easier navigation, renamed the "Activities" section to "Educational Games" for clarity, and improved the "Continue" button experience in activities for smoother gameplay.
-- App Performance and Analytics: Enhanced analytics and performance tracking with the implementation of Crashlytics and Performance Manager to improve app stability and gather user feedback for future updates.
-
-## Bug Fixes
-
-- Update Alert Fix: Resolved an issue where update alerts were repeatedly shown.
-- Navigation Bug Fix: Fixed a navigation bug when the update status encountered an error.
-- Resource Link Fix: Fixed a broken video link in the Resources section.
-- Robot Connection Display Bug: Resolved an issue where the robot connection status was not displayed correctly.
-
-## Other
-
-- Secure Connections: Implemented Firebase App Check to enhance the security of connections within the app.
+- Christmas Curriculums: Introduced new Christmas-themed curriculums, including "Christmas Memory" and "Christmas Objects Recognition," to celebrate the festive season.
