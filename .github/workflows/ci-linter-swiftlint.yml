@@ -17,19 +17,21 @@ concurrency:
 jobs:
   swift_format:
     name: swiftlint
-    runs-on: [self-hosted, iOS]
+    runs-on: [ubuntu-24.04]
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Fetch all history for all branches and tags
+          fetch-depth: 0
           lfs: false
 
       - name: Setup mise
-        run: |
-          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
-          mise install
+        uses: jdx/mise-action@v2
+        with:
+          version: 2024.12.4
+          install: true
+          cache: true
 
       - name: Run swiftlint
         run: |
@@ -39,10 +41,10 @@ jobs:
           which swiftlint
           swiftlint --version
 
-          git diff origin/main --name-only --diff-filter=AMCR \
+          git diff origin/develop --name-only --diff-filter=AMCR \
             | grep -E "\.swift\$$"                            \
             || echo "No files added nor modified!"
 
-          git diff origin/main --name-only --diff-filter=AMCR \
+          git diff origin/develop --name-only --diff-filter=AMCR \
             | grep -E "\.swift\$$"                            \
             | xargs --no-run-if-empty swiftlint lint --quiet --reporter github-actions-logging
