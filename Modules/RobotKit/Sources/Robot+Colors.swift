@@ -6,7 +6,7 @@ import SwiftUI
 
 // MARK: - Robot.Color
 
-// swiftlint:disable nesting identifier_name line_length
+// swiftlint:disable nesting identifier_name
 
 public extension Robot {
     struct Color {
@@ -125,8 +125,8 @@ public extension Robot.Color {
     static let pink: Robot.Color = .init(robot: 255, 0, 127, screen: 252, 103, 178)
     static let yellow: Robot.Color = .init(robot: 255, 255, 0, screen: 251, 232, 0)
 
-    static let mint: Robot.Color = .init(robot: 0, 255, 150, screen: 173, 235, 179)
-    static let lightPink: Robot.Color = .init(robot: 255, 0, 255, screen: 218, 177, 218)
+    static let mint: Robot.Color = .init(robot: 0, 255, 150, screen: 50, 227, 194)
+    static let lightPink: Robot.Color = .init(robot: 255, 0, 255, screen: 255, 172, 246)
 }
 
-// swiftlint:enable nesting identifier_name line_length
+// swiftlint:enable nesting identifier_name
