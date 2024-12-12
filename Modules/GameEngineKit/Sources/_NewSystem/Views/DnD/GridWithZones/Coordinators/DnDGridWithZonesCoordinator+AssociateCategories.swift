@@ -62,7 +62,7 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
         let results = self.gameplay.process(choices: self.currentlySelectedChoices)
 
         if results.first(where: { $0.choice.id == sourceChoice.id })?.correctCategory == true {
-            self.updateChoiceState(for: sourceChoice, to: .correct)
+            self.updateChoiceState(for: sourceChoice, to: .correct(dropZone: destination))
             self.alreadyValidatedChoices = self.currentlySelectedChoices
 
             if self.gameplay.isCompleted.value {
@@ -104,7 +104,7 @@ extension DnDGridWithZonesCoordinatorAssociateCategories {
     enum State: Equatable {
         case idle
         case selected
-        case correct
+        case correct(dropZone: SKSpriteNode)
         case wrong
     }
 
@@ -115,11 +115,10 @@ extension DnDGridWithZonesCoordinatorAssociateCategories {
             case .selected:
                 self.onDragAnimation(node)
                 node.zPosition += 100
-            case .correct:
+            case let .correct(dropzone):
                 node.isDraggable = false
+                node.repositionInside(dropZone: dropzone)
                 node.scale(to: CGSize(width: node.size.width * 0.75, height: node.size.height * 0.75))
-                node.zPosition = 10
-                self.onDropAction(node)
             case .wrong:
                 node.isDraggable = false
                 self.moveNodeBackToInitialPosition(node)
