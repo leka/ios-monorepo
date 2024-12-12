@@ -49,6 +49,11 @@ jobs:
           install: true
           cache: true
 
+      - name: tuist version
+        run: |
+          time which tuist
+          time tuist version
+
       - name: tuist install
         run: |
           TUIST_TURN_OFF_LINTERS=${{ env.TUIST_TURN_OFF_LINTERS }} \
