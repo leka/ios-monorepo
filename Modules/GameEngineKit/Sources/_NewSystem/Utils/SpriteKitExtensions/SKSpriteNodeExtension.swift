@@ -11,10 +11,10 @@ extension SKSpriteNode {
 
         let newX = max(dropZoneFrame.minX + size.width / 2,
                        min(position.x, dropZoneFrame.maxX - size.width / 2))
-        let newY = max(dropZoneFrame.minY + size.height / 3,
-                       min(position.y, dropZoneFrame.maxY - size.height / 3))
+        let newY = max(dropZoneFrame.minY + size.height / 2,
+                       min(position.y, dropZoneFrame.maxY - size.height / 2))
 
-        position = CGPoint(x: newX, y: newY)
+        self.moveSmoothly(to: CGPoint(x: newX, y: newY))
     }
 
     func snapToCenter(dropZone: SKSpriteNode) {
@@ -25,8 +25,10 @@ extension SKSpriteNode {
         let newY = max(dropZoneFrame.minY + size.height / 2,
                        min(position.y, dropZoneFrame.maxY - size.height / 2))
 
-        let targetPosition = CGPoint(x: newX, y: newY)
+        self.moveSmoothly(to: CGPoint(x: newX, y: newY))
+    }
 
+    func moveSmoothly(to targetPosition: CGPoint) {
         let moveToCenter = SKAction.move(to: targetPosition, duration: 0.2)
         moveToCenter.timingMode = .easeInEaseOut
 
@@ -39,27 +41,5 @@ extension SKSpriteNode {
                 self.removeAllActions()
             }
         )
-    }
-
-    func fullyContains(bounds: CGRect) -> Bool {
-        (position.x >= bounds.minX)
-            && (position.y >= bounds.minY)
-            && (position.x <= bounds.maxX)
-            && (position.y <= bounds.maxY)
-    }
-
-    func fullyContains(location: CGPoint, bounds: CGRect) -> Bool {
-        (location.x >= bounds.minX)
-            && (location.y >= bounds.minY)
-            && (location.x <= bounds.maxX)
-            && (location.y <= bounds.maxY)
-    }
-
-    // make sure the bigger side of a node measures a max of 170 pts
-    func scaleForMax(sizeOf: CGFloat) {
-        let initialSize = texture?.size()
-        let biggerSide = max(initialSize!.width, initialSize!.height)
-        let scaler = sizeOf / biggerSide
-        setScale(scaler)
     }
 }
