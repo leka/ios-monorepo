@@ -17,6 +17,50 @@ public struct DnDGridView: View {
     // MARK: Public
 
     public var body: some View {
+        HStack(spacing: 0) {
+            if let action = self.viewModel.action {
+                Button {
+                    // nothing to do
+                }
+                label: {
+                    ActionButtonView(action: action)
+                        .padding(20)
+                }
+                .simultaneousGesture(
+                    TapGesture()
+                        .onEnded { _ in
+                            withAnimation {
+                                self.viewModel.isActionTriggered = true
+                            }
+                        }
+                )
+
+                Divider()
+                    .opacity(0.4)
+                    .frame(maxHeight: 500)
+                    .padding(.vertical, 20)
+
+                Spacer()
+
+                self.standardDnDGridView
+                    .colorMultiply(self.viewModel.isActionTriggered ? .white : .gray.opacity(0.4))
+                    .animation(.easeOut(duration: 0.3), value: self.viewModel.isActionTriggered)
+                    .allowsHitTesting(self.viewModel.isActionTriggered)
+
+                Spacer()
+
+            } else {
+                self.standardDnDGridView
+            }
+        }
+    }
+
+    // MARK: Private
+
+    @StateObject private var viewModel: DnDGridViewModel
+    @State private var scene: SKScene = .init()
+
+    private var standardDnDGridView: some View {
         GeometryReader { proxy in
             SpriteView(scene: self.makeScene(size: proxy.size), options: [.allowsTransparency])
                 .frame(width: proxy.size.width, height: proxy.size.height)
@@ -25,11 +69,6 @@ public struct DnDGridView: View {
                 }
         }
     }
-
-    // MARK: Private
-
-    @StateObject private var viewModel: DnDGridViewModel
-    @State private var scene: SKScene = .init()
 
     private func makeScene(size: CGSize) -> SKScene {
         guard let finalScene = scene as? DnDGridBaseScene else {
