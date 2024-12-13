@@ -28,13 +28,20 @@ jobs:
           fetch-depth: 2
           lfs: true
 
+      - name: Set up mise
+        uses: jdx/mise-action@v2
+        with:
+          version: 2024.12.4
+          install: true
+          cache: true
+
       - uses: actions/cache@v4
         with:
           path: ~/.cache/pre-commit
-          key: ${{ runner.os }}-pre-commit-${{ runner.name }}-${{ hashFiles('.pre-commit-config.yaml') }}
+          key: pre-commit-${{ runner.name }}-${{ hashFiles('.pre-commit-config.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-pre-commit-${{ runner.name }}-
-            ${{ runner.os }}-pre-commit-
+            pre-commit-${{ runner.name }}-
+            pre-commit-
 
       - name: Run pre-commit hooks --all-files
         if: matrix.files == 'all_files'
