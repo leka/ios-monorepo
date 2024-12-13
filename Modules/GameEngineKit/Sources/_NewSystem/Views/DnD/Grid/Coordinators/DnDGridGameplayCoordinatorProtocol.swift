@@ -6,6 +6,6 @@ import Combine
 import Foundation
 
 public protocol DnDGridGameplayCoordinatorProtocol {
-    var uiChoices: CurrentValueSubject<DnDUIChoices, Never> { get }
+    var uiModel: CurrentValueSubject<DnDGridUIModel, Never> { get }
     func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDAnswerNode?)
 }

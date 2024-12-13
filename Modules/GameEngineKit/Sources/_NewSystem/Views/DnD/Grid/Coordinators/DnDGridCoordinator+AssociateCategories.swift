@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import ContentKit
 import SpriteKit
 import SwiftUI
 import UtilsKit
@@ -12,17 +13,18 @@ import UtilsKit
 public class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(gameplay: NewGameplayAssociateCategories) {
+    public init(gameplay: NewGameplayAssociateCategories, action: Exercise.Action? = nil) {
         self.gameplay = gameplay
 
-        self.uiChoices.value.choices = gameplay.choices.map { choice in
-            DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiChoices.value.choiceSize(for: gameplay.choices.count))
+        self.uiModel.value.action = action
+        self.uiModel.value.choices = gameplay.choices.map { choice in
+            DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiModel.value.choiceSize(for: gameplay.choices.count))
         }
     }
 
     // MARK: Public
 
-    public private(set) var uiChoices = CurrentValueSubject<DnDUIChoices, Never>(.zero)
+    public private(set) var uiModel = CurrentValueSubject<DnDGridUIModel, Never>(.zero)
 
     public func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDAnswerNode? = nil) {
         switch event {
@@ -76,7 +78,7 @@ public class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorPr
     private func updateChoiceState(for choice: NewGameplayAssociateCategoriesChoice, to state: State) {
         guard let index = self.gameplay.choices.firstIndex(where: { $0.id == choice.id }) else { return }
 
-        self.updateUINodeState(node: self.uiChoices.value.choices[index], state: state)
+        self.updateUINodeState(node: self.uiModel.value.choices[index], state: state)
     }
 
     private func choiceAlreadySelected(choice: NewGameplayAssociateCategoriesChoice) -> Bool {
