@@ -104,6 +104,15 @@ public extension NewGameplayAssociateCategories {
         NewGameplayAssociateCategoriesChoice(value: "Maison", category: nil, type: .text),
     ]
 
+    static let kDefaultImageChoices: [NewGameplayAssociateCategoriesChoice] = [
+        NewGameplayAssociateCategoriesChoice(value: "pictograms-weather-sun_yellow-0106", category: .categoryA, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "pictograms-animals-arctic-penguin_yellow-0088", category: .categoryB, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "pictograms-weather-sun_yellow-0106", category: .categoryA, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "pictograms-animals-arctic-penguin_yellow-0088", category: .categoryB, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "pictograms-weather-sun_yellow-0106", category: .categoryA, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "Maison", category: nil, type: .text),
+    ]
+
     static let kDefaultChoicesWithZones: [NewGameplayAssociateCategoriesChoice] = [
         NewGameplayAssociateCategoriesChoice(value: "sun", category: .categoryA, type: .text),
         NewGameplayAssociateCategoriesChoice(value: "car", category: .categoryB, type: .text),
