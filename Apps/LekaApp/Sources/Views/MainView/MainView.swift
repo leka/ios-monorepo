@@ -329,6 +329,21 @@ struct MainView: View {
                         })
                         .logEventScreenView(screenName: "carereceiver_picker", context: .sheet)
                         .navigationBarTitleDisplayMode(.inline)
+
+                    case .consent:
+                        ConsentView(
+                            onCancel: {
+                                print("Consent was denied") // Add analytics
+                            },
+                            onAccept: {
+                                self.rootAccountViewModel.updateConsentInfo(policyVersion: self.latestPolicyVersion)
+                                if self.caregiverManager.currentCaregiver.value == nil {
+                                    self.navigation.sheetContent = .caregiverPicker
+                                } else {
+                                    self.navigation.sheetContent = nil
+                                }
+                            }
+                        )
                 }
             }
         }
@@ -375,6 +390,18 @@ struct MainView: View {
                 self.caregiverManager.setCurrentCaregiver(byID: storedCaregiverID)
             }
         }
+        .onReceive(self.rootAccountViewModel.$currentRootAccount) { rootAccount in
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            guard rootAccount != nil else { return }
+
+            guard self.rootAccountViewModel.needsConsentUpdate(
+                latestPolicyVersion: self.latestPolicyVersion
+            ) else {
+                return
+            }
+            self.navigation.sheetContent = .consent
+//            }
+        }
         .onChange(of: self.caregiverManagerViewModel.currentCaregiver) { currentCaregiver in
             self.persistentDataManager.lastActiveCaregiverID = currentCaregiver?.id
             self.persistentDataManager.updateLastActiveTimestamp()
@@ -401,6 +428,7 @@ struct MainView: View {
     private var persistentDataManager: PersistentDataManager = .shared
     private var caregiverManager: CaregiverManager = .shared
     private var carereceiverManager: CarereceiverManager = .shared
+    private var latestPolicyVersion: String = "1.2.4" // fetch from Yaml
 }
 
 // swiftlint:enable type_body_length

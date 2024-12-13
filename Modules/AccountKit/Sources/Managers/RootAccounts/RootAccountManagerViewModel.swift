@@ -15,7 +15,8 @@ public class RootAccountManagerViewModel: ObservableObject {
 
     // MARK: Public
 
-    @Published public var latestConsentInfo: ConsentInfo?
+    @Published public var currentRootAccount: RootAccount?
+    @Published public var currentConsentInfo: ConsentInfo? // Not published
     @Published public var savedActivities: [SavedActivity] = []
     @Published public var savedCurriculums: [SavedCurriculum] = []
     @Published public var savedStories: [SavedStory] = []
@@ -84,6 +85,22 @@ public class RootAccountManagerViewModel: ObservableObject {
         self.rootAccountManager.resetData()
     }
 
+    // ConsentInfo
+
+    public func needsConsentUpdate(latestPolicyVersion: String) -> Bool {
+        guard let currentConsent = self.currentConsentInfo,
+              let currentVersion = Version(tolerant: currentConsent.policyVersion),
+              let latestVersion = Version(tolerant: latestPolicyVersion)
+        else {
+            return true
+        }
+        return currentVersion < latestVersion
+    }
+
+    public func updateConsentInfo(policyVersion: String) {
+        self.rootAccountManager.appendConsentInfo(policyVersion: policyVersion)
+    }
+
     // MARK: Private
 
     private var cancellables = Set<AnyCancellable>()
@@ -102,6 +119,7 @@ public class RootAccountManagerViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] rootAccount in
                 guard let self, let rootAccount else { return }
+                self.currentRootAccount = rootAccount
 
                 let library = rootAccount.library
                 self.savedActivities = library.savedActivities
@@ -109,7 +127,7 @@ public class RootAccountManagerViewModel: ObservableObject {
                 self.savedStories = library.savedStories
                 self.savedGamepads = library.savedGamepads
 
-                self.latestConsentInfo = self.getLatestConsentInfo(from: rootAccount.consentInfo)
+                self.currentConsentInfo = self.getLatestConsentInfo(from: rootAccount.consentInfo)
             })
             .store(in: &self.cancellables)
 

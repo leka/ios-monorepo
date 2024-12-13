@@ -59,6 +59,7 @@ struct LekaApp: App {
 
     @Environment(\.colorScheme) var colorScheme
     @StateObject var updateManager: UpdateManager = .shared
+    @StateObject var rootAccountViewModel = RootAccountManagerViewModel()
     @ObservedObject var styleManager: StyleManager = .shared
 
     var body: some Scene {
