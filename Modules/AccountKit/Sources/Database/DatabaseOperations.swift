@@ -97,6 +97,52 @@ public class DatabaseOperations {
         return subject.eraseToAnyPublisher()
     }
 
+    public func getCurrentLibrary() -> AnyPublisher<Library, Error> {
+        let subject = PassthroughSubject<Library, Error>()
+
+        guard let currentUserID = Auth.auth().currentUser?.uid else {
+            subject.send(completion: .failure(DatabaseError.customError("User not authenticated")))
+            return subject.eraseToAnyPublisher()
+        }
+
+        let listenerKey = "LIBRARIES_QUERY_\(currentUserID)"
+        if let existingListener = listenerRegistrations[listenerKey] {
+            existingListener.remove()
+            self.listenerRegistrations.removeValue(forKey: listenerKey)
+        }
+
+        let listener = self.database.collection(DatabaseCollection.libraries.rawValue)
+            .whereField("root_owner_uid", isEqualTo: currentUserID)
+            .limit(to: 1)
+            .addSnapshotListener { querySnapshot, error in
+                if let error {
+                    log.error("\(error.localizedDescription)")
+                    subject.send(completion: .failure(error))
+                } else if let querySnapshot, !querySnapshot.documents.isEmpty {
+                    do {
+                        let library = try querySnapshot.documents.first?.data(as: Library.self)
+                        if let library {
+                            log.info("Library document fetched successfully for user \(currentUserID). 🎉")
+                            subject.send(library)
+                        } else {
+                            log.error("Library document could not be decoded.")
+                            subject.send(completion: .failure(DatabaseError.decodeError))
+                        }
+                    } catch {
+                        log.error("\(error.localizedDescription)")
+                        subject.send(completion: .failure(error))
+                    }
+                } else {
+                    log.error("Library document not found for user \(currentUserID).")
+                    subject.send(completion: .failure(DatabaseError.documentNotFound))
+                }
+            }
+
+        self.listenerRegistrations[listenerKey] = listener
+
+        return subject.eraseToAnyPublisher()
+    }
+
     public func getCurrentRootAccount() -> AnyPublisher<RootAccount, Error> {
         let subject = PassthroughSubject<RootAccount, Error>()
 
@@ -105,13 +151,15 @@ public class DatabaseOperations {
             return subject.eraseToAnyPublisher()
         }
 
-        if let existingListener = listenerRegistrations["ROOT_ACCOUNTS_\(currentUserID)"] {
+        let listenerKey = "ROOT_ACCOUNTS_\(currentUserID)"
+        if let existingListener = listenerRegistrations[listenerKey] {
             existingListener.remove()
-            self.listenerRegistrations.removeValue(forKey: "ROOT_ACCOUNTS_\(currentUserID)")
+            self.listenerRegistrations.removeValue(forKey: listenerKey)
         }
 
         let listener = self.database.collection(DatabaseCollection.rootAccounts.rawValue)
             .whereField("root_owner_uid", isEqualTo: currentUserID)
+            .limit(to: 1)
             .addSnapshotListener { querySnapshot, error in
                 if let error {
                     log.error("\(error.localizedDescription)")
@@ -131,7 +179,7 @@ public class DatabaseOperations {
                 }
             }
 
-        self.listenerRegistrations["ROOT_ACCOUNTS_\(currentUserID)"] = listener
+        self.listenerRegistrations[listenerKey] = listener
 
         return subject.eraseToAnyPublisher()
     }
