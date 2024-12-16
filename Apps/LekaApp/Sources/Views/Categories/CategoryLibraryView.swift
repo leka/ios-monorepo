@@ -14,13 +14,13 @@ struct CategoryLibraryView: View {
         if self.authManagerViewModel.userAuthenticationState == .loggedIn {
             switch self.category {
                 case .libraryCurriculums:
-                    LibraryCurriculumsView(viewModel: self.rootAccountViewModel)
+                    LibraryCurriculumsView(viewModel: self.libraryManagerViewModel)
                         .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.libraryCurriculums.characters))
                 case .libraryStories:
-                    LibraryStoriesView(viewModel: self.rootAccountViewModel)
+                    LibraryStoriesView(viewModel: self.libraryManagerViewModel)
                         .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.libraryStories.characters))
                 default:
-                    LibraryActivitiesView(viewModel: self.rootAccountViewModel)
+                    LibraryActivitiesView(viewModel: self.libraryManagerViewModel)
                         .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.libraryActivities.characters))
             }
         } else {
@@ -29,7 +29,7 @@ struct CategoryLibraryView: View {
         }
     }
 
-    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
+    @StateObject private var libraryManagerViewModel = LibraryManagerViewModel() // VM won't work anymore
     @ObservedObject var authManagerViewModel = AuthManagerViewModel.shared
 }
 

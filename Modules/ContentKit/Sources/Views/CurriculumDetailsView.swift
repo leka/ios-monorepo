@@ -146,15 +146,15 @@ public struct CurriculumDetailsView: View {
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                     ToolbarItem {
                         Menu {
-                            if self.rootAccountViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) {
+                            if self.libraryManagerViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) {
                                 Button(role: .destructive) {
-                                    self.rootAccountViewModel.removeSavedCurriculum(curriculumID: self.curriculum.uuid)
+                                    self.libraryManager.removeCurriculum(curriculumID: self.curriculum.uuid)
                                 } label: {
                                     Label(String(l10n.Library.MenuActions.removeFromlibraryButtonLabel.characters), systemImage: "trash")
                                 }
                             } else {
                                 Button {
-                                    self.rootAccountViewModel.addSavedCurriculum(
+                                    self.libraryManager.addCurriculum(
                                         curriculumID: self.curriculum.uuid,
                                         caregiverID: currentCaregiverID
                                     )
@@ -188,9 +188,10 @@ public struct CurriculumDetailsView: View {
     @State private var isDescriptionExpanded = false
     @ObservedObject private var styleManager: StyleManager = .shared
 
-    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
+    @StateObject private var libraryManagerViewModel = LibraryManagerViewModel()
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
+    private var libraryManager: LibraryManager = .shared
     private let curriculum: Curriculum
 }
 

@@ -81,15 +81,15 @@ public struct LibraryActivityListView: View {
                             if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                                 Button {} label: {
                                     Menu {
-                                        if self.rootAccountViewModel.isActivitySaved(activityID: activity.uuid) {
+                                        if self.libraryManagerViewModel.isActivitySaved(activityID: activity.uuid) {
                                             Button(role: .destructive) {
-                                                self.rootAccountViewModel.removeSavedActivity(activityID: activity.uuid)
+                                                self.libraryManager.removeActivity(activityID: activity.uuid)
                                             } label: {
                                                 Label(String(l10n.Library.MenuActions.removeFromlibraryButtonLabel.characters), systemImage: "trash")
                                             }
                                         } else {
                                             Button {
-                                                self.rootAccountViewModel.addSavedActivity(
+                                                self.libraryManager.addActivity(
                                                     activityID: activity.uuid,
                                                     caregiverID: currentCaregiverID
                                                 )
@@ -154,8 +154,10 @@ public struct LibraryActivityListView: View {
 
     @ObservedObject private var styleManager: StyleManager = .shared
 
-    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
+    @StateObject private var libraryManagerViewModel = LibraryManagerViewModel()
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+
+    private var libraryManager: LibraryManager = .shared
 }
 
 #Preview {
