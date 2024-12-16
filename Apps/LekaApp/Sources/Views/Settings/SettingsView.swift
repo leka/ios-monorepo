@@ -240,18 +240,17 @@ struct SettingsView: View {
     private let authManager = AuthManager.shared
     private let caregiverManager: CaregiverManager = .shared
     private let carereceiverManager: CarereceiverManager = .shared
+    private var libraryManager: LibraryManager = .shared
     private let persistentDataManager: PersistentDataManager = .shared
 
     @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
     @ObservedObject private var styleManager: StyleManager = .shared
     @ObservedObject private var navigation = Navigation.shared
 
-    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
-
     private func reset() {
         self.caregiverManager.resetData()
         self.carereceiverManager.resetData()
-        self.rootAccountViewModel.resetData()
+        self.libraryManager.resetData()
         self.styleManager.accentColor = DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
         self.styleManager.colorScheme = .light
     }
