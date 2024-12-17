@@ -123,4 +123,15 @@ public extension NewGameplayAssociateCategories {
         NewGameplayAssociateCategoriesChoice(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
         NewGameplayAssociateCategoriesChoice(value: "Maison", category: nil, type: .text),
     ]
+
+    static let kDefaultImageChoicesWithZones: [NewGameplayAssociateCategoriesChoice] = [
+        NewGameplayAssociateCategoriesChoice(value: "dropzone_bathroom", category: .categoryA, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "dropzone_bedroom", category: .categoryB, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "pictograms-weather-sun_yellow-0106", category: .categoryA, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "pictograms-animals-arctic-penguin_yellow-0088", category: .categoryB, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "pictograms-weather-sun_yellow-0106", category: .categoryA, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "pictograms-animals-arctic-penguin_yellow-0088", category: .categoryB, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "pictograms-weather-sun_yellow-0106", category: .categoryA, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "Maison", category: nil, type: .text),
+    ]
 }
