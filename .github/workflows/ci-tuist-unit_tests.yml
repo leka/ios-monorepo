@@ -33,13 +33,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1 # shallow clone
-          lfs: true
+          fetch-depth: 1
+          lfs: false
 
-      - name: Setup mise
-        run: |
-          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
-          mise install
+      - name: Set up mise
+        uses: jdx/mise-action@v2
+        with:
+          version: 2024.12.4
+          install: true
+          cache: true
 
       - name: tuist install
         run: |
