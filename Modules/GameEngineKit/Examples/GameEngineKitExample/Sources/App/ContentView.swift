@@ -5,6 +5,8 @@
 import GameEngineKit
 import SwiftUI
 
+// swiftlint:disable type_body_length
+
 struct ContentView: View {
     var body: some View {
         NavigationStack {
@@ -349,6 +351,84 @@ struct ContentView: View {
                 }
             }
 
+            HStack(spacing: 20) {
+                Text("Action Then DnD One To One")
+                    .font(.title)
+                    .padding()
+
+                NavigationLink("Observe Image Then Drag & Drop One To One", destination: {
+                    let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultImageChoicesWithZones)
+                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(gameplay: gameplay,
+                                                                              action: .ipad(type: .image("sport_dance_player_man")))
+                    let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
+
+                    return DnDOneToOneView(viewModel: viewModel)
+                        .navigationTitle("Observe Image Then Drag & Drop One To One")
+                        .navigationBarTitleDisplayMode(.large)
+                })
+                .tint(.cyan)
+                .buttonStyle(.borderedProminent)
+                .frame(maxWidth: .infinity)
+
+                NavigationLink("Observe SFSymbol Then Drag & Drop One To One", destination: {
+                    let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultImageChoicesWithZones)
+                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(gameplay: gameplay,
+                                                                              action: .ipad(type: .sfsymbol("star")))
+                    let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
+
+                    return DnDOneToOneView(viewModel: viewModel)
+                        .navigationTitle("Observe SFSymbol Then Drag & Drop One To One")
+                        .navigationBarTitleDisplayMode(.large)
+                })
+                .tint(.cyan)
+                .buttonStyle(.borderedProminent)
+                .frame(maxWidth: .infinity)
+
+                NavigationLink("Listen Then Drag & Drop One To One", destination: {
+                    let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultImageChoicesWithZones)
+                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(gameplay: gameplay,
+                                                                              action: .ipad(type: .audio("sound_animal_duck")))
+                    let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
+
+                    return DnDOneToOneView(viewModel: viewModel)
+                        .navigationTitle("Listen Then Drag & Drop One To One")
+                        .navigationBarTitleDisplayMode(.large)
+                })
+                .tint(.cyan)
+                .buttonStyle(.borderedProminent)
+                .frame(maxWidth: .infinity)
+
+                NavigationLink("Listen Speech Then Drag & Drop One To One", destination: {
+                    let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultImageChoicesWithZones)
+                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(gameplay: gameplay,
+                                                                              action: .ipad(type: .speech("Correct answer")))
+                    let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
+
+                    return DnDOneToOneView(viewModel: viewModel)
+                        .navigationTitle("Listen Speech Then Drag & Drop One To One")
+                        .navigationBarTitleDisplayMode(.large)
+                })
+                .tint(.cyan)
+                .buttonStyle(.borderedProminent)
+                .frame(maxWidth: .infinity)
+
+                NavigationLink("Robot Then Drag & Drop One To One", destination: {
+                    let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultImageChoicesWithZones)
+                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(gameplay: gameplay,
+                                                                              action: .robot(type: .color("red")))
+                    let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
+
+                    return DnDOneToOneView(viewModel: viewModel)
+                        .navigationTitle("Listen Robot Then Drag & Drop One To One")
+                        .navigationBarTitleDisplayMode(.large)
+                })
+                .tint(.cyan)
+                .buttonStyle(.borderedProminent)
+                .frame(maxWidth: .infinity)
+
+                Spacer()
+            }
+
             Text("Or choose a template")
                 .font(.largeTitle)
                 .padding()
@@ -357,6 +437,8 @@ struct ContentView: View {
         }
     }
 }
+
+// swiftlint:enable type_body_length
 
 #Preview {
     ContentView()
