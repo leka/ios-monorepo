@@ -10,9 +10,8 @@ import SwiftUI
 public class DnDDropZoneNode: SKSpriteNode {
     // MARK: Lifecycle
 
-    init(id: String, value: String, type: ChoiceType, position: CGPoint) {
+    init(id: String, value: String, type: ChoiceType, position: CGPoint, size: CGSize) {
         self.id = id
-        let size = CGSize(width: 420, height: 315)
         let texture: SKTexture = switch type {
             case .image:
                 Self.createImageTexture(value: value, size: size)
