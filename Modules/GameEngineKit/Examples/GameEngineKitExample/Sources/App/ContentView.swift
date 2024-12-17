@@ -195,6 +195,80 @@ struct ContentView: View {
 
                     Spacer()
                 }
+
+                HStack(spacing: 20) {
+                    Text("Action Then DnDGrid")
+                        .font(.title)
+                        .padding()
+
+                    NavigationLink("Observe Image Then Drag & Drop Categories", destination: {
+                        let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoices)
+                        let coordinator = DnDGridCoordinatorAssociateCategories(gameplay: gameplay,
+                                                                                action: .ipad(type: .image("sport_dance_player_man")))
+                        let viewModel = DnDGridViewModel(coordinator: coordinator)
+
+                        return DnDGridView(viewModel: viewModel)
+                            .navigationTitle("Observe Image Then Drag & Drop Categories")
+                            .navigationBarTitleDisplayMode(.large)
+                    })
+                    .tint(.pink)
+                    .buttonStyle(.borderedProminent)
+                    .frame(maxWidth: .infinity)
+
+                    NavigationLink("Observe SFSymbol Then Drag & Drop Categories", destination: {
+                        let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoices)
+                        let coordinator = DnDGridCoordinatorAssociateCategories(gameplay: gameplay, action: .ipad(type: .sfsymbol("star")))
+                        let viewModel = DnDGridViewModel(coordinator: coordinator)
+
+                        return DnDGridView(viewModel: viewModel)
+                            .navigationTitle("Observe SFSymbol Then Drag & Drop Categories")
+                            .navigationBarTitleDisplayMode(.large)
+                    })
+                    .tint(.pink)
+                    .buttonStyle(.borderedProminent)
+                    .frame(maxWidth: .infinity)
+
+                    NavigationLink("Listen Then Drag & Drop Categories", destination: {
+                        let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoices)
+                        let coordinator = DnDGridCoordinatorAssociateCategories(gameplay: gameplay, action: .ipad(type: .audio("sound_animal_duck")))
+                        let viewModel = DnDGridViewModel(coordinator: coordinator)
+
+                        return DnDGridView(viewModel: viewModel)
+                            .navigationTitle("Listen Then Drag & Drop Categories")
+                            .navigationBarTitleDisplayMode(.large)
+                    })
+                    .tint(.pink)
+                    .buttonStyle(.borderedProminent)
+                    .frame(maxWidth: .infinity)
+
+                    NavigationLink("Listen Speech Then Drag & Drop Categories", destination: {
+                        let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultImageChoices)
+                        let coordinator = DnDGridCoordinatorAssociateCategories(gameplay: gameplay, action: .ipad(type: .speech("Correct answer")))
+                        let viewModel = DnDGridViewModel(coordinator: coordinator)
+
+                        return DnDGridView(viewModel: viewModel)
+                            .navigationTitle("Listen Speech  Then Drag & Drop Categories")
+                            .navigationBarTitleDisplayMode(.large)
+                    })
+                    .tint(.pink)
+                    .buttonStyle(.borderedProminent)
+                    .frame(maxWidth: .infinity)
+
+                    NavigationLink("Robot Then Drag & Drop Categories", destination: {
+                        let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoices)
+                        let coordinator = DnDGridCoordinatorAssociateCategories(gameplay: gameplay, action: .robot(type: .color("red")))
+                        let viewModel = DnDGridViewModel(coordinator: coordinator)
+
+                        return DnDGridView(viewModel: viewModel)
+                            .navigationTitle("Listen Speech  Then Drag & Drop Categories")
+                            .navigationBarTitleDisplayMode(.large)
+                    })
+                    .tint(.pink)
+                    .buttonStyle(.borderedProminent)
+                    .frame(maxWidth: .infinity)
+
+                    Spacer()
+                }
             }
 
             Text("Or choose a template")
