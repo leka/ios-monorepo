@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import ContentKit
 import SpriteKit
 import SwiftUI
 import UtilsKit
@@ -12,18 +13,19 @@ import UtilsKit
 public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(gameplay: NewGameplayFindTheRightOrder) {
+    public init(gameplay: NewGameplayFindTheRightOrder, action: Exercise.Action? = nil) {
         self.gameplay = gameplay
 
-        self.uiChoices.value.choices = gameplay.orderedChoices.map { choice in
-            DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiChoices.value.choiceSize(for: gameplay.orderedChoices.count))
+        self.uiModel.value.action = action
+        self.uiModel.value.choices = gameplay.orderedChoices.map { choice in
+            DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiModel.value.choiceSize(for: gameplay.orderedChoices.count))
         }
 
-        self.uiDropZones = self.uiChoices.value.choices.map { node in
+        self.uiDropZones = self.uiModel.value.choices.map { node in
             DnDDropZoneNode(node: node)
         }
 
-        self.uiChoices.value.choices.shuffle()
+        self.uiModel.value.choices.shuffle()
 
         self.currentOrderedChoices = Array(repeating: .zero, count: gameplay.orderedChoices.count)
         self.alreadyValidatedChoices = Array(repeating: .zero, count: gameplay.orderedChoices.count)
@@ -32,7 +34,7 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
     // MARK: Public
 
     public private(set) var uiDropZones: [DnDDropZoneNode] = []
-    public private(set) var uiChoices = CurrentValueSubject<DnDUIChoices, Never>(.zero)
+    public private(set) var uiModel = CurrentValueSubject<DnDOneToOneUIModel, Never>(.zero)
 
     public func setAlreadyOrderedNodes() {
         self.gameplay.orderedChoices.forEach { choice in
@@ -90,9 +92,9 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
     }
 
     private func updateChoiceState(for choice: NewGameplayFindTheRightOrderChoice, to state: State) {
-        guard let index = self.uiChoices.value.choices.firstIndex(where: { $0.id == choice.id }) else { return }
+        guard let index = self.uiModel.value.choices.firstIndex(where: { $0.id == choice.id }) else { return }
 
-        self.updateUINodeState(node: self.uiChoices.value.choices[index], state: state)
+        self.updateUINodeState(node: self.uiModel.value.choices[index], state: state)
     }
 
     private func choiceAlreadySelected(choice: NewGameplayFindTheRightOrderChoice) -> Bool {
@@ -130,7 +132,7 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
     }
 
     private func isMovable(choice: NewGameplayFindTheRightOrderChoice) -> Bool {
-        self.uiChoices.value.choices.first(where: { choice.id == $0.id })!.isDraggable
+        self.uiModel.value.choices.first(where: { choice.id == $0.id })!.isDraggable
     }
 }
 

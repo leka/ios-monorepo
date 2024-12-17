@@ -5,9 +5,8 @@
 import Combine
 import Foundation
 
-// swiftlint:disable:next type_name
 public protocol DnDOneToOneGameplayCoordinatorProtocol {
-    var uiChoices: CurrentValueSubject<DnDUIChoices, Never> { get }
+    var uiModel: CurrentValueSubject<DnDOneToOneUIModel, Never> { get }
     var uiDropZones: [DnDDropZoneNode] { get }
     func setAlreadyOrderedNodes()
     func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDDropZoneNode?)
