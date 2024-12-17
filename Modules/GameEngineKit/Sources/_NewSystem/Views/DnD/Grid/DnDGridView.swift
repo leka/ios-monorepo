@@ -39,19 +39,22 @@ public struct DnDGridView: View {
                     .opacity(0.4)
                     .frame(maxHeight: 500)
                     .padding(.vertical, 20)
-
-                Spacer()
-
-                self.standardDnDGridView
-                    .colorMultiply(self.viewModel.isActionTriggered ? .white : .gray.opacity(0.4))
-                    .animation(.easeOut(duration: 0.3), value: self.viewModel.isActionTriggered)
-                    .allowsHitTesting(self.viewModel.isActionTriggered)
-
-                Spacer()
-
-            } else {
-                self.standardDnDGridView
             }
+
+            Spacer()
+
+            GeometryReader { proxy in
+                SpriteView(scene: self.makeScene(size: proxy.size), options: [.allowsTransparency])
+                    .frame(width: proxy.size.width, height: proxy.size.height)
+                    .onAppear {
+                        self.scene = self.getScene(for: self.viewModel.choices.count, size: proxy.size)
+                    }
+            }
+            .colorMultiply(self.viewModel.isActionTriggered ? .white : .gray.opacity(0.4))
+            .animation(.easeOut(duration: 0.3), value: self.viewModel.isActionTriggered)
+            .allowsHitTesting(self.viewModel.isActionTriggered)
+
+            Spacer()
         }
     }
 
@@ -59,16 +62,6 @@ public struct DnDGridView: View {
 
     @StateObject private var viewModel: DnDGridViewModel
     @State private var scene: SKScene = .init()
-
-    private var standardDnDGridView: some View {
-        GeometryReader { proxy in
-            SpriteView(scene: self.makeScene(size: proxy.size), options: [.allowsTransparency])
-                .frame(width: proxy.size.width, height: proxy.size.height)
-                .onAppear {
-                    self.scene = self.getScene(for: self.viewModel.choices.count, size: proxy.size)
-                }
-        }
-    }
 
     private func makeScene(size: CGSize) -> SKScene {
         guard let finalScene = scene as? DnDGridBaseScene else {

@@ -14,6 +14,7 @@ public class DnDGridViewModel: ObservableObject {
     public init(coordinator: DnDGridGameplayCoordinatorProtocol) {
         self.choices = coordinator.uiModel.value.choices
         self.action = coordinator.uiModel.value.action
+        self.isActionTriggered = (self.action == nil) ? true : false
         self.coordinator = coordinator
         self.coordinator.uiModel
             .receive(on: DispatchQueue.main)
