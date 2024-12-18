@@ -43,7 +43,8 @@ public class RootAccountManager {
 
     public func updateRootAccount(rootAccount: inout RootAccount) {
         rootAccount.lastEditedAt = nil
-        self.dbOps.update(data: rootAccount, in: .rootAccounts)
+        let ignoredFields: [String] = ["root_owner_uid", "uuid", "created_at"]
+        self.dbOps.update(data: rootAccount, in: .rootAccounts, ignoringFields: ignoredFields)
             .sink(
                 receiveCompletion: { [weak self] completion in
                     if case let .failure(error) = completion {
