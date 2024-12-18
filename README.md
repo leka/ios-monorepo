@@ -62,6 +62,20 @@ TUIST_TURN_OFF_LINTERS=TRUE \
 tuist generate
 ```
 
+## Edit encrypted files
+
+For security reasons, some files are encrypted. To be able to access and edit them, follow those steps:
+
+```shell
+# install git-crypt
+brew install git-crypt
+
+# unlock files
+git-crypt unlock
+```
+
+More information here: https://github.com/AGWA/git-crypt#using-git-crypt
+
 ## License
 
 Copyright (c) APF France handicap. All rights reserved.
