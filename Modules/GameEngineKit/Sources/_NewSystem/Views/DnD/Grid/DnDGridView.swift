@@ -73,6 +73,14 @@ public struct DnDGridView: View {
 
     private func getScene(for choiceCount: Int, size _: CGSize) -> SKScene {
         switch choiceCount {
+            case 2:
+                DnDGridTwoChoicesScene(viewModel: self.viewModel)
+            case 3:
+                DnDGridThreeChoicesScene(viewModel: self.viewModel)
+            case 4:
+                DnDGridFourChoicesScene(viewModel: self.viewModel)
+            case 5:
+                DnDGridFiveChoicesScene(viewModel: self.viewModel)
             case 6:
                 DnDGridSixChoicesScene(viewModel: self.viewModel)
             default:

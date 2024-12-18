@@ -4,19 +4,20 @@
 
 import SwiftUI
 
-class DnDGridSixChoicesScene: DnDGridBaseScene {
+class DnDGridThreeChoicesScene: DnDGridBaseScene {
     override func setPositionVariables() {
-        self.horizontalSpacer = size.width / 3
+        self.horizontalSpacer = size.width / 2
         self.verticalSpacer = size.height / 3
-        self.initialNodeX = (size.width / 2) - self.horizontalSpacer
+        self.initialNodeX = (size.width - self.horizontalSpacer) / 2
     }
 
     override func setChoicePosition(_ index: Int) -> CGPoint {
-        let positionX = self.initialNodeX + (self.horizontalSpacer * CGFloat(index % 3))
-        if index / 3 < 1 {
+        if index / 2 < 1 {
+            let positionX = self.initialNodeX + (self.horizontalSpacer * CGFloat(index % 2))
             let positionY = 2 * self.verticalSpacer + 30
             return CGPoint(x: positionX, y: positionY)
         } else {
+            let positionX = size.width / 2
             let positionY = self.verticalSpacer - 30
             return CGPoint(x: positionX, y: positionY)
         }
