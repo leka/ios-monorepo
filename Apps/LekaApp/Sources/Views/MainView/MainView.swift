@@ -382,6 +382,7 @@ struct MainView: View {
                 self.styleManager.colorScheme = self.caregiverManagerViewModel.currentCaregiver!.colorScheme
                 self.styleManager.accentColor = self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color
             }
+            self.libraryManager.initializeLibraryListener()
         }
     }
 
@@ -401,6 +402,7 @@ struct MainView: View {
     private var persistentDataManager: PersistentDataManager = .shared
     private var caregiverManager: CaregiverManager = .shared
     private var carereceiverManager: CarereceiverManager = .shared
+    private var libraryManager: LibraryManager = .shared
 }
 
 // swiftlint:enable type_body_length
