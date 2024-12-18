@@ -393,6 +393,7 @@ struct MainView: View {
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
     @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
+    @StateObject private var libraryManagerViewModel = LibraryManagerViewModel()
 
     @State private var showingAppUpdateAlert: Bool = false
     @State private var showingOSUpdateAlert: Bool = false
