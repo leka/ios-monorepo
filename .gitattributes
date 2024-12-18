@@ -11,3 +11,5 @@
 *.json merge=json
 *.xcstrings merge=json
 *.mp4 filter=lfs diff=lfs merge=lfs -text
+*.rules filter=git-crypt diff=git-crypt
+Specs/rules/** filter=git-crypt diff=git-crypt
