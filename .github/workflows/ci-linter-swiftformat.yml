@@ -17,9 +17,14 @@ concurrency:
 jobs:
   swift_format:
     name: swiftformat
-    runs-on: [self-hosted, iOS]
+    runs-on: [ubuntu-24.04]
+    permissions:
+      pull-requests: write
 
     steps:
+      - name: Collect Workflow Telemetry
+        uses: catchpoint/workflow-telemetry-action@v2
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -34,9 +39,11 @@ jobs:
           cache: true
 
       - name: Setup mise
-        run: |
-          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
-          mise install
+        uses: jdx/mise-action@v2
+        with:
+          version: 2024.12.4
+          install: true
+          cache: true
 
       - name: Run swiftformat
         run: |

@@ -15,18 +15,29 @@ concurrency:
 jobs:
   swift_format:
     name: pre-commit hooks
-    runs-on: [self-hosted, iOS]
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
         files: [changed_files, all_files]
+    permissions:
+      pull-requests: write
 
     steps:
+      - name: Collect Workflow Telemetry
+        uses: catchpoint/workflow-telemetry-action@v2
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 2
           lfs: true
+
+      - name: Set up python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+          cache: "pip"
 
       - name: Set up mise
         uses: jdx/mise-action@v2
@@ -35,12 +46,25 @@ jobs:
           install: true
           cache: true
 
-      - uses: actions/cache@v4
+      - name: Install pre-commit
+        run: |
+          python -m pip install --upgrade pip
+          pip install pre-commit
+          pre-commit --version
+
+      - name: Install tools
+        run: |
+          npm install -g ajv-cli
+          pre-commit install
+          pre-commit autoupdate
+
+      - name: Cache pre-commit
+        uses: actions/cache@v4
         with:
           path: ~/.cache/pre-commit
-          key: pre-commit-${{ runner.name }}-${{ hashFiles('.pre-commit-config.yaml') }}
+          key: pre-commit-${{ runner.os }}-${{ hashFiles('.pre-commit-config.yaml') }}
           restore-keys: |
-            pre-commit-${{ runner.name }}-
+            pre-commit-${{ runner.os }}-
             pre-commit-
 
       - name: Run pre-commit hooks --all-files
@@ -52,4 +76,4 @@ jobs:
       - name: Run pre-commit hooks --files
         if: matrix.files == 'changed_files'
         run: |
-          pre-commit run --show-diff-on-failure --color=always --files $(git diff --name-only -r HEAD^1 HEAD)
+          pre-commit run --show-diff-on-failure --color=always --files $(git diff --name-only -r HEAD^1 HEAD --diff-filter=AMCR)
