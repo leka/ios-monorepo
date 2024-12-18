@@ -4,11 +4,10 @@
     "strings": {
         "connection.connect_button": {
             "comment": "Connect button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Connect"
                     }
                 },
@@ -22,11 +21,10 @@
         },
         "connection.continue_button": {
             "comment": "Continue button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Continue"
                     }
                 },
@@ -40,11 +38,10 @@
         },
         "connection.disconnect_button": {
             "comment": "Disconnect button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Disconnect"
                     }
                 },
@@ -58,11 +55,10 @@
         },
         "connection.no_robots_found_text": {
             "comment": "No robount found text",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "No robots found..."
                     }
                 },
@@ -76,11 +72,10 @@
         },
         "connection.robot_discovery_version": {
             "comment": "Discovery version LekaOS v...",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "LekaOS v%@"
                     }
                 },
@@ -94,11 +89,10 @@
         },
         "connection.search_button": {
             "comment": "Search button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Search"
                     }
                 },
@@ -112,11 +106,10 @@
         },
         "connection.search_invite_text": {
             "comment": "Search invite text",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Press the Search button to find robots around you"
                     }
                 },
@@ -130,11 +123,10 @@
         },
         "general.no": {
             "comment": "No",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "No"
                     }
                 },
@@ -148,11 +140,10 @@
         },
         "general.yes": {
             "comment": "Yes",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Yes"
                     }
                 },
@@ -166,11 +157,10 @@
         },
         "information.changelog_not_found_text": {
             "comment": "Changelog not found text",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Changelog is not available"
                     }
                 },
@@ -184,11 +174,10 @@
         },
         "information.changelog_section_title": {
             "comment": "Changelog of latest firmware update",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Changelog"
                     }
                 },
@@ -202,11 +191,10 @@
         },
         "information.robot.battery": {
             "comment": "Connected robot battery level",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Battery: %@"
                     }
                 },
@@ -220,11 +208,10 @@
         },
         "information.robot.charging_status": {
             "comment": "Connected robot charging status",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Charging: %@"
                     }
                 },
@@ -255,11 +242,10 @@
         },
         "information.robot.version": {
             "comment": "Connected robot version",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Version: %@"
                     }
                 },
@@ -273,11 +259,10 @@
         },
         "information.start_update_button": {
             "comment": "Start update button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Start robot update"
                     }
                 },
@@ -291,11 +276,10 @@
         },
         "information.status.alert.robot_not_in_charge": {
             "comment": "Robot not in charge alert",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "\u26a0\ufe0f WARNING \u26a1\nThe robot is no longer in charge"
                     }
                 },
@@ -309,11 +293,10 @@
         },
         "information.status.alert.robot_not_in_charge_button": {
             "comment": "Robot not in charge alert button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Please put Leka back on its charging station and/or check it's plugged to a power outlet"
                     }
                 },
@@ -327,11 +310,10 @@
         },
         "information.status.robot_cannot_be_updated_text": {
             "comment": "Robot cannot be updated text",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "\u26a0\ufe0f DEV \ud83d\udea7\nUpdate process not recognized or not available\n(Error code: #0003)"
                     }
                 },
@@ -345,11 +327,10 @@
         },
         "information.status.robot_is_up_to_date": {
             "comment": "Robot is up to date text",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "\ud83e\udd16 Your robot is up-to-date! \ud83c\udf89 You're all done \ud83d\udc4c"
                     }
                 },
@@ -363,11 +344,10 @@
         },
         "information.status.robot_update_available": {
             "comment": "Robot firmware update available text",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "\u2b06\ufe0f New firmware update available \ud83d\udce6"
                     }
                 },
@@ -416,11 +396,10 @@
         },
         "toolbar.connection_button": {
             "comment": "Connection toolbar button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Connection"
                     }
                 },
@@ -434,11 +413,10 @@
         },
         "update.error": {
             "comment": "Update error",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "An error has occurred"
                     }
                 },
@@ -452,11 +430,10 @@
         },
         "update.error.failed_to_load_file": {
             "comment": "Failed to load file",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Robot update file cannot be opened\n(Error code #0001)"
                     }
                 },
@@ -470,11 +447,10 @@
         },
         "update.error.failed_to_load_file_instructions": {
             "comment": "Failed to load file instructions",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Please reinstall the app"
                     }
                 },
@@ -488,11 +464,10 @@
         },
         "update.error.robot_not_up_to_date": {
             "comment": "Robot not up to date",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Update failed\n(Error code #0002)"
                     }
                 },
@@ -506,11 +481,10 @@
         },
         "update.error.robot_not_up_to_date_instructions": {
             "comment": "Robot not up to date instructions",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Reconnect the robot and restart the process"
                     }
                 },
@@ -524,11 +498,10 @@
         },
         "update.error.robot_unexpected_disconnection": {
             "comment": "Robot unexpected disconnection",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "The robot has been disconnected\n(Error code #0004)"
                     }
                 },
@@ -542,11 +515,10 @@
         },
         "update.error.robot_unexpected_disconnection_instructions": {
             "comment": "Robot unexpected disconnection instructions",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Restart the robot using the \"Emergency stop\" card,\nreconnect the robot and restart the process"
                     }
                 },
@@ -560,11 +532,10 @@
         },
         "update.error.unknown_error": {
             "comment": "unknown error",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "An unknown error has occurred\n(Error code #0000)"
                     }
                 },
@@ -578,11 +549,10 @@
         },
         "update.error.unknown_error_instructions": {
             "comment": "unknown error instructions",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Please contact technical support"
                     }
                 },
@@ -596,11 +566,10 @@
         },
         "update.error.update_process_not_available": {
             "comment": "Update process not available",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Update process not recognized or not available\n(Error code #0003)"
                     }
                 },
@@ -614,11 +583,10 @@
         },
         "update.error.update_process_not_available_instructions": {
             "comment": "Update process not available instructions",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Please contact technical support"
                     }
                 },
@@ -632,11 +600,10 @@
         },
         "update.error_back_button": {
             "comment": "Update error back button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Return to robot connection page"
                     }
                 },
@@ -650,11 +617,10 @@
         },
         "update.error_call_to_action": {
             "comment": "Update error call to action",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Contact technical support"
                     }
                 },
@@ -668,11 +634,10 @@
         },
         "update.error_description": {
             "comment": "Update error description",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Unknown error"
                     }
                 },
@@ -686,11 +651,10 @@
         },
         "update.finished.launch_leka_app_button": {
             "comment": "Launch Leka App button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Launch Leka App \ud83d\ude80"
                     }
                 },
@@ -704,11 +668,10 @@
         },
         "update.finished.robot_updated_successfully": {
             "comment": "Robot updated successfully",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Congrats! \ud83e\udd73\nYour robot is now up-to-date \ud83c\udf89"
                     }
                 },
@@ -722,11 +685,10 @@
         },
         "update.finished.update_another_robot_button": {
             "comment": "Update another robot button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Update another robot"
                     }
                 },
@@ -740,11 +702,10 @@
         },
         "update.rebooting.subtitle": {
             "comment": "Rebooting subtitle",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Your robot will reboot in a few minutes"
                     }
                 },
@@ -758,11 +719,10 @@
         },
         "update.rebooting.title": {
             "comment": "Rebooting title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "The update is being installed"
                     }
                 },
@@ -776,11 +736,10 @@
         },
         "update.requirements.charging_base_green_led_text": {
             "comment": "Base green LED must be on",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "The charging LED is green indicating the correct positioning on the base"
                     }
                 },
@@ -794,11 +753,10 @@
         },
         "update.requirements.charging_base_plugged_text": {
             "comment": "Base must be plugged",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "The robot is placed on its base and the base is connected to the mains"
                     }
                 },
@@ -812,11 +770,10 @@
         },
         "update.requirements.instructions_text": {
             "comment": "Requirements before update",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "To start the update, make sure that:"
                     }
                 },
@@ -830,11 +787,10 @@
         },
         "update.requirements.robot_battery_minimum_level_text": {
             "comment": "Robot battery level must be at least 30%",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "The robot battery level is at least 30%"
                     }
                 },
@@ -848,11 +804,10 @@
         },
         "update.sending.instruction": {
             "comment": "Sending instruction",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Do not unplug your robot\nDo not remove it from its charging station\nDo not close the app"
                     }
                 },
@@ -866,11 +821,10 @@
         },
         "update.sending.title": {
             "comment": "Sending title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Sending update to the robot"
                     }
                 },
@@ -884,11 +838,10 @@
         },
         "update.step_number": {
             "comment": "Update step number",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Step %@"
                     }
                 },
