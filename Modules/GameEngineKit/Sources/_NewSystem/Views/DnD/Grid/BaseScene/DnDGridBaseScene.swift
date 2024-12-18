@@ -30,7 +30,7 @@ class DnDGridBaseScene: SKScene {
         backgroundColor = .clear
         removeAllChildren()
         removeAllActions()
-        self.setFirstAnswerPosition()
+        self.setPositionVariables()
         self.layoutChoices()
     }
 
@@ -75,7 +75,7 @@ class DnDGridBaseScene: SKScene {
 
     func layoutChoices() {
         for (index, choice) in self.viewModel.choices.enumerated() {
-            choice.initialPosition = self.setInitialPosition(index)
+            choice.initialPosition = self.setChoicePosition(index)
             choice.position = choice.initialPosition!
             self.bindNodesToSafeArea([choice])
             self.dropDestinations.append(choice)
@@ -94,11 +94,11 @@ class DnDGridBaseScene: SKScene {
 
     // MARK: - Answer Positioning
 
-    func setFirstAnswerPosition() {
-        fatalError("setFirstAnswerPosition() must be implemented in the sub-scene")
+    func setPositionVariables() {
+        fatalError("setPositionVariables() must be implemented in the sub-scene")
     }
 
-    func setInitialPosition(_: Int) -> CGPoint {
+    func setChoicePosition(_: Int) -> CGPoint {
         fatalError("setNextAnswerPosition(_ index:) must be implemented in the sub-scene")
     }
 
