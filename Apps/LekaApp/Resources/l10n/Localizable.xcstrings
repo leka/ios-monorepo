@@ -4,11 +4,10 @@
     "strings": {
         "lekaapp.TextFieldEmail.invalidEmailErrorLabel": {
             "comment": "TextFieldEmail invalid Email Error Label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "The email is not valid"
                     }
                 },
@@ -22,11 +21,10 @@
         },
         "lekaapp.TextFieldEmail.label": {
             "comment": "TextFieldEmail label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Email"
                     }
                 },
@@ -40,11 +38,10 @@
         },
         "lekaapp.TextFieldPassword.invalidPasswordErrorLabel": {
             "comment": "TextFieldPassword invalid Password Error Label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "12 characters minimum, no spaces"
                     }
                 },
@@ -58,11 +55,10 @@
         },
         "lekaapp.TextFieldPassword.label": {
             "comment": "TextFieldPassword label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Password"
                     }
                 },
@@ -76,11 +72,10 @@
         },
         "lekaapp.account_creation_process.navigation_title": {
             "comment": "NavigationBar title on the whole Signup process",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Account Creation Process"
                     }
                 },
@@ -94,11 +89,10 @@
         },
         "lekaapp.account_creation_process.step_1.go_button": {
             "comment": "Step 1 continue button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Let's start! \ud83d\udc49"
                     }
                 },
@@ -112,11 +106,10 @@
         },
         "lekaapp.account_creation_process.step_1.message": {
             "comment": "Step 1 message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "We will now guide you throught\nthe creation of your account\nand the different steps.\nReady?"
                     }
                 },
@@ -130,11 +123,10 @@
         },
         "lekaapp.account_creation_process.step_1.title": {
             "comment": "Step 1 title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Welcome to our account creation process! \ud83d\udc4b"
                     }
                 },
@@ -148,11 +140,10 @@
         },
         "lekaapp.account_creation_process.step_2.create_button": {
             "comment": "Step 2 create button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Create"
                     }
                 },
@@ -166,11 +157,10 @@
         },
         "lekaapp.account_creation_process.step_2.message": {
             "comment": "Step 2 message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "First, let's create your profile as a caregiver."
                     }
                 },
@@ -184,11 +174,10 @@
         },
         "lekaapp.account_creation_process.step_2.skip_button": {
             "comment": "Step 2 skip button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Skip this step"
                     }
                 },
@@ -202,11 +191,10 @@
         },
         "lekaapp.account_creation_process.step_2.title": {
             "comment": "Step 2 title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Step 1 - Caregiver profile"
                     }
                 },
@@ -220,11 +208,10 @@
         },
         "lekaapp.account_creation_process.step_3.create_button": {
             "comment": "Step 3 create button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Create"
                     }
                 },
@@ -238,11 +225,10 @@
         },
         "lekaapp.account_creation_process.step_3.message": {
             "comment": "Step 3 message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "We will now create your first\ncare receiver profile."
                     }
                 },
@@ -256,11 +242,10 @@
         },
         "lekaapp.account_creation_process.step_3.skip_button": {
             "comment": "Step 3 skip button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Skip this step"
                     }
                 },
@@ -274,11 +259,10 @@
         },
         "lekaapp.account_creation_process.step_3.title": {
             "comment": "Step 3 title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Step 2 - Care receiver profile"
                     }
                 },
@@ -292,11 +276,10 @@
         },
         "lekaapp.account_creation_process.step_4.discover_content_button": {
             "comment": "Step 4 discover content button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Let's go! \ud83d\ude80"
                     }
                 },
@@ -310,11 +293,10 @@
         },
         "lekaapp.account_creation_process.step_4.message": {
             "comment": "Step 4 message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "You have just completed the onboarding!\nYou can now discover the Leka App and dive deep in our educational content!"
                     }
                 },
@@ -328,11 +310,10 @@
         },
         "lekaapp.account_creation_process.step_4.title": {
             "comment": "Step 4 title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "\ud83c\udf89 Congratulations! \ud83d\udc4f"
                     }
                 },
@@ -346,11 +327,10 @@
         },
         "lekaapp.account_creation_view.connection_button": {
             "comment": "Connection button on SignupView",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Connection"
                     }
                 },
@@ -364,11 +344,10 @@
         },
         "lekaapp.account_creation_view.create_account_title": {
             "comment": "Create account title on SignupView",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Create an account"
                     }
                 },
@@ -382,11 +361,10 @@
         },
         "lekaapp.account_creation_view.email_verification_alert.dismissButton": {
             "comment": "Email verification alert dismiss button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "OK"
                     }
                 },
@@ -400,11 +378,10 @@
         },
         "lekaapp.account_creation_view.email_verification_alert.message": {
             "comment": "Email verification alert message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "An email has been sent to the address provided. Please click on the link to confirm your email address."
                     }
                 },
@@ -418,11 +395,10 @@
         },
         "lekaapp.account_creation_view.email_verification_alert.title": {
             "comment": "Email verification alert title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Confirm your email address"
                     }
                 },
@@ -436,11 +412,10 @@
         },
         "lekaapp.account_creation_view.signup_failed_error": {
             "comment": "Sign-up failure error message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Sign-up failed. Please try again later."
                     }
                 },
@@ -454,11 +429,10 @@
         },
         "lekaapp.avatar_picker.close_button_label": {
             "comment": "Avatar picker close button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Close"
                     }
                 },
@@ -472,11 +446,10 @@
         },
         "lekaapp.avatar_picker.select_button_label": {
             "comment": "Avatar picker select button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Select"
                     }
                 },
@@ -490,11 +463,10 @@
         },
         "lekaapp.avatar_picker.title": {
             "comment": "Avatar picker title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Avatar choice"
                     }
                 },
@@ -508,11 +480,10 @@
         },
         "lekaapp.caregiver_creation.avatar_choice_button": {
             "comment": "Caregiver creation avatar choice button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Choose an avatar"
                     }
                 },
@@ -526,11 +497,10 @@
         },
         "lekaapp.caregiver_creation.caregiver_birthdate_label": {
             "comment": "Caregiver creation caregiver birthdate textfield label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Birthdate"
                     }
                 },
@@ -544,11 +514,10 @@
         },
         "lekaapp.caregiver_creation.caregiver_email_label": {
             "comment": "Caregiver creation caregiver email textfield label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Email"
                     }
                 },
@@ -562,11 +531,10 @@
         },
         "lekaapp.caregiver_creation.caregiver_first_name_label": {
             "comment": "Caregiver creation caregiver first name textfield label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "First name"
                     }
                 },
@@ -580,11 +548,10 @@
         },
         "lekaapp.caregiver_creation.caregiver_last_name_label": {
             "comment": "Caregiver creation caregiver last name textfield label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Last name"
                     }
                 },
@@ -598,11 +565,10 @@
         },
         "lekaapp.caregiver_creation.caregiver_placeholder_email": {
             "comment": "Caregiver creation caregiver placeholder email textfield",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "optional"
                     }
                 },
@@ -616,11 +582,10 @@
         },
         "lekaapp.caregiver_creation.caregiver_placeholder_first_name": {
             "comment": "Caregiver creation caregiver placeholder first name textfield",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "required"
                     }
                 },
@@ -634,11 +599,10 @@
         },
         "lekaapp.caregiver_creation.caregiver_placeholder_last_name": {
             "comment": "Caregiver creation caregiver placeholder last name textfield",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "optional"
                     }
                 },
@@ -652,11 +616,10 @@
         },
         "lekaapp.caregiver_creation.close_button_label": {
             "comment": "Caregiver creation close button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Close"
                     }
                 },
@@ -670,11 +633,10 @@
         },
         "lekaapp.caregiver_creation.create_profile_button_label": {
             "comment": "Caregiver creation create profile button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Create profile"
                     }
                 },
@@ -688,11 +650,10 @@
         },
         "lekaapp.caregiver_creation.email_whitespaces_error_message": {
             "comment": "Error message when whitespaces or linebreaks detected in email textfield",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Email cannot contain spaces or line breaks"
                     }
                 },
@@ -706,11 +667,10 @@
         },
         "lekaapp.caregiver_creation.profession_label": {
             "comment": "Caregiver creation profession label above profession selection button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Profession(s)"
                     }
                 },
@@ -724,11 +684,10 @@
         },
         "lekaapp.caregiver_creation.title": {
             "comment": "Caregiver creation title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Create a caregiver profile"
                     }
                 },
@@ -742,11 +701,10 @@
         },
         "lekaapp.caregiver_list.create_button_label": {
             "comment": "Caregiver list create button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Create profile"
                     }
                 },
@@ -760,11 +718,10 @@
         },
         "lekaapp.caregiver_list.create_first_caregiver.create_button_label": {
             "comment": "Caregiver list create first caregiver button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Create your first caregiver profile"
                     }
                 },
@@ -778,11 +735,10 @@
         },
         "lekaapp.caregiver_list.create_first_caregiver.message": {
             "comment": "Caregiver list create first caregiver message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "No caregiver profiles have been created yet."
                     }
                 },
@@ -796,11 +752,10 @@
         },
         "lekaapp.caregiver_list.description": {
             "comment": "Caregiver list description",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Access and modify the profiles of professionals and caregivers, view statistics and usage history."
                     }
                 },
@@ -814,11 +769,10 @@
         },
         "lekaapp.caregiver_list.subtitle": {
             "comment": "Caregiver list subtitle",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Manage profiles and track caregiver activities."
                     }
                 },
@@ -832,11 +786,10 @@
         },
         "lekaapp.caregiver_list.title": {
             "comment": "Caregiver list title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Caregivers"
                     }
                 },
@@ -850,11 +803,10 @@
         },
         "lekaapp.caregiver_picker.add_first_caregiver.add_button_label": {
             "comment": "Caregiver picker add first caregiver button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Add your first caregiver profile"
                     }
                 },
@@ -868,11 +820,10 @@
         },
         "lekaapp.caregiver_picker.add_first_caregiver.message": {
             "comment": "Caregiver picker add first caregiver message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "No caregiver profiles have been created yet."
                     }
                 },
@@ -886,11 +837,10 @@
         },
         "lekaapp.caregiver_picker.close_button_label": {
             "comment": "Caregiver picker close button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Close"
                     }
                 },
@@ -904,11 +854,10 @@
         },
         "lekaapp.caregiver_picker.create_button_label": {
             "comment": "Caregiver picker create button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Create profile"
                     }
                 },
@@ -922,11 +871,10 @@
         },
         "lekaapp.caregiver_picker.select_button_label": {
             "comment": "Caregiver picker select button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Select"
                     }
                 },
@@ -940,11 +888,10 @@
         },
         "lekaapp.caregiver_picker.title": {
             "comment": "Caregiver picker title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Select your profile"
                     }
                 },
@@ -958,11 +905,10 @@
         },
         "lekaapp.carereceiver_creation.avatar_choice_button": {
             "comment": "Carereceiver creation avatar choice button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Choose an avatar"
                     }
                 },
@@ -976,11 +922,10 @@
         },
         "lekaapp.carereceiver_creation.carereceiver_name_label": {
             "comment": "Carereceiver creation carereceiver name textfield label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Username"
                     }
                 },
@@ -994,11 +939,10 @@
         },
         "lekaapp.carereceiver_creation.carereceiver_placeholder_name": {
             "comment": "Carereceiver creation carereceiver placeholder name textfield",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "required"
                     }
                 },
@@ -1012,11 +956,10 @@
         },
         "lekaapp.carereceiver_creation.close_button_label": {
             "comment": "Carereceiver creation close button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Close"
                     }
                 },
@@ -1030,11 +973,10 @@
         },
         "lekaapp.carereceiver_creation.create_profile_button_label": {
             "comment": "Carereceiver creation create profile button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Create profile"
                     }
                 },
@@ -1048,11 +990,10 @@
         },
         "lekaapp.carereceiver_creation.title": {
             "comment": "Carereceiver creation title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Create a carereceiver profile"
                     }
                 },
@@ -1066,11 +1007,10 @@
         },
         "lekaapp.carereceiver_list.create_button_label": {
             "comment": "Carereceiver list create button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Create profile"
                     }
                 },
@@ -1084,11 +1024,10 @@
         },
         "lekaapp.carereceiver_list.create_first_carereceiver.create_button_label": {
             "comment": "Carereceiver list create first carereceiver button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Create your first care receiver profile"
                     }
                 },
@@ -1102,11 +1041,10 @@
         },
         "lekaapp.carereceiver_list.create_first_carereceiver.message": {
             "comment": "Carereceiver list create first carereceiver message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "No care receiver profiles have been created yet."
                     }
                 },
@@ -1120,11 +1058,10 @@
         },
         "lekaapp.carereceiver_list.description": {
             "comment": "Carereceiver list description",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Edit care receiver profiles, track their progress, and access activity history for tailored support and engagement."
                     }
                 },
@@ -1138,11 +1075,10 @@
         },
         "lekaapp.carereceiver_list.subtitle": {
             "comment": "Carereceiver list subtitle",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Detailed tracking and management of care receiver profiles."
                     }
                 },
@@ -1156,11 +1092,10 @@
         },
         "lekaapp.carereceiver_list.title": {
             "comment": "Carereceiver list title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Care receivers"
                     }
                 },
@@ -1174,11 +1109,10 @@
         },
         "lekaapp.carereceiver_picker.close_button_label": {
             "comment": "Carereceiver picker close button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Close"
                     }
                 },
@@ -1192,11 +1126,10 @@
         },
         "lekaapp.carereceiver_picker.create_first_carereceiver.button_label": {
             "comment": "Carereceiver picker button label that send to the Care Receivers section",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Go to Care Receivers section"
                     }
                 },
@@ -1210,11 +1143,10 @@
         },
         "lekaapp.carereceiver_picker.create_first_carereceiver.message": {
             "comment": "Carereceiver picker create first carereceiver message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "No care receiver profiles have been created yet.\nYou can create one in the Care Receivers section."
                     }
                 },
@@ -1228,11 +1160,10 @@
         },
         "lekaapp.carereceiver_picker.select_button_label": {
             "comment": "Carereceiver picker select button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Select"
                     }
                 },
@@ -1246,11 +1177,10 @@
         },
         "lekaapp.carereceiver_picker.skip_button_label": {
             "comment": "Carereceiver picker continue without profile button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Continue without profile"
                     }
                 },
@@ -1264,11 +1194,10 @@
         },
         "lekaapp.carereceiver_picker.title": {
             "comment": "Carereceiver picker title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Who do you do this activity with?"
                     }
                 },
@@ -1282,11 +1211,10 @@
         },
         "lekaapp.category_search_view.browse_skills_title": {
             "comment": "Browse skills title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Browse skills"
                     }
                 },
@@ -1300,11 +1228,10 @@
         },
         "lekaapp.connection_view.alert_message": {
             "comment": "Forgot Password alert message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "For security reasons, changes to your email or password need to be handled by our support team.\nPlease contact us at\nsupport@leka.io\nand we'll be happy to assist you with updating your account information."
                     }
                 },
@@ -1318,11 +1245,10 @@
         },
         "lekaapp.connection_view.alert_title": {
             "comment": "Forgot Password alert title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Forgot Password?"
                     }
                 },
@@ -1336,11 +1262,10 @@
         },
         "lekaapp.connection_view.connection_button": {
             "comment": "ConnectionView connection button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Connect"
                     }
                 },
@@ -1354,11 +1279,10 @@
         },
         "lekaapp.connection_view.password_forgotten_button": {
             "comment": "ConnectionView password forgotten button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Forgot password?"
                     }
                 },
@@ -1372,11 +1296,10 @@
         },
         "lekaapp.connection_view.signin_failed_error": {
             "comment": "Sign-in failure error message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Sign-in failed. Please try again."
                     }
                 },
@@ -1390,11 +1313,10 @@
         },
         "lekaapp.connection_view.title": {
             "comment": "ConnectionView title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Account connection"
                     }
                 },
@@ -1408,11 +1330,10 @@
         },
         "lekaapp.edit_caregiver_view.appearance_section.accent_color_row.title": {
             "comment": "AccentColor Row title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Color Theme"
                     }
                 },
@@ -1426,11 +1347,10 @@
         },
         "lekaapp.edit_caregiver_view.appearance_section.appearance_row.title": {
             "comment": "Appearance Row title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Dark Mode"
                     }
                 },
@@ -1444,11 +1364,10 @@
         },
         "lekaapp.edit_caregiver_view.close_button_label": {
             "comment": "Close button label of Edit Caregiver View",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Close"
                     }
                 },
@@ -1462,11 +1381,10 @@
         },
         "lekaapp.edit_caregiver_view.navigation_title": {
             "comment": "The navigation title of Edit Caregiver View",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Edit my profile"
                     }
                 },
@@ -1480,11 +1398,10 @@
         },
         "lekaapp.edit_caregiver_view.save_button_label": {
             "comment": "Save button label of Edit Caregiver View",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Save"
                     }
                 },
@@ -1498,11 +1415,10 @@
         },
         "lekaapp.edit_carereceiver_view.close_button_label": {
             "comment": "Close button label of Edit Carereceiver View",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Close"
                     }
                 },
@@ -1516,11 +1432,10 @@
         },
         "lekaapp.edit_carereceiver_view.navigation_title": {
             "comment": "The navigation title of Edit Carereceiver View",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Edit profil"
                     }
                 },
@@ -1534,11 +1449,10 @@
         },
         "lekaapp.edit_carereceiver_view.save_button_label": {
             "comment": "Save button label of Edit Carereceiver View",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Save"
                     }
                 },
@@ -1552,11 +1466,10 @@
         },
         "lekaapp.empty_library_placedholder_view.button_instruction": {
             "comment": "Instruction suffix",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "button on any activity, curriculum, or story to add them to your Library."
                     }
                 },
@@ -1570,11 +1483,10 @@
         },
         "lekaapp.empty_library_placedholder_view.library_is_empty": {
             "comment": "Empty library title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Your Library is Empty"
                     }
                 },
@@ -1588,11 +1500,10 @@
         },
         "lekaapp.empty_library_placedholder_view.remove_items": {
             "comment": "Removal instruction",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "You can remove items from your Library using the same button."
                     }
                 },
@@ -1606,11 +1517,10 @@
         },
         "lekaapp.empty_library_placedholder_view.tap_the": {
             "comment": "Instruction prefix",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Tap the"
                     }
                 },
@@ -1624,11 +1534,10 @@
         },
         "lekaapp.forgot_password_view.context_message": {
             "comment": "Forgot Password View context message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "For security reasons, we do not have access to your password, and therefore cannot provide it to you.\n\nHowever, you can change your password after filling in your email address below.\n\nYou will then receive an email allowing you to choose a new one."
                     }
                 },
@@ -1642,11 +1551,10 @@
         },
         "lekaapp.forgot_password_view.error_alert_title": {
             "comment": "Password Reset error alert title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Password Reset Error"
                     }
                 },
@@ -1660,11 +1568,10 @@
         },
         "lekaapp.forgot_password_view.reset_password_button_label": {
             "comment": "Forgot Password View reset button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Reset Password"
                     }
                 },
@@ -1678,11 +1585,10 @@
         },
         "lekaapp.forgot_password_view.reset_password_error_alert_message": {
             "comment": "Password Reset error alert message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "We encountered an issue sending you an e-mail to reset your password.\nPlease try again.\n\nIf the problem persists, contact our support team for assistance."
                     }
                 },
@@ -1696,11 +1602,10 @@
         },
         "lekaapp.forgot_password_view.reset_password_success_alert_message": {
             "comment": "Password Reset success alert message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "The e-mail to change your password was sent successfuly.\nPlease check your inbox."
                     }
                 },
@@ -1714,11 +1619,10 @@
         },
         "lekaapp.forgot_password_view.success_alert_title": {
             "comment": "Password Reset success alert title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Reset Password"
                     }
                 },
@@ -1732,11 +1636,10 @@
         },
         "lekaapp.forgot_password_view.title": {
             "comment": "Forgot Password View title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Reset Password"
                     }
                 },
@@ -1750,11 +1653,10 @@
         },
         "lekaapp.main_view.app_update_alert.action": {
             "comment": "The action button of the alert to inform the user that an update is available",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Update now"
                     }
                 },
@@ -1768,11 +1670,10 @@
         },
         "lekaapp.main_view.app_update_alert.message": {
             "comment": "The message of the alert to inform the user that an update is available",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Enjoy new features by updating to the latest version of Leka!"
                     }
                 },
@@ -1786,11 +1687,10 @@
         },
         "lekaapp.main_view.app_update_alert.reminder": {
             "comment": "The action button of the alert to inform the user that an os update is available",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Remind me later"
                     }
                 },
@@ -1804,11 +1704,10 @@
         },
         "lekaapp.main_view.app_update_alert.title": {
             "comment": "The title of the alert to inform the user that an update is available",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "New update available"
                     }
                 },
@@ -1822,11 +1721,10 @@
         },
         "lekaapp.main_view.detailView.disconnected_library_message": {
             "comment": "The message to invite users to connect to display the Library",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Log in to your account to access your personal library."
                     }
                 },
@@ -1840,11 +1738,10 @@
         },
         "lekaapp.main_view.os_update_alert.action": {
             "comment": "The action button of the alert to inform the user that an os update is available",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Update now"
                     }
                 },
@@ -1858,11 +1755,10 @@
         },
         "lekaapp.main_view.os_update_alert.message": {
             "comment": "The message of the alert to inform the user that an os update is available",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "A new version of iPadOS is available! Update now to enjoy enhanced performance, security, and compatibility with the latest features of our app."
                     }
                 },
@@ -1876,11 +1772,10 @@
         },
         "lekaapp.main_view.os_update_alert.reminder": {
             "comment": "The action button of the alert to inform the user that an os update is available",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Remind me later"
                     }
                 },
@@ -1894,11 +1789,10 @@
         },
         "lekaapp.main_view.os_update_alert.title": {
             "comment": "The title of the alert to inform the user that an os update is available",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Update your iPad to the Latest iPadOS Version"
                     }
                 },
@@ -1912,11 +1806,10 @@
         },
         "lekaapp.main_view.sidebar.category_label.caregivers": {
             "comment": "The title of the category 'Caregivers'",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Caregivers"
                     }
                 },
@@ -1930,11 +1823,10 @@
         },
         "lekaapp.main_view.sidebar.category_label.carereceivers": {
             "comment": "The title of the category 'Care Receivers'",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Care Receivers"
                     }
                 },
@@ -1948,11 +1840,10 @@
         },
         "lekaapp.main_view.sidebar.category_label.curriculums": {
             "comment": "The title of the category 'Curriculums'",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Curriculums"
                     }
                 },
@@ -1966,11 +1857,10 @@
         },
         "lekaapp.main_view.sidebar.category_label.educational_games": {
             "comment": "The title of the category 'Educational Games'",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Educational Games"
                     }
                 },
@@ -1984,11 +1874,10 @@
         },
         "lekaapp.main_view.sidebar.category_label.gamepads": {
             "comment": "The title of the category 'Gamepads'",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Gamepads"
                     }
                 },
@@ -2002,11 +1891,10 @@
         },
         "lekaapp.main_view.sidebar.category_label.home": {
             "comment": "The title of the category 'Home'",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Home"
                     }
                 },
@@ -2020,11 +1908,10 @@
         },
         "lekaapp.main_view.sidebar.category_label.library_activities": {
             "comment": "The title of the category 'Library Activities'",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Activities"
                     }
                 },
@@ -2038,11 +1925,10 @@
         },
         "lekaapp.main_view.sidebar.category_label.library_curriculums": {
             "comment": "The title of the category 'Library Curriculums'",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Curriculums"
                     }
                 },
@@ -2056,11 +1942,10 @@
         },
         "lekaapp.main_view.sidebar.category_label.library_stories": {
             "comment": "The title of the category 'Library Stories'",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Stories"
                     }
                 },
@@ -2074,11 +1959,10 @@
         },
         "lekaapp.main_view.sidebar.category_label.news": {
             "comment": "The title of the category 'News'",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "News"
                     }
                 },
@@ -2092,11 +1976,10 @@
         },
         "lekaapp.main_view.sidebar.category_label.none": {
             "comment": "The title of the category 'none'",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Select a category"
                     }
                 },
@@ -2110,11 +1993,10 @@
         },
         "lekaapp.main_view.sidebar.category_label.resources_deep_dive": {
             "comment": "The title of the resources sub category 'DeepDive'",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Deep Dive"
                     }
                 },
@@ -2128,11 +2010,10 @@
         },
         "lekaapp.main_view.sidebar.category_label.resources_first_steps": {
             "comment": "The title of the resources sub category 'First Steps'",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "First steps"
                     }
                 },
@@ -2146,11 +2027,10 @@
         },
         "lekaapp.main_view.sidebar.category_label.resources_video": {
             "comment": "The title of the resources sub category 'Videos'",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Videos"
                     }
                 },
@@ -2164,11 +2044,10 @@
         },
         "lekaapp.main_view.sidebar.category_label.search": {
             "comment": "The title of the category 'Search'",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Search"
                     }
                 },
@@ -2182,11 +2061,10 @@
         },
         "lekaapp.main_view.sidebar.category_label.stories": {
             "comment": "The title of the category 'Stories'",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Stories"
                     }
                 },
@@ -2200,11 +2078,10 @@
         },
         "lekaapp.main_view.sidebar.navigation_title": {
             "comment": "The title of the sidebar",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Leka App"
                     }
                 },
@@ -2218,11 +2095,10 @@
         },
         "lekaapp.main_view.sidebar.section.content": {
             "comment": "The title of the section 'Content'",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Content"
                     }
                 },
@@ -2236,11 +2112,10 @@
         },
         "lekaapp.main_view.sidebar.section.information": {
             "comment": "The title of the section 'Information'",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Information"
                     }
                 },
@@ -2254,11 +2129,10 @@
         },
         "lekaapp.main_view.sidebar.section.library": {
             "comment": "The title of the section 'Library'",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Library"
                     }
                 },
@@ -2272,11 +2146,10 @@
         },
         "lekaapp.main_view.sidebar.section.monitoring": {
             "comment": "The title of the section 'Users'",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Users"
                     }
                 },
@@ -2290,11 +2163,10 @@
         },
         "lekaapp.main_view.sidebar.section_resources": {
             "comment": "The title of the section 'Resources'",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Resources"
                     }
                 },
@@ -2308,11 +2180,10 @@
         },
         "lekaapp.news_view.description": {
             "comment": "News description",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
                     }
                 },
@@ -2326,11 +2197,10 @@
         },
         "lekaapp.news_view.subtitle": {
             "comment": "News subtitle",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                     }
                 },
@@ -2344,11 +2214,10 @@
         },
         "lekaapp.news_view.title": {
             "comment": "News title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "News"
                     }
                 },
@@ -2362,11 +2231,10 @@
         },
         "lekaapp.profession_picker.close_button_label": {
             "comment": "Profession picker close button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Close"
                     }
                 },
@@ -2380,11 +2248,10 @@
         },
         "lekaapp.profession_picker.other_label": {
             "comment": "Profession picker other profession label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Other (specify)"
                     }
                 },
@@ -2398,11 +2265,10 @@
         },
         "lekaapp.profession_picker.select_button_label": {
             "comment": "Profession picker select button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Select"
                     }
                 },
@@ -2416,11 +2282,10 @@
         },
         "lekaapp.profession_picker.title": {
             "comment": "Profession picker title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Profession List"
                     }
                 },
@@ -2434,11 +2299,10 @@
         },
         "lekaapp.re_authentication_view.cancel_reset_password_button_label": {
             "comment": "Cancel Reset password button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Cancel"
                     }
                 },
@@ -2452,11 +2316,10 @@
         },
         "lekaapp.re_authentication_view.confirm_reset_password_alert_message": {
             "comment": "Confirm reset password alert message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "We will send you an e-mail with a link to reset your password.\nAre you sure you want to continue?"
                     }
                 },
@@ -2470,11 +2333,10 @@
         },
         "lekaapp.re_authentication_view.confirm_reset_password_alert_title": {
             "comment": "Confirm reset password alert title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Are you sure you want to reset your password?"
                     }
                 },
@@ -2488,11 +2350,10 @@
         },
         "lekaapp.re_authentication_view.connection_button": {
             "comment": "ReAuthentication view connection button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Delete Account"
                     }
                 },
@@ -2506,11 +2367,10 @@
         },
         "lekaapp.re_authentication_view.context_message": {
             "comment": "ReAuthentication view context message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Please enter your password to confirm that you want\nto permanently delete your account.\n\nOnce you delete your account, there is no going back.\n\n**All your data will be lost forever.**\n*Please be certain.*"
                     }
                 },
@@ -2524,11 +2384,10 @@
         },
         "lekaapp.re_authentication_view.password_forgotten_button": {
             "comment": "ReAuthentication view password forgotten button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Forgot Password?"
                     }
                 },
@@ -2542,11 +2401,10 @@
         },
         "lekaapp.re_authentication_view.re_authentication_failed_error": {
             "comment": "ReAuthentication failure error message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Authentication failed. Please verify your password."
                     }
                 },
@@ -2560,11 +2418,10 @@
         },
         "lekaapp.re_authentication_view.reset_password_button_label": {
             "comment": "Confirm Reset password button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Reset Password"
                     }
                 },
@@ -2578,11 +2435,10 @@
         },
         "lekaapp.re_authentication_view.title": {
             "comment": "ReAuthentication view title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Confirm Account Deletion"
                     }
                 },
@@ -2596,11 +2452,10 @@
         },
         "lekaapp.reinforcer_picker.description": {
             "comment": "Reinforcer picker description",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Reinforcer is a repetitive light effect from the robot that you can activate to reward the user's behavior.\nIf your robot is connected, you can test the reinforcers before choosing one."
                     }
                 },
@@ -2614,11 +2469,10 @@
         },
         "lekaapp.reinforcer_picker.header": {
             "comment": "Reinforcer picker header",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Reinforcer choice"
                     }
                 },
@@ -2632,11 +2486,10 @@
         },
         "lekaapp.robot_connection_label.text_connected_to": {
             "comment": "Connected to xxx robot label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Connected to"
                     }
                 },
@@ -2650,11 +2503,10 @@
         },
         "lekaapp.robot_connection_label.text_not_connected": {
             "comment": "Connect to your Leka label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Connect to your Leka"
                     }
                 },
@@ -2668,11 +2520,10 @@
         },
         "lekaapp.settings_label.button_label": {
             "comment": "Settings button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Settings"
                     }
                 },
@@ -2686,11 +2537,10 @@
         },
         "lekaapp.settings_view.account_section.delete_account.alert_cancel_button_label": {
             "comment": "Delete account cancel button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Cancel"
                     }
                 },
@@ -2704,11 +2554,10 @@
         },
         "lekaapp.settings_view.account_section.delete_account.alert_delete_button_label": {
             "comment": "Delete account delete button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Delete"
                     }
                 },
@@ -2722,11 +2571,10 @@
         },
         "lekaapp.settings_view.account_section.delete_account.alert_message": {
             "comment": "Account deletion alert message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Are you certain you want to delete your account?\nThis action cannot be undone."
                     }
                 },
@@ -2740,11 +2588,10 @@
         },
         "lekaapp.settings_view.account_section.delete_account.alert_title": {
             "comment": "Account deletion alert title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Delete Account?"
                     }
                 },
@@ -2758,11 +2605,10 @@
         },
         "lekaapp.settings_view.account_section.delete_account.button_label": {
             "comment": "Delete account button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Delete Account"
                     }
                 },
@@ -2776,11 +2622,10 @@
         },
         "lekaapp.settings_view.account_section.delete_account.error_alert_message": {
             "comment": "Account deletion error alert message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "We encountered an issue deleting your account. Please try again.\nIf the problem persists, contact our support team for assistance."
                     }
                 },
@@ -2794,11 +2639,10 @@
         },
         "lekaapp.settings_view.account_section.delete_account.error_alert_title": {
             "comment": "Account deletion error alert title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Account Deletion Error"
                     }
                 },
@@ -2812,11 +2656,10 @@
         },
         "lekaapp.settings_view.account_section.log_in_sign_up.button_label": {
             "comment": "Log in / Sign up button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Log In / Sign Up"
                     }
                 },
@@ -2830,11 +2673,10 @@
         },
         "lekaapp.settings_view.account_section.log_out.alert_button_label": {
             "comment": "Log out alert button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Log out"
                     }
                 },
@@ -2848,11 +2690,10 @@
         },
         "lekaapp.settings_view.account_section.log_out.alert_message": {
             "comment": "Log out alert message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Are you sure you want to log out?\nYou will need to enter your email and password to log back in."
                     }
                 },
@@ -2866,11 +2707,10 @@
         },
         "lekaapp.settings_view.account_section.log_out.alert_title": {
             "comment": "Log out alert title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Confirm Logout"
                     }
                 },
@@ -2884,11 +2724,10 @@
         },
         "lekaapp.settings_view.account_section.log_out.button_label": {
             "comment": "Log out button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Log Out"
                     }
                 },
@@ -2902,11 +2741,10 @@
         },
         "lekaapp.settings_view.account_section.log_out.error_alert_message": {
             "comment": "Log out error alert message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "We encountered an issue logging you out. Please try again.\nIf the problem persists, contact our support team for assistance."
                     }
                 },
@@ -2920,11 +2758,10 @@
         },
         "lekaapp.settings_view.account_section.log_out.error_alert_title": {
             "comment": "Log out error alert title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Logout Error"
                     }
                 },
@@ -2938,11 +2775,10 @@
         },
         "lekaapp.settings_view.app_update_section.button_label": {
             "comment": "Update app button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Update now"
                     }
                 },
@@ -2956,11 +2792,10 @@
         },
         "lekaapp.settings_view.app_update_section.title": {
             "comment": "Update app section title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "A new update is available!"
                     }
                 },
@@ -2974,11 +2809,10 @@
         },
         "lekaapp.settings_view.change_language_section.button_label": {
             "comment": "Change app language button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Change App Language"
                     }
                 },
@@ -2992,11 +2826,10 @@
         },
         "lekaapp.settings_view.close_button_label": {
             "comment": "Close button label of Settings View",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Close"
                     }
                 },
@@ -3010,11 +2843,10 @@
         },
         "lekaapp.settings_view.credentials_section.change_credentials.alert_message": {
             "comment": "Change credentials alert message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "We will send you an e-mail with a link to change your password.\nAre you sure you want to continue?"
                     }
                 },
@@ -3028,11 +2860,10 @@
         },
         "lekaapp.settings_view.credentials_section.change_credentials.alert_title": {
             "comment": "Change credentials alert title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Are you sure you want to change your password?"
                     }
                 },
@@ -3046,11 +2877,10 @@
         },
         "lekaapp.settings_view.credentials_section.change_credentials.button_label": {
             "comment": "Change credentials button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Change Password"
                     }
                 },
@@ -3064,11 +2894,10 @@
         },
         "lekaapp.settings_view.credentials_section.change_credentials.error_alert_message": {
             "comment": "Password reset error alert message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "We encountered an issue while attempting to send the email.\nPlease try again later or contact support if the problem persists."
                     }
                 },
@@ -3082,11 +2911,10 @@
         },
         "lekaapp.settings_view.credentials_section.change_credentials.error_alert_title": {
             "comment": "Password reset error alert title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Failed to Send Email"
                     }
                 },
@@ -3100,11 +2928,10 @@
         },
         "lekaapp.settings_view.credentials_section.change_credentials.reset_password_button_label": {
             "comment": "Reset password button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Change Password"
                     }
                 },
@@ -3118,11 +2945,10 @@
         },
         "lekaapp.settings_view.credentials_section.change_credentials.success_alert_message": {
             "comment": "Password reset success alert message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "An email has been sent to your address with instructions to change your password.\nPlease check your inbox."
                     }
                 },
@@ -3136,11 +2962,10 @@
         },
         "lekaapp.settings_view.credentials_section.change_credentials.success_alert_title": {
             "comment": "Password reset success alert title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Email Sent"
                     }
                 },
@@ -3154,11 +2979,10 @@
         },
         "lekaapp.settings_view.credentials_section.email_label": {
             "comment": "Account email address label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Account Email"
                     }
                 },
@@ -3172,11 +2996,10 @@
         },
         "lekaapp.settings_view.navigation_title": {
             "comment": "The navigation title of Settings View",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Settings"
                     }
                 },
@@ -3190,11 +3013,10 @@
         },
         "lekaapp.settings_view.profiles_section.button_label": {
             "comment": "Switch caregiver profile button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Switch Caregiver Profile"
                     }
                 },
@@ -3208,11 +3030,10 @@
         },
         "lekaapp.welcome_view.create_account_button": {
             "comment": "Create account button on WelcomeView",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Create account"
                     }
                 },
@@ -3226,11 +3047,10 @@
         },
         "lekaapp.welcome_view.login_button": {
             "comment": "Login button on WelcomeView",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Login"
                     }
                 },
@@ -3244,11 +3064,10 @@
         },
         "lekaapp.welcome_view.skip_step_button": {
             "comment": "Skip step button on WelcomeView",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Skip this step"
                     }
                 },
@@ -3262,11 +3081,10 @@
         },
         "lekapp.add_first_caregiver_profile.button_label": {
             "comment": "The button label of create first profile when no profile is created",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Create First Caregiver"
                     }
                 },
@@ -3280,11 +3098,10 @@
         },
         "lekapp.caregiver_view.available_soon_label": {
             "comment": "Temporary content for caregiver monitoring",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Your usage history will soon be available here."
                     }
                 },
@@ -3298,11 +3115,10 @@
         },
         "lekapp.carereceiver_view.available_soon_label": {
             "comment": "Temporary content for carereceiver monitoring",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Your usage history will soon be available here."
                     }
                 },
@@ -3316,11 +3132,10 @@
         },
         "lekapp.carereceiver_view.edit_profile_button_label": {
             "comment": "The button label of carereceiver profile editor",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Edit profile"
                     }
                 },
@@ -3334,11 +3149,10 @@
         },
         "lekapp.edit_caregiver_profile.button_label": {
             "comment": "The button label of caregiver profile editor",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Edit profile"
                     }
                 },
@@ -3352,11 +3166,10 @@
         },
         "lekapp.not_account_connected_label.button_label": {
             "comment": "Button label to log in or sign up",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Log In or Sign Up"
                     }
                 },
@@ -3370,11 +3183,10 @@
         },
         "lekapp.not_account_connected_label.message": {
             "comment": "Warning message when no account connected",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "You are currently using Leka without an account!."
                     }
                 },
@@ -3388,11 +3200,10 @@
         },
         "lekapp.select_caregiver_profile.button_label": {
             "comment": "The button label of select caregiver profile",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Select Caregiver"
                     }
                 },
