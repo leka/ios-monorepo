@@ -21,10 +21,9 @@ class DnDGridBaseScene: SKScene {
     // MARK: Internal
 
     var viewModel: DnDGridViewModel
-    var spacer: CGFloat = .zero
-    var defaultPosition: CGPoint = .zero
     var initialNodeX: CGFloat = .zero
-    var verticalSpacing: CGFloat = .zero
+    var horizontalSpacer: CGFloat = .zero
+    var verticalSpacer: CGFloat = .zero
 
     override func didMove(to view: SKView) {
         super.didMove(to: view)
