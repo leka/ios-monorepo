@@ -4,11 +4,10 @@
     "strings": {
         "game_engine_kit.action_button_observe.button_label": {
             "comment": "ActionButtonObserve button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Tap to reveal"
                     }
                 },
@@ -22,11 +21,10 @@
         },
         "game_engine_kit.action_button_observe.image_unknown_error": {
             "comment": "ActionButtonObserve button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "\u274c\nImage not found:\n%1$@"
                     }
                 },
@@ -40,11 +38,10 @@
         },
         "game_engine_kit.action_button_view.observe_button.image_unknown_error": {
             "comment": "ObserveButton button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "\u274c\nImage not found:\n%1$@"
                     }
                 },
@@ -58,11 +55,10 @@
         },
         "game_engine_kit.activity_view.continue_button": {
             "comment": "The title of the continue button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Continue"
                     }
                 },
@@ -76,11 +72,10 @@
         },
         "game_engine_kit.activity_view.finish_button": {
             "comment": "The title of the finish button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Finish"
                     }
                 },
@@ -94,11 +89,10 @@
         },
         "game_engine_kit.activity_view.hide_reinforcer_to_show_answers_button": {
             "comment": "The title of the hide reinforcer to show answers button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Review answers"
                     }
                 },
@@ -112,11 +106,10 @@
         },
         "game_engine_kit.activity_view.quit_activity_alert.cancel_button_label": {
             "comment": "Quit activity alert cancel button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Cancel"
                     }
                 },
@@ -130,11 +123,10 @@
         },
         "game_engine_kit.activity_view.quit_activity_alert.message": {
             "comment": "Quit activity alert message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Are you sure you want to quit this activity?"
                     }
                 },
@@ -148,11 +140,10 @@
         },
         "game_engine_kit.activity_view.quit_activity_alert.quit_button_label": {
             "comment": "Quit activity alert quit button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Quit"
                     }
                 },
@@ -166,11 +157,10 @@
         },
         "game_engine_kit.activity_view.quit_activity_alert.title": {
             "comment": "Quit activity alert title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Leave activity?"
                     }
                 },
@@ -184,11 +174,10 @@
         },
         "game_engine_kit.activity_view.toolbar.dismiss_button": {
             "comment": "The title of the dismiss button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Dismiss"
                     }
                 },
@@ -202,11 +191,10 @@
         },
         "game_engine_kit.choice_emoji_view.emoji_error": {
             "comment": "ChoiceEmojiView emoji error ",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "\u274c\nText is not emoji:\n%1$@"
                     }
                 },
@@ -220,11 +208,10 @@
         },
         "game_engine_kit.choice_image_view.image_unknown_error": {
             "comment": "ChoiceImageView image unknown error",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "\u274c\nImage not found:\n%1$@"
                     }
                 },
@@ -238,11 +225,10 @@
         },
         "game_engine_kit.choice_sf_symbol_view.sf_symbol_unknown_error": {
             "comment": "ChoiceSFSymbolView SF symbol unknown error label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "\u274c\nSF Symbol not found:\n%1$@"
                     }
                 },
@@ -256,11 +242,10 @@
         },
         "game_engine_kit.dance_freeze_view.auto_button_label": {
             "comment": "DanceFreezeView auto button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Play - Auto mode"
                     }
                 },
@@ -274,11 +259,10 @@
         },
         "game_engine_kit.dance_freeze_view.instructions": {
             "comment": "DanceFreezeView instructions",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Dance with Leka to the music and act like a statue when he stops"
                     }
                 },
@@ -292,11 +276,10 @@
         },
         "game_engine_kit.dance_freeze_view.manual_button_label": {
             "comment": "DanceFreezeView manual button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Play - Manual mode"
                     }
                 },
@@ -310,11 +293,10 @@
         },
         "game_engine_kit.dance_freeze_view.motion_selection_title": {
             "comment": "DanceFreezeView motion selection title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Motion type"
                     }
                 },
@@ -328,11 +310,10 @@
         },
         "game_engine_kit.dance_freeze_view.movement_button_label": {
             "comment": "DanceFreezeView movement button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Movement"
                     }
                 },
@@ -346,11 +327,10 @@
         },
         "game_engine_kit.dance_freeze_view.music_selection_title": {
             "comment": "DanceFreezeView music selection title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Music selection"
                     }
                 },
@@ -364,11 +344,10 @@
         },
         "game_engine_kit.dance_freeze_view.rotation_button_label": {
             "comment": "DanceFreezeView rotation button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Rotation"
                     }
                 },
@@ -382,11 +361,10 @@
         },
         "game_engine_kit.discover_leka_view.pause_button_label": {
             "comment": "DiscoverLekaView pause button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Pause"
                     }
                 },
@@ -400,11 +378,10 @@
         },
         "game_engine_kit.discover_leka_view.play_button_label": {
             "comment": "Discover LekaView play button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Play"
                     }
                 },
@@ -418,11 +395,10 @@
         },
         "game_engine_kit.discover_leka_view.player.instructions": {
             "comment": "DiscoverLekaView instructions",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "\"Discover Leka\" allows the accompanied person to become familiar with Leka\nbefore even entering into learning Activities and Curriculums.\nThe robot will come to life, taking pauses so that the care receiver can\ntame your new companion!"
                     }
                 },
@@ -436,11 +412,10 @@
         },
         "game_engine_kit.discover_leka_view.stop_button_label": {
             "comment": "DiscoverLekaView stop button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Stop"
                     }
                 },
@@ -454,11 +429,10 @@
         },
         "game_engine_kit.hide_and_seek_view.launcher.instructions": {
             "comment": "HideAndSeekView Launcher instructions",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Press OK when Leka is hidden"
                     }
                 },
@@ -472,11 +446,10 @@
         },
         "game_engine_kit.hide_and_seek_view.launcher.ok_button_label": {
             "comment": "HideAndSeekView Laucher OK button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Ok"
                     }
                 },
@@ -490,11 +463,10 @@
         },
         "game_engine_kit.hide_and_seek_view.player.found_button_label": {
             "comment": "HideAndSeekView Player Found Button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Found!"
                     }
                 },
@@ -508,11 +480,10 @@
         },
         "game_engine_kit.hide_and_seek_view.player.instructions": {
             "comment": "HideAndSeekView Player instructions",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Encourage the care receiver to seek Leka.\nYou can throw a reinforcer to give him\na visual and/or audible clue.\nPress FOUND! once the robot found."
                     }
                 },
@@ -526,11 +497,10 @@
         },
         "game_engine_kit.led_zone_selector_view.front_label": {
             "comment": "Label that shows where the front is on the ColorPad",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Front"
                     }
                 },
@@ -544,11 +514,10 @@
         },
         "game_engine_kit.melody_view.keyboard_full": {
             "comment": "MelodyView keyboard full keyboard label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Full keyboard"
                     }
                 },
@@ -562,11 +531,10 @@
         },
         "game_engine_kit.melody_view.keyboard_partial": {
             "comment": "MelodyView partial keyboard label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Partial keyboard"
                     }
                 },
@@ -580,11 +548,10 @@
         },
         "game_engine_kit.melody_view.keyboard_selector_title": {
             "comment": "MelodyView keyboard selection title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Keyboard type"
                     }
                 },
@@ -598,11 +565,10 @@
         },
         "game_engine_kit.melody_view.play_button_label": {
             "comment": "MelodyView play button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Play"
                     }
                 },
@@ -616,11 +582,10 @@
         },
         "game_engine_kit.melody_view.song_selector_title": {
             "comment": "MelodyView music selection title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Music selection"
                     }
                 },
@@ -634,11 +599,10 @@
         },
         "game_engine_kit.memory_choice_view.type_unknown_error": {
             "comment": "MemoryChoiceView type unknown error label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "\u274c ERROR\nChoice type not implemented"
                     }
                 },
@@ -652,11 +616,10 @@
         },
         "game_engine_kit.robot_then_touch_to_select.button_label": {
             "comment": "Robot then touch to select button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Tap Leka"
                     }
                 },
@@ -670,11 +633,10 @@
         },
         "game_engine_kit.story_view.quit_story_alert.cancel_button_label": {
             "comment": "Quit story alert cancel button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Cancel"
                     }
                 },
@@ -688,11 +650,10 @@
         },
         "game_engine_kit.story_view.quit_story_alert.message": {
             "comment": "Quit story alert message",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Are you sure you want to quit this activity?"
                     }
                 },
@@ -706,11 +667,10 @@
         },
         "game_engine_kit.story_view.quit_story_alert.quit_button_label": {
             "comment": "Quit story alert quit button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Quit"
                     }
                 },
@@ -724,11 +684,10 @@
         },
         "game_engine_kit.story_view.quit_story_alert.title": {
             "comment": "Quit story alert title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Leave story?"
                     }
                 },
@@ -742,11 +701,10 @@
         },
         "game_engine_kit.success_failure_view.failure_cheering_label": {
             "comment": "Success and Failure view cheering label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Try again!"
                     }
                 },
@@ -760,11 +718,10 @@
         },
         "game_engine_kit.success_failure_view.quit_button_label": {
             "comment": "Success and Failure view quit button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Quit"
                     }
                 },
@@ -778,11 +735,10 @@
         },
         "game_engine_kit.success_failure_view.success_cheering_label": {
             "comment": "Success and Failure view cheering label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Well done, you've succeeded this activity!"
                     }
                 },
@@ -796,11 +752,10 @@
         },
         "game_engine_kit.success_failure_view.success_percentage_label": {
             "comment": "Success and Failure view success percentage label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "%.0f%% of success!"
                     }
                 },
@@ -814,11 +769,10 @@
         },
         "game_engine_kit.super_simon.button_label": {
             "comment": "Super Simon button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Tap Leka"
                     }
                 },
@@ -832,11 +786,10 @@
         },
         "game_engine_kit.super_simon.type_unknown_error": {
             "comment": "Super Simon interface unknown error label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "\u274c ERROR\nInterface not implemented"
                     }
                 },
@@ -850,11 +803,10 @@
         },
         "game_engine_kit.super_simon_choice_view.type_unknown_error": {
             "comment": "SuperSimonChoiceView type unknown error label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "\u274c ERROR\nChoice type not implemented"
                     }
                 },
@@ -868,11 +820,10 @@
         },
         "game_engine_kit.touch_to_select_choice_view.type_unknown_error": {
             "comment": "TouchToSelectChoiceView type unknown error label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "\u274c ERROR\nChoice type not implemented"
                     }
                 },

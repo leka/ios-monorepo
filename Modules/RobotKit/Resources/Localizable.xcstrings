@@ -4,11 +4,10 @@
     "strings": {
         "robotkit.bluetooth_unauthorized_view.button": {
             "comment": "Label of the button directing to Bluetooth settings of the bluetooth unauthorized of BluetoothUnauthorizedView",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Go to Settings"
                     }
                 },
@@ -22,11 +21,10 @@
         },
         "robotkit.connected_robot_view.navigation_title": {
             "comment": "The title of the connected robot view",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Connected Device"
                     }
                 },
@@ -40,11 +38,10 @@
         },
         "robotkit.connected_robot_view.rename_alert_button_label": {
             "comment": "The button label of the alert when renaming the robot",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Rename & Restart"
                     }
                 },
@@ -58,11 +55,10 @@
         },
         "robotkit.connected_robot_view.rename_alert_cancel_button_label": {
             "comment": "The cancel button label of the alert when renaming the robot",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Cancel"
                     }
                 },
@@ -76,11 +72,10 @@
         },
         "robotkit.connected_robot_view.rename_alert_message": {
             "comment": "The message of the alert when renaming the robot",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Renaming requires a quick device restart to apply changes."
                     }
                 },
@@ -94,11 +89,10 @@
         },
         "robotkit.connected_robot_view.rename_alert_text_field_placeholder": {
             "comment": "The placeholder of the text field when renaming the robot",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "New device name"
                     }
                 },
@@ -112,11 +106,10 @@
         },
         "robotkit.connected_robot_view.rename_alert_title": {
             "comment": "The title of the alert when renaming the robot",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Rename Device"
                     }
                 },
@@ -130,11 +123,10 @@
         },
         "robotkit.connected_robot_view.rename_button": {
             "comment": "The title of the rename button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Rename"
                     }
                 },
@@ -148,11 +140,10 @@
         },
         "robotkit.connected_robot_view.robot_not_up_to_date_alert": {
             "comment": "Update is available alert",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "An update for Leka is available"
                     }
                 },
@@ -166,11 +157,10 @@
         },
         "robotkit.connected_robot_view.serial_number_label": {
             "comment": "The title of the connected robot view",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "S/N: %1$@"
                     }
                 },
@@ -184,11 +174,10 @@
         },
         "robotkit.robot_connect_view.close_button": {
             "comment": "The title of the close button in the toolbar",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Close"
                     }
                 },
@@ -202,11 +191,10 @@
         },
         "robotkit.robot_connect_view.connect_button": {
             "comment": "The title of the connect button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Connect"
                     }
                 },
@@ -220,11 +208,10 @@
         },
         "robotkit.robot_connect_view.continue_button": {
             "comment": "The title of the continue button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Continue"
                     }
                 },
@@ -238,11 +225,10 @@
         },
         "robotkit.robot_connect_view.disconnect_button": {
             "comment": "The title of the disconnect button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Disconnect"
                     }
                 },
@@ -256,11 +242,10 @@
         },
         "robotkit.robot_connect_view.navigation_title": {
             "comment": "The title of the robot connection view",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Connect to a robot"
                     }
                 },
@@ -274,11 +259,10 @@
         },
         "robotkit.robot_connect_view.searching_view_text": {
             "comment": "The text displayed in the searching view",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Searching for robots..."
                     }
                 },
@@ -292,11 +276,10 @@
         },
         "robotkit.robot_connect_view.update_button": {
             "comment": "The title of the update button",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Update"
                     }
                 },
@@ -310,11 +293,10 @@
         },
         "robotkit.robot_connection_view.bluetooth_off_view.instruction": {
             "comment": "The instruction of the bluetooth off of RobotConnectionErrorsView",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Go to Settings -> Select Bluetooth in sidebar -> Turn Bluetooth on."
                     }
                 },
@@ -328,11 +310,10 @@
         },
         "robotkit.robot_connection_view.bluetooth_off_view.message": {
             "comment": "The message of the bluetooth off of RobotConnectionErrorsView",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "You need Bluetooth to connect to a robot."
                     }
                 },
@@ -346,11 +327,10 @@
         },
         "robotkit.robot_connection_view.bluetooth_off_view.title": {
             "comment": "The title of the bluetooth off of RobotConnectionErrorsView",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Bluetooth off"
                     }
                 },
@@ -364,11 +344,10 @@
         },
         "robotkit.robot_connection_view.bluetooth_unauthorized_view.message": {
             "comment": "The message of the bluetooth unauthorized of RobotConnectionErrorsView",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "You need Bluetooth to connect to a robot.\nPlease allow Leka App to use Bluetooth in your device settings"
                     }
                 },
@@ -382,11 +361,10 @@
         },
         "robotkit.robot_connection_view.bluetooth_unauthorized_view.title": {
             "comment": "The title of the bluetooth unauthorized of RobotConnectionErrorsView",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Bluetooth unauthorized"
                     }
                 },
@@ -400,11 +378,10 @@
         },
         "robotkit.robot_connection_view.restart_deep_sleep_robot_text": {
             "comment": "The text of the robot restarting from deep sleep state",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Leka is restarting from deep sleep state..."
                     }
                 },
@@ -418,11 +395,10 @@
         },
         "robotkit.robot_discovery_view.close_alert_action": {
             "comment": "Close alert",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Close"
                     }
                 },
@@ -436,11 +412,10 @@
         },
         "robotkit.robot_discovery_view.open_leka_updater_alert_action": {
             "comment": "Redirect to LekaUpdater app",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Open LekaUpdater"
                     }
                 },
@@ -454,11 +429,10 @@
         },
         "robotkit.robot_discovery_view.robot_not_up_to_date_alert": {
             "comment": "Update is available alert",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "An update for Leka is available"
                     }
                 },

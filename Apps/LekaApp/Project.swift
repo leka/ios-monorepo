@@ -79,6 +79,10 @@ let project = Project.app(
         "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym",
         "STRIP_DEBUG_SYMBOLS": "$(inherited)",
     ]),
+    options: .options(
+        defaultKnownRegions: ["fr", "en"],
+        developmentRegion: "en"
+    ),
     dependencies: [
         .project(target: "AccountKit", path: Path("../../Modules/AccountKit")),
         .project(target: "AnalyticsKit", path: Path("../../Modules/AnalyticsKit")),
