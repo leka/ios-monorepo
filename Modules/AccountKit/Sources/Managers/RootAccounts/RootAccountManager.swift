@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import Foundation
 
 public class RootAccountManager {
     // MARK: Lifecycle
@@ -55,6 +56,20 @@ public class RootAccountManager {
                 }
             )
             .store(in: &self.cancellables)
+    }
+
+    // MARK: ConsentInfo
+
+    public func appendConsentInfo(policyVersion: String) {
+        guard var rootAccount = self.currentRootAccount.value else {
+            self.fetchErrorSubject.send(DatabaseError.customError("RootAccount not found"))
+            return
+        }
+
+        let newConsentInfo = ConsentInfo(policyVersion: policyVersion, acceptedAt: Date())
+        rootAccount.consentInfo.append(newConsentInfo)
+
+        self.updateRootAccount(rootAccount: &rootAccount)
     }
 
     // MARK: Activities
