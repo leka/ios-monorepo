@@ -39,6 +39,10 @@ let project = Project.app(
             "bluetooth-central",
         ],
     ],
+    options: .options(
+        defaultKnownRegions: ["fr", "en"],
+        developmentRegion: "en"
+    ),
     dependencies: [
         .project(target: "BLEKit", path: Path("../../Modules/BLEKit")),
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
