@@ -53,7 +53,8 @@ public class CarereceiverManager {
 
     public func updateCarereceiver(carereceiver: inout Carereceiver) {
         carereceiver.lastEditedAt = nil
-        self.dbOps.update(data: carereceiver, in: .carereceivers)
+        let ignoredFields: [String] = ["root_owner_uid", "uuid", "created_at"]
+        self.dbOps.update(data: carereceiver, in: .carereceivers, ignoringFields: ignoredFields)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
                     self.fetchError.send(error)
