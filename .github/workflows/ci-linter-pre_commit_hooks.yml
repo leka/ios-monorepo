@@ -20,8 +20,13 @@ jobs:
       fail-fast: false
       matrix:
         files: [changed_files, all_files]
+    permissions:
+      pull-requests: write
 
     steps:
+      - name: Collect Workflow Telemetry
+        uses: catchpoint/workflow-telemetry-action@v2
+
       - name: Checkout
         uses: actions/checkout@v4
         with:

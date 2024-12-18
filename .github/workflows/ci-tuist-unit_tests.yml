@@ -28,8 +28,13 @@ jobs:
   unit_tests:
     name: unit tests
     runs-on: [self-hosted, iOS]
+    permissions:
+      pull-requests: write
 
     steps:
+      - name: Collect Workflow Telemetry
+        uses: catchpoint/workflow-telemetry-action@v2
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
