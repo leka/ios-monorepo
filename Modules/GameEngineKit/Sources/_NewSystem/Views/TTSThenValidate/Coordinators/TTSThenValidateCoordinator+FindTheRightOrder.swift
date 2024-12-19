@@ -3,58 +3,60 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import ContentKit
 import SwiftUI
 
 // MARK: - TTSThenValidateCoordinatorFindTheRightOrder
 
 // swiftlint:disable:next type_name
-class TTSThenValidateCoordinatorFindTheRightOrder: TTSThenValidateGameplayCoordinatorProtocol {
+public class TTSThenValidateCoordinatorFindTheRightOrder: TTSThenValidateGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    init(gameplay: NewGameplayFindTheRightOrder) {
+    public init(gameplay: NewGameplayFindTheRightOrder, action: Exercise.Action? = nil) {
         self.gameplay = gameplay
 
-        self.uiChoices.value.choices = self.gameplay.orderedChoices.map { choice in
+        self.uiModel.value.action = action
+        self.uiModel.value.choices = self.gameplay.orderedChoices.map { choice in
             let view = ChoiceView(value: choice.value,
                                   type: choice.type,
-                                  size: self.uiChoices.value.choiceSize,
+                                  size: self.uiModel.value.choiceSize(for: gameplay.orderedChoices.count),
                                   state: .idle)
-            return TTSViewUIChoiceModel(id: choice.id, view: view)
+            return TTSUIChoiceModel(id: choice.id, view: view)
         }
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    private(set) var uiChoices = CurrentValueSubject<TTSViewUIChoicesWrapper, Never>(.zero)
+    public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
 
-    func processUserSelection(choice: TTSViewUIChoiceModel) {
+    public func processUserSelection(choice: TTSUIChoiceModel) {
         guard let gameplayChoice = self.gameplay.orderedChoices.first(where: { $0.id == choice.id }),
               !self.choiceAlreadySelected(choice: gameplayChoice) else { return }
 
         self.select(choice: gameplayChoice)
     }
 
-    func validateUserSelection() {
-        if self.currentOrderedChoices.count == self.uiChoices.value.choices.count {
+    public func validateUserSelection() {
+        if self.currentOrderedChoices.count == self.uiModel.value.choices.count {
             _ = self.gameplay.process(choices: self.currentOrderedChoices)
 
             if self.gameplay.isCompleted.value {
                 for (indice, choice) in self.gameplay.orderedChoices.enumerated() {
                     let view = ChoiceView(value: choice.value,
                                           type: choice.type,
-                                          size: self.uiChoices.value.choiceSize,
+                                          size: self.uiModel.value.choiceSize(for: self.gameplay.orderedChoices.count),
                                           state: .correct(order: indice + 1))
 
-                    self.uiChoices.value.choices[indice] = TTSViewUIChoiceModel(id: choice.id, view: view)
+                    self.uiModel.value.choices[indice] = TTSUIChoiceModel(id: choice.id, view: view)
                 }
             } else {
                 self.gameplay.orderedChoices.enumerated().forEach { index, choice in
                     let view = ChoiceView(value: choice.value,
                                           type: choice.type,
-                                          size: self.uiChoices.value.choiceSize,
+                                          size: self.uiModel.value.choiceSize(for: self.gameplay.orderedChoices.count),
                                           state: .idle)
 
-                    self.uiChoices.value.choices[index] = TTSViewUIChoiceModel(id: choice.id, view: view)
+                    self.uiModel.value.choices[index] = TTSUIChoiceModel(id: choice.id, view: view)
                 }
             }
 
@@ -77,16 +79,16 @@ class TTSThenValidateCoordinatorFindTheRightOrder: TTSThenValidateGameplayCoordi
     }
 
     private func select(choice: NewGameplayFindTheRightOrderChoice) {
-        guard let index = self.uiChoices.value.choices.firstIndex(where: { $0.id == choice.id }) else { return }
+        guard let index = self.uiModel.value.choices.firstIndex(where: { $0.id == choice.id }) else { return }
 
         self.currentOrderedChoices.append(choice)
 
         let view = ChoiceView(value: choice.value,
                               type: choice.type,
-                              size: self.uiChoices.value.choiceSize,
+                              size: self.uiModel.value.choiceSize(for: self.gameplay.orderedChoices.count),
                               state: .selected(order: self.currentOrderedChoicesIndex))
 
-        self.uiChoices.value.choices[index] = TTSViewUIChoiceModel(id: choice.id, view: view)
+        self.uiModel.value.choices[index] = TTSUIChoiceModel(id: choice.id, view: view)
     }
 }
 
