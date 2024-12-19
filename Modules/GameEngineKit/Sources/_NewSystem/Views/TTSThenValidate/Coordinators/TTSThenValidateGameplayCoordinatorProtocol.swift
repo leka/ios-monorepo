@@ -5,8 +5,8 @@
 import Combine
 
 // swiftlint:disable:next type_name
-protocol TTSThenValidateGameplayCoordinatorProtocol {
-    var uiChoices: CurrentValueSubject<TTSViewUIChoicesWrapper, Never> { get }
-    func processUserSelection(choice: TTSViewUIChoiceModel)
+public protocol TTSThenValidateGameplayCoordinatorProtocol {
+    var uiModel: CurrentValueSubject<TTSUIModel, Never> { get }
+    func processUserSelection(choice: TTSUIChoiceModel)
     func validateUserSelection()
 }

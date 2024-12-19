@@ -3,31 +3,33 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import ContentKit
 import SwiftUI
 
 // MARK: - TTSThenValidateCoordinatorFindTheRightAnswers
 
 // swiftlint:disable:next type_name
-class TTSThenValidateCoordinatorFindTheRightAnswers: TTSThenValidateGameplayCoordinatorProtocol {
+public class TTSThenValidateCoordinatorFindTheRightAnswers: TTSThenValidateGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    init(gameplay: NewGameplayFindTheRightAnswers) {
+    public init(gameplay: NewGameplayFindTheRightAnswers, action: Exercise.Action? = nil) {
         self.gameplay = gameplay
 
-        self.uiChoices.value.choices = self.gameplay.choices.map { choice in
+        self.uiModel.value.action = action
+        self.uiModel.value.choices = self.gameplay.choices.map { choice in
             let view = ChoiceView(value: choice.value,
                                   type: choice.type,
-                                  size: self.uiChoices.value.choiceSize,
+                                  size: self.uiModel.value.choiceSize(for: gameplay.choices.count),
                                   state: .idle)
-            return TTSViewUIChoiceModel(id: choice.id, view: view)
+            return TTSUIChoiceModel(id: choice.id, view: view)
         }
     }
 
-    // MARK: Internal
+    // MARK: Public
 
-    private(set) var uiChoices = CurrentValueSubject<TTSViewUIChoicesWrapper, Never>(.zero)
+    public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
 
-    func processUserSelection(choice: TTSViewUIChoiceModel) {
+    public func processUserSelection(choice: TTSUIChoiceModel) {
         var choiceState: State {
             if let index = currentChoices.firstIndex(where: { $0.id == choice.id }) {
                 self.currentChoices.remove(at: index)
@@ -38,17 +40,17 @@ class TTSThenValidateCoordinatorFindTheRightAnswers: TTSThenValidateGameplayCoor
             }
         }
 
-        guard let index = self.uiChoices.value.choices.firstIndex(where: { $0.id == choice.id }) else { return }
+        guard let index = self.uiModel.value.choices.firstIndex(where: { $0.id == choice.id }) else { return }
 
         let view = ChoiceView(value: self.gameplay.choices[index].value,
                               type: self.gameplay.choices[index].type,
-                              size: self.uiChoices.value.choiceSize,
+                              size: self.uiModel.value.choiceSize(for: self.gameplay.choices.count),
                               state: choiceState)
 
-        self.uiChoices.value.choices[index] = TTSViewUIChoiceModel(id: choice.id, view: view)
+        self.uiModel.value.choices[index] = TTSUIChoiceModel(id: choice.id, view: view)
     }
 
-    func validateUserSelection() {
+    public func validateUserSelection() {
         let choices = self.currentChoices.map { choice in
             self.gameplay.choices.first(where: { $0.id == choice.id })!
         }
@@ -56,14 +58,14 @@ class TTSThenValidateCoordinatorFindTheRightAnswers: TTSThenValidateGameplayCoor
         let results = self.gameplay.process(choices: choices)
 
         results.forEach { result in
-            guard let index = self.uiChoices.value.choices.firstIndex(where: { $0.id == result.choice.id }) else { return }
+            guard let index = self.uiModel.value.choices.firstIndex(where: { $0.id == result.choice.id }) else { return }
 
             let view = ChoiceView(value: result.choice.value,
                                   type: result.choice.type,
-                                  size: self.uiChoices.value.choiceSize,
+                                  size: self.uiModel.value.choiceSize(for: self.gameplay.choices.count),
                                   state: result.isCorrect ? .correct : .wrong)
 
-            self.uiChoices.value.choices[index] = TTSViewUIChoiceModel(id: result.choice.id, view: view)
+            self.uiModel.value.choices[index] = TTSUIChoiceModel(id: result.choice.id, view: view)
         }
 
         self.resetCurrentChoices()
@@ -72,7 +74,7 @@ class TTSThenValidateCoordinatorFindTheRightAnswers: TTSThenValidateGameplayCoor
     // MARK: Private
 
     private let gameplay: NewGameplayFindTheRightAnswers
-    private var currentChoices: [TTSViewUIChoiceModel] = []
+    private var currentChoices: [TTSUIChoiceModel] = []
     private var cancellables = Set<AnyCancellable>()
 
     private func resetCurrentChoices() {
