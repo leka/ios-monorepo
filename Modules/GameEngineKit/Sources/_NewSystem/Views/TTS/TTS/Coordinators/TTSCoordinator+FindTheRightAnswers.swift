@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import ContentKit
 import SwiftUI
 
 // MARK: - TTSCoordinatorFindTheRightAnswers
@@ -10,36 +11,37 @@ import SwiftUI
 public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(gameplay: NewGameplayFindTheRightAnswers) {
+    public init(gameplay: NewGameplayFindTheRightAnswers, action: Exercise.Action? = nil) {
         self.gameplay = gameplay
 
-        self.uiChoices.value.choices = self.gameplay.choices.map { choice in
+        self.uiModel.value.action = action
+        self.uiModel.value.choices = self.gameplay.choices.map { choice in
             let view = ChoiceView(value: choice.value,
                                   type: choice.type,
-                                  size: self.uiChoices.value.choiceSize,
+                                  size: self.uiModel.value.choiceSize(for: gameplay.choices.count),
                                   state: .idle)
-            return TTSViewUIChoiceModel(id: choice.id, view: view)
+            return TTSUIChoiceModel(id: choice.id, view: view)
         }
     }
 
     // MARK: Public
 
-    public private(set) var uiChoices = CurrentValueSubject<TTSViewUIChoicesWrapper, Never>(.zero)
+    public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
 
-    public func processUserSelection(choice: TTSViewUIChoiceModel) {
+    public func processUserSelection(choice: TTSUIChoiceModel) {
         guard let gameplayChoice = self.gameplay.choices.first(where: { $0.id == choice.id }) else { return }
 
         let results = self.gameplay.process(choices: [gameplayChoice])
 
         results.forEach { result in
-            guard let index = self.uiChoices.value.choices.firstIndex(where: { $0.id == result.choice.id }) else { return }
+            guard let index = self.uiModel.value.choices.firstIndex(where: { $0.id == result.choice.id }) else { return }
 
             let view = ChoiceView(value: result.choice.value,
                                   type: result.choice.type,
-                                  size: self.uiChoices.value.choiceSize,
+                                  size: self.uiModel.value.choiceSize(for: self.gameplay.choices.count),
                                   state: result.isCorrect ? .correct : .wrong)
 
-            self.uiChoices.value.choices[index] = TTSViewUIChoiceModel(id: result.choice.id, view: view)
+            self.uiModel.value.choices[index] = TTSUIChoiceModel(id: result.choice.id, view: view)
         }
     }
 
