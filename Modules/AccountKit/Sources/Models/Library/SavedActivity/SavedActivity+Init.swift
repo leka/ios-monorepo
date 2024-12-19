@@ -7,13 +7,10 @@ import SwiftUI
 public extension SavedActivity {
     init(
         id: String? = nil,
-        rootOwnerUid: String = "",
         caregiverID: String
     ) {
         self.id = id
-        self.rootOwnerUid = rootOwnerUid
         self.caregiverID = caregiverID
-        self.createdAt = nil
-        self.lastEditedAt = nil
+        self.addedAt = Date()
     }
 }

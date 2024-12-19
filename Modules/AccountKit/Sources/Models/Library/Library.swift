@@ -5,9 +5,7 @@
 import FirebaseFirestore
 import SwiftUI
 
-// MARK: - SavedGamepad
-
-public struct SavedGamepad: DatabaseDocument, Hashable {
+public struct Library: DatabaseDocument, Hashable {
     // MARK: Public
 
     @ServerTimestamp public var createdAt: Date?
@@ -15,14 +13,18 @@ public struct SavedGamepad: DatabaseDocument, Hashable {
 
     public var id: String?
     public var rootOwnerUid: String
-    public var caregiverID: String
+    public var activities: [SavedActivity]
+    public var curriculums: [SavedCurriculum]
+    public var stories: [SavedStory]
 
     // MARK: Internal
 
     enum CodingKeys: String, CodingKey {
         case id = "uuid"
         case rootOwnerUid = "root_owner_uid"
-        case caregiverID = "caregiver_id"
+        case activities
+        case curriculums
+        case stories
         case createdAt = "created_at"
         case lastEditedAt = "last_edited_at"
     }

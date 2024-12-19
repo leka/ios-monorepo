@@ -54,6 +54,8 @@ struct AccountCreationView: View {
             if newValue == .loggedIn {
                 self.rootAccountManager.createRootAccount(rootAccount: RootAccount())
                 self.rootAccountManager.initializeRootAccountListener()
+                self.libraryManager.createLibrary(library: Library())
+                self.libraryManager.initializeLibraryListener()
                 self.isVerificationEmailAlertPresented = true
             }
         }
@@ -84,6 +86,7 @@ struct AccountCreationView: View {
 
     private var authManager = AuthManager.shared
     private var rootAccountManager = RootAccountManager.shared
+    private var libraryManager = LibraryManager.shared
 
     private var isCreationDisabled: Bool {
         self.viewModel.email.isInvalidEmail() || self.viewModel.password.isInvalidPassword()

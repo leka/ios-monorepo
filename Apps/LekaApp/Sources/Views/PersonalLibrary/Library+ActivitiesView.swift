@@ -12,7 +12,7 @@ import SwiftUI
 struct LibraryActivitiesView: View {
     // MARK: Lifecycle
 
-    init(viewModel: RootAccountManagerViewModel) {
+    init(viewModel: LibraryManagerViewModel) {
         self.viewModel = viewModel
     }
 
@@ -38,11 +38,11 @@ struct LibraryActivitiesView: View {
     // MARK: Private
 
     @ObservedObject private var navigation: Navigation = .shared
-    @ObservedObject private var viewModel: RootAccountManagerViewModel
+    @ObservedObject private var viewModel: LibraryManagerViewModel
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
 
     private var activities: [Activity] {
-        self.viewModel.savedActivities.compactMap { savedActivity in
+        self.viewModel.activities.compactMap { savedActivity in
             ContentKit.allPublishedActivities.first { $0.id == savedActivity.id }
         }
         .sorted {
@@ -52,7 +52,7 @@ struct LibraryActivitiesView: View {
 }
 
 #Preview {
-    let viewModel = RootAccountManagerViewModel()
+    let viewModel = LibraryManagerViewModel()
     NavigationStack {
         LibraryActivitiesView(viewModel: viewModel)
     }

@@ -5,8 +5,9 @@
 import Foundation
 
 public enum DatabaseCollection: String {
-    case rootAccounts = "ROOT_ACCOUNTS"
+    case activityCompletionData = "ACTIVITY_COMPLETION_DATA"
     case caregivers = "CAREGIVERS"
     case carereceivers = "CARE_RECEIVERS"
-    case activityCompletionData = "ACTIVITY_COMPLETION_DATA"
+    case libraries = "LIBRARIES"
+    case rootAccounts = "ROOT_ACCOUNTS"
 }

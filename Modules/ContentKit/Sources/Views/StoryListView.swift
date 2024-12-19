@@ -66,15 +66,15 @@ public struct StoryListView: View {
                                 Button {}
                                     label: {
                                         Menu {
-                                            if self.rootAccountViewModel.isStorySaved(storyID: story.uuid) {
+                                            if self.libraryManagerViewModel.isStorySaved(storyID: story.uuid) {
                                                 Button(role: .destructive) {
-                                                    self.rootAccountViewModel.removeSavedStory(storyID: story.uuid)
+                                                    self.libraryManager.removeStory(storyID: story.uuid)
                                                 } label: {
                                                     Label(String(l10n.Library.MenuActions.removeFromlibraryButtonLabel.characters), systemImage: "trash")
                                                 }
                                             } else {
                                                 Button {
-                                                    self.rootAccountViewModel.addSavedStory(
+                                                    self.libraryManager.addStory(
                                                         storyID: story.uuid,
                                                         caregiverID: currentCaregiverID
                                                     )
@@ -126,8 +126,10 @@ public struct StoryListView: View {
 
     @ObservedObject private var styleManager: StyleManager = .shared
 
-    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
+    @StateObject private var libraryManagerViewModel = LibraryManagerViewModel()
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+
+    private var libraryManager: LibraryManager = .shared
 }
 
 #Preview {

@@ -112,15 +112,15 @@ public struct StoryDetailsView: View {
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                     ToolbarItem {
                         Menu {
-                            if self.rootAccountViewModel.isStorySaved(storyID: self.story.uuid) {
+                            if self.libraryManagerViewModel.isStorySaved(storyID: self.story.uuid) {
                                 Button(role: .destructive) {
-                                    self.rootAccountViewModel.removeSavedStory(storyID: self.story.uuid)
+                                    self.libraryManager.removeStory(storyID: self.story.uuid)
                                 } label: {
                                     Label(String(l10n.Library.MenuActions.removeFromlibraryButtonLabel.characters), systemImage: "trash")
                                 }
                             } else {
                                 Button {
-                                    self.rootAccountViewModel.addSavedStory(
+                                    self.libraryManager.addStory(
                                         storyID: self.story.uuid,
                                         caregiverID: currentCaregiverID
                                     )
@@ -167,9 +167,10 @@ public struct StoryDetailsView: View {
 
     @ObservedObject private var styleManager: StyleManager = .shared
 
-    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
+    @StateObject private var libraryManagerViewModel = LibraryManagerViewModel()
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
+    private var libraryManager: LibraryManager = .shared
     private let story: Story
 }
 
