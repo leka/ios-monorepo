@@ -3,34 +3,43 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import ContentKit
 import SwiftUI
 
 // MARK: - TTSThenValidateViewViewModel
 
-class TTSThenValidateViewViewModel: ObservableObject {
+public class TTSThenValidateViewViewModel: ObservableObject {
     // MARK: Lifecycle
 
-    init(coordinator: TTSThenValidateGameplayCoordinatorProtocol) {
-        self.choices = coordinator.uiChoices.value.choices
+    public init(coordinator: TTSThenValidateGameplayCoordinatorProtocol) {
+        self.choices = coordinator.uiModel.value.choices
+        self.action = coordinator.uiModel.value.action
         self.coordinator = coordinator
-        self.coordinator.uiChoices
+        self.isActionTriggered = (self.action == nil) ? true : false
+        self.coordinator.uiModel
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] uiChoices in
-                self?.choices = uiChoices.choices
+            .sink { [weak self] model in
+                self?.choices = model.choices
             }
             .store(in: &self.cancellables)
     }
 
     // MARK: Internal
 
-    @Published var choices: [TTSViewUIChoiceModel]
+    @Published var isActionTriggered = false
+    @Published var isValidationDisabled: Bool = true
+    @Published var choices: [TTSUIChoiceModel]
 
-    func onChoiceTapped(choice: TTSViewUIChoiceModel) {
+    let action: Exercise.Action?
+
+    func onTapped(choice: TTSUIChoiceModel) {
         self.coordinator.processUserSelection(choice: choice)
+        self.isValidationDisabled = false
     }
 
     func onValidate() {
         self.coordinator.validateUserSelection()
+        self.isValidationDisabled = true
     }
 
     // MARK: Private
