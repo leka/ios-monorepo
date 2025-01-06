@@ -30,7 +30,7 @@ public struct DnDGridView: View {
                     TapGesture()
                         .onEnded { _ in
                             withAnimation {
-                                self.viewModel.isActionTriggered = true
+                                self.viewModel.didTriggerAction = true
                             }
                         }
                 )
@@ -50,9 +50,9 @@ public struct DnDGridView: View {
                         self.scene = self.getScene(for: self.viewModel.choices.count, size: proxy.size)
                     }
             }
-            .colorMultiply(self.viewModel.isActionTriggered ? .white : .gray.opacity(0.4))
-            .animation(.easeOut(duration: 0.3), value: self.viewModel.isActionTriggered)
-            .allowsHitTesting(self.viewModel.isActionTriggered)
+            .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+            .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+            .allowsHitTesting(self.viewModel.didTriggerAction)
 
             Spacer()
         }

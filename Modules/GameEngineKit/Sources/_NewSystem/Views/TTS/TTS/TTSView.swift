@@ -32,7 +32,7 @@ public struct TTSView: View {
                     TapGesture()
                         .onEnded { _ in
                             withAnimation {
-                                self.viewModel.isActionTriggered = true
+                                self.viewModel.didTriggerAction = true
                             }
                         }
                 )
@@ -48,39 +48,39 @@ public struct TTSView: View {
             switch interface {
                 case .oneChoice:
                     OneChoiceView(viewModel: self.viewModel)
-                        .colorMultiply(self.viewModel.isActionTriggered ? .white : .gray.opacity(0.4))
-                        .animation(.easeOut(duration: 0.3), value: self.viewModel.isActionTriggered)
-                        .allowsHitTesting(self.viewModel.isActionTriggered)
+                        .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                        .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                        .allowsHitTesting(self.viewModel.didTriggerAction)
 
                 case .twoChoices:
                     TwoChoicesView(viewModel: self.viewModel)
-                        .colorMultiply(self.viewModel.isActionTriggered ? .white : .gray.opacity(0.4))
-                        .animation(.easeOut(duration: 0.3), value: self.viewModel.isActionTriggered)
-                        .allowsHitTesting(self.viewModel.isActionTriggered)
+                        .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                        .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                        .allowsHitTesting(self.viewModel.didTriggerAction)
 
                 case .threeChoices:
                     ThreeChoicesView(viewModel: self.viewModel)
-                        .colorMultiply(self.viewModel.isActionTriggered ? .white : .gray.opacity(0.4))
-                        .animation(.easeOut(duration: 0.3), value: self.viewModel.isActionTriggered)
-                        .allowsHitTesting(self.viewModel.isActionTriggered)
+                        .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                        .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                        .allowsHitTesting(self.viewModel.didTriggerAction)
 
                 case .fourChoices:
                     FourChoicesView(viewModel: self.viewModel)
-                        .colorMultiply(self.viewModel.isActionTriggered ? .white : .gray.opacity(0.4))
-                        .animation(.easeOut(duration: 0.3), value: self.viewModel.isActionTriggered)
-                        .allowsHitTesting(self.viewModel.isActionTriggered)
+                        .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                        .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                        .allowsHitTesting(self.viewModel.didTriggerAction)
 
                 case .fiveChoices:
                     FiveChoicesView(viewModel: self.viewModel)
-                        .colorMultiply(self.viewModel.isActionTriggered ? .white : .gray.opacity(0.4))
-                        .animation(.easeOut(duration: 0.3), value: self.viewModel.isActionTriggered)
-                        .allowsHitTesting(self.viewModel.isActionTriggered)
+                        .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                        .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                        .allowsHitTesting(self.viewModel.didTriggerAction)
 
                 case .sixChoices:
                     SixChoicesView(viewModel: self.viewModel)
-                        .colorMultiply(self.viewModel.isActionTriggered ? .white : .gray.opacity(0.4))
-                        .animation(.easeOut(duration: 0.3), value: self.viewModel.isActionTriggered)
-                        .allowsHitTesting(self.viewModel.isActionTriggered)
+                        .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                        .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                        .allowsHitTesting(self.viewModel.didTriggerAction)
 
                 default:
                     ProgressView()

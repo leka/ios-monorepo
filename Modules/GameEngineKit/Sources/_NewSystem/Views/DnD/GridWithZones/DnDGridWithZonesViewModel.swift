@@ -15,7 +15,7 @@ public class DnDGridWithZonesViewModel: ObservableObject {
         self.choices = coordinator.uiModel.value.choices
         self.dropzones = coordinator.uiDropZoneModel.zones
         self.action = coordinator.uiModel.value.action
-        self.isActionTriggered = (self.action == nil) ? true : false
+        self.didTriggerAction = (self.action == nil) ? true : false
         self.coordinator = coordinator
         self.coordinator.uiModel
             .receive(on: DispatchQueue.main)
@@ -27,7 +27,7 @@ public class DnDGridWithZonesViewModel: ObservableObject {
 
     // MARK: Internal
 
-    @Published var isActionTriggered = false
+    @Published var didTriggerAction = false
     @Published var choices: [DnDAnswerNode] = []
     @Published var dropzones: [DnDDropZoneNode] = []
 

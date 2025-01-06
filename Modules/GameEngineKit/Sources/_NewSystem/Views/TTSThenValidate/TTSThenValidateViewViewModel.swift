@@ -15,7 +15,7 @@ public class TTSThenValidateViewViewModel: ObservableObject {
         self.choices = coordinator.uiModel.value.choices
         self.action = coordinator.uiModel.value.action
         self.coordinator = coordinator
-        self.isActionTriggered = (self.action == nil) ? true : false
+        self.didTriggerAction = (self.action == nil) ? true : false
         self.coordinator.uiModel
             .receive(on: DispatchQueue.main)
             .sink { [weak self] model in
@@ -26,7 +26,7 @@ public class TTSThenValidateViewViewModel: ObservableObject {
 
     // MARK: Internal
 
-    @Published var isActionTriggered = false
+    @Published var didTriggerAction = false
     @Published var isValidationDisabled: Bool = true
     @Published var choices: [TTSUIChoiceModel]
 
