@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import ContentKit
 import SwiftUI
 
 // MARK: - TTSViewViewModel
@@ -11,21 +12,26 @@ public class TTSViewViewModel: ObservableObject {
     // MARK: Lifecycle
 
     public init(coordinator: TTSGameplayCoordinatorProtocol) {
-        self.choices = coordinator.uiChoices.value.choices
+        self.choices = coordinator.uiModel.value.choices
+        self.action = coordinator.uiModel.value.action
+        self.didTriggerAction = (self.action == nil) ? true : false
         self.coordinator = coordinator
-        self.coordinator.uiChoices
+        self.coordinator.uiModel
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] uiChoices in
-                self?.choices = uiChoices.choices
+            .sink { [weak self] model in
+                self?.choices = model.choices
             }
             .store(in: &self.cancellables)
     }
 
     // MARK: Internal
 
-    @Published var choices: [TTSViewUIChoiceModel]
+    @Published var didTriggerAction = false
+    @Published var choices: [TTSUIChoiceModel]
 
-    func onTapped(choice: TTSViewUIChoiceModel) {
+    let action: Exercise.Action?
+
+    func onTapped(choice: TTSUIChoiceModel) {
         self.coordinator.processUserSelection(choice: choice)
     }
 

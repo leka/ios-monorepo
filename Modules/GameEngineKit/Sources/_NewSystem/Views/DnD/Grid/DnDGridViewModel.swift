@@ -14,7 +14,7 @@ public class DnDGridViewModel: ObservableObject {
     public init(coordinator: DnDGridGameplayCoordinatorProtocol) {
         self.choices = coordinator.uiModel.value.choices
         self.action = coordinator.uiModel.value.action
-        self.isActionTriggered = (self.action == nil) ? true : false
+        self.didTriggerAction = (self.action == nil) ? true : false
         self.coordinator = coordinator
         self.coordinator.uiModel
             .receive(on: DispatchQueue.main)
@@ -32,7 +32,7 @@ public class DnDGridViewModel: ObservableObject {
 
     // MARK: Internal
 
-    @Published var isActionTriggered = false
+    @Published var didTriggerAction = false
     @Published var choices: [DnDAnswerNode] = []
 
     let action: Exercise.Action?

@@ -30,7 +30,7 @@ public struct DnDOneToOneView: View {
                     TapGesture()
                         .onEnded { _ in
                             withAnimation {
-                                self.viewModel.isActionTriggered = true
+                                self.viewModel.didTriggerAction = true
                             }
                         }
                 )
@@ -50,9 +50,9 @@ public struct DnDOneToOneView: View {
                         self.scene = DnDOneToOneBaseScene(viewModel: self.viewModel)
                     }
             }
-            .colorMultiply(self.viewModel.isActionTriggered ? .white : .gray.opacity(0.4))
-            .animation(.easeOut(duration: 0.3), value: self.viewModel.isActionTriggered)
-            .allowsHitTesting(self.viewModel.isActionTriggered)
+            .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+            .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+            .allowsHitTesting(self.viewModel.didTriggerAction)
 
             Spacer()
         }
