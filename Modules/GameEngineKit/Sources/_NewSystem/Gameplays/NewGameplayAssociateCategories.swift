@@ -104,6 +104,24 @@ public extension NewGameplayAssociateCategories {
         NewGameplayAssociateCategoriesChoice(value: "Maison", category: nil, type: .text),
     ]
 
+    static let kDefaultEmojiChoices: [NewGameplayAssociateCategoriesChoice] = [
+        NewGameplayAssociateCategoriesChoice(value: "🍉", category: .categoryA, type: .emoji),
+        NewGameplayAssociateCategoriesChoice(value: "🍏", category: .categoryB, type: .emoji),
+        NewGameplayAssociateCategoriesChoice(value: "🍉", category: .categoryA, type: .emoji),
+        NewGameplayAssociateCategoriesChoice(value: "🍏", category: .categoryB, type: .emoji),
+        NewGameplayAssociateCategoriesChoice(value: "🍉", category: .categoryA, type: .emoji),
+        NewGameplayAssociateCategoriesChoice(value: "🐶", category: nil, type: .emoji),
+    ]
+
+    static let kDefaultColorChoices: [NewGameplayAssociateCategoriesChoice] = [
+        NewGameplayAssociateCategoriesChoice(value: "red", category: .categoryA, type: .color),
+        NewGameplayAssociateCategoriesChoice(value: "yellow", category: .categoryB, type: .color),
+        NewGameplayAssociateCategoriesChoice(value: "red", category: .categoryA, type: .color),
+        NewGameplayAssociateCategoriesChoice(value: "yellow", category: .categoryB, type: .color),
+        NewGameplayAssociateCategoriesChoice(value: "red", category: .categoryA, type: .color),
+        NewGameplayAssociateCategoriesChoice(value: "blue", category: nil, type: .color),
+    ]
+
     static let kDefaultImageChoices: [NewGameplayAssociateCategoriesChoice] = [
         NewGameplayAssociateCategoriesChoice(value: "pictograms-weather-sun_yellow-0106", category: .categoryA, type: .image),
         NewGameplayAssociateCategoriesChoice(value: "pictograms-animals-arctic-penguin_yellow-0088", category: .categoryB, type: .image),

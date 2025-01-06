@@ -11,6 +11,8 @@ public enum ChoiceType {
     case image
     case sfsymbol
     case text
+    case color
+    case emoji
 }
 
 // MARK: - TTSChoiceView
@@ -45,8 +47,28 @@ struct TTSChoiceView: View {
                                 .fill(self.isTappable ? .clear : .white.opacity(0.6))
                         )
                         .animation(.easeOut(duration: 0.3), value: self.isTappable)
-                default:
-                    EmptyView()
+                case .emoji:
+                    TTSChoiceViewEmoji(value: self.value, size: self.size)
+                        .overlay(
+                            Circle()
+                                .fill(self.isTappable ? .clear : .white.opacity(0.6))
+                        )
+                        .animation(.easeOut(duration: 0.3), value: self.isTappable)
+
+                case .image:
+                    TTSChoiceViewImage(value: self.value, size: self.size)
+                        .overlay(
+                            Circle()
+                                .fill(self.isTappable ? .clear : .white.opacity(0.6))
+                        )
+                        .animation(.easeOut(duration: 0.3), value: self.isTappable)
+                case .color:
+                    TTSChoiceViewColor(value: self.value, size: self.size)
+                        .overlay(
+                            Circle()
+                                .fill(self.isTappable ? .clear : .white.opacity(0.6))
+                        )
+                        .animation(.easeOut(duration: 0.3), value: self.isTappable)
             }
         }
         .contentShape(Circle())
