@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import RobotKit
 import SpriteKit
 import SwiftUI
 
@@ -19,6 +20,10 @@ public class DnDDropZoneNode: SKSpriteNode {
                 Self.createSFSymbolTexture(value: value, size: size)
             case .text:
                 Self.createTextTexture(value: value, size: size)
+            case .emoji:
+                Self.createEmojiTexture(value: value, size: size)
+            case .color:
+                Self.createColorTexture(value: value, size: size)
         }
 
         super.init(texture: texture, color: .clear, size: size)
@@ -111,6 +116,47 @@ extension DnDDropZoneNode {
             let textRect = rect.insetBy(dx: self.horizontalPadding, dy: (rect.height - textHeight) / 2)
 
             (value as NSString).draw(in: textRect, withAttributes: attributes)
+        }
+
+        return SKTexture(image: finalImage)
+    }
+
+    private static func createEmojiTexture(value: String, size: CGSize) -> SKTexture {
+        let renderer = UIGraphicsImageRenderer(size: size)
+        let finalImage = renderer.image { _ in
+            let rect = CGRect(origin: .zero, size: size)
+
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
+
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: UIFont.systemFont(ofSize: size.height * 0.8),
+                .paragraphStyle: paragraphStyle,
+            ]
+
+            let textRect = rect.offsetBy(dx: 0, dy: (rect.height - size.height * 0.8) / 2)
+            (value as NSString).draw(in: textRect, withAttributes: attributes)
+        }
+
+        return SKTexture(image: finalImage)
+    }
+
+    private static func createColorTexture(value: String, size: CGSize) -> SKTexture {
+        let renderer = UIGraphicsImageRenderer(size: size)
+        let finalImage = renderer.image { _ in
+            let rect = CGRect(origin: .zero, size: size)
+            let path = UIBezierPath(roundedRect: rect, cornerRadius: cornerRadiusFactor * size.width)
+
+            let color = Robot.Color(from: value).screen
+            UIColor(color).setFill()
+            path.fill()
+
+            UIColor.lightGray.setStroke()
+            let strokeWidth: CGFloat = 1
+            let borderRect = rect.insetBy(dx: strokeWidth / 2, dy: strokeWidth / 2)
+            let borderPath = UIBezierPath(roundedRect: borderRect, cornerRadius: cornerRadiusFactor * size.width)
+            borderPath.lineWidth = strokeWidth
+            borderPath.stroke()
         }
 
         return SKTexture(image: finalImage)
