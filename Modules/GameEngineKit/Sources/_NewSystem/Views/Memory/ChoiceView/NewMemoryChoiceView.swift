@@ -28,6 +28,10 @@ struct NewMemoryChoiceView: View {
                     NewMemoryChoiceViewSFSymbol(value: self.value, size: self.size)
                 case .text:
                     NewMemoryChoiceViewText(value: self.value, size: self.size)
+                case .emoji:
+                    NewMemoryChoiceViewEmoji(value: self.value, size: self.size)
+                case .color:
+                    NewMemoryChoiceViewColor(value: self.value, size: self.size)
             }
         }
         .contentShape(RoundedRectangle(cornerRadius: 10))
