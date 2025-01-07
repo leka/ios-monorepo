@@ -69,10 +69,22 @@ struct ActionThenTTSExercises: View {
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                     return TTSView(viewModel: viewModel)
-                        .navigationTitle("Robot Then Find The Right Answers")
+                        .navigationTitle("Robot Color & Right Answers")
                         .navigationBarTitleDisplayMode(.large)
                 } label: {
-                    ExerciseNavigationButtonLabel(text: "Robot & Right Answers", color: .blue)
+                    ExerciseNavigationButtonLabel(text: "Robot Color & Right Answers", color: .blue)
+                }
+
+                NavigationLink {
+                    let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: gameplay, action: .robot(type: .image("robotFaceHappy")))
+                    let viewModel = TTSViewViewModel(coordinator: coordinator)
+
+                    return TTSView(viewModel: viewModel)
+                        .navigationTitle("Robot Screen & Right Answers")
+                        .navigationBarTitleDisplayMode(.large)
+                } label: {
+                    ExerciseNavigationButtonLabel(text: "Robot Screen & Right Answers", color: .blue)
                 }
             }
         }
