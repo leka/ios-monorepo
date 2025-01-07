@@ -69,10 +69,22 @@ struct ActionThenDnDGridExercises: View {
                     let viewModel = DnDGridViewModel(coordinator: coordinator)
 
                     return DnDGridView(viewModel: viewModel)
-                        .navigationTitle("Robot")
+                        .navigationTitle("Robot Color")
                         .navigationBarTitleDisplayMode(.large)
                 } label: {
-                    ExerciseNavigationButtonLabel(text: "Robot & Associate", color: .yellow)
+                    ExerciseNavigationButtonLabel(text: "Robot Color & Associate", color: .yellow)
+                }
+
+                NavigationLink {
+                    let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoices)
+                    let coordinator = DnDGridCoordinatorAssociateCategories(gameplay: gameplay, action: .robot(type: .image("robotFaceHappy")))
+                    let viewModel = DnDGridViewModel(coordinator: coordinator)
+
+                    return DnDGridView(viewModel: viewModel)
+                        .navigationTitle("Robot Screen")
+                        .navigationBarTitleDisplayMode(.large)
+                } label: {
+                    ExerciseNavigationButtonLabel(text: "Robot Screen & Associate", color: .yellow)
                 }
             }
         }

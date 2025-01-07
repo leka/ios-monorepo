@@ -69,10 +69,22 @@ struct ActionThenTTSThenValidateExercises: View {
                     let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
 
                     return TTSThenValidateView(viewModel: viewModel)
-                        .navigationTitle("Robot")
+                        .navigationTitle("Robot Color")
                         .navigationBarTitleDisplayMode(.large)
                 } label: {
                     ExerciseNavigationButtonLabel(text: "Robot & Right Answers", color: .mint)
+                }
+
+                NavigationLink {
+                    let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
+                    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswers(gameplay: gameplay, action: .robot(type: .image("robotFaceHappy")))
+                    let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
+
+                    return TTSThenValidateView(viewModel: viewModel)
+                        .navigationTitle("Robot Screen")
+                        .navigationBarTitleDisplayMode(.large)
+                } label: {
+                    ExerciseNavigationButtonLabel(text: "Robot Screen & Right Answer", color: .mint)
                 }
             }
         }

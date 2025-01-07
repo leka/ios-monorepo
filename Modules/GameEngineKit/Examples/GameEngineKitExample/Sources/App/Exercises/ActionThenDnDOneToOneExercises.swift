@@ -71,10 +71,23 @@ struct ActionThenDnDOneToOneExercises: View {
                     let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
 
                     return DnDOneToOneView(viewModel: viewModel)
-                        .navigationTitle("Listen Robot Then Drag & Drop One To One")
+                        .navigationTitle("Robot Color & Right Order")
                         .navigationBarTitleDisplayMode(.large)
                 } label: {
-                    ExerciseNavigationButtonLabel(text: "Robot & Right Order", color: .red)
+                    ExerciseNavigationButtonLabel(text: "Robot Color & Right Order", color: .red)
+                }
+
+                NavigationLink {
+                    let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultImageChoicesWithZones)
+                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(gameplay: gameplay,
+                                                                              action: .robot(type: .image("robotFaceHappy")))
+                    let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
+
+                    return DnDOneToOneView(viewModel: viewModel)
+                        .navigationTitle("Robot Screen & Right Order")
+                        .navigationBarTitleDisplayMode(.large)
+                } label: {
+                    ExerciseNavigationButtonLabel(text: "Robot Screen & Right Order", color: .red)
                 }
             }
         }
