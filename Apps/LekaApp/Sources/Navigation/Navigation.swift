@@ -23,6 +23,7 @@ enum FullScreenCoverContent: Hashable, Identifiable {
 
 enum SheetContent: Hashable, Identifiable {
     case robotConnection
+    case consent
     case createCaregiver
     case editCaregiver
     case caregiverPicker
