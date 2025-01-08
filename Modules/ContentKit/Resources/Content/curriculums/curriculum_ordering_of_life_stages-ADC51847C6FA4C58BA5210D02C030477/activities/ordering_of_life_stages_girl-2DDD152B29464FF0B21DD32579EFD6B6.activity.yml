@@ -1,0 +1,97 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 2DDD152B29464FF0B21DD32579EFD6B6
+name: ordering_of_life_stages_girl
+
+created_at: "2024-03-08T11:49:37.123525"
+last_edited_at: "2024-07-12T12:48:14.929969"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - association
+  - association/ordering
+  - time_and_temporality_understanding
+
+tags:
+  - family_members
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: ordering_of_life_stages
+
+      title: Ordonner les étapes de la vie
+      subtitle: Fille
+
+      short_description: |
+        Glisser et déposer les étapes de la vie dans le bon ordre
+
+      description: |
+        Le participant doit glisser et déposer les étapes de la vie dans le bon ordre chronologique.
+
+      instructions: |
+        - Sur l'écran de l'iPad, quatre étapes de la vie sont présentées de manière désordonnée (bébé, enfant, adulte, personne âgée).
+        - Chaque étape est représentée par une image.
+        - Encouragez le participant à glisser chaque étape dans la zone correcte pour ordonner chronologiquement les étapes de la vie.
+        - Après avoir placé chaque étape correctement, Leka lance un renforçateur pour célébrer cette réussite et encourager l'apprentissage.
+
+  - locale: en_US
+    details:
+      icon: ordering_of_life_stages
+
+      title: Ordering of life stages
+      subtitle: Girl
+
+      short_description: |
+        Drag and drop the stages of life in the correct order.
+
+      description: |
+        The participant must drag and drop the stages of life in the correct chronological order.
+
+      instructions: |
+        - On the iPad screen, four stages of life are presented in a random order (baby, child, adult, elderly person).
+        - Each stage is represented by an image.
+        - Encourage the participant to drag each stage into the correct area to arrange the stages of life in chronological order.
+        - After correctly placing each stage, Leka triggers a reinforcer to celebrate the success and encourage learning.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Remets les étapes de la vie dans l'ordre
+            - locale: en_US
+              value: Put the stages of life back in order
+          interface: dragAndDropInOrder
+          gameplay: findTheRightOrder
+          payload:
+            choices:
+              - value: ordering_of_life_stages_baby
+                type: image
+              - value: ordering_of_life_stages_girl
+                type: image
+              - value: ordering_of_life_stages_woman
+                type: image
+              - value: ordering_of_life_stages_old_woman
+                type: image
