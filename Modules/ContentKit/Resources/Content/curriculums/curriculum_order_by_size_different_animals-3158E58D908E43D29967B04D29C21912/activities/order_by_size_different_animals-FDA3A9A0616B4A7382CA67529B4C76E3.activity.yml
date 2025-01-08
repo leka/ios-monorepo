@@ -1,0 +1,126 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: FDA3A9A0616B4A7382CA67529B4C76E3
+name: order_by_size_different_animals
+
+created_at: "2024-03-08T11:49:37.123525"
+last_edited_at: "2024-07-12T12:48:14.948500"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - association
+  - association/ordering
+
+tags:
+  - animals
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: order_animals_by_size
+
+      title: Ordonner les animaux selon leur taille
+      subtitle: Du plus petit au plus grand
+
+      short_description: |
+        Glisser et déposer les animaux dans l'ordre du plus petit au plus grand.
+
+      description: |
+        Le participant doit glisser et déposer les animaux dans le bon ordre du plus petit au plus grand.
+
+      instructions: |
+        - Sur l'écran de l'iPad, trois groupes d'animaux sont proposés.
+        - Chaque groupe contient trois animaux de tailles différentes.
+        - Encouragez le participant à glisser chaque animal dans la zone correcte pour former une suite du plus petit au plus grand.
+        - Après avoir placé chaque animal correctement, Leka lance un renforçateur pour célébrer cette réussite et encourager l'apprentissage.
+
+  - locale: en_US
+    details:
+      icon: order_animals_by_size
+
+      title: Order the Animals by Their Size
+      subtitle: From Smallest to Largest
+
+      short_description: |
+        Drag and drop the animals in order from the smallest to the largest.
+
+      description: |
+        The participant must drag and drop the animals into the correct order from the smallest to the largest.
+
+      instructions: |
+        - On the iPad screen, three groups of animals are presented.
+        - Each group contains three animals of different sizes.
+        - Encourage the participant to drag each animal to the correct area to form a sequence from the smallest to the largest.
+        - After placing each animal correctly, Leka triggers a reinforcer to celebrate the success and encourage learning.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Remets les animaux dans l'ordre du plus petit au plus grand
+            - locale: en_US
+              value: Put the animals in order from smallest to largest
+          interface: dragAndDropInOrder
+          gameplay: findTheRightOrder
+          payload:
+            choices:
+              - value: order_by_size_different_animals_fish
+                type: image
+              - value: order_by_size_different_animals_squirrel
+                type: image
+              - value: order_by_size_different_animals_giraffe
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Remets les animaux dans l'ordre du plus petit au plus grand
+            - locale: en_US
+              value: Put the animals in order from smallest to largest
+          interface: dragAndDropInOrder
+          gameplay: findTheRightOrder
+          payload:
+            choices:
+              - value: order_by_size_different_insects_ladybug
+                type: image
+              - value: order_by_size_different_animals_rabbit
+                type: image
+              - value: order_by_size_different_animals_arctic_bear
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Remets les animaux dans l'ordre du plus petit au plus grand
+            - locale: en_US
+              value: Put the animals in order from smallest to largest
+          interface: dragAndDropInOrder
+          gameplay: findTheRightOrder
+          payload:
+            choices:
+              - value: order_by_size_different_animals_snail
+                type: image
+              - value: order_by_size_different_animals_rabbit
+                type: image
+              - value: order_by_size_different_animals_cow
+                type: image

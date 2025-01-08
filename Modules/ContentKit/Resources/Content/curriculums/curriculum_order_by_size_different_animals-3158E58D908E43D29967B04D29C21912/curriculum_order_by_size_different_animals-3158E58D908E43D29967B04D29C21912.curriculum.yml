@@ -1,0 +1,55 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 3158E58D908E43D29967B04D29C21912
+name: curriculum_order_by_size_different_animals
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-09-27T17:53:03.453431"
+authors:
+  - leka
+
+skills:
+  - association
+  - association/ordering
+
+tags:
+  - animals
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: order_animals_by_size
+      title: Ordonner les animaux selon leur taille
+      subtitle: Classement du plus petit au plus grand
+      abstract: |
+        Ce parcours éducatif aide les participants à développer des compétences de classification et d'organisation, en apprenant à classer différents animaux par leur taille réelle.
+      description: |
+        À travers ce parcours, les participants explorent les tailles variées d'animaux et apprennent à les organiser du plus petit au plus grand.
+
+        En complétant les différentes activités, ils renforcent leurs compétences d'observation et de logique, tout en s'amusant avec des exercices engageants et interactifs.
+
+  - locale: en_US
+    details:
+      icon: order_animals_by_size
+      title: Ordering Animals by Size
+      subtitle: Sorting from Smallest to Largest
+      abstract: |
+        This educational curriculum helps participants develop classification and organization skills by learning to sort different animals by their real size.
+      description: |
+        Through this curriculum, participants explore the varying sizes of animals and learn to organize them from smallest to largest.
+
+        By completing the different activities, they enhance their observation and logical skills while enjoying engaging and interactive exercises.
+
+activities:
+  - order_by_size_different_animals-FDA3A9A0616B4A7382CA67529B4C76E3
