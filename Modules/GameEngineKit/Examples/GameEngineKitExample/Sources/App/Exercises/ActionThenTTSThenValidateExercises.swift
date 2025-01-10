@@ -5,6 +5,22 @@
 import GameEngineKit
 import SwiftUI
 
+// MARK: - ExerciseData
+
+// TODO: (@ladislas) to remove in the future, replaced by actual data
+extension ExerciseData {
+    static let TTSActionThenValidatexFindTheRightAnswers: [TTSCoordinatorFindTheRightAnswersChoiceModel] = [
+        .init(value: "Choice 1\nCorrect", isRightAnswer: true),
+        .init(value: "Choice 2", isRightAnswer: false),
+        .init(value: "Choice 3\nCorrect", isRightAnswer: true),
+        .init(value: "checkmark.seal.fill", isRightAnswer: true, type: .sfsymbol),
+        .init(value: "Choice 5\nCorrect", isRightAnswer: true),
+        .init(value: "exclamationmark.triangle.fill", isRightAnswer: false, type: .sfsymbol),
+    ]
+}
+
+// MARK: - ActionThenTTSThenValidateExercises
+
 struct ActionThenTTSThenValidateExercises: View {
     var body: some View {
         Text("Action Then TTS Then Validate")
@@ -13,9 +29,10 @@ struct ActionThenTTSThenValidateExercises: View {
         ScrollView(.horizontal) {
             HStack(spacing: 20) {
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
-                    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswers(gameplay: gameplay,
-                                                                                    action: .ipad(type: .image("sport_dance_player_man")))
+                    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswers(
+                        choices: ExerciseData.TTSActionThenValidatexFindTheRightAnswers,
+                        action: .ipad(type: .image("sport_dance_player_man"))
+                    )
                     let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
 
                     return TTSThenValidateView(viewModel: viewModel)
@@ -26,8 +43,10 @@ struct ActionThenTTSThenValidateExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
-                    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswers(gameplay: gameplay, action: .ipad(type: .sfsymbol("star")))
+                    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswers(
+                        choices: ExerciseData.TTSActionThenValidatexFindTheRightAnswers,
+                        action: .ipad(type: .sfsymbol("star"))
+                    )
                     let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
 
                     return TTSThenValidateView(viewModel: viewModel)
@@ -38,9 +57,10 @@ struct ActionThenTTSThenValidateExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
-                    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswers(gameplay: gameplay,
-                                                                                    action: .ipad(type: .audio("sound_animal_duck")))
+                    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswers(
+                        choices: ExerciseData.TTSActionThenValidatexFindTheRightAnswers,
+                        action: .ipad(type: .audio("sound_animal_duck"))
+                    )
                     let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
 
                     return TTSThenValidateView(viewModel: viewModel)
@@ -51,9 +71,10 @@ struct ActionThenTTSThenValidateExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
-                    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswers(gameplay: gameplay,
-                                                                                    action: .ipad(type: .speech("Correct answer")))
+                    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswers(
+                        choices: ExerciseData.TTSActionThenValidatexFindTheRightAnswers,
+                        action: .ipad(type: .speech("Correct answer"))
+                    )
                     let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
 
                     return TTSThenValidateView(viewModel: viewModel)
@@ -64,8 +85,10 @@ struct ActionThenTTSThenValidateExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
-                    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswers(gameplay: gameplay, action: .robot(type: .color("mint")))
+                    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswers(
+                        choices: ExerciseData.TTSActionThenValidatexFindTheRightAnswers,
+                        action: .robot(type: .color("mint"))
+                    )
                     let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
 
                     return TTSThenValidateView(viewModel: viewModel)
@@ -76,8 +99,10 @@ struct ActionThenTTSThenValidateExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
-                    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswers(gameplay: gameplay, action: .robot(type: .image("robotFaceHappy")))
+                    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswers(
+                        choices: ExerciseData.TTSActionThenValidatexFindTheRightAnswers,
+                        action: .robot(type: .image("robotFaceHappy"))
+                    )
                     let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
 
                     return TTSThenValidateView(viewModel: viewModel)

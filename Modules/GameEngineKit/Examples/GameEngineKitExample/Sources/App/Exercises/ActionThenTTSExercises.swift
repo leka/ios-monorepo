@@ -5,6 +5,19 @@
 import GameEngineKit
 import SwiftUI
 
+extension ExerciseData {
+    static let ActionThenTTSexFindTheRightAnswers: [TTSCoordinatorFindTheRightAnswersChoiceModel] = [
+        .init(value: "Choice 1\nCorrect", isRightAnswer: true),
+        .init(value: "Choice 2", isRightAnswer: false),
+        .init(value: "Choice 3\nCorrect", isRightAnswer: true),
+        .init(value: "checkmark.seal.fill", isRightAnswer: true, type: .sfsymbol),
+        .init(value: "Choice 5\nCorrect", isRightAnswer: true),
+        .init(value: "exclamationmark.triangle.fill", isRightAnswer: false, type: .sfsymbol),
+    ]
+}
+
+// MARK: - ActionThenTTSExercises
+
 struct ActionThenTTSExercises: View {
     var body: some View {
         Text("Action Then TTS")
@@ -13,9 +26,10 @@ struct ActionThenTTSExercises: View {
         ScrollView(.horizontal) {
             HStack(spacing: 20) {
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
-                    let coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: gameplay,
-                                                                        action: .ipad(type: .image("sport_dance_player_man")))
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(
+                        choices: ExerciseData.ActionThenTTSexFindTheRightAnswers,
+                        action: .ipad(type: .image("sport_dance_player_man"))
+                    )
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                     return TTSView(viewModel: viewModel)
@@ -26,8 +40,10 @@ struct ActionThenTTSExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
-                    let coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: gameplay, action: .ipad(type: .sfsymbol("star")))
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(
+                        choices: ExerciseData.ActionThenTTSexFindTheRightAnswers,
+                        action: .ipad(type: .sfsymbol("star"))
+                    )
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                     return TTSView(viewModel: viewModel)
@@ -38,9 +54,10 @@ struct ActionThenTTSExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
-                    let coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: gameplay,
-                                                                        action: .ipad(type: .audio("sound_animal_duck")))
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(
+                        choices: ExerciseData.ActionThenTTSexFindTheRightAnswers,
+                        action: .ipad(type: .audio("sound_animal_duck"))
+                    )
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                     return TTSView(viewModel: viewModel)
@@ -51,9 +68,10 @@ struct ActionThenTTSExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
-                    let coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: gameplay,
-                                                                        action: .ipad(type: .speech("Correct answer")))
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(
+                        choices: ExerciseData.ActionThenTTSexFindTheRightAnswers,
+                        action: .ipad(type: .speech("Correct answer"))
+                    )
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                     return TTSView(viewModel: viewModel)
@@ -64,8 +82,10 @@ struct ActionThenTTSExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
-                    let coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: gameplay, action: .robot(type: .color("blue")))
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(
+                        choices: ExerciseData.ActionThenTTSexFindTheRightAnswers,
+                        action: .robot(type: .color("blue"))
+                    )
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                     return TTSView(viewModel: viewModel)
@@ -76,8 +96,10 @@ struct ActionThenTTSExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
-                    let coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: gameplay, action: .robot(type: .image("robotFaceHappy")))
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(
+                        choices: ExerciseData.ActionThenTTSexFindTheRightAnswers,
+                        action: .robot(type: .image("robotFaceHappy"))
+                    )
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                     return TTSView(viewModel: viewModel)
