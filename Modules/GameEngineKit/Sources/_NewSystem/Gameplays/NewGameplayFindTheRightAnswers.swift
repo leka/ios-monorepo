@@ -10,7 +10,7 @@ import Foundation
 public struct NewGameplayFindTheRightAnswersChoiceModel: Identifiable {
     // MARK: Lifecycle
 
-    public init(id: String = UUID().uuidString, isRightAnswer: Bool) {
+    public init(id: String, isRightAnswer: Bool) {
         self.id = id
         self.isRightAnswer = isRightAnswer
     }
