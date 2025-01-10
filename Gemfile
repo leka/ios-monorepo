@@ -9,3 +9,7 @@ source 'https://rubygems.org'
 gem 'fastlane', '~>2.225.0'
 
 gem 'rubocop'
+gem 'abbrev'
+gem 'logger'
+gem 'mutex_m'
+gem 'csv'
