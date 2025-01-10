@@ -35,11 +35,11 @@ public class TTSThenValidateCoordinatorFindTheRightAnswers: TTSThenValidateGamep
 
     public func processUserSelection(choice: TTSUIChoiceModel) {
         var choiceState: State {
-            if let index = currentChoices.firstIndex(where: { $0.id == choice.id }) {
+            if let index = currentChoices.firstIndex(where: { $0 == choice.id }) {
                 self.currentChoices.remove(at: index)
                 return .idle
             } else {
-                self.currentChoices.append(choice)
+                self.currentChoices.append(choice.id)
                 return .selected
             }
         }
@@ -56,7 +56,7 @@ public class TTSThenValidateCoordinatorFindTheRightAnswers: TTSThenValidateGamep
 
     public func validateUserSelection() {
         let choices = self.currentChoices.compactMap { choice in
-            self.rawChoices.first(where: { $0.id == choice.id })?.id
+            self.rawChoices.first(where: { $0.id == choice })?.id
         }
 
         let results = self.gameplay.process(choiceIDs: choices)
@@ -82,7 +82,7 @@ public class TTSThenValidateCoordinatorFindTheRightAnswers: TTSThenValidateGamep
     private let gameplay: NewGameplayFindTheRightAnswers
 
     private let rawChoices: [TTSCoordinatorFindTheRightAnswersChoiceModel]
-    private var currentChoices: [TTSUIChoiceModel] = []
+    private var currentChoices: [String] = []
 
     private var cancellables = Set<AnyCancellable>()
 
