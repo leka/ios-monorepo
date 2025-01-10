@@ -4,6 +4,7 @@
 
 import Combine
 import Foundation
+import RobotKit
 
 // MARK: - NewGameplayFindTheRightAnswersChoiceModel
 
@@ -52,6 +53,10 @@ public class NewGameplayFindTheRightAnswers: GameplayProtocol {
 
         if self.remainingRightAnswers.isEmpty {
             self.isCompleted.send(true)
+            Robot.shared.run(.fire)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                self.reset()
+            }
         }
 
         return results
