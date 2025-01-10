@@ -14,7 +14,7 @@ extension ActionButtonView {
     struct RobotButton: View {
         // MARK: Lifecycle
 
-        init(actionType: Exercise.Action.ActionType) {
+        init(actionType: Exercise.Action.RobotActionType) {
             self.actionType = actionType
         }
 
@@ -22,7 +22,7 @@ extension ActionButtonView {
 
         @State var robotWasTapped: Bool = false
 
-        let actionType: Exercise.Action.ActionType
+        let actionType: Exercise.Action.RobotActionType
 
         var body: some View {
             Button {
@@ -32,12 +32,10 @@ extension ActionButtonView {
                     case let .image(name):
                         let robotAsset = RobotAssets.robotAsset(name: name)!
                         Robot.shared.display(imageID: robotAsset.id)
-                    case .audio,
-                         .emoji,
-                         .sfsymbol,
-                         .speech:
-                        log.error("Action not available for robot: \(self.actionType)")
-                        fatalError("💥 Action not available for robot: \(self.actionType)")
+                    case let .flash(repetition):
+                        Robot.shared.flashLight(repetitions: repetition)
+                    case let .spots(numberOfSpots):
+                        Robot.shared.shine(.randomBeltSpots(number: numberOfSpots))
                 }
 
                 withAnimation {

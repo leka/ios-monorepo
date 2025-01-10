@@ -13,7 +13,7 @@ import SwiftUI
 struct ActionButtonRobot: View {
     // MARK: Lifecycle
 
-    init(actionType: Exercise.Action.ActionType, robotWasTapped: Binding<Bool>) {
+    init(actionType: Exercise.Action.RobotActionType, robotWasTapped: Binding<Bool>) {
         self.actionType = actionType
         self._robotWasTapped = robotWasTapped
     }
@@ -22,7 +22,7 @@ struct ActionButtonRobot: View {
 
     @Binding var robotWasTapped: Bool
 
-    let actionType: Exercise.Action.ActionType
+    let actionType: Exercise.Action.RobotActionType
 
     var body: some View {
         Button {
@@ -32,10 +32,8 @@ struct ActionButtonRobot: View {
                 case let .image(name):
                     let robotAsset = RobotAssets.robotAsset(name: name)!
                     Robot.shared.display(imageID: robotAsset.id)
-                case .audio,
-                     .emoji,
-                     .sfsymbol,
-                     .speech:
+                case .flash,
+                     .spots:
                     log.error("Action not available for robot: \(self.actionType)")
                     fatalError("💥 Action not available for robot: \(self.actionType)")
             }

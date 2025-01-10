@@ -108,6 +108,10 @@ public struct RobotThenTouchToSelectView: View {
 
             Spacer()
         }
+        .onDisappear {
+            Robot.shared.stopLights()
+            Robot.shared.displayDefaultWorkingFace()
+        }
     }
 
     // MARK: Internal
@@ -128,5 +132,5 @@ public struct RobotThenTouchToSelectView: View {
     @StateObject private var viewModel: TouchToSelectViewViewModel
     @State private var didSendCommandToRobot = false
 
-    private let actionType: Exercise.Action.ActionType
+    private let actionType: Exercise.Action.RobotActionType
 }

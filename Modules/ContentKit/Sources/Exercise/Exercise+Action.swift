@@ -7,12 +7,12 @@ import LocalizationKit
 
 // MARK: - Exercise.Action
 
-// swiftlint:disable nesting
+// swiftlint:disable nesting cyclomatic_complexity function_body_length
 
 public extension Exercise {
     enum Action: Codable {
         case ipad(type: ActionType)
-        case robot(type: ActionType)
+        case robot(type: RobotActionType)
 
         // MARK: Lifecycle
 
@@ -48,7 +48,7 @@ public extension Exercise {
                             self = .ipad(type: .speech(speech!))
                     }
                 case "robot":
-                    let valueType = try valueContainer.decode(ValueType.self, forKey: .type)
+                    let valueType = try valueContainer.decode(RobotValueType.self, forKey: .type)
                     switch valueType {
                         case .image:
                             let image = try valueContainer.decode(String.self, forKey: .value)
@@ -56,12 +56,12 @@ public extension Exercise {
                         case .color:
                             let color = try valueContainer.decode(String.self, forKey: .value)
                             self = .robot(type: .color(color))
-                        default:
-                            throw DecodingError.dataCorruptedError(
-                                forKey: .type,
-                                in: valueContainer,
-                                debugDescription: "Unexpected type for RobotMedia"
-                            )
+                        case .flash:
+                            let repetition = try valueContainer.decode(Int.self, forKey: .value)
+                            self = .robot(type: .flash(repetition))
+                        case .spots:
+                            let numberOfSpots = try valueContainer.decode(Int.self, forKey: .value)
+                            self = .robot(type: .spots(numberOfSpots))
                     }
                 default:
                     throw DecodingError.dataCorruptedError(
@@ -84,12 +84,26 @@ public extension Exercise {
             case speech(String)
         }
 
+        public enum RobotActionType: Codable {
+            case color(String)
+            case image(String)
+            case flash(Int)
+            case spots(Int)
+        }
+
         public enum ValueType: String, Codable {
             case color
             case image
             case sfsymbol
             case audio
             case speech
+        }
+
+        public enum RobotValueType: String, Codable {
+            case color
+            case image
+            case flash
+            case spots
         }
 
         public func encode(to encoder: Encoder) throws {
@@ -129,18 +143,12 @@ public extension Exercise {
                         case let .color(value):
                             try valueContainer.encode("color", forKey: .type)
                             try valueContainer.encode(value, forKey: .value)
-                        case .audio:
-                            log.error("Action Audio not available for robot ")
-                            fatalError("💥 Action Audio not available for robot")
-                        case .speech:
-                            log.error("Action Speech not available for robot ")
-                            fatalError("💥 Action Speech not available for robot")
-                        case .emoji:
-                            log.error("Action Emoji not available for robot ")
-                            fatalError("💥 Action Emoji not available for robot")
-                        case .sfsymbol:
-                            log.error("Action SFSymbol not available for robot ")
-                            fatalError("💥 Action SFSymbol not available for robot")
+                        case let .flash(value):
+                            try valueContainer.encode("flash", forKey: .type)
+                            try valueContainer.encode(value, forKey: .value)
+                        case let .spots(value):
+                            try valueContainer.encode("spots", forKey: .type)
+                            try valueContainer.encode(value, forKey: .value)
                     }
             }
         }
@@ -173,4 +181,4 @@ public extension Exercise {
     }
 }
 
-// swiftlint:enable nesting
+// swiftlint:enable nesting cyclomatic_complexity function_body_length

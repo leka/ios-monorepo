@@ -46,13 +46,17 @@ public struct RobotThenDragAndDropIntoZonesView: View {
 
             Spacer()
         }
+        .onDisappear {
+            Robot.shared.stopLights()
+            Robot.shared.displayDefaultWorkingFace()
+        }
     }
 
     // MARK: Private
 
     @State private var robotWasTapped = false
 
-    private let actionType: Exercise.Action.ActionType
+    private let actionType: Exercise.Action.RobotActionType
     private var exercise: Exercise
     private var exerciseSharedData: ExerciseSharedData?
 }
