@@ -7,6 +7,8 @@
 
 @preconcurrency import PackageDescription
 
+let helloWorld = "Hello, World!"
+
 #if TUIST
     @preconcurrency import ProjectDescription
     @preconcurrency import ProjectDescriptionHelpers
