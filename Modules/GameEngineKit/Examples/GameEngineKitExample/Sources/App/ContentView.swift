@@ -3,10 +3,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import GameEngineKit
+import RobotKit
 import SwiftUI
 
 struct ContentView: View {
     @State var selection: Int = 0
+    @State var isConnectionSheetPresented: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -18,6 +20,8 @@ struct ContentView: View {
                             .multilineTextAlignment(.center)
                             .frame(maxWidth: .infinity)
                             .padding()
+
+                        MagicCardExercises()
 
                         TTSExercises()
 
@@ -55,6 +59,20 @@ struct ContentView: View {
                     Text("Choose your template")
                 }
                 .tag(1)
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Connect to a Robot") {
+                        self.isConnectionSheetPresented = true
+                    }
+                }
+            }
+        }
+        .sheet(isPresented: self.$isConnectionSheetPresented) {
+            NavigationStack {
+                RobotConnectionView(viewModel: RobotConnectionViewModel())
+                    .logEventScreenView(screenName: "robot_connection", context: .sheet)
+                    .navigationBarTitleDisplayMode(.inline)
             }
         }
     }
