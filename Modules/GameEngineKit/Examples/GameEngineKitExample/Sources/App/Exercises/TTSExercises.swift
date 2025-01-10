@@ -5,6 +5,20 @@
 import GameEngineKit
 import SwiftUI
 
+// TODO: (@ladislas) to remove in the future, replaced by actual data
+extension ExerciseData {
+    static let TTSxFindTheRightAnswers: [TTSCoordinatorFindTheRightAnswersChoiceModel] = [
+        .init(value: "Choice 1\nCorrect", isRightAnswer: true),
+        .init(value: "Choice 2", isRightAnswer: false),
+        .init(value: "Choice 3\nCorrect", isRightAnswer: true),
+        .init(value: "checkmark.seal.fill", isRightAnswer: true, type: .sfsymbol),
+        .init(value: "Choice 5\nCorrect", isRightAnswer: true),
+        .init(value: "exclamationmark.triangle.fill", isRightAnswer: false, type: .sfsymbol),
+    ]
+}
+
+// MARK: - TTSExercises
+
 struct TTSExercises: View {
     var body: some View {
         Text("TTS")
@@ -13,8 +27,10 @@ struct TTSExercises: View {
         ScrollView(.horizontal) {
             HStack(spacing: 20) {
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
-                    let coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: gameplay)
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(
+                        choices: ExerciseData.TTSxFindTheRightAnswers,
+                        action: nil
+                    )
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                     return TTSView(viewModel: viewModel)

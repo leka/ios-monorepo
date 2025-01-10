@@ -12,14 +12,18 @@ import SwiftUI
 public class TTSThenValidateCoordinatorFindTheRightAnswersAllAtOnce: TTSThenValidateGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(gameplay: NewGameplayFindTheRightAnswers, action: Exercise.Action? = nil) {
-        self.gameplay = gameplay
+    public init(choices: [TTSCoordinatorFindTheRightAnswersChoiceModel], action: Exercise.Action? = nil) {
+        self.rawChoices = choices
+        self.gameplay = NewGameplayFindTheRightAnswers(
+            choices: choices
+                .map { .init(id: $0.id, isRightAnswer: $0.isRightAnswer)
+                })
 
         self.uiModel.value.action = action
-        self.uiModel.value.choices = self.gameplay.choices.map { choice in
+        self.uiModel.value.choices = choices.map { choice in
             let view = ChoiceView(value: choice.value,
                                   type: choice.type,
-                                  size: self.uiModel.value.choiceSize(for: gameplay.choices.count),
+                                  size: self.uiModel.value.choiceSize(for: self.gameplay.choices.count),
                                   state: .idle)
             return TTSUIChoiceModel(id: choice.id, view: view)
         }
@@ -31,19 +35,19 @@ public class TTSThenValidateCoordinatorFindTheRightAnswersAllAtOnce: TTSThenVali
 
     public func processUserSelection(choice: TTSUIChoiceModel) {
         var choiceState: State {
-            if let index = currentChoices.firstIndex(where: { $0.id == choice.id }) {
+            if let index = currentChoices.firstIndex(where: { $0 == choice.id }) {
                 self.currentChoices.remove(at: index)
                 return .idle
             } else {
-                self.currentChoices.append(choice)
+                self.currentChoices.append(choice.id)
                 return .selected
             }
         }
 
         guard let index = self.uiModel.value.choices.firstIndex(where: { $0.id == choice.id }) else { return }
 
-        let view = ChoiceView(value: self.gameplay.choices[index].value,
-                              type: self.gameplay.choices[index].type,
+        let view = ChoiceView(value: self.rawChoices[index].value,
+                              type: self.rawChoices[index].type,
                               size: self.uiModel.value.choiceSize(for: self.gameplay.choices.count),
                               state: choiceState)
 
@@ -51,22 +55,24 @@ public class TTSThenValidateCoordinatorFindTheRightAnswersAllAtOnce: TTSThenVali
     }
 
     public func validateUserSelection() {
-        let choices = self.currentChoices.map { choice in
-            self.gameplay.choices.first(where: { $0.id == choice.id })!
+        let choices = self.currentChoices.compactMap { choice in
+            self.rawChoices.first(where: { $0.id == choice })?.id
         }
 
-        let results = self.gameplay.process(choices: choices)
+        let results = self.gameplay.process(choiceIDs: choices)
 
         guard results.allSatisfy(\.isCorrect), self.gameplay.isCompleted.value else {
             results.forEach { result in
-                guard let index = self.uiModel.value.choices.firstIndex(where: { $0.id == result.choice.id }) else { return }
+                guard let index = self.rawChoices.firstIndex(where: { $0.id == result.id }) else {
+                    return
+                }
 
-                let view = ChoiceView(value: result.choice.value,
-                                      type: result.choice.type,
+                let view = ChoiceView(value: self.rawChoices[index].value,
+                                      type: self.rawChoices[index].type,
                                       size: self.uiModel.value.choiceSize(for: self.gameplay.choices.count),
                                       state: .idle)
 
-                self.uiModel.value.choices[index] = TTSUIChoiceModel(id: result.choice.id, view: view)
+                self.uiModel.value.choices[index] = TTSUIChoiceModel(id: result.id, view: view)
             }
 
             self.gameplay.reset()
@@ -75,14 +81,14 @@ public class TTSThenValidateCoordinatorFindTheRightAnswersAllAtOnce: TTSThenVali
         }
 
         results.forEach { result in
-            guard let index = self.uiModel.value.choices.firstIndex(where: { $0.id == result.choice.id }) else { return }
+            guard let index = self.rawChoices.firstIndex(where: { $0.id == result.id }) else { return }
 
-            let view = ChoiceView(value: result.choice.value,
-                                  type: result.choice.type,
+            let view = ChoiceView(value: self.rawChoices[index].value,
+                                  type: self.rawChoices[index].type,
                                   size: self.uiModel.value.choiceSize(for: self.gameplay.choices.count),
                                   state: result.isCorrect ? .correct : .wrong)
 
-            self.uiModel.value.choices[index] = TTSUIChoiceModel(id: result.choice.id, view: view)
+            self.uiModel.value.choices[index] = TTSUIChoiceModel(id: result.id, view: view)
         }
 
         self.resetCurrentChoices()
@@ -91,7 +97,10 @@ public class TTSThenValidateCoordinatorFindTheRightAnswersAllAtOnce: TTSThenVali
     // MARK: Private
 
     private let gameplay: NewGameplayFindTheRightAnswers
-    private var currentChoices: [TTSUIChoiceModel] = []
+
+    private let rawChoices: [TTSCoordinatorFindTheRightAnswersChoiceModel]
+    private var currentChoices: [String] = []
+
     private var cancellables = Set<AnyCancellable>()
 
     private func resetCurrentChoices() {
@@ -142,8 +151,16 @@ extension TTSThenValidateCoordinatorFindTheRightAnswersAllAtOnce {
 }
 
 #Preview {
-    let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
-    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswersAllAtOnce(gameplay: gameplay)
+    let kDefaultChoices: [TTSCoordinatorFindTheRightAnswersChoiceModel] = [
+        .init(value: "Choice 1\nCorrect", isRightAnswer: true),
+        .init(value: "Choice 2", isRightAnswer: false),
+        .init(value: "Choice 3\nCorrect", isRightAnswer: true),
+        .init(value: "checkmark.seal.fill", isRightAnswer: true, type: .sfsymbol),
+        .init(value: "Choice 5\nCorrect", isRightAnswer: true),
+        .init(value: "exclamationmark.triangle.fill", isRightAnswer: false, type: .sfsymbol),
+    ]
+
+    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswersAllAtOnce(choices: kDefaultChoices)
     let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
 
     return TTSThenValidateView(viewModel: viewModel)
