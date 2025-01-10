@@ -35,6 +35,7 @@ jobs:
       matrix:
         TUIST_DEVELOPER_MODE: [TRUE, FALSE]
     permissions:
+      actions: write
       pull-requests: write
 
     steps:
