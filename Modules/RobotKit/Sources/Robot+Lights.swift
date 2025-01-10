@@ -23,6 +23,7 @@ public extension Robot {
         case earRight(in: Color)
 
         case spot(Spot.Position, ids: [UInt8], in: Color)
+        case randomBeltSpots(number: Int, multiColor: Bool = true, in: Color = .black)
         case range(start: UInt8, end: UInt8, in: Color)
 
         // MARK: Public
@@ -80,6 +81,7 @@ public extension Robot {
             case earRight
 
             case spot(Spot.Position, ids: [UInt8])
+            case randomBeltSpots(number: Int)
             case range(start: UInt8, end: UInt8)
         }
 
@@ -96,6 +98,7 @@ public extension Robot {
                      let .earLeft(color),
                      let .earRight(color),
                      let .spot(_, _, color),
+                     let .randomBeltSpots(_, _, color),
                      let .range(_, _, color):
                     color
             }
@@ -115,6 +118,14 @@ public extension Robot {
                 case let .spot(_: position, ids, color):
                     for id in ids {
                         let payload = self.shineSpot(id, on: position, in: color)
+                        output.append(payload)
+                    }
+
+                case let .randomBeltSpots(number, multiColour, color):
+                    let availableSpotIDs: [UInt8] = [0, 3, 6, 9, 12, 15, 18].shuffled()
+                    let availableColors = [Robot.Color.blue, Robot.Color.green, Robot.Color.red, Robot.Color.yellow, Robot.Color.orange, Robot.Color.purple].shuffled()
+                    for (index, id) in Array(availableSpotIDs[0..<number]).enumerated() {
+                        let payload = self.shineSpot(id, on: Spot.Position.belt, in: multiColour ? availableColors[index] : color)
                         output.append(payload)
                     }
 
@@ -267,6 +278,8 @@ public extension Robot {
                 self.shine(.earRight(in: .black))
             case let .spot(position, ids, _):
                 self.shine(.spot(position, ids: ids, in: .black))
+            case let .randomBeltSpots(number, _, _):
+                self.shine(.randomBeltSpots(number: number, multiColor: false, in: .black))
             case let .range(start, end, _):
                 self.shine(.range(start: start, end: end, in: .black))
         }
@@ -297,6 +310,8 @@ public extension Robot {
                 self.shine(.earRight(in: .black))
             case let .spot(postion, ids):
                 self.shine(.spot(postion, ids: ids, in: .black))
+            case let .randomBeltSpots(number):
+                self.shine(.randomBeltSpots(number: number, multiColor: false, in: .black))
             case let .range(start, end):
                 self.shine(.range(start: start, end: end, in: .black))
         }
@@ -322,6 +337,21 @@ public extension Robot {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + animationTime) {
             self.stopLights()
+        }
+    }
+
+    func flashLight(repetitions: Int) {
+        let colors: [Robot.Color] = [.red, .blue, .green, .yellow, .lightBlue, .orange, .pink].shuffled()
+        var animationTime = 0.1
+
+        for i in 0..<repetitions {
+            DispatchQueue.main.asyncAfter(deadline: .now() + animationTime) {
+                Robot.shared.shine(.all(in: colors[i]))
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + animationTime + 0.5) {
+                Robot.shared.blacken(.all)
+            }
+            animationTime += 1
         }
     }
 
