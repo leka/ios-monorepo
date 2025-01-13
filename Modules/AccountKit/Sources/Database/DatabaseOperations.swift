@@ -149,7 +149,7 @@ public class DatabaseOperations {
 
             do {
                 var dataDict = try Firestore.Encoder().encode(data)
-
+                dataDict["last_edited_at"] = FieldValue.serverTimestamp()
                 for field in ignoringFields {
                     dataDict.removeValue(forKey: field)
                 }
