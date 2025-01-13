@@ -2,6 +2,8 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import Foundation
+
 public extension Robot {
     enum Reinforcer: UInt8, CaseIterable {
         case rainbow = 0x51
@@ -25,12 +27,18 @@ public extension Robot {
         }
     }
 
-    func run(_ reinforcer: Reinforcer) {
+    func run(_ reinforcer: Reinforcer, onReinforcerCompleted: (() -> Void)? = nil) {
         log.trace("🤖 RUN reinforcer \(reinforcer)")
 
         let output = Self.commandGenerator(commands: reinforcer.cmd)
 
         connectedPeripheral?
             .sendCommand(output)
+
+        if let callback = onReinforcerCompleted {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                callback()
+            }
+        }
     }
 }
