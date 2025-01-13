@@ -51,8 +51,7 @@ public class CarereceiverManager {
             .eraseToAnyPublisher()
     }
 
-    public func updateCarereceiver(carereceiver: inout Carereceiver) {
-        carereceiver.lastEditedAt = nil
+    public func updateCarereceiver(carereceiver: Carereceiver) {
         let ignoredFields: [String] = ["root_owner_uid", "uuid", "created_at"]
         self.dbOps.update(data: carereceiver, in: .carereceivers, ignoringFields: ignoredFields)
             .sink(receiveCompletion: { completion in
