@@ -11,8 +11,9 @@ import SwiftUI
 struct ActionButtonView: View {
     // MARK: Lifecycle
 
-    init(action: Exercise.Action) {
+    init(action: Exercise.Action, scale: CGFloat = 1) {
         self.action = action
+        self.scale = scale
     }
 
     // MARK: Internal
@@ -26,19 +27,23 @@ struct ActionButtonView: View {
                         ObserveButton(image: value)
                     case let .audio(value):
                         ListenButton(audio: .file(name: value))
+                            .scaleEffect(self.scale)
                     case let .speech(value):
                         ListenButton(audio: .speech(text: value))
+                            .scaleEffect(self.scale)
                     default:
                         EmptyView()
                 }
             case let .robot(type):
                 RobotButton(actionType: type)
+                    .scaleEffect(self.scale)
         }
     }
 
     // MARK: Private
 
     private let action: Exercise.Action
+    private let scale: CGFloat
 }
 
 // MARK: ActionButtonView.Style
