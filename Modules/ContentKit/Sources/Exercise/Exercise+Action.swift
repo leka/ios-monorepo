@@ -7,22 +7,22 @@ import LocalizationKit
 
 // MARK: - Exercise.Action
 
-// swiftlint:disable nesting cyclomatic_complexity function_body_length
+// swiftlint:disable nesting cyclomatic_complexity
 
 public extension Exercise {
     enum Action: Codable {
-        case ipad(type: ActionType)
+        case ipad(type: TabletActionType)
         case robot(type: RobotActionType)
 
         // MARK: Lifecycle
 
         public init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            let type = try container.decode(String.self, forKey: .type)
+            let type = try container.decode(ActionType.self, forKey: .type)
             let valueContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .value)
             switch type {
-                case "ipad":
-                    let valueType = try valueContainer.decode(ValueType.self, forKey: .type)
+                case .ipad:
+                    let valueType = try valueContainer.decode(TabletValueType.self, forKey: .type)
                     switch valueType {
                         case .color:
                             let color = try valueContainer.decode(String.self, forKey: .value)
@@ -47,7 +47,7 @@ public extension Exercise {
                             let speech = localizedSpeech.first(where: { $0.locale == currentLocale })?.utterance
                             self = .ipad(type: .speech(speech!))
                     }
-                case "robot":
+                case .robot:
                     let valueType = try valueContainer.decode(RobotValueType.self, forKey: .type)
                     switch valueType {
                         case .image:
@@ -63,19 +63,17 @@ public extension Exercise {
                             let numberOfSpots = try valueContainer.decode(Int.self, forKey: .value)
                             self = .robot(type: .spots(numberOfSpots))
                     }
-                default:
-                    throw DecodingError.dataCorruptedError(
-                        forKey: .type,
-                        in: container,
-                        debugDescription:
-                        "Cannot decode ExercisePayload. Available keys: \(container.allKeys.map(\.stringValue))"
-                    )
             }
         }
 
         // MARK: Public
 
-        public enum ActionType: Codable {
+        public enum ActionType: String, Codable {
+            case robot
+            case ipad
+        }
+
+        public enum TabletActionType: Codable {
             case color(String)
             case image(String)
             case emoji(String)
@@ -91,7 +89,7 @@ public extension Exercise {
             case spots(Int)
         }
 
-        public enum ValueType: String, Codable {
+        public enum TabletValueType: String, Codable {
             case color
             case image
             case sfsymbol
@@ -181,4 +179,4 @@ public extension Exercise {
     }
 }
 
-// swiftlint:enable nesting cyclomatic_complexity function_body_length
+// swiftlint:enable nesting cyclomatic_complexity
