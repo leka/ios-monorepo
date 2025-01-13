@@ -32,8 +32,8 @@ extension ActionButtonView {
                     case let .image(name):
                         let robotAsset = RobotAssets.robotAsset(name: name)!
                         Robot.shared.display(imageID: robotAsset.id)
-                    case let .flash(repetition):
-                        Robot.shared.flashLight(repetitions: repetition)
+                    case let .flash(times):
+                        Robot.shared.flashLight(times: times)
                     case let .spots(numberOfSpots):
                         Robot.shared.shine(.randomBeltSpots(number: numberOfSpots))
                 }
