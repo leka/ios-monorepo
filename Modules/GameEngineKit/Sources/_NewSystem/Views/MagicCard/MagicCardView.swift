@@ -5,6 +5,7 @@
 import Combine
 import ContentKit
 import DesignKit
+import LocalizationKit
 import RobotKit
 import SwiftUI
 
@@ -20,12 +21,19 @@ public struct MagicCardView: View {
     // MARK: Public
 
     public var body: some View {
-        HStack(spacing: 0) {
+        VStack {
+            Text(l10n.MagicCardView.instructions)
+                .font(.headline)
+                .multilineTextAlignment(.center)
+                .padding(.top, 100)
+
+            Spacer()
+
             Button {
                 // nothing to do
             }
             label: {
-                ActionButtonView(action: self.viewModel.action)
+                ActionButtonView(action: self.viewModel.action, scale: 2)
                     .padding(20)
             }
             .simultaneousGesture(
@@ -33,27 +41,16 @@ public struct MagicCardView: View {
                     .onEnded { _ in
                         withAnimation {
                             self.viewModel.didTriggerAction = true
+                            self.viewModel.enableMagicCardDetection()
                         }
                     }
             )
-
-            Divider()
-                .opacity(0.4)
-                .frame(maxHeight: 500)
-                .padding(.vertical, 20)
-
-            Spacer()
-
-            Image(uiImage: DesignKitAsset.Images.robotMagicCard.image)
-                .resizable()
-                .frame(width: 400, height: 400)
-                .padding(10)
 
             Spacer()
         }
         .onDisappear {
             Robot.shared.stopLights()
-            Robot.shared.clearDisplay()
+            Robot.shared.displayDefaultWorkingFace()
         }
     }
 
@@ -62,11 +59,26 @@ public struct MagicCardView: View {
     @StateObject private var viewModel: MagicCardViewViewModel
 }
 
+// MARK: - l10n.MagicCardView
+
+extension l10n {
+    enum MagicCardView {
+        static let instructions = LocalizedString("game_engine_kit.magic_card_view.instructions",
+                                                  bundle: GameEngineKitResources.bundle,
+                                                  value: """
+                                                      Bring the magic card to the robot's forehead
+                                                      to validate the answer.
+                                                      """,
+                                                  comment: "MagicCardView instructions")
+    }
+}
+
 #Preview {
     // MARK: - MagicCardEmptyCoordinator
 
     class MagicCardEmptyCoordinator: MagicCardGameplayCoordinatorProtocol {
         var action = Exercise.Action.robot(type: .image("robotFaceDisgusted"))
+        func enableMagicCardDetection() {}
     }
 
     let coordinator = MagicCardEmptyCoordinator()

@@ -20,7 +20,13 @@ public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinat
                 .map { .init(id: $0.id, isRightAnswer: $0.isRightAnswer)
                 })
         self.action = action
+    }
 
+    // MARK: Public
+
+    public var action: Exercise.Action
+
+    public func enableMagicCardDetection() {
         self.robot.magicCard
             .receive(on: DispatchQueue.main)
             .sink { [weak self] card in
@@ -29,10 +35,6 @@ public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinat
             }
             .store(in: &self.cancellables)
     }
-
-    // MARK: Public
-
-    public var action: Exercise.Action
 
     // MARK: Private
 

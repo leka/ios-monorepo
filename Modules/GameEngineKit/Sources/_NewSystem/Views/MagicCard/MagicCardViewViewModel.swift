@@ -22,6 +22,10 @@ public class MagicCardViewViewModel: ObservableObject {
 
     let action: Exercise.Action
 
+    func enableMagicCardDetection() {
+        self.coordinator.enableMagicCardDetection()
+    }
+
     // MARK: Private
 
     private let coordinator: MagicCardGameplayCoordinatorProtocol
