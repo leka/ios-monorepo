@@ -79,9 +79,6 @@ public class CaregiverManager {
             }, receiveValue: { [weak self] updatedCaregiver in
                 guard let self else { return }
                 AnalyticsManager.logEventCaregiverEdit(caregiver: updatedCaregiver.id!)
-                guard updatedCaregiver.id == self.currentCaregiver.value?.id else { return }
-                self.setCurrentCaregiver(to: updatedCaregiver)
-                log.info("Caregiver successfully updated.")
             })
             .store(in: &self.cancellables)
     }
