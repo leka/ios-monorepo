@@ -83,20 +83,22 @@ public struct TTSThenValidateView: View {
 
             Spacer()
 
-            Button(String(l10n.TTSThenValidateView.validateButtonLabel.characters)) {
+            Button {
                 self.viewModel.onValidate()
+            } label: {
+                Text(l10n.TTSThenValidateView.validateButtonLabel)
+                    .font(.title2.bold())
+                    .foregroundColor(.white)
+                    .frame(width: 100, height: 30)
+                    .padding()
+                    .background(
+                        Capsule()
+                            .fill(self.viewModel.validationDisabled ? .gray.opacity(0.3) : .green)
+                            .shadow(radius: 1)
+                    )
             }
-            .font(.title2.bold())
-            .foregroundColor(.white)
-            .frame(width: 100, height: 30)
-            .padding()
-            .background(
-                Capsule()
-                    .fill(self.viewModel.isValidationDisabled ? .gray.opacity(0.3) : .green)
-                    .shadow(radius: 1)
-            )
-            .disabled(self.viewModel.isValidationDisabled)
-            .animation(.easeOut(duration: 0.3), value: self.viewModel.isValidationDisabled)
+            .animation(.easeOut(duration: 0.3), value: self.viewModel.validationDisabled)
+            .disabled(self.viewModel.validationDisabled)
             .padding(.vertical, 20)
         }
     }
