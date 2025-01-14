@@ -1,0 +1,61 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 1FAED1FF14134571849325B6EC9197B5
+name: curriculum_order_by_size
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2025-01-08T16:23:16.936842"
+authors:
+  - leka
+
+skills:
+  - association
+  - association/ordering
+  - time_and_temporality_understanding
+
+tags:
+  - animals
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: order_animals_by_size
+      title: Ordonner par taille
+      subtitle: Du plus petit au plus grand
+      abstract: |
+        Ce curriculum développe les compétences d'association et de classement en invitant les participants à ordonner des images d'animaux par taille.
+      description: |
+        Les participants glissent et déposent les images pour les classer du plus petit au plus grand. En plaçant correctement chaque image, ils renforcent leurs capacités d'organisation et de reconnaissance des tailles, tout en profitant d'une célébration pour chaque réussite.
+
+  - locale: en_US
+    details:
+      icon: order_animals_by_size
+      title: Order by Size
+      subtitle: From Smallest to Largest
+      abstract: |
+        This curriculum builds association and ordering skills by engaging participants in arranging animal images by size.
+      description: |
+        Participants drag and drop the images to arrange them from smallest to largest. By correctly placing each image, they reinforce their organization and size recognition skills, with a celebration for each success.
+
+activities:
+  - order_by_size_bear-10B482DBE5774C1E96B9A3CB36906285
+  - order_by_size_cow-AB57AA19297D4FFE870D63B79416B7C2
+  - order_by_size_dolphin-1BDE26A39AB24EBB81A0EAD9D9EF2813
+  - order_by_size_fish-9EBCA72374B04D58B87A38FD699B0227
+  - order_by_size_giraffe-62FACC5466D949BC9A6A179AE5C8D58B
+  - order_by_size_koala-FEBEFE797DC04FDAA65C64F8935586F1
+  - order_by_size_ladybug-A1E28A018A8747EAA6EA5A65CE8CAE0F
+  - order_by_size_rabbit-440AED4940AB482FB18261B44B8CE882
+  - order_by_size_snail-645F262E4C0D447AB85D25AF251979DE
+  - order_by_size_squirrel-8D855D878B8F49E38F8EFCCBBF0B5E29
