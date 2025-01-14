@@ -512,6 +512,24 @@
                 }
             }
         },
+        "game_engine_kit.magic_card_view.instructions": {
+            "comment": "MagicCardView instructions",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Bring the magic card to the robot's forehead\nto validate the answer."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Apporter la carte magique sur le front du robot\npour valider la r\u00e9ponse."
+                    }
+                }
+            }
+        },
         "game_engine_kit.melody_view.keyboard_full": {
             "comment": "MelodyView keyboard full keyboard label",
             "localizations": {
