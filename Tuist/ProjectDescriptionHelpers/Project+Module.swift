@@ -58,7 +58,11 @@ public extension Project {
                     resources: ["Examples/\(example.name)/Resources/**"],
                     scripts: TargetScript.linters(),
                     dependencies: [.target(name: name)] + example.dependencies,
-                    settings: .settings(base: .extendingBase(with: settings))
+                    settings:
+                    .settings(base:
+                        .extendingBase(with: settings)
+                            .merging(SettingsDictionary.manualCodeSigning)
+                    )
                 )
             }
         } else {
