@@ -28,12 +28,14 @@ public class TTSThenValidateCoordinatorFindTheRightOrder: TTSThenValidateGamepla
     // MARK: Public
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
+    public private(set) var validationEnabled = CurrentValueSubject<Bool, Never>(true)
 
     public func processUserSelection(choice: TTSUIChoiceModel) {
         guard let gameplayChoice = self.gameplay.orderedChoices.first(where: { $0.id == choice.id }),
               !self.choiceAlreadySelected(choice: gameplayChoice) else { return }
 
         self.select(choice: gameplayChoice)
+        self.validationEnabled.send(true)
     }
 
     public func validateUserSelection() {
@@ -62,6 +64,7 @@ public class TTSThenValidateCoordinatorFindTheRightOrder: TTSThenValidateGamepla
 
             self.currentOrderedChoices.removeAll()
         }
+        self.validationEnabled.send(false)
     }
 
     // MARK: Private

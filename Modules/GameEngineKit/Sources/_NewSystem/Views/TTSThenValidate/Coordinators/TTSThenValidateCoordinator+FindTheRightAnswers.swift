@@ -32,6 +32,7 @@ public class TTSThenValidateCoordinatorFindTheRightAnswers: TTSThenValidateGamep
     // MARK: Public
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
+    public private(set) var validationEnabled = CurrentValueSubject<Bool, Never>(true)
 
     public func processUserSelection(choice: TTSUIChoiceModel) {
         var choiceState: State {
@@ -52,6 +53,7 @@ public class TTSThenValidateCoordinatorFindTheRightAnswers: TTSThenValidateGamep
                               state: choiceState)
 
         self.uiModel.value.choices[index] = TTSUIChoiceModel(id: choice.id, view: view)
+        self.validationEnabled.send(true)
     }
 
     public func validateUserSelection() {
@@ -75,6 +77,8 @@ public class TTSThenValidateCoordinatorFindTheRightAnswers: TTSThenValidateGamep
         }
 
         self.resetCurrentChoices()
+
+        self.validationEnabled.send(false)
     }
 
     // MARK: Private

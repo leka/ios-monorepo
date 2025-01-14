@@ -22,24 +22,29 @@ public class TTSThenValidateViewViewModel: ObservableObject {
                 self?.choices = model.choices
             }
             .store(in: &self.cancellables)
+
+        self.coordinator.validationEnabled
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] validationEnabled in
+                self?.validationDisabled = !validationEnabled
+            }
+            .store(in: &self.cancellables)
     }
 
     // MARK: Internal
 
     @Published var didTriggerAction = false
-    @Published var isValidationDisabled: Bool = true
+    @Published var validationDisabled: Bool = true
     @Published var choices: [TTSUIChoiceModel]
 
     let action: Exercise.Action?
 
     func onTapped(choice: TTSUIChoiceModel) {
         self.coordinator.processUserSelection(choice: choice)
-        self.isValidationDisabled = false
     }
 
     func onValidate() {
         self.coordinator.validateUserSelection()
-        self.isValidationDisabled = true
     }
 
     // MARK: Private
