@@ -53,10 +53,7 @@ public class NewGameplayFindTheRightAnswers: GameplayProtocol {
 
         if self.remainingRightAnswers.isEmpty {
             self.isCompleted.send(true)
-            Robot.shared.run(.fire)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                self.reset()
-            }
+            Robot.shared.run(.fire, onReinforcerCompleted: self.reset)
         }
 
         return results
