@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import LocalizationKit
 import SwiftUI
 
 // MARK: - TTSView
@@ -18,75 +19,97 @@ public struct TTSView: View {
 
     public var body: some View {
         let interface = Interface(rawValue: viewModel.choices.count)
-
-        HStack(spacing: 0) {
-            if let action = self.viewModel.action {
-                Button {
-                    // nothing to do
-                }
-                label: {
-                    ActionButtonView(action: action)
-                        .padding(20)
-                }
-                .simultaneousGesture(
-                    TapGesture()
-                        .onEnded { _ in
-                            withAnimation {
-                                self.viewModel.didTriggerAction = true
+        VStack(alignment: .center) {
+            HStack(spacing: 0) {
+                if let action = self.viewModel.action {
+                    Button {
+                        // nothing to do
+                    }
+                    label: {
+                        ActionButtonView(action: action)
+                            .padding(20)
+                    }
+                    .simultaneousGesture(
+                        TapGesture()
+                            .onEnded { _ in
+                                withAnimation {
+                                    self.viewModel.didTriggerAction = true
+                                }
                             }
-                        }
-                )
+                    )
 
-                Divider()
-                    .opacity(0.4)
-                    .frame(maxHeight: 500)
-                    .padding(.vertical, 20)
+                    Divider()
+                        .opacity(0.4)
+                        .frame(maxHeight: 500)
+                        .padding(.vertical, 20)
+                }
+
+                Spacer()
+
+                switch interface {
+                    case .oneChoice:
+                        OneChoiceView(viewModel: self.viewModel)
+                            .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                            .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                            .allowsHitTesting(self.viewModel.didTriggerAction)
+
+                    case .twoChoices:
+                        TwoChoicesView(viewModel: self.viewModel)
+                            .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                            .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                            .allowsHitTesting(self.viewModel.didTriggerAction)
+
+                    case .threeChoices:
+                        ThreeChoicesView(viewModel: self.viewModel)
+                            .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                            .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                            .allowsHitTesting(self.viewModel.didTriggerAction)
+
+                    case .fourChoices:
+                        FourChoicesView(viewModel: self.viewModel)
+                            .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                            .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                            .allowsHitTesting(self.viewModel.didTriggerAction)
+
+                    case .fiveChoices:
+                        FiveChoicesView(viewModel: self.viewModel)
+                            .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                            .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                            .allowsHitTesting(self.viewModel.didTriggerAction)
+
+                    case .sixChoices:
+                        SixChoicesView(viewModel: self.viewModel)
+                            .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                            .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                            .allowsHitTesting(self.viewModel.didTriggerAction)
+
+                    default:
+                        ProgressView()
+                }
+
+                Spacer()
             }
 
-            Spacer()
-
-            switch interface {
-                case .oneChoice:
-                    OneChoiceView(viewModel: self.viewModel)
-                        .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
-                        .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
-                        .allowsHitTesting(self.viewModel.didTriggerAction)
-
-                case .twoChoices:
-                    TwoChoicesView(viewModel: self.viewModel)
-                        .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
-                        .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
-                        .allowsHitTesting(self.viewModel.didTriggerAction)
-
-                case .threeChoices:
-                    ThreeChoicesView(viewModel: self.viewModel)
-                        .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
-                        .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
-                        .allowsHitTesting(self.viewModel.didTriggerAction)
-
-                case .fourChoices:
-                    FourChoicesView(viewModel: self.viewModel)
-                        .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
-                        .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
-                        .allowsHitTesting(self.viewModel.didTriggerAction)
-
-                case .fiveChoices:
-                    FiveChoicesView(viewModel: self.viewModel)
-                        .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
-                        .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
-                        .allowsHitTesting(self.viewModel.didTriggerAction)
-
-                case .sixChoices:
-                    SixChoicesView(viewModel: self.viewModel)
-                        .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
-                        .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
-                        .allowsHitTesting(self.viewModel.didTriggerAction)
-
-                default:
-                    ProgressView()
+            // TODO: (@HPezz) Change into manual/automatic enum
+            if let validationEnabled = self.viewModel.validationEnabled {
+                Button {
+                    self.viewModel.onValidate()
+                } label: {
+                    Text(l10n.ExerciseView.validateButtonLabel)
+                        .font(.title2.bold())
+                        .foregroundColor(.white)
+                        .frame(width: 100, height: 30)
+                        .padding()
+                        .background(
+                            Capsule()
+                                .fill(validationEnabled ? .green : .gray.opacity(0.3))
+                                .shadow(radius: 1)
+                        )
+                }
+                .animation(.easeOut(duration: 0.3), value: validationEnabled)
+                .disabled(!validationEnabled)
+                .padding(20)
             }
-
-            Spacer()
         }
     }
 
@@ -106,6 +129,17 @@ public struct TTSView: View {
     @StateObject private var viewModel: TTSViewViewModel
 }
 
+// MARK: - l10n.ExerciseView
+
+extension l10n {
+    enum ExerciseView {
+        static let validateButtonLabel = LocalizedString("game_engine_kit.exercise_view.validate_button_label",
+                                                         bundle: GameEngineKitResources.bundle,
+                                                         value: "Validate",
+                                                         comment: "The label for the validate button to confirm selected choices")
+    }
+}
+
 #Preview {
     // MARK: - TTSEmptyCoordinator
 
@@ -121,6 +155,12 @@ public struct TTSView: View {
             TTSUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 5", type: .text, size: 240, state: .idle)),
             TTSUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 6", type: .text, size: 240, state: .idle)),
         ]))
+
+        var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
+
+        func validateUserSelection() {
+            log.debug("Choice validated")
+        }
 
         func processUserSelection(choiceID: String) {
             log.debug("\(choiceID)")
