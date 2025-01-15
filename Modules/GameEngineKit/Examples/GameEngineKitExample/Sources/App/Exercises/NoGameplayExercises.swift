@@ -33,9 +33,9 @@ struct NoGameplayExercises: View {
                         minimumToSelect: 1,
                         maximumToSelect: 3
                     )
-                    let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
+                    let viewModel = TTSViewViewModel(coordinator: coordinator)
 
-                    return TTSThenValidateView(viewModel: viewModel)
+                    return TTSView(viewModel: viewModel)
                         .navigationTitle("TTS")
                         .navigationBarTitleDisplayMode(.large)
                 } label: {
