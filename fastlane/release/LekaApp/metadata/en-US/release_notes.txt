@@ -1,4 +1,16 @@
 ## New Features
 
-- Color Music Pad: You ask, we listen! We brought back Music Color Pad from Leka Alpha
-- Christmas Curriculums: Introduced new Christmas-themed curriculums, including "Christmas Memory" and "Christmas Objects Recognition," to celebrate the festive season.
+- Color Music Pad Update: Enhanced visuals and colors in the Color Music Pad for a refreshed experience.
+
+## Improvements
+
+- Curriculums: Expanded the content library with new curriculums, such as "Ordering Life Stages" and "Sorting Animals by Size," to provide richer educational experiences.
+- Performance Enhancements: Continued optimization of app performance and content interactions for smoother usage.
+
+## Bug Fixes
+
+- Curriculum Updates: Fixed ordering and asset-related issues in various curriculums for consistent presentation.
+
+## Other
+
+- Security Updates: Enhanced app security with the integration of Firebase App Check.

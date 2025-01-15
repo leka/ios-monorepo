@@ -1,4 +1,16 @@
 ## Nouvelles Fonctionnalités
 
-- Pavé Musical Coloré : Beaucoup nous l'on demandé, voici donc le Piano Coloré de Leka Alpha disponible pour tous
-- Curriculums de Noël : Introduction de nouveaux curriculums sur le thème de Noël, y compris "Mémory de Noël" et "Reconnaissance d'Objets de Noël", pour célébrer la saison festive.
+- Mise à jour du Pavé Musical Coloré : Amélioration des visuels et des couleurs dans le Pavé Musical Coloré pour une expérience renouvelée.
+
+## Améliorations
+
+- Programmes éducatifs : Enrichissement de la bibliothèque de contenus avec de nouveaux programmes, tels que "Ordonner les étapes de la vie" et "Classer les animaux par taille," pour des expériences éducatives plus complètes.
+- Optimisations des performances : Poursuite des améliorations des performances de l'application et des interactions avec les contenus pour une utilisation plus fluide.
+
+## Corrections de Bugs
+
+- Mises à jour des programmes éducatifs : Correction des problèmes d'ordre et des ressources dans divers programmes pour une présentation cohérente.
+
+## Autres
+
+- Mises à jour de la sécurité : Renforcement de la sécurité de l'application avec l'intégration de Firebase App Check.
