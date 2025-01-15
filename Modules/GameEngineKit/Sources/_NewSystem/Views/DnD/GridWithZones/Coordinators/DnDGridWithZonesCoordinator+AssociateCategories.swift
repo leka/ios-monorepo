@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import ContentKit
 import SpriteKit
 import SwiftUI
 import UtilsKit
@@ -13,24 +14,26 @@ import UtilsKit
 public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(gameplay: NewGameplayAssociateCategories) {
+    public init(gameplay: NewGameplayAssociateCategories, action: Exercise.Action? = nil) {
         self.gameplay = gameplay
 
-        self.uiDropZones = gameplay.choices[0...1].map { dropzone in
+        self.uiModel.value.action = action
+        self.uiDropZoneModel.action = action
+        self.uiDropZoneModel.zones = gameplay.choices[0...1].map { dropzone in
             self.currentlySelectedChoices.append([dropzone])
             self.alreadyValidatedChoices.append([dropzone])
-            return DnDDropZoneNode(id: dropzone.id, value: dropzone.value, type: dropzone.type, position: .zero)
+            return DnDDropZoneNode(id: dropzone.id, value: dropzone.value, type: dropzone.type, position: .zero, size: self.uiDropZoneModel.zoneSize(for: gameplay.choices[0...1].count))
         }
 
-        self.uiChoices.value.choices = gameplay.choices[2...].map { choice in
-            DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiChoices.value.choiceSize(for: gameplay.choices.count))
+        self.uiModel.value.choices = gameplay.choices[2...].map { choice in
+            DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiModel.value.choiceSize(for: gameplay.choices[2...].count))
         }
     }
 
     // MARK: Public
 
-    public private(set) var uiDropZones: [DnDDropZoneNode] = []
-    public private(set) var uiChoices = CurrentValueSubject<DnDUIChoices, Never>(.zero)
+    public private(set) var uiDropZoneModel: DnDGridWithZonesUIDropzoneModel = .zero
+    public private(set) var uiModel = CurrentValueSubject<DnDGridWithZonesUIModel, Never>(.zero)
 
     public func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDDropZoneNode? = nil) {
         switch event {
@@ -62,7 +65,7 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
         let results = self.gameplay.process(choices: self.currentlySelectedChoices)
 
         if results.first(where: { $0.choice.id == sourceChoice.id })?.correctCategory == true {
-            self.updateChoiceState(for: sourceChoice, to: .correct)
+            self.updateChoiceState(for: sourceChoice, to: .correct(dropZone: destination))
             self.alreadyValidatedChoices = self.currentlySelectedChoices
 
             if self.gameplay.isCompleted.value {
@@ -76,7 +79,7 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
     private func updateChoiceState(for choice: NewGameplayAssociateCategoriesChoice, to state: State) {
         guard let index = self.gameplay.choices.firstIndex(where: { $0.id == choice.id }) else { return }
 
-        self.updateUINodeState(node: self.uiChoices.value.choices[index - 2], state: state)
+        self.updateUINodeState(node: self.uiModel.value.choices[index - 2], state: state)
     }
 
     private func choiceAlreadySelected(choice: NewGameplayAssociateCategoriesChoice) -> Bool {
@@ -104,7 +107,7 @@ extension DnDGridWithZonesCoordinatorAssociateCategories {
     enum State: Equatable {
         case idle
         case selected
-        case correct
+        case correct(dropZone: SKSpriteNode)
         case wrong
     }
 
@@ -115,11 +118,10 @@ extension DnDGridWithZonesCoordinatorAssociateCategories {
             case .selected:
                 self.onDragAnimation(node)
                 node.zPosition += 100
-            case .correct:
+            case let .correct(dropzone):
                 node.isDraggable = false
+                node.repositionInside(dropZone: dropzone)
                 node.scale(to: CGSize(width: node.size.width * 0.75, height: node.size.height * 0.75))
-                node.zPosition = 10
-                self.onDropAction(node)
             case .wrong:
                 node.isDraggable = false
                 self.moveNodeBackToInitialPosition(node)

@@ -82,7 +82,7 @@ class DnDOneToOneBaseScene: SKScene {
 
     func layoutChoices() {
         for (index, choice) in self.viewModel.choices.enumerated() {
-            choice.initialPosition = self.setInitialPosition(index)
+            choice.initialPosition = self.setChoicePosition(index)
             choice.position = choice.initialPosition!
             self.answerNodes.append(choice)
 
@@ -94,17 +94,17 @@ class DnDOneToOneBaseScene: SKScene {
 
     func layoutDropzones() {
         for (index, dropzone) in self.viewModel.dropzones.enumerated() {
-            dropzone.position = self.setInitialDropZonePosition(index)
+            dropzone.position = self.setDropZonePosition(index)
             self.dropZonesNodes.append(dropzone)
             addChild(dropzone)
         }
     }
 
-    func setInitialPosition(_ index: Int) -> CGPoint {
+    func setChoicePosition(_ index: Int) -> CGPoint {
         CGPoint(x: self.spacer * CGFloat(index + 1), y: size.height - self.viewModel.choices[0].size.height * 0.8)
     }
 
-    func setInitialDropZonePosition(_ index: Int) -> CGPoint {
+    func setDropZonePosition(_ index: Int) -> CGPoint {
         CGPoint(x: self.spacer * CGFloat(index + 1), y: self.viewModel.choices[0].size.height * 0.8)
     }
 

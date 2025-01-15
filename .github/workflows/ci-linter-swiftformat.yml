@@ -17,19 +17,35 @@ concurrency:
 jobs:
   swift_format:
     name: swiftformat
-    runs-on: [self-hosted, iOS]
+    runs-on: [ubuntu-24.04]
+    permissions:
+      pull-requests: write
 
     steps:
+      - name: Collect Workflow Telemetry
+        uses: catchpoint/workflow-telemetry-action@v2
+        with:
+          comment_on_pr: false
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Fetch all history for all branches and tags
+          fetch-depth: 2
           lfs: false
 
+      - name: Set up mise
+        uses: jdx/mise-action@v2
+        with:
+          version: 2025.1.7
+          install: true
+          cache: true
+
       - name: Setup mise
-        run: |
-          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
-          mise install
+        uses: jdx/mise-action@v2
+        with:
+          version: 2025.1.7
+          install: true
+          cache: true
 
       - name: Run swiftformat
         run: |
@@ -39,4 +55,10 @@ jobs:
           which swiftformat
           swiftformat --version
 
-          swiftformat --lint --reporter github-actions-log .
+          git diff HEAD^1 HEAD --name-only --diff-filter=AMCR \
+            | grep -E "\.swift\$$"                            \
+            || echo "No files added nor modified!"
+
+          git diff HEAD^1 HEAD --name-only --diff-filter=AMCR \
+            | grep -E "\.swift\$$"                            \
+            | xargs --no-run-if-empty swiftformat --lint --reporter github-actions-log

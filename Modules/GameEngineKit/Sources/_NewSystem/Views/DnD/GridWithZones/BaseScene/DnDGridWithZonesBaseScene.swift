@@ -67,7 +67,7 @@ class DnDGridWithZonesBaseScene: SKScene {
         removeAllChildren()
         removeAllActions()
 
-        self.setFirstAnswerPosition()
+        self.setPositionVariables()
         self.layoutDropZones()
         self.layoutAnswers()
     }
@@ -80,7 +80,7 @@ class DnDGridWithZonesBaseScene: SKScene {
 
     func layoutAnswers() {
         for (index, choice) in self.viewModel.choices.enumerated() {
-            choice.initialPosition = self.setInitialPosition(index)
+            choice.initialPosition = self.setChoicePosition(index)
             choice.position = choice.initialPosition!
 
             let shadowChoice = DnDShadowNode(node: choice)
@@ -99,12 +99,11 @@ class DnDGridWithZonesBaseScene: SKScene {
         }
     }
 
-    func setFirstAnswerPosition() {
+    func setPositionVariables() {
         self.spacer = size.width / CGFloat(self.viewModel.choices.count + 1)
-        self.defaultPosition = CGPoint(x: self.spacer, y: 3 * size.height / 4)
     }
 
-    func setInitialPosition(_ index: Int) -> CGPoint {
+    func setChoicePosition(_ index: Int) -> CGPoint {
         CGPoint(x: self.spacer * CGFloat(index + 1), y: 3 * size.height / 4)
     }
 
@@ -128,5 +127,4 @@ class DnDGridWithZonesBaseScene: SKScene {
     private var answerNodes: [DnDAnswerNode] = []
     private var playedNode: DnDAnswerNode?
     private var spacer: CGFloat = .zero
-    private var defaultPosition = CGPoint.zero
 }

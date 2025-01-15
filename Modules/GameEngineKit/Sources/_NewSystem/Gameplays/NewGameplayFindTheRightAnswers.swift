@@ -4,17 +4,16 @@
 
 import Combine
 import Foundation
+import RobotKit
 
-// MARK: - NewGameplayFindTheRightAnswersChoice
+// MARK: - NewGameplayFindTheRightAnswersChoiceModel
 
-public struct NewGameplayFindTheRightAnswersChoice: Identifiable {
+public struct NewGameplayFindTheRightAnswersChoiceModel: Identifiable {
     // MARK: Lifecycle
 
-    public init(id: String = UUID().uuidString, value: String, isRightAnswer: Bool, type: ChoiceType = .text) {
+    public init(id: String, isRightAnswer: Bool) {
         self.id = id
-        self.value = value
         self.isRightAnswer = isRightAnswer
-        self.type = type
     }
 
     // MARK: Public
@@ -23,8 +22,6 @@ public struct NewGameplayFindTheRightAnswersChoice: Identifiable {
 
     // MARK: Internal
 
-    let value: String
-    let type: ChoiceType
     let isRightAnswer: Bool
 }
 
@@ -33,24 +30,30 @@ public struct NewGameplayFindTheRightAnswersChoice: Identifiable {
 public class NewGameplayFindTheRightAnswers: GameplayProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [NewGameplayFindTheRightAnswersChoice]) {
+    public init(choices: [NewGameplayFindTheRightAnswersChoiceModel]) {
         self.choices = choices
         self.remainingRightAnswers = choices.filter(\.isRightAnswer)
     }
 
     // MARK: Public
 
-    public let choices: [NewGameplayFindTheRightAnswersChoice]
+    public let choices: [NewGameplayFindTheRightAnswersChoiceModel]
     public var isCompleted = CurrentValueSubject<Bool, Never>(false)
 
-    public func process(choices: [NewGameplayFindTheRightAnswersChoice]) -> [(choice: NewGameplayFindTheRightAnswersChoice, isCorrect: Bool)] {
-        let results = choices.map { choice in
-            self.remainingRightAnswers.removeAll { $0.id == choice.id }
-            return (choice, choice.isRightAnswer ? true : false)
+    public func process(choiceIDs: [String]) -> [(id: String, isCorrect: Bool)] {
+        let results: [(String, Bool)] = choiceIDs.compactMap { [weak self] id in
+            guard let self else { return nil }
+
+            let isRightAnswer: Bool = self.remainingRightAnswers.first(where: { id == $0.id })?.isRightAnswer ?? false
+
+            self.remainingRightAnswers.removeAll(where: { $0.id == id })
+
+            return (id, isRightAnswer)
         }
 
         if self.remainingRightAnswers.isEmpty {
             self.isCompleted.send(true)
+            Robot.shared.run(.fire, onReinforcerCompleted: self.reset)
         }
 
         return results
@@ -63,22 +66,9 @@ public class NewGameplayFindTheRightAnswers: GameplayProtocol {
 
     // MARK: Internal
 
-    typealias ChoiceType = NewGameplayFindTheRightAnswersChoice
+    typealias ChoiceType = NewGameplayFindTheRightAnswersChoiceModel
 
     // MARK: Private
 
-    private var remainingRightAnswers: [NewGameplayFindTheRightAnswersChoice]
-}
-
-public extension NewGameplayFindTheRightAnswers {
-    // MARK: Public
-
-    static let kDefaultChoices: [NewGameplayFindTheRightAnswersChoice] = [
-        NewGameplayFindTheRightAnswersChoice(value: "Choice 1\nCorrect", isRightAnswer: true),
-        NewGameplayFindTheRightAnswersChoice(value: "Choice 2", isRightAnswer: false),
-        NewGameplayFindTheRightAnswersChoice(value: "Choice 3\nCorrect", isRightAnswer: true),
-        NewGameplayFindTheRightAnswersChoice(value: "checkmark.seal.fill", isRightAnswer: true, type: .sfsymbol),
-        NewGameplayFindTheRightAnswersChoice(value: "Choice 5\nCorrect", isRightAnswer: true),
-        NewGameplayFindTheRightAnswersChoice(value: "exclamationmark.triangle.fill", isRightAnswer: false, type: .sfsymbol),
-    ]
+    private var remainingRightAnswers: [NewGameplayFindTheRightAnswersChoiceModel]
 }

@@ -5,93 +5,6 @@
 import Combine
 import SwiftUI
 
-// MARK: - TTSViewUIChoiceModel
-
-public struct TTSViewUIChoiceModel: Identifiable {
-    // MARK: Lifecycle
-
-    init(id: String = UUID().uuidString, view: some View = EmptyView()) {
-        self.id = id
-        self.view = AnyView(view)
-    }
-
-    // MARK: Public
-
-    public let id: String
-
-    // MARK: Internal
-
-    let view: AnyView
-}
-
-// MARK: - TTSViewUIChoicesWrapper
-
-public struct TTSViewUIChoicesWrapper {
-    // MARK: Internal
-
-    static let zero = TTSViewUIChoicesWrapper(choices: [])
-
-    var choices: [TTSViewUIChoiceModel]
-
-    var choiceSize: CGFloat {
-        TTSGridSize(self.choices.count).choiceSize
-    }
-
-    // MARK: Private
-
-    // swiftlint:disable identifier_name
-
-    private enum TTSGridSize: Int {
-        case one = 1
-        case two
-        case three
-        case four
-        case five
-        case six
-        case none
-
-        // MARK: Lifecycle
-
-        init(_ rawValue: Int) {
-            switch rawValue {
-                case 1:
-                    self = .one
-                case 2:
-                    self = .two
-                case 3:
-                    self = .three
-                case 4:
-                    self = .four
-                case 5:
-                    self = .five
-                case 6:
-                    self = .six
-                default:
-                    self = .none
-            }
-        }
-
-        // MARK: Internal
-
-        var choiceSize: CGFloat {
-            switch self {
-                case .one,
-                     .two:
-                    300
-                case .three:
-                    280
-                case .four,
-                     .five,
-                     .six,
-                     .none:
-                    240
-            }
-        }
-    }
-
-    // swiftlint:enable identifier_name
-}
-
 // MARK: - TTSView
 
 public struct TTSView: View {
@@ -104,27 +17,88 @@ public struct TTSView: View {
     // MARK: Public
 
     public var body: some View {
-        VStack(spacing: 100) {
-            HStack(spacing: 100) {
-                ForEach(self.viewModel.choices[0...2]) { choice in
-                    Button {
-                        self.viewModel.onTapped(choice: choice)
-                    } label: {
-                        choice.view
-                    }
+        let interface = Interface(rawValue: viewModel.choices.count)
+
+        HStack(spacing: 0) {
+            if let action = self.viewModel.action {
+                Button {
+                    // nothing to do
                 }
+                label: {
+                    ActionButtonView(action: action)
+                        .padding(20)
+                }
+                .simultaneousGesture(
+                    TapGesture()
+                        .onEnded { _ in
+                            withAnimation {
+                                self.viewModel.didTriggerAction = true
+                            }
+                        }
+                )
+
+                Divider()
+                    .opacity(0.4)
+                    .frame(maxHeight: 500)
+                    .padding(.vertical, 20)
             }
 
-            HStack(spacing: 100) {
-                ForEach(self.viewModel.choices[3...5]) { choice in
-                    Button {
-                        self.viewModel.onTapped(choice: choice)
-                    } label: {
-                        choice.view
-                    }
-                }
+            Spacer()
+
+            switch interface {
+                case .oneChoice:
+                    OneChoiceView(viewModel: self.viewModel)
+                        .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                        .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                        .allowsHitTesting(self.viewModel.didTriggerAction)
+
+                case .twoChoices:
+                    TwoChoicesView(viewModel: self.viewModel)
+                        .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                        .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                        .allowsHitTesting(self.viewModel.didTriggerAction)
+
+                case .threeChoices:
+                    ThreeChoicesView(viewModel: self.viewModel)
+                        .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                        .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                        .allowsHitTesting(self.viewModel.didTriggerAction)
+
+                case .fourChoices:
+                    FourChoicesView(viewModel: self.viewModel)
+                        .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                        .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                        .allowsHitTesting(self.viewModel.didTriggerAction)
+
+                case .fiveChoices:
+                    FiveChoicesView(viewModel: self.viewModel)
+                        .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                        .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                        .allowsHitTesting(self.viewModel.didTriggerAction)
+
+                case .sixChoices:
+                    SixChoicesView(viewModel: self.viewModel)
+                        .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                        .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                        .allowsHitTesting(self.viewModel.didTriggerAction)
+
+                default:
+                    ProgressView()
             }
+
+            Spacer()
         }
+    }
+
+    // MARK: Internal
+
+    enum Interface: Int {
+        case oneChoice = 1
+        case twoChoices
+        case threeChoices
+        case fourChoices
+        case fiveChoices
+        case sixChoices
     }
 
     // MARK: Private
@@ -136,19 +110,19 @@ public struct TTSView: View {
     // MARK: - TTSEmptyCoordinator
 
     class TTSEmptyCoordinator: TTSGameplayCoordinatorProtocol {
-        var uiChoices = CurrentValueSubject<TTSViewUIChoicesWrapper, Never>(TTSViewUIChoicesWrapper(choices: [
-            TTSViewUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 1", type: .text, size: 240, state: .idle)),
-            TTSViewUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 2", type: .text,
-                                                                                    size: 240, state: .idle)),
-            TTSViewUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 3\nCorrect", type: .text,
-                                                                                    size: 240, state: .correct)),
-            TTSViewUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "exclamationmark.triangle.fill", type: .sfsymbol,
-                                                                                    size: 240, state: .wrong)),
-            TTSViewUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 5", type: .text, size: 240, state: .idle)),
-            TTSViewUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 6", type: .text, size: 240, state: .idle)),
+        var uiModel = CurrentValueSubject<TTSUIModel, Never>(TTSUIModel(action: nil, choices: [
+            TTSUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 1", type: .text, size: 240, state: .idle)),
+            TTSUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 2", type: .text,
+                                                                                size: 240, state: .idle)),
+            TTSUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 3\nCorrect", type: .text,
+                                                                                size: 240, state: .correct)),
+            TTSUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "}.triangle.fill", type: .sfsymbol,
+                                                                                size: 240, state: .wrong)),
+            TTSUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 5", type: .text, size: 240, state: .idle)),
+            TTSUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 6", type: .text, size: 240, state: .idle)),
         ]))
 
-        func processUserSelection(choice: TTSViewUIChoiceModel) {
+        func processUserSelection(choice: TTSUIChoiceModel) {
             log.debug("\(choice.id)")
         }
     }

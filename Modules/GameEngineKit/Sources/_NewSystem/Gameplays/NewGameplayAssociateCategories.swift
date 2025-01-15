@@ -104,6 +104,33 @@ public extension NewGameplayAssociateCategories {
         NewGameplayAssociateCategoriesChoice(value: "Maison", category: nil, type: .text),
     ]
 
+    static let kDefaultEmojiChoices: [NewGameplayAssociateCategoriesChoice] = [
+        NewGameplayAssociateCategoriesChoice(value: "🍉", category: .categoryA, type: .emoji),
+        NewGameplayAssociateCategoriesChoice(value: "🍏", category: .categoryB, type: .emoji),
+        NewGameplayAssociateCategoriesChoice(value: "🍉", category: .categoryA, type: .emoji),
+        NewGameplayAssociateCategoriesChoice(value: "🍏", category: .categoryB, type: .emoji),
+        NewGameplayAssociateCategoriesChoice(value: "🍉", category: .categoryA, type: .emoji),
+        NewGameplayAssociateCategoriesChoice(value: "🐶", category: nil, type: .emoji),
+    ]
+
+    static let kDefaultColorChoices: [NewGameplayAssociateCategoriesChoice] = [
+        NewGameplayAssociateCategoriesChoice(value: "red", category: .categoryA, type: .color),
+        NewGameplayAssociateCategoriesChoice(value: "yellow", category: .categoryB, type: .color),
+        NewGameplayAssociateCategoriesChoice(value: "red", category: .categoryA, type: .color),
+        NewGameplayAssociateCategoriesChoice(value: "yellow", category: .categoryB, type: .color),
+        NewGameplayAssociateCategoriesChoice(value: "red", category: .categoryA, type: .color),
+        NewGameplayAssociateCategoriesChoice(value: "blue", category: nil, type: .color),
+    ]
+
+    static let kDefaultImageChoices: [NewGameplayAssociateCategoriesChoice] = [
+        NewGameplayAssociateCategoriesChoice(value: "pictograms-weather-sun_yellow-0106", category: .categoryA, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "pictograms-animals-arctic-penguin_yellow-0088", category: .categoryB, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "pictograms-weather-sun_yellow-0106", category: .categoryA, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "pictograms-animals-arctic-penguin_yellow-0088", category: .categoryB, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "pictograms-weather-sun_yellow-0106", category: .categoryA, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "Maison", category: nil, type: .text),
+    ]
+
     static let kDefaultChoicesWithZones: [NewGameplayAssociateCategoriesChoice] = [
         NewGameplayAssociateCategoriesChoice(value: "sun", category: .categoryA, type: .text),
         NewGameplayAssociateCategoriesChoice(value: "car", category: .categoryB, type: .text),
@@ -112,6 +139,17 @@ public extension NewGameplayAssociateCategories {
         NewGameplayAssociateCategoriesChoice(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
         NewGameplayAssociateCategoriesChoice(value: "car.rear.fill", category: .categoryB, type: .sfsymbol),
         NewGameplayAssociateCategoriesChoice(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
+        NewGameplayAssociateCategoriesChoice(value: "Maison", category: nil, type: .text),
+    ]
+
+    static let kDefaultImageChoicesWithZones: [NewGameplayAssociateCategoriesChoice] = [
+        NewGameplayAssociateCategoriesChoice(value: "dropzone_bathroom", category: .categoryA, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "dropzone_bedroom", category: .categoryB, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "pictograms-weather-sun_yellow-0106", category: .categoryA, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "pictograms-animals-arctic-penguin_yellow-0088", category: .categoryB, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "pictograms-weather-sun_yellow-0106", category: .categoryA, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "pictograms-animals-arctic-penguin_yellow-0088", category: .categoryB, type: .image),
+        NewGameplayAssociateCategoriesChoice(value: "pictograms-weather-sun_yellow-0106", category: .categoryA, type: .image),
         NewGameplayAssociateCategoriesChoice(value: "Maison", category: nil, type: .text),
     ]
 }

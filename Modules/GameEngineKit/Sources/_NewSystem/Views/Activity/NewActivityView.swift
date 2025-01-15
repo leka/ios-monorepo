@@ -39,19 +39,24 @@ class ExerciseCoordinator {
     @ViewBuilder
     var execiseView: some View {
         switch (ui: self.currentExercise.interface, gameplay: self.currentExercise.gameplay) {
-            case (.touchToSelect, .findTheRightAnswers):
-                // swiftlint:disable:next force_cast
-                let ttsPayload = self.currentExercise.payload as! TouchToSelect.Payload
-
-                let gameplayChoices = ttsPayload.choices.map {
-                    NewGameplayFindTheRightAnswersChoice(value: $0.value, isRightAnswer: $0.isRightAnswer)
-                }
-
-                let gameplay = NewGameplayFindTheRightAnswers(choices: gameplayChoices)
-                let coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: gameplay)
-                let viewModel = TTSViewViewModel(coordinator: coordinator)
-
-                TTSView(viewModel: viewModel)
+            // TODO: (@ladislas) implement this part with data when ready
+//            case (.touchToSelect, .findTheRightAnswers):
+//                // swiftlint:disable:next force_cast
+//                let ttsPayload = self.currentExercise.payload as! TouchToSelect.Payload
+//
+//                let gameplayChoices = ttsPayload.choices.map {
+//                    NewGameplayFindTheRightAnswersChoice(value: $0.value, isRightAnswer: $0.isRightAnswer)
+//                    NewGameplayFindTheRightAnswersChoiceModel(
+//                        id: $0.id,
+//                        isRightAnswer: <#T##Bool#>
+//                    )
+//                }
+//
+//                let gameplay = NewGameplayFindTheRightAnswers(choices: gameplayChoices)
+//                let coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: gameplay)
+//                let viewModel = TTSViewViewModel(coordinator: coordinator)
+//
+//                TTSView(viewModel: viewModel)
             default:
                 PlaceholderExerciseView()
         }

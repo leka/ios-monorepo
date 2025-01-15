@@ -23,4 +23,8 @@ public extension Robot {
 
         connectedPeripheral?.sendCommand(output)
     }
+
+    func displayDefaultWorkingFace() {
+        self.display(imageID: 0x0047)
+    }
 }

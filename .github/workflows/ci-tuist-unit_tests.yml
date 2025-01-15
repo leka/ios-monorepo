@@ -28,18 +28,27 @@ jobs:
   unit_tests:
     name: unit tests
     runs-on: [self-hosted, iOS]
+    permissions:
+      pull-requests: write
 
     steps:
+      - name: Collect Workflow Telemetry
+        uses: catchpoint/workflow-telemetry-action@v2
+        with:
+          comment_on_pr: false
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1 # shallow clone
-          lfs: true
+          fetch-depth: 1
+          lfs: false
 
-      - name: Setup mise
-        run: |
-          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
-          mise install
+      - name: Set up mise
+        uses: jdx/mise-action@v2
+        with:
+          version: 2025.1.7
+          install: true
+          cache: true
 
       - name: tuist install
         run: |

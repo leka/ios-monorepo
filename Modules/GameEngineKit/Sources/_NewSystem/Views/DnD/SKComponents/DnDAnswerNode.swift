@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import RobotKit
 import SpriteKit
 import SwiftUI
 
@@ -20,6 +21,10 @@ public class DnDAnswerNode: SKSpriteNode {
                 Self.createImageTexture(value: value, size: size)
             case .sfsymbol:
                 Self.createSFSymbolTexture(value: value, size: size)
+            case .emoji:
+                Self.createEmojiTexture(value: value, size: size)
+            case .color:
+                Self.createColorTexture(value: value, size: size)
         }
 
         super.init(texture: texture, color: .clear, size: texture.size())
@@ -107,73 +112,45 @@ extension DnDAnswerNode {
 
         return SKTexture(image: finalImage)
     }
-}
 
-// MARK: - DnDUIChoices
+    private static func createEmojiTexture(value: String, size: CGSize) -> SKTexture {
+        let renderer = UIGraphicsImageRenderer(size: size)
+        let finalImage = renderer.image { _ in
+            let rect = CGRect(origin: .zero, size: size)
 
-public struct DnDUIChoices {
-    // MARK: Internal
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
 
-    static let zero = DnDUIChoices(choices: [])
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: UIFont.systemFont(ofSize: size.height * 0.8),
+                .paragraphStyle: paragraphStyle,
+            ]
 
-    var choices: [DnDAnswerNode]
-
-    func choiceSize(for choiceNumber: Int) -> CGSize {
-        DnDGridSize(choiceNumber).choiceSize
-    }
-
-    // MARK: Private
-
-    // swiftlint:disable identifier_name
-
-    private enum DnDGridSize: Int {
-        case one = 1
-        case two
-        case three
-        case four
-        case five
-        case six
-        case none
-
-        // MARK: Lifecycle
-
-        init(_ rawValue: Int) {
-            switch rawValue {
-                case 1:
-                    self = .one
-                case 2:
-                    self = .two
-                case 3:
-                    self = .three
-                case 4:
-                    self = .four
-                case 5:
-                    self = .five
-                case 6:
-                    self = .six
-                default:
-                    self = .none
-            }
+            let emojiRect = rect.offsetBy(dx: 0, dy: (rect.height - size.height) / 2)
+            (value as NSString).draw(in: emojiRect, withAttributes: attributes)
         }
 
-        // MARK: Internal
-
-        var choiceSize: CGSize {
-            switch self {
-                case .one,
-                     .two:
-                    CGSize(width: 220, height: 220)
-                case .three,
-                     .four:
-                    CGSize(width: 200, height: 200)
-                case .five:
-                    CGSize(width: 160, height: 160)
-                case .six,
-                     .none:
-                    CGSize(width: 150, height: 150)
-            }
-        }
+        return SKTexture(image: finalImage)
     }
 
-    // swiftlint:enable identifier_name
+    private static func createColorTexture(value: String, size: CGSize) -> SKTexture {
+        let renderer = UIGraphicsImageRenderer(size: size)
+        let finalImage = renderer.image { _ in
+            let rect = CGRect(origin: .zero, size: size)
+            let path = UIBezierPath(roundedRect: rect, cornerRadius: cornerRadiusFactor * size.width)
+
+            let color = Robot.Color(from: value).screen
+            UIColor(color).setFill()
+            path.fill()
+
+            UIColor.lightGray.setStroke()
+            let strokeWidth: CGFloat = 1
+            let borderRect = rect.insetBy(dx: strokeWidth / 2, dy: strokeWidth / 2)
+            let borderPath = UIBezierPath(roundedRect: borderRect, cornerRadius: cornerRadiusFactor * size.width)
+            borderPath.lineWidth = strokeWidth
+            borderPath.stroke()
+        }
+
+        return SKTexture(image: finalImage)
+    }
 }

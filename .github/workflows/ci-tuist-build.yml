@@ -34,18 +34,32 @@ jobs:
       fail-fast: false
       matrix:
         TUIST_DEVELOPER_MODE: [TRUE, FALSE]
+    permissions:
+      pull-requests: write
 
     steps:
+      - name: Collect Workflow Telemetry
+        uses: catchpoint/workflow-telemetry-action@v2
+        with:
+          comment_on_pr: false
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1 # shallow clone
+          fetch-depth: 1
           lfs: true
 
-      - name: Setup mise
+      - name: Set up mise
+        uses: jdx/mise-action@v2
+        with:
+          version: 2025.1.7
+          install: true
+          cache: true
+
+      - name: tuist version
         run: |
-          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
-          mise install
+          time which tuist
+          time tuist version
 
       - name: tuist install
         run: |

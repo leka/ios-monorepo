@@ -59,7 +59,7 @@ struct EditCarereceiverView: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button(String(l10n.EditCarereceiverView.saveButtonLabel.characters)) {
-                    self.carereceiverManager.updateCarereceiver(carereceiver: &self.modifiedCarereceiver)
+                    self.carereceiverManager.updateCarereceiver(carereceiver: self.modifiedCarereceiver)
                     self.dismiss()
                 }
             }

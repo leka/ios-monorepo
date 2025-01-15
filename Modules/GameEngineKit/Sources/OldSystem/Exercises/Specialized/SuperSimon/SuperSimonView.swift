@@ -36,21 +36,23 @@ public struct SuperSimonView: View {
             Button {
                 self.viewModel.onRobotTapped()
             } label: {
-                VStack {
-                    Image(uiImage: DesignKitAsset.Images.robotFaceSimple.image)
-                        .resizable()
-                        .frame(width: 200, height: 200)
-                        .padding()
-
-                    Button(String(l10n.SuperSimonView.buttonLabel.characters)) {}
-                        .font(.title)
-                        .buttonStyle(.bordered)
-                        .allowsHitTesting(false)
-                        .tint(nil)
-                }
+                Image(uiImage: DesignKitAsset.Images.robotFaceAction.image)
+                    .resizable()
+                    .renderingMode(.template)
+                    .foregroundStyle(self.styleManager.accentColor!)
+                    .frame(width: 130, height: 130)
+                    .padding(10)
             }
+            .frame(width: 200)
             .disabled(self.viewModel.disableRobot)
-            .padding(20)
+            .opacity(self.viewModel.disableRobot ? 0.3 : 1.0)
+            .buttonStyle(ActionButtonStyle(progress: 0.0))
+            .animation(.spring(response: 0.3, dampingFraction: 0.45), value: self.viewModel.disableRobot)
+            .scaleEffect(self.viewModel.disableRobot ? 0.95 : 1.0, anchor: .center)
+            .shadow(
+                color: .accentColor.opacity(0.2),
+                radius: self.viewModel.disableRobot ? 6 : 3, x: 0, y: 3
+            )
 
             Divider()
                 .opacity(0.4)
@@ -107,6 +109,7 @@ public struct SuperSimonView: View {
     // MARK: Private
 
     @StateObject private var viewModel: SuperSimonViewViewModel
+    @StateObject private var styleManager: StyleManager = .shared
 }
 
 // MARK: - l10n.SuperSimonView

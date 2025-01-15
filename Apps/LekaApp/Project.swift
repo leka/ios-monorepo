@@ -11,7 +11,7 @@ let kLekaApp: App = if Environment.productionBuild.getBoolean(
     default: false
 ) {
     .init(
-        version: "1.15.3",
+        version: "1.16.0",
         bundleId: "io.leka.apf.app.LekaApp",
         name: "Leka",
         urlSchemes: "LekaApp",
@@ -79,6 +79,10 @@ let project = Project.app(
         "DEBUG_INFORMATION_FORMAT": "dwarf-with-dsym",
         "STRIP_DEBUG_SYMBOLS": "$(inherited)",
     ]),
+    options: .options(
+        defaultKnownRegions: ["fr", "en"],
+        developmentRegion: "en"
+    ),
     dependencies: [
         .project(target: "AccountKit", path: Path("../../Modules/AccountKit")),
         .project(target: "AnalyticsKit", path: Path("../../Modules/AnalyticsKit")),

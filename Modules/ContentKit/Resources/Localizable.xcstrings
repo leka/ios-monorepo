@@ -4,11 +4,10 @@
     "strings": {
         "content_kit.activity_details_view.activity_label": {
             "comment": "ActivityDetailsView's content type description label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Activity"
                     }
                 },
@@ -22,11 +21,10 @@
         },
         "content_kit.activity_details_view.authors_section_title": {
             "comment": "ActivityDetailsView 'authors' section title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Authors"
                     }
                 },
@@ -40,11 +38,10 @@
         },
         "content_kit.activity_details_view.description_section_title": {
             "comment": "ActivityDetailsView 'description' section title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Description"
                     }
                 },
@@ -58,11 +55,10 @@
         },
         "content_kit.activity_details_view.instructions_section_title": {
             "comment": "ActivityDetailsView 'instructions' section title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Instructions"
                     }
                 },
@@ -76,11 +72,10 @@
         },
         "content_kit.activity_details_view.skills_section_title": {
             "comment": "ActivityDetailsView 'skills' section title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Skills"
                     }
                 },
@@ -94,11 +89,10 @@
         },
         "content_kit.curriculum_details_view.activities_section_title": {
             "comment": "CurriculumDetailsView 'activities' section title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Activities"
                     }
                 },
@@ -112,11 +106,10 @@
         },
         "content_kit.curriculum_details_view.authors_section_title": {
             "comment": "CurriculumDetailsView 'authors' section title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Authors"
                     }
                 },
@@ -130,11 +123,10 @@
         },
         "content_kit.curriculum_details_view.curriculum_label": {
             "comment": "CurriculumDetailsView's content type description label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Curriculum"
                     }
                 },
@@ -148,11 +140,10 @@
         },
         "content_kit.curriculum_details_view.description_section_title": {
             "comment": "CurriculumDetailsView 'description' section title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Description"
                     }
                 },
@@ -166,11 +157,10 @@
         },
         "content_kit.curriculum_details_view.see_less_label": {
             "comment": "See less button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "See less"
                     }
                 },
@@ -184,11 +174,10 @@
         },
         "content_kit.curriculum_details_view.see_more_label": {
             "comment": "See more button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "See more"
                     }
                 },
@@ -202,11 +191,10 @@
         },
         "content_kit.curriculum_details_view.skills_section_title": {
             "comment": "CurriculumDetailsView 'skills' section title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Skills"
                     }
                 },
@@ -261,11 +249,10 @@
         },
         "content_kit.curriculum_groupbox_view.curriculum_label": {
             "comment": "CurriculumDetailsView's content type description label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Curriculum"
                     }
                 },
@@ -279,11 +266,10 @@
         },
         "content_kit.library_menu_actions.add_to_library_button_label": {
             "comment": "Add to library button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Add to Library"
                     }
                 },
@@ -297,11 +283,10 @@
         },
         "content_kit.library_menu_actions.remove_from_library_button_label": {
             "comment": "Remove from library button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Delete from Library"
                     }
                 },
@@ -315,11 +300,10 @@
         },
         "content_kit.sample_activity_list_view.start_activity_button_label": {
             "comment": "Start activity button label on Sample Activity List view",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Start activity"
                     }
                 },
@@ -333,11 +317,10 @@
         },
         "content_kit.sample_story_list_view.start_story_button_label": {
             "comment": "Start Story button label on Sample Story List view",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Start story"
                     }
                 },
@@ -351,11 +334,10 @@
         },
         "content_kit.search_grid_view.activities_title": {
             "comment": "SearchGridView 'activities' section title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Activities"
                     }
                 },
@@ -369,11 +351,10 @@
         },
         "content_kit.search_grid_view.curriculums_title": {
             "comment": "SearchGridView 'curriculums' section title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Curriculums"
                     }
                 },
@@ -387,11 +368,10 @@
         },
         "content_kit.search_grid_view.no_results": {
             "comment": "SearchGridView 'see all' button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Oops! No results found."
                     }
                 },
@@ -405,11 +385,10 @@
         },
         "content_kit.search_grid_view.see_all_label": {
             "comment": "SearchGridView 'see all' button label",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "See all"
                     }
                 },
@@ -423,11 +402,10 @@
         },
         "content_kit.search_grid_view.skills_title": {
             "comment": "SearchGridView 'skills' section title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Skills"
                     }
                 },
@@ -482,11 +460,10 @@
         },
         "content_kit.story_details_view.authors_section_title": {
             "comment": "StoryDetailsView 'authors' section title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Authors"
                     }
                 },
@@ -500,11 +477,10 @@
         },
         "content_kit.story_details_view.description_section_title": {
             "comment": "StoryDetailsView 'description' section title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Description"
                     }
                 },
@@ -518,11 +494,10 @@
         },
         "content_kit.story_details_view.instructions_section_title": {
             "comment": "StoryDetailsView 'instructions' section title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Instructions"
                     }
                 },
@@ -536,11 +511,10 @@
         },
         "content_kit.story_details_view.skills_section_title": {
             "comment": "StoryDetailsView 'skills' section title",
-            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "new",
+                        "state": "translated",
                         "value": "Skills"
                     }
                 },

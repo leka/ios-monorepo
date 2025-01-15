@@ -69,19 +69,16 @@ public class CaregiverManager {
             .eraseToAnyPublisher()
     }
 
-    public func updateCaregiver(caregiver: inout Caregiver) {
-        caregiver.lastEditedAt = nil
-        self.dbOps.update(data: caregiver, in: .caregivers)
+    public func updateCaregiver(caregiver: Caregiver) {
+        let ignoredFields: [String] = ["root_owner_uid", "uuid", "created_at"]
+        self.dbOps.update(data: caregiver, in: .caregivers, ignoringFields: ignoredFields)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
                     self.fetchError.send(error)
                 }
             }, receiveValue: { [weak self] updatedCaregiver in
                 guard let self else { return }
-                guard updatedCaregiver.id == self.currentCaregiver.value?.id else { return }
-                self.setCurrentCaregiver(to: updatedCaregiver)
                 AnalyticsManager.logEventCaregiverEdit(caregiver: updatedCaregiver.id!)
-                log.info("Caregiver successfully updated.")
             })
             .store(in: &self.cancellables)
     }

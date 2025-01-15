@@ -15,9 +15,16 @@ concurrency:
 jobs:
   license_checker:
     name: lint
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
+    permissions:
+      pull-requests: write
 
     steps:
+      - name: Collect Workflow Telemetry
+        uses: catchpoint/workflow-telemetry-action@v2
+        with:
+          comment_on_pr: false
+
       - name: Checkout
         uses: actions/checkout@v4
         with:

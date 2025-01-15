@@ -55,11 +55,11 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/airbnb/lottie-ios",
-            exact: "4.5.0"
+            exact: "4.5.1"
         ),
         .package(
             url: "https://github.com/gonzalezreal/swift-markdown-ui",
-            exact: "2.4.0"
+            exact: "2.4.1"
         ),
         .package(
             url: "https://github.com/apple/swift-argument-parser",
@@ -79,7 +79,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/apple/swift-log",
-            exact: "1.6.1"
+            exact: "1.6.2"
         ),
         .package(
             url: "https://github.com/mxcl/Version",
@@ -87,7 +87,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/firebase/firebase-ios-sdk",
-            exact: "11.5.0"
+            exact: "11.6.0"
         ),
         .package(
             url: "https://github.com/OlehKorchytskyi/Fit",

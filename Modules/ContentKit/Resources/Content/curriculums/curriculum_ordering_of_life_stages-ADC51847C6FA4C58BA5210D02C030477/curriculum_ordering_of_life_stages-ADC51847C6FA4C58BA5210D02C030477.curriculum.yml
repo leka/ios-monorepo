@@ -1,0 +1,59 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: ADC51847C6FA4C58BA5210D02C030477
+name: curriculum_ordering_of_life_stages
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-09-27T17:53:03.453431"
+authors:
+  - leka
+
+skills:
+  - association
+  - association/ordering
+  - time_and_temporality_understanding
+
+tags:
+  - family_members
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: ordering_of_life_stages
+      title: Ordonner les étapes de la vie
+      subtitle: Mettre en ordre chronologique les étapes de la vie
+      abstract: |
+        Activité éducative où les participants apprennent à organiser les étapes de la vie en ordre chronologique.
+      description: |
+        Cette activité vise à enseigner aux participants les étapes de la vie dans l'ordre chronologique à travers une interaction intuitive.
+        - Quatre étapes de la vie sont affichées de manière désordonnée : bébé, enfant, adulte, et personne âgée.
+        - Le participant doit glisser et déposer chaque étape dans la bonne séquence chronologique.
+        - Une fois les étapes correctement placées, Leka célèbre la réussite en lançant un renforçateur positif pour encourager l'apprentissage.
+
+  - locale: en_US
+    details:
+      icon: ordering_of_life_stages
+      title: Ordering Life Stages
+      subtitle: Arrange the stages of life in chronological order
+      abstract: |
+        Educational activity where participants learn to organize the stages of life in chronological order.
+      description: |
+        This activity aims to teach participants the stages of life in chronological order through an intuitive interaction.
+        - Four stages of life are displayed in a random order: baby, child, adult, and elderly person.
+        - The participant must drag and drop each stage into the correct chronological sequence.
+        - Once the stages are correctly placed, Leka celebrates the success by triggering a positive reinforcer to encourage learning.
+
+activities:
+  - ordering_of_life_stages_boy-660B3471643041ABA2C5994C04296809
+  - ordering_of_life_stages_girl-2DDD152B29464FF0B21DD32579EFD6B6

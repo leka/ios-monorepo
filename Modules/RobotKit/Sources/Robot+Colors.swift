@@ -6,10 +6,10 @@ import SwiftUI
 
 // MARK: - Robot.Color
 
-// swiftlint:disable nesting identifier_name line_length
+// swiftlint:disable nesting identifier_name
 
 public extension Robot {
-    struct Color {
+    struct Color: CaseIterable {
         // MARK: Lifecycle
 
         public init(robot rRGB: UInt8..., screen sRGB: UInt8...) {
@@ -45,6 +45,10 @@ public extension Robot {
         }
 
         // MARK: Public
+
+        public static var allCases: [Robot.Color] = [.black, .white, .red, .green, .blue, .yellow, .lightBlue,
+                                                     .lightPink, .orange, .purple, .mint, .pink]
+        public static var allMainColors: [Robot.Color] = [.red, .green, .blue, .yellow, .orange, .purple, .mint, .pink]
 
         public var robot: [UInt8] {
             self.robotRGB
@@ -125,8 +129,8 @@ public extension Robot.Color {
     static let pink: Robot.Color = .init(robot: 255, 0, 127, screen: 252, 103, 178)
     static let yellow: Robot.Color = .init(robot: 255, 255, 0, screen: 251, 232, 0)
 
-    static let mint: Robot.Color = .init(robot: 0, 255, 150, screen: 173, 235, 179)
-    static let lightPink: Robot.Color = .init(robot: 255, 0, 255, screen: 218, 177, 218)
+    static let mint: Robot.Color = .init(robot: 0, 255, 150, screen: 50, 227, 194)
+    static let lightPink: Robot.Color = .init(robot: 255, 0, 255, screen: 255, 172, 246)
 }
 
-// swiftlint:enable nesting identifier_name line_length
+// swiftlint:enable nesting identifier_name

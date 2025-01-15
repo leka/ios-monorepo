@@ -3,205 +3,77 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import GameEngineKit
+import RobotKit
 import SwiftUI
 
 struct ContentView: View {
+    @State var selection: Int = 0
+    @State var isConnectionSheetPresented: Bool = false
+
     var body: some View {
         NavigationStack {
-            Text("Choose your gameplay")
-                .font(.title)
-                .padding()
+            TabView(selection: self.$selection) {
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        Text("Choose your gameplay")
+                            .font(.largeTitle)
+                            .multilineTextAlignment(.center)
+                            .frame(maxWidth: .infinity)
+                            .padding()
 
-            VStack(spacing: 10) {
-                HStack(spacing: 20) {
-                    Text("TTS")
-                        .font(.title)
-                        .padding()
+                        MagicCardExercises()
 
-                    NavigationLink("Find The Right Answers", destination: {
-                        let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
-                        let coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: gameplay)
-                        let viewModel = TTSViewViewModel(coordinator: coordinator)
+                        TTSExercises()
 
-                        return TTSView(viewModel: viewModel)
-                            .navigationTitle("Find The Right Answers")
-                            .navigationBarTitleDisplayMode(.large)
-                    })
-                    .tint(.orange)
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
+                        ActionThenTTSExercises()
 
-                    NavigationLink("Find The Right Order", destination: {
-                        let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultChoices)
-                        let coordinator = TTSCoordinatorFindTheRightOrder(gameplay: gameplay)
-                        let viewModel = TTSViewViewModel(coordinator: coordinator)
+                        TTSThenValidateExercises()
 
-                        return TTSView(viewModel: viewModel)
-                            .navigationTitle("Find The Right Order")
-                            .navigationBarTitleDisplayMode(.large)
-                    })
-                    .tint(.green)
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
+                        ActionThenTTSThenValidateExercises()
 
-                    NavigationLink("Associate Categories", destination: {
-                        let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoices)
-                        let coordinator = TTSCoordinatorAssociateCategories(gameplay: gameplay)
-                        let viewModel = TTSViewViewModel(coordinator: coordinator)
+                        DnDExercises()
 
-                        return TTSView(viewModel: viewModel)
-                            .navigationTitle("Associate Categories")
-                            .navigationBarTitleDisplayMode(.large)
-                    })
-                    .tint(.cyan)
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
+                        ActionThenDnDGridExercises()
 
-                    NavigationLink("Memory", destination: {
-                        let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoices)
-                        let coordinator = MemoryCoordinatorAssociateCategories(gameplay: gameplay)
-                        let viewModel = NewMemoryViewViewModel(coordinator: coordinator)
+                        ActionThenDnDGridWithZoneExercises()
 
-                        return NewMemoryView(viewModel: viewModel)
-                            .navigationTitle("Memory")
-                            .navigationBarTitleDisplayMode(.large)
-                    })
-                    .tint(.cyan)
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
-
-                    Spacer()
+                        ActionThenDnDOneToOneExercises()
+                    }
                 }
-
-                HStack(spacing: 20) {
-                    Text("Action Then TTS")
-                        .font(.title)
-                        .padding()
-
-                    NavigationLink("Observe Image Then Find The Right Answers", destination: {
-                        let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
-                        let coordinator = ActionThenTTSCoordinatorFindTheRightAnswers(gameplay: gameplay,
-                                                                                      action: .ipad(type: .image("sport_dance_player_man")))
-                        let viewModel = ActionThenTTSViewViewModel(coordinator: coordinator)
-
-                        return ActionThenTTSView(viewModel: viewModel)
-                            .navigationTitle("Observe Image Then Find The Right Answers")
-                            .navigationBarTitleDisplayMode(.large)
-                    })
-                    .tint(.cyan)
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
-
-                    NavigationLink("Observe SFSymbol Then Find The Right Answers", destination: {
-                        let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
-                        let coordinator = ActionThenTTSCoordinatorFindTheRightAnswers(gameplay: gameplay, action: .ipad(type: .sfsymbol("star")))
-                        let viewModel = ActionThenTTSViewViewModel(coordinator: coordinator)
-
-                        return ActionThenTTSView(viewModel: viewModel)
-                            .navigationTitle("Observe SFSymbol Then Find The Right Answers")
-                            .navigationBarTitleDisplayMode(.large)
-                    })
-                    .tint(.cyan)
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
-
-                    NavigationLink("Listen Audio Then Find The Right Answers", destination: {
-                        let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
-                        let coordinator = ActionThenTTSCoordinatorFindTheRightAnswers(gameplay: gameplay,
-                                                                                      action: .ipad(type: .audio("sound_animal_duck")))
-                        let viewModel = ActionThenTTSViewViewModel(coordinator: coordinator)
-
-                        return ActionThenTTSView(viewModel: viewModel)
-                            .navigationTitle("Listen Audio Then Find The Right Answers")
-                            .navigationBarTitleDisplayMode(.large)
-                    })
-                    .tint(.cyan)
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
-
-                    NavigationLink("Listen Speech Then Find The Right Answers", destination: {
-                        let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
-                        let coordinator = ActionThenTTSCoordinatorFindTheRightAnswers(gameplay: gameplay,
-                                                                                      action: .ipad(type: .speech("Correct answer")))
-                        let viewModel = ActionThenTTSViewViewModel(coordinator: coordinator)
-
-                        return ActionThenTTSView(viewModel: viewModel)
-                            .navigationTitle("Listen Speech Then Find The Right Answers")
-                            .navigationBarTitleDisplayMode(.large)
-                    })
-                    .tint(.cyan)
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
-
-                    NavigationLink("Robot Then Find The Right Answers", destination: {
-                        let gameplay = NewGameplayFindTheRightAnswers(choices: NewGameplayFindTheRightAnswers.kDefaultChoices)
-                        let coordinator = ActionThenTTSCoordinatorFindTheRightAnswers(gameplay: gameplay, action: .robot(type: .color("red")))
-                        let viewModel = ActionThenTTSViewViewModel(coordinator: coordinator)
-
-                        return ActionThenTTSView(viewModel: viewModel)
-                            .navigationTitle("Robot Then Find The Right Answers")
-                            .navigationBarTitleDisplayMode(.large)
-                    })
-                    .tint(.cyan)
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
-
-                    Spacer()
+                .tabItem {
+                    Image(systemName: "gamecontroller")
+                    Text("Choose your gameplay")
                 }
+                .tag(0)
 
-                HStack(spacing: 20) {
-                    Text("DnD")
+                VStack {
+                    Text("Choose your template")
                         .font(.largeTitle)
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity)
                         .padding()
-
-                    NavigationLink("Drag & Drop Categories", destination: {
-                        let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoices)
-                        let coordinator = DnDGridCoordinatorAssociateCategories(gameplay: gameplay)
-                        let viewModel = DnDGridViewModel(coordinator: coordinator)
-
-                        return DnDGridView(viewModel: viewModel)
-                            .navigationTitle("Drag & Drop Categories")
-                            .navigationBarTitleDisplayMode(.large)
-                    })
-                    .tint(.purple)
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
-
-                    NavigationLink("Drag & Drop With Zones", destination: {
-                        let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoicesWithZones)
-                        let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(gameplay: gameplay)
-                        let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
-
-                        return DnDGridWithZonesView(viewModel: viewModel)
-                            .navigationTitle("Drag & Drop With Zones")
-                            .navigationBarTitleDisplayMode(.large)
-                    })
-                    .tint(.yellow)
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
-
-                    NavigationLink("Drag & Drop One To One In Right Order", destination: {
-                        let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultImageChoicesWithZones)
-                        let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(gameplay: gameplay)
-                        let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
-
-                        return DnDOneToOneView(viewModel: viewModel)
-                            .navigationTitle("Drag & Drop One To One In Right Order")
-                            .navigationBarTitleDisplayMode(.large)
-                    })
-                    .tint(.red)
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
-
-                    Spacer()
+                    ActivityTemplateList()
+                }
+                .tabItem {
+                    Image(systemName: "list.clipboard")
+                    Text("Choose your template")
+                }
+                .tag(1)
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Connect to a Robot") {
+                        self.isConnectionSheetPresented = true
+                    }
                 }
             }
-
-            Text("Or choose a template")
-                .font(.largeTitle)
-                .padding()
-
-            ActivityTemplateList()
+        }
+        .sheet(isPresented: self.$isConnectionSheetPresented) {
+            NavigationStack {
+                RobotConnectionView(viewModel: RobotConnectionViewModel())
+                    .logEventScreenView(screenName: "robot_connection", context: .sheet)
+                    .navigationBarTitleDisplayMode(.inline)
+            }
         }
     }
 }
