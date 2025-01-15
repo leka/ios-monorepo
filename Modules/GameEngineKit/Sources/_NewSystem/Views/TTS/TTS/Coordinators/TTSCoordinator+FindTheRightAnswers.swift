@@ -31,6 +31,7 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
     // MARK: Public
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
+    public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
 
     public func processUserSelection(choiceID: String) {
         let results = self.gameplay.process(choiceIDs: [choiceID])
@@ -47,6 +48,10 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
 
             self.uiModel.value.choices[index] = TTSUIChoiceModel(id: result.id, view: view)
         }
+    }
+
+    public func validateUserSelection() {
+        // Nothing to do
     }
 
     // MARK: Private
