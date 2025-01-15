@@ -41,8 +41,7 @@ public class RootAccountManager {
             .store(in: &self.cancellables)
     }
 
-    public func updateRootAccount(rootAccount: inout RootAccount) {
-        rootAccount.lastEditedAt = nil
+    public func updateRootAccount(rootAccount: RootAccount) {
         let ignoredFields: [String] = ["root_owner_uid", "uuid", "created_at"]
         self.dbOps.update(data: rootAccount, in: .rootAccounts, ignoringFields: ignoredFields)
             .sink(
@@ -74,7 +73,7 @@ public class RootAccountManager {
         }
 
         rootAccount.library.savedActivities.append(savedActivity)
-        self.updateRootAccount(rootAccount: &rootAccount)
+        self.updateRootAccount(rootAccount: rootAccount)
     }
 
     public func removeSavedActivity(activityID: String) {
@@ -89,7 +88,7 @@ public class RootAccountManager {
         }
 
         rootAccount.library.savedActivities.remove(at: index)
-        self.updateRootAccount(rootAccount: &rootAccount)
+        self.updateRootAccount(rootAccount: rootAccount)
     }
 
     // MARK: Curriculums
@@ -108,7 +107,7 @@ public class RootAccountManager {
         }
 
         rootAccount.library.savedCurriculums.append(savedCurriculum)
-        self.updateRootAccount(rootAccount: &rootAccount)
+        self.updateRootAccount(rootAccount: rootAccount)
     }
 
     public func removeSavedCurriculum(curriculumID: String) {
@@ -123,7 +122,7 @@ public class RootAccountManager {
         }
 
         rootAccount.library.savedCurriculums.remove(at: index)
-        self.updateRootAccount(rootAccount: &rootAccount)
+        self.updateRootAccount(rootAccount: rootAccount)
     }
 
     // MARK: Stories
@@ -142,7 +141,7 @@ public class RootAccountManager {
         }
 
         rootAccount.library.savedStories.append(savedStory)
-        self.updateRootAccount(rootAccount: &rootAccount)
+        self.updateRootAccount(rootAccount: rootAccount)
     }
 
     public func removeSavedStory(storyID: String) {
@@ -157,7 +156,7 @@ public class RootAccountManager {
         }
 
         rootAccount.library.savedStories.remove(at: index)
-        self.updateRootAccount(rootAccount: &rootAccount)
+        self.updateRootAccount(rootAccount: rootAccount)
     }
 
     // MARK: Gamepads
@@ -176,7 +175,7 @@ public class RootAccountManager {
         }
 
         rootAccount.library.savedGamepads.append(savedGamepad)
-        self.updateRootAccount(rootAccount: &rootAccount)
+        self.updateRootAccount(rootAccount: rootAccount)
     }
 
     public func removeSavedGamepad(gamepadID: String) {
@@ -191,7 +190,7 @@ public class RootAccountManager {
         }
 
         rootAccount.library.savedGamepads.remove(at: index)
-        self.updateRootAccount(rootAccount: &rootAccount)
+        self.updateRootAccount(rootAccount: rootAccount)
     }
 
     public func resetData() {

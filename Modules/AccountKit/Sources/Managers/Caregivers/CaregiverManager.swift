@@ -69,8 +69,7 @@ public class CaregiverManager {
             .eraseToAnyPublisher()
     }
 
-    public func updateCaregiver(caregiver: inout Caregiver) {
-        caregiver.lastEditedAt = nil
+    public func updateCaregiver(caregiver: Caregiver) {
         let ignoredFields: [String] = ["root_owner_uid", "uuid", "created_at"]
         self.dbOps.update(data: caregiver, in: .caregivers, ignoringFields: ignoredFields)
             .sink(receiveCompletion: { completion in
