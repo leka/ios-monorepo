@@ -171,6 +171,26 @@ public class DatabaseOperations {
         .eraseToAnyPublisher()
     }
 
+    public func update(id: String, data: [String: Any], collection: DatabaseCollection) -> AnyPublisher<Void, Error> {
+        Future<Void, Error> { promise in
+            let docRef = self.database.collection(collection.rawValue).document(id)
+
+            var updatedData = data
+            updatedData["last_edited_at"] = FieldValue.serverTimestamp()
+
+            docRef.updateData(updatedData) { error in
+                if let error {
+                    log.error("Update failed for document \(id): \(error.localizedDescription)")
+                    promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                } else {
+                    log.info("Document \(id) updated successfully in \(collection.rawValue). 🎉")
+                    promise(.success(()))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+
     public func delete(from collection: DatabaseCollection, documentID: String) -> AnyPublisher<Void, Error> {
         Future<Void, Error> { promise in
             let docRef = self.database.collection(collection.rawValue).document(documentID)
