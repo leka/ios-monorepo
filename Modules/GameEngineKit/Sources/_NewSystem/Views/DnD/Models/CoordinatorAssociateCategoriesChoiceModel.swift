@@ -4,13 +4,15 @@
 
 import Foundation
 
-public struct TTSCoordinatorFindTheRightAnswersChoiceModel {
+// MARK: - CoordinatorAssociateCategoriesChoiceModel
+
+public struct CoordinatorAssociateCategoriesChoiceModel {
     // MARK: Lifecycle
 
-    public init(id: String = UUID().uuidString, value: String, isRightAnswer: Bool, type: ChoiceType = .text) {
+    public init(id: String = UUID().uuidString, value: String, category: AssociateCategory?, type: ChoiceType = .text) {
         self.id = id
         self.value = value
-        self.isRightAnswer = isRightAnswer
+        self.category = category
         self.type = type
     }
 
@@ -18,6 +20,6 @@ public struct TTSCoordinatorFindTheRightAnswersChoiceModel {
 
     let id: String
     let value: String
-    let isRightAnswer: Bool
+    let category: AssociateCategory?
     let type: ChoiceType
 }

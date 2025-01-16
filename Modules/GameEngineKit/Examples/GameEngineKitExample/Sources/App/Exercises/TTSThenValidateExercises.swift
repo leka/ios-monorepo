@@ -8,7 +8,7 @@ import SwiftUI
 // MARK: - ExerciseData
 
 extension ExerciseData {
-    static let TTSThenValidatexFindTheRightAnswers: [TTSCoordinatorFindTheRightAnswersChoiceModel] = [
+    static let TTSThenValidatexFindTheRightAnswers: [CoordinatorFindTheRightAnswersChoiceModel] = [
         .init(value: "Choice 1\nCorrect", isRightAnswer: true),
         .init(value: "Choice 2", isRightAnswer: false),
         .init(value: "Choice 3\nCorrect", isRightAnswer: true),

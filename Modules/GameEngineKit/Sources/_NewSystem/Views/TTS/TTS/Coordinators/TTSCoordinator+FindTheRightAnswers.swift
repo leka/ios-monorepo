@@ -11,7 +11,7 @@ import SwiftUI
 public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [TTSCoordinatorFindTheRightAnswersChoiceModel], action: Exercise.Action? = nil) {
+    public init(choices: [CoordinatorFindTheRightAnswersChoiceModel], action: Exercise.Action? = nil) {
         self.rawChoices = choices
         self.gameplay = NewGameplayFindTheRightAnswers(
             choices: choices
@@ -32,8 +32,8 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
 
-    public func processUserSelection(choice: TTSUIChoiceModel) {
-        let results = self.gameplay.process(choiceIDs: [choice.id])
+    public func processUserSelection(choiceID: String) {
+        let results = self.gameplay.process(choiceIDs: [choiceID])
 
         results.forEach { result in
             guard let index = self.rawChoices.firstIndex(where: { $0.id == result.id }) else {
@@ -54,7 +54,7 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
     private var cancellables = Set<AnyCancellable>()
 
     private let gameplay: NewGameplayFindTheRightAnswers
-    private let rawChoices: [TTSCoordinatorFindTheRightAnswersChoiceModel]
+    private let rawChoices: [CoordinatorFindTheRightAnswersChoiceModel]
 }
 
 extension TTSCoordinatorFindTheRightAnswers {
@@ -97,7 +97,7 @@ extension TTSCoordinatorFindTheRightAnswers {
 }
 
 #Preview {
-    let kDefaultChoices: [TTSCoordinatorFindTheRightAnswersChoiceModel] = [
+    let kDefaultChoices: [CoordinatorFindTheRightAnswersChoiceModel] = [
         .init(value: "Choice 1\nCorrect", isRightAnswer: true),
         .init(value: "Choice 2", isRightAnswer: false),
         .init(value: "Choice 3\nCorrect", isRightAnswer: true),

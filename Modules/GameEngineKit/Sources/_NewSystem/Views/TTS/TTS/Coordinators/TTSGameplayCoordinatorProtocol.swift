@@ -9,5 +9,5 @@ import Foundation
 
 public protocol TTSGameplayCoordinatorProtocol {
     var uiModel: CurrentValueSubject<TTSUIModel, Never> { get }
-    func processUserSelection(choice: TTSUIChoiceModel)
+    func processUserSelection(choiceID: String)
 }

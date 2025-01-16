@@ -7,7 +7,7 @@ import SwiftUI
 
 // TODO: (@ladislas) to remove in the future, replaced by actual data
 extension ExerciseData {
-    static let TTSxFindTheRightAnswers: [TTSCoordinatorFindTheRightAnswersChoiceModel] = [
+    static let TTSxFindTheRightAnswers: [CoordinatorFindTheRightAnswersChoiceModel] = [
         .init(value: "Choice 1\nCorrect", isRightAnswer: true),
         .init(value: "Choice 2", isRightAnswer: false),
         .init(value: "Choice 3\nCorrect", isRightAnswer: true),
@@ -53,8 +53,7 @@ struct TTSExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoices)
-                    let coordinator = TTSCoordinatorAssociateCategories(gameplay: gameplay)
+                    let coordinator = TTSCoordinatorAssociateCategories(choices: ExerciseData.AssociateCategoriesChoicesDefault)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                     return TTSView(viewModel: viewModel)
@@ -65,8 +64,7 @@ struct TTSExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoices)
-                    let coordinator = MemoryCoordinatorAssociateCategories(gameplay: gameplay)
+                    let coordinator = MemoryCoordinatorAssociateCategories(choices: ExerciseData.AssociateCategoriesChoicesDefault)
                     let viewModel = NewMemoryViewViewModel(coordinator: coordinator)
 
                     return NewMemoryView(viewModel: viewModel)

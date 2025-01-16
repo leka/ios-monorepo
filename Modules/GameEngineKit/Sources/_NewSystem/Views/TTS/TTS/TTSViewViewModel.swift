@@ -32,7 +32,7 @@ public class TTSViewViewModel: ObservableObject {
     let action: Exercise.Action?
 
     func onTapped(choice: TTSUIChoiceModel) {
-        self.coordinator.processUserSelection(choice: choice)
+        self.coordinator.processUserSelection(choiceID: choice.id)
     }
 
     // MARK: Private

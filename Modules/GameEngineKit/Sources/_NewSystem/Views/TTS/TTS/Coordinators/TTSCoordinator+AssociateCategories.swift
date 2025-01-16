@@ -11,14 +11,18 @@ import SwiftUI
 public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(gameplay: NewGameplayAssociateCategories, action: Exercise.Action? = nil) {
-        self.gameplay = gameplay
+    public init(choices: [CoordinatorAssociateCategoriesChoiceModel], action: Exercise.Action? = nil) {
+        self.rawChoices = choices
+
+        self.gameplay = NewGameplayAssociateCategories(choices: choices.map {
+            .init(id: $0.id, category: $0.category)
+        })
 
         self.uiModel.value.action = action
-        self.uiModel.value.choices = self.gameplay.choices.map { choice in
+        self.uiModel.value.choices = self.rawChoices.map { choice in
             let view = ChoiceView(value: choice.value,
                                   type: choice.type,
-                                  size: self.uiModel.value.choiceSize(for: gameplay.choices.count),
+                                  size: self.uiModel.value.choiceSize(for: self.rawChoices.count),
                                   state: .idle)
             return TTSUIChoiceModel(id: choice.id, view: view)
         }
@@ -28,30 +32,30 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
 
-    public func processUserSelection(choice: TTSUIChoiceModel) {
-        guard let gameplayChoice = self.gameplay.choices.first(where: { $0.id == choice.id }) else {
+    public func processUserSelection(choiceID: String) {
+        guard let choice = self.rawChoices.first(where: { $0.id == choiceID }) else {
             return
         }
 
-        guard !self.selectedChoices.contains(where: { $0.id == gameplayChoice.id }) else {
-            self.selectedChoices.removeAll { $0.id == gameplayChoice.id }
-            self.updateChoiceState(for: gameplayChoice, to: .idle)
+        guard !self.selectedChoices.contains(where: { $0.id == choice.id }) else {
+            self.selectedChoices.removeAll { $0.id == choice.id }
+            self.updateChoiceState(for: choice, to: .idle)
             return
         }
 
-        self.selectedChoices.append(gameplayChoice)
-        self.updateChoiceState(for: gameplayChoice, to: .selected)
+        self.selectedChoices.append(choice)
+        self.updateChoiceState(for: choice, to: .selected)
 
         guard self.selectedChoices.count > 1 else {
             return
         }
 
-        let results = self.gameplay.process(choices: [self.selectedChoices])
-        let categoryGroupSize = self.gameplay.choices.filter { $0.category == gameplayChoice.category }.count
+        let results = self.gameplay.process(choiceIDs: [self.selectedChoices.map(\.id)])
+        let categoryGroupSize = self.rawChoices.filter { $0.category == choice.category }.count
 
         let choicesToProcess = self.selectedChoices
 
-        if results.allSatisfy(\.correctCategory) {
+        if results.allSatisfy(\.isCategoryCorrect) {
             log.debug("Correct category")
             if self.selectedChoices.count == categoryGroupSize {
                 self.selectedChoices.removeAll()
@@ -80,15 +84,18 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
     // MARK: Private
 
     private var cancellables = Set<AnyCancellable>()
-    private let gameplay: NewGameplayAssociateCategories
-    private var selectedChoices: [NewGameplayAssociateCategoriesChoice] = []
 
-    private func updateChoiceState(for choice: NewGameplayAssociateCategoriesChoice, to state: State) {
-        guard let index = self.gameplay.choices.firstIndex(where: { $0.id == choice.id }) else { return }
+    private let gameplay: NewGameplayAssociateCategories
+
+    private let rawChoices: [CoordinatorAssociateCategoriesChoiceModel]
+    private var selectedChoices: [CoordinatorAssociateCategoriesChoiceModel] = []
+
+    private func updateChoiceState(for choice: CoordinatorAssociateCategoriesChoiceModel, to state: State) {
+        guard let index = self.rawChoices.firstIndex(where: { $0.id == choice.id }) else { return }
 
         let view = ChoiceView(value: choice.value,
                               type: choice.type,
-                              size: self.uiModel.value.choiceSize(for: self.gameplay.choices.count),
+                              size: self.uiModel.value.choiceSize(for: self.rawChoices.count),
                               state: state)
 
         self.uiModel.value.choices[index] = TTSUIChoiceModel(id: choice.id, view: view)
@@ -135,8 +142,16 @@ extension TTSCoordinatorAssociateCategories {
 }
 
 #Preview {
-    let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoices)
-    let coordinator = TTSCoordinatorAssociateCategories(gameplay: gameplay)
+    let kDefaultChoices: [CoordinatorAssociateCategoriesChoiceModel] = [
+        CoordinatorAssociateCategoriesChoiceModel(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
+        CoordinatorAssociateCategoriesChoiceModel(value: "car.rear.fill", category: .categoryB, type: .sfsymbol),
+        CoordinatorAssociateCategoriesChoiceModel(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
+        CoordinatorAssociateCategoriesChoiceModel(value: "car.rear.fill", category: .categoryB, type: .sfsymbol),
+        CoordinatorAssociateCategoriesChoiceModel(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
+        CoordinatorAssociateCategoriesChoiceModel(value: "Maison", category: nil, type: .text),
+    ]
+
+    let coordinator = TTSCoordinatorAssociateCategories(choices: kDefaultChoices)
     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
     return TTSView(viewModel: viewModel)

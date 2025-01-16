@@ -59,8 +59,8 @@ extension TTSView {
             TTSUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 6", type: .text, size: 240, state: .idle)),
         ]))
 
-        func processUserSelection(choice: TTSUIChoiceModel) {
-            log.debug("\(choice.id)")
+        func processUserSelection(choiceID: String) {
+            log.debug("\(choiceID)")
         }
     }
 
