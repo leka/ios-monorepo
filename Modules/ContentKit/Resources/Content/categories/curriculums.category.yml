@@ -66,6 +66,7 @@ content:
           subtitle: Learn to identify and express emotions.
           description: Explore activities to help care receivers recognize and express their emotions.
     curriculums:
+      - curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
       - curriculum_recognition_emotions_pictures-BA3CB88A6A6E49CB9AB83FA992BF852B
       - curriculum_recognition_emotions_drawings-95C42E189BC146BB844467A3BAFE8BC0
       - curriculum_recognition_emotions_pictograms-3A9B0EB3A9CF4ABCB9B771B6047DF2D0
@@ -162,6 +163,9 @@ content:
           description: Discover activities to help people sort objects by size, sequence, or chronology.
     curriculums:
       - curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
+      - curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
+      - curriculum_order_by_size-1FAED1FF14134571849325B6EC9197B5
+      - curriculum_order_by_size_different_animals-3158E58D908E43D29967B04D29C21912
 
   - id: animals
     l10n:
@@ -184,6 +188,8 @@ content:
       - curriculum_animal_recognition_savannah_animals-FB96DF24CDBB463E987E241FDC5BEA17
       - curriculum_animal_recognition_sea_animals-ADBEC52B10B0423E96B3F08CEE042752
       - curriculum_recognition_the_ice_floe-0EAFF8A46A4C4D60A320EBBBF2CC03B8
+      - curriculum_order_by_size-1FAED1FF14134571849325B6EC9197B5
+      - curriculum_order_by_size_different_animals-3158E58D908E43D29967B04D29C21912
 
   - id: colors
     l10n:
@@ -299,6 +305,8 @@ content:
     curriculums:
       - curriculum_recognition_emotions_in_context-A135163C8D8646DE95D0854FD5E155EB
       - curriculum_recognition_family_members-AD1A9E2D874C47AEB3445D80E34DC702
+      - curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
+      - curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
 
   - id: food_and_cooking
     l10n:
