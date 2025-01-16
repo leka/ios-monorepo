@@ -6,7 +6,7 @@ uuid: B63B1180ECAF46269402C0AD2F20191A
 name: curriculum_recognition_emotions_robot
 
 created_at: "2024-03-28T15:12:35.579066"
-last_edited_at: "2025-01-10T12:25:41.278625"
+last_edited_at: "2025-01-16T14:57:48.511707"
 
 status: published
 
@@ -31,26 +31,34 @@ l10n:
     details:
       icon: recognition_emotions_robot
 
-      title: Les émotions en pictogrammes
-      subtitle: Reconnaitre les émotions à travers des pictogrammes de Leka
+      title: Les émotions du robot
+      subtitle: Identifier les émotions du robot
 
       abstract: |
-        Ce parcours éducatif est conçu pour aider les personnes accompagnées à identifier et comprendre différentes émotions représentées par des pictogrammes de Leka, couvrant la peur, la colère, la tristesse, la joie et le dégoût. En utilisant des pictogrammes pour exprimer des émotions, ce parcours vise à renforcer la reconnaissance des émotions et la communication émotionnelle de manière visuelle et intuitive.
+        Ce parcours éducatif aide les utilisateurs à identifier les émotions du robot. Ils devront répondre via la tablette en sélectionnant des photos, des dessins ou un mixe des trois, représentant la même émotion. Les émotions abordées incluent la peur, la colère, la tristesse, la joie et le dégoût.
       description: |
-        À travers des activités interactives sur l'écran de l'iPad, les personnes accompagnées explorent des pictogrammes de Leka exprimant une gamme d'émotions. L'objectif est de reconnaître l'émotion représentée par chaque pictogramme et de toucher l'image correspondante. Ces activités encouragent la compréhension et l'interprétation des émotions, facilitant la capacité des personnes accompagnées à communiquer et à comprendre les émotions de manière efficace.
+        À travers des activités interactives sur l'écran de l'iPad, les utilisateurs observent les émotions du robot et doivent choisir parmi des images, des dessins ou des photos représentant la même émotion. L'objectif est d'améliorer la reconnaissance des émotions et la communication émotionnelle, en associant les émotions du robot à des visuels intuitifs.
   - locale: en_US
     details:
       icon: recognition_emotions_robot
 
-      title: Emotions in pictograms
-      subtitle: Recognize emotions through Leka's pictograms
+      title: Robot emotions
+      subtitle: Identify the robot's emotions
 
       abstract: |
-        This educational journey is designed to assist participants in identifying and understanding different emotions represented by Leka's pictograms, covering fear, anger, sadness, joy, and disgust. By using pictograms to express emotions, this path aims to strengthen emotion recognition and emotional communication in a visual and intuitive way.
+        This educational path helps participants identify the robot's emotions. They will respond via the tablet by selecting photos, drawings, or a mix of both, representing the same emotion. The emotions covered include fear, anger, sadness, joy, and disgust.
       description: |
-        Through interactive activities on the iPad screen, participants explore Leka's pictograms expressing a range of emotions. The goal is to recognize the emotion depicted by each pictogram and to touch the corresponding image. These activities encourage understanding and interpretation of emotions, facilitating participants' ability to communicate and understand emotions effectively.
+        Through interactive activities on the iPad screen, participants observe the robot's emotions and must choose from images, drawings, or photos that represent the same emotion. The goal is to enhance emotion recognition and emotional communication by associating the robot's emotions with intuitive visuals.
 activities:
-  - recognition_emotions_pictograms_1_leka-5C8987EC85064792AAA6C9DFB6B315C5
-  - recognition_emotions_pictograms_2_leka-8AE0997C2DC843078ABE11B36F4BA56D
-  - recognition_emotions_pictograms_3_leka-A52EDCD576DB491790C5C79683B9E83A
-  - recognition_emotions_pictograms_4_leka-283E1BE7BB5A4CDDBAAC04E599CF74B7
+  - recognition_emotions_robot_leka_1-DE8FD427EB8A4A828E1967C22748840A
+  - recognition_emotions_robot_leka_2-A46A9406D8394C53B4218FDF228C93EF
+  - recognition_emotions_robot_leka_4-1540481A25AD433FB390C3DA3793651C
+  - recognition_emotions_robot_picture_1-22A6280EE77C4D3C8CB53E2A77075869
+  - recognition_emotions_robot_picture_2-922BB10EB26E4821BFBBF3372379D2D4
+  - recognition_emotions_robot_picture_4-C0F948C1A5154A548E028E6FF521E437
+  - recognition_emotions_robot_image_1-1E39204F7D4A43179FA161CDC82B7C37
+  - recognition_emotions_robot_image_2-F7C2EBD557CC4AA8BD91A49B6816CB33
+  - recognition_emotions_robot_image_4-2FAFEDDD82394FB89915A8C59CC69902
+  - recognition_emotions_robot_generalization_3-44C50975B50443D6A8C59207095CACE6
+  - recognition_emotions_robot_generalization_4-D1708A8981E749D6A1379B0CD984A6A7
+  - recognition_emotions_robot_generalization_6-B223003D2D7E44E59A1E18DA59ACA7AD
