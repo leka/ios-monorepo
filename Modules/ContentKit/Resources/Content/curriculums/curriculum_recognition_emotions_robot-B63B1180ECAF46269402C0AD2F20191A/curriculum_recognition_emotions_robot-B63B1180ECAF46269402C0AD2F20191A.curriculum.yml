@@ -50,15 +50,15 @@ l10n:
       description: |
         Through interactive activities on the iPad screen, participants observe the robot's emotions and must choose from images, drawings, or photos that represent the same emotion. The goal is to enhance emotion recognition and emotional communication by associating the robot's emotions with intuitive visuals.
 activities:
+  - recognition_emotions_robot_leka_1-DE8FD427EB8A4A828E1967C22748840A
+  - recognition_emotions_robot_leka_2-A46A9406D8394C53B4218FDF228C93EF
+  - recognition_emotions_robot_leka_4-1540481A25AD433FB390C3DA3793651C
   - recognition_emotions_robot_picture_1-22A6280EE77C4D3C8CB53E2A77075869
   - recognition_emotions_robot_picture_2-922BB10EB26E4821BFBBF3372379D2D4
   - recognition_emotions_robot_picture_4-C0F948C1A5154A548E028E6FF521E437
   - recognition_emotions_robot_image_1-1E39204F7D4A43179FA161CDC82B7C37
   - recognition_emotions_robot_image_2-F7C2EBD557CC4AA8BD91A49B6816CB33
   - recognition_emotions_robot_image_4-2FAFEDDD82394FB89915A8C59CC69902
-  - recognition_emotions_robot_leka_1-DE8FD427EB8A4A828E1967C22748840A
-  - recognition_emotions_robot_leka_2-A46A9406D8394C53B4218FDF228C93EF
-  - recognition_emotions_robot_leka_4-1540481A25AD433FB390C3DA3793651C
   - recognition_emotions_robot_generalization_3-44C50975B50443D6A8C59207095CACE6
   - recognition_emotions_robot_generalization_4-D1708A8981E749D6A1379B0CD984A6A7
   - recognition_emotions_robot_generalization_6-B223003D2D7E44E59A1E18DA59ACA7AD
