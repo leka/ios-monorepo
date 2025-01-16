@@ -6,7 +6,7 @@ import GameEngineKit
 import SwiftUI
 
 extension ExerciseData {
-    static let ActionThenTTSexFindTheRightAnswers: [TTSCoordinatorFindTheRightAnswersChoiceModel] = [
+    static let ActionThenTTSexFindTheRightAnswers: [CoordinatorFindTheRightAnswersChoiceModel] = [
         .init(value: "Choice 1\nCorrect", isRightAnswer: true),
         .init(value: "Choice 2", isRightAnswer: false),
         .init(value: "Choice 3\nCorrect", isRightAnswer: true),

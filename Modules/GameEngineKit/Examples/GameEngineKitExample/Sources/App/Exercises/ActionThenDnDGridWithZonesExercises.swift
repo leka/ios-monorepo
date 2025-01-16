@@ -13,9 +13,11 @@ struct ActionThenDnDGridWithZoneExercises: View {
         ScrollView(.horizontal) {
             HStack(spacing: 20) {
                 NavigationLink {
-                    let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultImageChoicesWithZones)
-                    let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(gameplay: gameplay,
-                                                                                     action: .ipad(type: .image("sport_dance_player_man")))
+                    let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(
+                        choices: ExerciseData.AssociateCategoriesWithZonesChoicesDefault,
+                        action: .ipad(type: .image("sport_dance_player_man"))
+                    )
+
                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 
                     return DnDGridWithZonesView(viewModel: viewModel)
@@ -26,9 +28,10 @@ struct ActionThenDnDGridWithZoneExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoicesWithZones)
-                    let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(gameplay: gameplay,
-                                                                                     action: .ipad(type: .sfsymbol("star")))
+                    let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(
+                        choices: ExerciseData.AssociateCategoriesWithZonesChoicesDefault,
+                        action: .ipad(type: .sfsymbol("star"))
+                    )
                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 
                     return DnDGridWithZonesView(viewModel: viewModel)
@@ -39,9 +42,10 @@ struct ActionThenDnDGridWithZoneExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoicesWithZones)
-                    let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(gameplay: gameplay,
-                                                                                     action: .ipad(type: .audio("sound_animal_duck")))
+                    let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(
+                        choices: ExerciseData.AssociateCategoriesWithZonesChoicesDefault,
+                        action: .ipad(type: .audio("sound_animal_duck"))
+                    )
                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 
                     return DnDGridWithZonesView(viewModel: viewModel)
@@ -52,9 +56,10 @@ struct ActionThenDnDGridWithZoneExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultImageChoicesWithZones)
-                    let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(gameplay: gameplay,
-                                                                                     action: .ipad(type: .speech("Correct answer")))
+                    let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(
+                        choices: ExerciseData.AssociateCategoriesWithZonesChoicesDefault,
+                        action: .ipad(type: .speech("Correct answer"))
+                    )
                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 
                     return DnDGridWithZonesView(viewModel: viewModel)
@@ -65,9 +70,10 @@ struct ActionThenDnDGridWithZoneExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoicesWithZones)
-                    let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(gameplay: gameplay,
-                                                                                     action: .robot(type: .color("orange")))
+                    let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(
+                        choices: ExerciseData.AssociateCategoriesWithZonesChoicesDefault,
+                        action: .robot(type: .color("orange"))
+                    )
                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 
                     return DnDGridWithZonesView(viewModel: viewModel)
@@ -78,9 +84,10 @@ struct ActionThenDnDGridWithZoneExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoicesWithZones)
-                    let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(gameplay: gameplay,
-                                                                                     action: .robot(type: .image("robotFaceHappy")))
+                    let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(
+                        choices: ExerciseData.AssociateCategoriesWithZonesChoicesDefault,
+                        action: .robot(type: .image("robotFaceHappy"))
+                    )
                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 
                     return DnDGridWithZonesView(viewModel: viewModel)

@@ -10,6 +10,7 @@
 ## Bug Fixes
 
 - Curriculum Updates: Fixed ordering and asset-related issues in various curriculums for consistent presentation.
+- Robot Emotions: Update pictograms to be the same between as in the robot
 
 ## Other
 
