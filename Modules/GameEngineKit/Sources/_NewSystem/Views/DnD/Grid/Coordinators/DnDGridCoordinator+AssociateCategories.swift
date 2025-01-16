@@ -13,12 +13,16 @@ import UtilsKit
 public class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(gameplay: NewGameplayAssociateCategories, action: Exercise.Action? = nil) {
-        self.gameplay = gameplay
+    public init(choices: [CoordinatorAssociateCategoriesChoiceModel], action: Exercise.Action? = nil) {
+        self.rawChoices = choices
+
+        self.gameplay = NewGameplayAssociateCategories(choices: choices.map {
+            .init(id: $0.id, category: $0.category)
+        })
 
         self.uiModel.value.action = action
-        self.uiModel.value.choices = gameplay.choices.map { choice in
-            DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiModel.value.choiceSize(for: gameplay.choices.count))
+        self.uiModel.value.choices = choices.map { choice in
+            DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiModel.value.choiceSize(for: self.rawChoices.count))
         }
     }
 
@@ -29,10 +33,10 @@ public class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorPr
     public func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDAnswerNode? = nil) {
         switch event {
             case .began:
-                self.updateChoiceState(for: self.gameplay.choices.first(where: { $0.id == choice.id })!, to: .selected)
+                self.updateChoiceState(for: self.rawChoices.first(where: { $0.id == choice.id })!, to: .selected)
             case .ended:
                 guard let destination else {
-                    self.updateChoiceState(for: self.gameplay.choices.first(where: { $0.id == choice.id })!, to: .idle)
+                    self.updateChoiceState(for: self.rawChoices.first(where: { $0.id == choice.id })!, to: .idle)
                     return
                 }
                 self.processUserDropOnDestination(choice: choice, destination: destination)
@@ -42,13 +46,16 @@ public class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorPr
     // MARK: Private
 
     private var cancellables = Set<AnyCancellable>()
+
     private let gameplay: NewGameplayAssociateCategories
-    private var currentlySelectedChoices: [[NewGameplayAssociateCategoriesChoice]] = []
-    private var alreadyValidatedChoices: [[NewGameplayAssociateCategoriesChoice]] = []
+    private let rawChoices: [CoordinatorAssociateCategoriesChoiceModel]
+
+    private var currentlySelectedChoices: [[CoordinatorAssociateCategoriesChoiceModel]] = []
+    private var alreadyValidatedChoices: [[CoordinatorAssociateCategoriesChoiceModel]] = []
 
     private func processUserDropOnDestination(choice: DnDAnswerNode, destination: DnDAnswerNode) {
-        guard let sourceChoice = self.gameplay.choices.first(where: { $0.id == choice.id }),
-              let destinationChoice = self.gameplay.choices.first(where: { $0.id == destination.id }),
+        guard let sourceChoice = self.rawChoices.first(where: { $0.id == choice.id }),
+              let destinationChoice = self.rawChoices.first(where: { $0.id == destination.id }),
               !self.choiceAlreadySelected(choice: sourceChoice) else { return }
 
         if let categoryIndex = getIndexOf(destination: destinationChoice) {
@@ -57,9 +64,9 @@ public class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorPr
             self.currentlySelectedChoices.append([destinationChoice, sourceChoice])
         }
 
-        let results = self.gameplay.process(choices: self.currentlySelectedChoices)
+        let results = self.gameplay.process(choiceIDs: self.currentlySelectedChoices.map { $0.map(\.id) })
 
-        if results.allSatisfy(\.correctCategory) {
+        if results.allSatisfy(\.isCategoryCorrect) {
             self.updateChoiceState(for: sourceChoice, to: .correct)
             if self.getIndexOf(destination: destinationChoice) == nil {
                 self.updateChoiceState(for: destinationChoice, to: .correct)
@@ -75,22 +82,22 @@ public class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorPr
         }
     }
 
-    private func updateChoiceState(for choice: NewGameplayAssociateCategoriesChoice, to state: State) {
-        guard let index = self.gameplay.choices.firstIndex(where: { $0.id == choice.id }) else { return }
+    private func updateChoiceState(for choice: CoordinatorAssociateCategoriesChoiceModel, to state: State) {
+        guard let index = self.rawChoices.firstIndex(where: { $0.id == choice.id }) else { return }
 
         self.updateUINodeState(node: self.uiModel.value.choices[index], state: state)
     }
 
-    private func choiceAlreadySelected(choice: NewGameplayAssociateCategoriesChoice) -> Bool {
+    private func choiceAlreadySelected(choice: CoordinatorAssociateCategoriesChoiceModel) -> Bool {
         self.alreadyValidatedChoices.contains(where: { $0.contains(where: { $0.id == choice.id }) })
     }
 
-    private func getIndexOf(destination: NewGameplayAssociateCategoriesChoice) -> Int? {
+    private func getIndexOf(destination: CoordinatorAssociateCategoriesChoiceModel) -> Int? {
         self.alreadyValidatedChoices.firstIndex(where: { $0.contains(where: { $0.id == destination.id }) })
     }
 
-    private func handleIncorrectChoice(_ choice: NewGameplayAssociateCategoriesChoice) {
-        let categoryChoices = self.gameplay.choices.filter { $0.category == choice.category }
+    private func handleIncorrectChoice(_ choice: CoordinatorAssociateCategoriesChoiceModel) {
+        let categoryChoices = self.rawChoices.filter { $0.category == choice.category }
 
         if categoryChoices.count > 1 {
             self.updateChoiceState(for: choice, to: .idle)

@@ -53,8 +53,7 @@ struct TTSExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoices)
-                    let coordinator = TTSCoordinatorAssociateCategories(gameplay: gameplay)
+                    let coordinator = TTSCoordinatorAssociateCategories(choices: ExerciseData.AssociateCategoriesChoicesDefault)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                     return TTSView(viewModel: viewModel)
@@ -65,8 +64,7 @@ struct TTSExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoices)
-                    let coordinator = MemoryCoordinatorAssociateCategories(gameplay: gameplay)
+                    let coordinator = MemoryCoordinatorAssociateCategories(choices: ExerciseData.AssociateCategoriesChoicesDefault)
                     let viewModel = NewMemoryViewViewModel(coordinator: coordinator)
 
                     return NewMemoryView(viewModel: viewModel)

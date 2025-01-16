@@ -32,8 +32,8 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
 
-    public func processUserSelection(choice: TTSUIChoiceModel) {
-        let results = self.gameplay.process(choiceIDs: [choice.id])
+    public func processUserSelection(choiceID: String) {
+        let results = self.gameplay.process(choiceIDs: [choiceID])
 
         results.forEach { result in
             guard let index = self.rawChoices.firstIndex(where: { $0.id == result.id }) else {

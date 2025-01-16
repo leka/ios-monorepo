@@ -13,8 +13,9 @@ struct DnDExercises: View {
         ScrollView(.horizontal) {
             HStack(spacing: 20) {
                 NavigationLink {
-                    let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoices)
-                    let coordinator = DnDGridCoordinatorAssociateCategories(gameplay: gameplay)
+                    let coordinator = DnDGridCoordinatorAssociateCategories(
+                        choices: ExerciseData.AssociateCategoriesChoicesDefault
+                    )
                     let viewModel = DnDGridViewModel(coordinator: coordinator)
 
                     return DnDGridView(viewModel: viewModel)
@@ -25,8 +26,9 @@ struct DnDExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayAssociateCategories(choices: NewGameplayAssociateCategories.kDefaultChoicesWithZones)
-                    let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(gameplay: gameplay)
+                    let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(
+                        choices: ExerciseData.AssociateCategoriesWithZonesChoicesDefault
+                    )
                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 
                     return DnDGridWithZonesView(viewModel: viewModel)

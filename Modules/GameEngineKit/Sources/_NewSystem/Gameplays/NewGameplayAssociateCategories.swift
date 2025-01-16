@@ -5,34 +5,32 @@
 import Combine
 import Foundation
 
-// MARK: - NewGameplayAssociateCategoriesChoice
+// MARK: - AssociateCategory
 
-public struct NewGameplayAssociateCategoriesChoice: Identifiable {
+public enum AssociateCategory {
+    case categoryA
+    case categoryB
+    case categoryC
+    case categoryD
+}
+
+// MARK: - NewGameplayAssociateCategoriesChoiceModel
+
+public struct NewGameplayAssociateCategoriesChoiceModel: Identifiable {
     // MARK: Lifecycle
 
-    public init(id: String = UUID().uuidString, value: String, category: Category?, type: ChoiceType = .text) {
+    public init(id: String, category: AssociateCategory?) {
         self.id = id
-        self.value = value
         self.category = category
-        self.type = type
     }
 
     // MARK: Public
-
-    public enum Category {
-        case categoryA
-        case categoryB
-        case categoryC
-        case categoryD
-    }
 
     public let id: String
 
     // MARK: Internal
 
-    let value: String
-    let type: ChoiceType
-    let category: Category?
+    let category: AssociateCategory?
 }
 
 // MARK: - NewGameplayAssociateCategories
@@ -40,7 +38,7 @@ public struct NewGameplayAssociateCategoriesChoice: Identifiable {
 public class NewGameplayAssociateCategories: GameplayProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [NewGameplayAssociateCategoriesChoice]) {
+    public init(choices: [NewGameplayAssociateCategoriesChoiceModel]) {
         self.choices = choices
         let categoryGroups = Dictionary(grouping: choices.filter { $0.category != nil }, by: { $0.category })
         self.remainingRightAnswers = categoryGroups.values
@@ -50,22 +48,28 @@ public class NewGameplayAssociateCategories: GameplayProtocol {
 
     // MARK: Public
 
-    public let choices: [NewGameplayAssociateCategoriesChoice]
+    public let choices: [NewGameplayAssociateCategoriesChoiceModel]
     public var isCompleted = CurrentValueSubject<Bool, Never>(false)
 
-    public func process(choices: [[NewGameplayAssociateCategoriesChoice]]) -> [(choice: NewGameplayAssociateCategoriesChoice, correctCategory: Bool)] {
-        var results = [(NewGameplayAssociateCategoriesChoice, Bool)]()
+    public func process(choiceIDs: [[String]]) -> [(id: String, isCategoryCorrect: Bool)] {
+        var results: [(id: String, isCategoryCorrect: Bool)] = []
 
-        for category in choices {
+        let selectedChoices: [[NewGameplayAssociateCategoriesChoiceModel]] = choiceIDs.map { idArray in
+            idArray.compactMap { id in
+                self.choices.first { $0.id == id }
+            }
+        }
+
+        for category in selectedChoices {
             let categoryGroups = Dictionary(grouping: category, by: { $0.category })
             for (_, categoryChoices) in categoryGroups {
                 if categoryChoices.count > 1 {
                     categoryChoices.forEach { choice in
-                        results.append((choice, true))
+                        results.append((choice.id, true))
                         self.remainingRightAnswers.removeAll { $0.id == choice.id }
                     }
                 } else if let choice = categoryChoices.first {
-                    results.append((choice, false))
+                    results.append((choice.id, false))
                 }
             }
         }
@@ -85,71 +89,9 @@ public class NewGameplayAssociateCategories: GameplayProtocol {
 
     // MARK: Internal
 
-    typealias ChoiceType = NewGameplayAssociateCategoriesChoice
+    typealias ChoiceType = NewGameplayAssociateCategoriesChoiceModel
 
     // MARK: Private
 
-    private var remainingRightAnswers: [NewGameplayAssociateCategoriesChoice]
-}
-
-public extension NewGameplayAssociateCategories {
-    // MARK: Public
-
-    static let kDefaultChoices: [NewGameplayAssociateCategoriesChoice] = [
-        NewGameplayAssociateCategoriesChoice(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
-        NewGameplayAssociateCategoriesChoice(value: "car.rear.fill", category: .categoryB, type: .sfsymbol),
-        NewGameplayAssociateCategoriesChoice(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
-        NewGameplayAssociateCategoriesChoice(value: "car.rear.fill", category: .categoryB, type: .sfsymbol),
-        NewGameplayAssociateCategoriesChoice(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
-        NewGameplayAssociateCategoriesChoice(value: "Maison", category: nil, type: .text),
-    ]
-
-    static let kDefaultEmojiChoices: [NewGameplayAssociateCategoriesChoice] = [
-        NewGameplayAssociateCategoriesChoice(value: "🍉", category: .categoryA, type: .emoji),
-        NewGameplayAssociateCategoriesChoice(value: "🍏", category: .categoryB, type: .emoji),
-        NewGameplayAssociateCategoriesChoice(value: "🍉", category: .categoryA, type: .emoji),
-        NewGameplayAssociateCategoriesChoice(value: "🍏", category: .categoryB, type: .emoji),
-        NewGameplayAssociateCategoriesChoice(value: "🍉", category: .categoryA, type: .emoji),
-        NewGameplayAssociateCategoriesChoice(value: "🐶", category: nil, type: .emoji),
-    ]
-
-    static let kDefaultColorChoices: [NewGameplayAssociateCategoriesChoice] = [
-        NewGameplayAssociateCategoriesChoice(value: "red", category: .categoryA, type: .color),
-        NewGameplayAssociateCategoriesChoice(value: "yellow", category: .categoryB, type: .color),
-        NewGameplayAssociateCategoriesChoice(value: "red", category: .categoryA, type: .color),
-        NewGameplayAssociateCategoriesChoice(value: "yellow", category: .categoryB, type: .color),
-        NewGameplayAssociateCategoriesChoice(value: "red", category: .categoryA, type: .color),
-        NewGameplayAssociateCategoriesChoice(value: "blue", category: nil, type: .color),
-    ]
-
-    static let kDefaultImageChoices: [NewGameplayAssociateCategoriesChoice] = [
-        NewGameplayAssociateCategoriesChoice(value: "pictograms-weather-sun_yellow-0106", category: .categoryA, type: .image),
-        NewGameplayAssociateCategoriesChoice(value: "pictograms-animals-arctic-penguin_yellow-0088", category: .categoryB, type: .image),
-        NewGameplayAssociateCategoriesChoice(value: "pictograms-weather-sun_yellow-0106", category: .categoryA, type: .image),
-        NewGameplayAssociateCategoriesChoice(value: "pictograms-animals-arctic-penguin_yellow-0088", category: .categoryB, type: .image),
-        NewGameplayAssociateCategoriesChoice(value: "pictograms-weather-sun_yellow-0106", category: .categoryA, type: .image),
-        NewGameplayAssociateCategoriesChoice(value: "Maison", category: nil, type: .text),
-    ]
-
-    static let kDefaultChoicesWithZones: [NewGameplayAssociateCategoriesChoice] = [
-        NewGameplayAssociateCategoriesChoice(value: "sun", category: .categoryA, type: .text),
-        NewGameplayAssociateCategoriesChoice(value: "car", category: .categoryB, type: .text),
-        NewGameplayAssociateCategoriesChoice(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
-        NewGameplayAssociateCategoriesChoice(value: "car.rear.fill", category: .categoryB, type: .sfsymbol),
-        NewGameplayAssociateCategoriesChoice(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
-        NewGameplayAssociateCategoriesChoice(value: "car.rear.fill", category: .categoryB, type: .sfsymbol),
-        NewGameplayAssociateCategoriesChoice(value: "sun.max.fill", category: .categoryA, type: .sfsymbol),
-        NewGameplayAssociateCategoriesChoice(value: "Maison", category: nil, type: .text),
-    ]
-
-    static let kDefaultImageChoicesWithZones: [NewGameplayAssociateCategoriesChoice] = [
-        NewGameplayAssociateCategoriesChoice(value: "dropzone_bathroom", category: .categoryA, type: .image),
-        NewGameplayAssociateCategoriesChoice(value: "dropzone_bedroom", category: .categoryB, type: .image),
-        NewGameplayAssociateCategoriesChoice(value: "pictograms-weather-sun_yellow-0106", category: .categoryA, type: .image),
-        NewGameplayAssociateCategoriesChoice(value: "pictograms-animals-arctic-penguin_yellow-0088", category: .categoryB, type: .image),
-        NewGameplayAssociateCategoriesChoice(value: "pictograms-weather-sun_yellow-0106", category: .categoryA, type: .image),
-        NewGameplayAssociateCategoriesChoice(value: "pictograms-animals-arctic-penguin_yellow-0088", category: .categoryB, type: .image),
-        NewGameplayAssociateCategoriesChoice(value: "pictograms-weather-sun_yellow-0106", category: .categoryA, type: .image),
-        NewGameplayAssociateCategoriesChoice(value: "Maison", category: nil, type: .text),
-    ]
+    private var remainingRightAnswers: [NewGameplayAssociateCategoriesChoiceModel]
 }
