@@ -29,7 +29,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: order_animals_by_size
+      icon: order_different_animals_by_size
       title: Ordonner les animaux selon leur taille
       subtitle: Classement du plus petit au plus grand
       abstract: |
@@ -41,7 +41,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: order_animals_by_size
+      icon: order_different_animals_by_size
       title: Ordering Animals by Size
       subtitle: Sorting from Smallest to Largest
       abstract: |
