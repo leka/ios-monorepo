@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct TTSCoordinatorFindTheRightAnswersChoiceModel {
+public struct CoordinatorFindTheRightAnswersChoiceModel {
     // MARK: Lifecycle
 
     public init(id: String = UUID().uuidString, value: String, isRightAnswer: Bool, type: ChoiceType = .text) {
