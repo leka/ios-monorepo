@@ -10,6 +10,7 @@
 ## Corrections de Bugs
 
 - Mises à jour des programmes éducatifs : Correction des problèmes d'ordre et des ressources dans divers programmes pour une présentation cohérente.
+- Emotions du robot : Mise à jours des images pour qu'elles soient semblables à celles dans le robot
 
 ## Autres
 
