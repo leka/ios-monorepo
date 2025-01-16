@@ -30,8 +30,8 @@ public class TTSThenValidateCoordinatorFindTheRightOrder: TTSGameplayCoordinator
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
     public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(true)
 
-    public func processUserSelection(choice: TTSUIChoiceModel) {
-        guard let gameplayChoice = self.gameplay.orderedChoices.first(where: { $0.id == choice.id }),
+    public func processUserSelection(choiceID: String) {
+        guard let gameplayChoice = self.gameplay.orderedChoices.first(where: { $0.id == choiceID }),
               !self.choiceAlreadySelected(choice: gameplayChoice) else { return }
 
         self.select(choice: gameplayChoice)
