@@ -29,9 +29,9 @@ struct TTSThenValidateExercises: View {
             HStack(spacing: 20) {
                 NavigationLink {
                     let coordinator = TTSThenValidateCoordinatorFindTheRightAnswers(choices: ExerciseData.TTSThenValidatexFindTheRightAnswers)
-                    let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
+                    let viewModel = TTSViewViewModel(coordinator: coordinator)
 
-                    return TTSThenValidateView(viewModel: viewModel)
+                    return TTSView(viewModel: viewModel)
                         .navigationTitle("Find The Right Answers")
                         .navigationBarTitleDisplayMode(.large)
                 } label: {
@@ -40,9 +40,9 @@ struct TTSThenValidateExercises: View {
 
                 NavigationLink {
                     let coordinator = TTSThenValidateCoordinatorFindTheRightAnswersAllAtOnce(choices: ExerciseData.TTSThenValidatexFindTheRightAnswers)
-                    let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
+                    let viewModel = TTSViewViewModel(coordinator: coordinator)
 
-                    return TTSThenValidateView(viewModel: viewModel)
+                    return TTSView(viewModel: viewModel)
                         .navigationTitle("Find The Right Answers All At Once")
                         .navigationBarTitleDisplayMode(.large)
                 } label: {
@@ -52,9 +52,9 @@ struct TTSThenValidateExercises: View {
                 NavigationLink {
                     let gameplay = NewGameplayFindTheRightOrder(choices: Array(NewGameplayFindTheRightOrder.kDefaultChoices[0..<3]))
                     let coordinator = TTSThenValidateCoordinatorFindTheRightOrder(gameplay: gameplay)
-                    let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
+                    let viewModel = TTSViewViewModel(coordinator: coordinator)
 
-                    return TTSThenValidateView(viewModel: viewModel)
+                    return TTSView(viewModel: viewModel)
                         .navigationTitle("Find The Right Order")
                         .navigationBarTitleDisplayMode(.large)
                 } label: {

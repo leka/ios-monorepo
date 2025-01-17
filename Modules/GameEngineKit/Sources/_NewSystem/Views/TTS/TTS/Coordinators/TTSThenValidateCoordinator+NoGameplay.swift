@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - TTSThenValidateCoordinatorNoGameplay
 
-public class TTSThenValidateCoordinatorNoGameplay: TTSThenValidateGameplayCoordinatorProtocol {
+public class TTSThenValidateCoordinatorNoGameplay: TTSGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
     public init(choices: [TTSCoordinatorNoGameplayChoiceModel], action: Exercise.Action? = nil, minimumToSelect: Int = 0, maximumToSelect: Int? = nil) {
@@ -33,27 +33,27 @@ public class TTSThenValidateCoordinatorNoGameplay: TTSThenValidateGameplayCoordi
     // MARK: Public
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
-    public private(set) var validationEnabled = CurrentValueSubject<Bool, Never>(false)
+    public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(false)
 
-    public func processUserSelection(choice: TTSUIChoiceModel) {
+    public func processUserSelection(choiceID: String) {
         var choiceState: State {
-            if let index = currentChoices.firstIndex(where: { $0 == choice.id }) {
+            if let index = currentChoices.firstIndex(where: { $0 == choiceID }) {
                 self.currentChoices.remove(at: index)
                 return .idle
             } else {
-                self.currentChoices.append(choice.id)
+                self.currentChoices.append(choiceID)
                 return .selected
             }
         }
 
-        guard let index = self.uiModel.value.choices.firstIndex(where: { $0.id == choice.id }) else { return }
+        guard let index = self.uiModel.value.choices.firstIndex(where: { $0.id == choiceID }) else { return }
 
         let view = ChoiceView(value: self.rawChoices[index].value,
                               type: self.rawChoices[index].type,
                               size: self.uiModel.value.choiceSize(for: self.rawChoices.count),
                               state: choiceState)
 
-        self.uiModel.value.choices[index] = TTSUIChoiceModel(id: choice.id, view: view)
+        self.uiModel.value.choices[index] = TTSUIChoiceModel(id: choiceID, view: view)
 
         if self.currentChoices.count < self.minimumToSelect || self.currentChoices.count > self.maximumToSelect {
             self.validationEnabled.send(false)
@@ -165,7 +165,7 @@ extension TTSThenValidateCoordinatorNoGameplay {
     ]
 
     let coordinator = TTSThenValidateCoordinatorNoGameplay(choices: kDefaultChoices)
-    let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
+    let viewModel = TTSViewViewModel(coordinator: coordinator)
 
-    return TTSThenValidateView(viewModel: viewModel)
+    return TTSView(viewModel: viewModel)
 }

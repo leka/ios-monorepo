@@ -33,9 +33,9 @@ struct ActionThenTTSThenValidateExercises: View {
                         choices: ExerciseData.TTSActionThenValidatexFindTheRightAnswers,
                         action: .ipad(type: .image("sport_dance_player_man"))
                     )
-                    let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
+                    let viewModel = TTSViewViewModel(coordinator: coordinator)
 
-                    return TTSThenValidateView(viewModel: viewModel)
+                    return TTSView(viewModel: viewModel)
                         .navigationTitle("Observe Image")
                         .navigationBarTitleDisplayMode(.large)
                 } label: {
@@ -47,9 +47,9 @@ struct ActionThenTTSThenValidateExercises: View {
                         choices: ExerciseData.TTSActionThenValidatexFindTheRightAnswers,
                         action: .ipad(type: .sfsymbol("star"))
                     )
-                    let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
+                    let viewModel = TTSViewViewModel(coordinator: coordinator)
 
-                    return TTSThenValidateView(viewModel: viewModel)
+                    return TTSView(viewModel: viewModel)
                         .navigationTitle("Observe SFSymbol")
                         .navigationBarTitleDisplayMode(.large)
                 } label: {
@@ -61,9 +61,9 @@ struct ActionThenTTSThenValidateExercises: View {
                         choices: ExerciseData.TTSActionThenValidatexFindTheRightAnswers,
                         action: .ipad(type: .audio("sound_animal_duck"))
                     )
-                    let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
+                    let viewModel = TTSViewViewModel(coordinator: coordinator)
 
-                    return TTSThenValidateView(viewModel: viewModel)
+                    return TTSView(viewModel: viewModel)
                         .navigationTitle("Listen Audio")
                         .navigationBarTitleDisplayMode(.large)
                 } label: {
@@ -75,9 +75,9 @@ struct ActionThenTTSThenValidateExercises: View {
                         choices: ExerciseData.TTSActionThenValidatexFindTheRightAnswers,
                         action: .ipad(type: .speech("Correct answer"))
                     )
-                    let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
+                    let viewModel = TTSViewViewModel(coordinator: coordinator)
 
-                    return TTSThenValidateView(viewModel: viewModel)
+                    return TTSView(viewModel: viewModel)
                         .navigationTitle("Listen Speech")
                         .navigationBarTitleDisplayMode(.large)
                 } label: {
@@ -89,9 +89,9 @@ struct ActionThenTTSThenValidateExercises: View {
                         choices: ExerciseData.TTSActionThenValidatexFindTheRightAnswers,
                         action: .robot(type: .color("mint"))
                     )
-                    let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
+                    let viewModel = TTSViewViewModel(coordinator: coordinator)
 
-                    return TTSThenValidateView(viewModel: viewModel)
+                    return TTSView(viewModel: viewModel)
                         .navigationTitle("Robot Color")
                         .navigationBarTitleDisplayMode(.large)
                 } label: {
@@ -103,9 +103,9 @@ struct ActionThenTTSThenValidateExercises: View {
                         choices: ExerciseData.TTSActionThenValidatexFindTheRightAnswers,
                         action: .robot(type: .image("robotFaceHappy"))
                     )
-                    let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
+                    let viewModel = TTSViewViewModel(coordinator: coordinator)
 
-                    return TTSThenValidateView(viewModel: viewModel)
+                    return TTSView(viewModel: viewModel)
                         .navigationTitle("Robot Screen")
                         .navigationBarTitleDisplayMode(.large)
                 } label: {

@@ -6,10 +6,10 @@ import Combine
 import ContentKit
 import SwiftUI
 
-// MARK: - TTSThenValidateCoordinatorFindTheRightAnswers
+// MARK: - TTSThenValidateCoordinatorFindTheRightAnswersAllAtOnce
 
 // swiftlint:disable:next type_name
-public class TTSThenValidateCoordinatorFindTheRightAnswers: TTSThenValidateGameplayCoordinatorProtocol {
+public class TTSThenValidateCoordinatorFindTheRightAnswersAllAtOnce: TTSGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
     public init(choices: [CoordinatorFindTheRightAnswersChoiceModel], action: Exercise.Action? = nil) {
@@ -23,7 +23,7 @@ public class TTSThenValidateCoordinatorFindTheRightAnswers: TTSThenValidateGamep
         self.uiModel.value.choices = choices.map { choice in
             let view = ChoiceView(value: choice.value,
                                   type: choice.type,
-                                  size: self.uiModel.value.choiceSize(for: self.gameplay.choices.count),
+                                  size: self.uiModel.value.choiceSize(for: self.rawChoices.count),
                                   state: .idle)
             return TTSUIChoiceModel(id: choice.id, view: view)
         }
@@ -32,27 +32,27 @@ public class TTSThenValidateCoordinatorFindTheRightAnswers: TTSThenValidateGamep
     // MARK: Public
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
-    public private(set) var validationEnabled = CurrentValueSubject<Bool, Never>(true)
+    public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(true)
 
-    public func processUserSelection(choice: TTSUIChoiceModel) {
+    public func processUserSelection(choiceID: String) {
         var choiceState: State {
-            if let index = currentChoices.firstIndex(where: { $0 == choice.id }) {
+            if let index = currentChoices.firstIndex(where: { $0 == choiceID }) {
                 self.currentChoices.remove(at: index)
                 return .idle
             } else {
-                self.currentChoices.append(choice.id)
+                self.currentChoices.append(choiceID)
                 return .selected
             }
         }
 
-        guard let index = self.uiModel.value.choices.firstIndex(where: { $0.id == choice.id }) else { return }
+        guard let index = self.uiModel.value.choices.firstIndex(where: { $0.id == choiceID }) else { return }
 
         let view = ChoiceView(value: self.rawChoices[index].value,
                               type: self.rawChoices[index].type,
                               size: self.uiModel.value.choiceSize(for: self.gameplay.choices.count),
                               state: choiceState)
 
-        self.uiModel.value.choices[index] = TTSUIChoiceModel(id: choice.id, view: view)
+        self.uiModel.value.choices[index] = TTSUIChoiceModel(id: choiceID, view: view)
         self.validationEnabled.send(true)
     }
 
@@ -63,10 +63,27 @@ public class TTSThenValidateCoordinatorFindTheRightAnswers: TTSThenValidateGamep
 
         let results = self.gameplay.process(choiceIDs: choices)
 
-        results.forEach { result in
-            guard let index = self.rawChoices.firstIndex(where: { $0.id == result.id }) else {
-                return
+        guard results.allSatisfy(\.isCorrect), self.gameplay.isCompleted.value else {
+            results.forEach { result in
+                guard let index = self.rawChoices.firstIndex(where: { $0.id == result.id }) else {
+                    return
+                }
+
+                let view = ChoiceView(value: self.rawChoices[index].value,
+                                      type: self.rawChoices[index].type,
+                                      size: self.uiModel.value.choiceSize(for: self.gameplay.choices.count),
+                                      state: .idle)
+
+                self.uiModel.value.choices[index] = TTSUIChoiceModel(id: result.id, view: view)
             }
+
+            self.gameplay.reset()
+            self.resetCurrentChoices()
+            return
+        }
+
+        results.forEach { result in
+            guard let index = self.rawChoices.firstIndex(where: { $0.id == result.id }) else { return }
 
             let view = ChoiceView(value: self.rawChoices[index].value,
                                   type: self.rawChoices[index].type,
@@ -77,7 +94,6 @@ public class TTSThenValidateCoordinatorFindTheRightAnswers: TTSThenValidateGamep
         }
 
         self.resetCurrentChoices()
-
         self.validationEnabled.send(false)
     }
 
@@ -95,7 +111,7 @@ public class TTSThenValidateCoordinatorFindTheRightAnswers: TTSThenValidateGamep
     }
 }
 
-extension TTSThenValidateCoordinatorFindTheRightAnswers {
+extension TTSThenValidateCoordinatorFindTheRightAnswersAllAtOnce {
     enum State {
         case idle
         case selected
@@ -147,8 +163,8 @@ extension TTSThenValidateCoordinatorFindTheRightAnswers {
         .init(value: "exclamationmark.triangle.fill", isRightAnswer: false, type: .sfsymbol),
     ]
 
-    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswers(choices: kDefaultChoices)
-    let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
+    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswersAllAtOnce(choices: kDefaultChoices)
+    let viewModel = TTSViewViewModel(coordinator: coordinator)
 
-    return TTSThenValidateView(viewModel: viewModel)
+    return TTSView(viewModel: viewModel)
 }

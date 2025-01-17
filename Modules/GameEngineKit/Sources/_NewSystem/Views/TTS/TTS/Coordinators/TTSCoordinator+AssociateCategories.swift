@@ -31,6 +31,7 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
     // MARK: Public
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
+    public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
 
     public func processUserSelection(choiceID: String) {
         guard let choice = self.rawChoices.first(where: { $0.id == choiceID }) else {
@@ -79,6 +80,10 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
                 }
             }
         }
+    }
+
+    public func validateUserSelection() {
+        // Nothing to do
     }
 
     // MARK: Private

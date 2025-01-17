@@ -27,6 +27,7 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
     // MARK: Public
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
+    public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
 
     public func processUserSelection(choiceID: String) {
         guard let gameplayChoice = self.gameplay.orderedChoices.first(where: { $0.id == choiceID }),
@@ -59,6 +60,10 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
 
             self.currentOrderedChoices.removeAll()
         }
+    }
+
+    public func validateUserSelection() {
+        // Nothing to do
     }
 
     // MARK: Private

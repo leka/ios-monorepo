@@ -22,17 +22,29 @@ public class TTSViewViewModel: ObservableObject {
                 self?.choices = model.choices
             }
             .store(in: &self.cancellables)
+
+        self.coordinator.validationEnabled
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] validationEnabled in
+                self?.validationEnabled = validationEnabled
+            }
+            .store(in: &self.cancellables)
     }
 
     // MARK: Internal
 
     @Published var didTriggerAction = false
+    @Published var validationEnabled: Bool?
     @Published var choices: [TTSUIChoiceModel]
 
     let action: Exercise.Action?
 
     func onTapped(choice: TTSUIChoiceModel) {
         self.coordinator.processUserSelection(choiceID: choice.id)
+    }
+
+    func onValidate() {
+        self.coordinator.validateUserSelection()
     }
 
     // MARK: Private
