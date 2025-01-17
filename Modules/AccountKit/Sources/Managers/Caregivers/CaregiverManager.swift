@@ -70,15 +70,25 @@ public class CaregiverManager {
     }
 
     public func updateCaregiver(caregiver: Caregiver) {
-        let ignoredFields: [String] = ["root_owner_uid", "uuid", "created_at"]
-        self.dbOps.update(data: caregiver, in: .caregivers, ignoringFields: ignoredFields)
+        let caregiverData: [String: Any] = [
+            Caregiver.CodingKeys.firstName.rawValue: caregiver.firstName,
+            Caregiver.CodingKeys.lastName.rawValue: caregiver.lastName,
+            Caregiver.CodingKeys.birthdate.rawValue: caregiver.birthdate as Any,
+            Caregiver.CodingKeys.email.rawValue: caregiver.email,
+            Caregiver.CodingKeys.avatar.rawValue: caregiver.avatar,
+            Caregiver.CodingKeys.professions.rawValue: caregiver.professions,
+            Caregiver.CodingKeys.colorScheme.rawValue: caregiver.colorScheme.rawValue,
+            Caregiver.CodingKeys.colorTheme.rawValue: caregiver.colorTheme.rawValue,
+        ]
+
+        self.dbOps.update(id: caregiver.id!, data: caregiverData, collection: .caregivers)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
                     self.fetchError.send(error)
                 }
-            }, receiveValue: { [weak self] updatedCaregiver in
+            }, receiveValue: { [weak self] in
                 guard let self else { return }
-                AnalyticsManager.logEventCaregiverEdit(caregiver: updatedCaregiver.id!)
+                AnalyticsManager.logEventCaregiverEdit(caregiver: caregiver.id!)
             })
             .store(in: &self.cancellables)
     }
