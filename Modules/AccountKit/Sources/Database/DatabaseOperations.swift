@@ -191,34 +191,6 @@ public class DatabaseOperations {
         self.listenerRegistrations.removeAll()
     }
 
-    public func update<T: DatabaseDocument>(data: T, in collection: DatabaseCollection, ignoringFields: [String] = []) -> AnyPublisher<T, Error> {
-        Future<T, Error> { promise in
-            let docRef = self.database.collection(collection.rawValue).document(data.id!)
-
-            do {
-                var dataDict = try Firestore.Encoder().encode(data)
-                dataDict["last_edited_at"] = FieldValue.serverTimestamp()
-                for field in ignoringFields {
-                    dataDict.removeValue(forKey: field)
-                }
-
-                docRef.updateData(dataDict) { error in
-                    if let error {
-                        log.error("Update failed for document \(String(describing: data.id!)): \(error.localizedDescription)")
-                        promise(.failure(DatabaseError.customError(error.localizedDescription)))
-                    } else {
-                        log.info("Document \(String(describing: data.id!)) updated successfully in \(collection.rawValue). 🎉")
-                        promise(.success(data))
-                    }
-                }
-            } catch {
-                log.error("\(error.localizedDescription)")
-                promise(.failure(DatabaseError.encodeError))
-            }
-        }
-        .eraseToAnyPublisher()
-    }
-
     public func update(id: String, data: [String: Any], collection: DatabaseCollection) -> AnyPublisher<Void, Error> {
         Future<Void, Error> { promise in
             let docRef = self.database.collection(collection.rawValue).document(id)

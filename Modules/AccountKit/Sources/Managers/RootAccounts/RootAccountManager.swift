@@ -41,22 +41,6 @@ public class RootAccountManager {
             .store(in: &self.cancellables)
     }
 
-    public func updateRootAccount(rootAccount: RootAccount) {
-        let ignoredFields: [String] = ["root_owner_uid", "uuid", "created_at"]
-        self.dbOps.update(data: rootAccount, in: .rootAccounts, ignoringFields: ignoredFields)
-            .sink(
-                receiveCompletion: { [weak self] completion in
-                    if case let .failure(error) = completion {
-                        self?.fetchErrorSubject.send(error)
-                    }
-                },
-                receiveValue: { _ in
-                    // Successfully updated
-                }
-            )
-            .store(in: &self.cancellables)
-    }
-
     public func resetData() {
         self.currentRootAccount.send(nil)
         self.dbOps.clearAllListeners()

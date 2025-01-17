@@ -53,22 +53,6 @@ public class LibraryManager {
             .store(in: &self.cancellables)
     }
 
-    // Useless now
-    public func updateLibrary(_ library: Library) {
-        let ignoredFields: [String] = ["root_owner_uid", "uuid", "created_at"]
-        self.dbOps.update(data: library, in: .libraries, ignoringFields: ignoredFields)
-            .handleLoadingState(using: self.isLoading)
-            .sink(receiveCompletion: { [weak self] completion in
-                if case let .failure(error) = completion {
-                    self?.fetchError.send(error)
-                }
-            }, receiveValue: { [weak self] updatedLibrary in
-                self?.currentLibrary.send(updatedLibrary)
-                log.info("Library successfully updated.")
-            })
-            .store(in: &self.cancellables)
-    }
-
     public func addActivity(activityID: String, caregiverID: String) {
         guard let library = self.currentLibrary.value else {
             self.fetchError.send(DatabaseError.customError("Library not found"))
@@ -104,7 +88,6 @@ public class LibraryManager {
         }
 
         library.activities.remove(at: index)
-        self.updateLibrary(library)
     }
 
     // MARK: - Curriculums
@@ -144,7 +127,6 @@ public class LibraryManager {
         }
 
         library.curriculums.remove(at: index)
-        self.updateLibrary(library)
     }
 
     // MARK: - Stories
@@ -184,7 +166,6 @@ public class LibraryManager {
         }
 
         library.stories.remove(at: index)
-        self.updateLibrary(library)
     }
 
     // MARK: - Reset Data
