@@ -53,6 +53,7 @@ public class LibraryManager {
             .store(in: &self.cancellables)
     }
 
+    // Useless now
     public func updateLibrary(_ library: Library) {
         let ignoredFields: [String] = ["root_owner_uid", "uuid", "created_at"]
         self.dbOps.update(data: library, in: .libraries, ignoringFields: ignoredFields)
@@ -68,23 +69,27 @@ public class LibraryManager {
             .store(in: &self.cancellables)
     }
 
-    // MARK: - Activities & Gamepads
-
     public func addActivity(activityID: String, caregiverID: String) {
-        guard var library = self.currentLibrary.value else {
+        guard let library = self.currentLibrary.value else {
             self.fetchError.send(DatabaseError.customError("Library not found"))
             return
         }
 
         let savedActivity = SavedActivity(id: activityID, caregiverID: caregiverID)
 
-        guard !library.activities.contains(where: { $0.id == activityID }) else {
-            log.info("\(activityID) is already saved.")
-            return
-        }
-
-        library.activities.append(savedActivity)
-        self.updateLibrary(library)
+        self.dbOps.addItemToLibrary(
+            documentID: library.id!,
+            fieldName: .activities,
+            newItem: savedActivity
+        )
+        .sink(receiveCompletion: { [weak self] completion in
+            if case let .failure(error) = completion {
+                self?.fetchError.send(error)
+            }
+        }, receiveValue: {
+            // Nothing to do
+        })
+        .store(in: &self.cancellables)
     }
 
     public func removeActivity(activityID: String) {
@@ -105,20 +110,26 @@ public class LibraryManager {
     // MARK: - Curriculums
 
     public func addCurriculum(curriculumID: String, caregiverID: String) {
-        guard var library = self.currentLibrary.value else {
+        guard let library = self.currentLibrary.value else {
             self.fetchError.send(DatabaseError.customError("Library not found"))
             return
         }
 
         let savedCurriculum = SavedCurriculum(id: curriculumID, caregiverID: caregiverID)
 
-        guard !library.curriculums.contains(where: { $0.id == curriculumID }) else {
-            log.info("\(curriculumID) is already saved.")
-            return
-        }
-
-        library.curriculums.append(savedCurriculum)
-        self.updateLibrary(library)
+        self.dbOps.addItemToLibrary(
+            documentID: library.id!,
+            fieldName: .curriculums,
+            newItem: savedCurriculum
+        )
+        .sink(receiveCompletion: { [weak self] completion in
+            if case let .failure(error) = completion {
+                self?.fetchError.send(error)
+            }
+        }, receiveValue: {
+            // Nothing to do
+        })
+        .store(in: &self.cancellables)
     }
 
     public func removeCurriculum(curriculumID: String) {
@@ -139,20 +150,26 @@ public class LibraryManager {
     // MARK: - Stories
 
     public func addStory(storyID: String, caregiverID: String) {
-        guard var library = self.currentLibrary.value else {
+        guard let library = self.currentLibrary.value else {
             self.fetchError.send(DatabaseError.customError("Library not found"))
             return
         }
 
         let savedStory = SavedStory(id: storyID, caregiverID: caregiverID)
 
-        guard !library.stories.contains(where: { $0.id == storyID }) else {
-            log.info("\(storyID) is already saved.")
-            return
-        }
-
-        library.stories.append(savedStory)
-        self.updateLibrary(library)
+        self.dbOps.addItemToLibrary(
+            documentID: library.id!,
+            fieldName: .stories,
+            newItem: savedStory
+        )
+        .sink(receiveCompletion: { [weak self] completion in
+            if case let .failure(error) = completion {
+                self?.fetchError.send(error)
+            }
+        }, receiveValue: {
+            // Nothing to do
+        })
+        .store(in: &self.cancellables)
     }
 
     public func removeStory(storyID: String) {

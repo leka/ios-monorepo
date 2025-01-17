@@ -239,6 +239,38 @@ public class DatabaseOperations {
         .eraseToAnyPublisher()
     }
 
+    public func addItemToLibrary(
+        documentID: String,
+        fieldName: Library.EditableLibraryField,
+        newItem: some Encodable
+    ) -> Future<Void, Error> {
+        Future { promise in
+            do {
+                let encodedItem = try Firestore.Encoder().encode(newItem)
+                let collection = DatabaseCollection.libraries.rawValue
+                let field = fieldName.rawValue
+                let lastEditedAt = Library.EditableLibraryField.lastEditedAt.rawValue
+                let documentRef = self.database.collection(collection).document(documentID)
+
+                documentRef.updateData([
+                    field: FieldValue.arrayUnion([encodedItem]),
+                    lastEditedAt: FieldValue.serverTimestamp(),
+                ]) { error in
+                    if let error {
+                        log.error("Failed to update field \(field) in document \(documentID) in collection \(collection): \(error.localizedDescription)")
+                        promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                    } else {
+                        log.info("Successfully updated field \(field) in document \(documentID) in collection \(collection). 🎉")
+                        promise(.success(()))
+                    }
+                }
+            } catch {
+                log.error("Encoding error for item: \(error.localizedDescription)")
+                promise(.failure(DatabaseError.customError(error.localizedDescription)))
+            }
+        }
+    }
+
     public func delete(from collection: DatabaseCollection, documentID: String) -> AnyPublisher<Void, Error> {
         Future<Void, Error> { promise in
             let docRef = self.database.collection(collection.rawValue).document(documentID)
