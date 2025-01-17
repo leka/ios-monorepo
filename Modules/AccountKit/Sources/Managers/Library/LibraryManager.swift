@@ -77,17 +77,24 @@ public class LibraryManager {
     }
 
     public func removeActivity(activityID: String) {
-        guard var library = self.currentLibrary.value else {
+        guard let library = self.currentLibrary.value else {
             self.fetchError.send(DatabaseError.customError("Library not found"))
             return
         }
 
-        guard let index = library.activities.firstIndex(where: { $0.id == activityID }) else {
-            log.info("\(activityID) is not saved.")
-            return
-        }
-
-        library.activities.remove(at: index)
+        self.dbOps.removeItemFromLibrary(
+            documentID: library.id!,
+            fieldName: .activities,
+            itemID: activityID
+        )
+        .sink(receiveCompletion: { [weak self] completion in
+            if case let .failure(error) = completion {
+                self?.fetchError.send(error)
+            }
+        }, receiveValue: {
+            // Nothing to do
+        })
+        .store(in: &self.cancellables)
     }
 
     // MARK: - Curriculums
@@ -116,17 +123,24 @@ public class LibraryManager {
     }
 
     public func removeCurriculum(curriculumID: String) {
-        guard var library = self.currentLibrary.value else {
+        guard let library = self.currentLibrary.value else {
             self.fetchError.send(DatabaseError.customError("Library not found"))
             return
         }
 
-        guard let index = library.curriculums.firstIndex(where: { $0.id == curriculumID }) else {
-            log.info("\(curriculumID) is not saved.")
-            return
-        }
-
-        library.curriculums.remove(at: index)
+        self.dbOps.removeItemFromLibrary(
+            documentID: library.id!,
+            fieldName: .curriculums,
+            itemID: curriculumID
+        )
+        .sink(receiveCompletion: { [weak self] completion in
+            if case let .failure(error) = completion {
+                self?.fetchError.send(error)
+            }
+        }, receiveValue: {
+            // Nothing to do
+        })
+        .store(in: &self.cancellables)
     }
 
     // MARK: - Stories
@@ -155,17 +169,24 @@ public class LibraryManager {
     }
 
     public func removeStory(storyID: String) {
-        guard var library = self.currentLibrary.value else {
+        guard let library = self.currentLibrary.value else {
             self.fetchError.send(DatabaseError.customError("Library not found"))
             return
         }
 
-        guard let index = library.stories.firstIndex(where: { $0.id == storyID }) else {
-            log.info("\(storyID) is not saved.")
-            return
-        }
-
-        library.stories.remove(at: index)
+        self.dbOps.removeItemFromLibrary(
+            documentID: library.id!,
+            fieldName: .stories,
+            itemID: storyID
+        )
+        .sink(receiveCompletion: { [weak self] completion in
+            if case let .failure(error) = completion {
+                self?.fetchError.send(error)
+            }
+        }, receiveValue: {
+            // Nothing to do
+        })
+        .store(in: &self.cancellables)
     }
 
     // MARK: - Reset Data

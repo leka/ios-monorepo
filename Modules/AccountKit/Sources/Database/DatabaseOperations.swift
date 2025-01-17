@@ -243,6 +243,32 @@ public class DatabaseOperations {
         }
     }
 
+    public func removeItemFromLibrary(
+        documentID: String,
+        fieldName: Library.EditableLibraryField,
+        itemID: String
+    ) -> Future<Void, Error> {
+        Future { promise in
+            let collection = DatabaseCollection.libraries.rawValue
+            let field = fieldName.rawValue
+            let lastEditedAt = Library.EditableLibraryField.lastEditedAt.rawValue
+            let documentRef = self.database.collection(collection).document(documentID)
+
+            documentRef.updateData([
+                field: FieldValue.arrayRemove([itemID]),
+                lastEditedAt: FieldValue.serverTimestamp(),
+            ]) { error in
+                if let error {
+                    log.error("Failed to remove item with ID \(itemID) from field \(field) in document \(documentID) in collection \(collection): \(error.localizedDescription)")
+                    promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                } else {
+                    log.info("Successfully removed item with ID \(itemID) from field \(field) in document \(documentID) in collection \(collection). 🎉")
+                    promise(.success(()))
+                }
+            }
+        }
+    }
+
     public func delete(from collection: DatabaseCollection, documentID: String) -> AnyPublisher<Void, Error> {
         Future<Void, Error> { promise in
             let docRef = self.database.collection(collection.rawValue).document(documentID)
