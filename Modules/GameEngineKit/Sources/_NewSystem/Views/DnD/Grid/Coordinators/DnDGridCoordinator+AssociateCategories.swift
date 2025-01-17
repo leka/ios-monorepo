@@ -33,7 +33,7 @@ public class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorPr
     public func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDAnswerNode? = nil) {
         switch event {
             case .began:
-                self.updateChoiceState(for: self.rawChoices.first(where: { $0.id == choice.id })!, to: .selected)
+                self.updateChoiceState(for: self.rawChoices.first(where: { $0.id == choice.id })!, to: .dragged)
             case .ended:
                 guard let destination else {
                     self.updateChoiceState(for: self.rawChoices.first(where: { $0.id == choice.id })!, to: .idle)
@@ -112,6 +112,7 @@ public class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorPr
 extension DnDGridCoordinatorAssociateCategories {
     enum State: Equatable {
         case idle
+        case dragged
         case selected
         case correct
         case wrong
@@ -121,9 +122,12 @@ extension DnDGridCoordinatorAssociateCategories {
         switch state {
             case .idle:
                 self.moveNodeBackToInitialPosition(node)
-            case .selected:
+            case .dragged:
                 self.onDragAnimation(node)
                 node.zPosition += 100
+            case .selected:
+                // Nothing to do
+                break
             case .correct:
                 node.isDraggable = false
                 node.scale(to: CGSize(width: node.size.width * 0.75, height: node.size.height * 0.75))
