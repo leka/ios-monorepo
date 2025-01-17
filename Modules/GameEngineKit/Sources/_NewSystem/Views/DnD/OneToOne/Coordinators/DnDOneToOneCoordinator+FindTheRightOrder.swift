@@ -50,7 +50,7 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
     public func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDDropZoneNode? = nil) {
         switch event {
             case .began:
-                self.updateChoiceState(for: self.gameplay.orderedChoices.first(where: { $0.id == choice.id })!, to: .selected)
+                self.updateChoiceState(for: self.gameplay.orderedChoices.first(where: { $0.id == choice.id })!, to: .dragged)
             case .ended:
                 guard let destination else {
                     self.updateChoiceState(for: self.gameplay.orderedChoices.first(where: { $0.id == choice.id })!, to: .idle)
@@ -139,7 +139,7 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
 extension DnDOneToOneCoordinatorFindTheRightOrder {
     enum State: Equatable {
         case idle
-        case selected
+        case dragged
         case ordered(order: Int)
         case correct(order: Int)
     }
@@ -148,7 +148,7 @@ extension DnDOneToOneCoordinatorFindTheRightOrder {
         switch state {
             case .idle:
                 self.moveNodeBackToInitialPosition(node)
-            case .selected:
+            case .dragged:
                 self.onDragAnimation(node)
             case let .ordered(order):
                 node.snapToCenter(dropZone: self.uiDropZones[order])
