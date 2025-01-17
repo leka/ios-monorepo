@@ -124,7 +124,7 @@ exercises_payload:
                 is_right_answer: true
               - value: emotion_drawing_child_angry_zoe
                 type: image
-              - value: emotion_picto_sad_leka
+              - value: emotion_picto_joy_leka
                 type: image
               - value: emotion_picto_disgust_leka
                 type: image
