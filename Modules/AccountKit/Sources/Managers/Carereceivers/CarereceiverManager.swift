@@ -52,16 +52,20 @@ public class CarereceiverManager {
     }
 
     public func updateCarereceiver(carereceiver: Carereceiver) {
-        let ignoredFields: [String] = ["root_owner_uid", "uuid", "created_at"]
-        self.dbOps.update(data: carereceiver, in: .carereceivers, ignoringFields: ignoredFields)
+        let carereceiverData: [String: Any] = [
+            Carereceiver.CodingKeys.username.rawValue: carereceiver.username,
+            Carereceiver.CodingKeys.avatar.rawValue: carereceiver.avatar,
+            Carereceiver.CodingKeys.reinforcer.rawValue: carereceiver.reinforcer,
+        ]
+
+        self.dbOps.update(id: carereceiver.id!, data: carereceiverData, collection: .carereceivers)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
                     self.fetchError.send(error)
                 }
-            }, receiveValue: { [weak self] updatedCarereceiver in
+            }, receiveValue: { [weak self] in
                 guard let self else { return }
-                AnalyticsManager.logEventCarereceiverEdit(carereceivers: updatedCarereceiver.id!)
-                log.info("Carereceiver \(updatedCarereceiver.id!) successfully updated.")
+                AnalyticsManager.logEventCarereceiverEdit(carereceivers: carereceiver.id!)
             })
             .store(in: &self.cancellables)
     }
