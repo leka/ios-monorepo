@@ -56,13 +56,16 @@ extension TTSThenValidateView {
             TTSUIChoiceModel(view: TTSThenValidateCoordinatorFindTheRightAnswers.ChoiceView(value: "exclamationmark.triangle.fill", type: .sfsymbol,
                                                                                             size: 240, state: .wrong)),
         ]))
+        public private(set) var validationEnabled = CurrentValueSubject<Bool, Never>(false)
 
         func processUserSelection(choice: TTSUIChoiceModel) {
             log.debug("\(choice.id)")
+            self.validationEnabled.send(true)
         }
 
         func validateUserSelection() {
             log.debug("Validate")
+            self.validationEnabled.send(false)
         }
     }
 

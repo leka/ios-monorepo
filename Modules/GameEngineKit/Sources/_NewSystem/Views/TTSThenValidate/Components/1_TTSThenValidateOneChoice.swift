@@ -29,12 +29,16 @@ extension TTSThenValidateView {
             TTSUIChoiceModel(view: TTSThenValidateCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 1", type: .text, size: 240, state: .idle)),
         ]))
 
+        public private(set) var validationEnabled = CurrentValueSubject<Bool, Never>(false)
+
         func processUserSelection(choice: TTSUIChoiceModel) {
             log.debug("\(choice.id)")
+            self.validationEnabled.send(true)
         }
 
         func validateUserSelection() {
             log.debug("Validate")
+            self.validationEnabled.send(false)
         }
     }
 
