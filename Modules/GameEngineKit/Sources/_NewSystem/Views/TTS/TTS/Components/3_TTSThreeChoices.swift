@@ -21,6 +21,7 @@ extension TTSView {
                         } label: {
                             choice.view
                         }
+                        .disabled(choice.disabled)
                     }
                 }
 
@@ -29,6 +30,7 @@ extension TTSView {
                 } label: {
                     self.viewModel.choices[2].view
                 }
+                .disabled(self.viewModel.choices[2].disabled)
             }
         }
 
