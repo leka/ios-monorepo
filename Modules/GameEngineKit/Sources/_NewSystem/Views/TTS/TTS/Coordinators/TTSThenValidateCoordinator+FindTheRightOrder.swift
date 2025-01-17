@@ -49,7 +49,7 @@ public class TTSThenValidateCoordinatorFindTheRightOrder: TTSGameplayCoordinator
                                           size: self.uiModel.value.choiceSize(for: self.gameplay.orderedChoices.count),
                                           state: .correct(order: indice + 1))
 
-                    self.uiModel.value.choices[indice] = TTSUIChoiceModel(id: choice.id, view: view)
+                    self.uiModel.value.choices[indice] = TTSUIChoiceModel(id: choice.id, view: view, disabled: true)
                 }
             } else {
                 self.gameplay.orderedChoices.enumerated().forEach { index, choice in

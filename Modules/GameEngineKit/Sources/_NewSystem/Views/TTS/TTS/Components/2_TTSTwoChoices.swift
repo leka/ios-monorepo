@@ -20,6 +20,7 @@ extension TTSView {
                     } label: {
                         choice.view
                     }
+                    .disabled(choice.disabled)
                 }
             }
         }

@@ -46,7 +46,7 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
                                   size: self.uiModel.value.choiceSize(for: self.gameplay.choices.count),
                                   state: result.isCorrect ? .correct : .wrong)
 
-            self.uiModel.value.choices[index] = TTSUIChoiceModel(id: result.id, view: view)
+            self.uiModel.value.choices[index] = TTSUIChoiceModel(id: result.id, view: view, disabled: true)
         }
     }
 

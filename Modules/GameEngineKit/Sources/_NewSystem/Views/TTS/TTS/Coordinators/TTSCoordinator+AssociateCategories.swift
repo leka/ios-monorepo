@@ -103,7 +103,7 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
                               size: self.uiModel.value.choiceSize(for: self.rawChoices.count),
                               state: state)
 
-        self.uiModel.value.choices[index] = TTSUIChoiceModel(id: choice.id, view: view)
+        self.uiModel.value.choices[index] = TTSUIChoiceModel(id: choice.id, view: view, disabled: state == .correct)
     }
 }
 
