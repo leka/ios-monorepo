@@ -39,7 +39,7 @@ struct TTSThenValidateExercises: View {
                 }
 
                 NavigationLink {
-                    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswersAllAtOnce(choices: ExerciseData.TTSThenValidatexFindTheRightAnswers)
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(choices: ExerciseData.TTSThenValidatexFindTheRightAnswers, validationEnabled: false)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                     return TTSView(viewModel: viewModel)
