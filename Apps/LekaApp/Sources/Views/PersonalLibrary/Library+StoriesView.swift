@@ -12,7 +12,7 @@ import SwiftUI
 struct LibraryStoriesView: View {
     // MARK: Lifecycle
 
-    init(viewModel: RootAccountManagerViewModel) {
+    init(viewModel: LibraryManagerViewModel) {
         self.viewModel = viewModel
     }
 
@@ -38,11 +38,11 @@ struct LibraryStoriesView: View {
     // MARK: Private
 
     @ObservedObject private var navigation: Navigation = .shared
-    @ObservedObject private var viewModel: RootAccountManagerViewModel
+    @ObservedObject private var viewModel: LibraryManagerViewModel
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
 
     private var stories: [Story] {
-        self.viewModel.savedStories.compactMap { savedStories in
+        self.viewModel.stories.compactMap { savedStories in
             ContentKit.allStories.first { $0.id == savedStories.id }
         }
         .sorted {
@@ -52,7 +52,7 @@ struct LibraryStoriesView: View {
 }
 
 #Preview {
-    let viewModel = RootAccountManagerViewModel()
+    let viewModel = LibraryManagerViewModel()
     NavigationStack {
         LibraryStoriesView(viewModel: viewModel)
     }
