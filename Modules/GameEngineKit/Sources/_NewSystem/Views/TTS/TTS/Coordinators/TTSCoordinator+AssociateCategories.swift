@@ -31,6 +31,7 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
     // MARK: Public
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
+    public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
 
     public func processUserSelection(choiceID: String) {
         guard let choice = self.rawChoices.first(where: { $0.id == choiceID }) else {
@@ -81,6 +82,10 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
         }
     }
 
+    public func validateUserSelection() {
+        // Nothing to do
+    }
+
     // MARK: Private
 
     private var cancellables = Set<AnyCancellable>()
@@ -98,7 +103,7 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
                               size: self.uiModel.value.choiceSize(for: self.rawChoices.count),
                               state: state)
 
-        self.uiModel.value.choices[index] = TTSUIChoiceModel(id: choice.id, view: view)
+        self.uiModel.value.choices[index] = TTSUIChoiceModel(id: choice.id, view: view, disabled: state == .correct)
     }
 }
 

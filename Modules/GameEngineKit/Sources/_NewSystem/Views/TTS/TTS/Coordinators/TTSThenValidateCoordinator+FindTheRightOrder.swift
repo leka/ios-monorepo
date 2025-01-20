@@ -9,7 +9,7 @@ import SwiftUI
 // MARK: - TTSThenValidateCoordinatorFindTheRightOrder
 
 // swiftlint:disable:next type_name
-public class TTSThenValidateCoordinatorFindTheRightOrder: TTSThenValidateGameplayCoordinatorProtocol {
+public class TTSThenValidateCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
     public init(gameplay: NewGameplayFindTheRightOrder, action: Exercise.Action? = nil) {
@@ -28,12 +28,14 @@ public class TTSThenValidateCoordinatorFindTheRightOrder: TTSThenValidateGamepla
     // MARK: Public
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
+    public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(true)
 
-    public func processUserSelection(choice: TTSUIChoiceModel) {
-        guard let gameplayChoice = self.gameplay.orderedChoices.first(where: { $0.id == choice.id }),
+    public func processUserSelection(choiceID: String) {
+        guard let gameplayChoice = self.gameplay.orderedChoices.first(where: { $0.id == choiceID }),
               !self.choiceAlreadySelected(choice: gameplayChoice) else { return }
 
         self.select(choice: gameplayChoice)
+        self.validationEnabled.send(true)
     }
 
     public func validateUserSelection() {
@@ -47,7 +49,7 @@ public class TTSThenValidateCoordinatorFindTheRightOrder: TTSThenValidateGamepla
                                           size: self.uiModel.value.choiceSize(for: self.gameplay.orderedChoices.count),
                                           state: .correct(order: indice + 1))
 
-                    self.uiModel.value.choices[indice] = TTSUIChoiceModel(id: choice.id, view: view)
+                    self.uiModel.value.choices[indice] = TTSUIChoiceModel(id: choice.id, view: view, disabled: true)
                 }
             } else {
                 self.gameplay.orderedChoices.enumerated().forEach { index, choice in
@@ -62,6 +64,7 @@ public class TTSThenValidateCoordinatorFindTheRightOrder: TTSThenValidateGamepla
 
             self.currentOrderedChoices.removeAll()
         }
+        self.validationEnabled.send(false)
     }
 
     // MARK: Private
@@ -150,7 +153,7 @@ extension TTSThenValidateCoordinatorFindTheRightOrder {
 #Preview {
     let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultChoices)
     let coordinator = TTSThenValidateCoordinatorFindTheRightOrder(gameplay: gameplay)
-    let viewModel = TTSThenValidateViewViewModel(coordinator: coordinator)
+    let viewModel = TTSViewViewModel(coordinator: coordinator)
 
-    return TTSThenValidateView(viewModel: viewModel)
+    return TTSView(viewModel: viewModel)
 }

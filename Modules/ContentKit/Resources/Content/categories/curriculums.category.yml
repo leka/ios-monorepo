@@ -15,6 +15,24 @@ l10n:
       description: Curated groups of activities developed with caregivers for stepwise progression.
 
 content:
+  - id: recent_additions
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Ajouts récents
+          subtitle: Découvrez les dernières nouveautés ajoutées à notre catalogue.
+          description: Explorez les contenus récemment ajoutés pour enrichir et varier vos séances.
+      - locale: en_US
+        details:
+          title: Recent additions
+          subtitle: Discover the latest additions to our catalog.
+          description: Explore recently added content to enrich and diversify your sessions.
+    curriculums:
+      - curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
+      - curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
+      - curriculum_order_by_size-1FAED1FF14134571849325B6EC9197B5
+      - curriculum_order_by_size_different_animals-3158E58D908E43D29967B04D29C21912
+
   - id: emotion_recognition
     l10n:
       - locale: fr_FR

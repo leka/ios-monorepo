@@ -11,9 +11,10 @@ import SwiftUI
 public struct TTSUIChoiceModel: Identifiable {
     // MARK: Lifecycle
 
-    init(id: String = UUID().uuidString, view: some View = EmptyView()) {
+    init(id: String = UUID().uuidString, view: some View = EmptyView(), disabled: Bool = false) {
         self.id = id
         self.view = AnyView(view)
+        self.disabled = disabled
     }
 
     // MARK: Public
@@ -23,6 +24,7 @@ public struct TTSUIChoiceModel: Identifiable {
     // MARK: Internal
 
     let view: AnyView
+    let disabled: Bool
 }
 
 // MARK: - TTSUIModel

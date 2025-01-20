@@ -27,6 +27,7 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
     // MARK: Public
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
+    public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
 
     public func processUserSelection(choiceID: String) {
         guard let gameplayChoice = self.gameplay.orderedChoices.first(where: { $0.id == choiceID }),
@@ -44,7 +45,7 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
                                           size: self.uiModel.value.choiceSize(for: self.gameplay.orderedChoices.count),
                                           state: .correct(order: indice + 1))
 
-                    self.uiModel.value.choices[indice] = TTSUIChoiceModel(id: choice.id, view: view)
+                    self.uiModel.value.choices[indice] = TTSUIChoiceModel(id: choice.id, view: view, disabled: true)
                 }
             } else {
                 self.gameplay.orderedChoices.enumerated().forEach { index, choice in
@@ -59,6 +60,10 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
 
             self.currentOrderedChoices.removeAll()
         }
+    }
+
+    public func validateUserSelection() {
+        // Nothing to do
     }
 
     // MARK: Private

@@ -10,7 +10,7 @@ import SwiftUI
 struct LibraryCurriculumsView: View {
     // MARK: Lifecycle
 
-    init(viewModel: RootAccountManagerViewModel) {
+    init(viewModel: LibraryManagerViewModel) {
         self.viewModel = viewModel
     }
 
@@ -37,11 +37,11 @@ struct LibraryCurriculumsView: View {
     // MARK: Private
 
     @ObservedObject private var navigation: Navigation = .shared
-    @ObservedObject private var viewModel: RootAccountManagerViewModel
+    @ObservedObject private var viewModel: LibraryManagerViewModel
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
 
     private var curriculums: [Curriculum] {
-        self.viewModel.savedCurriculums.compactMap { savedCurriculums in
+        self.viewModel.curriculums.compactMap { savedCurriculums in
             ContentKit.allCurriculums.first { $0.id == savedCurriculums.id }
         }
         .sorted {
@@ -51,6 +51,6 @@ struct LibraryCurriculumsView: View {
 }
 
 #Preview {
-    let viewModel = RootAccountManagerViewModel()
+    let viewModel = LibraryManagerViewModel()
     LibraryCurriculumsView(viewModel: viewModel)
 }

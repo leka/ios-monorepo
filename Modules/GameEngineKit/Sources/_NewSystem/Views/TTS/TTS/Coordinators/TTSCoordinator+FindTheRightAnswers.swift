@@ -11,7 +11,7 @@ import SwiftUI
 public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorFindTheRightAnswersChoiceModel], action: Exercise.Action? = nil) {
+    public init(choices: [CoordinatorFindTheRightAnswersChoiceModel], action: Exercise.Action? = nil, validationEnabled: Bool? = nil) {
         self.rawChoices = choices
         self.gameplay = NewGameplayFindTheRightAnswers(
             choices: choices
@@ -26,26 +26,56 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
                                   state: .idle)
             return TTSUIChoiceModel(id: choice.id, view: view)
         }
+        self.validationEnabled.value = validationEnabled
     }
 
     // MARK: Public
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
+    public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
 
     public func processUserSelection(choiceID: String) {
-        let results = self.gameplay.process(choiceIDs: [choiceID])
-
-        results.forEach { result in
-            guard let index = self.rawChoices.firstIndex(where: { $0.id == result.id }) else {
-                return
+        if self.validationEnabled.value == nil {
+            self.currentChoices.removeAll()
+            self.currentChoices.append(choiceID)
+            self.validateUserSelection()
+        } else {
+            var choiceState: State {
+                if let index = currentChoices.firstIndex(where: { $0 == choiceID }) {
+                    self.currentChoices.remove(at: index)
+                    return .idle
+                } else {
+                    self.currentChoices.append(choiceID)
+                    return .selected
+                }
             }
 
-            let view = ChoiceView(value: self.rawChoices[index].value,
-                                  type: self.rawChoices[index].type,
-                                  size: self.uiModel.value.choiceSize(for: self.gameplay.choices.count),
-                                  state: result.isCorrect ? .correct : .wrong)
+            self.updateChoiceState(for: choiceID, to: choiceState)
+            self.validationEnabled.send(self.currentChoices.isNotEmpty)
+        }
+    }
 
-            self.uiModel.value.choices[index] = TTSUIChoiceModel(id: result.id, view: view)
+    public func validateUserSelection() {
+        let choiceIDs = self.currentChoices.compactMap { choice in
+            self.rawChoices.first(where: { $0.id == choice })?.id
+        }
+
+        let results = self.gameplay.process(choiceIDs: choiceIDs)
+
+        if self.validationEnabled.value != nil {
+            guard results.allSatisfy(\.isCorrect), self.gameplay.isCompleted.value else {
+                results.forEach { result in
+                    self.updateChoiceState(for: result.id, to: .idle)
+                }
+
+                self.gameplay.reset()
+                self.resetCurrentChoices()
+                return
+            }
+        }
+
+        results.forEach { result in
+            self.updateChoiceState(for: result.id, to: result.isCorrect ? .correct : .wrong)
         }
     }
 
@@ -54,12 +84,32 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
     private var cancellables = Set<AnyCancellable>()
 
     private let gameplay: NewGameplayFindTheRightAnswers
+
+    private var currentChoices: [String] = []
     private let rawChoices: [CoordinatorFindTheRightAnswersChoiceModel]
+
+    private func resetCurrentChoices() {
+        self.currentChoices = []
+        self.validationEnabled.value = false
+    }
+
+    private func updateChoiceState(for choiceID: String, to state: State) {
+        guard let index = self.rawChoices.firstIndex(where: { $0.id == choiceID }) else { return }
+
+        let view = ChoiceView(value: self.rawChoices[index].value,
+                              type: self.rawChoices[index].type,
+                              size: self.uiModel.value.choiceSize(for: self.rawChoices.count),
+                              state: state)
+
+        let isChoiceDisabled = (state == .correct || state == .wrong)
+        self.uiModel.value.choices[index] = TTSUIChoiceModel(id: choiceID, view: view, disabled: isChoiceDisabled)
+    }
 }
 
 extension TTSCoordinatorFindTheRightAnswers {
     enum State {
         case idle
+        case selected
         case correct
         case wrong
     }
@@ -82,6 +132,8 @@ extension TTSCoordinatorFindTheRightAnswers {
                     TTSChoiceViewDefaultCorrect(value: self.value, type: self.type, size: self.size)
                 case .wrong:
                     TTSChoiceViewDefaultWrong(value: self.value, type: self.type, size: self.size)
+                case .selected:
+                    TTSChoiceViewDefaultSelected(value: self.value, type: self.type, size: self.size)
                 case .idle:
                     TTSChoiceViewDefaultIdle(value: self.value, type: self.type, size: self.size)
             }

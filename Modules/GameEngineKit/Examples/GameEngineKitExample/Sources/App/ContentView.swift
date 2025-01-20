@@ -21,6 +21,8 @@ struct ContentView: View {
                             .frame(maxWidth: .infinity)
                             .padding()
 
+                        NoGameplayExercises()
+
                         MagicCardExercises()
 
                         TTSExercises()

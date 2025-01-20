@@ -17,6 +17,7 @@ extension TTSView {
             } label: {
                 choice.view
             }
+            .disabled(choice.disabled)
         }
     }
 }
@@ -25,6 +26,12 @@ extension TTSView {
     // MARK: - TTSEmptyCoordinator
 
     class TTSEmptyCoordinator: TTSGameplayCoordinatorProtocol {
+        var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
+
+        func validateUserSelection() {
+            log.debug("Choice validated")
+        }
+
         var uiModel = CurrentValueSubject<TTSUIModel, Never>(TTSUIModel(action: nil, choices: [
             TTSUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 1", type: .text, size: 240, state: .idle)),
         ]))

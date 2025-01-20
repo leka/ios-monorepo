@@ -43,7 +43,7 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
     public func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDDropZoneNode? = nil) {
         switch event {
             case .began:
-                self.updateChoiceState(for: self.rawChoices.first(where: { $0.id == choice.id })!, to: .selected)
+                self.updateChoiceState(for: self.rawChoices.first(where: { $0.id == choice.id })!, to: .dragged)
             case .ended:
                 guard let destination else {
                     self.updateChoiceState(for: self.rawChoices.first(where: { $0.id == choice.id })!, to: .idle)
@@ -116,6 +116,7 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
 extension DnDGridWithZonesCoordinatorAssociateCategories {
     enum State: Equatable {
         case idle
+        case dragged
         case selected
         case correct(dropZone: SKSpriteNode)
         case wrong
@@ -125,9 +126,12 @@ extension DnDGridWithZonesCoordinatorAssociateCategories {
         switch state {
             case .idle:
                 self.moveNodeBackToInitialPosition(node)
-            case .selected:
+            case .dragged:
                 self.onDragAnimation(node)
                 node.zPosition += 100
+            case .selected:
+                // Nothing to do
+                break
             case let .correct(dropzone):
                 node.isDraggable = false
                 node.repositionInside(dropZone: dropzone)

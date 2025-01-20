@@ -427,6 +427,24 @@
                 }
             }
         },
+        "game_engine_kit.exercise_view.validate_button_label": {
+            "comment": "The label for the validate button to confirm selected choices",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Validate"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Valider"
+                    }
+                }
+            }
+        },
         "game_engine_kit.hide_and_seek_view.launcher.instructions": {
             "comment": "HideAndSeekView Launcher instructions",
             "localizations": {
@@ -849,24 +867,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "\u274c ERREUR\nType non impl\u00e9ment\u00e9"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.tts_then_validate_view.validate_button_label": {
-            "comment": "The label for the validate button to confirm selected choices",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Validate"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Valider"
                     }
                 }
             }
