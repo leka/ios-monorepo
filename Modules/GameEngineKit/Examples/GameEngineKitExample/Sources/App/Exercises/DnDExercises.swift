@@ -39,8 +39,7 @@ struct DnDExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultImageChoicesWithZones)
-                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(gameplay: gameplay)
+                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(choices: ExerciseData.FindTheRightOrderChoicesImages)
                     let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
 
                     return DnDOneToOneView(viewModel: viewModel)

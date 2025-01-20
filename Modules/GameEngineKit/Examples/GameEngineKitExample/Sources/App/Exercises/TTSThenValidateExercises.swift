@@ -39,7 +39,8 @@ struct TTSThenValidateExercises: View {
                 }
 
                 NavigationLink {
-                    let coordinator = TTSCoordinatorFindTheRightAnswers(choices: ExerciseData.TTSThenValidatexFindTheRightAnswers, validationEnabled: false)
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(choices: ExerciseData.TTSThenValidatexFindTheRightAnswers,
+                                                                        validationEnabled: false)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                     return TTSView(viewModel: viewModel)
@@ -50,8 +51,8 @@ struct TTSThenValidateExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightOrder(choices: Array(NewGameplayFindTheRightOrder.kDefaultChoices[0..<3]))
-                    let coordinator = TTSThenValidateCoordinatorFindTheRightOrder(gameplay: gameplay)
+                    let coordinator = TTSCoordinatorFindTheRightOrder(choices: ExerciseData.FindTheRightOrderChoicesSFSymbols,
+                                                                      validationEnabled: false)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                     return TTSView(viewModel: viewModel)
