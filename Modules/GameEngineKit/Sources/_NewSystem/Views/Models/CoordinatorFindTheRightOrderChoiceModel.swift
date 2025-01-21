@@ -7,7 +7,7 @@ import Foundation
 public struct CoordinatorFindTheRightOrderChoiceModel: Identifiable, Equatable {
     // MARK: Lifecycle
 
-    public init(id: String = UUID().uuidString, value: String, type: ChoiceType = .text, alreadyOrdered: Bool = false) {
+    public init(id: UUID = UUID(), value: String, type: ChoiceType = .text, alreadyOrdered: Bool = false) {
         self.id = id
         self.value = value
         self.type = type
@@ -16,7 +16,7 @@ public struct CoordinatorFindTheRightOrderChoiceModel: Identifiable, Equatable {
 
     // MARK: Public
 
-    public let id: String
+    public let id: UUID
 
     // MARK: Internal
 

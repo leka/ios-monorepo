@@ -19,14 +19,14 @@ public enum AssociateCategory {
 public struct NewGameplayAssociateCategoriesChoiceModel: Identifiable {
     // MARK: Lifecycle
 
-    public init(id: String, category: AssociateCategory?) {
+    public init(id: UUID, category: AssociateCategory?) {
         self.id = id
         self.category = category
     }
 
     // MARK: Public
 
-    public let id: String
+    public let id: UUID
 
     // MARK: Internal
 
@@ -51,8 +51,8 @@ public class NewGameplayAssociateCategories: GameplayProtocol {
     public let choices: [NewGameplayAssociateCategoriesChoiceModel]
     public var isCompleted = CurrentValueSubject<Bool, Never>(false)
 
-    public func process(choiceIDs: [[String]]) -> [(id: String, isCategoryCorrect: Bool)] {
-        var results: [(id: String, isCategoryCorrect: Bool)] = []
+    public func process(choiceIDs: [[UUID]]) -> [(id: UUID, isCategoryCorrect: Bool)] {
+        var results: [(id: UUID, isCategoryCorrect: Bool)] = []
 
         let selectedChoices: [[NewGameplayAssociateCategoriesChoiceModel]] = choiceIDs.map { idArray in
             idArray.compactMap { id in

@@ -7,7 +7,7 @@ import Foundation
 public struct TTSCoordinatorNoGameplayChoiceModel {
     // MARK: Lifecycle
 
-    public init(id: String = UUID().uuidString, value: String, type: ChoiceType = .text) {
+    public init(id: UUID = UUID(), value: String, type: ChoiceType = .text) {
         self.id = id
         self.value = value
         self.type = type
@@ -15,7 +15,7 @@ public struct TTSCoordinatorNoGameplayChoiceModel {
 
     // MARK: Internal
 
-    let id: String
+    let id: UUID
     let value: String
     let type: ChoiceType
 }

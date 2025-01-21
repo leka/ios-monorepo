@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import Foundation
 
 #if DEBUG
 
@@ -33,8 +34,8 @@ import Combine
             log.debug("Choice validated")
         }
 
-        func processUserSelection(choiceID: String) {
-            log.debug("\(choiceID)")
+        func processUserSelection(choiceID: UUID) {
+            log.debug("\(choiceID.uuidString) selected")
         }
     }
 

@@ -34,7 +34,7 @@ public class TTSThenValidateCoordinatorFindTheRightAnswers: TTSGameplayCoordinat
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
     public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(true)
 
-    public func processUserSelection(choiceID: String) {
+    public func processUserSelection(choiceID: UUID) {
         var choiceState: State {
             if let index = currentChoices.firstIndex(where: { $0 == choiceID }) {
                 self.currentChoices.remove(at: index)
@@ -86,7 +86,7 @@ public class TTSThenValidateCoordinatorFindTheRightAnswers: TTSGameplayCoordinat
     private let gameplay: NewGameplayFindTheRightAnswers
 
     private let rawChoices: [CoordinatorFindTheRightAnswersChoiceModel]
-    private var currentChoices: [String] = []
+    private var currentChoices: [UUID] = []
 
     private var cancellables = Set<AnyCancellable>()
 

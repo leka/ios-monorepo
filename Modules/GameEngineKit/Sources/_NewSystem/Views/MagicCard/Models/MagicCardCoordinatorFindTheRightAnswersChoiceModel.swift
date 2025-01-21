@@ -8,7 +8,7 @@ import RobotKit
 public struct MagicCardCoordinatorFindTheRightAnswersChoiceModel {
     // MARK: Lifecycle
 
-    public init(id: String = UUID().uuidString, value: MagicCard, isRightAnswer: Bool = false) {
+    public init(id: UUID = UUID(), value: MagicCard, isRightAnswer: Bool = false) {
         self.id = id
         self.value = value
         self.isRightAnswer = isRightAnswer
@@ -16,7 +16,7 @@ public struct MagicCardCoordinatorFindTheRightAnswersChoiceModel {
 
     // MARK: Internal
 
-    let id: String
+    let id: UUID
     let value: MagicCard
     let isRightAnswer: Bool
 }

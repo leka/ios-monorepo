@@ -10,13 +10,13 @@ import Foundation
 public struct NewGameplayFindTheRightOrderChoice: Identifiable, Equatable {
     // MARK: Lifecycle
 
-    public init(id: String) {
+    public init(id: UUID) {
         self.id = id
     }
 
     // MARK: Public
 
-    public let id: String
+    public let id: UUID
 
     public static func == (lhs: NewGameplayFindTheRightOrderChoice, rhs: NewGameplayFindTheRightOrderChoice) -> Bool {
         lhs.id == rhs.id
@@ -42,7 +42,7 @@ public class NewGameplayFindTheRightOrder: GameplayProtocol {
 
     typealias ChoiceType = NewGameplayFindTheRightOrderChoice
 
-    func process(choiceIDs: [String]) -> [(id: String, correctPosition: Bool)] {
+    func process(choiceIDs: [UUID]) -> [(id: UUID, correctPosition: Bool)] {
         if self.orderedChoices.map(\.id) == choiceIDs {
             self.isCompleted.send(true)
             return self.orderedChoices.map { (id: $0.id, correctPosition: true) }

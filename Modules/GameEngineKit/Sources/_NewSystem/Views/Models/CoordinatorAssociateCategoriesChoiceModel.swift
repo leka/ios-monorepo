@@ -9,7 +9,7 @@ import Foundation
 public struct CoordinatorAssociateCategoriesChoiceModel {
     // MARK: Lifecycle
 
-    public init(id: String = UUID().uuidString, value: String, category: AssociateCategory?, type: ChoiceType = .text) {
+    public init(id: UUID = UUID(), value: String, category: AssociateCategory?, type: ChoiceType = .text) {
         self.id = id
         self.value = value
         self.category = category
@@ -18,7 +18,7 @@ public struct CoordinatorAssociateCategoriesChoiceModel {
 
     // MARK: Internal
 
-    let id: String
+    let id: UUID
     let value: String
     let category: AssociateCategory?
     let type: ChoiceType

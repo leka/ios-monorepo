@@ -35,7 +35,7 @@ public class TTSThenValidateCoordinatorNoGameplay: TTSGameplayCoordinatorProtoco
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
     public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(false)
 
-    public func processUserSelection(choiceID: String) {
+    public func processUserSelection(choiceID: UUID) {
         var choiceState: State {
             if let index = currentChoices.firstIndex(where: { $0 == choiceID }) {
                 self.currentChoices.remove(at: index)
@@ -103,7 +103,7 @@ public class TTSThenValidateCoordinatorNoGameplay: TTSGameplayCoordinatorProtoco
     private let rawChoices: [TTSCoordinatorNoGameplayChoiceModel]
     private let minimumToSelect: Int
     private let maximumToSelect: Int
-    private var currentChoices: [String] = []
+    private var currentChoices: [UUID] = []
 
     private var cancellables = Set<AnyCancellable>()
 
