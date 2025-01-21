@@ -41,8 +41,7 @@ struct TTSExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultChoices)
-                    let coordinator = TTSCoordinatorFindTheRightOrder(gameplay: gameplay)
+                    let coordinator = TTSCoordinatorFindTheRightOrder(choices: ExerciseData.FindTheRightOrderChoicesEmojis)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                     return TTSView(viewModel: viewModel)
