@@ -153,9 +153,9 @@ extension TTSCoordinatorFindTheRightAnswers {
         .init(value: "Choice 1\nCorrect", isRightAnswer: true),
         .init(value: "Choice 2", isRightAnswer: false),
         .init(value: "Choice 3\nCorrect", isRightAnswer: true),
-        .init(value: "checkmark.seal.fill", isRightAnswer: true, type: .sfsymbol),
+        .init(value: "checkmark.seal.fill", type: .sfsymbol, isRightAnswer: true),
         .init(value: "Choice 5\nCorrect", isRightAnswer: true),
-        .init(value: "exclamationmark.triangle.fill", isRightAnswer: false, type: .sfsymbol),
+        .init(value: "exclamationmark.triangle.fill", type: .sfsymbol, isRightAnswer: false),
     ]
 
     let coordinator = TTSCoordinatorFindTheRightAnswers(choices: kDefaultChoices)

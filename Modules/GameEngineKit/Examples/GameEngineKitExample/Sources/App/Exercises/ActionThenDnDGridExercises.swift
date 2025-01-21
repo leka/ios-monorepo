@@ -16,7 +16,7 @@ struct ActionThenDnDGridExercises: View {
             HStack(spacing: 20) {
                 NavigationLink {
                     let coordinator = DnDGridCoordinatorAssociateCategories(
-                        choices: ExerciseData.AssociateCategoriesChoicesDefault,
+                        choices: ExerciseData.kAssociateCategoriesChoicesDefault,
                         action: .ipad(type: .image("sport_dance_player_man"))
                     )
                     let viewModel = DnDGridViewModel(coordinator: coordinator)
@@ -30,7 +30,7 @@ struct ActionThenDnDGridExercises: View {
 
                 NavigationLink {
                     let coordinator = DnDGridCoordinatorAssociateCategories(
-                        choices: ExerciseData.AssociateCategoriesChoicesDefault,
+                        choices: ExerciseData.kAssociateCategoriesChoicesImages,
                         action: .ipad(type: .sfsymbol("star"))
                     )
                     let viewModel = DnDGridViewModel(coordinator: coordinator)
@@ -44,7 +44,7 @@ struct ActionThenDnDGridExercises: View {
 
                 NavigationLink {
                     let coordinator = DnDGridCoordinatorAssociateCategories(
-                        choices: ExerciseData.AssociateCategoriesChoicesDefault,
+                        choices: ExerciseData.kAssociateCategoriesChoicesSFSymbols,
                         action: .ipad(type: .audio("sound_animal_duck"))
                     )
                     let viewModel = DnDGridViewModel(coordinator: coordinator)
@@ -58,7 +58,7 @@ struct ActionThenDnDGridExercises: View {
 
                 NavigationLink {
                     let coordinator = DnDGridCoordinatorAssociateCategories(
-                        choices: ExerciseData.AssociateCategoriesChoicesDefault,
+                        choices: ExerciseData.kAssociateCategoriesChoicesEmojis,
                         action: .ipad(type: .speech("Correct answer"))
                     )
                     let viewModel = DnDGridViewModel(coordinator: coordinator)
@@ -72,8 +72,8 @@ struct ActionThenDnDGridExercises: View {
 
                 NavigationLink {
                     let coordinator = DnDGridCoordinatorAssociateCategories(
-                        choices: ExerciseData.AssociateCategoriesChoicesDefault,
-                        action: .robot(type: .color("yellow"))
+                        choices: ExerciseData.kAssociateCategoriesChoicesColors,
+                        action: .robot(type: .color("blue"))
                     )
                     let viewModel = DnDGridViewModel(coordinator: coordinator)
 
@@ -86,7 +86,7 @@ struct ActionThenDnDGridExercises: View {
 
                 NavigationLink {
                     let coordinator = DnDGridCoordinatorAssociateCategories(
-                        choices: ExerciseData.AssociateCategoriesChoicesDefault,
+                        choices: ExerciseData.kAssociateCategoriesChoicesDefault,
                         action: .robot(type: .image("robotFaceHappy"))
                     )
                     let viewModel = DnDGridViewModel(coordinator: coordinator)

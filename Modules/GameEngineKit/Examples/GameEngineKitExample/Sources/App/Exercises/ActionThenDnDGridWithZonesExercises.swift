@@ -14,7 +14,7 @@ struct ActionThenDnDGridWithZoneExercises: View {
             HStack(spacing: 20) {
                 NavigationLink {
                     let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(
-                        choices: ExerciseData.AssociateCategoriesWithZonesChoicesDefault,
+                        choices: ExerciseData.kAssociateCategoriesWithZonesChoicesDefault,
                         action: .ipad(type: .image("sport_dance_player_man"))
                     )
 
@@ -29,7 +29,7 @@ struct ActionThenDnDGridWithZoneExercises: View {
 
                 NavigationLink {
                     let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(
-                        choices: ExerciseData.AssociateCategoriesWithZonesChoicesDefault,
+                        choices: ExerciseData.kAssociateCategoriesWithZonesChoicesImages,
                         action: .ipad(type: .sfsymbol("star"))
                     )
                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
@@ -43,7 +43,7 @@ struct ActionThenDnDGridWithZoneExercises: View {
 
                 NavigationLink {
                     let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(
-                        choices: ExerciseData.AssociateCategoriesWithZonesChoicesDefault,
+                        choices: ExerciseData.kAssociateCategoriesWithZonesChoicesEmojis,
                         action: .ipad(type: .audio("sound_animal_duck"))
                     )
                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
@@ -57,7 +57,7 @@ struct ActionThenDnDGridWithZoneExercises: View {
 
                 NavigationLink {
                     let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(
-                        choices: ExerciseData.AssociateCategoriesWithZonesChoicesDefault,
+                        choices: ExerciseData.kAssociateCategoriesWithZonesChoicesSFSymbols,
                         action: .ipad(type: .speech("Correct answer"))
                     )
                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
@@ -71,7 +71,7 @@ struct ActionThenDnDGridWithZoneExercises: View {
 
                 NavigationLink {
                     let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(
-                        choices: ExerciseData.AssociateCategoriesWithZonesChoicesDefault,
+                        choices: ExerciseData.kAssociateCategoriesWithZonesChoicesColors,
                         action: .robot(type: .color("orange"))
                     )
                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
@@ -85,7 +85,7 @@ struct ActionThenDnDGridWithZoneExercises: View {
 
                 NavigationLink {
                     let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(
-                        choices: ExerciseData.AssociateCategoriesWithZonesChoicesDefault,
+                        choices: ExerciseData.kAssociateCategoriesWithZonesChoicesDefault,
                         action: .robot(type: .image("robotFaceHappy"))
                     )
                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)

@@ -14,7 +14,7 @@ struct DnDExercises: View {
             HStack(spacing: 20) {
                 NavigationLink {
                     let coordinator = DnDGridCoordinatorAssociateCategories(
-                        choices: ExerciseData.AssociateCategoriesChoicesDefault
+                        choices: ExerciseData.kAssociateCategoriesChoicesDefault
                     )
                     let viewModel = DnDGridViewModel(coordinator: coordinator)
 
@@ -27,7 +27,7 @@ struct DnDExercises: View {
 
                 NavigationLink {
                     let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(
-                        choices: ExerciseData.AssociateCategoriesWithZonesChoicesDefault
+                        choices: ExerciseData.kAssociateCategoriesWithZonesChoicesDefault
                     )
                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 
@@ -39,7 +39,7 @@ struct DnDExercises: View {
                 }
 
                 NavigationLink {
-                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(choices: ExerciseData.FindTheRightOrderChoicesImages)
+                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(choices: ExerciseData.kFindTheRightOrderChoicesImages)
                     let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
 
                     return DnDOneToOneView(viewModel: viewModel)

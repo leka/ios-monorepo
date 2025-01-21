@@ -6,6 +6,7 @@ import Foundation
 
 // MARK: - CoordinatorAssociateCategoriesChoiceModel
 
+// swiftlint:disable:next type_name
 public struct CoordinatorAssociateCategoriesChoiceModel {
     // MARK: Lifecycle
 
