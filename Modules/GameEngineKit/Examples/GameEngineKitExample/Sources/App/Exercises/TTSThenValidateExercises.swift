@@ -5,19 +5,6 @@
 import GameEngineKit
 import SwiftUI
 
-// MARK: - ExerciseData
-
-extension ExerciseData {
-    static let TTSThenValidatexFindTheRightAnswers: [CoordinatorFindTheRightAnswersChoiceModel] = [
-        .init(value: "Choice 1\nCorrect", isRightAnswer: true),
-        .init(value: "Choice 2", isRightAnswer: false),
-        .init(value: "Choice 3\nCorrect", isRightAnswer: true),
-        .init(value: "checkmark.seal.fill", isRightAnswer: true, type: .sfsymbol),
-        .init(value: "Choice 5\nCorrect", isRightAnswer: true),
-        .init(value: "exclamationmark.triangle.fill", isRightAnswer: false, type: .sfsymbol),
-    ]
-}
-
 // MARK: - TTSThenValidateExercises
 
 struct TTSThenValidateExercises: View {
@@ -28,18 +15,7 @@ struct TTSThenValidateExercises: View {
         ScrollView(.horizontal) {
             HStack(spacing: 20) {
                 NavigationLink {
-                    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswers(choices: ExerciseData.TTSThenValidatexFindTheRightAnswers)
-                    let viewModel = TTSViewViewModel(coordinator: coordinator)
-
-                    return TTSView(viewModel: viewModel)
-                        .navigationTitle("Find The Right Answers")
-                        .navigationBarTitleDisplayMode(.large)
-                } label: {
-                    ExerciseNavigationButtonLabel(text: "Right Answers", color: .cyan)
-                }
-
-                NavigationLink {
-                    let coordinator = TTSCoordinatorFindTheRightAnswers(choices: ExerciseData.TTSThenValidatexFindTheRightAnswers,
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(choices: ExerciseData.kFindTheRightAnswersChoicesDefault,
                                                                         validationEnabled: false)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -51,7 +27,7 @@ struct TTSThenValidateExercises: View {
                 }
 
                 NavigationLink {
-                    let coordinator = TTSCoordinatorFindTheRightOrder(choices: ExerciseData.FindTheRightOrderChoicesSFSymbols,
+                    let coordinator = TTSCoordinatorFindTheRightOrder(choices: ExerciseData.kFindTheRightOrderChoicesSFSymbols,
                                                                       validationEnabled: false)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
