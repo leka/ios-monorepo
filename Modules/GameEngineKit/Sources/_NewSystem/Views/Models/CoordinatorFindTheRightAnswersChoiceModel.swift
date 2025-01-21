@@ -8,7 +8,7 @@ import Foundation
 public struct CoordinatorFindTheRightAnswersChoiceModel {
     // MARK: Lifecycle
 
-    public init(id: UUID = UUID(), value: String, isRightAnswer: Bool, type: ChoiceType = .text, isRightAnswer: Bool = false) {
+    public init(id: UUID = UUID(), value: String, type: ChoiceType = .text, isRightAnswer: Bool = false) {
         self.id = id
         self.value = value
         self.isRightAnswer = isRightAnswer
