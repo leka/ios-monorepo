@@ -7,12 +7,12 @@ import ContentKit
 import RobotKit
 import SwiftUI
 
-// MARK: - TTSThenValidateCoordinatorNoGameplay
+// MARK: - TTSCoordinatorNoGameplay
 
-public class TTSThenValidateCoordinatorNoGameplay: TTSGameplayCoordinatorProtocol {
+public class TTSCoordinatorNoGameplay: TTSGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [TTSCoordinatorNoGameplayChoiceModel], action: Exercise.Action? = nil, minimumToSelect: Int = 0, maximumToSelect: Int? = nil) {
+    public init(choices: [CoordinatorNoGameplayChoiceModel], action: Exercise.Action? = nil, minimumToSelect: Int = 0, maximumToSelect: Int? = nil) {
         self.rawChoices = choices
 
         self.uiModel.value.action = action
@@ -100,7 +100,7 @@ public class TTSThenValidateCoordinatorNoGameplay: TTSGameplayCoordinatorProtoco
 
     // MARK: Private
 
-    private let rawChoices: [TTSCoordinatorNoGameplayChoiceModel]
+    private let rawChoices: [CoordinatorNoGameplayChoiceModel]
     private let minimumToSelect: Int
     private let maximumToSelect: Int
     private var currentChoices: [UUID] = []
@@ -112,7 +112,7 @@ public class TTSThenValidateCoordinatorNoGameplay: TTSGameplayCoordinatorProtoco
     }
 }
 
-extension TTSThenValidateCoordinatorNoGameplay {
+extension TTSCoordinatorNoGameplay {
     enum State {
         case idle
         case selected
@@ -155,7 +155,7 @@ extension TTSThenValidateCoordinatorNoGameplay {
 }
 
 #Preview {
-    let kDefaultChoices: [TTSCoordinatorNoGameplayChoiceModel] = [
+    let kDefaultChoices: [CoordinatorNoGameplayChoiceModel] = [
         .init(value: "Choice 1\nCorrect"),
         .init(value: "Choice 2"),
         .init(value: "Choice 3\nCorrect"),
@@ -164,7 +164,7 @@ extension TTSThenValidateCoordinatorNoGameplay {
         .init(value: "exclamationmark.triangle.fill", type: .sfsymbol),
     ]
 
-    let coordinator = TTSThenValidateCoordinatorNoGameplay(choices: kDefaultChoices)
+    let coordinator = TTSCoordinatorNoGameplay(choices: kDefaultChoices)
     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
     return TTSView(viewModel: viewModel)
