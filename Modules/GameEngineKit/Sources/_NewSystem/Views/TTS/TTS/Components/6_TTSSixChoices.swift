@@ -6,6 +6,8 @@ import Combine
 import ContentKit
 import SwiftUI
 
+// MARK: - TTSView.SixChoicesView
+
 extension TTSView {
     struct SixChoicesView: View {
         // MARK: Internal
@@ -45,35 +47,11 @@ extension TTSView {
     }
 }
 
-#Preview {
-    // MARK: - TTSEmptyCoordinator
+#if DEBUG
+    #Preview {
+        let coordinator = TTSEmptyCoordinator(choices: Array(TTSEmptyCoordinator.kDefaultChoices.prefix(6)))
+        let viewModel = TTSViewViewModel(coordinator: coordinator)
 
-    class TTSEmptyCoordinator: TTSGameplayCoordinatorProtocol {
-        var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
-
-        func validateUserSelection() {
-            log.debug("Choice validated")
-        }
-
-        var uiModel = CurrentValueSubject<TTSUIModel, Never>(TTSUIModel(action: nil, choices: [
-            TTSUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 1", type: .text, size: 240, state: .idle)),
-            TTSUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 2", type: .text,
-                                                                                size: 240, state: .idle)),
-            TTSUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 3\nCorrect", type: .text,
-                                                                                size: 240, state: .correct)),
-            TTSUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "}.triangle.fill", type: .sfsymbol,
-                                                                                size: 240, state: .wrong)),
-            TTSUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 5", type: .text, size: 240, state: .idle)),
-            TTSUIChoiceModel(view: TTSCoordinatorFindTheRightAnswers.ChoiceView(value: "Choice 6", type: .text, size: 240, state: .idle)),
-        ]))
-
-        func processUserSelection(choiceID: String) {
-            log.debug("\(choiceID)")
-        }
+        return TTSView(viewModel: viewModel)
     }
-
-    let coordinator = TTSEmptyCoordinator()
-    let viewModel = TTSViewViewModel(coordinator: coordinator)
-
-    return TTSView(viewModel: viewModel)
-}
+#endif
