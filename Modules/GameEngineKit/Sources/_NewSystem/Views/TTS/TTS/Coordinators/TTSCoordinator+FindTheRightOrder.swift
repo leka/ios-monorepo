@@ -32,7 +32,7 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
     public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
 
-    public func processUserSelection(choiceID: String) {
+    public func processUserSelection(choiceID: UUID) {
         if self.validationEnabled.value == nil {
             guard !self.choiceAlreadySelected(choiceID: choiceID) else { return }
 
@@ -80,7 +80,7 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
 
     // MARK: Private
 
-    private var currentOrderedChoices: [String] = []
+    private var currentOrderedChoices: [UUID] = []
     private let gameplay: NewGameplayFindTheRightOrder
     private let rawChoices: [CoordinatorFindTheRightOrderChoiceModel]
 
@@ -88,11 +88,11 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
         self.currentOrderedChoices.count
     }
 
-    private func choiceAlreadySelected(choiceID: String) -> Bool {
+    private func choiceAlreadySelected(choiceID: UUID) -> Bool {
         self.currentOrderedChoices.contains(where: { $0 == choiceID })
     }
 
-    private func updateChoiceState(for choiceID: String, to state: State) {
+    private func updateChoiceState(for choiceID: UUID, to state: State) {
         guard let index = self.rawChoices.firstIndex(where: { $0.id == choiceID }) else { return }
 
         let view = ChoiceView(value: self.rawChoices[index].value,

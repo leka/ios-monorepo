@@ -34,7 +34,7 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
     public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
 
-    public func processUserSelection(choiceID: String) {
+    public func processUserSelection(choiceID: UUID) {
         if self.validationEnabled.value == nil {
             self.currentChoices.removeAll()
             self.currentChoices.append(choiceID)
@@ -85,7 +85,7 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
 
     private let gameplay: NewGameplayFindTheRightAnswers
 
-    private var currentChoices: [String] = []
+    private var currentChoices: [UUID] = []
     private let rawChoices: [CoordinatorFindTheRightAnswersChoiceModel]
 
     private func resetCurrentChoices() {
@@ -93,7 +93,7 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
         self.validationEnabled.value = false
     }
 
-    private func updateChoiceState(for choiceID: String, to state: State) {
+    private func updateChoiceState(for choiceID: UUID, to state: State) {
         guard let index = self.rawChoices.firstIndex(where: { $0.id == choiceID }) else { return }
 
         let view = ChoiceView(value: self.rawChoices[index].value,

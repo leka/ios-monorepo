@@ -11,7 +11,7 @@ import SwiftUI
 public class DnDAnswerNode: SKSpriteNode {
     // MARK: Lifecycle
 
-    init(id: String, value: String, type: ChoiceType, size: CGSize) {
+    init(id: UUID, value: String, type: ChoiceType, size: CGSize) {
         self.id = id
         self.type = type
         let texture: SKTexture = switch type {
@@ -39,7 +39,7 @@ public class DnDAnswerNode: SKSpriteNode {
 
     // MARK: Internal
 
-    let id: String
+    let id: UUID
     let type: ChoiceType
     var initialPosition: CGPoint?
     var isDraggable = true
