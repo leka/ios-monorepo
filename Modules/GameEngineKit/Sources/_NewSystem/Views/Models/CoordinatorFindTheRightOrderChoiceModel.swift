@@ -4,6 +4,7 @@
 
 import Foundation
 
+// swiftlint:disable:next type_name
 public struct CoordinatorFindTheRightOrderChoiceModel: Identifiable, Equatable {
     // MARK: Lifecycle
 
