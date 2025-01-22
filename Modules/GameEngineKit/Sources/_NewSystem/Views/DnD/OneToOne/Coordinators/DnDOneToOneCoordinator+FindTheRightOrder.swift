@@ -13,7 +13,7 @@ import UtilsKit
 public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorFindTheRightOrderChoiceModel], action: Exercise.Action? = nil) {
+    public init(choices: [CoordinatorFindTheRightOrderChoiceModel], action: Exercise.Action? = nil, validationEnabled: Bool? = nil) {
         self.rawChoices = choices
 
         self.gameplay = NewGameplayFindTheRightOrder(choices: choices.map { .init(id: $0.id) })
@@ -33,6 +33,7 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
         }
 
         self.uiModel.value.choices.shuffle()
+        self.validationEnabled.value = validationEnabled
 
         self.currentOrderedChoices = Array(repeating: nil, count: self.gameplay.orderedChoices.count)
         self.alreadyValidatedChoices = Array(repeating: nil, count: self.gameplay.orderedChoices.count)
@@ -42,6 +43,7 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
 
     public private(set) var uiDropZones: [DnDDropZoneNode] = []
     public private(set) var uiModel = CurrentValueSubject<DnDOneToOneUIModel, Never>(.zero)
+    public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
 
     public func setAlreadyOrderedNodes() {
         self.rawChoices.forEach { choice in
@@ -58,6 +60,10 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
         switch event {
             case .began:
                 self.updateChoiceState(for: choiceID, to: .dragged)
+                self.disableValidation()
+                if let index = self.currentOrderedChoices.firstIndex(where: { $0 == choiceID }) {
+                    self.currentOrderedChoices[index] = nil
+                }
             case .ended:
                 guard let destinationID else {
                     self.updateChoiceState(for: choiceID, to: .idle)
@@ -65,6 +71,24 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
                 }
 
                 self.processUserDropOnDestination(choiceID: choiceID, destinationID: destinationID)
+        }
+    }
+
+    public func validateUserSelection() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            let results = self.gameplay.process(choiceIDs: self.currentOrderedChoices.map { $0! })
+
+            results.enumerated().forEach { index, result in
+                let choiceID = self.rawChoices.first(where: { $0.id == result.id })!.id
+                if result.correctPosition {
+                    self.updateChoiceState(for: choiceID, to: .correct(order: index))
+                    self.alreadyValidatedChoices[index] = choiceID
+                } else {
+                    self.disableValidation()
+                    self.updateChoiceState(for: choiceID, to: .idle)
+                    self.currentOrderedChoices[index] = nil
+                }
+            }
         }
     }
 
@@ -83,19 +107,10 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
 
         self.order(choiceID: choiceID, dropZoneIndex: destinationIndex)
         if self.currentOrderedChoices.doesNotContain(nil) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                let results = self.gameplay.process(choiceIDs: self.currentOrderedChoices.map { $0! })
-
-                results.enumerated().forEach { index, result in
-                    let choiceID = self.rawChoices.first(where: { $0.id == result.id })!.id
-                    if result.correctPosition {
-                        self.updateChoiceState(for: choiceID, to: .correct(order: index))
-                        self.alreadyValidatedChoices[index] = choiceID
-                    } else {
-                        self.updateChoiceState(for: choiceID, to: .idle)
-                        self.currentOrderedChoices[index] = nil
-                    }
-                }
+            if self.validationEnabled.value == nil {
+                self.validateUserSelection()
+            } else {
+                self.validationEnabled.send(true)
             }
         }
     }
@@ -108,6 +123,12 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
 
     private func choiceAlreadySelected(choiceID: UUID) -> Bool {
         self.alreadyValidatedChoices.contains(where: { $0 == choiceID })
+    }
+
+    private func disableValidation() {
+        if self.validationEnabled.value != nil {
+            self.validationEnabled.send(false)
+        }
     }
 
     private func order(choiceID: UUID, dropZoneIndex: Int) {
