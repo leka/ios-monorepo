@@ -9,5 +9,5 @@ import Foundation
 public protocol DnDGridWithZonesGameplayCoordinatorProtocol {
     var uiModel: CurrentValueSubject<DnDGridWithZonesUIModel, Never> { get }
     var uiDropZoneModel: DnDGridWithZonesUIDropzoneModel { get }
-    func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDDropZoneNode?)
+    func onTouch(_ event: DnDTouchEvent, choiceID: UUID, destinationID: UUID?)
 }

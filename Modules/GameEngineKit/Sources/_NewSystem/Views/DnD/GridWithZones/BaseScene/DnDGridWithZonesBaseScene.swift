@@ -35,7 +35,7 @@ class DnDGridWithZonesBaseScene: SKScene {
         if let node = atPoint(location) as? DnDAnswerNode {
             for choice in self.viewModel.choices where node.id == choice.id && node.isDraggable {
                 selectedNodes[touch] = node
-                self.viewModel.onTouch(.began, choice: node)
+                self.viewModel.onTouch(.began, choiceID: node.id)
             }
         }
     }
@@ -57,9 +57,9 @@ class DnDGridWithZonesBaseScene: SKScene {
             return
         }
 
-        self.viewModel.onTouch(.ended, choice: playedNode, destination: self.dropZonesNodes.first(where: {
+        self.viewModel.onTouch(.ended, choiceID: playedNode.id, destinationID: self.dropZonesNodes.first(where: {
             $0.frame.contains(touch.location(in: self))
-        }))
+        })?.id)
     }
 
     func reset() {
