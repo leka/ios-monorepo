@@ -6,7 +6,6 @@ import Combine
 import ContentKit
 import SpriteKit
 import SwiftUI
-import UtilsKit
 
 // MARK: - DnDOneToOneCoordinatorFindTheRightOrder
 
@@ -177,45 +176,22 @@ extension DnDOneToOneCoordinatorFindTheRightOrder {
     private func updateUINodeState(node: DnDAnswerNode, state: State) {
         switch state {
             case .idle:
-                self.moveNodeBackToInitialPosition(node)
+                node.triggerDefaultIdleBehavior()
             case .dragged:
-                self.onDragAnimation(node)
+                node.triggerDefaultDraggedBehavior()
             case let .ordered(order):
-                node.snapToCenter(dropZone: self.uiDropZones[order])
+                self.triggerOrderedBehavior(for: node, in: self.uiDropZones[order])
             case let .correct(order):
-                node.snapToCenter(dropZone: self.uiDropZones[order])
-                node.isDraggable = false
+                self.triggerCorrectBehavior(for: node, in: self.uiDropZones[order])
         }
     }
 
-    // MARK: - Animations
-
-    private func onDragAnimation(_ node: SKSpriteNode) {
-        let wiggleAnimation = SKAction.sequence([
-            SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: -4)), duration: 0.1),
-            SKAction.rotate(byAngle: 0.0, duration: 0.1),
-            SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: 4)), duration: 0.1),
-        ])
-        node.zPosition += 100
-        node.run(SKAction.repeatForever(wiggleAnimation))
+    private func triggerOrderedBehavior(for node: DnDAnswerNode, in dropzone: SKSpriteNode) {
+        node.snapToCenter(dropZone: dropzone)
     }
 
-    // MARK: Private
-
-    private func onDropAction(_ node: SKSpriteNode) {
-        node.zRotation = 0
-        node.removeAllActions()
-    }
-
-    private func moveNodeBackToInitialPosition(_ node: DnDAnswerNode) {
-        let moveAnimation = SKAction.move(to: node.initialPosition ?? .zero, duration: 0.25)
-        node.run(
-            moveAnimation,
-            completion: {
-                node.position = node.initialPosition ?? .zero
-                node.zPosition = 10
-                self.onDropAction(node)
-            }
-        )
+    private func triggerCorrectBehavior(for node: DnDAnswerNode, in dropzone: SKSpriteNode) {
+        node.snapToCenter(dropZone: dropzone)
+        node.isDraggable = false
     }
 }
