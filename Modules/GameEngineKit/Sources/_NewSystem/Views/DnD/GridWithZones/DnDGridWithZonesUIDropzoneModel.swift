@@ -20,23 +20,23 @@ public struct DnDGridWithZonesUIDropzoneModel {
                  .ipad(type: .sfsymbol):
                 switch numberOfChoices {
                     case 1:
-                        CGSize(width: 315, height: 236.25)
+                        CGSize(width: 300, height: 225)
                     default:
-                        CGSize(width: 210, height: 157.5)
+                        CGSize(width: 200, height: 150)
                 }
             case .none:
-                CGSize(width: 420, height: 315)
+                CGSize(width: 400, height: 300)
             case .ipad(type: .audio),
                  .ipad(type: .speech),
                  .robot:
                 switch numberOfChoices {
                     case 1:
-                        CGSize(width: 420, height: 315)
+                        CGSize(width: 400, height: 300)
                     default:
-                        CGSize(width: 315, height: 236.25)
+                        CGSize(width: 300, height: 225)
                 }
             default:
-                CGSize(width: 210, height: 157.5)
+                CGSize(width: 200, height: 150)
         }
     }
 }
