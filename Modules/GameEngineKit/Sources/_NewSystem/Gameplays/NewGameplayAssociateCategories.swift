@@ -61,9 +61,10 @@ public class NewGameplayAssociateCategories: GameplayProtocol {
         }
 
         for category in selectedChoices {
+            let correctCategory = category[0].category
             let categoryGroups = Dictionary(grouping: category, by: { $0.category })
-            for (_, categoryChoices) in categoryGroups {
-                if categoryChoices.count > 1 {
+            for (subCategory, categoryChoices) in categoryGroups {
+                if categoryChoices.count > 1, subCategory == correctCategory {
                     categoryChoices.forEach { choice in
                         results.append((choice.id, true))
                         self.remainingRightAnswers.removeAll { $0.id == choice.id }
