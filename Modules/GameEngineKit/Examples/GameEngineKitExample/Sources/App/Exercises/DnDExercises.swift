@@ -50,6 +50,20 @@ struct DnDExercises: View {
                 }
 
                 NavigationLink {
+                    let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(
+                        choices: ExerciseData.kAssociateCategoriesWithZonesChoicesEmojis,
+                        validationEnabled: false
+                    )
+                    let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
+
+                    return DnDGridWithZonesView(viewModel: viewModel)
+                        .navigationTitle("Validate With Zones")
+                        .navigationBarTitleDisplayMode(.large)
+                } label: {
+                    ExerciseNavigationButtonLabel(text: "Validate With Zones", color: .green)
+                }
+
+                NavigationLink {
                     let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(choices: ExerciseData.kFindTheRightOrderChoicesEmojis,
                                                                               validationEnabled: false)
                     let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
