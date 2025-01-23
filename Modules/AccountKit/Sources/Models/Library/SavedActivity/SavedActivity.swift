@@ -7,9 +7,9 @@ import SwiftUI
 public struct SavedActivity: Hashable {
     // MARK: Public
 
-    public var id: String?
+    public var id: String
     public var caregiverID: String
-    public var addedAt: Date
+    public var addedAt = Date()
 
     // MARK: Internal
 

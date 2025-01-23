@@ -82,10 +82,17 @@ public class LibraryManager {
             return
         }
 
-        self.dbOps.removeItemFromLibrary(
+        guard let activityToRemove = library.activities.first(where: { $0.id == activityID }) else {
+            log.info("Activity \(activityID) is not in the library.")
+            return
+        }
+
+        let savedActivity = SavedActivity(id: activityToRemove.id, caregiverID: activityToRemove.caregiverID, addedAt: activityToRemove.addedAt)
+
+        self.dbOps.removeItemWithStringDateFromLibrary(
             documentID: library.id!,
             fieldName: .activities,
-            itemID: activityID
+            valueToRemove: savedActivity
         )
         .sink(receiveCompletion: { [weak self] completion in
             if case let .failure(error) = completion {

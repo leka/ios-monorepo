@@ -243,6 +243,7 @@ public class DatabaseOperations {
         }
     }
 
+    // original
     public func removeItemFromLibrary(
         documentID: String,
         fieldName: Library.EditableLibraryField,
@@ -265,6 +266,39 @@ public class DatabaseOperations {
                     log.info("Successfully removed item with ID \(itemID) from field \(field) in document \(documentID) in collection \(collection). 🎉")
                     promise(.success(()))
                 }
+            }
+        }
+    }
+
+    // Remove item using Date converted to String (
+    // savedActivity ONLY so far
+    // Cf Codable extension for conversion and init(from: Decoder)
+    public func removeItemWithStringDateFromLibrary(
+        documentID: String,
+        collection: DatabaseCollection = .libraries,
+        fieldName: Library.EditableLibraryField,
+        valueToRemove: some Encodable
+    ) -> Future<Void, Error> {
+        Future { promise in
+            do {
+                let encodedItem = try Firestore.Encoder().encode(valueToRemove)
+                let documentRef = self.database.collection(collection.rawValue).document(documentID)
+
+                documentRef.updateData([
+                    fieldName.rawValue: FieldValue.arrayRemove([encodedItem]),
+                    "last_edited_at": FieldValue.serverTimestamp(),
+                ]) { error in
+                    if let error {
+                        log.error("Failed to remove item from field \(fieldName.rawValue) in document \(documentID) in collection \(collection.rawValue): \(error.localizedDescription)")
+                        promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                    } else {
+                        log.info("Successfully removed item from field \(fieldName.rawValue) in document \(documentID) in collection \(collection.rawValue). 🎉")
+                        promise(.success(()))
+                    }
+                }
+            } catch {
+                log.error("Encoding error for item: \(error.localizedDescription)")
+                promise(.failure(DatabaseError.customError(error.localizedDescription)))
             }
         }
     }
