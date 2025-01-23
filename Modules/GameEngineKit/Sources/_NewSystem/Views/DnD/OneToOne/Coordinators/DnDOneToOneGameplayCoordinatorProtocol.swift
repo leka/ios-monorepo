@@ -9,5 +9,5 @@ public protocol DnDOneToOneGameplayCoordinatorProtocol {
     var uiModel: CurrentValueSubject<DnDOneToOneUIModel, Never> { get }
     var uiDropZones: [DnDDropZoneNode] { get }
     func setAlreadyOrderedNodes()
-    func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDDropZoneNode?)
+    func onTouch(_ event: DnDTouchEvent, choiceID: UUID, destinationID: UUID?)
 }

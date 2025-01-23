@@ -33,8 +33,8 @@ public class DnDGridWithZonesViewModel: ObservableObject {
 
     let action: Exercise.Action?
 
-    func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDDropZoneNode? = nil) {
-        self.coordinator.onTouch(event, choice: choice, destination: destination)
+    func onTouch(_ event: DnDTouchEvent, choiceID: UUID, destinationID: UUID? = nil) {
+        self.coordinator.onTouch(event, choiceID: choiceID, destinationID: destinationID)
     }
 
     // MARK: Private

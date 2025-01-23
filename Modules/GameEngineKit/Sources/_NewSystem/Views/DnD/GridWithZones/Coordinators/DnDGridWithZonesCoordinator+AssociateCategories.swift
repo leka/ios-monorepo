@@ -25,9 +25,15 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
         self.uiDropZoneModel.action = action
 
         self.uiDropZoneModel.zones = self.rawChoices[0...1].map { dropzone in
-            self.currentlySelectedChoices.append([dropzone])
-            self.alreadyValidatedChoices.append([dropzone])
-            return DnDDropZoneNode(id: dropzone.id, value: dropzone.value, type: dropzone.type, position: .zero, size: self.uiDropZoneModel.zoneSize(for: self.rawChoices[0...1].count))
+            self.currentlySelectedChoices.append([dropzone.id])
+            self.alreadyValidatedChoices.append([dropzone.id])
+            return DnDDropZoneNode(
+                id: dropzone.id,
+                value: dropzone.value,
+                type: dropzone.type,
+                position: .zero,
+                size: self.uiDropZoneModel.zoneSize(for: self.rawChoices[0...1].count)
+            )
         }
 
         self.uiModel.value.choices = self.rawChoices[2...].map { choice in
@@ -40,17 +46,17 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
     public private(set) var uiDropZoneModel: DnDGridWithZonesUIDropzoneModel = .zero
     public private(set) var uiModel = CurrentValueSubject<DnDGridWithZonesUIModel, Never>(.zero)
 
-    public func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDDropZoneNode? = nil) {
+    public func onTouch(_ event: DnDTouchEvent, choiceID: UUID, destinationID: UUID? = nil) {
         switch event {
             case .began:
-                self.updateChoiceState(for: self.rawChoices.first(where: { $0.id == choice.id })!, to: .dragged)
+                self.updateChoiceState(for: choiceID, to: .dragged)
             case .ended:
-                guard let destination else {
-                    self.updateChoiceState(for: self.rawChoices.first(where: { $0.id == choice.id })!, to: .idle)
+                guard let destinationID else {
+                    self.updateChoiceState(for: choiceID, to: .idle)
                     return
                 }
 
-                self.processUserDropOnDestination(choice: choice, destination: destination)
+                self.processUserDropOnDestination(choiceID: choiceID, destinationID: destinationID)
         }
     }
 
@@ -59,54 +65,55 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
     private let gameplay: NewGameplayAssociateCategories
     private let rawChoices: [CoordinatorAssociateCategoriesChoiceModel]
 
-    private var currentlySelectedChoices: [[CoordinatorAssociateCategoriesChoiceModel]] = []
-    private var alreadyValidatedChoices: [[CoordinatorAssociateCategoriesChoiceModel]] = []
+    private var currentlySelectedChoices: [[UUID]] = []
+    private var alreadyValidatedChoices: [[UUID]] = []
 
-    private func processUserDropOnDestination(choice: DnDAnswerNode, destination: DnDDropZoneNode) {
-        guard let sourceChoice = self.rawChoices.first(where: { $0.id == choice.id }),
-              let destinationChoice = self.rawChoices.first(where: { $0.id == destination.id }),
-              let categoryIndex = getIndexOf(destination: destinationChoice),
-              !self.choiceAlreadySelected(choice: sourceChoice) else { return }
+    private func processUserDropOnDestination(choiceID: UUID, destinationID: UUID) {
+        guard let choiceID = self.rawChoices.first(where: { $0.id == choiceID })?.id,
+              let destination = self.rawChoices.first(where: { $0.id == destinationID }),
+              let categoryIndex = getIndexOf(destinationID: destinationID),
+              !self.choiceAlreadySelected(choiceID: choiceID) else { return }
 
-        self.currentlySelectedChoices[categoryIndex].append(sourceChoice)
+        self.currentlySelectedChoices[categoryIndex].append(choiceID)
 
-        let results = self.gameplay.process(choiceIDs: self.currentlySelectedChoices.map { $0.map(\.id) })
+        let results = self.gameplay.process(choiceIDs: self.currentlySelectedChoices)
 
         if results
-            .first(where: { $0.id == sourceChoice.id })?.isCategoryCorrect == true
+            .first(where: { $0.id == choiceID })?.isCategoryCorrect == true
         {
-            self.updateChoiceState(for: sourceChoice, to: .correct(dropZone: destination))
+            self.updateChoiceState(for: choiceID, to: .correct(dropZone: self.uiDropZoneModel.zones[categoryIndex]))
             self.alreadyValidatedChoices = self.currentlySelectedChoices
 
             if self.gameplay.isCompleted.value {
                 log.debug("Exercise completed")
             }
         } else {
-            self.handleIncorrectChoice(sourceChoice)
+            self.handleIncorrectChoice(choiceID)
         }
     }
 
-    private func updateChoiceState(for choice: CoordinatorAssociateCategoriesChoiceModel, to state: State) {
-        guard let index = self.rawChoices.firstIndex(where: { $0.id == choice.id }) else { return }
+    private func updateChoiceState(for choiceID: UUID, to state: State) {
+        guard let index = self.rawChoices.firstIndex(where: { $0.id == choiceID }) else { return }
 
         self.updateUINodeState(node: self.uiModel.value.choices[index - 2], state: state)
     }
 
-    private func choiceAlreadySelected(choice: CoordinatorAssociateCategoriesChoiceModel) -> Bool {
-        self.alreadyValidatedChoices.contains(where: { $0.contains(where: { $0.id == choice.id }) })
+    private func choiceAlreadySelected(choiceID: UUID) -> Bool {
+        self.alreadyValidatedChoices.contains(where: { $0.contains(where: { $0 == choiceID }) })
     }
 
-    private func getIndexOf(destination: CoordinatorAssociateCategoriesChoiceModel) -> Int? {
-        self.alreadyValidatedChoices.firstIndex(where: { $0.contains(where: { $0.id == destination.id }) })
+    private func getIndexOf(destinationID: UUID) -> Int? {
+        self.alreadyValidatedChoices.firstIndex(where: { $0.contains(where: { $0 == destinationID }) })
     }
 
-    private func handleIncorrectChoice(_ choice: CoordinatorAssociateCategoriesChoiceModel) {
+    private func handleIncorrectChoice(_ choiceID: UUID) {
+        guard let choice = self.rawChoices.first(where: { $0.id == choiceID }) else { return }
         let categoryChoices = self.rawChoices.filter { $0.category == choice.category }
 
         if categoryChoices.count > 1 {
-            self.updateChoiceState(for: choice, to: .idle)
+            self.updateChoiceState(for: choiceID, to: .idle)
         } else {
-            self.updateChoiceState(for: choice, to: .wrong)
+            self.updateChoiceState(for: choiceID, to: .wrong)
         }
 
         self.currentlySelectedChoices = self.alreadyValidatedChoices

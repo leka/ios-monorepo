@@ -7,5 +7,5 @@ import Foundation
 
 public protocol DnDGridGameplayCoordinatorProtocol {
     var uiModel: CurrentValueSubject<DnDGridUIModel, Never> { get }
-    func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDAnswerNode?)
+    func onTouch(_ event: DnDTouchEvent, choiceID: UUID, destinationID: UUID?)
 }

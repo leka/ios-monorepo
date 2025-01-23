@@ -26,8 +26,8 @@ public class DnDGridViewModel: ObservableObject {
 
     // MARK: Public
 
-    public func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDAnswerNode? = nil) {
-        self.coordinator.onTouch(event, choice: choice, destination: destination)
+    public func onTouch(_ event: DnDTouchEvent, choiceID: UUID, destinationID: UUID? = nil) {
+        self.coordinator.onTouch(event, choiceID: choiceID, destinationID: destinationID)
     }
 
     // MARK: Internal

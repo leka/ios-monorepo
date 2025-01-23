@@ -34,8 +34,8 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
 
         self.uiModel.value.choices.shuffle()
 
-        self.currentOrderedChoices = Array(repeating: .zero, count: self.gameplay.orderedChoices.count)
-        self.alreadyValidatedChoices = Array(repeating: .zero, count: self.gameplay.orderedChoices.count)
+        self.currentOrderedChoices = Array(repeating: nil, count: self.gameplay.orderedChoices.count)
+        self.alreadyValidatedChoices = Array(repeating: nil, count: self.gameplay.orderedChoices.count)
     }
 
     // MARK: Public
@@ -47,24 +47,24 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
         self.rawChoices.forEach { choice in
             if choice.alreadyOrdered {
                 guard let index = self.uiDropZones.firstIndex(where: { $0.id == choice.id }) else { return }
-                self.updateChoiceState(for: choice, to: .correct(order: index))
-                self.currentOrderedChoices[index] = choice
-                self.alreadyValidatedChoices[index] = choice
+                self.updateChoiceState(for: choice.id, to: .correct(order: index))
+                self.currentOrderedChoices[index] = choice.id
+                self.alreadyValidatedChoices[index] = choice.id
             }
         }
     }
 
-    public func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDDropZoneNode? = nil) {
+    public func onTouch(_ event: DnDTouchEvent, choiceID: UUID, destinationID: UUID? = nil) {
         switch event {
             case .began:
-                self.updateChoiceState(for: self.rawChoices.first(where: { $0.id == choice.id })!, to: .dragged)
+                self.updateChoiceState(for: choiceID, to: .dragged)
             case .ended:
-                guard let destination else {
-                    self.updateChoiceState(for: self.rawChoices.first(where: { $0.id == choice.id })!, to: .idle)
+                guard let destinationID else {
+                    self.updateChoiceState(for: choiceID, to: .idle)
                     return
                 }
 
-                self.processUserDropOnDestination(choice: choice, destination: destination)
+                self.processUserDropOnDestination(choiceID: choiceID, destinationID: destinationID)
         }
     }
 
@@ -73,75 +73,75 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
     private let gameplay: NewGameplayFindTheRightOrder
 
     private let rawChoices: [CoordinatorFindTheRightOrderChoiceModel]
-    private var currentOrderedChoices: [CoordinatorFindTheRightOrderChoiceModel] = []
-    private var alreadyValidatedChoices: [CoordinatorFindTheRightOrderChoiceModel] = []
+    private var currentOrderedChoices: [UUID?] = []
+    private var alreadyValidatedChoices: [UUID?] = []
 
-    private func processUserDropOnDestination(choice: DnDAnswerNode, destination: DnDDropZoneNode) {
-        guard let sourceChoice = self.rawChoices.first(where: { $0.id == choice.id }),
-              let destinationIndex = self.uiDropZones.firstIndex(where: { $0.id == destination.id }),
-              !self.choiceAlreadySelected(choice: sourceChoice) else { return }
+    private func processUserDropOnDestination(choiceID: UUID, destinationID: UUID) {
+        guard let choiceID = self.rawChoices.first(where: { $0.id == choiceID })?.id,
+              let destinationIndex = self.uiDropZones.firstIndex(where: { $0.id == destinationID }),
+              !self.choiceAlreadySelected(choiceID: choiceID) else { return }
 
-        self.order(choice: sourceChoice, dropZoneIndex: destinationIndex)
-        if self.currentOrderedChoices.doesNotContain(.zero) {
+        self.order(choiceID: choiceID, dropZoneIndex: destinationIndex)
+        if self.currentOrderedChoices.doesNotContain(nil) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                let results = self.gameplay.process(choiceIDs: self.currentOrderedChoices.map(\.id))
+                let results = self.gameplay.process(choiceIDs: self.currentOrderedChoices.map { $0! })
 
                 results.enumerated().forEach { index, result in
-                    let choice = self.rawChoices.first(where: { $0.id == result.id })!
+                    let choiceID = self.rawChoices.first(where: { $0.id == result.id })!.id
                     if result.correctPosition {
-                        self.updateChoiceState(for: choice, to: .correct(order: index))
-                        self.alreadyValidatedChoices[index] = choice
+                        self.updateChoiceState(for: choiceID, to: .correct(order: index))
+                        self.alreadyValidatedChoices[index] = choiceID
                     } else {
-                        self.updateChoiceState(for: choice, to: .idle)
-                        self.currentOrderedChoices[index] = .zero
+                        self.updateChoiceState(for: choiceID, to: .idle)
+                        self.currentOrderedChoices[index] = nil
                     }
                 }
             }
         }
     }
 
-    private func updateChoiceState(for choice: CoordinatorFindTheRightOrderChoiceModel, to state: State) {
-        guard let index = self.uiModel.value.choices.firstIndex(where: { $0.id == choice.id }) else { return }
+    private func updateChoiceState(for choiceID: UUID, to state: State) {
+        guard let index = self.uiModel.value.choices.firstIndex(where: { $0.id == choiceID }) else { return }
 
         self.updateUINodeState(node: self.uiModel.value.choices[index], state: state)
     }
 
-    private func choiceAlreadySelected(choice: CoordinatorFindTheRightOrderChoiceModel) -> Bool {
-        self.alreadyValidatedChoices.contains(where: { $0.id == choice.id })
+    private func choiceAlreadySelected(choiceID: UUID) -> Bool {
+        self.alreadyValidatedChoices.contains(where: { $0 == choiceID })
     }
 
-    private func order(choice: CoordinatorFindTheRightOrderChoiceModel, dropZoneIndex: Int) {
-        let previousChoice = self.currentOrderedChoices[dropZoneIndex]
-        if let index = self.currentOrderedChoices.firstIndex(where: { $0 == choice }) {
-            if previousChoice == .zero {
-                self.currentOrderedChoices[index] = .zero
-                self.currentOrderedChoices[dropZoneIndex] = choice
-                self.updateChoiceState(for: choice, to: .ordered(order: dropZoneIndex))
-            } else if self.isMovable(choice: previousChoice) {
-                self.currentOrderedChoices[index] = previousChoice
-                self.currentOrderedChoices[dropZoneIndex] = choice
-                self.updateChoiceState(for: previousChoice, to: .ordered(order: index))
-                self.updateChoiceState(for: choice, to: .ordered(order: dropZoneIndex))
+    private func order(choiceID: UUID, dropZoneIndex: Int) {
+        let previousChoiceID = self.currentOrderedChoices[dropZoneIndex]
+        if let index = self.currentOrderedChoices.firstIndex(where: { $0 == choiceID }) {
+            if previousChoiceID == nil {
+                self.currentOrderedChoices[index] = nil
+                self.currentOrderedChoices[dropZoneIndex] = choiceID
+                self.updateChoiceState(for: choiceID, to: .ordered(order: dropZoneIndex))
+            } else if let previousChoiceID, self.isMovable(choiceID: previousChoiceID) {
+                self.currentOrderedChoices[index] = previousChoiceID
+                self.currentOrderedChoices[dropZoneIndex] = choiceID
+                self.updateChoiceState(for: previousChoiceID, to: .ordered(order: index))
+                self.updateChoiceState(for: choiceID, to: .ordered(order: dropZoneIndex))
             } else {
-                self.currentOrderedChoices[index] = .zero
-                self.updateChoiceState(for: choice, to: .idle)
+                self.currentOrderedChoices[index] = nil
+                self.updateChoiceState(for: choiceID, to: .idle)
             }
         } else {
-            if previousChoice == .zero {
-                self.currentOrderedChoices[dropZoneIndex] = choice
-                self.updateChoiceState(for: choice, to: .ordered(order: dropZoneIndex))
-            } else if self.isMovable(choice: previousChoice) {
-                self.currentOrderedChoices[dropZoneIndex] = choice
-                self.updateChoiceState(for: previousChoice, to: .idle)
-                self.updateChoiceState(for: choice, to: .ordered(order: dropZoneIndex))
+            if previousChoiceID == nil {
+                self.currentOrderedChoices[dropZoneIndex] = choiceID
+                self.updateChoiceState(for: choiceID, to: .ordered(order: dropZoneIndex))
+            } else if let previousChoiceID, self.isMovable(choiceID: previousChoiceID) {
+                self.currentOrderedChoices[dropZoneIndex] = choiceID
+                self.updateChoiceState(for: previousChoiceID, to: .idle)
+                self.updateChoiceState(for: choiceID, to: .ordered(order: dropZoneIndex))
             } else {
-                self.updateChoiceState(for: choice, to: .idle)
+                self.updateChoiceState(for: choiceID, to: .idle)
             }
         }
     }
 
-    private func isMovable(choice: CoordinatorFindTheRightOrderChoiceModel) -> Bool {
-        self.uiModel.value.choices.first(where: { choice.id == $0.id })!.isDraggable
+    private func isMovable(choiceID: UUID) -> Bool {
+        self.uiModel.value.choices.first(where: { choiceID == $0.id })!.isDraggable
     }
 }
 
