@@ -82,6 +82,7 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
                 }
             }
         }
+        self.disableValidation()
     }
 
     // MARK: Private
@@ -105,7 +106,9 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
 
         if self.validationEnabled.value != nil {
             self.updateChoiceState(for: choiceID, to: .selected(dropZone: self.uiDropZoneModel.zones[destinationIndex]))
-            self.validationEnabled.send(true)
+            if self.areAllCategorizableChoiceSelected() {
+                self.validationEnabled.send(true)
+            }
         } else {
             self.validateUserSelection()
         }
@@ -127,12 +130,27 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
             self.updateChoiceState(for: choiceID, to: .wrong)
         }
 
-        self.currentlySelectedChoices = self.alreadyValidatedChoices
+        self.removeChoice(with: choiceID)
+    }
+
+    private func areAllCategorizableChoiceSelected() -> Bool {
+        let categorizableChoices = self.rawChoices.filter { $0.category != nil }.map(\.id)
+        let selectedChoices = self.currentlySelectedChoices.flatMap { $0.dropFirst() }
+        return Set(categorizableChoices).isSubset(of: Set(selectedChoices))
     }
 
     private func disableValidation() {
         if self.validationEnabled.value != nil {
             self.validationEnabled.send(false)
+        }
+    }
+
+    private func removeChoice(with choiceID: UUID) {
+        for (index, category) in self.currentlySelectedChoices.enumerated() {
+            if let choiceIndex = category.firstIndex(of: choiceID) {
+                self.currentlySelectedChoices[index].remove(at: choiceIndex)
+                break
+            }
         }
     }
 }
