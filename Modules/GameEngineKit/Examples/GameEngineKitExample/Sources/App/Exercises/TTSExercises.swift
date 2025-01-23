@@ -60,6 +60,30 @@ struct TTSExercises: View {
                 } label: {
                     ExerciseNavigationButtonLabel(text: "Memory", color: .indigo)
                 }
+
+                NavigationLink {
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(choices: ExerciseData.kFindTheRightAnswersChoicesDefault,
+                                                                        validationEnabled: false)
+                    let viewModel = TTSViewViewModel(coordinator: coordinator)
+
+                    return TTSView(viewModel: viewModel)
+                        .navigationTitle("Validate Right Answers")
+                        .navigationBarTitleDisplayMode(.large)
+                } label: {
+                    ExerciseNavigationButtonLabel(text: "Validate Right Answers", color: .indigo)
+                }
+
+                NavigationLink {
+                    let coordinator = TTSCoordinatorFindTheRightOrder(choices: ExerciseData.kFindTheRightOrderChoicesSFSymbols,
+                                                                      validationEnabled: false)
+                    let viewModel = TTSViewViewModel(coordinator: coordinator)
+
+                    return TTSView(viewModel: viewModel)
+                        .navigationTitle("Validate Right Order")
+                        .navigationBarTitleDisplayMode(.large)
+                } label: {
+                    ExerciseNavigationButtonLabel(text: "Validate Right Order", color: .indigo)
+                }
             }
         }
     }

@@ -43,10 +43,22 @@ struct DnDExercises: View {
                     let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
 
                     return DnDOneToOneView(viewModel: viewModel)
-                        .navigationTitle("One To One In Right Order")
+                        .navigationTitle("One To One")
                         .navigationBarTitleDisplayMode(.large)
                 } label: {
                     ExerciseNavigationButtonLabel(text: "One To One", color: .green)
+                }
+
+                NavigationLink {
+                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(choices: ExerciseData.kFindTheRightOrderChoicesEmojis,
+                                                                              validationEnabled: false)
+                    let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
+
+                    return DnDOneToOneView(viewModel: viewModel)
+                        .navigationTitle("Validate Right Order")
+                        .navigationBarTitleDisplayMode(.large)
+                } label: {
+                    ExerciseNavigationButtonLabel(text: "Validate Right Order", color: .green)
                 }
             }
         }
