@@ -181,6 +181,7 @@ extension DnDGridWithZonesCoordinatorAssociateCategories {
 
     private func triggerSelectedBehavior(for node: DnDAnswerNode, in dropzone: SKSpriteNode) {
         node.repositionInside(dropZone: dropzone)
+        node.isDraggable = true
     }
 
     private func triggerCorrectBehavior(for node: DnDAnswerNode, in dropzone: SKSpriteNode) {

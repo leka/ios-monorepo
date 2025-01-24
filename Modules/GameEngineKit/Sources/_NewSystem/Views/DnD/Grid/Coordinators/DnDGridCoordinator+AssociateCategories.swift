@@ -140,6 +140,7 @@ extension DnDGridCoordinatorAssociateCategories {
 
     private func triggerSelectBehavior(for node: DnDAnswerNode) {
         node.onDropAction()
+        node.isDraggable = true
     }
 
     private func triggerCorrectBehavior(for node: DnDAnswerNode) {
