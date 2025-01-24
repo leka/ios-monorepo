@@ -40,6 +40,7 @@ public class DnDAnswerNode: SKSpriteNode {
 
     static let cornerRadiusFactor: CGFloat = 10 / 57
     static let sizeFactorSFSymbol: CGFloat = 0.6
+    static var computedZPosition: CGFloat = 0
 
     let id: UUID
     let type: ChoiceType

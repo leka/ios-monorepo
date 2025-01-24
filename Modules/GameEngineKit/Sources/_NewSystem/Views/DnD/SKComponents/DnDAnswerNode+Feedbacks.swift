@@ -37,14 +37,16 @@ extension DnDAnswerNode {
             SKAction.rotate(byAngle: 0.0, duration: 0.1),
             SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: 4)), duration: 0.1),
         ])
-        self.zPosition += 100
+        Self.computedZPosition += 1
+        self.zPosition = Self.computedZPosition
         self.run(SKAction.repeatForever(wiggleAnimation))
         self.scale(to: CGSize(width: self.size.width * 1.25, height: self.size.height * 1.25))
     }
 
     func onDropAction() {
         self.zRotation = 0
-        self.zPosition = 10
+        Self.computedZPosition += 1
+        self.zPosition = Self.computedZPosition
         self.removeAllActions()
         self.scale(to: self.initialSize)
     }
