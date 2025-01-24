@@ -6,7 +6,6 @@ import Combine
 import ContentKit
 import SpriteKit
 import SwiftUI
-import UtilsKit
 
 // MARK: - DnDGridCoordinatorAssociateCategories
 
@@ -63,6 +62,8 @@ public class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorPr
         } else {
             self.currentlySelectedChoices.append([destinationID, choiceID])
         }
+
+        self.updateChoiceState(for: choiceID, to: .selected)
 
         log.debug("Selected choices :  \(self.currentlySelectedChoices)")
 
@@ -125,51 +126,23 @@ extension DnDGridCoordinatorAssociateCategories {
     private func updateUINodeState(node: DnDAnswerNode, state: State) {
         switch state {
             case .idle:
-                self.moveNodeBackToInitialPosition(node)
+                node.triggerDefaultIdleBehavior()
             case .dragged:
-                self.onDragAnimation(node)
-                node.zPosition += 100
+                node.triggerDefaultDraggedBehavior()
             case .selected:
-                // Nothing to do
-                break
+                self.triggerSelectBehavior(for: node)
             case .correct:
-                node.isDraggable = false
-                node.scale(to: CGSize(width: node.size.width * 0.75, height: node.size.height * 0.75))
-                node.zPosition = 0
-                self.onDropAction(node)
+                self.triggerCorrectBehavior(for: node)
             case .wrong:
-                node.isDraggable = false
-                self.moveNodeBackToInitialPosition(node)
+                node.triggerDefaultWrongBehavior()
         }
     }
 
-    // MARK: - Animations
-
-    private func onDragAnimation(_ node: SKSpriteNode) {
-        let wiggleAnimation = SKAction.sequence([
-            SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: -4)), duration: 0.1),
-            SKAction.rotate(byAngle: 0.0, duration: 0.1),
-            SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: 4)), duration: 0.1),
-        ])
-        node.run(SKAction.repeatForever(wiggleAnimation))
+    private func triggerSelectBehavior(for node: DnDAnswerNode) {
+        node.onDropAction()
     }
 
-    // MARK: Private
-
-    private func onDropAction(_ node: SKSpriteNode) {
-        node.zRotation = 0
-        node.removeAllActions()
-    }
-
-    private func moveNodeBackToInitialPosition(_ node: DnDAnswerNode) {
-        let moveAnimation = SKAction.move(to: node.initialPosition ?? .zero, duration: 0.25)
-        node.run(
-            moveAnimation,
-            completion: {
-                node.position = node.initialPosition ?? .zero
-                node.zPosition = 10
-                self.onDropAction(node)
-            }
-        )
+    private func triggerCorrectBehavior(for node: DnDAnswerNode) {
+        node.isDraggable = false
     }
 }

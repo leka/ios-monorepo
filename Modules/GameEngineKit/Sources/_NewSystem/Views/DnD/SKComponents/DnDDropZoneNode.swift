@@ -29,7 +29,6 @@ public class DnDDropZoneNode: SKSpriteNode {
         super.init(texture: texture, color: .clear, size: size)
         self.name = value
         self.position = position
-        self.zPosition = 10
     }
 
     init(node: DnDAnswerNode, position: CGPoint = .zero) {

@@ -6,7 +6,6 @@ import Combine
 import ContentKit
 import SpriteKit
 import SwiftUI
-import UtilsKit
 
 // MARK: - DnDGridWithZonesCoordinatorAssociateCategories
 
@@ -83,6 +82,7 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
                 }
             }
         }
+        self.disableValidation()
     }
 
     // MARK: Private
@@ -106,7 +106,9 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
 
         if self.validationEnabled.value != nil {
             self.updateChoiceState(for: choiceID, to: .selected(dropZone: self.uiDropZoneModel.zones[destinationIndex]))
-            self.validationEnabled.send(true)
+            if self.areAllCategorizableChoiceSelected() {
+                self.validationEnabled.send(true)
+            }
         } else {
             self.validateUserSelection()
         }
@@ -128,12 +130,27 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
             self.updateChoiceState(for: choiceID, to: .wrong)
         }
 
-        self.currentlySelectedChoices = self.alreadyValidatedChoices
+        self.removeChoice(with: choiceID)
+    }
+
+    private func areAllCategorizableChoiceSelected() -> Bool {
+        let categorizableChoices = self.rawChoices.filter { $0.category != nil }.map(\.id)
+        let selectedChoices = self.currentlySelectedChoices.flatMap { $0.dropFirst() }
+        return Set(categorizableChoices).isSubset(of: Set(selectedChoices))
     }
 
     private func disableValidation() {
         if self.validationEnabled.value != nil {
             self.validationEnabled.send(false)
+        }
+    }
+
+    private func removeChoice(with choiceID: UUID) {
+        for (index, category) in self.currentlySelectedChoices.enumerated() {
+            if let choiceIndex = category.firstIndex(of: choiceID) {
+                self.currentlySelectedChoices[index].remove(at: choiceIndex)
+                break
+            }
         }
     }
 }
@@ -150,49 +167,24 @@ extension DnDGridWithZonesCoordinatorAssociateCategories {
     private func updateUINodeState(node: DnDAnswerNode, state: State) {
         switch state {
             case .idle:
-                self.moveNodeBackToInitialPosition(node)
-                node.scale(to: CGSize(width: node.size.width, height: node.size.height))
+                node.triggerDefaultIdleBehavior()
             case .dragged:
-                self.onDragAnimation(node)
-                node.zPosition += 100
+                node.triggerDefaultDraggedBehavior()
             case let .selected(dropzone):
-                node.repositionInside(dropZone: dropzone)
+                self.triggerSelectedBehavior(for: node, in: dropzone)
             case let .correct(dropzone):
-                node.isDraggable = false
-                node.repositionInside(dropZone: dropzone)
+                self.triggerCorrectBehavior(for: node, in: dropzone)
             case .wrong:
-                node.isDraggable = false
-                self.moveNodeBackToInitialPosition(node)
+                node.triggerDefaultWrongBehavior()
         }
     }
 
-    // MARK: - Animations
-
-    private func onDragAnimation(_ node: SKSpriteNode) {
-        let wiggleAnimation = SKAction.sequence([
-            SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: -4)), duration: 0.1),
-            SKAction.rotate(byAngle: 0.0, duration: 0.1),
-            SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: 4)), duration: 0.1),
-        ])
-        node.run(SKAction.repeatForever(wiggleAnimation))
+    private func triggerSelectedBehavior(for node: DnDAnswerNode, in dropzone: SKSpriteNode) {
+        node.repositionInside(dropZone: dropzone)
     }
 
-    // MARK: Private
-
-    private func onDropAction(_ node: SKSpriteNode) {
-        node.zRotation = 0
-        node.removeAllActions()
-    }
-
-    private func moveNodeBackToInitialPosition(_ node: DnDAnswerNode) {
-        let moveAnimation = SKAction.move(to: node.initialPosition ?? .zero, duration: 0.25)
-        node.run(
-            moveAnimation,
-            completion: {
-                node.position = node.initialPosition ?? .zero
-                node.zPosition = 10
-                self.onDropAction(node)
-            }
-        )
+    private func triggerCorrectBehavior(for node: DnDAnswerNode, in dropzone: SKSpriteNode) {
+        node.repositionInside(dropZone: dropzone)
+        node.isDraggable = false
     }
 }
