@@ -25,8 +25,9 @@ extension DnDAnswerNode {
         return SKTexture(image: finalImage)
     }
 
-    static func createSFSymbolTexture(value: String, size _: CGSize) -> SKTexture {
-        guard let image = UIImage(systemName: value)
+    static func createSFSymbolTexture(value: String, size: CGSize) -> SKTexture {
+        guard let image = UIImage(systemName: value,
+                                  withConfiguration: UIImage.SymbolConfiguration(pointSize: size.height * sizeFactorSFSymbol))
         else {
             fatalError("SFSymbol not found")
         }

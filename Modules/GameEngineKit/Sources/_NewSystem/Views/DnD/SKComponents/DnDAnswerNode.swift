@@ -13,7 +13,6 @@ public class DnDAnswerNode: SKSpriteNode {
     init(id: UUID, value: String, type: ChoiceType, size: CGSize) {
         self.id = id
         self.type = type
-        self.initialSize = size
         let texture: SKTexture = switch type {
             case .text:
                 DnDAnswerNode.createTextTexture(value: value, size: size)
@@ -26,6 +25,7 @@ public class DnDAnswerNode: SKSpriteNode {
             case .color:
                 DnDAnswerNode.createColorTexture(value: value, size: size)
         }
+        self.initialSize = texture.size()
 
         super.init(texture: texture, color: .clear, size: texture.size())
         self.name = value
