@@ -28,6 +28,21 @@ struct NoGameplayExercises: View {
                 } label: {
                     ExerciseNavigationButtonLabel(text: "TTS", color: .pink)
                 }
+
+                NavigationLink {
+                    let coordinator = DnDGridWithZonesCoordinatorNoGameplay(
+                        choices: ExerciseData.kNoGameplayWithZonesChoicesEmojis,
+                        minimumToSelect: 1,
+                        maximumToSelect: 3
+                    )
+                    let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
+
+                    return DnDGridWithZonesView(viewModel: viewModel)
+                        .navigationTitle("WithZones")
+                        .navigationBarTitleDisplayMode(.large)
+                } label: {
+                    ExerciseNavigationButtonLabel(text: "WithZones", color: .pink)
+                }
             }
         }
     }

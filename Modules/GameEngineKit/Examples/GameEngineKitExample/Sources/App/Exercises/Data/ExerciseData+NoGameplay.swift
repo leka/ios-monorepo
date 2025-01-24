@@ -42,4 +42,59 @@ extension ExerciseData {
         .init(value: "red", type: .color),
         .init(value: "blue", type: .color),
     ]
+
+    static let kNoGameplayWithZonesChoicesDefault: [CoordinatorNoGameplayChoiceModel] = [
+        .init(value: "😍", type: .emoji),
+        .init(value: "☹️", type: .emoji),
+        .init(value: "Whale"),
+        .init(value: "Duck"),
+        .init(value: "Elephant"),
+        .init(value: "Pigeon"),
+        .init(value: "Monkey"),
+        .init(value: "Chicken"),
+    ]
+
+    static let kNoGameplayWithZonesChoicesSFSymbols: [CoordinatorNoGameplayChoiceModel] = [
+        .init(value: "😍", type: .emoji),
+        .init(value: "☹️", type: .emoji),
+        .init(value: "scooter", type: .sfsymbol),
+        .init(value: "car", type: .sfsymbol),
+        .init(value: "bicycle", type: .sfsymbol),
+        .init(value: "sailboat", type: .sfsymbol),
+        .init(value: "tram", type: .sfsymbol),
+        .init(value: "truck.box", type: .sfsymbol),
+    ]
+
+    static let kNoGameplayWithZonesChoicesImages: [CoordinatorNoGameplayChoiceModel] = [
+        .init(value: "😍", type: .emoji),
+        .init(value: "☹️", type: .emoji),
+        .init(value: "pictograms-foods-meals-cup_of_coffee-0184", type: .image),
+        .init(value: "pictograms-animals-arctic-penguin_yellow-0088", type: .image),
+        .init(value: "pictograms-foods-meals-orange_juice-017C", type: .image),
+        .init(value: "pictograms-foods-meals-sandwich-0176", type: .image),
+        .init(value: "pictograms-foods-meals-soup-0172", type: .image),
+        .init(value: "pictograms-foods-meals-birthday_cake-0173", type: .image),
+    ]
+
+    static let kNoGameplayWithZonesChoicesColors: [CoordinatorNoGameplayChoiceModel] = [
+        .init(value: "😍", type: .emoji),
+        .init(value: "☹️", type: .emoji),
+        .init(value: "red", type: .color),
+        .init(value: "blue", type: .color),
+        .init(value: "green", type: .color),
+        .init(value: "purple", type: .color),
+        .init(value: "orange", type: .color),
+        .init(value: "yellow", type: .color),
+    ]
+
+    static let kNoGameplayWithZonesChoicesEmojis: [CoordinatorNoGameplayChoiceModel] = [
+        .init(value: "😍", type: .emoji),
+        .init(value: "☹️", type: .emoji),
+        .init(value: "🍏", type: .emoji),
+        .init(value: "🌮", type: .emoji),
+        .init(value: "🍓", type: .emoji),
+        .init(value: "🍩", type: .emoji),
+        .init(value: "🍊", type: .emoji),
+        .init(value: "💩", type: .emoji),
+    ]
 }
