@@ -49,6 +49,13 @@ public class LibraryManagerViewModel: ObservableObject {
             })
             .store(in: &self.cancellables)
 
+        self.libraryManager.savedCurriculums
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { [weak self] curriculums in
+                self?.curriculums = curriculums
+            })
+            .store(in: &self.cancellables)
+
         self.libraryManager.isLoading
             .receive(on: DispatchQueue.main)
             .sink { [weak self] isLoading in
@@ -73,7 +80,6 @@ public class LibraryManagerViewModel: ObservableObject {
         }
 
         self.activities = library.activities
-        self.curriculums = library.curriculums
         self.stories = library.stories
     }
 

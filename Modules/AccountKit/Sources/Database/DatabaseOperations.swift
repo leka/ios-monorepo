@@ -6,6 +6,8 @@ import Combine
 import FirebaseAuth
 import FirebaseFirestore
 
+// MARK: - DatabaseOperations
+
 public class DatabaseOperations {
     // MARK: Lifecycle
 
@@ -324,4 +326,95 @@ public class DatabaseOperations {
 
     private let database = Firestore.firestore()
     private var listenerRegistrations = [String: ListenerRegistration]()
+}
+
+public extension DatabaseOperations {
+    // Setup listeners for the curriculums sub-collection
+    func listenToCurriculums(libraryID: String) -> AnyPublisher<[SavedCurriculum], Error> {
+        let subject = PassthroughSubject<[SavedCurriculum], Error>()
+
+        guard let currentUserID = Auth.auth().currentUser?.uid else {
+            subject.send(completion: .failure(DatabaseError.customError("User not authenticated")))
+            return subject.eraseToAnyPublisher()
+        }
+
+        let listenerKey = "CURRICULUMS_LIBRARY_\(currentUserID)"
+        if let existingListener = listenerRegistrations[listenerKey] {
+            existingListener.remove()
+            self.listenerRegistrations.removeValue(forKey: listenerKey)
+        }
+
+        let listener = self.database.collection(DatabaseCollection.libraries.rawValue)
+            .document(libraryID)
+            .collection("CURRICULUMS")
+            .addSnapshotListener { snapshot, error in
+                if let error {
+                    log.error("Error listening to saved curriculums: \(error.localizedDescription)")
+                    subject.send(completion: .failure(DatabaseError.customError(error.localizedDescription)))
+                } else if let snapshot {
+                    let curriculums = snapshot.documents.compactMap { document -> SavedCurriculum? in
+                        try? document.data(as: SavedCurriculum.self)
+                    }
+                    log.info("Fetched \(curriculums.count) saved curriculums successfully.")
+                    subject.send(curriculums)
+                }
+            }
+
+        self.listenerRegistrations[listenerKey] = listener
+
+        return subject.eraseToAnyPublisher()
+    }
+
+    func addCurriculumToLibrary(libraryID: String, curriculum: SavedCurriculum) -> AnyPublisher<Void, Error> {
+        let libraryRef = self.database.collection(DatabaseCollection.libraries.rawValue).document(libraryID)
+        let curriculumRef = libraryRef.collection("CURRICULUMS").document()
+
+        return Future<Void, Error> { promise in
+            do {
+                try curriculumRef.setData(from: curriculum) { error in
+                    if let error {
+                        log.error("Failed to add curriculum: \(error.localizedDescription)")
+                        promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                    } else {
+                        log.info("Curriculum added successfully to library.")
+                        promise(.success(()))
+                    }
+                }
+            } catch {
+                log.error("Failed to encode curriculum: \(error.localizedDescription)")
+                promise(.failure(DatabaseError.encodeError))
+            }
+        }.eraseToAnyPublisher()
+    }
+
+    func removeCurriculumFromLibrary(libraryID: String, curriculumID: String) -> AnyPublisher<Void, Error> {
+        let libraryRef = self.database.collection(DatabaseCollection.libraries.rawValue).document(libraryID)
+        let curriculumsRef = libraryRef.collection("CURRICULUMS")
+
+        return Future<Void, Error> { promise in
+            curriculumsRef.whereField("uuid", isEqualTo: curriculumID).getDocuments { snapshot, error in
+                if let error {
+                    log.error("Error fetching curriculum with UUID \(curriculumID): \(error.localizedDescription)")
+                    promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                    return
+                }
+
+                guard let document = snapshot?.documents.first else {
+                    log.error("No curriculum found with UUID \(curriculumID)")
+                    promise(.failure(DatabaseError.documentNotFound))
+                    return
+                }
+
+                document.reference.delete { error in
+                    if let error {
+                        log.error("Failed to remove curriculum: \(error.localizedDescription)")
+                        promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                    } else {
+                        log.info("Curriculum removed successfully from library.")
+                        promise(.success(()))
+                    }
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
 }
