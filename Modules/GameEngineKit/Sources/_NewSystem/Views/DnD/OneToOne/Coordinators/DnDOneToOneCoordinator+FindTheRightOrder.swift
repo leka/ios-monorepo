@@ -188,6 +188,7 @@ extension DnDOneToOneCoordinatorFindTheRightOrder {
 
     private func triggerOrderedBehavior(for node: DnDAnswerNode, in dropzone: SKSpriteNode) {
         node.snapToCenter(dropZone: dropzone)
+        node.isDraggable = true
     }
 
     private func triggerCorrectBehavior(for node: DnDAnswerNode, in dropzone: SKSpriteNode) {

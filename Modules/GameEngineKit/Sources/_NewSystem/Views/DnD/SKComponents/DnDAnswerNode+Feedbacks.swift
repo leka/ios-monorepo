@@ -9,10 +9,12 @@ import UtilsKit
 extension DnDAnswerNode {
     func triggerDefaultIdleBehavior() {
         self.moveNodeBackToInitialPosition()
+        self.isDraggable = true
     }
 
     func triggerDefaultDraggedBehavior() {
         self.onDragAnimation()
+        self.isDraggable = true
     }
 
     func triggerDefaultWrongBehavior() {
