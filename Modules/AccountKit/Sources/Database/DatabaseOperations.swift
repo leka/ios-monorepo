@@ -365,18 +365,46 @@ public extension DatabaseOperations {
         return subject.eraseToAnyPublisher()
     }
 
+    //    func addCurriculumToLibrary(libraryID: String, curriculum: SavedCurriculum) -> AnyPublisher<Void, Error> {
+    //        let libraryRef = self.database.collection(DatabaseCollection.libraries.rawValue).document(libraryID)
+    //        let curriculumRef = libraryRef.collection("CURRICULUMS").document()
+    //
+    //        return Future<Void, Error> { promise in
+    //            do {
+    //                try curriculumRef.setData(from: curriculum) { error in
+    //                    if let error {
+    //                        log.error("Failed to add curriculum: \(error.localizedDescription)")
+    //                        promise(.failure(DatabaseError.customError(error.localizedDescription)))
+    //                    } else {
+    //                        log.info("Curriculum added successfully to library.")
+    //                        promise(.success(()))
+    //                    }
+    //                }
+    //            } catch {
+    //                log.error("Failed to encode curriculum: \(error.localizedDescription)")
+    //                promise(.failure(DatabaseError.encodeError))
+    //            }
+    //        }.eraseToAnyPublisher()
+    //    }
+
     func addCurriculumToLibrary(libraryID: String, curriculum: SavedCurriculum) -> AnyPublisher<Void, Error> {
         let libraryRef = self.database.collection(DatabaseCollection.libraries.rawValue).document(libraryID)
-        let curriculumRef = libraryRef.collection("CURRICULUMS").document()
+        let curriculumsRef = libraryRef.collection("CURRICULUMS").document()
 
         return Future<Void, Error> { promise in
+            let batch = self.database.batch()
+
             do {
-                try curriculumRef.setData(from: curriculum) { error in
+                try batch.setData(from: curriculum, forDocument: curriculumsRef)
+
+                batch.updateData(["last_edited_at": FieldValue.serverTimestamp()], forDocument: libraryRef)
+
+                batch.commit { error in
                     if let error {
-                        log.error("Failed to add curriculum: \(error.localizedDescription)")
+                        log.error("Failed to add curriculum and update last_edited_at: \(error.localizedDescription)")
                         promise(.failure(DatabaseError.customError(error.localizedDescription)))
                     } else {
-                        log.info("Curriculum added successfully to library.")
+                        log.info("Curriculum added and library's last_edited_at updated successfully.")
                         promise(.success(()))
                     }
                 }
@@ -384,8 +412,40 @@ public extension DatabaseOperations {
                 log.error("Failed to encode curriculum: \(error.localizedDescription)")
                 promise(.failure(DatabaseError.encodeError))
             }
-        }.eraseToAnyPublisher()
+        }
+        .eraseToAnyPublisher()
     }
+
+    //    func removeCurriculumFromLibrary(libraryID: String, curriculumID: String) -> AnyPublisher<Void, Error> {
+    //        let libraryRef = self.database.collection(DatabaseCollection.libraries.rawValue).document(libraryID)
+    //        let curriculumsRef = libraryRef.collection("CURRICULUMS")
+    //
+    //        return Future<Void, Error> { promise in
+    //            curriculumsRef.whereField("uuid", isEqualTo: curriculumID).getDocuments { snapshot, error in
+    //                if let error {
+    //                    log.error("Error fetching curriculum with UUID \(curriculumID): \(error.localizedDescription)")
+    //                    promise(.failure(DatabaseError.customError(error.localizedDescription)))
+    //                    return
+    //                }
+    //
+    //                guard let document = snapshot?.documents.first else {
+    //                    log.error("No curriculum found with UUID \(curriculumID)")
+    //                    promise(.failure(DatabaseError.documentNotFound))
+    //                    return
+    //                }
+    //
+    //                document.reference.delete { error in
+    //                    if let error {
+    //                        log.error("Failed to remove curriculum: \(error.localizedDescription)")
+    //                        promise(.failure(DatabaseError.customError(error.localizedDescription)))
+    //                    } else {
+    //                        log.info("Curriculum removed successfully from library.")
+    //                        promise(.success(()))
+    //                    }
+    //                }
+    //            }
+    //        }.eraseToAnyPublisher()
+    //    }
 
     func removeCurriculumFromLibrary(libraryID: String, curriculumID: String) -> AnyPublisher<Void, Error> {
         let libraryRef = self.database.collection(DatabaseCollection.libraries.rawValue).document(libraryID)
@@ -405,16 +465,24 @@ public extension DatabaseOperations {
                     return
                 }
 
-                document.reference.delete { error in
+                let curriculumDocRef = document.reference
+                let batch = self.database.batch()
+
+                batch.deleteDocument(curriculumDocRef)
+
+                batch.updateData(["last_edited_at": FieldValue.serverTimestamp()], forDocument: libraryRef)
+
+                batch.commit { error in
                     if let error {
-                        log.error("Failed to remove curriculum: \(error.localizedDescription)")
+                        log.error("Failed to remove curriculum and update last_edited_at: \(error.localizedDescription)")
                         promise(.failure(DatabaseError.customError(error.localizedDescription)))
                     } else {
-                        log.info("Curriculum removed successfully from library.")
+                        log.info("Curriculum removed and library's last_edited_at updated successfully.")
                         promise(.success(()))
                     }
                 }
             }
-        }.eraseToAnyPublisher()
+        }
+        .eraseToAnyPublisher()
     }
 }
