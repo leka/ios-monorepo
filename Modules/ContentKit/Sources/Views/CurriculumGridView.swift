@@ -21,7 +21,7 @@ public struct CurriculumGridView: View {
     // MARK: Public
 
     public var body: some View {
-        LazyVGrid(columns: self.columns) {
+        LazyVGrid(columns: self.columns, spacing: 20) {
             ForEach(self.curriculums) { curriculum in
                 NavigationLink(destination:
                     CurriculumDetailsView(curriculum: curriculum, onActivitySelected: self.onActivitySelected)
@@ -57,7 +57,9 @@ public struct CurriculumGridView: View {
 
     @ObservedObject private var styleManager: StyleManager = .shared
 
-    private let columns = Array(repeating: GridItem(), count: 3)
+    private let columns = [
+        GridItem(.adaptive(minimum: 280), spacing: 20),
+    ]
 }
 
 #Preview {
