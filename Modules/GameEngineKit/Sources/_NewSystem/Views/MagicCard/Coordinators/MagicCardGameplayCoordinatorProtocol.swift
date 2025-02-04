@@ -12,4 +12,5 @@ import RobotKit
 public protocol MagicCardGameplayCoordinatorProtocol {
     var action: Exercise.Action { get }
     func enableMagicCardDetection()
+    func validateCorrectAnswer()
 }

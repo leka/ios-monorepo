@@ -36,6 +36,11 @@ public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinat
             .store(in: &self.cancellables)
     }
 
+    public func validateCorrectAnswer() {
+        // TODO: (@HPezz/@ladislas) Implement end of exercise through coordinator
+        Robot.shared.run(.fire)
+    }
+
     // MARK: Private
 
     private var cancellables = Set<AnyCancellable>()
