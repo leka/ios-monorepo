@@ -13,18 +13,12 @@ public struct Library: DatabaseDocument, Hashable {
 
     public var id: String?
     public var rootOwnerUid: String
-    public var activities: [SavedActivity]
-    public var curriculums: [SavedCurriculum]
-    public var stories: [SavedStory]
 
     // MARK: Internal
 
     enum CodingKeys: String, CodingKey {
         case id = "uuid"
         case rootOwnerUid = "root_owner_uid"
-        case activities
-        case curriculums
-        case stories
         case createdAt = "created_at"
         case lastEditedAt = "last_edited_at"
     }
