@@ -48,6 +48,27 @@ public class LibraryManagerViewModel: ObservableObject {
             })
             .store(in: &self.cancellables)
 
+        self.libraryManager.savedCurriculums
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { [weak self] curriculums in
+                self?.curriculums = curriculums
+            })
+            .store(in: &self.cancellables)
+
+        self.libraryManager.savedActivities
+            .receive(on: RunLoop.main)
+            .sink { [weak self] activities in
+                self?.activities = activities
+            }
+            .store(in: &self.cancellables)
+
+        self.libraryManager.savedStories
+            .receive(on: RunLoop.main)
+            .sink { [weak self] stories in
+                self?.stories = stories
+            }
+            .store(in: &self.cancellables)
+
         self.libraryManager.isLoading
             .receive(on: DispatchQueue.main)
             .sink { [weak self] isLoading in
