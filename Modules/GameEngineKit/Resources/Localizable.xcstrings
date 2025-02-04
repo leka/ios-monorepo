@@ -445,6 +445,24 @@
                 }
             }
         },
+        "game_engine_kit.exercise_view.validate_correct_answer_button_label": {
+            "comment": "The label for the validate correct answer button to validate a good behavior",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Validate Correct Answer"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Valider la bonne r\u00e9ponse"
+                    }
+                }
+            }
+        },
         "game_engine_kit.hide_and_seek_view.launcher.instructions": {
             "comment": "HideAndSeekView Launcher instructions",
             "localizations": {
