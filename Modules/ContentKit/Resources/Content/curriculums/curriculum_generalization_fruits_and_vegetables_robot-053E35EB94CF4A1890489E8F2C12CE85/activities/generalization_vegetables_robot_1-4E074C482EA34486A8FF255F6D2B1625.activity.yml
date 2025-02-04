@@ -1,0 +1,192 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+uuid: 4E074C482EA34486A8FF255F6D2B1625
+created_at: 2025-01-27T09:07:56.800Z
+last_edited_at: 2025-01-27T09:07:56.800Z
+name: generalization_vegetables_robot_1
+status: published
+authors:
+  - leka
+skills:
+  - generalization
+tags:
+  - vegetables
+hmi: tablet_robot
+types: one_on_one
+locales:
+  - en_US
+  - fr_FR
+l10n:
+  - locale: en_US
+    details:
+      icon: generalization_vegetable_robot_1
+      title: Generalization of vegetables
+      subtitle: 3 images
+      short_description: Touch the vegetables requested by the robot
+      description:
+        Leka displays a vegetable on its screen. The aim is to encourage
+        the person being accompanied to recognize this vegetable in different
+        forms and representations (photos, drawings, pictograms) to promote
+        generalization.
+      instructions: >-
+        - The person being accompanied must observe the image displayed on the
+        robot's screen
+
+        - Invite them to find the corresponding images on the tablet screen.
+  - locale: fr_FR
+    details:
+      icon: generalization_vegetables_robot_1
+      title: Généralisation des légumes
+      subtitle: 3 images
+      short_description: Touche les légumes demandés par le robot
+      description:
+        Leka affiche un légume sur son écran. L'objectif est d'encourager
+        la personne accompagnée à reconnaître ce légume sous différentes formes
+        et représentations (photos, dessins, pictogrammes) pour favoriser la
+        généralisation.
+      instructions: >-
+        - La personne accompagnée doit observer l'image affichée sur l'écran du
+        robot
+
+        - Invitez-la à trouver les images correspondantes sur l'écran de la
+        tablette.
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: en_US
+              value: Touch the vegetables requested by the robot
+            - locale: fr_FR
+              value: Touche les légumes demandés par le robot
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: photoVegetableRadishRedGreen
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: generalization_fruits_vegetables_robot_drawing_vegetable_radish
+                type: image
+                is_right_answer: true
+              - value: generalization_fruits_vegetables_robot_picto_vegetable_radish
+                type: image
+                is_right_answer: true
+    - group:
+        - instructions:
+            - locale: en_US
+              value: Touch the vegetables requested by the robot
+            - locale: fr_FR
+              value: Touche les légumes demandés par le robot
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: photoVegetableAvocadoGreen
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: generalization_fruits_vegetables_robot_picto_vegetable_avocado
+                type: image
+                is_right_answer: true
+              - value: generalization_fruits_vegetables_robot_drawing_vegetable_avocado
+                type: image
+                is_right_answer: true
+    - group:
+        - instructions:
+            - locale: en_US
+              value: Touch the vegetables requested by the robot
+            - locale: fr_FR
+              value: Touche les légumes demandés par le robot
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: photoVegetableTomatoRed
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: generalization_fruits_vegetables_robot_picto_vegetable_tomato
+                type: image
+                is_right_answer: true
+              - value: generalization_fruits_vegetables_robot_drawing_vegetable_tomato
+                type: image
+                is_right_answer: true
+    - group:
+        - instructions:
+            - locale: en_US
+              value: Touch the vegetables requested by the robot
+            - locale: fr_FR
+              value: Touche les légumes demandés par le robot
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: pictoFoodVegetablesCarrotOrange
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: generalization_fruits_vegetables_robot_drawing_vegetable_carrot
+                type: image
+                is_right_answer: true
+              - value: generalization_fruits_vegetables_robot_photo_vegetable_carrot
+                type: image
+                is_right_answer: true
+    - group:
+        - instructions:
+            - locale: en_US
+              value: Touch the vegetables requested by the robot
+            - locale: fr_FR
+              value: Touche les légumes demandés par le robot
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: pictoFoodVegetablesMushroomBrown
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: generalization_fruits_vegetables_robot_drawing_vegetable_mushroom
+                type: image
+                is_right_answer: true
+              - value: generalization_fruits_vegetables_robot_photo_vegetable_mushroom
+                type: image
+                is_right_answer: true
+    - group:
+        - instructions:
+            - locale: en_US
+              value: Touch the vegetables requested by the robot
+            - locale: fr_FR
+              value: Touche les légumes demandés par le robot
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: drawingVegetableEggplantViolet
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: generalization_fruits_vegetables_robot_picto_vegetable_eggplant
+                type: image
+                is_right_answer: true
+              - value: generalization_fruits_vegetables_robot_photo_vegetable_eggplant
+                type: image
+                is_right_answer: true
