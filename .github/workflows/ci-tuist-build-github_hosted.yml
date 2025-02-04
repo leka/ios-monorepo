@@ -66,10 +66,10 @@ jobs:
         id: xcode_cache
         uses: irgaly/xcode-cache@v1
         with:
-          key: xcode_cache-tuist_build_github_hosted-${{ hashFiles('Tuist/Package.resolved', '.mise.toml') }}-DEVELOPER_MODE_${{ matrix.TUIST_DEVELOPER_MODE }}-${{ github.sha }}
+          key: xcode_cache-tuist_build_github_hosted-DEVELOPER_MODE_${{ matrix.TUIST_DEVELOPER_MODE }}-${{ github.sha }}
           restore-keys: |
-            xcode_cache-tuist_build_github_hosted-${{ hashFiles('Tuist/Package.resolved', '.mise.toml') }}-DEVELOPER_MODE__${{ matrix.TUIST_DEVELOPER_MODE }}-
-            xcode_cache-tuist_build_github_hosted-${{ hashFiles('Tuist/Package.resolved', '.mise.toml') }}-
+            xcode_cache-tuist_build_github_hosted-DEVELOPER_MODE_${{ matrix.TUIST_DEVELOPER_MODE }}-
+            xcode_cache-tuist_build_github_hosted-
           delete-used-deriveddata-cache: true
           swiftpm-package-resolved-file: Tuist/Package.resolved
           use-default-mtime-targets: true
@@ -110,13 +110,17 @@ jobs:
             Tuist/.build/checkouts
             Tuist/.build/derived
             Tuist/.build/workspace-state.json
-          key: tuist_cache-tuist_build_github_hosted-${{ hashFiles('Tuist/Package.resolved', '.mise.toml') }}-DEVELOPER_MODE_${{ matrix.TUIST_DEVELOPER_MODE }}-${{ github.sha }}
+          key: tuist_cache-tuist_build_github_hosted-DEVELOPER_MODE_${{ matrix.TUIST_DEVELOPER_MODE }}-${{ github.sha }}
           restore-keys: |
-            tuist_cache-tuist_build_github_hosted-${{ hashFiles('Tuist/Package.resolved', '.mise.toml') }}-DEVELOPER_MODE_${{ matrix.TUIST_DEVELOPER_MODE }}-
-            tuist_cache-tuist_build_github_hosted-${{ hashFiles('Tuist/Package.resolved', '.mise.toml') }}-
+            tuist_cache-tuist_build_github_hosted-DEVELOPER_MODE_${{ matrix.TUIST_DEVELOPER_MODE }}-
+            tuist_cache-tuist_build_github_hosted-
 
-      - name: Clean if cache miss
-        if: steps.xcode_cache.outputs.cache-hit != 'true' || steps.tuist_cache.outputs.cache-hit != 'true'
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v45
+
+      - name: Clean on tuist upgrade or package.resolved change
+        if: ${{ contains(steps.changed-files.outputs.modified_files, 'Tuist/Package.resolved') || contains(steps.changed-files.outputs.modified_files, '.mise.toml') }}
         run: |
           tuist clean
           rm -rf .build
