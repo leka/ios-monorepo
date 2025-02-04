@@ -63,13 +63,13 @@ jobs:
           tuist version
 
       - name: Cache Xcode derived data
+        id: xcode_cache
         uses: irgaly/xcode-cache@v1
         with:
-          key: xcode-cache-tuist_build_github_hosted-DEVELOPER_MODE_${{ matrix.TUIST_DEVELOPER_MODE }}-${{ github.sha }}
+          key: xcode_cache-tuist_build_github_hosted-DEVELOPER_MODE_${{ matrix.TUIST_DEVELOPER_MODE }}-${{ github.sha }}
           restore-keys: |
-            xcode-cache-tuist_build_github_hosted-DEVELOPER_MODE_${{ matrix.TUIST_DEVELOPER_MODE }}-
-            xcode-cache-tuist_build_github_hosted-
-            xcode-cache-
+            xcode_cache-tuist_build_github_hosted-DEVELOPER_MODE_${{ matrix.TUIST_DEVELOPER_MODE }}-
+            xcode_cache-tuist_build_github_hosted-
           delete-used-deriveddata-cache: true
           swiftpm-package-resolved-file: Tuist/Package.resolved
           use-default-mtime-targets: true
@@ -95,13 +95,14 @@ jobs:
           path: |
             ~/Library/Caches/org.swift.swiftpm
             ~/Library/org.swift.swiftpm
-          key: spm-cache-tuist_build_github_hosted-DEVELOPER_MODE_${{ matrix.TUIST_DEVELOPER_MODE }}-${{ github.sha }}
+          key: spm_cache-tuist_build_github_hosted-DEVELOPER_MODE_${{ matrix.TUIST_DEVELOPER_MODE }}-${{ github.sha }}
           restore-keys: |
-            spm-cache-tuist_build_github_hosted-DEVELOPER_MODE_${{ matrix.TUIST_DEVELOPER_MODE }}-
-            spm-cache-tuist_build_github_hosted-
-            spm-cache-
+            spm_cache-tuist_build_github_hosted-DEVELOPER_MODE_${{ matrix.TUIST_DEVELOPER_MODE }}-
+            spm_cache-tuist_build_github_hosted-
+            spm_cache-
 
       - name: Cache tuist data
+        id: tuist_cache
         uses: actions/cache@v4
         with:
           path: |
@@ -109,11 +110,22 @@ jobs:
             Tuist/.build/checkouts
             Tuist/.build/derived
             Tuist/.build/workspace-state.json
-          key: spm-cache-tuist_build_github_hosted-DEVELOPER_MODE_${{ matrix.TUIST_DEVELOPER_MODE }}-${{ github.sha }}
+          key: tuist_cache-tuist_build_github_hosted-DEVELOPER_MODE_${{ matrix.TUIST_DEVELOPER_MODE }}-${{ github.sha }}
           restore-keys: |
-            spm-cache-tuist_build_github_hosted-DEVELOPER_MODE_${{ matrix.TUIST_DEVELOPER_MODE }}-
-            spm-cache-tuist_build_github_hosted-
-            spm-cache-
+            tuist_cache-tuist_build_github_hosted-DEVELOPER_MODE_${{ matrix.TUIST_DEVELOPER_MODE }}-
+            tuist_cache-tuist_build_github_hosted-
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v45
+
+      - name: Clean on tuist upgrade or package.resolved change
+        if: ${{ contains(steps.changed-files.outputs.modified_files, 'Tuist/Package.resolved') || contains(steps.changed-files.outputs.modified_files, '.mise.toml') }}
+        run: |
+          tuist clean
+          rm -rf .build
+          rm -rf Tuist/.build
+          rm -rf ~/Library/Developer/Xcode/DerivedData
 
       - name: restore files' mtime
         uses: chetan/git-restore-mtime-action@v2
@@ -141,7 +153,6 @@ jobs:
 
       - name: tuist build
         run: |
-
           TUIST_TURN_OFF_LINTERS=${{ env.TUIST_TURN_OFF_LINTERS }} \
           TUIST_GENERATE_EXAMPLE_TARGETS=${{ env.TUIST_GENERATE_EXAMPLE_TARGETS }} \
           TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG=${{ env.TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG }} \
