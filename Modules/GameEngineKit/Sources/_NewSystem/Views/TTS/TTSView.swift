@@ -137,6 +137,11 @@ extension l10n {
                                                          bundle: GameEngineKitResources.bundle,
                                                          value: "Validate",
                                                          comment: "The label for the validate button to confirm selected choices")
+
+        static let validateCorrectAnswerButtonLabel = LocalizedString("game_engine_kit.exercise_view.validate_correct_answer_button_label",
+                                                                      bundle: GameEngineKitResources.bundle,
+                                                                      value: "Validate Correct Answer",
+                                                                      comment: "The label for the validate correct answer button to validate a good behavior")
     }
 }
 
