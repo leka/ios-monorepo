@@ -13,7 +13,7 @@ import SwiftUI
 public struct StoryListView: View {
     // MARK: Lifecycle
 
-    public init(stories: [Story]? = nil, onStartStory: ((Story) -> Void)?) {
+    public init(stories: [Story]? = nil, onStartStory: ((Story) -> Void)? = nil) {
         self.stories = stories ?? []
         self.onStartStory = onStartStory
     }
@@ -21,73 +21,67 @@ public struct StoryListView: View {
     // MARK: Public
 
     public var body: some View {
-        LazyVStack(alignment: .leading, spacing: 20) {
-            ForEach(self.stories) { story in
-                NavigationLink(destination:
-                    StoryDetailsView(story: story, onStartStory: self.onStartStory)
-                        .logEventScreenView(
-                            screenName: "story_details",
-                            context: .splitView,
-                            parameters: [
-                                "lk_story_id": "\(story.name)-\(story.id)",
-                            ]
-                        )
-                ) {
-                    HStack(alignment: .center, spacing: 30) {
-                        Image(uiImage: story.details.iconImage)
-                            .resizable()
-                            .scaledToFit()
-                            .clipShape(Circle())
-                            .frame(width: 50)
-                            .overlay(
-                                Circle()
-                                    .stroke(self.styleManager.accentColor!, lineWidth: 1)
-                            )
+        ScrollView {
+            Grid(alignment: .center, horizontalSpacing: 10, verticalSpacing: 20) {
+                ForEach(self.stories) { story in
+                    GridRow {
+                        NavigationLink(destination:
+                            StoryDetailsView(story: story, onStartStory: self.onStartStory)
+                                .logEventScreenView(
+                                    screenName: "story_details",
+                                    context: .splitView,
+                                    parameters: ["lk_story_id": "\(story.name)-\(story.id)"]
+                                )
+                        ) {
+                            Image(systemName: "star.fill")
+                                .font(.system(size: 12))
+                                .foregroundColor(
+                                    self.libraryManagerViewModel.isStoryFavorite(storyID: story.uuid) ? (self.styleManager.accentColor ?? .blue) : .clear
+                                )
+                                .frame(width: 12)
 
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text(story.details.title)
-                                    .font(.headline)
-                                    .frame(alignment: .leading)
-                            }
+                            HStack(spacing: 10) {
+                                Image(uiImage: story.details.iconImage)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 50)
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))
 
-                            if let subtitle = story.details.subtitle {
-                                Text(subtitle)
-                                    .font(.subheadline)
-                                    .frame(alignment: .leading)
+                                VStack(alignment: .leading) {
+                                    Text(story.details.title)
+                                        .font(.headline)
+
+                                    if let subtitle = story.details.subtitle {
+                                        Text(subtitle)
+                                            .font(.subheadline)
+                                    }
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
                             }
+                            .contentShape(Rectangle())
                         }
-                        .padding(.vertical)
-
-                        Spacer()
+                        .buttonStyle(.plain)
+                        .frame(maxWidth: .infinity, maxHeight: 120)
+                        .simultaneousGesture(TapGesture().onEnded {
+                            AnalyticsManager.logEventSelectContent(
+                                type: .story,
+                                id: story.id,
+                                name: story.name,
+                                origin: .personalLibrary
+                            )
+                        })
 
                         #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                             if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                                Button {}
-                                    label: {
-                                        Menu {
-                                            if self.libraryManagerViewModel.isStorySaved(storyID: story.uuid) {
-                                                Button(role: .destructive) {
-                                                    self.libraryManager.removeStory(storyID: story.uuid)
-                                                } label: {
-                                                    Label(String(l10n.Library.MenuActions.removeFromlibraryButtonLabel.characters), systemImage: "trash")
-                                                }
-                                            } else {
-                                                Button {
-                                                    self.libraryManager.addStory(
-                                                        storyID: story.uuid,
-                                                        caregiverID: currentCaregiverID
-                                                    )
-                                                } label: {
-                                                    Label(String(l10n.Library.MenuActions.addTolibraryButtonLabel.characters), systemImage: "plus")
-                                                }
-                                            }
-                                        } label: {
-                                            Image(systemName: "ellipsis")
-                                                .bold()
-                                        }
-                                        .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
-                                    }
+                                Menu {
+                                    self.addOrRemoveButton(story: story, caregiverID: currentCaregiverID)
+                                    self.addOrRemoveFavoriteButton(story: story, caregiverID: currentCaregiverID)
+                                } label: {
+                                    Image(systemName: "ellipsis")
+                                        .bold()
+                                }
+                                .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
+                                .frame(width: 34)
                             }
                         #endif
 
@@ -99,22 +93,12 @@ public struct StoryListView: View {
                                 .contentShape(Rectangle())
                         }
                         .tint(.lkGreen)
+                        .frame(width: 34)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: 120)
-                    .contentShape(Rectangle())
-                    .simultaneousGesture(TapGesture().onEnded {
-                        AnalyticsManager.logEventSelectContent(
-                            type: .story,
-                            id: story.id,
-                            name: story.name,
-                            origin: .personalLibrary
-                        )
-                    })
                 }
-                .buttonStyle(.plain)
             }
+            .padding()
         }
-        .padding()
     }
 
     // MARK: Internal
@@ -125,11 +109,47 @@ public struct StoryListView: View {
     // MARK: Private
 
     @ObservedObject private var styleManager: StyleManager = .shared
-
     @StateObject private var libraryManagerViewModel = LibraryManagerViewModel()
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var libraryManager: LibraryManager = .shared
+
+    @ViewBuilder
+    private func addOrRemoveButton(story: Story, caregiverID: String) -> some View {
+        if self.libraryManagerViewModel.isStorySaved(storyID: story.uuid) {
+            Button(role: .destructive) {
+                self.libraryManager.removeStory(storyID: story.uuid)
+            } label: {
+                Label("Remove from Library", systemImage: "trash")
+            }
+        } else {
+            Button {
+                self.libraryManager.addStory(
+                    storyID: story.uuid,
+                    caregiverID: caregiverID
+                )
+            } label: {
+                Label("Add to Library", systemImage: "plus")
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func addOrRemoveFavoriteButton(story: Story, caregiverID _: String) -> some View {
+        if self.libraryManagerViewModel.isStoryFavorite(storyID: story.uuid) {
+            Button(role: .destructive) {
+                self.libraryManager.toggleStoryFavoriteStatus(storyID: story.uuid)
+            } label: {
+                Label("Remove from Favorites", systemImage: "star.slash")
+            }
+        } else {
+            Button {
+                self.libraryManager.toggleStoryFavoriteStatus(storyID: story.uuid)
+            } label: {
+                Label("Add to Favorites", systemImage: "star")
+            }
+        }
+    }
 }
 
 #Preview {
