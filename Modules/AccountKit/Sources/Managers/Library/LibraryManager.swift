@@ -169,13 +169,13 @@ public class LibraryManager {
 
     // MARK: - Stories
 
-    public func addStory(storyID: String, caregiverID: String) {
+    public func addStory(asFavorite: Bool = false, storyID: String, caregiverID: String) {
         guard let libraryID = currentLibrary.value?.id else {
             self.fetchError.send(DatabaseError.customError("Library not found"))
             return
         }
 
-        let newStory = SavedStory(id: storyID, caregiverID: caregiverID, addedAt: Date())
+        let newStory = SavedStory(id: storyID, caregiverID: caregiverID, addedAt: Date(), isFavorite: asFavorite)
 
         self.dbOps.addItemToLibrarySubCollection(
             libraryID: libraryID,
@@ -188,6 +188,27 @@ public class LibraryManager {
             }
         }, receiveValue: {
             // Nothing to do
+        })
+        .store(in: &self.cancellables)
+    }
+
+    public func toggleStoryFavoriteStatus(storyID: String) {
+        guard let libraryID = currentLibrary.value?.id else {
+            self.fetchError.send(DatabaseError.customError("Library not found"))
+            return
+        }
+
+        self.dbOps.toggleLibraryItemFavoriteStatus(
+            libraryID: libraryID,
+            subCollection: .stories,
+            itemID: storyID
+        )
+        .sink(receiveCompletion: { [weak self] completion in
+            if case let .failure(error) = completion {
+                self?.fetchError.send(error)
+            }
+        }, receiveValue: {
+            // Successfully updated favorite status
         })
         .store(in: &self.cancellables)
     }

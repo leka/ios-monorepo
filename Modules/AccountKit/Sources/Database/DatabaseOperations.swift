@@ -324,6 +324,57 @@ public class DatabaseOperations {
         .eraseToAnyPublisher()
     }
 
+    public func toggleLibraryItemFavoriteStatus(
+        libraryID: String,
+        subCollection: LibrarySubCollection,
+        itemID: String
+    ) -> AnyPublisher<Void, Error> {
+        let libraryRef = self.database.collection(DatabaseCollection.libraries.rawValue).document(libraryID)
+        let subCollectionRef = libraryRef.collection(subCollection.rawValue)
+
+        return Future<Void, Error> { promise in
+            subCollectionRef
+                .whereField(SavedStory.CodingKeys.id.rawValue, isEqualTo: itemID)
+                .getDocuments { snapshot, error in
+                    if let error {
+                        log.error("Error fetching item with uuid \(itemID) from \(subCollection.rawValue): \(error.localizedDescription)")
+                        promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                        return
+                    }
+
+                    guard let document = snapshot?.documents.first else {
+                        log.error("No item found with uuid \(itemID) in sub-collection \(subCollection.rawValue)")
+                        promise(.failure(DatabaseError.documentNotFound))
+                        return
+                    }
+
+                    let currentIsFavorite = document.data()[SavedStory.CodingKeys.isFavorite.rawValue] as? Bool ?? false
+                    let newFavoriteValue = !currentIsFavorite
+
+                    let batch = self.database.batch()
+                    batch.updateData(
+                        [SavedStory.CodingKeys.isFavorite.rawValue: newFavoriteValue],
+                        forDocument: document.reference
+                    )
+                    batch.updateData(
+                        [Library.CodingKeys.lastEditedAt.rawValue: FieldValue.serverTimestamp()],
+                        forDocument: libraryRef
+                    )
+
+                    batch.commit { error in
+                        if let error {
+                            log.error("Failed to update favorite status for item \(itemID): \(error.localizedDescription)")
+                            promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                        } else {
+                            log.info("Favorite status for item \(itemID) updated successfully.")
+                            promise(.success(()))
+                        }
+                    }
+                }
+        }
+        .eraseToAnyPublisher()
+    }
+
     // MARK: Private
 
     private let database = Firestore.firestore()

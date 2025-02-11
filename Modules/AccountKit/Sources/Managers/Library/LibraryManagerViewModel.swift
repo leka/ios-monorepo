@@ -35,6 +35,10 @@ public class LibraryManagerViewModel: ObservableObject {
         self.stories.contains(where: { $0.id == storyID })
     }
 
+    public func isStoryFavorite(storyID: String) -> Bool {
+        self.stories.first(where: { $0.id == storyID })?.isFavorite ?? false
+    }
+
     // MARK: Private
 
     private var cancellables = Set<AnyCancellable>()
