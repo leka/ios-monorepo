@@ -87,6 +87,27 @@ struct RobotControlView: View {
                         RobotControlActionButton(title: "Spin 2", image: "number.circle", tint: .teal) {
                             self.robot.run(.spinBlinkBlueViolet)
                         }
+                        RobotControlActionButton(title: "Breath T=0.008", image: "light.max", tint: .green) {
+                            self.robot.beltBreath(for: 5, timeInterval: 0.008)
+                        }
+                        RobotControlActionButton(title: "Breath T=0.009", image: "light.max", tint: .yellow) {
+                            self.robot.beltBreath(for: 5, timeInterval: 0.009)
+                        }
+                        RobotControlActionButton(title: "Breath T=0.01", image: "light.max", tint: .red) {
+                            self.robot.beltBreath(for: 5, timeInterval: 0.01)
+                        }
+                        RobotControlActionButton(title: "Rotation T=0.03", image: "light.max", tint: .green) {
+                            self.robot.rotatingPoint(for: 5, timeInterval: 0.03)
+                        }
+                        RobotControlActionButton(title: "Rotation T=0.05", image: "light.max", tint: .yellow) {
+                            self.robot.rotatingPoint(for: 5, timeInterval: 0.05)
+                        }
+                        RobotControlActionButton(title: "Rotation T=0.1", image: "light.max", tint: .red) {
+                            self.robot.rotatingPoint(for: 5, timeInterval: 0.1)
+                        }
+                        RobotControlActionButton(title: "SpinBlink V2", image: "light.max", tint: .mint) {
+                            self.robot.spinBlink(for: 7)
+                        }
                     }
                 }
 
