@@ -355,6 +355,80 @@ public extension Robot {
         }
     }
 
+    func beltBreath(for duration: Double, timeInterval: Double = 0.01) {
+        let currentTime = DispatchTime.now()
+        var timer = 0.0
+        var paletteCursor = 0
+        var breatheIn = true
+
+        while timer < duration {
+            log.debug("Dispatch after : \(currentTime + timer)")
+            DispatchQueue.main.asyncAfter(deadline: currentTime + timer) {
+                if paletteCursor >= 250 {
+                    breatheIn = false
+                } else if paletteCursor <= 5 {
+                    breatheIn = true
+                }
+                paletteCursor += breatheIn ? 10 : -10
+                Robot.shared.shine(.all(in: Robot.Color(r: UInt8(paletteCursor), g: 0, b: 0)))
+            }
+            timer += timeInterval
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+            self.stopLights()
+        }
+    }
+
+    func rotatingPoint(for duration: Double, timeInterval: Double = 0.01) {
+        let currentTime = DispatchTime.now()
+        var timer = 0.0
+        var spotPosition = 0
+        var turnClockwise = true
+
+        while timer < duration {
+            log.debug("Dispatch after : \(currentTime + timer)")
+            DispatchQueue.main.asyncAfter(deadline: currentTime + timer) {
+                if spotPosition >= 20 {
+                    turnClockwise = false
+                } else if spotPosition <= 0 {
+                    turnClockwise = true
+                }
+                Robot.shared.blacken(.all)
+                Robot.shared.shine(.spot(.belt, ids: [UInt8(spotPosition)], in: .red))
+                spotPosition += turnClockwise ? 1 : -1
+            }
+            timer += timeInterval
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+            self.stopLights()
+        }
+    }
+
+    func spinBlink(for duration: Double) {
+        let currentTime = DispatchTime.now()
+        var timer = 0.0
+        let timeInterval = 0.5
+        var isGreen = true
+
+        while timer < duration {
+            log.debug("Dispatch after : \(currentTime + timer)")
+            DispatchQueue.main.asyncAfter(deadline: currentTime + timer) {
+                Robot.shared.shine(.all(in: isGreen ? .green : .mint))
+                isGreen.toggle()
+            }
+            DispatchQueue.main.asyncAfter(deadline: currentTime + timer + timeInterval / 2.0) {
+                Robot.shared.blacken(.all)
+            }
+            timer += timeInterval
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+            self.stopLights()
+        }
+    }
+
     private func getRandomLight(color: Robot.Color) -> Robot.Lights {
         let lights: [Robot.Lights] = [
             .earLeft(in: color), .earRight(in: color), .quarterBackLeft(in: color), .quarterBackRight(in: color),
