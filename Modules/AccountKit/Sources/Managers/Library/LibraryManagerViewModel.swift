@@ -18,6 +18,7 @@ public class LibraryManagerViewModel: ObservableObject {
     @Published public var activities: [SavedActivity] = []
     @Published public var curriculums: [SavedCurriculum] = []
     @Published public var stories: [SavedStory] = []
+    @Published public var favoriteActivities: [SavedActivity] = []
 
     @Published public var errorMessage: String = ""
     @Published public var showErrorAlert: Bool = false
@@ -25,6 +26,10 @@ public class LibraryManagerViewModel: ObservableObject {
 
     public func isActivitySaved(activityID: String) -> Bool {
         self.activities.contains(where: { $0.id == activityID })
+    }
+
+    public func isActivityFavorite(activityID: String) -> Bool {
+        self.favoriteActivities.contains(where: { $0.id == activityID })
     }
 
     public func isCurriculumSaved(curriculumID: String) -> Bool {
@@ -70,6 +75,13 @@ public class LibraryManagerViewModel: ObservableObject {
             .receive(on: RunLoop.main)
             .sink { [weak self] stories in
                 self?.stories = stories
+            }
+            .store(in: &self.cancellables)
+
+        self.libraryManager.favoriteActivities
+            .receive(on: RunLoop.main)
+            .sink { [weak self] favoriteActivities in
+                self?.favoriteActivities = favoriteActivities
             }
             .store(in: &self.cancellables)
 

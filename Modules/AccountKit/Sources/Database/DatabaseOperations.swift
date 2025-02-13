@@ -375,12 +375,7 @@ public class DatabaseOperations {
         .eraseToAnyPublisher()
     }
 
-    // MARK: Private
-
-    private let database = Firestore.firestore()
-    private var listenerRegistrations = [String: ListenerRegistration]()
-
-    private func listenToLibrarySubCollection<T: Decodable>(
+    public func listenToLibrarySubCollection<T: Decodable>(
         libraryID: String,
         subCollection: LibrarySubCollection
     ) -> AnyPublisher<[T], Error> {
@@ -416,4 +411,9 @@ public class DatabaseOperations {
         self.listenerRegistrations[listenerKey] = listener
         return subject.eraseToAnyPublisher()
     }
+
+    // MARK: Private
+
+    private let database = Firestore.firestore()
+    private var listenerRegistrations = [String: ListenerRegistration]()
 }

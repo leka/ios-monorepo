@@ -20,4 +20,5 @@ public enum LibrarySubCollection: String {
     case curriculums = "CURRICULUMS"
     case activities = "ACTIVITIES"
     case stories = "STORIES"
+    case favoriteActivities = "FAVORITE_ACTIVITIES"
 }

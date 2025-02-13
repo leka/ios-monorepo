@@ -77,45 +77,6 @@ public struct ActivityListView: View {
                         if let templateIconUIImage = ContentKit.getTemplateIconUIImage(for: activity) {
                             IconImageView(image: templateIconUIImage)
                         }
-
-                        #if DEVELOPER_MODE || TESTFLIGHT_BUILD
-                            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                                Button {} label: {
-                                    Menu {
-                                        if self.libraryManagerViewModel.isActivitySaved(activityID: activity.uuid) {
-                                            Button(role: .destructive) {
-                                                self.libraryManager.removeActivity(activityID: activity.uuid)
-                                            } label: {
-                                                Label(String(l10n.Library.MenuActions.removeFromlibraryButtonLabel.characters), systemImage: "trash")
-                                            }
-                                        } else {
-                                            Button {
-                                                self.libraryManager.addActivity(
-                                                    activityID: activity.uuid,
-                                                    caregiverID: currentCaregiverID
-                                                )
-                                            } label: {
-                                                Label(String(l10n.Library.MenuActions.addTolibraryButtonLabel.characters), systemImage: "plus")
-                                            }
-                                        }
-                                    } label: {
-                                        Image(systemName: "ellipsis")
-                                            .bold()
-                                    }
-                                    .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
-                                }
-                            }
-                        #endif
-
-                        Button {
-                            self.onStartActivity?(activity)
-                        } label: {
-                            Image(systemName: "play.circle")
-                                .font(.system(size: 24))
-                                .contentShape(Rectangle())
-                        }
-                        .tint(.lkGreen)
-                        .padding(.horizontal, 5)
                     }
                     .frame(maxWidth: .infinity, maxHeight: 120)
                     .contentShape(Rectangle())
@@ -129,6 +90,31 @@ public struct ActivityListView: View {
                     )
                 })
                 .buttonStyle(.plain)
+
+                #if DEVELOPER_MODE || TESTFLIGHT_BUILD
+                    if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                        Button {} label: {
+                            Menu {
+                                self.addOrRemoveButton(activity: activity, caregiverID: currentCaregiverID)
+                                self.addOrRemoveFavoriteButton(activity: activity, caregiverID: currentCaregiverID)
+                            } label: {
+                                Image(systemName: "ellipsis")
+                                    .bold()
+                            }
+                            .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
+                        }
+                    }
+                #endif
+
+                Button {
+                    self.onStartActivity?(activity)
+                } label: {
+                    Image(systemName: "play.circle")
+                        .font(.system(size: 24))
+                        .contentShape(Rectangle())
+                }
+                .tint(.lkGreen)
+                .padding(.horizontal, 5)
             }
         }
         .padding()
@@ -159,6 +145,43 @@ public struct ActivityListView: View {
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var libraryManager: LibraryManager = .shared
+
+    @ViewBuilder
+    private func addOrRemoveButton(activity: Activity, caregiverID: String) -> some View {
+        if self.libraryManagerViewModel.isActivitySaved(activityID: activity.uuid) {
+            Button(role: .destructive) {
+                self.libraryManager.removeActivity(activityID: activity.uuid)
+            } label: {
+                Label("Remove from Library", systemImage: "trash")
+            }
+        } else {
+            Button {
+                self.libraryManager.addActivity(
+                    activityID: activity.uuid,
+                    caregiverID: caregiverID
+                )
+            } label: {
+                Label("Add to Library", systemImage: "plus")
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func addOrRemoveFavoriteButton(activity: Activity, caregiverID: String) -> some View {
+        if self.libraryManagerViewModel.isActivityFavorite(activityID: activity.uuid) {
+            Button(role: .destructive) {
+                self.libraryManager.removeActivityFromFavorites(activityID: activity.uuid)
+            } label: {
+                Label("Remove from Favorites", systemImage: "star.slash")
+            }
+        } else {
+            Button {
+                self.libraryManager.addActivityToFavorites(activityID: activity.uuid, caregiverID: caregiverID)
+            } label: {
+                Label("Add to Favorites", systemImage: "star")
+            }
+        }
+    }
 }
 
 #Preview {

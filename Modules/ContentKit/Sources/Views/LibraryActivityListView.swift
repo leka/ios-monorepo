@@ -8,12 +8,12 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - ActivityListView
+// MARK: - LibraryActivityListView
 
 public struct LibraryActivityListView: View {
     // MARK: Lifecycle
 
-    public init(activities: [Activity]? = nil, onStartActivity: ((Activity) -> Void)?) {
+    public init(activities: [Activity]? = nil, onStartActivity: ((Activity) -> Void)? = nil) {
         self.activities = activities ?? []
         self.onStartActivity = onStartActivity
     }
@@ -21,88 +21,83 @@ public struct LibraryActivityListView: View {
     // MARK: Public
 
     public var body: some View {
-        LazyVStack(alignment: .leading, spacing: 20) {
-            ForEach(self.activities) { activity in
-                NavigationLink(destination:
-                    ActivityDetailsView(activity: activity, onStartActivity: self.onStartActivity)
-                        .logEventScreenView(
-                            screenName: "activity_details",
-                            context: .splitView,
-                            parameters: [
-                                "lk_activity_id": "\(activity.name)-\(activity.id)",
-                            ]
-                        )
-                ) {
-                    HStack(alignment: .center) {
-                        Image(uiImage: activity.details.iconImage)
-                            .resizable()
-                            .scaledToFit()
-                            .clipShape(Circle())
-                            .frame(width: 50)
-                            .overlay(
-                                Circle()
-                                    .stroke(self.styleManager.accentColor!, lineWidth: 1)
+        ScrollView {
+            Grid(alignment: .center, horizontalSpacing: 10, verticalSpacing: 20) {
+                ForEach(self.activities) { activity in
+                    GridRow {
+                        NavigationLink(destination:
+                            ActivityDetailsView(activity: activity, onStartActivity: self.onStartActivity)
+                                .logEventScreenView(
+                                    screenName: "activity_details",
+                                    context: .splitView,
+                                    parameters: ["lk_activity_id": "\(activity.name)-\(activity.id)"]
+                                )
+                        ) {
+                            Image(systemName: "star.fill")
+                                .font(.system(size: 12))
+                                .foregroundColor(
+                                    self.libraryManagerViewModel.isActivityFavorite(activityID: activity.uuid) ? (self.styleManager.accentColor ?? .blue) : .clear
+                                )
+                                .frame(width: 12)
+
+                            HStack(spacing: 10) {
+                                Image(uiImage: activity.details.iconImage)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 50)
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+
+                                VStack(alignment: .leading) {
+                                    Text(activity.details.title)
+                                        .font(.headline)
+
+                                    if let subtitle = activity.details.subtitle {
+                                        Text(subtitle)
+                                            .font(.subheadline)
+                                    }
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                            .contentShape(Rectangle())
+
+                            if let gestureIconUIImage = ContentKit.getGestureIconUIImage(for: activity) {
+                                IconImageView(image: gestureIconUIImage)
+                            }
+
+                            if let earFocusIconUIImage = ContentKit.getFocusIconUIImage(for: activity, ofType: .ears) {
+                                IconImageView(image: earFocusIconUIImage)
+                            }
+
+                            if let robotFocusIconUIImage = ContentKit.getFocusIconUIImage(for: activity, ofType: .robot) {
+                                IconImageView(image: robotFocusIconUIImage)
+                            }
+
+                            if let templateIconUIImage = ContentKit.getTemplateIconUIImage(for: activity) {
+                                IconImageView(image: templateIconUIImage)
+                            }
+                        }
+                        .buttonStyle(.plain)
+                        .frame(maxWidth: .infinity, maxHeight: 120)
+                        .simultaneousGesture(TapGesture().onEnded {
+                            AnalyticsManager.logEventSelectContent(
+                                type: .activity,
+                                id: activity.id,
+                                name: activity.name,
+                                origin: .personalLibrary
                             )
-
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text(activity.details.title)
-                                    .font(.headline)
-                                    .frame(alignment: .leading)
-                            }
-
-                            if let subtitle = activity.details.subtitle {
-                                Text(subtitle)
-                                    .font(.subheadline)
-                                    .frame(alignment: .leading)
-                            }
-                        }
-                        .padding(.vertical)
-
-                        Spacer()
-
-                        if let gestureIconUIImage = ContentKit.getGestureIconUIImage(for: activity) {
-                            IconImageView(image: gestureIconUIImage)
-                        }
-
-                        if let earFocusIconUIImage = ContentKit.getFocusIconUIImage(for: activity, ofType: .ears) {
-                            IconImageView(image: earFocusIconUIImage)
-                        }
-
-                        if let robotFocusIconUIImage = ContentKit.getFocusIconUIImage(for: activity, ofType: .robot) {
-                            IconImageView(image: robotFocusIconUIImage)
-                        }
-
-                        if let templateIconUIImage = ContentKit.getTemplateIconUIImage(for: activity) {
-                            IconImageView(image: templateIconUIImage)
-                        }
+                        })
 
                         #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                             if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                                Button {} label: {
-                                    Menu {
-                                        if self.libraryManagerViewModel.isActivitySaved(activityID: activity.uuid) {
-                                            Button(role: .destructive) {
-                                                self.libraryManager.removeActivity(activityID: activity.uuid)
-                                            } label: {
-                                                Label(String(l10n.Library.MenuActions.removeFromlibraryButtonLabel.characters), systemImage: "trash")
-                                            }
-                                        } else {
-                                            Button {
-                                                self.libraryManager.addActivity(
-                                                    activityID: activity.uuid,
-                                                    caregiverID: currentCaregiverID
-                                                )
-                                            } label: {
-                                                Label(String(l10n.Library.MenuActions.addTolibraryButtonLabel.characters), systemImage: "plus")
-                                            }
-                                        }
-                                    } label: {
-                                        Image(systemName: "ellipsis")
-                                            .bold()
-                                    }
-                                    .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
+                                Menu {
+                                    self.addOrRemoveButton(activity: activity, caregiverID: currentCaregiverID)
+                                    self.addOrRemoveFavoriteButton(activity: activity, caregiverID: currentCaregiverID)
+                                } label: {
+                                    Image(systemName: "ellipsis")
+                                        .bold()
                                 }
+                                .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
+                                .frame(width: 34)
                             }
                         #endif
 
@@ -114,23 +109,12 @@ public struct LibraryActivityListView: View {
                                 .contentShape(Rectangle())
                         }
                         .tint(.lkGreen)
-                        .padding(.horizontal, 5)
+                        .frame(width: 34)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: 120)
-                    .contentShape(Rectangle())
                 }
-                .buttonStyle(.plain)
-                .simultaneousGesture(TapGesture().onEnded {
-                    AnalyticsManager.logEventSelectContent(
-                        type: .activity,
-                        id: activity.id,
-                        name: activity.name,
-                        origin: .personalLibrary
-                    )
-                })
             }
+            .padding()
         }
-        .padding()
     }
 
     // MARK: Internal
@@ -153,11 +137,47 @@ public struct LibraryActivityListView: View {
     }
 
     @ObservedObject private var styleManager: StyleManager = .shared
-
     @StateObject private var libraryManagerViewModel = LibraryManagerViewModel()
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var libraryManager: LibraryManager = .shared
+
+    @ViewBuilder
+    private func addOrRemoveButton(activity: Activity, caregiverID: String) -> some View {
+        if self.libraryManagerViewModel.isActivitySaved(activityID: activity.uuid) {
+            Button(role: .destructive) {
+                self.libraryManager.removeActivity(activityID: activity.uuid)
+            } label: {
+                Label("Remove from Library", systemImage: "trash")
+            }
+        } else {
+            Button {
+                self.libraryManager.addActivity(
+                    activityID: activity.uuid,
+                    caregiverID: caregiverID
+                )
+            } label: {
+                Label("Add to Library", systemImage: "plus")
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func addOrRemoveFavoriteButton(activity: Activity, caregiverID: String) -> some View {
+        if self.libraryManagerViewModel.isActivityFavorite(activityID: activity.uuid) {
+            Button(role: .destructive) {
+                self.libraryManager.removeActivityFromFavorites(activityID: activity.uuid)
+            } label: {
+                Label("Remove from Favorites", systemImage: "star.slash")
+            }
+        } else {
+            Button {
+                self.libraryManager.addActivityToFavorites(activityID: activity.uuid, caregiverID: caregiverID)
+            } label: {
+                Label("Add to Favorites", systemImage: "star")
+            }
+        }
+    }
 }
 
 #Preview {
