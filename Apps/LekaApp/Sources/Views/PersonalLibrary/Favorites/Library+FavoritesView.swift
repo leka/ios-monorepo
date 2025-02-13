@@ -1,0 +1,71 @@
+// Leka - iOS Monorepo
+// Copyright APF France handicap
+// SPDX-License-Identifier: Apache-2.0
+
+import AccountKit
+import SwiftUI
+
+// MARK: - LibraryFavoritesView
+
+struct LibraryFavoritesView: View {
+    // MARK: Lifecycle
+
+    init(viewModel: LibraryManagerViewModel) {
+        self.viewModel = viewModel
+    }
+
+    // MARK: Internal
+
+    var body: some View {
+        VStack {
+            Picker("Favorites", selection: self.$selectedCategory) {
+                ForEach(FavoriteCategory.allCases, id: \..self) { category in
+                    Text(category.rawValue.capitalized).tag(category)
+                }
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            .frame(maxWidth: 400)
+
+            Spacer()
+
+            self.contentView(for: self.selectedCategory)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                .padding()
+
+            Spacer()
+        }
+        .navigationTitle("Favorites")
+    }
+
+    // MARK: Private
+
+    @ObservedObject private var viewModel: LibraryManagerViewModel
+    @State private var selectedCategory: FavoriteCategory = .curriculums
+
+    @ViewBuilder
+    private func contentView(for category: FavoriteCategory) -> some View {
+        switch category {
+            case .curriculums:
+                EmptyLibraryPlaceholderView(icon: .curriculums)
+            case .activities:
+                FavoriteActivitiesView(viewModel: self.viewModel)
+            case .stories:
+                FavoriteStoriesView(viewModel: self.viewModel)
+        }
+    }
+}
+
+#Preview {
+    let viewModel = LibraryManagerViewModel()
+    NavigationStack {
+        LibraryFavoritesView(viewModel: viewModel)
+    }
+}
+
+// MARK: - FavoriteCategory
+
+enum FavoriteCategory: String, CaseIterable {
+    case curriculums
+    case activities
+    case stories
+}
