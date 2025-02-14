@@ -19,9 +19,12 @@ struct CategoryLibraryView: View {
                 case .libraryStories:
                     LibraryStoriesView(viewModel: self.libraryManagerViewModel)
                         .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.libraryStories.characters))
-                default:
+                case .libraryActivities:
                     LibraryActivitiesView(viewModel: self.libraryManagerViewModel)
                         .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.libraryActivities.characters))
+                default:
+                    LibraryFavoritesView(viewModel: self.libraryManagerViewModel)
+                        .navigationTitle("Favorites")
             }
         } else {
             Text(String(l10n.MainView.DetailView.disconnectedLibraryMessage.characters))
@@ -29,7 +32,7 @@ struct CategoryLibraryView: View {
         }
     }
 
-    @StateObject private var libraryManagerViewModel = LibraryManagerViewModel() // VM won't work anymore
+    @StateObject private var libraryManagerViewModel = LibraryManagerViewModel()
     @ObservedObject var authManagerViewModel = AuthManagerViewModel.shared
 }
 
