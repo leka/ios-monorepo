@@ -6,7 +6,7 @@ import DesignKit
 import SwiftUI
 
 extension Robot.Reinforcer: Codable {
-    var stringValue: String {
+    public var stringValue: String {
         switch self {
             case .rainbow: "rainbow"
             case .fire: "fire"

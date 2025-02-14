@@ -55,7 +55,7 @@ public class CarereceiverManager {
         let carereceiverData: [String: Any] = [
             Carereceiver.CodingKeys.username.rawValue: carereceiver.username,
             Carereceiver.CodingKeys.avatar.rawValue: carereceiver.avatar,
-            Carereceiver.CodingKeys.reinforcer.rawValue: carereceiver.reinforcer,
+            Carereceiver.CodingKeys.reinforcer.rawValue: carereceiver.reinforcer.stringValue,
         ]
 
         self.dbOps.update(id: carereceiver.id!, data: carereceiverData, collection: .carereceivers)
