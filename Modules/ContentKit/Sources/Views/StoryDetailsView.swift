@@ -112,22 +112,9 @@ public struct StoryDetailsView: View {
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                     ToolbarItem {
                         Menu {
-                            if self.libraryManagerViewModel.isStorySaved(storyID: self.story.uuid) {
-                                Button(role: .destructive) {
-                                    self.libraryManager.removeStory(storyID: self.story.uuid)
-                                } label: {
-                                    Label(String(l10n.Library.MenuActions.removeFromlibraryButtonLabel.characters), systemImage: "trash")
-                                }
-                            } else {
-                                Button {
-                                    self.libraryManager.addStory(
-                                        storyID: self.story.uuid,
-                                        caregiverID: currentCaregiverID
-                                    )
-                                } label: {
-                                    Label(String(l10n.Library.MenuActions.addTolibraryButtonLabel.characters), systemImage: "plus")
-                                }
-                            }
+                            self.addOrRemoveButton(story: self.story, caregiverID: currentCaregiverID)
+                            Divider()
+                            self.addOrRemoveFavoriteButton(story: self.story, caregiverID: currentCaregiverID)
                         } label: {
                             Button {
                                 // Nothing to do
@@ -172,6 +159,43 @@ public struct StoryDetailsView: View {
 
     private var libraryManager: LibraryManager = .shared
     private let story: Story
+
+    @ViewBuilder
+    private func addOrRemoveButton(story: Story, caregiverID: String) -> some View {
+        if self.libraryManagerViewModel.isStorySaved(storyID: story.uuid) {
+            Button(role: .destructive) {
+                self.libraryManager.removeStory(storyID: story.uuid)
+            } label: {
+                Label("Remove from Library", systemImage: "trash")
+            }
+        } else {
+            Button {
+                self.libraryManager.addStory(
+                    storyID: story.uuid,
+                    caregiverID: caregiverID
+                )
+            } label: {
+                Label("Add to Library", systemImage: "plus")
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func addOrRemoveFavoriteButton(story: Story, caregiverID _: String) -> some View {
+        if self.libraryManagerViewModel.isStorySaved(storyID: story.uuid) {
+            Button {
+                print("Remove Story from Favorites")
+            } label: {
+                Label("Undo Favorites", systemImage: "star.slash")
+            }
+        } else {
+            Button {
+                print("Add Story to Favorites")
+            } label: {
+                Label("Add to Favorites", systemImage: "star")
+            }
+        }
+    }
 }
 
 // MARK: - l10n.StoryDetailsView
