@@ -33,9 +33,22 @@ public struct StoryDetailsView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 10 / 57 * 120))
 
                         VStack(alignment: .leading, spacing: 8) {
-                            Text(self.story.details.title)
-                                .font(.largeTitle)
-                                .bold()
+                            HStack(alignment: .center) {
+                                Text(self.story.details.title)
+                                    .font(.largeTitle)
+                                    .bold()
+
+                                Image(systemName: "star.fill")
+                                    .font(.subheadline)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(
+                                        self.libraryManagerViewModel.isStorySaved(
+                                            storyID: self.story.uuid
+                                        ) ? (self.styleManager.accentColor ?? .blue) : .clear
+                                    )
+
+                                Spacer()
+                            }
 
                             if let subtitle = self.story.details.subtitle {
                                 Text(subtitle)
@@ -112,22 +125,8 @@ public struct StoryDetailsView: View {
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                     ToolbarItem {
                         Menu {
-                            if self.libraryManagerViewModel.isStorySaved(storyID: self.story.uuid) {
-                                Button(role: .destructive) {
-                                    self.libraryManager.removeStory(storyID: self.story.uuid)
-                                } label: {
-                                    Label(String(l10n.Library.MenuActions.removeFromlibraryButtonLabel.characters), systemImage: "trash")
-                                }
-                            } else {
-                                Button {
-                                    self.libraryManager.addStory(
-                                        storyID: self.story.uuid,
-                                        caregiverID: currentCaregiverID
-                                    )
-                                } label: {
-                                    Label(String(l10n.Library.MenuActions.addTolibraryButtonLabel.characters), systemImage: "plus")
-                                }
-                            }
+                            self.addOrRemoveButton(story: self.story, caregiverID: currentCaregiverID)
+                            self.addOrRemoveFavoriteButton(story: self.story, caregiverID: currentCaregiverID)
                         } label: {
                             Button {
                                 // Nothing to do
@@ -172,6 +171,43 @@ public struct StoryDetailsView: View {
 
     private var libraryManager: LibraryManager = .shared
     private let story: Story
+
+    @ViewBuilder
+    private func addOrRemoveButton(story: Story, caregiverID: String) -> some View {
+        if self.libraryManagerViewModel.isStorySaved(storyID: story.uuid) {
+            Button(role: .destructive) {
+                self.libraryManager.removeStory(storyID: story.uuid)
+            } label: {
+                Label("Remove from Library", systemImage: "trash")
+            }
+        } else {
+            Button {
+                self.libraryManager.addStory(
+                    storyID: story.uuid,
+                    caregiverID: caregiverID
+                )
+            } label: {
+                Label("Add to Library", systemImage: "plus")
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func addOrRemoveFavoriteButton(story: Story, caregiverID _: String) -> some View {
+        if self.libraryManagerViewModel.isStorySaved(storyID: story.uuid) {
+            Button(role: .destructive) {
+                print("Remove Story from Favorites")
+            } label: {
+                Label("Remove from Favorites", systemImage: "star.slash")
+            }
+        } else {
+            Button {
+                print("Add Story to Favorites")
+            } label: {
+                Label("Add to Favorites", systemImage: "star")
+            }
+        }
+    }
 }
 
 // MARK: - l10n.StoryDetailsView
