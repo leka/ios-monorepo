@@ -20,6 +20,7 @@ extension Navigation {
         case libraryCurriculums
         case libraryActivities
         case libraryStories
+        case libraryFavorites
 
         // ? Monitoring
         case caregivers

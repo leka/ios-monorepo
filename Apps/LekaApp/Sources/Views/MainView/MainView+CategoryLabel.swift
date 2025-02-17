@@ -67,6 +67,10 @@ extension MainView {
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.stories.characters)
                     self.systemImage = "text.book.closed.fill"
 
+                case .libraryFavorites:
+                    self.title = "Favorites"
+                    self.systemImage = "star.fill"
+
                 case .caregivers:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.caregivers.characters)
                     self.systemImage = "person.3.fill"
