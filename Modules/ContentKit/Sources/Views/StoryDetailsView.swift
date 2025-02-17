@@ -33,9 +33,22 @@ public struct StoryDetailsView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 10 / 57 * 120))
 
                         VStack(alignment: .leading, spacing: 8) {
-                            Text(self.story.details.title)
-                                .font(.largeTitle)
-                                .bold()
+                            HStack(alignment: .center) {
+                                Text(self.story.details.title)
+                                    .font(.largeTitle)
+                                    .bold()
+
+                                Image(systemName: "star.fill")
+                                    .font(.subheadline)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(
+                                        self.libraryManagerViewModel.isStorySaved(
+                                            storyID: self.story.uuid
+                                        ) ? (self.styleManager.accentColor ?? .blue) : .clear
+                                    )
+
+                                Spacer()
+                            }
 
                             if let subtitle = self.story.details.subtitle {
                                 Text(subtitle)

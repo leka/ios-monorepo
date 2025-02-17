@@ -55,11 +55,19 @@ public struct CurriculumGroupboxView: View {
                         .frame(width: 150)
                         .clipShape(RoundedRectangle(cornerRadius: 10 / 57 * 150))
 
-                    Text(self.curriculum.details.title)
-                        .font(.headline)
-                        .multilineTextAlignment(.center)
-                        .foregroundStyle(Color.primary)
-                        .fixedSize(horizontal: false, vertical: true)
+                    HStack(spacing: 5) {
+                        Text(self.curriculum.details.title)
+                            .font(.headline)
+                            .multilineTextAlignment(.center)
+                            .foregroundStyle(Color.primary)
+                            .fixedSize(horizontal: false, vertical: true)
+
+                        if self.libraryManagerViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) {
+                            Text(Image(systemName: "star.fill"))
+                                .font(.caption)
+                                .foregroundColor(self.styleManager.accentColor ?? .blue)
+                        }
+                    }
 
                     Text(self.curriculum.details.subtitle ?? "")
                         .font(.body)

@@ -38,6 +38,15 @@ public struct ActivityDetailsView: View {
                                     .font(.largeTitle)
                                     .bold()
 
+                                Image(systemName: "star.fill")
+                                    .font(.subheadline)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(
+                                        self.libraryManagerViewModel.isActivitySaved(
+                                            activityID: self.activity.uuid
+                                        ) ? (self.styleManager.accentColor ?? .blue) : .clear
+                                    )
+
                                 Spacer()
 
                                 VStack {

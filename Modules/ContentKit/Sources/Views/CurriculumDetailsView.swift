@@ -38,6 +38,15 @@ public struct CurriculumDetailsView: View {
                                     .font(.largeTitle)
                                     .bold()
 
+                                Image(systemName: "star.fill")
+                                    .font(.subheadline)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(
+                                        self.libraryManagerViewModel.isCurriculumSaved(
+                                            curriculumID: self.curriculum.uuid
+                                        ) ? (self.styleManager.accentColor ?? .blue) : .clear
+                                    )
+
                                 Spacer()
 
                                 VStack {
