@@ -33,9 +33,13 @@ public struct StoryDetailsView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 10 / 57 * 120))
 
                         VStack(alignment: .leading, spacing: 8) {
-                            Text(self.story.details.title)
-                                .font(.largeTitle)
-                                .bold()
+                            HStack(alignment: .center) {
+                                Text(self.story.details.title)
+                                    .font(.largeTitle)
+                                    .bold()
+
+                                Spacer()
+                            }
 
                             if let subtitle = self.story.details.subtitle {
                                 Text(subtitle)
@@ -110,7 +114,15 @@ public struct StoryDetailsView: View {
         .toolbar {
             #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                    ToolbarItem {
+                    ToolbarItemGroup {
+                        if self.libraryManagerViewModel.isStorySaved(
+                            storyID: self.story.uuid
+                        ) {
+                            Image(systemName: "star.circle")
+                                .font(.system(size: 21))
+                                .foregroundColor(self.styleManager.accentColor ?? .blue)
+                        }
+
                         Menu {
                             self.addOrRemoveButton(story: self.story, caregiverID: currentCaregiverID)
                             Divider()
