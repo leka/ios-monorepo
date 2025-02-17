@@ -146,22 +146,9 @@ public struct CurriculumDetailsView: View {
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                     ToolbarItem {
                         Menu {
-                            if self.libraryManagerViewModel.isCurriculumSaved(curriculumID: self.curriculum.uuid) {
-                                Button(role: .destructive) {
-                                    self.libraryManager.removeCurriculum(curriculumID: self.curriculum.uuid)
-                                } label: {
-                                    Label(String(l10n.Library.MenuActions.removeFromlibraryButtonLabel.characters), systemImage: "trash")
-                                }
-                            } else {
-                                Button {
-                                    self.libraryManager.addCurriculum(
-                                        curriculumID: self.curriculum.uuid,
-                                        caregiverID: currentCaregiverID
-                                    )
-                                } label: {
-                                    Label(String(l10n.Library.MenuActions.addTolibraryButtonLabel.characters), systemImage: "plus")
-                                }
-                            }
+                            self.addOrRemoveButton(curriculum: self.curriculum, caregiverID: currentCaregiverID)
+                            Divider()
+                            self.addOrRemoveFavoriteButton(curriculum: self.curriculum, caregiverID: currentCaregiverID)
                         } label: {
                             Button {
                                 // Nothing to do
@@ -193,6 +180,43 @@ public struct CurriculumDetailsView: View {
 
     private var libraryManager: LibraryManager = .shared
     private let curriculum: Curriculum
+
+    @ViewBuilder
+    private func addOrRemoveButton(curriculum: Curriculum, caregiverID: String) -> some View {
+        if self.libraryManagerViewModel.isCurriculumSaved(curriculumID: curriculum.uuid) {
+            Button(role: .destructive) {
+                self.libraryManager.removeCurriculum(curriculumID: curriculum.uuid)
+            } label: {
+                Label("Remove from Library", systemImage: "trash")
+            }
+        } else {
+            Button {
+                self.libraryManager.addCurriculum(
+                    curriculumID: curriculum.uuid,
+                    caregiverID: caregiverID
+                )
+            } label: {
+                Label("Add to Library", systemImage: "plus")
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func addOrRemoveFavoriteButton(curriculum: Curriculum, caregiverID _: String) -> some View {
+        if self.libraryManagerViewModel.isCurriculumSaved(curriculumID: curriculum.uuid) {
+            Button {
+                print("Remove Curriculum from Favorites")
+            } label: {
+                Label("Undo Favorites", systemImage: "star.slash")
+            }
+        } else {
+            Button {
+                print("Add Curriculum to Favorites")
+            } label: {
+                Label("Add to Favorites", systemImage: "star")
+            }
+        }
+    }
 }
 
 // MARK: - l10n.CurriculumDetailsView
