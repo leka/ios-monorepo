@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import AnalyticsKit
 import DesignKit
 import SwiftUI
@@ -39,9 +40,17 @@ public struct GamepadGridView: View {
                             .frame(width: 160)
                             .padding(.bottom, 15)
 
-                        Text(activity.details.title)
-                            .font(.headline)
-                            .foregroundStyle(Color.primary)
+                        HStack(spacing: 5) {
+                            Text(activity.details.title)
+                                .font(.headline)
+                                .foregroundStyle(Color.primary)
+
+                            if self.libraryManagerViewModel.isActivitySaved(activityID: activity.uuid) {
+                                Text(Image(systemName: "star.fill"))
+                                    .font(.caption)
+                                    .foregroundColor(self.styleManager.accentColor ?? .blue)
+                            }
+                        }
 
                         Spacer()
                     }
@@ -67,6 +76,8 @@ public struct GamepadGridView: View {
     // MARK: Private
 
     @ObservedObject private var styleManager: StyleManager = .shared
+
+    @StateObject private var libraryManagerViewModel = LibraryManagerViewModel()
 
     private let columns = Array(repeating: GridItem(), count: 2)
 }
