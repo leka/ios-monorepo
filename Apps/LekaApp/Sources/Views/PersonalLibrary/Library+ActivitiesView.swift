@@ -22,14 +22,12 @@ struct LibraryActivitiesView: View {
         if self.activities.isEmpty {
             EmptyLibraryPlaceholderView(icon: .activities)
         } else {
-            ScrollView(showsIndicators: true) {
-                LibraryActivityListView(activities: self.activities) { activity in
-                    if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
-                        self.navigation.sheetContent = .carereceiverPicker(activity: activity, story: nil)
-                    } else {
-                        self.navigation.currentActivity = activity
-                        self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
-                    }
+            LibraryActivityListView(activities: self.activities) { activity in
+                if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
+                    self.navigation.sheetContent = .carereceiverPicker(activity: activity, story: nil)
+                } else {
+                    self.navigation.currentActivity = activity
+                    self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
                 }
             }
         }
