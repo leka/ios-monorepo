@@ -5,8 +5,10 @@
 version: 1.0.0
 
 uuid: 0BBA7068199A4CD385AFEB4FDDE0585E
-created_at: 2025-01-27T09:07:56.800Z
-last_edited_at: 2025-01-27T09:07:56.800Z
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2025-02-17T19:18:30.132603"
+
 name: generalization_fruits_robot_2
 status: published
 authors:
@@ -15,8 +17,10 @@ skills:
   - generalization
 tags:
   - fruits
-hmi: tablet_robot
-types: one_on_one
+hmi:
+  - tablet_robot
+types:
+  - one_on_one
 locales:
   - en_US
   - fr_FR
@@ -24,36 +28,34 @@ l10n:
   - locale: en_US
     details:
       icon: generalization_fruits_robot_2
-      title: Generalization of fruits
+      title: Generalization of fruits with the robot
       subtitle: 6 images
       short_description: Touch the fruits requested by the robot
-      description:
+      description: |
         Leka displays a fruit on its screen. The aim is to encourage the
         person being accompanied to recognize this fruit in different forms and
         representations (photos, drawings, pictograms) to promote
         generalization.
-      instructions: >-
+      instructions: |
         - The person being accompanied must observe the image displayed on the
-        robot's screen
-
+          robot's screen.
         - Invite them to find the corresponding images on the tablet screen.
   - locale: fr_FR
     details:
       icon: generalization_fruits_robot_2
-      title: Généralisation des fruits
+      title: Généralisation des fruits avec le robot
       subtitle: 6 images
       short_description: Touche les fruits demandés par le robot
-      description:
+      description: |
         Leka affiche un fruit sur son écran. L'objectif est d'encourager la
         personne accompagnée à reconnaître ce fruit sous différentes formes et
         représentations (photos, dessins, pictogrammes) pour favoriser la
         généralisation.
-      instructions: >-
+      instructions: |
         - La personne accompagnée doit observer l'image affichée sur l'écran du
-        robot
-
+          robot.
         - Invitez-la à trouver les images correspondantes sur l'écran de la
-        tablette.
+          tablette.
 exercises_payload:
   options:
     shuffle_exercises: true
@@ -75,7 +77,7 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: generalization_fruits_vegetables_robot_generalization_fruits_vegetables_robot_drawing_fruit_banana
+              - value: generalization_fruits_vegetables_robot_drawing_fruit_banana
                 type: image
                 is_right_answer: true
               - value: generalization_fruits_vegetables_robot_picto_fruit_banana
@@ -89,7 +91,7 @@ exercises_payload:
                 type: image
               - value: generalization_fruits_vegetables_robot_drawing_fruit_strawberry
                 type: image
-    - group:
+
         - instructions:
             - locale: en_US
               value: Touch the fruits requested by the robot
@@ -119,7 +121,7 @@ exercises_payload:
                 type: image
               - value: generalization_fruits_vegetables_robot_drawing_fruit_apple
                 type: image
-    - group:
+
         - instructions:
             - locale: en_US
               value: Touch the fruits requested by the robot
@@ -147,9 +149,9 @@ exercises_payload:
                 type: image
               - value: generalization_fruits_vegetables_robot_picto_fruit_pear
                 type: image
-              - value: generalization_fruits_vegetables_robot_generalization_fruits_vegetables_robot_drawing_fruit_banana
+              - value: generalization_fruits_vegetables_robot_drawing_fruit_banana
                 type: image
-    - group:
+
         - instructions:
             - locale: en_US
               value: Touch the fruits requested by the robot
@@ -171,15 +173,15 @@ exercises_payload:
               - value: generalization_fruits_vegetables_robot_photo_fruit_apple
                 type: image
                 is_right_answer: true
-              - value: generalization_fruits_vegetables_robot_picto_fruit_orange
+              - value: generalization_fruits_vegetables_robot_picto_fruit_cherry
                 type: image
               - value: generalization_fruits_vegetables_robot_picto_fruit_banana
                 type: image
-              - value: generalization_fruits_vegetables_robot_drawing_fruit_lemon
+              - value: generalization_fruits_vegetables_robot_drawing_fruit_orange
                 type: image
               - value: generalization_fruits_vegetables_robot_photo_fruit_grape
                 type: image
-    - group:
+
         - instructions:
             - locale: en_US
               value: Touch the fruits requested by the robot
@@ -209,7 +211,7 @@ exercises_payload:
                 type: image
               - value: generalization_fruits_vegetables_robot_photo_fruit_lemon
                 type: image
-    - group:
+
         - instructions:
             - locale: en_US
               value: Touch the fruits requested by the robot

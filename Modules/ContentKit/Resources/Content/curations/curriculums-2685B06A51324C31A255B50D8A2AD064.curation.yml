@@ -32,6 +32,8 @@ content:
           subtitle: Discover the latest additions to our catalog.
           description: Explore recently added content to enrich and diversify your sessions.
     items:
+      - value: curriculum_generalization_fruits_and_vegetables_robot-053E35EB94CF4A1890489E8F2C12CE85
+        type: curriculum
       - value: curriculum_counting_robot-53E4A0E2B181472ABF3E089C833615D8
         type: curriculum
       - value: curriculum_leka_weather_robot-ED4C900D4ACB426384DC76F182BC19A5
@@ -360,6 +362,8 @@ content:
           subtitle: Learn to recognize fruits and vegetables.
           description: Discover activities to help care receivers identify, classify, and name different fruits and vegetables.
     items:
+      - value: curriculum_generalization_fruits_and_vegetables_robot-053E35EB94CF4A1890489E8F2C12CE85
+        type: curriculum
       - value: sorting_fruits_vegetables_basket-E6A322DC7A6E48518CED2CA2D3D2A595
         type: curriculum
       - value: curriculum_fruits_and_vegetables_generalization-B6F2027A304C44F5B3C482EAFCD8DE7E
@@ -398,6 +402,8 @@ content:
           subtitle: Learn to recognize various foods and the world of cooking.
           description: Discover activities designed to help participants become familiar with a variety of foods, understand their role in cooking, and explore the tools used in the kitchen.
     items:
+      - value: curriculum_generalization_fruits_and_vegetables_robot-053E35EB94CF4A1890489E8F2C12CE85
+        type: curriculum
       - value: curriculum_sort_sweet_and_salty-5ED0AFBEC4504F6EBA52B26C65ED93CC
         type: curriculum
       - value: curriculum_recognition_kitchen_items-FCBEE55DD11F427785A12328E6E01C8E

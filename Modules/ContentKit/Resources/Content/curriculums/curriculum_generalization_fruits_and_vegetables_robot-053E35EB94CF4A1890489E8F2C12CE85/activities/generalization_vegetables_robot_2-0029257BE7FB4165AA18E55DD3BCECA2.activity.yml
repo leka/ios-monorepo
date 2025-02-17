@@ -5,8 +5,10 @@
 version: 1.0.0
 
 uuid: 0029257BE7FB4165AA18E55DD3BCECA2
-created_at: 2025-01-27T09:07:56.800Z
-last_edited_at: 2025-01-27T09:07:56.800Z
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2025-02-17T19:18:30.129714"
+
 name: generalization_vegetables_robot_2
 status: published
 authors:
@@ -15,8 +17,10 @@ skills:
   - generalization
 tags:
   - vegetables
-hmi: tablet_robot
-types: one_on_one
+hmi:
+  - tablet_robot
+types:
+  - one_on_one
 locales:
   - en_US
   - fr_FR
@@ -24,36 +28,34 @@ l10n:
   - locale: en_US
     details:
       icon: generalization_vegetable_robot_2
-      title: Generalization of vegetables
+      title: Generalization of vegetables with the robot
       subtitle: 6 images
       short_description: Touch the vegetables requested by the robot
-      description:
+      description: |
         Leka displays a vegetable on its screen. The aim is to encourage
         the person being accompanied to recognize this vegetable in different
         forms and representations (photos, drawings, pictograms) to promote
         generalization.
-      instructions: >-
+      instructions: |
         - The person being accompanied must observe the image displayed on the
-        robot's screen
-
+          robot's screen.
         - Invite them to find the corresponding images on the tablet screen.
   - locale: fr_FR
     details:
-      icon: generalization_vegetables_robot_2
-      title: Généralisation des légumes
+      icon: generalization_vegetable_robot_2
+      title: Généralisation des légumes avec le robot
       subtitle: 6 images
       short_description: Touche les légumes demandés par le robot
-      description:
+      description: |
         Leka affiche un légume sur son écran. L'objectif est d'encourager
         la personne accompagnée à reconnaître ce légume sous différentes formes
         et représentations (photos, dessins, pictogrammes) pour favoriser la
         généralisation.
-      instructions: >-
+      instructions: |
         - La personne accompagnée doit observer l'image affichée sur l'écran du
-        robot
-
+          robot.
         - Invitez-la à trouver les images correspondantes sur l'écran de la
-        tablette.
+          tablette.
 exercises_payload:
   options:
     shuffle_exercises: true
@@ -89,7 +91,7 @@ exercises_payload:
                 type: image
               - value: generalization_fruits_vegetables_robot_drawing_vegetable_carrot
                 type: image
-    - group:
+
         - instructions:
             - locale: en_US
               value: Touch the vegetables requested by the robot
@@ -113,13 +115,13 @@ exercises_payload:
                 is_right_answer: true
               - value: generalization_fruits_vegetables_robot_photo_vegetable_carrot
                 type: image
-              - value: generalization_fruits_vegetables_robot_photo_vegetable_radish
+              - value: generalization_fruits_vegetables_robot_photo_vegetable_radish X
                 type: image
               - value: generalization_fruits_vegetables_robot_picto_vegetable_eggplant
                 type: image
               - value: generalization_fruits_vegetables_robot_drawing_vegetable_tomato
                 type: image
-    - group:
+
         - instructions:
             - locale: en_US
               value: Touch the vegetables requested by the robot
@@ -143,13 +145,13 @@ exercises_payload:
                 is_right_answer: true
               - value: generalization_fruits_vegetables_robot_photo_vegetable_eggplant
                 type: image
-              - value: generalization_fruits_vegetables_robot_photo_vegetable_radish
+              - value: generalization_fruits_vegetables_robot_photo_vegetable_radish X
                 type: image
-              - value: generalization_fruits_vegetables_robot_picto_vegetable_mushroom
+              - value: generalization_fruits_vegetables_robot_picto_vegetable_mushroom X
                 type: image
               - value: generalization_fruits_vegetables_robot_drawing_vegetable_carrot
                 type: image
-    - group:
+
         - instructions:
             - locale: en_US
               value: Touch the vegetables requested by the robot
@@ -179,7 +181,7 @@ exercises_payload:
                 type: image
               - value: generalization_fruits_vegetables_robot_drawing_vegetable_radish
                 type: image
-    - group:
+
         - instructions:
             - locale: en_US
               value: Touch the vegetables requested by the robot
@@ -209,7 +211,7 @@ exercises_payload:
                 type: image
               - value: generalization_fruits_vegetables_robot_drawing_vegetable_radish
                 type: image
-    - group:
+
         - instructions:
             - locale: en_US
               value: Touch the vegetables requested by the robot
