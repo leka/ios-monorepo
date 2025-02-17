@@ -2,11 +2,11 @@
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-uuid: B63B1180ECAF46269402C0AD2F20191A
-name: curriculum_generalization_fruits_vegetables_robot
+uuid: 053E35EB94CF4A1890489E8F2C12CE85
+name: curriculum_generalization_fruits_and_vegetables_robot
 
-created_at: "2024-03-28T15:12:35.579066"
-last_edited_at: "2025-01-16T14:57:48.511707"
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2025-02-17T19:20:16.785312"
 
 status: published
 
@@ -32,24 +32,33 @@ l10n:
     details:
       icon: generalization_fruits_and_vegetables_robot
 
-      title: Généralisation des fruits et légumes
+      title: Généralisation des fruits et légumes avec le robot
       subtitle: Reconnaître les fruits et légumes sous différentes formes
 
       abstract: |
-        Ce parcours éducatif aide les utilisateurs à reconnaître les fruits et légumes sous différentes formes. L'objectif est de favoriser la généralisation en sélectionnant des photos, des dessins ou des pictogrammes représentant le même fruit ou légume.
+        Ce parcours éducatif aide les utilisateurs à reconnaître les fruits et légumes sous différentes formes.
+        L'objectif est de favoriser la généralisation en sélectionnant des photos, des dessins ou des pictogrammes représentant le même fruit ou légume.
+
       description: |
-        À travers des activités interactives sur l'écran de l'iPad, les utilisateurs observent un fruit ou un légume affiché par le robot et doivent choisir parmi des images, des dessins ou des pictogrammes qui représentent la même catégorie d'aliment. L'objectif est d'améliorer la reconnaissance et la généralisation des fruits et légumes en utilisant des visuels variés.
+        À travers des activités interactives sur l'écran de l'iPad, les utilisateurs observent un fruit ou un légume affiché par le robot
+        et doivent choisir parmi des images, des dessins ou des pictogrammes qui représentent la même catégorie d'aliment.
+        L'objectif est d'améliorer la reconnaissance et la généralisation des fruits et légumes en utilisant des visuels variés.
+
   - locale: en_US
     details:
       icon: generalization_fruits_and_vegetables_robot
 
-      title: Generalization of fruits and vegetables
-      subtitle: Recognize fruits and vegetables in different forms
+      title: Generalization of Fruits and Vegetables with the robot
+      subtitle: Recognize Fruits and Vegetables in Different Forms
 
       abstract: |
-        This educational path helps participants recognize fruits and vegetables in different forms. The goal is to promote generalization by selecting photos, drawings, or pictograms representing the same fruit or vegetable.
+        This educational path helps participants recognize fruits and vegetables in different forms.
+        The goal is to promote generalization by selecting photos, drawings, or pictograms representing the same fruit or vegetable.
+
       description: |
-        Through interactive activities on the iPad screen, participants observe a fruit or vegetable displayed by the robot and must choose from images, drawings, or pictograms that represent the same category of food. The goal is to enhance recognition and generalization of fruits and vegetables using varied visuals.
+        Through interactive activities on the iPad screen, participants observe a fruit or vegetable displayed by the robot
+        and must choose from images, drawings, or pictograms that represent the same category of food.
+        The goal is to enhance recognition and generalization of fruits and vegetables using varied visuals.
 
 activities:
   - generalization_fruits_robot_1-39780088085F47E0986DD91679B90027
