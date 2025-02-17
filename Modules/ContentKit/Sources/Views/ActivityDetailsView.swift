@@ -119,7 +119,15 @@ public struct ActivityDetailsView: View {
         .toolbar {
             #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                    ToolbarItem {
+                    ToolbarItemGroup {
+                        if self.libraryManagerViewModel.isActivitySaved(
+                            activityID: self.activity.uuid
+                        ) {
+                            Image(systemName: "star.circle")
+                                .font(.system(size: 21))
+                                .foregroundColor(self.styleManager.accentColor ?? .blue)
+                        }
+
                         Menu {
                             self.addOrRemoveButton(activity: self.activity, caregiverID: currentCaregiverID)
                             Divider()
