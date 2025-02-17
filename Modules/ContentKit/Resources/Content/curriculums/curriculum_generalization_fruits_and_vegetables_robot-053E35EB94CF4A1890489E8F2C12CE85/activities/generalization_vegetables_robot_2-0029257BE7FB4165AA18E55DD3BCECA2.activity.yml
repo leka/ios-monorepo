@@ -7,7 +7,7 @@ version: 1.0.0
 uuid: 0029257BE7FB4165AA18E55DD3BCECA2
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2025-02-17T19:18:30.129714"
+last_edited_at: "2025-02-17T20:19:19.044963"
 
 name: generalization_vegetables_robot_2
 status: published
@@ -115,7 +115,7 @@ exercises_payload:
                 is_right_answer: true
               - value: generalization_fruits_vegetables_robot_photo_vegetable_carrot
                 type: image
-              - value: generalization_fruits_vegetables_robot_photo_vegetable_radish X
+              - value: generalization_fruits_vegetables_robot_photo_vegetable_radish
                 type: image
               - value: generalization_fruits_vegetables_robot_picto_vegetable_eggplant
                 type: image
@@ -145,9 +145,9 @@ exercises_payload:
                 is_right_answer: true
               - value: generalization_fruits_vegetables_robot_photo_vegetable_eggplant
                 type: image
-              - value: generalization_fruits_vegetables_robot_photo_vegetable_radish X
+              - value: generalization_fruits_vegetables_robot_photo_vegetable_radish
                 type: image
-              - value: generalization_fruits_vegetables_robot_picto_vegetable_mushroom X
+              - value: generalization_fruits_vegetables_robot_picto_vegetable_mushroom
                 type: image
               - value: generalization_fruits_vegetables_robot_drawing_vegetable_carrot
                 type: image
