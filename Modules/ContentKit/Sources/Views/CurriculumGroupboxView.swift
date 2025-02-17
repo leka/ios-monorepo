@@ -32,6 +32,14 @@ public struct CurriculumGroupboxView: View {
 
                     #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                         if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                            if self.libraryManagerViewModel.isCurriculumSaved(
+                                curriculumID: self.curriculum.uuid
+                            ) {
+                                Image(systemName: "star.circle")
+                                    .font(.system(size: 26))
+                                    .foregroundColor(self.styleManager.accentColor ?? .blue)
+                            }
+
                             Menu {
                                 self.addOrRemoveButton(curriculum: self.curriculum, caregiverID: currentCaregiverID)
                                 Divider()
