@@ -8,7 +8,7 @@ uuid: 660B3471643041ABA2C5994C04296809
 name: ordering_of_life_stages_boy
 
 created_at: "2024-03-08T11:49:37.123525"
-last_edited_at: "2024-07-12T12:48:14.929969"
+last_edited_at: "2025-02-18T10:08:51.630551"
 status: published
 
 authors:
@@ -35,7 +35,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: ordering_of_life_stages
+      icon: ordering_of_life_stages_boy
 
       title: Ordonner les étapes de la vie
       subtitle: Garçon
@@ -54,7 +54,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: ordering_of_life_stages
+      icon: ordering_of_life_stages_boy
 
       title: Ordering of life stages
       subtitle: Boy

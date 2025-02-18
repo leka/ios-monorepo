@@ -8,7 +8,7 @@ uuid: 030525AA798F4E0D8EDAFAF3939471F9
 name: recognition_weather_and_time_meteo_4_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-07-12T12:48:14.936637"
+last_edited_at: "2025-02-18T10:08:51.541539"
 status: published
 
 authors:
@@ -34,7 +34,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: recognition_weather_and_temperatures
+      icon: recognition_weather_and_temperatures_1_and_4
 
       title: La météo
       subtitle: 4 images
@@ -52,7 +52,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: recognition_weather_and_temperatures
+      icon: recognition_weather_and_temperatures_1_and_4
 
       title: The weather
       subtitle: 4 images

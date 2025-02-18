@@ -8,7 +8,7 @@ uuid: A9BC9B8ED47F4EA3A1760EFCCCBE0977
 name: recognition_kitchen_items_kitchen_utensils
 
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-08-23T14:13:58.960901"
+last_edited_at: "2025-02-18T10:08:51.630551"
 status: published
 
 authors:
@@ -35,7 +35,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: curriculum_recognition_kitchen_items
+      icon: recognition_kitchen_items_2
 
       title: Les ustensiles de cuisine
       subtitle: Reconnaitre des objets du quotidien
@@ -52,7 +52,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: curriculum_recognition_kitchen_items
+      icon: recognition_kitchen_items_2
 
       title: Kitchen Utensils
       subtitle: Recognize Everyday Objects
