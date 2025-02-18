@@ -8,7 +8,7 @@ uuid: 62FACC5466D949BC9A6A179AE5C8D58B
 name: order_by_size_giraffe
 
 created_at: "2024-03-08T11:49:37.123525"
-last_edited_at: "2024-07-12T12:48:14.929969"
+last_edited_at: "2025-02-18T10:08:51.541539"
 status: published
 
 authors:
@@ -34,7 +34,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: order_animals_by_size
+      icon: order_animals_by_size_giraffe
 
       title: Ordonner par taille - Girafe
       subtitle: Du plus petit au plus grand
@@ -52,7 +52,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: order_animals_by_size
+      icon: order_animals_by_size_giraffe
 
       title: Order by Size - Giraffe
       subtitle: From Smallest to Largest

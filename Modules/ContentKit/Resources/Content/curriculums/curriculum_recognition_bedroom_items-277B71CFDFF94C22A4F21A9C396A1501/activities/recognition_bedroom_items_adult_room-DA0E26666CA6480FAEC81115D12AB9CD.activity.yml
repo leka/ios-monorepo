@@ -8,7 +8,7 @@ uuid: DA0E26666CA6480FAEC81115D12AB9CD
 name: recognition_bedroom_items_adult_room
 
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-07-16T15:57:13.431550"
+last_edited_at: "2025-02-18T10:08:51.564881"
 status: published
 
 authors:
@@ -35,7 +35,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: recognition_bedroom_items
+      icon: recognition_bedroom_items_2
 
       title: La chambre d'adulte
       subtitle: Reconnaitre des objets du quotidien
@@ -52,7 +52,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: recognition_bedroom_items
+      icon: recognition_bedroom_items_2
 
       title: Adult's Bedroom
       subtitle: Recognize Everyday Objects

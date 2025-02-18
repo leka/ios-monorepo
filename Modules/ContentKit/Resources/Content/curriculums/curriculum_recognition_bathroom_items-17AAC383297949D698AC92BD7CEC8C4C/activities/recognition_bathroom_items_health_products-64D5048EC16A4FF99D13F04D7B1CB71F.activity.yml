@@ -8,7 +8,7 @@ uuid: 64D5048EC16A4FF99D13F04D7B1CB71F
 name: recognition_bathroom_items_health_products
 
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-07-15T15:09:06.596504"
+last_edited_at: "2025-02-18T10:08:51.548260"
 status: published
 
 authors:
@@ -35,7 +35,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: curriculum_recognition_bathroom_items
+      icon: recognition_bathroom_items_2
 
       title: Les produits de santé
       subtitle: Reconnaitre des objets du quotidien
@@ -52,7 +52,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: curriculum_recognition_bathroom_items
+      icon: recognition_bathroom_items_2
 
       title: Health Products
       subtitle: Recognize Everyday Objects

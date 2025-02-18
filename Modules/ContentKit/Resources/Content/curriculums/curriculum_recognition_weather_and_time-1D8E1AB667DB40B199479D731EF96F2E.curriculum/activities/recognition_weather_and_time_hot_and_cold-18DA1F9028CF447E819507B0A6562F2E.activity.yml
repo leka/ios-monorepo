@@ -8,7 +8,7 @@ uuid: 18DA1F9028CF447E819507B0A6562F2E
 name: recognition_weather_and_time_hot_and_cold
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-07-12T12:48:14.944032"
+last_edited_at: "2025-02-18T10:08:51.543929"
 status: published
 
 authors:
@@ -36,7 +36,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: recognition_weather_and_temperatures
+      icon: recognition_weather_and_temperatures_3
 
       title: Les températures chaudes et froides
       subtitle: null
@@ -54,7 +54,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: recognition_weather_and_temperatures
+      icon: recognition_weather_and_temperatures_3
 
       title: Hot and cold temperatures
       subtitle: null
