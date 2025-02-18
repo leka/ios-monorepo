@@ -8,7 +8,7 @@ uuid: 1BDE26A39AB24EBB81A0EAD9D9EF2813
 name: order_by_size_dolphin
 
 created_at: "2024-03-08T11:49:37.123525"
-last_edited_at: "2024-07-12T12:48:14.929969"
+last_edited_at: "2025-02-18T10:08:51.548260"
 status: published
 
 authors:
@@ -34,7 +34,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: order_animals_by_size
+      icon: order_animals_by_size_dolphin
 
       title: Ordonner par taille - Dauphin
       subtitle: Du plus petit au plus grand
@@ -52,7 +52,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: order_animals_by_size
+      icon: order_animals_by_size_dolphin
 
       title: Order by Size - Dolphin
       subtitle: From Smallest to Largest

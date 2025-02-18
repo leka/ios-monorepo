@@ -8,7 +8,7 @@ uuid: 1BD7331BDF0D4319B7E71AA64A16A638
 name: counting_candies_from_5_to_10
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-09-27T13:03:45.379574"
+last_edited_at: "2025-02-18T10:08:51.543929"
 status: published
 
 authors:
@@ -35,7 +35,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: counting_candies
+      icon: counting_candies_2
 
       title: Compter des bonbons
       subtitle: 5 à 10
@@ -54,7 +54,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: counting_candies
+      icon: counting_candies_2
 
       title: Counting Candies
       subtitle: 5 to 10
