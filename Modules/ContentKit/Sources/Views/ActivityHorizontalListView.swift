@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import AnalyticsKit
 import DesignKit
 import SwiftUI
@@ -43,11 +44,19 @@ public struct ActivityHorizontalListView: View {
                                         .stroke(self.styleManager.accentColor!, lineWidth: 1)
                                 )
 
-                            Text(activity.details.title)
-                                .font(.headline)
-                                .multilineTextAlignment(.center)
-                                .foregroundStyle(Color.primary)
-                                .fixedSize(horizontal: false, vertical: true)
+                            HStack(spacing: 5) {
+                                Text(activity.details.title)
+                                    .font(.headline)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundStyle(Color.primary)
+                                    .fixedSize(horizontal: false, vertical: true)
+
+                                if self.libraryManagerViewModel.isActivitySaved(activityID: activity.uuid) {
+                                    Text(Image(systemName: "star.fill"))
+                                        .font(.caption)
+                                        .foregroundColor(self.styleManager.accentColor ?? .blue)
+                                }
+                            }
 
                             Text(activity.details.subtitle ?? "")
                                 .font(.body)
@@ -81,6 +90,8 @@ public struct ActivityHorizontalListView: View {
     // MARK: Private
 
     @ObservedObject private var styleManager: StyleManager = .shared
+
+    @StateObject private var libraryManagerViewModel = LibraryManagerViewModel()
 
     private let columns = Array(repeating: GridItem(), count: 3)
     private let rows = [GridItem()]

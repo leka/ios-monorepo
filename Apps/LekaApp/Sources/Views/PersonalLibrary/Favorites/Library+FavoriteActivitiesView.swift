@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - PersonalLibraryActivitiesView
 
-struct LibraryActivitiesView: View {
+struct FavoriteActivitiesView: View {
     // MARK: Lifecycle
 
     init(viewModel: LibraryManagerViewModel) {
@@ -22,12 +22,14 @@ struct LibraryActivitiesView: View {
         if self.activities.isEmpty {
             EmptyLibraryPlaceholderView(icon: .activities)
         } else {
-            LibraryActivityListView(activities: self.activities) { activity in
-                if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
-                    self.navigation.sheetContent = .carereceiverPicker(activity: activity, story: nil)
-                } else {
-                    self.navigation.currentActivity = activity
-                    self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+            ScrollView(showsIndicators: true) {
+                LibraryActivityListView(activities: self.activities) { activity in
+                    if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
+                        self.navigation.sheetContent = .carereceiverPicker(activity: activity, story: nil)
+                    } else {
+                        self.navigation.currentActivity = activity
+                        self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+                    }
                 }
             }
         }
@@ -52,6 +54,6 @@ struct LibraryActivitiesView: View {
 #Preview {
     let viewModel = LibraryManagerViewModel()
     NavigationStack {
-        LibraryActivitiesView(viewModel: viewModel)
+        FavoriteActivitiesView(viewModel: viewModel)
     }
 }
