@@ -29,7 +29,8 @@ def get_files() -> List[Path]:
 
 
 def find_duplicates(files: List[Path]) -> Dict[str, List[Path]]:
-    """Find and return duplicates as a dictionary with base names and their corresponding file paths"""
+    """Find and return duplicates as a dictionary with base names
+    and their corresponding file paths"""
     file_count = defaultdict(list)
     duplicates: Dict[str, List[Path]] = {}
 

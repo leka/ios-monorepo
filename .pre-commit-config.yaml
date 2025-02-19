@@ -144,6 +144,7 @@ repos:
         additional_dependencies: ["ruamel.yaml"]
         files: .*\.activity\.yml
         types: [yaml]
+        pass_filenames: true
 
       - id: check_yaml_content_activities_unique_uuid
         name: Check activity.yml files for unique uuid
