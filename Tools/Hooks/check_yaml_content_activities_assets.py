@@ -1,51 +1,53 @@
 #!/usr/bin/python3
-"""Check the content of a YAML file for an activity"""
+"""
+Check for duplicated image files in the Modules/ContentKit directory.
+Helps prevent duplicate assets by detecting files with the same name but different extensions.
+Excludes files in .xcassets directories.
+"""
 
 # Leka - LekaOS
 # Copyright 2020 APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
 import sys
-import glob
 from collections import defaultdict
 from pathlib import Path
+from typing import List, Dict
+
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'svg'}
 
 
-def get_files():
-    """Get list of files ending with .activity.asset.{png,jpg,svg}"""
-    extensions = ['png', 'jpg', 'svg']
-    files = []
+def get_files() -> List[Path]:
+    """Get list of image files from Modules/ContentKit directory, excluding .xcasset directories"""
+    files: List[Path] = []
 
-    for ext in extensions:
-        found_files = glob.glob(f'**/*.activity.asset.{ext}', recursive=True)  # Search in subdirectories
-        files.extend(found_files)
+    for ext in ALLOWED_EXTENSIONS:
+        found_files = Path().glob(f'Modules/ContentKit/**/*.{ext}')
+        files.extend([f for f in found_files if '.xcassets' not in str(f)])
 
     return files
 
 
-def find_duplicates(files):
+def find_duplicates(files: List[Path]) -> Dict[str, List[Path]]:
     """Find and return duplicates as a dictionary with base names and their corresponding file paths"""
     file_count = defaultdict(list)
-    duplicates = {}
+    duplicates: Dict[str, List[Path]] = {}
 
     for file in files:
-        base_name = Path(file).stem.split('.activity.asset')[0]
+        base_name = file.stem
         file_count[base_name].append(file)
 
     # Only keep base names that have more than one file
-    for base_name, paths in file_count.items():
-        if len(paths) > 1:
-            duplicates[base_name] = paths
+    duplicates = {name: paths for name, paths in file_count.items() if len(paths) > 1}
 
     return duplicates
 
 
-def main():
+def main() -> int:
     """Main function"""
     assets = get_files()
     duplicates = find_duplicates(assets)
     print("pwd:", Path.cwd())
-
     print("Number of files:", len(assets))
 
     if duplicates:
@@ -56,6 +58,7 @@ def main():
                 print(f"        {path}")
         return 1
 
+    print("\n✅ No duplicate files found!")
     return 0
 
 
