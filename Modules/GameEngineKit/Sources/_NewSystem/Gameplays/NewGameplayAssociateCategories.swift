@@ -19,14 +19,14 @@ public enum AssociateCategory {
 public struct NewGameplayAssociateCategoriesChoiceModel: Identifiable {
     // MARK: Lifecycle
 
-    public init(id: String, category: AssociateCategory?) {
+    public init(id: UUID, category: AssociateCategory?) {
         self.id = id
         self.category = category
     }
 
     // MARK: Public
 
-    public let id: String
+    public let id: UUID
 
     // MARK: Internal
 
@@ -51,8 +51,8 @@ public class NewGameplayAssociateCategories: GameplayProtocol {
     public let choices: [NewGameplayAssociateCategoriesChoiceModel]
     public var isCompleted = CurrentValueSubject<Bool, Never>(false)
 
-    public func process(choiceIDs: [[String]]) -> [(id: String, isCategoryCorrect: Bool)] {
-        var results: [(id: String, isCategoryCorrect: Bool)] = []
+    public func process(choiceIDs: [[UUID]]) -> [(id: UUID, isCategoryCorrect: Bool)] {
+        var results: [(id: UUID, isCategoryCorrect: Bool)] = []
 
         let selectedChoices: [[NewGameplayAssociateCategoriesChoiceModel]] = choiceIDs.map { idArray in
             idArray.compactMap { id in
@@ -61,9 +61,10 @@ public class NewGameplayAssociateCategories: GameplayProtocol {
         }
 
         for category in selectedChoices {
+            let correctCategory = category[0].category
             let categoryGroups = Dictionary(grouping: category, by: { $0.category })
-            for (_, categoryChoices) in categoryGroups {
-                if categoryChoices.count > 1 {
+            for (subCategory, categoryChoices) in categoryGroups {
+                if categoryChoices.count > 1, subCategory == correctCategory {
                     categoryChoices.forEach { choice in
                         results.append((choice.id, true))
                         self.remainingRightAnswers.removeAll { $0.id == choice.id }

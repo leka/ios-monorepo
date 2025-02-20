@@ -69,6 +69,43 @@ public class DatabaseOperations {
         .eraseToAnyPublisher()
     }
 
+    public func update(id: String, data: [String: Any], collection: DatabaseCollection) -> AnyPublisher<Void, Error> {
+        Future<Void, Error> { promise in
+            let docRef = self.database.collection(collection.rawValue).document(id)
+
+            var updatedData = data
+            updatedData["last_edited_at"] = FieldValue.serverTimestamp()
+
+            docRef.updateData(updatedData) { error in
+                if let error {
+                    log.error("Update failed for document \(id): \(error.localizedDescription)")
+                    promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                } else {
+                    log.info("Document \(id) updated successfully in \(collection.rawValue). 🎉")
+                    promise(.success(()))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+
+    public func delete(from collection: DatabaseCollection, documentID: String) -> AnyPublisher<Void, Error> {
+        Future<Void, Error> { promise in
+            let docRef = self.database.collection(collection.rawValue).document(documentID)
+
+            docRef.delete { error in
+                if let error {
+                    log.error("\(error.localizedDescription)")
+                    promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                } else {
+                    log.info("Document \(String(describing: documentID)) deleted successfully from \(collection.rawValue). 🎉")
+                    promise(.success(()))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+
     public func observeAll<T: DatabaseDocument>(from collection: DatabaseCollection) -> AnyPublisher<[T], Error> {
         let subject = CurrentValueSubject<[T], Error>([])
 
@@ -143,6 +180,20 @@ public class DatabaseOperations {
         return subject.eraseToAnyPublisher()
     }
 
+    public func listenToAllLibrarySubCollections(libraryID: String) -> AnyPublisher<([SavedCurriculum], [SavedActivity], [SavedStory]), Error> {
+        let curriculumPublisher: AnyPublisher<[SavedCurriculum], Error> = self.listenToLibrarySubCollection(libraryID: libraryID, subCollection: .curriculums)
+        let activityPublisher: AnyPublisher<[SavedActivity], Error> = self.listenToLibrarySubCollection(libraryID: libraryID, subCollection: .activities)
+        let storyPublisher: AnyPublisher<[SavedStory], Error> = self.listenToLibrarySubCollection(libraryID: libraryID, subCollection: .stories)
+
+        return Publishers.CombineLatest(curriculumPublisher,
+                                        Publishers.CombineLatest(activityPublisher, storyPublisher))
+            .map { curriculums, combined in
+                let (activities, stories) = combined
+                return (curriculums, activities, stories)
+            }
+            .eraseToAnyPublisher()
+    }
+
     public func getCurrentRootAccount() -> AnyPublisher<RootAccount, Error> {
         let subject = PassthroughSubject<RootAccount, Error>()
 
@@ -191,67 +242,84 @@ public class DatabaseOperations {
         self.listenerRegistrations.removeAll()
     }
 
-    public func update<T: DatabaseDocument>(data: T, in collection: DatabaseCollection, ignoringFields: [String] = []) -> AnyPublisher<T, Error> {
-        Future<T, Error> { promise in
-            let docRef = self.database.collection(collection.rawValue).document(data.id!)
+    public func addItemToLibrarySubCollection(
+        libraryID: String,
+        subCollection: LibrarySubCollection,
+        item: some Encodable
+    ) -> AnyPublisher<Void, Error> {
+        let libraryRef = self.database.collection(DatabaseCollection.libraries.rawValue).document(libraryID)
+        let itemRef = libraryRef.collection(subCollection.rawValue).document()
 
+        return Future<Void, Error> { promise in
+            let batch = self.database.batch()
             do {
-                var dataDict = try Firestore.Encoder().encode(data)
-                dataDict["last_edited_at"] = FieldValue.serverTimestamp()
-                for field in ignoringFields {
-                    dataDict.removeValue(forKey: field)
-                }
+                try batch.setData(from: item, forDocument: itemRef)
 
-                docRef.updateData(dataDict) { error in
+                batch.updateData(
+                    [Library.CodingKeys.lastEditedAt.rawValue: FieldValue.serverTimestamp()],
+                    forDocument: libraryRef
+                )
+
+                batch.commit { error in
                     if let error {
-                        log.error("Update failed for document \(String(describing: data.id!)): \(error.localizedDescription)")
+                        log.error("Failed to add item to sub-collection \(subCollection.rawValue) and update last_edited_at: \(error.localizedDescription)")
                         promise(.failure(DatabaseError.customError(error.localizedDescription)))
                     } else {
-                        log.info("Document \(String(describing: data.id!)) updated successfully in \(collection.rawValue). 🎉")
-                        promise(.success(data))
+                        log.info("Item added to sub-collection \(subCollection.rawValue) and library's last_edited_at updated successfully.")
+                        promise(.success(()))
                     }
                 }
             } catch {
-                log.error("\(error.localizedDescription)")
+                log.error("Failed to encode item for sub-collection \(subCollection.rawValue): \(error.localizedDescription)")
                 promise(.failure(DatabaseError.encodeError))
             }
         }
         .eraseToAnyPublisher()
     }
 
-    public func update(id: String, data: [String: Any], collection: DatabaseCollection) -> AnyPublisher<Void, Error> {
-        Future<Void, Error> { promise in
-            let docRef = self.database.collection(collection.rawValue).document(id)
+    public func removeItemFromLibrarySubCollection(
+        libraryID: String,
+        subCollection: LibrarySubCollection,
+        itemID: String
+    ) -> AnyPublisher<Void, Error> {
+        let libraryRef = self.database.collection(DatabaseCollection.libraries.rawValue).document(libraryID)
+        let subCollectionRef = libraryRef.collection(subCollection.rawValue)
 
-            var updatedData = data
-            updatedData["last_edited_at"] = FieldValue.serverTimestamp()
+        return Future<Void, Error> { promise in
+            subCollectionRef
+                .whereField("uuid", isEqualTo: itemID)
+                .getDocuments { snapshot, error in
+                    if let error {
+                        log.error("Error fetching item with uuid \(itemID) from sub-collection \(subCollection.rawValue): \(error.localizedDescription)")
+                        promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                        return
+                    }
 
-            docRef.updateData(updatedData) { error in
-                if let error {
-                    log.error("Update failed for document \(id): \(error.localizedDescription)")
-                    promise(.failure(DatabaseError.customError(error.localizedDescription)))
-                } else {
-                    log.info("Document \(id) updated successfully in \(collection.rawValue). 🎉")
-                    promise(.success(()))
+                    guard let document = snapshot?.documents.first else {
+                        log.error("No item found with uuid \(itemID) in sub-collection \(subCollection.rawValue)")
+                        promise(.failure(DatabaseError.documentNotFound))
+                        return
+                    }
+
+                    let batch = self.database.batch()
+
+                    batch.deleteDocument(document.reference)
+
+                    batch.updateData(
+                        [Library.CodingKeys.lastEditedAt.rawValue: FieldValue.serverTimestamp()],
+                        forDocument: libraryRef
+                    )
+
+                    batch.commit { error in
+                        if let error {
+                            log.error("Failed to remove item with uuid \(itemID) from sub-collection \(subCollection.rawValue) and update last_edited_at: \(error.localizedDescription)")
+                            promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                        } else {
+                            log.info("Item with uuid \(itemID) removed from sub-collection \(subCollection.rawValue) and library's last_edited_at updated successfully.")
+                            promise(.success(()))
+                        }
+                    }
                 }
-            }
-        }
-        .eraseToAnyPublisher()
-    }
-
-    public func delete(from collection: DatabaseCollection, documentID: String) -> AnyPublisher<Void, Error> {
-        Future<Void, Error> { promise in
-            let docRef = self.database.collection(collection.rawValue).document(documentID)
-
-            docRef.delete { error in
-                if let error {
-                    log.error("\(error.localizedDescription)")
-                    promise(.failure(DatabaseError.customError(error.localizedDescription)))
-                } else {
-                    log.info("Document \(String(describing: documentID)) deleted successfully from \(collection.rawValue). 🎉")
-                    promise(.success(()))
-                }
-            }
         }
         .eraseToAnyPublisher()
     }
@@ -260,4 +328,41 @@ public class DatabaseOperations {
 
     private let database = Firestore.firestore()
     private var listenerRegistrations = [String: ListenerRegistration]()
+
+    private func listenToLibrarySubCollection<T: Decodable>(
+        libraryID: String,
+        subCollection: LibrarySubCollection
+    ) -> AnyPublisher<[T], Error> {
+        let subject = PassthroughSubject<[T], Error>()
+
+        guard let currentUserID = Auth.auth().currentUser?.uid else {
+            subject.send(completion: .failure(DatabaseError.customError("User not authenticated")))
+            return subject.eraseToAnyPublisher()
+        }
+
+        let listenerKey = "SUBCOLLECTION_\(subCollection.rawValue)_\(libraryID)_\(currentUserID)"
+        if let existingListener = listenerRegistrations[listenerKey] {
+            existingListener.remove()
+            self.listenerRegistrations.removeValue(forKey: listenerKey)
+        }
+
+        let listener = self.database.collection(DatabaseCollection.libraries.rawValue)
+            .document(libraryID)
+            .collection(subCollection.rawValue)
+            .addSnapshotListener { snapshot, error in
+                if let error {
+                    log.error("Error listening to \(subCollection.rawValue): \(error.localizedDescription)")
+                    subject.send(completion: .failure(DatabaseError.customError(error.localizedDescription)))
+                } else if let snapshot {
+                    let items: [T] = snapshot.documents.compactMap { document in
+                        try? document.data(as: T.self)
+                    }
+                    log.info("Fetched \(items.count) items from sub-collection \(subCollection.rawValue).")
+                    subject.send(items)
+                }
+            }
+
+        self.listenerRegistrations[listenerKey] = listener
+        return subject.eraseToAnyPublisher()
+    }
 }

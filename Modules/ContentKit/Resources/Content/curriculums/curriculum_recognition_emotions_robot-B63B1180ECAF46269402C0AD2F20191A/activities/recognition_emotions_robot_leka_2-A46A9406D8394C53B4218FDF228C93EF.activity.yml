@@ -8,7 +8,7 @@ uuid: A46A9406D8394C53B4218FDF228C93EF
 name: recognition_emotions_robot_leka_2
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2025-01-10T12:24:04.273866"
+last_edited_at: "2025-02-18T10:08:51.520404"
 
 status: published
 
@@ -35,7 +35,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: recognition_emotions_robot
+      icon: recognition_emotions_robot_leka_2
 
       title: Les émotions du robot
       subtitle: Pictogrammes de Leka - 2
@@ -51,7 +51,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: recognition_emotions_robot
+      icon: recognition_emotions_robot_leka_2
 
       title: The Emotions of the Robot
       subtitle: Leka pictograms - 2

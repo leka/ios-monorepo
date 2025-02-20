@@ -45,8 +45,28 @@ public class LibraryManagerViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] library in
                 self?.currentLibrary = library
-                self?.updateCurrentLibraryContent(from: library)
             })
+            .store(in: &self.cancellables)
+
+        self.libraryManager.savedCurriculums
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { [weak self] curriculums in
+                self?.curriculums = curriculums
+            })
+            .store(in: &self.cancellables)
+
+        self.libraryManager.savedActivities
+            .receive(on: RunLoop.main)
+            .sink { [weak self] activities in
+                self?.activities = activities
+            }
+            .store(in: &self.cancellables)
+
+        self.libraryManager.savedStories
+            .receive(on: RunLoop.main)
+            .sink { [weak self] stories in
+                self?.stories = stories
+            }
             .store(in: &self.cancellables)
 
         self.libraryManager.isLoading
@@ -62,19 +82,6 @@ public class LibraryManagerViewModel: ObservableObject {
                 self?.handleError(error)
             })
             .store(in: &self.cancellables)
-    }
-
-    private func updateCurrentLibraryContent(from library: Library?) {
-        guard let library else {
-            self.activities = []
-            self.curriculums = []
-            self.stories = []
-            return
-        }
-
-        self.activities = library.activities
-        self.curriculums = library.curriculums
-        self.stories = library.stories
     }
 
     private func handleError(_ error: Error) {

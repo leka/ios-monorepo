@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Utily functions for the hooks."""
+"""Utility functions for the hooks."""
 
 # Leka - iOS Monorepo
 # Copyright APF France handicap

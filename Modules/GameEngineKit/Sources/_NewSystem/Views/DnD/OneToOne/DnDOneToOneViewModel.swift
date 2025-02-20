@@ -23,11 +23,19 @@ public class DnDOneToOneViewModel: ObservableObject {
                 self?.choices = model.choices
             }
             .store(in: &self.cancellables)
+
+        self.coordinator.validationEnabled
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] validationEnabled in
+                self?.validationEnabled = validationEnabled
+            }
+            .store(in: &self.cancellables)
     }
 
     // MARK: Internal
 
     @Published var didTriggerAction = false
+    @Published var validationEnabled: Bool?
     @Published var choices: [DnDAnswerNode] = []
     @Published var dropzones: [DnDDropZoneNode] = []
 
@@ -37,8 +45,12 @@ public class DnDOneToOneViewModel: ObservableObject {
         self.coordinator.setAlreadyOrderedNodes()
     }
 
-    func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDDropZoneNode? = nil) {
-        self.coordinator.onTouch(event, choice: choice, destination: destination)
+    func onTouch(_ event: DnDTouchEvent, choiceID: UUID, destinationID: UUID? = nil) {
+        self.coordinator.onTouch(event, choiceID: choiceID, destinationID: destinationID)
+    }
+
+    func onValidate() {
+        self.coordinator.validateUserSelection()
     }
 
     // MARK: Private

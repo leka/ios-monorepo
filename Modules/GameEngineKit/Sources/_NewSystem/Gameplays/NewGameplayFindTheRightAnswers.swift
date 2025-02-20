@@ -11,14 +11,14 @@ import RobotKit
 public struct NewGameplayFindTheRightAnswersChoiceModel: Identifiable {
     // MARK: Lifecycle
 
-    public init(id: String, isRightAnswer: Bool) {
+    public init(id: UUID, isRightAnswer: Bool) {
         self.id = id
         self.isRightAnswer = isRightAnswer
     }
 
     // MARK: Public
 
-    public let id: String
+    public let id: UUID
 
     // MARK: Internal
 
@@ -40,8 +40,8 @@ public class NewGameplayFindTheRightAnswers: GameplayProtocol {
     public let choices: [NewGameplayFindTheRightAnswersChoiceModel]
     public var isCompleted = CurrentValueSubject<Bool, Never>(false)
 
-    public func process(choiceIDs: [String]) -> [(id: String, isCorrect: Bool)] {
-        let results: [(String, Bool)] = choiceIDs.compactMap { [weak self] id in
+    public func process(choiceIDs: [UUID]) -> [(id: UUID, isCorrect: Bool)] {
+        let results: [(UUID, Bool)] = choiceIDs.compactMap { [weak self] id in
             guard let self else { return nil }
 
             let isRightAnswer: Bool = self.remainingRightAnswers.first(where: { id == $0.id })?.isRightAnswer ?? false

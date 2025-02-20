@@ -5,18 +5,6 @@
 import GameEngineKit
 import SwiftUI
 
-// TODO: (@ladislas) to remove in the future, replaced by actual data
-extension ExerciseData {
-    static let TTSxFindTheRightAnswers: [CoordinatorFindTheRightAnswersChoiceModel] = [
-        .init(value: "Choice 1\nCorrect", isRightAnswer: true),
-        .init(value: "Choice 2", isRightAnswer: false),
-        .init(value: "Choice 3\nCorrect", isRightAnswer: true),
-        .init(value: "checkmark.seal.fill", isRightAnswer: true, type: .sfsymbol),
-        .init(value: "Choice 5\nCorrect", isRightAnswer: true),
-        .init(value: "exclamationmark.triangle.fill", isRightAnswer: false, type: .sfsymbol),
-    ]
-}
-
 // MARK: - TTSExercises
 
 struct TTSExercises: View {
@@ -28,7 +16,7 @@ struct TTSExercises: View {
             HStack(spacing: 20) {
                 NavigationLink {
                     let coordinator = TTSCoordinatorFindTheRightAnswers(
-                        choices: ExerciseData.TTSxFindTheRightAnswers,
+                        choices: ExerciseData.kFindTheRightAnswersChoicesImages,
                         action: nil
                     )
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
@@ -41,8 +29,7 @@ struct TTSExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultChoices)
-                    let coordinator = TTSCoordinatorFindTheRightOrder(gameplay: gameplay)
+                    let coordinator = TTSCoordinatorFindTheRightOrder(choices: ExerciseData.kFindTheRightOrderChoicesEmojis)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                     return TTSView(viewModel: viewModel)
@@ -53,7 +40,7 @@ struct TTSExercises: View {
                 }
 
                 NavigationLink {
-                    let coordinator = TTSCoordinatorAssociateCategories(choices: ExerciseData.AssociateCategoriesChoicesDefault)
+                    let coordinator = TTSCoordinatorAssociateCategories(choices: ExerciseData.kAssociateCategoriesChoicesImages)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                     return TTSView(viewModel: viewModel)
@@ -64,7 +51,7 @@ struct TTSExercises: View {
                 }
 
                 NavigationLink {
-                    let coordinator = MemoryCoordinatorAssociateCategories(choices: ExerciseData.AssociateCategoriesChoicesDefault)
+                    let coordinator = MemoryCoordinatorAssociateCategories(choices: ExerciseData.kAssociateCategoriesChoicesEmojis)
                     let viewModel = NewMemoryViewViewModel(coordinator: coordinator)
 
                     return NewMemoryView(viewModel: viewModel)
@@ -72,6 +59,30 @@ struct TTSExercises: View {
                         .navigationBarTitleDisplayMode(.large)
                 } label: {
                     ExerciseNavigationButtonLabel(text: "Memory", color: .indigo)
+                }
+
+                NavigationLink {
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(choices: ExerciseData.kFindTheRightAnswersChoicesDefault,
+                                                                        validationEnabled: false)
+                    let viewModel = TTSViewViewModel(coordinator: coordinator)
+
+                    return TTSView(viewModel: viewModel)
+                        .navigationTitle("Validate Right Answers")
+                        .navigationBarTitleDisplayMode(.large)
+                } label: {
+                    ExerciseNavigationButtonLabel(text: "Validate Right Answers", color: .indigo)
+                }
+
+                NavigationLink {
+                    let coordinator = TTSCoordinatorFindTheRightOrder(choices: ExerciseData.kFindTheRightOrderChoicesSFSymbols,
+                                                                      validationEnabled: false)
+                    let viewModel = TTSViewViewModel(coordinator: coordinator)
+
+                    return TTSView(viewModel: viewModel)
+                        .navigationTitle("Validate Right Order")
+                        .navigationBarTitleDisplayMode(.large)
+                } label: {
+                    ExerciseNavigationButtonLabel(text: "Validate Right Order", color: .indigo)
                 }
             }
         }

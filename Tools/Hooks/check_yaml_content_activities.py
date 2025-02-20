@@ -6,6 +6,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 import sys
+from multiprocessing import Pool, cpu_count
 
 from modules.content import (
     is_created_at_present,
@@ -30,8 +31,16 @@ from modules.yaml import create_yaml_object, is_jtd_schema_compliant
 JTD_SCHEMA = "Specs/jtd/activity.jtd.json"
 
 
-def check_activity(filename):
-    """Check the content of a YAML file for an activity"""
+def check_activity(filename: str) -> bool:
+    """
+    Check the content of a YAML file for an activity.
+
+    Args:
+        filename: Path to the YAML file to check
+
+    Returns:
+        bool: True if file is valid, False otherwise
+    """
     yaml = create_yaml_object()
 
     file_is_valid = True
@@ -123,20 +132,27 @@ def check_activity(filename):
     return file_is_valid
 
 
-def main():
-    """Main function"""
-    files = get_files()
+def main() -> int:
+    """Main function that orchestrates the YAML content checking"""
+    activity_files = get_files()
 
-    must_fail = False
+    if not activity_files:
+        print("\n✅ No activity files to check!")
+        return 0
 
-    for file in files:
-        file_is_valid = check_activity(file)
-        if file_is_valid is False:
-            must_fail = True
+    workers = max(1, cpu_count() - 1)
 
-    if must_fail:
+    print(f"\nChecking {len(activity_files)} files using {workers} workers...")
+
+    with Pool(processes=workers) as pool:
+        results = pool.map(check_activity, activity_files)
+
+    has_errors = not all(results)
+
+    if has_errors:
         return 1
 
+    print("\n✅ All checked activity files are valid!")
     return 0
 
 

@@ -21,32 +21,67 @@ public struct MagicCardView: View {
     // MARK: Public
 
     public var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             Text(l10n.MagicCardView.instructions)
-                .font(.headline)
+                .font(.title3.bold())
                 .multilineTextAlignment(.center)
-                .padding(.top, 100)
+                .padding()
+
+            Spacer()
+
+            HStack(spacing: 0) {
+                Spacer()
+
+                Button {
+                    // nothing to do
+                }
+                label: {
+                    ActionButtonView(action: self.viewModel.action)
+                        .frame(width: 300, height: 300)
+                }
+                .simultaneousGesture(
+                    TapGesture()
+                        .onEnded { _ in
+                            withAnimation {
+                                self.viewModel.didTriggerAction = true
+                                self.viewModel.enableMagicCardDetection()
+                            }
+                        }
+                )
+
+                Spacer()
+
+                Divider()
+                    .opacity(0.4)
+                    .frame(maxHeight: 500)
+                    .padding(.vertical, 20)
+
+                Spacer()
+
+                Image(uiImage: DesignKitAsset.Images.robotMagicCard.image)
+                    .resizable()
+                    .frame(width: 300, height: 300)
+
+                Spacer()
+            }
 
             Spacer()
 
             Button {
-                // nothing to do
+                self.viewModel.onValidateCorrectAnswer()
+            } label: {
+                Text(l10n.ExerciseView.validateCorrectAnswerButtonLabel)
+                    .font(.title2.bold())
+                    .foregroundColor(.white)
+                    .frame(height: 30)
+                    .padding()
+                    .background(
+                        Capsule()
+                            .fill(.orange)
+                            .shadow(radius: 1)
+                    )
             }
-            label: {
-                ActionButtonView(action: self.viewModel.action, scale: 2)
-                    .padding(20)
-            }
-            .simultaneousGesture(
-                TapGesture()
-                    .onEnded { _ in
-                        withAnimation {
-                            self.viewModel.didTriggerAction = true
-                            self.viewModel.enableMagicCardDetection()
-                        }
-                    }
-            )
-
-            Spacer()
+            .padding(20)
         }
         .onDisappear {
             Robot.shared.stopLights()
@@ -79,6 +114,7 @@ extension l10n {
     class MagicCardEmptyCoordinator: MagicCardGameplayCoordinatorProtocol {
         var action = Exercise.Action.robot(type: .image("robotFaceDisgusted"))
         func enableMagicCardDetection() {}
+        func validateCorrectAnswer() {}
     }
 
     let coordinator = MagicCardEmptyCoordinator()

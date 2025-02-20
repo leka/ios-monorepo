@@ -10,14 +10,14 @@ import SwiftUI
 public struct MemoryViewUIChoiceModel: Identifiable {
     // MARK: Lifecycle
 
-    init(id: String = UUID().uuidString, view: some View = EmptyView()) {
+    init(id: UUID = UUID(), view: some View = EmptyView()) {
         self.id = id
         self.view = AnyView(view)
     }
 
     // MARK: Public
 
-    public let id: String
+    public let id: UUID
 
     // MARK: Internal
 

@@ -5,19 +5,6 @@
 import GameEngineKit
 import SwiftUI
 
-// MARK: - ExerciseData
-
-extension ExerciseData {
-    static let TTSThenValidatexNoGameplay: [TTSCoordinatorNoGameplayChoiceModel] = [
-        .init(value: "Choice 1\nCorrect"),
-        .init(value: "Choice 2"),
-        .init(value: "Choice 3\nCorrect"),
-        .init(value: "checkmark.seal.fill", type: .sfsymbol),
-        .init(value: "Choice 5\nCorrect"),
-        .init(value: "exclamationmark.triangle.fill", type: .sfsymbol),
-    ]
-}
-
 // MARK: - NoGameplayExercises
 
 struct NoGameplayExercises: View {
@@ -28,8 +15,8 @@ struct NoGameplayExercises: View {
         ScrollView(.horizontal) {
             HStack(spacing: 20) {
                 NavigationLink {
-                    let coordinator = TTSThenValidateCoordinatorNoGameplay(
-                        choices: ExerciseData.TTSThenValidatexNoGameplay,
+                    let coordinator = TTSCoordinatorNoGameplay(
+                        choices: ExerciseData.kNoGameplayDefault,
                         minimumToSelect: 1,
                         maximumToSelect: 3
                     )
@@ -40,6 +27,21 @@ struct NoGameplayExercises: View {
                         .navigationBarTitleDisplayMode(.large)
                 } label: {
                     ExerciseNavigationButtonLabel(text: "TTS", color: .pink)
+                }
+
+                NavigationLink {
+                    let coordinator = DnDGridWithZonesCoordinatorNoGameplay(
+                        choices: ExerciseData.kNoGameplayWithZonesChoicesEmojis,
+                        minimumToSelect: 1,
+                        maximumToSelect: 3
+                    )
+                    let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
+
+                    return DnDGridWithZonesView(viewModel: viewModel)
+                        .navigationTitle("WithZones")
+                        .navigationBarTitleDisplayMode(.large)
+                } label: {
+                    ExerciseNavigationButtonLabel(text: "WithZones", color: .pink)
                 }
             }
         }

@@ -13,8 +13,7 @@ struct ActionThenDnDOneToOneExercises: View {
         ScrollView(.horizontal) {
             HStack(spacing: 20) {
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultImageChoicesWithZones)
-                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(gameplay: gameplay,
+                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(choices: ExerciseData.kFindTheRightOrderChoicesDefault,
                                                                               action: .ipad(type: .image("sport_dance_player_man")))
                     let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
 
@@ -26,8 +25,7 @@ struct ActionThenDnDOneToOneExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultImageChoicesWithZones)
-                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(gameplay: gameplay,
+                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(choices: ExerciseData.kFindTheRightOrderChoicesImages,
                                                                               action: .ipad(type: .sfsymbol("star")))
                     let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
 
@@ -39,8 +37,7 @@ struct ActionThenDnDOneToOneExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultImageChoicesWithZones)
-                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(gameplay: gameplay,
+                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(choices: ExerciseData.kFindTheRightOrderChoicesSFSymbols,
                                                                               action: .ipad(type: .audio("sound_animal_duck")))
                     let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
 
@@ -52,8 +49,7 @@ struct ActionThenDnDOneToOneExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultImageChoicesWithZones)
-                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(gameplay: gameplay,
+                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(choices: ExerciseData.kFindTheRightOrderChoicesColors,
                                                                               action: .ipad(type: .speech("Correct answer")))
                     let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
 
@@ -65,8 +61,7 @@ struct ActionThenDnDOneToOneExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultImageChoicesWithZones)
-                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(gameplay: gameplay,
+                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(choices: ExerciseData.kFindTheRightOrderChoicesEmojis,
                                                                               action: .robot(type: .color("red")))
                     let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
 
@@ -78,8 +73,7 @@ struct ActionThenDnDOneToOneExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultImageChoicesWithZones)
-                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(gameplay: gameplay,
+                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(choices: ExerciseData.kFindTheRightOrderChoicesImages,
                                                                               action: .robot(type: .image("robotFaceHappy")))
                     let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
 

@@ -6,7 +6,6 @@ import Combine
 import ContentKit
 import SpriteKit
 import SwiftUI
-import UtilsKit
 
 // MARK: - DnDGridWithZonesCoordinatorAssociateCategories
 
@@ -14,8 +13,10 @@ import UtilsKit
 public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorAssociateCategoriesChoiceModel], action: Exercise.Action? = nil) {
-        self.rawChoices = choices
+    public init(choices: [CoordinatorAssociateCategoriesChoiceModel], action: Exercise.Action? = nil, validationEnabled: Bool? = nil) {
+        let dropZones = choices.prefix(2)
+        let nodes = choices.suffix(choices.count - dropZones.count)
+        self.rawChoices = Array(nodes)
 
         self.gameplay = NewGameplayAssociateCategories(choices: choices.map {
             .init(id: $0.id, category: $0.category)
@@ -24,14 +25,21 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
         self.uiModel.value.action = action
         self.uiDropZoneModel.action = action
 
-        self.uiDropZoneModel.zones = self.rawChoices[0...1].map { dropzone in
-            self.currentlySelectedChoices.append([dropzone])
-            self.alreadyValidatedChoices.append([dropzone])
-            return DnDDropZoneNode(id: dropzone.id, value: dropzone.value, type: dropzone.type, position: .zero, size: self.uiDropZoneModel.zoneSize(for: self.rawChoices[0...1].count))
+        self.uiDropZoneModel.zones = dropZones.map { dropzone in
+            self.currentlySelectedChoices.append([dropzone.id])
+            self.alreadyValidatedChoices.append([dropzone.id])
+            return DnDDropZoneNode(
+                id: dropzone.id,
+                value: dropzone.value,
+                type: dropzone.type,
+                position: .zero,
+                size: self.uiDropZoneModel.zoneSize(for: dropZones.count)
+            )
         }
+        self.validationEnabled.value = validationEnabled
 
-        self.uiModel.value.choices = self.rawChoices[2...].map { choice in
-            DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiModel.value.choiceSize(for: choices[2...].count))
+        self.uiModel.value.choices = nodes.map { choice in
+            DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiModel.value.choiceSize(for: nodes.count))
         }
     }
 
@@ -39,19 +47,42 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
 
     public private(set) var uiDropZoneModel: DnDGridWithZonesUIDropzoneModel = .zero
     public private(set) var uiModel = CurrentValueSubject<DnDGridWithZonesUIModel, Never>(.zero)
+    public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
 
-    public func onTouch(_ event: DnDTouchEvent, choice: DnDAnswerNode, destination: DnDDropZoneNode? = nil) {
+    public func onTouch(_ event: DnDTouchEvent, choiceID: UUID, destinationID: UUID? = nil) {
         switch event {
             case .began:
-                self.updateChoiceState(for: self.rawChoices.first(where: { $0.id == choice.id })!, to: .dragged)
+                self.updateChoiceState(for: choiceID, to: .dragged)
+                self.currentlySelectedChoices.enumerated().forEach { categoryIndex, category in
+                    if let index = category.firstIndex(of: choiceID) {
+                        self.currentlySelectedChoices[categoryIndex].remove(at: index)
+                        self.disableValidation()
+                    }
+                }
             case .ended:
-                guard let destination else {
-                    self.updateChoiceState(for: self.rawChoices.first(where: { $0.id == choice.id })!, to: .idle)
+                guard let destinationID else {
+                    self.updateChoiceState(for: choiceID, to: .idle)
                     return
                 }
 
-                self.processUserDropOnDestination(choice: choice, destination: destination)
+                self.processUserDropOnDestination(choiceID: choiceID, destinationID: destinationID)
         }
+    }
+
+    public func validateUserSelection() {
+        let results = self.gameplay.process(choiceIDs: self.currentlySelectedChoices)
+
+        for (categoryIndex, category) in self.currentlySelectedChoices.enumerated() {
+            for choiceID in category {
+                if let result = results.first(where: { $0.id == choiceID }), result.isCategoryCorrect {
+                    self.updateChoiceState(for: result.id, to: .correct(dropZone: self.uiDropZoneModel.zones[categoryIndex]))
+                    self.alreadyValidatedChoices[categoryIndex].append(result.id)
+                } else {
+                    self.handleIncorrectChoice(choiceID)
+                }
+            }
+        }
+        self.disableValidation()
     }
 
     // MARK: Private
@@ -59,57 +90,68 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
     private let gameplay: NewGameplayAssociateCategories
     private let rawChoices: [CoordinatorAssociateCategoriesChoiceModel]
 
-    private var currentlySelectedChoices: [[CoordinatorAssociateCategoriesChoiceModel]] = []
-    private var alreadyValidatedChoices: [[CoordinatorAssociateCategoriesChoiceModel]] = []
+    private var currentlySelectedChoices: [[UUID]] = []
+    private var alreadyValidatedChoices: [[UUID]] = []
 
-    private func processUserDropOnDestination(choice: DnDAnswerNode, destination: DnDDropZoneNode) {
-        guard let sourceChoice = self.rawChoices.first(where: { $0.id == choice.id }),
-              let destinationChoice = self.rawChoices.first(where: { $0.id == destination.id }),
-              let categoryIndex = getIndexOf(destination: destinationChoice),
-              !self.choiceAlreadySelected(choice: sourceChoice) else { return }
+    private func processUserDropOnDestination(choiceID: UUID, destinationID: UUID) {
+        let destinationIndex = self.uiDropZoneModel.zones.firstIndex(where: { $0.id == destinationID })!
 
-        self.currentlySelectedChoices[categoryIndex].append(sourceChoice)
+        for (categoryIndex, category) in self.currentlySelectedChoices.enumerated() {
+            if let index = category.firstIndex(where: { $0 == choiceID }) {
+                self.currentlySelectedChoices[categoryIndex].remove(at: index)
+                break
+            }
+        }
+        self.currentlySelectedChoices[destinationIndex].append(choiceID)
 
-        let results = self.gameplay.process(choiceIDs: self.currentlySelectedChoices.map { $0.map(\.id) })
-
-        if results
-            .first(where: { $0.id == sourceChoice.id })?.isCategoryCorrect == true
-        {
-            self.updateChoiceState(for: sourceChoice, to: .correct(dropZone: destination))
-            self.alreadyValidatedChoices = self.currentlySelectedChoices
-
-            if self.gameplay.isCompleted.value {
-                log.debug("Exercise completed")
+        if self.validationEnabled.value != nil {
+            self.updateChoiceState(for: choiceID, to: .selected(dropZone: self.uiDropZoneModel.zones[destinationIndex]))
+            if self.areAllCategorizableChoiceSelected() {
+                self.validationEnabled.send(true)
             }
         } else {
-            self.handleIncorrectChoice(sourceChoice)
+            self.validateUserSelection()
         }
     }
 
-    private func updateChoiceState(for choice: CoordinatorAssociateCategoriesChoiceModel, to state: State) {
-        guard let index = self.rawChoices.firstIndex(where: { $0.id == choice.id }) else { return }
+    private func updateChoiceState(for choiceID: UUID, to state: State) {
+        guard let index = self.rawChoices.firstIndex(where: { $0.id == choiceID }) else { return }
 
-        self.updateUINodeState(node: self.uiModel.value.choices[index - 2], state: state)
+        self.updateUINodeState(node: self.uiModel.value.choices[index], state: state)
     }
 
-    private func choiceAlreadySelected(choice: CoordinatorAssociateCategoriesChoiceModel) -> Bool {
-        self.alreadyValidatedChoices.contains(where: { $0.contains(where: { $0.id == choice.id }) })
-    }
-
-    private func getIndexOf(destination: CoordinatorAssociateCategoriesChoiceModel) -> Int? {
-        self.alreadyValidatedChoices.firstIndex(where: { $0.contains(where: { $0.id == destination.id }) })
-    }
-
-    private func handleIncorrectChoice(_ choice: CoordinatorAssociateCategoriesChoiceModel) {
+    private func handleIncorrectChoice(_ choiceID: UUID) {
+        guard let choice = self.rawChoices.first(where: { $0.id == choiceID }) else { return }
         let categoryChoices = self.rawChoices.filter { $0.category == choice.category }
 
         if categoryChoices.count > 1 {
-            self.updateChoiceState(for: choice, to: .idle)
+            self.updateChoiceState(for: choiceID, to: .idle)
         } else {
-            self.updateChoiceState(for: choice, to: .wrong)
+            self.updateChoiceState(for: choiceID, to: .wrong)
         }
 
-        self.currentlySelectedChoices = self.alreadyValidatedChoices
+        self.removeChoice(with: choiceID)
+    }
+
+    private func areAllCategorizableChoiceSelected() -> Bool {
+        let categorizableChoices = self.rawChoices.filter { $0.category != nil }.map(\.id)
+        let selectedChoices = self.currentlySelectedChoices.flatMap { $0.dropFirst() }
+        return Set(categorizableChoices).isSubset(of: Set(selectedChoices))
+    }
+
+    private func disableValidation() {
+        if self.validationEnabled.value != nil {
+            self.validationEnabled.send(false)
+        }
+    }
+
+    private func removeChoice(with choiceID: UUID) {
+        for (index, category) in self.currentlySelectedChoices.enumerated() {
+            if let choiceIndex = category.firstIndex(of: choiceID) {
+                self.currentlySelectedChoices[index].remove(at: choiceIndex)
+                break
+            }
+        }
     }
 }
 
@@ -117,7 +159,7 @@ extension DnDGridWithZonesCoordinatorAssociateCategories {
     enum State: Equatable {
         case idle
         case dragged
-        case selected
+        case selected(dropZone: SKSpriteNode)
         case correct(dropZone: SKSpriteNode)
         case wrong
     }
@@ -125,50 +167,25 @@ extension DnDGridWithZonesCoordinatorAssociateCategories {
     private func updateUINodeState(node: DnDAnswerNode, state: State) {
         switch state {
             case .idle:
-                self.moveNodeBackToInitialPosition(node)
+                node.triggerDefaultIdleBehavior()
             case .dragged:
-                self.onDragAnimation(node)
-                node.zPosition += 100
-            case .selected:
-                // Nothing to do
-                break
+                node.triggerDefaultDraggedBehavior()
+            case let .selected(dropzone):
+                self.triggerSelectedBehavior(for: node, in: dropzone)
             case let .correct(dropzone):
-                node.isDraggable = false
-                node.repositionInside(dropZone: dropzone)
-                node.scale(to: CGSize(width: node.size.width * 0.75, height: node.size.height * 0.75))
+                self.triggerCorrectBehavior(for: node, in: dropzone)
             case .wrong:
-                node.isDraggable = false
-                self.moveNodeBackToInitialPosition(node)
+                node.triggerDefaultWrongBehavior()
         }
     }
 
-    // MARK: - Animations
-
-    private func onDragAnimation(_ node: SKSpriteNode) {
-        let wiggleAnimation = SKAction.sequence([
-            SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: -4)), duration: 0.1),
-            SKAction.rotate(byAngle: 0.0, duration: 0.1),
-            SKAction.rotate(byAngle: CGFloat(degreesToRadian(degrees: 4)), duration: 0.1),
-        ])
-        node.run(SKAction.repeatForever(wiggleAnimation))
+    private func triggerSelectedBehavior(for node: DnDAnswerNode, in dropzone: SKSpriteNode) {
+        node.repositionInside(dropZone: dropzone)
+        node.isDraggable = true
     }
 
-    // MARK: Private
-
-    private func onDropAction(_ node: SKSpriteNode) {
-        node.zRotation = 0
-        node.removeAllActions()
-    }
-
-    private func moveNodeBackToInitialPosition(_ node: DnDAnswerNode) {
-        let moveAnimation = SKAction.move(to: node.initialPosition ?? .zero, duration: 0.25)
-        node.run(
-            moveAnimation,
-            completion: {
-                node.position = node.initialPosition ?? .zero
-                node.zPosition = 10
-                self.onDropAction(node)
-            }
-        )
+    private func triggerCorrectBehavior(for node: DnDAnswerNode, in dropzone: SKSpriteNode) {
+        node.repositionInside(dropZone: dropzone)
+        node.isDraggable = false
     }
 }

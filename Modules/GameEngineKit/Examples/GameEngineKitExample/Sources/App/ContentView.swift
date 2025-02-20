@@ -29,8 +29,6 @@ struct ContentView: View {
 
                         ActionThenTTSExercises()
 
-                        TTSThenValidateExercises()
-
                         ActionThenTTSThenValidateExercises()
 
                         DnDExercises()

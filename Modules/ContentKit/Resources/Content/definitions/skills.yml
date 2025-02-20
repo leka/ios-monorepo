@@ -343,7 +343,6 @@ list:
                     description: >
                       Utiliser des mots pour s'exprimer.
                 subskills: []
-
               - id: >-
                   communication/verbal_communication/expressive_language/written_expression
                 sha: aec6
@@ -383,7 +382,6 @@ list:
                     description: >
                       Comprendre les mots que les gens disent.
                 subskills: []
-
               - id: >-
                   communication/verbal_communication/receptive_language/written_comprehension
                 sha: fd12

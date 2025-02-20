@@ -14,7 +14,7 @@ struct DnDExercises: View {
             HStack(spacing: 20) {
                 NavigationLink {
                     let coordinator = DnDGridCoordinatorAssociateCategories(
-                        choices: ExerciseData.AssociateCategoriesChoicesDefault
+                        choices: ExerciseData.kAssociateCategoriesChoicesDefault
                     )
                     let viewModel = DnDGridViewModel(coordinator: coordinator)
 
@@ -27,7 +27,7 @@ struct DnDExercises: View {
 
                 NavigationLink {
                     let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(
-                        choices: ExerciseData.AssociateCategoriesWithZonesChoicesDefault
+                        choices: ExerciseData.kAssociateCategoriesWithZonesChoicesDefault
                     )
                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 
@@ -39,15 +39,40 @@ struct DnDExercises: View {
                 }
 
                 NavigationLink {
-                    let gameplay = NewGameplayFindTheRightOrder(choices: NewGameplayFindTheRightOrder.kDefaultImageChoicesWithZones)
-                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(gameplay: gameplay)
+                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(choices: ExerciseData.kFindTheRightOrderChoicesImages)
                     let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
 
                     return DnDOneToOneView(viewModel: viewModel)
-                        .navigationTitle("One To One In Right Order")
+                        .navigationTitle("One To One")
                         .navigationBarTitleDisplayMode(.large)
                 } label: {
                     ExerciseNavigationButtonLabel(text: "One To One", color: .green)
+                }
+
+                NavigationLink {
+                    let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(
+                        choices: ExerciseData.kAssociateCategoriesWithZonesChoicesEmojis,
+                        validationEnabled: false
+                    )
+                    let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
+
+                    return DnDGridWithZonesView(viewModel: viewModel)
+                        .navigationTitle("Validate With Zones")
+                        .navigationBarTitleDisplayMode(.large)
+                } label: {
+                    ExerciseNavigationButtonLabel(text: "Validate With Zones", color: .green)
+                }
+
+                NavigationLink {
+                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(choices: ExerciseData.kFindTheRightOrderChoicesEmojis,
+                                                                              validationEnabled: false)
+                    let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
+
+                    return DnDOneToOneView(viewModel: viewModel)
+                        .navigationTitle("Validate Right Order")
+                        .navigationBarTitleDisplayMode(.large)
+                } label: {
+                    ExerciseNavigationButtonLabel(text: "Validate Right Order", color: .green)
                 }
             }
         }

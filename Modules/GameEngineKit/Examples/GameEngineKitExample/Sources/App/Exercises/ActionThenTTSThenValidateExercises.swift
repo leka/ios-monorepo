@@ -5,20 +5,6 @@
 import GameEngineKit
 import SwiftUI
 
-// MARK: - ExerciseData
-
-// TODO: (@ladislas) to remove in the future, replaced by actual data
-extension ExerciseData {
-    static let TTSActionThenValidatexFindTheRightAnswers: [CoordinatorFindTheRightAnswersChoiceModel] = [
-        .init(value: "Choice 1\nCorrect", isRightAnswer: true),
-        .init(value: "Choice 2", isRightAnswer: false),
-        .init(value: "Choice 3\nCorrect", isRightAnswer: true),
-        .init(value: "checkmark.seal.fill", isRightAnswer: true, type: .sfsymbol),
-        .init(value: "Choice 5\nCorrect", isRightAnswer: true),
-        .init(value: "exclamationmark.triangle.fill", isRightAnswer: false, type: .sfsymbol),
-    ]
-}
-
 // MARK: - ActionThenTTSThenValidateExercises
 
 struct ActionThenTTSThenValidateExercises: View {
@@ -29,9 +15,10 @@ struct ActionThenTTSThenValidateExercises: View {
         ScrollView(.horizontal) {
             HStack(spacing: 20) {
                 NavigationLink {
-                    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswers(
-                        choices: ExerciseData.TTSActionThenValidatexFindTheRightAnswers,
-                        action: .ipad(type: .image("sport_dance_player_man"))
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(
+                        choices: ExerciseData.kFindTheRightAnswersChoicesEmojis,
+                        action: .ipad(type: .image("sport_dance_player_man")),
+                        validationEnabled: false
                     )
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -43,9 +30,10 @@ struct ActionThenTTSThenValidateExercises: View {
                 }
 
                 NavigationLink {
-                    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswers(
-                        choices: ExerciseData.TTSActionThenValidatexFindTheRightAnswers,
-                        action: .ipad(type: .sfsymbol("star"))
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(
+                        choices: ExerciseData.kFindTheRightAnswersChoicesSFSymbols,
+                        action: .ipad(type: .sfsymbol("star")),
+                        validationEnabled: false
                     )
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -57,9 +45,10 @@ struct ActionThenTTSThenValidateExercises: View {
                 }
 
                 NavigationLink {
-                    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswers(
-                        choices: ExerciseData.TTSActionThenValidatexFindTheRightAnswers,
-                        action: .ipad(type: .audio("sound_animal_duck"))
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(
+                        choices: ExerciseData.kFindTheRightAnswersChoicesDefault,
+                        action: .ipad(type: .audio("sound_animal_duck")),
+                        validationEnabled: false
                     )
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -71,9 +60,10 @@ struct ActionThenTTSThenValidateExercises: View {
                 }
 
                 NavigationLink {
-                    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswers(
-                        choices: ExerciseData.TTSActionThenValidatexFindTheRightAnswers,
-                        action: .ipad(type: .speech("Correct answer"))
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(
+                        choices: ExerciseData.kFindTheRightAnswersChoicesImages,
+                        action: .ipad(type: .speech("happy")),
+                        validationEnabled: false
                     )
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -85,9 +75,10 @@ struct ActionThenTTSThenValidateExercises: View {
                 }
 
                 NavigationLink {
-                    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswers(
-                        choices: ExerciseData.TTSActionThenValidatexFindTheRightAnswers,
-                        action: .robot(type: .color("mint"))
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(
+                        choices: ExerciseData.kFindTheRightAnswersChoicesColors,
+                        action: .robot(type: .color("blue")),
+                        validationEnabled: false
                     )
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -99,9 +90,10 @@ struct ActionThenTTSThenValidateExercises: View {
                 }
 
                 NavigationLink {
-                    let coordinator = TTSThenValidateCoordinatorFindTheRightAnswers(
-                        choices: ExerciseData.TTSActionThenValidatexFindTheRightAnswers,
-                        action: .robot(type: .image("robotFaceHappy"))
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(
+                        choices: ExerciseData.kFindTheRightAnswersChoicesImages,
+                        action: .robot(type: .image("robotFaceHappy")),
+                        validationEnabled: false
                     )
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 

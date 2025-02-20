@@ -11,7 +11,7 @@ import SwiftUI
 public class DnDDropZoneNode: SKSpriteNode {
     // MARK: Lifecycle
 
-    init(id: String, value: String, type: ChoiceType, position: CGPoint, size: CGSize) {
+    init(id: UUID, value: String, type: ChoiceType, position: CGPoint, size: CGSize) {
         self.id = id
         let texture: SKTexture = switch type {
             case .image:
@@ -29,7 +29,6 @@ public class DnDDropZoneNode: SKSpriteNode {
         super.init(texture: texture, color: .clear, size: size)
         self.name = value
         self.position = position
-        self.zPosition = 10
     }
 
     init(node: DnDAnswerNode, position: CGPoint = .zero) {
@@ -47,7 +46,7 @@ public class DnDDropZoneNode: SKSpriteNode {
 
     // MARK: Internal
 
-    let id: String
+    let id: UUID
     var initialPosition: CGPoint?
     var isDraggable = true
 

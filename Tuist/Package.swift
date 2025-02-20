@@ -87,7 +87,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/firebase/firebase-ios-sdk",
-            exact: "11.6.0"
+            exact: "11.8.0"
         ),
         .package(
             url: "https://github.com/OlehKorchytskyi/Fit",
@@ -103,11 +103,11 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/SvenTiigi/YouTubePlayerKit",
-            exact: "1.9.0"
+            exact: "2.0.0"
         ),
         .package(
             url: "https://github.com/lukepistrol/SFSymbolsMacro",
-            exact: "0.5.3"
+            exact: "0.5.4"
         ),
     ]
 )
