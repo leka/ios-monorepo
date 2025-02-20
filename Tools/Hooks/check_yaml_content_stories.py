@@ -127,7 +127,7 @@ def check_story(filename: str) -> bool:
             for string in empty_string_value:
                 logger.error(f"  - {string}")
 
-    except Exception as e:
+    except (OSError, IOError) as e:
         logger.error(f"Error processing {filename}: {e}")
         return False
 
