@@ -6,6 +6,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 import sys
+from multiprocessing import Pool, cpu_count
 
 from modules.content import (
     is_created_at_present,
@@ -30,8 +31,16 @@ from modules.yaml import create_yaml_object, is_jtd_schema_compliant
 JTD_SCHEMA = "Specs/jtd/curriculum.jtd.json"
 
 
-def check_curriculum(filename):
-    """Check the content of a YAML file for an curriculum"""
+def check_curriculum(filename: str) -> bool:
+    """
+    Check the content of a YAML file for a curriculum.
+
+    Args:
+        filename: Path to the YAML file to check
+
+    Returns:
+        bool: True if file is valid, False otherwise
+    """
     yaml = create_yaml_object()
 
     file_is_valid = True
@@ -45,7 +54,7 @@ def check_curriculum(filename):
     if differing_uuids := is_uuid_same_as_filename(curriculum, filename):
         file_is_valid = False
         curriculum_uuid, filename_uuid = differing_uuids
-        print(f"\n❌ Activity uuid and filename uuid are not the same in {filename}")
+        print(f"\n❌ Curriculum uuid and filename uuid are not the same in {filename}")
         print(f"uuid:     {curriculum_uuid}")
         print(f"filename: {filename_uuid}")
 
@@ -57,7 +66,7 @@ def check_curriculum(filename):
     if differing_names := is_name_same_as_filename(curriculum, filename):
         file_is_valid = False
         curriculum_name, filename_name = differing_names
-        print(f"\n❌ Activity name and filename name are not the same in {filename}")
+        print(f"\n❌ Curriculum name and filename name are not the same in {filename}")
         print(f"name:     {curriculum_name}")
         print(f"filename: {filename_name}")
 
@@ -123,20 +132,32 @@ def check_curriculum(filename):
     return file_is_valid
 
 
-def main():
-    """Main function"""
-    files = get_files()
+def main() -> int:
+    """
+    Main function that orchestrates the YAML content checking.
 
-    must_fail = False
+    Returns:
+        int: 0 if all checks pass, 1 if any check fails
+    """
+    curriculum_files = get_files()
 
-    for file in files:
-        file_is_valid = check_curriculum(file)
-        if file_is_valid is False:
-            must_fail = True
+    if not curriculum_files:
+        print("\n✅ No curriculum files to check!")
+        return 0
 
-    if must_fail:
+    workers = max(1, cpu_count() - 1)
+
+    print(f"\nChecking {len(curriculum_files)} files using {workers} workers...")
+
+    with Pool(processes=workers) as pool:
+        results = pool.map(check_curriculum, curriculum_files)
+
+    has_errors = not all(results)
+
+    if has_errors:
         return 1
 
+    print("\n✅ All checked curriculum files are valid!")
     return 0
 
 
