@@ -51,7 +51,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/jpsim/Yams",
-            exact: "5.1.3"
+            exact: "5.3.0"
         ),
         .package(
             url: "https://github.com/airbnb/lottie-ios",
@@ -87,7 +87,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/firebase/firebase-ios-sdk",
-            exact: "11.8.0"
+            exact: "11.8.1"
         ),
         .package(
             url: "https://github.com/OlehKorchytskyi/Fit",
