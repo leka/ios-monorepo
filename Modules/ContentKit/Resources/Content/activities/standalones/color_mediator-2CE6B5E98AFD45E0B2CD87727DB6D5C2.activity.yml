@@ -1,0 +1,117 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+uuid: 2CE6B5E98AFD45E0B2CD87727DB6D5C2
+name: color_mediator
+
+created_at: "2024-03-01T14:00:38.160396"
+last_edited_at: "2025-02-25T17:24:54.289606"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+  - association
+  - association/matching
+  - sensory_integration/vision
+  - sensory_integration
+
+tags:
+  - colors
+  - robot_colors
+
+hmi:
+  - robot
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: color_mediator
+
+      title: Médiateur Coloré
+      subtitle: Une activité adaptable avec Leka
+
+      short_description: |
+        Une activité où Leka se colore pour donner la consigne, permettant de multiples jeux éducatifs et interactifs.
+
+      description: |
+        Le Médiateur Coloré est une activité paramétrable où Leka joue le rôle de médiateur et donne la consigne en s'illuminant d'une couleur.
+        Il existe plusieurs cas de figure selon l'utilisation souhaitée :
+
+        **1. Le Béret Coloré**
+        - Leka affiche une couleur et la personne ou le groupe correspondant doit aller le toucher.
+        - Mode basé sur la rapidité et la réactivité.
+
+        **2. Parcours de motricité coloré**
+        - Leka affiche une couleur qui est associée à un parcours spécifique.
+        - Lorsque Leka s'allume en bleu, la personne doit suivre le parcours bleu.
+        - Utilisation en ergothérapie, rééducation motrice, ou sport adapté.
+
+        **3. Activité de groupe personnalisable**
+        - Le professionnel attribue des couleurs aux consignes de son choix.
+        - Exemple : "Quand Leka est rouge, le groupe doit lever les bras. Quand il est vert, ils doivent s'asseoir."
+        - Permet une adaptation libre selon les besoins pédagogiques.
+
+        Leka affiche les couleurs dans un ordre aléatoire ou séquentiel, permettant d'adapter l'activité à différents objectifs pédagogiques et d'accompagnement.
+
+      instructions: |
+        - Le professionnel paramètre les couleurs assignées aux personnes accompagnées, à un parcours ou à une consigne.
+        - Leka affiche les couleurs dans l'ordre défini ou de manière aléatoire.
+        - Selon l'association faite par le professionnel, les personnes accompagnées doivent toucher Leka, suivre un parcours ou réaliser une consigne spécifique.
+        - Le professionnel peut ajuster les règles et les paramètres en cours de jeu.
+
+  - locale: en_US
+    details:
+      icon: color_mediator
+
+      title: Color Mediator
+      subtitle: A customizable activity with Leka
+
+      short_description: |
+        An activity where Leka changes color to give instructions, enabling various educational and interactive games.
+
+      description: |
+        Color Mediator is a customizable activity where Leka acts as the mediator, giving instructions by lighting up in a color.
+        There are multiple possible use cases:
+
+        **1. Classic Steal the Bacon Game**
+        - Leka displays a color, and the corresponding person or group must rush to touch it.
+        - Focuses on speed and responsiveness.
+
+        **2. Color-Coded Motor Skills Pathway**
+        - Leka lights up with a color linked to a specific movement pathway.
+        - When Leka turns blue, the individual follows the blue pathway.
+        - Used in occupational therapy, motor skill exercises, or adaptive sports.
+
+        **3. Customizable Group Activity**
+        - The professional assigns colors to specific instructions.
+        - Example: "When Leka is red, the group must raise their arms. When it is green, they must sit down."
+        - Allows flexible adaptation to pedagogical needs.
+
+        Leka displays colors either in a predefined sequence or randomly, making it possible to tailor the activity to different educational and support objectives.
+
+      instructions: |
+        - The professional assigns colors to individuals, a specific pathway, or an instruction.
+        - Leka displays colors either in a predefined sequence or randomly.
+        - Depending on the assigned association, supported individuals must touch Leka, follow a pathway, or execute a specific instruction.
+        - The professional can adjust rules and parameters during the game.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - interface: colorMediator
