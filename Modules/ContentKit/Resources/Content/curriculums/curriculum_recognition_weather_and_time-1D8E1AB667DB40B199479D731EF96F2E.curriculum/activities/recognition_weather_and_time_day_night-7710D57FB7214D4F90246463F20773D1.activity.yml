@@ -8,7 +8,7 @@ uuid: 7710D57FB7214D4F90246463F20773D1
 name: recognition_weather_and_time_day_night
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-09-27T13:03:45.385860"
+last_edited_at: "2025-02-18T10:08:51.572738"
 status: published
 
 authors:
@@ -34,7 +34,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: recognition_time_of_day_day_night
+      icon: recognition_weather_and_temperatures_2
 
       title: Le jour et la nuit
       subtitle: null
@@ -52,7 +52,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: recognition_time_of_day_day_night
+      icon: recognition_weather_and_temperatures_2
 
       title: Day and night
       subtitle: null

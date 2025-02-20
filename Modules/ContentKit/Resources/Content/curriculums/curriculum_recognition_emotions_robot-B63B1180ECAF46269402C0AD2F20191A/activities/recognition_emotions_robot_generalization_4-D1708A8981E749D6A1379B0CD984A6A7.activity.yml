@@ -8,7 +8,7 @@ uuid: D1708A8981E749D6A1379B0CD984A6A7
 name: recognition_emotions_robot_generalization_4
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2025-01-10T12:24:04.262820"
+last_edited_at: "2025-02-18T10:08:51.547621"
 
 status: published
 
@@ -38,7 +38,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: recognition_emotions_robot
+      icon: recognition_emotions_robot_generalization_4
 
       title: Les émotions du robot
       subtitle: Généralisation - 4 images
@@ -54,7 +54,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: recognition_emotions_robot
+      icon: recognition_emotions_robot_generalization_4
 
       title: The Emotions of the Robot
       subtitle: Generalization - 4 images
