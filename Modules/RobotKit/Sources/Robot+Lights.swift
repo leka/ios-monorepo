@@ -355,6 +355,63 @@ public extension Robot {
         }
     }
 
+    func cancelReinforcer() {
+        self.timer?.cancel()
+        self.timer = nil
+    }
+
+    func testDispatchTimer() {
+        let totalDuration = 10.0 // Total simulation time in seconds
+        let interval = 0.05 // 50ms interval (20 updates per second)
+        let totalSteps = Int(totalDuration / interval)
+        let cycleDuration = 2.0 // 2-second heartbeat cycle (slower)
+
+        var currentStep = 0
+
+        // Create a timer on a background queue
+        self.timer?.cancel()
+        self.timer = nil
+
+        self.timer = DispatchSource.makeTimerSource(queue: DispatchQueue.global(qos: .userInteractive))
+        self.timer?.schedule(deadline: .now(), repeating: interval)
+
+        self.timer?.setEventHandler {
+            // Determine elapsed time and current time within the 2-second cycle
+            let elapsedTime = Double(currentStep) * interval
+            let cycleTime = elapsedTime.truncatingRemainder(dividingBy: cycleDuration)
+
+            var brightness = 0.0
+
+            // Primary pulse: ramp up from 0.0 to 0.3 sec and ramp down from 0.3 to 0.6 sec
+            if cycleTime < 0.3 {
+                brightness = cycleTime / 0.3
+            } else if cycleTime < 0.6 {
+                brightness = 1 - ((cycleTime - 0.3) / 0.3)
+            }
+            // Secondary pulse: ramp up from 0.6 to 0.9 sec and ramp down from 0.9 to 1.2 sec (at 70% intensity)
+            else if cycleTime < 0.9 {
+                brightness = ((cycleTime - 0.6) / 0.3) * 0.7
+            } else if cycleTime < 1.2 {
+                brightness = 0.7 * (1 - ((cycleTime - 0.9) / 0.3))
+            } else {
+                brightness = 0.0
+            }
+
+            // Convert brightness (0.0 to 1.0) to an 8-bit red value (0 to 255)
+            let redValue = UInt8(brightness * 255)
+
+            // Send the color to the BLE device using your Robot API
+            Robot.shared.shine(.all(in: Robot.Color(r: redValue, g: 0, b: 0)))
+
+            currentStep += 1
+            if currentStep >= totalSteps {
+                self.timer?.cancel()
+            }
+        }
+
+        self.timer?.resume()
+    }
+
     func beltBreath(for duration: Double, timeInterval: Double = 0.01) {
         let currentTime = DispatchTime.now()
         var timer = 0.0

@@ -87,6 +87,12 @@ struct RobotControlView: View {
                         RobotControlActionButton(title: "Spin 2", image: "number.circle", tint: .teal) {
                             self.robot.run(.spinBlinkBlueViolet)
                         }
+                        RobotControlActionButton(title: "Stop reinforcers", image: "xmark", tint: .red) {
+                            self.robot.cancelReinforcer()
+                        }
+                        RobotControlActionButton(title: "DispatchTimer", image: "light.max", tint: .green) {
+                            self.robot.testDispatchTimer()
+                        }
                         RobotControlActionButton(title: "Breath T=0.008", image: "light.max", tint: .green) {
                             self.robot.beltBreath(for: 5, timeInterval: 0.008)
                         }
