@@ -1,17 +1,16 @@
 ## Nouvelles Fonctionnalités
 
-- Mise à jour du Pavé Musical Coloré : Amélioration des visuels et des couleurs dans le Pavé Musical Coloré pour une expérience renouvelée.
+- n/a
 
 ## Améliorations
 
-- Programmes éducatifs : Enrichissement de la bibliothèque de contenus avec de nouveaux programmes, tels que "Ordonner les étapes de la vie" et "Classer les animaux par taille," pour des expériences éducatives plus complètes.
-- Optimisations des performances : Poursuite des améliorations des performances de l'application et des interactions avec les contenus pour une utilisation plus fluide.
+- Icônes mises à jour : Rafraîchissement des icônes des activités et curriculums pour une meilleure cohérence visuelle et une meilleure expérience utilisateur.
 
 ## Corrections de Bugs
 
-- Mises à jour des programmes éducatifs : Correction des problèmes d'ordre et des ressources dans divers programmes pour une présentation cohérente.
-- Emotions du robot : Mise à jours des images pour qu'elles soient semblables à celles dans le robot
+- Correction de la sérialisation des renforçateurs : Résolution d’un problème entraînant des crashs liés à la sérialisation des renforçateurs dans Firestore.
 
 ## Autres
 
-- Mises à jour de la sécurité : Renforcement de la sécurité de l'application avec l'intégration de Firebase App Check.
+- Mise à jour de Firebase : Mise à jour des dépendances Firebase vers la version 11.8.0 pour une meilleure stabilité et performance.
+- Améliorations des performances internes : Optimisation des opérations de base de données et des performances globales de l’application.
