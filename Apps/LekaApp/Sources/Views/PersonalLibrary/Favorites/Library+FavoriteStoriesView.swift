@@ -20,16 +20,14 @@ struct FavoriteStoriesView: View {
 
     var body: some View {
         if self.stories.isEmpty {
-            EmptyLibraryPlaceholderView(icon: .stories)
+            EmptyFavoritesPlaceholderView(icon: .stories)
         } else {
-            ScrollView(showsIndicators: true) {
-                LibraryStoryListView(stories: self.stories) { story in
-                    if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
-                        self.navigation.sheetContent = .carereceiverPicker(activity: nil, story: story)
-                    } else {
-                        self.navigation.currentStory = story
-                        self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
-                    }
+            LibraryStoryListView(stories: self.stories) { story in
+                if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
+                    self.navigation.sheetContent = .carereceiverPicker(activity: nil, story: story)
+                } else {
+                    self.navigation.currentStory = story
+                    self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
                 }
             }
         }

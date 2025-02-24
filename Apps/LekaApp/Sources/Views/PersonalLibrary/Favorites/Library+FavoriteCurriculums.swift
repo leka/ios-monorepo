@@ -18,7 +18,7 @@ struct FavoriteCurriculumsView: View {
 
     var body: some View {
         if self.curriculums.isEmpty {
-            EmptyLibraryPlaceholderView(icon: .curriculums)
+            EmptyFavoritesPlaceholderView(icon: .curriculums)
         } else {
             ScrollView(showsIndicators: true) {
                 CurriculumGridView(curriculums: self.curriculums, onActivitySelected: {
