@@ -1447,6 +1447,78 @@
                 }
             }
         },
+        "lekaapp.empty_favorites_placedholder_view.button_instruction": {
+            "comment": "Favorites Instruction suffix",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "button on any activity, curriculum, or story to add them to your Favorites."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "dans n'importe quelle activit\u00e9, parcours ou histoire pour les ajouter \u00e0 vos Favoris."
+                    }
+                }
+            }
+        },
+        "lekaapp.empty_favorites_placedholder_view.library_is_empty": {
+            "comment": "Empty Favorites title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Your Favorites are Empty"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Votre liste de Favoris est vide"
+                    }
+                }
+            }
+        },
+        "lekaapp.empty_favorites_placedholder_view.remove_items": {
+            "comment": "Favorites Removal instruction",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "You can remove items from your Favorites using the same button."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Vous pouvez supprimer des \u00e9l\u00e9ments de votre liste de Favoris en utilisant le m\u00eame bouton."
+                    }
+                }
+            }
+        },
+        "lekaapp.empty_favorites_placedholder_view.tap_the": {
+            "comment": "Favorites Instruction prefix",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Tap the"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Appuyez sur le bouton"
+                    }
+                }
+            }
+        },
         "lekaapp.empty_library_placedholder_view.button_instruction": {
             "comment": "Instruction suffix",
             "localizations": {
