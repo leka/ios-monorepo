@@ -7,7 +7,7 @@ import SwiftUI
 
 // MARK: - Action
 
-extension ColorCoachView {
+extension ColorMediatorView {
     struct ActionButton: View {
         // MARK: Lifecycle
 
@@ -49,15 +49,15 @@ extension ColorCoachView {
 
 #Preview {
     HStack(spacing: 50) {
-        ColorCoachView.ActionButton(.start, text: "Play", isPlaying: true) {
+        ColorMediatorView.ActionButton(.start, text: "Play", isPlaying: true) {
             print("Button Play tapped !")
         }
 
-        ColorCoachView.ActionButton(.next, text: "Next", isPlaying: true) {
+        ColorMediatorView.ActionButton(.next, text: "Next", isPlaying: true) {
             print("Button Next tapped !")
         }
 
-        ColorCoachView.ActionButton(.stop, text: "Stop", isPlaying: false) {
+        ColorMediatorView.ActionButton(.stop, text: "Stop", isPlaying: false) {
             print("Button Stop tapped !")
         }
     }

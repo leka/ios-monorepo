@@ -7,7 +7,7 @@ import LocalizationKit
 import RobotKit
 import SwiftUI
 
-public extension ColorCoachView {
+public extension ColorMediatorView {
     struct ColorSelector: View {
         // MARK: Public
 
@@ -23,7 +23,7 @@ public extension ColorCoachView {
         public var body: some View {
             NavigationStack {
                 VStack(spacing: 20) {
-                    Text(l10n.ColorCoachView.ColorSelector.instruction)
+                    Text(l10n.ColorMediatorView.ColorSelector.instruction)
                         .font(.title3.bold())
                         .multilineTextAlignment(.center)
                         .padding()
@@ -49,7 +49,7 @@ public extension ColorCoachView {
                         Button {
                             self.dismiss()
                         } label: {
-                            Text(l10n.ColorCoachView.ColorSelector.closeLabel)
+                            Text(l10n.ColorMediatorView.ColorSelector.closeLabel)
                         }
                     }
                     ToolbarItem(placement: .topBarTrailing) {
@@ -57,7 +57,7 @@ public extension ColorCoachView {
                             self.onSelected(self.selectedColors)
                             self.dismiss()
                         } label: {
-                            Text(l10n.ColorCoachView.ColorSelector.selectLabel)
+                            Text(l10n.ColorMediatorView.ColorSelector.selectLabel)
                         }
                         .disabled(self.selectedColors.isEmpty)
                     }
@@ -105,5 +105,5 @@ public extension ColorCoachView {
 }
 
 #Preview {
-    ColorCoachView.ColorSelector(selectedColors: [.red, .blue], onSelected: { colors in print("\(colors) selected") })
+    ColorMediatorView.ColorSelector(selectedColors: [.red, .blue], onSelected: { colors in print("\(colors) selected") })
 }

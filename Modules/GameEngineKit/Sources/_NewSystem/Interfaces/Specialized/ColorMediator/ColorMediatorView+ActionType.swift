@@ -5,7 +5,7 @@
 import DesignKit
 import SwiftUI
 
-extension ColorCoachView {
+extension ColorMediatorView {
     enum ActionType {
         case start
         case next

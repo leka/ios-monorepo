@@ -5,7 +5,7 @@
 import RobotKit
 import SwiftUI
 
-extension ColorCoachView {
+extension ColorMediatorView {
     struct ColorBar: View {
         // MARK: Internal
 
@@ -34,8 +34,8 @@ extension ColorCoachView {
 
 #Preview {
     VStack(spacing: 50) {
-        ColorCoachView.ColorBar(colors: [.red, .blue, .yellow], size: 100)
+        ColorMediatorView.ColorBar(colors: [.red, .blue, .yellow], size: 100)
 
-        ColorCoachView.ColorBar(colors: [.red, .blue, .yellow, .pink, .purple], size: 150)
+        ColorMediatorView.ColorBar(colors: [.red, .blue, .yellow, .pink, .purple], size: 150)
     }
 }

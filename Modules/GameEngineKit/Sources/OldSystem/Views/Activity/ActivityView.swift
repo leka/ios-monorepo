@@ -392,7 +392,7 @@ public struct ActivityView: View {
                 ColorMusicPad()
 
             case .colorMediator:
-                ColorCoachView()
+                ColorMediatorView()
         }
     }
 

@@ -240,8 +240,8 @@
                 }
             }
         },
-        "game_engine_kit.color_coach_view.choose_colors_button_label": {
-            "comment": "Choose colors button label of ColorCoachView",
+        "game_engine_kit.color_mediator_view.choose_colors_button_label": {
+            "comment": "Choose colors button label of ColorMediatorView",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -258,7 +258,7 @@
                 }
             }
         },
-        "game_engine_kit.color_coach_view.color_selector.close_label": {
+        "game_engine_kit.color_mediator_view.color_selector.close_label": {
             "comment": "ColorSelector close button label",
             "extractionState": "extracted_with_value",
             "localizations": {
@@ -276,7 +276,7 @@
                 }
             }
         },
-        "game_engine_kit.color_coach_view.color_selector.instruction": {
+        "game_engine_kit.color_mediator_view.color_selector.instruction": {
             "comment": "Color selector instruction ",
             "extractionState": "extracted_with_value",
             "localizations": {
@@ -289,12 +289,12 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "S\u00e9lectionne les couleurs en jeu"
+                        "value": "Choisir les couleurs"
                     }
                 }
             }
         },
-        "game_engine_kit.color_coach_view.color_selector.select_label": {
+        "game_engine_kit.color_mediator_view.color_selector.select_label": {
             "comment": "ColorSelector select button label",
             "extractionState": "extracted_with_value",
             "localizations": {
@@ -312,26 +312,8 @@
                 }
             }
         },
-        "game_engine_kit.color_coach_view.instructions": {
-            "comment": "ColorCoachView instructions",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Press Play to start coloring Leka"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Appuie sur Play pour colorer Leka"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.color_coach_view.next_button_label": {
-            "comment": "Label under Next button of ColorCoachView",
+        "game_engine_kit.color_mediator_view.next_button_label": {
+            "comment": "Label under Next button of ColorMediatorView",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -348,8 +330,8 @@
                 }
             }
         },
-        "game_engine_kit.color_coach_view.play_button_label": {
-            "comment": "Label under Play button of ColorCoachView",
+        "game_engine_kit.color_mediator_view.play_button_label": {
+            "comment": "Label under Play button of ColorMediatorView",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -366,8 +348,8 @@
                 }
             }
         },
-        "game_engine_kit.color_coach_view.robot_color": {
-            "comment": "Label under robot color visual of ColorCoachView",
+        "game_engine_kit.color_mediator_view.robot_color": {
+            "comment": "Label under robot color visual of ColorMediatorView",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -384,8 +366,26 @@
                 }
             }
         },
-        "game_engine_kit.color_coach_view.stop_button_label": {
-            "comment": "Label under Stop button of ColorCoachView",
+        "game_engine_kit.color_mediator_view.shuffle_color_label": {
+            "comment": "Label of shuffle color button of ColorMediatorView",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Shuffle"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Al\u00e9atoire"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.color_mediator_view.stop_button_label": {
+            "comment": "Label under Stop button of ColorMediatorView",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
