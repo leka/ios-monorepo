@@ -20,7 +20,7 @@ struct FavoriteActivitiesView: View {
 
     var body: some View {
         if self.activities.isEmpty {
-            EmptyLibraryPlaceholderView(icon: .activities)
+            EmptyFavoritesPlaceholderView(icon: .activities)
         } else {
             LibraryActivityListView(activities: self.activities) { activity in
                 if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
