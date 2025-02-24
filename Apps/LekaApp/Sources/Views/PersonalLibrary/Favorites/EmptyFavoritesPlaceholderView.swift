@@ -6,9 +6,9 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - EmptyLibraryPlaceholderView
+// MARK: - EmptyFavoritesPlaceholderView
 
-struct EmptyLibraryPlaceholderView: View {
+struct EmptyFavoritesPlaceholderView: View {
     // MARK: Lifecycle
 
     init(icon: Icon) {
@@ -45,23 +45,23 @@ struct EmptyLibraryPlaceholderView: View {
                 .foregroundColor(self.styleManager.accentColor ?? .blue)
                 .padding(.bottom, 16)
 
-            Text(l10n.EmptyLibraryPlaceholderView.libraryIsEmpty)
+            Text(l10n.EmptyFavoritesPlaceholderView.FavoritesAreEmpty)
                 .font(.headline)
 
             HStack(spacing: 4) {
-                Text(l10n.EmptyLibraryPlaceholderView.tapThe)
+                Text(l10n.EmptyFavoritesPlaceholderView.tapThe)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 Image(systemName: "ellipsis.circle")
                     .foregroundColor(self.styleManager.accentColor ?? .blue)
                     .accessibility(label: Text("More Options"))
-                Text(l10n.EmptyLibraryPlaceholderView.buttonInstruction)
+                Text(l10n.EmptyFavoritesPlaceholderView.buttonInstruction)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
             .multilineTextAlignment(.center)
 
-            Text(l10n.EmptyLibraryPlaceholderView.removeItems)
+            Text(l10n.EmptyFavoritesPlaceholderView.removeItems)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
@@ -76,33 +76,33 @@ struct EmptyLibraryPlaceholderView: View {
     private let icon: Icon
 }
 
-// MARK: - l10n.EmptyLibraryPlaceholderView
+// MARK: - l10n.EmptyFavoritesPlaceholderView
 
 extension l10n {
-    enum EmptyLibraryPlaceholderView {
-        static let libraryIsEmpty = LocalizedString(
-            "lekaapp.empty_library_placedholder_view.library_is_empty",
-            value: "Your Library is Empty",
-            comment: "Empty library title"
+    enum EmptyFavoritesPlaceholderView {
+        static let FavoritesAreEmpty = LocalizedString(
+            "lekaapp.empty_favorites_placedholder_view.library_is_empty",
+            value: "Your Favorites are Empty",
+            comment: "Empty Favorites title"
         )
         static let tapThe = LocalizedString(
-            "lekaapp.empty_library_placedholder_view.tap_the",
+            "lekaapp.empty_favorites_placedholder_view.tap_the",
             value: "Tap the",
-            comment: "Instruction prefix"
+            comment: "Favorites Instruction prefix"
         )
         static let buttonInstruction = LocalizedString(
-            "lekaapp.empty_library_placedholder_view.button_instruction",
-            value: "button on any activity, curriculum, or story to add them to your Library.",
-            comment: "Instruction suffix"
+            "lekaapp.empty_favorites_placedholder_view.button_instruction",
+            value: "button on any activity, curriculum, or story to add them to your Favorites.",
+            comment: "Favorites Instruction suffix"
         )
         static let removeItems = LocalizedString(
-            "lekaapp.empty_library_placedholder_view.remove_items",
-            value: "You can remove items from your Library using the same button.",
-            comment: "Removal instruction"
+            "lekaapp.empty_favorites_placedholder_view.remove_items",
+            value: "You can remove items from your Favorites using the same button.",
+            comment: "Favorites Removal instruction"
         )
     }
 }
 
 #Preview {
-    EmptyLibraryPlaceholderView(icon: .stories)
+    EmptyFavoritesPlaceholderView(icon: .stories)
 }
