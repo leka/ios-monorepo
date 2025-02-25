@@ -240,6 +240,168 @@
                 }
             }
         },
+        "game_engine_kit.color_mediator_view.choose_colors_button_label": {
+            "comment": "Choose colors button label of ColorMediatorView",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Choose colors"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Choisir les couleurs"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.color_mediator_view.color_selector.close_label": {
+            "comment": "ColorSelector close button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Close"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Fermer"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.color_mediator_view.color_selector.instruction": {
+            "comment": "Color selector instruction ",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Select colors you want to play with"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Choisir les couleurs"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.color_mediator_view.color_selector.select_label": {
+            "comment": "ColorSelector select button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Select"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "S\u00e9lectionner"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.color_mediator_view.next_button_label": {
+            "comment": "Label under Next button of ColorMediatorView",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Next color"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Prochaine couleur"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.color_mediator_view.play_button_label": {
+            "comment": "Label under Play button of ColorMediatorView",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Start coloring Leka"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "D\u00e9marrer"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.color_mediator_view.robot_color": {
+            "comment": "Label under robot color visual of ColorMediatorView",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Robot color"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Couleur du robot"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.color_mediator_view.shuffle_color_label": {
+            "comment": "Label of shuffle color button of ColorMediatorView",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Shuffle"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Al\u00e9atoire"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.color_mediator_view.stop_button_label": {
+            "comment": "Label under Stop button of ColorMediatorView",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Stop coloring Leka"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Arr\u00eat"
+                    }
+                }
+            }
+        },
         "game_engine_kit.dance_freeze_view.auto_button_label": {
             "comment": "DanceFreezeView auto button label",
             "localizations": {

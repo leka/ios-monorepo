@@ -73,7 +73,8 @@ public struct Exercise: Decodable {
                  (.gamepadArrowPad, .none),
                  (.hideAndSeek, .none),
                  (.colorMusicPad, .none),
-                 (.pairing, .none):
+                 (.pairing, .none),
+                 (.colorMediator, .none):
                 self.payload = nil
 
             default:

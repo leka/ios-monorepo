@@ -428,6 +428,9 @@
                 },
                 "colorMusicPad": {
                     "properties": {}
+                },
+                "colorMediator": {
+                    "properties": {}
                 }
             }
         },
@@ -468,7 +471,8 @@
                 "melody",
                 "pairing",
                 "memory",
-                "colorMusicPad"
+                "colorMusicPad",
+                "colorMediator"
             ]
         },
         "$exercise/gameplay": {
