@@ -1,0 +1,219 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+uuid: 2CDC8A5FBA2841159F6E7E2EB262FE7F
+created_at: "2025-02-19T14:27:22.101000"
+last_edited_at: "2025-02-26T10:03:55.110052"
+name: weather_with_leka_1
+status: published
+
+authors:
+  - leka
+
+skills:
+  - association
+  - association/logical
+
+tags:
+  - weather_elements
+
+hmi:
+  - tablet_robot
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: en_US
+    details:
+      icon: leka_weather_robot
+
+      title: Weather with Leka
+      subtitle: 2 images
+
+      short_description: |
+        A fun activity where the person accompanied associates objects with the
+        weather displayed by Leka by touching the correct images on the iPad.
+
+      description: |
+        Leka displays a weather forecast on its screen (sun, snow, night, hot or cold). The person accompanied must observe and touch the objects corresponding to this weather on the iPad.
+
+      instructions: |
+        - Encourage the person accompanied to look at the Leka screen.
+        - Ask him to observe the weather displayed.
+        - Invite him to touch the corresponding objects on the iPad.
+
+  - locale: fr_FR
+    details:
+      icon: leka_weather_robot
+      title: La météo avec Leka
+      subtitle: 2 images
+
+      short_description: Une activité ludique où la personne accompagnée associe des objets à la météo affichée par Leka en touchant les bonnes images sur l’iPad.
+
+      description: |
+        Leka affiche une météo sur son écran (soleil, neige, nuit, chaud ou froid). La personne accompagnée doit observer et toucher sur l’iPad les objets correspondant à cette météo.
+
+      instructions: |
+        - Incitez la personne accompagnée à regarder l’écran de Leka.
+        - Demandez-lui d’observer la météo affichée.
+        - Invitez-la à toucher les objets correspondants sur l’iPad.
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: en_US
+              value: Look at the weather on the robot's screen. Touch the correct picture.
+            - locale: fr_FR
+              value: Regarde la météo sur l'écran du robot. Touche la bonne image.
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: pictoWeatherSunShiningYellow
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: ⛱️
+                type: emoji
+                is_right_answer: true
+              - value: ☂️
+                type: emoji
+
+        - instructions:
+            - locale: en_US
+              value: Look at the weather on the robot's screen. Touch the correct picture.
+            - locale: fr_FR
+              value: Regarde la météo sur l'écran du robot. Touche la bonne image.
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: pictoWeatherRainyGray
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: ⛱️
+                type: emoji
+              - value: ☂️
+                type: emoji
+                is_right_answer: true
+
+        - instructions:
+            - locale: en_US
+              value: Look at the weather on the robot's screen. Touch the correct picture.
+            - locale: fr_FR
+              value: Regarde la météo sur l'écran du robot. Touche la bonne image.
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: pictoWeatherSnowFallGray
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: ⛄
+                type: emoji
+                is_right_answer: true
+              - value: 🩴
+                type: emoji
+
+        - instructions:
+            - locale: en_US
+              value: Look at the weather on the robot's screen. Touch the correct picture.
+            - locale: fr_FR
+              value: Regarde la météo sur l'écran du robot. Touche la bonne image.
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: pictoWeatherTemperatureHotRed
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: ⛄
+                type: emoji
+              - value: 🩴
+                type: emoji
+                is_right_answer: true
+
+        - instructions:
+            - locale: en_US
+              value: Look at the weather on the robot's screen. Touch the correct picture.
+            - locale: fr_FR
+              value: Regarde la météo sur l'écran du robot. Touche la bonne image.
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: pictoWeatherTemperatureColdBlue
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 🧣
+                type: emoji
+              - value: 🏖️
+                type: emoji
+                is_right_answer: true
+
+        - instructions:
+            - locale: en_US
+              value: Look at the weather on the robot's screen. Touch the correct picture.
+            - locale: fr_FR
+              value: Regarde la météo sur l'écran du robot. Touche la bonne image.
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: pictoWeatherTemperatureHotRed
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 🧣
+                type: emoji
+              - value: 🏖️
+                type: emoji
+                is_right_answer: true
+
+        - instructions:
+            - locale: en_US
+              value: Look at the weather on the robot's screen. Touch the correct picture.
+            - locale: fr_FR
+              value: Regarde la météo sur l'écran du robot. Touche la bonne image.
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: pictoWeatherMoonCrescentShiningWhite
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: 🛝
+                type: emoji
+              - value: 🛌
+                type: emoji
+                is_right_answer: true

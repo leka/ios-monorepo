@@ -28,6 +28,7 @@ content:
           subtitle: Discover the latest additions to our catalog.
           description: Explore recently added content to enrich and diversify your sessions.
     curriculums:
+      - curriculum_leka_weather_robot-ED4C900D4ACB426384DC76F182BC19A5
       - curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
       - curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
       - curriculum_order_by_size-1FAED1FF14134571849325B6EC9197B5
@@ -220,6 +221,7 @@ content:
           subtitle: Learn to recognize weather elements and the environment.
           description: Discover activities to help care receivers identify and understand weather elements and nature.
     curriculums:
+      - curriculum_leka_weather_robot-ED4C900D4ACB426384DC76F182BC19A5
       - curriculum_recognition_weather_and_time-1D8E1AB667DB40B199479D731EF96F2E
       - curriculum_recognition_seaside_holidays-B1BA5597BC594082AECE293AD25CFA89
       - curriculum_recognition_winter_holidays-2B8E01DABDBC4863A962B785D4069B3E
