@@ -146,6 +146,8 @@ public struct LibraryActivityListView: View {
         var body: some View {
             Image(uiImage: self.image ?? UIImage())
                 .resizable()
+                .renderingMode(.template)
+                .foregroundStyle(.secondary)
                 .scaledToFit()
                 .frame(width: 50)
                 .padding(.horizontal, 5)
