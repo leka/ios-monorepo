@@ -8,6 +8,6 @@ import Foundation
 // MARK: - MemoryGameplayCoordinatorProtocol
 
 public protocol MemoryGameplayCoordinatorProtocol {
-    var uiChoices: CurrentValueSubject<MemoryViewUIChoicesWrapper, Never> { get }
-    func processUserSelection(choice: MemoryViewUIChoiceModel)
+    var uiModel: CurrentValueSubject<MemoryUIModel, Never> { get }
+    func processUserSelection(choiceID: UUID)
 }

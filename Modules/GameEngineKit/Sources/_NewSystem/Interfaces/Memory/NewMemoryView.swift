@@ -17,25 +17,50 @@ public struct NewMemoryView: View {
     // MARK: Public
 
     public var body: some View {
-        VStack(spacing: 100) {
-            HStack(spacing: 100) {
-                ForEach(self.viewModel.choices[0...2]) { choice in
-                    choice.view
-                        .onTapGesture {
-                            self.viewModel.onTapped(choice: choice)
-                        }
-                }
-            }
+        VStack {
+            let interface = Interface(rawValue: viewModel.choices.count)
+            switch interface {
+                case .oneChoice:
+                    OneChoiceView(viewModel: self.viewModel)
 
-            HStack(spacing: 100) {
-                ForEach(self.viewModel.choices[3...5]) { choice in
-                    choice.view
-                        .onTapGesture {
-                            self.viewModel.onTapped(choice: choice)
-                        }
-                }
+                case .twoChoices:
+                    TwoChoicesView(viewModel: self.viewModel)
+
+                case .threeChoices:
+                    ThreeChoicesView(viewModel: self.viewModel)
+
+                case .fourChoices:
+                    FourChoicesView(viewModel: self.viewModel)
+
+                case .fiveChoices:
+                    FiveChoicesView(viewModel: self.viewModel)
+
+                case .sixChoices:
+                    SixChoicesView(viewModel: self.viewModel)
+
+                case .sevenChoices:
+                    SevenChoicesView(viewModel: self.viewModel)
+
+                case .eightChoices:
+                    EightChoicesView(viewModel: self.viewModel)
+
+                default:
+                    ProgressView()
             }
         }
+    }
+
+    // MARK: Internal
+
+    enum Interface: Int {
+        case oneChoice = 1
+        case twoChoices
+        case threeChoices
+        case fourChoices
+        case fiveChoices
+        case sixChoices
+        case sevenChoices
+        case eightChoices
     }
 
     // MARK: Private
