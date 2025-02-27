@@ -16,6 +16,7 @@ public extension ContentKit {
         return uniqueInterfaces.count == 1 ? uniqueInterfaces.first : nil
     }
 
+    // TODO: (@HPezz) Add MagicCard gesture case when available
     private static func getGestureIcon(for activity: Activity) -> String {
         let interface = self.getInterface(for: activity)
         switch interface {
