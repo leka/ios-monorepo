@@ -11,22 +11,22 @@ public class NewMemoryViewViewModel: ObservableObject {
     // MARK: Lifecycle
 
     public init(coordinator: MemoryGameplayCoordinatorProtocol) {
-        self.choices = coordinator.uiChoices.value.choices
+        self.choices = coordinator.uiModel.value.choices
         self.coordinator = coordinator
-        self.coordinator.uiChoices
+        self.coordinator.uiModel
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] uiChoices in
-                self?.choices = uiChoices.choices
+            .sink { [weak self] uiModel in
+                self?.choices = uiModel.choices
             }
             .store(in: &self.cancellables)
     }
 
     // MARK: Internal
 
-    @Published var choices: [MemoryViewUIChoiceModel]
+    @Published var choices: [MemoryUIChoiceModel]
 
-    func onTapped(choice: MemoryViewUIChoiceModel) {
-        self.coordinator.processUserSelection(choice: choice)
+    func onTapped(choice: MemoryUIChoiceModel) {
+        self.coordinator.processUserSelection(choiceID: choice.id)
     }
 
     // MARK: Private
