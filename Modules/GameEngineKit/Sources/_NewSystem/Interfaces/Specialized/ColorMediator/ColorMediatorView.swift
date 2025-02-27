@@ -126,11 +126,10 @@ public struct ColorMediatorView: View {
 
     private func startTimer() {
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            if self.remainingTime > 0 {
-                self.remainingTime -= 1
-            } else {
-                self.stopTimer()
+            self.remainingTime -= 1
+            if self.remainingTime == 0 {
                 Robot.shared.shine(.all(in: self.currentColor))
+                self.stopTimer()
             }
         }
     }
