@@ -10,6 +10,7 @@ public struct SavedStory: Hashable {
     public var id: String?
     public var caregiverID: String
     public var addedAt: Date
+    public var isFavorite: Bool = false
 
     // MARK: Internal
 
@@ -17,5 +18,6 @@ public struct SavedStory: Hashable {
         case id = "uuid"
         case caregiverID = "caregiver_id"
         case addedAt = "added_at"
+        case isFavorite = "is_favorite"
     }
 }
