@@ -121,4 +121,6 @@ public class Robot {
     // MARK: Internal
 
     var cancellables: Set<AnyCancellable> = []
+
+    var timer: DispatchSourceTimer?
 }
