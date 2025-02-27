@@ -6,6 +6,8 @@ import Combine
 import FirebaseAuth
 import FirebaseFirestore
 
+// swiftlint:disable file_length type_body_length
+
 public class DatabaseOperations {
     // MARK: Lifecycle
 
@@ -180,10 +182,21 @@ public class DatabaseOperations {
         return subject.eraseToAnyPublisher()
     }
 
+    // swiftlint:disable large_tuple
+
     public func listenToAllLibrarySubCollections(libraryID: String) -> AnyPublisher<([SavedCurriculum], [SavedActivity], [SavedStory]), Error> {
-        let curriculumPublisher: AnyPublisher<[SavedCurriculum], Error> = self.listenToLibrarySubCollection(libraryID: libraryID, subCollection: .curriculums)
-        let activityPublisher: AnyPublisher<[SavedActivity], Error> = self.listenToLibrarySubCollection(libraryID: libraryID, subCollection: .activities)
-        let storyPublisher: AnyPublisher<[SavedStory], Error> = self.listenToLibrarySubCollection(libraryID: libraryID, subCollection: .stories)
+        let curriculumPublisher: AnyPublisher<[SavedCurriculum], Error> = self.listenToLibrarySubCollection(
+            libraryID: libraryID,
+            subCollection: .curriculums
+        )
+        let activityPublisher: AnyPublisher<[SavedActivity], Error> = self.listenToLibrarySubCollection(
+            libraryID: libraryID,
+            subCollection: .activities
+        )
+        let storyPublisher: AnyPublisher<[SavedStory], Error> = self.listenToLibrarySubCollection(
+            libraryID: libraryID,
+            subCollection: .stories
+        )
 
         return Publishers.CombineLatest(curriculumPublisher,
                                         Publishers.CombineLatest(activityPublisher, storyPublisher))
@@ -193,6 +206,8 @@ public class DatabaseOperations {
             }
             .eraseToAnyPublisher()
     }
+
+    // swiftlint:enable large_tuple
 
     public func getCurrentRootAccount() -> AnyPublisher<RootAccount, Error> {
         let subject = PassthroughSubject<RootAccount, Error>()
@@ -324,6 +339,108 @@ public class DatabaseOperations {
         .eraseToAnyPublisher()
     }
 
+    // MARK: Favorites
+
+    public func addLibraryItemToFavorites(
+        libraryID: String,
+        subCollection: LibrarySubCollection,
+        itemID: String,
+        caregiverID: String
+    ) -> AnyPublisher<Void, Error> {
+        let libraryRef = self.database.collection(DatabaseCollection.libraries.rawValue).document(libraryID)
+        let subCollectionRef = libraryRef.collection(subCollection.rawValue)
+
+        return Future<Void, Error> { promise in
+            subCollectionRef
+                .whereField("id", isEqualTo: itemID)
+                .getDocuments { snapshot, error in
+                    if let error {
+                        log.error("Error fetching item \(itemID) from \(subCollection.rawValue): \(error.localizedDescription)")
+                        promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                        return
+                    }
+
+                    guard let document = snapshot?.documents.first else {
+                        log.error("No item found with id \(itemID) in \(subCollection.rawValue)")
+                        promise(.failure(DatabaseError.documentNotFound))
+                        return
+                    }
+
+                    let timestamp = FieldValue.serverTimestamp()
+
+                    let batch = self.database.batch()
+                    batch.updateData(
+                        ["favoritedBy.\(caregiverID)": timestamp],
+                        forDocument: document.reference
+                    )
+                    batch.updateData(
+                        [Library.CodingKeys.lastEditedAt.rawValue: timestamp],
+                        forDocument: libraryRef
+                    )
+
+                    batch.commit { error in
+                        if let error {
+                            log.error("Failed to favorite item \(itemID): \(error.localizedDescription)")
+                            promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                        } else {
+                            log.info("Item \(itemID) favorited by caregiver \(caregiverID).")
+                            promise(.success(()))
+                        }
+                    }
+                }
+        }
+        .eraseToAnyPublisher()
+    }
+
+    public func removeLibraryItemFromFavorites(
+        libraryID: String,
+        subCollection: LibrarySubCollection,
+        itemID: String,
+        caregiverID: String
+    ) -> AnyPublisher<Void, Error> {
+        let libraryRef = self.database.collection(DatabaseCollection.libraries.rawValue).document(libraryID)
+        let subCollectionRef = libraryRef.collection(subCollection.rawValue)
+
+        return Future<Void, Error> { promise in
+            subCollectionRef
+                .whereField("id", isEqualTo: itemID)
+                .getDocuments { snapshot, error in
+                    if let error {
+                        log.error("Error fetching item \(itemID) from \(subCollection.rawValue): \(error.localizedDescription)")
+                        promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                        return
+                    }
+
+                    guard let document = snapshot?.documents.first else {
+                        log.error("No item found with id \(itemID) in \(subCollection.rawValue)")
+                        promise(.failure(DatabaseError.documentNotFound))
+                        return
+                    }
+
+                    let batch = self.database.batch()
+                    batch.updateData(
+                        ["favoritedBy.\(caregiverID)": FieldValue.delete()],
+                        forDocument: document.reference
+                    )
+                    batch.updateData(
+                        [Library.CodingKeys.lastEditedAt.rawValue: FieldValue.serverTimestamp()],
+                        forDocument: libraryRef
+                    )
+
+                    batch.commit { error in
+                        if let error {
+                            log.error("Failed to remove favorite for item \(itemID): \(error.localizedDescription)")
+                            promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                        } else {
+                            log.info("Item \(itemID) unfavorited by caregiver \(caregiverID).")
+                            promise(.success(()))
+                        }
+                    }
+                }
+        }
+        .eraseToAnyPublisher()
+    }
+
     // MARK: Private
 
     private let database = Firestore.firestore()
@@ -366,3 +483,5 @@ public class DatabaseOperations {
         return subject.eraseToAnyPublisher()
     }
 }
+
+// swiftlint:enable file_length type_body_length
