@@ -77,13 +77,14 @@ public class LibraryManager {
 
     // MARK: - Curriculums
 
-    public func addCurriculum(curriculumID: String, caregiverID: String) {
+    public func addCurriculum(asFavorite: Bool = false, curriculumID: String, caregiverID: String) {
         guard let libraryID = currentLibrary.value?.id else {
             self.fetchError.send(DatabaseError.customError("Library not found"))
             return
         }
 
-        let newCurriculum = SavedCurriculum(id: curriculumID, caregiverID: caregiverID, addedAt: Date())
+        let favoritedBy = asFavorite ? [caregiverID: Date()] : [:]
+        let newCurriculum = SavedCurriculum(id: curriculumID, caregiverID: caregiverID, addedAt: Date(), favoritedBy: favoritedBy)
 
         self.dbOps.addItemToLibrarySubCollection(
             libraryID: libraryID,
@@ -121,15 +122,38 @@ public class LibraryManager {
         .store(in: &self.cancellables)
     }
 
-    // MARK: - Activities + Gamepads
-
-    public func addActivity(activityID: String, caregiverID: String) {
+    public func removeCurriculumFromFavorites(curriculumID: String, caregiverID: String) {
         guard let libraryID = currentLibrary.value?.id else {
             self.fetchError.send(DatabaseError.customError("Library not found"))
             return
         }
 
-        let newActivity = SavedActivity(id: activityID, caregiverID: caregiverID, addedAt: Date())
+        self.dbOps.removeLibraryItemFromFavorites(
+            libraryID: libraryID,
+            subCollection: .curriculums,
+            itemID: curriculumID,
+            caregiverID: caregiverID
+        )
+        .sink(receiveCompletion: { [weak self] completion in
+            if case let .failure(error) = completion {
+                self?.fetchError.send(error)
+            }
+        }, receiveValue: {
+            // Nothing to do
+        })
+        .store(in: &self.cancellables)
+    }
+
+    // MARK: - Activities + Gamepads
+
+    public func addActivity(asFavorite: Bool = false, activityID: String, caregiverID: String) {
+        guard let libraryID = currentLibrary.value?.id else {
+            self.fetchError.send(DatabaseError.customError("Library not found"))
+            return
+        }
+
+        let favoritedBy = asFavorite ? [caregiverID: Date()] : [:]
+        let newActivity = SavedActivity(id: activityID, caregiverID: caregiverID, addedAt: Date(), favoritedBy: favoritedBy)
 
         self.dbOps.addItemToLibrarySubCollection(
             libraryID: libraryID,
@@ -167,15 +191,38 @@ public class LibraryManager {
         .store(in: &self.cancellables)
     }
 
-    // MARK: - Stories
-
-    public func addStory(storyID: String, caregiverID: String) {
+    public func removeActivityFromFavorites(activityID: String, caregiverID: String) {
         guard let libraryID = currentLibrary.value?.id else {
             self.fetchError.send(DatabaseError.customError("Library not found"))
             return
         }
 
-        let newStory = SavedStory(id: storyID, caregiverID: caregiverID, addedAt: Date())
+        self.dbOps.removeLibraryItemFromFavorites(
+            libraryID: libraryID,
+            subCollection: .activities,
+            itemID: activityID,
+            caregiverID: caregiverID
+        )
+        .sink(receiveCompletion: { [weak self] completion in
+            if case let .failure(error) = completion {
+                self?.fetchError.send(error)
+            }
+        }, receiveValue: {
+            // Nothing to do
+        })
+        .store(in: &self.cancellables)
+    }
+
+    // MARK: - Stories
+
+    public func addStory(asFavorite: Bool = false, storyID: String, caregiverID: String) {
+        guard let libraryID = currentLibrary.value?.id else {
+            self.fetchError.send(DatabaseError.customError("Library not found"))
+            return
+        }
+
+        let favoritedBy = asFavorite ? [caregiverID: Date()] : [:]
+        let newStory = SavedStory(id: storyID, caregiverID: caregiverID, addedAt: Date(), favoritedBy: favoritedBy)
 
         self.dbOps.addItemToLibrarySubCollection(
             libraryID: libraryID,
@@ -202,6 +249,28 @@ public class LibraryManager {
             libraryID: libraryID,
             subCollection: .stories,
             itemID: storyID
+        )
+        .sink(receiveCompletion: { [weak self] completion in
+            if case let .failure(error) = completion {
+                self?.fetchError.send(error)
+            }
+        }, receiveValue: {
+            // Nothing to do
+        })
+        .store(in: &self.cancellables)
+    }
+
+    public func removeStoryFromFavorites(storyID: String, caregiverID: String) {
+        guard let libraryID = currentLibrary.value?.id else {
+            self.fetchError.send(DatabaseError.customError("Library not found"))
+            return
+        }
+
+        self.dbOps.removeLibraryItemFromFavorites(
+            libraryID: libraryID,
+            subCollection: .stories,
+            itemID: storyID,
+            caregiverID: caregiverID
         )
         .sink(receiveCompletion: { [weak self] completion in
             if case let .failure(error) = completion {
