@@ -5,6 +5,8 @@
 import Combine
 import SwiftUI
 
+// MARK: - LibraryManagerViewModel
+
 public class LibraryManagerViewModel: ObservableObject {
     // MARK: Lifecycle
 
@@ -13,6 +15,14 @@ public class LibraryManagerViewModel: ObservableObject {
     }
 
     // MARK: Public
+
+    public enum RemoveAlertType {
+        case none
+        case confirmPersonalFavorite
+        case informOthersFavorited
+    }
+
+    public static let shared = LibraryManagerViewModel()
 
     @Published public var currentLibrary: Library?
     @Published public var activities: [SavedActivity] = []
@@ -23,16 +33,42 @@ public class LibraryManagerViewModel: ObservableObject {
     @Published public var showErrorAlert: Bool = false
     @Published public var isLoading: Bool = false
 
+    // Alert-related properties
+    @Published public var showRemoveAlert: Bool = false
+    @Published public var alertType: RemoveAlertType = .none
+    @Published public var itemToRemove: LibraryItem?
+
+    // Activities
+
     public func isActivitySaved(activityID: String) -> Bool {
-        self.activities.contains(where: { $0.id == activityID })
+        self.activities.contains { $0.id == activityID }
     }
+
+    public func isActivityFavoritedByCurrentCaregiver(activityID: String, caregiverID: String) -> Bool {
+        guard let activity = self.activities.first(where: { $0.id == activityID }) else { return false }
+        return activity.favoritedBy.keys.contains(caregiverID)
+    }
+
+    // Curriculums
 
     public func isCurriculumSaved(curriculumID: String) -> Bool {
-        self.curriculums.contains(where: { $0.id == curriculumID })
+        self.curriculums.contains { $0.id == curriculumID }
     }
 
+    public func isCurriculumFavoritedByCurrentCaregiver(curriculumID: String, caregiverID: String) -> Bool {
+        guard let curriculum = self.curriculums.first(where: { $0.id == curriculumID }) else { return false }
+        return curriculum.favoritedBy.keys.contains(caregiverID)
+    }
+
+    // Stories
+
     public func isStorySaved(storyID: String) -> Bool {
-        self.stories.contains(where: { $0.id == storyID })
+        self.stories.contains { $0.id == storyID }
+    }
+
+    public func isStoryFavoritedByCurrentCaregiver(storyID: String, caregiverID: String) -> Bool {
+        guard let story = self.stories.first(where: { $0.id == storyID }) else { return false }
+        return story.favoritedBy.keys.contains(caregiverID)
     }
 
     // MARK: Private
@@ -100,5 +136,75 @@ public class LibraryManagerViewModel: ObservableObject {
             self.errorMessage = "An unknown error occurred: \(error.localizedDescription)"
         }
         self.showErrorAlert = true
+    }
+}
+
+public extension LibraryManagerViewModel {
+    func requestItemRemoval(_ item: LibraryItem, caregiverID: String) {
+        if self.isItemFavoritedByOthers(item: item, caregiverID: caregiverID) {
+            self.alertType = .informOthersFavorited
+        } else if self.isItemFavoritedByCurrentCaregiver(item: item, caregiverID: caregiverID),
+                  self.getFavoritingCaregivers(for: item).count == 1
+        {
+            self.alertType = .confirmPersonalFavorite
+        } else {
+            self.removeItemFromLibrary(item)
+            return
+        }
+
+        self.itemToRemove = item
+        self.showRemoveAlert = true
+    }
+
+    func removeItemFromLibrary(_ item: LibraryItem) {
+        switch item {
+            case let .activity(activity):
+                self.libraryManager.removeActivity(activityID: activity.id!)
+            case let .curriculum(curriculum):
+                self.libraryManager.removeCurriculum(curriculumID: curriculum.id!)
+            case let .story(story):
+                self.libraryManager.removeStory(storyID: story.id!)
+        }
+
+        self.itemToRemove = nil
+        self.showRemoveAlert = false
+    }
+
+    // MARK: - Favorite Status Checks
+
+    private func isItemFavoritedByCurrentCaregiver(item: LibraryItem, caregiverID: String) -> Bool {
+        let favoritingCaregivers = self.getFavoritingCaregivers(for: item)
+        return favoritingCaregivers.contains(caregiverID)
+    }
+
+    private func isItemFavoritedByOthers(item: LibraryItem, caregiverID: String) -> Bool {
+        let favoritingCaregivers = self.getFavoritingCaregivers(for: item)
+        return favoritingCaregivers.contains(where: { $0 != caregiverID })
+    }
+
+    private func getFavoritingCaregivers(for item: LibraryItem) -> [String] {
+        switch item {
+            case let .activity(activity):
+                self.getFavoritingCaregiversForActivity(activityID: activity.id!)
+            case let .curriculum(curriculum):
+                self.getFavoritingCaregiversForCurriculum(curriculumID: curriculum.id!)
+            case let .story(story):
+                self.getFavoritingCaregiversForStory(storyID: story.id!)
+        }
+    }
+
+    private func getFavoritingCaregiversForActivity(activityID: String) -> [String] {
+        guard let favoritedBy = self.activities.first(where: { $0.id == activityID })?.favoritedBy else { return [] }
+        return Array(favoritedBy.keys)
+    }
+
+    private func getFavoritingCaregiversForCurriculum(curriculumID: String) -> [String] {
+        guard let favoritedBy = self.curriculums.first(where: { $0.id == curriculumID })?.favoritedBy else { return [] }
+        return Array(favoritedBy.keys)
+    }
+
+    private func getFavoritingCaregiversForStory(storyID: String) -> [String] {
+        guard let favoritedBy = self.stories.first(where: { $0.id == storyID })?.favoritedBy else { return [] }
+        return Array(favoritedBy.keys)
     }
 }
