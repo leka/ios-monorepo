@@ -10,6 +10,7 @@ public struct SavedCurriculum: Hashable {
     public var id: String?
     public var caregiverID: String
     public var addedAt: Date
+    public var favoritedBy: [String: Date]
 
     // MARK: Internal
 
@@ -17,5 +18,6 @@ public struct SavedCurriculum: Hashable {
         case id = "uuid"
         case caregiverID = "caregiver_id"
         case addedAt = "added_at"
+        case favoritedBy = "favorited_by"
     }
 }
