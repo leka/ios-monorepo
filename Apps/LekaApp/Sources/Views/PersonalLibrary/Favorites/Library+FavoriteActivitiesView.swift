@@ -7,9 +7,9 @@ import ContentKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - LibraryStoriesView
+// MARK: - PersonalLibraryActivitiesView
 
-struct LibraryStoriesView: View {
+struct FavoriteActivitiesView: View {
     // MARK: Lifecycle
 
     init(viewModel: LibraryManagerViewModel) {
@@ -19,14 +19,14 @@ struct LibraryStoriesView: View {
     // MARK: Internal
 
     var body: some View {
-        if self.stories.isEmpty {
-            EmptyLibraryPlaceholderView(icon: .stories)
+        if self.activities.isEmpty {
+            EmptyFavoritesPlaceholderView(icon: .activities)
         } else {
-            LibraryStoryListView(stories: self.stories) { story in
+            LibraryActivityListView(activities: self.activities) { activity in
                 if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
-                    self.navigation.sheetContent = .carereceiverPicker(activity: nil, story: story)
+                    self.navigation.sheetContent = .carereceiverPicker(activity: activity, story: nil)
                 } else {
-                    self.navigation.currentStory = story
+                    self.navigation.currentActivity = activity
                     self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
                 }
             }
@@ -39,9 +39,9 @@ struct LibraryStoriesView: View {
     @ObservedObject private var viewModel: LibraryManagerViewModel
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
 
-    private var stories: [Story] {
-        self.viewModel.stories.compactMap { savedStories in
-            ContentKit.allStories.first { $0.id == savedStories.id }
+    private var activities: [Activity] {
+        self.viewModel.activities.compactMap { savedActivity in
+            ContentKit.allPublishedActivities.first { $0.id == savedActivity.id }
         }
         .sorted {
             $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
@@ -52,6 +52,6 @@ struct LibraryStoriesView: View {
 #Preview {
     let viewModel = LibraryManagerViewModel()
     NavigationStack {
-        LibraryStoriesView(viewModel: viewModel)
+        FavoriteActivitiesView(viewModel: viewModel)
     }
 }

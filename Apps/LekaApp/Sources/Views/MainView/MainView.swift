@@ -70,6 +70,7 @@ struct MainView: View {
 
                     #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                         Section(String(l10n.MainView.Sidebar.sectionLibrary.characters)) {
+                            CategoryLabel(category: .libraryFavorites)
                             CategoryLabel(category: .libraryCurriculums)
                             CategoryLabel(category: .libraryActivities)
                             CategoryLabel(category: .libraryStories)
@@ -234,6 +235,10 @@ struct MainView: View {
                     case .libraryStories:
                         CategoryLibraryView(category: .libraryStories)
                             .logEventScreenView(screenName: "library_stories", context: .splitView)
+
+                    case .libraryFavorites:
+                        CategoryLibraryView(category: .libraryFavorites)
+                            .logEventScreenView(screenName: "library_favorites", context: .splitView)
 
                     case .none:
                         Text(l10n.MainView.Sidebar.CategoryLabel.home)

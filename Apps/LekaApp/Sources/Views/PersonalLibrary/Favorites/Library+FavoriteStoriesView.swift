@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - LibraryStoriesView
 
-struct LibraryStoriesView: View {
+struct FavoriteStoriesView: View {
     // MARK: Lifecycle
 
     init(viewModel: LibraryManagerViewModel) {
@@ -20,7 +20,7 @@ struct LibraryStoriesView: View {
 
     var body: some View {
         if self.stories.isEmpty {
-            EmptyLibraryPlaceholderView(icon: .stories)
+            EmptyFavoritesPlaceholderView(icon: .stories)
         } else {
             LibraryStoryListView(stories: self.stories) { story in
                 if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
@@ -52,6 +52,6 @@ struct LibraryStoriesView: View {
 #Preview {
     let viewModel = LibraryManagerViewModel()
     NavigationStack {
-        LibraryStoriesView(viewModel: viewModel)
+        FavoriteStoriesView(viewModel: viewModel)
     }
 }
