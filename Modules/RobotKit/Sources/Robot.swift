@@ -41,6 +41,10 @@ public class Robot {
 
     public var connectedPeripheral: RobotPeripheral? {
         didSet {
+            guard self.connectedPeripheral != nil else {
+                return
+            }
+
             registerBatteryCharacteristicNotificationCallback()
             registerChargingStatusNotificationCallback()
             registerNegotiatedMTUNotificationCallback()
