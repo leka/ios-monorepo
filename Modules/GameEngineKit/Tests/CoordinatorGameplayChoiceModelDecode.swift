@@ -54,4 +54,55 @@ final class CoordinatorGameplayModelDecode: XCTestCase {
 
         XCTAssertEqual(model.choices.count, 6)
     }
+
+    func test_AssociateCategories() throws {
+        let kExercise =
+            """
+            instructions:
+              - locale: fr_FR
+                value: Associe les emojis identiques
+              - locale: en_US
+                value: Associate the identical emojis
+            interface: touchToSelect
+            gameplay: associateCategories
+            action:
+              type: ipad
+              value:
+                type: speech
+                value:
+                  - locale: fr_FR
+                    utterance: "mets les bananes ensemble"
+                  - locale: en_US
+                    utterance: "put the bananas together"
+            options:
+              shuffle_choices: true
+              validate: true
+            payload:
+              choices:
+                - value: 🍉
+                  type: emoji
+                  category: catA
+                - value: 🍌
+                  type: emoji
+                  category: catA
+                - value: 🍒
+                  type: emoji
+                  category: catA
+                - value: 🐶️
+                  type: emoji
+                  category: catB
+                - value: 🐱
+                  type: emoji
+                  category: catA
+                - value: 🐭
+                  type: emoji
+                  category: catB
+            """
+
+        let exercise = NewExercise(yaml: kExercise)!
+
+        let model = try JSONDecoder().decode(CoordinatorAssociateCategoriesModel.self, from: exercise.payload!)
+
+        XCTAssertEqual(model.choices.count, 6)
+    }
 }
