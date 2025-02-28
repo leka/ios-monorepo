@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import ContentKit
 import GameEngineKit
 import SwiftUI
 
@@ -83,6 +84,22 @@ struct TTSExercises: View {
                         .navigationBarTitleDisplayMode(.large)
                 } label: {
                     ExerciseNavigationButtonLabel(text: "Validate Right Order", color: .indigo)
+                }
+
+                NavigationLink {
+                    let exercise = NewExercise(yaml: ExerciseData.kFindTheRightAnswersYaml)!
+
+                    let model = CoordinatorFindTheRightAnswersModel(data: exercise.payload!)!
+
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(model: model)
+
+                    let viewModel = TTSViewViewModel(coordinator: coordinator)
+
+                    return TTSView(viewModel: viewModel)
+                        .navigationTitle("Exercise from YAML")
+                        .navigationBarTitleDisplayMode(.large)
+                } label: {
+                    ExerciseNavigationButtonLabel(text: "From YAML", color: .indigo)
                 }
             }
         }
