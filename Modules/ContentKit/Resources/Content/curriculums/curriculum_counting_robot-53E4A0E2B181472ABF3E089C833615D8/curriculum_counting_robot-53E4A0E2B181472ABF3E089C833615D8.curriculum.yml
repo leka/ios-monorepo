@@ -1,0 +1,63 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 53E4A0E2B181472ABF3E089C833615D8
+name: curriculum_counting_robot
+
+created_at: "2024-03-28T15:12:35.579066"
+last_edited_at: "2025-05-06T12:08:44.473336"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - counting
+
+tags:
+  - numbers
+  - animals
+  - fruits
+  - clothes
+
+hmi:
+  - tablet_robot
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: curriculum_counting_robot
+
+      title: Compter avec Leka
+      subtitle: de 1 à 6
+
+      abstract: |
+        Ce parcours éducatif aide les personnes accompagnées à apprendre à compter avec le robot Leka. Elles observent un chiffre affiché par le robot et comptent en touchant des éléments sur la tablette (animaux, instruments de musique ou fruits), de gauche à droite et ligne par ligne, jusqu’à atteindre ce chiffre.
+
+      description: |
+        L’activité suit une progression de gauche à droite, ligne par ligne, pour structurer le comptage et éviter les erreurs.
+        Toucher chaque élément avec le doigt aide à mieux associer les nombres aux quantités et améliore la coordination œil-main.
+
+  - locale: en_US
+    details:
+      icon: curriculum_counting_robot
+
+      title: Counting with Leka
+      subtitle: from 1 to 6
+
+      abstract: |
+        This educational path helps care receivers learn to count with the Leka robot. They observe a number displayed by the robot and count by tapping items on the tablet (animals, musical instruments or fruits) from left to right, row by row, until they reach that number.
+
+      description: |
+        The activity follows a left-to-right, line-by-line approach to structure counting and prevent mistakes.
+        Tapping each item with a finger helps link numbers to quantities and improves hand-eye coordination.
+activities:
+  - counting_robot_animals-313569E530C243D2973F4181BD99F59C
+  - counting_robot_musical_instruments-A1EFFF53AE424CCB836115C4E9911017
+  - counting_robot_fruits-26652AC123BD4E1182D7105AB31FF396
