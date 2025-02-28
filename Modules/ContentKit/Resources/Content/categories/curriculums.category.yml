@@ -28,6 +28,7 @@ content:
           subtitle: Discover the latest additions to our catalog.
           description: Explore recently added content to enrich and diversify your sessions.
     curriculums:
+      - curriculum_counting_robot-53E4A0E2B181472ABF3E089C833615D8
       - curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
       - curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
       - curriculum_order_by_size-1FAED1FF14134571849325B6EC9197B5
@@ -161,6 +162,7 @@ content:
           subtitle: Learn to count and manipulate numbers.
           description: Explore activities to help care receivers develop their numeracy skills, such as counting and number recognition.
     curriculums:
+      - curriculum_counting_robot-53E4A0E2B181472ABF3E089C833615D8
       - curriculum_receptive_language_identify_number_quantity-4499A9AFB56B4476969B96CE32F5314C
       - curriculum_counting_candies-215DCF9CCB7B4E36A73273DC42D848E9
       - curriculum_counting_flower_petals-3F83E1E0F3094DC787258B9CEEF227A1
