@@ -76,6 +76,23 @@ git-crypt unlock
 
 More information here: https://github.com/AGWA/git-crypt#using-git-crypt
 
+## Using VSCode + Copilot for development
+
+Follow this article: <https://dimillian.medium.com/how-to-use-cursor-for-ios-development-54b912c23941>
+
+And as tl;dr:
+
+```shell
+brew install xcode-build-server
+brew install xcbeautify
+brew install swiftformat
+```
+
+In VSCdode, install the following extensions:
+
+- <https://marketplace.visualstudio.com/items?itemName=swiftlang.swift-vscode>
+- <https://marketplace.visualstudio.com/items?itemName=sweetpad.sweetpad>
+
 ## License
 
 Copyright (c) APF France handicap. All rights reserved.
