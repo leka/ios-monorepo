@@ -105,4 +105,49 @@ final class CoordinatorGameplayModelDecode: XCTestCase {
 
         XCTAssertEqual(model.choices.count, 6)
     }
+
+    func test_FindTheRightOrder() throws {
+        let kExercise =
+            """
+            instructions:
+              - locale: fr_FR
+                value: Mets les emojis dans le bon ordre
+              - locale: en_US
+                value: Put the emojis in the right order
+            interface: touchToSelect
+            gameplay: findTheRightOrder
+            action:
+              type: ipad
+              value:
+                type: speech
+                value:
+                  - locale: fr_FR
+                    utterance: "mets les bananes ensemble"
+                  - locale: en_US
+                    utterance: "put the bananas together"
+            options:
+              shuffle_choices: true
+              validate: true
+            payload:
+              choices:
+                - value: 1.circle
+                  type: sfsymbol
+                - value: 2.circle
+                  type: sfsymbol
+                - value: 3.circle
+                  type: sfsymbol
+                - value: 4.circle
+                  type: sfsymbol
+                - value: 5.circle
+                  type: sfsymbol
+                - value: 6.circle
+                  type: sfsymbol
+            """
+
+        let exercise = NewExercise(yaml: kExercise)!
+
+        let model = try JSONDecoder().decode(CoordinatorFindTheRightOrderModel.self, from: exercise.payload!)
+
+        XCTAssertEqual(model.choices.count, 6)
+    }
 }
