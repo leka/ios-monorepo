@@ -7,12 +7,12 @@ import ContentKit
 import RobotKit
 import SwiftUI
 
-// MARK: - TTSCoordinatorNoGameplay
+// MARK: - TTSCoordinatorOpenPlay
 
-public class TTSCoordinatorNoGameplay: TTSGameplayCoordinatorProtocol {
+public class TTSCoordinatorOpenPlay: TTSGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorNoGameplayChoiceModel], action: Exercise.Action? = nil, minimumToSelect: Int = 0, maximumToSelect: Int? = nil) {
+    public init(choices: [CoordinatorOpenPlayChoiceModel], action: Exercise.Action? = nil, minimumToSelect: Int = 0, maximumToSelect: Int? = nil) {
         self.rawChoices = choices
 
         self.uiModel.value.action = action
@@ -100,7 +100,7 @@ public class TTSCoordinatorNoGameplay: TTSGameplayCoordinatorProtocol {
 
     // MARK: Private
 
-    private let rawChoices: [CoordinatorNoGameplayChoiceModel]
+    private let rawChoices: [CoordinatorOpenPlayChoiceModel]
     private let minimumToSelect: Int
     private let maximumToSelect: Int
     private var currentChoices: [UUID] = []
@@ -112,7 +112,7 @@ public class TTSCoordinatorNoGameplay: TTSGameplayCoordinatorProtocol {
     }
 }
 
-extension TTSCoordinatorNoGameplay {
+extension TTSCoordinatorOpenPlay {
     enum State {
         case idle
         case selected
@@ -155,7 +155,7 @@ extension TTSCoordinatorNoGameplay {
 }
 
 #Preview {
-    let kDefaultChoices: [CoordinatorNoGameplayChoiceModel] = [
+    let kDefaultChoices: [CoordinatorOpenPlayChoiceModel] = [
         .init(value: "Choice 1\nCorrect"),
         .init(value: "Choice 2"),
         .init(value: "Choice 3\nCorrect"),
@@ -164,7 +164,7 @@ extension TTSCoordinatorNoGameplay {
         .init(value: "exclamationmark.triangle.fill", type: .sfsymbol),
     ]
 
-    let coordinator = TTSCoordinatorNoGameplay(choices: kDefaultChoices)
+    let coordinator = TTSCoordinatorOpenPlay(choices: kDefaultChoices)
     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
     return TTSView(viewModel: viewModel)

@@ -4,7 +4,7 @@
 
 import Foundation
 
-public struct CoordinatorNoGameplayChoiceModel {
+public struct CoordinatorOpenPlayChoiceModel {
     // MARK: Lifecycle
 
     public init(id: UUID = UUID(), value: String, type: ChoiceType = .text) {

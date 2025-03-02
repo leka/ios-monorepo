@@ -8,13 +8,13 @@ import RobotKit
 import SpriteKit
 import SwiftUI
 
-// MARK: - DnDGridWithZonesCoordinatorNoGameplay
+// MARK: - DnDGridWithZonesCoordinatorOpenPlay
 
 // swiftlint:disable:next type_name
-public class DnDGridWithZonesCoordinatorNoGameplay: DnDGridWithZonesGameplayCoordinatorProtocol {
+public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorNoGameplayChoiceModel], action: Exercise.Action? = nil, minimumToSelect: Int = 0, maximumToSelect: Int? = nil) {
+    public init(choices: [CoordinatorOpenPlayChoiceModel], action: Exercise.Action? = nil, minimumToSelect: Int = 0, maximumToSelect: Int? = nil) {
         let dropZones = choices.prefix(2)
         let nodes = choices.suffix(choices.count - dropZones.count)
         self.rawChoices = Array(nodes)
@@ -82,7 +82,7 @@ public class DnDGridWithZonesCoordinatorNoGameplay: DnDGridWithZonesGameplayCoor
 
     // MARK: Private
 
-    private let rawChoices: [CoordinatorNoGameplayChoiceModel]
+    private let rawChoices: [CoordinatorOpenPlayChoiceModel]
     private let minimumToSelect: Int
     private let maximumToSelect: Int
 
@@ -113,7 +113,7 @@ public class DnDGridWithZonesCoordinatorNoGameplay: DnDGridWithZonesGameplayCoor
     }
 }
 
-extension DnDGridWithZonesCoordinatorNoGameplay {
+extension DnDGridWithZonesCoordinatorOpenPlay {
     enum State: Equatable {
         case idle
         case dragged

@@ -5,9 +5,9 @@
 import GameEngineKit
 import SwiftUI
 
-// MARK: - NoGameplayExercises
+// MARK: - OpenPlay
 
-struct NoGameplayExercises: View {
+struct OpenPlayExercises: View {
     var body: some View {
         Text("Choose Any Answers")
             .font(.title)
@@ -15,8 +15,8 @@ struct NoGameplayExercises: View {
         ScrollView(.horizontal) {
             HStack(spacing: 20) {
                 NavigationLink {
-                    let coordinator = TTSCoordinatorNoGameplay(
-                        choices: ExerciseData.kNoGameplayDefault,
+                    let coordinator = TTSCoordinatorOpenPlay(
+                        choices: ExerciseData.kOpenPlayDefault,
                         minimumToSelect: 1,
                         maximumToSelect: 3
                     )
@@ -30,8 +30,8 @@ struct NoGameplayExercises: View {
                 }
 
                 NavigationLink {
-                    let coordinator = DnDGridWithZonesCoordinatorNoGameplay(
-                        choices: ExerciseData.kNoGameplayWithZonesChoicesEmojis,
+                    let coordinator = DnDGridWithZonesCoordinatorOpenPlay(
+                        choices: ExerciseData.kOpenPlayWithZonesChoicesEmojis,
                         minimumToSelect: 1,
                         maximumToSelect: 3
                     )
@@ -49,5 +49,5 @@ struct NoGameplayExercises: View {
 }
 
 #Preview {
-    NoGameplayExercises()
+    OpenPlayExercises()
 }
