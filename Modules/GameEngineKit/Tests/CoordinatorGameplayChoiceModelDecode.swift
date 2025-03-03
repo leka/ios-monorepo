@@ -150,4 +150,49 @@ final class CoordinatorGameplayModelDecode: XCTestCase {
 
         XCTAssertEqual(model.choices.count, 6)
     }
+
+    func test_OpenPlay() throws {
+        let kExercise =
+            """
+            instructions:
+              - locale: fr_FR
+                value: Ouvre le jeu
+              - locale: en_US
+                value: Open the game
+            interface: touchToSelect
+            gameplay: openPlay
+            action:
+              type: ipad
+              value:
+                type: speech
+                value:
+                  - locale: fr_FR
+                    utterance: "mets les bananes ensemble"
+                  - locale: en_US
+                    utterance: "put the bananas together"
+            options:
+              shuffle_choices: true
+              validate: true
+            payload:
+              choices:
+                - value: 🍉
+                  type: emoji
+                - value: 🍌
+                  type: emoji
+                - value: 🍒
+                  type: emoji
+                - value: 🐶️
+                  type: emoji
+                - value: 🐱
+                  type: emoji
+                - value: 🐭
+                  type: emoji
+            """
+
+        let exercise = NewExercise(yaml: kExercise)!
+
+        let model = try JSONDecoder().decode(CoordinatorOpenPlayModel.self, from: exercise.payload!)
+
+        XCTAssertEqual(model.choices.count, 6)
+    }
 }
