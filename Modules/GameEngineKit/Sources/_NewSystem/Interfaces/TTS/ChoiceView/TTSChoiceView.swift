@@ -5,16 +5,6 @@
 import ContentKit
 import SwiftUI
 
-// MARK: - ChoiceType
-
-public enum ChoiceType {
-    case image
-    case sfsymbol
-    case text
-    case color
-    case emoji
-}
-
 // MARK: - TTSChoiceView
 
 struct TTSChoiceView: View {

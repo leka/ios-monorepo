@@ -7,11 +7,11 @@ import Foundation
 
 // MARK: - AssociateCategory
 
-public enum AssociateCategory {
-    case categoryA
-    case categoryB
-    case categoryC
-    case categoryD
+public enum AssociateCategory: String, Codable {
+    case categoryA = "catA"
+    case categoryB = "catB"
+    case categoryC = "catC"
+    case categoryD = "catD"
 }
 
 // MARK: - NewGameplayAssociateCategoriesChoiceModel

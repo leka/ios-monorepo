@@ -8,7 +8,7 @@ import SwiftUI
 // MARK: - ExerciseData
 
 extension ExerciseData {
-    static let kNoGameplayDefault: [CoordinatorNoGameplayChoiceModel] = [
+    static let kOpenPlayDefault: [CoordinatorOpenPlayChoiceModel] = [
         .init(value: "Cow"),
         .init(value: "Horse"),
         .init(value: "Duck"),
@@ -17,7 +17,7 @@ extension ExerciseData {
         .init(value: "Duck"),
     ]
 
-    static let kNoGameplayImages: [CoordinatorNoGameplayChoiceModel] = [
+    static let kOpenPlayImages: [CoordinatorOpenPlayChoiceModel] = [
         .init(value: "emotion_picto_angry_leka", type: .image),
         .init(value: "emotion_picto_disgust_leka", type: .image),
         .init(value: "emotion_picto_fear_leka", type: .image),
@@ -25,25 +25,25 @@ extension ExerciseData {
         .init(value: "emotion_picto_sad_leka", type: .image),
     ]
 
-    static let kNoGameplaySFSymbols: [CoordinatorNoGameplayChoiceModel] = [
+    static let kOpenPlaySFSymbols: [CoordinatorOpenPlayChoiceModel] = [
         .init(value: "star", type: .sfsymbol),
         .init(value: "circle", type: .sfsymbol),
         .init(value: "square", type: .sfsymbol),
         .init(value: "triangle", type: .sfsymbol),
     ]
 
-    static let kNoGameplayEmojis: [CoordinatorNoGameplayChoiceModel] = [
+    static let kOpenPlayEmojis: [CoordinatorOpenPlayChoiceModel] = [
         .init(value: "🕺", type: .emoji),
         .init(value: "🚴", type: .emoji),
         .init(value: "🏃‍♂️", type: .emoji),
     ]
 
-    static let kNoGameplayColors: [CoordinatorNoGameplayChoiceModel] = [
+    static let kOpenPlayColors: [CoordinatorOpenPlayChoiceModel] = [
         .init(value: "red", type: .color),
         .init(value: "blue", type: .color),
     ]
 
-    static let kNoGameplayWithZonesChoicesDefault: [CoordinatorNoGameplayChoiceModel] = [
+    static let kOpenPlayWithZonesChoicesDefault: [CoordinatorOpenPlayChoiceModel] = [
         .init(value: "😍", type: .emoji),
         .init(value: "☹️", type: .emoji),
         .init(value: "Whale"),
@@ -54,7 +54,7 @@ extension ExerciseData {
         .init(value: "Chicken"),
     ]
 
-    static let kNoGameplayWithZonesChoicesSFSymbols: [CoordinatorNoGameplayChoiceModel] = [
+    static let kOpenPlayWithZonesChoicesSFSymbols: [CoordinatorOpenPlayChoiceModel] = [
         .init(value: "😍", type: .emoji),
         .init(value: "☹️", type: .emoji),
         .init(value: "scooter", type: .sfsymbol),
@@ -65,7 +65,7 @@ extension ExerciseData {
         .init(value: "truck.box", type: .sfsymbol),
     ]
 
-    static let kNoGameplayWithZonesChoicesImages: [CoordinatorNoGameplayChoiceModel] = [
+    static let kOpenPlayWithZonesChoicesImages: [CoordinatorOpenPlayChoiceModel] = [
         .init(value: "😍", type: .emoji),
         .init(value: "☹️", type: .emoji),
         .init(value: "pictograms-foods-meals-cup_of_coffee-0184", type: .image),
@@ -76,7 +76,7 @@ extension ExerciseData {
         .init(value: "pictograms-foods-meals-birthday_cake-0173", type: .image),
     ]
 
-    static let kNoGameplayWithZonesChoicesColors: [CoordinatorNoGameplayChoiceModel] = [
+    static let kOpenPlayWithZonesChoicesColors: [CoordinatorOpenPlayChoiceModel] = [
         .init(value: "😍", type: .emoji),
         .init(value: "☹️", type: .emoji),
         .init(value: "red", type: .color),
@@ -87,7 +87,7 @@ extension ExerciseData {
         .init(value: "yellow", type: .color),
     ]
 
-    static let kNoGameplayWithZonesChoicesEmojis: [CoordinatorNoGameplayChoiceModel] = [
+    static let kOpenPlayWithZonesChoicesEmojis: [CoordinatorOpenPlayChoiceModel] = [
         .init(value: "😍", type: .emoji),
         .init(value: "☹️", type: .emoji),
         .init(value: "🍏", type: .emoji),
