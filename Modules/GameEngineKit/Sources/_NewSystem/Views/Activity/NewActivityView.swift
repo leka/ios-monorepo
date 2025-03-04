@@ -23,46 +23,6 @@ struct PlaceholderExerciseView: View {
     }
 }
 
-// MARK: - ExerciseCoordinator
-
-class ExerciseCoordinator {
-    // MARK: Lifecycle
-
-    init(payload: Activity.ExercisesPayload) {
-        self.currentExercise = payload.exerciseGroups.first!.exercises.first!
-    }
-
-    // MARK: Internal
-
-    let currentExercise: Exercise
-
-    @ViewBuilder
-    var execiseView: some View {
-        switch (ui: self.currentExercise.interface, gameplay: self.currentExercise.gameplay) {
-            // TODO: (@ladislas) implement this part with data when ready
-//            case (.touchToSelect, .findTheRightAnswers):
-//                // swiftlint:disable:next force_cast
-//                let ttsPayload = self.currentExercise.payload as! TouchToSelect.Payload
-//
-//                let gameplayChoices = ttsPayload.choices.map {
-//                    NewGameplayFindTheRightAnswersChoice(value: $0.value, isRightAnswer: $0.isRightAnswer)
-//                    NewGameplayFindTheRightAnswersChoiceModel(
-//                        id: $0.id,
-//                        isRightAnswer: <#T##Bool#>
-//                    )
-//                }
-//
-//                let gameplay = NewGameplayFindTheRightAnswers(choices: gameplayChoices)
-//                let coordinator = TTSCoordinatorFindTheRightAnswers(gameplay: gameplay)
-//                let viewModel = TTSViewViewModel(coordinator: coordinator)
-//
-//                TTSView(viewModel: viewModel)
-            default:
-                PlaceholderExerciseView()
-        }
-    }
-}
-
 // MARK: - NewActivityViewModel
 
 public class NewActivityViewModel: ObservableObject {
@@ -70,7 +30,7 @@ public class NewActivityViewModel: ObservableObject {
 
     public init(activity: Activity) {
         self.activity = activity
-        self.exerciseCoordinator = ExerciseCoordinator(payload: activity.exercisePayload)
+//        self.exerciseCoordinator = ExerciseCoordinator(payload: activity.exercisePayload)
     }
 
     // MARK: Internal
@@ -82,14 +42,16 @@ public class NewActivityViewModel: ObservableObject {
     @ViewBuilder
     var exerciseView: some View {
         VStack {
-            Button(self.exerciseCoordinator.currentExercise.instructions ?? "Missing instructions") {
-                log.warning("Exercise instructions button tapped")
-            }
-            .buttonStyle(.borderedProminent)
+//            Button(self.exerciseCoordinator.currentExercise.instructions ?? "Missing instructions") {
+//                log.warning("Exercise instructions button tapped")
+//            }
+//            .buttonStyle(.borderedProminent)
 
             Spacer()
 
-            self.exerciseCoordinator.execiseView
+            Text("Exercise view")
+
+//            self.exerciseCoordinator.execiseView
 
             Spacer()
         }
@@ -98,7 +60,7 @@ public class NewActivityViewModel: ObservableObject {
     // MARK: Private
 
     private let activity: Activity
-    private let exerciseCoordinator: ExerciseCoordinator
+//    private let exerciseCoordinator: ExerciseCoordinator
 }
 
 // MARK: - NewActivityView
