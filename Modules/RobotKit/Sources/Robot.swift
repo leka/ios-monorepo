@@ -37,7 +37,7 @@ public class Robot {
     public var battery: CurrentValueSubject<Int, Never> = CurrentValueSubject(0)
     public var negotiatedMTU: CurrentValueSubject<Int, Never> = CurrentValueSubject(0)
 
-    public var magicCard: CurrentValueSubject<MagicCard, Never> = CurrentValueSubject(.none)
+    public var magicCard: CurrentValueSubject<MagicCard, Never> = CurrentValueSubject(MagicCard(.dice_roll))
 
     public var connectedPeripheral: RobotPeripheral? {
         didSet {
@@ -114,7 +114,7 @@ public class Robot {
     // MARK: - Magic Cards
 
     public func onMagicCard() -> AnyPublisher<MagicCard, Never> {
-        Just(MagicCard.dice_roll)
+        Just(MagicCard(.dice_roll))
             .eraseToAnyPublisher()
     }
 

@@ -16,7 +16,7 @@ class RobotControlViewModel: ObservableObject {
             .sink {
                 self.magicCard = $0
                 self.magicCardImage = {
-                    switch $0 {
+                    switch $0.details {
                         case .none:
                             Image(systemName: "cross")
                         case .emergency_stop:
@@ -33,7 +33,7 @@ class RobotControlViewModel: ObservableObject {
 
     // MARK: Internal
 
-    @Published var magicCard: MagicCard = .none
+    @Published var magicCard: MagicCard = .init(.none)
     @Published var magicCardImage: Image = .init(systemName: "photo")
 
     // MARK: Private
