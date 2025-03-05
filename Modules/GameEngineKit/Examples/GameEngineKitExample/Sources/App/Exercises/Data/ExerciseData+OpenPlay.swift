@@ -44,8 +44,8 @@ extension ExerciseData {
     ]
 
     static let kOpenPlayWithZonesChoicesDefault: [CoordinatorOpenPlayChoiceModel] = [
-        .init(value: "😍", type: .emoji),
-        .init(value: "☹️", type: .emoji),
+        .init(value: "😍", type: .emoji, isDropzone: true),
+        .init(value: "☹️", type: .emoji, isDropzone: true),
         .init(value: "Whale"),
         .init(value: "Duck"),
         .init(value: "Elephant"),
@@ -55,8 +55,8 @@ extension ExerciseData {
     ]
 
     static let kOpenPlayWithZonesChoicesSFSymbols: [CoordinatorOpenPlayChoiceModel] = [
-        .init(value: "😍", type: .emoji),
-        .init(value: "☹️", type: .emoji),
+        .init(value: "😍", type: .emoji, isDropzone: true),
+        .init(value: "☹️", type: .emoji, isDropzone: true),
         .init(value: "scooter", type: .sfsymbol),
         .init(value: "car", type: .sfsymbol),
         .init(value: "bicycle", type: .sfsymbol),
@@ -66,8 +66,8 @@ extension ExerciseData {
     ]
 
     static let kOpenPlayWithZonesChoicesImages: [CoordinatorOpenPlayChoiceModel] = [
-        .init(value: "😍", type: .emoji),
-        .init(value: "☹️", type: .emoji),
+        .init(value: "😍", type: .emoji, isDropzone: true),
+        .init(value: "☹️", type: .emoji, isDropzone: true),
         .init(value: "pictograms-foods-meals-cup_of_coffee-0184", type: .image),
         .init(value: "pictograms-animals-arctic-penguin_yellow-0088", type: .image),
         .init(value: "pictograms-foods-meals-orange_juice-017C", type: .image),
@@ -77,8 +77,8 @@ extension ExerciseData {
     ]
 
     static let kOpenPlayWithZonesChoicesColors: [CoordinatorOpenPlayChoiceModel] = [
-        .init(value: "😍", type: .emoji),
-        .init(value: "☹️", type: .emoji),
+        .init(value: "😍", type: .emoji, isDropzone: true),
+        .init(value: "☹️", type: .emoji, isDropzone: true),
         .init(value: "red", type: .color),
         .init(value: "blue", type: .color),
         .init(value: "green", type: .color),
@@ -88,8 +88,8 @@ extension ExerciseData {
     ]
 
     static let kOpenPlayWithZonesChoicesEmojis: [CoordinatorOpenPlayChoiceModel] = [
-        .init(value: "😍", type: .emoji),
-        .init(value: "☹️", type: .emoji),
+        .init(value: "😍", type: .emoji, isDropzone: true),
+        .init(value: "☹️", type: .emoji, isDropzone: true),
         .init(value: "🍏", type: .emoji),
         .init(value: "🌮", type: .emoji),
         .init(value: "🍓", type: .emoji),

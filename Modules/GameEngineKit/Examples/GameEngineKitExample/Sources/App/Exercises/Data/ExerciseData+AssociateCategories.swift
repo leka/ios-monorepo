@@ -53,8 +53,8 @@ extension ExerciseData {
     ]
 
     static let kAssociateCategoriesWithZonesChoicesDefault: [CoordinatorAssociateCategoriesChoiceModel] = [
-        .init(value: "Mammals", category: .categoryA),
-        .init(value: "Birds", category: .categoryB),
+        .init(value: "Mammals", category: .categoryA, isDropzone: true),
+        .init(value: "Birds", category: .categoryB, isDropzone: true),
         .init(value: "Whale", category: .categoryA),
         .init(value: "Duck", category: .categoryB),
         .init(value: "Elephant", category: .categoryA),
@@ -64,8 +64,8 @@ extension ExerciseData {
     ]
 
     static let kAssociateCategoriesWithZonesChoicesSFSymbols: [CoordinatorAssociateCategoriesChoiceModel] = [
-        .init(value: "cloud.sun", category: .categoryA, type: .sfsymbol),
-        .init(value: "car.2", category: .categoryB, type: .sfsymbol),
+        .init(value: "cloud.sun", category: .categoryA, type: .sfsymbol, isDropzone: true),
+        .init(value: "car.2", category: .categoryB, type: .sfsymbol, isDropzone: true),
         .init(value: "sun.max", category: .categoryA, type: .sfsymbol),
         .init(value: "car", category: .categoryB, type: .sfsymbol),
         .init(value: "sun.rain", category: .categoryA, type: .sfsymbol),
@@ -75,8 +75,8 @@ extension ExerciseData {
     ]
 
     static let kAssociateCategoriesWithZonesChoicesImages: [CoordinatorAssociateCategoriesChoiceModel] = [
-        .init(value: "dropzone_bathroom", category: .categoryA, type: .image),
-        .init(value: "dropzone_bedroom", category: .categoryB, type: .image),
+        .init(value: "dropzone_bathroom", category: .categoryA, type: .image, isDropzone: true),
+        .init(value: "dropzone_bedroom", category: .categoryB, type: .image, isDropzone: true),
         .init(value: "pictograms-weather-sun_yellow-0106", category: .categoryA, type: .image),
         .init(value: "pictograms-animals-arctic-penguin_yellow-0088", category: .categoryB, type: .image),
         .init(value: "pictograms-weather-sun_yellow-0106", category: .categoryA, type: .image),
@@ -86,8 +86,8 @@ extension ExerciseData {
     ]
 
     static let kAssociateCategoriesWithZonesChoicesColors: [CoordinatorAssociateCategoriesChoiceModel] = [
-        .init(value: "red", category: .categoryA, type: .color),
-        .init(value: "red", category: .categoryB, type: .color),
+        .init(value: "red", category: .categoryA, type: .color, isDropzone: true),
+        .init(value: "blue", category: .categoryB, type: .color, isDropzone: true),
         .init(value: "red", category: .categoryA, type: .color),
         .init(value: "blue", category: .categoryB, type: .color),
         .init(value: "red", category: .categoryA, type: .color),
@@ -97,8 +97,8 @@ extension ExerciseData {
     ]
 
     static let kAssociateCategoriesWithZonesChoicesEmojis: [CoordinatorAssociateCategoriesChoiceModel] = [
-        .init(value: "🍉", category: .categoryA, type: .emoji),
-        .init(value: "🐵", category: .categoryB, type: .emoji),
+        .init(value: "🍉", category: .categoryA, type: .emoji, isDropzone: true),
+        .init(value: "🐵", category: .categoryB, type: .emoji, isDropzone: true),
         .init(value: "🍏", category: .categoryA, type: .emoji),
         .init(value: "🐄", category: .categoryB, type: .emoji),
         .init(value: "🍓", category: .categoryA, type: .emoji),

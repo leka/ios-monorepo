@@ -32,7 +32,7 @@ extension CoordinatorFindTheRightAnswersChoiceModel: Decodable {
         let container = try from.container(keyedBy: CodingKeys.self)
 
         self.value = try container.decode(String.self, forKey: .value)
-        self.type = try container.decode(ChoiceType.self, forKey: .type)
+        self.type = try container.decodeIfPresent(ChoiceType.self, forKey: .type) ?? .text
         self.isRightAnswer = try container.decodeIfPresent(Bool.self, forKey: .isRightAnswer) ?? false
 
         self.id = UUID()
