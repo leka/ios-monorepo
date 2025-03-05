@@ -12,7 +12,7 @@ import SwiftUI
 public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [MagicCardCoordinatorFindTheRightAnswersChoiceModel], action: Exercise.Action) {
+    public init(choices: [CoordinatorFindTheRightAnswersChoiceModel], action: Exercise.Action) {
         self.rawChoices = choices
 
         self.gameplay = NewGameplayFindTheRightAnswers(
@@ -20,6 +20,10 @@ public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinat
                 .map { .init(id: $0.id, isRightAnswer: $0.isRightAnswer)
                 })
         self.action = action
+    }
+
+    public convenience init(model: CoordinatorFindTheRightAnswersModel, action: Exercise.Action) {
+        self.init(choices: model.choices, action: action)
     }
 
     // MARK: Public
@@ -31,7 +35,7 @@ public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinat
             .receive(on: DispatchQueue.main)
             .sink { [weak self] card in
                 if self!.gameplay.isCompleted.value { return }
-                self!.processUserSelection(magicCard: card)
+                self!.processUserSelection(cardName: card.details.name)
             }
             .store(in: &self.cancellables)
     }
@@ -47,22 +51,22 @@ public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinat
 
     private var robot: Robot = .shared
     private let gameplay: NewGameplayFindTheRightAnswers
-    private let rawChoices: [MagicCardCoordinatorFindTheRightAnswersChoiceModel]
+    private let rawChoices: [CoordinatorFindTheRightAnswersChoiceModel]
 
-    private func processUserSelection(magicCard: MagicCard) {
-        guard let choiceID = self.rawChoices.first(where: { $0.value == magicCard }) else { return }
+    private func processUserSelection(cardName: String) {
+        guard let choice = self.rawChoices.first(where: { $0.value == cardName }) else { return }
 
-        _ = self.gameplay.process(choiceIDs: [choiceID.id])
+        _ = self.gameplay.process(choiceIDs: [choice.id])
     }
 }
 
 #Preview {
-    let kDefaultChoices: [MagicCardCoordinatorFindTheRightAnswersChoiceModel] = [
-        .init(value: MagicCard.emotion_disgust_leka, isRightAnswer: true),
-        .init(value: MagicCard.emotion_fear_leka),
-        .init(value: MagicCard.emotion_joy_leka),
-        .init(value: MagicCard.emotion_sadness_leka),
-        .init(value: MagicCard.emotion_anger_leka),
+    let kDefaultChoices: [CoordinatorFindTheRightAnswersChoiceModel] = [
+        .init(value: "emotion_disgust_leka", isRightAnswer: true),
+        .init(value: "emotion_fear_leka"),
+        .init(value: "emotion_joy_leka"),
+        .init(value: "emotion_sadness_leka"),
+        .init(value: "emotion_anger_leka"),
     ]
 
     let coordinator = MagicCardCoordinatorFindTheRightAnswers(
