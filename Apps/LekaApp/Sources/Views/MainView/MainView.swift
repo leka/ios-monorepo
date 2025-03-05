@@ -12,7 +12,7 @@ import LocalizationKit
 import RobotKit
 import SwiftUI
 
-// swiftlint:disable type_body_length
+// swiftlint:disable type_body_length file_length
 
 extension Bundle {
     static var version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
@@ -152,6 +152,9 @@ struct MainView: View {
                         AnalyticsManager.logEventOSUpdateAlertResponse(.remindLater)
                     }
                 )
+            }
+            .alert(isPresented: self.$libraryManagerViewModel.showRemoveAlert) {
+                self.createRemovalAlert()
             }
         } detail: {
             NavigationStack(path: self.$navigation.path) {
@@ -398,6 +401,7 @@ struct MainView: View {
     @Environment(\.scenePhase) private var scenePhase
 
     @ObservedObject private var styleManager: StyleManager = .shared
+    @ObservedObject private var libraryManagerViewModel: LibraryManagerViewModel = .shared
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
     @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
@@ -410,10 +414,38 @@ struct MainView: View {
     private var caregiverManager: CaregiverManager = .shared
     private var carereceiverManager: CarereceiverManager = .shared
     private var libraryManager: LibraryManager = .shared
-}
 
-// swiftlint:enable type_body_length
+    private func createRemovalAlert() -> Alert {
+        guard let itemToRemove = self.libraryManagerViewModel.itemToRemove else {
+            return Alert(title: Text("Error"))
+        }
+
+        switch self.libraryManagerViewModel.alertType {
+            case .confirmPersonalFavorite:
+                return Alert(
+                    title: Text("Confirm Removal"),
+                    message: Text("You have marked this item as a favorite. Are you sure you want to remove it from your library?"),
+                    primaryButton: .destructive(Text("Remove")) {
+                        self.libraryManagerViewModel.removeItemFromLibrary(itemToRemove)
+                    },
+                    secondaryButton: .cancel()
+                )
+
+            case .informOthersFavorited:
+                return Alert(
+                    title: Text("Cannot Remove Item"),
+                    message: Text("This item is favorited by other caregivers. You cannot remove it."),
+                    dismissButton: .default(Text("OK"))
+                )
+
+            case .none:
+                return Alert(title: Text("Error"))
+        }
+    }
+}
 
 #Preview {
     MainView()
 }
+
+// swiftlint:enable type_body_length file_length
