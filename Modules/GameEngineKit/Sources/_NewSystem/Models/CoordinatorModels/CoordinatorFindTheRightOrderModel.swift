@@ -18,6 +18,14 @@ extension CoordinatorFindTheRightOrderModel: Decodable {
         self.choices = try container.decode([CoordinatorFindTheRightOrderChoiceModel].self, forKey: .choices)
     }
 
+    public init?(data: Data) {
+        if let model = try? JSONDecoder().decode(CoordinatorFindTheRightOrderModel.self, from: data) {
+            self = model
+        } else {
+            return nil
+        }
+    }
+
     enum CodingKeys: String, CodingKey {
         case choices
     }
