@@ -37,32 +37,24 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
     public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
 
     public func processUserSelection(choiceID: UUID) {
-        if self.validationEnabled.value == nil {
-            guard !self.choiceAlreadySelected(choiceID: choiceID) else { return }
-
+        if let index = self.currentOrderedChoices.firstIndex(of: choiceID) {
+            self.currentOrderedChoices.remove(at: index)
+            self.updateChoiceState(for: choiceID, to: .idle)
+        } else {
             self.currentOrderedChoices.append(choiceID)
             self.updateChoiceState(for: choiceID, to: .selected(order: self.currentOrderedChoicesIndex))
-            if self.currentOrderedChoices.count == self.rawChoices.count {
+        }
+
+        for (index, id) in self.currentOrderedChoices.enumerated() {
+            self.updateChoiceState(for: id, to: .selected(order: index + 1))
+        }
+
+        if self.validationEnabled.value != nil {
+            self.validationEnabled.send(self.currentOrderedChoices.isNotEmpty)
+        } else {
+            if self.currentOrderedChoicesIndex == self.rawChoices.count {
                 self.validateUserSelection()
             }
-        } else {
-            var choiceState: State {
-                if let index = currentOrderedChoices.firstIndex(where: { $0 == choiceID }) {
-                    self.currentOrderedChoices.remove(at: index)
-                    return .idle
-                } else {
-                    self.currentOrderedChoices.append(choiceID)
-                    return .selected(order: self.currentOrderedChoicesIndex)
-                }
-            }
-
-            self.updateChoiceState(for: choiceID, to: choiceState)
-            if case .idle = choiceState {
-                for (index, id) in self.currentOrderedChoices.enumerated() {
-                    self.updateChoiceState(for: id, to: .selected(order: index + 1))
-                }
-            }
-            self.validationEnabled.send(self.currentOrderedChoices.isNotEmpty)
         }
     }
 
@@ -90,10 +82,6 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
 
     private var currentOrderedChoicesIndex: Int {
         self.currentOrderedChoices.count
-    }
-
-    private func choiceAlreadySelected(choiceID: UUID) -> Bool {
-        self.currentOrderedChoices.contains(where: { $0 == choiceID })
     }
 
     private func updateChoiceState(for choiceID: UUID, to state: State) {
