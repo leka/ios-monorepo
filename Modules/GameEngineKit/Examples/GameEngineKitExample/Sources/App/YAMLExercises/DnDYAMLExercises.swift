@@ -15,66 +15,45 @@ struct DnDYAMLExercises: View {
             HStack(spacing: 20) {
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kDnDGridAssociateCategoriesYaml)!
-                    let model = CoordinatorAssociateCategoriesModel(data: exercise.payload!)
-                    let coordinator = DnDGridCoordinatorAssociateCategories(model: model)
-                    let viewModel = DnDGridViewModel(coordinator: coordinator)
-
-                    return DnDGridView(viewModel: viewModel)
+                    ExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("Categories")
-                        .navigationBarTitleDisplayMode(.large)
+                        .navigationBarTitleDisplayMode(.inline)
                 } label: {
                     ExerciseNavigationButtonLabel(text: "Categories", color: .green)
                 }
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kDnDGridWithZonesAssociateCategoriesYaml)!
-                    let model = CoordinatorAssociateCategoriesModel(data: exercise.payload!)
-                    let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(model: model)
-                    let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
-
-                    return DnDGridWithZonesView(viewModel: viewModel)
+                    ExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("With Zones")
-                        .navigationBarTitleDisplayMode(.large)
+                        .navigationBarTitleDisplayMode(.inline)
                 } label: {
                     ExerciseNavigationButtonLabel(text: "With Zones", color: .green)
                 }
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kDnDOneToOneFindTheRightOrderYaml)!
-                    let model = CoordinatorFindTheRightOrderModel(data: exercise.payload!)
-                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(model: model)
-                    let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
-                    return DnDOneToOneView(viewModel: viewModel)
+                    ExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("One To One")
-                        .navigationBarTitleDisplayMode(.large)
+                        .navigationBarTitleDisplayMode(.inline)
                 } label: {
                     ExerciseNavigationButtonLabel(text: "One To One", color: .green)
                 }
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kDnDGridWithZonesAssociateCategoriesYaml)!
-                    let model = CoordinatorAssociateCategoriesModel(data: exercise.payload!)
-                    let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(model: model,
-                                                                                     validationEnabled: false)
-                    let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
-
-                    return DnDGridWithZonesView(viewModel: viewModel)
+                    ExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("Validate With Zones")
-                        .navigationBarTitleDisplayMode(.large)
+                        .navigationBarTitleDisplayMode(.inline)
                 } label: {
                     ExerciseNavigationButtonLabel(text: "Validate With Zones", color: .green)
                 }
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kDnDOneToOneFindTheRightOrderThenValidateYaml)!
-                    let model = CoordinatorFindTheRightOrderModel(data: exercise.payload!)
-                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(model: model,
-                                                                              validationEnabled: false)
-                    let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
-
-                    return DnDOneToOneView(viewModel: viewModel)
+                    ExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("Validate Right Order")
-                        .navigationBarTitleDisplayMode(.large)
+                        .navigationBarTitleDisplayMode(.inline)
                 } label: {
                     ExerciseNavigationButtonLabel(text: "Validate Right Order", color: .green)
                 }
