@@ -15,7 +15,7 @@ struct DnDYAMLExercises: View {
             HStack(spacing: 20) {
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kDnDGridAssociateCategoriesYaml)!
-                    let model = CoordinatorAssociateCategoriesModel(data: exercise.payload!)!
+                    let model = CoordinatorAssociateCategoriesModel(data: exercise.payload!)
                     let coordinator = DnDGridCoordinatorAssociateCategories(model: model)
                     let viewModel = DnDGridViewModel(coordinator: coordinator)
 
@@ -28,7 +28,7 @@ struct DnDYAMLExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kDnDGridWithZonesAssociateCategoriesYaml)!
-                    let model = CoordinatorAssociateCategoriesModel(data: exercise.payload!)!
+                    let model = CoordinatorAssociateCategoriesModel(data: exercise.payload!)
                     let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(model: model)
                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 
@@ -41,7 +41,7 @@ struct DnDYAMLExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kDnDOneToOneFindTheRightOrderYaml)!
-                    let model = CoordinatorFindTheRightOrderModel(data: exercise.payload!)!
+                    let model = CoordinatorFindTheRightOrderModel(data: exercise.payload!)
                     let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(model: model)
                     let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
                     return DnDOneToOneView(viewModel: viewModel)
@@ -53,7 +53,7 @@ struct DnDYAMLExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kDnDGridWithZonesAssociateCategoriesYaml)!
-                    let model = CoordinatorAssociateCategoriesModel(data: exercise.payload!)!
+                    let model = CoordinatorAssociateCategoriesModel(data: exercise.payload!)
                     let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(model: model,
                                                                                      validationEnabled: false)
                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
@@ -67,7 +67,7 @@ struct DnDYAMLExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kDnDOneToOneFindTheRightOrderThenValidateYaml)!
-                    let model = CoordinatorFindTheRightOrderModel(data: exercise.payload!)!
+                    let model = CoordinatorFindTheRightOrderModel(data: exercise.payload!)
                     let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(model: model,
                                                                               validationEnabled: false)
                     let viewModel = DnDOneToOneViewModel(coordinator: coordinator)

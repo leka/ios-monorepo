@@ -18,12 +18,13 @@ extension CoordinatorFindTheRightAnswersModel: Decodable {
         self.choices = try container.decode([CoordinatorFindTheRightAnswersChoiceModel].self, forKey: .choices)
     }
 
-    public init?(data: Data) {
-        if let model = try? JSONDecoder().decode(CoordinatorFindTheRightAnswersModel.self, from: data) {
-            self = model
-        } else {
-            return nil
+    public init(data: Data) {
+        guard let model = try? JSONDecoder().decode(CoordinatorFindTheRightAnswersModel.self, from: data) else {
+            log.error("Exercise payload not compatible with FindTheRightAnswers model:\n\(String(data: data, encoding: .utf8) ?? "(no data)")")
+            fatalError()
         }
+
+        self = model
     }
 
     enum CodingKeys: String, CodingKey {

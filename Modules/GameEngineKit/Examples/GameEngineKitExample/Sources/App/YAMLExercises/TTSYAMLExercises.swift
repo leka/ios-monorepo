@@ -17,7 +17,7 @@ struct TTSYAMLExercises: View {
             HStack(spacing: 20) {
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kTTSFindTheRightAnswersYaml)!
-                    let model = CoordinatorFindTheRightAnswersModel(data: exercise.payload!)!
+                    let model = CoordinatorFindTheRightAnswersModel(data: exercise.payload!)
                     let coordinator = TTSCoordinatorFindTheRightAnswers(model: model)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -30,7 +30,7 @@ struct TTSYAMLExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kTTSFindTheRightOrderYaml)!
-                    let model = CoordinatorFindTheRightOrderModel(data: exercise.payload!)!
+                    let model = CoordinatorFindTheRightOrderModel(data: exercise.payload!)
                     let coordinator = TTSCoordinatorFindTheRightOrder(model: model)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -43,7 +43,7 @@ struct TTSYAMLExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kTTSAssociateCategoriesYaml)!
-                    let model = CoordinatorAssociateCategoriesModel(data: exercise.payload!)!
+                    let model = CoordinatorAssociateCategoriesModel(data: exercise.payload!)
                     let coordinator = TTSCoordinatorAssociateCategories(model: model)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -56,7 +56,7 @@ struct TTSYAMLExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kMemoryAssociateCategoriesYaml)!
-                    let model = CoordinatorAssociateCategoriesModel(data: exercise.payload!)!
+                    let model = CoordinatorAssociateCategoriesModel(data: exercise.payload!)
                     let coordinator = MemoryCoordinatorAssociateCategories(model: model)
                     let viewModel = NewMemoryViewViewModel(coordinator: coordinator)
 
@@ -69,7 +69,7 @@ struct TTSYAMLExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kTTSFindTheRightAnswersThenValidateYaml)!
-                    let model = CoordinatorFindTheRightAnswersModel(data: exercise.payload!)!
+                    let model = CoordinatorFindTheRightAnswersModel(data: exercise.payload!)
                     let coordinator = TTSCoordinatorFindTheRightAnswers(model: model,
                                                                         validationEnabled: false)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
@@ -83,7 +83,7 @@ struct TTSYAMLExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kTTSFindTheRightOrderThenValidateYaml)!
-                    let model = CoordinatorFindTheRightOrderModel(data: exercise.payload!)!
+                    let model = CoordinatorFindTheRightOrderModel(data: exercise.payload!)
                     let coordinator = TTSCoordinatorFindTheRightOrder(model: model,
                                                                       validationEnabled: false)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
