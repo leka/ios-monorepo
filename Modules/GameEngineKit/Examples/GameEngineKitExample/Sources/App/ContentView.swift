@@ -15,6 +15,24 @@ struct ContentView: View {
             TabView(selection: self.$selection) {
                 ScrollView {
                     VStack(alignment: .leading) {
+                        Text("YAML - Choose your gameplay")
+                            .font(.largeTitle)
+                            .multilineTextAlignment(.center)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+
+                        TTSYAMLExercises()
+                        DnDYAMLExercises()
+                    }
+                }
+                .tabItem {
+                    Image(systemName: "text.word.spacing")
+                    Text("Choose your YAML activity")
+                }
+                .tag(0)
+
+                ScrollView {
+                    VStack(alignment: .leading) {
                         Text("Choose your gameplay")
                             .font(.largeTitle)
                             .multilineTextAlignment(.center)
@@ -42,9 +60,9 @@ struct ContentView: View {
                 }
                 .tabItem {
                     Image(systemName: "gamecontroller")
-                    Text("Choose your gameplay")
+                    Text("Choose your template")
                 }
-                .tag(0)
+                .tag(1)
 
                 VStack {
                     Text("Choose your template")
@@ -58,7 +76,7 @@ struct ContentView: View {
                     Image(systemName: "list.clipboard")
                     Text("Choose your template")
                 }
-                .tag(1)
+                .tag(2)
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
