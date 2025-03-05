@@ -30,6 +30,10 @@ public class TTSCoordinatorOpenPlay: TTSGameplayCoordinatorProtocol {
         }
     }
 
+    public convenience init(model: CoordinatorOpenPlayModel, action: Exercise.Action? = nil, minimumToSelect: Int = 0, maximumToSelect: Int? = nil) {
+        self.init(choices: model.choices, action: action, minimumToSelect: minimumToSelect, maximumToSelect: maximumToSelect)
+    }
+
     // MARK: Public
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)

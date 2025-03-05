@@ -28,6 +28,10 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
         }
     }
 
+    public convenience init(model: CoordinatorAssociateCategoriesModel, action: Exercise.Action? = nil) {
+        self.init(choices: model.choices, action: action)
+    }
+
     // MARK: Public
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)

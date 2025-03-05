@@ -15,8 +15,8 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
     // MARK: Lifecycle
 
     public init(choices: [CoordinatorOpenPlayChoiceModel], action: Exercise.Action? = nil, minimumToSelect: Int = 0, maximumToSelect: Int? = nil) {
-        let dropZones = choices.prefix(2)
-        let nodes = choices.suffix(choices.count - dropZones.count)
+        let dropZones = choices.filter(\.isDropzone)
+        let nodes = choices.filter { $0.isDropzone == false }
         self.rawChoices = Array(nodes)
 
         self.uiModel.value.action = action
@@ -40,6 +40,10 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
         self.uiModel.value.choices = nodes.map { choice in
             DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiModel.value.choiceSize(for: nodes.count))
         }
+    }
+
+    public convenience init(model: CoordinatorOpenPlayModel, action: Exercise.Action? = nil, minimumToSelect: Int = 0, maximumToSelect: Int? = nil) {
+        self.init(choices: model.choices, action: action, minimumToSelect: minimumToSelect, maximumToSelect: maximumToSelect)
     }
 
     // MARK: Public

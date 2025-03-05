@@ -25,6 +25,10 @@ public class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorPr
         }
     }
 
+    public convenience init(model: CoordinatorAssociateCategoriesModel, action: Exercise.Action? = nil) {
+        self.init(choices: model.choices, action: action)
+    }
+
     // MARK: Public
 
     public private(set) var uiModel = CurrentValueSubject<DnDGridUIModel, Never>(.zero)

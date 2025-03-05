@@ -25,6 +25,10 @@ public class MemoryCoordinatorAssociateCategories: MemoryGameplayCoordinatorProt
         }
     }
 
+    public convenience init(model: CoordinatorAssociateCategoriesModel) {
+        self.init(choices: model.choices)
+    }
+
     // MARK: Public
 
     public private(set) var uiModel = CurrentValueSubject<MemoryUIModel, Never>(.zero)
