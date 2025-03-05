@@ -36,7 +36,7 @@ extension CoordinatorFindTheRightOrderChoiceModel: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         self.value = try container.decode(String.self, forKey: .value)
-        self.type = try container.decode(ChoiceType.self, forKey: .type)
+        self.type = try container.decodeIfPresent(ChoiceType.self, forKey: .type) ?? .text
         self.alreadyOrdered = try container.decodeIfPresent(Bool.self, forKey: .alreadyOrdered) ?? false
 
         self.id = UUID()

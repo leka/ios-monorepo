@@ -10,10 +10,11 @@ import Foundation
 public struct CoordinatorAssociateCategoriesChoiceModel {
     // MARK: Lifecycle
 
-    public init(id: UUID = UUID(), value: String, category: AssociateCategory?, type: ChoiceType = .text) {
+    public init(id: UUID = UUID(), value: String, category: AssociateCategory?, type: ChoiceType = .text, isDropzone: Bool = false) {
         self.id = id
         self.value = value
         self.category = category
+        self.isDropzone = isDropzone
         self.type = type
     }
 
@@ -22,6 +23,7 @@ public struct CoordinatorAssociateCategoriesChoiceModel {
     let id: UUID
     let value: String
     let category: AssociateCategory?
+    let isDropzone: Bool
     let type: ChoiceType
 }
 
@@ -33,7 +35,8 @@ extension CoordinatorAssociateCategoriesChoiceModel: Decodable {
 
         self.value = try container.decode(String.self, forKey: .value)
         self.category = try container.decodeIfPresent(AssociateCategory.self, forKey: .category)
-        self.type = try container.decode(ChoiceType.self, forKey: .type)
+        self.isDropzone = try container.decodeIfPresent(Bool.self, forKey: .isDropzone) ?? false
+        self.type = try container.decodeIfPresent(ChoiceType.self, forKey: .type) ?? .text
 
         self.id = UUID()
     }
@@ -42,5 +45,6 @@ extension CoordinatorAssociateCategoriesChoiceModel: Decodable {
         case value
         case category
         case type
+        case isDropzone = "is_dropzone"
     }
 }

@@ -14,8 +14,8 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
     // MARK: Lifecycle
 
     public init(choices: [CoordinatorAssociateCategoriesChoiceModel], action: Exercise.Action? = nil, validationEnabled: Bool? = nil) {
-        let dropZones = choices.prefix(2)
-        let nodes = choices.suffix(choices.count - dropZones.count)
+        let dropZones = choices.filter(\.isDropzone)
+        let nodes = choices.filter { $0.isDropzone == false }
         self.rawChoices = Array(nodes)
 
         self.gameplay = NewGameplayAssociateCategories(choices: choices.map {
@@ -41,6 +41,10 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
         self.uiModel.value.choices = nodes.map { choice in
             DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiModel.value.choiceSize(for: nodes.count))
         }
+    }
+
+    public convenience init(model: CoordinatorAssociateCategoriesModel, action: Exercise.Action? = nil, validationEnabled: Bool? = nil) {
+        self.init(choices: model.choices, action: action, validationEnabled: validationEnabled)
     }
 
     // MARK: Public

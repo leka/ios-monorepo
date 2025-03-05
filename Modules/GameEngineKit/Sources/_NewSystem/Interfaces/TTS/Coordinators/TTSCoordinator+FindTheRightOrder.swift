@@ -27,6 +27,10 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
         self.validationEnabled.value = validationEnabled
     }
 
+    public convenience init(model: CoordinatorFindTheRightOrderModel, action: Exercise.Action? = nil, validationEnabled: Bool? = nil) {
+        self.init(choices: model.choices, action: action, validationEnabled: validationEnabled)
+    }
+
     // MARK: Public
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)

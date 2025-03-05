@@ -6,9 +6,9 @@ import ContentKit
 import GameEngineKit
 import SwiftUI
 
-// MARK: - TTSExercises
+// MARK: - TTSYAMLExercises
 
-struct TTSExercises: View {
+struct TTSYAMLExercises: View {
     var body: some View {
         Text("TTS")
             .font(.title)
@@ -16,43 +16,48 @@ struct TTSExercises: View {
         ScrollView(.horizontal) {
             HStack(spacing: 20) {
                 NavigationLink {
-                    let coordinator = TTSCoordinatorFindTheRightAnswers(
-                        choices: ExerciseData.kFindTheRightAnswersChoicesImages,
-                        action: nil
-                    )
+                    let exercise = NewExercise(yaml: ExerciseYAMLs.kTTSFindTheRightAnswersYaml)!
+                    let model = CoordinatorFindTheRightAnswersModel(data: exercise.payload!)!
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(model: model)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                     return TTSView(viewModel: viewModel)
-                        .navigationTitle("Find The Right Answers")
+                        .navigationTitle("Right Answers")
                         .navigationBarTitleDisplayMode(.large)
                 } label: {
                     ExerciseNavigationButtonLabel(text: "Right Answers", color: .indigo)
                 }
 
                 NavigationLink {
-                    let coordinator = TTSCoordinatorFindTheRightOrder(choices: ExerciseData.kFindTheRightOrderChoicesEmojis)
+                    let exercise = NewExercise(yaml: ExerciseYAMLs.kTTSFindTheRightOrderYaml)!
+                    let model = CoordinatorFindTheRightOrderModel(data: exercise.payload!)!
+                    let coordinator = TTSCoordinatorFindTheRightOrder(model: model)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                     return TTSView(viewModel: viewModel)
-                        .navigationTitle("Find The Right Order")
+                        .navigationTitle("Right Order")
                         .navigationBarTitleDisplayMode(.large)
                 } label: {
                     ExerciseNavigationButtonLabel(text: "Right Order", color: .indigo)
                 }
 
                 NavigationLink {
-                    let coordinator = TTSCoordinatorAssociateCategories(choices: ExerciseData.kAssociateCategoriesChoicesImages)
+                    let exercise = NewExercise(yaml: ExerciseYAMLs.kTTSAssociateCategoriesYaml)!
+                    let model = CoordinatorAssociateCategoriesModel(data: exercise.payload!)!
+                    let coordinator = TTSCoordinatorAssociateCategories(model: model)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                     return TTSView(viewModel: viewModel)
                         .navigationTitle("Associate Categories")
                         .navigationBarTitleDisplayMode(.large)
                 } label: {
-                    ExerciseNavigationButtonLabel(text: "Categories", color: .indigo)
+                    ExerciseNavigationButtonLabel(text: "Associate Categories", color: .indigo)
                 }
 
                 NavigationLink {
-                    let coordinator = MemoryCoordinatorAssociateCategories(choices: ExerciseData.kAssociateCategoriesChoicesEmojis)
+                    let exercise = NewExercise(yaml: ExerciseYAMLs.kMemoryAssociateCategoriesYaml)!
+                    let model = CoordinatorAssociateCategoriesModel(data: exercise.payload!)!
+                    let coordinator = MemoryCoordinatorAssociateCategories(model: model)
                     let viewModel = NewMemoryViewViewModel(coordinator: coordinator)
 
                     return NewMemoryView(viewModel: viewModel)
@@ -63,7 +68,9 @@ struct TTSExercises: View {
                 }
 
                 NavigationLink {
-                    let coordinator = TTSCoordinatorFindTheRightAnswers(choices: ExerciseData.kFindTheRightAnswersChoicesDefault,
+                    let exercise = NewExercise(yaml: ExerciseYAMLs.kTTSFindTheRightAnswersThenValidateYaml)!
+                    let model = CoordinatorFindTheRightAnswersModel(data: exercise.payload!)!
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(model: model,
                                                                         validationEnabled: false)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -75,7 +82,9 @@ struct TTSExercises: View {
                 }
 
                 NavigationLink {
-                    let coordinator = TTSCoordinatorFindTheRightOrder(choices: ExerciseData.kFindTheRightOrderChoicesSFSymbols,
+                    let exercise = NewExercise(yaml: ExerciseYAMLs.kTTSFindTheRightOrderThenValidateYaml)!
+                    let model = CoordinatorFindTheRightOrderModel(data: exercise.payload!)!
+                    let coordinator = TTSCoordinatorFindTheRightOrder(model: model,
                                                                       validationEnabled: false)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -91,5 +100,5 @@ struct TTSExercises: View {
 }
 
 #Preview {
-    TTSExercises()
+    TTSYAMLExercises()
 }

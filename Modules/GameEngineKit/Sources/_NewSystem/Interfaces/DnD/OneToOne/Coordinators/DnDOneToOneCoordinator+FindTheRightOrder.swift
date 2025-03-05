@@ -38,6 +38,10 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
         self.alreadyValidatedChoices = Array(repeating: nil, count: self.gameplay.orderedChoices.count)
     }
 
+    public convenience init(model: CoordinatorFindTheRightOrderModel, action: Exercise.Action? = nil, validationEnabled: Bool? = nil) {
+        self.init(choices: model.choices, action: action, validationEnabled: validationEnabled)
+    }
+
     // MARK: Public
 
     public private(set) var uiDropZones: [DnDDropZoneNode] = []
