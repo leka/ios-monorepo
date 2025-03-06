@@ -135,9 +135,37 @@ public class ExerciseCoordinator {
             }
 
             if case let .specialized(interface) = self.exercise.interface {
-                switch interface {
-                    default:
-                        PlaceholderExerciseView()
+                if let payload = self.exercise.payload {
+                    switch interface {
+                        case .pairing:
+                            DiscoverLekaView()
+                        case .danceFreeze:
+                            let model = DanceFreezeModel(data: payload)
+                            DanceFreezeView(model: model)
+                        case .hideAndSeek:
+                            HideAndSeekView()
+                        case .musicalInstruments:
+                            let model = MusicalInstrumentModel(data: payload)
+                            MusicalInstrumentView(model: model)
+                        case .melody:
+                            let model = MelodyModel(data: payload)
+                            MelodyView(model: model)
+                        case .gamepadJoyStickColorPad:
+                            Gamepad.Joystick()
+                        case .gamepadArrowPadColorPad:
+                            Gamepad.ArrowPadColorPad()
+                        case .gamepadColorPad:
+                            Gamepad.ColorPadView()
+                        case .gamepadArrowPad:
+                            ArrowPadView(size: 200, xPosition: 180)
+                        case .colorMusicPad:
+                            ColorMusicPad()
+                        case .colorMediator:
+                            ColorMediatorView()
+                        case .superSimon:
+                            let model = SuperSimonModel(data: payload)
+                            SuperSimonView(model: model)
+                    }
                 }
             }
         }
