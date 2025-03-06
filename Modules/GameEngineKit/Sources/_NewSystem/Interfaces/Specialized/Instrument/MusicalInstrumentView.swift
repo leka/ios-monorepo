@@ -6,6 +6,8 @@ import AudioKit
 import ContentKit
 import SwiftUI
 
+// MARK: - MusicalInstrumentView
+
 struct MusicalInstrumentView: View {
     // MARK: Lifecycle
 
@@ -29,6 +31,12 @@ struct MusicalInstrumentView: View {
         self.instrument = instrument
         self.scale = scale
         _midiPlayer = StateObject(wrappedValue: MIDIPlayer(instrument: instrument))
+    }
+
+    init(model: MusicalInstrumentModel) {
+        self.instrument = model.instrument
+        self.scale = model.scale
+        _midiPlayer = StateObject(wrappedValue: MIDIPlayer(instrument: model.instrument))
     }
 
     // MARK: Internal

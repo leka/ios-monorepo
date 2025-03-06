@@ -27,6 +27,10 @@ public struct SuperSimonView: View {
             wrappedValue: SuperSimonViewViewModel(level: payload.level, shared: data))
     }
 
+    public init(model: SuperSimonModel) {
+        _viewModel = StateObject(wrappedValue: SuperSimonViewViewModel(level: model.level))
+    }
+
     // MARK: Public
 
     public var body: some View {
