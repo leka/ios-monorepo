@@ -6,6 +6,8 @@ import ContentKit
 import DesignKit
 import SwiftUI
 
+// MARK: - DanceFreezeView
+
 public struct DanceFreezeView: View {
     // MARK: Lifecycle
 
@@ -23,6 +25,12 @@ public struct DanceFreezeView: View {
         self.songs = payload.songs
         self.selectedAudioRecording = self.songs.first!
         self.data = data
+    }
+
+    public init(model: DanceFreezeModel) {
+        self.songs = model.songs
+        self.selectedAudioRecording = model.songs.first!
+        self.data = ExerciseSharedData()
     }
 
     // MARK: Public
