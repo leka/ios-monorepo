@@ -121,8 +121,9 @@ public struct ActivityDetailsView: View {
             #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                     ToolbarItemGroup {
-                        if self.libraryManagerViewModel.isActivitySaved(
-                            activityID: self.activity.uuid
+                        if self.libraryManagerViewModel.isActivityFavoritedByCurrentCaregiver(
+                            activityID: self.activity.id,
+                            caregiverID: currentCaregiverID
                         ) {
                             Image(systemName: "star.circle")
                                 .font(.system(size: 21))
@@ -171,9 +172,9 @@ public struct ActivityDetailsView: View {
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
 
+    @ObservedObject private var libraryManagerViewModel: LibraryManagerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
 
-    @StateObject private var libraryManagerViewModel = LibraryManagerViewModel()
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var libraryManager: LibraryManager = .shared
@@ -181,9 +182,13 @@ public struct ActivityDetailsView: View {
 
     @ViewBuilder
     private func addOrRemoveButton(activity: Activity, caregiverID: String) -> some View {
+        let libraryItem = LibraryItem.activity(
+            SavedActivity(id: activity.uuid, caregiverID: caregiverID)
+        )
+
         if self.libraryManagerViewModel.isActivitySaved(activityID: activity.uuid) {
             Button(role: .destructive) {
-                self.libraryManager.removeActivity(activityID: activity.uuid)
+                self.libraryManagerViewModel.requestItemRemoval(libraryItem, caregiverID: caregiverID)
             } label: {
                 Label("Remove from Library", systemImage: "trash")
             }
@@ -200,18 +205,27 @@ public struct ActivityDetailsView: View {
     }
 
     @ViewBuilder
-    private func addOrRemoveFavoriteButton(activity: Activity, caregiverID _: String) -> some View {
-        if self.libraryManagerViewModel.isActivitySaved(activityID: activity.uuid) {
+    private func addOrRemoveFavoriteButton(activity: Activity, caregiverID: String) -> some View {
+        if self.libraryManagerViewModel.isActivityFavoritedByCurrentCaregiver(
+            activityID: activity.uuid,
+            caregiverID: caregiverID
+        ) {
             Button {
-                print("Remove Activity from Favorites")
+                self.libraryManager.removeActivityFromFavorites(
+                    activityID: activity.uuid,
+                    caregiverID: caregiverID
+                )
             } label: {
-                Label("Undo Favorites", systemImage: "star.slash")
+                Label("Undo Favorite", systemImage: "star.slash")
             }
         } else {
             Button {
-                print("Add Activity to Favorites")
+                self.libraryManager.addActivityToLibraryAsFavorite(
+                    activityID: activity.uuid,
+                    caregiverID: caregiverID
+                )
             } label: {
-                Label("Add to Favorites", systemImage: "star")
+                Label("Favorite", systemImage: "star")
             }
         }
     }

@@ -145,8 +145,9 @@ public struct CurriculumDetailsView: View {
             #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                     ToolbarItemGroup {
-                        if self.libraryManagerViewModel.isCurriculumSaved(
-                            curriculumID: self.curriculum.uuid
+                        if self.libraryManagerViewModel.isCurriculumFavoritedByCurrentCaregiver(
+                            curriculumID: self.curriculum.uuid,
+                            caregiverID: currentCaregiverID
                         ) {
                             Image(systemName: "star.circle")
                                 .font(.system(size: 21))
@@ -181,9 +182,10 @@ public struct CurriculumDetailsView: View {
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
     @State private var isDescriptionExpanded = false
+
+    @ObservedObject private var libraryManagerViewModel: LibraryManagerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
 
-    @StateObject private var libraryManagerViewModel = LibraryManagerViewModel()
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var libraryManager: LibraryManager = .shared
@@ -191,9 +193,13 @@ public struct CurriculumDetailsView: View {
 
     @ViewBuilder
     private func addOrRemoveButton(curriculum: Curriculum, caregiverID: String) -> some View {
+        let libraryItem = LibraryItem.curriculum(
+            SavedCurriculum(id: curriculum.uuid, caregiverID: caregiverID)
+        )
+
         if self.libraryManagerViewModel.isCurriculumSaved(curriculumID: curriculum.uuid) {
             Button(role: .destructive) {
-                self.libraryManager.removeCurriculum(curriculumID: curriculum.uuid)
+                self.libraryManagerViewModel.requestItemRemoval(libraryItem, caregiverID: caregiverID)
             } label: {
                 Label("Remove from Library", systemImage: "trash")
             }
@@ -210,18 +216,27 @@ public struct CurriculumDetailsView: View {
     }
 
     @ViewBuilder
-    private func addOrRemoveFavoriteButton(curriculum: Curriculum, caregiverID _: String) -> some View {
-        if self.libraryManagerViewModel.isCurriculumSaved(curriculumID: curriculum.uuid) {
+    private func addOrRemoveFavoriteButton(curriculum: Curriculum, caregiverID: String) -> some View {
+        if self.libraryManagerViewModel.isCurriculumFavoritedByCurrentCaregiver(
+            curriculumID: curriculum.uuid,
+            caregiverID: caregiverID
+        ) {
             Button {
-                print("Remove Curriculum from Favorites")
+                self.libraryManager.removeCurriculumFromFavorites(
+                    curriculumID: curriculum.uuid,
+                    caregiverID: caregiverID
+                )
             } label: {
-                Label("Undo Favorites", systemImage: "star.slash")
+                Label("Undo Favorite", systemImage: "star.slash")
             }
         } else {
             Button {
-                print("Add Curriculum to Favorites")
+                self.libraryManager.addCurriculumToLibraryAsFavorite(
+                    curriculumID: curriculum.uuid,
+                    caregiverID: caregiverID
+                )
             } label: {
-                Label("Add to Favorites", systemImage: "star")
+                Label("Favorite", systemImage: "star")
             }
         }
     }

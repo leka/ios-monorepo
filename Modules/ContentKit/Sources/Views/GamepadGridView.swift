@@ -45,7 +45,12 @@ public struct GamepadGridView: View {
                                 .font(.headline)
                                 .foregroundStyle(Color.primary)
 
-                            if self.libraryManagerViewModel.isActivitySaved(activityID: activity.uuid) {
+                            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id,
+                               self.libraryManagerViewModel.isActivityFavoritedByCurrentCaregiver(
+                                   activityID: activity.id,
+                                   caregiverID: currentCaregiverID
+                               )
+                            {
                                 Text(Image(systemName: "star.fill"))
                                     .font(.caption)
                                     .foregroundColor(self.styleManager.accentColor ?? .blue)
@@ -75,9 +80,10 @@ public struct GamepadGridView: View {
 
     // MARK: Private
 
+    @ObservedObject private var libraryManagerViewModel: LibraryManagerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
 
-    @StateObject private var libraryManagerViewModel = LibraryManagerViewModel()
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private let columns = Array(repeating: GridItem(), count: 2)
 }

@@ -32,14 +32,20 @@ public struct LibraryStoryListView: View {
                         )
                 ) {
                     HStack(spacing: 10) {
-                        Image(systemName: "star.fill")
-                            .font(.system(size: 10))
-                            .foregroundColor(
-                                self.libraryManagerViewModel.isStorySaved(storyID: story.uuid) ?
-                                    (self.styleManager.accentColor ?? .blue) :
-                                    .clear
-                            )
-                            .frame(width: 10)
+                        if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id,
+                           self.libraryManagerViewModel.isStoryFavoritedByCurrentCaregiver(
+                               storyID: story.id,
+                               caregiverID: currentCaregiverID
+                           )
+                        {
+                            Image(systemName: "star.fill")
+                                .font(.system(size: 10))
+                                .foregroundColor(self.styleManager.accentColor ?? .blue)
+                                .frame(width: 10)
+                        } else {
+                            Color.clear
+                                .frame(width: 10)
+                        }
 
                         Image(uiImage: story.details.iconImage)
                             .resizable()
@@ -112,17 +118,22 @@ public struct LibraryStoryListView: View {
 
     // MARK: Private
 
+    @ObservedObject private var libraryManagerViewModel: LibraryManagerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
-    @StateObject private var libraryManagerViewModel = LibraryManagerViewModel()
+
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var libraryManager: LibraryManager = .shared
 
     @ViewBuilder
     private func addOrRemoveButton(story: Story, caregiverID: String) -> some View {
+        let libraryItem = LibraryItem.story(
+            SavedStory(id: story.uuid, caregiverID: caregiverID)
+        )
+
         if self.libraryManagerViewModel.isStorySaved(storyID: story.uuid) {
             Button(role: .destructive) {
-                self.libraryManager.removeStory(storyID: story.uuid)
+                self.libraryManagerViewModel.requestItemRemoval(libraryItem, caregiverID: caregiverID)
             } label: {
                 Label("Remove from Library", systemImage: "trash")
             }
@@ -139,18 +150,27 @@ public struct LibraryStoryListView: View {
     }
 
     @ViewBuilder
-    private func addOrRemoveFavoriteButton(story: Story, caregiverID _: String) -> some View {
-        if self.libraryManagerViewModel.isStorySaved(storyID: story.uuid) {
+    private func addOrRemoveFavoriteButton(story: Story, caregiverID: String) -> some View {
+        if self.libraryManagerViewModel.isStoryFavoritedByCurrentCaregiver(
+            storyID: story.uuid,
+            caregiverID: caregiverID
+        ) {
             Button {
-                print("Remove Story from Favorites")
+                self.libraryManager.removeStoryFromFavorites(
+                    storyID: story.uuid,
+                    caregiverID: caregiverID
+                )
             } label: {
-                Label("Undo Favorites", systemImage: "star.slash")
+                Label("Undo Favorite", systemImage: "star.slash")
             }
         } else {
             Button {
-                print("Add Story to Favorites")
+                self.libraryManager.addStoryToLibraryAsFavorite(
+                    storyID: story.uuid,
+                    caregiverID: caregiverID
+                )
             } label: {
-                Label("Add to Favorites", systemImage: "star")
+                Label("Favorite", systemImage: "star")
             }
         }
     }

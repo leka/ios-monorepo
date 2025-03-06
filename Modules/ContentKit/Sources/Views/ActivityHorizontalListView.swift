@@ -51,7 +51,12 @@ public struct ActivityHorizontalListView: View {
                                     .foregroundStyle(Color.primary)
                                     .fixedSize(horizontal: false, vertical: true)
 
-                                if self.libraryManagerViewModel.isActivitySaved(activityID: activity.uuid) {
+                                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id,
+                                   self.libraryManagerViewModel.isActivityFavoritedByCurrentCaregiver(
+                                       activityID: activity.id,
+                                       caregiverID: currentCaregiverID
+                                   )
+                                {
                                     Text(Image(systemName: "star.fill"))
                                         .font(.caption)
                                         .foregroundColor(self.styleManager.accentColor ?? .blue)
@@ -89,9 +94,10 @@ public struct ActivityHorizontalListView: View {
 
     // MARK: Private
 
+    @ObservedObject private var libraryManagerViewModel: LibraryManagerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
 
-    @StateObject private var libraryManagerViewModel = LibraryManagerViewModel()
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private let columns = Array(repeating: GridItem(), count: 3)
     private let rows = [GridItem()]

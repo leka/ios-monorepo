@@ -115,8 +115,9 @@ public struct StoryDetailsView: View {
             #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                     ToolbarItemGroup {
-                        if self.libraryManagerViewModel.isStorySaved(
-                            storyID: self.story.uuid
+                        if self.libraryManagerViewModel.isStoryFavoritedByCurrentCaregiver(
+                            storyID: self.story.uuid,
+                            caregiverID: currentCaregiverID
                         ) {
                             Image(systemName: "star.circle")
                                 .font(.system(size: 21))
@@ -164,9 +165,9 @@ public struct StoryDetailsView: View {
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
 
+    @ObservedObject private var libraryManagerViewModel: LibraryManagerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
 
-    @StateObject private var libraryManagerViewModel = LibraryManagerViewModel()
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var libraryManager: LibraryManager = .shared
@@ -174,9 +175,13 @@ public struct StoryDetailsView: View {
 
     @ViewBuilder
     private func addOrRemoveButton(story: Story, caregiverID: String) -> some View {
+        let libraryItem = LibraryItem.story(
+            SavedStory(id: story.uuid, caregiverID: caregiverID)
+        )
+
         if self.libraryManagerViewModel.isStorySaved(storyID: story.uuid) {
             Button(role: .destructive) {
-                self.libraryManager.removeStory(storyID: story.uuid)
+                self.libraryManagerViewModel.requestItemRemoval(libraryItem, caregiverID: caregiverID)
             } label: {
                 Label("Remove from Library", systemImage: "trash")
             }
@@ -193,18 +198,27 @@ public struct StoryDetailsView: View {
     }
 
     @ViewBuilder
-    private func addOrRemoveFavoriteButton(story: Story, caregiverID _: String) -> some View {
-        if self.libraryManagerViewModel.isStorySaved(storyID: story.uuid) {
+    private func addOrRemoveFavoriteButton(story: Story, caregiverID: String) -> some View {
+        if self.libraryManagerViewModel.isStoryFavoritedByCurrentCaregiver(
+            storyID: story.uuid,
+            caregiverID: caregiverID
+        ) {
             Button {
-                print("Remove Story from Favorites")
+                self.libraryManager.removeStoryFromFavorites(
+                    storyID: story.uuid,
+                    caregiverID: caregiverID
+                )
             } label: {
-                Label("Undo Favorites", systemImage: "star.slash")
+                Label("Undo Favorite", systemImage: "star.slash")
             }
         } else {
             Button {
-                print("Add Story to Favorites")
+                self.libraryManager.addStoryToLibraryAsFavorite(
+                    storyID: story.uuid,
+                    caregiverID: caregiverID
+                )
             } label: {
-                Label("Add to Favorites", systemImage: "star")
+                Label("Favorite", systemImage: "star")
             }
         }
     }
