@@ -44,7 +44,7 @@ extension NewExercise: Decodable {
             self.instructions = nil
         }
 
-        let data = try container.decode(AnyCodable.self, forKey: .payload)
+        let data = try container.decodeIfPresent(AnyCodable.self, forKey: .payload)
         self.payload = try JSONEncoder().encode(data)
     }
 
