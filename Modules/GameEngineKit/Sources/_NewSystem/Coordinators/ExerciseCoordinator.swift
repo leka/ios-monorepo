@@ -69,8 +69,7 @@ public class ExerciseCoordinator {
                                     DnDGridView(viewModel: viewModel)
 
                                 default:
-                                    // TODO: (@ladislas) - handle wrong combinations
-                                    PlaceholderExerciseView()
+                                    ExerciseInterfaceGameplayNotSupportedView(interface: interface, gameplay: gameplay)
                             }
 
                         case .dragAndDropGridWithZones:
@@ -90,8 +89,7 @@ public class ExerciseCoordinator {
                                     DnDGridWithZonesView(viewModel: viewModel)
 
                                 default:
-                                    // TODO: (@ladislas) - handle wrong combinations
-                                    PlaceholderExerciseView()
+                                    ExerciseInterfaceGameplayNotSupportedView(interface: interface, gameplay: gameplay)
                             }
 
                         case .dragAndDropOneToOne:
@@ -104,8 +102,7 @@ public class ExerciseCoordinator {
                                     DnDOneToOneView(viewModel: viewModel)
 
                                 default:
-                                    // TODO: (@ladislas) - handle wrong combinations
-                                    PlaceholderExerciseView()
+                                    ExerciseInterfaceGameplayNotSupportedView(interface: interface, gameplay: gameplay)
                             }
 
                         case .memory:
@@ -118,8 +115,7 @@ public class ExerciseCoordinator {
                                     NewMemoryView(viewModel: viewModel)
 
                                 default:
-                                    // TODO: (@ladislas) - handle wrong combinations
-                                    PlaceholderExerciseView()
+                                    ExerciseInterfaceGameplayNotSupportedView(interface: interface, gameplay: gameplay)
                             }
 
                         case .magicCards:
@@ -129,8 +125,7 @@ public class ExerciseCoordinator {
                             }
                     }
                 } else {
-                    // TODO: (@ladislas) - handle missing gameplay
-                    PlaceholderExerciseView()
+                    ExerciseInterfaceGameplayNotSupportedView(interface: interface, gameplay: nil)
                 }
             }
 
@@ -149,3 +144,47 @@ public class ExerciseCoordinator {
 
     private let exercise: NewExercise
 }
+
+// MARK: - ExerciseInterfaceGameplayNotSupportedView
+
+private struct ExerciseInterfaceGameplayNotSupportedView: View {
+    // MARK: Lifecycle
+
+    init(interface: NewExerciseInterface.GeneralInterface, gameplay: NewExerciseGameplay? = nil) {
+        log.error("Interface \(interface) and gameplay \(gameplay?.rawValue ?? "empty") combination not supported.")
+        self.interface = interface
+        self.gameplay = gameplay
+    }
+
+    // MARK: Internal
+
+    var body: some View {
+        VStack(spacing: 40) {
+            Image(systemName: "xmark.octagon.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 100)
+                .foregroundColor(.red)
+
+            Text("Interface + Gameplay \n not supported")
+                .font(.title)
+
+            Text(
+                "Interface: \(self.interface.rawValue) \n Gameplay: \(self.gameplay?.rawValue ?? "empty")"
+            )
+            .font(.subheadline)
+        }
+        .multilineTextAlignment(.center)
+    }
+
+    // MARK: Private
+
+    private let interface: NewExerciseInterface.GeneralInterface
+    private let gameplay: NewExerciseGameplay?
+}
+
+#if DEBUG
+    #Preview {
+        ExerciseInterfaceGameplayNotSupportedView(interface: .dragAndDropGrid, gameplay: .openPlay)
+    }
+#endif
