@@ -32,11 +32,12 @@ public struct CurriculumGroupboxView: View {
 
                     #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                         if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                            if self.libraryManagerViewModel.isCurriculumSaved(
-                                curriculumID: self.curriculum.uuid
+                            if self.libraryManagerViewModel.isCurriculumFavoritedByCurrentCaregiver(
+                                curriculumID: self.curriculum.uuid,
+                                caregiverID: currentCaregiverID
                             ) {
                                 Image(systemName: "star.circle")
-                                    .font(.system(size: 26))
+                                    .font(.system(size: 25))
                                     .foregroundColor(self.styleManager.accentColor ?? .blue)
                             }
 
@@ -105,9 +106,9 @@ public struct CurriculumGroupboxView: View {
 
     // MARK: Private
 
+    @ObservedObject private var libraryManagerViewModel: LibraryManagerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
 
-    @StateObject private var libraryManagerViewModel = LibraryManagerViewModel()
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var libraryManager: LibraryManager = .shared
@@ -134,18 +135,27 @@ public struct CurriculumGroupboxView: View {
     }
 
     @ViewBuilder
-    private func addOrRemoveFavoriteButton(curriculum: Curriculum, caregiverID _: String) -> some View {
-        if self.libraryManagerViewModel.isCurriculumSaved(curriculumID: curriculum.uuid) {
+    private func addOrRemoveFavoriteButton(curriculum: Curriculum, caregiverID: String) -> some View {
+        if self.libraryManagerViewModel.isCurriculumFavoritedByCurrentCaregiver(
+            curriculumID: curriculum.uuid,
+            caregiverID: caregiverID
+        ) {
             Button {
-                print("Remove Curriculum from Favorites")
+                self.libraryManager.removeCurriculumFromFavorites(
+                    curriculumID: curriculum.uuid,
+                    caregiverID: caregiverID
+                )
             } label: {
-                Label("Undo Favorites", systemImage: "star.slash")
+                Label("Undo Favorite", systemImage: "star.slash")
             }
         } else {
             Button {
-                print("Add Curriculum to Favorites")
+                self.libraryManager.addCurriculumToLibraryAsFavorite(
+                    curriculumID: curriculum.uuid,
+                    caregiverID: caregiverID
+                )
             } label: {
-                Label("Add to Favorites", systemImage: "star")
+                Label("Favorite", systemImage: "star")
             }
         }
     }
