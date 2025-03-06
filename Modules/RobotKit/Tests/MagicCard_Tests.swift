@@ -11,8 +11,8 @@ final class MagicCard_Tests: XCTestCase {
         // Given
 
         // When
-        let card1 = MagicCard(language: .fr_FR, id: 0xBEEF)
-        let card2 = MagicCard(language: .fr_FR, id: 0xBEEF)
+        let card1 = MagicCard.from(id: 0xBEEF, language: .fr_FR)!
+        let card2 = MagicCard.from(id: 0xBEEF, language: .fr_FR)!
 
         // Then
         XCTAssertTrue(card1 == card2)
@@ -22,8 +22,8 @@ final class MagicCard_Tests: XCTestCase {
         // Given
 
         // When
-        let card1 = MagicCard(language: .fr_FR, id: 0xBEEF)
-        let card2 = MagicCard(language: .en_US, id: 0xBEEF)
+        let card1 = MagicCard.from(id: 0xBEEF, language: .fr_FR)!
+        let card2 = MagicCard.from(id: 0xBEEF, language: .en_US)!
 
         // Then
         XCTAssertTrue(card1 == card2)
@@ -33,8 +33,8 @@ final class MagicCard_Tests: XCTestCase {
         // Given
 
         // When
-        let card1 = MagicCard(language: .fr_FR, id: 0xBEEF)
-        let card2 = MagicCard(language: .fr_FR, id: 0xBEEF)
+        let card1 = MagicCard.from(id: 0xBEEF, language: .fr_FR)!
+        let card2 = MagicCard.from(id: 0xBEEF, language: .fr_FR)!
 
         // Then
         XCTAssertTrue(card1 === card2)
@@ -44,8 +44,8 @@ final class MagicCard_Tests: XCTestCase {
         // Given
 
         // When
-        let card1 = MagicCard(language: .fr_FR, id: 0xBEEF)
-        let card2 = MagicCard(language: .en_US, id: 0xBEEF)
+        let card1 = MagicCard.from(id: 0xBEEF, language: .fr_FR)!
+        let card2 = MagicCard.from(id: 0xBEEF, language: .en_US)!
 
         // Then
         XCTAssertFalse(card1 === card2)
@@ -55,8 +55,8 @@ final class MagicCard_Tests: XCTestCase {
         // Given
 
         // When
-        let card1 = MagicCard(id: 0x0002)
-        let card2 = MagicCard.dice_roll
+        let card1 = MagicCard.from(id: 0x0002)!
+        let card2 = MagicCard(.dice_roll)
 
         // Then
         XCTAssertTrue(card1 == card2)
@@ -66,8 +66,8 @@ final class MagicCard_Tests: XCTestCase {
         // Given
 
         // When
-        let card1 = MagicCard(language: .fr_FR, id: 0x0002)
-        let card2 = MagicCard.dice_roll
+        let card1 = MagicCard.from(id: 0x0002, language: .fr_FR)!
+        let card2 = MagicCard(.dice_roll)
 
         // Then
         XCTAssertTrue(card1 == card2)
@@ -77,8 +77,8 @@ final class MagicCard_Tests: XCTestCase {
         // Given
 
         // When
-        let card1 = MagicCard(language: .fr_FR, id: 0x0002)
-        let card2 = MagicCard.dice_roll
+        let card1 = MagicCard.from(id: 0x0002, language: .fr_FR)!
+        let card2 = MagicCard(.dice_roll)
 
         // Then
         XCTAssertFalse(card1 === card2)

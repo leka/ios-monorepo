@@ -23,6 +23,7 @@ struct ContentView: View {
 
                         TTSYAMLExercises()
                         DnDYAMLExercises()
+                        MagicCardYAMLExercises()
                     }
                 }
                 .tabItem {

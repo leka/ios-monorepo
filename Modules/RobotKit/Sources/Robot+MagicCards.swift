@@ -15,7 +15,7 @@ extension Robot {
                     let id = data.dropLast().map { UInt16($0) }.reduce(0) { $0 << 8 + $1 }
                     let language = MagicCard.Language(rawValue: data.last!)!
 
-                    let card = MagicCard(language: language, id: id)
+                    let card = MagicCard.from(id: id, language: language)!
                     self.magicCard.send(card)
 
                     log.trace("🤖 magicCard: language \(language.rawValue), id \(String(format: "%04X", id))")
@@ -35,7 +35,7 @@ extension Robot {
                     let id = data.dropLast().map { UInt16($0) }.reduce(0) { $0 << 8 + $1 }
                     let language = MagicCard.Language(rawValue: data.last!)!
 
-                    let card = MagicCard(language: language, id: id)
+                    let card = MagicCard.from(id: id, language: language)!
                     self.magicCard.send(card)
 
                     log.trace("🤖 magicCard: language \(language.rawValue), id \(String(format: "%04X", id))")
