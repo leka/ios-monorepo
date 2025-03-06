@@ -33,12 +33,20 @@ public struct ActivityListView: View {
                                     parameters: ["lk_activity_id": "\(activity.name)-\(activity.id)"]
                                 )
                         ) {
-                            Image(systemName: "star.fill")
-                                .font(.system(size: 10))
-                                .foregroundColor(
-                                    self.libraryManagerViewModel.isActivitySaved(activityID: activity.uuid) ? (self.styleManager.accentColor ?? .blue) : .clear
-                                )
-                                .frame(width: 10)
+                            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id,
+                               self.libraryManagerViewModel.isActivityFavoritedByCurrentCaregiver(
+                                   activityID: activity.id,
+                                   caregiverID: currentCaregiverID
+                               )
+                            {
+                                Image(systemName: "star.fill")
+                                    .font(.system(size: 10))
+                                    .foregroundColor(self.styleManager.accentColor ?? .blue)
+                                    .frame(width: 10)
+                            } else {
+                                Color.clear
+                                    .frame(width: 10)
+                            }
 
                             HStack(spacing: 10) {
                                 Image(uiImage: activity.details.iconImage)
@@ -156,17 +164,22 @@ public struct ActivityListView: View {
         }
     }
 
+    @ObservedObject private var libraryManagerViewModel: LibraryManagerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
-    @StateObject private var libraryManagerViewModel = LibraryManagerViewModel()
+
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var libraryManager: LibraryManager = .shared
 
     @ViewBuilder
     private func addOrRemoveButton(activity: Activity, caregiverID: String) -> some View {
+        let libraryItem = LibraryItem.activity(
+            SavedActivity(id: activity.uuid, caregiverID: caregiverID)
+        )
+
         if self.libraryManagerViewModel.isActivitySaved(activityID: activity.uuid) {
             Button(role: .destructive) {
-                self.libraryManager.removeActivity(activityID: activity.uuid)
+                self.libraryManagerViewModel.requestItemRemoval(libraryItem, caregiverID: caregiverID)
             } label: {
                 Label("Remove from Library", systemImage: "trash")
             }
@@ -183,18 +196,27 @@ public struct ActivityListView: View {
     }
 
     @ViewBuilder
-    private func addOrRemoveFavoriteButton(activity: Activity, caregiverID _: String) -> some View {
-        if self.libraryManagerViewModel.isActivitySaved(activityID: activity.uuid) {
+    private func addOrRemoveFavoriteButton(activity: Activity, caregiverID: String) -> some View {
+        if self.libraryManagerViewModel.isActivityFavoritedByCurrentCaregiver(
+            activityID: activity.uuid,
+            caregiverID: caregiverID
+        ) {
             Button {
-                print("Remove Activity from Favorites")
+                self.libraryManager.removeActivityFromFavorites(
+                    activityID: activity.uuid,
+                    caregiverID: caregiverID
+                )
             } label: {
-                Label("Undo Favorites", systemImage: "star.slash")
+                Label("Undo Favorite", systemImage: "star.slash")
             }
         } else {
             Button {
-                print("Add Activity to Favorites")
+                self.libraryManager.addActivityToLibraryAsFavorite(
+                    activityID: activity.uuid,
+                    caregiverID: caregiverID
+                )
             } label: {
-                Label("Add to Favorites", systemImage: "star")
+                Label("Favorite", systemImage: "star")
             }
         }
     }

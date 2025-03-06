@@ -45,7 +45,12 @@ public struct StoryGridView: View {
                                 .font(.headline)
                                 .foregroundStyle(Color.primary)
 
-                            if self.libraryManagerViewModel.isStorySaved(storyID: story.uuid) {
+                            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id,
+                               self.libraryManagerViewModel.isStoryFavoritedByCurrentCaregiver(
+                                   storyID: story.id,
+                                   caregiverID: currentCaregiverID
+                               )
+                            {
                                 Text(Image(systemName: "star.fill"))
                                     .font(.caption)
                                     .foregroundColor(self.styleManager.accentColor ?? .blue)
@@ -79,9 +84,10 @@ public struct StoryGridView: View {
 
     // MARK: Private
 
+    @ObservedObject private var libraryManagerViewModel: LibraryManagerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
 
-    @StateObject private var libraryManagerViewModel = LibraryManagerViewModel()
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private let columns = Array(repeating: GridItem(), count: 3)
 }
