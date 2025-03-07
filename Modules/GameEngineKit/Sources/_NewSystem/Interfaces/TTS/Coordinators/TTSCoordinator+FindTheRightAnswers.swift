@@ -6,9 +6,15 @@ import Combine
 import ContentKit
 import SwiftUI
 
+// MARK: - ExerciseSharedDataProtocol
+
+protocol ExerciseSharedDataProtocol {
+    var didComplete: PassthroughSubject<Void, Never> { get }
+}
+
 // MARK: - TTSCoordinatorFindTheRightAnswers
 
-public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
+public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol, ExerciseSharedDataProtocol {
     // MARK: Lifecycle
 
     public init(choices: [CoordinatorFindTheRightAnswersChoiceModel], action: Exercise.Action? = nil, validationEnabled: Bool? = nil) {
@@ -81,7 +87,15 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
         results.forEach { result in
             self.updateChoiceState(for: result.id, to: result.isCorrect ? .correct : .wrong)
         }
+
+        if self.gameplay.isCompleted.value {
+            self.didComplete.send()
+        }
     }
+
+    // MARK: Internal
+
+    var didComplete: PassthroughSubject<Void, Never> = .init()
 
     // MARK: Private
 
