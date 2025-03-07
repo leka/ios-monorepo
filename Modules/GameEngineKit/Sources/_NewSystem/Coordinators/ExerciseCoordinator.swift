@@ -126,7 +126,7 @@ public class ExerciseCoordinator {
                         case .magicCards:
                             switch gameplay {
                                 default:
-                                    PlaceholderExerciseView()
+                                    ExercisePlaceholderView()
                             }
                     }
                 } else {
