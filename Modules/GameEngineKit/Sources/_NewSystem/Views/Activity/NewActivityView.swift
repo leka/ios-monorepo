@@ -7,22 +7,6 @@ import ContentKit
 import DesignKit
 import SwiftUI
 
-// MARK: - PlaceholderExerciseView
-
-struct PlaceholderExerciseView: View {
-    @State var count = 0
-
-    var body: some View {
-        Text("Placeholder Exercise View")
-
-        Text("Counter: \(self.count)")
-        Button("Press me") {
-            self.count += 1
-        }
-        .buttonStyle(.bordered)
-    }
-}
-
 // MARK: - NewActivityViewModel
 
 public class NewActivityViewModel: ObservableObject {
