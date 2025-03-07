@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import Combine
 import ContentKit
 import SwiftUI
 
@@ -43,6 +44,10 @@ public class ExerciseCoordinator {
                                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                                     TTSView(viewModel: viewModel)
+                                        .onAppear {
+                                            log.info("Exercise shared data set")
+                                            self.exerciseSharedData = coordinator
+                                        }
 
                                 case .findTheRightOrder:
                                     let model = CoordinatorFindTheRightOrderModel(data: payload)
@@ -166,6 +171,21 @@ public class ExerciseCoordinator {
         }
 
         Spacer()
+    }
+
+    // MARK: Internal
+
+    var cancellables = Set<AnyCancellable>()
+
+    var exerciseSharedData: (any ExerciseSharedDataProtocol)? {
+        didSet {
+            self.exerciseSharedData?.didComplete
+                .receive(on: DispatchQueue.main)
+                .sink { [weak self] in
+                    log.info("Exercise completed")
+                }
+                .store(in: &self.cancellables)
+        }
     }
 
     // MARK: Private
