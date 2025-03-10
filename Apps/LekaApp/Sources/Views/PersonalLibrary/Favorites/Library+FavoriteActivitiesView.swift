@@ -39,12 +39,23 @@ struct FavoriteActivitiesView: View {
     @ObservedObject private var viewModel: LibraryManagerViewModel
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
 
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+
     private var activities: [Activity] {
-        self.viewModel.activities.compactMap { savedActivity in
-            ContentKit.allPublishedActivities.first { $0.id == savedActivity.id }
-        }
-        .sorted {
-            $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
+        if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+            self.viewModel.activities.compactMap { savedActivity in
+                ContentKit.allPublishedActivities.first {
+                    $0.id == savedActivity.id && self.viewModel.isActivityFavoritedByCurrentCaregiver(
+                        activityID: savedActivity.id!,
+                        caregiverID: currentCaregiverID
+                    )
+                }
+            }
+            .sorted {
+                $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
+            }
+        } else {
+            []
         }
     }
 }

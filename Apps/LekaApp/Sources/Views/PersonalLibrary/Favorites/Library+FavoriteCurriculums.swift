@@ -40,12 +40,23 @@ struct FavoriteCurriculumsView: View {
     @ObservedObject private var viewModel: LibraryManagerViewModel
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
 
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+
     private var curriculums: [Curriculum] {
-        self.viewModel.curriculums.compactMap { savedCurriculums in
-            ContentKit.allCurriculums.first { $0.id == savedCurriculums.id }
-        }
-        .sorted {
-            $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
+        if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+            self.viewModel.curriculums.compactMap { savedCurriculum in
+                ContentKit.allCurriculums.first {
+                    $0.id == savedCurriculum.id && self.viewModel.isCurriculumFavoritedByCurrentCaregiver(
+                        curriculumID: savedCurriculum.id!,
+                        caregiverID: currentCaregiverID
+                    )
+                }
+            }
+            .sorted {
+                $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
+            }
+        } else {
+            []
         }
     }
 }
