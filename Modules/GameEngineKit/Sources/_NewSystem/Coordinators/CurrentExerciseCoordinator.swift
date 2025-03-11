@@ -153,8 +153,18 @@ public class CurrentExerciseCoordinator {
                     case .pairing:
                         DiscoverLekaView()
                     case .danceFreeze:
-                        let model = DanceFreezeModel(data: payload)
-                        DanceFreezeView(model: model)
+                        let model = NewDanceFreezeModel(data: payload)
+                        let coordinator = NewDanceFreezeCoordinator(model: model)
+                        let viewModel = NewDanceFreezeViewViewModel(coordinator: coordinator)
+                        NewDanceFreezeView(viewModel: viewModel)
+                            .onAppear {
+                                coordinator.didComplete
+                                    .receive(on: DispatchQueue.main)
+                                    .sink { [weak self] in
+                                        self?.didComplete.send()
+                                    }
+                                    .store(in: &self.cancellables)
+                            }
                     case .hideAndSeek:
                         HideAndSeekView()
                     case .musicalInstruments:
