@@ -20,6 +20,7 @@ public extension StoryView.PageView {
 
         public var body: some View {
             Text(self.text)
+                .foregroundStyle(.black)
                 .font(Font(UIFont(name: "ChalkboardSE-Light", size: CGFloat(26)) ?? .systemFont(ofSize: 26)))
         }
 
