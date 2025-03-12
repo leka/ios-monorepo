@@ -166,7 +166,18 @@ public class CurrentExerciseCoordinator {
                                     .store(in: &self.cancellables)
                             }
                     case .hideAndSeek:
-                        HideAndSeekView()
+                        let coordinator = NewHideAndSeekCoordinator()
+                        let viewModel = NewHideAndSeekViewViewModel(coordinator: coordinator)
+
+                        NewHideAndSeekView(viewModel: viewModel)
+                            .onAppear {
+                                coordinator.didComplete
+                                    .receive(on: DispatchQueue.main)
+                                    .sink { [weak self] in
+                                        self?.didComplete.send()
+                                    }
+                                    .store(in: &self.cancellables)
+                            }
                     case .musicalInstruments:
                         let model = MusicalInstrumentModel(data: payload)
                         MusicalInstrumentView(model: model)
