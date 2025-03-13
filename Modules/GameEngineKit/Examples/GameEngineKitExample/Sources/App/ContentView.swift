@@ -23,6 +23,7 @@ struct ContentView: View {
 
                         TTSYAMLExercises()
                         DnDYAMLExercises()
+                        SpecializedExercises()
                     }
                 }
                 .tabItem {

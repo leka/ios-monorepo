@@ -6,6 +6,8 @@ import AudioKit
 import ContentKit
 import SwiftUI
 
+// MARK: - MelodyView
+
 public struct MelodyView: View {
     // MARK: Lifecycle
 
@@ -23,13 +25,20 @@ public struct MelodyView: View {
 
         guard let instrument = MIDIInstrument(rawValue: payload.instrument)
         else {
-            fatalError("Instrument or song not found")
+            fatalError("Instrument \(payload.instrument) not found")
         }
 
         self.instrument = instrument
         self.songs = payload.songs
         self.selectedSong = self.songs.first!
         self.data = data
+    }
+
+    init(model: MelodyModel) {
+        self.instrument = model.instrument
+        self.songs = model.songs
+        self.selectedSong = self.songs.first!
+        self.data = ExerciseSharedData()
     }
 
     // MARK: Public

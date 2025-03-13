@@ -50,6 +50,7 @@ public enum NewExerciseInterface: Decodable, Equatable {
         case musicalInstruments
         case melody
         case pairing
-        case memory
+        case colorMusicPad
+        case colorMediator
     }
 }
