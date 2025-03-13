@@ -45,8 +45,12 @@ public class ExerciseCoordinator {
 
                                     TTSView(viewModel: viewModel)
                                         .onAppear {
-                                            log.info("Exercise shared data set")
-                                            self.exerciseSharedData = coordinator
+                                            coordinator.didComplete
+                                                .receive(on: DispatchQueue.main)
+                                                .sink { [weak self] in
+                                                    self?.didComplete.send()
+                                                }
+                                                .store(in: &self.cancellables)
                                         }
 
                                 case .findTheRightOrder:
@@ -177,16 +181,7 @@ public class ExerciseCoordinator {
 
     var cancellables = Set<AnyCancellable>()
 
-    var exerciseSharedData: (any ExerciseSharedDataProtocol)? {
-        didSet {
-            self.exerciseSharedData?.didComplete
-                .receive(on: DispatchQueue.main)
-                .sink { [weak self] in
-                    log.info("Exercise completed")
-                }
-                .store(in: &self.cancellables)
-        }
-    }
+    var didComplete: PassthroughSubject<Void, Never> = .init()
 
     // MARK: Private
 
