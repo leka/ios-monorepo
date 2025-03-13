@@ -4,56 +4,16 @@
 
 import Combine
 import ContentKit
-import DesignKit
 import SwiftUI
-
-// MARK: - NewActivityViewModel
-
-public class NewActivityViewModel: ObservableObject {
-    // MARK: Lifecycle
-
-    public init(activity: Activity) {
-        self.activity = activity
-//        self.exerciseCoordinator = ExerciseCoordinator(payload: activity.exercisePayload)
-    }
-
-    // MARK: Internal
-
-    var activityTitle: String {
-        self.activity.details.title
-    }
-
-    @ViewBuilder
-    var exerciseView: some View {
-        VStack {
-//            Button(self.exerciseCoordinator.currentExercise.instructions ?? "Missing instructions") {
-//                log.warning("Exercise instructions button tapped")
-//            }
-//            .buttonStyle(.borderedProminent)
-
-            Spacer()
-
-            Text("Exercise view")
-
-//            self.exerciseCoordinator.execiseView
-
-            Spacer()
-        }
-    }
-
-    // MARK: Private
-
-    private let activity: Activity
-//    private let exerciseCoordinator: ExerciseCoordinator
-}
 
 // MARK: - NewActivityView
 
 public struct NewActivityView: View {
     // MARK: Lifecycle
 
-    public init(viewModel: NewActivityViewModel) {
-        self._viewModel = StateObject(wrappedValue: viewModel)
+    public init(activity: NewActivity) {
+        self.activity = activity
+        self._activityManager = StateObject(wrappedValue: .init(payload: activity.payload))
     }
 
     // MARK: Public
@@ -62,21 +22,21 @@ public struct NewActivityView: View {
         ZStack(alignment: .bottomTrailing) {
             VStack {
                 VStack(spacing: 15) {
-                    Text("Progress bar")
+                    NewActivityProgressBar(manager: self.activityManager)
                 }
 
-                self.viewModel.exerciseView
+                self.activityManager.currentExerciseView
             }
         }
         .frame(maxWidth: .infinity)
         .background(.lkBackground)
         .ignoresSafeArea(.all, edges: .bottom)
-        .navigationTitle(self.viewModel.activityTitle)
+        .navigationTitle(self.activity.name)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    log.warning("Reinforcer animation toggled")
+                    // TODO: (@dev-ios) implement reinforcer toggle
                 } label: {
                     Image(systemName: "livephoto")
                 }
@@ -84,23 +44,25 @@ public struct NewActivityView: View {
 
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    log.warning("Move to previous exercise")
+                    self.activityManager.previousExercise()
                 } label: {
                     Image(systemName: "arrow.backward")
                 }
+                .disabled(self.activityManager.isFirstExercise)
             }
 
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    log.warning("Move to next exercise")
+                    self.activityManager.nextExercise()
                 } label: {
                     Image(systemName: "arrow.forward")
                 }
+                .disabled(self.activityManager.isLastExercise)
             }
 
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    log.warning("Activity information sheet toggled")
+                    // TODO: (@dev-ios) implement activity information sheet toggle
                 } label: {
                     Image(systemName: "info.circle")
                 }
@@ -110,17 +72,212 @@ public struct NewActivityView: View {
 
     // MARK: Internal
 
-    @StateObject var viewModel: NewActivityViewModel
-
     @Environment(\.dismiss) var dismiss
+
+    // MARK: Private
+
+    @StateObject private var activityManager: NewActivityManager
+
+    private let activity: NewActivity
 }
 
-#Preview {
-    NavigationStack {
-        let activity = ContentKit.allTemplateActivities.first(where: {
-            $0.exercisePayload.exerciseGroups.first!.exercises.first!.interface == .touchToSelect
-        })!
-        let viewModel = NewActivityViewModel(activity: activity)
-        NewActivityView(viewModel: viewModel)
+#if DEBUG
+
+    let kActivityYaml = """
+        uuid: F8C90919AF204155A170D3957BABE7D6
+        name: TestActivityMock
+        exercises_payload:
+          options:
+            shuffle_exercises: false
+            shuffle_groups: false
+
+          exercise_groups:
+            - group:
+                - instructions:
+                    - locale: fr_FR
+                      value: Touche les emojis qui sont identiques
+                    - locale: en_US
+                      value: Tap the emojis that are the same
+                  interface: touchToSelect
+                  gameplay: associateCategories
+                  payload:
+                    shuffle_choices: true
+                    choices:
+                      - value: 🐶
+                        type: emoji
+                        category: catA
+                      - value: 🐶
+                        type: emoji
+                        category: catA
+                      - value: 🐱
+                        type: emoji
+                        category: catB
+                      - value: 🐱
+                        type: emoji
+                        category: catB
+                      - value: 🐷
+                        type: emoji
+                        category: catC
+                      - value: 🐷
+                        type: emoji
+                        category: catC
+                - instructions:
+                    - locale: fr_FR
+                      value: Glisse et dépose les emojis identiques ensemble
+                    - locale: en_US
+                      value: Drag and drop the same emojis together
+                  interface: dragAndDropGrid
+                  gameplay: associateCategories
+                  payload:
+                    shuffle_choices: true
+                    choices:
+                      - value: 🐶
+                        type: emoji
+                        category: catA
+                      - value: 🐶
+                        type: emoji
+                        category: catA
+                      - value: 🐱
+                        type: emoji
+                        category: catB
+                      - value: 🐱
+                        type: emoji
+                        category: catB
+                      - value: 🐷
+                        type: emoji
+                        category: catC
+                      - value: 🐷
+                        type: emoji
+                        category: catC
+                - instructions:
+                    - locale: fr_FR
+                      value: Glisse et dépose les émojis dans la zone correspondante
+                    - locale: en_US
+                      value: Drag and drop the emojis in the correct zone
+                  interface: dragAndDropGridWithZones
+                  gameplay: associateCategories
+                  payload:
+                    shuffle_choices: true
+                    choices:
+                      - value: 🐶
+                        type: emoji
+                        category: catA
+                        is_dropzone: true
+                      - value: 🐶
+                        type: emoji
+                        category: catA
+                      - value: 🐱
+                        type: emoji
+                        category: catB
+                        is_dropzone: true
+                      - value: 🐱
+                        type: emoji
+                        category: catB
+                      - value: 🐷
+                        type: emoji
+                        category: catC
+                      - value: 🐷
+                        type: emoji
+                        category: catC
+            - group:
+                - instructions:
+                    - locale: fr_FR
+                      value: Touche les emojis qui sont identiques
+                    - locale: en_US
+                      value: Tap the emojis that are the same
+                  interface: touchToSelect
+                  gameplay: associateCategories
+                  payload:
+                    shuffle_choices: true
+                    choices:
+                      - value: 🐶
+                        type: emoji
+                        category: catA
+                      - value: 🐶
+                        type: emoji
+                        category: catA
+                      - value: 🐱
+                        type: emoji
+                        category: catB
+                      - value: 🐱
+                        type: emoji
+                        category: catB
+                      - value: 🐷
+                        type: emoji
+                        category: catC
+                      - value: 🐷
+                        type: emoji
+                        category: catC
+                - instructions:
+                    - locale: fr_FR
+                      value: Touche les emojis qui sont identiques
+                    - locale: en_US
+                      value: Tap the emojis that are the same
+                  interface: dragAndDropGrid
+                  gameplay: associateCategories
+                  payload:
+                    shuffle_choices: true
+                    choices:
+                      - value: 🐶
+                        type: emoji
+                        category: catA
+                      - value: 🐶
+                        type: emoji
+                        category: catA
+                      - value: 🐱
+                        type: emoji
+                        category: catB
+                      - value: 🐱
+                        type: emoji
+                        category: catB
+                      - value: 🐷
+                        type: emoji
+                        category: catC
+                      - value: 🐷
+                        type: emoji
+                        category: catC
+                - instructions:
+                    - locale: fr_FR
+                      value: Touche les emojis qui sont identiques
+                    - locale: en_US
+                      value: Tap the emojis that are the same
+                  interface: dragAndDropGridWithZones
+                  gameplay: associateCategories
+                  payload:
+                    shuffle_choices: true
+                    choices:
+                      - value: 🐶
+                        type: emoji
+                        category: catA
+                        is_dropzone: true
+                      - value: 🐶
+                        type: emoji
+                        category: catA
+                      - value: 🐱
+                        type: emoji
+                        category: catB
+                        is_dropzone: true
+                      - value: 🐱
+                        type: emoji
+                        category: catB
+                      - value: 🐷
+                        type: emoji
+                        category: catC
+                      - value: 🐷
+                        type: emoji
+                        category: catC
+        """
+
+    import Yams
+
+    #Preview {
+        NavigationStack {
+            if let activity = NewActivity(yaml: kActivityYaml) {
+                NewActivityView(activity: activity)
+            } else {
+                Text("Invalid activity")
+            }
+        }
     }
-}
+
+#endif
