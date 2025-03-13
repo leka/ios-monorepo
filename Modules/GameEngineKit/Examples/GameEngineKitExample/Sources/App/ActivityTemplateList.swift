@@ -11,24 +11,24 @@ struct ActivityTemplateList: View {
 
     var body: some View {
         List {
-            ForEach(self.activities) { activity in
-                let viewModel = NewActivityViewModel(activity: activity)
-
-                NavigationLink(destination: NewActivityView(viewModel: viewModel)) {
-                    Image(uiImage: activity.details.iconImage)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 70, height: 70)
-
-                    VStack(alignment: .leading) {
-                        Text("\(activity.details.title)")
-                            .font(.headline)
-                        Text("\(activity.details.subtitle ?? "")")
-                            .font(.subheadline)
-                    }
-                    .padding()
-                }
-            }
+//            ForEach(self.activities) { activity in
+//                let viewModel = NewActivityViewModel(activity: activity)
+//
+//                NavigationLink(destination: NewActivityView(viewModel: viewModel)) {
+//                    Image(uiImage: activity.details.iconImage)
+//                        .resizable()
+//                        .scaledToFit()
+//                        .frame(width: 70, height: 70)
+//
+//                    VStack(alignment: .leading) {
+//                        Text("\(activity.details.title)")
+//                            .font(.headline)
+//                        Text("\(activity.details.subtitle ?? "")")
+//                            .font(.subheadline)
+//                    }
+//                    .padding()
+//                }
+//            }
         }
     }
 }
