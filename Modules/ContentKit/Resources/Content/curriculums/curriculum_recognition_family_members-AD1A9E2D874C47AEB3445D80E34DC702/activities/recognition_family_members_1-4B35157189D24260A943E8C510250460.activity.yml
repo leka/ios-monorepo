@@ -4,11 +4,11 @@
 
 version: 1.0.0
 
-uuid: B8FA6D153A764A29811D5B606956CA44
-name: recognition_recognition_family_members_6
+uuid: 4B35157189D24260A943E8C510250460
+name: recognition_family_members_1
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-09-24T15:59:20.396364"
+last_edited_at: "2024-09-24T15:59:20.409367"
 
 status: published
 
@@ -37,7 +37,7 @@ l10n:
       icon: recognition_family_members
 
       title: Les membres de la famille
-      subtitle: 6 images
+      subtitle: 1 image
 
       short_description: |
         Une activité amusante où la personne accompagnée apprend à reconnaître et à sélectionner les membres de la famille en écoutant des instructions audio.
@@ -55,7 +55,7 @@ l10n:
       icon: recognition_family_members
 
       title: Family Members
-      subtitle: 6 images
+      subtitle: 1 image
 
       short_description: |
         A fun activity where the user learns to recognize and select family members by listening to audio instructions.
@@ -97,16 +97,6 @@ exercises_payload:
               - value: family_member_baby
                 type: image
                 is_right_answer: true
-              - value: family_member_grandmother
-                type: image
-              - value: family_member_father
-                type: image
-              - value: family_member_daughter
-                type: image
-              - value: family_member_son
-                type: image
-              - value: family_member_mother
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -130,16 +120,6 @@ exercises_payload:
               - value: family_member_daughter
                 type: image
                 is_right_answer: true
-              - value: family_member_father
-                type: image
-              - value: family_member_mother
-                type: image
-              - value: family_member_son
-                type: image
-              - value: family_member_baby
-                type: image
-              - value: family_member_grandfather
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -163,16 +143,6 @@ exercises_payload:
               - value: family_member_son
                 type: image
                 is_right_answer: true
-              - value: family_member_mother
-                type: image
-              - value: family_member_grandfather
-                type: image
-              - value: family_member_baby
-                type: image
-              - value: family_member_father
-                type: image
-              - value: family_member_daughter
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -196,16 +166,6 @@ exercises_payload:
               - value: family_member_father
                 type: image
                 is_right_answer: true
-              - value: family_member_daughter
-                type: image
-              - value: family_member_grandmother
-                type: image
-              - value: family_member_grandfather
-                type: image
-              - value: family_member_son
-                type: image
-              - value: family_member_baby
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -229,16 +189,6 @@ exercises_payload:
               - value: family_member_mother
                 type: image
                 is_right_answer: true
-              - value: family_member_son
-                type: image
-              - value: family_member_father
-                type: image
-              - value: family_member_grandfather
-                type: image
-              - value: family_member_daughter
-                type: image
-              - value: family_member_baby
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -262,16 +212,6 @@ exercises_payload:
               - value: family_member_grandfather
                 type: image
                 is_right_answer: true
-              - value: family_member_grandmother
-                type: image
-              - value: family_member_father
-                type: image
-              - value: family_member_daughter
-                type: image
-              - value: family_member_son
-                type: image
-              - value: family_member_baby
-                type: image
 
         - instructions:
             - locale: fr_FR
@@ -295,13 +235,3 @@ exercises_payload:
               - value: family_member_grandmother
                 type: image
                 is_right_answer: true
-              - value: family_member_grandfather
-                type: image
-              - value: family_member_mother
-                type: image
-              - value: family_member_baby
-                type: image
-              - value: family_member_father
-                type: image
-              - value: family_member_daughter
-                type: image

@@ -7,7 +7,7 @@ name: curriculum_recognition_kitchen_items
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-09-27T17:53:03.463714"
+last_edited_at: "2025-03-13T13:50:30.529916"
 authors:
   - leka
 
@@ -53,4 +53,4 @@ l10n:
 activities:
   - recognition_kitchen_items_tableware-6E87124002B34BC18520CDD94BFB8D07
   - recognition_kitchen_items_kitchen_utensils-A9BC9B8ED47F4EA3A1760EFCCCBE0977
-  - recognition_kitchen_household_appliances-2CBFAD17B01F4288AAE9CCCE37088FEC
+  - recognition_kitchen_items_household_appliances-2CBFAD17B01F4288AAE9CCCE37088FEC

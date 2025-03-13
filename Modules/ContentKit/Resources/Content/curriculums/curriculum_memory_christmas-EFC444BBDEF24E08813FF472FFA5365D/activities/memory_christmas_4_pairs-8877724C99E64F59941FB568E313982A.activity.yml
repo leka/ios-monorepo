@@ -4,8 +4,8 @@
 
 version: 1.0.0
 
-uuid: 670413A9FFAB479B90B60E7806CB9CB4
-name: christmas_memory_1_pair
+uuid: 8877724C99E64F59941FB568E313982A
+name: memory_christmas_4_pairs
 
 created_at: "2024-06-17T17:38:12.804177"
 last_edited_at: "2024-12-03T10:38:25.159050"
@@ -43,7 +43,7 @@ l10n:
       icon: memory_christmas
 
       title: Memory de Noël
-      subtitle: 1 paire
+      subtitle: 4 paires
 
       short_description: |
         Un jeu de mémoire engageant avec des images d'objets de Noël. Trouvez les paires correspondantes pour gagner.
@@ -61,7 +61,7 @@ l10n:
       icon: memory_christmas
 
       title: Christmas Memory
-      subtitle: 1 pair
+      subtitle: 4 pairs
 
       short_description: |
         An engaging memory game featuring Christmas items images. Find the matching pairs to win.
@@ -91,97 +91,30 @@ exercises_payload:
           payload:
             shuffle_choices: true
             choices:
-              - value: christmas_memory_christmas_ball
-                type: image
-                category: catA
-              - value: christmas_memory_christmas_ball
-                type: image
-                category: catA
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche les cartes pour les retourner et trouve les paires identiques
-            - locale: en_US
-              value: Tap the cards to flip them and find the identical pairs
-          interface: memory
-          gameplay: associateCategories
-          payload:
-            shuffle_choices: true
-            choices:
-              - value: christmas_memory_christmas_candle
-                type: image
-                category: catA
-              - value: christmas_memory_christmas_candle
-                type: image
-                category: catA
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche les cartes pour les retourner et trouve les paires identiques
-            - locale: en_US
-              value: Tap the cards to flip them and find the identical pairs
-          interface: memory
-          gameplay: associateCategories
-          payload:
-            shuffle_choices: true
-            choices:
-              - value: christmas_memory_christmas_candy_cane
-                type: image
-                category: catA
-              - value: christmas_memory_christmas_candy_cane
-                type: image
-                category: catA
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche les cartes pour les retourner et trouve les paires identiques
-            - locale: en_US
-              value: Tap the cards to flip them and find the identical pairs
-          interface: memory
-          gameplay: associateCategories
-          payload:
-            shuffle_choices: true
-            choices:
-              - value: christmas_memory_christmas_chimney
-                type: image
-                category: catA
-              - value: christmas_memory_christmas_chimney
-                type: image
-                category: catA
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche les cartes pour les retourner et trouve les paires identiques
-            - locale: en_US
-              value: Tap the cards to flip them and find the identical pairs
-          interface: memory
-          gameplay: associateCategories
-          payload:
-            shuffle_choices: true
-            choices:
               - value: christmas_memory_christmas_tree
                 type: image
                 category: catA
               - value: christmas_memory_christmas_tree
                 type: image
                 category: catA
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche les cartes pour les retourner et trouve les paires identiques
-            - locale: en_US
-              value: Tap the cards to flip them and find the identical pairs
-          interface: memory
-          gameplay: associateCategories
-          payload:
-            shuffle_choices: true
-            choices:
               - value: christmas_memory_christmas_garland
                 type: image
-                category: catA
+                category: catB
               - value: christmas_memory_christmas_garland
                 type: image
-                category: catA
+                category: catB
+              - value: christmas_memory_christmas_biscuit
+                type: image
+                category: catC
+              - value: christmas_memory_christmas_biscuit
+                type: image
+                category: catC
+              - value: christmas_memory_christmas_candle
+                type: image
+                category: catD
+              - value: christmas_memory_christmas_candle
+                type: image
+                category: catD
 
         - instructions:
             - locale: fr_FR
@@ -199,23 +132,24 @@ exercises_payload:
               - value: christmas_memory_christmas_gift
                 type: image
                 category: catA
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche les cartes pour les retourner et trouve les paires identiques
-            - locale: en_US
-              value: Tap the cards to flip them and find the identical pairs
-          interface: memory
-          gameplay: associateCategories
-          payload:
-            shuffle_choices: true
-            choices:
               - value: christmas_memory_christmas_hat
                 type: image
-                category: catA
+                category: catB
               - value: christmas_memory_christmas_hat
                 type: image
-                category: catA
+                category: catB
+              - value: christmas_memory_christmas_letter
+                type: image
+                category: catC
+              - value: christmas_memory_christmas_letter
+                type: image
+                category: catC
+              - value: christmas_memory_christmas_tree
+                type: image
+                category: catD
+              - value: christmas_memory_christmas_tree
+                type: image
+                category: catD
 
         - instructions:
             - locale: fr_FR
@@ -233,23 +167,24 @@ exercises_payload:
               - value: christmas_memory_christmas_letter
                 type: image
                 category: catA
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche les cartes pour les retourner et trouve les paires identiques
-            - locale: en_US
-              value: Tap the cards to flip them and find the identical pairs
-          interface: memory
-          gameplay: associateCategories
-          payload:
-            shuffle_choices: true
-            choices:
               - value: christmas_memory_christmas_mug
                 type: image
-                category: catA
+                category: catB
               - value: christmas_memory_christmas_mug
                 type: image
-                category: catA
+                category: catB
+              - value: christmas_memory_christmas_chimney
+                type: image
+                category: catC
+              - value: christmas_memory_christmas_chimney
+                type: image
+                category: catC
+              - value: christmas_memory_christmas_santa's_sack
+                type: image
+                category: catD
+              - value: christmas_memory_christmas_santa's_sack
+                type: image
+                category: catD
 
         - instructions:
             - locale: fr_FR
@@ -267,23 +202,24 @@ exercises_payload:
               - value: christmas_memory_christmas_santa's_sack
                 type: image
                 category: catA
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche les cartes pour les retourner et trouve les paires identiques
-            - locale: en_US
-              value: Tap the cards to flip them and find the identical pairs
-          interface: memory
-          gameplay: associateCategories
-          payload:
-            shuffle_choices: true
-            choices:
               - value: christmas_memory_christmas_snowflake
                 type: image
-                category: catA
+                category: catB
               - value: christmas_memory_christmas_snowflake
                 type: image
-                category: catA
+                category: catB
+              - value: christmas_memory_christmas_sock
+                type: image
+                category: catC
+              - value: christmas_memory_christmas_sock
+                type: image
+                category: catC
+              - value: christmas_memory_christmas_biscuit
+                type: image
+                category: catD
+              - value: christmas_memory_christmas_biscuit
+                type: image
+                category: catD
 
         - instructions:
             - locale: fr_FR
@@ -301,37 +237,21 @@ exercises_payload:
               - value: christmas_memory_christmas_sock
                 type: image
                 category: catA
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche les cartes pour les retourner et trouve les paires identiques
-            - locale: en_US
-              value: Tap the cards to flip them and find the identical pairs
-          interface: memory
-          gameplay: associateCategories
-          payload:
-            shuffle_choices: true
-            choices:
               - value: christmas_memory_christmas_star
                 type: image
-                category: catA
+                category: catB
               - value: christmas_memory_christmas_star
                 type: image
-                category: catA
-
-        - instructions:
-            - locale: fr_FR
-              value: Touche les cartes pour les retourner et trouve les paires identiques
-            - locale: en_US
-              value: Tap the cards to flip them and find the identical pairs
-          interface: memory
-          gameplay: associateCategories
-          payload:
-            shuffle_choices: true
-            choices:
-              - value: christmas_memory_christmas_tree
+                category: catB
+              - value: christmas_memory_christmas_santa's_sack
                 type: image
-                category: catA
-              - value: christmas_memory_christmas_tree
+                category: catC
+              - value: christmas_memory_christmas_santa's_sack
                 type: image
-                category: catA
+                category: catC
+              - value: christmas_memory_christmas_snowflake
+                type: image
+                category: catD
+              - value: christmas_memory_christmas_snowflake
+                type: image
+                category: catD
