@@ -4,11 +4,11 @@
 
 version: 1.0.0
 
-uuid: 88013EBEBE2E4FA6B616CF0B393F2346
-name: sorting_fruits_vegetables_basket_3_three_choices_multiple_intruders
+uuid: 58A898C6E60742BD9ED7BDB2E5AEB265
+name: categorization_sorting_fruits_vegetables_basket_4_four_choices_same_images
 
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-07-12T12:48:14.936637"
+last_edited_at: "2024-07-12T12:48:14.929007"
 status: published
 
 authors:
@@ -39,36 +39,36 @@ l10n:
       icon: sorting_fruits_vegetables_basket
 
       title: Trier et placer les fruits et légumes dans le panier
-      subtitle: 3 choix, 1 bonne réponse et 2 intrus
+      subtitle: 3 choix, 2 images similaires et 1 intrus
 
       short_description: |
-        Identifiez et placez le bon fruit ou légume dans le panier
+        Identifiez et placez les images similaires dans le panier
 
       description: |
-        Sélectionnez le fruit ou le légume correct parmi les options présentées et évitez les intrus pour réussir l'exercice
+        La personne accompagnée doit regrouper dans le panier les images similaires, tout en évitant l'intrus
 
       instructions: |
-        - Sur l'écran de l'iPad, trois images sont présentées à l'extérieur du panier : la bonne réponse et deux intrus.
-        - Encouragez la personne accompagnée à réfléchir et à choisir l'image correcte qui représente le fruit ou le légume demandé, puis à la glisser dans le panier.
-        - Pour chaque choix correct, félicitez le participant pendant que Leka lance un renforçateur pour célébrer la réussite.
+        - Sur l'écran de l'iPad, trois images sont à l'extérieur du panier : deux sont similaires et une est un intrus.
+        - Encouragez la personne accompagnée à identifier et à glisser dans le panier les deux images similaires.
+        - Lorsque la réponse est correcte, Leka lance un renforçateur pour célébrer la réussite.
 
   - locale: en_US
     details:
       icon: sorting_fruits_vegetables_basket
 
       title: Sort and place fruits and vegetables in the basket
-      subtitle: 3 choices, 1 correct answer and 2 intruders
+      subtitle: 3 choices, 2 similar images and 1 intruder
 
       short_description: |
-        Identify and place the correct fruit or vegetable in the basket
+        Identify and place similar images in the basket
 
       description: |
-        Select the correct fruit or vegetable from the options presented, avoiding the intruders to successfully complete the exercise
+        The care receiver must group similar images in the basket, while avoiding the intruder
 
       instructions: |
-        - On the iPad screen, three images are presented outside of the basket: the correct answer and two intruders.
-        - Encourage the participant to think and choose the correct image that represents the requested fruit or vegetable, then drag it into the basket.
-        - For each correct choice, congratulate the participant while Leka launches a reinforcer to celebrate the success.
+        - On the iPad screen, there are three images outside of the basket: two images are the same and one is an intruder.
+        - Encourage the care receiver to identify and drag the two similar images into the basket.
+        - When the answer is correct, Leka provides a reinforcer to celebrate the success.
 
 exercises_payload:
   options:
@@ -79,9 +79,9 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Mets le champignon dans le panier
+              value: Mets les images similaires dans le panier
             - locale: en_US
-              value: Put the mushroom in the basket
+              value: Put the images that are similar in the basket
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -90,67 +90,20 @@ exercises_payload:
               value: dropzone_basket
               type: image
             choices:
-              - value: pictograms-foods-vegetables-mushroom_white-00EF
-                type: image
-                dropZone: zoneA
-              - value: pictograms-foods-vegetables-salad_green_1-00EA
-                type: image
-              - value: pictograms-foods-fruits-strawberry_red-00FD
-                type: image
-              - value: pictograms-foods-fruits-cherry_red-00FF
-                type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets la salade dans le panier
-            - locale: en_US
-              value: Put the salad in the basket
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            shuffle_choices: true
-            dropZoneA:
-              value: dropzone_basket
-              type: image
-            choices:
-              - value: pictograms-foods-vegetables-salad_green_1-00EA
+              - value: pictograms-foods-vegetables-carrot_orange-00E6
                 type: image
                 dropZone: zoneA
               - value: pictograms-foods-vegetables-carrot_orange-00E6
                 type: image
-              - value: pictograms-foods-fruits-cherry_red-00FF
-                type: image
-              - value: pictograms-foods-vegetables-mushroom_white-00EF
-                type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets la pomme dans le panier
-            - locale: en_US
-              value: Put the apple in the basket
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            shuffle_choices: true
-            dropZoneA:
-              value: dropzone_basket
-              type: image
-            choices:
+                dropZone: zoneA
               - value: pictograms-foods-fruits-apple_green-0100
                 type: image
-                dropZone: zoneA
-              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
-                type: image
-              - value: pictograms-foods-fruits-grape_purple-00FE
-                type: image
-              - value: pictograms-foods-fruits-cherry_red-00FF
-                type: image
 
         - instructions:
             - locale: fr_FR
-              value: Mets la cerise dans le panier
+              value: Mets les images similaires dans le panier
             - locale: en_US
-              value: Put the cherry in the basket
+              value: Put the images that are similar in the basket
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -159,21 +112,20 @@ exercises_payload:
               value: dropzone_basket
               type: image
             choices:
-              - value: pictograms-foods-fruits-cherry_red-00FF
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
                 type: image
                 dropZone: zoneA
               - value: pictograms-foods-vegetables-salad_green_1-00EA
                 type: image
-              - value: pictograms-foods-vegetables-mushroom_brown-00F0
-                type: image
-              - value: pictograms-foods-vegetables-carrot_orange-00E6
-                type: image
 
         - instructions:
             - locale: fr_FR
-              value: Mets la carotte dans le panier
+              value: Mets les images similaires dans le panier
             - locale: en_US
-              value: Put the carrot in the basket
+              value: Put the images that are similar in the basket
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -182,21 +134,42 @@ exercises_payload:
               value: dropzone_basket
               type: image
             choices:
-              - value: pictograms-foods-vegetables-carrot_orange-00E6
-                type: image
-                dropZone: zoneA
-              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
-                type: image
               - value: pictograms-foods-fruits-cherry_red-00FF
                 type: image
+                dropZone: zoneA
+              - value: pictograms-foods-fruits-cherry_red-00FF
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-vegetables-mushroom_white-00EF
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les images similaires dans le panier
+            - locale: en_US
+              value: Put the images that are similar in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: dropzone_basket
+              type: image
+            choices:
               - value: pictograms-foods-fruits-apple_red-0101
                 type: image
+                dropZone: zoneA
+              - value: pictograms-foods-fruits-apple_red-0101
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-fruits-strawberry_red-00FD
+                type: image
 
         - instructions:
             - locale: fr_FR
-              value: Mets la banane dans le panier
+              value: Mets les images similaires dans le panier
             - locale: en_US
-              value: Put the banana in the basket
+              value: Put the images that are similar in the basket
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -205,67 +178,20 @@ exercises_payload:
               value: dropzone_basket
               type: image
             choices:
-              - value: pictograms-foods-fruits-banana_yellow-00FB
-                type: image
-                dropZone: zoneA
-              - value: pictograms-foods-vegetables-salad_green_1-00EA
-                type: image
-              - value: pictograms-foods-vegetables-mushroom_gray-00EF
-                type: image
-              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
-                type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets le raisin dans le panier
-            - locale: en_US
-              value: Put the grape in the basket
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            shuffle_choices: true
-            dropZoneA:
-              value: dropzone_basket
-              type: image
-            choices:
-              - value: pictograms-foods-fruits-grape_purple-00FE
-                type: image
-                dropZone: zoneA
-              - value: pictograms-foods-vegetables-salad_green_1-00EA
-                type: image
-              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
-                type: image
-              - value: pictograms-foods-fruits-cherry_red-00FF
-                type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Mets la salade dans le panier
-            - locale: en_US
-              value: Put the salad in the basket
-          interface: dragAndDropIntoZones
-          gameplay: findTheRightAnswers
-          payload:
-            shuffle_choices: true
-            dropZoneA:
-              value: dropzone_basket
-              type: image
-            choices:
-              - value: pictograms-foods-vegetables-salad_green_1-00EA
-                type: image
-                dropZone: zoneA
-              - value: pictograms-foods-fruits-apple_yellow-0102
-                type: image
               - value: pictograms-foods-vegetables-mushroom_brown-00F0
                 type: image
+                dropZone: zoneA
+              - value: pictograms-foods-vegetables-mushroom_brown-00F0
+                type: image
+                dropZone: zoneA
               - value: pictograms-foods-fruits-cherry_red-00FF
                 type: image
 
         - instructions:
             - locale: fr_FR
-              value: Mets la pomme dans le panier
+              value: Mets les images similaires dans le panier
             - locale: en_US
-              value: Put the apple in the basket
+              value: Put the images that are similar in the basket
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -274,21 +200,42 @@ exercises_payload:
               value: dropzone_basket
               type: image
             choices:
-              - value: pictograms-foods-fruits-apple_green-0100
+              - value: pictograms-foods-vegetables-mushroom_white-00EF
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-vegetables-mushroom_white-00EF
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-fruits-cherry_red-00FF
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les images similaires dans le panier
+            - locale: en_US
+              value: Put the images that are similar in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: dropzone_basket
+              type: image
+            choices:
+              - value: pictograms-foods-vegetables-salad_green_1-00EA
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-vegetables-salad_green_1-00EA
                 type: image
                 dropZone: zoneA
               - value: pictograms-foods-fruits-grape_purple-00FE
                 type: image
-              - value: pictograms-foods-fruits-cherry_red-00FF
-                type: image
-              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
-                type: image
 
         - instructions:
             - locale: fr_FR
-              value: Mets la patate dans le panier
+              value: Mets les images similaires dans le panier
             - locale: en_US
-              value: Put the potata in the basket
+              value: Put the images that are similar in the basket
           interface: dragAndDropIntoZones
           gameplay: findTheRightAnswers
           payload:
@@ -300,9 +247,52 @@ exercises_payload:
               - value: pictograms-foods-vegetables-potato_yellow_1-00E9
                 type: image
                 dropZone: zoneA
-              - value: pictograms-foods-fruits-cherry_red-00FF
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
                 type: image
-              - value: pictograms-foods-vegetables-mushroom_white-00EF
+                dropZone: zoneA
+              - value: pictograms-foods-fruits-grape_purple-00FE
                 type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les images similaires dans le panier
+            - locale: en_US
+              value: Put the images that are similar in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: dropzone_basket
+              type: image
+            choices:
+              - value: pictograms-foods-vegetables-salad_green_1-00EA
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-vegetables-salad_green_1-00EA
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-vegetables-potato_yellow_1-00E9
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Mets les images similaires dans le panier
+            - locale: en_US
+              value: Put the images that are similar in the basket
+          interface: dragAndDropIntoZones
+          gameplay: findTheRightAnswers
+          payload:
+            shuffle_choices: true
+            dropZoneA:
+              value: dropzone_basket
+              type: image
+            choices:
+              - value: pictograms-foods-fruits-apple_red-0101
+                type: image
+                dropZone: zoneA
+              - value: pictograms-foods-fruits-apple_red-0101
+                type: image
+                dropZone: zoneA
               - value: pictograms-foods-fruits-strawberry_red-00FD
                 type: image

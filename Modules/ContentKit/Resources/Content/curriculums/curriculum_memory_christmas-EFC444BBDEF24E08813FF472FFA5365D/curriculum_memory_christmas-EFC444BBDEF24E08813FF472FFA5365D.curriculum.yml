@@ -8,7 +8,7 @@ name: curriculum_memory_christmas
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-12-03T10:40:43.658547"
+last_edited_at: "2025-03-13T13:50:30.858818"
 authors:
   - leka
 
@@ -53,6 +53,6 @@ l10n:
         The "Christmas Memory" curriculum is a series of activities aimed at helping participants improve their memory and attention. Each activity features Christmas items images that players must match in pairs. The levels of difficulty gradually increase, starting with a single pair and progressing to four pairs, providing a growing challenge to keep participants engaged.
 
 activities:
-  - christmas_memory_1_pair-670413A9FFAB479B90B60E7806CB9CB4
-  - christmas_memory_2_pairs-AB70B78D8F204726B164C8769F57A5D7
-  - christmas_memory_4_pairs-8877724C99E64F59941FB568E313982A
+  - memory_christmas_1_pair-670413A9FFAB479B90B60E7806CB9CB4
+  - memory_christmas_2_pairs-AB70B78D8F204726B164C8769F57A5D7
+  - memory_christmas_4_pairs-8877724C99E64F59941FB568E313982A

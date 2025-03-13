@@ -6,7 +6,7 @@ uuid: AD1A9E2D874C47AEB3445D80E34DC702
 name: curriculum_recognition_family_members
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-09-27T13:05:22.469389"
+last_edited_at: "2025-03-13T13:50:30.905513"
 
 status: published
 
@@ -48,7 +48,7 @@ l10n:
         This curriculum provides a series of activities aimed at improving recognition and discrimination of family members. Through audio and visual instructions, users will learn to identify family members.
 
 activities:
-  - recognition_recognition_family_members_1-4B35157189D24260A943E8C510250460
-  - recognition_recognition_family_members_2-CD589A3DA58A4E738D37B8878F0BA107
-  - recognition_recognition_family_members_4-A7611096717E43938D51A7FED5A0EE4E
-  - recognition_recognition_family_members_6-B8FA6D153A764A29811D5B606956CA44
+  - recognition_family_members_1-4B35157189D24260A943E8C510250460
+  - recognition_family_members_2-CD589A3DA58A4E738D37B8878F0BA107
+  - recognition_family_members_4-A7611096717E43938D51A7FED5A0EE4E
+  - recognition_family_members_6-B8FA6D153A764A29811D5B606956CA44
