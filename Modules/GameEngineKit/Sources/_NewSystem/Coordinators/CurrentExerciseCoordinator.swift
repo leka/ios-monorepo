@@ -182,8 +182,18 @@ public class CurrentExerciseCoordinator {
                         let model = MusicalInstrumentModel(data: payload)
                         MusicalInstrumentView(model: model)
                     case .melody:
-                        let model = MelodyModel(data: payload)
-                        MelodyView(model: model)
+                        let model = NewMelodyModel(data: payload)
+                        let coordinator = NewMelodyCoordinator(model: model)
+                        let viewModel = NewMelodyViewViewModel(coordinator: coordinator)
+                        NewMelodyView(viewModel: viewModel)
+                            .onAppear {
+                                coordinator.didComplete
+                                    .receive(on: DispatchQueue.main)
+                                    .sink { [weak self] in
+                                        self?.didComplete.send()
+                                    }
+                                    .store(in: &self.cancellables)
+                            }
                     case .gamepadJoyStickColorPad:
                         Gamepad.Joystick()
                     case .gamepadArrowPadColorPad:
