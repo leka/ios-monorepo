@@ -16,7 +16,7 @@
         "editor.formatOnSave": true
     },
     "makefile.configureOnOpen": false,
-    "sweetpad.tuist.autogenerate": true,
+    "sweetpad.tuist.autogenerate": false,
     "sweetpad.format.path": "swiftformat",
     "sweetpad.format.args": ["--quiet", "${file}"]
 }
