@@ -3,17 +3,19 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import ContentKit
-import Foundation
+import SwiftUI
 
 // MARK: - NewActivityManager
 
-class NewActivityManager {
+class NewActivityManager: ObservableObject {
     // MARK: Lifecycle
 
     init(payload: ActivityPayload) {
         self.payload = payload
         self.groups = payload.exerciseGroups
-        self.currentExercise = self.groups[self.currentGroupIndex].group[self.currentExerciseIndex]
+        self.currentExercise = self.groups[0].group[0]
+        self.groupSizeEnumeration = self.groups.map(\.group.count)
+        self.currentExerciseCoordinator = ExerciseCoordinator(exercise: self.currentExercise)
     }
 
     convenience init(payload: Data) {
@@ -26,8 +28,13 @@ class NewActivityManager {
 
     // MARK: Public
 
+    @Published public var currentGroupIndex: Int = 0
+    @Published public var currentExerciseIndex: Int = 0
+
+    public let groupSizeEnumeration: [Int]
+
     public var numberOfGroups: Int {
-        self.groups.count
+        self.groupSizeEnumeration.count
     }
 
     public var numberOfExercisesInCurrentGroup: Int {
@@ -43,14 +50,21 @@ class NewActivityManager {
         self.currentGroupIndex == 0 && self.currentExerciseIndex == 0
     }
 
+    @ViewBuilder
+    public var currentExerciseView: some View {
+        Spacer()
+
+        self.currentExerciseCoordinator.exerciseView
+
+        Spacer()
+    }
+
     // MARK: Internal
 
     let payload: ActivityPayload
     let groups: [ExerciseGroup]
 
     var currentExercise: NewExercise
-    var currentGroupIndex: Int = 0
-    var currentExerciseIndex: Int = 0
 
     func nextExercise() {
         guard !self.isLastExercise else { return }
@@ -67,6 +81,7 @@ class NewActivityManager {
         }
 
         self.currentExercise = self.groups[self.currentGroupIndex].group[self.currentExerciseIndex]
+        self.currentExerciseCoordinator = ExerciseCoordinator(exercise: self.currentExercise)
     }
 
     func previousExercise() {
@@ -84,5 +99,10 @@ class NewActivityManager {
         }
 
         self.currentExercise = self.groups[self.currentGroupIndex].group[self.currentExerciseIndex]
+        self.currentExerciseCoordinator = ExerciseCoordinator(exercise: self.currentExercise)
     }
+
+    // MARK: Private
+
+    private var currentExerciseCoordinator: ExerciseCoordinator
 }
