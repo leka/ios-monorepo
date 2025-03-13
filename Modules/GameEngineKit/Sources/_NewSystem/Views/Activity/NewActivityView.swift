@@ -95,32 +95,28 @@ public struct NewActivityView: View {
             - group:
                 - instructions:
                     - locale: fr_FR
-                      value: Touche les emojis qui sont identiques
+                      value: Touche les emojis du chien
                     - locale: en_US
-                      value: Tap the emojis that are the same
+                      value: Tap the dog emojis
                   interface: touchToSelect
-                  gameplay: associateCategories
+                  gameplay: findTheRightAnswers
                   payload:
                     shuffle_choices: true
                     choices:
                       - value: 🐶
                         type: emoji
-                        category: catA
+                        is_right_answer: true
                       - value: 🐶
                         type: emoji
-                        category: catA
+                        is_right_answer: true
                       - value: 🐱
                         type: emoji
-                        category: catB
                       - value: 🐱
                         type: emoji
-                        category: catB
                       - value: 🐷
                         type: emoji
-                        category: catC
                       - value: 🐷
                         type: emoji
-                        category: catC
                 - instructions:
                     - locale: fr_FR
                       value: Glisse et dépose les emojis identiques ensemble
