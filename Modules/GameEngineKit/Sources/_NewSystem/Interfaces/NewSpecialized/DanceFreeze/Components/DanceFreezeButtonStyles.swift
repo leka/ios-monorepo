@@ -4,33 +4,6 @@
 
 import SwiftUI
 
-// MARK: - DanceFreezeStageModeButtonStyle
-
-struct DanceFreezeStageModeButtonStyle: View {
-    // MARK: Lifecycle
-
-    init(_ text: String, color: Color) {
-        self.text = text
-        self.color = color
-    }
-
-    // MARK: Internal
-
-    let text: String
-    let color: Color
-
-    var body: some View {
-        Text(self.text)
-            .font(.body)
-            .foregroundColor(.white)
-            .fixedSize(horizontal: false, vertical: true)
-            .multilineTextAlignment(.center)
-            .frame(width: 220, height: 50)
-            .scaledToFit()
-            .background(RoundedRectangle(cornerRadius: 10).fill(self.color).shadow(radius: 3))
-    }
-}
-
 // MARK: - DanceFreezeMotionModeButtonStyle
 
 struct DanceFreezeMotionModeButtonStyle: View {
@@ -49,13 +22,13 @@ struct DanceFreezeMotionModeButtonStyle: View {
 
 #Preview {
     HStack(spacing: 100) {
-        DanceFreezeStageModeButtonStyle(
-            "Stage Mode",
-            color: .blue
-        )
         DanceFreezeMotionModeButtonStyle(
             image: Image(systemName: "wrench"),
             color: .blue
+        )
+        DanceFreezeMotionModeButtonStyle(
+            image: Image(systemName: "book"),
+            color: .green
         )
     }
 }
