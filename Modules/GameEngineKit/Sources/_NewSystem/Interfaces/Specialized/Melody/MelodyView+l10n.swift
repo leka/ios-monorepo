@@ -30,5 +30,10 @@ extension l10n {
                                                        bundle: GameEngineKitResources.bundle,
                                                        value: "Full keyboard",
                                                        comment: "MelodyView keyboard full keyboard label")
+
+        static let skipButtonLabel = LocalizedString("game_engine_kit.melody_view.skip_button_label",
+                                                     bundle: GameEngineKitResources.bundle,
+                                                     value: "Skip",
+                                                     comment: "Skip button label")
     }
 }
