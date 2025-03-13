@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import Combine
 import ContentKit
 import SwiftUI
 
@@ -16,6 +17,7 @@ class NewActivityManager: ObservableObject {
         self.currentExercise = self.groups[0].group[0]
         self.groupSizeEnumeration = self.groups.map(\.group.count)
         self.currentExerciseCoordinator = ExerciseCoordinator(exercise: self.currentExercise)
+        self.setExerciseCoordinator(self.currentExerciseCoordinator)
     }
 
     convenience init(payload: Data) {
@@ -66,6 +68,17 @@ class NewActivityManager: ObservableObject {
 
     var currentExercise: NewExercise
 
+    func setExerciseCoordinator(_ coordinator: ExerciseCoordinator) {
+        self.currentExerciseCoordinator = coordinator
+
+        self.currentExerciseCoordinator.didComplete
+            .receive(on: DispatchQueue.main)
+            .sink {
+                log.info("Current exercise completed 🎉️")
+            }
+            .store(in: &self.cancellables)
+    }
+
     func nextExercise() {
         guard !self.isLastExercise else { return }
 
@@ -81,7 +94,7 @@ class NewActivityManager: ObservableObject {
         }
 
         self.currentExercise = self.groups[self.currentGroupIndex].group[self.currentExerciseIndex]
-        self.currentExerciseCoordinator = ExerciseCoordinator(exercise: self.currentExercise)
+        self.setExerciseCoordinator(ExerciseCoordinator(exercise: self.currentExercise))
     }
 
     func previousExercise() {
@@ -99,10 +112,12 @@ class NewActivityManager: ObservableObject {
         }
 
         self.currentExercise = self.groups[self.currentGroupIndex].group[self.currentExerciseIndex]
-        self.currentExerciseCoordinator = ExerciseCoordinator(exercise: self.currentExercise)
+        self.setExerciseCoordinator(ExerciseCoordinator(exercise: self.currentExercise))
     }
 
     // MARK: Private
+
+    private var cancellables = Set<AnyCancellable>()
 
     private var currentExerciseCoordinator: ExerciseCoordinator
 }
