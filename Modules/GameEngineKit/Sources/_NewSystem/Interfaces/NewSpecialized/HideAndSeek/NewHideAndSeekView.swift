@@ -33,7 +33,7 @@ struct NewHideAndSeekView: View {
                     Button {
                         self.stage = .hidden
                     } label: {
-                        HideAndSeekButtonLabel(String(l10n.HideAndSeekView.Launcher.okButtonLabel.characters).uppercased(), color: .cyan)
+                        CapsuleColoredButtonLabel(String(l10n.HideAndSeekView.Launcher.okButtonLabel.characters).uppercased(), color: .cyan)
                     }
                 }
                 .scaledToFill()
@@ -61,7 +61,7 @@ struct NewHideAndSeekView: View {
                         Button {
                             self.viewModel.completeHideAndSeek()
                         } label: {
-                            HideAndSeekButtonLabel(String(l10n.HideAndSeekView.Player.foundButtonLabel.characters).uppercased(), color: .cyan)
+                            CapsuleColoredButtonLabel(String(l10n.HideAndSeekView.Player.foundButtonLabel.characters).uppercased(), color: .cyan)
                         }
                         .padding(.vertical, 30)
                     }

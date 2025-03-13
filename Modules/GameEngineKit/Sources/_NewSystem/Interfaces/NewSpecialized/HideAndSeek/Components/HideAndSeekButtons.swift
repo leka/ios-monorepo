@@ -22,33 +22,6 @@ enum Stimulation: String, CaseIterable {
     }
 }
 
-// MARK: - HideAndSeekButtonLabel
-
-struct HideAndSeekButtonLabel: View {
-    // MARK: Lifecycle
-
-    init(_ text: String, color: Color) {
-        self.text = text
-        self.color = color
-    }
-
-    // MARK: Internal
-
-    let text: String
-    let color: Color
-
-    var body: some View {
-        Text(self.text)
-            .font(.body)
-            .foregroundColor(.white)
-            .fixedSize(horizontal: false, vertical: true)
-            .multilineTextAlignment(.center)
-            .frame(width: 400, height: 50)
-            .scaledToFit()
-            .background(Capsule().fill(self.color).shadow(radius: 3))
-    }
-}
-
 // MARK: - HideAndSeekStimulationButton
 
 struct HideAndSeekStimulationButton: View {
@@ -75,8 +48,6 @@ struct HideAndSeekStimulationButton: View {
 
 #Preview {
     HStack(spacing: 100) {
-        HideAndSeekButtonLabel("Terminé", color: .cyan)
-
         HideAndSeekStimulationButton(stimulation: .light, action: { print("Lights") })
 
         HideAndSeekStimulationButton(stimulation: .motion, action: { print("Motion") })
