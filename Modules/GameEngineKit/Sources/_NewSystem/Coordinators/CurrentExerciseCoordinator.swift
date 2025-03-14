@@ -207,8 +207,18 @@ public class CurrentExerciseCoordinator {
                     case .colorMediator:
                         ColorMediatorView()
                     case .superSimon:
-                        let model = SuperSimonModel(data: payload)
-                        SuperSimonView(model: model)
+                        let model = NewSuperSimonModel(data: payload)
+                        let coordinator = NewSuperSimonCoordinator(model: model)
+                        let viewModel = NewSuperSimonViewViewModel(coordinator: coordinator)
+                        NewSuperSimonView(viewModel: viewModel)
+                            .onAppear {
+                                coordinator.didComplete
+                                    .receive(on: DispatchQueue.main)
+                                    .sink { [weak self] in
+                                        self?.didComplete.send()
+                                    }
+                                    .store(in: &self.cancellables)
+                            }
                 }
             }
         }
