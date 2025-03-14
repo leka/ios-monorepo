@@ -119,6 +119,34 @@ public struct NewActivityView: View {
                         type: emoji
                 - instructions:
                     - locale: fr_FR
+                      value: Touche les emojis qui sont identiques
+                    - locale: en_US
+                      value: Tap the emojis that are the same
+                  interface: touchToSelect
+                  gameplay: associateCategories
+                  payload:
+                    shuffle_choices: true
+                    choices:
+                      - value: 🐶
+                        type: emoji
+                        category: catA
+                      - value: 🐶
+                        type: emoji
+                        category: catA
+                      - value: 🐱
+                        type: emoji
+                        category: catB
+                      - value: 🐱
+                        type: emoji
+                        category: catB
+                      - value: 🐷
+                        type: emoji
+                        category: catC
+                      - value: 🐷
+                        type: emoji
+                        category: catC
+                - instructions:
+                    - locale: fr_FR
                       value: Glisse et dépose les emojis identiques ensemble
                     - locale: en_US
                       value: Drag and drop the same emojis together
@@ -176,34 +204,6 @@ public struct NewActivityView: View {
                         type: emoji
                         category: catC
             - group:
-                - instructions:
-                    - locale: fr_FR
-                      value: Touche les emojis qui sont identiques
-                    - locale: en_US
-                      value: Tap the emojis that are the same
-                  interface: touchToSelect
-                  gameplay: associateCategories
-                  payload:
-                    shuffle_choices: true
-                    choices:
-                      - value: 🐶
-                        type: emoji
-                        category: catA
-                      - value: 🐶
-                        type: emoji
-                        category: catA
-                      - value: 🐱
-                        type: emoji
-                        category: catB
-                      - value: 🐱
-                        type: emoji
-                        category: catB
-                      - value: 🐷
-                        type: emoji
-                        category: catC
-                      - value: 🐷
-                        type: emoji
-                        category: catC
                 - instructions:
                     - locale: fr_FR
                       value: Touche les emojis qui sont identiques

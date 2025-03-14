@@ -37,6 +37,14 @@ public class ExerciseCoordinator {
                                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                                     TTSView(viewModel: viewModel)
+                                        .onAppear {
+                                            coordinator.didComplete
+                                                .receive(on: DispatchQueue.main)
+                                                .sink { [weak self] in
+                                                    self?.didComplete.send()
+                                                }
+                                                .store(in: &self.cancellables)
+                                        }
 
                                 case .findTheRightAnswers:
                                     let model = CoordinatorFindTheRightAnswersModel(data: payload)
