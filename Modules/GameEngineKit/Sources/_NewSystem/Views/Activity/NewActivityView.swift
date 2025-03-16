@@ -20,8 +20,8 @@ public struct NewActivityView: View {
 
     public var body: some View {
         ZStack(alignment: .bottomTrailing) {
-            VStack {
-                VStack(spacing: 15) {
+            VStack(spacing: 10) {
+                VStack {
                     NewActivityProgressBar(manager: self.activityManager)
                 }
 
