@@ -8,10 +8,10 @@ import SwiftUI
 
 // MARK: - NewActivityManager
 
-class NewActivityManager: ObservableObject {
+public class NewActivityManager: ObservableObject {
     // MARK: Lifecycle
 
-    init(payload: ActivityPayload) {
+    public init(payload: ActivityPayload) {
         self.payload = payload
         self.groups = payload.exerciseGroups
         self.currentExercise = self.groups[0].group[0]
@@ -20,7 +20,7 @@ class NewActivityManager: ObservableObject {
         self.setExerciseCoordinator(self.currentExerciseCoordinator)
     }
 
-    convenience init(payload: Data) {
+    public convenience init(payload: Data) {
         guard let payload = try? JSONDecoder().decode(ActivityPayload.self, from: payload) else {
             log.error("Failed to decode ActivityPayload: \(payload)")
             fatalError("Failed to decode ActivityPayload")
