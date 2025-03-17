@@ -10,7 +10,7 @@ import SwiftUI
 struct NewActivityProgressBar: View {
     // MARK: Internal
 
-    @ObservedObject var manager: ActivityExercisesCoordinator
+    var manager: ActivityExercisesCoordinator
 
     var body: some View {
         HStack(spacing: 0) {

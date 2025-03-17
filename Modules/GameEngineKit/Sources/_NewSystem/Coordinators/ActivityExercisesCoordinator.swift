@@ -8,15 +8,24 @@ import SwiftUI
 
 // MARK: - NewActivityManager
 
-public class ActivityExercisesCoordinator: ObservableObject {
+@Observable
+public class ActivityExercisesCoordinator {
     // MARK: Lifecycle
 
     public init(payload: ActivityPayload) {
+        guard let firstExercise = payload.exerciseGroups.first?.group.first else {
+            log.error("Failed to get first exercise from ActivityPayload: \(payload)")
+            fatalError("Failed to get first exercise from ActivityPayload")
+        }
+
         self.payload = payload
         self.groups = payload.exerciseGroups
-        self.currentExercise = self.groups[0].group[0]
+
         self.groupSizeEnumeration = self.groups.map(\.group.count)
-        self.currentExerciseCoordinator = CurrentExerciseCoordinator(exercise: self.currentExercise)
+
+        self.currentExercise = firstExercise
+        self.currentExerciseCoordinator = CurrentExerciseCoordinator(exercise: firstExercise)
+
         self.setExerciseCoordinator(self.currentExerciseCoordinator)
     }
 
@@ -30,8 +39,8 @@ public class ActivityExercisesCoordinator: ObservableObject {
 
     // MARK: Public
 
-    @Published public var currentGroupIndex: Int = 0
-    @Published public var currentExerciseIndex: Int = 0
+    public var currentGroupIndex: Int = 0
+    public var currentExerciseIndex: Int = 0
 
     public let groupSizeEnumeration: [Int]
 
