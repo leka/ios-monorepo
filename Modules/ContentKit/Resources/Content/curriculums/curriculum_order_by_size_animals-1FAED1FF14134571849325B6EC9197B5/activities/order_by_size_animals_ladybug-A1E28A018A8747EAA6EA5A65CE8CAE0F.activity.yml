@@ -4,11 +4,11 @@
 
 version: 1.0.0
 
-uuid: 8D855D878B8F49E38F8EFCCBBF0B5E29
-name: order_by_size_squirrel
+uuid: A1E28A018A8747EAA6EA5A65CE8CAE0F
+name: order_by_size_animals_ladybug
 
 created_at: "2024-03-08T11:49:37.123525"
-last_edited_at: "2025-02-18T10:08:51.548260"
+last_edited_at: "2025-02-18T10:08:51.630551"
 status: published
 
 authors:
@@ -34,9 +34,9 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: order_animals_by_size_squirrel
+      icon: order_animals_by_size_ladybug
 
-      title: Ordonner par taille - Écureuil
+      title: Ordonner par taille - Coccinelle
       subtitle: Du plus petit au plus grand
 
       short_description: |
@@ -52,9 +52,9 @@ l10n:
 
   - locale: en_US
     details:
-      icon: order_animals_by_size_squirrel
+      icon: order_animals_by_size_ladybug
 
-      title: Order by Size - Squirrel
+      title: Order by Size - Ladybug
       subtitle: From Smallest to Largest
 
       short_description: |
@@ -84,13 +84,13 @@ exercises_payload:
           gameplay: findTheRightOrder
           payload:
             choices:
-              - value: animals_forest_squirrel_orange_one
+              - value: animals_insects_ladybug_red_one
                 type: image
-              - value: animals_forest_squirrel_orange_two
+              - value: animals_insects_ladybug_red_two
                 type: image
-              - value: animals_forest_squirrel_orange_three
+              - value: animals_insects_ladybug_red_three
                 type: image
-              - value: animals_forest_squirrel_orange_four
+              - value: animals_insects_ladybug_red_four
                 type: image
-              - value: animals_forest_squirrel_orange_five
+              - value: animals_insects_ladybug_red_five
                 type: image
