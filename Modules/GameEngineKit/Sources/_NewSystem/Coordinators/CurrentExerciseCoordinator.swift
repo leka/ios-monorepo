@@ -8,7 +8,7 @@ import SwiftUI
 
 // MARK: - ExerciseCoordinator
 
-public class ExerciseCoordinator {
+public class CurrentExerciseCoordinator {
     // MARK: Lifecycle
 
     public init(exercise: NewExercise) {
