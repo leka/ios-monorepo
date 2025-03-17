@@ -95,22 +95,20 @@ public struct LibraryActivityListView: View {
             }
             .width(50)
 
-            #if DEVELOPER_MODE || TESTFLIGHT_BUILD
-                TableColumn("") { activity in
-                    if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                        Menu {
-                            self.addOrRemoveButton(activity: activity, caregiverID: currentCaregiverID)
-                            Divider()
-                            self.addOrRemoveFavoriteButton(activity: activity, caregiverID: currentCaregiverID)
-                        } label: {
-                            Image(systemName: "ellipsis")
-                                .bold()
-                        }
-                        .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
+            TableColumn("") { activity in
+                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                    Menu {
+                        self.addOrRemoveButton(activity: activity, caregiverID: currentCaregiverID)
+                        Divider()
+                        self.addOrRemoveFavoriteButton(activity: activity, caregiverID: currentCaregiverID)
+                    } label: {
+                        Image(systemName: "ellipsis")
+                            .bold()
                     }
+                    .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
                 }
-                .width(50)
-            #endif
+            }
+            .width(50)
 
             TableColumn("") { activity in
                 Button {

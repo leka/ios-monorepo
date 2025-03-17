@@ -71,22 +71,20 @@ public struct LibraryStoryListView: View {
             }
             .width(min: 400, ideal: 450, max: .infinity)
 
-            #if DEVELOPER_MODE || TESTFLIGHT_BUILD
-                TableColumn("") { story in
-                    if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                        Menu {
-                            self.addOrRemoveButton(story: story, caregiverID: currentCaregiverID)
-                            Divider()
-                            self.addOrRemoveFavoriteButton(story: story, caregiverID: currentCaregiverID)
-                        } label: {
-                            Image(systemName: "ellipsis")
-                                .bold()
-                        }
-                        .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
+            TableColumn("") { story in
+                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                    Menu {
+                        self.addOrRemoveButton(story: story, caregiverID: currentCaregiverID)
+                        Divider()
+                        self.addOrRemoveFavoriteButton(story: story, caregiverID: currentCaregiverID)
+                    } label: {
+                        Image(systemName: "ellipsis")
+                            .bold()
                     }
+                    .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
                 }
-                .width(50)
-            #endif
+            }
+            .width(50)
 
             TableColumn("") { story in
                 Button {

@@ -68,14 +68,12 @@ struct MainView: View {
                         CategoryLabel(category: .gamepads)
                     }
 
-                    #if DEVELOPER_MODE || TESTFLIGHT_BUILD
-                        Section(String(l10n.MainView.Sidebar.sectionLibrary.characters)) {
-                            CategoryLabel(category: .libraryFavorites)
-                            CategoryLabel(category: .libraryCurriculums)
-                            CategoryLabel(category: .libraryActivities)
-                            CategoryLabel(category: .libraryStories)
-                        }
-                    #endif
+                    Section(String(l10n.MainView.Sidebar.sectionLibrary.characters)) {
+                        CategoryLabel(category: .libraryFavorites)
+                        CategoryLabel(category: .libraryCurriculums)
+                        CategoryLabel(category: .libraryActivities)
+                        CategoryLabel(category: .libraryStories)
+                    }
 
                     if self.authManagerViewModel.userAuthenticationState == .loggedIn {
                         Section(String(l10n.MainView.Sidebar.sectionUsers.characters)) {

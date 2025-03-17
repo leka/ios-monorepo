@@ -99,20 +99,18 @@ public struct ActivityListView: View {
                             )
                         })
 
-                        #if DEVELOPER_MODE || TESTFLIGHT_BUILD
-                            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                                Menu {
-                                    self.addOrRemoveButton(activity: activity, caregiverID: currentCaregiverID)
-                                    Divider()
-                                    self.addOrRemoveFavoriteButton(activity: activity, caregiverID: currentCaregiverID)
-                                } label: {
-                                    Image(systemName: "ellipsis")
-                                        .bold()
-                                }
-                                .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
-                                .frame(width: 50)
+                        if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                            Menu {
+                                self.addOrRemoveButton(activity: activity, caregiverID: currentCaregiverID)
+                                Divider()
+                                self.addOrRemoveFavoriteButton(activity: activity, caregiverID: currentCaregiverID)
+                            } label: {
+                                Image(systemName: "ellipsis")
+                                    .bold()
                             }
-                        #endif
+                            .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
+                            .frame(width: 50)
+                        }
 
                         Button {
                             self.onStartActivity?(activity)
