@@ -13,7 +13,7 @@ public struct NewActivityView: View {
 
     public init(activity: NewActivity, manager: ActivityExercisesCoordinator) {
         self.activity = activity
-        self._activityManager = StateObject(wrappedValue: manager)
+        self.activityManager = manager
     }
 
     // MARK: Public
@@ -76,7 +76,7 @@ public struct NewActivityView: View {
 
     // MARK: Private
 
-    @StateObject private var activityManager: ActivityExercisesCoordinator
+    private var activityManager: ActivityExercisesCoordinator
 
     private let activity: NewActivity
 }
