@@ -118,34 +118,32 @@ public struct ActivityDetailsView: View {
             }
         }
         .toolbar {
-            #if DEVELOPER_MODE || TESTFLIGHT_BUILD
-                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                    ToolbarItemGroup {
-                        if self.libraryManagerViewModel.isActivityFavoritedByCurrentCaregiver(
-                            activityID: self.activity.id,
-                            caregiverID: currentCaregiverID
-                        ) {
-                            Image(systemName: "star.circle")
-                                .font(.system(size: 21))
-                                .foregroundColor(self.styleManager.accentColor ?? .blue)
-                        }
+            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                ToolbarItemGroup {
+                    if self.libraryManagerViewModel.isActivityFavoritedByCurrentCaregiver(
+                        activityID: self.activity.id,
+                        caregiverID: currentCaregiverID
+                    ) {
+                        Image(systemName: "star.circle")
+                            .font(.system(size: 21))
+                            .foregroundColor(self.styleManager.accentColor ?? .blue)
+                    }
 
-                        Menu {
-                            self.addOrRemoveButton(activity: self.activity, caregiverID: currentCaregiverID)
-                            Divider()
-                            self.addOrRemoveFavoriteButton(activity: self.activity, caregiverID: currentCaregiverID)
+                    Menu {
+                        self.addOrRemoveButton(activity: self.activity, caregiverID: currentCaregiverID)
+                        Divider()
+                        self.addOrRemoveFavoriteButton(activity: self.activity, caregiverID: currentCaregiverID)
+                    } label: {
+                        Button {
+                            // Nothing to do
                         } label: {
-                            Button {
-                                // Nothing to do
-                            } label: {
-                                Image(systemName: "ellipsis")
-                                    .bold()
-                            }
-                            .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
+                            Image(systemName: "ellipsis")
+                                .bold()
                         }
+                        .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
                     }
                 }
-            #endif
+            }
 
             ToolbarItem {
                 Button {

@@ -30,32 +30,30 @@ public struct CurriculumGroupboxView: View {
 
                     Spacer()
 
-                    #if DEVELOPER_MODE || TESTFLIGHT_BUILD
-                        if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                            if self.libraryManagerViewModel.isCurriculumFavoritedByCurrentCaregiver(
-                                curriculumID: self.curriculum.uuid,
-                                caregiverID: currentCaregiverID
-                            ) {
-                                Image(systemName: "star.circle")
-                                    .font(.system(size: 25))
-                                    .foregroundColor(self.styleManager.accentColor ?? .blue)
-                            }
-
-                            Menu {
-                                self.addOrRemoveButton(curriculum: self.curriculum, caregiverID: currentCaregiverID)
-                                Divider()
-                                self.addOrRemoveFavoriteButton(curriculum: self.curriculum, caregiverID: currentCaregiverID)
-                            } label: {
-                                Button {
-                                    // Nothing to do
-                                } label: {
-                                    Image(systemName: "ellipsis")
-                                        .bold()
-                                }
-                                .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
-                            }
+                    if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                        if self.libraryManagerViewModel.isCurriculumFavoritedByCurrentCaregiver(
+                            curriculumID: self.curriculum.uuid,
+                            caregiverID: currentCaregiverID
+                        ) {
+                            Image(systemName: "star.circle")
+                                .font(.system(size: 25))
+                                .foregroundColor(self.styleManager.accentColor ?? .blue)
                         }
-                    #endif
+
+                        Menu {
+                            self.addOrRemoveButton(curriculum: self.curriculum, caregiverID: currentCaregiverID)
+                            Divider()
+                            self.addOrRemoveFavoriteButton(curriculum: self.curriculum, caregiverID: currentCaregiverID)
+                        } label: {
+                            Button {
+                                // Nothing to do
+                            } label: {
+                                Image(systemName: "ellipsis")
+                                    .bold()
+                            }
+                            .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
+                        }
+                    }
                 }
 
                 VStack(spacing: 10) {

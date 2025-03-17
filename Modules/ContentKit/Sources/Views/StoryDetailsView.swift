@@ -112,34 +112,32 @@ public struct StoryDetailsView: View {
             }
         }
         .toolbar {
-            #if DEVELOPER_MODE || TESTFLIGHT_BUILD
-                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                    ToolbarItemGroup {
-                        if self.libraryManagerViewModel.isStoryFavoritedByCurrentCaregiver(
-                            storyID: self.story.uuid,
-                            caregiverID: currentCaregiverID
-                        ) {
-                            Image(systemName: "star.circle")
-                                .font(.system(size: 21))
-                                .foregroundColor(self.styleManager.accentColor ?? .blue)
-                        }
+            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                ToolbarItemGroup {
+                    if self.libraryManagerViewModel.isStoryFavoritedByCurrentCaregiver(
+                        storyID: self.story.uuid,
+                        caregiverID: currentCaregiverID
+                    ) {
+                        Image(systemName: "star.circle")
+                            .font(.system(size: 21))
+                            .foregroundColor(self.styleManager.accentColor ?? .blue)
+                    }
 
-                        Menu {
-                            self.addOrRemoveButton(story: self.story, caregiverID: currentCaregiverID)
-                            Divider()
-                            self.addOrRemoveFavoriteButton(story: self.story, caregiverID: currentCaregiverID)
+                    Menu {
+                        self.addOrRemoveButton(story: self.story, caregiverID: currentCaregiverID)
+                        Divider()
+                        self.addOrRemoveFavoriteButton(story: self.story, caregiverID: currentCaregiverID)
+                    } label: {
+                        Button {
+                            // Nothing to do
                         } label: {
-                            Button {
-                                // Nothing to do
-                            } label: {
-                                Image(systemName: "ellipsis")
-                                    .bold()
-                            }
-                            .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
+                            Image(systemName: "ellipsis")
+                                .bold()
                         }
+                        .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
                     }
                 }
-            #endif
+            }
 
             ToolbarItem {
                 Button {
