@@ -72,21 +72,13 @@ public struct ActivityListView: View {
                             }
                             .contentShape(Rectangle())
 
-                            if let gestureIconUIImage = ContentKit.getGestureIconUIImage(for: activity) {
-                                IconImageView(image: gestureIconUIImage)
-                            }
+                            IconImageView(image: ContentKit.getGestureIconUIImage(for: activity))
 
-                            if let earFocusIconUIImage = ContentKit.getFocusIconUIImage(for: activity, ofType: .ears) {
-                                IconImageView(image: earFocusIconUIImage)
-                            }
+                            IconImageView(image: ContentKit.getFocusIconUIImage(for: activity, ofType: .ears))
 
-                            if let robotFocusIconUIImage = ContentKit.getFocusIconUIImage(for: activity, ofType: .robot) {
-                                IconImageView(image: robotFocusIconUIImage)
-                            }
+                            IconImageView(image: ContentKit.getFocusIconUIImage(for: activity, ofType: .robot))
 
-                            if let templateIconUIImage = ContentKit.getTemplateIconUIImage(for: activity) {
-                                IconImageView(image: templateIconUIImage)
-                            }
+                            IconImageView(image: ContentKit.getTemplateIconUIImage(for: activity))
                         }
                         .buttonStyle(.plain)
                         .frame(maxWidth: .infinity, maxHeight: 120)
@@ -157,7 +149,7 @@ public struct ActivityListView: View {
                     .padding(.horizontal, 5)
             } else {
                 Color.clear
-                    .frame(width: 50, height: 50)
+                    .frame(width: 60, height: 50)
             }
         }
     }
