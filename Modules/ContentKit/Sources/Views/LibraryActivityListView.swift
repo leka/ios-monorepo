@@ -22,7 +22,7 @@ public struct LibraryActivityListView: View {
 
     public var body: some View {
         Table(self.activities) {
-            TableColumn("Title") { activity in
+            TableColumn(String(l10n.Library.Table.titleColumnLabel.characters)) { activity in
                 NavigationLink(destination:
                     ActivityDetailsView(activity: activity, onStartActivity: self.onStartActivity)
                         .logEventScreenView(
@@ -177,7 +177,7 @@ public struct LibraryActivityListView: View {
             Button(role: .destructive) {
                 self.libraryManagerViewModel.requestItemRemoval(libraryItem, caregiverID: caregiverID)
             } label: {
-                Label("Remove from Library", systemImage: "trash")
+                Label(String(l10n.Library.MenuActions.removeFromLibraryButtonLabel.characters), systemImage: "trash")
             }
         } else {
             Button {
@@ -186,7 +186,7 @@ public struct LibraryActivityListView: View {
                     caregiverID: caregiverID
                 )
             } label: {
-                Label("Add to Library", systemImage: "plus")
+                Label(String(l10n.Library.MenuActions.addToLibraryButtonLabel.characters), systemImage: "plus")
             }
         }
     }
@@ -203,7 +203,7 @@ public struct LibraryActivityListView: View {
                     caregiverID: caregiverID
                 )
             } label: {
-                Label("Undo Favorite", systemImage: "star.slash")
+                Label(String(l10n.Library.MenuActions.undoFavoriteButtonLabel.characters), systemImage: "star.slash")
             }
         } else {
             Button {
@@ -212,7 +212,7 @@ public struct LibraryActivityListView: View {
                     caregiverID: caregiverID
                 )
             } label: {
-                Label("Favorite", systemImage: "star")
+                Label(String(l10n.Library.MenuActions.favoriteButtonLabel.characters), systemImage: "star")
             }
         }
     }
