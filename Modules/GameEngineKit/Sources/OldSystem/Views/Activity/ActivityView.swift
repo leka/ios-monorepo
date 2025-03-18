@@ -231,7 +231,6 @@ public struct ActivityView: View {
     // MARK: Private
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
-    @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
 
     @State private var isAlertPresented: Bool = false
 
@@ -414,7 +413,7 @@ public struct ActivityView: View {
 
     private func saveActivityCompletion() {
         let caregiverID = self.caregiverManagerViewModel.currentCaregiver?.id
-        let carereceiverIDs = self.carereceiverManagerViewModel.currentCarereceivers.compactMap(\.id)
+        let carereceiverIDs = self.carereceiverManager.currentCarereceivers.value.compactMap(\.id)
         self.viewModel.saveActivityCompletion(caregiverID: caregiverID, carereceiverIDs: carereceiverIDs)
     }
 }
