@@ -7,7 +7,8 @@ import SwiftUI
 
 // MARK: - LibraryManagerViewModel
 
-public class LibraryManagerViewModel: ObservableObject {
+@Observable
+public class LibraryManagerViewModel {
     // MARK: Lifecycle
 
     public init() {
@@ -24,19 +25,19 @@ public class LibraryManagerViewModel: ObservableObject {
 
     public static let shared = LibraryManagerViewModel()
 
-    @Published public var currentLibrary: Library?
-    @Published public var activities: [SavedActivity] = []
-    @Published public var curriculums: [SavedCurriculum] = []
-    @Published public var stories: [SavedStory] = []
+    public var currentLibrary: Library?
+    public var activities: [SavedActivity] = []
+    public var curriculums: [SavedCurriculum] = []
+    public var stories: [SavedStory] = []
 
-    @Published public var errorMessage: String = ""
-    @Published public var showErrorAlert: Bool = false
-    @Published public var isLoading: Bool = false
+    public var errorMessage: String = ""
+    public var showErrorAlert: Bool = false
+    public var isLoading: Bool = false
 
     // Alert-related properties
-    @Published public var showRemoveAlert: Bool = false
-    @Published public var alertType: RemoveAlertType = .none
-    @Published public var itemToRemove: LibraryItem?
+    public var showRemoveAlert: Bool = false
+    public var alertType: RemoveAlertType = .none
+    public var itemToRemove: LibraryItem?
 
     // Activities
 

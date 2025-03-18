@@ -89,11 +89,11 @@ public struct ActivityGridView: View {
 
     // MARK: Private
 
-    @ObservedObject private var libraryManagerViewModel: LibraryManagerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
+    private var libraryManagerViewModel: LibraryManagerViewModel = .shared
     private let columns = Array(repeating: GridItem(), count: 3)
 }
 
