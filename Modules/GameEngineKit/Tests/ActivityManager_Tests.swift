@@ -14,7 +14,7 @@ import Yams
 
     init() async throws {
         self.payload = try YAMLDecoder().decode(ActivityPayload.self, from: self.kActivityYaml)
-        self.activityManager = NewActivityManager(payload: self.payload)
+        self.activityManager = ActivityExercisesCoordinator(payload: self.payload)
     }
 
     // MARK: Internal
@@ -198,7 +198,7 @@ import Yams
         """
 
     let payload: ActivityPayload
-    let activityManager: NewActivityManager
+    let activityManager: ActivityExercisesCoordinator
 
     @Test func initFromPayload() async throws {
         #expect(self.activityManager.numberOfGroups == 2)

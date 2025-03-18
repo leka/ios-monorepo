@@ -8,7 +8,7 @@ import SwiftUI
 
 // MARK: - NewActivityManager
 
-public class NewActivityManager: ObservableObject {
+public class ActivityExercisesCoordinator: ObservableObject {
     // MARK: Lifecycle
 
     public init(payload: ActivityPayload) {
@@ -16,7 +16,7 @@ public class NewActivityManager: ObservableObject {
         self.groups = payload.exerciseGroups
         self.currentExercise = self.groups[0].group[0]
         self.groupSizeEnumeration = self.groups.map(\.group.count)
-        self.currentExerciseCoordinator = ExerciseCoordinator(exercise: self.currentExercise)
+        self.currentExerciseCoordinator = CurrentExerciseCoordinator(exercise: self.currentExercise)
         self.setExerciseCoordinator(self.currentExerciseCoordinator)
     }
 
@@ -68,7 +68,7 @@ public class NewActivityManager: ObservableObject {
 
     var currentExercise: NewExercise
 
-    func setExerciseCoordinator(_ coordinator: ExerciseCoordinator) {
+    func setExerciseCoordinator(_ coordinator: CurrentExerciseCoordinator) {
         self.currentExerciseCoordinator = coordinator
 
         self.currentExerciseCoordinator.didComplete
@@ -94,7 +94,7 @@ public class NewActivityManager: ObservableObject {
         }
 
         self.currentExercise = self.groups[self.currentGroupIndex].group[self.currentExerciseIndex]
-        self.setExerciseCoordinator(ExerciseCoordinator(exercise: self.currentExercise))
+        self.setExerciseCoordinator(CurrentExerciseCoordinator(exercise: self.currentExercise))
     }
 
     func previousExercise() {
@@ -112,12 +112,12 @@ public class NewActivityManager: ObservableObject {
         }
 
         self.currentExercise = self.groups[self.currentGroupIndex].group[self.currentExerciseIndex]
-        self.setExerciseCoordinator(ExerciseCoordinator(exercise: self.currentExercise))
+        self.setExerciseCoordinator(CurrentExerciseCoordinator(exercise: self.currentExercise))
     }
 
     // MARK: Private
 
     private var cancellables = Set<AnyCancellable>()
 
-    private var currentExerciseCoordinator: ExerciseCoordinator
+    private var currentExerciseCoordinator: CurrentExerciseCoordinator
 }

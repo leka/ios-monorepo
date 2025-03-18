@@ -11,7 +11,7 @@ import SwiftUI
 public struct NewActivityView: View {
     // MARK: Lifecycle
 
-    public init(activity: NewActivity, manager: NewActivityManager) {
+    public init(activity: NewActivity, manager: ActivityExercisesCoordinator) {
         self.activity = activity
         self._activityManager = StateObject(wrappedValue: manager)
     }
@@ -76,7 +76,7 @@ public struct NewActivityView: View {
 
     // MARK: Private
 
-    @StateObject private var activityManager: NewActivityManager
+    @StateObject private var activityManager: ActivityExercisesCoordinator
 
     private let activity: NewActivity
 }
@@ -269,7 +269,7 @@ public struct NewActivityView: View {
     #Preview {
         NavigationStack {
             if let activity = NewActivity(yaml: kActivityYaml) {
-                let manager = NewActivityManager(payload: activity.payload)
+                let manager = ActivityExercisesCoordinator(payload: activity.payload)
                 NewActivityView(activity: activity, manager: manager)
             } else {
                 Text("Invalid activity")
