@@ -15,7 +15,7 @@ extension DragAndDropInOrderView {
         init(viewModel: ViewModel) {
             self.viewModel = viewModel
             super.init(size: CGSize.zero)
-            self.maxWidthAndHeight = 200 - 5 * CGFloat(viewModel.choices.count)
+            self.maxWidthAndHeight = 190 - 5 * CGFloat(viewModel.choices.count)
             self.spacer = size.width / CGFloat(viewModel.choices.count + 1)
             self.defaultAnswerPosition = CGPoint(x: self.spacer, y: size.height - self.padding)
             self.defaultDropZonePosition = CGPoint(x: self.spacer, y: self.padding)
@@ -90,7 +90,7 @@ extension DragAndDropInOrderView {
             removeAllChildren()
             removeAllActions()
 
-            self.maxWidthAndHeight = 200 - 5 * CGFloat(self.viewModel.choices.count)
+            self.maxWidthAndHeight = 190 - 5 * CGFloat(self.viewModel.choices.count)
             self.spacer = size.width / CGFloat(self.viewModel.choices.count + 1)
             self.defaultAnswerPosition = CGPoint(x: self.spacer, y: size.height - self.padding)
             self.defaultDropZonePosition = CGPoint(x: self.spacer, y: self.padding)
