@@ -8,7 +8,7 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - ActivityListView
+// MARK: - LibraryActivityListView
 
 public struct LibraryActivityListView: View {
     // MARK: Lifecycle
@@ -108,13 +108,21 @@ public struct LibraryActivityListView: View {
 
                         Button {
                             self.onStartActivity?(activity)
+                            AnalyticsManager.logEventActivityLaunch(id: activity.id, name: activity.name, origin: .listButton)
                         } label: {
-                            Image(systemName: "play.circle")
-                                .font(.system(size: 24))
-                                .contentShape(Rectangle())
+                            HStack(spacing: 6) {
+                                Image(systemName: "play.fill")
+                                Text(l10n.LibraryActivityListView.playButtonLabel)
+                                    .font(.callout)
+                            }
+                            .foregroundColor(.lkGreen)
+                            .padding(.vertical, 5)
+                            .padding(.horizontal, 8)
+                            .overlay(
+                                Capsule()
+                                    .stroke(Color.lkGreen, lineWidth: 1)
+                            )
                         }
-                        .tint(.lkGreen)
-                        .padding(.horizontal, 5)
                     }
                     .frame(maxWidth: .infinity, maxHeight: 120)
                     .contentShape(Rectangle())
@@ -146,6 +154,8 @@ public struct LibraryActivityListView: View {
         var body: some View {
             Image(uiImage: self.image ?? UIImage())
                 .resizable()
+                .renderingMode(.template)
+                .foregroundStyle(.secondary)
                 .scaledToFit()
                 .frame(width: 50)
                 .padding(.horizontal, 5)
@@ -158,6 +168,17 @@ public struct LibraryActivityListView: View {
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var libraryManager: LibraryManager = .shared
+}
+
+// MARK: - l10n.LibraryActivityListView
+
+extension l10n {
+    enum LibraryActivityListView {
+        static let playButtonLabel = LocalizedString("content_kit.library_activity_list_view.play_button_label",
+                                                     bundle: ContentKitResources.bundle,
+                                                     value: "Play",
+                                                     comment: "Play button label on Library Activity List view")
+    }
 }
 
 #Preview {

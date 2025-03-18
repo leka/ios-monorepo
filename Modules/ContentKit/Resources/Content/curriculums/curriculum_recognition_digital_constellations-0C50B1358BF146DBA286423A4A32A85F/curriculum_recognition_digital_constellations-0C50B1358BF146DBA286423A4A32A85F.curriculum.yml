@@ -8,7 +8,7 @@ name: curriculum_recognition_digital_constellations
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-09-27T15:25:31.988665"
+last_edited_at: "2025-03-13T13:50:30.966021"
 authors:
   - leka
 
@@ -55,6 +55,6 @@ l10n:
         This curriculum aims to teach participants to recognize the numerical constellations represented by the faces of a die and other objects arranged in constellations (such as apples or legos). Participants will learn to associate each constellation, whether formed by the dots on a die or by objects, with the corresponding number. This curriculum helps reinforce the understanding of basic numeracy concepts, number recognition, and the association between constellations and their corresponding numbers.
 
 activities:
-  - recognize_dice_constellations-38D55E8E0967461AA33572A78B6AC0EA
-  - recognize_dice_numbers-A001E852147B47548B634067E6E832A9
-  - recognize_objects_constellations-700B09D55E3B4AB998CEA7028D41EEA7
+  - recognition_digital_constellations_dice_numbers-A001E852147B47548B634067E6E832A9
+  - recognition_digital_constellations_dice-38D55E8E0967461AA33572A78B6AC0EA
+  - recognition_digital_constellations_objects-700B09D55E3B4AB998CEA7028D41EEA7

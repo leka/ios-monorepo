@@ -1,0 +1,55 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: ED4C900D4ACB426384DC76F182BC19A5
+name: curriculum_leka_weather_robot
+status: published
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2025-02-25T11:51:01.988113"
+authors:
+  - leka
+
+skills:
+  - association
+  - association/logical
+
+tags:
+  - weather_elements
+
+hmi:
+  - tablet_robot
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: leka_weather_robot
+      title: La météo avec Leka
+      subtitle: Associer la météo du robot aux bons objets
+
+      abstract: |
+        Ce parcours éducatif permet aux utilisateurs de reconnaître différentes météos et d’associer les objets correspondants. Leka affiche une météo sur son écran et la personne accompagnée doit toucher sur l’iPad les images associées.
+
+      description: |
+        À travers plusieurs niveaux de difficulté, les utilisateurs apprennent à associer des objets à la météo affichée par Leka. L’objectif est de développer la reconnaissance visuelle et la logique d’association.
+
+  - locale: en_US
+    details:
+      icon: leka_weather_robot
+      title: Weather with Leka
+      subtitle: Match the robot's weather with the right objects
+
+      abstract: |
+        This educational path helps users recognize different weather conditions and match them with the correct objects. Leka displays a weather condition on its screen, and the participant must touch the associated images on the iPad.
+
+      description: |
+        Through multiple levels of difficulty, users learn to associate objects with the weather displayed by Leka. The goal is to enhance visual recognition and logical association.
+
+activities:
+  - weather_with_leka_1-2CDC8A5FBA2841159F6E7E2EB262FE7F
+  - weather_with_leka_2-201A137112424541B806C8F12708EA01
+  - weather_with_leka_3-9ED6A34E56A243578284485DAB9C89BD

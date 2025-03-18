@@ -48,21 +48,7 @@ struct CaregiverPicker: View {
                     }
                 }
             }
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    guard let selectedCaregiver = self.selectedCaregiver else {
-                        return
-                    }
-
-                    self.caregiverManager.setCurrentCaregiver(to: selectedCaregiver)
-
-                    self.dismiss()
-                } label: {
-                    Text(l10n.CaregiverPicker.selectButtonLabel)
-                }
-                .disabled(self.selectedCaregiver == nil)
-            }
-            ToolbarItemGroup(placement: .bottomBar) {
+            ToolbarItemGroup(placement: .topBarTrailing) {
                 Button {
                     self.isCaregiverCreationPresented = true
                 } label: {
@@ -72,8 +58,6 @@ struct CaregiverPicker: View {
                 }
                 .buttonStyle(.bordered)
                 .tint(nil)
-
-                Spacer()
             }
         }
     }
@@ -82,7 +66,6 @@ struct CaregiverPicker: View {
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
-    @State private var selectedCaregiver: Caregiver?
     @State private var isCaregiverCreationPresented: Bool = false
 
     private var caregiverManager: CaregiverManager = .shared
@@ -110,18 +93,14 @@ struct CaregiverPicker: View {
     private var oneToFourCaregiversView: some View {
         HStack(spacing: 40) {
             ForEach(self.caregiverManagerViewModel.caregivers, id: \.id) { caregiver in
-                CaregiverAvatarCell(caregiver: caregiver, isSelected: self.selectedCaregiver?.id == caregiver.id)
-                    .frame(maxWidth: 125)
-                    .onTapGesture {
-                        withAnimation(.default) {
-                            if self.selectedCaregiver?.id == caregiver.id {
-                                self.selectedCaregiver = nil
-                            } else {
-                                self.selectedCaregiver = caregiver
-                            }
-                        }
-                    }
-                    .disabled(self.caregiverManagerViewModel.isLoading)
+                Button {
+                    self.caregiverManager.setCurrentCaregiver(to: caregiver)
+                    self.dismiss()
+                } label: {
+                    CaregiverAvatarCell(caregiver: caregiver)
+                        .frame(maxWidth: 125)
+                        .disabled(self.caregiverManagerViewModel.isLoading)
+                }
             }
         }
     }
@@ -130,18 +109,14 @@ struct CaregiverPicker: View {
         ScrollView(showsIndicators: false) {
             LazyVGrid(columns: self.columns, spacing: 40) {
                 ForEach(self.caregiverManagerViewModel.caregivers, id: \.id) { caregiver in
-                    CaregiverAvatarCell(caregiver: caregiver, isSelected: self.selectedCaregiver?.id == caregiver.id)
-                        .frame(maxWidth: 125)
-                        .onTapGesture {
-                            withAnimation(.default) {
-                                if self.selectedCaregiver?.id == caregiver.id {
-                                    self.selectedCaregiver = nil
-                                } else {
-                                    self.selectedCaregiver = caregiver
-                                }
-                            }
-                        }
-                        .disabled(self.caregiverManagerViewModel.isLoading)
+                    Button {
+                        self.caregiverManager.setCurrentCaregiver(to: caregiver)
+                        self.dismiss()
+                    } label: {
+                        CaregiverAvatarCell(caregiver: caregiver)
+                            .frame(maxWidth: 125)
+                            .disabled(self.caregiverManagerViewModel.isLoading)
+                    }
                 }
             }
         }
@@ -165,8 +140,6 @@ extension l10n {
         }
 
         static let title = LocalizedString("lekaapp.caregiver_picker.title", value: "Select your profile", comment: "Caregiver picker title")
-
-        static let selectButtonLabel = LocalizedString("lekaapp.caregiver_picker.select_button_label", value: "Select", comment: "Caregiver picker select button label")
 
         static let createButtonLabel = LocalizedString("lekaapp.caregiver_picker.create_button_label", value: "Create profile", comment: "Caregiver picker create button label")
 

@@ -8,7 +8,7 @@ name: curriculum_categorization_sort_through_functional_category
 status: published
 
 created_at: "2024-03-21T15:12:35.579066"
-last_edited_at: "2024-09-27T17:53:03.444743"
+last_edited_at: "2025-03-13T13:50:30.067547"
 authors:
   - leka
 
@@ -57,7 +57,7 @@ l10n:
 
 activities:
   - categorization_sort_through_functional_category_without_error-4AD006AAD458451F848DA9D3C0D1D0AD
-  - categorization_sort_1_image_through_functional_category-DA072AA227724969AE41ECF7BDAA7F91
-  - categorization_sort_2_images_through_functional_category-F617D5D9F9D045A0B3D3FFE04FA85105
-  - categorization_sort_6_images_through_functional_category-DA01E28D686943C4869F6A3CB16FA89B
+  - categorization_sort_through_functional_category_1_image-DA072AA227724969AE41ECF7BDAA7F91
+  - categorization_sort_through_functional_category_2_images-F617D5D9F9D045A0B3D3FFE04FA85105
+  - categorization_sort_through_functional_category_6_images-DA01E28D686943C4869F6A3CB16FA89B
   - categorization_sort_through_functional_category_with_an_intruder-DB5A88B225644ABC997B86FD0E025443

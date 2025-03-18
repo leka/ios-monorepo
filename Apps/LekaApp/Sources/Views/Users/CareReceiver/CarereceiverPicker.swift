@@ -49,15 +49,6 @@ struct CarereceiverPicker: View {
                     Text(l10n.CarereceiverPicker.closeButtonLabel)
                 }
             }
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    self.action = .select
-                    self.dismiss()
-                } label: {
-                    Text(l10n.CarereceiverPicker.selectButtonLabel)
-                }
-                .disabled(self.selectedCarereceiver.isEmpty)
-            }
             ToolbarItemGroup(placement: .bottomBar) {
                 Button {
                     self.action = .skip
@@ -122,18 +113,14 @@ struct CarereceiverPicker: View {
     private var oneToFourCarereceiversView: some View {
         HStack(spacing: 30) {
             ForEach(self.carereceiverManagerViewModel.carereceivers, id: \.id) { carereceiver in
-                let isCarereceiverSelected = self.selectedCarereceiver.contains(where: { $0.id == carereceiver.id })
-                CarereceiverAvatarCell(carereceiver: carereceiver, isSelected: isCarereceiverSelected)
-                    .frame(maxWidth: 125)
-                    .onTapGesture {
-                        withAnimation(.default) {
-                            if let carereceiverIndex = self.selectedCarereceiver.firstIndex(of: carereceiver) {
-                                _ = self.selectedCarereceiver.remove(at: carereceiverIndex)
-                            } else {
-                                self.selectedCarereceiver.append(carereceiver)
-                            }
-                        }
-                    }
+                Button {
+                    self.selectedCarereceiver.append(carereceiver)
+                    self.action = .select
+                    self.dismiss()
+                } label: {
+                    CarereceiverAvatarCell(carereceiver: carereceiver)
+                        .frame(maxWidth: 125)
+                }
             }
         }
     }
@@ -142,18 +129,14 @@ struct CarereceiverPicker: View {
         ScrollView(showsIndicators: true) {
             LazyVGrid(columns: self.columns, spacing: 15) {
                 ForEach(self.carereceiverManagerViewModel.carereceivers) { carereceiver in
-                    let isCarereceiverSelected = self.selectedCarereceiver.contains(where: { $0.id == carereceiver.id })
-                    CarereceiverAvatarCell(carereceiver: carereceiver, isSelected: isCarereceiverSelected)
-                        .frame(maxWidth: 110)
-                        .onTapGesture {
-                            withAnimation(.default) {
-                                if let carereceiverIndex = self.selectedCarereceiver.firstIndex(of: carereceiver) {
-                                    _ = self.selectedCarereceiver.remove(at: carereceiverIndex)
-                                } else {
-                                    self.selectedCarereceiver.append(carereceiver)
-                                }
-                            }
-                        }
+                    Button {
+                        self.selectedCarereceiver.append(carereceiver)
+                        self.action = .select
+                        self.dismiss()
+                    } label: {
+                        CarereceiverAvatarCell(carereceiver: carereceiver)
+                            .frame(maxWidth: 110)
+                    }
                 }
             }
         }

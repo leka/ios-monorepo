@@ -11,5 +11,12 @@
     "[jsonc]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "makefile.configureOnOpen": false
+    "[swift]": {
+        "editor.defaultFormatter": "sweetpad.sweetpad",
+        "editor.formatOnSave": true
+    },
+    "makefile.configureOnOpen": false,
+    "sweetpad.tuist.autogenerate": false,
+    "sweetpad.format.path": "swiftformat",
+    "sweetpad.format.args": ["--quiet", "${file}"]
 }

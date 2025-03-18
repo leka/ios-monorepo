@@ -90,15 +90,22 @@ public struct StoryListView: View {
                                     }
                             }
                         #endif
-
                         Button {
                             self.onStartStory?(story)
                         } label: {
-                            Image(systemName: "play.circle")
-                                .font(.system(size: 24))
-                                .contentShape(Rectangle())
+                            HStack(spacing: 6) {
+                                Image(systemName: "play.fill")
+                                Text(l10n.StoryListView.playButtonLabel)
+                                    .font(.callout)
+                            }
+                            .foregroundColor(.lkGreen)
+                            .padding(.vertical, 5)
+                            .padding(.horizontal, 8)
+                            .overlay(
+                                Capsule()
+                                    .stroke(Color.lkGreen, lineWidth: 1)
+                            )
                         }
-                        .tint(.lkGreen)
                     }
                     .frame(maxWidth: .infinity, maxHeight: 120)
                     .contentShape(Rectangle())
@@ -130,6 +137,17 @@ public struct StoryListView: View {
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var libraryManager: LibraryManager = .shared
+}
+
+// MARK: - l10n.StoryListView
+
+extension l10n {
+    enum StoryListView {
+        static let playButtonLabel = LocalizedString("content_kit.story_list_view.play_button_label",
+                                                     bundle: ContentKitResources.bundle,
+                                                     value: "Play",
+                                                     comment: "Play button label on Story List view")
+    }
 }
 
 #Preview {

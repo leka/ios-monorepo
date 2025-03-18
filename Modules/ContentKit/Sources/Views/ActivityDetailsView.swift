@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
+import AnalyticsKit
 import DesignKit
 import Fit
 import LocalizationKit
@@ -153,8 +154,9 @@ public struct ActivityDetailsView: View {
             ToolbarItem {
                 Button {
                     self.onStartActivity?(self.activity)
+                    AnalyticsManager.logEventActivityLaunch(id: self.activity.id, name: self.activity.name, origin: .detailsViewButton)
                 } label: {
-                    Image(systemName: "play.circle")
+                    Image(systemName: "play.fill")
                     Text(l10n.ActivityDetailsView.startActivityButtonLabel)
                 }
                 .buttonStyle(.borderedProminent)
@@ -212,10 +214,10 @@ extension l10n {
                                                               value: "Instructions",
                                                               comment: "ActivityDetailsView 'instructions' section title")
 
-        static let startActivityButtonLabel = LocalizedString("content_kit.sample_activity_list_view.start_activity_button_label",
+        static let startActivityButtonLabel = LocalizedString("content_kit.activity_details_view.start_activity_button_label",
                                                               bundle: ContentKitResources.bundle,
                                                               value: "Start activity",
-                                                              comment: "Start activity button label on Sample Activity List view")
+                                                              comment: "Start activity button label on Activity Details view")
     }
 }
 

@@ -38,7 +38,9 @@ public extension ContentKit {
                          .gamepadJoyStickColorPad,
                          .melody,
                          .musicalInstruments,
-                         .superSimon:
+                         .superSimon,
+                         .colorMediator,
+                         .colorMusicPad:
                         return "robot"
                     default:
                         return ""
@@ -50,8 +52,13 @@ public extension ContentKit {
                          .listenThenDragAndDropToAssociate,
                          .melody,
                          .musicalInstruments,
-                         .danceFreeze:
+                         .danceFreeze,
+                         .colorMusicPad:
                         return "ear"
+                    case .observeThenTouchToSelect,
+                         .observeThenDragAndDropIntoZones,
+                         .observeThenDragAndDropToAssociate:
+                        return "eye"
                     default:
                         return ""
                 }

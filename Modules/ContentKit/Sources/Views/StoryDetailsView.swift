@@ -145,7 +145,7 @@ public struct StoryDetailsView: View {
                 Button {
                     self.onStartStory?(self.story)
                 } label: {
-                    Image(systemName: "play.circle")
+                    Image(systemName: "play.fill")
                     Text(l10n.StoryDetailsView.startStoryButtonLabel)
                 }
                 .buttonStyle(.borderedProminent)
