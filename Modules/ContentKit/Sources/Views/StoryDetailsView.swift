@@ -163,11 +163,11 @@ public struct StoryDetailsView: View {
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
 
-    @ObservedObject private var libraryManagerViewModel: LibraryManagerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
+    private var libraryManagerViewModel: LibraryManagerViewModel = .shared
     private var libraryManager: LibraryManager = .shared
     private let story: Story
 

@@ -10,7 +10,7 @@ import SwiftUI
 struct CategoryLibraryView: View {
     @State var category: Navigation.Category
 
-    @ObservedObject var libraryManagerViewModel: LibraryManagerViewModel = .shared
+    @State var libraryManagerViewModel: LibraryManagerViewModel = .shared
     @ObservedObject var authManagerViewModel = AuthManagerViewModel.shared
 
     var body: some View {

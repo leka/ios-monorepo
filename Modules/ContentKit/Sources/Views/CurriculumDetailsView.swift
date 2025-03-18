@@ -181,11 +181,11 @@ public struct CurriculumDetailsView: View {
     @State private var selectedSkill: Skill?
     @State private var isDescriptionExpanded = false
 
-    @ObservedObject private var libraryManagerViewModel: LibraryManagerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
+    private var libraryManagerViewModel: LibraryManagerViewModel = .shared
     private var libraryManager: LibraryManager = .shared
     private let curriculum: Curriculum
 
