@@ -87,6 +87,42 @@
                 }
             }
         },
+        "content_kit.activity_details_view.start_activity_button_label": {
+            "comment": "Start activity button label on Activity Details view",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Start activity"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "D\u00e9marrer l\u2019activit\u00e9"
+                    }
+                }
+            }
+        },
+        "content_kit.activity_list_view.play_button_label": {
+            "comment": "Play button label on Activity List view",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Play"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Jouer"
+                    }
+                }
+            }
+        },
         "content_kit.curriculum_details_view.activities_section_title": {
             "comment": "CurriculumDetailsView 'activities' section title",
             "localizations": {
@@ -264,6 +300,24 @@
                 }
             }
         },
+        "content_kit.library_activity_list_view.play_button_label": {
+            "comment": "Play button label on Library Activity List view",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Play"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Jouer"
+                    }
+                }
+            }
+        },
         "content_kit.library_menu_actions.add_to_library_button_label": {
             "comment": "Add to library button label",
             "localizations": {
@@ -294,23 +348,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Supprimer de la Biblioth\u00e8que"
-                    }
-                }
-            }
-        },
-        "content_kit.sample_activity_list_view.start_activity_button_label": {
-            "comment": "Start activity button label on Sample Activity List view",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Start activity"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "D\u00e9marrer l'activit\u00e9"
                     }
                 }
             }
@@ -522,6 +559,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Comp\u00e9tences"
+                    }
+                }
+            }
+        },
+        "content_kit.story_list_view.play_button_label": {
+            "comment": "Play button label on Story List view",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Play"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Jouer"
                     }
                 }
             }

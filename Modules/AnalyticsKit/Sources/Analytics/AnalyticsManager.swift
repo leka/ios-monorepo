@@ -22,6 +22,7 @@ public class AnalyticsManager {
     }
 
     enum Event {
+        case activityLaunch
         case activityStart
         case activityEnd
 
@@ -55,6 +56,8 @@ public class AnalyticsManager {
 
         var name: String {
             switch self {
+                case .activityLaunch:
+                    "activity_launch"
                 case .activityStart:
                     "activity_start"
                 case .activityEnd:
