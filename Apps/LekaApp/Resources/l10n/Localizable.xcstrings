@@ -869,23 +869,6 @@
                 }
             }
         },
-        "lekaapp.caregiver_picker.select_button_label": {
-            "comment": "Caregiver picker select button label",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Select"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "S\u00e9lectionner"
-                    }
-                }
-            }
-        },
         "lekaapp.caregiver_picker.title": {
             "comment": "Caregiver picker title",
             "localizations": {
