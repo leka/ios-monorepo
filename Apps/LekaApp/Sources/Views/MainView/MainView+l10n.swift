@@ -23,6 +23,7 @@ extension l10n {
                 static let caregivers = LocalizedString("lekaapp.main_view.sidebar.category_label.caregivers", value: "Caregivers", comment: "The title of the category 'Caregivers'")
                 static let carereceivers = LocalizedString("lekaapp.main_view.sidebar.category_label.carereceivers", value: "Care Receivers", comment: "The title of the category 'Care Receivers'")
                 static let none = LocalizedString("lekaapp.main_view.sidebar.category_label.none", value: "Select a category", comment: "The title of the category 'none'")
+                static let libraryFavorites = LocalizedString("lekaapp.main_view.sidebar.category_label.library_favorites", value: "Favorites", comment: "The title of the category 'Library Favorites'")
                 static let libraryCurriculums = LocalizedString("lekaapp.main_view.sidebar.category_label.library_curriculums", value: "Curriculums", comment: "The title of the category 'Library Curriculums'")
                 static let libraryActivities = LocalizedString("lekaapp.main_view.sidebar.category_label.library_activities", value: "Activities", comment: "The title of the category 'Library Activities'")
                 static let libraryStories = LocalizedString("lekaapp.main_view.sidebar.category_label.library_stories", value: "Stories", comment: "The title of the category 'Library Stories'")
@@ -57,6 +58,50 @@ extension l10n {
             static let message = LocalizedString("lekaapp.main_view.os_update_alert.message", value: "A new version of iPadOS is available! Update now to enjoy enhanced performance, security, and compatibility with the latest features of our app.", comment: "The message of the alert to inform the user that an os update is available")
             static let action = LocalizedString("lekaapp.main_view.os_update_alert.action", value: "Update now", comment: "The action button of the alert to inform the user that an os update is available")
             static let reminder = LocalizedString("lekaapp.main_view.os_update_alert.reminder", value: "Remind me later", comment: "The action button of the alert to inform the user that an os update is available")
+        }
+
+        enum RemovalAlert {
+            static let errorTitle = LocalizedString(
+                "lekaapp.main_view.removal_alert.error_title",
+                value: "Error",
+                comment: "Title of the alert when an error occurs during item removal"
+            )
+
+            static let confirmTitle = LocalizedString(
+                "lekaapp.main_view.removal_alert.confirm_title",
+                value: "Confirm Removal",
+                comment: "Title of the alert when a user is about to remove a favorited item"
+            )
+
+            static let confirmMessage = LocalizedString(
+                "lekaapp.main_view.removal_alert.confirm_message",
+                value: "You have marked this item as a favorite. Are you sure you want to remove it from your library?",
+                comment: "Message of the alert when a user is about to remove a favorited item"
+            )
+
+            static let confirmAction = LocalizedString(
+                "lekaapp.main_view.removal_alert.confirm_action",
+                value: "Remove",
+                comment: "Action button text for confirming item removal"
+            )
+
+            static let cannotRemoveTitle = LocalizedString(
+                "lekaapp.main_view.removal_alert.cannot_remove_title",
+                value: "Cannot Remove Item",
+                comment: "Title of the alert when an item cannot be removed due to being favorited by others"
+            )
+
+            static let cannotRemoveMessage = LocalizedString(
+                "lekaapp.main_view.removal_alert.cannot_remove_message",
+                value: "This item is favorited by other caregivers. You cannot remove it.",
+                comment: "Message of the alert when an item cannot be removed because it is favorited by others"
+            )
+
+            static let okAction = LocalizedString(
+                "lekaapp.main_view.removal_alert.ok_action",
+                value: "OK",
+                comment: "OK button text for alerts"
+            )
         }
     }
 }

@@ -1859,6 +1859,132 @@
                 }
             }
         },
+        "lekaapp.main_view.removal_alert.cannot_remove_message": {
+            "comment": "Message of the alert when an item cannot be removed because it is favorited by others",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "This item is favorited by other caregivers. You cannot remove it."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Ceci a \u00e9t\u00e9 ajout\u00e9 aux favoris d\u2019autres utilisateurs. Vous ne pouvez pas le supprimer."
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.removal_alert.cannot_remove_title": {
+            "comment": "Title of the alert when an item cannot be removed due to being favorited by others",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Cannot Remove Item"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Suppression impossible"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.removal_alert.confirm_action": {
+            "comment": "Action button text for confirming item removal",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Remove"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Supprimer"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.removal_alert.confirm_message": {
+            "comment": "Message of the alert when a user is about to remove a favorited item",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "You have marked this item as a favorite. Are you sure you want to remove it from your library?"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Vous avez ajout\u00e9 ceci \u00e0 vos favoris. \u00cates-vous certain(e) de vouloir le supprimer de votre biblioth\u00e8que ?"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.removal_alert.confirm_title": {
+            "comment": "Title of the alert when a user is about to remove a favorited item",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Confirm Removal"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Confirmer la suppression"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.removal_alert.error_title": {
+            "comment": "Title of the alert when an error occurs during item removal",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Error"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Erreur"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.removal_alert.ok_action": {
+            "comment": "OK button text for alerts",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "OK"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "OK"
+                    }
+                }
+            }
+        },
         "lekaapp.main_view.sidebar.category_label.caregivers": {
             "comment": "The title of the category 'Caregivers'",
             "localizations": {
@@ -1991,6 +2117,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Parcours"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.library_favorites": {
+            "comment": "The title of the category 'Library Favorites'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Favorites"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Favoris"
                     }
                 }
             }
