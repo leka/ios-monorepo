@@ -109,6 +109,7 @@ public struct ActivityListView: View {
 
                         Button {
                             self.onStartActivity?(activity)
+                            AnalyticsManager.logEventActivityLaunch(id: activity.id, name: activity.name, origin: .listButton)
                         } label: {
                             HStack(spacing: 6) {
                                 Image(systemName: "play.fill")

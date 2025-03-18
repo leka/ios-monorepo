@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
+import AnalyticsKit
 import DesignKit
 import Fit
 import LocalizationKit
@@ -153,6 +154,7 @@ public struct ActivityDetailsView: View {
             ToolbarItem {
                 Button {
                     self.onStartActivity?(self.activity)
+                    AnalyticsManager.logEventActivityLaunch(id: self.activity.id, name: self.activity.name, origin: .detailsViewButton)
                 } label: {
                     Image(systemName: "play.fill")
                     Text(l10n.ActivityDetailsView.startActivityButtonLabel)
