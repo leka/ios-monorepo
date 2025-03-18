@@ -1,16 +1,21 @@
+## IMPORTANT
+
+Version 1.17.0 is the last version to support iOS 16. Future versions of Leka will require iOS 18+.
+
 ## New Features
 
-- n/a
+- ColorMediator Activity: Added a new activity called "ColorMediator" to enhance color recognition experiences.
+- Weather Curriculum: Introduced the new curriculum "Weather with Leka" to enrich educational content with weather-related activities.
+- Memory Game Update: Improved the Memory game experience with updated visuals and smoother interactions.
 
 ## Improvements
 
-- Updated Icons: Refreshed icons for activities and curriculums to improve visual consistency and user experience.
+- Enhanced Icons: Updated gesture and focus icons to improve visual clarity.
+- Start Button Improvements: Improved the clarity and appearance of the "Start" button in activity list, making it lighter and easier to interact with.
+- User Interaction Enhancements: Adjusted caregiver and care receiver selection to ensure selections are intentional, now requiring direct taps.
+- Improved Spacing: Increased spacing between draggable answers in ordering activities for better usability.
 
 ## Bug Fixes
 
-- Reinforcer Serialization Fix: Fixed an issue causing crashes related to reinforcer serialization in Firestore.
-
-## Other
-
-- Firebase Upgrade: Upgraded Firebase dependencies to v11.8.0 for improved stability and performance.
-- Internal Performance Enhancements: Improved database operations and overall app performance.
+- DanceFreeze Fix: Resolved an issue affecting the end-of-exercise behavior in DanceFreeze activities.
+- Dark Mode Readability: Improved readability of stories when the app is in dark mode.
