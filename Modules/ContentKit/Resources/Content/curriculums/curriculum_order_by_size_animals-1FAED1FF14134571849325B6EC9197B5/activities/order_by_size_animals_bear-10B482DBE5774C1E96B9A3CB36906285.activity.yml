@@ -4,11 +4,11 @@
 
 version: 1.0.0
 
-uuid: FEBEFE797DC04FDAA65C64F8935586F1
-name: order_by_size_koala
+uuid: 10B482DBE5774C1E96B9A3CB36906285
+name: order_by_size_animals_bear
 
 created_at: "2024-03-08T11:49:37.123525"
-last_edited_at: "2025-02-18T10:08:51.547621"
+last_edited_at: "2025-02-18T10:08:51.541539"
 status: published
 
 authors:
@@ -34,9 +34,9 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: order_animals_by_size_koala
+      icon: order_animals_by_size_bear
 
-      title: Ordonner par taille - Koala
+      title: Ordonner par taille - Ours
       subtitle: Du plus petit au plus grand
 
       short_description: |
@@ -52,9 +52,9 @@ l10n:
 
   - locale: en_US
     details:
-      icon: order_animals_by_size_koala
+      icon: order_animals_by_size_bear
 
-      title: Order by Size - Koala
+      title: Order by Size - Bear
       subtitle: From Smallest to Largest
 
       short_description: |
@@ -84,13 +84,13 @@ exercises_payload:
           gameplay: findTheRightOrder
           payload:
             choices:
-              - value: animals_savannah_koala_gray_one
+              - value: animals_arctic_bear_white_one
                 type: image
-              - value: animals_savannah_koala_gray_two
+              - value: animals_arctic_bear_white_two
                 type: image
-              - value: animals_savannah_koala_gray_three
+              - value: animals_arctic_bear_white_three
                 type: image
-              - value: animals_savannah_koala_gray_four
+              - value: animals_arctic_bear_white_four
                 type: image
-              - value: animals_savannah_koala_gray_five
+              - value: animals_arctic_bear_white_five
                 type: image

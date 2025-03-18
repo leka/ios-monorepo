@@ -4,8 +4,8 @@
 
 version: 1.0.0
 
-uuid: A1E28A018A8747EAA6EA5A65CE8CAE0F
-name: order_by_size_ladybug
+uuid: 9EBCA72374B04D58B87A38FD699B0227
+name: order_by_size_animals_fish
 
 created_at: "2024-03-08T11:49:37.123525"
 last_edited_at: "2025-02-18T10:08:51.630551"
@@ -34,9 +34,9 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: order_animals_by_size_ladybug
+      icon: order_animals_by_size_fish
 
-      title: Ordonner par taille - Coccinelle
+      title: Ordonner par taille - Poisson
       subtitle: Du plus petit au plus grand
 
       short_description: |
@@ -52,9 +52,9 @@ l10n:
 
   - locale: en_US
     details:
-      icon: order_animals_by_size_ladybug
+      icon: order_animals_by_size_fish
 
-      title: Order by Size - Ladybug
+      title: Order by Size - Fish
       subtitle: From Smallest to Largest
 
       short_description: |
@@ -84,13 +84,13 @@ exercises_payload:
           gameplay: findTheRightOrder
           payload:
             choices:
-              - value: animals_insects_ladybug_red_one
+              - value: animals_sea_fish_blue_one
                 type: image
-              - value: animals_insects_ladybug_red_two
+              - value: animals_sea_fish_blue_two
                 type: image
-              - value: animals_insects_ladybug_red_three
+              - value: animals_sea_fish_blue_three
                 type: image
-              - value: animals_insects_ladybug_red_four
+              - value: animals_sea_fish_blue_four
                 type: image
-              - value: animals_insects_ladybug_red_five
+              - value: animals_sea_fish_blue_five
                 type: image
