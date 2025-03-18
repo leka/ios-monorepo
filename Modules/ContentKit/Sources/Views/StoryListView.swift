@@ -90,15 +90,22 @@ public struct StoryListView: View {
                                     }
                             }
                         #endif
-
                         Button {
                             self.onStartStory?(story)
                         } label: {
-                            Image(systemName: "play.fill")
-                            Text(l10n.StoryListView.playButtonLabel)
+                            HStack(spacing: 6) {
+                                Image(systemName: "play.fill")
+                                Text(l10n.StoryListView.playButtonLabel)
+                                    .font(.callout)
+                            }
+                            .foregroundColor(.lkGreen)
+                            .padding(.vertical, 5)
+                            .padding(.horizontal, 8)
+                            .overlay(
+                                Capsule()
+                                    .stroke(Color.lkGreen, lineWidth: 1)
+                            )
                         }
-                        .buttonStyle(.borderedProminent)
-                        .tint(.lkGreen)
                     }
                     .frame(maxWidth: .infinity, maxHeight: 120)
                     .contentShape(Rectangle())

@@ -109,12 +109,19 @@ public struct LibraryActivityListView: View {
                         Button {
                             self.onStartActivity?(activity)
                         } label: {
-                            Image(systemName: "play.fill")
-                            Text(l10n.LibraryActivityListView.playButtonLabel)
+                            HStack(spacing: 6) {
+                                Image(systemName: "play.fill")
+                                Text(l10n.LibraryActivityListView.playButtonLabel)
+                                    .font(.callout)
+                            }
+                            .foregroundColor(.lkGreen)
+                            .padding(.vertical, 5)
+                            .padding(.horizontal, 8)
+                            .overlay(
+                                Capsule()
+                                    .stroke(Color.lkGreen, lineWidth: 1)
+                            )
                         }
-                        .buttonStyle(.borderedProminent)
-                        .tint(.lkGreen)
-                        .padding(.horizontal, 5)
                     }
                     .frame(maxWidth: .infinity, maxHeight: 120)
                     .contentShape(Rectangle())
