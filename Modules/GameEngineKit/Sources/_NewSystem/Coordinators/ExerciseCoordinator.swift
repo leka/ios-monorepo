@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import Combine
 import ContentKit
 import SwiftUI
 
@@ -36,6 +37,14 @@ public class ExerciseCoordinator {
                                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                                     TTSView(viewModel: viewModel)
+                                        .onAppear {
+                                            coordinator.didComplete
+                                                .receive(on: DispatchQueue.main)
+                                                .sink { [weak self] in
+                                                    self?.didComplete.send()
+                                                }
+                                                .store(in: &self.cancellables)
+                                        }
 
                                 case .findTheRightAnswers:
                                     let model = CoordinatorFindTheRightAnswersModel(data: payload)
@@ -43,6 +52,14 @@ public class ExerciseCoordinator {
                                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                                     TTSView(viewModel: viewModel)
+                                        .onAppear {
+                                            coordinator.didComplete
+                                                .receive(on: DispatchQueue.main)
+                                                .sink { [weak self] in
+                                                    self?.didComplete.send()
+                                                }
+                                                .store(in: &self.cancellables)
+                                        }
 
                                 case .findTheRightOrder:
                                     let model = CoordinatorFindTheRightOrderModel(data: payload)
@@ -121,7 +138,7 @@ public class ExerciseCoordinator {
                         case .magicCards:
                             switch gameplay {
                                 default:
-                                    PlaceholderExerciseView()
+                                    ExercisePlaceholderView()
                             }
                     }
                 } else {
@@ -167,6 +184,12 @@ public class ExerciseCoordinator {
 
         Spacer()
     }
+
+    // MARK: Internal
+
+    var cancellables = Set<AnyCancellable>()
+
+    var didComplete: PassthroughSubject<Void, Never> = .init()
 
     // MARK: Private
 

@@ -2,91 +2,24 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import Combine
-import ContentKit
-import SwiftUI
+import Testing
+import Yams
 
-// MARK: - NewActivityView
+@testable import GameEngineKit
 
-public struct NewActivityView: View {
+// MARK: - ActivityManager_Tests
+
+@Suite struct ActivityManager_Tests {
     // MARK: Lifecycle
 
-    public init(activity: NewActivity, manager: NewActivityManager) {
-        self.activity = activity
-        self._activityManager = StateObject(wrappedValue: manager)
-    }
-
-    // MARK: Public
-
-    public var body: some View {
-        ZStack(alignment: .bottomTrailing) {
-            VStack(spacing: 10) {
-                VStack {
-                    NewActivityProgressBar(manager: self.activityManager)
-                }
-
-                self.activityManager.currentExerciseView
-            }
-        }
-        .frame(maxWidth: .infinity)
-        .background(.lkBackground)
-        .ignoresSafeArea(.all, edges: .bottom)
-        .navigationTitle(self.activity.name)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    // TODO: (@dev-ios) implement reinforcer toggle
-                } label: {
-                    Image(systemName: "livephoto")
-                }
-            }
-
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    self.activityManager.previousExercise()
-                } label: {
-                    Image(systemName: "arrow.backward")
-                }
-                .disabled(self.activityManager.isFirstExercise)
-            }
-
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    self.activityManager.nextExercise()
-                } label: {
-                    Image(systemName: "arrow.forward")
-                }
-                .disabled(self.activityManager.isLastExercise)
-            }
-
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    // TODO: (@dev-ios) implement activity information sheet toggle
-                } label: {
-                    Image(systemName: "info.circle")
-                }
-            }
-        }
+    init() async throws {
+        self.payload = try YAMLDecoder().decode(ActivityPayload.self, from: self.kActivityYaml)
+        self.activityManager = NewActivityManager(payload: self.payload)
     }
 
     // MARK: Internal
 
-    @Environment(\.dismiss) var dismiss
-
-    // MARK: Private
-
-    @StateObject private var activityManager: NewActivityManager
-
-    private let activity: NewActivity
-}
-
-#if DEBUG
-
     let kActivityYaml = """
-        uuid: F8C90919AF204155A170D3957BABE7D6
-        name: TestActivityMock
-        exercises_payload:
           options:
             shuffle_exercises: false
             shuffle_groups: false
@@ -95,28 +28,32 @@ public struct NewActivityView: View {
             - group:
                 - instructions:
                     - locale: fr_FR
-                      value: Touche les emojis du chien
+                      value: Touche les emojis qui sont identiques
                     - locale: en_US
-                      value: Tap the dog emojis
+                      value: Tap the emojis that are the same
                   interface: touchToSelect
-                  gameplay: findTheRightAnswers
+                  gameplay: associateCategories
                   payload:
                     shuffle_choices: true
                     choices:
                       - value: 🐶
                         type: emoji
-                        is_right_answer: true
+                        category: catA
                       - value: 🐶
                         type: emoji
-                        is_right_answer: true
+                        category: catA
                       - value: 🐱
                         type: emoji
+                        category: catB
                       - value: 🐱
                         type: emoji
+                        category: catB
                       - value: 🐷
                         type: emoji
+                        category: catC
                       - value: 🐷
                         type: emoji
+                        category: catC
                 - instructions:
                     - locale: fr_FR
                       value: Touche les emojis qui sont identiques
@@ -147,10 +84,10 @@ public struct NewActivityView: View {
                         category: catC
                 - instructions:
                     - locale: fr_FR
-                      value: Glisse et dépose les emojis identiques ensemble
+                      value: Touche les emojis qui sont identiques
                     - locale: en_US
-                      value: Drag and drop the same emojis together
-                  interface: dragAndDropGrid
+                      value: Tap the emojis that are the same
+                  interface: touchToSelect
                   gameplay: associateCategories
                   payload:
                     shuffle_choices: true
@@ -164,36 +101,6 @@ public struct NewActivityView: View {
                       - value: 🐱
                         type: emoji
                         category: catB
-                      - value: 🐱
-                        type: emoji
-                        category: catB
-                      - value: 🐷
-                        type: emoji
-                        category: catC
-                      - value: 🐷
-                        type: emoji
-                        category: catC
-                - instructions:
-                    - locale: fr_FR
-                      value: Glisse et dépose les émojis dans la zone correspondante
-                    - locale: en_US
-                      value: Drag and drop the emojis in the correct zone
-                  interface: dragAndDropGridWithZones
-                  gameplay: associateCategories
-                  payload:
-                    shuffle_choices: true
-                    choices:
-                      - value: 🐶
-                        type: emoji
-                        category: catA
-                        is_dropzone: true
-                      - value: 🐶
-                        type: emoji
-                        category: catA
-                      - value: 🐱
-                        type: emoji
-                        category: catB
-                        is_dropzone: true
                       - value: 🐱
                         type: emoji
                         category: catB
@@ -209,7 +116,7 @@ public struct NewActivityView: View {
                       value: Touche les emojis qui sont identiques
                     - locale: en_US
                       value: Tap the emojis that are the same
-                  interface: dragAndDropGrid
+                  interface: touchToSelect
                   gameplay: associateCategories
                   payload:
                     shuffle_choices: true
@@ -237,7 +144,7 @@ public struct NewActivityView: View {
                       value: Touche les emojis qui sont identiques
                     - locale: en_US
                       value: Tap the emojis that are the same
-                  interface: dragAndDropGridWithZones
+                  interface: touchToSelect
                   gameplay: associateCategories
                   payload:
                     shuffle_choices: true
@@ -245,14 +152,40 @@ public struct NewActivityView: View {
                       - value: 🐶
                         type: emoji
                         category: catA
-                        is_dropzone: true
                       - value: 🐶
                         type: emoji
                         category: catA
                       - value: 🐱
                         type: emoji
                         category: catB
-                        is_dropzone: true
+                      - value: 🐱
+                        type: emoji
+                        category: catB
+                      - value: 🐷
+                        type: emoji
+                        category: catC
+                      - value: 🐷
+                        type: emoji
+                        category: catC
+                - instructions:
+                    - locale: fr_FR
+                      value: Touche les emojis qui sont identiques
+                    - locale: en_US
+                      value: Tap the emojis that are the same
+                  interface: touchToSelect
+                  gameplay: associateCategories
+                  payload:
+                    shuffle_choices: true
+                    choices:
+                      - value: 🐶
+                        type: emoji
+                        category: catA
+                      - value: 🐶
+                        type: emoji
+                        category: catA
+                      - value: 🐱
+                        type: emoji
+                        category: catB
                       - value: 🐱
                         type: emoji
                         category: catB
@@ -264,17 +197,54 @@ public struct NewActivityView: View {
                         category: catC
         """
 
-    import Yams
+    let payload: ActivityPayload
+    let activityManager: NewActivityManager
 
-    #Preview {
-        NavigationStack {
-            if let activity = NewActivity(yaml: kActivityYaml) {
-                let manager = NewActivityManager(payload: activity.payload)
-                NewActivityView(activity: activity, manager: manager)
-            } else {
-                Text("Invalid activity")
-            }
-        }
+    @Test func initFromPayload() async throws {
+        #expect(self.activityManager.numberOfGroups == 2)
+        #expect(self.activityManager.numberOfExercisesInCurrentGroup == 3)
     }
 
-#endif
+    @Test func nextExercise() async throws {
+        self.activityManager.nextExercise()
+
+        #expect(self.activityManager.currentGroupIndex == 0)
+        #expect(self.activityManager.currentExerciseIndex == 1)
+    }
+
+    @Test func nextExerciseAfterLast() async throws {
+        self.activityManager.currentGroupIndex = 1
+        self.activityManager.currentExerciseIndex = 2
+
+        self.activityManager.nextExercise()
+
+        #expect(self.activityManager.currentGroupIndex == 1)
+        #expect(self.activityManager.currentExerciseIndex == 2)
+    }
+
+    @Test func previousExerciseAfterNext() async throws {
+        self.activityManager.nextExercise()
+        self.activityManager.previousExercise()
+
+        #expect(self.activityManager.currentGroupIndex == 0)
+        #expect(self.activityManager.currentExerciseIndex == 0)
+    }
+
+    @Test func previousExerciseWhenFirst() async throws {
+        self.activityManager.previousExercise()
+
+        #expect(self.activityManager.currentGroupIndex == 0)
+        #expect(self.activityManager.currentExerciseIndex == 0)
+    }
+
+    @Test func isLastExercise() async throws {
+        self.activityManager.currentGroupIndex = 1
+        self.activityManager.currentExerciseIndex = 2
+
+        #expect(self.activityManager.isLastExercise)
+    }
+
+    @Test func isFirstExercise() async throws {
+        #expect(self.activityManager.isFirstExercise)
+    }
+}
