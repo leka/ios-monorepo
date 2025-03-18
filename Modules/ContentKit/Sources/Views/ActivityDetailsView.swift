@@ -154,7 +154,7 @@ public struct ActivityDetailsView: View {
                 Button {
                     self.onStartActivity?(self.activity)
                 } label: {
-                    Image(systemName: "play.circle")
+                    Image(systemName: "play.fill")
                     Text(l10n.ActivityDetailsView.startActivityButtonLabel)
                 }
                 .buttonStyle(.borderedProminent)
@@ -212,10 +212,10 @@ extension l10n {
                                                               value: "Instructions",
                                                               comment: "ActivityDetailsView 'instructions' section title")
 
-        static let startActivityButtonLabel = LocalizedString("content_kit.sample_activity_list_view.start_activity_button_label",
+        static let startActivityButtonLabel = LocalizedString("content_kit.activity_details_view.start_activity_button_label",
                                                               bundle: ContentKitResources.bundle,
                                                               value: "Start activity",
-                                                              comment: "Start activity button label on Sample Activity List view")
+                                                              comment: "Start activity button label on Activity Details view")
     }
 }
 

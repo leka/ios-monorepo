@@ -110,10 +110,10 @@ public struct ActivityListView: View {
                         Button {
                             self.onStartActivity?(activity)
                         } label: {
-                            Image(systemName: "play.circle")
-                                .font(.system(size: 24))
-                                .contentShape(Rectangle())
+                            Image(systemName: "play.fill")
+                            Text(l10n.ActivityListView.playButtonLabel)
                         }
+                        .buttonStyle(.borderedProminent)
                         .tint(.lkGreen)
                         .padding(.horizontal, 5)
                     }
@@ -161,6 +161,17 @@ public struct ActivityListView: View {
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var libraryManager: LibraryManager = .shared
+}
+
+// MARK: - l10n.ActivityListView
+
+extension l10n {
+    enum ActivityListView {
+        static let playButtonLabel = LocalizedString("content_kit.activity_list_view.play_button_label",
+                                                     bundle: ContentKitResources.bundle,
+                                                     value: "Play",
+                                                     comment: "Play button label on Activity List view")
+    }
 }
 
 #Preview {
