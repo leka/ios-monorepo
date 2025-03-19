@@ -60,7 +60,7 @@ struct NewDanceFreezeView: View {
                         )
                         self.stageMode = .manualMode
                     } label: {
-                        DanceFreezeStageModeButtonStyle(String(l10n.DanceFreezeView.manualButtonLabel.characters), color: .cyan)
+                        CapsuleColoredButtonLabel(String(l10n.DanceFreezeView.manualButtonLabel.characters), color: .cyan)
                     }
 
                     Button {
@@ -71,7 +71,7 @@ struct NewDanceFreezeView: View {
                         )
                         self.stageMode = .automaticMode
                     } label: {
-                        DanceFreezeStageModeButtonStyle(String(l10n.DanceFreezeView.autoButtonLabel.characters), color: .mint)
+                        CapsuleColoredButtonLabel(String(l10n.DanceFreezeView.autoButtonLabel.characters), color: .mint)
                     }
                 }
                 .padding(.bottom, 30)
