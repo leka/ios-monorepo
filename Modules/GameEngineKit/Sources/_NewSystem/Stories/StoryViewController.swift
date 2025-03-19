@@ -49,45 +49,59 @@ class StoryViewController: UIViewController, UIPageViewControllerDataSource, UIP
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.pageController = UIPageViewController(transitionStyle: .pageCurl, navigationOrientation: .horizontal, options: nil)
+        self.pageController = UIPageViewController(transitionStyle: .pageCurl,
+                                                   navigationOrientation: .horizontal,
+                                                   options: nil)
         self.pageController.dataSource = self
         self.pageController.delegate = self
 
         addChild(self.pageController)
         view.addSubview(self.pageController.view)
+        self.pageController.view.frame = view.bounds
 
         for page in self.pages {
             let vc = UIHostingController(rootView: page)
             self.controllers.append(vc)
         }
 
-        self.pageController.setViewControllers([self.controllers[0]], direction: .forward, animated: false)
+        if let first = self.controllers.first {
+            self.pageController.setViewControllers([first], direction: .forward, animated: false)
+        }
 
         self.setupNavigationButtons()
     }
 
-    func pageViewController(_: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        if let index = controllers.firstIndex(of: viewController) {
-            if index > 0 {
-                return self.controllers[index - 1]
-            } else {
-                return nil
-            }
+    func pageViewController(_: UIPageViewController,
+                            viewControllerBefore viewController: UIViewController) -> UIViewController?
+    {
+        if let index = controllers.firstIndex(of: viewController), index > 0 {
+            return self.controllers[index - 1]
         }
-
         return nil
     }
 
-    func pageViewController(_: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        if let index = controllers.firstIndex(of: viewController) {
-            if index < self.controllers.count - 1 {
-                return self.controllers[index + 1]
-            } else {
-                return nil
-            }
+    func pageViewController(_: UIPageViewController,
+                            viewControllerAfter viewController: UIViewController) -> UIViewController?
+    {
+        if let index = controllers.firstIndex(of: viewController), index < self.controllers.count - 1 {
+            return self.controllers[index + 1]
         }
-
         return nil
+    }
+
+    func pageViewController(_: UIPageViewController,
+                            spineLocationFor _: UIInterfaceOrientation) -> UIPageViewController.SpineLocation
+    {
+        if let currentVC = pageController.viewControllers?.first {
+            self.pageController.setViewControllers(
+                [currentVC],
+                direction: .forward,
+                animated: true,
+                completion: nil
+            )
+        }
+        self.pageController.isDoubleSided = false
+        return .min
     }
 
     // MARK: Private
@@ -122,7 +136,6 @@ class StoryViewController: UIViewController, UIPageViewControllerDataSource, UIP
         NSLayoutConstraint.activate([
             self.nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             self.nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-
             self.prevButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             self.prevButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
@@ -135,8 +148,8 @@ class StoryViewController: UIViewController, UIPageViewControllerDataSource, UIP
            let currentIndex = controllers.firstIndex(of: currentViewController),
            currentIndex < controllers.count - 1
         {
-            let nextViewController = self.controllers[currentIndex + 1]
-            self.pageController.setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
+            let nextVC = self.controllers[currentIndex + 1]
+            self.pageController.setViewControllers([nextVC], direction: .forward, animated: true, completion: nil)
             self.updateButtonVisibility()
         }
     }
@@ -146,8 +159,8 @@ class StoryViewController: UIViewController, UIPageViewControllerDataSource, UIP
            let currentIndex = controllers.firstIndex(of: currentViewController),
            currentIndex > 0
         {
-            let prevViewController = self.controllers[currentIndex - 1]
-            self.pageController.setViewControllers([prevViewController], direction: .reverse, animated: true, completion: nil)
+            let prevVC = self.controllers[currentIndex - 1]
+            self.pageController.setViewControllers([prevVC], direction: .reverse, animated: true, completion: nil)
             self.updateButtonVisibility()
         }
     }
