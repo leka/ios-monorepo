@@ -8,7 +8,7 @@ import SwiftUI
 
 // MARK: - TTSCoordinatorAssociateCategories
 
-public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
+public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol, ExerciseCompletionObservable {
     // MARK: Lifecycle
 
     public init(choices: [CoordinatorAssociateCategoriesChoiceModel], action: Exercise.Action? = nil) {
@@ -36,6 +36,8 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
     public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
+
+    public var didComplete: PassthroughSubject<Void, Never> = .init()
 
     public func processUserSelection(choiceID: UUID) {
         guard let choice = self.rawChoices.first(where: { $0.id == choiceID }) else {
@@ -72,7 +74,7 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol {
                 }
 
                 if self.gameplay.isCompleted.value {
-                    log.info("Exercise completed")
+                    self.didComplete.send()
                 }
             }
         } else {

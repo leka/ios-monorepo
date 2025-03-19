@@ -15,7 +15,7 @@ struct DnDYAMLExercises: View {
             HStack(spacing: 20) {
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kDnDGridAssociateCategoriesYaml)!
-                    ExerciseCoordinator(exercise: exercise).exerciseView
+                    CurrentExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("Categories")
                         .navigationBarTitleDisplayMode(.inline)
                 } label: {
@@ -24,7 +24,7 @@ struct DnDYAMLExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kDnDGridWithZonesAssociateCategoriesYaml)!
-                    ExerciseCoordinator(exercise: exercise).exerciseView
+                    CurrentExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("With Zones")
                         .navigationBarTitleDisplayMode(.inline)
                 } label: {
@@ -33,7 +33,7 @@ struct DnDYAMLExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kDnDOneToOneFindTheRightOrderYaml)!
-                    ExerciseCoordinator(exercise: exercise).exerciseView
+                    CurrentExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("One To One")
                         .navigationBarTitleDisplayMode(.inline)
                 } label: {
@@ -42,7 +42,7 @@ struct DnDYAMLExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kDnDGridWithZonesAssociateCategoriesYaml)!
-                    ExerciseCoordinator(exercise: exercise).exerciseView
+                    CurrentExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("Validate With Zones")
                         .navigationBarTitleDisplayMode(.inline)
                 } label: {
@@ -51,7 +51,7 @@ struct DnDYAMLExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kDnDOneToOneFindTheRightOrderThenValidateYaml)!
-                    ExerciseCoordinator(exercise: exercise).exerciseView
+                    CurrentExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("Validate Right Order")
                         .navigationBarTitleDisplayMode(.inline)
                 } label: {

@@ -796,6 +796,24 @@
                 }
             }
         },
+        "game_engine_kit.melody_view.skip_button_label": {
+            "comment": "Skip button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Skip"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Passer"
+                    }
+                }
+            }
+        },
         "game_engine_kit.melody_view.song_selector_title": {
             "comment": "MelodyView music selection title",
             "localizations": {

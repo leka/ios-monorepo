@@ -156,6 +156,11 @@ extension ExerciseYAMLs {
 
     static let kMediumSuperSimonYaml: String =
         """
+          instructions:
+            - locale: fr_FR
+              value: Joue les couleurs de Leka dans le même ordre
+            - locale: en_US
+              value: Play Leka's colors in the same order
           interface: superSimon
           payload:
             level: medium

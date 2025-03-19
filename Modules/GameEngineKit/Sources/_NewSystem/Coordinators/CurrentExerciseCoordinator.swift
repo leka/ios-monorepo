@@ -2,12 +2,13 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import Combine
 import ContentKit
 import SwiftUI
 
 // MARK: - ExerciseCoordinator
 
-public class ExerciseCoordinator {
+public class CurrentExerciseCoordinator {
     // MARK: Lifecycle
 
     public init(exercise: NewExercise) {
@@ -36,6 +37,14 @@ public class ExerciseCoordinator {
                                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                                     TTSView(viewModel: viewModel)
+                                        .onAppear {
+                                            coordinator.didComplete
+                                                .receive(on: DispatchQueue.main)
+                                                .sink { [weak self] in
+                                                    self?.didComplete.send()
+                                                }
+                                                .store(in: &self.cancellables)
+                                        }
 
                                 case .findTheRightAnswers:
                                     let model = CoordinatorFindTheRightAnswersModel(data: payload)
@@ -43,6 +52,14 @@ public class ExerciseCoordinator {
                                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                                     TTSView(viewModel: viewModel)
+                                        .onAppear {
+                                            coordinator.didComplete
+                                                .receive(on: DispatchQueue.main)
+                                                .sink { [weak self] in
+                                                    self?.didComplete.send()
+                                                }
+                                                .store(in: &self.cancellables)
+                                        }
 
                                 case .findTheRightOrder:
                                     let model = CoordinatorFindTheRightOrderModel(data: payload)
@@ -121,7 +138,7 @@ public class ExerciseCoordinator {
                         case .magicCards:
                             switch gameplay {
                                 default:
-                                    PlaceholderExerciseView()
+                                    ExercisePlaceholderView()
                             }
                     }
                 } else {
@@ -136,16 +153,47 @@ public class ExerciseCoordinator {
                     case .pairing:
                         DiscoverLekaView()
                     case .danceFreeze:
-                        let model = DanceFreezeModel(data: payload)
-                        DanceFreezeView(model: model)
+                        let model = NewDanceFreezeModel(data: payload)
+                        let coordinator = NewDanceFreezeCoordinator(model: model)
+                        let viewModel = NewDanceFreezeViewViewModel(coordinator: coordinator)
+                        NewDanceFreezeView(viewModel: viewModel)
+                            .onAppear {
+                                coordinator.didComplete
+                                    .receive(on: DispatchQueue.main)
+                                    .sink { [weak self] in
+                                        self?.didComplete.send()
+                                    }
+                                    .store(in: &self.cancellables)
+                            }
                     case .hideAndSeek:
-                        HideAndSeekView()
+                        let coordinator = NewHideAndSeekCoordinator()
+                        let viewModel = NewHideAndSeekViewViewModel(coordinator: coordinator)
+
+                        NewHideAndSeekView(viewModel: viewModel)
+                            .onAppear {
+                                coordinator.didComplete
+                                    .receive(on: DispatchQueue.main)
+                                    .sink { [weak self] in
+                                        self?.didComplete.send()
+                                    }
+                                    .store(in: &self.cancellables)
+                            }
                     case .musicalInstruments:
                         let model = MusicalInstrumentModel(data: payload)
                         MusicalInstrumentView(model: model)
                     case .melody:
-                        let model = MelodyModel(data: payload)
-                        MelodyView(model: model)
+                        let model = NewMelodyModel(data: payload)
+                        let coordinator = NewMelodyCoordinator(model: model)
+                        let viewModel = NewMelodyViewViewModel(coordinator: coordinator)
+                        NewMelodyView(viewModel: viewModel)
+                            .onAppear {
+                                coordinator.didComplete
+                                    .receive(on: DispatchQueue.main)
+                                    .sink { [weak self] in
+                                        self?.didComplete.send()
+                                    }
+                                    .store(in: &self.cancellables)
+                            }
                     case .gamepadJoyStickColorPad:
                         Gamepad.Joystick()
                     case .gamepadArrowPadColorPad:
@@ -159,8 +207,18 @@ public class ExerciseCoordinator {
                     case .colorMediator:
                         ColorMediatorView()
                     case .superSimon:
-                        let model = SuperSimonModel(data: payload)
-                        SuperSimonView(model: model)
+                        let model = NewSuperSimonModel(data: payload)
+                        let coordinator = NewSuperSimonCoordinator(model: model)
+                        let viewModel = NewSuperSimonViewViewModel(coordinator: coordinator)
+                        NewSuperSimonView(viewModel: viewModel)
+                            .onAppear {
+                                coordinator.didComplete
+                                    .receive(on: DispatchQueue.main)
+                                    .sink { [weak self] in
+                                        self?.didComplete.send()
+                                    }
+                                    .store(in: &self.cancellables)
+                            }
                 }
             }
         }
@@ -168,51 +226,13 @@ public class ExerciseCoordinator {
         Spacer()
     }
 
+    // MARK: Internal
+
+    var cancellables = Set<AnyCancellable>()
+
+    var didComplete: PassthroughSubject<Void, Never> = .init()
+
     // MARK: Private
 
     private let exercise: NewExercise
 }
-
-// MARK: - ExerciseInterfaceGameplayNotSupportedView
-
-private struct ExerciseInterfaceGameplayNotSupportedView: View {
-    // MARK: Lifecycle
-
-    init(interface: NewExerciseInterface.GeneralInterface, gameplay: NewExerciseGameplay? = nil) {
-        log.error("Interface \(interface) and gameplay \(gameplay?.rawValue ?? "empty") combination not supported.")
-        self.interface = interface
-        self.gameplay = gameplay
-    }
-
-    // MARK: Internal
-
-    var body: some View {
-        VStack(spacing: 40) {
-            Image(systemName: "xmark.octagon.fill")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 100)
-                .foregroundColor(.red)
-
-            Text("Interface + Gameplay \n not supported")
-                .font(.title)
-
-            Text(
-                "Interface: \(self.interface.rawValue) \n Gameplay: \(self.gameplay?.rawValue ?? "empty")"
-            )
-            .font(.subheadline)
-        }
-        .multilineTextAlignment(.center)
-    }
-
-    // MARK: Private
-
-    private let interface: NewExerciseInterface.GeneralInterface
-    private let gameplay: NewExerciseGameplay?
-}
-
-#if DEBUG
-    #Preview {
-        ExerciseInterfaceGameplayNotSupportedView(interface: .dragAndDropGrid, gameplay: .openPlay)
-    }
-#endif

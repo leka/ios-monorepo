@@ -17,7 +17,7 @@ struct TTSYAMLExercises: View {
             HStack(spacing: 20) {
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kTTSFindTheRightAnswersYaml)!
-                    ExerciseCoordinator(exercise: exercise).exerciseView
+                    CurrentExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("Right Answers")
                         .navigationBarTitleDisplayMode(.inline)
 
@@ -27,7 +27,7 @@ struct TTSYAMLExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kTTSFindTheRightOrderYaml)!
-                    ExerciseCoordinator(exercise: exercise).exerciseView
+                    CurrentExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("Right Order")
                         .navigationBarTitleDisplayMode(.inline)
                 } label: {
@@ -36,7 +36,7 @@ struct TTSYAMLExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kTTSAssociateCategoriesYaml)!
-                    ExerciseCoordinator(exercise: exercise).exerciseView
+                    CurrentExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("Associate Categories")
                         .navigationBarTitleDisplayMode(.inline)
                 } label: {
@@ -45,7 +45,7 @@ struct TTSYAMLExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kMemoryAssociateCategoriesYaml)!
-                    ExerciseCoordinator(exercise: exercise).exerciseView
+                    CurrentExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("Memory")
                         .navigationBarTitleDisplayMode(.inline)
                 } label: {
@@ -54,7 +54,7 @@ struct TTSYAMLExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kTTSFindTheRightAnswersThenValidateYaml)!
-                    ExerciseCoordinator(exercise: exercise).exerciseView
+                    CurrentExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("Validate Right Answers")
                         .navigationBarTitleDisplayMode(.inline)
                 } label: {
@@ -63,7 +63,7 @@ struct TTSYAMLExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kTTSFindTheRightOrderThenValidateYaml)!
-                    ExerciseCoordinator(exercise: exercise).exerciseView
+                    CurrentExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("Validate Right Order")
                         .navigationBarTitleDisplayMode(.inline)
                 } label: {
