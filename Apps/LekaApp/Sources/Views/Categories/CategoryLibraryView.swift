@@ -28,7 +28,7 @@ struct CategoryLibraryView: View {
                             .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.libraryActivities.characters))
                     default:
                         LibraryFavoritesView(viewModel: self.libraryManagerViewModel)
-                            .navigationTitle("Favorites")
+                            .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.libraryFavorites.characters))
                 }
             }
         } else {

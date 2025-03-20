@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
+import LocalizationKit
 import SwiftUI
 
 // MARK: - LibraryFavoritesView
@@ -20,7 +21,7 @@ struct LibraryFavoritesView: View {
         VStack {
             Picker("Favorites", selection: self.$selectedCategory) {
                 ForEach(FavoriteCategory.allCases, id: \..self) { category in
-                    Text(category.rawValue.capitalized).tag(category)
+                    Text(category.localizedName).tag(category)
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
@@ -34,7 +35,6 @@ struct LibraryFavoritesView: View {
 
             Spacer()
         }
-        .navigationTitle("Favorites")
     }
 
     // MARK: Private
@@ -68,4 +68,17 @@ enum FavoriteCategory: String, CaseIterable {
     case activities
     case curriculums
     case stories
+
+    // MARK: Internal
+
+    var localizedName: String {
+        switch self {
+            case .activities:
+                String(l10n.MainView.Sidebar.CategoryLabel.libraryActivities.characters)
+            case .curriculums:
+                String(l10n.MainView.Sidebar.CategoryLabel.libraryCurriculums.characters)
+            case .stories:
+                String(l10n.MainView.Sidebar.CategoryLabel.libraryStories.characters)
+        }
+    }
 }
