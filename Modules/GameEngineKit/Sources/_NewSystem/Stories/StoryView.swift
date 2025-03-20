@@ -14,17 +14,52 @@ public struct StoryView: View {
     // MARK: Lifecycle
 
     public init(story: Story) {
-        self._viewModel = StateObject(wrappedValue: StoryViewViewModel(story: story))
+        self.currentStory = story
     }
 
     // MARK: Public
 
     public var body: some View {
-        Pages(pages: self.viewModel.currentStory.pages.compactMap {
-            PageView(page: $0)
-        })
+        ZStack {
+            Pages(
+                pages: self.currentStory.pages.compactMap { PageView(page: $0) },
+                currentPage: self.$currentPage
+            )
+            .onChange(of: self.currentPage) { newPage in
+                if newPage == self.currentStory.pages.count - 1 {
+                    self.showFinishButton = false
+                    withAnimation(.easeInOut.delay(1)) {
+                        if newPage == self.currentStory.pages.count - 1 {
+                            self.showFinishButton = true
+                        }
+                    }
+                } else {
+                    self.showFinishButton = false
+                }
+            }
+
+            if self.showFinishButton {
+                VStack {
+                    Spacer()
+
+                    Button {
+                        self.dismiss()
+                    } label: {
+                        Text(l10n.StoryView.finishButtonLabel)
+                            .font(.title3.bold())
+                            .foregroundColor(.white)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .multilineTextAlignment(.center)
+                            .frame(width: 300, height: 300.0 / 4.0)
+                            .scaledToFit()
+                            .background(Capsule().fill(.green).shadow(radius: 3))
+                    }
+                    .padding(.bottom, 30)
+                }
+            }
+        }
         .ignoresSafeArea(.all)
-        .navigationTitle(self.viewModel.currentStory.details.title)
+        .navigationTitle(self.currentStory.details.title)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
@@ -55,12 +90,12 @@ public struct StoryView: View {
             Text(l10n.StoryView.QuitStoryAlert.message)
         }
         .sheet(isPresented: self.$isInfoSheetPresented) {
-            StoryDetailsView(story: self.viewModel.currentStory)
+            StoryDetailsView(story: self.currentStory)
                 .logEventScreenView(
                     screenName: "story_details",
                     context: .sheet,
                     parameters: [
-                        "lk_story_id": "\(self.viewModel.currentStory.name)-\(self.viewModel.currentStory.id)",
+                        "lk_story_id": "\(self.currentStory.name)-\(self.currentStory.id)",
                     ]
                 )
         }
@@ -79,10 +114,12 @@ public struct StoryView: View {
     @Environment(\.dismiss) var dismiss
 
     // TODO: (@ladislas) check why not @ObservedObject
-    @StateObject var viewModel: StoryViewViewModel
+    let currentStory: Story
 
     // MARK: Private
 
+    @State private var currentPage = 0
+    @State private var showFinishButton = false
     @State private var isAlertPresented: Bool = false
     @State private var isInfoSheetPresented: Bool = false
 }

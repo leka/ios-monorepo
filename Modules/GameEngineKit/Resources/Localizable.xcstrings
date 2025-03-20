@@ -847,6 +847,24 @@
                 }
             }
         },
+        "game_engine_kit.story_view.finish_button_label": {
+            "comment": "Finish story button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Finish"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Terminer"
+                    }
+                }
+            }
+        },
         "game_engine_kit.story_view.quit_story_alert.cancel_button_label": {
             "comment": "Quit story alert cancel button label",
             "localizations": {
