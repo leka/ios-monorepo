@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - LibraryStoriesView
 
-struct LibraryStoriesView: View {
+struct FavoriteStoriesView: View {
     // MARK: Lifecycle
 
     init(viewModel: LibraryManagerViewModel) {
@@ -20,7 +20,7 @@ struct LibraryStoriesView: View {
 
     var body: some View {
         if self.stories.isEmpty {
-            EmptyLibraryPlaceholderView(icon: .stories)
+            EmptyFavoritesPlaceholderView(icon: .stories)
         } else {
             LibraryStoryListView(stories: self.stories) { story in
                 if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
@@ -39,12 +39,23 @@ struct LibraryStoriesView: View {
     @ObservedObject private var viewModel: LibraryManagerViewModel
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
 
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+
     private var stories: [Story] {
-        self.viewModel.stories.compactMap { savedStories in
-            ContentKit.allStories.first { $0.id == savedStories.id }
-        }
-        .sorted {
-            $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
+        if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+            self.viewModel.stories.compactMap { savedStory in
+                ContentKit.allStories.first {
+                    $0.id == savedStory.id && self.viewModel.isStoryFavoritedByCurrentCaregiver(
+                        storyID: savedStory.id!,
+                        caregiverID: currentCaregiverID
+                    )
+                }
+            }
+            .sorted {
+                $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
+            }
+        } else {
+            []
         }
     }
 }
@@ -52,6 +63,6 @@ struct LibraryStoriesView: View {
 #Preview {
     let viewModel = LibraryManagerViewModel()
     NavigationStack {
-        LibraryStoriesView(viewModel: viewModel)
+        FavoriteStoriesView(viewModel: viewModel)
     }
 }

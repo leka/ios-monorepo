@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import AnalyticsKit
 import DesignKit
 import SwiftUI
@@ -39,9 +40,22 @@ public struct StoryGridView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 10 / 57 * 120))
                             .padding(.bottom)
 
-                        Text(story.details.title)
-                            .font(.headline)
-                            .foregroundStyle(Color.primary)
+                        HStack(spacing: 5) {
+                            Text(story.details.title)
+                                .font(.headline)
+                                .foregroundStyle(Color.primary)
+
+                            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id,
+                               self.libraryManagerViewModel.isStoryFavoritedByCurrentCaregiver(
+                                   storyID: story.id,
+                                   caregiverID: currentCaregiverID
+                               )
+                            {
+                                Text(Image(systemName: "star.fill"))
+                                    .font(.caption)
+                                    .foregroundColor(self.styleManager.accentColor ?? .blue)
+                            }
+                        }
 
                         Text(story.details.subtitle ?? "")
                             .font(.body)
@@ -70,7 +84,10 @@ public struct StoryGridView: View {
 
     // MARK: Private
 
+    @ObservedObject private var libraryManagerViewModel: LibraryManagerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
+
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private let columns = Array(repeating: GridItem(), count: 3)
 }
