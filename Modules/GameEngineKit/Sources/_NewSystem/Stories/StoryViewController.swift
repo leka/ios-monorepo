@@ -12,9 +12,10 @@ struct Pages: UIViewControllerRepresentable {
     typealias UIViewControllerType = StoryViewController
 
     let pages: [StoryView.PageView]
+    @Binding var currentPage: Int
 
     func makeUIViewController(context _: Context) -> StoryViewController {
-        StoryViewController(pages: self.pages)
+        StoryViewController(pages: self.pages, currentPage: self.$currentPage)
     }
 
     func updateUIViewController(_: StoryViewController, context _: Context) {
@@ -24,13 +25,12 @@ struct Pages: UIViewControllerRepresentable {
 
 // MARK: - StoryViewController
 
-// swiftlint:disable identifier_name
-
 class StoryViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     // MARK: Lifecycle
 
-    init(pages: [StoryView.PageView]) {
+    init(pages: [StoryView.PageView], currentPage: Binding<Int>) {
         self.pages = pages
+        self._currentPage = currentPage
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -40,6 +40,8 @@ class StoryViewController: UIViewController, UIPageViewControllerDataSource, UIP
     }
 
     // MARK: Internal
+
+    @Binding var currentPage: Int
 
     var pageController: UIPageViewController!
     var controllers = [UIViewController]()
@@ -59,13 +61,11 @@ class StoryViewController: UIViewController, UIPageViewControllerDataSource, UIP
         view.addSubview(self.pageController.view)
         self.pageController.view.frame = view.bounds
 
-        for page in self.pages {
-            let vc = UIHostingController(rootView: page)
-            self.controllers.append(vc)
-        }
+        self.controllers = self.pages.map { UIHostingController(rootView: $0) }
 
         if let first = self.controllers.first {
             self.pageController.setViewControllers([first], direction: .forward, animated: false)
+            self.currentPage = 0
         }
 
         self.setupNavigationButtons()
@@ -74,34 +74,19 @@ class StoryViewController: UIViewController, UIPageViewControllerDataSource, UIP
     func pageViewController(_: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController?
     {
-        if let index = controllers.firstIndex(of: viewController), index > 0 {
-            return self.controllers[index - 1]
-        }
-        return nil
+        guard let index = controllers.firstIndex(of: viewController), index > 0 else { return nil }
+        self.updateButtonVisibility(for: index - 1)
+        self.currentPage = index - 1
+        return self.controllers[index - 1]
     }
 
     func pageViewController(_: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController?
     {
-        if let index = controllers.firstIndex(of: viewController), index < self.controllers.count - 1 {
-            return self.controllers[index + 1]
-        }
-        return nil
-    }
-
-    func pageViewController(_: UIPageViewController,
-                            spineLocationFor _: UIInterfaceOrientation) -> UIPageViewController.SpineLocation
-    {
-        if let currentVC = pageController.viewControllers?.first {
-            self.pageController.setViewControllers(
-                [currentVC],
-                direction: .forward,
-                animated: true,
-                completion: nil
-            )
-        }
-        self.pageController.isDoubleSided = false
-        return .min
+        guard let index = controllers.firstIndex(of: viewController), index < self.controllers.count - 1 else { return nil }
+        self.updateButtonVisibility(for: index + 1)
+        self.currentPage = index + 1
+        return self.controllers[index + 1]
     }
 
     // MARK: Private
@@ -116,6 +101,11 @@ class StoryViewController: UIViewController, UIPageViewControllerDataSource, UIP
             self.prevButton.isHidden = currentIndex == 0
             self.nextButton.isHidden = currentIndex == self.controllers.count - 1
         }
+    }
+
+    private func updateButtonVisibility(for index: Int) {
+        self.prevButton.isHidden = index == 0
+        self.nextButton.isHidden = index == self.controllers.count - 1
     }
 
     private func setupNavigationButtons() {
@@ -150,6 +140,7 @@ class StoryViewController: UIViewController, UIPageViewControllerDataSource, UIP
         {
             let nextVC = self.controllers[currentIndex + 1]
             self.pageController.setViewControllers([nextVC], direction: .forward, animated: true, completion: nil)
+            self.currentPage = currentIndex + 1
             self.updateButtonVisibility()
         }
     }
@@ -161,9 +152,8 @@ class StoryViewController: UIViewController, UIPageViewControllerDataSource, UIP
         {
             let prevVC = self.controllers[currentIndex - 1]
             self.pageController.setViewControllers([prevVC], direction: .reverse, animated: true, completion: nil)
+            self.currentPage = currentIndex - 1
             self.updateButtonVisibility()
         }
     }
 }
-
-// swiftlint:enable identifier_name
