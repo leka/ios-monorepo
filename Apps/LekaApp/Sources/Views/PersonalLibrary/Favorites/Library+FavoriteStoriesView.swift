@@ -36,10 +36,11 @@ struct FavoriteStoriesView: View {
     // MARK: Private
 
     @ObservedObject private var navigation: Navigation = .shared
-    @ObservedObject private var viewModel: LibraryManagerViewModel
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+
+    private var viewModel: LibraryManagerViewModel
 
     private var stories: [Story] {
         if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {

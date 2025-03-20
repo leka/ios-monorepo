@@ -39,8 +39,9 @@ struct LibraryFavoritesView: View {
 
     // MARK: Private
 
-    @ObservedObject private var viewModel: LibraryManagerViewModel
     @State private var selectedCategory: FavoriteCategory = .activities
+
+    private var viewModel: LibraryManagerViewModel
 
     @ViewBuilder
     private func contentView(for category: FavoriteCategory) -> some View {
