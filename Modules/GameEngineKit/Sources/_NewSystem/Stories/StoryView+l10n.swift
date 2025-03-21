@@ -32,6 +32,11 @@ extension l10n {
                                                            value: "Cancel",
                                                            comment: "Quit story alert cancel button label")
         }
+
+        static let finishButtonLabel = LocalizedString("game_engine_kit.story_view.finish_button_label",
+                                                       bundle: GameEngineKitResources.bundle,
+                                                       value: "Finish",
+                                                       comment: "Finish story button label")
     }
 }
 

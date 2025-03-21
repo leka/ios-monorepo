@@ -247,20 +247,22 @@ struct MainView: View {
             self.navigation.currentActivity = nil
             self.navigation.currentStory = nil
         } content: { content in
-            NavigationStack {
-                switch content {
-                    case .welcomeView:
+            switch content {
+                case .welcomeView:
+                    NavigationStack {
                         WelcomeView()
                             .logEventScreenView(screenName: "welcome", context: .fullScreenCover)
+                    }
 
-                    case let .activityView(carereceivers):
+                case let .activityView(carereceivers):
+                    NavigationStack {
                         ActivityView(activity: self.navigation.currentActivity!, reinforcer: carereceivers.first?.reinforcer ?? .rainbow)
                             .logEventScreenView(screenName: "activity", context: .fullScreenCover)
+                    }
 
-                    case .storyView:
-                        StoryView(story: self.navigation.currentStory!)
-                            .logEventScreenView(screenName: "story", context: .fullScreenCover)
-                }
+                case .storyView:
+                    StoryView(story: self.navigation.currentStory!)
+                        .logEventScreenView(screenName: "story", context: .fullScreenCover)
             }
         }
         .sheet(item: self.$navigation.sheetContent) {
