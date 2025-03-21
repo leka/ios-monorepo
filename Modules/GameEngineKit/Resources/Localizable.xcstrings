@@ -14,7 +14,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Touche pour r\u00e9v\u00e9ler"
+                        "value": "Touche pour révéler"
                     }
                 }
             }
@@ -25,13 +25,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u274c\nImage not found:\n%1$@"
+                        "value": "❌\nImage not found:\n%1$@"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u274c\nImage non reconnue :\n%1$@"
+                        "value": "❌\nImage non reconnue :\n%1$@"
                     }
                 }
             }
@@ -42,13 +42,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u274c\nImage not found:\n%1$@"
+                        "value": "❌\nImage not found:\n%1$@"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u274c\nImage non reconnue :\n%1$@"
+                        "value": "❌\nImage non reconnue :\n%1$@"
                     }
                 }
             }
@@ -99,7 +99,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Revoir les r\u00e9ponses"
+                        "value": "Revoir les réponses"
                     }
                 }
             }
@@ -133,7 +133,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u00cates-vous s\u00fbr de vouloir quitter cette activit\u00e9 ?"
+                        "value": "Êtes-vous sûr de vouloir quitter cette activité ?"
                     }
                 }
             }
@@ -167,7 +167,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Quitter l'activit\u00e9 ?"
+                        "value": "Quitter l'activité ?"
                     }
                 }
             }
@@ -195,13 +195,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u274c\nText is not emoji:\n%1$@"
+                        "value": "❌\nText is not emoji:\n%1$@"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u274c\nCe texte n'est pas un \u00e9moji:\n%1$@"
+                        "value": "❌\nCe texte n'est pas un émoji:\n%1$@"
                     }
                 }
             }
@@ -212,13 +212,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u274c\nImage not found:\n%1$@"
+                        "value": "❌\nImage not found:\n%1$@"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u274c\nImage non reconnue:\n%1$@"
+                        "value": "❌\nImage non reconnue:\n%1$@"
                     }
                 }
             }
@@ -229,13 +229,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u274c\nSF Symbol not found:\n%1$@"
+                        "value": "❌\nSF Symbol not found:\n%1$@"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u274c\nSymbole non reconnu:\n%1$@"
+                        "value": "❌\nSymbole non reconnu:\n%1$@"
                     }
                 }
             }
@@ -307,7 +307,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "S\u00e9lectionner"
+                        "value": "Sélectionner"
                     }
                 }
             }
@@ -343,7 +343,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "D\u00e9marrer"
+                        "value": "Démarrer"
                     }
                 }
             }
@@ -379,7 +379,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Al\u00e9atoire"
+                        "value": "Aléatoire"
                     }
                 }
             }
@@ -397,7 +397,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Arr\u00eat"
+                        "value": "Arrêt"
                     }
                 }
             }
@@ -431,7 +431,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Danse avec Leka au rythme de la musique et fais la statue lorsque elle s'arr\u00eate"
+                        "value": "Danse avec Leka au rythme de la musique et fais la statue lorsque elle s'arrête"
                     }
                 }
             }
@@ -482,7 +482,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "D\u00e9placement"
+                        "value": "Déplacement"
                     }
                 }
             }
@@ -499,7 +499,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "S\u00e9lection de la musique"
+                        "value": "Sélection de la musique"
                     }
                 }
             }
@@ -567,7 +567,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\"D\u00e9couvre Leka\" permet \u00e0 la personne accompagn\u00e9e de se familiariser \u00e0 Leka\navant m\u00eame d'entrer dans les apprentissages des Activit\u00e9s et des Parcours.\nLe robot va s'animer en faisant des pauses afin que\nla personne accompagn\u00e9e puisse apprivoiser son nouveau compagnon !"
+                        "value": "\"Découvre Leka\" permet à la personne accompagnée de se familiariser à Leka\navant même d'entrer dans les apprentissages des Activités et des Parcours.\nLe robot va s'animer en faisant des pauses afin que\nla personne accompagnée puisse apprivoiser son nouveau compagnon !"
                     }
                 }
             }
@@ -620,7 +620,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Valider la bonne r\u00e9ponse"
+                        "value": "Valider la bonne réponse"
                     }
                 }
             }
@@ -637,7 +637,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Appuie sur OK lorsque Leka est cach\u00e9"
+                        "value": "Appuie sur OK lorsque Leka est caché"
                     }
                 }
             }
@@ -671,7 +671,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Trouv\u00e9 !"
+                        "value": "Trouvé !"
                     }
                 }
             }
@@ -688,7 +688,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Incite la personne accompagn\u00e9e \u00e0 chercher Leka.\nTu peux lancer un renfor\u00e7ateur pour lui donner un indice visuel et/ou sonore.\nAppuie sur \"TROUV\u00c9\" une fois le robot trouv\u00e9."
+                        "value": "Incite la personne accompagnée à chercher Leka.\nTu peux lancer un renforçateur pour lui donner un indice visuel et/ou sonore.\nAppuie sur \"TROUVÉ\" une fois le robot trouvé."
                     }
                 }
             }
@@ -723,7 +723,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Apporter la carte magique sur le front du robot\npour valider la r\u00e9ponse."
+                        "value": "Apporter la carte magique sur le front du robot\npour valider la réponse."
                     }
                 }
             }
@@ -796,24 +796,6 @@
                 }
             }
         },
-        "game_engine_kit.melody_view.skip_button_label": {
-            "comment": "Skip button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Skip"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Passer"
-                    }
-                }
-            }
-        },
         "game_engine_kit.melody_view.song_selector_title": {
             "comment": "MelodyView music selection title",
             "localizations": {
@@ -826,7 +808,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "S\u00e9lection de la musique"
+                        "value": "Sélection de la musique"
                     }
                 }
             }
@@ -837,13 +819,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u274c ERROR\nChoice type not implemented"
+                        "value": "❌ ERROR\nChoice type not implemented"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u274c ERREUR\nType non impl\u00e9ment\u00e9"
+                        "value": "❌ ERREUR\nType non implémenté"
                     }
                 }
             }
@@ -894,7 +876,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u00cates-vous s\u00fbr de vouloir quitter cette activit\u00e9 ?"
+                        "value": "Êtes-vous sûr de vouloir quitter cette activité ?"
                     }
                 }
             }
@@ -979,7 +961,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Bien jou\u00e9, tu as r\u00e9ussi l'activit\u00e9 !"
+                        "value": "Bien joué, tu as réussi l'activité !"
                     }
                 }
             }
@@ -996,7 +978,7 @@
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "%.0f%% de succ\u00e8s !"
+                        "value": "%.0f%% de succès !"
                     }
                 }
             }
@@ -1024,13 +1006,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u274c ERROR\nInterface not implemented"
+                        "value": "❌ ERROR\nInterface not implemented"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u274c ERREUR\nInterface non impl\u00e9ment\u00e9e"
+                        "value": "❌ ERREUR\nInterface non implémentée"
                     }
                 }
             }
@@ -1041,13 +1023,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u274c ERROR\nChoice type not implemented"
+                        "value": "❌ ERROR\nChoice type not implemented"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u274c ERREUR\nType non impl\u00e9ment\u00e9"
+                        "value": "❌ ERREUR\nType non implémenté"
                     }
                 }
             }
@@ -1058,13 +1040,49 @@
                 "en": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u274c ERROR\nChoice type not implemented"
+                        "value": "❌ ERROR\nChoice type not implemented"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "\u274c ERREUR\nType non impl\u00e9ment\u00e9"
+                        "value": "❌ ERREUR\nType non implémenté"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.story_view.finish_button_label": {
+            "comment": "Finish story button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Finish"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Terminer"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.melody_view.skip_button_label": {
+            "comment": "Skip button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Skip"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Passer"
                     }
                 }
             }
