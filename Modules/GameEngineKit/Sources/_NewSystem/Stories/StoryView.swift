@@ -14,32 +14,49 @@ public struct StoryView: View {
     // MARK: Lifecycle
 
     public init(story: Story) {
-        self._viewModel = StateObject(wrappedValue: StoryViewViewModel(story: story))
+        self.currentStory = story
     }
 
     // MARK: Public
 
     public var body: some View {
-        Pages(pages: self.viewModel.currentStory.pages.compactMap {
-            PageView(page: $0)
-        })
-        .ignoresSafeArea(.all)
-        .navigationTitle(self.viewModel.currentStory.details.title)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button {
-                    self.isAlertPresented = true
-                } label: {
-                    Image(systemName: "xmark.circle")
+        ZStack {
+            TabView(selection: self.$currentPageIndex) {
+                ForEach(0..<self.currentStory.pages.count, id: \.self) { index in
+                    PageView(page: self.currentStory.pages[index])
+                        .tag(index)
+                }
+            }
+            .ignoresSafeArea(.all)
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            .animation(.default, value: self.currentPageIndex)
+            .onChange(of: self.currentPageIndex) {
+                self.isLastPage = false
+                if self.currentPageIndex == self.currentStory.pages.count - 1 {
+                    withAnimation(.easeInOut(duration: 0.3).delay(1)) {
+                        self.isLastPage = true
+                    }
                 }
             }
 
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    self.isInfoSheetPresented.toggle()
-                } label: {
-                    Image(systemName: "info.circle")
+            self.toolbarView
+
+            VStack {
+                Spacer()
+                if self.isLastPage {
+                    Button {
+                        self.dismiss()
+                    } label: {
+                        Text(l10n.StoryView.finishButtonLabel)
+                            .font(.title3.bold())
+                            .foregroundColor(.white)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .multilineTextAlignment(.center)
+                            .frame(width: 300, height: 300.0 / 4.0)
+                            .scaledToFit()
+                            .background(Capsule().fill(.green).shadow(radius: 3))
+                            .padding(.bottom, 30)
+                    }
                 }
             }
         }
@@ -55,12 +72,12 @@ public struct StoryView: View {
             Text(l10n.StoryView.QuitStoryAlert.message)
         }
         .sheet(isPresented: self.$isInfoSheetPresented) {
-            StoryDetailsView(story: self.viewModel.currentStory)
+            StoryDetailsView(story: self.currentStory)
                 .logEventScreenView(
                     screenName: "story_details",
                     context: .sheet,
                     parameters: [
-                        "lk_story_id": "\(self.viewModel.currentStory.name)-\(self.viewModel.currentStory.id)",
+                        "lk_story_id": "\(self.currentStory.name)-\(self.currentStory.id)",
                     ]
                 )
         }
@@ -78,13 +95,67 @@ public struct StoryView: View {
 
     @Environment(\.dismiss) var dismiss
 
-    // TODO: (@ladislas) check why not @ObservedObject
-    @StateObject var viewModel: StoryViewViewModel
+    let currentStory: Story
 
     // MARK: Private
 
+    @State private var isLastPage: Bool = false
+    @State private var currentPageIndex: Int = 0
     @State private var isAlertPresented: Bool = false
     @State private var isInfoSheetPresented: Bool = false
+
+    private var toolbarView: some View {
+        VStack {
+            HStack {
+                Button {
+                    self.isAlertPresented = true
+                } label: {
+                    Image(systemName: "xmark.circle")
+                        .font(.title2)
+                }
+
+                Spacer()
+
+                Text(self.currentStory.details.title)
+                    .font(.title2.bold())
+                    .foregroundStyle(.black)
+
+                Spacer()
+
+                Button {
+                    self.isInfoSheetPresented.toggle()
+                } label: {
+                    Image(systemName: "info.circle")
+                        .font(.title2)
+                }
+            }
+
+            Spacer()
+
+            HStack {
+                if self.currentPageIndex > 0 {
+                    Button {
+                        self.currentPageIndex -= 1
+                    } label: {
+                        Image(systemName: "arrow.backward")
+                            .font(.title.bold())
+                    }
+                }
+
+                Spacer()
+
+                if self.currentPageIndex < self.currentStory.pages.count - 1 {
+                    Button {
+                        self.currentPageIndex += 1
+                    } label: {
+                        Image(systemName: "arrow.forward")
+                            .font(.title.bold())
+                    }
+                }
+            }
+        }
+        .padding()
+    }
 }
 
 #Preview {
