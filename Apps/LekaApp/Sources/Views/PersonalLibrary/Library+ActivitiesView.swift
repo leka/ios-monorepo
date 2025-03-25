@@ -19,24 +19,33 @@ struct LibraryActivitiesView: View {
     // MARK: Internal
 
     var body: some View {
-        if self.activities.isEmpty {
-            EmptyLibraryPlaceholderView(icon: .activities)
-        } else {
-            LibraryActivityListView(activities: self.activities) { activity in
-                if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
-                    self.navigation.sheetContent = .carereceiverPicker(activity: activity, story: nil)
-                } else {
-                    self.navigation.currentActivity = activity
-                    self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+        Group {
+            if self.filteredActivities.isEmpty {
+                EmptyLibraryPlaceholderView(icon: .activities)
+            } else {
+                LibraryActivityListView(activities: self.filteredActivities) { activity in
+                    if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
+                        self.navigation.sheetContent = .carereceiverPicker(activity: activity, story: nil)
+                    } else {
+                        self.navigation.currentActivity = activity
+                        self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+                    }
                 }
             }
         }
+        .searchable(
+            text: self.$searchText,
+            placement: .navigationBarDrawer(displayMode: .always),
+            prompt: Text(String(localized: "Search"))
+        )
     }
 
     // MARK: Private
 
     @ObservedObject private var navigation: Navigation = .shared
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
+
+    @State private var searchText: String = ""
 
     private var viewModel: LibraryManagerViewModel
 
@@ -46,6 +55,16 @@ struct LibraryActivitiesView: View {
         }
         .sorted {
             $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
+        }
+    }
+
+    private var filteredActivities: [Activity] {
+        guard !self.searchText.isEmpty else { return self.activities }
+
+        return self.activities.filter {
+            $0.details.title.localizedCaseInsensitiveContains(self.searchText)
+                || ($0.details.subtitle?.localizedCaseInsensitiveContains(self.searchText) ?? false)
+                || ($0.details.instructions.localizedCaseInsensitiveContains(self.searchText))
         }
     }
 }
