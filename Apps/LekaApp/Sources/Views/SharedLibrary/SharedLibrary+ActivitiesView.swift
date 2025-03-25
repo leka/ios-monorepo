@@ -16,14 +16,23 @@ struct SharedLibraryActivitiesView: View {
     // MARK: Internal
 
     var body: some View {
-        if self.items.isEmpty {
-            EmptySharedLibraryPlaceholderView(icon: .activities)
-        } else {
-            VerticalActivityTable(items: self.items)
+        Group {
+            if self.items.isEmpty {
+                EmptySharedLibraryPlaceholderView(icon: .activities)
+            } else {
+                VerticalActivityTable(items: self.filteredItems)
+            }
         }
+        .searchable(
+            text: self.$searchText,
+            placement: .navigationBarDrawer(displayMode: .always),
+            prompt: Text(String(localized: "Search"))
+        )
     }
 
     // MARK: Private
+
+    @State private var searchText: String = ""
 
     private var viewModel: SharedLibraryManagerViewModel
 
@@ -35,6 +44,14 @@ struct SharedLibraryActivitiesView: View {
             $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
         }
         .map { CurationItemModel(id: $0.id, name: $0.name, contentType: .activity) }
+    }
+
+    private var filteredItems: [CurationItemModel] {
+        guard !self.searchText.isEmpty else { return self.items }
+
+        return self.items.filter {
+            $0.name.localizedCaseInsensitiveContains(self.searchText)
+        }
     }
 }
 
