@@ -26,12 +26,10 @@ public extension StoryView {
                 if self.background.isRasterImageFile {
                     Image(uiImage: UIImage(named: self.background)!)
                         .resizable()
-                        .frame(maxWidth: .infinity)
-                        .ignoresSafeArea(.all)
+                        .scaledToFill()
                 } else if self.background.isVectorImageFile {
                     SVGView(contentsOf: URL(fileURLWithPath: self.background))
-                        .frame(width: .infinity)
-                        .ignoresSafeArea(.all)
+                        .scaledToFill()
                 } else {
                     Color.lkBackground
                 }

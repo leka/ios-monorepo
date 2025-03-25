@@ -8,7 +8,7 @@ import SwiftUI
 
 // MARK: - TTSCoordinatorFindTheRightAnswers
 
-public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
+public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol, ExerciseCompletionObservable {
     // MARK: Lifecycle
 
     public init(choices: [CoordinatorFindTheRightAnswersChoiceModel], action: Exercise.Action? = nil, validationEnabled: Bool? = nil) {
@@ -37,6 +37,8 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
     public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
+
+    public var didComplete: PassthroughSubject<Void, Never> = .init()
 
     public func processUserSelection(choiceID: UUID) {
         if self.validationEnabled.value == nil {
@@ -80,6 +82,10 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol {
 
         results.forEach { result in
             self.updateChoiceState(for: result.id, to: result.isCorrect ? .correct : .wrong)
+        }
+
+        if self.gameplay.isCompleted.value {
+            self.didComplete.send()
         }
     }
 
@@ -152,18 +158,22 @@ extension TTSCoordinatorFindTheRightAnswers {
     }
 }
 
-#Preview {
-    let kDefaultChoices: [CoordinatorFindTheRightAnswersChoiceModel] = [
-        .init(value: "Choice 1\nCorrect", isRightAnswer: true),
-        .init(value: "Choice 2", isRightAnswer: false),
-        .init(value: "Choice 3\nCorrect", isRightAnswer: true),
-        .init(value: "checkmark.seal.fill", type: .sfsymbol, isRightAnswer: true),
-        .init(value: "Choice 5\nCorrect", isRightAnswer: true),
-        .init(value: "exclamationmark.triangle.fill", type: .sfsymbol, isRightAnswer: false),
-    ]
+#if DEBUG
 
-    let coordinator = TTSCoordinatorFindTheRightAnswers(choices: kDefaultChoices)
-    let viewModel = TTSViewViewModel(coordinator: coordinator)
+    #Preview {
+        let kDefaultChoices: [CoordinatorFindTheRightAnswersChoiceModel] = [
+            .init(value: "Choice 1\nCorrect", isRightAnswer: true),
+            .init(value: "Choice 2", isRightAnswer: false),
+            .init(value: "Choice 3\nCorrect", isRightAnswer: true),
+            .init(value: "checkmark.seal.fill", type: .sfsymbol, isRightAnswer: true),
+            .init(value: "Choice 5\nCorrect", isRightAnswer: true),
+            .init(value: "exclamationmark.triangle.fill", type: .sfsymbol, isRightAnswer: false),
+        ]
 
-    return TTSView(viewModel: viewModel)
-}
+        let coordinator = TTSCoordinatorFindTheRightAnswers(choices: kDefaultChoices)
+        let viewModel = TTSViewViewModel(coordinator: coordinator)
+
+        return TTSView(viewModel: viewModel)
+    }
+
+#endif

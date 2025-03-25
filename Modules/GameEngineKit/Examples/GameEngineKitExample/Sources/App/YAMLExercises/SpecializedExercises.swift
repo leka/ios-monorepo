@@ -17,7 +17,7 @@ struct SpecializedExercises: View {
             HStack(spacing: 20) {
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kDanceFreezeYaml)!
-                    ExerciseCoordinator(exercise: exercise).exerciseView
+                    CurrentExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("Dance Freeze")
                         .navigationBarTitleDisplayMode(.inline)
 
@@ -27,7 +27,7 @@ struct SpecializedExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kMusicalInstrumentYaml)!
-                    ExerciseCoordinator(exercise: exercise).exerciseView
+                    CurrentExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("Musical Instruments")
                         .navigationBarTitleDisplayMode(.inline)
 
@@ -37,7 +37,7 @@ struct SpecializedExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kMediumSuperSimonYaml)!
-                    ExerciseCoordinator(exercise: exercise).exerciseView
+                    CurrentExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("Super Simon")
                         .navigationBarTitleDisplayMode(.inline)
 
@@ -47,7 +47,7 @@ struct SpecializedExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kMelodyYaml)!
-                    ExerciseCoordinator(exercise: exercise).exerciseView
+                    CurrentExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("Melody")
                         .navigationBarTitleDisplayMode(.inline)
 
@@ -57,7 +57,7 @@ struct SpecializedExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kHideAndSeekYaml)!
-                    ExerciseCoordinator(exercise: exercise).exerciseView
+                    CurrentExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("HideAndSeek")
                         .navigationBarTitleDisplayMode(.inline)
 
@@ -67,7 +67,7 @@ struct SpecializedExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kDiscoverLekaYaml)!
-                    ExerciseCoordinator(exercise: exercise).exerciseView
+                    CurrentExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("Discover Leka")
                         .navigationBarTitleDisplayMode(.inline)
 
@@ -77,7 +77,7 @@ struct SpecializedExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kColorMediatorYaml)!
-                    ExerciseCoordinator(exercise: exercise).exerciseView
+                    CurrentExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("Color Mediator")
                         .navigationBarTitleDisplayMode(.inline)
 
@@ -87,7 +87,7 @@ struct SpecializedExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kColorMusicPadYaml)!
-                    ExerciseCoordinator(exercise: exercise).exerciseView
+                    CurrentExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("Color Music Pad")
                         .navigationBarTitleDisplayMode(.inline)
 
@@ -97,7 +97,7 @@ struct SpecializedExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kGamepadArrowPadYaml)!
-                    ExerciseCoordinator(exercise: exercise).exerciseView
+                    CurrentExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("Gamepad Arrow Pad")
                         .navigationBarTitleDisplayMode(.inline)
 
@@ -117,7 +117,7 @@ struct SpecializedExercises: View {
 
                 NavigationLink {
                     let exercise = NewExercise(yaml: ExerciseYAMLs.kGamepadJoystickColorPadYaml)!
-                    ExerciseCoordinator(exercise: exercise).exerciseView
+                    CurrentExerciseCoordinator(exercise: exercise).exerciseView
                         .navigationTitle("Gamepad Joystick Color Pad")
                         .navigationBarTitleDisplayMode(.inline)
 
