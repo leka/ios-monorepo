@@ -11,7 +11,7 @@ public struct ObserveThenDragAndDropIntoZonesView: View {
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
         guard case let .ipad(type: .image(name)) = exercise.action else {
-            log.error("Exercise does not contain iPad audio action")
+            logGEK.error("Exercise does not contain iPad audio action")
             fatalError("💥 Exercise does not contain iPad audio action")
         }
 

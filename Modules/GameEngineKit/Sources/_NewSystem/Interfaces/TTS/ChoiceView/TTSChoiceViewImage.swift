@@ -13,7 +13,7 @@ struct TTSChoiceViewImage: View {
 
     init(value: String, size: CGFloat, background: Color? = nil) {
         guard let value = Bundle.path(forImage: value) else {
-            log.error("Image not found: \(value)")
+            logGEK.error("Image not found: \(value)")
             fatalError("💥️ Image not found: \(value)")
         }
         self.value = value
@@ -78,7 +78,7 @@ struct TTSChoiceViewImage: View {
                     .stroke(Color.red, lineWidth: 5)
             }
             .onAppear {
-                log.error("Image not found: \(self.value)")
+                logGEK.error("Image not found: \(self.value)")
             }
     }
 }

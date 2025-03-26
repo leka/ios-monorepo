@@ -19,7 +19,7 @@ public struct SuperSimonView: View {
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
         guard let payload = exercise.payload as? SuperSimon.Payload else {
-            log.error("Exercise payload is not .selection")
+            logGEK.error("Exercise payload is not .selection")
             fatalError("💥 Exercise payload is not .selection")
         }
 
@@ -94,7 +94,7 @@ public struct SuperSimonView: View {
                     Text(l10n.SuperSimonView.typeUnknownError)
                         .multilineTextAlignment(.center)
                         .onAppear {
-                            log.error("Interface \(interface) not implemented")
+                            logGEK.error("Interface \(interface) not implemented")
                         }
             }
 

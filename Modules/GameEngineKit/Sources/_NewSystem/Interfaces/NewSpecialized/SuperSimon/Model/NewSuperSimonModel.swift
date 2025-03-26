@@ -18,7 +18,7 @@ public struct NewSuperSimonModel: Decodable {
     public init(data: Data) {
         guard let model = try? JSONDecoder().decode(NewSuperSimonModel.self, from: data)
         else {
-            log.error("Exercise payload not compatible with SuperSimon model:\n\(String(data: data, encoding: .utf8) ?? "(no data)")")
+            logGEK.error("Exercise payload not compatible with SuperSimon model:\n\(String(data: data, encoding: .utf8) ?? "(no data)")")
             fatalError()
         }
 

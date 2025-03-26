@@ -19,7 +19,7 @@ public struct ListenThenDragAndDropToAssociateView: View {
             case let .ipad(type: .speech(utterance)):
                 self.audioData = .speech(text: utterance)
             default:
-                log.error("Action not recognized: \(String(describing: exercise.action))")
+                logGEK.error("Action not recognized: \(String(describing: exercise.action))")
                 fatalError("💥 Action not recognized: \(String(describing: exercise.action))")
         }
     }

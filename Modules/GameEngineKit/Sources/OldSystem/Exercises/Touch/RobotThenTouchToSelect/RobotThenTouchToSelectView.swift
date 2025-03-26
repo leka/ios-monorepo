@@ -25,7 +25,7 @@ public struct RobotThenTouchToSelectView: View {
         guard let payload = exercise.payload as? TouchToSelect.Payload,
               case let .robot(actionType) = exercise.action
         else {
-            log.error("Exercise payload is not .selection and/or Exercise does not contain robot action")
+            logGEK.error("Exercise payload is not .selection and/or Exercise does not contain robot action")
             fatalError("💥 Exercise payload is not .selection and/or Exercise does not contain robot action")
         }
 

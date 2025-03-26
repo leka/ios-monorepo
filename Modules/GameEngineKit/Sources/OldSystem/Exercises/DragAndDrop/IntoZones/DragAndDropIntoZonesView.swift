@@ -24,7 +24,7 @@ public struct DragAndDropIntoZonesView: View {
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
         guard let payload = exercise.payload as? DragAndDropIntoZones.Payload else {
-            log.error("Exercise payload is not .dragAndDrop")
+            logGEK.error("Exercise payload is not .dragAndDrop")
             fatalError("💥 Exercise payload is not .dragAndDrop")
         }
 

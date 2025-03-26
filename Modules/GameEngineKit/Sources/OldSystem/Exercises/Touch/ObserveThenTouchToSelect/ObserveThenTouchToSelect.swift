@@ -16,7 +16,7 @@ public struct ObserveThenTouchToSelectView: View {
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
         guard let payload = exercise.payload as? TouchToSelect.Payload else {
-            log.error("Invalid payload type: expected TouchToSelect.Payload, got \(type(of: exercise.payload))")
+            logGEK.error("Invalid payload type: expected TouchToSelect.Payload, got \(type(of: exercise.payload))")
             fatalError("💥 Invalid payload type: expected TouchToSelect.Payload, got \(type(of: exercise.payload))")
         }
 
@@ -26,7 +26,7 @@ public struct ObserveThenTouchToSelectView: View {
             case let .ipad(type: .sfsymbol(name)):
                 self.image = name
             default:
-                log.error("Invalid action type: expected iPad image or sfsymbol, got \(String(describing: exercise.action))")
+                logGEK.error("Invalid action type: expected iPad image or sfsymbol, got \(String(describing: exercise.action))")
                 fatalError("💥 Invalid action type: expected iPad image or sfsymbol, got \(String(describing: exercise.action))")
         }
 

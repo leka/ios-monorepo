@@ -15,7 +15,7 @@ public struct ChoiceImageView: View {
 
     public init(image: String, size: CGFloat, background: Color? = nil, state: GameplayChoiceState = .idle) {
         guard let image = Bundle.path(forImage: image) else {
-            log.error("Image not found: \(image)")
+            logGEK.error("Image not found: \(image)")
             fatalError("💥️ Image not found: \(image)")
         }
         self.image = image
@@ -129,7 +129,7 @@ public struct ChoiceImageView: View {
                     .stroke(Color.red, lineWidth: 5)
             }
             .onAppear {
-                log.error("Image not found: \(self.image)")
+                logGEK.error("Image not found: \(self.image)")
             }
     }
 }

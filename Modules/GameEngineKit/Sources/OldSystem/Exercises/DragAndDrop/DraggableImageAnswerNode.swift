@@ -54,7 +54,7 @@ class DraggableImageAnswerNode: SKSpriteNode {
         guard let pathImage = Bundle.path(forImage: choice.choice.value),
               let image = UIImage(named: pathImage)
         else {
-            log.error("Image not found: \(choice.choice.value)")
+            logGEK.error("Image not found: \(choice.choice.value)")
             fatalError("💥️ Image not found: \(choice.choice.value)")
         }
 

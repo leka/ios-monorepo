@@ -106,7 +106,7 @@ extension ActionButtonView {
                         .stroke(Color.red, lineWidth: 5)
                 }
                 .onAppear {
-                    log.error("Image not found: \(self.image)")
+                    logGEK.error("Image not found: \(self.image)")
                 }
         }
     }

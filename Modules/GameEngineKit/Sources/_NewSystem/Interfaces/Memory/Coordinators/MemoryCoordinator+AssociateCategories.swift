@@ -57,10 +57,10 @@ public class MemoryCoordinatorAssociateCategories: MemoryGameplayCoordinatorProt
         let choicesToProcess = self.selectedChoices
 
         if results.allSatisfy(\.isCategoryCorrect) {
-            log.debug("Correct category")
+            logGEK.debug("Correct category")
             if self.selectedChoices.count == categoryGroupSize {
                 self.selectedChoices.removeAll()
-                log.debug("Category completed")
+                logGEK.debug("Category completed")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     choicesToProcess.forEach { choice in
                         self.updateChoiceState(for: choice.id, to: .correct)
@@ -68,11 +68,11 @@ public class MemoryCoordinatorAssociateCategories: MemoryGameplayCoordinatorProt
                 }
 
                 if self.gameplay.isCompleted.value {
-                    log.info("Exercise completed")
+                    logGEK.info("Exercise completed")
                 }
             }
         } else {
-            log.debug("Incorrect category")
+            logGEK.debug("Incorrect category")
             self.selectedChoices.removeAll()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                 choicesToProcess.forEach { choice in

@@ -34,7 +34,7 @@ struct ActionButtonRobot: View {
                     Robot.shared.display(imageID: robotAsset.id)
                 case .flash,
                      .spots:
-                    log.error("Action not available for robot: \(self.actionType)")
+                    logGEK.error("Action not available for robot: \(self.actionType)")
                     fatalError("💥 Action not available for robot: \(self.actionType)")
             }
 

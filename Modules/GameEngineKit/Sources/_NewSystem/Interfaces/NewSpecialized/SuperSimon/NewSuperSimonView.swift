@@ -80,7 +80,7 @@ struct NewSuperSimonView: View {
                     Text(l10n.NewSuperSimonView.typeUnknownError)
                         .multilineTextAlignment(.center)
                         .onAppear {
-                            log.error("Interface \(interface) not implemented")
+                            logGEK.error("Interface \(interface) not implemented")
                         }
             }
 

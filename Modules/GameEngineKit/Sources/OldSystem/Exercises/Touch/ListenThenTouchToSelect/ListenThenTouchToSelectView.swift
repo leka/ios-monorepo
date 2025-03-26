@@ -16,7 +16,7 @@ public struct ListenThenTouchToSelectView: View {
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
         guard let payload = exercise.payload as? TouchToSelect.Payload else {
-            log.error("Payload not recognized: \(String(describing: exercise.payload))")
+            logGEK.error("Payload not recognized: \(String(describing: exercise.payload))")
             fatalError("💥 Payload not recognized: \(String(describing: exercise.payload))")
         }
 
@@ -29,7 +29,7 @@ public struct ListenThenTouchToSelectView: View {
             case let .ipad(type: .speech(utterance)):
                 self.audioData = .speech(text: utterance)
             default:
-                log.error("Action not recognized: \(String(describing: exercise.action))")
+                logGEK.error("Action not recognized: \(String(describing: exercise.action))")
                 fatalError("💥 Action not recognized: \(String(describing: exercise.action))")
         }
     }

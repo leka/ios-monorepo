@@ -11,7 +11,7 @@ struct ExerciseInterfaceGameplayNotSupportedView: View {
     // MARK: Lifecycle
 
     init(interface: NewExerciseInterface.GeneralInterface, gameplay: NewExerciseGameplay? = nil) {
-        log.error("Interface \(interface) and gameplay \(gameplay?.rawValue ?? "empty") combination not supported.")
+        logGEK.error("Interface \(interface) and gameplay \(gameplay?.rawValue ?? "empty") combination not supported.")
         self.interface = interface
         self.gameplay = gameplay
     }

@@ -4,4 +4,4 @@
 
 import LogKit
 
-let log = LogKit.createLoggerFor(module: "GameEngineKit")
+let logGEK = LogKit.createLoggerFor(module: "GameEngineKit")

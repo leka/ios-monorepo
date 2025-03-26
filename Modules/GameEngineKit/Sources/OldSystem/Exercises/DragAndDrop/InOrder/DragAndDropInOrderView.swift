@@ -17,7 +17,7 @@ public struct DragAndDropInOrderView: View {
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
         guard let payload = exercise.payload as? DragAndDropInOrder.Payload else {
-            log.error("Exercise payload is not .dragAndDropInOrder")
+            logGEK.error("Exercise payload is not .dragAndDropInOrder")
             fatalError("💥 Exercise payload is not .dragAndDropInOrder")
         }
 

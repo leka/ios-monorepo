@@ -14,7 +14,7 @@ public class ActivityExercisesCoordinator {
 
     public init(payload: ActivityPayload) {
         guard let firstExercise = payload.exerciseGroups.first?.group.first else {
-            log.error("Failed to get first exercise from ActivityPayload: \(payload)")
+            logGEK.error("Failed to get first exercise from ActivityPayload: \(payload)")
             fatalError("Failed to get first exercise from ActivityPayload")
         }
 
@@ -31,7 +31,7 @@ public class ActivityExercisesCoordinator {
 
     public convenience init(payload: Data) {
         guard let payload = try? JSONDecoder().decode(ActivityPayload.self, from: payload) else {
-            log.error("Failed to decode ActivityPayload: \(payload)")
+            logGEK.error("Failed to decode ActivityPayload: \(payload)")
             fatalError("Failed to decode ActivityPayload")
         }
         self.init(payload: payload)
@@ -83,7 +83,7 @@ public class ActivityExercisesCoordinator {
         self.currentExerciseCoordinator.didComplete
             .receive(on: DispatchQueue.main)
             .sink {
-                log.info("Current exercise completed 🎉️")
+                logGEK.info("Current exercise completed 🎉️")
             }
             .store(in: &self.cancellables)
     }

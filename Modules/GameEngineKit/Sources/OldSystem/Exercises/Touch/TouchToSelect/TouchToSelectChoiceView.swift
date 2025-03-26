@@ -69,7 +69,7 @@ struct TouchToSelectChoiceView: View {
                     Text(l10n.TouchToSelectChoiceView.typeUnknownError)
                         .multilineTextAlignment(.center)
                         .onAppear {
-                            log.error("Choice type \(self.choice.type) not implemented for choice: \(self.choice)")
+                            logGEK.error("Choice type \(self.choice.type) not implemented for choice: \(self.choice)")
                         }
             }
         }

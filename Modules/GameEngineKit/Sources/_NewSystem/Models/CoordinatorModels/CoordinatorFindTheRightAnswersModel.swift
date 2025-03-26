@@ -20,7 +20,7 @@ extension CoordinatorFindTheRightAnswersModel: Decodable {
 
     public init(data: Data) {
         guard let model = try? JSONDecoder().decode(CoordinatorFindTheRightAnswersModel.self, from: data) else {
-            log.error("Exercise payload not compatible with FindTheRightAnswers model:\n\(String(data: data, encoding: .utf8) ?? "(no data)")")
+            logGEK.error("Exercise payload not compatible with FindTheRightAnswers model:\n\(String(data: data, encoding: .utf8) ?? "(no data)")")
             fatalError()
         }
 

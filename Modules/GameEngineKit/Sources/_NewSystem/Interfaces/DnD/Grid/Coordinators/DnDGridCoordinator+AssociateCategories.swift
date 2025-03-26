@@ -69,7 +69,7 @@ public class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorPr
 
         self.updateChoiceState(for: choiceID, to: .selected)
 
-        log.debug("Selected choices :  \(self.currentlySelectedChoices)")
+        logGEK.debug("Selected choices :  \(self.currentlySelectedChoices)")
 
         let results = self.gameplay.process(choiceIDs: self.currentlySelectedChoices)
 
@@ -82,7 +82,7 @@ public class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorPr
             self.alreadyValidatedChoices = self.currentlySelectedChoices
 
             if self.gameplay.isCompleted.value {
-                log.debug("Exercise completed")
+                logGEK.debug("Exercise completed")
             }
         } else {
             self.handleIncorrectChoice(choiceID)
@@ -104,7 +104,7 @@ public class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorPr
     }
 
     private func handleIncorrectChoice(_ choiceID: UUID) {
-        log.debug("Handle this incorrect choice \(choiceID)")
+        logGEK.debug("Handle this incorrect choice \(choiceID)")
         guard let choice = self.rawChoices.first(where: { $0.id == choiceID }) else { return }
         let categoryChoices = self.rawChoices.filter { $0.category == choice.category }
 

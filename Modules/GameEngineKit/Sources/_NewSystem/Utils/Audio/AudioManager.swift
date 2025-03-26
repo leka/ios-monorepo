@@ -65,7 +65,7 @@ public class AudioManager: NSObject {
 
     public func play(_ audioType: AudioType) {
         if case let .playing(currentType) = self.state.value {
-            log.debug("Audio is already playing: \(currentType)")
+            logGEK.debug("Audio is already playing: \(currentType)")
             return
         }
 
@@ -93,7 +93,7 @@ public class AudioManager: NSObject {
     }
 
     public func stop() {
-        log.debug("Stopping audio playback")
+        logGEK.debug("Stopping audio playback")
 
         self.stopAudioPlayer()
         self.stopSpeechSynthesizer()
@@ -116,7 +116,7 @@ public class AudioManager: NSObject {
         guard let player = self.audioPlayer else { return }
 
         if player.isPlaying {
-            log.debug("Pausing audio playback")
+            logGEK.debug("Pausing audio playback")
             self.audioPlayer?.pause()
         }
     }
@@ -144,7 +144,7 @@ public class AudioManager: NSObject {
 
         if case let .paused(currentType) = self.state.value, currentType == type {
             guard let player = self.audioPlayer else { return }
-            log.debug("Resuming audio playback")
+            logGEK.debug("Resuming audio playback")
             player.play()
             self.state.send(.playing(type: type))
             return
@@ -152,7 +152,7 @@ public class AudioManager: NSObject {
 
         self.stopAudioPlayer()
 
-        log.debug("Playing audio: \(file)")
+        logGEK.debug("Playing audio: \(file)")
         self.setAudioPlayerData(file: file)
         guard let player = self.audioPlayer else { return }
         player.play()
@@ -167,7 +167,7 @@ public class AudioManager: NSObject {
         }
 
         if case let .paused(currentType) = self.state.value, currentType == type {
-            log.debug("Resuming speech playback")
+            logGEK.debug("Resuming speech playback")
             if self.speechSynthesizer.isPaused {
                 self.speechSynthesizer.continueSpeaking()
             }
@@ -179,7 +179,7 @@ public class AudioManager: NSObject {
 
         self.setSpeechSynthetizerData(text: text)
 
-        log.debug("Speaking text: \(text)")
+        logGEK.debug("Speaking text: \(text)")
         var utterance: AVSpeechUtterance {
             let utterance = AVSpeechUtterance(string: self.speechSentence)
             utterance.rate = 0.40
@@ -196,22 +196,22 @@ public class AudioManager: NSObject {
             try session.setCategory(.playback, mode: .default)
             try session.setActive(true)
         } catch {
-            log.critical("Could not set Audio Session. Error: \(error)")
+            logGEK.critical("Could not set Audio Session. Error: \(error)")
             return
         }
 
         do {
             if let url = Bundle.url(forAudio: file) {
-                log.debug("Audio found at url: \(url)")
+                logGEK.debug("Audio found at url: \(url)")
                 self.audioPlayer = try AVAudioPlayer(contentsOf: url)
             } else {
-                log.error("Audio not found: \(file)")
+                logGEK.error("Audio not found: \(file)")
                 let fileURL = Bundle.module.url(forResource: file, withExtension: "mp3")!
                 self.audioPlayer = try AVAudioPlayer(contentsOf: fileURL)
             }
 
         } catch {
-            log.error("mp3 file not found - \(error)")
+            logGEK.error("mp3 file not found - \(error)")
             return
         }
 

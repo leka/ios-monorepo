@@ -19,7 +19,7 @@ extension HideAndSeekView {
                 }
                 return
             }
-            log.trace("🤖 WIGGLE for \(duration) seconds")
+            logGEK.trace("🤖 WIGGLE for \(duration) seconds")
             let motionDuration = 0.2
 
             DispatchQueue.main.asyncAfter(deadline: .now() + motionDuration) {

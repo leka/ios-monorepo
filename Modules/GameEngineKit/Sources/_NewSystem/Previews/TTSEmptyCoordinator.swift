@@ -31,11 +31,11 @@ import Foundation
         var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
 
         func validateUserSelection() {
-            log.debug("Choice validated")
+            logGEK.debug("Choice validated")
         }
 
         func processUserSelection(choiceID: UUID) {
-            log.debug("\(choiceID.uuidString) selected")
+            logGEK.debug("\(choiceID.uuidString) selected")
         }
     }
 

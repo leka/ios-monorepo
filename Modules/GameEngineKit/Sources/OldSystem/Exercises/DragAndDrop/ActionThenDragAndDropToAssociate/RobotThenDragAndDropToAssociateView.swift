@@ -12,7 +12,7 @@ public struct RobotThenDragAndDropToAssociateView: View {
 
     public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
         guard case let .robot(actionType) = exercise.action else {
-            log.error("Exercise does not contain robot action")
+            logGEK.error("Exercise does not contain robot action")
             fatalError("💥 Exercise does not contain robot action")
         }
 
