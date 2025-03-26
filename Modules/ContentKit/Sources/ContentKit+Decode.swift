@@ -10,7 +10,7 @@ public extension ContentKit {
     static func decodeActivity(_ filename: String) -> Activity {
         do {
             guard let file = Bundle.main.path(forResource: filename, ofType: "yml") else {
-                log.error("File not found: \(filename)")
+                logCK.error("File not found: \(filename)")
                 fatalError("💥 File not found: \(filename)")
             }
 
@@ -19,7 +19,7 @@ public extension ContentKit {
 
             return activity
         } catch {
-            log.error("Error decoding \(filename): \(error)")
+            logCK.error("Error decoding \(filename): \(error)")
             fatalError("💥 Error decoding \(filename): \(error)")
         }
     }

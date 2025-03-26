@@ -6,7 +6,7 @@ import Foundation
 import LogKit
 import Yams
 
-let log = LogKit.createLoggerFor(module: "ContentKit")
+let logCK = LogKit.createLoggerFor(module: "ContentKit")
 
 // MARK: - ContentKit
 
@@ -59,7 +59,7 @@ public enum ContentKit {
             let data = try? String(contentsOfFile: file, encoding: .utf8)
 
             guard let data else {
-                log.error("Error reading file: \(file)")
+                logCK.error("Error reading file: \(file)")
                 continue
             }
 
@@ -67,7 +67,7 @@ public enum ContentKit {
                 let curriculum = try YAMLDecoder().decode(Curriculum.self, from: data)
                 curriculums.append(curriculum)
             } catch {
-                log.error("Error decoding file: \(file) with error:\n\(error)")
+                logCK.error("Error decoding file: \(file) with error:\n\(error)")
             }
         }
 
@@ -84,7 +84,7 @@ public enum ContentKit {
             let data = try? String(contentsOfFile: file, encoding: .utf8)
 
             guard let data else {
-                log.error("Error reading file: \(file)")
+                logCK.error("Error reading file: \(file)")
                 continue
             }
 
@@ -92,7 +92,7 @@ public enum ContentKit {
                 let activity = try YAMLDecoder().decode(Activity.self, from: data)
                 activities.append(activity)
             } catch {
-                log.error("Error decoding file: \(file) with error:\n\(error)")
+                logCK.error("Error decoding file: \(file) with error:\n\(error)")
             }
         }
 
@@ -133,7 +133,7 @@ public enum ContentKit {
             let data = try? String(contentsOfFile: file, encoding: .utf8)
 
             guard let data else {
-                log.error("Error reading file: \(file)")
+                logCK.error("Error reading file: \(file)")
                 continue
             }
 
@@ -141,7 +141,7 @@ public enum ContentKit {
                 let story = try YAMLDecoder().decode(Story.self, from: data)
                 stories.append(story)
             } catch {
-                log.error("Error decoding file: \(file) with error:\n\(error)")
+                logCK.error("Error decoding file: \(file) with error:\n\(error)")
             }
         }
 
@@ -153,7 +153,7 @@ public enum ContentKit {
         let data = try? String(contentsOfFile: path!, encoding: .utf8)
 
         guard let data else {
-            log.error("Error reading file")
+            logCK.error("Error reading file")
             fatalError("💥 Error reading file")
         }
 
@@ -161,7 +161,7 @@ public enum ContentKit {
             let info = try YAMLDecoder().decode(CategoryResources.self, from: data)
             return info
         } catch {
-            log.error("Error decoding file with error:\n\(error)")
+            logCK.error("Error decoding file with error:\n\(error)")
             fatalError("💥 Error decoding file with error:\n\(error)")
         }
     }

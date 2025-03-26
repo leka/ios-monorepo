@@ -30,7 +30,7 @@ public struct CategoryEducationalGames: CategoryProtocol {
         let data = try? String(contentsOfFile: path!, encoding: .utf8)
 
         guard let data else {
-            log.error("Error reading file")
+            logCK.error("Error reading file")
             fatalError("💥 Error reading file")
         }
 

@@ -44,11 +44,11 @@ public class ActivityTypes: Codable {
                 let container = try YAMLDecoder().decode(TypesContainer.self, from: yamlString)
                 return container
             } catch {
-                log.error("Failed to read YAML file: \(error)")
+                logCK.error("Failed to read YAML file: \(error)")
                 return TypesContainer(list: [])
             }
         } else {
-            log.error("activity_types.yml not found")
+            logCK.error("activity_types.yml not found")
             return TypesContainer(list: [])
         }
     }

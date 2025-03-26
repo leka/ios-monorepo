@@ -44,11 +44,11 @@ public class HMI: Codable {
                 let container = try YAMLDecoder().decode(HMIContainer.self, from: yamlString)
                 return container
             } catch {
-                log.error("Failed to read YAML file: \(error)")
+                logCK.error("Failed to read YAML file: \(error)")
                 return HMIContainer(list: [])
             }
         } else {
-            log.error("hmi.yml not found")
+            logCK.error("hmi.yml not found")
             return HMIContainer(list: [])
         }
     }

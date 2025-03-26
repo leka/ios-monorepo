@@ -74,7 +74,7 @@ public struct Activity: Decodable, Identifiable {
 
     public func details(in language: Locale.LanguageCode) -> Details {
         guard let details = self.l10n.first(where: { $0.language == language })?.details else {
-            log.error("No details found for language \(language)")
+            logCK.error("No details found for language \(language)")
             fatalError("💥 No details found for language \(language)")
         }
 

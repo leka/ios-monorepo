@@ -67,11 +67,11 @@ public class Tags {
                 let container = try YAMLDecoder().decode(TagsContainer.self, from: yamlString)
                 return container
             } catch {
-                log.error("Failed to read YAML file: \(error)")
+                logCK.error("Failed to read YAML file: \(error)")
                 return TagsContainer(list: [])
             }
         } else {
-            log.error("tags.yml not found")
+            logCK.error("tags.yml not found")
             return TagsContainer(list: [])
         }
     }

@@ -61,7 +61,7 @@ public struct GamepadGridView: View {
                     }
                 }
                 .simultaneousGesture(TapGesture().onEnded {
-                    log.debug("Gamepad selected: \(activity.name)")
+                    logCK.debug("Gamepad selected: \(activity.name)")
                     AnalyticsManager.logEventSelectContent(
                         type: .gamepad,
                         id: activity.id,

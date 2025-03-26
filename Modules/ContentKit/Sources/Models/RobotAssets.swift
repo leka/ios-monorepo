@@ -43,11 +43,11 @@ public class RobotAssets {
                 let container = try YAMLDecoder().decode(RobotAssetsContainer.self, from: yamlString)
                 return container
             } catch {
-                log.error("Failed to read YAML file: \(error)")
+                logCK.error("Failed to read YAML file: \(error)")
                 return RobotAssetsContainer(list: [])
             }
         } else {
-            log.error("robot_assets.yml not found")
+            logCK.error("robot_assets.yml not found")
             return RobotAssetsContainer(list: [])
         }
     }

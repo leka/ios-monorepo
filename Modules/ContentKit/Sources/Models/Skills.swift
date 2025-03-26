@@ -67,11 +67,11 @@ public class Skills {
                 let container = try YAMLDecoder().decode(SkillsContainer.self, from: yamlString)
                 return container
             } catch {
-                log.error("Failed to read YAML file: \(error)")
+                logCK.error("Failed to read YAML file: \(error)")
                 return SkillsContainer(list: [])
             }
         } else {
-            log.error("skills.yml not found")
+            logCK.error("skills.yml not found")
             return SkillsContainer(list: [])
         }
     }
