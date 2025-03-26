@@ -318,40 +318,6 @@
                 }
             }
         },
-        "content_kit.library_menu_actions.add_to_library_button_label": {
-            "comment": "Add to library button label",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Add to Library"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Ajouter \u00e0 la Biblioth\u00e8que"
-                    }
-                }
-            }
-        },
-        "content_kit.library_menu_actions.remove_from_library_button_label": {
-            "comment": "Remove from library button label",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Delete from Library"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Supprimer de la Biblioth\u00e8que"
-                    }
-                }
-            }
-        },
         "content_kit.sample_story_list_view.start_story_button_label": {
             "comment": "Start Story button label on Sample Story List view",
             "localizations": {
@@ -577,6 +543,96 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Jouer"
+                    }
+                }
+            }
+        },
+        "library.menu_actions.add_to_library_button_label": {
+            "comment": "Button label to add an item to the library",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Add to Library"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Ajouter \u00e0 la Biblioth\u00e8que"
+                    }
+                }
+            }
+        },
+        "library.menu_actions.favorite_button_label": {
+            "comment": "Button label to mark an item as favorite",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Favorite"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Ajouter aux Favoris"
+                    }
+                }
+            }
+        },
+        "library.menu_actions.remove_from_library_button_label": {
+            "comment": "Button label to remove an item from the library",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Remove from Library"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Retirer de la Biblioth\u00e8que"
+                    }
+                }
+            }
+        },
+        "library.menu_actions.undo_favorite_button_label": {
+            "comment": "Button label to remove an item from favorites",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Undo Favorite"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Retirer des Favoris"
+                    }
+                }
+            }
+        },
+        "library.table.title_column_label": {
+            "comment": "Title Column header label in the Library table views",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Title"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Titre"
                     }
                 }
             }

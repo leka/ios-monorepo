@@ -64,11 +64,11 @@ extension MainView {
                     self.systemImage = "dice.fill"
 
                 case .libraryStories:
-                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.stories.characters)
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.libraryStories.characters)
                     self.systemImage = "text.book.closed.fill"
 
                 case .libraryFavorites:
-                    self.title = "Favorites"
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.libraryFavorites.characters)
                     self.systemImage = "star.fill"
 
                 case .caregivers:

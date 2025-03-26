@@ -415,15 +415,15 @@ struct MainView: View {
 
     private func createRemovalAlert() -> Alert {
         guard let itemToRemove = self.libraryManagerViewModel.itemToRemove else {
-            return Alert(title: Text("Error"))
+            return Alert(title: Text(l10n.MainView.RemovalAlert.errorTitle))
         }
 
         switch self.libraryManagerViewModel.alertType {
             case .confirmPersonalFavorite:
                 return Alert(
-                    title: Text("Confirm Removal"),
-                    message: Text("You have marked this item as a favorite. Are you sure you want to remove it from your library?"),
-                    primaryButton: .destructive(Text("Remove")) {
+                    title: Text(l10n.MainView.RemovalAlert.confirmTitle),
+                    message: Text(l10n.MainView.RemovalAlert.confirmMessage),
+                    primaryButton: .destructive(Text(l10n.MainView.RemovalAlert.confirmAction)) {
                         self.libraryManagerViewModel.removeItemFromLibrary(itemToRemove)
                     },
                     secondaryButton: .cancel()
@@ -431,13 +431,13 @@ struct MainView: View {
 
             case .informOthersFavorited:
                 return Alert(
-                    title: Text("Cannot Remove Item"),
-                    message: Text("This item is favorited by other caregivers. You cannot remove it."),
-                    dismissButton: .default(Text("OK"))
+                    title: Text(l10n.MainView.RemovalAlert.cannotRemoveTitle),
+                    message: Text(l10n.MainView.RemovalAlert.cannotRemoveMessage),
+                    dismissButton: .default(Text(l10n.MainView.RemovalAlert.okAction))
                 )
 
             case .none:
-                return Alert(title: Text("Error"))
+                return Alert(title: Text(l10n.MainView.RemovalAlert.errorTitle))
         }
     }
 }
