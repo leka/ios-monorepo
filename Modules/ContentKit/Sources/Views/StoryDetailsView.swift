@@ -33,9 +33,13 @@ public struct StoryDetailsView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 10 / 57 * 120))
 
                         VStack(alignment: .leading, spacing: 8) {
-                            Text(self.story.details.title)
-                                .font(.largeTitle)
-                                .bold()
+                            HStack(alignment: .center) {
+                                Text(self.story.details.title)
+                                    .font(.largeTitle)
+                                    .bold()
+
+                                Spacer()
+                            }
 
                             if let subtitle = self.story.details.subtitle {
                                 Text(subtitle)
@@ -108,38 +112,32 @@ public struct StoryDetailsView: View {
             }
         }
         .toolbar {
-            #if DEVELOPER_MODE || TESTFLIGHT_BUILD
-                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                    ToolbarItem {
-                        Menu {
-                            if self.libraryManagerViewModel.isStorySaved(storyID: self.story.uuid) {
-                                Button(role: .destructive) {
-                                    self.libraryManager.removeStory(storyID: self.story.uuid)
-                                } label: {
-                                    Label(String(l10n.Library.MenuActions.removeFromlibraryButtonLabel.characters), systemImage: "trash")
-                                }
-                            } else {
-                                Button {
-                                    self.libraryManager.addStory(
-                                        storyID: self.story.uuid,
-                                        caregiverID: currentCaregiverID
-                                    )
-                                } label: {
-                                    Label(String(l10n.Library.MenuActions.addTolibraryButtonLabel.characters), systemImage: "plus")
-                                }
-                            }
+            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                ToolbarItemGroup {
+                    if self.libraryManagerViewModel.isStoryFavoritedByCurrentCaregiver(
+                        storyID: self.story.uuid,
+                        caregiverID: currentCaregiverID
+                    ) {
+                        Image(systemName: "star.circle")
+                            .font(.system(size: 21))
+                            .foregroundColor(self.styleManager.accentColor ?? .blue)
+                    }
+
+                    Menu {
+                        self.addOrRemoveButton(story: self.story, caregiverID: currentCaregiverID)
+                        Divider()
+                        self.addOrRemoveFavoriteButton(story: self.story, caregiverID: currentCaregiverID)
+                    } label: {
+                        Button {
+                            // Nothing to do
                         } label: {
-                            Button {
-                                // Nothing to do
-                            } label: {
-                                Image(systemName: "ellipsis")
-                                    .bold()
-                            }
-                            .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
+                            Image(systemName: "ellipsis")
+                                .bold()
                         }
+                        .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
                     }
                 }
-            #endif
+            }
 
             ToolbarItem {
                 Button {
@@ -165,13 +163,63 @@ public struct StoryDetailsView: View {
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
 
+    @ObservedObject private var libraryManagerViewModel: LibraryManagerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
 
-    @StateObject private var libraryManagerViewModel = LibraryManagerViewModel()
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var libraryManager: LibraryManager = .shared
     private let story: Story
+
+    @ViewBuilder
+    private func addOrRemoveButton(story: Story, caregiverID: String) -> some View {
+        let libraryItem = LibraryItem.story(
+            SavedStory(id: story.uuid, caregiverID: caregiverID)
+        )
+
+        if self.libraryManagerViewModel.isStorySaved(storyID: story.uuid) {
+            Button(role: .destructive) {
+                self.libraryManagerViewModel.requestItemRemoval(libraryItem, caregiverID: caregiverID)
+            } label: {
+                Label("Remove from Library", systemImage: "trash")
+            }
+        } else {
+            Button {
+                self.libraryManager.addStory(
+                    storyID: story.uuid,
+                    caregiverID: caregiverID
+                )
+            } label: {
+                Label("Add to Library", systemImage: "plus")
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func addOrRemoveFavoriteButton(story: Story, caregiverID: String) -> some View {
+        if self.libraryManagerViewModel.isStoryFavoritedByCurrentCaregiver(
+            storyID: story.uuid,
+            caregiverID: caregiverID
+        ) {
+            Button {
+                self.libraryManager.removeStoryFromFavorites(
+                    storyID: story.uuid,
+                    caregiverID: caregiverID
+                )
+            } label: {
+                Label("Undo Favorite", systemImage: "star.slash")
+            }
+        } else {
+            Button {
+                self.libraryManager.addStoryToLibraryAsFavorite(
+                    storyID: story.uuid,
+                    caregiverID: caregiverID
+                )
+            } label: {
+                Label("Favorite", systemImage: "star")
+            }
+        }
+    }
 }
 
 // MARK: - l10n.StoryDetailsView

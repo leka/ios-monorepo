@@ -11,6 +11,7 @@ extension SavedCurriculum: Codable {
         self.id = try container.decodeIfPresent(String.self, forKey: .id)
         self.caregiverID = try container.decodeIfPresent(String.self, forKey: .caregiverID) ?? ""
         self.addedAt = try container.decode(Date.self, forKey: .addedAt)
+        self.favoritedBy = try container.decodeIfPresent([String: Date].self, forKey: .favoritedBy) ?? [:]
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -18,6 +19,7 @@ extension SavedCurriculum: Codable {
 
         try container.encodeIfPresent(self.id, forKey: .id)
         try container.encode(self.caregiverID, forKey: .caregiverID)
-        try container.encodeIfPresent(self.addedAt, forKey: .addedAt)
+        try container.encode(self.addedAt, forKey: .addedAt)
+        try container.encode(self.favoritedBy, forKey: .favoritedBy)
     }
 }

@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import AnalyticsKit
 import DesignKit
 import SwiftUI
@@ -39,9 +40,22 @@ public struct GamepadGridView: View {
                             .frame(width: 160)
                             .padding(.bottom, 15)
 
-                        Text(activity.details.title)
-                            .font(.headline)
-                            .foregroundStyle(Color.primary)
+                        HStack(spacing: 5) {
+                            Text(activity.details.title)
+                                .font(.headline)
+                                .foregroundStyle(Color.primary)
+
+                            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id,
+                               self.libraryManagerViewModel.isActivityFavoritedByCurrentCaregiver(
+                                   activityID: activity.id,
+                                   caregiverID: currentCaregiverID
+                               )
+                            {
+                                Text(Image(systemName: "star.fill"))
+                                    .font(.caption)
+                                    .foregroundColor(self.styleManager.accentColor ?? .blue)
+                            }
+                        }
 
                         Spacer()
                     }
@@ -66,7 +80,10 @@ public struct GamepadGridView: View {
 
     // MARK: Private
 
+    @ObservedObject private var libraryManagerViewModel: LibraryManagerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
+
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private let columns = Array(repeating: GridItem(), count: 2)
 }

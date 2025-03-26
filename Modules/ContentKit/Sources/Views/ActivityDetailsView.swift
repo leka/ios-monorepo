@@ -118,38 +118,32 @@ public struct ActivityDetailsView: View {
             }
         }
         .toolbar {
-            #if DEVELOPER_MODE || TESTFLIGHT_BUILD
-                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                    ToolbarItem {
-                        Menu {
-                            if self.libraryManagerViewModel.isActivitySaved(activityID: self.activity.uuid) {
-                                Button(role: .destructive) {
-                                    self.libraryManager.removeActivity(activityID: self.activity.uuid)
-                                } label: {
-                                    Label(String(l10n.Library.MenuActions.removeFromlibraryButtonLabel.characters), systemImage: "trash")
-                                }
-                            } else {
-                                Button {
-                                    self.libraryManager.addActivity(
-                                        activityID: self.activity.uuid,
-                                        caregiverID: currentCaregiverID
-                                    )
-                                } label: {
-                                    Label(String(l10n.Library.MenuActions.addTolibraryButtonLabel.characters), systemImage: "plus")
-                                }
-                            }
+            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                ToolbarItemGroup {
+                    if self.libraryManagerViewModel.isActivityFavoritedByCurrentCaregiver(
+                        activityID: self.activity.id,
+                        caregiverID: currentCaregiverID
+                    ) {
+                        Image(systemName: "star.circle")
+                            .font(.system(size: 21))
+                            .foregroundColor(self.styleManager.accentColor ?? .blue)
+                    }
+
+                    Menu {
+                        self.addOrRemoveButton(activity: self.activity, caregiverID: currentCaregiverID)
+                        Divider()
+                        self.addOrRemoveFavoriteButton(activity: self.activity, caregiverID: currentCaregiverID)
+                    } label: {
+                        Button {
+                            // Nothing to do
                         } label: {
-                            Button {
-                                // Nothing to do
-                            } label: {
-                                Image(systemName: "ellipsis")
-                                    .bold()
-                            }
-                            .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
+                            Image(systemName: "ellipsis")
+                                .bold()
                         }
+                        .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
                     }
                 }
-            #endif
+            }
 
             ToolbarItem {
                 Button {
@@ -176,13 +170,63 @@ public struct ActivityDetailsView: View {
     @State private var selectedAuthor: Author?
     @State private var selectedSkill: Skill?
 
+    @ObservedObject private var libraryManagerViewModel: LibraryManagerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
 
-    @StateObject private var libraryManagerViewModel = LibraryManagerViewModel()
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var libraryManager: LibraryManager = .shared
     private let activity: Activity
+
+    @ViewBuilder
+    private func addOrRemoveButton(activity: Activity, caregiverID: String) -> some View {
+        let libraryItem = LibraryItem.activity(
+            SavedActivity(id: activity.uuid, caregiverID: caregiverID)
+        )
+
+        if self.libraryManagerViewModel.isActivitySaved(activityID: activity.uuid) {
+            Button(role: .destructive) {
+                self.libraryManagerViewModel.requestItemRemoval(libraryItem, caregiverID: caregiverID)
+            } label: {
+                Label("Remove from Library", systemImage: "trash")
+            }
+        } else {
+            Button {
+                self.libraryManager.addActivity(
+                    activityID: activity.uuid,
+                    caregiverID: caregiverID
+                )
+            } label: {
+                Label("Add to Library", systemImage: "plus")
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func addOrRemoveFavoriteButton(activity: Activity, caregiverID: String) -> some View {
+        if self.libraryManagerViewModel.isActivityFavoritedByCurrentCaregiver(
+            activityID: activity.uuid,
+            caregiverID: caregiverID
+        ) {
+            Button {
+                self.libraryManager.removeActivityFromFavorites(
+                    activityID: activity.uuid,
+                    caregiverID: caregiverID
+                )
+            } label: {
+                Label("Undo Favorite", systemImage: "star.slash")
+            }
+        } else {
+            Button {
+                self.libraryManager.addActivityToLibraryAsFavorite(
+                    activityID: activity.uuid,
+                    caregiverID: caregiverID
+                )
+            } label: {
+                Label("Favorite", systemImage: "star")
+            }
+        }
+    }
 }
 
 // MARK: - l10n.ActivityDetailsView

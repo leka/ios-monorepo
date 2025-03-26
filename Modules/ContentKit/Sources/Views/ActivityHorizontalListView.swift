@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import AnalyticsKit
 import DesignKit
 import SwiftUI
@@ -43,11 +44,24 @@ public struct ActivityHorizontalListView: View {
                                         .stroke(self.styleManager.accentColor!, lineWidth: 1)
                                 )
 
-                            Text(activity.details.title)
-                                .font(.headline)
-                                .multilineTextAlignment(.center)
-                                .foregroundStyle(Color.primary)
-                                .fixedSize(horizontal: false, vertical: true)
+                            HStack(spacing: 5) {
+                                Text(activity.details.title)
+                                    .font(.headline)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundStyle(Color.primary)
+                                    .fixedSize(horizontal: false, vertical: true)
+
+                                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id,
+                                   self.libraryManagerViewModel.isActivityFavoritedByCurrentCaregiver(
+                                       activityID: activity.id,
+                                       caregiverID: currentCaregiverID
+                                   )
+                                {
+                                    Text(Image(systemName: "star.fill"))
+                                        .font(.caption)
+                                        .foregroundColor(self.styleManager.accentColor ?? .blue)
+                                }
+                            }
 
                             Text(activity.details.subtitle ?? "")
                                 .font(.body)
@@ -80,7 +94,10 @@ public struct ActivityHorizontalListView: View {
 
     // MARK: Private
 
+    @ObservedObject private var libraryManagerViewModel: LibraryManagerViewModel = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
+
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private let columns = Array(repeating: GridItem(), count: 3)
     private let rows = [GridItem()]
