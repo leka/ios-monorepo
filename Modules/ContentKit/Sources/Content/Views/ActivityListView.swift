@@ -51,7 +51,7 @@ public struct ActivityListView: View {
                             HStack(spacing: 10) {
                                 Image(uiImage: activity.details.iconImage)
                                     .resizable()
-                                    .scaledToFill()
+                                    .scaledToFit()
                                     .clipShape(Circle())
                                     .frame(width: 50)
                                     .overlay(

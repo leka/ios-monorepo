@@ -49,7 +49,7 @@ public struct LibraryActivityListView: View {
 
                         Image(uiImage: activity.details.iconImage)
                             .resizable()
-                            .scaledToFill()
+                            .scaledToFit()
                             .clipShape(Circle())
                             .frame(width: 50, height: 50)
                             .overlay(
