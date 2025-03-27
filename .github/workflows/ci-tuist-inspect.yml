@@ -1,0 +1,90 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+name: Tuist - Inspect
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - "**/*.swift"
+      - ".mise.toml"
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - "**/*.swift"
+      - ".mise.toml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  TUIST_TURN_OFF_LINTERS: TRUE
+  TUIST_GENERATE_EXAMPLE_TARGETS: TRUE
+  TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG: FALSE
+  TUIST_DEVELOPER_MODE: TRUE
+
+jobs:
+  inspect:
+    name: inspect
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          lfs: true
+
+      - name: Setup mise
+        uses: jdx/mise-action@v2
+        with:
+          version: 2025.1.7
+          install: true
+          cache: true
+
+      - name: tuist version
+        run: |
+          which tuist
+          tuist version
+
+      - name: Config Xcode
+        run: |
+          xcodes select 16.1
+          defaults write com.apple.dt.XCBuild IgnoreFileSystemDeviceInodeChanges -bool YES
+
+      - name: tuist install
+        run: |
+          TUIST_TURN_OFF_LINTERS=${{ env.TUIST_TURN_OFF_LINTERS }} \
+          TUIST_GENERATE_EXAMPLE_TARGETS=${{ env.TUIST_GENERATE_EXAMPLE_TARGETS }} \
+          TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG=${{ env.TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG }} \
+          TUIST_DEVELOPER_MODE=${{ env.TUIST_DEVELOPER_MODE }} \
+          tuist install
+
+      - name: tuist generate
+        run: |
+          TUIST_TURN_OFF_LINTERS=${{ env.TUIST_TURN_OFF_LINTERS }} \
+          TUIST_GENERATE_EXAMPLE_TARGETS=${{ env.TUIST_GENERATE_EXAMPLE_TARGETS }} \
+          TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG=${{ env.TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG }} \
+          TUIST_DEVELOPER_MODE=${{ env.TUIST_DEVELOPER_MODE }} \
+          tuist generate --no-open
+
+      - name: tuist inspect implicit-imports
+        run: |
+          TUIST_TURN_OFF_LINTERS=${{ env.TUIST_TURN_OFF_LINTERS }} \
+          TUIST_GENERATE_EXAMPLE_TARGETS=${{ env.TUIST_GENERATE_EXAMPLE_TARGETS }} \
+          TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG=${{ env.TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG }} \
+          TUIST_DEVELOPER_MODE=${{ env.TUIST_DEVELOPER_MODE }} \
+          tuist inspect implicit-imports
+
+      - name: tuist inspect redundant-imports
+        continue-on-error: true
+        run: |
+          TUIST_TURN_OFF_LINTERS=${{ env.TUIST_TURN_OFF_LINTERS }} \
+          TUIST_GENERATE_EXAMPLE_TARGETS=${{ env.TUIST_GENERATE_EXAMPLE_TARGETS }} \
+          TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG=${{ env.TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG }} \
+          TUIST_DEVELOPER_MODE=${{ env.TUIST_DEVELOPER_MODE }} \
+          tuist inspect redundant-imports
