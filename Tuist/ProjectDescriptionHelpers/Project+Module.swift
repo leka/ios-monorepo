@@ -120,7 +120,7 @@ private func makeFrameworkTargets(
         sources: ["Tests/**"],
         resources: [],
         scripts: TargetScript.linters(),
-        dependencies: dependencies
+        dependencies: [.target(name: "\(name)")] + dependencies
     )
 
     return [module, tests]

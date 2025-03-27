@@ -82,7 +82,7 @@ public extension Project {
             sources: ["Tests/**"],
             resources: [],
             scripts: TargetScript.linters(),
-            dependencies: dependencies
+            dependencies: [.target(name: "\(name)")] + dependencies
         )
 
         return Project(
