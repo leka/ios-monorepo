@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import ContentKit
-import GameEngineKit
 import SwiftUI
 
 struct ActivityTemplateList: View {

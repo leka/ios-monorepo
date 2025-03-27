@@ -5,7 +5,7 @@
 import XCTest
 import Yams
 
-@testable import GameEngineKit
+@testable import ContentKit
 
 let kActivityYaml = """
       options:

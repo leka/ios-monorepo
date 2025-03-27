@@ -2,7 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import GameEngineKit
+import ContentKit
 
 // swiftlint:disable identifier_name
 

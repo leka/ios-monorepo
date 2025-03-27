@@ -5,7 +5,7 @@
 import Foundation
 import XCTest
 
-@testable import GameEngineKit
+@testable import ContentKit
 
 final class UtilsLeftPWMConversion_Tests: XCTestCase {
     let maxValue: CGFloat = 300

@@ -5,7 +5,7 @@
 import Testing
 import Yams
 
-@testable import GameEngineKit
+@testable import ContentKit
 
 // MARK: - ActivityManager_Tests
 
