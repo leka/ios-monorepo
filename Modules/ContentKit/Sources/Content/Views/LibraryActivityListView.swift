@@ -49,7 +49,7 @@ public struct LibraryActivityListView: View {
 
                         Image(uiImage: activity.details.iconImage)
                             .resizable()
-                            .scaledToFill()
+                            .scaledToFit()
                             .clipShape(Circle())
                             .frame(width: 50, height: 50)
                             .overlay(
@@ -78,22 +78,22 @@ public struct LibraryActivityListView: View {
             TableColumn("") { activity in
                 IconImageView(image: ContentKit.getGestureIconUIImage(for: activity))
             }
-            .width(50)
+            .width(40)
 
             TableColumn("") { activity in
                 IconImageView(image: ContentKit.getFocusIconUIImage(for: activity, ofType: .ears))
             }
-            .width(50)
+            .width(40)
 
             TableColumn("") { activity in
                 IconImageView(image: ContentKit.getFocusIconUIImage(for: activity, ofType: .robot))
             }
-            .width(50)
+            .width(40)
 
             TableColumn("") { activity in
                 IconImageView(image: ContentKit.getTemplateIconUIImage(for: activity))
             }
-            .width(50)
+            .width(40)
 
             TableColumn("") { activity in
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
@@ -108,7 +108,7 @@ public struct LibraryActivityListView: View {
                     .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
                 }
             }
-            .width(50)
+            .width(40)
 
             TableColumn("") { activity in
                 Button {
@@ -151,11 +151,11 @@ public struct LibraryActivityListView: View {
                     .renderingMode(.template)
                     .foregroundStyle(.secondary)
                     .scaledToFit()
-                    .frame(width: 50)
+                    .frame(width: 40)
                     .padding(.horizontal, 5)
             } else {
                 Color.clear
-                    .frame(width: 50, height: 50)
+                    .frame(width: 40, height: 40)
             }
         }
     }

@@ -51,7 +51,7 @@ public struct ActivityListView: View {
                             HStack(spacing: 10) {
                                 Image(uiImage: activity.details.iconImage)
                                     .resizable()
-                                    .scaledToFill()
+                                    .scaledToFit()
                                     .clipShape(Circle())
                                     .frame(width: 50)
                                     .overlay(
@@ -101,7 +101,7 @@ public struct ActivityListView: View {
                                     .bold()
                             }
                             .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
-                            .frame(width: 50)
+                            .frame(width: 40)
                         }
 
                         Button {
@@ -145,11 +145,11 @@ public struct ActivityListView: View {
                     .renderingMode(.template)
                     .foregroundStyle(.secondary)
                     .scaledToFit()
-                    .frame(width: 50)
+                    .frame(width: 40)
                     .padding(.horizontal, 5)
             } else {
                 Color.clear
-                    .frame(width: 60, height: 50)
+                    .frame(width: 40, height: 40)
             }
         }
     }
