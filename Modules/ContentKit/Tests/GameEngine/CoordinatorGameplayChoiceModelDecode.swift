@@ -2,9 +2,9 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import ContentKit
-
 import XCTest
+
+@testable import ContentKit
 
 final class CoordinatorGameplayModelDecode: XCTestCase {
     func test_FindTheRightAnswer() throws {

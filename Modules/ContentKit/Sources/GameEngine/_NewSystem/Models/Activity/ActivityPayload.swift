@@ -4,10 +4,6 @@
 
 // MARK: - ActivityPayload
 
-import ContentKit
-
-// MARK: - ActivityPayload
-
 public struct ActivityPayload: Decodable {
     // MARK: Public
 

@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
-import ContentKit
 import Foundation
 
 // MARK: - GameplayFindTheRightOrderChoiceModelDragAndDropInOrder

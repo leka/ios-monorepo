@@ -2,10 +2,11 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import ContentKit
 import Foundation
 import XCTest
 import Yams
+
+@testable import ContentKit
 
 let kTestExerciseMock =
     """
