@@ -4,7 +4,6 @@
 
 import AccountKit
 import Combine
-import ContentKit
 import SwiftUI
 
 class ActivityViewViewModel: ObservableObject {

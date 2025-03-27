@@ -4,7 +4,6 @@
 
 import AudioKit
 import AVFAudio
-import ContentKit
 import SwiftUI
 
 class MIDIPlayer: ObservableObject {
