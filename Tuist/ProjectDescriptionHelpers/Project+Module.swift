@@ -121,8 +121,8 @@ private func makeFrameworkTargets(
         resources: [],
         scripts: TargetScript.linters(),
         dependencies: [
-            .target(name: name),
-        ]
+            .target(name: "\(name)"),
+        ] + dependencies
     )
 
     return [module, tests]
