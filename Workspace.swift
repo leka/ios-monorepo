@@ -29,7 +29,6 @@ var projects: [Path] {
         "Modules/ContentKit",
         "Modules/DesignKit",
         "Modules/FirebaseKit",
-        "Modules/GameEngineKit",
         "Modules/LocalizationKit",
         "Modules/LogKit",
         "Modules/RobotKit",
