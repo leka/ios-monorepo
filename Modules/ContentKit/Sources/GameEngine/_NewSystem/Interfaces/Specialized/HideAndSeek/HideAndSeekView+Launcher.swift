@@ -14,7 +14,7 @@ extension HideAndSeekView {
             VStack {
                 Text(l10n.HideAndSeekView.Launcher.instructions)
                     .font(.headline)
-                GameEngineKitAsset.Exercises.HideAndSeek.imageIllustration.swiftUIImage
+                ContentKitAsset.Exercises.HideAndSeek.imageIllustration.swiftUIImage
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 500, height: 500)

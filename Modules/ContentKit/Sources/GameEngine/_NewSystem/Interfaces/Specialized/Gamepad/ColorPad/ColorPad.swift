@@ -44,7 +44,7 @@ struct ColorPad: View {
 extension l10n {
     enum ColorPad {
         static let frontLabel = LocalizedString("game_engine_kit.led_zone_selector_view.front_label",
-                                                bundle: GameEngineKitResources.bundle,
+                                                bundle: ContentKitResources.bundle,
                                                 value: "Front",
                                                 comment: "Label that shows where the front is on the ColorPad")
     }

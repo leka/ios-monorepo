@@ -100,12 +100,12 @@ struct NewSuperSimonView: View {
 extension l10n {
     enum NewSuperSimonView {
         static let buttonLabel = LocalizedString("game_engine_kit.super_simon.button_label",
-                                                 bundle: GameEngineKitResources.bundle,
+                                                 bundle: ContentKitResources.bundle,
                                                  value: "Tap Leka",
                                                  comment: "Super Simon button label")
 
         static let typeUnknownError = LocalizedString("game_engine_kit.super_simon.type_unknown_error",
-                                                      bundle: GameEngineKitResources.bundle,
+                                                      bundle: ContentKitResources.bundle,
                                                       value: "❌ ERROR\nInterface not implemented",
                                                       comment: "Super Simon interface unknown error label")
     }

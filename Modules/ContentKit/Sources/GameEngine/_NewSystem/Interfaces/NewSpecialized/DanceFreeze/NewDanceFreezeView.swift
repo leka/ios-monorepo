@@ -36,7 +36,7 @@ struct NewDanceFreezeView: View {
 
                 HStack(spacing: 30) {
                     VStack(spacing: 0) {
-                        GameEngineKitAsset.Exercises.DanceFreeze.imageIllustration.swiftUIImage
+                        ContentKitAsset.Exercises.DanceFreeze.imageIllustration.swiftUIImage
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .padding(80)

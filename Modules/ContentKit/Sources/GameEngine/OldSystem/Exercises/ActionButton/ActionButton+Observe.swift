@@ -155,12 +155,12 @@ struct ActionButtonObserve: View {
 extension l10n {
     enum ActionButtonObserve {
         static let buttonLabel = LocalizedString("game_engine_kit.action_button_observe.button_label",
-                                                 bundle: GameEngineKitResources.bundle,
+                                                 bundle: ContentKitResources.bundle,
                                                  value: "Tap to reveal",
                                                  comment: "ActionButtonObserve button label")
 
         static let imageUnknownError = LocalizedStringInterpolation("game_engine_kit.action_button_observe.image_unknown_error",
-                                                                    bundle: GameEngineKitResources.bundle,
+                                                                    bundle: ContentKitResources.bundle,
                                                                     value: "❌\nImage not found:\n%1$@",
                                                                     comment: "ActionButtonObserve button label")
     }

@@ -139,7 +139,7 @@ public struct ChoiceImageView: View {
 extension l10n {
     enum ChoiceImageView {
         static let imageUnknownError = LocalizedStringInterpolation("game_engine_kit.choice_image_view.image_unknown_error",
-                                                                    bundle: GameEngineKitResources.bundle,
+                                                                    bundle: ContentKitResources.bundle,
                                                                     value: "❌\nImage not found:\n%1$@",
                                                                     comment: "ChoiceImageView image unknown error")
     }

@@ -71,7 +71,7 @@ struct ActionButtonRobot: View {
 extension l10n {
     enum ActionButtonRobot {
         static let buttonLabel = LocalizedString("game_engine_kit.robot_then_touch_to_select.button_label",
-                                                 bundle: GameEngineKitResources.bundle,
+                                                 bundle: ContentKitResources.bundle,
                                                  value: "Tap Leka",
                                                  comment: "Robot then touch to select button label")
     }

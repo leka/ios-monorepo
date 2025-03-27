@@ -117,7 +117,7 @@ extension ActionButtonView {
 extension l10n {
     enum ObserveButton {
         static let imageUnknownError = LocalizedStringInterpolation("game_engine_kit.action_button_view.observe_button.image_unknown_error",
-                                                                    bundle: GameEngineKitResources.bundle,
+                                                                    bundle: ContentKitResources.bundle,
                                                                     value: "❌\nImage not found:\n%1$@",
                                                                     comment: "ObserveButton button label")
     }

@@ -118,7 +118,7 @@ struct ChoiceSFSymbolView: View {
 extension l10n {
     enum ChoiceSFSymbolView {
         static let sfSymbolUnknownError = LocalizedStringInterpolation("game_engine_kit.choice_sf_symbol_view.sf_symbol_unknown_error",
-                                                                       bundle: GameEngineKitResources.bundle,
+                                                                       bundle: ContentKitResources.bundle,
                                                                        value: "❌\nSF Symbol not found:\n%1$@",
                                                                        comment: "ChoiceSFSymbolView SF symbol unknown error label")
     }

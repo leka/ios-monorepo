@@ -82,7 +82,7 @@ struct TouchToSelectChoiceView: View {
 extension l10n {
     enum TouchToSelectChoiceView {
         static let typeUnknownError = LocalizedString("game_engine_kit.touch_to_select_choice_view.type_unknown_error",
-                                                      bundle: GameEngineKitResources.bundle,
+                                                      bundle: ContentKitResources.bundle,
                                                       value: "❌ ERROR\nChoice type not implemented",
                                                       comment: "TouchToSelectChoiceView type unknown error label")
     }

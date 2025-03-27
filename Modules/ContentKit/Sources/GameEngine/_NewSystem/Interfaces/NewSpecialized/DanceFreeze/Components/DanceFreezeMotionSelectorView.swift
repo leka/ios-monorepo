@@ -42,7 +42,7 @@ struct DanceFreezeMotionSelectorView: View {
                         )
                     VStack(spacing: 0) {
                         DanceFreezeMotionModeButtonStyle(
-                            image: GameEngineKitAsset.Exercises.DanceFreeze.iconMotionModeRotation.swiftUIImage,
+                            image: ContentKitAsset.Exercises.DanceFreeze.iconMotionModeRotation.swiftUIImage,
                             color: self.motion == .rotation ? self.styleManager.accentColor! : .primary
                         )
                         Text(l10n.DanceFreezeView.rotationButtonLabel)
@@ -64,7 +64,7 @@ struct DanceFreezeMotionSelectorView: View {
                         )
                     VStack(spacing: 0) {
                         DanceFreezeMotionModeButtonStyle(
-                            image: GameEngineKitAsset.Exercises.DanceFreeze.iconMotionModeMovement.swiftUIImage,
+                            image: ContentKitAsset.Exercises.DanceFreeze.iconMotionModeMovement.swiftUIImage,
                             color: self.motion == .movement ? self.styleManager.accentColor! : .primary
                         )
                         Text(l10n.DanceFreezeView.movementButtonLabel)

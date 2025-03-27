@@ -33,7 +33,7 @@ struct MelodyKeyboardModeView: View {
                                 ? self.styleManager.accentColor! : .primary
                         )
                     VStack(spacing: 0) {
-                        GameEngineKitAsset.Exercises.Melody.iconKeyboardPartial.swiftUIImage
+                        ContentKitAsset.Exercises.Melody.iconKeyboardPartial.swiftUIImage
                             .resizable()
                             .scaledToFit()
                             .frame(width: 130)
@@ -55,7 +55,7 @@ struct MelodyKeyboardModeView: View {
                                 ? self.styleManager.accentColor! : .primary
                         )
                     VStack(spacing: 0) {
-                        GameEngineKitAsset.Exercises.Melody.iconKeyboardFull.swiftUIImage
+                        ContentKitAsset.Exercises.Melody.iconKeyboardFull.swiftUIImage
                             .resizable()
                             .scaledToFit()
                             .frame(width: 130)

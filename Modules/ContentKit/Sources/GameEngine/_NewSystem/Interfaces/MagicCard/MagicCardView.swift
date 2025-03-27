@@ -99,7 +99,7 @@ public struct MagicCardView: View {
 extension l10n {
     enum MagicCardView {
         static let instructions = LocalizedString("game_engine_kit.magic_card_view.instructions",
-                                                  bundle: GameEngineKitResources.bundle,
+                                                  bundle: ContentKitResources.bundle,
                                                   value: """
                                                       Bring the magic card to the robot's forehead
                                                       to validate the answer.

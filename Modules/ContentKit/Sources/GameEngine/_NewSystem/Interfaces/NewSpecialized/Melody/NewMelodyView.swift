@@ -25,7 +25,7 @@ public struct NewMelodyView: View {
                 VStack(spacing: 50) {
                     HStack(spacing: 30) {
                         VStack(spacing: 20) {
-                            GameEngineKitAsset.Exercises.Melody.imageIllustration.swiftUIImage
+                            ContentKitAsset.Exercises.Melody.imageIllustration.swiftUIImage
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
 

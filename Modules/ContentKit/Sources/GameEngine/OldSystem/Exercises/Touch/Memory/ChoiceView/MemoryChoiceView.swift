@@ -58,7 +58,7 @@ struct MemoryChoiceView: View {
 extension l10n {
     enum MemoryChoiceView {
         static let typeUnknownError = LocalizedString("game_engine_kit.memory_choice_view.type_unknown_error",
-                                                      bundle: GameEngineKitResources.bundle,
+                                                      bundle: ContentKitResources.bundle,
                                                       value: "❌ ERROR\nChoice type not implemented",
                                                       comment: "MemoryChoiceView type unknown error label")
     }
