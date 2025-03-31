@@ -36,8 +36,8 @@ public struct StoryGridView: View {
                         Image(uiImage: story.details.iconImage)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 155, height: 200)
-                            .clipShape(RoundedRectangle(cornerRadius: 10 / 57 * 120))
+                            .frame(width: 180, height: 180)
+                            .clipShape(RoundedRectangle(cornerRadius: 10 / 57 * 180))
                             .padding(.bottom)
 
                         HStack(spacing: 5) {
