@@ -90,6 +90,7 @@ struct MainView: View {
                     #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                         if !self.navigation.demoMode {
                             Section("Developer Mode") {
+                                CategoryLabel(category: .curationSandbox)
                                 CategoryLabel(category: .allTemplateActivities)
                                 CategoryLabel(category: .allDraftActivities)
                                 CategoryLabel(category: .allPublishedActivities)
@@ -201,6 +202,9 @@ struct MainView: View {
                             .logEventScreenView(screenName: "carereceivers", context: .splitView)
 
                     // ? DEVELOPER_MODE + TESTFLIGHT_BUILD
+                    case .curationSandbox:
+                        CurationSandbox(curation: ContentKit.allCurations[0])
+
                     case .allPublishedActivities:
                         AllPublishedActivitiesView()
 
@@ -324,7 +328,6 @@ struct MainView: View {
                             } else if self.navigation.currentStory != nil {
                                 self.navigation.fullScreenCoverContent = .storyView(carereceivers: carereceivers)
                             }
-
                         }, onSkip: {
                             self.navigation.currentActivity = activity
                             self.navigation.currentStory = story
