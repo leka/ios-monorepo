@@ -22,6 +22,7 @@ public enum ContentKit {
     public static let allDraftCurriculums: [Curriculum] = ContentKit.listAllDraftCurriculums() ?? []
     public static let allTemplateCurriculums: [Curriculum] = ContentKit.listAllTemplateCurriculums() ?? []
     public static let allStories: [Story] = ContentKit.listAllStories() ?? []
+    public static let allCurations: [CategoryCuration] = ContentKit.listAllCurations() ?? []
 
     public static var firstStepsResources: CategoryResources = loadResourceYAML(from: "resources_first_steps")
     public static var videosResources: CategoryResources = loadResourceYAML(from: "resources_videos")
@@ -48,6 +49,30 @@ public enum ContentKit {
     }
 
     // MARK: Private
+
+    private static func listAllCurations() -> [CategoryCuration]? {
+        let bundle = Bundle.module
+        var curations: [CategoryCuration] = []
+        let paths = bundle.paths(forResourcesOfType: "curation.yml", inDirectory: nil)
+
+        for path in paths {
+            let data = try? String(contentsOfFile: path, encoding: .utf8)
+
+            guard let data else {
+                logCK.error("Error reading file: \(path)")
+                continue
+            }
+
+            do {
+                let curation = try YAMLDecoder().decode(CategoryCuration.self, from: data)
+                curations.append(curation)
+            } catch {
+                logCK.error("Error decoding file: \(path) with error:\n\(error)")
+            }
+        }
+
+        return curations
+    }
 
     private static func listCurriculums() -> [Curriculum]? {
         let bundle = Bundle.module
