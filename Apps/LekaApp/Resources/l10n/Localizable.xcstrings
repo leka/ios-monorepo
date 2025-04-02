@@ -1263,6 +1263,60 @@
                 }
             }
         },
+        "lekaapp.change_email_view.context_message": {
+            "comment": "ChangeEmailView context message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Please confirm your identity by entering your password.\n\nYou're about to change the email associated with this account.\n\n**All profiles linked to this account will be affected.**\n*Please be certain.*"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Veuillez confirmer votre identit\u00e9 en saisissant votre mot de passe.\n\nVous \u00eates sur le point de modifier l\u2019adresse e-mail associ\u00e9e \u00e0 ce compte.\n\n**Tous les profils li\u00e9s \u00e0 ce compte seront affect\u00e9s.**\n*\u00cates-vous s\u00fbr(e) de vous ?*"
+                    }
+                }
+            }
+        },
+        "lekaapp.change_email_view.reauth_and_change_email_button": {
+            "comment": "ChangeEmailView reauth button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Continue"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Continuer"
+                    }
+                }
+            }
+        },
+        "lekaapp.change_email_view.title": {
+            "comment": "ChangeEmailView title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Confirm Email Change"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Confirmez le changement d\u2019email"
+                    }
+                }
+            }
+        },
         "lekaapp.connection_view.alert_message": {
             "comment": "Forgot Password alert message",
             "localizations": {
