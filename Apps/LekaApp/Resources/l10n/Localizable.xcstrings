@@ -1807,6 +1807,42 @@
                 }
             }
         },
+        "lekaapp.enter_new_email_view.confirm_button": {
+            "comment": "Button to confirm email change",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Confirm new email"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Confirmer le nouvel email"
+                    }
+                }
+            }
+        },
+        "lekaapp.enter_new_email_view.title": {
+            "comment": "Title for view that requests new email input",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Change your email"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Changement d\u2019adresse email"
+                    }
+                }
+            }
+        },
         "lekaapp.forgot_password_view.context_message": {
             "comment": "Forgot Password View context message",
             "localizations": {
