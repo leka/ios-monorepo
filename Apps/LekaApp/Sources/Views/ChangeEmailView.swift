@@ -76,9 +76,11 @@ struct ChangeEmailView: View {
                 self.authManagerViewModel.userAction = .userIsChangingEmail
             }
         }
-        .sheet(isPresented: self.$showEnterNewEmailSheet) {
-            Text("Enter your new email address")
-        }
+        .sheet(isPresented: self.$showEnterNewEmailSheet, onDismiss: {
+            self.dismiss()
+        }, content: {
+            EnterNewEmailView()
+        })
     }
 
     // MARK: Private
