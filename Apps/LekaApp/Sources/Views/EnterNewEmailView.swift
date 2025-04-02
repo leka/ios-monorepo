@@ -34,6 +34,7 @@ struct EnterNewEmailView: View {
                 title: Text(l10n.AccountCreationView.EmailVerificationAlert.title),
                 message: Text(l10n.AccountCreationView.EmailVerificationAlert.message),
                 dismissButton: .default(Text(l10n.AccountCreationView.EmailVerificationAlert.dismissButton)) {
+                    self.authManagerVM.userAction = .none
                     self.dismiss()
                 }
             )
@@ -56,7 +57,7 @@ struct EnterNewEmailView: View {
     private func submit() {
         guard !self.isSubmissionDisabled else { return }
 
-        // Update Email here
+        self.authManager.sendEmailVerificationBeforeUpdatingEmail(to: self.newEmail)
 
         self.showVerificationAlert = true
     }
