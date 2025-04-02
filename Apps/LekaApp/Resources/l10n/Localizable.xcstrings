@@ -3428,6 +3428,24 @@
                 }
             }
         },
+        "lekaapp.settings_view.credentials.change_email.button_label": {
+            "comment": "Button label to trigger email change",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Change Email Address"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Changer l\u2019Adresse Email"
+                    }
+                }
+            }
+        },
         "lekaapp.settings_view.credentials_section.change_credentials.alert_message": {
             "comment": "Change credentials alert message",
             "localizations": {
