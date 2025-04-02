@@ -123,8 +123,8 @@
                 }
             }
         },
-        "content_kit.curation_type.activity_label": {
-            "comment": "Label title of 'activity' curation type",
+        "content_kit.content_type.activity_label": {
+            "comment": "Label title of 'activity' content type",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -141,8 +141,8 @@
                 }
             }
         },
-        "content_kit.curation_type.curation_label": {
-            "comment": "Label title of 'curation' curation type",
+        "content_kit.content_type.curation_label": {
+            "comment": "Label title of 'curation' content type",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -159,8 +159,8 @@
                 }
             }
         },
-        "content_kit.curation_type.curriculum_label": {
-            "comment": "Label title of 'curriculum' curation type",
+        "content_kit.content_type.curriculum_label": {
+            "comment": "Label title of 'curriculum' content type",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -177,8 +177,8 @@
                 }
             }
         },
-        "content_kit.curation_type.story_label": {
-            "comment": "Label title of 'story' curation type",
+        "content_kit.content_type.story_label": {
+            "comment": "Label title of 'story' content type",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {

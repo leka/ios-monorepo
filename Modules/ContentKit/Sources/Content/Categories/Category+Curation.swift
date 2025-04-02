@@ -14,7 +14,7 @@ import Yams
 public struct CurationItemModel: Identifiable, Hashable, Equatable {
     // MARK: Lifecycle
 
-    public init(id: String, contentType: CurationType) {
+    public init(id: String, contentType: ContentType) {
         self.id = id
         self.contentType = contentType
     }
@@ -22,7 +22,7 @@ public struct CurationItemModel: Identifiable, Hashable, Equatable {
     // MARK: Public
 
     public let id: String
-    public var contentType: CurationType = .curation
+    public var contentType: ContentType = .curation
 }
 
 // MARK: - CategoryCuration
@@ -56,7 +56,7 @@ public struct CategoryCuration: Identifiable, CategoryProtocol {
     public var color: Color
     public var l10n: [Category.LocalizedDetails]
     public var sections: [CategoryCuration.Section]
-    public var contentType: CurationType = .curation
+    public var contentType: ContentType = .curation
 
     public var id: String { self.uuid }
 
@@ -139,7 +139,7 @@ public extension Category {
                 .trimmingCharacters(in: .whitespaces)
 
             let typeString = try container.decode(String.self, forKey: .type)
-            self.type = CurationType(rawValue: typeString) ?? .activity
+            self.type = ContentType(rawValue: typeString) ?? .activity
             self.curation = CurationItemModel(id: self.value, contentType: self.type)
         }
 
@@ -147,7 +147,7 @@ public extension Category {
 
         public let id = UUID()
         public var value: String
-        public let type: CurationType
+        public let type: ContentType
         public var curation: CurationItemModel
 
         // MARK: Internal

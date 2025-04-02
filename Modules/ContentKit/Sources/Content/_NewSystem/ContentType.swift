@@ -6,9 +6,9 @@ import Combine
 import LocalizationKit
 import SwiftUI
 
-// MARK: - CurationType
+// MARK: - ContentType
 
-public enum CurationType: String, Codable {
+public enum ContentType: String, Codable {
     case curriculum
     case activity
     case story
@@ -32,39 +32,39 @@ public enum CurationType: String, Codable {
     public var label: String {
         switch self {
             case .curriculum:
-                String(l10n.CurationType.curriculumLabel.characters)
+                String(l10n.ContentType.curriculumLabel.characters)
             case .activity:
-                String(l10n.CurationType.activityLabel.characters)
+                String(l10n.ContentType.activityLabel.characters)
             case .story:
-                String(l10n.CurationType.storyLabel.characters)
+                String(l10n.ContentType.storyLabel.characters)
             case .curation:
-                String(l10n.CurationType.curationLabel.characters)
+                String(l10n.ContentType.curationLabel.characters)
         }
     }
 }
 
-// MARK: - l10n.CurationType
+// MARK: - l10n.ContentType
 
 extension l10n {
-    enum CurationType {
-        static let curriculumLabel = LocalizedString("content_kit.curation_type.curriculum_label",
+    enum ContentType {
+        static let curriculumLabel = LocalizedString("content_kit.content_type.curriculum_label",
                                                      bundle: ContentKitResources.bundle,
                                                      value: "Curriculum",
-                                                     comment: "Label title of 'curriculum' curation type")
+                                                     comment: "Label title of 'curriculum' content type")
 
-        static let activityLabel = LocalizedString("content_kit.curation_type.activity_label",
+        static let activityLabel = LocalizedString("content_kit.content_type.activity_label",
                                                    bundle: ContentKitResources.bundle,
                                                    value: "Activity",
-                                                   comment: "Label title of 'activity' curation type")
+                                                   comment: "Label title of 'activity' content type")
 
-        static let storyLabel = LocalizedString("content_kit.curation_type.story_label",
+        static let storyLabel = LocalizedString("content_kit.content_type.story_label",
                                                 bundle: ContentKitResources.bundle,
                                                 value: "Story",
-                                                comment: "Label title of 'story' curation type")
+                                                comment: "Label title of 'story' content type")
 
-        static let curationLabel = LocalizedString("content_kit.curation_type.curation_label",
+        static let curationLabel = LocalizedString("content_kit.content_type.curation_label",
                                                    bundle: ContentKitResources.bundle,
                                                    value: "Curation",
-                                                   comment: "Label title of 'curation' curation type")
+                                                   comment: "Label title of 'curation' content type")
     }
 }

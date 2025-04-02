@@ -125,7 +125,7 @@ public struct GroupboxItem: View {
     private var subtitle: String?
     private var activityCount: Int?
     private let kIconSize: CGFloat = 120
-    private var contentType: CurationType = .activity
+    private var contentType: ContentType = .activity
 }
 
 // MARK: - l10n.GroupboxItem

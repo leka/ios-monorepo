@@ -87,7 +87,7 @@ public struct ListItem: View {
     private let kIconSize: CGFloat = 60
     private var title: String = "Content not found"
     private var subtitle: String?
-    private var contentType: CurationType = .activity
+    private var contentType: ContentType = .activity
 }
 
 #Preview {

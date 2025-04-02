@@ -100,7 +100,7 @@ public struct ContentCard: View {
     private var icon: UIImage = .init(systemName: "exclamationmark.triangle")!
     private var title: String = "Content not found"
     private var subtitle: String?
-    private var contentType: CurationType = .activity
+    private var contentType: ContentType = .activity
 }
 
 #Preview {
