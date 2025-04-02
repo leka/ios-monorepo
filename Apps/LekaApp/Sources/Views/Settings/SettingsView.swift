@@ -10,6 +10,8 @@ import SwiftUI
 
 // MARK: - SettingsView
 
+// swiftlint:disable type_body_length
+
 struct SettingsView: View {
     @Environment(\.openURL) private var openURL
     @Environment(\.dismiss) var dismiss
@@ -18,6 +20,7 @@ struct SettingsView: View {
     @State private var showConfirmDisconnection: Bool = false
     @State private var showConfirmDeleteAccount: Bool = false
     @State private var showReAuthenticate: Bool = false
+    @State private var showChangeEmail: Bool = false
     @State private var isCaregiverpickerPresented: Bool = false
 
     @Bindable private var authManagerViewModel: AuthManagerViewModel = .shared
@@ -85,6 +88,20 @@ struct SettingsView: View {
                     } label: {
                         Text(l10n.SettingsView.CredentialsSection.emailLabel)
                     }
+
+                    if self.caregiverManager.currentCaregiver.value?.isAdmin == true {
+                        Button(
+                            String(l10n.SettingsView.CredentialsSection.ChangeCredentials.changeEmailButtonLabel.characters),
+                            systemImage: "envelope"
+                        ) {
+                            self.showChangeEmail = true
+                            self.authManagerViewModel.userAction = .userIsReAuthenticating
+                        }
+                        .sheet(isPresented: self.$showChangeEmail) {
+                            ChangeEmailView()
+                        }
+                    }
+
                     Button(String(l10n.SettingsView.CredentialsSection.ChangeCredentials.buttonLabel.characters), systemImage: "lock") {
                         self.showConfirmCredentialsChange = true
                     }
@@ -287,3 +304,5 @@ struct SettingsView: View {
             }
         }
 }
+
+// swiftlint:enable type_body_length
