@@ -31,6 +31,7 @@ public class AuthManager {
         case userIsSigningOut
         case userIsReAuthenticating
         case userIsResettingPassword
+        case userIsChangingEmail
         case userIsDeletingAccount
     }
 

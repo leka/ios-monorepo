@@ -79,6 +79,7 @@ public class CaregiverManager {
             Caregiver.CodingKeys.professions.rawValue: caregiver.professions,
             Caregiver.CodingKeys.colorScheme.rawValue: caregiver.colorScheme.rawValue,
             Caregiver.CodingKeys.colorTheme.rawValue: caregiver.colorTheme.rawValue,
+            Caregiver.CodingKeys.isAdmin.rawValue: caregiver.isAdmin ?? false,
         ]
 
         self.dbOps.update(id: caregiver.id!, data: caregiverData, collection: .caregivers)
@@ -93,6 +94,17 @@ public class CaregiverManager {
     }
 
     public func deleteCaregiver(documentID: String) {
+        guard let caregiver = self.caregiverList.value.first(where: { $0.id == documentID }) else {
+            log.error("Caregiver to delete not found.")
+            return
+        }
+
+        if caregiver.isAdmin == true {
+            log.warning("Attempted to delete admin caregiver: \(documentID). This is not allowed.")
+            self.fetchError.send(DatabaseError.customError("Admin caregiver cannot be deleted."))
+            return
+        }
+
         self.dbOps.delete(from: .caregivers, documentID: documentID)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
