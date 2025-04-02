@@ -151,6 +151,29 @@ public class AuthManager {
         }
     }
 
+    public func sendEmailVerificationBeforeUpdatingEmail(to newEmail: String) {
+        guard let user = self.auth.currentUser else {
+            let errorMessage = "No authenticated user found for email update."
+            log.error("\(errorMessage)")
+            self.authenticationError.send(AuthenticationError.custom(message: errorMessage))
+            CrashlyticsManager.log(message: errorMessage)
+            return
+        }
+
+        self.loadingStatePublisher.send(true)
+
+        user.sendEmailVerification(beforeUpdatingEmail: newEmail) { [weak self] error in
+            self?.loadingStatePublisher.send(false)
+            if let error {
+                log.error("Failed to send verification email before updating email: \(error.localizedDescription)")
+                self?.authenticationError.send(error)
+                CrashlyticsManager.recordError(error)
+            } else {
+                log.info("Verification email sent to \(newEmail). Email will update once verified.")
+            }
+        }
+    }
+
     public func deleteCurrentUser() {
         self.auth.currentUser?.delete { [weak self] error in
             if let error {
