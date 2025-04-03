@@ -79,6 +79,10 @@ extension MainView {
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.carereceivers.characters)
                     self.systemImage = "figure.2.arms.open"
 
+                case .curationSandbox:
+                    self.title = "Curation Sandbox"
+                    self.systemImage = "wrench.and.screwdriver"
+
                 case .allPublishedActivities:
                     self.title = "Published Activities"
                     self.systemImage = "list.bullet"

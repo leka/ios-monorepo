@@ -32,6 +32,7 @@ extension Navigation {
         case resourcesDeepDive
 
         // ? DEVELOPER_MODE + TESTFLIGHT_BUILD
+        case curationSandbox
         case allPublishedActivities
         case allDraftActivities
         case allTemplateActivities

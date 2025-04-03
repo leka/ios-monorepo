@@ -123,6 +123,78 @@
                 }
             }
         },
+        "content_kit.content_type.activity_label": {
+            "comment": "Label title of 'activity' content type",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Activity"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Activit\u00e9"
+                    }
+                }
+            }
+        },
+        "content_kit.content_type.curation_label": {
+            "comment": "Label title of 'curation' content type",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Curation"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Curation"
+                    }
+                }
+            }
+        },
+        "content_kit.content_type.curriculum_label": {
+            "comment": "Label title of 'curriculum' content type",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Curriculum"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Parcours"
+                    }
+                }
+            }
+        },
+        "content_kit.content_type.story_label": {
+            "comment": "Label title of 'story' content type",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Story"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Histoire"
+                    }
+                }
+            }
+        },
         "content_kit.curriculum_details_view.activities_section_title": {
             "comment": "CurriculumDetailsView 'activities' section title",
             "localizations": {
