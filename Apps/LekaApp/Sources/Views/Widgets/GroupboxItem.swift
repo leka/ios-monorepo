@@ -2,7 +2,9 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AccountKit
 import ContentKit
+import DesignKit
 import LocalizationKit
 import SwiftUI
 
@@ -18,7 +20,7 @@ public struct GroupboxItem: View {
                     log.error("Content \(content.id) is labeled as curriculum but not decoded as such ")
                     return
                 }
-                self.contentType = .curriculum
+                self.curationItem = content
                 self.icon = curriculum.details.iconImage
                 self.title = curriculum.details.title
                 self.subtitle = curriculum.details.subtitle
@@ -29,7 +31,7 @@ public struct GroupboxItem: View {
                     log.error("Content \(content.id) is labeled as activity but not decoded as such ")
                     return
                 }
-                self.contentType = .activity
+                self.curationItem = content
                 self.icon = activity.details.iconImage
                 self.title = activity.details.title
                 self.subtitle = activity.details.subtitle
@@ -39,7 +41,7 @@ public struct GroupboxItem: View {
                     log.error("Content \(content.id) is labeled as story but not decoded as such ")
                     return
                 }
-                self.contentType = .story
+                self.curationItem = content
                 self.icon = story.details.iconImage
                 self.title = story.details.title
                 self.subtitle = story.details.subtitle
@@ -56,17 +58,25 @@ public struct GroupboxItem: View {
             VStack {
                 HStack {
                     Label(
-                        self.contentType.label,
-                        systemImage: self.contentType.icon
+                        self.curationItem.contentType.label,
+                        systemImage: self.curationItem.contentType.icon
                     )
                     .font(.subheadline)
                     .foregroundColor(.secondary)
 
                     Spacer()
 
-                    Button {} label: {
-                        Image(systemName: "ellipsis")
-                            .bold()
+                    if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                        if self.libraryManagerViewModel.isContentFavorited(
+                            by: currentCaregiverID,
+                            contentID: self.curationItem.id
+                        ) {
+                            Image(systemName: "star.circle")
+                                .font(.system(size: 25))
+                                .foregroundColor(self.styleManager.accentColor ?? .blue)
+                        }
+
+                        ContentItemMenu(self.curationItem, caregiverID: currentCaregiverID)
                     }
                 }
 
@@ -96,6 +106,7 @@ public struct GroupboxItem: View {
                             Image(systemName: "checkmark.circle.fill")
                                 .font(.title3)
                                 .foregroundStyle(Color.secondary)
+                                .opacity(self.libraryManagerViewModel.isContentSaved(id: self.curationItem.id) ? 1 : 0)
 
                             Spacer()
 
@@ -113,27 +124,31 @@ public struct GroupboxItem: View {
                     .frame(maxWidth: .infinity)
                 }
             }
-            .frame(width: 230, height: 300)
+            .frame(width: 260, height: 320)
         }
     }
 
     // MARK: Private
 
+    @StateObject private var styleManager: StyleManager = .shared
+    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+
+    private var curationItem: CurationItemModel = .init(id: UUID().uuidString, contentType: .activity)
     private var icon: UIImage = .init(systemName: "exclamationmark.triangle")!
     private var shape: any Shape = Rectangle()
     private var title: String = "Content not found"
     private var subtitle: String?
     private var activityCount: Int?
     private let kIconSize: CGFloat = 120
-    private var contentType: ContentType = .activity
+
+    private var libraryManagerViewModel: LibraryManagerViewModel = .shared
 }
 
 // MARK: - l10n.GroupboxItem
 
 extension l10n {
     enum GroupboxItem {
-        static let activityCountLabel = LocalizedStringInterpolation("content_kit.groupbox_item_view.activity_count_label",
-                                                                     bundle: ContentKitResources.bundle,
+        static let activityCountLabel = LocalizedStringInterpolation("lekaapp.groupbox_item_view.activity_count_label",
                                                                      value: "%d activity",
                                                                      comment: "Activity count label of GroupboxItem")
     }
