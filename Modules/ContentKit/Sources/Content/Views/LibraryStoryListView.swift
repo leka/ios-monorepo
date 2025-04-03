@@ -68,6 +68,14 @@ public struct LibraryStoryListView: View {
                     .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
+                .simultaneousGesture(TapGesture().onEnded {
+                    AnalyticsManager.logEventSelectContent(
+                        type: .story,
+                        id: story.id,
+                        name: story.name,
+                        origin: .personalLibrary
+                    )
+                })
             }
             .width(min: 400, ideal: 450, max: .infinity)
 
