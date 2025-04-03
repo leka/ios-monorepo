@@ -178,19 +178,19 @@ struct MainView: View {
                             .logEventScreenView(screenName: "resources_deep_dive", context: .splitView)
 
                     case .curriculums:
-                        CategoryCurriculumsView()
+                        CurationView(.curriculums)
                             .logEventScreenView(screenName: "curriculums", context: .splitView)
 
                     case .educationalGames:
-                        CategoryEducationalGamesView()
+                        CurationView(.educationalGames)
                             .logEventScreenView(screenName: "educational_games", context: .splitView)
 
                     case .stories:
-                        CategoryStoriesView()
+                        CurationView(.stories)
                             .logEventScreenView(screenName: "stories", context: .splitView)
 
                     case .gamepads:
-                        CategoryGamepadsView()
+                        CurationView(.gamepads)
                             .logEventScreenView(screenName: "gamepads", context: .splitView)
 
                     case .caregivers:
@@ -203,7 +203,7 @@ struct MainView: View {
 
                     // ? DEVELOPER_MODE + TESTFLIGHT_BUILD
                     case .curationSandbox:
-                        CurationSandbox(curation: ContentKit.allCurations[0])
+                        CurationView(.home)
 
                     case .allPublishedActivities:
                         AllPublishedActivitiesView()
