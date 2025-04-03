@@ -19,7 +19,7 @@ l10n:
       description:
 
 content:
-  - type: groupbox
+  - component: groupbox
     l10n:
       - locale: fr_FR
         details:
@@ -52,7 +52,26 @@ content:
         type: curriculum
       - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
         type: activity
-  - type: gridlist
+  - component: vertical_button
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Niveaux de difficultés
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Difficulty level
+          subtitle:
+          description:
+    items:
+      - value: medium-E2C641B879A248C982AA0C93B21A690A
+        type: curation
+      - value: hard-181519A691954BAC8C4825E660E91E45
+        type: curation
+      - value: medium-E2C641B879A248C982AA0C93B21A690A
+        type: curation
+  - component: column
     l10n:
       - locale: fr_FR
         details:
@@ -85,7 +104,7 @@ content:
         type: curriculum
       - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
         type: activity
-  - type: curation_button
+  - component: horizontal_button
     l10n:
       - locale: fr_FR
         details:
@@ -98,6 +117,14 @@ content:
           subtitle:
           description:
     items:
+      - value: medium-E2C641B879A248C982AA0C93B21A690A
+        type: curation
+      - value: hard-181519A691954BAC8C4825E660E91E45
+        type: curation
+      - value: medium-E2C641B879A248C982AA0C93B21A690A
+        type: curation
+      - value: hard-181519A691954BAC8C4825E660E91E45
+        type: curation
       - value: medium-E2C641B879A248C982AA0C93B21A690A
         type: curation
       - value: hard-181519A691954BAC8C4825E660E91E45
