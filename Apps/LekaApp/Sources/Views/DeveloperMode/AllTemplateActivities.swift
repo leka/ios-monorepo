@@ -18,10 +18,20 @@ struct AllTemplateActivitiesView: View {
 
     var body: some View {
         ScrollView(showsIndicators: true) {
-            ActivityGridView(activities: self.activities, onStartActivity: { activity in
-                self.navigation.currentActivity = activity
-                self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
-            })
+            VStack(alignment: .leading, spacing: 30) {
+                LazyVGrid(columns: self.columns) {
+                    ForEach(self.activities) { activity in
+                        NavigationLink(destination:
+                            ActivityDetailsView(activity: activity, onStartActivity: { activity in
+                                self.navigation.currentActivity = activity
+                                self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+                            })) {
+                                VerticalItem(CurationItemModel(id: activity.uuid, contentType: .activity))
+                            }
+                    }
+                }
+                .padding(.horizontal)
+            }
         }
         .navigationTitle("Template Activities")
     }
@@ -29,6 +39,8 @@ struct AllTemplateActivitiesView: View {
     // MARK: Private
 
     @ObservedObject private var navigation: Navigation = .shared
+
+    private var columns = Array(repeating: GridItem(), count: 3)
 }
 
 #Preview {
