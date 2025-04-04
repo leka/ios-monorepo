@@ -23,10 +23,7 @@ public enum ContentKit {
     public static let allTemplateCurriculums: [Curriculum] = ContentKit.listAllTemplateCurriculums() ?? []
     public static let allStories: [Story] = ContentKit.listAllStories() ?? []
     public static let allCurations: [CategoryCuration] = ContentKit.listAllCurations() ?? []
-
-    public static var firstStepsResources: CategoryResources = loadResourceYAML(from: "resources_first_steps")
-    public static var videosResources: CategoryResources = loadResourceYAML(from: "resources_videos")
-    public static var deepDiveResources: CategoryResources = loadResourceYAML(from: "resources_deep_dive")
+    public static let allResources: [CategoryResources] = ContentKit.listAllResources() ?? []
 
     public static func listRasterImages() -> [String] {
         let bundle = Bundle.module
@@ -173,21 +170,27 @@ public enum ContentKit {
         return stories
     }
 
-    private static func loadResourceYAML(from resourceName: String) -> CategoryResources {
-        let path = ContentKitResources.bundle.path(forResource: resourceName, ofType: ".category.yml")
-        let data = try? String(contentsOfFile: path!, encoding: .utf8)
+    private static func listAllResources() -> [CategoryResources]? {
+        let bundle = Bundle.module
+        var resources: [CategoryResources] = []
+        let paths = bundle.paths(forResourcesOfType: "resources.yml", inDirectory: nil)
 
-        guard let data else {
-            logCK.error("Error reading file")
-            fatalError("💥 Error reading file")
+        for path in paths {
+            let data = try? String(contentsOfFile: path, encoding: .utf8)
+
+            guard let data else {
+                logCK.error("Error reading file: \(path)")
+                continue
+            }
+
+            do {
+                let curation = try YAMLDecoder().decode(CategoryResources.self, from: data)
+                resources.append(curation)
+            } catch {
+                logCK.error("Error decoding file: \(path) with error:\n\(error)")
+            }
         }
 
-        do {
-            let info = try YAMLDecoder().decode(CategoryResources.self, from: data)
-            return info
-        } catch {
-            logCK.error("Error decoding file with error:\n\(error)")
-            fatalError("💥 Error decoding file with error:\n\(error)")
-        }
+        return resources
     }
 }

@@ -2,6 +2,8 @@
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
+id: videos
+
 l10n:
   - locale: fr_FR
     details:
@@ -13,6 +15,7 @@ l10n:
       title: Videos
       subtitle: Resources are the tools we provide to all caregivers.
       description: Resources give the keys to optimal use of the Leka solution!
+
 content:
   - id: videos
     l10n:

@@ -47,8 +47,6 @@ public struct ResourceGridView: View {
 
 #Preview {
     NavigationStack {
-        ResourceGridView(
-            resources: ContentKit.firstStepsResources.sections[0].resources.map(\.resource)
-        )
+        ResourceGridView(resources: ContentKit.allResources[0].sections[0].resources.map(\.resource))
     }
 }

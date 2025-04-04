@@ -63,7 +63,7 @@ public struct ResourceFileView: View {
 #Preview {
     NavigationStack {
         ResourceFileView(
-            resource: ContentKit.firstStepsResources.sections[0].resources.map(\.resource)[0]
+            resource: ContentKit.allResources[0].sections[0].resources[1].resource
         )
     }
 }

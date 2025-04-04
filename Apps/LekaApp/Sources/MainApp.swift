@@ -80,6 +80,7 @@ struct LekaApp: App {
                                 _ = ContentKit.allCurriculums
                                 _ = ContentKit.allStories
                                 _ = ContentKit.allCurations
+                                _ = ContentKit.allResources
                             }
                         }
                 }
