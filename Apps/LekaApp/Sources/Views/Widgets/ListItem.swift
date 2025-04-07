@@ -13,12 +13,12 @@ import UtilsKit
 public struct ListItem: View {
     // MARK: Lifecycle
 
-    public init(_ content: CurationItemModel) {
+    public init?(_ content: CurationItemModel) {
         switch content.contentType {
             case .curriculum:
                 guard let curriculum = Curriculum(id: content.id) else {
                     log.error("Content \(content.id) is labeled as curriculum but not decoded as such ")
-                    return
+                    return nil
                 }
                 self.curationItem = content
                 self.icon = curriculum.details.iconImage
@@ -28,7 +28,7 @@ public struct ListItem: View {
             case .activity:
                 guard let activity = Activity(id: content.id) else {
                     log.error("Content \(content.id) is labeled as activity but not decoded as such ")
-                    return
+                    return nil
                 }
                 self.curationItem = content
                 self.icon = activity.details.iconImage
@@ -38,7 +38,7 @@ public struct ListItem: View {
             case .story:
                 guard let story = Story(id: content.id) else {
                     log.error("Content \(content.id) is labeled as story but not decoded as such ")
-                    return
+                    return nil
                 }
                 self.curationItem = content
                 self.icon = story.details.iconImage
@@ -47,7 +47,7 @@ public struct ListItem: View {
                 self.shape = RoundedRectangle(cornerRadius: 10 / 57 * self.kIconSize)
             default:
                 log.error("Content \(content.id) is a curation and cannot be decoded as ListItem")
-                return
+                return nil
         }
     }
 
@@ -104,11 +104,11 @@ public struct ListItem: View {
     @StateObject private var styleManager: StyleManager = .shared
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
-    private var curationItem: CurationItemModel = .init(id: UUID().uuidString, contentType: .activity)
-    private var icon: UIImage = .init(systemName: "exclamationmark.triangle")!
-    private var shape: any Shape = Rectangle()
+    private var curationItem: CurationItemModel
+    private var icon: UIImage
+    private var shape: any Shape
     private let kIconSize: CGFloat = 60
-    private var title: String = "Content not found"
+    private var title: String
     private var subtitle: String?
 
     private var libraryManagerViewModel: LibraryManagerViewModel = .shared

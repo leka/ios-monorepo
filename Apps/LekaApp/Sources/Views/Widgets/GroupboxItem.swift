@@ -13,12 +13,12 @@ import SwiftUI
 public struct GroupboxItem: View {
     // MARK: Lifecycle
 
-    public init(_ content: CurationItemModel) {
+    public init?(_ content: CurationItemModel) {
         switch content.contentType {
             case .curriculum:
                 guard let curriculum = Curriculum(id: content.id) else {
                     log.error("Content \(content.id) is labeled as curriculum but not decoded as such ")
-                    return
+                    return nil
                 }
                 self.curationItem = content
                 self.icon = curriculum.details.iconImage
@@ -29,7 +29,7 @@ public struct GroupboxItem: View {
             case .activity:
                 guard let activity = Activity(id: content.id) else {
                     log.error("Content \(content.id) is labeled as activity but not decoded as such ")
-                    return
+                    return nil
                 }
                 self.curationItem = content
                 self.icon = activity.details.iconImage
@@ -39,7 +39,7 @@ public struct GroupboxItem: View {
             case .story:
                 guard let story = Story(id: content.id) else {
                     log.error("Content \(content.id) is labeled as story but not decoded as such ")
-                    return
+                    return nil
                 }
                 self.curationItem = content
                 self.icon = story.details.iconImage
@@ -48,6 +48,7 @@ public struct GroupboxItem: View {
                 self.shape = RoundedRectangle(cornerRadius: 10 / 57 * 150)
             default:
                 log.error("Content \(content.id) is a curation and cannot be decoded as GroupboxItem")
+                return nil
         }
     }
 
@@ -133,10 +134,10 @@ public struct GroupboxItem: View {
     @StateObject private var styleManager: StyleManager = .shared
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
-    private var curationItem: CurationItemModel = .init(id: UUID().uuidString, contentType: .activity)
-    private var icon: UIImage = .init(systemName: "exclamationmark.triangle")!
-    private var shape: any Shape = Rectangle()
-    private var title: String = "Content not found"
+    private var curationItem: CurationItemModel
+    private var icon: UIImage
+    private var shape: any Shape
+    private var title: String
     private var subtitle: String?
     private var activityCount: Int?
     private let kIconSize: CGFloat = 120
