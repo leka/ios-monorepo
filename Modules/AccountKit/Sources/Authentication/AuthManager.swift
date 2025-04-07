@@ -144,9 +144,11 @@ public class AuthManager {
                 log.error("Failed to send password reset email: \(error.localizedDescription)")
                 self?.authenticationError.send(error)
                 self?.passwordResetEmail.send(false)
+                CrashlyticsManager.recordError(error)
             } else {
                 log.info("Password reset email sent successfully.")
                 self?.passwordResetEmail.send(true)
+                AnalyticsManager.logEventRequestPasswordChange()
             }
         }
     }
@@ -170,6 +172,7 @@ public class AuthManager {
                 CrashlyticsManager.recordError(error)
             } else {
                 log.info("Verification email sent to \(newEmail). Email will update once verified.")
+                AnalyticsManager.logEventRequestEmailChange()
             }
         }
     }
