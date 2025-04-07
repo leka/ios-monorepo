@@ -41,6 +41,8 @@ public class AuthManager {
         case didDeleteAccount
         case didDetectLoggedInState(uid: String)
         case didDetectLoggedOutState
+        case didRequestPasswordReset
+        case didRequestEmailChange
     }
 
     public static let shared = AuthManager()
@@ -150,6 +152,7 @@ public class AuthManager {
             } else {
                 log.info("Password reset email sent successfully.")
                 self?.passwordResetEmail.send(true)
+                self?.analyticsEvent.send(.didRequestPasswordReset)
             }
         }
     }
@@ -159,7 +162,6 @@ public class AuthManager {
             let errorMessage = "No authenticated user found for email update."
             log.error("\(errorMessage)")
             self.authenticationError.send(AuthenticationError.custom(message: errorMessage))
-            CrashlyticsManager.log(message: errorMessage)
             return
         }
 
@@ -170,9 +172,9 @@ public class AuthManager {
             if let error {
                 log.error("Failed to send verification email before updating email: \(error.localizedDescription)")
                 self?.authenticationError.send(error)
-                CrashlyticsManager.recordError(error)
             } else {
                 log.info("Verification email sent to \(newEmail). Email will update once verified.")
+                self?.analyticsEvent.send(.didRequestEmailChange)
             }
         }
     }

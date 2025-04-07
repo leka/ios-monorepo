@@ -242,6 +242,12 @@ final class DatabaseAnalyticsEventBridge {
                 AnalyticsManager.setUserID(nil)
                 AnalyticsManager.setUserPropertyUserIsLoggedIn(value: false)
                 AnalyticsManager.clearDefaultEventParameters()
+
+            case .didRequestPasswordReset:
+                AnalyticsManager.logEventRequestPasswordChange()
+
+            case .didRequestEmailChange:
+                AnalyticsManager.logEventRequestEmailChange()
         }
     }
 
