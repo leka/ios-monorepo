@@ -192,7 +192,7 @@ public struct ActivityView: View {
             Text(l10n.GameEngineKit.ActivityView.QuitActivityAlert.message)
         }
         .sheet(isPresented: self.$isInfoSheetPresented) {
-            ActivityDetailsView(activity: self.viewModel.currentActivity)
+            InfoDetailsView(CurationItemModel(id: self.viewModel.currentActivity.id, contentType: .activity))
                 .logEventScreenView(
                     screenName: "activity_details",
                     context: .sheet,

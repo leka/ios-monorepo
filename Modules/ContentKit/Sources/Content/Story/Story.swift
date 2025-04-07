@@ -32,7 +32,8 @@ public struct Story: Decodable, Identifiable {
         self.status = try container.decode(Status.self, forKey: .status)
 
         self.authors = try container.decode([String].self, forKey: .authors)
-        self.skills = try container.decode([String].self, forKey: .skills)
+        let skillsIDs = try container.decode([String].self, forKey: .skills)
+        self.skills = skillsIDs.compactMap { Skills.skill(id: $0) }
         self.hmi = try container.decode([String].self, forKey: .hmi)
         self.types = try container.decode([String].self, forKey: .types)
         self.tags = try container.decode([String].self, forKey: .tags)
@@ -53,7 +54,7 @@ public struct Story: Decodable, Identifiable {
     public let status: Status
 
     public let authors: [String] // TODO: (@ladislas) - implement authors
-    public let skills: [String] // TODO: (@ladislas) - implement skills
+    public let skills: [Skill]
     public let hmi: [String] // TODO: (@ladislas) - implement hmi
     public let types: [String] // TODO: (@ladislas) - implement types
     public let tags: [String] // TODO: (@ladislas) - implement tags
