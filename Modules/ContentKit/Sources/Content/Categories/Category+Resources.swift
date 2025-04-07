@@ -18,14 +18,14 @@ public struct CategoryResources: Identifiable, CategoryProtocol {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         self.id = try container.decode(String.self, forKey: .id)
-        self.l10n = try container.decode([Category.LocalizedDetails].self, forKey: .l10n)
+        self.l10n = try container.decode([ContentCategory.LocalizedDetails].self, forKey: .l10n)
         self.sections = try container.decode([CategoryResources.Section].self, forKey: .content)
     }
 
     // MARK: Public
 
     public let id: String
-    public var l10n: [Category.LocalizedDetails]
+    public var l10n: [ContentCategory.LocalizedDetails]
     public var sections: [CategoryResources.Section]
 
     // MARK: Internal
@@ -46,8 +46,8 @@ public extension CategoryResources {
         public init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.id = try container.decode(String.self, forKey: .id)
-            self.l10n = try container.decode([Category.LocalizedDetails].self, forKey: .l10n)
-            self.resources = try container.decode([Category.ResourcePayload].self, forKey: .resources)
+            self.l10n = try container.decode([ContentCategory.LocalizedDetails].self, forKey: .l10n)
+            self.resources = try container.decode([ContentCategory.ResourcePayload].self, forKey: .resources)
         }
 
         // MARK: Public
@@ -60,19 +60,19 @@ public extension CategoryResources {
 
         public let id: String
 
-        public let resources: [Category.ResourcePayload]
+        public let resources: [ContentCategory.ResourcePayload]
 
-        public var details: Category.Details {
+        public var details: ContentCategory.Details {
             self.details(in: LocalizationKit.l10n.language)
         }
 
         // MARK: Internal
 
-        let l10n: [Category.LocalizedDetails]
+        let l10n: [ContentCategory.LocalizedDetails]
 
         // MARK: Private
 
-        private func details(in language: Locale.LanguageCode) -> Category.Details {
+        private func details(in language: Locale.LanguageCode) -> ContentCategory.Details {
             guard let details = self.l10n.first(where: { $0.language == language })?.details else {
                 logCK.error("No details found for language \(language)")
                 fatalError("💥 No details found for language \(language)")
@@ -83,7 +83,7 @@ public extension CategoryResources {
     }
 }
 
-public extension Category {
+public extension ContentCategory {
     struct Resource: Codable, Identifiable {
         // MARK: Lifecycle
 
@@ -150,7 +150,7 @@ public extension Category {
 
         public init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            self.localizedResources = try container.decode([Category.LocalizedResources].self, forKey: .localizedResources)
+            self.localizedResources = try container.decode([ContentCategory.LocalizedResources].self, forKey: .localizedResources)
 
             if let localizedResources = self.localizedResources {
                 let availableLocales = localizedResources.map(\.locale)
@@ -159,9 +159,9 @@ public extension Category {
                     $0.language.languageCode == LocalizationKit.l10n.language
                 }) ?? Locale(identifier: "en_US")
 
-                self.resource = self.localizedResources?.first(where: { $0.locale == currentLocale })?.details ?? Category.Resource()
+                self.resource = self.localizedResources?.first(where: { $0.locale == currentLocale })?.details ?? ContentCategory.Resource()
             } else {
-                self.resource = Category.Resource()
+                self.resource = ContentCategory.Resource()
             }
         }
 

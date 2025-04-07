@@ -10,17 +10,17 @@ import LocalizationKit
 // MARK: - CategoryProtocol
 
 public protocol CategoryProtocol: Decodable {
-    var l10n: [Category.LocalizedDetails] { get }
-    var details: Category.Details { get }
-    func details(in language: Locale.LanguageCode) -> Category.Details
+    var l10n: [ContentCategory.LocalizedDetails] { get }
+    var details: ContentCategory.Details { get }
+    func details(in language: Locale.LanguageCode) -> ContentCategory.Details
 }
 
 public extension CategoryProtocol {
-    var details: Category.Details {
+    var details: ContentCategory.Details {
         self.details(in: LocalizationKit.l10n.language)
     }
 
-    func details(in language: Locale.LanguageCode) -> Category.Details {
+    func details(in language: Locale.LanguageCode) -> ContentCategory.Details {
         guard let details = self.l10n.first(where: { $0.language == language })?.details else {
             logCK.error("No details found for language \(language)")
             fatalError("💥 No details found for language \(language)")
@@ -30,13 +30,13 @@ public extension CategoryProtocol {
     }
 }
 
-// MARK: - Category
+// MARK: - ContentCategory
 
-public struct Category {}
+public struct ContentCategory {}
 
-// MARK: Category.Details
+// MARK: ContentCategory.Details
 
-public extension Category {
+public extension ContentCategory {
     struct Details: Decodable {
         // MARK: Public
 
@@ -54,9 +54,9 @@ public extension Category {
     }
 }
 
-// MARK: Category.LocalizedDetails
+// MARK: ContentCategory.LocalizedDetails
 
-public extension Category {
+public extension ContentCategory {
     struct LocalizedDetails: Decodable {
         // MARK: Lifecycle
 
@@ -66,7 +66,7 @@ public extension Category {
             let localeString = try container.decode(String.self, forKey: .locale)
             self.locale = Locale(identifier: localeString)
 
-            self.details = try container.decode(Category.Details.self, forKey: .details)
+            self.details = try container.decode(ContentCategory.Details.self, forKey: .details)
         }
 
         // MARK: Public
