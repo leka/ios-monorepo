@@ -174,9 +174,10 @@ public struct WidgetFactory: View {
 
 #Preview {
     VStack(spacing: 20) {
-        WidgetFactory(section: ContentKit.allCurations[0].sections[0])
-        WidgetFactory(section: ContentKit.allCurations[0].sections[1])
-        WidgetFactory(section: ContentKit.allCurations[0].sections[2])
+        WidgetFactory(section: ContentKit.allCurations[4].sections[0])
+        WidgetFactory(section: ContentKit.allCurations[4].sections[1])
+        WidgetFactory(section: ContentKit.allCurations[4].sections[2])
+        WidgetFactory(section: ContentKit.allCurations[4].sections[3])
     }
     .padding()
 }

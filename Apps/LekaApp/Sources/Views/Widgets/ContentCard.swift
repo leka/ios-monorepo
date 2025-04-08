@@ -12,12 +12,12 @@ import UtilsKit
 public struct ContentCard: View {
     // MARK: Lifecycle
 
-    public init(_ content: CurationItemModel) {
+    public init?(_ content: CurationItemModel) {
         switch content.contentType {
             case .curriculum:
                 guard let curriculum = Curriculum(id: content.id) else {
                     log.error("Content \(content.id) is labeled as curriculum but not decoded as such ")
-                    return
+                    return nil
                 }
                 self.contentType = .curriculum
                 self.icon = curriculum.details.iconImage
@@ -26,7 +26,7 @@ public struct ContentCard: View {
             case .activity:
                 guard let activity = Activity(id: content.id) else {
                     log.error("Content \(content.id) is labeled as activity but not decoded as such ")
-                    return
+                    return nil
                 }
                 self.contentType = .activity
                 self.icon = activity.details.iconImage
@@ -35,7 +35,7 @@ public struct ContentCard: View {
             case .story:
                 guard let story = Story(id: content.id) else {
                     log.error("Content \(content.id) is labeled as story but not decoded as such ")
-                    return
+                    return nil
                 }
                 self.contentType = .story
                 self.icon = story.details.iconImage
@@ -43,7 +43,7 @@ public struct ContentCard: View {
                 self.subtitle = story.details.subtitle
             default:
                 log.error("Content \(content.id) is a curation and cannot be decoded as ContentCard")
-                return
+                return nil
         }
     }
 
@@ -97,10 +97,10 @@ public struct ContentCard: View {
 
     // MARK: Private
 
-    private var icon: UIImage = .init(systemName: "exclamationmark.triangle")!
-    private var title: String = "Content not found"
-    private var subtitle: String?
-    private var contentType: ContentType = .activity
+    private let icon: UIImage
+    private let title: String
+    private let subtitle: String?
+    private let contentType: ContentType
 }
 
 #Preview {

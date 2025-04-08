@@ -10,18 +10,18 @@ import SwiftUI
 public struct CurationButton: View {
     // MARK: Lifecycle
 
-    public init(_ content: CurationItemModel) {
+    public init?(_ content: CurationItemModel) {
         if content.contentType == .curation {
             guard let curation = CategoryCuration(id: content.id) else {
                 log.error("Content \(content.id) is labeled as curation but not decoded as such")
-                return
+                return nil
             }
             self.icon = curation.icon
             self.title = curation.details.title
             self.color = curation.color
         } else {
             log.error("Content \(content.id) is a not curation and cannot be decoded as CurationButton")
-            return
+            return nil
         }
     }
 
@@ -55,9 +55,9 @@ public struct CurationButton: View {
 
     // MARK: Private
 
-    private var icon: String = "exclamationmark.triangle"
-    private var title: String = "Content not found"
-    private var color: Color = .gray
+    private var icon: String
+    private var title: String
+    private var color: Color
 }
 
 #Preview {
