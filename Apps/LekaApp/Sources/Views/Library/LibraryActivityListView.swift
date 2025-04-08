@@ -4,6 +4,7 @@
 
 import AccountKit
 import AnalyticsKit
+import ContentKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -22,7 +23,7 @@ public struct LibraryActivityListView: View {
 
     public var body: some View {
         Table(self.activities) {
-            TableColumn(String(l10n.Library.Table.titleColumnLabel.characters)) { activity in
+            TableColumn(String(l10n.Library.titleColumnLabel.characters)) { activity in
                 NavigationLink(destination:
                     ActivityDetailsView(activity: activity, onStartActivity: self.onStartActivity)
                         .logEventScreenView(
@@ -103,20 +104,15 @@ public struct LibraryActivityListView: View {
             }
             .width(40)
 
-            TableColumn("") { activity in
-                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                    Menu {
-                        self.addOrRemoveButton(activity: activity, caregiverID: currentCaregiverID)
-                        Divider()
-                        self.addOrRemoveFavoriteButton(activity: activity, caregiverID: currentCaregiverID)
-                    } label: {
-                        Image(systemName: "ellipsis")
-                            .bold()
-                    }
-                    .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
+            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                TableColumn("") { activity in
+                    ContentItemMenu(
+                        CurationItemModel(id: activity.uuid, contentType: .activity),
+                        caregiverID: currentCaregiverID
+                    )
                 }
+                .width(40)
             }
-            .width(40)
 
             TableColumn("") { activity in
                 Button {
@@ -173,65 +169,13 @@ public struct LibraryActivityListView: View {
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var libraryManagerViewModel: LibraryManagerViewModel = .shared
-    private var libraryManager: LibraryManager = .shared
-
-    @ViewBuilder
-    private func addOrRemoveButton(activity: Activity, caregiverID: String) -> some View {
-        let libraryItem = LibraryItem.activity(
-            SavedActivity(id: activity.uuid, caregiverID: caregiverID)
-        )
-
-        if self.libraryManagerViewModel.isActivitySaved(activityID: activity.uuid) {
-            Button(role: .destructive) {
-                self.libraryManagerViewModel.requestItemRemoval(libraryItem, caregiverID: caregiverID)
-            } label: {
-                Label(String(l10n.Library.MenuActions.removeFromLibraryButtonLabel.characters), systemImage: "trash")
-            }
-        } else {
-            Button {
-                self.libraryManager.addActivity(
-                    activityID: activity.uuid,
-                    caregiverID: caregiverID
-                )
-            } label: {
-                Label(String(l10n.Library.MenuActions.addToLibraryButtonLabel.characters), systemImage: "plus")
-            }
-        }
-    }
-
-    @ViewBuilder
-    private func addOrRemoveFavoriteButton(activity: Activity, caregiverID: String) -> some View {
-        if self.libraryManagerViewModel.isActivityFavoritedByCurrentCaregiver(
-            activityID: activity.uuid,
-            caregiverID: caregiverID
-        ) {
-            Button {
-                self.libraryManager.removeActivityFromFavorites(
-                    activityID: activity.uuid,
-                    caregiverID: caregiverID
-                )
-            } label: {
-                Label(String(l10n.Library.MenuActions.undoFavoriteButtonLabel.characters), systemImage: "star.slash")
-            }
-        } else {
-            Button {
-                self.libraryManager.addActivityToLibraryAsFavorite(
-                    activityID: activity.uuid,
-                    caregiverID: caregiverID
-                )
-            } label: {
-                Label(String(l10n.Library.MenuActions.favoriteButtonLabel.characters), systemImage: "star")
-            }
-        }
-    }
 }
 
 // MARK: - l10n.LibraryActivityListView
 
 extension l10n {
     enum LibraryActivityListView {
-        static let playButtonLabel = LocalizedString("content_kit.library_activity_list_view.play_button_label",
-                                                     bundle: ContentKitResources.bundle,
+        static let playButtonLabel = LocalizedString("lekaapp.library_activity_list_view.play_button_label",
                                                      value: "Play",
                                                      comment: "Play button label on Library Activity List view")
     }

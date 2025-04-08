@@ -3,8 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AnalyticsKit
-import DesignKit
-import LocalizationKit
+import ContentKit
 import SwiftUI
 
 // MARK: - CurriculumHorizontalListView
@@ -12,9 +11,9 @@ import SwiftUI
 public struct CurriculumHorizontalListView: View {
     // MARK: Lifecycle
 
-    public init(curriculums: [Curriculum]? = nil, onActivitySelected: ((Activity) -> Void)?) {
+    public init(curriculums: [Curriculum]? = nil, onStartActivity: ((Activity) -> Void)?) {
         self.curriculums = curriculums ?? []
-        self.onActivitySelected = onActivitySelected
+        self.onStartActivity = onStartActivity
     }
 
     // MARK: Public
@@ -24,7 +23,7 @@ public struct CurriculumHorizontalListView: View {
             HStack(alignment: .firstTextBaseline) {
                 ForEach(self.curriculums) { curriculum in
                     NavigationLink(destination:
-                        CurriculumDetailsView(curriculum: curriculum, onActivitySelected: self.onActivitySelected)
+                        CurriculumDetailsView(curriculum: curriculum, onStartActivity: self.onStartActivity)
                             .logEventScreenView(
                                 screenName: "curriculum_details",
                                 context: .splitView,
@@ -33,7 +32,7 @@ public struct CurriculumHorizontalListView: View {
                                 ]
                             )
                     ) {
-                        CurriculumGroupboxView(curriculum: curriculum)
+                        GroupboxItem(CurationItemModel(id: curriculum.id, contentType: .curriculum))
                     }
                     .simultaneousGesture(TapGesture().onEnded {
                         AnalyticsManager.logEventSelectContent(
@@ -52,11 +51,9 @@ public struct CurriculumHorizontalListView: View {
     // MARK: Internal
 
     let curriculums: [Curriculum]
-    let onActivitySelected: ((Activity) -> Void)?
+    let onStartActivity: ((Activity) -> Void)?
 
     // MARK: Private
-
-    @ObservedObject private var styleManager: StyleManager = .shared
 
     private let columns = Array(repeating: GridItem(), count: 3)
     private let rows = [GridItem()]
@@ -69,7 +66,7 @@ public struct CurriculumHorizontalListView: View {
                 Section {
                     CurriculumHorizontalListView(
                         curriculums: ContentKit.allCurriculums,
-                        onActivitySelected: { _ in
+                        onStartActivity: { _ in
                             print("Activity Selected")
                         }
                     )
@@ -78,7 +75,7 @@ public struct CurriculumHorizontalListView: View {
                 Section {
                     CurriculumHorizontalListView(
                         curriculums: ContentKit.allCurriculums,
-                        onActivitySelected: { _ in
+                        onStartActivity: { _ in
                             print("Activity Selected")
                         }
                     )
@@ -87,7 +84,7 @@ public struct CurriculumHorizontalListView: View {
                 Section {
                     CurriculumHorizontalListView(
                         curriculums: ContentKit.allCurriculums,
-                        onActivitySelected: { _ in
+                        onStartActivity: { _ in
                             print("Activity Selected")
                         }
                     )
@@ -96,7 +93,7 @@ public struct CurriculumHorizontalListView: View {
                 Section {
                     CurriculumHorizontalListView(
                         curriculums: ContentKit.allCurriculums,
-                        onActivitySelected: { _ in
+                        onStartActivity: { _ in
                             print("Activity Selected")
                         }
                     )

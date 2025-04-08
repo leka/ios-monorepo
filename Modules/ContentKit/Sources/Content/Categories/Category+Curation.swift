@@ -45,7 +45,7 @@ public struct CategoryCuration: Identifiable, CategoryProtocol {
         self.icon = try container.decode(String.self, forKey: .icon)
         let hexColor = try container.decode(UInt.self, forKey: .color)
         self.color = Color(hex: hexColor)
-        self.l10n = try container.decode([Category.LocalizedDetails].self, forKey: .l10n)
+        self.l10n = try container.decode([ContentCategory.LocalizedDetails].self, forKey: .l10n)
         self.sections = try container.decode([CategoryCuration.Section].self, forKey: .content)
     }
 
@@ -54,7 +54,7 @@ public struct CategoryCuration: Identifiable, CategoryProtocol {
     public let uuid: String
     public var icon: String
     public var color: Color
-    public var l10n: [Category.LocalizedDetails]
+    public var l10n: [ContentCategory.LocalizedDetails]
     public var sections: [CategoryCuration.Section]
     public var contentType: ContentType = .curation
 
@@ -80,8 +80,8 @@ public extension CategoryCuration {
         public init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.componentType = try container.decode(ComponentType.self, forKey: .component)
-            self.l10n = try container.decode([Category.LocalizedDetails].self, forKey: .l10n)
-            self.items = try container.decode([Category.CurationPayload].self, forKey: .items)
+            self.l10n = try container.decode([ContentCategory.LocalizedDetails].self, forKey: .l10n)
+            self.items = try container.decode([ContentCategory.CurationPayload].self, forKey: .items)
         }
 
         // MARK: Public
@@ -103,19 +103,19 @@ public extension CategoryCuration {
 
         public let id = UUID()
         public let componentType: ComponentType
-        public let items: [Category.CurationPayload]
+        public let items: [ContentCategory.CurationPayload]
 
-        public var details: Category.Details {
+        public var details: ContentCategory.Details {
             self.details(in: LocalizationKit.l10n.language)
         }
 
         // MARK: Internal
 
-        let l10n: [Category.LocalizedDetails]
+        let l10n: [ContentCategory.LocalizedDetails]
 
         // MARK: Private
 
-        private func details(in language: Locale.LanguageCode) -> Category.Details {
+        private func details(in language: Locale.LanguageCode) -> ContentCategory.Details {
             guard let details = self.l10n.first(where: { $0.language == language })?.details else {
                 logCK.error("No details found for language \(language)")
                 fatalError("💥 No details found for language \(language)")
@@ -126,9 +126,9 @@ public extension CategoryCuration {
     }
 }
 
-// MARK: - Category.CurationPayload
+// MARK: - ContentCategory.CurationPayload
 
-public extension Category {
+public extension ContentCategory {
     struct CurationPayload: Codable, Identifiable {
         // MARK: Lifecycle
 
@@ -161,9 +161,9 @@ public extension Category {
     }
 }
 
-// MARK: - Category.CurationPayload + Equatable, Hashable
+// MARK: - ContentCategory.CurationPayload + Equatable, Hashable
 
-extension Category.CurationPayload: Equatable, Hashable {
+extension ContentCategory.CurationPayload: Equatable, Hashable {
     public static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.id == rhs.id
     }

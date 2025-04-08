@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
+import ContentKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -54,13 +55,13 @@ public struct ContentItemMenu: View {
             Button(role: .destructive) {
                 self.libraryManagerViewModel.requestItemRemoval(libraryItem, caregiverID: caregiverID)
             } label: {
-                Label(String(l10n.Library.MenuActions.removeFromLibraryButtonLabel.characters), systemImage: "trash")
+                Label(String(l10n.ContentItemMenu.removeFromLibraryButtonLabel.characters), systemImage: "trash")
             }
         } else {
             Button {
                 self.libraryManagerViewModel.addItemToLibrary(libraryItem)
             } label: {
-                Label(String(l10n.Library.MenuActions.addToLibraryButtonLabel.characters), systemImage: "plus")
+                Label(String(l10n.ContentItemMenu.addToLibraryButtonLabel.characters), systemImage: "plus")
             }
         }
     }
@@ -76,13 +77,13 @@ public struct ContentItemMenu: View {
             Button {
                 self.libraryManagerViewModel.removeItemFromFavorites(libraryItem)
             } label: {
-                Label(String(l10n.Library.MenuActions.undoFavoriteButtonLabel.characters), systemImage: "star.slash")
+                Label(String(l10n.ContentItemMenu.undoFavoriteButtonLabel.characters), systemImage: "star.slash")
             }
         } else {
             Button {
                 self.libraryManagerViewModel.addItemToFavorite(libraryItem)
             } label: {
-                Label(String(l10n.Library.MenuActions.favoriteButtonLabel.characters), systemImage: "star")
+                Label(String(l10n.ContentItemMenu.favoriteButtonLabel.characters), systemImage: "star")
             }
         }
     }
@@ -105,9 +106,40 @@ public extension LibraryManager {
                     SavedStory(id: curationItem.id, caregiverID: caregiverID)
                 )
             default:
-                logCK.error("Library item conversion - Unsupported content type")
+                log.error("Library item conversion - Unsupported content type")
         }
         return libraryItem
+    }
+}
+
+// MARK: - l10n.ContentItemMenu
+
+extension l10n {
+    enum ContentItemMenu {
+        static let addToLibraryButtonLabel = LocalizedString(
+            "lekaapp.content_item_menu.add_to_library_button_label",
+            bundle: ContentKitResources.bundle,
+            value: "Add to Library",
+            comment: "Button label to add an item to the library"
+        )
+
+        static let removeFromLibraryButtonLabel = LocalizedString(
+            "lekaapp.content_item_menu.remove_from_library_button_label",
+            value: "Remove from Library",
+            comment: "Button label to remove an item from the library"
+        )
+
+        static let favoriteButtonLabel = LocalizedString(
+            "lekaapp.content_item_menu.favorite_button_label",
+            value: "Favorite",
+            comment: "Button label to mark an item as favorite"
+        )
+
+        static let undoFavoriteButtonLabel = LocalizedString(
+            "lekaapp.content_item_menu.undo_favorite_button_label",
+            value: "Undo Favorite",
+            comment: "Button label to remove an item from favorites"
+        )
     }
 }
 

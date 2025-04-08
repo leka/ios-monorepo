@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import ContentKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -50,7 +51,7 @@ public struct SearchGridView: View {
                 }
                 .padding(.horizontal)
 
-                ActivityHorizontalListView(activities: self.activities, onActivitySelected: self.onStartActivity)
+                ActivityHorizontalListView(activities: self.activities, onStartActivity: self.onStartActivity)
             }
 
             if !self.curriculums.isEmpty {
@@ -60,7 +61,7 @@ public struct SearchGridView: View {
                     Spacer()
                     NavigationLink(destination:
                         ScrollView(showsIndicators: true) {
-                            CurriculumGridView(curriculums: self.curriculums, onActivitySelected: self.onStartActivity)
+                            CurriculumGridView(curriculums: self.curriculums, onStartActivity: self.onStartActivity)
                                 .navigationTitle(String(l10n.SearchGridView.curriculumsTitle.characters))
                         }
                     ) {
@@ -69,7 +70,7 @@ public struct SearchGridView: View {
                 }
                 .padding(.horizontal)
 
-                CurriculumHorizontalListView(curriculums: self.curriculums, onActivitySelected: self.onStartActivity)
+                CurriculumHorizontalListView(curriculums: self.curriculums, onStartActivity: self.onStartActivity)
             }
 
             if !self.skills.isEmpty {
@@ -102,28 +103,23 @@ public struct SearchGridView: View {
 
 extension l10n {
     enum SearchGridView {
-        static let activitiesTitle = LocalizedString("content_kit.search_grid_view.activities_title",
-                                                     bundle: ContentKitResources.bundle,
+        static let activitiesTitle = LocalizedString("lekaapp.search_grid_view.activities_title",
                                                      value: "Activities",
                                                      comment: "SearchGridView 'activities' section title")
 
-        static let curriculumsTitle = LocalizedString("content_kit.search_grid_view.curriculums_title",
-                                                      bundle: ContentKitResources.bundle,
+        static let curriculumsTitle = LocalizedString("lekaapp.search_grid_view.curriculums_title",
                                                       value: "Curriculums",
                                                       comment: "SearchGridView 'curriculums' section title")
 
-        static let skillsTitle = LocalizedString("content_kit.search_grid_view.skills_title",
-                                                 bundle: ContentKitResources.bundle,
+        static let skillsTitle = LocalizedString("lekaapp.search_grid_view.skills_title",
                                                  value: "Skills",
                                                  comment: "SearchGridView 'skills' section title")
 
-        static let seeAllLabel = LocalizedString("content_kit.search_grid_view.see_all_label",
-                                                 bundle: ContentKitResources.bundle,
+        static let seeAllLabel = LocalizedString("lekaapp.search_grid_view.see_all_label",
                                                  value: "See all",
                                                  comment: "SearchGridView 'see all' button label")
 
-        static let noResults = LocalizedString("content_kit.search_grid_view.no_results",
-                                               bundle: ContentKitResources.bundle,
+        static let noResults = LocalizedString("lekaapp.search_grid_view.no_results",
                                                value: "Oops! No results found.",
                                                comment: "SearchGridView 'see all' button label")
     }

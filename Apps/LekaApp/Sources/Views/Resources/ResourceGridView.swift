@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import ContentKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -11,7 +12,7 @@ import SwiftUI
 public struct ResourceGridView: View {
     // MARK: Lifecycle
 
-    public init(resources: [Category.Resource]? = nil) {
+    public init(resources: [ContentCategory.Resource]? = nil) {
         self.resources = resources ?? []
     }
 
@@ -36,11 +37,9 @@ public struct ResourceGridView: View {
 
     // MARK: Internal
 
-    let resources: [Category.Resource]
+    let resources: [ContentCategory.Resource]
 
     // MARK: Private
-
-    @ObservedObject private var styleManager: StyleManager = .shared
 
     private let columns = Array(repeating: GridItem(), count: 2)
 }

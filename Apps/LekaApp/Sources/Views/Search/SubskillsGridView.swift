@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import ContentKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -24,7 +25,7 @@ public struct SubskillsGridView: View {
             ScrollView(showsIndicators: true) {
                 HStack(alignment: .center, spacing: 30) {
                     let mainSkill = self.subskills[0]
-                    if let icon = UIImage(named: "\(mainSkill.id).skill.png", in: .module, with: nil) {
+                    if let icon = mainSkill.iconImage {
                         Image(uiImage: icon)
                             .resizable()
                             .renderingMode(.template)
@@ -62,7 +63,7 @@ public struct SubskillsGridView: View {
                                         .padding(.horizontal)
                                         .padding(.horizontal)
 
-                                        ActivityHorizontalListView(activities: subskillActivities, onActivitySelected: self.onActivitySelected)
+                                        ActivityHorizontalListView(activities: subskillActivities, onStartActivity: self.onActivitySelected)
 
                                         Divider()
                                             .padding(.horizontal)
@@ -74,9 +75,20 @@ public struct SubskillsGridView: View {
                     }
                 } else {
                     ScrollView(showsIndicators: true) {
-                        ActivityGridView(activities: self.activities.filter {
-                            $0.skills.contains(self.subskills[0])
-                        }, onStartActivity: self.onActivitySelected)
+                        VStack(alignment: .leading, spacing: 30) {
+                            LazyVGrid(columns: Array(repeating: GridItem(), count: 3)) {
+                                ForEach(self.activities.filter {
+                                    $0.skills.contains(self.subskills[0])
+                                }) { activity in
+                                    NavigationLink(destination:
+                                        ActivityDetailsView(activity: activity, onStartActivity: self.onActivitySelected))
+                                    {
+                                        VerticalItem(CurationItemModel(id: activity.uuid, contentType: .activity))
+                                    }
+                                }
+                            }
+                            .padding(.horizontal)
+                        }
                     }
                 }
             }

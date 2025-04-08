@@ -5,6 +5,7 @@
 import Foundation
 import LocalizationKit
 import LogKit
+import UIKit
 import Version
 import Yams
 
@@ -119,7 +120,6 @@ public struct Skill: Codable, Identifiable {
         self.id = try container.decode(String.self, forKey: .id)
 
         self.l10n = try container.decode([Skill.Localization].self, forKey: .l10n)
-
         let availableLocales = self.l10n.map(\.locale)
 
         let currentLocale = availableLocales.first(where: {
@@ -137,6 +137,11 @@ public struct Skill: Codable, Identifiable {
     public let name: String
     public let description: String
     public let subskills: [Skill]
+
+    // TODO: (@ladislas) use string path instead
+    public var iconImage: UIImage? {
+        UIImage(named: "\(self.id).skill.icon.png", in: .module, with: nil)
+    }
 
     // MARK: Private
 

@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AnalyticsKit
+import ContentKit
 import QuickLook
 import SwiftUI
 
@@ -11,7 +12,7 @@ import SwiftUI
 public struct ResourceFileView: View {
     // MARK: Lifecycle
 
-    public init(resource: Category.Resource) {
+    public init(resource: ContentCategory.Resource) {
         self.resource = resource
     }
 
@@ -53,7 +54,7 @@ public struct ResourceFileView: View {
 
     @State var isPresented: Bool = false
 
-    let resource: Category.Resource
+    let resource: ContentCategory.Resource
 
     // MARK: Private
 

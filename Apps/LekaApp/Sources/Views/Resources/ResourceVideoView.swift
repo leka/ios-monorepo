@@ -4,8 +4,7 @@
 
 import AnalyticsKit
 import Combine
-import DesignKit
-import LocalizationKit
+import ContentKit
 import SwiftUI
 import YouTubePlayerKit
 
@@ -14,7 +13,7 @@ import YouTubePlayerKit
 public struct ResourceVideoView: View {
     // MARK: Lifecycle
 
-    public init(resource: Category.Resource) {
+    public init(resource: ContentCategory.Resource) {
         self.resource = resource
     }
 
@@ -49,7 +48,7 @@ public struct ResourceVideoView: View {
 
     // MARK: Internal
 
-    let resource: Category.Resource
+    let resource: ContentCategory.Resource
 
     // MARK: Private
 

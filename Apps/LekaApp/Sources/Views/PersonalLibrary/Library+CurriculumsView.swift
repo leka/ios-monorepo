@@ -21,7 +21,7 @@ struct LibraryCurriculumsView: View {
             EmptyLibraryPlaceholderView(icon: .curriculums)
         } else {
             ScrollView(showsIndicators: true) {
-                CurriculumGridView(curriculums: self.curriculums, onActivitySelected: {
+                CurriculumGridView(curriculums: self.curriculums, onStartActivity: {
                     activity in
                     if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
                         self.navigation.sheetContent = .carereceiverPicker(activity: activity, story: nil)

@@ -4,8 +4,7 @@
 
 import AccountKit
 import AnalyticsKit
-import DesignKit
-import LocalizationKit
+import ContentKit
 import SwiftUI
 
 // MARK: - CurriculumGridView
@@ -13,9 +12,9 @@ import SwiftUI
 public struct CurriculumGridView: View {
     // MARK: Lifecycle
 
-    public init(curriculums: [Curriculum]? = nil, onActivitySelected: ((Activity) -> Void)?) {
+    public init(curriculums: [Curriculum]? = nil, onStartActivity: ((Activity) -> Void)?) {
         self.curriculums = curriculums ?? []
-        self.onActivitySelected = onActivitySelected
+        self.onStartActivity = onStartActivity
     }
 
     // MARK: Public
@@ -24,7 +23,7 @@ public struct CurriculumGridView: View {
         LazyVGrid(columns: self.columns, spacing: 20) {
             ForEach(self.curriculums) { curriculum in
                 NavigationLink(destination:
-                    CurriculumDetailsView(curriculum: curriculum, onActivitySelected: self.onActivitySelected)
+                    CurriculumDetailsView(curriculum: curriculum, onStartActivity: self.onStartActivity)
                         .logEventScreenView(
                             screenName: "curriculum_details",
                             context: .splitView,
@@ -33,7 +32,7 @@ public struct CurriculumGridView: View {
                             ]
                         )
                 ) {
-                    CurriculumGroupboxView(curriculum: curriculum)
+                    GroupboxItem(CurationItemModel(id: curriculum.id, contentType: .curriculum))
                 }
                 .simultaneousGesture(TapGesture().onEnded {
                     AnalyticsManager.logEventSelectContent(
@@ -51,11 +50,9 @@ public struct CurriculumGridView: View {
     // MARK: Internal
 
     let curriculums: [Curriculum]
-    let onActivitySelected: ((Activity) -> Void)?
+    let onStartActivity: ((Activity) -> Void)?
 
     // MARK: Private
-
-    @ObservedObject private var styleManager: StyleManager = .shared
 
     private let columns = [
         GridItem(.adaptive(minimum: 280), spacing: 20),
@@ -66,7 +63,7 @@ public struct CurriculumGridView: View {
     NavigationStack {
         CurriculumGridView(
             curriculums: ContentKit.allCurriculums,
-            onActivitySelected: { _ in
+            onStartActivity: { _ in
                 print("Activity Selected")
             }
         )

@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import ContentKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -34,7 +35,7 @@ public struct SkillsGridView: View {
                             VStack {
                                 Spacer()
 
-                                if let icon = UIImage(named: "\(skill.id).skill.icon.png", in: .module, with: nil) {
+                                if let icon = skill.iconImage {
                                     Image(uiImage: icon)
                                         .resizable()
                                         .scaledToFit()
@@ -82,8 +83,7 @@ public struct SkillsGridView: View {
 
 extension l10n {
     enum SkillsGridView {
-        static let activityCountLabel = LocalizedStringInterpolation("content_kit.skills_grid_view.activity_count_label",
-                                                                     bundle: ContentKitResources.bundle,
+        static let activityCountLabel = LocalizedStringInterpolation("lekapp.skills_grid_view.activity_count_label",
                                                                      value: "%d activity",
                                                                      comment: "Activity count label of SkillsGridView")
     }

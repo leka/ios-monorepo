@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
+import ContentKit
 import DesignKit
 import Fit
 import LocalizationKit
@@ -14,9 +15,9 @@ import SwiftUI
 public struct CurriculumDetailsView: View {
     // MARK: Lifecycle
 
-    public init(curriculum: Curriculum, onActivitySelected: ((Activity) -> Void)? = nil) {
+    public init(curriculum: Curriculum, onStartActivity: ((Activity) -> Void)? = nil) {
         self.curriculum = curriculum
-        self.onActivitySelected = onActivitySelected
+        self.onStartActivity = onStartActivity
     }
 
     // MARK: Public
@@ -29,8 +30,8 @@ public struct CurriculumDetailsView: View {
                         Image(uiImage: self.curriculum.details.iconImage)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 120, height: 120)
-                            .clipShape(RoundedRectangle(cornerRadius: 10 / 57 * 120))
+                            .frame(width: self.kIconSize, height: self.kIconSize)
+                            .clipShape(RoundedRectangle(cornerRadius: 10 / 57 * self.kIconSize))
 
                         VStack(alignment: .leading, spacing: 8) {
                             HStack(alignment: .center) {
@@ -136,7 +137,7 @@ public struct CurriculumDetailsView: View {
                 ScrollView(showsIndicators: true) {
                     ActivityListView(
                         activities: self.curriculum.activities.compactMap { Activity(id: $0) },
-                        onStartActivity: self.onActivitySelected
+                        onStartActivity: self.onStartActivity
                     )
                 }
             }
@@ -153,19 +154,10 @@ public struct CurriculumDetailsView: View {
                             .foregroundColor(self.styleManager.accentColor ?? .blue)
                     }
 
-                    Menu {
-                        self.addOrRemoveButton(curriculum: self.curriculum, caregiverID: currentCaregiverID)
-                        Divider()
-                        self.addOrRemoveFavoriteButton(curriculum: self.curriculum, caregiverID: currentCaregiverID)
-                    } label: {
-                        Button {
-                            // Nothing to do
-                        } label: {
-                            Image(systemName: "ellipsis")
-                                .bold()
-                        }
-                        .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
-                    }
+                    ContentItemMenu(
+                        CurationItemModel(id: self.curriculum.uuid, contentType: .curriculum),
+                        caregiverID: currentCaregiverID
+                    )
                 }
             }
         }
@@ -173,7 +165,7 @@ public struct CurriculumDetailsView: View {
 
     // MARK: Internal
 
-    var onActivitySelected: ((Activity) -> Void)?
+    var onStartActivity: ((Activity) -> Void)?
 
     // MARK: Private
 
@@ -186,96 +178,40 @@ public struct CurriculumDetailsView: View {
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var libraryManagerViewModel: LibraryManagerViewModel = .shared
-    private var libraryManager: LibraryManager = .shared
     private let curriculum: Curriculum
 
-    @ViewBuilder
-    private func addOrRemoveButton(curriculum: Curriculum, caregiverID: String) -> some View {
-        let libraryItem = LibraryItem.curriculum(
-            SavedCurriculum(id: curriculum.uuid, caregiverID: caregiverID)
-        )
-
-        if self.libraryManagerViewModel.isCurriculumSaved(curriculumID: curriculum.uuid) {
-            Button(role: .destructive) {
-                self.libraryManagerViewModel.requestItemRemoval(libraryItem, caregiverID: caregiverID)
-            } label: {
-                Label(String(l10n.Library.MenuActions.removeFromLibraryButtonLabel.characters), systemImage: "trash")
-            }
-        } else {
-            Button {
-                self.libraryManager.addCurriculum(
-                    curriculumID: curriculum.uuid,
-                    caregiverID: caregiverID
-                )
-            } label: {
-                Label(String(l10n.Library.MenuActions.addToLibraryButtonLabel.characters), systemImage: "plus")
-            }
-        }
-    }
-
-    @ViewBuilder
-    private func addOrRemoveFavoriteButton(curriculum: Curriculum, caregiverID: String) -> some View {
-        if self.libraryManagerViewModel.isCurriculumFavoritedByCurrentCaregiver(
-            curriculumID: curriculum.uuid,
-            caregiverID: caregiverID
-        ) {
-            Button {
-                self.libraryManager.removeCurriculumFromFavorites(
-                    curriculumID: curriculum.uuid,
-                    caregiverID: caregiverID
-                )
-            } label: {
-                Label(String(l10n.Library.MenuActions.undoFavoriteButtonLabel.characters), systemImage: "star.slash")
-            }
-        } else {
-            Button {
-                self.libraryManager.addCurriculumToLibraryAsFavorite(
-                    curriculumID: curriculum.uuid,
-                    caregiverID: caregiverID
-                )
-            } label: {
-                Label(String(l10n.Library.MenuActions.favoriteButtonLabel.characters), systemImage: "star")
-            }
-        }
-    }
+    private let kIconSize: CGFloat = 150
 }
 
 // MARK: - l10n.CurriculumDetailsView
 
 extension l10n {
     enum CurriculumDetailsView {
-        static let curriculumLabel = LocalizedString("content_kit.curriculum_details_view.curriculum_label",
-                                                     bundle: ContentKitResources.bundle,
+        static let curriculumLabel = LocalizedString("lekaapp.curriculum_details_view.curriculum_label",
                                                      value: "Curriculum",
                                                      comment: "CurriculumDetailsView's content type description label")
 
-        static let seeMoreLabel = LocalizedString("content_kit.curriculum_details_view.see_more_label",
-                                                  bundle: ContentKitResources.bundle,
+        static let seeMoreLabel = LocalizedString("lekaapp.curriculum_details_view.see_more_label",
                                                   value: "See more",
                                                   comment: "See more button label")
 
-        static let seeLessLabel = LocalizedString("content_kit.curriculum_details_view.see_less_label",
-                                                  bundle: ContentKitResources.bundle,
+        static let seeLessLabel = LocalizedString("lekaapp.curriculum_details_view.see_less_label",
                                                   value: "See less",
                                                   comment: "See less button label")
 
-        static let skillsSectionTitle = LocalizedString("content_kit.curriculum_details_view.skills_section_title",
-                                                        bundle: ContentKitResources.bundle,
+        static let skillsSectionTitle = LocalizedString("lekaapp.curriculum_details_view.skills_section_title",
                                                         value: "Skills",
                                                         comment: "CurriculumDetailsView 'skills' section title")
 
-        static let authorsSectionTitle = LocalizedString("content_kit.curriculum_details_view.authors_section_title",
-                                                         bundle: ContentKitResources.bundle,
+        static let authorsSectionTitle = LocalizedString("lekaapp.curriculum_details_view.authors_section_title",
                                                          value: "Authors",
                                                          comment: "CurriculumDetailsView 'authors' section title")
 
-        static let descriptionSectionTitle = LocalizedString("content_kit.curriculum_details_view.description_section_title",
-                                                             bundle: ContentKitResources.bundle,
+        static let descriptionSectionTitle = LocalizedString("lekaapp.curriculum_details_view.description_section_title",
                                                              value: "Description",
                                                              comment: "CurriculumDetailsView 'description' section title")
 
-        static let activitiesSectionTitle = LocalizedString("content_kit.curriculum_details_view.activities_section_title",
-                                                            bundle: ContentKitResources.bundle,
+        static let activitiesSectionTitle = LocalizedString("lekaapp.curriculum_details_view.activities_section_title",
                                                             value: "Activities",
                                                             comment: "CurriculumDetailsView 'activities' section title")
     }

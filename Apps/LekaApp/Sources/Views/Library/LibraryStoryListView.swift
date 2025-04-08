@@ -4,6 +4,7 @@
 
 import AccountKit
 import AnalyticsKit
+import ContentKit
 import DesignKit
 import LocalizationKit
 import SwiftUI
@@ -22,7 +23,7 @@ public struct LibraryStoryListView: View {
 
     public var body: some View {
         Table(self.stories) {
-            TableColumn(String(l10n.Library.Table.titleColumnLabel.characters)) { story in
+            TableColumn(String(l10n.Library.titleColumnLabel.characters)) { story in
                 NavigationLink(destination:
                     StoryDetailsView(story: story, onStartStory: self.onStartStory)
                         .logEventScreenView(
@@ -79,20 +80,15 @@ public struct LibraryStoryListView: View {
             }
             .width(min: 400, ideal: 450, max: .infinity)
 
-            TableColumn("") { story in
-                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                    Menu {
-                        self.addOrRemoveButton(story: story, caregiverID: currentCaregiverID)
-                        Divider()
-                        self.addOrRemoveFavoriteButton(story: story, caregiverID: currentCaregiverID)
-                    } label: {
-                        Image(systemName: "ellipsis")
-                            .bold()
-                    }
-                    .buttonStyle(TranslucentButtonStyle(color: self.styleManager.accentColor!))
+            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                TableColumn("") { story in
+                    ContentItemMenu(
+                        CurationItemModel(id: story.id, contentType: .story),
+                        caregiverID: currentCaregiverID
+                    )
                 }
+                .width(50)
             }
-            .width(50)
 
             TableColumn("") { story in
                 Button {
@@ -129,65 +125,13 @@ public struct LibraryStoryListView: View {
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var libraryManagerViewModel: LibraryManagerViewModel = .shared
-    private var libraryManager: LibraryManager = .shared
-
-    @ViewBuilder
-    private func addOrRemoveButton(story: Story, caregiverID: String) -> some View {
-        let libraryItem = LibraryItem.story(
-            SavedStory(id: story.uuid, caregiverID: caregiverID)
-        )
-
-        if self.libraryManagerViewModel.isStorySaved(storyID: story.uuid) {
-            Button(role: .destructive) {
-                self.libraryManagerViewModel.requestItemRemoval(libraryItem, caregiverID: caregiverID)
-            } label: {
-                Label(String(l10n.Library.MenuActions.removeFromLibraryButtonLabel.characters), systemImage: "trash")
-            }
-        } else {
-            Button {
-                self.libraryManager.addStory(
-                    storyID: story.uuid,
-                    caregiverID: caregiverID
-                )
-            } label: {
-                Label(String(l10n.Library.MenuActions.addToLibraryButtonLabel.characters), systemImage: "plus")
-            }
-        }
-    }
-
-    @ViewBuilder
-    private func addOrRemoveFavoriteButton(story: Story, caregiverID: String) -> some View {
-        if self.libraryManagerViewModel.isStoryFavoritedByCurrentCaregiver(
-            storyID: story.uuid,
-            caregiverID: caregiverID
-        ) {
-            Button {
-                self.libraryManager.removeStoryFromFavorites(
-                    storyID: story.uuid,
-                    caregiverID: caregiverID
-                )
-            } label: {
-                Label(String(l10n.Library.MenuActions.undoFavoriteButtonLabel.characters), systemImage: "star.slash")
-            }
-        } else {
-            Button {
-                self.libraryManager.addStoryToLibraryAsFavorite(
-                    storyID: story.uuid,
-                    caregiverID: caregiverID
-                )
-            } label: {
-                Label(String(l10n.Library.MenuActions.favoriteButtonLabel.characters), systemImage: "star")
-            }
-        }
-    }
 }
 
 // MARK: - l10n.StoryListView
 
 extension l10n {
     enum StoryListView {
-        static let playButtonLabel = LocalizedString("content_kit.story_list_view.play_button_label",
-                                                     bundle: ContentKitResources.bundle,
+        static let playButtonLabel = LocalizedString("lekaapp.story_list_view.play_button_label",
                                                      value: "Play",
                                                      comment: "Play button label on Story List view")
     }

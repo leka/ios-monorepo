@@ -152,7 +152,7 @@ public struct WidgetFactory: View {
                 guard let curriculum = Curriculum(id: curation.id) else {
                     return Text("Curriculum \(curation.id) not found")
                 }
-                return CurriculumDetailsView(curriculum: curriculum, onActivitySelected: self.onStartActivity)
+                return CurriculumDetailsView(curriculum: curriculum, onStartActivity: self.onStartActivity)
             case .activity:
                 guard let activity = Activity(id: curation.id) else {
                     return Text("Activity \(curation.id) not found")
