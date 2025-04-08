@@ -22,7 +22,7 @@ public struct ActivityDetailsView: View {
     // MARK: Public
 
     public var body: some View {
-        InfoDetailsView(CurationItemModel(id: self.activity.id, contentType: .story))
+        InfoDetailsView(CurationItemModel(id: self.activity.id, contentType: .activity))
             .toolbar {
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                     ToolbarItemGroup {
