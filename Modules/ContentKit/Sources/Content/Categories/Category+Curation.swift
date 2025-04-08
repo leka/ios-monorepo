@@ -79,7 +79,7 @@ public extension CategoryCuration {
 
         public init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            self.widgetType = try container.decode(WidgetType.self, forKey: .type)
+            self.componentType = try container.decode(ComponentType.self, forKey: .component)
             self.l10n = try container.decode([Category.LocalizedDetails].self, forKey: .l10n)
             self.items = try container.decode([Category.CurationPayload].self, forKey: .items)
         }
@@ -87,20 +87,22 @@ public extension CategoryCuration {
         // MARK: Public
 
         public enum CodingKeys: CodingKey {
-            case type
+            case component
             case l10n
             case items
         }
 
-        public enum WidgetType: String, Codable {
+        public enum ComponentType: String, Codable {
+            case carousel
+            case column
             case groupbox
-            case gridlist
-            case contentCard = "content_card"
-            case curationButton = "curation_button"
+            case grid
+            case verticalButton = "vertical_button"
+            case horizontalButton = "horizontal_button"
         }
 
         public let id = UUID()
-        public let widgetType: WidgetType
+        public let componentType: ComponentType
         public let items: [Category.CurationPayload]
 
         public var details: Category.Details {

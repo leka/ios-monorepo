@@ -10,16 +10,16 @@ l10n:
   - locale: fr_FR
     details:
       title: Accueil
-      subtitle: Bah bienvenue hein
-      description: J'espère que ça va pépère
+      subtitle:
+      description:
   - locale: en_US
     details:
       title: Welcome
-      subtitle: Just wanna say "Hi" to you
-      description: Hope you and your family are just fine and have big moula
+      subtitle:
+      description:
 
 content:
-  - type: content_card
+  - component: carousel
     l10n:
       - locale: fr_FR
         details:
@@ -42,7 +42,7 @@ content:
         type: curriculum
       - value: super_simon-C6EABAC161CD44C290B32202DFDCDAF6
         type: curriculum
-  - type: gridlist
+  - component: column
     l10n:
       - locale: fr_FR
         details:
@@ -73,7 +73,7 @@ content:
         type: curriculum
       - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
         type: activity
-  - type: curation_button
+  - component: vertical_button
     l10n:
       - locale: fr_FR
         details:
@@ -92,7 +92,7 @@ content:
         type: curation
       - value: hard-181519A691954BAC8C4825E660E91E45
         type: curation
-  - type: groupbox
+  - component: groupbox
     l10n:
       - locale: fr_FR
         details:
@@ -125,7 +125,7 @@ content:
         type: curriculum
       - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
         type: activity
-  - type: gridlist
+  - component: column
     l10n:
       - locale: fr_FR
         details:
@@ -156,7 +156,7 @@ content:
         type: curriculum
       - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
         type: activity
-  - type: groupbox
+  - component: groupbox
     l10n:
       - locale: fr_FR
         details:
@@ -189,7 +189,8 @@ content:
         type: curriculum
       - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
         type: activity
-  - type: curation_button
+  - component: horizontal_button
+    layout: grid
     l10n:
       - locale: fr_FR
         details:
@@ -202,6 +203,18 @@ content:
           subtitle:
           description:
     items:
+      - value: easy-0E1860BB217C4E2DA93AF366B1D1F283
+        type: curation
+      - value: medium-E2C641B879A248C982AA0C93B21A690A
+        type: curation
+      - value: hard-181519A691954BAC8C4825E660E91E45
+        type: curation
+      - value: easy-0E1860BB217C4E2DA93AF366B1D1F283
+        type: curation
+      - value: medium-E2C641B879A248C982AA0C93B21A690A
+        type: curation
+      - value: hard-181519A691954BAC8C4825E660E91E45
+        type: curation
       - value: easy-0E1860BB217C4E2DA93AF366B1D1F283
         type: curation
       - value: medium-E2C641B879A248C982AA0C93B21A690A

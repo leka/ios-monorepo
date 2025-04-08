@@ -9,23 +9,37 @@ import SwiftUI
 // MARK: - WidgetFactory
 
 public struct WidgetFactory: View {
+    // MARK: Lifecycle
+
+    public init(section: CategoryCuration.Section) {
+        self.section = section
+        switch section.componentType {
+            case .carousel:
+                self.layoutType = .horizontalScroll
+                self.widgetType = .contentCard
+            case .column:
+                self.layoutType = .horizontalScrollList
+                self.widgetType = .listItem
+            case .groupbox:
+                self.layoutType = .horizontalScroll
+                self.widgetType = .groupbox
+            case .grid:
+                self.layoutType = .verticalGrid
+                self.widgetType = .verticalItem
+            case .verticalButton:
+                self.layoutType = .verticalGrid
+                self.widgetType = .curationButton
+            case .horizontalButton:
+                self.layoutType = .horizontalScroll
+                self.widgetType = .curationButton
+        }
+    }
+
     // MARK: Public
 
     public var body: some View {
-        switch self.section.widgetType {
-            case .groupbox:
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        ForEach(self.section.items) { item in
-                            NavigationLink(destination:
-                                AnyView(self.curationDestination(item.curation))
-                            ) {
-                                GroupboxItem(item.curation)
-                            }
-                        }
-                    }
-                }
-            case .gridlist:
+        switch self.layoutType {
+            case .horizontalScrollList:
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 30) {
                         ForEach(self.section.items.chunked(into: 3), id: \.self) { chunk in
@@ -34,7 +48,7 @@ public struct WidgetFactory: View {
                                     NavigationLink(destination:
                                         AnyView(self.curationDestination(item.curation))
                                     ) {
-                                        ListItem(item.curation)
+                                        AnyView(self.curationLabel(item.curation))
                                     }
                                     Divider()
                                 }
@@ -42,54 +56,62 @@ public struct WidgetFactory: View {
                         }
                     }
                 }
-            case .contentCard:
+                .padding()
+            case .horizontalScroll:
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(self.section.items) { item in
                             NavigationLink(destination:
                                 AnyView(self.curationDestination(item.curation))
                             ) {
-                                ContentCard(item.curation)
+                                AnyView(self.curationLabel(item.curation))
                             }
                         }
                     }
                 }
-            case .curationButton:
-                if self.section.items.count > 3 {
-                    HStack {
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            ForEach(self.section.items) { item in
-                                NavigationLink(destination:
-                                    AnyView(self.curationDestination(item.curation))
-                                ) {
-                                    CurationButton(item.curation)
-                                }
-                            }
+                .padding()
+            case .verticalGrid:
+                LazyVGrid(columns: self.columns) {
+                    ForEach(self.section.items) { item in
+                        NavigationLink(destination:
+                            AnyView(self.curationDestination(item.curation))
+                        ) {
+                            AnyView(self.curationLabel(item.curation))
                         }
                     }
-                } else {
-                    HStack {
-                        ForEach(self.section.items) { item in
-                            NavigationLink(destination:
-                                AnyView(self.curationDestination(item.curation))
-                            ) {
-                                CurationButton(item.curation)
-                            }
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
                 }
+                .padding()
         }
     }
 
     // MARK: Internal
 
+    enum LayoutType: String {
+        case horizontalScrollList
+        case horizontalScroll
+        case verticalGrid
+    }
+
+    enum WidgetType: String {
+        case groupbox
+        case verticalItem
+        case listItem
+        case contentCard
+        case curationButton
+    }
+
     let section: CategoryCuration.Section
+    let layoutType: LayoutType
+    let widgetType: WidgetType
 
     // MARK: Private
 
     @ObservedObject private var navigation: Navigation = .shared
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
+
+    private var columns: [GridItem] {
+        Array(repeating: GridItem(), count: self.section.items.count % 3 == 0 || self.section.items.count > 4 ? 3 : 2)
+    }
 
     private func onStartActivity(_ activity: Activity) {
         if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
@@ -106,6 +128,21 @@ public struct WidgetFactory: View {
         } else {
             self.navigation.currentStory = story
             self.navigation.fullScreenCoverContent = .storyView(carereceivers: [])
+        }
+    }
+
+    private func curationLabel(_ curation: CurationItemModel) -> any View {
+        switch self.widgetType {
+            case .groupbox:
+                GroupboxItem(curation)
+            case .verticalItem:
+                VerticalItem(curation)
+            case .listItem:
+                ListItem(curation)
+            case .contentCard:
+                ContentCard(curation)
+            case .curationButton:
+                CurationButton(curation)
         }
     }
 
@@ -130,7 +167,7 @@ public struct WidgetFactory: View {
                 guard let curation = CategoryCuration(id: curation.id) else {
                     return Text("Curation \(curation.id) not found")
                 }
-                return CurationSandbox(curation: curation)
+                return CurationView(curation: curation)
         }
     }
 }

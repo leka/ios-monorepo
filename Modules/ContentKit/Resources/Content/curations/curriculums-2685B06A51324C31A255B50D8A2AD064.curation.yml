@@ -2,6 +2,10 @@
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
+uuid: 2685B06A51324C31A255B50D8A2AD064
+icon: graduationcap
+color: 0x3C336B
+
 l10n:
   - locale: fr_FR
     details:
@@ -15,7 +19,7 @@ l10n:
       description: Curated groups of activities developed with caregivers for stepwise progression.
 
 content:
-  - id: recent_additions
+  - component: groupbox
     l10n:
       - locale: fr_FR
         details:
@@ -27,14 +31,19 @@ content:
           title: Recent additions
           subtitle: Discover the latest additions to our catalog.
           description: Explore recently added content to enrich and diversify your sessions.
-    curriculums:
-      - curriculum_leka_weather_robot-ED4C900D4ACB426384DC76F182BC19A5
-      - curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
-      - curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
-      - curriculum_order_by_size-1FAED1FF14134571849325B6EC9197B5
-      - curriculum_order_by_size_different_animals-3158E58D908E43D29967B04D29C21912
+    items:
+      - value: curriculum_leka_weather_robot-ED4C900D4ACB426384DC76F182BC19A5
+        type: curriculum
+      - value: curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
+        type: curriculum
+      - value: curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
+        type: curriculum
+      - value: curriculum_order_by_size-1FAED1FF14134571849325B6EC9197B5
+        type: curriculum
+      - value: curriculum_order_by_size_different_animals-3158E58D908E43D29967B04D29C21912
+        type: curriculum
 
-  - id: emotion_recognition
+  - component: groupbox
     l10n:
       - locale: fr_FR
         details:
@@ -46,16 +55,23 @@ content:
           title: Emotion Recognition
           subtitle: Learn to identify and express emotions.
           description: Explore activities to help care receivers recognize and express their emotions.
-    curriculums:
-      - curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
-      - curriculum_recognition_emotions_in_context-A135163C8D8646DE95D0854FD5E155EB
-      - curriculum_recognition_sounds_emotions-2D48CCB418BF4808BCB16148C901C617
-      - curriculum_recognition_emotions_pictures-BA3CB88A6A6E49CB9AB83FA992BF852B
-      - curriculum_recognition_emotions_drawings-95C42E189BC146BB844467A3BAFE8BC0
-      - curriculum_recognition_emotions_pictograms-3A9B0EB3A9CF4ABCB9B771B6047DF2D0
-      - curriculum_recognition_emotions_generalization-173A0E0985D944F9835E2205867121FC
+    items:
+      - value: curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
+        type: curriculum
+      - value: curriculum_recognition_emotions_in_context-A135163C8D8646DE95D0854FD5E155EB
+        type: curriculum
+      - value: curriculum_recognition_sounds_emotions-2D48CCB418BF4808BCB16148C901C617
+        type: curriculum
+      - value: curriculum_recognition_emotions_pictures-BA3CB88A6A6E49CB9AB83FA992BF852B
+        type: curriculum
+      - value: curriculum_recognition_emotions_drawings-95C42E189BC146BB844467A3BAFE8BC0
+        type: curriculum
+      - value: curriculum_recognition_emotions_pictograms-3A9B0EB3A9CF4ABCB9B771B6047DF2D0
+        type: curriculum
+      - value: curriculum_recognition_emotions_generalization-173A0E0985D944F9835E2205867121FC
+        type: curriculum
 
-  - id: ordering_and_sequencing
+  - component: groupbox
     l10n:
       - locale: fr_FR
         details:
@@ -67,13 +83,17 @@ content:
           title: Ordering and Sequencing
           subtitle: Learn to organize objects by order or sequence.
           description: Discover activities to help people sort objects by size, sequence, or chronology.
-    curriculums:
-      - curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
-      - curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
-      - curriculum_order_by_size-1FAED1FF14134571849325B6EC9197B5
-      - curriculum_order_by_size_different_animals-3158E58D908E43D29967B04D29C21912
+    items:
+      - value: curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
+        type: curriculum
+      - value: curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
+        type: curriculum
+      - value: curriculum_order_by_size-1FAED1FF14134571849325B6EC9197B5
+        type: curriculum
+      - value: curriculum_order_by_size_different_animals-3158E58D908E43D29967B04D29C21912
+        type: curriculum
 
-  - id: daily_life
+  - component: groupbox
     l10n:
       - locale: fr_FR
         details:
@@ -85,14 +105,19 @@ content:
           title: Daily Life
           subtitle: Activities for daily living.
           description: Explore activities to enhance essential daily living skills.
-    curriculums:
-      - curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
-      - curriculum_recognition_basic_physiological_needs-B697FEE9EF7946A2B704673FEEAA0824
-      - curriculum_recognition_kitchen_items-FCBEE55DD11F427785A12328E6E01C8E
-      - curriculum_recognition_bathroom_items-17AAC383297949D698AC92BD7CEC8C4C
-      - curriculum_recognition_bedroom_items-277B71CFDFF94C22A4F21A9C396A1501
+    items:
+      - value: curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
+        type: curriculum
+      - value: curriculum_recognition_basic_physiological_needs-B697FEE9EF7946A2B704673FEEAA0824
+        type: curriculum
+      - value: curriculum_recognition_kitchen_items-FCBEE55DD11F427785A12328E6E01C8E
+        type: curriculum
+      - value: curriculum_recognition_bathroom_items-17AAC383297949D698AC92BD7CEC8C4C
+        type: curriculum
+      - value: curriculum_recognition_bedroom_items-277B71CFDFF94C22A4F21A9C396A1501
+        type: curriculum
 
-  - id: categorization
+  - component: groupbox
     l10n:
       - locale: fr_FR
         details:
@@ -104,14 +129,19 @@ content:
           title: Categorization
           subtitle: Learning to sort and categorize.
           description: Explore activities to help care receivers classifying and organizing objects according to different categories and criteria.
-    curriculums:
-      - sorting_fruits_vegetables_basket-E6A322DC7A6E48518CED2CA2D3D2A595
-      - curriculum_categorization_sort_through-88C512E99B61485D93A7AD8C34ED6A76
-      - curriculum_categorization_sort_through_functional_category-64388748AF714B4880B8C7B6DD6D93F3
-      - curriculum_sort_objects_by_location-CC406024F40C4834A66BB7C8F0E8C0AD
-      - curriculum_sort_sweet_and_salty-5ED0AFBEC4504F6EBA52B26C65ED93CC
+    items:
+      - value: sorting_fruits_vegetables_basket-E6A322DC7A6E48518CED2CA2D3D2A595
+        type: curriculum
+      - value: curriculum_categorization_sort_through-88C512E99B61485D93A7AD8C34ED6A76
+        type: curriculum
+      - value: curriculum_categorization_sort_through_functional_category-64388748AF714B4880B8C7B6DD6D93F3
+        type: curriculum
+      - value: curriculum_sort_objects_by_location-CC406024F40C4834A66BB7C8F0E8C0AD
+        type: curriculum
+      - value: curriculum_sort_sweet_and_salty-5ED0AFBEC4504F6EBA52B26C65ED93CC
+        type: curriculum
 
-  - id: receptive_language
+  - component: groupbox
     l10n:
       - locale: fr_FR
         details:
@@ -123,16 +153,23 @@ content:
           title: Receptive Language
           subtitle: Understand and interpret words and phrases.
           description: Explore activities to help care receivers understand and interpret words and phrases.
-    curriculums:
-      - curriculum_receptive_language_identity_familiar_nouns-1607BEA72CC14285AB709C567E1BE5E7
-      - curriculum_receptive_language_ing_verbs-2B927C344CA94CD993DDB7AC4C7F46FD
-      - curriculum_receptive_language_identify_objects_by_function-9B35D447AB6C402DB13BA66E4F7F4E05
-      - curriculum_receptive_language_identify_objects_by_color-506EA3B894AE46EBAE4BE4AFFC65233F
-      - curriculum_receptive_language_identify_opposites-5B73795D20984208AF07C4686089266E
-      - curriculum_receptive_language_identify_positional_concepts-BC1E66BCFB994A76AF09C446407D8ECF
-      - curriculum_receptive_language_identify_number_quantity-4499A9AFB56B4476969B96CE32F5314C
+    items:
+      - value: curriculum_receptive_language_identity_familiar_nouns-1607BEA72CC14285AB709C567E1BE5E7
+        type: curriculum
+      - value: curriculum_receptive_language_ing_verbs-2B927C344CA94CD993DDB7AC4C7F46FD
+        type: curriculum
+      - value: curriculum_receptive_language_identify_objects_by_function-9B35D447AB6C402DB13BA66E4F7F4E05
+        type: curriculum
+      - value: curriculum_receptive_language_identify_objects_by_color-506EA3B894AE46EBAE4BE4AFFC65233F
+        type: curriculum
+      - value: curriculum_receptive_language_identify_opposites-5B73795D20984208AF07C4686089266E
+        type: curriculum
+      - value: curriculum_receptive_language_identify_positional_concepts-BC1E66BCFB994A76AF09C446407D8ECF
+        type: curriculum
+      - value: curriculum_receptive_language_identify_number_quantity-4499A9AFB56B4476969B96CE32F5314C
+        type: curriculum
 
-  - id: sound_recognition
+  - component: groupbox
     l10n:
       - locale: fr_FR
         details:
@@ -144,12 +181,15 @@ content:
           title: Sound Recognition
           subtitle: Identify and associate sounds with objects and actions.
           description: Explore activities to help care receivers identify and associate sounds with objects and actions.
-    curriculums:
-      - curriculum_recognition_sounds_emotions-2D48CCB418BF4808BCB16148C901C617
-      - curriculum_recognition_sounds_musical_instruments-6A5EF209D00942F4AEEA4AEC6DAC052A
-      - curriculum_recognition_sounds_animals-FED25D9B424E42019F03593FE0D65AEE
+    items:
+      - value: curriculum_recognition_sounds_emotions-2D48CCB418BF4808BCB16148C901C617
+        type: curriculum
+      - value: curriculum_recognition_sounds_musical_instruments-6A5EF209D00942F4AEEA4AEC6DAC052A
+        type: curriculum
+      - value: curriculum_recognition_sounds_animals-FED25D9B424E42019F03593FE0D65AEE
+        type: curriculum
 
-  - id: numeracy_skills
+  - component: groupbox
     l10n:
       - locale: fr_FR
         details:
@@ -161,13 +201,17 @@ content:
           title: Numeration
           subtitle: Learn to count and manipulate numbers.
           description: Explore activities to help care receivers develop their numeracy skills, such as counting and number recognition.
-    curriculums:
-      - curriculum_receptive_language_identify_number_quantity-4499A9AFB56B4476969B96CE32F5314C
-      - curriculum_counting_candies-215DCF9CCB7B4E36A73273DC42D848E9
-      - curriculum_counting_flower_petals-3F83E1E0F3094DC787258B9CEEF227A1
-      - curriculum_recognition_digital_constellations-0C50B1358BF146DBA286423A4A32A85F
+    items:
+      - value: curriculum_receptive_language_identify_number_quantity-4499A9AFB56B4476969B96CE32F5314C
+        type: curriculum
+      - value: curriculum_counting_candies-215DCF9CCB7B4E36A73273DC42D848E9
+        type: curriculum
+      - value: curriculum_counting_flower_petals-3F83E1E0F3094DC787258B9CEEF227A1
+        type: curriculum
+      - value: curriculum_recognition_digital_constellations-0C50B1358BF146DBA286423A4A32A85F
+        type: curriculum
 
-  - id: animals
+  - component: groupbox
     l10n:
       - locale: fr_FR
         details:
@@ -179,19 +223,29 @@ content:
           title: Animals
           subtitle: Learn to recognize animals and their environment.
           description: Discover activities to help care receivers identify animals.
-    curriculums:
-      - curriculum_animal_memory-7C75908B86D748A283AA080D40642BE7
-      - curriculum_animal_recognition_farm_animals-7D02DB707DD945A38BC65BDD86D2CFEA
-      - curriculum_animal_recognition_forest_animals-E3C3263704DC49FE8C861DDB04E27D0B
-      - curriculum_animal_recognition_insects-D4B717CBC9B5484490A2E86B32D400AE
-      - curriculum_animal_recognition_pets-358521AE2F434D54BFFFA513ED608529
-      - curriculum_animal_recognition_savannah_animals-FB96DF24CDBB463E987E241FDC5BEA17
-      - curriculum_animal_recognition_sea_animals-ADBEC52B10B0423E96B3F08CEE042752
-      - curriculum_recognition_the_ice_floe-0EAFF8A46A4C4D60A320EBBBF2CC03B8
-      - curriculum_order_by_size-1FAED1FF14134571849325B6EC9197B5
-      - curriculum_order_by_size_different_animals-3158E58D908E43D29967B04D29C21912
+    items:
+      - value: curriculum_animal_memory-7C75908B86D748A283AA080D40642BE7
+        type: curriculum
+      - value: curriculum_animal_recognition_farm_animals-7D02DB707DD945A38BC65BDD86D2CFEA
+        type: curriculum
+      - value: curriculum_animal_recognition_forest_animals-E3C3263704DC49FE8C861DDB04E27D0B
+        type: curriculum
+      - value: curriculum_animal_recognition_insects-D4B717CBC9B5484490A2E86B32D400AE
+        type: curriculum
+      - value: curriculum_animal_recognition_pets-358521AE2F434D54BFFFA513ED608529
+        type: curriculum
+      - value: curriculum_animal_recognition_savannah_animals-FB96DF24CDBB463E987E241FDC5BEA17
+        type: curriculum
+      - value: curriculum_animal_recognition_sea_animals-ADBEC52B10B0423E96B3F08CEE042752
+        type: curriculum
+      - value: curriculum_recognition_the_ice_floe-0EAFF8A46A4C4D60A320EBBBF2CC03B8
+        type: curriculum
+      - value: curriculum_order_by_size-1FAED1FF14134571849325B6EC9197B5
+        type: curriculum
+      - value: curriculum_order_by_size_different_animals-3158E58D908E43D29967B04D29C21912
+        type: curriculum
 
-  - id: colors
+  - component: groupbox
     l10n:
       - locale: fr_FR
         details:
@@ -203,12 +257,15 @@ content:
           title: Colors
           subtitle: Learn and recognize colors.
           description: Explore activities to help care receivers recognize and differentiate colors.
-    curriculums:
-      - color_bingo-69760D1DA61849E3926E3A939BBEF0CE
-      - curriculum_receptive_language_identify_objects_by_color-506EA3B894AE46EBAE4BE4AFFC65233F
-      - super_simon-C6EABAC161CD44C290B32202DFDCDAF6
+    items:
+      - value: color_bingo-69760D1DA61849E3926E3A939BBEF0CE
+        type: curriculum
+      - value: curriculum_receptive_language_identify_objects_by_color-506EA3B894AE46EBAE4BE4AFFC65233F
+        type: curriculum
+      - value: super_simon-C6EABAC161CD44C290B32202DFDCDAF6
+        type: curriculum
 
-  - id: weather_and_environment
+  - component: groupbox
     l10n:
       - locale: fr_FR
         details:
@@ -220,15 +277,21 @@ content:
           title: Weather and Environment
           subtitle: Learn to recognize weather elements and the environment.
           description: Discover activities to help care receivers identify and understand weather elements and nature.
-    curriculums:
-      - curriculum_leka_weather_robot-ED4C900D4ACB426384DC76F182BC19A5
-      - curriculum_recognition_weather_and_time-1D8E1AB667DB40B199479D731EF96F2E
-      - curriculum_recognition_seaside_holidays-B1BA5597BC594082AECE293AD25CFA89
-      - curriculum_recognition_winter_holidays-2B8E01DABDBC4863A962B785D4069B3E
-      - curriculum_recognition_the_ice_floe-0EAFF8A46A4C4D60A320EBBBF2CC03B8
-      - curriculum_recognition_garden_items-A1006027902E44C0B38BC3D3BAEDD4F6
+    items:
+      - value: curriculum_leka_weather_robot-ED4C900D4ACB426384DC76F182BC19A5
+        type: curriculum
+      - value: curriculum_recognition_weather_and_time-1D8E1AB667DB40B199479D731EF96F2E
+        type: curriculum
+      - value: curriculum_recognition_seaside_holidays-B1BA5597BC594082AECE293AD25CFA89
+        type: curriculum
+      - value: curriculum_recognition_winter_holidays-2B8E01DABDBC4863A962B785D4069B3E
+        type: curriculum
+      - value: curriculum_recognition_the_ice_floe-0EAFF8A46A4C4D60A320EBBBF2CC03B8
+        type: curriculum
+      - value: curriculum_recognition_garden_items-A1006027902E44C0B38BC3D3BAEDD4F6
+        type: curriculum
 
-  - id: human_body_and_physiological_needs
+  - component: groupbox
     l10n:
       - locale: fr_FR
         details:
@@ -240,11 +303,13 @@ content:
           title: Human Body and Physiological Needs
           subtitle: Learn about the human body and basic needs.
           description: Discover activities to help care receivers recognize body parts and understand basic physiological needs.
-    curriculums:
-      - curriculum_recognition_body_parts-80761A1D62BF4C6980BF20E7D9BE52B8
-      - curriculum_recognition_basic_physiological_needs-B697FEE9EF7946A2B704673FEEAA0824
+    items:
+      - value: curriculum_recognition_body_parts-80761A1D62BF4C6980BF20E7D9BE52B8
+        type: curriculum
+      - value: curriculum_recognition_basic_physiological_needs-B697FEE9EF7946A2B704673FEEAA0824
+        type: curriculum
 
-  - id: professions_and_sports
+  - component: groupbox
     l10n:
       - locale: fr_FR
         details:
@@ -256,11 +321,13 @@ content:
           title: Professions and Sports
           subtitle: Discover activities to explore the tools of professions and the equipment of sports.
           description: Activities to help people identify different professions and sports, as well as their tools and accessories.
-    curriculums:
-      - curriculum_recognition_professions-92ACC48ED3A041DE959EA5C2E8600441
-      - curriculum_recognition_sports-C7F3963541234712A2701C0EB9E2EEAE
+    items:
+      - value: curriculum_recognition_professions-92ACC48ED3A041DE959EA5C2E8600441
+        type: curriculum
+      - value: curriculum_recognition_sports-C7F3963541234712A2701C0EB9E2EEAE
+        type: curriculum
 
-  - id: transportation
+  - component: groupbox
     l10n:
       - locale: fr_FR
         details:
@@ -272,10 +339,11 @@ content:
           title: Modes of Transportation
           subtitle: Learn to recognize different modes of transportation.
           description: Discover activities to help care receivers identify modes of transportation and their uses.
-    curriculums:
-      - curriculum_recognition_modes_of_transportation-B20B0721C37644E9A0168481421893F8
+    items:
+      - value: curriculum_recognition_modes_of_transportation-B20B0721C37644E9A0168481421893F8
+        type: curriculum
 
-  - id: fruits_and_vegetables
+  - component: groupbox
     l10n:
       - locale: fr_FR
         details:
@@ -287,11 +355,13 @@ content:
           title: Fruits and Vegetables
           subtitle: Learn to recognize fruits and vegetables.
           description: Discover activities to help care receivers identify, classify, and name different fruits and vegetables.
-    curriculums:
-      - sorting_fruits_vegetables_basket-E6A322DC7A6E48518CED2CA2D3D2A595
-      - curriculum_fruits_and_vegetables_generalization-B6F2027A304C44F5B3C482EAFCD8DE7E
+    items:
+      - value: sorting_fruits_vegetables_basket-E6A322DC7A6E48518CED2CA2D3D2A595
+        type: curriculum
+      - value: curriculum_fruits_and_vegetables_generalization-B6F2027A304C44F5B3C482EAFCD8DE7E
+        type: curriculum
 
-  - id: social_relations
+  - component: groupbox
     l10n:
       - locale: fr_FR
         details:
@@ -303,12 +373,15 @@ content:
           title: Social Relations
           subtitle: Learn to recognize and understand social interactions.
           description: Discover activities to help care receivers identify family members, friends, and other social relationships while developing social interaction skills.
-    curriculums:
-      - curriculum_recognition_emotions_in_context-A135163C8D8646DE95D0854FD5E155EB
-      - curriculum_recognition_family_members-AD1A9E2D874C47AEB3445D80E34DC702
-      - curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
+    items:
+      - value: curriculum_recognition_emotions_in_context-A135163C8D8646DE95D0854FD5E155EB
+        type: curriculum
+      - value: curriculum_recognition_family_members-AD1A9E2D874C47AEB3445D80E34DC702
+        type: curriculum
+      - value: curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
+        type: curriculum
 
-  - id: food_and_cooking
+  - component: groupbox
     l10n:
       - locale: fr_FR
         details:
@@ -320,13 +393,17 @@ content:
           title: Food and Cooking
           subtitle: Learn to recognize various foods and the world of cooking.
           description: Discover activities designed to help participants become familiar with a variety of foods, understand their role in cooking, and explore the tools used in the kitchen.
-    curriculums:
-      - curriculum_sort_sweet_and_salty-5ED0AFBEC4504F6EBA52B26C65ED93CC
-      - curriculum_recognition_kitchen_items-FCBEE55DD11F427785A12328E6E01C8E
-      - curriculum_fruits_and_vegetables_generalization-B6F2027A304C44F5B3C482EAFCD8DE7E
-      - sorting_fruits_vegetables_basket-E6A322DC7A6E48518CED2CA2D3D2A595
+    items:
+      - value: curriculum_sort_sweet_and_salty-5ED0AFBEC4504F6EBA52B26C65ED93CC
+        type: curriculum
+      - value: curriculum_recognition_kitchen_items-FCBEE55DD11F427785A12328E6E01C8E
+        type: curriculum
+      - value: curriculum_fruits_and_vegetables_generalization-B6F2027A304C44F5B3C482EAFCD8DE7E
+        type: curriculum
+      - value: sorting_fruits_vegetables_basket-E6A322DC7A6E48518CED2CA2D3D2A595
+        type: curriculum
 
-  - id: festivities_and_holidays
+  - component: groupbox
     l10n:
       - locale: fr_FR
         details:
@@ -338,9 +415,14 @@ content:
           title: Festivities and holidays
           subtitle: Celebrate festivities and holidays with fun activities.
           description: Explore themed activities to engage care receivers during various celebrations, such as Halloween, Christmas, Easter, but also to prepare for the holidays..
-    curriculums:
-      - curriculum_christmas_memory-EFC444BBDEF24E08813FF472FFA5365D
-      - curriculum_recognition_christmas-DA8D769CC7C643CFA0484FAE4B22D1F7
-      - curriculum_recognition_winter_holidays-2B8E01DABDBC4863A962B785D4069B3E
-      - curriculum_recognition_halloween-DD01FCFF7BCB4A44A78BF7C813CE8DF5
-      - curriculum_recognition_seaside_holidays-B1BA5597BC594082AECE293AD25CFA89
+    items:
+      - value: curriculum_christmas_memory-EFC444BBDEF24E08813FF472FFA5365D
+        type: curriculum
+      - value: curriculum_recognition_christmas-DA8D769CC7C643CFA0484FAE4B22D1F7
+        type: curriculum
+      - value: curriculum_recognition_winter_holidays-2B8E01DABDBC4863A962B785D4069B3E
+        type: curriculum
+      - value: curriculum_recognition_halloween-DD01FCFF7BCB4A44A78BF7C813CE8DF5
+        type: curriculum
+      - value: curriculum_recognition_seaside_holidays-B1BA5597BC594082AECE293AD25CFA89
+        type: curriculum

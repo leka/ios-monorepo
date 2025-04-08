@@ -48,7 +48,7 @@ public struct CurationButton: View {
                     .foregroundStyle(.white)
             }
             .frame(height: 100)
-            .frame(maxWidth: .infinity)
+            .frame(minWidth: 200, maxWidth: .infinity)
         }
         .backgroundStyle(self.color)
     }

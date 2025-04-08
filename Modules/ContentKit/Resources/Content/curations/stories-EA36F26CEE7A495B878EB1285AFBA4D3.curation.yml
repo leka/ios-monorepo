@@ -1,0 +1,46 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: EA36F26CEE7A495B878EB1285AFBA4D3
+icon: text.book.closed
+color: 0x3C336B
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Histoires
+      subtitle: Histoires interactives et ludiques qui vous entraînent dans les aventures de Hanna et Leka.
+      description: Une collection d'histoires captivantes et interactives remplies de couleurs, de musique et d'activités amusantes, stimulant la créativité et l'apprentissage des lecteurs.
+  - locale: en_US
+    details:
+      title: Stories
+      subtitle: Interactive and playful stories that immerse you in the adventures of Hanna and Leka.
+      description: A collection of captivating, interactive stories filled with colors, music, and fun activities that stimulate readers' creativity and learning.
+
+content:
+  - component: grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title:
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title:
+          subtitle:
+          description:
+    items:
+      - value: hanna_meets_leka-FF7618528E194E8CB3A6950E08562D16
+        type: story
+      - value: hanna_plays_music-CB8EB22A988049FB900AD5B66F78B00F
+        type: story
+      - value: hanna_dances_with_leka-47509B00A3B94C27B7D64DC1BC3B6895
+        type: story
+      - value: hanna_makes_pancakes-5213404A073D47198A6B3B694396CB8B
+        type: story
+      - value: hanna_at_the_beach-60C133CB19F94BA0864DFA9BF6E7F696
+        type: story
+      - value: first_day_of_school-8DE906A44CC642F8824C567169AF6626
+        type: story

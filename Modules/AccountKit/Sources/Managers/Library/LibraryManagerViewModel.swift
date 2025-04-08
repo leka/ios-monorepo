@@ -39,6 +39,24 @@ public class LibraryManagerViewModel {
     public var alertType: RemoveAlertType = .none
     public var itemToRemove: LibraryItem?
 
+    public func isContentSaved(id: String) -> Bool {
+        self.activities.contains { $0.id == id } ||
+            self.curriculums.contains { $0.id == id } ||
+            self.stories.contains { $0.id == id }
+    }
+
+    public func isContentFavorited(by caregiver: String, contentID: String) -> Bool {
+        if let activity = self.activities.first(where: { $0.id == contentID }) {
+            activity.favoritedBy.keys.contains(caregiver)
+        } else if let curriculum = self.curriculums.first(where: { $0.id == contentID }) {
+            curriculum.favoritedBy.keys.contains(caregiver)
+        } else if let story = self.stories.first(where: { $0.id == contentID }) {
+            story.favoritedBy.keys.contains(caregiver)
+        } else {
+            false
+        }
+    }
+
     // Activities
 
     public func isActivitySaved(activityID: String) -> Bool {
@@ -141,6 +159,46 @@ public class LibraryManagerViewModel {
 }
 
 public extension LibraryManagerViewModel {
+    func addItemToLibrary(_ item: LibraryItem) {
+        switch item {
+            case let .activity(activity):
+                self.libraryManager.addActivity(
+                    activityID: activity.id!,
+                    caregiverID: activity.caregiverID
+                )
+            case let .curriculum(curriculum):
+                self.libraryManager.addCurriculum(
+                    curriculumID: curriculum.id!,
+                    caregiverID: curriculum.caregiverID
+                )
+            case let .story(story):
+                self.libraryManager.addStory(
+                    storyID: story.id!,
+                    caregiverID: story.caregiverID
+                )
+        }
+    }
+
+    func addItemToFavorite(_ item: LibraryItem) {
+        switch item {
+            case let .activity(activity):
+                self.libraryManager.addActivityToLibraryAsFavorite(
+                    activityID: activity.id!,
+                    caregiverID: activity.caregiverID
+                )
+            case let .curriculum(curriculum):
+                self.libraryManager.addCurriculumToLibraryAsFavorite(
+                    curriculumID: curriculum.id!,
+                    caregiverID: curriculum.caregiverID
+                )
+            case let .story(story):
+                self.libraryManager.addStoryToLibraryAsFavorite(
+                    storyID: story.id!,
+                    caregiverID: story.caregiverID
+                )
+        }
+    }
+
     func requestItemRemoval(_ item: LibraryItem, caregiverID: String) {
         if self.isItemFavoritedByOthers(item: item, caregiverID: caregiverID) {
             self.alertType = .informOthersFavorited
@@ -165,6 +223,20 @@ public extension LibraryManagerViewModel {
                 self.libraryManager.removeCurriculum(curriculumID: curriculum.id!)
             case let .story(story):
                 self.libraryManager.removeStory(storyID: story.id!)
+        }
+
+        self.itemToRemove = nil
+        self.showRemoveAlert = false
+    }
+
+    func removeItemFromFavorites(_ item: LibraryItem) {
+        switch item {
+            case let .activity(activity):
+                self.libraryManager.removeActivityFromFavorites(activityID: activity.id!, caregiverID: activity.caregiverID)
+            case let .curriculum(curriculum):
+                self.libraryManager.removeCurriculumFromFavorites(curriculumID: curriculum.id!, caregiverID: curriculum.caregiverID)
+            case let .story(story):
+                self.libraryManager.removeStoryFromFavorites(storyID: story.id!, caregiverID: story.caregiverID)
         }
 
         self.itemToRemove = nil

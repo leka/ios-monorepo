@@ -2,47 +2,6 @@
     "version": "1.0",
     "sourceLanguage": "en",
     "strings": {
-        "content_kit.groupbox_item_view.activity_count_label": {
-            "comment": "Activity count label of GroupboxItem",
-            "localizations": {
-                "en": {
-                    "variations": {
-                        "plural": {
-                            "one": {
-                                "stringUnit": {
-                                    "state": "needs_review",
-                                    "value": "%d activity"
-                                }
-                            },
-                            "other": {
-                                "stringUnit": {
-                                    "state": "translated",
-                                    "value": "%d activities"
-                                }
-                            }
-                        }
-                    }
-                },
-                "fr": {
-                    "variations": {
-                        "plural": {
-                            "one": {
-                                "stringUnit": {
-                                    "state": "translated",
-                                    "value": "%d activit\u00e9"
-                                }
-                            },
-                            "other": {
-                                "stringUnit": {
-                                    "state": "translated",
-                                    "value": "%d activtit\u00e9s"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "lekaapp.TextFieldEmail.invalidEmailErrorLabel": {
             "comment": "TextFieldEmail invalid Email Error Label",
             "localizations": {
@@ -1743,6 +1702,47 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Changement de Mot de Passe"
+                    }
+                }
+            }
+        },
+        "lekaapp.groupbox_item_view.activity_count_label": {
+            "comment": "Activity count label of GroupboxItem",
+            "localizations": {
+                "en": {
+                    "variations": {
+                        "plural": {
+                            "one": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activity"
+                                }
+                            },
+                            "other": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activities"
+                                }
+                            }
+                        }
+                    }
+                },
+                "fr": {
+                    "variations": {
+                        "plural": {
+                            "one": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activit\u00e9"
+                                }
+                            },
+                            "other": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activit\u00e9s"
+                                }
+                            }
+                        }
                     }
                 }
             }

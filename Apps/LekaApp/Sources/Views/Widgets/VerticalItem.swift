@@ -6,11 +6,10 @@ import AccountKit
 import ContentKit
 import DesignKit
 import SwiftUI
-import UtilsKit
 
-// MARK: - ListItem
+// MARK: - VerticalItem
 
-public struct ListItem: View {
+public struct VerticalItem: View {
     // MARK: Lifecycle
 
     public init(_ content: CurationItemModel) {
@@ -54,49 +53,38 @@ public struct ListItem: View {
     // MARK: Public
 
     public var body: some View {
-        HStack(spacing: 0) {
-            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id,
-               self.libraryManagerViewModel.isContentFavorited(
-                   by: currentCaregiverID,
-                   contentID: curationItem.id
-               )
-            {
-                Image(systemName: "star.fill")
-                    .font(.system(size: 10))
-                    .foregroundColor(self.styleManager.accentColor ?? .blue)
-                    .frame(width: 10)
-                    .padding(.trailing)
-            } else {
-                Color.clear
-                    .frame(width: 10)
-                    .padding(.trailing)
-            }
-
+        VStack {
             Image(uiImage: self.icon)
                 .resizable()
                 .scaledToFit()
-                .frame(width: self.kIconSize)
                 .clipShape(AnyShape(self.shape))
+                .frame(width: self.kIconSize)
+                .padding(.bottom, 15)
 
-            VStack(alignment: .leading) {
+            HStack(spacing: 5) {
                 Text(self.title)
-                    .font(.body)
+                    .font(.headline)
+                    .foregroundStyle(Color.primary)
 
-                Text(self.subtitle ?? "")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id,
+                   self.libraryManagerViewModel.isContentFavorited(
+                       by: currentCaregiverID,
+                       contentID: self.curationItem.id
+                   )
+                {
+                    Text(Image(systemName: "star.fill"))
+                        .font(.caption)
+                        .foregroundColor(self.styleManager.accentColor ?? .blue)
+                }
             }
-            .padding()
+
+            Text(self.subtitle ?? "")
+                .font(.body)
+                .foregroundStyle(Color.secondary)
 
             Spacer()
-
-            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                ContentItemMenu(self.curationItem, caregiverID: currentCaregiverID)
-            }
         }
-        .frame(height: 60)
-        .frame(minWidth: 200, maxWidth: .infinity)
-        .contentShape(Rectangle())
+        .padding(.vertical)
     }
 
     // MARK: Private
@@ -107,7 +95,7 @@ public struct ListItem: View {
     private var curationItem: CurationItemModel = .init(id: UUID().uuidString, contentType: .activity)
     private var icon: UIImage = .init(systemName: "exclamationmark.triangle")!
     private var shape: any Shape = Rectangle()
-    private let kIconSize: CGFloat = 60
+    private let kIconSize: CGFloat = 180
     private var title: String = "Content not found"
     private var subtitle: String?
 
@@ -130,15 +118,10 @@ public struct ListItem: View {
         .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
     ]
 
-    ScrollView(.horizontal, showsIndicators: false) {
-        HStack(spacing: 30) {
-            ForEach(curations.chunked(into: 3), id: \.self) { chunk in
-                VStack {
-                    ForEach(chunk) { curation in
-                        ListItem(curation)
-                        Divider()
-                    }
-                }
+    return ScrollView(.horizontal) {
+        HStack {
+            ForEach(curations) { curation in
+                VerticalItem(curation)
             }
         }
     }
