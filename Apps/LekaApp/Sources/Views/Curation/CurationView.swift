@@ -72,6 +72,17 @@ struct CurationView: View {
                                             Text(section.details.subtitle)
                                                 .font(.headline)
                                         }
+
+                                        Spacer()
+
+                                        if section.items.count > 8 {
+                                            NavigationLink(destination:
+                                                CurationSeeMoreFactory(section: section)
+                                                    .navigationTitle(section.details.title)
+                                            ) {
+                                                Text(l10n.SearchGridView.seeAllLabel)
+                                            }
+                                        }
                                     }
                                     if section.details.description != "" {
                                         Text(section.details.description)
@@ -101,6 +112,16 @@ struct CurationView: View {
     @ObservedObject private var styleManager: StyleManager = .shared
 
     private let curation: CategoryCuration
+}
+
+// MARK: - l10n.CurationView
+
+extension l10n {
+    enum CurationView {
+        static let seeAllLabel = LocalizedString("lekaapp.curation_view.see_all_label",
+                                                 value: "See all",
+                                                 comment: "CurationView's 'See all' button label")
+    }
 }
 
 #Preview {
