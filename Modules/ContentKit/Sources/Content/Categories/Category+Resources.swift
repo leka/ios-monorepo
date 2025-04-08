@@ -11,24 +11,27 @@ import Yams
 
 // swiftlint:disable nesting
 
-public struct CategoryResources: CategoryProtocol {
+public struct CategoryResources: Identifiable, CategoryProtocol {
     // MARK: Lifecycle
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
+        self.id = try container.decode(String.self, forKey: .id)
         self.l10n = try container.decode([Category.LocalizedDetails].self, forKey: .l10n)
         self.sections = try container.decode([CategoryResources.Section].self, forKey: .content)
     }
 
     // MARK: Public
 
+    public let id: String
     public var l10n: [Category.LocalizedDetails]
     public var sections: [CategoryResources.Section]
 
     // MARK: Internal
 
     enum CodingKeys: String, CodingKey {
+        case id
         case l10n
         case content
     }

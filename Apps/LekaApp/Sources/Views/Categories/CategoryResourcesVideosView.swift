@@ -62,7 +62,7 @@ struct CategoryResourcesVideosView: View {
 
     // MARK: Private
 
-    private let category: CategoryResources = ContentKit.videosResources
+    private let category = ContentKit.allResources.first(where: { $0.id == "videos" })!
 
     @ObservedObject private var navigation: Navigation = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
