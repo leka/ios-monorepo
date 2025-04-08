@@ -59,7 +59,7 @@ class Navigation: ObservableObject {
 
     @Published var navigateToAccountCreationProcess: Bool = false
 
-    var selectedCategory: Category? = .home {
+    var selectedCategory: Category? = .curriculums {
         willSet {
             self.disableUICompletly = true
             // ? Note: early return to avoid reseting path
