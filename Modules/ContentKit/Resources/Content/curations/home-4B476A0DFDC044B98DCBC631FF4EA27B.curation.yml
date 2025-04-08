@@ -132,6 +132,12 @@ content:
         type: curation
       - value: hard-181519A691954BAC8C4825E660E91E45
         type: curation
+      - value: easy-0E1860BB217C4E2DA93AF366B1D1F283
+        type: curation
+      - value: medium-E2C641B879A248C982AA0C93B21A690A
+        type: curation
+      - value: hard-181519A691954BAC8C4825E660E91E45
+        type: curation
   - component: horizontal_card_list
     l10n:
       - locale: fr_FR

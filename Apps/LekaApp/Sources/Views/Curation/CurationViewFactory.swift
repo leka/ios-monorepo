@@ -51,7 +51,7 @@ public struct CurationViewFactory: View {
         switch self.layoutType {
             case .horizontalGrid:
                 ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHGrid(rows: self.rows) {
+                    LazyHGrid(rows: self.rows, spacing: 15) {
                         let items = self.section.items.prefix(self.componentItemType == .columnListItem ? 15 : 8)
                         ForEach(items) { item in
                             NavigationLink(destination:
@@ -64,7 +64,7 @@ public struct CurationViewFactory: View {
                 }
                 .padding()
             case .verticalGrid:
-                LazyVGrid(columns: self.columns) {
+                LazyVGrid(columns: self.columns, spacing: 10) {
                     ForEach(self.section.items) { item in
                         NavigationLink(destination:
                             AnyView(self.curationDestination(item.curation))
@@ -94,11 +94,11 @@ public struct CurationViewFactory: View {
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
 
     private var rows: [GridItem] {
-        Array(repeating: GridItem(), count: self.section.componentType == .horizontalColumnList ? 3 : 1)
+        Array(repeating: GridItem(spacing: 15), count: self.section.componentType == .horizontalColumnList ? 3 : 1)
     }
 
     private var columns: [GridItem] {
-        Array(repeating: GridItem(), count: self.section.items.count % 3 == 0 || self.section.items.count > 4 ? 3 : 2)
+        Array(repeating: GridItem(spacing: 10), count: self.section.items.count % 3 == 0 || self.section.items.count > 4 ? 3 : 2)
     }
 
     private func onStartActivity(_ activity: Activity) {
