@@ -32,7 +32,7 @@ public struct CurriculumHorizontalListView: View {
                                 ]
                             )
                     ) {
-                        GroupboxItem(CurationItemModel(id: curriculum.id, contentType: .curriculum))
+                        CardItem(CurationItemModel(id: curriculum.id, contentType: .curriculum))
                     }
                     .simultaneousGesture(TapGesture().onEnded {
                         AnalyticsManager.logEventSelectContent(

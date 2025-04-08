@@ -26,7 +26,7 @@ struct AllPublishedActivitiesView: View {
                                 self.navigation.currentActivity = activity
                                 self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
                             })) {
-                                VerticalItem(CurationItemModel(id: activity.uuid, contentType: .activity))
+                                ContentGridItem(CurationItemModel(id: activity.uuid, contentType: .activity))
                             }
                     }
                 }

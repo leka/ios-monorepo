@@ -83,7 +83,7 @@ public struct SubskillsGridView: View {
                                     NavigationLink(destination:
                                         ActivityDetailsView(activity: activity, onStartActivity: self.onActivitySelected))
                                     {
-                                        VerticalItem(CurationItemModel(id: activity.uuid, contentType: .activity))
+                                        ContentGridItem(CurationItemModel(id: activity.uuid, contentType: .activity))
                                     }
                                 }
                             }

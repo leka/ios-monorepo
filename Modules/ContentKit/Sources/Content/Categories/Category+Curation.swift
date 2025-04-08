@@ -94,11 +94,11 @@ public extension CategoryCuration {
 
         public enum ComponentType: String, Codable {
             case carousel
-            case column
-            case groupbox
-            case grid
-            case verticalButton = "vertical_button"
-            case horizontalButton = "horizontal_button"
+            case horizontalColumnList = "horizontal_column_list"
+            case horizontalCardList = "horizontal_card_list"
+            case verticalContentList = "vertical_content_list"
+            case verticalTileGrid = "vertical_tile_grid"
+            case horizontalTileGrid = "horizontal_tile_grid"
         }
 
         public let id = UUID()

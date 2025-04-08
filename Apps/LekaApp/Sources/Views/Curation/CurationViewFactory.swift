@@ -6,32 +6,32 @@ import AccountKit
 import ContentKit
 import SwiftUI
 
-// MARK: - WidgetFactory
+// MARK: - CurationViewFactory
 
-public struct WidgetFactory: View {
+public struct CurationViewFactory: View {
     // MARK: Lifecycle
 
     public init(section: CategoryCuration.Section) {
         self.section = section
         switch section.componentType {
             case .carousel:
-                self.layoutType = .horizontalScroll
-                self.widgetType = .contentCard
-            case .column:
-                self.layoutType = .horizontalScrollList
-                self.widgetType = .listItem
-            case .groupbox:
-                self.layoutType = .horizontalScroll
-                self.widgetType = .groupbox
-            case .grid:
+                self.layoutType = .horizontalGrid
+                self.componentItemType = .carouselItem
+            case .horizontalColumnList:
+                self.layoutType = .horizontalGrid
+                self.componentItemType = .columnListItem
+            case .horizontalCardList:
+                self.layoutType = .horizontalGrid
+                self.componentItemType = .cardItem
+            case .verticalContentList:
                 self.layoutType = .verticalGrid
-                self.widgetType = .verticalItem
-            case .verticalButton:
+                self.componentItemType = .contentGridItem
+            case .verticalTileGrid:
                 self.layoutType = .verticalGrid
-                self.widgetType = .curationButton
-            case .horizontalButton:
-                self.layoutType = .horizontalScroll
-                self.widgetType = .curationButton
+                self.componentItemType = .tileItem
+            case .horizontalTileGrid:
+                self.layoutType = .horizontalGrid
+                self.componentItemType = .tileItem
         }
     }
 
@@ -39,28 +39,11 @@ public struct WidgetFactory: View {
 
     public var body: some View {
         switch self.layoutType {
-            case .horizontalScrollList:
+            case .horizontalGrid:
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 30) {
-                        ForEach(self.section.items.chunked(into: 3), id: \.self) { chunk in
-                            VStack {
-                                ForEach(chunk) { item in
-                                    NavigationLink(destination:
-                                        AnyView(self.curationDestination(item.curation))
-                                    ) {
-                                        AnyView(self.curationLabel(item.curation))
-                                    }
-                                    Divider()
-                                }
-                            }
-                        }
-                    }
-                }
-                .padding()
-            case .horizontalScroll:
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        ForEach(self.section.items) { item in
+                    LazyHGrid(rows: self.rows) {
+                        let items = self.section.items.prefix(self.componentItemType == .columnListItem ? 15 : 8)
+                        ForEach(items) { item in
                             NavigationLink(destination:
                                 AnyView(self.curationDestination(item.curation))
                             ) {
@@ -87,27 +70,30 @@ public struct WidgetFactory: View {
     // MARK: Internal
 
     enum LayoutType: String {
-        case horizontalScrollList
-        case horizontalScroll
+        case horizontalGrid
         case verticalGrid
     }
 
-    enum WidgetType: String {
-        case groupbox
-        case verticalItem
-        case listItem
-        case contentCard
-        case curationButton
+    enum ComponentItemType: String {
+        case carouselItem
+        case cardItem
+        case contentGridItem
+        case columnListItem
+        case tileItem
     }
 
     let section: CategoryCuration.Section
     let layoutType: LayoutType
-    let widgetType: WidgetType
+    let componentItemType: ComponentItemType
 
     // MARK: Private
 
     @ObservedObject private var navigation: Navigation = .shared
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
+
+    private var rows: [GridItem] {
+        Array(repeating: GridItem(), count: self.section.componentType == .horizontalColumnList ? 3 : 1)
+    }
 
     private var columns: [GridItem] {
         Array(repeating: GridItem(), count: self.section.items.count % 3 == 0 || self.section.items.count > 4 ? 3 : 2)
@@ -132,17 +118,17 @@ public struct WidgetFactory: View {
     }
 
     private func curationLabel(_ curation: CurationItemModel) -> any View {
-        switch self.widgetType {
-            case .groupbox:
-                GroupboxItem(curation)
-            case .verticalItem:
-                VerticalItem(curation)
-            case .listItem:
-                ListItem(curation)
-            case .contentCard:
-                ContentCard(curation)
-            case .curationButton:
-                CurationButton(curation)
+        switch self.componentItemType {
+            case .carouselItem:
+                CarouselItem(curation)
+            case .cardItem:
+                CardItem(curation)
+            case .contentGridItem:
+                ContentGridItem(curation)
+            case .columnListItem:
+                ColumnListItem(curation)
+            case .tileItem:
+                TileItem(curation)
         }
     }
 
@@ -174,10 +160,10 @@ public struct WidgetFactory: View {
 
 #Preview {
     VStack(spacing: 20) {
-        WidgetFactory(section: ContentKit.allCurations[4].sections[0])
-        WidgetFactory(section: ContentKit.allCurations[4].sections[1])
-        WidgetFactory(section: ContentKit.allCurations[4].sections[2])
-        WidgetFactory(section: ContentKit.allCurations[4].sections[3])
+        CurationViewFactory(section: ContentKit.allCurations[4].sections[0])
+        CurationViewFactory(section: ContentKit.allCurations[4].sections[1])
+        CurationViewFactory(section: ContentKit.allCurations[4].sections[2])
+        CurationViewFactory(section: ContentKit.allCurations[4].sections[3])
     }
     .padding()
 }

@@ -8,9 +8,9 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - GroupboxItem
+// MARK: - CardItem
 
-public struct GroupboxItem: View {
+public struct CardItem: View {
     // MARK: Lifecycle
 
     public init?(_ content: CurationItemModel) {
@@ -47,7 +47,7 @@ public struct GroupboxItem: View {
                 self.subtitle = story.details.subtitle
                 self.shape = RoundedRectangle(cornerRadius: 10 / 57 * 150)
             default:
-                log.error("Content \(content.id) is a curation and cannot be decoded as GroupboxItem")
+                log.error("Content \(content.id) is a curation and cannot be decoded as CardItem")
                 return nil
         }
     }
@@ -117,7 +117,7 @@ public struct GroupboxItem: View {
                         }
 
                         if let activityCount = self.activityCount {
-                            Text(l10n.GroupboxItem.activityCountLabel(activityCount))
+                            Text(l10n.CardItem.activityCountLabel(activityCount))
                                 .font(.caption.bold())
                                 .foregroundStyle(Color.secondary)
                         }
@@ -145,13 +145,13 @@ public struct GroupboxItem: View {
     private var libraryManagerViewModel: LibraryManagerViewModel = .shared
 }
 
-// MARK: - l10n.GroupboxItem
+// MARK: - l10n.CardItem
 
 extension l10n {
-    enum GroupboxItem {
+    enum CardItem {
         static let activityCountLabel = LocalizedStringInterpolation("lekaapp.groupbox_item_view.activity_count_label",
                                                                      value: "%d activity",
-                                                                     comment: "Activity count label of GroupboxItem")
+                                                                     comment: "Activity count label of CardItem")
     }
 }
 
@@ -167,7 +167,7 @@ extension l10n {
     return ScrollView(.horizontal) {
         HStack {
             ForEach(curations) { curation in
-                GroupboxItem(curation)
+                CardItem(curation)
             }
         }
     }

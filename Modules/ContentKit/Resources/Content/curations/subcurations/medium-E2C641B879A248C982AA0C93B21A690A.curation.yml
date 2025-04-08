@@ -19,7 +19,7 @@ l10n:
       description:
 
 content:
-  - component: groupbox
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:
@@ -52,7 +52,7 @@ content:
         type: curriculum
       - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
         type: activity
-  - component: column
+  - component: horizontal_column_list
     l10n:
       - locale: fr_FR
         details:
@@ -85,7 +85,7 @@ content:
         type: curriculum
       - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
         type: activity
-  - component: groupbox
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:

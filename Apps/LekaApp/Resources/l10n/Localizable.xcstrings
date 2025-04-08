@@ -1419,6 +1419,24 @@
                 }
             }
         },
+        "lekaapp.curation_view.see_all_label": {
+            "comment": "CurationView's 'See all' button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "See all"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Voir plus"
+                    }
+                }
+            }
+        },
         "lekaapp.curriculum_details_view.activities_section_title": {
             "comment": "CurriculumDetailsView 'activities' section title",
             "extractionState": "extracted_with_value",
@@ -1941,7 +1959,7 @@
             }
         },
         "lekaapp.groupbox_item_view.activity_count_label": {
-            "comment": "Activity count label of GroupboxItem",
+            "comment": "Activity count label of CardItem",
             "localizations": {
                 "en": {
                     "variations": {

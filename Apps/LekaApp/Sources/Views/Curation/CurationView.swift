@@ -82,7 +82,7 @@ struct CurationView: View {
                                 .padding(.horizontal)
                             }
 
-                            WidgetFactory(section: section)
+                            CurationViewFactory(section: section)
 
                             Divider()
                                 .padding(.horizontal)
