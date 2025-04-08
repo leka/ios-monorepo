@@ -19,7 +19,7 @@ l10n:
       description: Curated groups of activities developed with caregivers for stepwise progression.
 
 content:
-  - component: groupbox
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:
@@ -43,7 +43,7 @@ content:
       - value: curriculum_order_by_size_different_animals-3158E58D908E43D29967B04D29C21912
         type: curriculum
 
-  - component: groupbox
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:
@@ -71,7 +71,7 @@ content:
       - value: curriculum_recognition_emotions_generalization-173A0E0985D944F9835E2205867121FC
         type: curriculum
 
-  - component: groupbox
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:
@@ -93,7 +93,7 @@ content:
       - value: curriculum_order_by_size_different_animals-3158E58D908E43D29967B04D29C21912
         type: curriculum
 
-  - component: groupbox
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:
@@ -117,7 +117,7 @@ content:
       - value: curriculum_recognition_bedroom_items-277B71CFDFF94C22A4F21A9C396A1501
         type: curriculum
 
-  - component: groupbox
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:
@@ -141,7 +141,7 @@ content:
       - value: curriculum_sort_sweet_and_salty-5ED0AFBEC4504F6EBA52B26C65ED93CC
         type: curriculum
 
-  - component: groupbox
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:
@@ -169,7 +169,7 @@ content:
       - value: curriculum_receptive_language_identify_number_quantity-4499A9AFB56B4476969B96CE32F5314C
         type: curriculum
 
-  - component: groupbox
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:
@@ -189,7 +189,7 @@ content:
       - value: curriculum_recognition_sounds_animals-FED25D9B424E42019F03593FE0D65AEE
         type: curriculum
 
-  - component: groupbox
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:
@@ -211,7 +211,7 @@ content:
       - value: curriculum_recognition_digital_constellations-0C50B1358BF146DBA286423A4A32A85F
         type: curriculum
 
-  - component: groupbox
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:
@@ -245,7 +245,7 @@ content:
       - value: curriculum_order_by_size_different_animals-3158E58D908E43D29967B04D29C21912
         type: curriculum
 
-  - component: groupbox
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:
@@ -265,7 +265,7 @@ content:
       - value: super_simon-C6EABAC161CD44C290B32202DFDCDAF6
         type: curriculum
 
-  - component: groupbox
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:
@@ -291,7 +291,7 @@ content:
       - value: curriculum_recognition_garden_items-A1006027902E44C0B38BC3D3BAEDD4F6
         type: curriculum
 
-  - component: groupbox
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:
@@ -309,7 +309,7 @@ content:
       - value: curriculum_recognition_basic_physiological_needs-B697FEE9EF7946A2B704673FEEAA0824
         type: curriculum
 
-  - component: groupbox
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:
@@ -327,7 +327,7 @@ content:
       - value: curriculum_recognition_sports-C7F3963541234712A2701C0EB9E2EEAE
         type: curriculum
 
-  - component: groupbox
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:
@@ -343,7 +343,7 @@ content:
       - value: curriculum_recognition_modes_of_transportation-B20B0721C37644E9A0168481421893F8
         type: curriculum
 
-  - component: groupbox
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:
@@ -361,7 +361,7 @@ content:
       - value: curriculum_fruits_and_vegetables_generalization-B6F2027A304C44F5B3C482EAFCD8DE7E
         type: curriculum
 
-  - component: groupbox
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:
@@ -381,7 +381,7 @@ content:
       - value: curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
         type: curriculum
 
-  - component: groupbox
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:
@@ -403,7 +403,7 @@ content:
       - value: sorting_fruits_vegetables_basket-E6A322DC7A6E48518CED2CA2D3D2A595
         type: curriculum
 
-  - component: groupbox
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:

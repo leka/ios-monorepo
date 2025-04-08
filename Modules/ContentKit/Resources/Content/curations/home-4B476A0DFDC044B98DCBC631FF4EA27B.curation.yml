@@ -42,7 +42,17 @@ content:
         type: curriculum
       - value: super_simon-C6EABAC161CD44C290B32202DFDCDAF6
         type: curriculum
-  - component: column
+      - value: animal_recognition_insects_1-14B267712FD3424E99DFEEFE27A37463
+        type: activity
+      - value: curriculum_counting_flower_petals-3F83E1E0F3094DC787258B9CEEF227A1
+        type: curriculum
+      - value: curriculum_recognition_sounds_animals-FED25D9B424E42019F03593FE0D65AEE
+        type: curriculum
+      - value: curriculum_sort_objects_by_location-CC406024F40C4834A66BB7C8F0E8C0AD
+        type: curriculum
+      - value: super_simon-C6EABAC161CD44C290B32202DFDCDAF6
+        type: curriculum
+  - component: horizontal_column_list
     l10n:
       - locale: fr_FR
         details:
@@ -73,7 +83,37 @@ content:
         type: curriculum
       - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
         type: activity
-  - component: vertical_button
+      - value: curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
+        type: curriculum
+      - value: melody-CB995F829411449AB32E6B8A688E3DDB
+        type: activity
+      - value: curriculum_recognition_winter_holidays-2B8E01DABDBC4863A962B785D4069B3E
+        type: curriculum
+      - value: curriculum_recognition_sports-C7F3963541234712A2701C0EB9E2EEAE
+        type: curriculum
+      - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
+        type: activity
+      - value: curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
+        type: curriculum
+      - value: melody-CB995F829411449AB32E6B8A688E3DDB
+        type: activity
+      - value: curriculum_recognition_winter_holidays-2B8E01DABDBC4863A962B785D4069B3E
+        type: curriculum
+      - value: curriculum_recognition_sports-C7F3963541234712A2701C0EB9E2EEAE
+        type: curriculum
+      - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
+        type: activity
+      - value: curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
+        type: curriculum
+      - value: melody-CB995F829411449AB32E6B8A688E3DDB
+        type: activity
+      - value: curriculum_recognition_winter_holidays-2B8E01DABDBC4863A962B785D4069B3E
+        type: curriculum
+      - value: curriculum_recognition_sports-C7F3963541234712A2701C0EB9E2EEAE
+        type: curriculum
+      - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
+        type: activity
+  - component: vertical_tile_grid
     l10n:
       - locale: fr_FR
         details:
@@ -92,7 +132,7 @@ content:
         type: curation
       - value: hard-181519A691954BAC8C4825E660E91E45
         type: curation
-  - component: groupbox
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:
@@ -125,7 +165,19 @@ content:
         type: curriculum
       - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
         type: activity
-  - component: column
+      - value: curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
+        type: curriculum
+      - value: melody-CB995F829411449AB32E6B8A688E3DDB
+        type: activity
+      - value: curriculum_recognition_winter_holidays-2B8E01DABDBC4863A962B785D4069B3E
+        type: curriculum
+      - value: curriculum_recognition_sports-C7F3963541234712A2701C0EB9E2EEAE
+        type: curriculum
+      - value: curriculum_recognition_modes_of_transportation-B20B0721C37644E9A0168481421893F8
+        type: curriculum
+      - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
+        type: activity
+  - component: horizontal_column_list
     l10n:
       - locale: fr_FR
         details:
@@ -156,7 +208,7 @@ content:
         type: curriculum
       - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
         type: activity
-  - component: groupbox
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:
@@ -189,7 +241,7 @@ content:
         type: curriculum
       - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
         type: activity
-  - component: horizontal_button
+  - component: horizontal_tile_grid
     layout: grid
     l10n:
       - locale: fr_FR

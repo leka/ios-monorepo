@@ -7,9 +7,9 @@ import LocalizationKit
 import SwiftUI
 import UtilsKit
 
-// MARK: - ContentCard
+// MARK: - CarouselItem
 
-public struct ContentCard: View {
+public struct CarouselItem: View {
     // MARK: Lifecycle
 
     public init?(_ content: CurationItemModel) {
@@ -42,7 +42,7 @@ public struct ContentCard: View {
                 self.title = story.details.title
                 self.subtitle = story.details.subtitle
             default:
-                log.error("Content \(content.id) is a curation and cannot be decoded as ContentCard")
+                log.error("Content \(content.id) is a curation and cannot be decoded as CarouselItem")
                 return nil
         }
     }
@@ -115,7 +115,7 @@ public struct ContentCard: View {
     return ScrollView(.horizontal) {
         HStack(spacing: 10) {
             ForEach(curations) { curation in
-                ContentCard(curation)
+                CarouselItem(curation)
             }
         }
     }

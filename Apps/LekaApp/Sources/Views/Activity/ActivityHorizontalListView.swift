@@ -34,7 +34,7 @@ public struct ActivityHorizontalListView: View {
                                 ]
                             )
                     ) {
-                        VerticalItem(CurationItemModel(id: activity.id, contentType: .activity))
+                        ContentGridItem(CurationItemModel(id: activity.id, contentType: .activity))
                             .frame(width: 280)
                     }
                     .simultaneousGesture(TapGesture().onEnded {
