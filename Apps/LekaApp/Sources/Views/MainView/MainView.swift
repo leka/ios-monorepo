@@ -203,7 +203,7 @@ struct MainView: View {
 
                     // ? DEVELOPER_MODE + TESTFLIGHT_BUILD
                     case .curationSandbox:
-                        CurationView(.home)
+                        CurationView(.sandbox)
 
                     case .allPublishedActivities:
                         AllPublishedActivitiesView()

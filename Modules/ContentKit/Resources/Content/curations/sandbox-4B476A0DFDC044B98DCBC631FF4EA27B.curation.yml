@@ -3,18 +3,18 @@
 # SPDX-License-Identifier: Apache-2.0
 
 uuid: 4B476A0DFDC044B98DCBC631FF4EA27B
-icon: house
+icon: wrench.and.screwdriver
 color: 0xFFEEFF
 
 l10n:
   - locale: fr_FR
     details:
-      title: Accueil
+      title: Bac à sable
       subtitle:
       description:
   - locale: en_US
     details:
-      title: Welcome
+      title: Sandbox
       subtitle:
       description:
 
