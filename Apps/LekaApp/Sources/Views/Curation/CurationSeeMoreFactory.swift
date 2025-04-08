@@ -6,41 +6,24 @@ import AccountKit
 import ContentKit
 import SwiftUI
 
-// MARK: - ComponentItemType
+// MARK: - CurationSeeMoreFactory
 
-enum ComponentItemType: String {
-    case carouselItem
-    case cardItem
-    case contentGridItem
-    case columnListItem
-    case tileItem
-}
-
-// MARK: - CurationViewFactory
-
-public struct CurationViewFactory: View {
+public struct CurationSeeMoreFactory: View {
     // MARK: Lifecycle
 
     public init(section: CategoryCuration.Section) {
         self.section = section
         switch section.componentType {
             case .carousel:
-                self.layoutType = .horizontalGrid
                 self.componentItemType = .carouselItem
             case .horizontalColumnList:
-                self.layoutType = .horizontalGrid
                 self.componentItemType = .columnListItem
             case .horizontalCardList:
-                self.layoutType = .horizontalGrid
                 self.componentItemType = .cardItem
             case .verticalContentList:
-                self.layoutType = .verticalGrid
                 self.componentItemType = .contentGridItem
-            case .verticalTileGrid:
-                self.layoutType = .verticalGrid
-                self.componentItemType = .tileItem
-            case .horizontalTileGrid:
-                self.layoutType = .horizontalGrid
+            case .verticalTileGrid,
+                 .horizontalTileGrid:
                 self.componentItemType = .tileItem
         }
     }
@@ -48,44 +31,23 @@ public struct CurationViewFactory: View {
     // MARK: Public
 
     public var body: some View {
-        switch self.layoutType {
-            case .horizontalGrid:
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHGrid(rows: self.rows) {
-                        let items = self.section.items.prefix(self.componentItemType == .columnListItem ? 15 : 8)
-                        ForEach(items) { item in
-                            NavigationLink(destination:
-                                AnyView(self.curationDestination(item.curation))
-                            ) {
-                                AnyView(self.curationLabel(item.curation))
-                            }
-                        }
+        ScrollView(showsIndicators: false) {
+            LazyVGrid(columns: self.columns) {
+                ForEach(self.section.items) { item in
+                    NavigationLink(destination:
+                        AnyView(self.curationDestination(item.curation))
+                    ) {
+                        AnyView(self.curationLabel(item.curation))
                     }
                 }
-                .padding()
-            case .verticalGrid:
-                LazyVGrid(columns: self.columns) {
-                    ForEach(self.section.items) { item in
-                        NavigationLink(destination:
-                            AnyView(self.curationDestination(item.curation))
-                        ) {
-                            AnyView(self.curationLabel(item.curation))
-                        }
-                    }
-                }
-                .padding()
+            }
         }
+        .padding(.horizontal)
     }
 
     // MARK: Internal
 
-    enum LayoutType: String {
-        case horizontalGrid
-        case verticalGrid
-    }
-
     let section: CategoryCuration.Section
-    let layoutType: LayoutType
     let componentItemType: ComponentItemType
 
     // MARK: Private
@@ -93,12 +55,8 @@ public struct CurationViewFactory: View {
     @ObservedObject private var navigation: Navigation = .shared
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
 
-    private var rows: [GridItem] {
-        Array(repeating: GridItem(), count: self.section.componentType == .horizontalColumnList ? 3 : 1)
-    }
-
     private var columns: [GridItem] {
-        Array(repeating: GridItem(), count: self.section.items.count % 3 == 0 || self.section.items.count > 4 ? 3 : 2)
+        Array(repeating: GridItem(), count: 3)
     }
 
     private func onStartActivity(_ activity: Activity) {
@@ -123,14 +81,10 @@ public struct CurationViewFactory: View {
         switch self.componentItemType {
             case .carouselItem:
                 CarouselItem(curation)
-            case .cardItem:
-                CardItem(curation)
-            case .contentGridItem:
-                ContentGridItem(curation)
-            case .columnListItem:
-                ColumnListItem(curation)
             case .tileItem:
                 TileItem(curation)
+            default:
+                ContentGridItem(curation)
         }
     }
 
@@ -162,10 +116,9 @@ public struct CurationViewFactory: View {
 
 #Preview {
     VStack(spacing: 20) {
-        CurationViewFactory(section: ContentKit.allCurations[4].sections[0])
-        CurationViewFactory(section: ContentKit.allCurations[4].sections[1])
-        CurationViewFactory(section: ContentKit.allCurations[4].sections[2])
-        CurationViewFactory(section: ContentKit.allCurations[4].sections[3])
+        CurationSeeMoreFactory(section: ContentKit.allCurations[0].sections[0])
+        CurationSeeMoreFactory(section: ContentKit.allCurations[0].sections[1])
+        CurationSeeMoreFactory(section: ContentKit.allCurations[0].sections[2])
     }
     .padding()
 }
