@@ -9,12 +9,12 @@ color: 0xFFEEFF
 l10n:
   - locale: fr_FR
     details:
-      title: Bac à sable
+      title: Accueil
       subtitle:
       description:
   - locale: en_US
     details:
-      title: Sandbox
+      title: Home
       subtitle:
       description:
 
@@ -23,259 +23,112 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Des contenus exclusifs
-          subtitle: Découvrez de tout nouveaux contenus educatifs
-          description: Franchement très exclusifs
+          title: Sélection du moment
+          subtitle:
+          description: Nos contenus les plus pertinents, choisis pour vous.
       - locale: en_US
         details:
-          title: Some exclusive contents
-          subtitle: Discover our brand new educational contents
-          description: Frankly so much exclusive
+          title: Top Picks
+          subtitle:
+          description: Our most relevant picks, just for you.
     items:
-      - value: animal_recognition_insects_1-14B267712FD3424E99DFEEFE27A37463
-        type: activity
-      - value: curriculum_counting_flower_petals-3F83E1E0F3094DC787258B9CEEF227A1
+      - value: curriculum_recognition_family_members-AD1A9E2D874C47AEB3445D80E34DC702
         type: curriculum
-      - value: curriculum_recognition_sounds_animals-FED25D9B424E42019F03593FE0D65AEE
+      - value: curriculum_recognition_garden_items-A1006027902E44C0B38BC3D3BAEDD4F6
         type: curriculum
       - value: curriculum_sort_objects_by_location-CC406024F40C4834A66BB7C8F0E8C0AD
         type: curriculum
-      - value: super_simon-C6EABAC161CD44C290B32202DFDCDAF6
+      - value: curriculum_recognition_seaside_holidays-B1BA5597BC594082AECE293AD25CFA89
         type: curriculum
-      - value: animal_recognition_insects_1-14B267712FD3424E99DFEEFE27A37463
+      - value: curriculum_animal_memory-7C75908B86D748A283AA080D40642BE7
+        type: curriculum
+
+  - component: horizontal_card_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Nouveautés
+          subtitle:
+          description: Les derniers ajouts à découvrir.
+      - locale: en_US
+        details:
+          title: New Arrivals
+          subtitle:
+          description: The latest to explore.
+    items:
+      - value: color_mediator-2CE6B5E98AFD45E0B2CD87727DB6D5C2
         type: activity
-      - value: curriculum_counting_flower_petals-3F83E1E0F3094DC787258B9CEEF227A1
+      - value: curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
         type: curriculum
-      - value: curriculum_recognition_sounds_animals-FED25D9B424E42019F03593FE0D65AEE
+      - value: curriculum_leka_weather_robot-ED4C900D4ACB426384DC76F182BC19A5
         type: curriculum
-      - value: curriculum_sort_objects_by_location-CC406024F40C4834A66BB7C8F0E8C0AD
+      - value: curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
         type: curriculum
-      - value: super_simon-C6EABAC161CD44C290B32202DFDCDAF6
-        type: curriculum
+
   - component: horizontal_column_list
     l10n:
       - locale: fr_FR
         details:
-          title: Des activités en vrac
-          subtitle: Oh on est à la Biocoop là ouuuuuuuu ...... ?
-          description: Parce que j'ai pas mes sachets réutilisables ça pose problème ?
+          title: Les parcours les plus populaires
+          subtitle:
+          description: Les parcours les plus suivis par les professionnels de votre secteur.
       - locale: en_US
         details:
-          title: Random activities
-          subtitle: Oh gosh it is so random
-          description: More random than a dice
+          title: Most Popular Curriculums
+          subtitle:
+          description: The most completed curriculums among professionals in your field.
+
     items:
-      - value: curriculum_sort_sweet_and_salty-5ED0AFBEC4504F6EBA52B26C65ED93CC
+      - value: curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
         type: curriculum
+      - value: curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
+        type: curriculum
+      - value: curriculum_recognition_body_parts-80761A1D62BF4C6980BF20E7D9BE52B8
+        type: curriculum
+      - value: super_simon-C6EABAC161CD44C290B32202DFDCDAF6
+        type: curriculum
+      - value: curriculum_recognition_sounds_emotions-2D48CCB418BF4808BCB16148C901C617
+        type: curriculum
+
+  - component: horizontal_column_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Les jeux éducatifs les plus populaires
+          subtitle:
+          description: Les jeux éducatifs les plus suivis par les professionnels de votre secteur.
+      - locale: en_US
+        details:
+          title: Most Popular Educational Games
+          subtitle:
+          description: The most completed educational games among professionals in your field.
+
+    items:
       - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
         type: activity
-      - value: hanna_dances_with_leka-47509B00A3B94C27B7D64DC1BC3B6895
-        type: story
-      - value: curriculum_sort_objects_by_location-CC406024F40C4834A66BB7C8F0E8C0AD
-        type: curriculum
-      - value: curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
-        type: curriculum
       - value: melody-CB995F829411449AB32E6B8A688E3DDB
         type: activity
-      - value: curriculum_recognition_winter_holidays-2B8E01DABDBC4863A962B785D4069B3E
-        type: curriculum
-      - value: curriculum_recognition_sports-C7F3963541234712A2701C0EB9E2EEAE
-        type: curriculum
+      - value: color_music_pad-8439D1EE7DD846ACB048145089F34C33
+        type: activity
+      - value: hide_and_seek-4BFA2AC3390E49248DD022E27008F118
+        type: activity
+      - value: xylophone_pentatonic-7C1DDED6C6D44913B9A7D4EB4AEE8F6B
+        type: activity
       - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
         type: activity
-      - value: curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
-        type: curriculum
-      - value: melody-CB995F829411449AB32E6B8A688E3DDB
-        type: activity
-      - value: curriculum_recognition_winter_holidays-2B8E01DABDBC4863A962B785D4069B3E
-        type: curriculum
-      - value: curriculum_recognition_sports-C7F3963541234712A2701C0EB9E2EEAE
-        type: curriculum
-      - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
-        type: activity
-      - value: curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
-        type: curriculum
-      - value: melody-CB995F829411449AB32E6B8A688E3DDB
-        type: activity
-      - value: curriculum_recognition_winter_holidays-2B8E01DABDBC4863A962B785D4069B3E
-        type: curriculum
-      - value: curriculum_recognition_sports-C7F3963541234712A2701C0EB9E2EEAE
-        type: curriculum
-      - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
-        type: activity
-      - value: curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
-        type: curriculum
-      - value: melody-CB995F829411449AB32E6B8A688E3DDB
-        type: activity
-      - value: curriculum_recognition_winter_holidays-2B8E01DABDBC4863A962B785D4069B3E
-        type: curriculum
-      - value: curriculum_recognition_sports-C7F3963541234712A2701C0EB9E2EEAE
-        type: curriculum
-      - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
-        type: activity
+
   - component: vertical_tile_grid
     l10n:
       - locale: fr_FR
         details:
-          title: Niveaux de difficultés
+          title: Par objectif pédagogique
           subtitle:
-          description:
+          description: Retrouvez les contenus adaptés selon les objectifs pédagogiques de la personne accompagnée
       - locale: en_US
         details:
-          title: Difficulty level
+          title: by learning objective
           subtitle:
-          description:
+          description: Find content tailored to the learning objectives of the person you're supporting.
     items:
-      - value: easy-0E1860BB217C4E2DA93AF366B1D1F283
-        type: curation
-      - value: medium-E2C641B879A248C982AA0C93B21A690A
-        type: curation
-      - value: hard-181519A691954BAC8C4825E660E91E45
-        type: curation
-      - value: easy-0E1860BB217C4E2DA93AF366B1D1F283
-        type: curation
-      - value: medium-E2C641B879A248C982AA0C93B21A690A
-        type: curation
-      - value: hard-181519A691954BAC8C4825E660E91E45
-        type: curation
-  - component: horizontal_card_list
-    l10n:
-      - locale: fr_FR
-        details:
-          title: Les contenus populaires
-          subtitle: Ah oui très très populaires ces contenus
-          description: Qu'est ce qu'ils sont populaires ces contenus dis donc !
-      - locale: en_US
-        details:
-          title: Popular contents
-          subtitle: Oh yeah very very popular those contents
-          description: Damn how popular they are those contents!
-    items:
-      - value: curriculum_sort_sweet_and_salty-5ED0AFBEC4504F6EBA52B26C65ED93CC
-        type: curriculum
-      - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
-        type: activity
-      - value: hanna_dances_with_leka-47509B00A3B94C27B7D64DC1BC3B6895
-        type: story
-      - value: curriculum_sort_objects_by_location-CC406024F40C4834A66BB7C8F0E8C0AD
-        type: curriculum
-      - value: curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
-        type: curriculum
-      - value: melody-CB995F829411449AB32E6B8A688E3DDB
-        type: activity
-      - value: curriculum_recognition_winter_holidays-2B8E01DABDBC4863A962B785D4069B3E
-        type: curriculum
-      - value: curriculum_recognition_sports-C7F3963541234712A2701C0EB9E2EEAE
-        type: curriculum
-      - value: curriculum_recognition_modes_of_transportation-B20B0721C37644E9A0168481421893F8
-        type: curriculum
-      - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
-        type: activity
-      - value: curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
-        type: curriculum
-      - value: melody-CB995F829411449AB32E6B8A688E3DDB
-        type: activity
-      - value: curriculum_recognition_winter_holidays-2B8E01DABDBC4863A962B785D4069B3E
-        type: curriculum
-      - value: curriculum_recognition_sports-C7F3963541234712A2701C0EB9E2EEAE
-        type: curriculum
-      - value: curriculum_recognition_modes_of_transportation-B20B0721C37644E9A0168481421893F8
-        type: curriculum
-      - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
-        type: activity
-  - component: horizontal_column_list
-    l10n:
-      - locale: fr_FR
-        details:
-          title: Des activités en vrac
-          subtitle: Oh on est à la Biocoop là ouuuuuuuu ...... ?
-          description: Parce que j'ai pas mes sachets réutilisables ça pose problème ?
-      - locale: en_US
-        details:
-          title: Random activities
-          subtitle: Oh gosh it is so random
-          description: More random than a dice
-    items:
-      - value: curriculum_sort_sweet_and_salty-5ED0AFBEC4504F6EBA52B26C65ED93CC
-        type: curriculum
-      - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
-        type: activity
-      - value: hanna_dances_with_leka-47509B00A3B94C27B7D64DC1BC3B6895
-        type: story
-      - value: curriculum_sort_objects_by_location-CC406024F40C4834A66BB7C8F0E8C0AD
-        type: curriculum
-      - value: curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
-        type: curriculum
-      - value: melody-CB995F829411449AB32E6B8A688E3DDB
-        type: activity
-      - value: curriculum_recognition_winter_holidays-2B8E01DABDBC4863A962B785D4069B3E
-        type: curriculum
-      - value: curriculum_recognition_sports-C7F3963541234712A2701C0EB9E2EEAE
-        type: curriculum
-      - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
-        type: activity
-  - component: horizontal_card_list
-    l10n:
-      - locale: fr_FR
-        details:
-          title: Les contenus populaires
-          subtitle: Ah oui très très populaires ces contenus
-          description: Qu'est ce qu'ils sont populaires ces contenus dis donc !
-      - locale: en_US
-        details:
-          title: Popular contents
-          subtitle: Oh yeah very very popular those contents
-          description: Damn how popular they are those contents!
-    items:
-      - value: curriculum_sort_sweet_and_salty-5ED0AFBEC4504F6EBA52B26C65ED93CC
-        type: curriculum
-      - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
-        type: activity
-      - value: hanna_dances_with_leka-47509B00A3B94C27B7D64DC1BC3B6895
-        type: story
-      - value: curriculum_sort_objects_by_location-CC406024F40C4834A66BB7C8F0E8C0AD
-        type: curriculum
-      - value: curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
-        type: curriculum
-      - value: melody-CB995F829411449AB32E6B8A688E3DDB
-        type: activity
-      - value: curriculum_recognition_winter_holidays-2B8E01DABDBC4863A962B785D4069B3E
-        type: curriculum
-      - value: curriculum_recognition_sports-C7F3963541234712A2701C0EB9E2EEAE
-        type: curriculum
-      - value: curriculum_recognition_modes_of_transportation-B20B0721C37644E9A0168481421893F8
-        type: curriculum
-      - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
-        type: activity
-  - component: horizontal_tile_grid
-    layout: grid
-    l10n:
-      - locale: fr_FR
-        details:
-          title: Niveaux de difficultés
-          subtitle:
-          description:
-      - locale: en_US
-        details:
-          title: Difficulty level
-          subtitle:
-          description:
-    items:
-      - value: easy-0E1860BB217C4E2DA93AF366B1D1F283
-        type: curation
-      - value: medium-E2C641B879A248C982AA0C93B21A690A
-        type: curation
-      - value: hard-181519A691954BAC8C4825E660E91E45
-        type: curation
-      - value: easy-0E1860BB217C4E2DA93AF366B1D1F283
-        type: curation
-      - value: medium-E2C641B879A248C982AA0C93B21A690A
-        type: curation
-      - value: hard-181519A691954BAC8C4825E660E91E45
-        type: curation
-      - value: easy-0E1860BB217C4E2DA93AF366B1D1F283
-        type: curation
-      - value: medium-E2C641B879A248C982AA0C93B21A690A
-        type: curation
-      - value: hard-181519A691954BAC8C4825E660E91E45
+      - value: motor_skills_and_sensory_processing-500410B6BF98489E9F42BD797F24F3BE
         type: curation

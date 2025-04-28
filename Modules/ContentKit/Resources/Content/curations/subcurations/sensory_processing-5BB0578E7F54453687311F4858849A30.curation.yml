@@ -1,0 +1,38 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 5BB0578E7F54453687311F4858849A30
+icon: sensor.tag.radiowaves.forward.fill
+color: 0x00FF00
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Sensorialité
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Sensory processing
+      subtitle:
+      description:
+
+content:
+  - component: carousel
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Sensorialité
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Sensory processing
+          subtitle:
+          description:
+    items:
+      - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
+        type: activity
+      - value: hide_and_seek-4BFA2AC3390E49248DD022E27008F118
+        type: activity
