@@ -1,0 +1,38 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 63BB71F5611844BDB3EB20492DEC3501
+icon: figure.walk
+color: 0x00FF00
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Motricité globale
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Gross motor skills
+      subtitle:
+      description:
+
+content:
+  - component: carousel
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Motricité globale
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Gross motor skills
+          subtitle:
+          description:
+    items:
+      - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
+        type: activity
+      - value: hide_and_seek-4BFA2AC3390E49248DD022E27008F118
+        type: activity

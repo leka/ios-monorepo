@@ -1,0 +1,40 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 500410B6BF98489E9F42BD797F24F3BE
+icon: figure.run
+color: 0x00FF00
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Motricité et sensorialité
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Motor skills and sensory processing
+      subtitle:
+      description:
+
+content:
+  - component: vertical_tile_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Motricité et sensorialité
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Motor skills and sensory processing
+          subtitle:
+          description:
+    items:
+      - value: gross_motor_skills-63BB71F5611844BDB3EB20492DEC3501
+        type: curation
+      - value: sensory_processing-5BB0578E7F54453687311F4858849A30
+        type: curation
+      - value: fine_motor_skills-EFBB68F0B3D84A32B08A688CC2F9B8F0
+        type: curation
