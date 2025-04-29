@@ -8,7 +8,7 @@ uuid: 47509B00A3B94C27B7D64DC1BC3B6895
 name: hanna_dances_with_leka
 
 created_at: "2024-03-31T23:33:50.987548"
-last_edited_at: "2024-09-27T00:29:52.482967"
+last_edited_at: "2025-04-29T18:14:13.457424"
 status: published
 
 authors:
@@ -111,7 +111,9 @@ pages:
               text: Leka
               action:
                 type: robot
-                value: bootyShake
+                value:
+                  type: motion
+                  value: bootyShake
           - type: text
             payload:
               text: "aiment s'amuser ensemble"
@@ -132,7 +134,9 @@ pages:
               text: Leka
               action:
                 type: robot
-                value: bootyShake
+                value:
+                  type: motion
+                  value: bootyShake
           - type: text
             payload:
               text: enjoy playing together
@@ -156,7 +160,9 @@ pages:
               text: Leka
               action:
                 type: robot
-                value: bootyShake
+                value:
+                  type: motion
+                  value: bootyShake
           - type: text
             payload:
               text: sait
@@ -166,7 +172,9 @@ pages:
               text: danser
               action:
                 type: robot
-                value: dance
+                value:
+                  type: motion
+                  value: dance
       - locale: en_US
         items:
           - type: text
@@ -184,7 +192,9 @@ pages:
               text: Leka
               action:
                 type: robot
-                value: bootyShake
+                value:
+                  type: motion
+                  value: bootyShake
           - type: text
             payload:
               text: knows
@@ -194,7 +204,9 @@ pages:
               text: how to dance
               action:
                 type: robot
-                value: dance
+                value:
+                  type: motion
+                  value: dance
   - background: scene_background
     l10n:
       - locale: fr_FR
@@ -209,7 +221,9 @@ pages:
               text: Leka !
               action:
                 type: robot
-                value: bootyShake
+                value:
+                  type: motion
+                  value: bootyShake
           - type: button_image
             payload:
               idle: hanna
@@ -223,8 +237,10 @@ pages:
               idle: hanna_dance
               text: danser
               action:
-                type: activity
-                value: dance_freeze-6E2F7D56726C419EA534C614F777D934
+                type: ipad
+                value:
+                  type: activity
+                  value: dance_freeze-6E2F7D56726C419EA534C614F777D934
       - locale: en_US
         items:
           - type: button_image
@@ -234,7 +250,9 @@ pages:
               text: Leka
               action:
                 type: robot
-                value: bootyShake
+                value:
+                  type: motion
+                  value: bootyShake
           - type: text
             payload:
               text: is really good!
@@ -251,8 +269,10 @@ pages:
               idle: hanna_dance
               text: dance
               action:
-                type: activity
-                value: dance_freeze-6E2F7D56726C419EA534C614F777D934
+                type: ipad
+                value:
+                  type: activity
+                  value: dance_freeze-6E2F7D56726C419EA534C614F777D934
 
   - background: scene_background
     l10n:
@@ -273,7 +293,9 @@ pages:
               text: Leka
               action:
                 type: robot
-                value: reinforcer
+                value:
+                  type: random
+                  value: reinforcer
           - type: text
             payload:
               text: sont vraiment de bons danseurs !
@@ -294,7 +316,9 @@ pages:
               text: Leka
               action:
                 type: robot
-                value: reinforcer
+                value:
+                  type: random
+                  value: reinforcer
           - type: text
             payload:
               text: are really good dancers!
