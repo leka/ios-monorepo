@@ -34,7 +34,7 @@ content:
     items:
       - value: gross_motor_skills-63BB71F5611844BDB3EB20492DEC3501
         type: curation
-      - value: sensory_processing-5BB0578E7F54453687311F4858849A30
-        type: curation
       - value: fine_motor_skills-EFBB68F0B3D84A32B08A688CC2F9B8F0
+        type: curation
+      - value: sensory_processing-5BB0578E7F54453687311F4858849A30
         type: curation

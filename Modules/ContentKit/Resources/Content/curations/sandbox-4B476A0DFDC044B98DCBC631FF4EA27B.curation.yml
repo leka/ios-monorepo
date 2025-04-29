@@ -132,3 +132,5 @@ content:
     items:
       - value: motor_skills_and_sensory_processing-500410B6BF98489E9F42BD797F24F3BE
         type: curation
+      - value: social_interactions-DEDDFB10F16348A19ECB1B9736377193
+        type: curation
