@@ -19,20 +19,40 @@ l10n:
       description:
 
 content:
-  - component: carousel
+  - component: vertical_content_list
     l10n:
       - locale: fr_FR
         details:
-          title: Motricité globale
+          title: Pour bouger avec Leka !
           subtitle:
-          description:
+          description: Encouragez les enfants à bouger, à s’amuser et à développer leur motricité globale avec Leka.
       - locale: en_US
         details:
-          title: Gross motor skills
+          title: To move with Leka !
           subtitle:
-          description:
+          description: Encourage children to move, have fun, and develop their gross motor skills with Leka.
     items:
       - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
         type: activity
       - value: hide_and_seek-4BFA2AC3390E49248DD022E27008F118
+        type: activity
+
+  - component: vertical_content_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Pour créer des parcours moteurs
+          subtitle:
+          description: Proposez des activités pour encourager le mouvement, l'exploration de l'espace et la coordination.
+      - locale: en_US
+        details:
+          title: To design motor activity paths
+          subtitle:
+          description: Offer activities that encourage movement, spatial exploration, and coordination.
+    items:
+      - value: color_mediator-2CE6B5E98AFD45E0B2CD87727DB6D5C2
+        type: activity
+      - value: gamepad_arrow_pad_color_pad-5554CD696BB6492594082C5F8F895A85
+        type: activity
+      - value: gamepad_joystick_color_pad-E85F0498A29047E893631397592CC444
         type: activity
