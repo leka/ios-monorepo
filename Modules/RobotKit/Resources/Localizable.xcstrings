@@ -1,448 +1,474 @@
 {
-    "version": "1.0",
-    "sourceLanguage": "en",
-    "strings": {
-        "robotkit.bluetooth_unauthorized_view.button": {
-            "comment": "Label of the button directing to Bluetooth settings of the bluetooth unauthorized of BluetoothUnauthorizedView",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Go to Settings"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Aller aux R\u00e9glages"
-                    }
-                }
-            }
+  "sourceLanguage" : "en",
+  "strings" : {
+    "robotkit.bluetooth_unauthorized_view.button" : {
+      "comment" : "Label of the button directing to Bluetooth settings of the bluetooth unauthorized of BluetoothUnauthorizedView",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go to Settings"
+          }
         },
-        "robotkit.connected_robot_view.navigation_title": {
-            "comment": "The title of the connected robot view",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Connected Device"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Appareil Connect\u00e9"
-                    }
-                }
-            }
-        },
-        "robotkit.connected_robot_view.rename_alert_button_label": {
-            "comment": "The button label of the alert when renaming the robot",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Rename & Restart"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Renommer & Red\u00e9marrer"
-                    }
-                }
-            }
-        },
-        "robotkit.connected_robot_view.rename_alert_cancel_button_label": {
-            "comment": "The cancel button label of the alert when renaming the robot",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Cancel"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Annuler"
-                    }
-                }
-            }
-        },
-        "robotkit.connected_robot_view.rename_alert_message": {
-            "comment": "The message of the alert when renaming the robot",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Renaming requires a quick device restart to apply changes."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Le changement de nom n\u00e9cessite un red\u00e9marrage rapide de l'appareil pour appliquer les modifications."
-                    }
-                }
-            }
-        },
-        "robotkit.connected_robot_view.rename_alert_text_field_placeholder": {
-            "comment": "The placeholder of the text field when renaming the robot",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "New device name"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Nouveau nom de l\u2019appareil"
-                    }
-                }
-            }
-        },
-        "robotkit.connected_robot_view.rename_alert_title": {
-            "comment": "The title of the alert when renaming the robot",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Rename Device"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Renommer l'appareil"
-                    }
-                }
-            }
-        },
-        "robotkit.connected_robot_view.rename_button": {
-            "comment": "The title of the rename button",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Rename"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Renommer"
-                    }
-                }
-            }
-        },
-        "robotkit.connected_robot_view.robot_not_up_to_date_alert": {
-            "comment": "Update is available alert",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "An update for Leka is available"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Une mise \u00e0 jour pour Leka est disponible"
-                    }
-                }
-            }
-        },
-        "robotkit.connected_robot_view.serial_number_label": {
-            "comment": "The title of the connected robot view",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "S/N: %1$@"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "S/N: %1$@"
-                    }
-                }
-            }
-        },
-        "robotkit.robot_connect_view.close_button": {
-            "comment": "The title of the close button in the toolbar",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Close"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Fermer"
-                    }
-                }
-            }
-        },
-        "robotkit.robot_connect_view.connect_button": {
-            "comment": "The title of the connect button",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Connect"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Se connecter"
-                    }
-                }
-            }
-        },
-        "robotkit.robot_connect_view.continue_button": {
-            "comment": "The title of the continue button",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Continue"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Continuer"
-                    }
-                }
-            }
-        },
-        "robotkit.robot_connect_view.disconnect_button": {
-            "comment": "The title of the disconnect button",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Disconnect"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Se d\u00e9connecter"
-                    }
-                }
-            }
-        },
-        "robotkit.robot_connect_view.navigation_title": {
-            "comment": "The title of the robot connection view",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Connect to a robot"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Connecter un robot"
-                    }
-                }
-            }
-        },
-        "robotkit.robot_connect_view.searching_view_text": {
-            "comment": "The text displayed in the searching view",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Searching for robots..."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Recherche en cours..."
-                    }
-                }
-            }
-        },
-        "robotkit.robot_connect_view.update_button": {
-            "comment": "The title of the update button",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Update"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Mettre \u00e0 jour"
-                    }
-                }
-            }
-        },
-        "robotkit.robot_connection_view.bluetooth_off_view.instruction": {
-            "comment": "The instruction of the bluetooth off of RobotConnectionErrorsView",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Go to Settings -> Select Bluetooth in sidebar -> Turn Bluetooth on."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Aller dans R\u00e9glages -> Cliquez sur Bluetooth -> Activez le Bluetooth"
-                    }
-                }
-            }
-        },
-        "robotkit.robot_connection_view.bluetooth_off_view.message": {
-            "comment": "The message of the bluetooth off of RobotConnectionErrorsView",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "You need Bluetooth to connect to a robot."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Le Bluetooth est requis pour se connecter \u00e0 un robot."
-                    }
-                }
-            }
-        },
-        "robotkit.robot_connection_view.bluetooth_off_view.title": {
-            "comment": "The title of the bluetooth off of RobotConnectionErrorsView",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Bluetooth off"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Bluetooth d\u00e9sactiv\u00e9"
-                    }
-                }
-            }
-        },
-        "robotkit.robot_connection_view.bluetooth_unauthorized_view.message": {
-            "comment": "The message of the bluetooth unauthorized of RobotConnectionErrorsView",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "You need Bluetooth to connect to a robot.\nPlease allow Leka App to use Bluetooth in your device settings"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Le Bluetooth est requis pour se connecter \u00e0 un robot.\nVeuillez autoriser l'utilisation du Bluetooth pour cette application."
-                    }
-                }
-            }
-        },
-        "robotkit.robot_connection_view.bluetooth_unauthorized_view.title": {
-            "comment": "The title of the bluetooth unauthorized of RobotConnectionErrorsView",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Bluetooth unauthorized"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Bluetooth non autoris\u00e9"
-                    }
-                }
-            }
-        },
-        "robotkit.robot_connection_view.restart_deep_sleep_robot_text": {
-            "comment": "The text of the robot restarting from deep sleep state",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Leka is restarting from deep sleep state..."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Leka red\u00e9marre depuis l'\u00e9tat de veille profonde..."
-                    }
-                }
-            }
-        },
-        "robotkit.robot_discovery_view.close_alert_action": {
-            "comment": "Close alert",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Close"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Fermer"
-                    }
-                }
-            }
-        },
-        "robotkit.robot_discovery_view.open_leka_updater_alert_action": {
-            "comment": "Redirect to LekaUpdater app",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Open LekaUpdater"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Ouvrir LekaUpdater"
-                    }
-                }
-            }
-        },
-        "robotkit.robot_discovery_view.robot_not_up_to_date_alert": {
-            "comment": "Update is available alert",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "An update for Leka is available"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Une mise \u00e0 jour pour Leka est disponible"
-                    }
-                }
-            }
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aller aux Réglages"
+          }
         }
+      }
+    },
+    "robotkit.connected_robot_view.navigation_title" : {
+      "comment" : "The title of the connected robot view",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connected Device"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appareil Connecté"
+          }
+        }
+      }
+    },
+    "robotkit.connected_robot_view.rename_alert_button_label" : {
+      "comment" : "The button label of the alert when renaming the robot",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rename & Restart"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renommer & Redémarrer"
+          }
+        }
+      }
+    },
+    "robotkit.connected_robot_view.rename_alert_cancel_button_label" : {
+      "comment" : "The cancel button label of the alert when renaming the robot",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+          }
+        }
+      }
+    },
+    "robotkit.connected_robot_view.rename_alert_message" : {
+      "comment" : "The message of the alert when renaming the robot",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renaming requires a quick device restart to apply changes."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le changement de nom nécessite un redémarrage rapide de l'appareil pour appliquer les modifications."
+          }
+        }
+      }
+    },
+    "robotkit.connected_robot_view.rename_alert_text_field_placeholder" : {
+      "comment" : "The placeholder of the text field when renaming the robot",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New device name"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nouveau nom de l’appareil"
+          }
+        }
+      }
+    },
+    "robotkit.connected_robot_view.rename_alert_title" : {
+      "comment" : "The title of the alert when renaming the robot",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rename Device"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renommer l'appareil"
+          }
+        }
+      }
+    },
+    "robotkit.connected_robot_view.rename_button" : {
+      "comment" : "The title of the rename button",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rename"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renommer"
+          }
+        }
+      }
+    },
+    "robotkit.connected_robot_view.robot_not_up_to_date_alert" : {
+      "comment" : "Update is available alert",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An update for Leka is available"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une mise à jour pour Leka est disponible"
+          }
+        }
+      }
+    },
+    "robotkit.connected_robot_view.serial_number_label" : {
+      "comment" : "The title of the connected robot view",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "S/N: %1$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "S/N: %1$@"
+          }
+        }
+      }
+    },
+    "robotkit.robot_connect_view.close_button" : {
+      "comment" : "The title of the close button in the toolbar",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fermer"
+          }
+        }
+      }
+    },
+    "robotkit.robot_connect_view.connect_button" : {
+      "comment" : "The title of the connect button",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connect"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se connecter"
+          }
+        }
+      }
+    },
+    "robotkit.robot_connect_view.continue_button" : {
+      "comment" : "The title of the continue button",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer"
+          }
+        }
+      }
+    },
+    "robotkit.robot_connect_view.disconnect_button" : {
+      "comment" : "The title of the disconnect button",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disconnect"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se déconnecter"
+          }
+        }
+      }
+    },
+    "robotkit.robot_connect_view.navigation_title" : {
+      "comment" : "The title of the robot connection view",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connect to a robot"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connecter un robot"
+          }
+        }
+      }
+    },
+    "robotkit.robot_connect_view.searching_view_text" : {
+      "comment" : "The text displayed in the searching view",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Searching for robots..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recherche en cours..."
+          }
+        }
+      }
+    },
+    "robotkit.robot_connect_view.update_button" : {
+      "comment" : "The title of the update button",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mettre à jour"
+          }
+        }
+      }
+    },
+    "robotkit.robot_connection_view.bluetooth_off_view.instruction" : {
+      "comment" : "The instruction of the bluetooth off of RobotConnectionErrorsView",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go to Settings -> Select Bluetooth in sidebar -> Turn Bluetooth on."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aller dans Réglages -> Cliquez sur Bluetooth -> Activez le Bluetooth"
+          }
+        }
+      }
+    },
+    "robotkit.robot_connection_view.bluetooth_off_view.message" : {
+      "comment" : "The message of the bluetooth off of RobotConnectionErrorsView",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You need Bluetooth to connect to a robot."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le Bluetooth est requis pour se connecter à un robot."
+          }
+        }
+      }
+    },
+    "robotkit.robot_connection_view.bluetooth_off_view.title" : {
+      "comment" : "The title of the bluetooth off of RobotConnectionErrorsView",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bluetooth off"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bluetooth désactivé"
+          }
+        }
+      }
+    },
+    "robotkit.robot_connection_view.bluetooth_unauthorized_view.message" : {
+      "comment" : "The message of the bluetooth unauthorized of RobotConnectionErrorsView",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You need Bluetooth to connect to a robot.\nPlease allow Leka App to use Bluetooth in your device settings"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le Bluetooth est requis pour se connecter à un robot.\nVeuillez autoriser l'utilisation du Bluetooth pour cette application."
+          }
+        }
+      }
+    },
+    "robotkit.robot_connection_view.bluetooth_unauthorized_view.title" : {
+      "comment" : "The title of the bluetooth unauthorized of RobotConnectionErrorsView",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bluetooth unauthorized"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bluetooth non autorisé"
+          }
+        }
+      }
+    },
+    "robotkit.robot_connection_view.restart_deep_sleep_robot_text" : {
+      "comment" : "The text of the robot restarting from deep sleep state",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leka is restarting from deep sleep state..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leka redémarre depuis l'état de veille profonde..."
+          }
+        }
+      }
+    },
+    "robotkit.robot_discovery_view.close_alert_action" : {
+      "comment" : "Close alert",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fermer"
+          }
+        }
+      }
+    },
+    "robotkit.robot_discovery_view.open_leka_updater_alert_action" : {
+      "comment" : "Redirect to LekaUpdater app",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open LekaUpdater"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrir LekaUpdater"
+          }
+        }
+      }
+    },
+    "robotkit.robot_discovery_view.robot_not_up_to_date_alert" : {
+      "comment" : "Update is available alert",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An update for Leka is available"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une mise à jour pour Leka est disponible"
+          }
+        }
+      }
     }
+  },
+  "version" : "1.0"
 }
