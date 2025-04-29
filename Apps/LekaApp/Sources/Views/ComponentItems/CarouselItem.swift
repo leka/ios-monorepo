@@ -50,49 +50,42 @@ public struct CarouselItem: View {
     // MARK: Public
 
     public var body: some View {
-        VStack(spacing: 0) {
-            Image(uiImage: self.icon)
-                .resizable()
-                .scaledToFill()
-                .frame(width: 240, height: 240)
-                .overlay {
-                    VStack {
-                        HStack {
-                            Spacer()
-
-                            Label(
-                                self.contentType.label,
-                                systemImage: self.contentType.icon
-                            )
-                            .font(.caption2.bold())
-                            .foregroundColor(.gray)
-                        }
-                        Spacer()
-                    }
-                    .padding()
-                }
-
-            HStack {
-                VStack(alignment: .leading) {
-                    Text(self.title)
-                        .font(.callout.bold())
-                        .foregroundStyle(.white)
-
-                    Text(self.subtitle ?? "")
-                        .font(.caption2)
-                        .foregroundStyle(.white)
-                }
-
-                Spacer()
-            }
-            .padding()
-            .background(
-                Color(uiColor: self.icon.averageColor!)
+        VStack(alignment: .leading) {
+            Label(
+                self.contentType.label,
+                systemImage: self.contentType.icon
             )
-            .frame(width: 240, height: 60)
-            .fixedSize()
+            .font(.subheadline)
+            .foregroundColor(.gray)
+
+            VStack(spacing: 0) {
+                Image(uiImage: self.icon)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 240, height: 240)
+
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(self.title)
+                            .font(.callout.bold())
+                            .foregroundStyle(.white)
+
+                        Text(self.subtitle ?? "")
+                            .font(.caption2)
+                            .foregroundStyle(.white)
+                    }
+
+                    Spacer()
+                }
+                .padding()
+                .background(
+                    Color(uiColor: self.icon.averageColor!)
+                )
+                .frame(width: 240, height: 60)
+                .fixedSize()
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 15))
         }
-        .clipShape(RoundedRectangle(cornerRadius: 15))
     }
 
     // MARK: Private
