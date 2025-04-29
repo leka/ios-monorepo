@@ -6,41 +6,55 @@ import RobotKit
 import SVGView
 import SwiftUI
 
-extension Page.Action.ActionType {
+// swiftlint:disable cyclomatic_complexity
+
+extension Page.Action.RobotActionType {
     // MARK: Internal
 
     func getAction() {
+        let robot = Robot.shared
         switch self {
-            case .bootyShake:
-                Robot.shared.bootyShake()
-            case .randomColor:
-                let color: [Robot.Color] = [.blue, .green, .orange, .pink, .purple, .red, .yellow]
-                Robot.shared.shine(.all(in: color.randomElement()!))
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    Robot.shared.stopLights()
+            case let .reinforcer(value):
+                let reinforcer = Robot.Reinforcer(rawValue: value)
+                robot.run(reinforcer ?? .rainbow)
+            case let .random(type):
+                switch type {
+                    case .reinforcer:
+                        let reinforcer = Robot.Reinforcer.allCases.randomElement()!
+                        robot.run(reinforcer)
+                    case .color:
+                        let color = Robot.Color.allCases.randomElement()!
+                        robot.shine(.all(in: color))
+                    case .move:
+                        robot.randomMove()
                 }
-            case .randomMove:
-                Robot.shared.randomMove()
-            case .reinforcer:
-                Robot.shared.run(.rainbow)
-            case .yellow:
-                Robot.shared.shine(.all(in: .yellow))
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    Robot.shared.stopLights()
+            case let .motion(type):
+                switch type {
+                    case .bootyShake:
+                        robot.bootyShake()
+                    case .dance:
+                        robot.dance()
+                        robot.lightFrenzy()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                            robot.stopMotion()
+                            robot.stopLights()
+                        }
+                    case .spin:
+                        let rotation = [Robot.Motion.Rotation.clockwise, Robot.Motion.Rotation.counterclockwise]
+                        robot.move(.spin(rotation.randomElement()!, speed: 0.6))
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                            robot.stopMotion()
+                        }
                 }
-            case .spin:
-                let rotation = [Robot.Motion.Rotation.clockwise, Robot.Motion.Rotation.counterclockwise]
-                Robot.shared.move(.spin(rotation.randomElement()!, speed: 0.6))
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                    Robot.shared.stopMotion()
-                }
-            case .dance:
-                Robot.shared.dance()
-                Robot.shared.lightFrenzy()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                    Robot.shared.stopMotion()
-                    Robot.shared.stopLights()
-                }
+            case let .color(value):
+                robot.shine(.all(in: .init(from: value)))
+            case let .image(name):
+                let robotAsset = RobotAssets.robotAsset(name: name)!
+                robot.display(imageID: robotAsset.id)
+            case let .flash(times):
+                robot.flashLight(times: times)
+            case let .spots(numberOfSpots):
+                robot.shine(.randomBeltSpots(number: numberOfSpots))
         }
     }
 }
@@ -70,17 +84,23 @@ public extension StoryView.PageView {
         public var body: some View {
             VStack(spacing: 0) {
                 switch self.action {
-                    case let .activity(id):
-                        self.launchActivityButton(id: id)
-                            .fullScreenCover(isPresented: self.$launchActivity, content: {
-                                NavigationStack {
-                                    ActivityView(activity: ContentKit.allActivities.first(where: { $0.uuid == id })!)
-                                }
-                            })
+                    case let .ipad(actionType):
+                        switch actionType {
+                            case let .activity(id):
+                                self.launchActivityButton(id: id)
+                                    .fullScreenCover(isPresented: self.$launchActivity, content: {
+                                        NavigationStack {
+                                            ActivityView(activity: ContentKit.allActivities.first(where: { $0.uuid == id })!)
+                                        }
+                                    })
+                            default:
+                                EmptyView()
+                        }
+
                     case let .robot(actionType):
                         PressableImageButton(idleImage: self.idle, pressedImage: self.pressed, action: actionType.getAction)
 
-                    case .none:
+                    default:
                         PressableImageButton(idleImage: self.idle, pressedImage: self.pressed)
                 }
 
@@ -97,7 +117,7 @@ public extension StoryView.PageView {
         private let idle: String
         private let pressed: String
         private let text: String
-        private let action: Page.Action
+        private let action: Page.Action?
 
         private func launchActivityButton(id _: String) -> some View {
             Button {
@@ -121,3 +141,5 @@ public extension StoryView.PageView {
         StoryView.PageView(page: Story.mock.pages[1])
     }
 }
+
+// swiftlint:enable cyclomatic_complexity
