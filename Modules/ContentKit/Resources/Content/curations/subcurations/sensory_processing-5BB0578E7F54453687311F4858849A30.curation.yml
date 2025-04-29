@@ -19,20 +19,42 @@ l10n:
       description:
 
 content:
-  - component: carousel
+  - component: vertical_content_list
     l10n:
       - locale: fr_FR
         details:
-          title: Sensorialité
+          title: Activités autour du toucher et des lumières colorées
           subtitle:
-          description:
+          description: Stimulez le toucher et l'interaction avec des activités autour des lumières colorées.
       - locale: en_US
         details:
-          title: Sensory processing
+          title: Activities involving touch and colorful lights
           subtitle:
-          description:
+          description: Stimulate touch and interaction through activities with colorful lights.
     items:
-      - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
+      - value: color_music_pad-8439D1EE7DD846ACB048145089F34C33
         type: activity
-      - value: hide_and_seek-4BFA2AC3390E49248DD022E27008F118
+      - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
         type: activity
+      - value: xylophone_pentatonic-7C1DDED6C6D44913B9A7D4EB4AEE8F6B
+        type: activity
+
+  - component: horizontal_card_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Parcours autour des sons
+          subtitle:
+          description: Découvrez des activités basées sur l'écoute et la reconnaissance de sons.
+      - locale: en_US
+        details:
+          title: Sound-based curriculums
+          subtitle:
+          description: Explore activities focused on listening and recognizing sounds.
+    items:
+      - value: curriculum_recognition_sounds_emotions-2D48CCB418BF4808BCB16148C901C617
+        type: curriculum
+      - value: curriculum_recognition_sounds_animals-FED25D9B424E42019F03593FE0D65AEE
+        type: curriculum
+      - value: curriculum_recognition_sounds_musical_instruments-6A5EF209D00942F4AEEA4AEC6DAC052A
+        type: curriculum

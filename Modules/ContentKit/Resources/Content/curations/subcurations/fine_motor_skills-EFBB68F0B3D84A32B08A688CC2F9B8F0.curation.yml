@@ -23,16 +23,40 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Motricité fine
+          title: Travailler le pointage fonctionnel
           subtitle:
-          description:
+          description: Le pointage fonctionnel consiste à réaliser des actions simples comme actionner un interrupteur, appuyer sur un écran tactile ou pointer une lettre sur un clavier.
       - locale: en_US
         details:
-          title: Fine motor skills
+          title: Develop functional pointing
           subtitle:
-          description:
+          description: Functional pointing involves performing simple actions such as pressing a switch, tapping on a touchscreen, or pointing to a letter on a keyboard.
     items:
-      - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
+      - value: color_bingo-69760D1DA61849E3926E3A939BBEF0CE
+        type: curriculum
+      - value: melody-CB995F829411449AB32E6B8A688E3DDB
         type: activity
-      - value: hide_and_seek-4BFA2AC3390E49248DD022E27008F118
-        type: activity
+      - value: super_simon-C6EABAC161CD44C290B32202DFDCDAF6
+        type: curriculum
+
+  - component: horizontal_card_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Maitriser le glisser-déposer sur la tablette
+          subtitle:
+          description: Les contenus glisser-déposer consistent à déplacer un élément avec le doigt sur un écran tactile pour le déposer à un endroit précis. Cela nécessite souvent un apprentissage et fait appel à la motricité fine ainsi qu'à la dextérité.
+      - locale: en_US
+        details:
+          title: Mastering drag and drop on the tablet
+          subtitle:
+          description: Drag-and-drop contents involve moving an item with a finger across a touchscreen to place it precisely somewhere. This often requires learning and engages fine motor skills and dexterity.
+    items:
+      - value: curriculum_order_by_size_animals-1FAED1FF14134571849325B6EC9197B5
+        type: curriculum
+      - value: curriculum_categorization_sorting_fruits_vegetables_basket-E6A322DC7A6E48518CED2CA2D3D2A595
+        type: curriculum
+      - value: curriculum_categorization_sort_through-88C512E99B61485D93A7AD8C34ED6A76
+        type: curriculum
+      - value: curriculum_order_by_size_different_animals-3158E58D908E43D29967B04D29C21912
+        type: curriculum
