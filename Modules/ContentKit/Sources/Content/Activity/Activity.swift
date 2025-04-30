@@ -63,6 +63,8 @@ public struct Activity: Decodable, Identifiable {
     public let locales: [Locale]
     public let l10n: [LocalizedDetails]
 
+    public var curriculums: [String] = []
+
     public var exercisePayload: ExercisesPayload
 
     public var id: String { self.uuid }
