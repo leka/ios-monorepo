@@ -13,7 +13,7 @@ public extension ColorMediatorView {
 
         @Environment(\.dismiss) var dismiss
 
-        private let colors: [Robot.Color] = [.red, .blue, .green, .yellow, .purple, .orange, .pink]
+        private let colors: [Robot.Color] = [.red, .blue, .green, .yellow, .orange, .pink]
         private let buttonSize: CGFloat = 140
 
         @ObservedObject private var styleManager: StyleManager = .shared
@@ -31,13 +31,13 @@ public extension ColorMediatorView {
                     Spacer()
 
                     HStack(spacing: 20) {
-                        ForEach(self.colors.prefix(4), id: \.screen) { color in
+                        ForEach(self.colors.prefix(3), id: \.screen) { color in
                             self.colorButton(for: color)
                         }
                     }
 
                     HStack(spacing: 20) {
-                        ForEach(self.colors.suffix(from: 4), id: \.screen) { color in
+                        ForEach(self.colors.suffix(from: 3), id: \.screen) { color in
                             self.colorButton(for: color)
                         }
                     }
