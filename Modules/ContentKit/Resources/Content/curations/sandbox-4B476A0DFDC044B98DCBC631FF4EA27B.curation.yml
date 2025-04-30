@@ -130,5 +130,15 @@ content:
           subtitle:
           description: Find content tailored to the learning objectives of the person you're supporting.
     items:
+      - value: cognition_and_academic_learning-4D4D3C30F4704417A9DDD4B8AD30EE62
+        type: curation
+      - value: communication-68C1DB69401B4BA3957140B90DDFF735
+        type: curation
+      - value: autonomy_and_daily_life-D680A31677B14C8D8EE29F2F05B07117
+        type: curation
+      - value: social_interactions-DEDDFB10F16348A19ECB1B9736377193
+        type: curation
+      - value: emotions-21E32736271B4637B0F970C725463FB5
+        type: curation
       - value: motor_skills_and_sensory_processing-500410B6BF98489E9F42BD797F24F3BE
         type: curation

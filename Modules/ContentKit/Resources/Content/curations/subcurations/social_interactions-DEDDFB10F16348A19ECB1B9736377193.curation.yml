@@ -1,0 +1,40 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: DEDDFB10F16348A19ECB1B9736377193
+icon: figure.run
+color: 0x00FF00
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Interactions sociales
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Social interactions
+      subtitle:
+      description:
+
+content:
+  - component: carousel
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Interactions sociales
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Social interactions
+          subtitle:
+          description:
+    items:
+      - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
+        type: activity
+      - value: hide_and_seek-4BFA2AC3390E49248DD022E27008F118
+        type: activity
+      - value: color_mediator-2CE6B5E98AFD45E0B2CD87727DB6D5C2
+        type: activity

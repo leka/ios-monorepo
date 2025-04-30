@@ -1,0 +1,64 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 21E32736271B4637B0F970C725463FB5
+icon: figure.run
+color: 0x00FF00
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Emotions
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Emotions
+      subtitle:
+      description:
+
+content:
+  - component: vertical_content_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Identifier des émotions
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Identify emotions
+          subtitle:
+          description:
+    items:
+      - value: curriculum_recognition_emotions_pictures-BA3CB88A6A6E49CB9AB83FA992BF852B
+        type: curriculum
+      - value: curriculum_recognition_emotions_drawings-95C42E189BC146BB844467A3BAFE8BC0
+        type: curriculum
+      - value: curriculum_recognition_emotions_pictograms-3A9B0EB3A9CF4ABCB9B771B6047DF2D0
+        type: curriculum
+      - value: curriculum_recognition_emotions_generalization-173A0E0985D944F9835E2205867121FC
+        type: curriculum
+      - value: curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
+        type: curriculum
+      - value: curriculum_recognition_emotions_in_context-A135163C8D8646DE95D0854FD5E155EB
+        type: curriculum
+
+  - component: vertical_content_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Encourager l'empathie
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Encourage empathy
+          subtitle:
+          description:
+    items:
+      - value: recognition_emotions_in_context_thumbs_up_thumbs_down-95A0134AA0E04EA3B6933BDFC8564CBA
+        type: activity
+      - value: recognition_emotions_in_context_5_emotions-ADE4BA794B6D4B42B3A39127F5DDF8D0
+        type: activity
