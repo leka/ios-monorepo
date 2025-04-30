@@ -203,32 +203,17 @@
                 }
             }
         },
+
         "$page/item/button_image/action": {
-            "discriminator": "type",
-            "mapping": {
-                "robot": {
-                    "properties": {
-                        "value": {
-                            "enum": [
-                                "bootyShake",
-                                "randomColor",
-                                "randomMove",
-                                "reinforcer",
-                                "yellow",
-                                "spin",
-                                "dance"
-                            ]
-                        }
-                    }
+            "properties": {
+                "type": {
+                    "enum": ["ipad", "robot"]
                 },
-                "activity": {
-                    "properties": {
-                        "value": {
-                            "type": "string"
-                        }
-                    }
+                "value": {
+                    "ref": "$page/item/button_image/action/properties/value"
                 }
             }
-        }
+        },
+        "$page/item/button_image/action/properties/value": {}
     }
 }

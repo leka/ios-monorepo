@@ -8,7 +8,7 @@ uuid: FF7618528E194E8CB3A6950E08562D16
 name: hanna_meets_leka
 
 created_at: "2024-03-31T23:33:50.987548"
-last_edited_at: "2024-09-27T00:29:52.482960"
+last_edited_at: "2025-04-29T18:14:13.437612"
 status: published
 
 authors:
@@ -118,7 +118,9 @@ pages:
               text: Leka
               action:
                 type: robot
-                value: bootyShake
+                value:
+                  type: motion
+                  value: bootyShake
           - type: text
             payload:
               text: "!"
@@ -142,7 +144,9 @@ pages:
               text: Leka
               action:
                 type: robot
-                value: bootyShake
+                value:
+                  type: motion
+                  value: bootyShake
           - type: text
             payload:
               text: "!"
@@ -174,7 +178,9 @@ pages:
               text: Leka
               action:
                 type: robot
-                value: randomMove
+                value:
+                  type: random
+                  value: move
       - locale: en_US
         items:
           - type: button_image
@@ -200,7 +206,9 @@ pages:
               text: Leka
               action:
                 type: robot
-                value: randomMove
+                value:
+                  type: random
+                  value: move
 
   - background: bedroom_background
     l10n:
@@ -215,7 +223,9 @@ pages:
               text: rouler
               action:
                 type: robot
-                value: spin
+                value:
+                  type: motion
+                  value: spin
           - type: text
             payload:
               text: et briller de différentes
@@ -225,7 +235,9 @@ pages:
               text: couleurs
               action:
                 type: robot
-                value: yellow
+                value:
+                  type: random
+                  value: color
       - locale: en_US
         items:
           - type: text
@@ -237,7 +249,9 @@ pages:
               text: roll
               action:
                 type: robot
-                value: spin
+                value:
+                  type: motion
+                  value: spin
           - type: text
             payload:
               text: and shine in different
@@ -247,7 +261,9 @@ pages:
               text: colors
               action:
                 type: robot
-                value: yellow
+                value:
+                  type: random
+                  value: color
 
   - background: bedroom_background
     l10n:
@@ -266,8 +282,10 @@ pages:
               idle: colors
               text: couleurs
               action:
-                type: activity
-                value: color_bingo_4-A7584D692B23422BB12683FA7BE393BE
+                type: ipad
+                value:
+                  type: activity
+                  value: color_bingo_4-A7584D692B23422BB12683FA7BE393BE
           - type: text
             payload:
               text: de Leka
@@ -286,8 +304,10 @@ pages:
               idle: colors
               text: colors
               action:
-                type: activity
-                value: color_bingo_4-A7584D692B23422BB12683FA7BE393BE
+                type: ipad
+                value:
+                  type: activity
+                  value: color_bingo_4-A7584D692B23422BB12683FA7BE393BE
           - type: text
             payload:
               text: of Leka

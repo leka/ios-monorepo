@@ -8,7 +8,7 @@ uuid: 60C133CB19F94BA0864DFA9BF6E7F696
 name: hanna_at_the_beach
 
 created_at: "2024-03-31T23:33:50.987548"
-last_edited_at: "2024-09-27T00:29:52.482967"
+last_edited_at: "2025-04-29T18:14:13.470776"
 status: published
 
 authors:
@@ -119,7 +119,9 @@ pages:
               text: Leka
               action:
                 type: robot
-                value: randomMove
+                value:
+                  type: random
+                  value: move
           - type: text
             payload:
               text: vont à la
@@ -153,7 +155,9 @@ pages:
               text: Leka
               action:
                 type: robot
-                value: randomMove
+                value:
+                  type: random
+                  value: move
           - type: text
             payload:
               text: go to the
@@ -280,7 +284,9 @@ pages:
               text: Leka
               action:
                 type: robot
-                value: randomMove
+                value:
+                  type: random
+                  value: move
           - type: text
             payload:
               text: veulent faire un
@@ -306,7 +312,9 @@ pages:
               text: Leka
               action:
                 type: robot
-                value: randomMove
+                value:
+                  type: random
+                  value: move
           - type: text
             payload:
               text: want to build a
@@ -335,7 +343,9 @@ pages:
               text: Leka
               action:
                 type: robot
-                value: randomMove
+                value:
+                  type: random
+                  value: move
           - type: text
             payload:
               text: construisent le plus beau
@@ -364,7 +374,9 @@ pages:
               text: Leka
               action:
                 type: robot
-                value: randomMove
+                value:
+                  type: random
+                  value: move
           - type: text
             payload:
               text: build the most beautiful
@@ -396,7 +408,9 @@ pages:
               text: Leka
               action:
                 type: robot
-                value: randomMove
+                value:
+                  type: random
+                  value: move
           - type: text
             payload:
               text: se sont bien amusés
@@ -417,7 +431,9 @@ pages:
               text: Leka
               action:
                 type: robot
-                value: randomMove
+                value:
+                  type: random
+                  value: move
           - type: text
             payload:
               text: had a great fun

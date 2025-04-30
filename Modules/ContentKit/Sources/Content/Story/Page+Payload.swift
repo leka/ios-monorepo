@@ -66,7 +66,7 @@ public struct ButtonImagePayload: PagePayloadProtocol {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.idle = try container.decode(String.self, forKey: .idle)
         self.pressed = try container.decodeIfPresent(String.self, forKey: .pressed) ?? self.idle
-        self.action = try container.decodeIfPresent(Page.Action.self, forKey: .action) ?? .none
+        self.action = try container.decodeIfPresent(Page.Action.self, forKey: .action)
         self.text = try container.decode(String.self, forKey: .text)
     }
 
@@ -75,7 +75,7 @@ public struct ButtonImagePayload: PagePayloadProtocol {
     public let idle: String
     public let pressed: String
     public let text: String
-    public let action: Page.Action
+    public let action: Page.Action?
 
     // MARK: Internal
 
