@@ -13,7 +13,7 @@ let logCK = LogKit.createLoggerFor(module: "ContentKit")
 public enum ContentKit {
     // MARK: Public
 
-    public static let allActivities: [Activity] = ContentKit.listAllActivities() ?? []
+    public static var allActivities: [Activity] = ContentKit.listAllActivities() ?? []
     public static let allPublishedActivities: [Activity] = ContentKit.listAllPublishedActivities() ?? []
     public static let allDraftActivities: [Activity] = ContentKit.listAllDraftActivities() ?? []
     public static let allTemplateActivities: [Activity] = ContentKit.listAllTemplateActivities() ?? []
@@ -87,6 +87,12 @@ public enum ContentKit {
 
             do {
                 let curriculum = try YAMLDecoder().decode(Curriculum.self, from: data)
+
+                for activity in curriculum.activities {
+                    if let index = allActivities.firstIndex(where: { $0.id == activity }) {
+                        self.allActivities[index].curriculums.append(curriculum.id)
+                    }
+                }
                 curriculums.append(curriculum)
             } catch {
                 logCK.error("Error decoding file: \(file) with error:\n\(error)")
