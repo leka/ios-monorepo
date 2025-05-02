@@ -9,12 +9,12 @@ color: 0x00FF00
 l10n:
   - locale: fr_FR
     details:
-      title: Corps humain
+      title: Corps et besoins
       subtitle:
       description:
   - locale: en_US
     details:
-      title: Human body
+      title: Body and needs
       subtitle:
       description:
 
@@ -23,14 +23,16 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Corps humain
+          title: Corps et besoins
           subtitle:
           description:
       - locale: en_US
         details:
-          title: Human body
+          title: Body and needs
           subtitle:
           description:
     items:
       - value: curriculum_recognition_body_parts-80761A1D62BF4C6980BF20E7D9BE52B8
+        type: curriculum
+      - value: curriculum_recognition_basic_physiological_needs-B697FEE9EF7946A2B704673FEEAA0824
         type: curriculum
