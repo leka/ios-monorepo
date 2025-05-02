@@ -47,6 +47,7 @@ let project = Project.app(
         .project(target: "BLEKit", path: Path("../../Modules/BLEKit")),
         .project(target: "DesignKit", path: Path("../../Modules/DesignKit")),
         .project(target: "LocalizationKit", path: Path("../../Modules/LocalizationKit")),
+        .project(target: "LogKit", path: Path("../../Modules/LogKit")),
         .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
 
         .external(name: "Version"),

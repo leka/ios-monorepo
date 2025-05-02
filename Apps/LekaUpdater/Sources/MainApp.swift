@@ -4,8 +4,10 @@
 
 import BLEKit
 import DesignKit
+import LogKit
 import SwiftUI
 
+let log = LogKit.createLoggerFor(app: "LekaUpdater")
 var globalFirmwareManager = FirmwareManager()
 
 // MARK: - LekaUpdaterApp
