@@ -1,0 +1,44 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: F7F2B8BFB65D403E929B3FD24380BC3B
+icon: figure.run
+color: 0x00FF00
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Vacances et festivités
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Holidays and Festivities
+      subtitle:
+      description:
+
+content:
+  - component: vertical_content_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Vacances et festivités
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Holidays and Festivities
+          subtitle:
+          description:
+    items:
+      - value: curriculum_recognition_seaside_holidays-B1BA5597BC594082AECE293AD25CFA89
+        type: curriculum
+      - value: curriculum_recognition_halloween-DD01FCFF7BCB4A44A78BF7C813CE8DF5
+        type: curriculum
+      - value: curriculum_recognition_christmas-DA8D769CC7C643CFA0484FAE4B22D1F7
+        type: curriculum
+      - value: curriculum_memory_christmas-EFC444BBDEF24E08813FF472FFA5365D
+        type: curriculum
+      - value: curriculum_recognition_winter_holidays-2B8E01DABDBC4863A962B785D4069B3E
+        type: curriculum

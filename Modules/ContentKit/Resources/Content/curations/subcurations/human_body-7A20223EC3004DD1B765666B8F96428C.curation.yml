@@ -1,0 +1,36 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 7A20223EC3004DD1B765666B8F96428C
+icon: figure.run
+color: 0x00FF00
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Corps humain
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Human body
+      subtitle:
+      description:
+
+content:
+  - component: vertical_content_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Corps humain
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Human body
+          subtitle:
+          description:
+    items:
+      - value: curriculum_recognition_body_parts-80761A1D62BF4C6980BF20E7D9BE52B8
+        type: curriculum
