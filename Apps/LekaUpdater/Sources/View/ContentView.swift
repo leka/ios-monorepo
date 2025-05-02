@@ -16,15 +16,15 @@ struct ContentView: View {
                 isConnectionViewPresented: self.$isConnectionViewPresented,
                 isUpdateStatusViewPresented: self.$isUpdateStatusViewPresented
             )
-            .fullScreenCover(isPresented: self.$isConnectionViewPresented) {
-                NavigationStack {
-                    ConnectionView()
-                }
+        }
+        .sheet(isPresented: self.$isConnectionViewPresented) {
+            NavigationStack {
+                ConnectionView()
             }
-            .fullScreenCover(isPresented: self.$isUpdateStatusViewPresented) {
-                NavigationStack {
-                    UpdateStatusView(isConnectionViewPresented: self.$isConnectionViewPresented)
-                }
+        }
+        .fullScreenCover(isPresented: self.$isUpdateStatusViewPresented) {
+            NavigationStack {
+                UpdateStatusView(isConnectionViewPresented: self.$isConnectionViewPresented)
             }
         }
     }

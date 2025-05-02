@@ -84,20 +84,18 @@ struct InformationView: View {
                         .padding([.vertical], 10)
                 }
 
-                VStack {
-                    LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 70)
-                        .padding(35)
-                }
+                LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 70)
+                    .padding(35)
             }
             .padding([.horizontal], 20)
         }
         .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
         .background(.lkBackground)
-        .onChange(of: self.isViewVisible) { isVisible in
-            if isVisible { self.viewModel.onViewReappear() }
+        .onChange(of: self.isViewVisible) {
+            if self.isViewVisible { self.viewModel.onViewReappear() }
         }
         .toolbar {
             ToolbarItem(placement: .principal) {
