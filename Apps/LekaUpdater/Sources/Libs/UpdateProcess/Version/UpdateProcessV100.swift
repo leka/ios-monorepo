@@ -287,7 +287,13 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
         let majorCharacteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.versionMajor,
             serviceUUID: BLESpecs.FirmwareUpdate.service,
-            onWrite: self.setMinor
+            onWrite: {
+                log.debug("Major characteristic written, dispatching setMinor")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    log.debug("Inside dispatchqueue, about to setMinor")
+                    self.setMinor()
+                }
+            }
         )
 
         Robot.shared.connectedPeripheral?.send(majorData, forCharacteristic: majorCharacteristic)
@@ -299,7 +305,13 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
         let minorCharacteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.versionMinor,
             serviceUUID: BLESpecs.FirmwareUpdate.service,
-            onWrite: self.setRevision
+            onWrite: {
+                log.debug("Minor characteristic written, dispatching setRevision")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    log.debug("Inside dispatchqueue, about to setRevision")
+                    self.setRevision()
+                }
+            }
         )
 
         Robot.shared.connectedPeripheral?.send(minorData, forCharacteristic: minorCharacteristic)
@@ -311,7 +323,13 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
         let revisionCharacteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.versionRevision,
             serviceUUID: BLESpecs.FirmwareUpdate.service,
-            onWrite: self.applyUpdate
+            onWrite: {
+                log.debug("Revision characteristic written, dispatching applyUpdate")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    log.debug("Inside dispatchqueue, about to applyUpdate")
+                    self.applyUpdate()
+                }
+            }
         )
 
         Robot.shared.connectedPeripheral?.send(revisionData, forCharacteristic: revisionCharacteristic)
