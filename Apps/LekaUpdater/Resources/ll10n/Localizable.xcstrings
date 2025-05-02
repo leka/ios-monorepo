@@ -2,121 +2,38 @@
     "version": "1.0",
     "sourceLanguage": "en",
     "strings": {
-        "connection.connect_button": {
-            "comment": "Connect button",
+        "connection.another_robot": {
+            "comment": "Connect another robot button label",
+            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "translated",
-                        "value": "Connect"
+                        "state": "new",
+                        "value": "Click here to connect another robot"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Se connecter"
+                        "value": "Cliquer ici pour se connecter \u00e0 un autre robot"
                     }
                 }
             }
         },
-        "connection.continue_button": {
-            "comment": "Continue button",
+        "connection.new_robot": {
+            "comment": "Connect a robot button label",
+            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "translated",
-                        "value": "Continue"
+                        "state": "new",
+                        "value": "Click to connect a robot"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Continuer"
-                    }
-                }
-            }
-        },
-        "connection.disconnect_button": {
-            "comment": "Disconnect button",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Disconnect"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Se d\u00e9connecter"
-                    }
-                }
-            }
-        },
-        "connection.no_robots_found_text": {
-            "comment": "No robount found text",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "No robots found..."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Aucun robot trouv\u00e9..."
-                    }
-                }
-            }
-        },
-        "connection.robot_discovery_version": {
-            "comment": "Discovery version LekaOS v...",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "LekaOS v%@"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "LekaOS v%@"
-                    }
-                }
-            }
-        },
-        "connection.search_button": {
-            "comment": "Search button",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Search"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Rechercher"
-                    }
-                }
-            }
-        },
-        "connection.search_invite_text": {
-            "comment": "Search invite text",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Press the Search button to find robots around you"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Lancer une recherche pour trouver les robots autour de vous !"
+                        "value": "Cliquer pour se connecter \u00e0 un robot"
                     }
                 }
             }
@@ -342,6 +259,24 @@
                 }
             }
         },
+        "information.status.robot_not_connected": {
+            "comment": "Robot not connected text",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "\ud83e\udd16 No robot connected \ud83d\udeab"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\ud83e\udd16 Aucun robot connect\u00e9 \ud83d\udeab"
+                    }
+                }
+            }
+        },
         "information.status.robot_update_available": {
             "comment": "Robot firmware update available text",
             "localizations": {
@@ -390,23 +325,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Leka Updater"
-                    }
-                }
-            }
-        },
-        "toolbar.connection_button": {
-            "comment": "Connection toolbar button",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Connection"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Connexion"
                     }
                 }
             }

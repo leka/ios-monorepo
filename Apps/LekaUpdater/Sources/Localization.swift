@@ -21,39 +21,20 @@ extension l10n {
         )
     }
 
-    enum toolbar {
-        static let connectionButton = LocalizedString(
-            "toolbar.connection_button", value: "Connection", comment: "Connection toolbar button"
-        )
-    }
-
     enum connection {
-        static let continueButton = LocalizedString(
-            "connection.continue_button", value: "Continue", comment: "Continue button"
+        static let newRobot = LocalizedString(
+            "connection.new_robot", value: "Click to connect a robot", comment: "Connect a robot button label"
         )
-        static let searchButton = LocalizedString("connection.search_button", value: "Search", comment: "Search button")
-        static let connectButton = LocalizedString(
-            "connection.connect_button", value: "Connect", comment: "Connect button"
-        )
-        static let disconnectButton = LocalizedString(
-            "connection.disconnect_button", value: "Disconnect", comment: "Disconnect button"
-        )
-
-        static let noRobotsFoundText = LocalizedString(
-            "connection.no_robots_found_text", value: "No robots found...", comment: "No robount found text"
-        )
-        static let searchInviteText = LocalizedString(
-            "connection.search_invite_text", value: "Press the Search button to find robots around you",
-            comment: "Search invite text"
-        )
-
-        static let robotDiscoveryVersion = LocalizedStringInterpolation(
-            "connection.robot_discovery_version", value: "LekaOS v%@", comment: "Discovery version LekaOS v..."
-        )
+        static let anotherRobot = LocalizedString("connection.another_robot", value: "Click here to connect another robot", comment: "Connect another robot button label")
     }
 
     enum information {
         enum status {
+            static let robotNotConnected = LocalizedString(
+                "information.status.robot_not_connected",
+                value: "🤖 No robot connected 🚫",
+                comment: "Robot not connected text"
+            )
             static let robotCannotBeUpdatedText = LocalizedString(
                 "information.status.robot_cannot_be_updated_text",
                 value: "⚠️ DEV 🚧\nUpdate process not recognized or not available\n(Error code: #0003)",
