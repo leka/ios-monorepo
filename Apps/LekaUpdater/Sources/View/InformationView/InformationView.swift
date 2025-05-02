@@ -20,39 +20,7 @@ struct InformationView: View {
     var body: some View {
         VStack {
             ScrollView {
-                VStack(alignment: .center, spacing: 10) {
-                    if self.viewModel.showRobotCannotBeUpdated {
-                        RobotCannotBeUpdatedIllustration(size: 200)
-
-                        Text(self.viewModel.robotName)
-                            .font(.title3)
-
-                        Text(
-                            l10n.information.status.robotCannotBeUpdatedText.characters
-                                + " - (LekaOS v\(self.viewModel.robotOSVersion))"
-                        )
-                        .font(.title2)
-                        .multilineTextAlignment(.center)
-
-                    } else if self.viewModel.showRobotNeedsUpdate {
-                        RobotNeedsUpdateIllustration(size: 200)
-
-                        Text(self.viewModel.robotName)
-                            .font(.title3)
-
-                        Text(l10n.information.status.robotUpdateAvailable)
-                            .font(.title2)
-                    } else {
-                        RobotUpToDateIllustration(size: 200)
-
-                        Text(self.viewModel.robotName)
-                            .font(.title3)
-
-                        Text(l10n.information.status.robotIsUpToDate)
-                            .font(.title2)
-                    }
-                }
-                .padding([.bottom], 10)
+                RobotStateView(viewModel: self.viewModel, isConnectionViewPresented: self.$isConnectionViewPresented)
 
                 RobotInformationView()
                     .padding()
@@ -60,8 +28,8 @@ struct InformationView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .stroke(.lkStroke, lineWidth: 3)
                     )
-                    .padding([.horizontal], 3)
-                    .padding([.vertical], 10)
+                    .padding(.horizontal, 3)
+                    .padding(.vertical, 10)
 
                 DisclosureGroup {
                     ChangelogView()
@@ -76,12 +44,12 @@ struct InformationView: View {
                     RoundedRectangle(cornerRadius: 20)
                         .stroke(.lkStroke, lineWidth: 3)
                 )
-                .padding([.horizontal], 3)
-                .padding([.vertical], 10)
+                .padding(.horizontal, 3)
+                .padding(.vertical, 10)
 
                 if self.viewModel.showRobotNeedsUpdate {
                     RobotUpdateAvailableView(isUpdateStatusViewPresented: self.$isUpdateStatusViewPresented)
-                        .padding([.vertical], 10)
+                        .padding(.vertical, 10)
                 }
 
                 LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
@@ -90,7 +58,7 @@ struct InformationView: View {
                     .frame(height: 70)
                     .padding(35)
             }
-            .padding([.horizontal], 20)
+            .padding(.horizontal, 20)
         }
         .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
         .background(.lkBackground)
@@ -106,17 +74,6 @@ struct InformationView: View {
                     Text(l10n.main.appDescription)
                 }
                 .foregroundColor(.lkNavigationTitle)
-            }
-
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    self.isConnectionViewPresented = true
-                } label: {
-                    HStack {
-                        Image(systemName: "chevron.backward")
-                        Text(l10n.toolbar.connectionButton)
-                    }
-                }
             }
         }
     }
