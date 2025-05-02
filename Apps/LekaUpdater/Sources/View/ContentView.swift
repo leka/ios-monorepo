@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import RobotKit
 import SwiftUI
 
 // MARK: - ContentView
@@ -19,7 +20,7 @@ struct ContentView: View {
         }
         .sheet(isPresented: self.$isConnectionViewPresented) {
             NavigationStack {
-                ConnectionView()
+                RobotConnectionView()
             }
         }
         .fullScreenCover(isPresented: self.$isUpdateStatusViewPresented) {
