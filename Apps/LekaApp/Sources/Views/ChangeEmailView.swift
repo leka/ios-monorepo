@@ -17,6 +17,12 @@ struct ChangeEmailView: View {
         VStack(alignment: .center, spacing: 30) {
             VStack(spacing: 10) {
                 VStack(spacing: 40) {
+                    Image(systemName: "envelope")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 50, height: 50)
+                        .foregroundColor(.blue)
+
                     Text(l10n.ChangeEmailView.title)
                         .font(.title)
 
