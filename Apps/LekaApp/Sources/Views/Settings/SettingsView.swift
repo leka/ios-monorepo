@@ -238,12 +238,12 @@ struct SettingsView: View {
     }
 
     private let authManager = AuthManager.shared
+    private var authManagerViewModel: AuthManagerViewModel = .shared
     private let caregiverManager: CaregiverManager = .shared
     private let carereceiverManager: CarereceiverManager = .shared
     private var libraryManager: LibraryManager = .shared
     private let persistentDataManager: PersistentDataManager = .shared
 
-    @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
     @ObservedObject private var styleManager: StyleManager = .shared
     @ObservedObject private var navigation = Navigation.shared
 

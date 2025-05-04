@@ -94,12 +94,12 @@ struct ConnectionView: View {
     @State private var password: String = ""
     @State private var forgotPasswordEmail: String = ""
 
-    @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
     @ObservedObject private var navigation: Navigation = .shared
 
     @State private var showResetPassword: Bool = false
 
     private var authManager: AuthManager = .shared
+    private var authManagerViewModel: AuthManagerViewModel = .shared
     private var rootAccountManager: RootAccountManager = .shared
     private var libraryManager: LibraryManager = .shared
     private var caregiverManager: CaregiverManager = .shared

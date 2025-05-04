@@ -42,8 +42,9 @@ extension AccountCreationProcess {
 
         @Environment(\.dismiss) private var dismiss
 
-        @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
         @ObservedObject private var navigation = Navigation.shared
+
+        private var authManagerViewModel: AuthManagerViewModel = .shared
     }
 }
 

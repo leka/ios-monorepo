@@ -31,7 +31,8 @@ struct MainView: View {
     @State private var isDemoSectionExpanded: Bool = true
 
     @ObservedObject var navigation: Navigation = .shared
-    @ObservedObject var authManagerViewModel = AuthManagerViewModel.shared
+
+    var authManagerViewModel: AuthManagerViewModel = .shared
 
     var body: some View {
         NavigationSplitView {

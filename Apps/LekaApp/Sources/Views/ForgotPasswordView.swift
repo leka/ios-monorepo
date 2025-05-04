@@ -67,7 +67,7 @@ struct ForgotPasswordView: View {
 
     // MARK: Private
 
-    @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
+    @Bindable private var authManagerViewModel: AuthManagerViewModel = .shared
 
     private var authManager: AuthManager = .shared
 

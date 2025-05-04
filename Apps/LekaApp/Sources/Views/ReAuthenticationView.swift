@@ -85,12 +85,11 @@ struct ReAuthenticationView: View {
 
     // MARK: Private
 
-    @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
-
     @State private var password: String = ""
     @State private var showConfirmResetPassword: Bool = false
 
     private var authManager: AuthManager = .shared
+    private var authManagerViewModel: AuthManagerViewModel = .shared
 
     private var isConnectionDisabled: Bool {
         self.password.isEmpty
