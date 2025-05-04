@@ -5,10 +5,12 @@
 import Combine
 import Foundation
 import LocalizationKit
+import Observation
 
 // MARK: - AuthManagerViewModel
 
-public class AuthManagerViewModel: ObservableObject {
+@Observable
+public class AuthManagerViewModel {
     // MARK: Lifecycle
 
     public init() {
@@ -17,22 +19,22 @@ public class AuthManagerViewModel: ObservableObject {
 
     // MARK: Public
 
-    public static let shared = AuthManagerViewModel()
+    @ObservationIgnored public static let shared = AuthManagerViewModel()
 
     // MARK: - User
 
-    @Published public var userAuthenticationState: AuthManager.AuthenticationState = .unknown
-    @Published public var userAction: AuthManager.UserAction?
-    @Published public var userEmailIsVerified = false
-    @Published public var reAuthenticationSucceeded: Bool = false
+    public var userAuthenticationState: AuthManager.AuthenticationState = .unknown
+    public var userAction: AuthManager.UserAction?
+    public var userEmailIsVerified = false
+    public var reAuthenticationSucceeded: Bool = false
 
     // MARK: - Alerts
 
-    @Published public var showErrorAlert = false
-    @Published public var showErrorMessage = false
-    @Published public var showActionRequestAlert = false
-    @Published public var resetPasswordSucceeded: Bool = false
-    @Published public var isLoading: Bool = false
+    public var showErrorAlert = false
+    public var showErrorMessage = false
+    public var showActionRequestAlert = false
+    public var resetPasswordSucceeded: Bool = false
+    public var isLoading: Bool = false
 
     public func resetErrorMessage() {
         self.showErrorAlert = false
@@ -41,8 +43,8 @@ public class AuthManagerViewModel: ObservableObject {
 
     // MARK: Private
 
-    private let authManager: AuthManager = .shared
-    private var cancellables = Set<AnyCancellable>()
+    @ObservationIgnored private let authManager: AuthManager = .shared
+    @ObservationIgnored private var cancellables = Set<AnyCancellable>()
 
     private func subscribeToAuthManager() {
         self.authManager.authenticationStatePublisher
@@ -69,7 +71,10 @@ public class AuthManagerViewModel: ObservableObject {
 
         self.authManager.isLoadingPublisher
             .receive(on: DispatchQueue.main)
-            .assign(to: &self.$isLoading)
+            .sink { [weak self] isLoading in
+                self?.isLoading = isLoading
+            }
+            .store(in: &self.cancellables)
 
         self.authManager.emailVerificationStatePublisher
             .receive(on: DispatchQueue.main)

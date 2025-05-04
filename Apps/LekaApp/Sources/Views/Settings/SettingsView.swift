@@ -238,6 +238,7 @@ struct SettingsView: View {
     }
 
     private let authManager = AuthManager.shared
+    private var authManagerViewModel: AuthManagerViewModel = .shared
     private let caregiverManager: CaregiverManager = .shared
     private let carereceiverManager: CarereceiverManager = .shared
     private var libraryManager: LibraryManager = .shared
@@ -245,8 +246,6 @@ struct SettingsView: View {
     private var styleManager: StyleManager = .shared
 
     @Bindable private var navigation = Navigation.shared
-
-    @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
 
     private func reset() {
         self.caregiverManager.resetData()
