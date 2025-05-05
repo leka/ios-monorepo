@@ -87,7 +87,7 @@ struct CarereceiverPicker: View {
         case skip
     }
 
-    @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
+    @State private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
     @State private var selectedCarereceiver: [Carereceiver]
     @State private var action: ActionType?
 
