@@ -20,32 +20,43 @@ struct InformationView: View {
     var body: some View {
         VStack {
             ScrollView {
-                RobotStateView(viewModel: self.viewModel, isConnectionViewPresented: self.$isConnectionViewPresented)
+                RobotStateView(viewModel: self.viewModel)
 
-                RobotInformationView()
-                    .padding()
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(.lkStroke, lineWidth: 3)
-                    )
-                    .padding(.horizontal, 3)
-                    .padding(.vertical, 10)
+                SwitchRobotButton(isRobotConnected: self.viewModel.isRobotConnected, isConnectionViewPresented: self.$isConnectionViewPresented)
 
-                DisclosureGroup {
-                    ChangelogView()
+                if self.viewModel.isRobotConnected {
+                    RobotInformationView()
                         .padding()
-                } label: {
-                    Text(l10n.information.changelogSectionTitle)
-                        .foregroundStyle(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(.lkStroke, lineWidth: 3)
+                        )
+                        .padding(.horizontal, 3)
+                        .padding(.vertical, 10)
                 }
-                .accentColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
-                .padding()
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(.lkStroke, lineWidth: 3)
-                )
-                .padding(.horizontal, 3)
-                .padding(.vertical, 10)
+                VStack(alignment: .leading, spacing: 0) {
+                    Section {
+                        DisclosureGroup {
+                            ChangelogView()
+                                .padding()
+                        } label: {
+                            Text(l10n.information.changelogDisclosureTitle)
+                                .foregroundStyle(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
+                        }
+                        .accentColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
+                        .padding()
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(.lkStroke, lineWidth: 3)
+                        )
+                        .padding(.horizontal, 3)
+                        .padding(.vertical, 10)
+                    } header: {
+                        Text(l10n.information.changelogSectionTitle)
+                            .font(.headline)
+                            .padding(.horizontal)
+                    }
+                }
 
                 if self.viewModel.showRobotNeedsUpdate {
                     RobotUpdateAvailableView(isUpdateStatusViewPresented: self.$isUpdateStatusViewPresented)

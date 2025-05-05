@@ -9,13 +9,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Click here to connect another robot"
+                        "value": "Disconnect and connect another robot"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Cliquer ici pour se connecter \u00e0 un autre robot"
+                        "value": "Se d\u00e9connecter et choisir un autre robot"
                     }
                 }
             }
@@ -27,13 +27,13 @@
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Click to connect a robot"
+                        "value": "Connect to your robot"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Cliquer pour se connecter \u00e0 un robot"
+                        "value": "Se connecter \u00e0 un robot"
                     }
                 }
             }
@@ -72,6 +72,24 @@
                 }
             }
         },
+        "information.changelog_disclosure_title": {
+            "comment": "Changelog disclusure title of latest firmware update",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Changelog"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Liste des changements apport\u00e9s"
+                    }
+                }
+            }
+        },
         "information.changelog_not_found_text": {
             "comment": "Changelog not found text",
             "localizations": {
@@ -90,18 +108,19 @@
             }
         },
         "information.changelog_section_title": {
-            "comment": "Changelog of latest firmware update",
+            "comment": "Changelog section title of latest firmware update",
+            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "translated",
-                        "value": "Changelog"
+                        "state": "new",
+                        "value": "New features"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Liste des changements apport\u00e9s"
+                        "value": "Nouveaut\u00e9s"
                     }
                 }
             }

@@ -11,35 +11,16 @@ import Version
 
 struct RobotStateView: View {
     @StateObject var viewModel: InformationViewModel
-    @Binding var isConnectionViewPresented: Bool
 
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
             if !self.viewModel.isRobotConnected {
-                Button {
-                    self.isConnectionViewPresented = true
-                } label: {
-                    VStack(spacing: 10) {
-                        RobotNotConnectedIllustration(size: 200)
-                        Text(l10n.connection.newRobot)
-                            .font(.caption)
-                            .underline()
-                    }
-                }
+                RobotNotConnectedIllustration(size: 200)
 
                 Text(l10n.information.status.robotNotConnected)
                     .font(.title2)
             } else if self.viewModel.showRobotCannotBeUpdated {
-                Button {
-                    self.isConnectionViewPresented = true
-                } label: {
-                    VStack(spacing: 10) {
-                        RobotCannotBeUpdatedIllustration(size: 200)
-                        Text(l10n.connection.anotherRobot)
-                            .font(.caption)
-                            .underline()
-                    }
-                }
+                RobotCannotBeUpdatedIllustration(size: 200)
 
                 Text(self.viewModel.robotName)
                     .font(.title3)
@@ -52,16 +33,7 @@ struct RobotStateView: View {
                 .multilineTextAlignment(.center)
 
             } else if self.viewModel.showRobotNeedsUpdate {
-                Button {
-                    self.isConnectionViewPresented = true
-                } label: {
-                    VStack(spacing: 10) {
-                        RobotNeedsUpdateIllustration(size: 200)
-                        Text(l10n.connection.anotherRobot)
-                            .font(.caption)
-                            .underline()
-                    }
-                }
+                RobotNeedsUpdateIllustration(size: 200)
 
                 Text(self.viewModel.robotName)
                     .font(.title3)
@@ -69,16 +41,7 @@ struct RobotStateView: View {
                 Text(l10n.information.status.robotUpdateAvailable)
                     .font(.title2)
             } else {
-                Button {
-                    self.isConnectionViewPresented = true
-                } label: {
-                    VStack(spacing: 10) {
-                        RobotUpToDateIllustration(size: 200)
-                        Text(l10n.connection.anotherRobot)
-                            .font(.caption)
-                            .underline()
-                    }
-                }
+                RobotUpToDateIllustration(size: 200)
 
                 Text(self.viewModel.robotName)
                     .font(.title3)
@@ -95,8 +58,7 @@ struct RobotStateView: View {
     NavigationStack {
         HStack(spacing: 100) {
             RobotStateView(
-                viewModel: InformationViewModel(),
-                isConnectionViewPresented: .constant(false)
+                viewModel: InformationViewModel()
             )
             .onAppear {
                 Robot.shared.isConnected.send(true)
@@ -107,8 +69,7 @@ struct RobotStateView: View {
             }
 
             RobotStateView(
-                viewModel: InformationViewModel(),
-                isConnectionViewPresented: .constant(false)
+                viewModel: InformationViewModel()
             )
             .onAppear {
                 Robot.shared.name.send("Leka")

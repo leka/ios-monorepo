@@ -23,9 +23,9 @@ extension l10n {
 
     enum connection {
         static let newRobot = LocalizedString(
-            "connection.new_robot", value: "Click to connect a robot", comment: "Connect a robot button label"
+            "connection.new_robot", value: "Connect to your robot", comment: "Connect a robot button label"
         )
-        static let anotherRobot = LocalizedString("connection.another_robot", value: "Click here to connect another robot", comment: "Connect another robot button label")
+        static let anotherRobot = LocalizedString("connection.another_robot", value: "Disconnect and connect another robot", comment: "Connect another robot button label")
     }
 
     enum information {
@@ -67,7 +67,10 @@ extension l10n {
         }
 
         static let changelogSectionTitle = LocalizedString(
-            "information.changelog_section_title", value: "Changelog", comment: "Changelog of latest firmware update"
+            "information.changelog_section_title", value: "New features", comment: "Changelog section title of latest firmware update"
+        )
+        static let changelogDisclosureTitle = LocalizedString(
+            "information.changelog_disclosure_title", value: "Changelog", comment: "Changelog disclosure title of latest firmware update"
         )
         static let changelogNotFoundText = LocalizedString(
             "information.changelog_not_found_text", value: "Changelog is not available",
