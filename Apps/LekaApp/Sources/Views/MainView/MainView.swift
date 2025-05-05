@@ -410,12 +410,12 @@ struct MainView: View {
 
     @ObservedObject private var styleManager: StyleManager = .shared
 
-    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
-    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
-
     @State private var showingAppUpdateAlert: Bool = false
     @State private var showingOSUpdateAlert: Bool = false
     @State private var updateAlertHasBeenShown: Bool = false
+
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @State private var rootAccountViewModel = RootAccountManagerViewModel()
 
     @Bindable private var libraryManagerViewModel: LibraryManagerViewModel = .shared
 
