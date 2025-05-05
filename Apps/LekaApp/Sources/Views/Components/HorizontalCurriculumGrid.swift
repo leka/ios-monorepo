@@ -38,7 +38,7 @@ public struct HorizontalCurriculumGrid: View {
 
     // MARK: Private
 
-    @StateObject private var navigation: Navigation = .shared
+    @State private var navigation: Navigation = .shared
 
     private var numberOfRows: Int {
         self.items.count < 6 ? 1 : 2

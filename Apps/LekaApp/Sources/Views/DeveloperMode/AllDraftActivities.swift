@@ -38,8 +38,7 @@ struct AllDraftActivitiesView: View {
 
     // MARK: Private
 
-    @ObservedObject private var navigation: Navigation = .shared
-
+    private var navigation: Navigation = .shared
     private var columns = Array(repeating: GridItem(), count: 3)
 }
 

@@ -36,11 +36,11 @@ struct FavoriteCurriculumsView: View {
 
     // MARK: Private
 
-    @ObservedObject private var navigation: Navigation = .shared
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
+    private var navigation: Navigation = .shared
     private var viewModel: LibraryManagerViewModel
 
     private var curriculums: [Curriculum] {

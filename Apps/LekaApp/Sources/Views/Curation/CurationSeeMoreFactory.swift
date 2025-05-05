@@ -36,10 +36,7 @@ public struct CurationSeeMoreFactory: View {
     // MARK: Internal
 
     let section: CategoryCuration.Section
-
-    // MARK: Private
-
-    @ObservedObject private var navigation: Navigation = .shared
+    var navigation: Navigation = .shared
 }
 
 #Preview {

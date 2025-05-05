@@ -113,9 +113,9 @@ struct CategorySearchView: View {
     private let activities: [Activity] = Array(ContentKit.allPublishedActivities.values)
     private let curriculums: [Curriculum] = Array(ContentKit.allPublishedCurriculums.values)
     private let skills: [Skill] = Skills.primarySkillsList
+    private var navigation: Navigation = .shared
 
     @State private var query = ""
-    @ObservedObject private var navigation: Navigation = .shared
 }
 
 // MARK: - l10n.CategorySearchView

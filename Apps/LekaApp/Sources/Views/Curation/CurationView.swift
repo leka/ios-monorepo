@@ -109,9 +109,8 @@ struct CurationView: View {
 
     // MARK: Private
 
-    @ObservedObject private var navigation: Navigation = .shared
-
     private var styleManager: StyleManager = .shared
+    private var navigation: Navigation = .shared
     private let curation: CategoryCuration
     private let kDividerPadding: CGFloat = 100
 }
