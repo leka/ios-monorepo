@@ -5,6 +5,7 @@
 import AccountKit
 import Combine
 import ContentKit
+import Observation
 import SwiftUI
 
 // MARK: - FullScreenCoverContent
@@ -36,7 +37,8 @@ enum SheetContent: Hashable, Identifiable {
 
 // MARK: - Navigation
 
-class Navigation: ObservableObject {
+@Observable
+class Navigation {
     // MARK: Lifecycle
 
     private init() {
@@ -92,17 +94,17 @@ class Navigation: ObservableObject {
 
     static let shared = Navigation()
 
-    @Published var disableUICompletly: Bool = false
-    @Published var demoMode: Bool = false
-    @Published var categories = Category.allCases
+    var disableUICompletly: Bool = false
+    var demoMode: Bool = false
+    var categories = Category.allCases
 
-    @Published var sheetContent: SheetContent?
-    @Published var fullScreenCoverContent: FullScreenCoverContent?
+    var sheetContent: SheetContent?
+    var fullScreenCoverContent: FullScreenCoverContent?
 
-    @Published var currentActivity: Activity?
-    @Published var currentStory: Story?
+    var currentActivity: Activity?
+    var currentStory: Story?
 
-    @Published var navigateToAccountCreationProcess: Bool = false
+    var navigateToAccountCreationProcess: Bool = false
 
     var selectedCategory: Category? = .home {
         willSet {
@@ -118,7 +120,7 @@ class Navigation: ObservableObject {
         }
     }
 
-    @Published var path: NavigationPath = .init() {
+    var path: NavigationPath = .init() {
         willSet {
             self.disableUICompletly = true
         }
@@ -129,11 +131,10 @@ class Navigation: ObservableObject {
 
     // MARK: Private
 
-    private var authManager: AuthManager = .shared
-    private var authManagerViewModel: AuthManagerViewModel = .shared
-    private var cancellables: Set<AnyCancellable> = []
-
-    private var isProgrammaticNavigation: Bool = false
+    @ObservationIgnored private var authManager: AuthManager = .shared
+    @ObservationIgnored private var authManagerViewModel: AuthManagerViewModel = .shared
+    @ObservationIgnored private var cancellables: Set<AnyCancellable> = []
+    @ObservationIgnored private var isProgrammaticNavigation: Bool = false
 
     private var pushPopNoAnimationTransaction: Transaction {
         var transaction = Transaction(animation: nil)
