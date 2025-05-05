@@ -63,7 +63,7 @@ struct WelcomeView: View {
 
     @Bindable private var navigation: Navigation = .shared
 
-    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private func setupVideo() {
         self.player.play()

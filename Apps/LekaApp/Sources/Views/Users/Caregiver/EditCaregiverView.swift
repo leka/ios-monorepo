@@ -128,7 +128,7 @@ struct EditCaregiverView: View {
 
     @State private var caregiver: Caregiver
     @State private var isAvatarPickerPresented = false
-    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     @State private var birthdate: Date
 

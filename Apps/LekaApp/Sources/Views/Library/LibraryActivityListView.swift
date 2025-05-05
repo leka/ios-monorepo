@@ -164,7 +164,7 @@ public struct LibraryActivityListView: View {
         }
     }
 
-    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var styleManager: StyleManager = .shared
     private var libraryManagerViewModel: LibraryManagerViewModel = .shared

@@ -91,11 +91,10 @@ struct EditCaregiverLabel: View {
 
     // MARK: Private
 
+    private var navigation: Navigation = .shared
     private var styleManager: StyleManager = .shared
 
-    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
-
-    private var navigation: Navigation = .shared
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 }
 
 // MARK: - l10n.ChangeCaregiverProfile

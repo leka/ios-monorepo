@@ -36,7 +36,7 @@ struct FavoriteCurriculumsView: View {
 
     // MARK: Private
 
-    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var navigation: Navigation = .shared
     private var viewModel: LibraryManagerViewModel

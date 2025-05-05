@@ -54,8 +54,6 @@ struct CreateCaregiverView: View {
 
     var onClose: (() -> Void)?
 
-    var caregiverManager: CaregiverManager = .shared
-
     var body: some View {
         VStack(spacing: 40) {
             Form {

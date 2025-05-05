@@ -229,7 +229,7 @@ public struct ActivityView: View {
 
     // MARK: Private
 
-    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     @State private var isAlertPresented: Bool = false
 

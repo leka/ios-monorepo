@@ -85,7 +85,7 @@ public struct ActivityListView: View {
 
     // MARK: Private
 
-    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 }
 
 // MARK: - l10n.ActivityListView

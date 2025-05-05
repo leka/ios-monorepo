@@ -372,11 +372,11 @@ struct MainView: View {
                     break
             }
         }
-        .onReceive(self.caregiverManagerViewModel.$caregivers, perform: { _ in
+        .onChange(of: self.caregiverManagerViewModel.caregivers) {
             if self.authManagerViewModel.userAuthenticationState == .loggedIn {
                 self.persistentDataManager.checkInactivity()
             }
-        })
+        }
         .onReceive(self.persistentDataManager.inactivityTimeoutPublisher) { isTimedOut in
             if isTimedOut {
                 self.caregiverManager.resetCurrentCaregiver()
@@ -407,7 +407,7 @@ struct MainView: View {
 
     @Environment(\.scenePhase) private var scenePhase
 
-    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
     @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
 
     @State private var showingAppUpdateAlert: Bool = false
