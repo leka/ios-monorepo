@@ -3,8 +3,8 @@
 # SPDX-License-Identifier: Apache-2.0
 
 uuid: 4D4D3C30F4704417A9DDD4B8AD30EE62
-icon: figure.run
-color: 0x00FF00
+icon: brain.head.profile
+color: 0xF48FB1
 
 l10n:
   - locale: fr_FR
@@ -19,7 +19,7 @@ l10n:
       description:
 
 content:
-  - component: carousel
+  - component: vertical_tile_grid
     l10n:
       - locale: fr_FR
         details:
@@ -32,9 +32,11 @@ content:
           subtitle:
           description:
     items:
-      - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
-        type: activity
-      - value: hide_and_seek-4BFA2AC3390E49248DD022E27008F118
-        type: activity
-      - value: color_mediator-2CE6B5E98AFD45E0B2CD87727DB6D5C2
-        type: activity
+      - value: categorize_associate_organize-3B7D4928FF4B498F9DAA16FF50933979
+        type: curation
+      - value: recognize_and_generalize-B34593ED6BE947AB93D212CB5D2A7C5A
+        type: curation
+      - value: memory-2A2BEFBAEE01478CABA4D7EDA9958F56
+        type: curation
+      - value: mathematics-9D3BC84542E44614922FE450EC2F7F58
+        type: curation

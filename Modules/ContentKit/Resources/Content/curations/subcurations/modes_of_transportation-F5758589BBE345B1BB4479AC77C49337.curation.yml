@@ -3,8 +3,8 @@
 # SPDX-License-Identifier: Apache-2.0
 
 uuid: F5758589BBE345B1BB4479AC77C49337
-icon: figure.run
-color: 0x00FF00
+icon: car.fill
+color: 0xD29CDC
 
 l10n:
   - locale: fr_FR

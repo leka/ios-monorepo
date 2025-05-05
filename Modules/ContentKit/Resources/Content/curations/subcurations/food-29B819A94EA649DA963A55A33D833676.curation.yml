@@ -2,19 +2,19 @@
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-uuid: 7A20223EC3004DD1B765666B8F96428C
-icon: person.fill
-color: 0xC682D2
+uuid: 29B819A94EA649DA963A55A33D833676
+icon: fork.knife
+color: 0xFFAB91
 
 l10n:
   - locale: fr_FR
     details:
-      title: Corps et besoins
+      title: Nourriture
       subtitle:
       description:
   - locale: en_US
     details:
-      title: Body and needs
+      title: Food
       subtitle:
       description:
 
@@ -23,16 +23,16 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Corps et besoins
+          title: Nourriture
           subtitle:
           description:
       - locale: en_US
         details:
-          title: Body and needs
+          title: Food
           subtitle:
           description:
     items:
-      - value: curriculum_recognition_body_parts-80761A1D62BF4C6980BF20E7D9BE52B8
+      - value: curriculum_fruits_and_vegetables_generalization-B6F2027A304C44F5B3C482EAFCD8DE7E
         type: curriculum
-      - value: curriculum_recognition_basic_physiological_needs-B697FEE9EF7946A2B704673FEEAA0824
+      - value: curriculum_sort_sweet_and_salty-5ED0AFBEC4504F6EBA52B26C65ED93CC
         type: curriculum

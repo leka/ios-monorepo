@@ -2,19 +2,19 @@
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-uuid: 7A20223EC3004DD1B765666B8F96428C
-icon: person.fill
-color: 0xC682D2
+uuid: 1B908AC5B41A4B3ABAE2B6C6703EEBA0
+icon: paintbrush.pointed.fill
+color: 0xA5D6A7
 
 l10n:
   - locale: fr_FR
     details:
-      title: Corps et besoins
+      title: Couleurs
       subtitle:
       description:
   - locale: en_US
     details:
-      title: Body and needs
+      title: Colors
       subtitle:
       description:
 
@@ -23,16 +23,16 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Corps et besoins
+          title: Couleurs
           subtitle:
           description:
       - locale: en_US
         details:
-          title: Body and needs
+          title: Colors
           subtitle:
           description:
     items:
-      - value: curriculum_recognition_body_parts-80761A1D62BF4C6980BF20E7D9BE52B8
+      - value: color_bingo-69760D1DA61849E3926E3A939BBEF0CE
         type: curriculum
-      - value: curriculum_recognition_basic_physiological_needs-B697FEE9EF7946A2B704673FEEAA0824
+      - value: curriculum_receptive_language_identify_objects_by_color-506EA3B894AE46EBAE4BE4AFFC65233F
         type: curriculum

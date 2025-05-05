@@ -2,24 +2,24 @@
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-uuid: D680A31677B14C8D8EE29F2F05B07117
-icon: figure.stand
-color: 0xFFEE58
+uuid: B693E6225E20474C977B9DA6298667AE
+icon: house.fill
+color: 0xFFD54F
 
 l10n:
   - locale: fr_FR
     details:
-      title: Autonomie et vie quotidienne
+      title: Objets du quotidien
       subtitle:
       description:
   - locale: en_US
     details:
-      title: Autonomy and daily life
+      title: Everyday objects
       subtitle:
       description:
 
 content:
-  - component: horizontal_column_list
+  - component: vertical_content_list
     l10n:
       - locale: fr_FR
         details:
@@ -48,41 +48,3 @@ content:
         type: activity
       - value: recognition_bathroom_items_health_products-64D5048EC16A4FF99D13F04D7B1CB71F
         type: activity
-
-  - component: horizontal_column_list
-    l10n:
-      - locale: fr_FR
-        details:
-          title: Routines de vie quotidienne
-          subtitle:
-          description:
-      - locale: en_US
-        details:
-          title: Daily life routines
-          subtitle:
-          description:
-    items:
-      - value: sequencing_daily_life_tooth_brushing-0CFC700AF1FE476E9A934487A3159FBD
-        type: activity
-      - value: sequencing_daily_life_hand_washing-5EC782D9173A4CD999450FC573DD652D
-        type: activity
-      - value: sequencing_daily_life_dressing_up-A33F20A81F8F478E8B705F7FAB807965
-        type: activity
-
-  - component: horizontal_card_list
-    l10n:
-      - locale: fr_FR
-        details:
-          title: Corps humain et besoins physiologiques
-          subtitle:
-          description:
-      - locale: en_US
-        details:
-          title: Human body and physiological needs
-          subtitle:
-          description:
-    items:
-      - value: curriculum_recognition_body_parts-80761A1D62BF4C6980BF20E7D9BE52B8
-        type: curriculum
-      - value: curriculum_recognition_basic_physiological_needs-B697FEE9EF7946A2B704673FEEAA0824
-        type: curriculum
