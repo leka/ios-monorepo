@@ -76,7 +76,7 @@ struct CaregiverView: View {
 
     private let strokeColor: Color = .init(light: UIColor.systemGray3, dark: UIColor.systemGray2)
     @ObservedObject private var styleManager: StyleManager = .shared
-    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
     @State private var isEditCaregiverViewPresented = false
 }
 

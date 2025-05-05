@@ -93,7 +93,7 @@ struct CaregiverList: View {
 
     private let columns = Array(repeating: GridItem(), count: 4)
 
-    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
     @ObservedObject private var styleManager: StyleManager = .shared
     @State private var isCaregiverCreationPresented: Bool = false
 }

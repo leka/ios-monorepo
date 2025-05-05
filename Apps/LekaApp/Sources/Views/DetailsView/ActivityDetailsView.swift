@@ -65,7 +65,7 @@ public struct ActivityDetailsView: View {
     // MARK: Private
 
     @ObservedObject private var styleManager: StyleManager = .shared
-    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var libraryManagerViewModel: LibraryManagerViewModel = .shared
 

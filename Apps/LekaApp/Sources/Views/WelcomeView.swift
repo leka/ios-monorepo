@@ -60,7 +60,7 @@ struct WelcomeView: View {
     // MARK: Private
 
     @ObservedObject private var navigation: Navigation = .shared
-    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var authManagerViewModel: AuthManagerViewModel = .shared
 

@@ -94,7 +94,7 @@ public struct ActivityDetailedListItem: View {
     }
 
     @StateObject private var styleManager: StyleManager = .shared
-    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private let kIconSize: CGFloat = 60
 

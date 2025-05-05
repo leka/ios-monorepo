@@ -175,7 +175,7 @@ public struct CurriculumDetailsView: View {
 
     @ObservedObject private var styleManager: StyleManager = .shared
 
-    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var libraryManagerViewModel: LibraryManagerViewModel = .shared
     private let curriculum: Curriculum

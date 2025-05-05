@@ -69,7 +69,7 @@ public struct CurriculumItem: View {
     // MARK: Private
 
     @StateObject private var styleManager: StyleManager = .shared
-    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var curationItem: CurationItemModel
     private var icon: UIImage
