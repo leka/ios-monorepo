@@ -73,10 +73,9 @@ struct AccountCreationView: View {
     @State private var email: String = ""
     @State private var password: String = ""
 
-    @ObservedObject private var navigation: Navigation = .shared
-
     @State private var isVerificationEmailAlertPresented: Bool = false
 
+    private var navigation: Navigation = .shared
     private var authManager = AuthManager.shared
     private var authManagerViewModel: AuthManagerViewModel = .shared
     private var rootAccountManager = RootAccountManager.shared

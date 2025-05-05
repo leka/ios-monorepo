@@ -35,8 +35,7 @@ struct LibraryActivitiesView: View {
 
     // MARK: Private
 
-    @ObservedObject private var navigation: Navigation = .shared
-
+    private var navigation: Navigation = .shared
     private var viewModel: LibraryManagerViewModel
     private var authManagerViewModel: AuthManagerViewModel = .shared
 

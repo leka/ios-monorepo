@@ -29,7 +29,7 @@ public struct VerticalCurationGrid: View {
 
     // MARK: Private
 
-    @StateObject private var navigation: Navigation = .shared
+    @State private var navigation: Navigation = .shared
 
     private let columns = [
         GridItem(.adaptive(minimum: 220), spacing: 20),

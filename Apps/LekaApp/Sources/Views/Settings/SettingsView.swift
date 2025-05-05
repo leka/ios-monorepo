@@ -245,8 +245,8 @@ struct SettingsView: View {
     private var libraryManager: LibraryManager = .shared
     private let persistentDataManager: PersistentDataManager = .shared
 
+    @Bindable private var navigation = Navigation.shared
     @ObservedObject private var styleManager: StyleManager = .shared
-    @ObservedObject private var navigation = Navigation.shared
 
     private func reset() {
         self.caregiverManager.resetData()

@@ -35,10 +35,9 @@ struct FavoriteActivitiesView: View {
 
     // MARK: Private
 
-    @ObservedObject private var navigation: Navigation = .shared
-
     @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
+    private var navigation: Navigation = .shared
     private var viewModel: LibraryManagerViewModel
     private var authManagerViewModel: AuthManagerViewModel = .shared
 

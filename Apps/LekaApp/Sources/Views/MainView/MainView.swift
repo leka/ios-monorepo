@@ -30,9 +30,9 @@ struct MainView: View {
     @State private var isDeveloperSectionExpanded: Bool = true
     @State private var isDemoSectionExpanded: Bool = true
 
-    @ObservedObject var navigation: Navigation = .shared
-
     @Bindable var authManagerViewModel: AuthManagerViewModel = .shared
+
+    @Bindable var navigation: Navigation = .shared
 
     var body: some View {
         NavigationSplitView {

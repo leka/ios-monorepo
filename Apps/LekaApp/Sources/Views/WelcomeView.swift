@@ -59,10 +59,10 @@ struct WelcomeView: View {
 
     // MARK: Private
 
-    @ObservedObject private var navigation: Navigation = .shared
-    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
-
     private var authManagerViewModel: AuthManagerViewModel = .shared
+
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @Bindable private var navigation: Navigation = .shared
 
     private func setupVideo() {
         self.player.play()

@@ -88,10 +88,10 @@ struct CarereceiverPicker: View {
     }
 
     @State private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
-    @ObservedObject private var navigation: Navigation = .shared
     @State private var selectedCarereceiver: [Carereceiver]
     @State private var action: ActionType?
 
+    private var navigation: Navigation = .shared
     private let columns = Array(repeating: GridItem(spacing: -20), count: 4)
 
     private var noCarereceiverView: some View {

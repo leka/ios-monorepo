@@ -66,7 +66,7 @@ struct CategoryResourcesDeepDiveView: View {
 
     private let category: CategoryResources = ContentKit.allResources["deep_dive"]!
 
-    @ObservedObject private var navigation: Navigation = .shared
+    private var navigation: Navigation = .shared
     @ObservedObject private var styleManager: StyleManager = .shared
 }
 
