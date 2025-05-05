@@ -19,22 +19,54 @@ l10n:
       description:
 
 content:
-  - component: carousel
+  - component: horizontal_card_list
     l10n:
       - locale: fr_FR
         details:
-          title: Communication
+          title: Comprendre une consigne orale
           subtitle:
           description:
       - locale: en_US
         details:
-          title: Communication
+          title: Understanding an oral instruction
           subtitle:
           description:
     items:
-      - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
-        type: activity
-      - value: hide_and_seek-4BFA2AC3390E49248DD022E27008F118
-        type: activity
-      - value: color_mediator-2CE6B5E98AFD45E0B2CD87727DB6D5C2
-        type: activity
+      - value: curriculum_receptive_language_identity_familiar_nouns-1607BEA72CC14285AB709C567E1BE5E7
+        type: curriculum
+      - value: curriculum_receptive_language_identify_objects_by_function-9B35D447AB6C402DB13BA66E4F7F4E05
+        type: curriculum
+      - value: curriculum_receptive_language_ing_verbs-2B927C344CA94CD993DDB7AC4C7F46FD
+        type: curriculum
+      - value: curriculum_receptive_language_identify_positional_concepts-BC1E66BCFB994A76AF09C446407D8ECF
+        type: curriculum
+      - value: curriculum_receptive_language_identify_opposites-5B73795D20984208AF07C4686089266E
+        type: curriculum
+      - value: curriculum_receptive_language_identify_objects_by_color-506EA3B894AE46EBAE4BE4AFFC65233F
+        type: curriculum
+      - value: curriculum_receptive_language_identify_number_quantity-4499A9AFB56B4476969B96CE32F5314C
+        type: curriculum
+
+  - component: vertical_tile_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Développer le champs lexical
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Develop the lexical field
+          subtitle:
+          description:
+    items:
+      - value: animals-0609CB09299847E581F6E191796499B4
+        type: curation
+      - value: body_and_needs-7A20223EC3004DD1B765666B8F96428C
+        type: curation
+      - value: modes_of_transportation-F5758589BBE345B1BB4479AC77C49337
+        type: curation
+      - value: family-A92F6E5239214E26BF5E33D9F8D7972F
+        type: curation
+      - value: holidays_and_festivities-F7F2B8BFB65D403E929B3FD24380BC3B
+        type: curation

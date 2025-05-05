@@ -1,0 +1,38 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: A92F6E5239214E26BF5E33D9F8D7972F
+icon: figure.run
+color: 0x00FF00
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Famille
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Family
+      subtitle:
+      description:
+
+content:
+  - component: vertical_content_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Famille
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Family
+          subtitle:
+          description:
+    items:
+      - value: curriculum_recognition_family_members-AD1A9E2D874C47AEB3445D80E34DC702
+        type: curriculum
+      - value: curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
+        type: curriculum
