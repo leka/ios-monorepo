@@ -5,7 +5,8 @@
 import Combine
 import SwiftUI
 
-public class CaregiverManagerViewModel: ObservableObject {
+@Observable
+public class CaregiverManagerViewModel {
     // MARK: Lifecycle
 
     public init() {
@@ -14,16 +15,16 @@ public class CaregiverManagerViewModel: ObservableObject {
 
     // MARK: Public
 
-    @Published public var caregivers: [Caregiver] = []
-    @Published public var currentCaregiver: Caregiver?
-    @Published public var errorMessage: String = ""
-    @Published public var showErrorAlert = false
-    @Published public var isLoading: Bool = false
+    public var caregivers: [Caregiver] = []
+    public var currentCaregiver: Caregiver?
+    public var errorMessage: String = ""
+    public var showErrorAlert = false
+    public var isLoading: Bool = false
 
     // MARK: Private
 
-    private var cancellables = Set<AnyCancellable>()
-    private let caregiverManager = CaregiverManager.shared
+    @ObservationIgnored private var cancellables = Set<AnyCancellable>()
+    @ObservationIgnored private let caregiverManager = CaregiverManager.shared
 
     private func subscribeToManager() {
         self.caregiverManager.caregiverList
