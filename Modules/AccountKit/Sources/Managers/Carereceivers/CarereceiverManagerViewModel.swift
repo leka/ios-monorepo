@@ -3,9 +3,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import Observation
 import SwiftUI
 
-public class CarereceiverManagerViewModel: ObservableObject {
+@Observable
+public class CarereceiverManagerViewModel {
     // MARK: Lifecycle
 
     public init() {
@@ -14,15 +16,15 @@ public class CarereceiverManagerViewModel: ObservableObject {
 
     // MARK: Public
 
-    @Published public var carereceivers: [Carereceiver] = []
-    @Published public var currentCarereceivers: [Carereceiver] = []
-    @Published public var errorMessage: String = ""
-    @Published public var showErrorAlert = false
+    public var carereceivers: [Carereceiver] = []
+    public var currentCarereceivers: [Carereceiver] = []
+    public var errorMessage: String = ""
+    public var showErrorAlert = false
 
     // MARK: Private
 
-    private var cancellables = Set<AnyCancellable>()
-    private let carereceiverManager = CarereceiverManager.shared
+    @ObservationIgnored private var cancellables = Set<AnyCancellable>()
+    @ObservationIgnored private let carereceiverManager = CarereceiverManager.shared
 
     private func subscribeToManager() {
         self.carereceiverManager.carereceiverList
