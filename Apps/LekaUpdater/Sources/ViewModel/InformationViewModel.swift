@@ -11,6 +11,7 @@ class InformationViewModel: ObservableObject {
     // MARK: Lifecycle
 
     init() {
+        self.subscribeToRobotConnection()
         self.subscribeToRobotNameUpdates()
         self.subscribeToRobotOsVersionUpdates()
     }
@@ -23,6 +24,7 @@ class InformationViewModel: ObservableObject {
 
     // MARK: Internal
 
+    @Published var isRobotConnected: Bool = false
     @Published var showRobotCannotBeUpdated: Bool = false
     @Published var showRobotNeedsUpdate: Bool = true
     @Published var robotName: String = "n/a"
@@ -31,6 +33,15 @@ class InformationViewModel: ObservableObject {
     // MARK: Private
 
     private var cancellables: Set<AnyCancellable> = []
+
+    private func subscribeToRobotConnection() {
+        Robot.shared.isConnected
+            .receive(on: DispatchQueue.main)
+            .sink { isConnected in
+                self.isRobotConnected = isConnected
+            }
+            .store(in: &self.cancellables)
+    }
 
     private func subscribeToRobotNameUpdates() {
         Robot.shared.name

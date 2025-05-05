@@ -25,6 +25,7 @@ struct RobotUpToDateIllustration: View {
             Circle()
                 .fill(.lkBackground)
                 .frame(width: self.illustrationSize)
+                .shadow(radius: 3)
 
             Circle()
                 .strokeBorder(

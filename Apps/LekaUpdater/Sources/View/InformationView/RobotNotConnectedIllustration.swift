@@ -5,9 +5,9 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - RobotCannotBeUpdatedIllustration
+// MARK: - RobotNotConnectedIllustration
 
-struct RobotCannotBeUpdatedIllustration: View {
+struct RobotNotConnectedIllustration: View {
     // MARK: Lifecycle
 
     init(size: CGFloat = 300) {
@@ -25,6 +25,7 @@ struct RobotCannotBeUpdatedIllustration: View {
             Circle()
                 .fill(.lkBackground)
                 .frame(width: self.illustrationSize)
+                .shadow(radius: 3)
 
             Circle()
                 .strokeBorder(
@@ -34,9 +35,11 @@ struct RobotCannotBeUpdatedIllustration: View {
                 .frame(width: self.circleSize)
 
             LekaUpdaterAsset.Assets.robotOnBase.swiftUIImage
+                .renderingMode(.template)
                 .resizable()
                 .scaledToFit()
                 .frame(height: self.imageSize)
+                .foregroundStyle(.gray.opacity(0.3))
 
             VStack {
                 Spacer()
@@ -45,7 +48,7 @@ struct RobotCannotBeUpdatedIllustration: View {
                     Circle().fill(.lkBackground)
                         .frame(height: self.checkmarkSize)
 
-                    Image(systemName: "xmark.circle")
+                    Image(systemName: "questionmark.circle")
                         .font(.system(size: self.checkmarkSize))
                         .foregroundColor(.gray)
                 }
@@ -77,18 +80,16 @@ struct RobotCannotBeUpdatedIllustration: View {
     }
 }
 
-// MARK: - RobotCannotBeUpdatedIllustration_Previews
+// MARK: - RobotNotConnectedIllustration_Previews
 
-struct RobotCannotBeUpdatedIllustration_Previews: PreviewProvider {
-    static var previews: some View {
-        Form {
-            Section {
-                Group {
-                    RobotCannotBeUpdatedIllustration(size: 600)
-                }
-                .frame(maxWidth: .infinity, alignment: .center)
+#Preview {
+    Form {
+        Section {
+            Group {
+                RobotNotConnectedIllustration(size: 600)
             }
-            .listRowBackground(Color.clear)
+            .frame(maxWidth: .infinity, alignment: .center)
         }
+        .listRowBackground(Color.clear)
     }
 }

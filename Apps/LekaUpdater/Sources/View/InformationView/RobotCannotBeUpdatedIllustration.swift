@@ -5,9 +5,9 @@
 import DesignKit
 import SwiftUI
 
-// MARK: - RobotNeedsUpdateIllustration
+// MARK: - RobotCannotBeUpdatedIllustration
 
-struct RobotNeedsUpdateIllustration: View {
+struct RobotCannotBeUpdatedIllustration: View {
     // MARK: Lifecycle
 
     init(size: CGFloat = 300) {
@@ -29,7 +29,7 @@ struct RobotNeedsUpdateIllustration: View {
 
             Circle()
                 .strokeBorder(
-                    .yellow,
+                    .gray,
                     style: StrokeStyle(lineWidth: self.circleLineWidth, lineCap: .round, dash: [self.dashSpacer, self.dashSpacer])
                 )
                 .frame(width: self.circleSize)
@@ -46,9 +46,9 @@ struct RobotNeedsUpdateIllustration: View {
                     Circle().fill(.lkBackground)
                         .frame(height: self.checkmarkSize)
 
-                    Image(systemName: "exclamationmark.circle")
+                    Image(systemName: "xmark.circle")
                         .font(.system(size: self.checkmarkSize))
-                        .foregroundColor(.yellow)
+                        .foregroundColor(.gray)
                 }
             }
         }
@@ -78,14 +78,14 @@ struct RobotNeedsUpdateIllustration: View {
     }
 }
 
-// MARK: - RobotNeedsUpdateIllustration_Previews
+// MARK: - RobotCannotBeUpdatedIllustration_Previews
 
-struct RobotNeedsUpdateIllustration_Previews: PreviewProvider {
+struct RobotCannotBeUpdatedIllustration_Previews: PreviewProvider {
     static var previews: some View {
         Form {
             Section {
                 Group {
-                    RobotNeedsUpdateIllustration(size: 600)
+                    RobotCannotBeUpdatedIllustration(size: 600)
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
             }
