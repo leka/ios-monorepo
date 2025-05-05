@@ -3,9 +3,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import Observation
 import SwiftUI
 
-public class RootAccountManagerViewModel: ObservableObject {
+@Observable
+public class RootAccountManagerViewModel {
     // MARK: Lifecycle
 
     public init() {
@@ -14,12 +16,12 @@ public class RootAccountManagerViewModel: ObservableObject {
 
     // MARK: Public
 
-    @Published public var errorMessage: String = ""
+    public var errorMessage: String = ""
 
     // MARK: Private
 
-    private var cancellables = Set<AnyCancellable>()
-    private let rootAccountManager = RootAccountManager.shared
+    @ObservationIgnored private var cancellables = Set<AnyCancellable>()
+    @ObservationIgnored private let rootAccountManager = RootAccountManager.shared
 
     private func subscribeToManager() {
         self.rootAccountManager.fetchErrorPublisher
