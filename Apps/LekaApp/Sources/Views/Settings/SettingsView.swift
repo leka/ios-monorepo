@@ -20,6 +20,8 @@ struct SettingsView: View {
     @State private var showReAuthenticate: Bool = false
     @State private var isCaregiverpickerPresented: Bool = false
 
+    @Bindable private var authManagerViewModel: AuthManagerViewModel = .shared
+
     var body: some View {
         Form {
             if case .appUpdateAvailable = UpdateManager.shared.appUpdateStatus {
@@ -202,12 +204,12 @@ struct SettingsView: View {
                     .font(.footnote)
             }
         }
-        .onReceive(self.authManagerViewModel.$userAuthenticationState, perform: { newState in
+        .onChange(of: self.authManagerViewModel.userAuthenticationState) { _, newState in
             if newState == .loggedOut {
                 self.persistentDataManager.clearUserData()
                 self.reset()
             }
-        })
+        }
         .navigationTitle(String(l10n.SettingsView.navigationTitle.characters))
         .sheet(isPresented: self.$isCaregiverpickerPresented) {
             NavigationStack {
@@ -238,7 +240,6 @@ struct SettingsView: View {
     }
 
     private let authManager = AuthManager.shared
-    private var authManagerViewModel: AuthManagerViewModel = .shared
     private let caregiverManager: CaregiverManager = .shared
     private let carereceiverManager: CarereceiverManager = .shared
     private var libraryManager: LibraryManager = .shared
