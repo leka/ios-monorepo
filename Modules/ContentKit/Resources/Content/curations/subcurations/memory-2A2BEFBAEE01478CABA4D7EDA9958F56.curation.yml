@@ -2,19 +2,19 @@
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-uuid: 7A20223EC3004DD1B765666B8F96428C
-icon: person.fill
-color: 0xC682D2
+uuid: 2A2BEFBAEE01478CABA4D7EDA9958F56
+icon: brain
+color: 0xFBC1D1
 
 l10n:
   - locale: fr_FR
     details:
-      title: Corps et besoins
+      title: Mémoire
       subtitle:
       description:
   - locale: en_US
     details:
-      title: Body and needs
+      title: Memory
       subtitle:
       description:
 
@@ -23,16 +23,20 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Corps et besoins
+          title: Mémoire
           subtitle:
           description:
       - locale: en_US
         details:
-          title: Body and needs
+          title: Memory
           subtitle:
           description:
     items:
-      - value: curriculum_recognition_body_parts-80761A1D62BF4C6980BF20E7D9BE52B8
+      - value: super_simon_4_colors-B39DDA35800849F7A40F651E411D30CD
+        type: activity
+      - value: super_simon_6_colors-9EFAAC01288F41C0ACACCA5094FAD8E7
+        type: activity
+      - value: curriculum_animal_memory-7C75908B86D748A283AA080D40642BE7
         type: curriculum
-      - value: curriculum_recognition_basic_physiological_needs-B697FEE9EF7946A2B704673FEEAA0824
+      - value: curriculum_memory_christmas-EFC444BBDEF24E08813FF472FFA5365D
         type: curriculum

@@ -2,19 +2,19 @@
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-uuid: 7A20223EC3004DD1B765666B8F96428C
-icon: person.fill
-color: 0xC682D2
+uuid: 572F710A05F94F25831FF05938728453
+icon: sun.rain
+color: 0x90CAF9
 
 l10n:
   - locale: fr_FR
     details:
-      title: Corps et besoins
+      title: Météo et environnement
       subtitle:
       description:
   - locale: en_US
     details:
-      title: Body and needs
+      title: Weather and environment
       subtitle:
       description:
 
@@ -23,16 +23,16 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Corps et besoins
+          title: Météo et environnement
           subtitle:
           description:
       - locale: en_US
         details:
-          title: Body and needs
+          title: Weather and environment
           subtitle:
           description:
     items:
-      - value: curriculum_recognition_body_parts-80761A1D62BF4C6980BF20E7D9BE52B8
+      - value: curriculum_leka_weather_robot-ED4C900D4ACB426384DC76F182BC19A5
         type: curriculum
-      - value: curriculum_recognition_basic_physiological_needs-B697FEE9EF7946A2B704673FEEAA0824
+      - value: curriculum_recognition_weather_and_time-1D8E1AB667DB40B199479D731EF96F2E
         type: curriculum

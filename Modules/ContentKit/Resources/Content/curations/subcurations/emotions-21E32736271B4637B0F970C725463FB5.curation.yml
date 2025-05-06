@@ -3,8 +3,8 @@
 # SPDX-License-Identifier: Apache-2.0
 
 uuid: 21E32736271B4637B0F970C725463FB5
-icon: figure.run
-color: 0x00FF00
+icon: face.smiling.inverse
+color: 0x4FC3F7
 
 l10n:
   - locale: fr_FR

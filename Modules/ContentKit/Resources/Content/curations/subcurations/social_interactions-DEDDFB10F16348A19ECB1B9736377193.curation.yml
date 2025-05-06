@@ -3,8 +3,8 @@
 # SPDX-License-Identifier: Apache-2.0
 
 uuid: DEDDFB10F16348A19ECB1B9736377193
-icon: figure.run
-color: 0x00FF00
+icon: figure.socialdance
+color: 0xFFB74D
 
 l10n:
   - locale: fr_FR
