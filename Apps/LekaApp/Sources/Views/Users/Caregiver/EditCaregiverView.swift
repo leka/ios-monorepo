@@ -5,6 +5,7 @@
 import AccountKit
 import DesignKit
 import LocalizationKit
+import Observation
 import SwiftUI
 
 // MARK: - EditCaregiverView
@@ -13,7 +14,7 @@ struct EditCaregiverView: View {
     // MARK: Lifecycle
 
     init(caregiver: Caregiver) {
-        self._viewModel = StateObject(wrappedValue: EditCaregiverViewViewModel(caregiver: caregiver))
+        self._viewModel = State(wrappedValue: EditCaregiverViewViewModel(caregiver: caregiver))
         self._birthdate = State(wrappedValue: caregiver.birthdate ?? Date.now)
     }
 
@@ -126,7 +127,7 @@ struct EditCaregiverView: View {
     @FocusState private var focused: Bool
     @State private var isWhitespacesErrorMessageVisible = false
 
-    @StateObject private var viewModel: EditCaregiverViewViewModel
+    @State private var viewModel: EditCaregiverViewViewModel
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     @ObservedObject private var styleManager: StyleManager = .shared
@@ -165,7 +166,8 @@ struct EditCaregiverView: View {
 
 // MARK: - EditCaregiverViewViewModel
 
-class EditCaregiverViewViewModel: ObservableObject {
+@Observable
+class EditCaregiverViewViewModel {
     // MARK: Lifecycle
 
     init(caregiver: Caregiver) {
@@ -174,8 +176,8 @@ class EditCaregiverViewViewModel: ObservableObject {
 
     // MARK: Internal
 
-    @Published var caregiver: Caregiver
-    @Published var isAvatarPickerPresented: Bool = false
+    var caregiver: Caregiver
+    var isAvatarPickerPresented: Bool = false
 }
 
 #Preview {
