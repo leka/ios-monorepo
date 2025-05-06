@@ -3,11 +3,13 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import Observation
 import RobotKit
 import SwiftUI
 
 extension MainView {
-    class ViewModel: ObservableObject {
+    @Observable
+    class ViewModel {
         // MARK: Lifecycle
 
         init() {
@@ -22,13 +24,12 @@ extension MainView {
 
         // MARK: Internal
 
-        @Published var isDesignSystemAppleExpanded: Bool = false
-        @Published var isDesignSystemLekaExpanded: Bool = false
-
-        @Published var isRobotConnect: Bool = false
+        var isDesignSystemAppleExpanded: Bool = false
+        var isDesignSystemLekaExpanded: Bool = false
+        var isRobotConnect: Bool = false
 
         // MARK: Private
 
-        private var cancellables: Set<AnyCancellable> = []
+        @ObservationIgnored private var cancellables = Set<AnyCancellable>()
     }
 }

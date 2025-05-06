@@ -8,6 +8,7 @@ import Combine
 import ContentKit
 import DesignKit
 import LocalizationKit
+import Observation
 import RobotKit
 import SwiftUI
 
@@ -26,7 +27,7 @@ struct MainView: View {
     @State var isResourcesCollapsed: Bool = true
     @ObservedObject var navigation: Navigation = .shared
     @ObservedObject var authManagerViewModel = AuthManagerViewModel.shared
-    @StateObject var viewModel: ViewModel = .init()
+    @State var viewModel: ViewModel = .init()
 
     var body: some View {
         NavigationSplitView {
