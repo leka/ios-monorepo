@@ -6,11 +6,13 @@ import AccountKit
 import Combine
 import DesignKit
 import LocalizationKit
+import Observation
 import SwiftUI
 
 // MARK: - CreateCarereceiverViewModel
 
-class CreateCarereceiverViewModel: ObservableObject {
+@Observable
+class CreateCarereceiverViewModel {
     // MARK: Internal
 
     var carereceiverManager: CarereceiverManager = .shared
@@ -35,7 +37,7 @@ class CreateCarereceiverViewModel: ObservableObject {
 
     // MARK: Private
 
-    private var cancellables = Set<AnyCancellable>()
+    @ObservationIgnored private var cancellables = Set<AnyCancellable>()
 }
 
 // MARK: - CreateCarereceiverView
@@ -127,13 +129,12 @@ struct CreateCarereceiverView: View {
     // MARK: Private
 
     @State private var isCarereceiverCreated: Bool = false
-    @StateObject private var viewModel = CreateCarereceiverViewModel()
+    @State private var viewModel = CreateCarereceiverViewModel()
 
     @FocusState private var focused: Bool
 
     @State private var newCarereceiver = Carereceiver()
     @State private var isAvatarPickerPresented: Bool = false
-    @State private var cancellables = Set<AnyCancellable>()
 
     private var placeholderName = Text(String(String(l10n.CarereceiverCreation.carereceiverPlaceholderName.characters)))
 
