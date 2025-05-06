@@ -1,0 +1,273 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 26652AC123BD4E1182D7105AB31FF396
+name: counting_robot_fruits
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2025-02-28T19:01:38.647731"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - counting
+
+tags:
+  - fruits
+  - numbers
+
+hmi:
+  - tablet_robot
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: counting_with_leka_fruits
+
+      title: Compter avec Leka
+      subtitle: Fruits
+
+      short_description: |
+        Une activité ludique pour apprendre à compter avec le robot Leka.
+
+      description: |
+        Cette activité aide la personne accompagnée à développer ses compétences en comptage. Le robot affiche un chiffre sur son écran, et la personne accompagnée doit toucher le même nombre d’éléments demandés sur la tablette.
+
+        L’activité suit une structure de gauche à droite, ligne par ligne, pour renforcer l’organisation spatiale et éviter les erreurs de comptage. Le comptage avec le doigt est encouragé pour favoriser la coordination œil-main et ancrer la compréhension des quantités.
+
+      instructions: |
+        - Demandez à la personne accompagnée d’observer le chiffre affiché par le robot.
+        - Expliquez qu’elle doit toucher sur la tablette le même nombre d’éléments.
+        - Dites-lui de commencer par la gauche et d’avancer vers la droite, ligne par ligne.
+        - Encouragez-la à compter à voix haute en touchant chaque élément.
+
+  - locale: en_US
+    details:
+      icon: counting_with_leka_fruits
+
+      title: Counting with Leka
+      subtitle: Fruits
+
+      short_description: |
+        A fun activity to learn counting with the Leka robot.
+
+      description: |
+        This activity helps the care receiver develop counting skills. The robot displays a number on its screen, and the care receiver must tap the same number of requested items on the tablet.
+
+        The activity follows a left-to-right, line-by-line structure to reinforce spatial organization and prevent counting mistakes. Counting with the finger is encouraged to improve hand-eye coordination and strengthen quantity understanding.
+
+      instructions: |
+        - Ask the care receiver to observe the number displayed by the robot.
+        - Explain that they need to tap the same number of items.
+        - Tell them to start from the left and move to the right, line by line.
+        - Encourage them to count out loud while tapping each item.
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Regarde le chiffre sur Leka. Compte et touche, de gauche à droite et ligne par ligne, le même nombre d'éléments.
+            - locale: en_US
+              value: Look at the number on Leka. Count and touch, from left to right and line by line, the same number of elements.
+
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardNumbers1One
+          payload:
+            shuffle_choices: false
+            choices:
+              - value: curriculum_counting_robot_photo_fruit_apple
+                type: image
+                is_right_answer: true
+              - value: curriculum_counting_robot_photo_fruit_apple
+                type: image
+              - value: curriculum_counting_robot_photo_fruit_apple
+                type: image
+              - value: curriculum_counting_robot_photo_fruit_apple
+                type: image
+              - value: curriculum_counting_robot_photo_fruit_apple
+                type: image
+              - value: curriculum_counting_robot_photo_fruit_apple
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde le chiffre sur Leka. Compte et touche, de gauche à droite et ligne par ligne, le même nombre d'éléments.
+            - locale: en_US
+              value: Look at the number on Leka. Count and touch, from left to right and line by line, the same number of elements.
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardNumbers2Two
+          payload:
+            shuffle_choices: false
+            choices:
+              - value: curriculum_counting_robot_photo_fruit_banana
+                type: image
+                is_right_answer: true
+              - value: curriculum_counting_robot_photo_fruit_banana
+                type: image
+                is_right_answer: true
+              - value: curriculum_counting_robot_photo_fruit_banana
+                type: image
+              - value: curriculum_counting_robot_photo_fruit_banana
+                type: image
+              - value: curriculum_counting_robot_photo_fruit_banana
+                type: image
+              - value: curriculum_counting_robot_photo_fruit_banana
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde le chiffre sur Leka. Compte et touche, de gauche à droite et ligne par ligne, le même nombre d'éléments.
+            - locale: en_US
+              value: Look at the number on Leka. Count and touch, from left to right and line by line, the same number of elements.
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardNumbers3Three
+          payload:
+            shuffle_choices: false
+            choices:
+              - value: curriculum_counting_robot_photo_fruit_lemon
+                type: image
+                is_right_answer: true
+              - value: curriculum_counting_robot_photo_fruit_lemon
+                type: image
+                is_right_answer: true
+              - value: curriculum_counting_robot_photo_fruit_lemon
+                type: image
+                is_right_answer: true
+              - value: curriculum_counting_robot_photo_fruit_lemon
+                type: image
+              - value: curriculum_counting_robot_photo_fruit_lemon
+                type: image
+              - value: curriculum_counting_robot_photo_fruit_lemon
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde le chiffre sur Leka. Compte et touche, de gauche à droite et ligne par ligne, le même nombre d'éléments.
+            - locale: en_US
+              value: Look at the number on Leka. Count and touch, from left to right and line by line, the same number of elements.
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardNumbers4Four
+          payload:
+            shuffle_choices: false
+            choices:
+              - value: curriculum_counting_robot_photo_fruit_orange
+                type: image
+                is_right_answer: true
+              - value: curriculum_counting_robot_photo_fruit_orange
+                type: image
+                is_right_answer: true
+              - value: curriculum_counting_robot_photo_fruit_orange
+                type: image
+                is_right_answer: true
+              - value: curriculum_counting_robot_photo_fruit_orange
+                type: image
+                is_right_answer: true
+              - value: curriculum_counting_robot_photo_fruit_orange
+                type: image
+              - value: curriculum_counting_robot_photo_fruit_orange
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde le chiffre sur Leka. Compte et touche, de gauche à droite et ligne par ligne, le même nombre d'éléments.
+            - locale: en_US
+              value: Look at the number on Leka. Count and touch, from left to right and line by line, the same number of elements.
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardNumbers5Five
+          payload:
+            shuffle_choices: false
+            choices:
+              - value: curriculum_counting_robot_photo_fruit_pear
+                type: image
+                is_right_answer: true
+              - value: curriculum_counting_robot_photo_fruit_pear
+                type: image
+                is_right_answer: true
+              - value: curriculum_counting_robot_photo_fruit_pear
+                type: image
+                is_right_answer: true
+              - value: curriculum_counting_robot_photo_fruit_pear
+                type: image
+                is_right_answer: true
+              - value: curriculum_counting_robot_photo_fruit_pear
+                type: image
+                is_right_answer: true
+              - value: curriculum_counting_robot_photo_fruit_pear
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde le chiffre sur Leka. Compte et touche, de gauche à droite et ligne par ligne, le même nombre d'éléments.
+            - locale: en_US
+              value: Look at the number on Leka. Count and touch, from left to right and line by line, the same number of elements.
+          interface: robotThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardNumbers6Six
+          payload:
+            shuffle_choices: false
+            choices:
+              - value: curriculum_counting_robot_photo_fruit_strawberry
+                type: image
+                is_right_answer: true
+              - value: curriculum_counting_robot_photo_fruit_strawberry
+                type: image
+                is_right_answer: true
+              - value: curriculum_counting_robot_photo_fruit_strawberry
+                type: image
+                is_right_answer: true
+              - value: curriculum_counting_robot_photo_fruit_strawberry
+                type: image
+                is_right_answer: true
+              - value: curriculum_counting_robot_photo_fruit_strawberry
+                type: image
+                is_right_answer: true
+              - value: curriculum_counting_robot_photo_fruit_strawberry
+                type: image
+                is_right_answer: true
