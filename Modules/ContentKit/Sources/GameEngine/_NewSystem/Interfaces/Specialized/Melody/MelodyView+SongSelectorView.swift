@@ -55,7 +55,7 @@ extension MelodyView {
 
         // MARK: Private
 
-        @ObservedObject private var styleManager: StyleManager = .shared
+        private var styleManager: StyleManager = .shared
     }
 
     private struct ListRowSong: View {

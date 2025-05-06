@@ -60,7 +60,8 @@ struct LekaApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
     @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var styleManager: StyleManager = .shared
+
+    var styleManager: StyleManager = .shared
 
     var body: some Scene {
         WindowGroup {

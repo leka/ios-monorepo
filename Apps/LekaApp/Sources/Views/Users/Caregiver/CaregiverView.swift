@@ -13,6 +13,7 @@ struct CaregiverView: View {
     // MARK: Internal
 
     @Environment(\.dismiss) var dismiss
+    var styleManager: StyleManager = .shared
     @State var caregiver: Caregiver
 
     var body: some View {
@@ -75,7 +76,7 @@ struct CaregiverView: View {
     // MARK: Private
 
     private let strokeColor: Color = .init(light: UIColor.systemGray3, dark: UIColor.systemGray2)
-    @ObservedObject private var styleManager: StyleManager = .shared
+
     @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
     @State private var isEditCaregiverViewPresented = false
 }

@@ -89,9 +89,9 @@ public struct ActivityGridItem: View {
 
     // MARK: Private
 
-    @StateObject private var styleManager: StyleManager = .shared
     @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
+    private var styleManager: StyleManager = .shared
     private var curationItem: CurationItemModel
     private var icon: UIImage
     private var shape: any Shape

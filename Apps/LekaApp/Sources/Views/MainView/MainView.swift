@@ -408,8 +408,6 @@ struct MainView: View {
 
     @Environment(\.scenePhase) private var scenePhase
 
-    @ObservedObject private var styleManager: StyleManager = .shared
-
     @State private var showingAppUpdateAlert: Bool = false
     @State private var showingOSUpdateAlert: Bool = false
     @State private var updateAlertHasBeenShown: Bool = false
@@ -419,6 +417,7 @@ struct MainView: View {
 
     @Bindable private var libraryManagerViewModel: LibraryManagerViewModel = .shared
 
+    private var styleManager: StyleManager = .shared
     private var persistentDataManager: PersistentDataManager = .shared
     private var caregiverManager: CaregiverManager = .shared
     private var carereceiverManager: CarereceiverManager = .shared

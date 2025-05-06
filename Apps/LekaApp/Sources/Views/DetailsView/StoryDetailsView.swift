@@ -62,10 +62,9 @@ public struct StoryDetailsView: View {
 
     // MARK: Private
 
-    @ObservedObject private var styleManager: StyleManager = .shared
-
     @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
+    private var styleManager: StyleManager = .shared
     private var libraryManagerViewModel: LibraryManagerViewModel = .shared
     private let story: Story
 }

@@ -96,7 +96,7 @@ public struct SearchGridView: View {
 
     // MARK: Private
 
-    @ObservedObject private var styleManager: StyleManager = .shared
+    private var styleManager: StyleManager = .shared
 }
 
 // MARK: - l10n.SearchGridView

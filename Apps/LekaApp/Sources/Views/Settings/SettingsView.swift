@@ -21,6 +21,7 @@ struct SettingsView: View {
     @State private var isCaregiverpickerPresented: Bool = false
 
     @Bindable private var authManagerViewModel: AuthManagerViewModel = .shared
+    @Bindable private var navigation = Navigation.shared
 
     var body: some View {
         Form {
@@ -244,9 +245,7 @@ struct SettingsView: View {
     private let carereceiverManager: CarereceiverManager = .shared
     private var libraryManager: LibraryManager = .shared
     private let persistentDataManager: PersistentDataManager = .shared
-
-    @Bindable private var navigation = Navigation.shared
-    @ObservedObject private var styleManager: StyleManager = .shared
+    private var styleManager: StyleManager = .shared
 
     private func reset() {
         self.caregiverManager.resetData()

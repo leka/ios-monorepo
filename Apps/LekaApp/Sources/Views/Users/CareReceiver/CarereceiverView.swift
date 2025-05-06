@@ -14,6 +14,7 @@ struct CarereceiverView: View {
 
     @Environment(\.dismiss) var dismiss
     @State var carereceiver: Carereceiver
+    var styleManager: StyleManager = .shared
 
     var body: some View {
         VStack {
@@ -83,7 +84,6 @@ struct CarereceiverView: View {
     // MARK: Private
 
     private let strokeColor: Color = .init(light: UIColor.systemGray3, dark: UIColor.systemGray2)
-    @ObservedObject private var styleManager: StyleManager = .shared
     @State private var isEditCarereceiverViewPresented = false
 }
 

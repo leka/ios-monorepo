@@ -8,8 +8,7 @@ import SwiftUI
 
 extension AvatarPicker {
     struct ButtonLabel: View {
-        // MARK: Internal
-
+        var styleManager: StyleManager = .shared
         let image: String
 
         var body: some View {
@@ -32,10 +31,6 @@ extension AvatarPicker {
                     )
             }
         }
-
-        // MARK: Private
-
-        @ObservedObject private var styleManager: StyleManager = .shared
     }
 }
 

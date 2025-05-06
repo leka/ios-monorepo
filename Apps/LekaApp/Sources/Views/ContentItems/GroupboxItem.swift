@@ -131,7 +131,6 @@ public struct GroupboxItem: View {
 
     // MARK: Private
 
-    @StateObject private var styleManager: StyleManager = .shared
     @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var curationItem: CurationItemModel
@@ -142,6 +141,7 @@ public struct GroupboxItem: View {
     private var activityCount: Int?
     private let kIconSize: CGFloat = 120
 
+    private var styleManager: StyleManager = .shared
     private var libraryManagerViewModel: LibraryManagerViewModel = .shared
 }
 

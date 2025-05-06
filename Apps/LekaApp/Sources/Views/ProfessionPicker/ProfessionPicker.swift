@@ -101,7 +101,8 @@ struct ProfessionPicker: View {
 
     @State private var action: ActionType?
     @State private var selectedProfessionForDetails: Profession?
-    @ObservedObject private var styleManager: StyleManager = .shared
+
+    private var styleManager: StyleManager = .shared
 }
 
 // MARK: - ProfessionPicker_Previews

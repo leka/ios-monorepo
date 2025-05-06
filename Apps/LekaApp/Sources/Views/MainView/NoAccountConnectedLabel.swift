@@ -13,6 +13,8 @@ import SwiftUI
 struct NoAccountConnectedLabel: View {
     // MARK: Internal
 
+    var navigation = Navigation.shared
+
     var body: some View {
         VStack(alignment: .center, spacing: 10) {
             Image(systemName: "person.crop.circle.badge.xmark")
@@ -37,8 +39,7 @@ struct NoAccountConnectedLabel: View {
 
     // MARK: Private
 
-    @ObservedObject private var styleManager: StyleManager = .shared
-    var navigation = Navigation.shared
+    private var styleManager: StyleManager = .shared
 }
 
 // MARK: - l10n.NoAccountConnectedLabel

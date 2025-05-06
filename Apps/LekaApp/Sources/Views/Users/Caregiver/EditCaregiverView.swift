@@ -130,9 +130,9 @@ struct EditCaregiverView: View {
     @State private var isAvatarPickerPresented = false
     @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
-    @ObservedObject private var styleManager: StyleManager = .shared
     @State private var birthdate: Date
 
+    private var styleManager: StyleManager = .shared
     private var caregiverManager: CaregiverManager = .shared
 
     private var placeholderFirstName = Text(String(l10n.CaregiverCreation.caregiverPlaceholderFirstName.characters))

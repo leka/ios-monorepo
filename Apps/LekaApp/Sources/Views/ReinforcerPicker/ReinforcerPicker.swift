@@ -13,6 +13,7 @@ import SwiftUI
 struct ReinforcerPicker: View {
     // MARK: Internal
 
+    var styleManager = StyleManager.shared
     @Binding var carereceiver: Carereceiver
 
     var body: some View {
@@ -39,8 +40,6 @@ struct ReinforcerPicker: View {
     // MARK: Private
 
     private let robot: Robot = .shared
-
-    @ObservedObject private var styleManager = StyleManager.shared
 }
 
 // MARK: - l10n.ReinforcerPicker

@@ -74,8 +74,7 @@ public struct SkillsGridView: View {
 
     // MARK: Private
 
-    @ObservedObject private var styleManager: StyleManager = .shared
-
+    private var styleManager: StyleManager = .shared
     private let columns = Array(repeating: GridItem(), count: 3)
 }
 

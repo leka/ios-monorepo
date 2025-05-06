@@ -10,6 +10,7 @@ extension AvatarPicker {
     struct AvatarCellLabel: View {
         // MARK: Internal
 
+        var styleManager: StyleManager = .shared
         let image: UIImage
         @Binding var isSelected: Bool
 
@@ -27,10 +28,6 @@ extension AvatarPicker {
                                 lineWidth: self.isSelected ? 4 : 0)
                 )
         }
-
-        // MARK: Private
-
-        @ObservedObject private var styleManager: StyleManager = .shared
     }
 }
 
