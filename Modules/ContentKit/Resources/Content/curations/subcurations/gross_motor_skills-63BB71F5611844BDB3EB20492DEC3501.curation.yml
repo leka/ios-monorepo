@@ -23,13 +23,13 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Pour bouger avec Leka !
-          subtitle:
+          title: Activités pour bouger avec Leka !
+          subtitle: Les activités à faire en groupe
           description: Encouragez les enfants à bouger, à s’amuser et à développer leur motricité globale avec Leka.
       - locale: en_US
         details:
-          title: To move with Leka !
-          subtitle:
+          title: Activities to move with Leka !
+          subtitle: Group activities
           description: Encourage children to move, have fun, and develop their gross motor skills with Leka.
     items:
       - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
@@ -41,12 +41,12 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Pour créer des parcours moteurs
+          title: Activités et manettes pour créer des parcours moteurs
           subtitle:
           description: Proposez des activités pour encourager le mouvement, l'exploration de l'espace et la coordination.
       - locale: en_US
         details:
-          title: To design motor activity paths
+          title: Activities and gamepads to create motor skill paths
           subtitle:
           description: Offer activities that encourage movement, spatial exploration, and coordination.
     items:

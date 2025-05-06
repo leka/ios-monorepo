@@ -32,6 +32,8 @@ content:
           subtitle:
           description:
     items:
+      - value: curriculum_generalization_fruits_and_vegetables_robot-053E35EB94CF4A1890489E8F2C12CE85
+        type: curriculum
       - value: curriculum_fruits_and_vegetables_generalization-B6F2027A304C44F5B3C482EAFCD8DE7E
         type: curriculum
       - value: curriculum_sort_sweet_and_salty-5ED0AFBEC4504F6EBA52B26C65ED93CC

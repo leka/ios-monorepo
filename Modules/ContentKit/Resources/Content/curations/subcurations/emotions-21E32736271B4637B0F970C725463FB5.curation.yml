@@ -19,18 +19,44 @@ l10n:
       description:
 
 content:
-  - component: vertical_content_list
+  - component: horizontal_column_list
     l10n:
       - locale: fr_FR
         details:
-          title: Identifier des émotions
-          subtitle:
-          description:
+          title: Activités pour découvrir les émotions
+          subtitle: Premiers pas avec les émotions
+          description: Une première approche des émotions à travers des photos, dessins et pictogrammes.
       - locale: en_US
         details:
-          title: Identify emotions
-          subtitle:
-          description:
+          title: Activities to explore emotions
+          subtitle: First steps with emotions
+          description: An introductory approach to emotions using photos, drawings, and pictograms.
+    items:
+      - value: recognition_emotions_pictures_1_hortense-418F229DD3384711BB241CC5E4F07C46
+        type: activity
+      - value: recognition_emotions_pictures_1_hugo-2046B91706984344AC8CDA8F3E630FE0
+        type: activity
+      - value: recognition_emotions_drawings_1_hugo-D9663D6F1E9F4D228FDCD918317996A3
+        type: activity
+      - value: recognition_emotions_drawings_1_louna-A5D3673F3D9643B29EF6F7C5CBAE73CA
+        type: activity
+      - value: recognition_emotions_pictograms_1_leka-5C8987EC85064792AAA6C9DFB6B315C5
+        type: activity
+      - value: recognition_emotions_robot_leka_1-DE8FD427EB8A4A828E1967C22748840A
+        type: activity
+
+  - component: horizontal_card_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Parcours pour identifier différentes émotions
+          subtitle: De la reconnaissance à la généralisation
+          description: Ces activités aident à reconnaître les émotions, puis à les généraliser dans différents contextes.
+      - locale: en_US
+        details:
+          title: Paths to identify different emotions
+          subtitle: From recognition to generalization
+          description: These activities support recognizing emotions, and generalizing them across contexts.
     items:
       - value: curriculum_recognition_emotions_pictures-BA3CB88A6A6E49CB9AB83FA992BF852B
         type: curriculum
@@ -49,14 +75,14 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Encourager l'empathie
-          subtitle:
-          description:
+          title: Activités pour encourager l'empathie
+          subtitle: Comprendre les émotions chez les autres
+          description: Jeux et mises en situation pour apprendre à reconnaître les émotions des autres.
       - locale: en_US
         details:
-          title: Encourage empathy
-          subtitle:
-          description:
+          title: Activities to encourage empathy
+          subtitle: Understanding others' emotions
+          description: Games and scenarios to help recognize other people’s emotions.
     items:
       - value: recognition_emotions_in_context_thumbs_up_thumbs_down-95A0134AA0E04EA3B6933BDFC8564CBA
         type: activity

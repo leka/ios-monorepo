@@ -23,12 +23,12 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Objets du quotidien
+          title: Cuisine, chambre, salle de bain
           subtitle:
           description:
       - locale: en_US
         details:
-          title: Everyday objects
+          title: Kitchen, bedroom, bathroom
           subtitle:
           description:
     items:
