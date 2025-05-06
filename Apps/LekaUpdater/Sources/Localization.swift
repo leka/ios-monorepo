@@ -44,6 +44,10 @@ extension l10n {
                 "information.status.robot_update_available", value: "⬆️ New firmware update available 📦",
                 comment: "Robot firmware update available text"
             )
+            static let robotRollBackAvailable = LocalizedString(
+                "information.status.robot_roll_back_available", value: "🔙 Go back to previous version 📦",
+                comment: "Robot firmware roll back available text"
+            )
             static let robotIsUpToDate = LocalizedString(
                 "information.status.robot_is_up_to_date", value: "🤖 Your robot is up-to-date! 🎉 You're all done 👌",
                 comment: "Robot is up to date text"
@@ -78,6 +82,8 @@ extension l10n {
         )
 
         static let startUpdateButton = LocalizedString("information.start_update_button", value: "Start robot update", comment: "Start update button")
+
+        static let startRollBackButton = LocalizedString("information.start_roll_back_button", value: "Go back to previous version", comment: "Start roll back button")
     }
 
     enum update {
