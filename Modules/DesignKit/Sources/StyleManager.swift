@@ -2,9 +2,11 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import Observation
 import SwiftUI
 
-public class StyleManager: ObservableObject {
+@Observable
+public class StyleManager {
     // MARK: Lifecycle
 
     public init(accentColor: Color? = nil, colorScheme: ColorScheme = .light) {
@@ -16,8 +18,8 @@ public class StyleManager: ObservableObject {
 
     public static let shared = StyleManager(accentColor: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
 
-    @Published public var accentColor: Color?
-    @Published public var colorScheme: ColorScheme
+    public var accentColor: Color?
+    public var colorScheme: ColorScheme
 
     public func setDefaultColorScheme(_ colorScheme: ColorScheme) {
         self.colorScheme = colorScheme
