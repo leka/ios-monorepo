@@ -6,11 +6,13 @@ import AccountKit
 import Combine
 import DesignKit
 import LocalizationKit
+import Observation
 import SwiftUI
 
 // MARK: - CreateCaregiverViewModel
 
-class CreateCaregiverViewModel: ObservableObject {
+@Observable
+class CreateCaregiverViewModel {
     // MARK: Internal
 
     var caregiverManager: CaregiverManager = .shared
@@ -34,6 +36,7 @@ class CreateCaregiverViewModel: ObservableObject {
 
     // MARK: Private
 
+    @ObservationIgnored
     private var cancellables = Set<AnyCancellable>()
 }
 
@@ -161,7 +164,7 @@ struct CreateCaregiverView: View {
     // MARK: Private
 
     @State private var isCaregiverCreated: Bool = false
-    @StateObject private var viewModel = CreateCaregiverViewModel()
+    @State private var viewModel = CreateCaregiverViewModel()
 
     @FocusState private var focused: Bool
     @State private var isWhitespacesErrorMessageVisible = false
