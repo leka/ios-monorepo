@@ -89,8 +89,7 @@ struct NewSuperSimonView: View {
 
     // MARK: Private
 
-    @StateObject private var styleManager: StyleManager = .shared
-
+    private var styleManager: StyleManager = .shared
     private let viewModel: NewSuperSimonViewViewModel
 }
 

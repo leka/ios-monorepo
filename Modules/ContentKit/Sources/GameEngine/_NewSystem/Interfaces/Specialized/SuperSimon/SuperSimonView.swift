@@ -112,7 +112,8 @@ public struct SuperSimonView: View {
     // MARK: Private
 
     @StateObject private var viewModel: SuperSimonViewViewModel
-    @StateObject private var styleManager: StyleManager = .shared
+
+    private var styleManager: StyleManager = .shared
 }
 
 // MARK: - l10n.SuperSimonView

@@ -37,7 +37,7 @@ struct NoAccountConnectedLabel: View {
 
     // MARK: Private
 
-    @ObservedObject private var styleManager: StyleManager = .shared
+    private var styleManager: StyleManager = .shared
     @ObservedObject var navigation = Navigation.shared
 }
 

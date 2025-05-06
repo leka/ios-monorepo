@@ -15,6 +15,7 @@ extension EditCaregiverView {
     struct AccentColorRow: View {
         // MARK: Internal
 
+        var styleManager: StyleManager = .shared
         @Binding var caregiver: Caregiver
 
         var body: some View {
@@ -33,8 +34,6 @@ extension EditCaregiverView {
             }
         }
 
-        // MARK: Private
-
         // MARK: - ColorCircleView
 
         private struct ColorCircleView: View {
@@ -52,8 +51,6 @@ extension EditCaregiverView {
                 .animation(.easeIn, value: self.isSelected)
             }
         }
-
-        @ObservedObject private var styleManager: StyleManager = .shared
 
         private var selectedColor: Color {
             self.styleManager.accentColor ?? .clear
