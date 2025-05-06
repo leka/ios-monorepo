@@ -6,13 +6,15 @@ import AccountKit
 import AnalyticsKit
 import DesignKit
 import LocalizationKit
+import Observation
 import SwiftUI
 
 // MARK: - AccountCreationViewViewModel
 
-class AccountCreationViewViewModel: ObservableObject {
-    @Published var email: String = ""
-    @Published var password: String = ""
+@Observable
+class AccountCreationViewViewModel {
+    var email: String = ""
+    var password: String = ""
 }
 
 // MARK: - AccountCreationView
@@ -77,7 +79,7 @@ struct AccountCreationView: View {
 
     // MARK: Private
 
-    @StateObject private var viewModel = AccountCreationViewViewModel()
+    @State private var viewModel = AccountCreationViewViewModel()
 
     @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
     @ObservedObject private var navigation: Navigation = .shared
