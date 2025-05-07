@@ -15,7 +15,7 @@ public struct ConnectedRobotView: View {
     // MARK: Lifecycle
 
     init(robot: Robot) {
-        _connectedRobotInformationViewModel = StateObject(
+        _connectedRobotInformationViewModel = State(
             wrappedValue: .init(robot: robot)
         )
     }
@@ -147,7 +147,7 @@ public struct ConnectedRobotView: View {
 
     // MARK: Internal
 
-    @StateObject var connectedRobotInformationViewModel: ConnectedRobotInformationViewModel
+    @State var connectedRobotInformationViewModel: ConnectedRobotInformationViewModel
 
     @Environment(\.dismiss) var dismiss
 

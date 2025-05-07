@@ -97,8 +97,7 @@ public struct RobotConnectionView: View {
 
     // MARK: Private
 
-    @StateObject private var robotViewModel: ConnectedRobotInformationViewModel = .init(
-        robot: .shared)
+    @Bindable private var robotViewModel: ConnectedRobotInformationViewModel = .init(robot: .shared)
 
     private let columns: [GridItem] = [
         GridItem(),
