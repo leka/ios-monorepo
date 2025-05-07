@@ -3,9 +3,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import Observation
 import SwiftUI
 
-public class ConnectedRobotInformationViewModel: ObservableObject {
+@Observable
+public class ConnectedRobotInformationViewModel {
     // MARK: Lifecycle
 
     public init(robot: Robot = .shared) {
@@ -15,16 +17,16 @@ public class ConnectedRobotInformationViewModel: ObservableObject {
 
     // MARK: Public
 
-    @Published public var isNotConnected: Bool = true
+    public var isNotConnected: Bool = true
 
-    @Published public var name: String = "(n/a)"
-    @Published public var serialNumber: String = "(n/a)"
-    @Published public var osVersion: String = "(n/a)"
+    public var name: String = "(n/a)"
+    public var serialNumber: String = "(n/a)"
+    public var osVersion: String = "(n/a)"
 
-    @Published public var battery: Int = 0
-    @Published public var isCharging: Bool = false
+    public var battery: Int = 0
+    public var isCharging: Bool = false
 
-    @Published public var isConnected: Bool = false {
+    public var isConnected: Bool = false {
         didSet {
             self.isNotConnected = !self.isConnected
         }
@@ -32,11 +34,11 @@ public class ConnectedRobotInformationViewModel: ObservableObject {
 
     // MARK: Internal
 
-    let robot: Robot
+    @ObservationIgnored let robot: Robot
 
     // MARK: Private
 
-    private var cancellables: Set<AnyCancellable> = []
+    @ObservationIgnored private var cancellables: Set<AnyCancellable> = []
 
     private func getRobotInformation() {
         self.robot.isConnected
