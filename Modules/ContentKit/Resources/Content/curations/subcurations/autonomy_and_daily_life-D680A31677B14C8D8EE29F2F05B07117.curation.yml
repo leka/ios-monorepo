@@ -23,12 +23,12 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Objets du quotidien
+          title: Activités autours des objets du quotidien
           subtitle:
           description:
       - locale: en_US
         details:
-          title: Everyday objects
+          title: Activities around everyday objects
           subtitle:
           description:
     items:
@@ -49,16 +49,16 @@ content:
       - value: recognition_bathroom_items_health_products-64D5048EC16A4FF99D13F04D7B1CB71F
         type: activity
 
-  - component: horizontal_column_list
+  - component: vertical_content_list
     l10n:
       - locale: fr_FR
         details:
-          title: Routines de vie quotidienne
+          title: Activités autours des routines
           subtitle:
           description:
       - locale: en_US
         details:
-          title: Daily life routines
+          title: Activities based on daily routines
           subtitle:
           description:
     items:
@@ -73,7 +73,7 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Corps humain et besoins physiologiques
+          title: Parcours autours du corps et des besoins
           subtitle:
           description:
       - locale: en_US

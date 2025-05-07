@@ -34,9 +34,11 @@ content:
     items:
       - value: curriculum_receptive_language_identify_number_quantity-4499A9AFB56B4476969B96CE32F5314C
         type: curriculum
+      - value: curriculum_recognition_digital_constellations-0C50B1358BF146DBA286423A4A32A85F
+        type: curriculum
       - value: curriculum_counting_candies-215DCF9CCB7B4E36A73273DC42D848E9
         type: curriculum
       - value: curriculum_counting_flower-petals-3F83E1E0F3094DC787258B9CEEF227A1
         type: curriculum
-      - value: curriculum_recognition_digital_constellations-0C50B1358BF146DBA286423A4A32A85F
+      - value: curriculum_counting_robot-53E4A0E2B181472ABF3E089C833615D8
         type: curriculum

@@ -19,16 +19,16 @@ l10n:
       description:
 
 content:
-  - component: carousel
+  - component: vertical_content_list
     l10n:
       - locale: fr_FR
         details:
-          title: Interactions sociales
+          title: Activités à faire en groupe
           subtitle:
           description:
       - locale: en_US
         details:
-          title: Social interactions
+          title: Group activities
           subtitle:
           description:
     items:

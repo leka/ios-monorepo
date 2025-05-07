@@ -23,13 +23,13 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Comprendre une consigne orale
-          subtitle:
+          title: Parcours de langage réceptif
+          subtitle: Comprendre les consignes et les informations entendues
           description:
       - locale: en_US
         details:
-          title: Understanding an oral instruction
-          subtitle:
+          title: Receptive language curriculums
+          subtitle: Understanding spoken instructions and information
           description:
     items:
       - value: curriculum_receptive_language_identity_familiar_nouns-1607BEA72CC14285AB709C567E1BE5E7
@@ -47,26 +47,74 @@ content:
       - value: curriculum_receptive_language_identify_number_quantity-4499A9AFB56B4476969B96CE32F5314C
         type: curriculum
 
-  - component: vertical_tile_grid
+  - component: horizontal_column_list
     l10n:
       - locale: fr_FR
         details:
-          title: Développer le champs lexical
-          subtitle:
+          title: Activités pour enrichir le vocabulaire
+          subtitle: Les animaux
           description:
       - locale: en_US
         details:
-          title: Develop the lexical field
-          subtitle:
+          title: Vocabulary enrichment activities
+          subtitle: Animals
           description:
     items:
-      - value: animals-0609CB09299847E581F6E191796499B4
-        type: curation
-      - value: body_and_needs-7A20223EC3004DD1B765666B8F96428C
-        type: curation
-      - value: modes_of_transportation-F5758589BBE345B1BB4479AC77C49337
-        type: curation
-      - value: family-A92F6E5239214E26BF5E33D9F8D7972F
-        type: curation
-      - value: holidays_and_festivities-F7F2B8BFB65D403E929B3FD24380BC3B
-        type: curation
+      - value: animal_recognition_farm_animals_1-4719436B24BA4876804DC6A734BA7E76
+        type: activity
+      - value: animal_recognition_forest_animals_1-3A4F8EBF04424890B2EBF25DA6EC531A
+        type: activity
+      - value: animal_recognition_insects_1-14B267712FD3424E99DFEEFE27A37463
+        type: activity
+      - value: animal_recognition_pets_1-03C46293135143BF81BA579682B9E78C
+        type: activity
+      - value: animal_animal_recognition_savannah_animals_1-945961648A2746688D36698AD0B82F86
+        type: activity
+      - value: animal_recognition_sea_animals_1-EC749D20F1114F78A10FCB58E49AA034
+        type: activity
+      - value: recognition_the_ice_floe_1-8D8DDB52F3FD41169688C2811CCD2D66
+        type: activity
+
+  - component: horizontal_column_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Activités pour enrichir le vocabulaire
+          subtitle: Le corps humain, la famille, les moyens de transport, le jardin
+          description:
+      - locale: en_US
+        details:
+          title: Vocabulary enrichment activities
+          subtitle: The human body, family, means of transport, and garden
+          description:
+    items:
+      - value: recognition_body_parts_1-756B84801C32483FABEA6E5BC5DF7081
+        type: activity
+      - value: recognition_family_members_1-4B35157189D24260A943E8C510250460
+        type: activity
+      - value: recognition_modes_of_transportation_1-0F5E9FE3202D4F5197F7C93B8945329C
+        type: activity
+      - value: recognition_garden_items_1-34E696B157354C76B9613F4C7E185BEE
+        type: activity
+
+  - component: horizontal_column_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Activités pour enrichir le vocabulaire
+          subtitle: Les vacances et festivités
+          description:
+      - locale: en_US
+        details:
+          title: Vocabulary enrichment activities
+          subtitle: Holidays and celebrations
+          description:
+    items:
+      - value: recognition_seaside_holidays_1-E8B904158A0D48E785C398FEEB51F007
+        type: activity
+      - value: recognition_halloween_1-5E9C3E7866BC47E8931701F244459AF6
+        type: activity
+      - value: recognition_christmas_1-6000423931E84518BD3A840B7D2FE172
+        type: activity
+      - value: recognition_winter_holidays_1-9C5A3D5EA2DC47A1905C013133AEF72C
+        type: activity

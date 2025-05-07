@@ -23,12 +23,12 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Ordonner
+          title: Parcours pour ordonner
           subtitle:
           description:
       - locale: en_US
         details:
-          title: Order
+          title: Ordering paths
           subtitle:
           description:
     items:
@@ -45,12 +45,12 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Trier
+          title: Parcours pour trier
           subtitle:
           description:
       - locale: en_US
         details:
-          title: Sort
+          title: Sorting paths
           subtitle:
           description:
     items:
@@ -67,12 +67,12 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Apparier
+          title: Parcours pour apparier
           subtitle:
           description:
       - locale: en_US
         details:
-          title: Match
+          title: Matching paths
           subtitle:
           description:
     items:
@@ -89,12 +89,12 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Faire des associations logiques
+          title: Parcours pour faire des associations logiques
           subtitle:
           description:
       - locale: en_US
         details:
-          title: Make logical associations
+          title: Logical association paths
           subtitle:
           description:
     items:
