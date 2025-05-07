@@ -6,8 +6,10 @@ import BLEKit
 import Combine
 import CoreBluetooth
 import Foundation
+import Observation
 
-public class RobotConnectionViewModel: ObservableObject {
+@Observable
+public class RobotConnectionViewModel {
     // MARK: Lifecycle
 
     public init() {
@@ -116,14 +118,14 @@ public class RobotConnectionViewModel: ObservableObject {
 
     // MARK: Internal
 
-    @Published var robotDiscoveries: [RobotDiscoveryModel] = []
-    @Published var selectedDiscovery: RobotDiscoveryModel?
+    var robotDiscoveries: [RobotDiscoveryModel] = []
+    var selectedDiscovery: RobotDiscoveryModel?
 
-    @Published var connected: Bool = false
-    @Published var connectingToRestartingRobot: Bool = false
-    @Published var managerState: CBManagerState = .unknown
+    var connected: Bool = false
+    var connectingToRestartingRobot: Bool = false
+    var managerState: CBManagerState = .unknown
 
-    @Published var connectedDiscovery: RobotDiscoveryModel? {
+    var connectedDiscovery: RobotDiscoveryModel? {
         didSet {
             self.connected = self.connectedDiscovery != nil
         }
@@ -131,11 +133,11 @@ public class RobotConnectionViewModel: ObservableObject {
 
     // MARK: Private
 
-    private let robot = Robot.shared
-    private let bleManager = BLEManager.shared
+    @ObservationIgnored private let robot = Robot.shared
+    @ObservationIgnored private let bleManager = BLEManager.shared
 
-    private var cancellables: Set<AnyCancellable> = []
-    private var scanCancellable: AnyCancellable?
+    @ObservationIgnored private var cancellables: Set<AnyCancellable> = []
+    @ObservationIgnored private var scanCancellable: AnyCancellable?
 
     private func subscribeToManagerState() {
         self.bleManager.state
