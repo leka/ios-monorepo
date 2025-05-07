@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import Observation
 import SwiftUI
 
 // MARK: - LibraryManagerViewModel
@@ -92,8 +93,8 @@ public class LibraryManagerViewModel {
 
     // MARK: Private
 
-    private var cancellables = Set<AnyCancellable>()
-    private let libraryManager = LibraryManager.shared
+    @ObservationIgnored private var cancellables = Set<AnyCancellable>()
+    @ObservationIgnored private let libraryManager = LibraryManager.shared
 
     private func subscribeToManager() {
         self.libraryManager.currentLibrary
