@@ -6,6 +6,7 @@ import AccountKit
 import AnalyticsKit
 import DesignKit
 import LocalizationKit
+import Observation
 import SwiftUI
 
 // MARK: - ConnectionViewViewModel
@@ -15,10 +16,11 @@ import SwiftUI
 // ? the same applies for both login/signup
 // ? re-enable autofill modifiers in TextFields when OK (textContentType)
 
-class ConnectionViewViewModel: ObservableObject {
-    @Published var email: String = ""
-    @Published var password: String = ""
-    @Published var forgotPasswordEmail: String = ""
+@Observable
+class ConnectionViewViewModel {
+    var email: String = ""
+    var password: String = ""
+    var forgotPasswordEmail: String = ""
 }
 
 // MARK: - ConnectionView
@@ -96,7 +98,7 @@ struct ConnectionView: View {
 
     // MARK: Private
 
-    @StateObject private var viewModel = ConnectionViewViewModel()
+    @State private var viewModel = ConnectionViewViewModel()
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
     @ObservedObject private var navigation: Navigation = .shared
 
