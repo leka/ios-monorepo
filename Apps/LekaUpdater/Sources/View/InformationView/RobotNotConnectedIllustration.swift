@@ -27,32 +27,12 @@ struct RobotNotConnectedIllustration: View {
                 .frame(width: self.illustrationSize)
                 .shadow(radius: 3)
 
-            Circle()
-                .strokeBorder(
-                    .gray,
-                    style: StrokeStyle(lineWidth: self.circleLineWidth, lineCap: .round, dash: [self.dashSpacer, self.dashSpacer])
-                )
-                .frame(width: self.circleSize)
-
             LekaUpdaterAsset.Assets.robotOnBase.swiftUIImage
                 .renderingMode(.template)
                 .resizable()
                 .scaledToFit()
                 .frame(height: self.imageSize)
                 .foregroundStyle(.gray.opacity(0.3))
-
-            VStack {
-                Spacer()
-
-                ZStack {
-                    Circle().fill(.lkBackground)
-                        .frame(height: self.checkmarkSize)
-
-                    Image(systemName: "questionmark.circle")
-                        .font(.system(size: self.checkmarkSize))
-                        .foregroundColor(.gray)
-                }
-            }
         }
         .frame(width: self.circleSize, height: self.illustrationSize)
     }
@@ -63,20 +43,8 @@ struct RobotNotConnectedIllustration: View {
         self.illustrationSize * 250 / 300
     }
 
-    private var circleLineWidth: CGFloat {
-        self.illustrationSize / 60
-    }
-
-    private var dashSpacer: CGFloat {
-        self.illustrationSize / 18
-    }
-
     private var imageSize: CGFloat {
         self.illustrationSize * 180 / 300
-    }
-
-    private var checkmarkSize: CGFloat {
-        self.illustrationSize * 56 / 300
     }
 }
 
