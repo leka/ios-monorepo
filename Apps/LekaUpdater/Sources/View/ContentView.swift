@@ -8,7 +8,7 @@ import SwiftUI
 // MARK: - ContentView
 
 struct ContentView: View {
-    @State var isConnectionViewPresented = true
+    @State var isConnectionViewPresented = false
     @State var isUpdateStatusViewPresented = false
 
     var body: some View {
