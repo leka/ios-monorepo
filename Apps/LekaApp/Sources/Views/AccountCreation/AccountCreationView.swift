@@ -6,16 +6,7 @@ import AccountKit
 import AnalyticsKit
 import DesignKit
 import LocalizationKit
-import Observation
 import SwiftUI
-
-// MARK: - AccountCreationViewViewModel
-
-@Observable
-class AccountCreationViewViewModel {
-    var email: String = ""
-    var password: String = ""
-}
 
 // MARK: - AccountCreationView
 
@@ -34,8 +25,8 @@ struct AccountCreationView: View {
             }
 
             VStack(spacing: 15) {
-                TextFieldEmail(entry: self.$viewModel.email)
-                TextFieldPassword(entry: self.$viewModel.password)
+                TextFieldEmail(entry: self.$email)
+                TextFieldPassword(entry: self.$password)
             }
             .frame(width: 400)
             .disableAutocorrection(true)
@@ -79,7 +70,8 @@ struct AccountCreationView: View {
 
     // MARK: Private
 
-    @State private var viewModel = AccountCreationViewViewModel()
+    @State private var email: String = ""
+    @State private var password: String = ""
 
     @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
     @ObservedObject private var navigation: Navigation = .shared
@@ -91,11 +83,11 @@ struct AccountCreationView: View {
     private var libraryManager = LibraryManager.shared
 
     private var isCreationDisabled: Bool {
-        self.viewModel.email.isInvalidEmail() || self.viewModel.password.isInvalidPassword()
+        self.email.isInvalidEmail() || self.password.isInvalidPassword()
     }
 
     private func submitForm() {
-        self.authManager.signUp(email: self.viewModel.email, password: self.viewModel.password)
+        self.authManager.signUp(email: self.email, password: self.password)
     }
 }
 
