@@ -55,7 +55,7 @@ public struct ActivityGridView: View {
 #Preview {
     NavigationStack {
         ActivityGridView(
-            activities: ContentKit.allActivities,
+            activities: Array(ContentKit.allActivities.values),
             onStartActivity: { _ in
                 print("Activity Started")
             }

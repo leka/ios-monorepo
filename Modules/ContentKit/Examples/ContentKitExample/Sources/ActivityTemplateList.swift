@@ -6,7 +6,7 @@ import ContentKit
 import SwiftUI
 
 struct ActivityTemplateList: View {
-    let activities: [Activity] = ContentKit.allTemplateActivities.sorted { $0.name < $1.name }
+    let activities: [Activity] = ContentKit.allTemplateActivities.values.sorted { $0.name < $1.name }
 
     var body: some View {
         List {

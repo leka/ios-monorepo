@@ -15,7 +15,7 @@ public struct Activity: Decodable, Identifiable {
     // MARK: Lifecycle
 
     public init?(id: String) {
-        if let activity = ContentKit.allActivities.first(where: { $0.id == id }) {
+        if let activity = ContentKit.allActivities[id] {
             self = activity
         } else {
             return nil

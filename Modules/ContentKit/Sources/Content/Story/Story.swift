@@ -15,7 +15,7 @@ public struct Story: Decodable, Identifiable {
     // MARK: Lifecycle
 
     public init?(id: String) {
-        if let story = ContentKit.allStories.first(where: { $0.id == id }) {
+        if let story = ContentKit.allStories[id] {
             self = story
         } else {
             return nil

@@ -106,7 +106,7 @@ extension l10n {
         NavigationStack {
             ScrollView {
                 ActivityListView(
-                    activities: ContentKit.allActivities,
+                    activities: Array(ContentKit.allActivities.values),
                     onStartActivity: { _ in
                         print("Activity Started")
                     }

@@ -104,7 +104,7 @@ public struct ActivityDetailedListItem: View {
 #Preview {
     ScrollView(.horizontal, showsIndicators: false) {
         VStack {
-            ForEach(ContentKit.allActivities) { activity in
+            ForEach(Array(ContentKit.allActivities.values)) { activity in
                 ActivityDetailedListItem(activity)
                 Divider()
             }

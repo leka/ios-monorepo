@@ -43,7 +43,7 @@ struct LibraryCurriculumsView: View {
 
     private var curriculums: [Curriculum] {
         self.viewModel.curriculums.compactMap { savedCurriculums in
-            ContentKit.allCurriculums.first { $0.id == savedCurriculums.id }
+            ContentKit.allCurriculums[savedCurriculums.id!]
         }
         .sorted {
             $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending

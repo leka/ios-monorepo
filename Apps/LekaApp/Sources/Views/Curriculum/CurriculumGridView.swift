@@ -62,7 +62,7 @@ public struct CurriculumGridView: View {
 #Preview {
     NavigationStack {
         CurriculumGridView(
-            curriculums: ContentKit.allCurriculums,
+            curriculums: Array(ContentKit.allCurriculums.values),
             onStartActivity: { _ in
                 print("Activity Selected")
             }
