@@ -64,7 +64,7 @@ struct CategoryResourcesFirstStepsView: View {
 
     // MARK: Private
 
-    private let category: CategoryResources = ContentKit.allResources.first(where: { $0.id == "first_steps" })!
+    private let category: CategoryResources = ContentKit.allResources["first_steps"]!
 
     @ObservedObject private var navigation: Navigation = .shared
     @ObservedObject private var styleManager: StyleManager = .shared

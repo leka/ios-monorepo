@@ -145,7 +145,7 @@ extension l10n {
 
 #Preview {
     ContentItemMenu(
-        ContentKit.allCurations[0].sections[0].items[0].curation,
+        ContentKit.allCurations.first!.value.sections[0].items[0].curation,
         caregiverID: "Mock UUID"
     )
 }

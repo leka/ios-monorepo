@@ -22,8 +22,8 @@ public enum ContentKit {
     public static let allDraftCurriculums: [String: Curriculum] = ContentKit.listAllDraftCurriculums() ?? [:]
     public static let allTemplateCurriculums: [String: Curriculum] = ContentKit.listAllTemplateCurriculums() ?? [:]
     public static let allStories: [String: Story] = ContentKit.listAllStories() ?? [:]
-    public static let allCurations: [CategoryCuration] = ContentKit.listAllCurations() ?? []
-    public static let allResources: [CategoryResources] = ContentKit.listAllResources() ?? []
+    public static let allCurations: [String: CategoryCuration] = ContentKit.listAllCurations() ?? [:]
+    public static let allResources: [String: CategoryResources] = ContentKit.listAllResources() ?? [:]
 
     public static func listRasterImages() -> [String] {
         let bundle = Bundle.module
@@ -47,9 +47,9 @@ public enum ContentKit {
 
     // MARK: Private
 
-    private static func listAllCurations() -> [CategoryCuration]? {
+    private static func listAllCurations() -> [String: CategoryCuration]? {
         let bundle = Bundle.module
-        var curations: [CategoryCuration] = []
+        var curations: [String: CategoryCuration] = [:]
         let paths = bundle.paths(forResourcesOfType: "curation.yml", inDirectory: nil)
 
         for path in paths {
@@ -62,7 +62,7 @@ public enum ContentKit {
 
             do {
                 let curation = try YAMLDecoder().decode(CategoryCuration.self, from: data)
-                curations.append(curation)
+                curations[curation.id] = curation
             } catch {
                 logCK.error("Error decoding file: \(path) with error:\n\(error)")
             }
@@ -174,9 +174,9 @@ public enum ContentKit {
         return stories
     }
 
-    private static func listAllResources() -> [CategoryResources]? {
+    private static func listAllResources() -> [String: CategoryResources]? {
         let bundle = Bundle.module
-        var resources: [CategoryResources] = []
+        var resources: [String: CategoryResources] = [:]
         let paths = bundle.paths(forResourcesOfType: "resources.yml", inDirectory: nil)
 
         for path in paths {
@@ -188,8 +188,8 @@ public enum ContentKit {
             }
 
             do {
-                let curation = try YAMLDecoder().decode(CategoryResources.self, from: data)
-                resources.append(curation)
+                let resource = try YAMLDecoder().decode(CategoryResources.self, from: data)
+                resources[resource.id] = resource
             } catch {
                 logCK.error("Error decoding file: \(path) with error:\n\(error)")
             }

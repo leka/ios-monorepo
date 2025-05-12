@@ -58,7 +58,7 @@ public struct ResourceVideoView: View {
 #Preview {
     NavigationStack {
         ResourceVideoView(
-            resource: ContentKit.allResources[0].sections[0].resources[0].resource
+            resource: ContentKit.allResources.first!.value.sections[0].resources[0].resource
         )
     }
 }
