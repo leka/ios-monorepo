@@ -6,7 +6,6 @@ import AccountKit
 import AnalyticsKit
 import DesignKit
 import LocalizationKit
-import Observation
 import SwiftUI
 
 // MARK: - ConnectionViewViewModel
@@ -15,13 +14,6 @@ import SwiftUI
 // ? is enabled in Settings in order to get the strong password proposals etc...
 // ? the same applies for both login/signup
 // ? re-enable autofill modifiers in TextFields when OK (textContentType)
-
-@Observable
-class ConnectionViewViewModel {
-    var email: String = ""
-    var password: String = ""
-    var forgotPasswordEmail: String = ""
-}
 
 // MARK: - ConnectionView
 
@@ -41,10 +33,10 @@ struct ConnectionView: View {
                 }
 
                 VStack {
-                    TextFieldEmail(entry: self.$viewModel.email)
+                    TextFieldEmail(entry: self.$email)
 
                     VStack {
-                        TextFieldPassword(entry: self.$viewModel.password)
+                        TextFieldPassword(entry: self.$password)
 
                         Button(role: .destructive) {
                             self.showResetPassword = true
@@ -57,7 +49,7 @@ struct ConnectionView: View {
                         .sheet(isPresented: self.$showResetPassword) {
                             self.authManagerViewModel.userAction = .userIsSigningIn
                         } content: {
-                            ForgotPasswordView(email: self.viewModel.email)
+                            ForgotPasswordView(email: self.email)
                         }
                     }
                 }
@@ -98,7 +90,10 @@ struct ConnectionView: View {
 
     // MARK: Private
 
-    @State private var viewModel = ConnectionViewViewModel()
+    @State private var email: String = ""
+    @State private var password: String = ""
+    @State private var forgotPasswordEmail: String = ""
+
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
     @ObservedObject private var navigation: Navigation = .shared
 
@@ -111,11 +106,11 @@ struct ConnectionView: View {
     private var carereceiverManager: CarereceiverManager = .shared
 
     private var isConnectionDisabled: Bool {
-        self.viewModel.email.isEmpty || self.viewModel.password.isEmpty
+        self.email.isEmpty || self.password.isEmpty
     }
 
     private func submitForm() {
-        self.authManager.signIn(email: self.viewModel.email, password: self.viewModel.password)
+        self.authManager.signIn(email: self.email, password: self.password)
     }
 }
 
