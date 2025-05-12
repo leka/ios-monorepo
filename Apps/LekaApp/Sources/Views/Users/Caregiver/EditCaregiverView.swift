@@ -5,7 +5,6 @@
 import AccountKit
 import DesignKit
 import LocalizationKit
-import Observation
 import SwiftUI
 
 // MARK: - EditCaregiverView
@@ -14,7 +13,7 @@ struct EditCaregiverView: View {
     // MARK: Lifecycle
 
     init(caregiver: Caregiver) {
-        self._viewModel = State(wrappedValue: EditCaregiverViewViewModel(caregiver: caregiver))
+        self._caregiver = State(wrappedValue: caregiver)
         self._birthdate = State(wrappedValue: caregiver.birthdate ?? Date.now)
     }
 
@@ -31,7 +30,7 @@ struct EditCaregiverView: View {
 
                 Section {
                     LabeledContent(String(l10n.CaregiverCreation.caregiverFirstNameLabel.characters)) {
-                        TextField("", text: self.$viewModel.caregiver.firstName, prompt: self.placeholderFirstName)
+                        TextField("", text: self.$caregiver.firstName, prompt: self.placeholderFirstName)
                             .textContentType(.givenName)
                             .textInputAutocapitalization(.words)
                             .autocorrectionDisabled()
@@ -40,12 +39,12 @@ struct EditCaregiverView: View {
                             .focused(self.$focused)
                             .onChange(of: self.focused) { focused in
                                 if !focused {
-                                    self.viewModel.caregiver.firstName = self.viewModel.caregiver.firstName.trimLeadingAndTrailingWhitespaces()
+                                    self.caregiver.firstName = self.caregiver.firstName.trimLeadingAndTrailingWhitespaces()
                                 }
                             }
                     }
                     LabeledContent(String(l10n.CaregiverCreation.caregiverLastNameLabel.characters)) {
-                        TextField("", text: self.$viewModel.caregiver.lastName, prompt: self.placeholderLastName)
+                        TextField("", text: self.$caregiver.lastName, prompt: self.placeholderLastName)
                             .textContentType(.familyName)
                             .textInputAutocapitalization(.words)
                             .autocorrectionDisabled()
@@ -54,18 +53,18 @@ struct EditCaregiverView: View {
                             .focused(self.$focused)
                             .onChange(of: self.focused) { focused in
                                 if !focused {
-                                    self.viewModel.caregiver.lastName = self.viewModel.caregiver.lastName.trimLeadingAndTrailingWhitespaces()
+                                    self.caregiver.lastName = self.caregiver.lastName.trimLeadingAndTrailingWhitespaces()
                                 }
                             }
                     }
                     LabeledContent(String(l10n.CaregiverCreation.caregiverEmailLabel.characters)) {
-                        TextField("", text: self.$viewModel.caregiver.email, prompt: self.placeholderEmail)
+                        TextField("", text: self.$caregiver.email, prompt: self.placeholderEmail)
                             .textContentType(.emailAddress)
                             .textInputAutocapitalization(.never)
                             .autocorrectionDisabled()
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
-                            .onChange(of: self.viewModel.caregiver.email) { newValue in
+                            .onChange(of: self.caregiver.email) { newValue in
                                 withAnimation {
                                     self.isWhitespacesErrorMessageVisible = newValue.containsInvalidCharacters()
                                 }
@@ -87,17 +86,17 @@ struct EditCaregiverView: View {
                         displayedComponents: [.date]
                     )
                     .onChange(of: self.birthdate, perform: { _ in
-                        self.viewModel.caregiver.birthdate = self.birthdate
+                        self.caregiver.birthdate = self.birthdate
                     })
                 }
 
                 Section {
-                    ProfessionListView(caregiver: self.$viewModel.caregiver)
+                    ProfessionListView(caregiver: self.$caregiver)
                 }
 
                 Section {
-                    AppearanceRow(caregiver: self.$viewModel.caregiver)
-                    AccentColorRow(caregiver: self.$viewModel.caregiver)
+                    AppearanceRow(caregiver: self.$caregiver)
+                    AccentColorRow(caregiver: self.$caregiver)
                 }
             }
         }
@@ -112,7 +111,7 @@ struct EditCaregiverView: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button(String(l10n.EditCaregiverView.saveButtonLabel.characters)) {
-                    self.caregiverManager.updateCaregiver(caregiver: self.viewModel.caregiver)
+                    self.caregiverManager.updateCaregiver(caregiver: self.caregiver)
                     self.dismiss()
                 }
             }
@@ -127,7 +126,8 @@ struct EditCaregiverView: View {
     @FocusState private var focused: Bool
     @State private var isWhitespacesErrorMessageVisible = false
 
-    @State private var viewModel: EditCaregiverViewViewModel
+    @State private var caregiver: Caregiver
+    @State private var isAvatarPickerPresented = false
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     @ObservedObject private var styleManager: StyleManager = .shared
@@ -143,41 +143,25 @@ struct EditCaregiverView: View {
 
     private var avatarPickerButton: some View {
         Button {
-            self.viewModel.isAvatarPickerPresented = true
+            self.isAvatarPickerPresented = true
         } label: {
             VStack(alignment: .center, spacing: 15) {
-                AvatarPicker.ButtonLabel(image: self.viewModel.caregiver.avatar)
+                AvatarPicker.ButtonLabel(image: self.caregiver.avatar)
                 Text(l10n.CaregiverCreation.avatarChoiceButton)
                     .font(.headline)
             }
         }
-        .sheet(isPresented: self.$viewModel.isAvatarPickerPresented) {
+        .sheet(isPresented: self.$isAvatarPickerPresented) {
             NavigationStack {
-                AvatarPicker(selectedAvatar: self.viewModel.caregiver.avatar,
+                AvatarPicker(selectedAvatar: self.caregiver.avatar,
                              onSelect: { avatar in
-                                 self.viewModel.caregiver.avatar = avatar
+                                 self.caregiver.avatar = avatar
                              })
                              .navigationBarTitleDisplayMode(.inline)
             }
         }
         .frame(maxWidth: .infinity, alignment: .center)
     }
-}
-
-// MARK: - EditCaregiverViewViewModel
-
-@Observable
-class EditCaregiverViewViewModel {
-    // MARK: Lifecycle
-
-    init(caregiver: Caregiver) {
-        self.caregiver = caregiver
-    }
-
-    // MARK: Internal
-
-    var caregiver: Caregiver
-    var isAvatarPickerPresented: Bool = false
 }
 
 #Preview {
