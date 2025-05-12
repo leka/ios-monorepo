@@ -42,7 +42,7 @@ struct LibraryActivitiesView: View {
 
     private var activities: [Activity] {
         self.viewModel.activities.compactMap { savedActivity in
-            ContentKit.allPublishedActivities[savedActivity.id!]
+            ContentKit.allPublishedActivities[savedActivity.id]
         }
         .sorted {
             $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending

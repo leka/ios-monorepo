@@ -46,12 +46,12 @@ struct FavoriteStoriesView: View {
         if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
             self.viewModel.stories.compactMap { savedStory in
                 guard self.viewModel.isStoryFavoritedByCurrentCaregiver(
-                    storyID: savedStory.id!,
+                    storyID: savedStory.id,
                     caregiverID: currentCaregiverID
                 ) else {
                     return nil
                 }
-                return ContentKit.allStories[savedStory.id!]
+                return ContentKit.allStories[savedStory.id]
             }
             .sorted {
                 $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending

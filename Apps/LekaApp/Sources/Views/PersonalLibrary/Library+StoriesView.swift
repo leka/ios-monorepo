@@ -42,7 +42,7 @@ struct LibraryStoriesView: View {
 
     private var stories: [Story] {
         self.viewModel.stories.compactMap { savedStories in
-            ContentKit.allStories[savedStories.id!]
+            ContentKit.allStories[savedStories.id]
         }
         .sorted {
             $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
