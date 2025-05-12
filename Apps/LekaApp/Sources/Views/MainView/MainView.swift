@@ -8,7 +8,6 @@ import Combine
 import ContentKit
 import DesignKit
 import LocalizationKit
-import Observation
 import RobotKit
 import SwiftUI
 

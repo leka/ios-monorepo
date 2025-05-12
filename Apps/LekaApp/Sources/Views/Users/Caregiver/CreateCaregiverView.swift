@@ -6,7 +6,6 @@ import AccountKit
 import Combine
 import DesignKit
 import LocalizationKit
-import Observation
 import SwiftUI
 
 // MARK: - CreateCaregiverViewModel

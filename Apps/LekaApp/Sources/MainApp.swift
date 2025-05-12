@@ -11,7 +11,6 @@ import DeviceKit
 import FirebaseKit
 import LocalizationKit
 import LogKit
-import Observation
 import SwiftUI
 import UtilsKit
 
