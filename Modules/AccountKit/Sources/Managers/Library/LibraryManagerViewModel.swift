@@ -163,17 +163,17 @@ public extension LibraryManagerViewModel {
         switch item {
             case let .activity(activity):
                 self.libraryManager.addActivity(
-                    activityID: activity.id!,
+                    activityID: activity.id,
                     caregiverID: activity.caregiverID
                 )
             case let .curriculum(curriculum):
                 self.libraryManager.addCurriculum(
-                    curriculumID: curriculum.id!,
+                    curriculumID: curriculum.id,
                     caregiverID: curriculum.caregiverID
                 )
             case let .story(story):
                 self.libraryManager.addStory(
-                    storyID: story.id!,
+                    storyID: story.id,
                     caregiverID: story.caregiverID
                 )
         }
@@ -183,17 +183,17 @@ public extension LibraryManagerViewModel {
         switch item {
             case let .activity(activity):
                 self.libraryManager.addActivityToLibraryAsFavorite(
-                    activityID: activity.id!,
+                    activityID: activity.id,
                     caregiverID: activity.caregiverID
                 )
             case let .curriculum(curriculum):
                 self.libraryManager.addCurriculumToLibraryAsFavorite(
-                    curriculumID: curriculum.id!,
+                    curriculumID: curriculum.id,
                     caregiverID: curriculum.caregiverID
                 )
             case let .story(story):
                 self.libraryManager.addStoryToLibraryAsFavorite(
-                    storyID: story.id!,
+                    storyID: story.id,
                     caregiverID: story.caregiverID
                 )
         }
@@ -218,11 +218,11 @@ public extension LibraryManagerViewModel {
     func removeItemFromLibrary(_ item: LibraryItem) {
         switch item {
             case let .activity(activity):
-                self.libraryManager.removeActivity(activityID: activity.id!)
+                self.libraryManager.removeActivity(activityID: activity.id)
             case let .curriculum(curriculum):
-                self.libraryManager.removeCurriculum(curriculumID: curriculum.id!)
+                self.libraryManager.removeCurriculum(curriculumID: curriculum.id)
             case let .story(story):
-                self.libraryManager.removeStory(storyID: story.id!)
+                self.libraryManager.removeStory(storyID: story.id)
         }
 
         self.itemToRemove = nil
@@ -232,11 +232,11 @@ public extension LibraryManagerViewModel {
     func removeItemFromFavorites(_ item: LibraryItem) {
         switch item {
             case let .activity(activity):
-                self.libraryManager.removeActivityFromFavorites(activityID: activity.id!, caregiverID: activity.caregiverID)
+                self.libraryManager.removeActivityFromFavorites(activityID: activity.id, caregiverID: activity.caregiverID)
             case let .curriculum(curriculum):
-                self.libraryManager.removeCurriculumFromFavorites(curriculumID: curriculum.id!, caregiverID: curriculum.caregiverID)
+                self.libraryManager.removeCurriculumFromFavorites(curriculumID: curriculum.id, caregiverID: curriculum.caregiverID)
             case let .story(story):
-                self.libraryManager.removeStoryFromFavorites(storyID: story.id!, caregiverID: story.caregiverID)
+                self.libraryManager.removeStoryFromFavorites(storyID: story.id, caregiverID: story.caregiverID)
         }
 
         self.itemToRemove = nil
@@ -258,11 +258,11 @@ public extension LibraryManagerViewModel {
     private func getFavoritingCaregivers(for item: LibraryItem) -> [String] {
         switch item {
             case let .activity(activity):
-                self.getFavoritingCaregiversForActivity(activityID: activity.id!)
+                self.getFavoritingCaregiversForActivity(activityID: activity.id)
             case let .curriculum(curriculum):
-                self.getFavoritingCaregiversForCurriculum(curriculumID: curriculum.id!)
+                self.getFavoritingCaregiversForCurriculum(curriculumID: curriculum.id)
             case let .story(story):
-                self.getFavoritingCaregiversForStory(storyID: story.id!)
+                self.getFavoritingCaregiversForStory(storyID: story.id)
         }
     }
 

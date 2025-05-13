@@ -162,10 +162,10 @@ public struct CurationViewFactory: View {
 
 #Preview {
     VStack(spacing: 20) {
-        CurationViewFactory(section: ContentKit.allCurations[4].sections[0])
-        CurationViewFactory(section: ContentKit.allCurations[4].sections[1])
-        CurationViewFactory(section: ContentKit.allCurations[4].sections[2])
-        CurationViewFactory(section: ContentKit.allCurations[4].sections[3])
+        CurationViewFactory(section: ContentKit.allCurations.first!.value.sections[0])
+        CurationViewFactory(section: ContentKit.allCurations.first!.value.sections[1])
+        CurationViewFactory(section: ContentKit.allCurations.first!.value.sections[2])
+        CurationViewFactory(section: ContentKit.allCurations.first!.value.sections[3])
     }
     .padding()
 }

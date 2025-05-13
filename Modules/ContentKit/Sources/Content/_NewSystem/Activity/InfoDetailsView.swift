@@ -194,12 +194,12 @@ extension l10n {
 
 #Preview {
     TabView {
-        InfoDetailsView(CurationItemModel(id: ContentKit.allActivities[0].id, contentType: .activity))
+        InfoDetailsView(CurationItemModel(id: ContentKit.allActivities.first!.key, contentType: .activity))
             .tabItem {
                 Text("Activity")
             }
 
-        InfoDetailsView(CurationItemModel(id: ContentKit.allStories[0].id, contentType: .story))
+        InfoDetailsView(CurationItemModel(id: ContentKit.allStories.first!.key, contentType: .story))
             .tabItem {
                 Text("Story")
             }

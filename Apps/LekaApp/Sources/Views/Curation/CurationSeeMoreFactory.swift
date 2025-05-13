@@ -116,9 +116,9 @@ public struct CurationSeeMoreFactory: View {
 
 #Preview {
     VStack(spacing: 20) {
-        CurationSeeMoreFactory(section: ContentKit.allCurations[0].sections[0])
-        CurationSeeMoreFactory(section: ContentKit.allCurations[0].sections[1])
-        CurationSeeMoreFactory(section: ContentKit.allCurations[0].sections[2])
+        CurationSeeMoreFactory(section: ContentKit.allCurations.first!.value.sections[0])
+        CurationSeeMoreFactory(section: ContentKit.allCurations.first!.value.sections[1])
+        CurationSeeMoreFactory(section: ContentKit.allCurations.first!.value.sections[2])
     }
     .padding()
 }

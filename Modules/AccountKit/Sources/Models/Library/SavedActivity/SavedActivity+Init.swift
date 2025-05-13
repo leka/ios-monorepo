@@ -6,7 +6,7 @@ import SwiftUI
 
 public extension SavedActivity {
     init(
-        id: String? = nil,
+        id: String,
         caregiverID: String,
         favoritedBy: [String: Date] = [:]
     ) {

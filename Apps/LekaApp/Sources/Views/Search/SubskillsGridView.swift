@@ -100,7 +100,7 @@ public struct SubskillsGridView: View {
 
     let backgroundColors: [Color] = [.purple, .blue, .green, .orange, .teal, .pink, .mint, .red, .yellow, .cyan]
 
-    let activities: [Activity] = ContentKit.allPublishedActivities.sorted {
+    let activities: [Activity] = ContentKit.allPublishedActivities.values.sorted {
         $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
     }
 

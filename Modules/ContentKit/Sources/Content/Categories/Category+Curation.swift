@@ -31,7 +31,7 @@ public struct CategoryCuration: Identifiable, CategoryProtocol {
     // MARK: Lifecycle
 
     public init?(id: String) {
-        if let curation = ContentKit.allCurations.first(where: { $0.id == id }) {
+        if let curation = ContentKit.allCurations[id] {
             self = curation
         } else {
             return nil

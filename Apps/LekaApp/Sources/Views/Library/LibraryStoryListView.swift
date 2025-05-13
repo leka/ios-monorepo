@@ -143,7 +143,7 @@ extension l10n {
     } detail: {
         NavigationStack {
             LibraryStoryListView(
-                stories: ContentKit.allStories,
+                stories: Array(ContentKit.allStories.values),
                 onStartStory: { _ in
                     print("Story Started")
                 }

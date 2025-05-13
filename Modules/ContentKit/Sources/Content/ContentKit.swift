@@ -13,17 +13,17 @@ let logCK = LogKit.createLoggerFor(module: "ContentKit")
 public enum ContentKit {
     // MARK: Public
 
-    public static var allActivities: [Activity] = ContentKit.listAllActivities() ?? []
-    public static let allPublishedActivities: [Activity] = ContentKit.listAllPublishedActivities() ?? []
-    public static let allDraftActivities: [Activity] = ContentKit.listAllDraftActivities() ?? []
-    public static let allTemplateActivities: [Activity] = ContentKit.listAllTemplateActivities() ?? []
-    public static let allCurriculums: [Curriculum] = ContentKit.listCurriculums() ?? []
-    public static let allPublishedCurriculums: [Curriculum] = ContentKit.listAllPublishedCurriculums() ?? []
-    public static let allDraftCurriculums: [Curriculum] = ContentKit.listAllDraftCurriculums() ?? []
-    public static let allTemplateCurriculums: [Curriculum] = ContentKit.listAllTemplateCurriculums() ?? []
-    public static let allStories: [Story] = ContentKit.listAllStories() ?? []
-    public static let allCurations: [CategoryCuration] = ContentKit.listAllCurations() ?? []
-    public static let allResources: [CategoryResources] = ContentKit.listAllResources() ?? []
+    public static var allActivities: [String: Activity] = ContentKit.listAllActivities() ?? [:]
+    public static let allPublishedActivities: [String: Activity] = ContentKit.listAllPublishedActivities() ?? [:]
+    public static let allDraftActivities: [String: Activity] = ContentKit.listAllDraftActivities() ?? [:]
+    public static let allTemplateActivities: [String: Activity] = ContentKit.listAllTemplateActivities() ?? [:]
+    public static let allCurriculums: [String: Curriculum] = ContentKit.listCurriculums() ?? [:]
+    public static let allPublishedCurriculums: [String: Curriculum] = ContentKit.listAllPublishedCurriculums() ?? [:]
+    public static let allDraftCurriculums: [String: Curriculum] = ContentKit.listAllDraftCurriculums() ?? [:]
+    public static let allTemplateCurriculums: [String: Curriculum] = ContentKit.listAllTemplateCurriculums() ?? [:]
+    public static let allStories: [String: Story] = ContentKit.listAllStories() ?? [:]
+    public static let allCurations: [String: CategoryCuration] = ContentKit.listAllCurations() ?? [:]
+    public static let allResources: [String: CategoryResources] = ContentKit.listAllResources() ?? [:]
 
     public static func listRasterImages() -> [String] {
         let bundle = Bundle.module
@@ -47,9 +47,9 @@ public enum ContentKit {
 
     // MARK: Private
 
-    private static func listAllCurations() -> [CategoryCuration]? {
+    private static func listAllCurations() -> [String: CategoryCuration]? {
         let bundle = Bundle.module
-        var curations: [CategoryCuration] = []
+        var curations: [String: CategoryCuration] = [:]
         let paths = bundle.paths(forResourcesOfType: "curation.yml", inDirectory: nil)
 
         for path in paths {
@@ -62,7 +62,7 @@ public enum ContentKit {
 
             do {
                 let curation = try YAMLDecoder().decode(CategoryCuration.self, from: data)
-                curations.append(curation)
+                curations[curation.id] = curation
             } catch {
                 logCK.error("Error decoding file: \(path) with error:\n\(error)")
             }
@@ -71,11 +71,11 @@ public enum ContentKit {
         return curations
     }
 
-    private static func listCurriculums() -> [Curriculum]? {
+    private static func listCurriculums() -> [String: Curriculum]? {
         let bundle = Bundle.module
         let files = bundle.paths(forResourcesOfType: "curriculum.yml", inDirectory: nil)
 
-        var curriculums: [Curriculum] = []
+        var curriculums: [String: Curriculum] = [:]
 
         for file in files {
             let data = try? String(contentsOfFile: file, encoding: .utf8)
@@ -89,24 +89,22 @@ public enum ContentKit {
                 let curriculum = try YAMLDecoder().decode(Curriculum.self, from: data)
 
                 for activity in curriculum.activities {
-                    if let index = allActivities.firstIndex(where: { $0.id == activity }) {
-                        self.allActivities[index].curriculums.append(curriculum.id)
-                    }
+                    self.allActivities[activity]?.curriculums.append(curriculum.id)
                 }
-                curriculums.append(curriculum)
+                curriculums[curriculum.id] = curriculum
             } catch {
                 logCK.error("Error decoding file: \(file) with error:\n\(error)")
             }
         }
 
-        return curriculums.sorted { $0.name < $1.name }
+        return curriculums
     }
 
-    private static func listAllActivities() -> [Activity]? {
+    private static func listAllActivities() -> [String: Activity]? {
         let bundle = Bundle.module
         let files = bundle.paths(forResourcesOfType: "activity.yml", inDirectory: nil)
 
-        var activities: [Activity] = []
+        var activities: [String: Activity] = [:]
 
         for file in files {
             let data = try? String(contentsOfFile: file, encoding: .utf8)
@@ -118,7 +116,7 @@ public enum ContentKit {
 
             do {
                 let activity = try YAMLDecoder().decode(Activity.self, from: data)
-                activities.append(activity)
+                activities[activity.uuid] = activity
             } catch {
                 logCK.error("Error decoding file: \(file) with error:\n\(error)")
             }
@@ -127,35 +125,35 @@ public enum ContentKit {
         return activities
     }
 
-    private static func listAllPublishedActivities() -> [Activity]? {
-        self.allActivities.filter { $0.status == .published }
+    private static func listAllPublishedActivities() -> [String: Activity]? {
+        self.allActivities.filter { $0.value.status == .published }
     }
 
-    private static func listAllDraftActivities() -> [Activity]? {
-        self.allActivities.filter { $0.status == .draft }
+    private static func listAllDraftActivities() -> [String: Activity]? {
+        self.allActivities.filter { $0.value.status == .draft }
     }
 
-    private static func listAllTemplateActivities() -> [Activity]? {
-        self.allActivities.filter { $0.status == .template }
+    private static func listAllTemplateActivities() -> [String: Activity]? {
+        self.allActivities.filter { $0.value.status == .template }
     }
 
-    private static func listAllPublishedCurriculums() -> [Curriculum]? {
-        self.allCurriculums.filter { $0.status == .published }
+    private static func listAllPublishedCurriculums() -> [String: Curriculum]? {
+        self.allCurriculums.filter { $0.value.status == .published }
     }
 
-    private static func listAllDraftCurriculums() -> [Curriculum]? {
-        self.allCurriculums.filter { $0.status == .draft }
+    private static func listAllDraftCurriculums() -> [String: Curriculum]? {
+        self.allCurriculums.filter { $0.value.status == .draft }
     }
 
-    private static func listAllTemplateCurriculums() -> [Curriculum]? {
-        self.allCurriculums.filter { $0.status == .template }
+    private static func listAllTemplateCurriculums() -> [String: Curriculum]? {
+        self.allCurriculums.filter { $0.value.status == .template }
     }
 
-    private static func listAllStories() -> [Story]? {
+    private static func listAllStories() -> [String: Story]? {
         let bundle = Bundle.module
         let files = bundle.paths(forResourcesOfType: "story.yml", inDirectory: nil)
 
-        var stories: [Story] = []
+        var stories: [String: Story] = [:]
 
         for file in files {
             let data = try? String(contentsOfFile: file, encoding: .utf8)
@@ -167,7 +165,7 @@ public enum ContentKit {
 
             do {
                 let story = try YAMLDecoder().decode(Story.self, from: data)
-                stories.append(story)
+                stories[story.id] = story
             } catch {
                 logCK.error("Error decoding file: \(file) with error:\n\(error)")
             }
@@ -176,9 +174,9 @@ public enum ContentKit {
         return stories
     }
 
-    private static func listAllResources() -> [CategoryResources]? {
+    private static func listAllResources() -> [String: CategoryResources]? {
         let bundle = Bundle.module
-        var resources: [CategoryResources] = []
+        var resources: [String: CategoryResources] = [:]
         let paths = bundle.paths(forResourcesOfType: "resources.yml", inDirectory: nil)
 
         for path in paths {
@@ -190,8 +188,8 @@ public enum ContentKit {
             }
 
             do {
-                let curation = try YAMLDecoder().decode(CategoryResources.self, from: data)
-                resources.append(curation)
+                let resource = try YAMLDecoder().decode(CategoryResources.self, from: data)
+                resources[resource.id] = resource
             } catch {
                 logCK.error("Error decoding file: \(path) with error:\n\(error)")
             }

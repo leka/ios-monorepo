@@ -13,9 +13,9 @@ public enum LibraryItem {
 
     public var id: String {
         switch self {
-            case let .activity(activity): activity.id!
-            case let .curriculum(curriculum): curriculum.id!
-            case let .story(story): story.id!
+            case let .activity(activity): activity.id
+            case let .curriculum(curriculum): curriculum.id
+            case let .story(story): story.id
         }
     }
 

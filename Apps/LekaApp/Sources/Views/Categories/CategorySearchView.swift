@@ -110,8 +110,8 @@ struct CategorySearchView: View {
     private let kSubtitleWeight = 3
     private let kTagWeight = 5
 
-    private let activities: [Activity] = ContentKit.allPublishedActivities
-    private let curriculums: [Curriculum] = ContentKit.allPublishedCurriculums
+    private let activities: [Activity] = Array(ContentKit.allPublishedActivities.values)
+    private let curriculums: [Curriculum] = Array(ContentKit.allPublishedCurriculums.values)
     private let skills: [Skill] = Skills.primarySkillsList
 
     @State private var query = ""

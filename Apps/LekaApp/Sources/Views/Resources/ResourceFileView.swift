@@ -64,7 +64,7 @@ public struct ResourceFileView: View {
 #Preview {
     NavigationStack {
         ResourceFileView(
-            resource: ContentKit.allResources[0].sections[0].resources[1].resource
+            resource: ContentKit.allResources.first!.value.sections[0].resources[1].resource
         )
     }
 }

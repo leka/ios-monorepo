@@ -12,7 +12,7 @@ public struct Curriculum: Decodable, Identifiable {
     // MARK: Lifecycle
 
     public init?(id: String) {
-        if let curriculum = ContentKit.allCurriculums.first(where: { $0.id == id }) {
+        if let curriculum = ContentKit.allCurriculums[id] {
             self = curriculum
         } else {
             return nil

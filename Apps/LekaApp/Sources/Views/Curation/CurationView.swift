@@ -27,7 +27,10 @@ struct CurationView: View {
     }
 
     init(_ mainCuration: MainCurations) {
-        self.curation = ContentKit.allCurations.first(where: { $0.id == mainCuration.rawValue })!
+        guard let curation = ContentKit.allCurations[mainCuration.rawValue] else {
+            fatalError("Curation not found for key: \(mainCuration.rawValue)")
+        }
+        self.curation = curation
     }
 
     // MARK: Internal
@@ -125,5 +128,5 @@ extension l10n {
 }
 
 #Preview {
-    CurationView(curation: ContentKit.allCurations[0])
+    CurationView(curation: ContentKit.allCurations.first!.value)
 }

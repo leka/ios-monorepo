@@ -128,9 +128,9 @@ extension l10n {
 #Preview {
     NavigationStack {
         SearchGridView(
-            activities: ContentKit.allActivities,
+            activities: Array(ContentKit.allActivities.values),
             skills: Skills.primarySkillsList,
-            curriculums: ContentKit.allCurriculums,
+            curriculums: Array(ContentKit.allCurriculums.values),
             onStartActivity: { _ in
                 print("Activity Started")
             }

@@ -46,12 +46,13 @@ struct FavoriteCurriculumsView: View {
     private var curriculums: [Curriculum] {
         if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
             self.viewModel.curriculums.compactMap { savedCurriculum in
-                ContentKit.allCurriculums.first {
-                    $0.id == savedCurriculum.id && self.viewModel.isCurriculumFavoritedByCurrentCaregiver(
-                        curriculumID: savedCurriculum.id!,
-                        caregiverID: currentCaregiverID
-                    )
+                guard self.viewModel.isCurriculumFavoritedByCurrentCaregiver(
+                    curriculumID: savedCurriculum.id,
+                    caregiverID: currentCaregiverID
+                ) else {
+                    return nil
                 }
+                return ContentKit.allPublishedCurriculums[savedCurriculum.id]
             }
             .sorted {
                 $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending

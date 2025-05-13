@@ -187,7 +187,7 @@ extension l10n {
     } detail: {
         NavigationStack {
             LibraryActivityListView(
-                activities: ContentKit.allActivities,
+                activities: Array(ContentKit.allActivities.values),
                 onStartActivity: { _ in
                     print("Activity Started")
                 }

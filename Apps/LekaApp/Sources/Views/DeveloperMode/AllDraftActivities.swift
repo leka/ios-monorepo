@@ -12,7 +12,7 @@ import SwiftUI
 struct AllDraftActivitiesView: View {
     // MARK: Internal
 
-    let activities: [Activity] = ContentKit.allDraftActivities.sorted {
+    let activities: [Activity] = ContentKit.allDraftActivities.values.sorted {
         $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
     }
 

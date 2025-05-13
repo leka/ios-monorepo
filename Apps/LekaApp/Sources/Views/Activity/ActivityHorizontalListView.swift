@@ -63,7 +63,7 @@ public struct ActivityHorizontalListView: View {
             VStack {
                 Section {
                     ActivityHorizontalListView(
-                        activities: ContentKit.allActivities,
+                        activities: Array(ContentKit.allActivities.values),
                         onStartActivity: { _ in
                             print("Activity Selected")
                         }
@@ -72,7 +72,7 @@ public struct ActivityHorizontalListView: View {
 
                 Section {
                     ActivityHorizontalListView(
-                        activities: ContentKit.allActivities,
+                        activities: Array(ContentKit.allActivities.values),
                         onStartActivity: { _ in
                             print("Activity Selected")
                         }
@@ -81,7 +81,7 @@ public struct ActivityHorizontalListView: View {
 
                 Section {
                     ActivityHorizontalListView(
-                        activities: ContentKit.allActivities,
+                        activities: Array(ContentKit.allActivities.values),
                         onStartActivity: { _ in
                             print("Activity Selected")
                         }
@@ -90,7 +90,7 @@ public struct ActivityHorizontalListView: View {
 
                 Section {
                     ActivityHorizontalListView(
-                        activities: ContentKit.allActivities,
+                        activities: Array(ContentKit.allActivities.values),
                         onStartActivity: { _ in
                             print("Activity Selected")
                         }
