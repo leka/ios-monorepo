@@ -25,7 +25,7 @@ struct ContentView: View {
         }
         .fullScreenCover(isPresented: self.$isUpdateStatusViewPresented) {
             NavigationStack {
-                UpdateStatusView(isConnectionViewPresented: self.$isConnectionViewPresented)
+                UpdateStatusView(isConnectionViewPresented: self.$isConnectionViewPresented, isUpdateStatusViewPresented: self.$isUpdateStatusViewPresented)
             }
         }
     }
