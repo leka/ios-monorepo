@@ -22,7 +22,7 @@ struct InformationView: View {
             ScrollView {
                 RobotStateView(viewModel: self.viewModel)
 
-                if self.viewModel.showRobotNeedsUpdate {
+                if self.viewModel.showRobotNeedsUpdate, self.viewModel.isRobotConnected {
                     RobotUpdateAvailableView(isUpdateStatusViewPresented: self.$isUpdateStatusViewPresented)
                         .padding(.vertical, 10)
                 }
