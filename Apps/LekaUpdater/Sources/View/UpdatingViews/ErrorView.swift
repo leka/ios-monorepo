@@ -20,12 +20,15 @@ struct ErrorIllustration: View {
 // MARK: - ErrorContentView
 
 struct ErrorContentView: View {
-    @Environment(\.dismiss) var dismiss
+    // MARK: Public
 
     public let errorDescription: String
     public let errorInstruction: String
 
+    // MARK: Internal
+
     @Binding var isConnectionViewPresented: Bool
+    @Binding var isUpdateStatusViewPresented: Bool
 
     var body: some View {
         VStack(spacing: 15) {
@@ -40,7 +43,7 @@ struct ErrorContentView: View {
                 .multilineTextAlignment(.center)
 
             Button {
-                self.dismiss()
+                self.isUpdateStatusViewPresented = false
                 self.isConnectionViewPresented = true
             } label: {
                 Text(l10n.update.errorBackButtonTitle)
@@ -61,6 +64,7 @@ struct ErrorContentView: View {
 
 struct ErrorView_Previews: PreviewProvider {
     @State static var isConnectionViewPresented = false
+    @State static var isUpdateStatusViewPresented = true
 
     static let errorDescription = l10n.update.errorDescription
     static let errorActionRequired = l10n.update.errorCallToAction
@@ -78,7 +82,8 @@ struct ErrorView_Previews: PreviewProvider {
             ErrorContentView(
                 errorDescription: String(errorDescription.characters),
                 errorInstruction: String(errorActionRequired.characters),
-                isConnectionViewPresented: $isConnectionViewPresented
+                isConnectionViewPresented: $isConnectionViewPresented,
+                isUpdateStatusViewPresented: $isUpdateStatusViewPresented
             )
             .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
         }

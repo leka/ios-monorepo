@@ -41,8 +41,7 @@ struct UpdateFinishedIllustration: View {
 // MARK: - UpdateFinishedContentView
 
 struct UpdateFinishedContentView: View {
-    @Environment(\.dismiss) var dismiss
-
+    @Binding var isUpdateStatusViewPresented: Bool
     @Binding var isConnectionViewPresented: Bool
 
     var body: some View {
@@ -54,7 +53,7 @@ struct UpdateFinishedContentView: View {
 
             VStack(spacing: 20) {
                 Button {
-                    self.dismiss()
+                    self.isUpdateStatusViewPresented = false
                     self.isConnectionViewPresented = true
                 } label: {
                     Text(l10n.update.finished.updateAnotherRobotButton)
@@ -101,6 +100,7 @@ struct UpdateFinishedContentView: View {
 
 struct UpdateFinishedView_Previews: PreviewProvider {
     @State static var isConnectionViewPresented = false
+    @State static var isUpdateStatusViewPresented = false
 
     static var previews: some View {
         VStack {
@@ -116,7 +116,7 @@ struct UpdateFinishedView_Previews: PreviewProvider {
                 .padding()
 
             VStack {
-                UpdateFinishedContentView(isConnectionViewPresented: $isConnectionViewPresented)
+                UpdateFinishedContentView(isUpdateStatusViewPresented: $isUpdateStatusViewPresented, isConnectionViewPresented: $isConnectionViewPresented)
                 Spacer()
             }
             .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
