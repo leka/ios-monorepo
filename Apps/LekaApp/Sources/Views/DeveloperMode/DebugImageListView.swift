@@ -17,9 +17,9 @@ class DebugImageListViewViewModel {
 
     // MARK: Internal
 
-    var cellSize: CGFloat = 300
-    var cellState: GameplayChoiceState = .idle
-    var cellBackgroundColor: Color?
+    private(set) var cellSize: CGFloat = 300
+    private(set) var cellState: GameplayChoiceState = .idle
+    private(set) var cellBackgroundColor: Color?
     var images: [String]
 
     func getImageNameFromPath(path: String) -> String {
