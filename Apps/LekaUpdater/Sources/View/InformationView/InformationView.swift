@@ -22,7 +22,14 @@ struct InformationView: View {
             ScrollView {
                 RobotStateView(viewModel: self.viewModel)
 
-                SwitchRobotButton(isRobotConnected: self.viewModel.isRobotConnected, isConnectionViewPresented: self.$isConnectionViewPresented)
+                if self.viewModel.showRobotNeedsUpdate {
+                    RobotUpdateAvailableView(isUpdateStatusViewPresented: self.$isUpdateStatusViewPresented)
+                        .padding(.vertical, 10)
+                }
+
+                if !self.viewModel.isRobotConnected {
+                    SwitchRobotButton(isRobotConnected: false, isConnectionViewPresented: self.$isConnectionViewPresented)
+                }
 
                 if self.viewModel.isRobotConnected {
                     RobotInformationView()
@@ -34,6 +41,7 @@ struct InformationView: View {
                         .padding(.horizontal, 3)
                         .padding(.vertical, 10)
                 }
+
                 VStack(alignment: .leading, spacing: 0) {
                     Section {
                         DisclosureGroup {
@@ -58,9 +66,8 @@ struct InformationView: View {
                     }
                 }
 
-                if self.viewModel.showRobotNeedsUpdate {
-                    RobotUpdateAvailableView(isUpdateStatusViewPresented: self.$isUpdateStatusViewPresented)
-                        .padding(.vertical, 10)
+                if self.viewModel.isRobotConnected {
+                    SwitchRobotButton(isRobotConnected: true, isConnectionViewPresented: self.$isConnectionViewPresented)
                 }
 
                 LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
