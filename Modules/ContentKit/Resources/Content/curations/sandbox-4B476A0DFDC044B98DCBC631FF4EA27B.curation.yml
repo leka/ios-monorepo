@@ -142,3 +142,29 @@ content:
         type: curation
       - value: motor_skills_and_sensory_processing-500410B6BF98489E9F42BD797F24F3BE
         type: curation
+
+  - component: vertical_tile_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Explorer
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Explore
+          subtitle:
+          description:
+    items:
+      - value: robot_content-A56B4DD2C5CE4D44BEFA09BF66FBB734
+        type: curation
+      - value: sensory_processing-5BB0578E7F54453687311F4858849A30
+        type: curation
+      - value: in_group-9D0EBC777B7843FFA19D08916793F06B
+        type: curation
+      - value: end_of_session-1E23125988EC4CE0A011A0845D2CCDE6
+        type: curation
+      - value: quiet_time-7A47BF7D73694FA9A364A256511EE809
+        type: curation
+      - value: by_theme-F83E2947CE8F40D1B6B8798042F3D31A
+        type: curation

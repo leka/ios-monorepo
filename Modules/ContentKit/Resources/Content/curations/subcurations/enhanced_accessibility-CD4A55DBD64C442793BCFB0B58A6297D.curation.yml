@@ -1,0 +1,52 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: CD4A55DBD64C442793BCFB0B58A6297D
+icon: dog.fill
+color: 0xBA68C8
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Accessibilité renforcée
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Enhanced accessibility
+      subtitle:
+      description:
+
+content:
+  - component: vertical_content_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Animaux
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Animals
+          subtitle:
+          description:
+    items:
+      - value: curriculum_animal_recognition_farm_animals-7D02DB707DD945A38BC65BDD86D2CFEA
+        type: curriculum
+      - value: curriculum_animal_recognition_forest_animals-E3C3263704DC49FE8C861DDB04E27D0B
+        type: curriculum
+      - value: curriculum_animal_recognition_insects-D4B717CBC9B5484490A2E86B32D400AE
+        type: curriculum
+      - value: curriculum_animal_recognition_pets-358521AE2F434D54BFFFA513ED608529
+        type: curriculum
+      - value: curriculum_animal_recognition_savannah_animals-FB96DF24CDBB463E987E241FDC5BEA17
+        type: curriculum
+      - value: curriculum_animal_recognition_sea_animals-ADBEC52B10B0423E96B3F08CEE042752
+        type: curriculum
+      - value: curriculum_animal_memory-7C75908B86D748A283AA080D40642BE7
+        type: curriculum
+      - value: curriculum_order_by_size_animals-1FAED1FF14134571849325B6EC9197B5
+        type: curriculum
+      - value: curriculum_order_by_size_different_animals-3158E58D908E43D29967B04D29C21912
+        type: curriculum

@@ -1,0 +1,58 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: F83E2947CE8F40D1B6B8798042F3D31A
+icon: theatermasks.fill
+color: 0xFFD54F
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Par thème
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: By theme
+      subtitle:
+      description:
+
+content:
+  - component: vertical_tile_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Par thème
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: By theme
+          subtitle:
+          description:
+    items:
+      - value: colors-1B908AC5B41A4B3ABAE2B6C6703EEBA0
+        type: curation
+      - value: animals-0609CB09299847E581F6E191796499B4
+        type: curation
+      - value: emotions-21E32736271B4637B0F970C725463FB5
+        type: curation
+      - value: modes_of_transportation-F5758589BBE345B1BB4479AC77C49337
+        type: curation
+      - value: everyday_objects-B693E6225E20474C977B9DA6298667AE
+        type: curation
+      - value: holidays_and_festivities-F7F2B8BFB65D403E929B3FD24380BC3B
+        type: curation
+      - value: professions_and_sports-3201B894830F4EB99FEB324F9EE2F9A3
+        type: curation
+      - value: body_and_needs-7A20223EC3004DD1B765666B8F96428C
+        type: curation
+      - value: food-29B819A94EA649DA963A55A33D833676
+        type: curation
+      - value: family-A92F6E5239214E26BF5E33D9F8D7972F
+        type: curation
+      - value: weather_and_environment-572F710A05F94F25831FF05938728453
+        type: curation
+      - value: sounds-29A4584EAF5B43F6AA8693BED7327D9A
+        type: curation

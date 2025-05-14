@@ -1,0 +1,62 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 7A47BF7D73694FA9A364A256511EE809
+icon: powersleep
+color: 0x4DB6AC
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Temps calme
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Quiet time
+      subtitle:
+      description:
+
+content:
+  - component: vertical_content_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Histoires
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Stories
+          subtitle:
+          description:
+    items:
+      - value: first_day_of_school-8DE906A44CC642F8824C567169AF6626
+        type: story
+      - value: hanna_at_the_beach-60C133CB19F94BA0864DFA9BF6E7F696
+        type: story
+      - value: hanna_dances_with_leka-47509B00A3B94C27B7D64DC1BC3B6895
+        type: story
+      - value: hanna_makes_pancakes-5213404A073D47198A6B3B694396CB8B
+        type: story
+      - value: hanna_meets_leka-FF7618528E194E8CB3A6950E08562D16
+        type: story
+      - value: hanna_plays_music-CB8EB22A988049FB900AD5B66F78B00F
+        type: story
+
+  - component: vertical_content_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Activités pour un temps calme
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Activities for a quiet time
+          subtitle:
+          description:
+    items:
+      - value: discover_leka-89CEA9FE20624659B1307B633641BC90
+        type: activity
