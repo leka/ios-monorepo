@@ -25,7 +25,7 @@ class UpdateStatusViewModel: ObservableObject {
     @Published public var sendingFileProgression: Float = 0.0
     @Published public var showAlert: Bool = false
 
-    @Published public var errorDescription: String = ""
+    @Published public var error: UpdateProcessError = .none
     @Published public var errorInstructions: String = ""
 
     public var stepNumber: Int {
@@ -75,34 +75,7 @@ class UpdateStatusViewModel: ObservableObject {
                         self.updatingStatus = .updateFinished
                     case let .failure(error):
                         self.updatingStatus = .error
-
-                        switch error {
-                            case .failedToLoadFile:
-                                self.errorDescription = String(l10n.update.error.failedToLoadFileDescription.characters)
-                                self.errorInstructions = String(
-                                    l10n.update.error.failedToLoadFileInstructions.characters)
-
-                            case .robotNotUpToDate:
-                                self.errorDescription = String(l10n.update.error.robotNotUpToDateDescription.characters)
-                                self.errorInstructions = String(
-                                    l10n.update.error.robotNotUpToDateInstructions.characters)
-
-                            case .updateProcessNotAvailable:
-                                self.errorDescription = String(
-                                    l10n.update.error.updateProcessNotAvailableDescription.characters)
-                                self.errorInstructions = String(
-                                    l10n.update.error.updateProcessNotAvailableInstructions.characters)
-
-                            case .robotUnexpectedDisconnection:
-                                self.errorDescription = String(
-                                    l10n.update.error.robotUnexpectedDisconnectionDescription.characters)
-                                self.errorInstructions = String(
-                                    l10n.update.error.robotUnexpectedDisconnectionInstructions.characters)
-
-                            default:
-                                self.errorDescription = String(l10n.update.error.unknownErrorDescription.characters)
-                                self.errorInstructions = String(l10n.update.error.unknownErrorInstructions.characters)
-                        }
+                        self.error = error
                 }
                 self.onUpdateEnded()
             } receiveValue: { state in
