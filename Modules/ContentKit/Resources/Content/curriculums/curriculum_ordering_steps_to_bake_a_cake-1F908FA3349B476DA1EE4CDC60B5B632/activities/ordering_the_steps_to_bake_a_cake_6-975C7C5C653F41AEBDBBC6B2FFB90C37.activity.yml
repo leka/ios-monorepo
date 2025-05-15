@@ -1,0 +1,101 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 975C7C5C653F41AEBDBBC6B2FFB90C37
+name: ordering_the_steps_to_bake_a_cake_6
+
+created_at: "2025-05-15T10:00:00.000000"
+last_edited_at: "2025-05-15T10:00:00.000000"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - association
+  - association/ordering
+  - time_and_temporality_understanding
+
+tags:
+  - food
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: ordering_steps_cake_recipe
+
+      title: Ordonner les étapes pour faire un gâteau
+      subtitle: 6 étapes
+
+      short_description: |
+        Glisser et déposer les étapes de la préparation d’un gâteau dans le bon ordre
+
+      description: |
+        Le participant doit glisser et déposer les étapes de la préparation d’un gâteau dans le bon ordre chronologique.
+
+      instructions: |
+        - Sur l'écran de l'iPad, quatre étapes de la recette sont présentées de manière désordonnée.
+        - Chaque étape est illustrée par une image.
+        - Encouragez le participant à glisser chaque étape dans la zone correcte pour reconstituer la séquence de la recette.
+        - Une fois toutes les étapes correctement ordonnées, Leka déclenche un renforçateur pour féliciter et motiver le participant.
+
+  - locale: en_US
+    details:
+      icon: ordering_steps_cake_recipe
+
+      title: Ordering the steps to bake a cake
+      subtitle: 6 steps
+
+      short_description: |
+        Drag and drop the steps for baking a cake in the correct order
+
+      description: |
+        The participant must drag and drop the steps for baking a cake in the correct chronological order.
+
+      instructions: |
+        - On the iPad screen, four recipe steps are shown in a random order.
+        - Each step is illustrated with an image.
+        - Encourage the participant to drag each step into the correct place to complete the sequence.
+        - Once all steps are in the correct order, Leka triggers a reinforcer to celebrate and encourage the participant.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Remets les étapes de la recette dans l'ordre
+            - locale: en_US
+              value: Put the recipe steps back in order
+          interface: dragAndDropInOrder
+          gameplay: findTheRightOrder
+          payload:
+            choices:
+              - value: ordering_steps_cake_recipe_1
+                type: image
+              - value: ordering_steps_cake_recipe_2
+                type: image
+              - value: ordering_steps_cake_recipe_3
+                type: image
+              - value: ordering_steps_cake_recipe_4
+                type: image
+              - value: ordering_steps_cake_recipe_5
+                type: image
+              - value: ordering_steps_cake_recipe_6
+                type: image
