@@ -1,0 +1,76 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: A56B4DD2C5CE4D44BEFA09BF66FBB734
+icon: target
+color: 0x90CAF9
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: 100% robot
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: 100% robot
+      subtitle:
+      description:
+
+content:
+  - component: horizontal_column_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Activités avec le robot
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Activities with the robot
+          subtitle:
+          description:
+    items:
+      - value: discover_leka-89CEA9FE20624659B1307B633641BC90
+        type: activity
+      - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
+        type: activity
+      - value: hide_and_seek-4BFA2AC3390E49248DD022E27008F118
+        type: activity
+      - value: melody-CB995F829411449AB32E6B8A688E3DDB
+        type: activity
+      - value: color_music_pad-8439D1EE7DD846ACB048145089F34C33
+        type: activity
+      - value: xylophone_pentatonic-7C1DDED6C6D44913B9A7D4EB4AEE8F6B
+        type: activity
+      - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
+        type: activity
+      - value: color_mediator-2CE6B5E98AFD45E0B2CD87727DB6D5C2
+        type: activity
+
+  - component: horizontal_card_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Parcours avec le robot
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Curriculums with the robot
+          subtitle:
+          description:
+    items:
+      - value: curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
+        type: curriculum
+      - value: curriculum_generalization_fruits_and_vegetables_robot-053E35EB94CF4A1890489E8F2C12CE85
+        type: curriculum
+      - value: curriculum_leka_weather_robot-ED4C900D4ACB426384DC76F182BC19A5
+        type: curriculum
+      - value: color_bingo-69760D1DA61849E3926E3A939BBEF0CE
+        type: curriculum
+      - value: super_simon-C6EABAC161CD44C290B32202DFDCDAF6
+        type: curriculum
+      - value: curriculum_counting_robot-53E4A0E2B181472ABF3E089C833615D8
+        type: curriculum
