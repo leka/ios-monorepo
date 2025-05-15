@@ -1,0 +1,56 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 655C2A62DB644DAABC8A286025231418
+name: curriculum_recognition_cooked_vegetables
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-09-27T17:53:03.463714"
+authors:
+  - leka
+
+skills:
+  - association
+  - recognition
+
+tags:
+  - food
+  - vegetables
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_cooked_vegetables
+      title: Les légumes dans l'assiette
+      subtitle: Associer les légumes entiers à leurs formes découpées ou cuisinées
+      abstract: |
+        Ce parcours vise à renforcer la capacité de la personne accompagnée à reconnaître visuellement les légumes à partir de plats cuisinés.
+      description: |
+        À travers différentes activités d’observation et d’association, la personne accompagnée apprend à identifier les légumes présents dans une assiette.
+        Les exercices varient en difficulté, allant de deux à six choix visuels, et permettent de développer le sens de l’observation, le vocabulaire alimentaire ainsi que la compréhension des formes et couleurs typiques des légumes.
+
+  - locale: en_US
+    details:
+      icon: recognition_cooked_vegetables
+      title: Vegetables on the Plate
+      subtitle: Matching whole vegetables with their cut or cooked forms
+      abstract: |
+        This curriculum is designed to help participants visually recognize fruits in prepared dishes.
+      description: |
+        Through a series of observation and association tasks, participants learn to identify vegetables featured in plated meals.
+        The exercises increase in difficulty, from two to six visual options, and support the development of visual attention, food-related vocabulary, and the ability to distinguish shapes and colors associated with common vegetables.
+
+activities:
+  - recognition_cooked_vegetables_2_images-3D84B134E4D14D8FB7FA13944B546058
+  - recognition_cooked_vegetables_4_images-9DBCA385BE544A01B0402A7E2978CE28
+  - recognition_cooked_vegetables_6_images-266EFC2160C54D7FB3C9AE9750A1C4DC
