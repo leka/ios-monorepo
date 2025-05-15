@@ -67,6 +67,12 @@ public struct NewActivityView: View {
                 }
             }
         }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                logGEK.debug("Activity started")
+                self.activityManager.activityStage.send(.start)
+            }
+        }
     }
 
     // MARK: Internal
@@ -266,10 +272,28 @@ public struct NewActivityView: View {
     import Yams
 
     #Preview {
+        var cancellables = Set<AnyCancellable>()
+
         NavigationStack {
             if let activity = NewActivity(yaml: kActivityYaml) {
                 let manager = ActivityExercisesCoordinator(payload: activity.payload)
+
                 NewActivityView(activity: activity, manager: manager)
+                    .onAppear {
+                        manager.activityStage
+                            .receive(on: DispatchQueue.main)
+                            .sink { stage in
+                                switch stage {
+                                    case .start:
+                                        logGEK.debug("Publisher - Activity started")
+
+                                    case .end:
+                                        logGEK.debug("Publisher - Activity ended")
+                                }
+                            }
+                            .store(in: &cancellables)
+                    }
+
             } else {
                 Text("Invalid activity")
             }

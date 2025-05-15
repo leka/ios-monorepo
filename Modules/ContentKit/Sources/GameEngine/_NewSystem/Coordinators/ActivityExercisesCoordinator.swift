@@ -38,10 +38,17 @@ public class ActivityExercisesCoordinator {
 
     // MARK: Public
 
+    public enum ActivityStage {
+        case start
+        case end // swiftlint:disable:this identifier_name
+    }
+
     public var currentGroupIndex: Int = 0
     public var currentExerciseIndex: Int = 0
 
     public let groupSizeEnumeration: [Int]
+
+    public var activityStage = PassthroughSubject<ActivityStage, Never>()
 
     public var numberOfGroups: Int {
         self.groupSizeEnumeration.count
