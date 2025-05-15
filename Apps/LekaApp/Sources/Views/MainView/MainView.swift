@@ -23,7 +23,14 @@ extension Bundle {
 struct MainView: View {
     // MARK: Internal
 
-    @State var isResourcesCollapsed: Bool = true
+    @State private var isInformationSectionExpanded: Bool = true
+    @State private var isContentSectionExpanded: Bool = true
+    @State private var isLibrarySectionExpanded: Bool = true
+    @State private var isUserSectionExpanded: Bool = true
+    @State private var isResourcesSectionExpanded: Bool = true
+    @State private var isDeveloperSectionExpanded: Bool = true
+    @State private var isDemoSectionExpanded: Bool = true
+
     @ObservedObject var navigation: Navigation = .shared
     @ObservedObject var authManagerViewModel = AuthManagerViewModel.shared
 
@@ -54,19 +61,19 @@ struct MainView: View {
                     }
                     .listRowInsets(EdgeInsets(top: 0, leading: -8, bottom: -8, trailing: -8))
 
-                    Section(String(l10n.MainView.Sidebar.sectionInformation.characters)) {
+                    Section(String(l10n.MainView.Sidebar.sectionInformation.characters), isExpanded: self.$isInformationSectionExpanded) {
                         CategoryLabel(category: .home)
                         CategoryLabel(category: .search)
                     }
 
-                    Section(String(l10n.MainView.Sidebar.sectionContent.characters)) {
+                    Section(String(l10n.MainView.Sidebar.sectionContent.characters), isExpanded: self.$isContentSectionExpanded) {
                         CategoryLabel(category: .curriculums)
                         CategoryLabel(category: .educationalGames)
                         CategoryLabel(category: .stories)
                         CategoryLabel(category: .gamepads)
                     }
 
-                    Section(String(l10n.MainView.Sidebar.sectionLibrary.characters)) {
+                    Section(String(l10n.MainView.Sidebar.sectionLibrary.characters), isExpanded: self.$isLibrarySectionExpanded) {
                         CategoryLabel(category: .libraryFavorites)
                         CategoryLabel(category: .libraryCurriculums)
                         CategoryLabel(category: .libraryActivities)
@@ -74,13 +81,13 @@ struct MainView: View {
                     }
 
                     if self.authManagerViewModel.userAuthenticationState == .loggedIn {
-                        Section(String(l10n.MainView.Sidebar.sectionUsers.characters)) {
+                        Section(String(l10n.MainView.Sidebar.sectionUsers.characters), isExpanded: self.$isUserSectionExpanded) {
                             CategoryLabel(category: .caregivers)
                             CategoryLabel(category: .carereceivers)
                         }
                     }
 
-                    Section(String(l10n.MainView.Sidebar.sectionResources.characters)) {
+                    Section(String(l10n.MainView.Sidebar.sectionResources.characters), isExpanded: self.$isResourcesSectionExpanded) {
                         CategoryLabel(category: .resourcesFirstSteps)
                         CategoryLabel(category: .resourcesVideo)
                         CategoryLabel(category: .resourcesDeepDive)
@@ -88,7 +95,7 @@ struct MainView: View {
 
                     #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                         if !self.navigation.demoMode {
-                            Section("Developer Mode") {
+                            Section("Developer Mode", isExpanded: self.$isDeveloperSectionExpanded) {
                                 CategoryLabel(category: .curationSandbox)
                                 CategoryLabel(category: .allTemplateActivities)
                                 CategoryLabel(category: .allDraftActivities)
@@ -98,7 +105,7 @@ struct MainView: View {
                                 CategoryLabel(category: .news)
                             }
                         } else {
-                            Section("Demo mode") {
+                            Section("Demo mode", isExpanded: self.$isDemoSectionExpanded) {
                                 CategoryLabel(category: .demo)
                             }
                         }
