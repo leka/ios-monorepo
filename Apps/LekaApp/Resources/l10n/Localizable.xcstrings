@@ -1958,8 +1958,8 @@
                 }
             }
         },
-        "lekaapp.groupbox_item_view.activity_count_label": {
-            "comment": "Activity count label of CardItem",
+        "lekaapp.groupbox_item.activity_count_label": {
+            "comment": "Activity count label of GroupboxItem",
             "localizations": {
                 "en": {
                     "variations": {

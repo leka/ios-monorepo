@@ -24,8 +24,7 @@ public struct CardItem: View {
                 self.icon = curriculum.details.iconImage
                 self.title = curriculum.details.title
                 self.subtitle = curriculum.details.subtitle
-                self.activityCount = curriculum.activities.count
-                self.shape = RoundedRectangle(cornerRadius: 10 / 57 * 150)
+                self.shape = RoundedRectangle(cornerRadius: 8)
             case .activity:
                 guard let activity = Activity(id: content.id) else {
                     log.error("Content \(content.id) is labeled as activity but not decoded as such ")
@@ -45,7 +44,7 @@ public struct CardItem: View {
                 self.icon = story.details.iconImage
                 self.title = story.details.title
                 self.subtitle = story.details.subtitle
-                self.shape = RoundedRectangle(cornerRadius: 10 / 57 * 150)
+                self.shape = RoundedRectangle(cornerRadius: 8)
             default:
                 log.error("Content \(content.id) is a curation and cannot be decoded as CardItem")
                 return nil
@@ -55,78 +54,37 @@ public struct CardItem: View {
     // MARK: Public
 
     public var body: some View {
-        GroupBox {
-            VStack {
-                HStack {
-                    Label(
-                        self.curationItem.contentType.label,
-                        systemImage: self.curationItem.contentType.icon
-                    )
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
+        VStack(alignment: .leading) {
+            Image(uiImage: self.icon)
+                .resizable()
+                .scaledToFit()
+                .clipShape(AnyShape(self.shape))
+                .frame(maxWidth: self.kIconSize)
 
-                    Spacer()
+            HStack {
+                Text(self.title)
+                    .font(.headline)
+                    .foregroundStyle(Color.primary)
 
-                    if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                        if self.libraryManagerViewModel.isContentFavorited(
-                            by: currentCaregiverID,
-                            contentID: self.curationItem.id
-                        ) {
-                            Image(systemName: "star.circle")
-                                .font(.system(size: 25))
-                                .foregroundColor(self.styleManager.accentColor ?? .blue)
-                        }
-
-                        ContentItemMenu(self.curationItem, caregiverID: currentCaregiverID)
+                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                    if self.libraryManagerViewModel.isContentFavorited(
+                        by: currentCaregiverID,
+                        contentID: self.curationItem.id
+                    ) {
+                        Image(systemName: "star.fill")
+                            .font(.system(size: 10))
+                            .foregroundColor(self.styleManager.accentColor ?? .blue)
                     }
-                }
-
-                VStack(spacing: 10) {
-                    Image(uiImage: self.icon)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: self.kIconSize)
-                        .clipShape(AnyShape(self.shape))
-
-                    Text(self.title)
-                        .font(.headline)
-                        .multilineTextAlignment(.center)
-                        .foregroundStyle(Color.primary)
-                        .fixedSize(horizontal: false, vertical: true)
-
-                    Text(self.subtitle ?? "")
-                        .font(.body)
-                        .multilineTextAlignment(.center)
-                        .foregroundStyle(Color.secondary)
-                        .fixedSize(horizontal: false, vertical: true)
-
-                    Spacer()
-
-                    ZStack {
-                        HStack {
-                            Image(systemName: "checkmark.circle.fill")
-                                .font(.title3)
-                                .foregroundStyle(Color.secondary)
-                                .opacity(self.libraryManagerViewModel.isContentSaved(id: self.curationItem.id) ? 1 : 0)
-
-                            Spacer()
-
-                            Image(systemName: "chevron.right")
-                                .font(.title3)
-                                .foregroundStyle(Color.secondary)
-                        }
-
-                        if let activityCount = self.activityCount {
-                            Text(l10n.CardItem.activityCountLabel(activityCount))
-                                .font(.caption.bold())
-                                .foregroundStyle(Color.secondary)
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
                 }
             }
-            .frame(width: 260, height: 320)
+
+            Text(self.subtitle ?? "")
+                .font(.body)
+                .foregroundStyle(Color.secondary)
         }
+        .frame(width: self.kIconSize, alignment: .leading)
+        .lineLimit(0)
+        .fixedSize()
     }
 
     // MARK: Private
@@ -139,20 +97,9 @@ public struct CardItem: View {
     private var shape: any Shape
     private var title: String
     private var subtitle: String?
-    private var activityCount: Int?
-    private let kIconSize: CGFloat = 120
+    private let kIconSize: CGFloat = 180
 
     private var libraryManagerViewModel: LibraryManagerViewModel = .shared
-}
-
-// MARK: - l10n.CardItem
-
-extension l10n {
-    enum CardItem {
-        static let activityCountLabel = LocalizedStringInterpolation("lekaapp.groupbox_item_view.activity_count_label",
-                                                                     value: "%d activity",
-                                                                     comment: "Activity count label of CardItem")
-    }
 }
 
 #Preview {
