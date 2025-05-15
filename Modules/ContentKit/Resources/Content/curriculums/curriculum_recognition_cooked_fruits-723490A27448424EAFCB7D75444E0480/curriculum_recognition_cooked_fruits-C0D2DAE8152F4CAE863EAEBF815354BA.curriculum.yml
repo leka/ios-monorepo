@@ -1,0 +1,56 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: C0D2DAE8152F4CAE863EAEBF815354BA
+name: curriculum_recognition_cooked_fruits
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-09-27T17:53:03.463714"
+authors:
+  - leka
+
+skills:
+  - association
+  - recognition
+
+tags:
+  - food
+  - fruits
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_cooked_fruits
+      title: Les fruits dans l'assiette
+      subtitle:
+      abstract: |
+        Ce parcours vise à renforcer la capacité de la personne accompagnée à reconnaître visuellement les fruits à partir de plats cuisinés.
+      description: |
+        À travers différentes activités d’observation et d’association, la personne accompagnée apprend à identifier les fruits présents dans une assiette ou une préparation culinaire.
+        Les exercices varient en difficulté, allant de deux à six choix visuels, et permettent de développer le sens de l’observation, le vocabulaire alimentaire ainsi que la compréhension des formes et couleurs typiques des fruits.
+
+  - locale: en_US
+    details:
+      icon: recognition_cooked_fruits
+      title: Fruits on the Plate
+      subtitle:
+      abstract: |
+        This curriculum is designed to help participants visually recognize fruits in prepared dishes.
+      description: |
+        Through a series of observation and association tasks, participants learn to identify fruits featured in plated meals or desserts.
+        The exercises increase in difficulty, from two to six visual options, and support the development of visual attention, food-related vocabulary, and the ability to distinguish shapes and colors associated with common fruits.
+
+activities:
+  - recognition_cooked_fruits_2_images-88CA88F2E05D471E994D5F618C556D64
+  - recognition_cooked_fruits_4_images-A4B293D45223433CB45ED92275BAA0DE
+  - recognition_cooked_fruits_6_images-372197E48EDF4EE7A9A0BB04AACB3791
