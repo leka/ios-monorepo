@@ -1,0 +1,101 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 8D126A04F37D4E8BA498EE4758E071AC
+name: sequencing_daily_life_toilets
+
+created_at: "2024-03-08T11:49:37.123525"
+last_edited_at: "2024-07-12T12:48:14.946202"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - association
+  - association/ordering
+  - time_and_temporality_understanding
+
+tags:
+  - everyday_objects
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: sequencing_toilet_routine
+
+      title: Aller aux toilettes
+      subtitle: Séquencer les étapes du passage aux toilettes
+
+      short_description: |
+        Glisser et déposer les étapes du passage aux toilettes dans le bon ordre
+
+      description: |
+        Le participant doit glisser et déposer les étapes du passage aux toilettes dans le bon ordre pour apprendre la séquence correcte.
+
+      instructions: |
+        - Sur l'écran de l'iPad, cinq étapes du passage aux toilettes sont présentées de manière désordonnée.
+        - Chaque étape est représentée par une image.
+        - Encouragez le participant à glisser chaque étape dans la zone correcte pour former la séquence complète du passage aux toilettes.
+        - Après avoir placé chaque étape correctement, Leka lance un renforçateur pour célébrer cette réussite et encourager l'apprentissage.
+
+  - locale: en_US
+    details:
+      icon: sequencing_toilet_routine
+
+      title: Going to the toilet
+      subtitle: Sequencing the steps of using the toilet
+
+      short_description: |
+        Drag and drop the steps of using the toilet in the correct order
+
+      description: |
+        The participant must drag and drop the steps of using the toilet in the correct order to learn the proper sequence.
+
+      instructions: |
+        - On the iPad screen, five steps of the toilet routine are displayed in a mixed-up order.
+        - Each step is represented by an image.
+        - Encourage the participant to drag each step into the correct area to complete the full toilet sequence.
+        - After all the steps are correctly placed, Leka triggers a reinforcer to celebrate the success and encourage learning.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Remets les étapes dans l'ordre
+            - locale: en_US
+              value: Put the steps in order
+          interface: dragAndDropInOrder
+          gameplay: findTheRightOrder
+          payload:
+            choices:
+              - value: sequencing_toilet_routine_1
+                type: image
+              - value: sequencing_toilet_routine_2
+                type: image
+              - value: sequencing_toilet_routine_3
+                type: image
+              - value: sequencing_toilet_routine_4
+                type: image
+              - value: sequencing_toilet_routine_5
+                type: image
+              - value: sequencing_toilet_routine_6
+                type: image
