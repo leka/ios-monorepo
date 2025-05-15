@@ -103,20 +103,24 @@ extension l10n {
         }
 
         enum error {
-            static let failedToLoadFileDescription = LocalizedString("update.error.failed_to_load_file", value: "Robot update file cannot be opened\n(Error code #0001)", comment: "Failed to load file")
-            static let failedToLoadFileInstructions = LocalizedString("update.error.failed_to_load_file_instructions", value: "Please reinstall the app", comment: "Failed to load file instructions")
+            static let failedToLoadFileDescription = LocalizedString("update.error.failed_to_load_file_description", value: "Error code #0001: Robot update file cannot be opened", comment: "Failed to load file")
+            static let failedToLoadFileInstructions = LocalizedString("update.error.failed_to_load_file_instructions", value: "Ensure your app is up to date", comment: "Failed to load file instructions")
 
-            static let robotNotUpToDateDescription = LocalizedString("update.error.robot_not_up_to_date", value: "Update failed\n(Error code #0002)", comment: "Robot not up to date")
+            static let robotNotUpToDateDescription = LocalizedString("update.error.robot_not_up_to_date_description", value: "Error code #0002: Update failed", comment: "Robot not up to date")
             static let robotNotUpToDateInstructions = LocalizedString("update.error.robot_not_up_to_date_instructions", value: "Reconnect the robot and restart the process", comment: "Robot not up to date instructions")
 
-            static let updateProcessNotAvailableDescription = LocalizedString("update.error.update_process_not_available", value: "Update process not recognized or not available\n(Error code #0003)", comment: "Update process not available")
+            static let updateProcessNotAvailableDescription = LocalizedString("update.error.update_process_not_available_description", value: "Error code #0003: Update process not recognized or not available", comment: "Update process not available")
             static let updateProcessNotAvailableInstructions = LocalizedString("update.error.update_process_not_available_instructions", value: "Please contact technical support", comment: "Update process not available instructions")
 
-            static let robotUnexpectedDisconnectionDescription = LocalizedString("update.error.robot_unexpected_disconnection", value: "The robot has been disconnected\n(Error code #0004)", comment: "Robot unexpected disconnection")
-            static let robotUnexpectedDisconnectionInstructions = LocalizedString("update.error.robot_unexpected_disconnection_instructions", value: "Restart the robot using the \"Emergency stop\" card,\nreconnect the robot and restart the process", comment: "Robot unexpected disconnection instructions")
+            static let robotUnexpectedDisconnectionDescription = LocalizedString("update.error.robot_unexpected_disconnection_description", value: "Error code #0004: The robot has been disconnected", comment: "Robot unexpected disconnection")
+            static let robotUnexpectedDisconnectionInstructions = LocalizedString("update.error.robot_unexpected_disconnection_instructions", value: "Restart the robot using the \"Emergency stop\" card\nReconnect the robot \nRestart the process", comment: "Robot unexpected disconnection instructions")
 
-            static let unknownErrorDescription = LocalizedString("update.error.unknown_error", value: "An unknown error has occurred\n(Error code #0000)", comment: "unknown error")
+            static let unknownErrorDescription = LocalizedString("update.error.unknown_error_description", value: "Error code #0000: An unknown error has occurred", comment: "unknown error")
             static let unknownErrorInstructions = LocalizedString("update.error.unknown_error_instructions", value: "Please contact technical support", comment: "unknown error instructions")
+
+            static let checkUpdateButtonLabel = LocalizedString("update.error.check_update_button_label", value: "Check for updates", comment: "Check for update button label")
+            static let backToConnectionButtonLabel = LocalizedString("update.error.back_to_connection_button_label", value: "Return to robot connection page", comment: "Update error back to connection view button")
+            static let closeButtonLabel = LocalizedString("update.error.close_button_label", value: "Close", comment: "Update error close button")
         }
 
         enum alert {
@@ -145,10 +149,7 @@ extension l10n {
 
         static let stepNumber = LocalizedStringInterpolation("update.step_number", value: "Step %@", comment: "Update step number")
 
-        static let errorTitle = LocalizedString("update.error", value: "An error has occurred", comment: "Update error")
-        static let errorDescription = LocalizedString("update.error_description", value: "Unknown error", comment: "Update error description")
-        static let errorCallToAction = LocalizedString("update.error_call_to_action", value: "Contact technical support", comment: "Update error call to action")
-        static let errorBackButtonTitle = LocalizedString("update.error_back_button", value: "Return to robot connection page", comment: "Update error back button")
+        static let errorTitle = LocalizedString("update.error_title", value: "Oops... Something went wrong.", comment: "Update error")
     }
 }
 

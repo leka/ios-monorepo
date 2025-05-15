@@ -65,8 +65,7 @@ struct UpdateStatusView: View {
                                                   isConnectionViewPresented: self.$isConnectionViewPresented)
                     case .error:
                         ErrorContentView(
-                            errorDescription: self.viewModel.errorDescription,
-                            errorInstruction: self.viewModel.errorInstructions,
+                            error: self.viewModel.error,
                             isConnectionViewPresented: self.$isConnectionViewPresented,
                             isUpdateStatusViewPresented: self.$isUpdateStatusViewPresented
                         )
