@@ -10,6 +10,9 @@ import SwiftUI
 // MARK: - MainCurations
 
 enum MainCurations: String {
+    case home = "F4E2C104C09E436CB80A87749CE62DDF"
+    case explore = "60EE8932AE34449187E5B67646BEAEEF"
+    case objectives = "29E4975B217F4DAEA99EE4E0DFCDB5BD"
     case sandbox = "4B476A0DFDC044B98DCBC631FF4EA27B"
     case curriculums = "2685B06A51324C31A255B50D8A2AD064"
     case educationalGames = "CBC96C481C3544B6A4F9A7DCAD1D13E9"

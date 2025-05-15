@@ -19,6 +19,14 @@ extension MainView {
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.home.characters)
                     self.systemImage = "house"
 
+                case .explore:
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.explore.characters)
+                    self.systemImage = "safari"
+
+                case .objectives:
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.objectives.characters)
+                    self.systemImage = "target"
+
                 case .search:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.search.characters)
                     self.systemImage = "magnifyingglass"
@@ -38,10 +46,6 @@ extension MainView {
                 case .resourcesDeepDive:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.resourcesDeepDive.characters)
                     self.systemImage = "paperclip"
-
-                case .curriculums:
-                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.curriculums.characters)
-                    self.systemImage = "graduationcap"
 
                 case .educationalGames:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.educationalGames.characters)

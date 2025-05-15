@@ -2382,6 +2382,24 @@
                 }
             }
         },
+        "lekaapp.main_view.sidebar.category_label.explore": {
+            "comment": "The title of the category 'Explore'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Explore"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Explorer"
+                    }
+                }
+            }
+        },
         "lekaapp.main_view.sidebar.category_label.gamepads": {
             "comment": "The title of the category 'Gamepads'",
             "localizations": {
@@ -2519,6 +2537,24 @@
                 }
             }
         },
+        "lekaapp.main_view.sidebar.category_label.objectives": {
+            "comment": "The title of the category 'Learning Objectives'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Learning Objectives"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Objectifs P\u00e9dagogiques"
+                    }
+                }
+            }
+        },
         "lekaapp.main_view.sidebar.category_label.resources_deep_dive": {
             "comment": "The title of the resources sub category 'DeepDive'",
             "localizations": {
@@ -2634,23 +2670,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Contenu"
-                    }
-                }
-            }
-        },
-        "lekaapp.main_view.sidebar.section.information": {
-            "comment": "The title of the section 'Information'",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Information"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Informations"
                     }
                 }
             }

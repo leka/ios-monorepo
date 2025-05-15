@@ -23,7 +23,6 @@ extension Bundle {
 struct MainView: View {
     // MARK: Internal
 
-    @State private var isInformationSectionExpanded: Bool = true
     @State private var isContentSectionExpanded: Bool = true
     @State private var isLibrarySectionExpanded: Bool = true
     @State private var isUserSectionExpanded: Bool = true
@@ -61,13 +60,11 @@ struct MainView: View {
                     }
                     .listRowInsets(EdgeInsets(top: 0, leading: -8, bottom: -8, trailing: -8))
 
-                    Section(String(l10n.MainView.Sidebar.sectionInformation.characters), isExpanded: self.$isInformationSectionExpanded) {
-                        CategoryLabel(category: .home)
-                        CategoryLabel(category: .search)
-                    }
-
                     Section(String(l10n.MainView.Sidebar.sectionContent.characters), isExpanded: self.$isContentSectionExpanded) {
-                        CategoryLabel(category: .curriculums)
+                        CategoryLabel(category: .home)
+                        CategoryLabel(category: .explore)
+                        CategoryLabel(category: .objectives)
+                        CategoryLabel(category: .search)
                         CategoryLabel(category: .educationalGames)
                         CategoryLabel(category: .stories)
                         CategoryLabel(category: .gamepads)
@@ -164,8 +161,16 @@ struct MainView: View {
             NavigationStack(path: self.$navigation.path) {
                 switch self.navigation.selectedCategory {
                     case .home:
-                        CategoryHome()
+                        CurationView(.home)
                             .logEventScreenView(screenName: "home", context: .splitView)
+
+                    case .explore:
+                        CurationView(.explore)
+                            .logEventScreenView(screenName: "explore", context: .splitView)
+
+                    case .objectives:
+                        CurationView(.objectives)
+                            .logEventScreenView(screenName: "objectives", context: .splitView)
 
                     case .search:
                         CategorySearchView()
@@ -182,10 +187,6 @@ struct MainView: View {
                     case .resourcesDeepDive:
                         CategoryResourcesDeepDiveView()
                             .logEventScreenView(screenName: "resources_deep_dive", context: .splitView)
-
-                    case .curriculums:
-                        CurationView(.curriculums)
-                            .logEventScreenView(screenName: "curriculums", context: .splitView)
 
                     case .educationalGames:
                         CurationView(.educationalGames)
