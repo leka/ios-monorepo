@@ -32,9 +32,10 @@ l10n:
     details:
       icon: recognition_cooked_fruits
       title: Les fruits dans l'assiette
-      subtitle:
+      subtitle: Associer les fruits entiers à leurs formes découpées ou cuisinées
       abstract: |
         Ce parcours vise à renforcer la capacité de la personne accompagnée à reconnaître visuellement les fruits à partir de plats cuisinés.
+
       description: |
         À travers différentes activités d’observation et d’association, la personne accompagnée apprend à identifier les fruits présents dans une assiette ou une préparation culinaire.
         Les exercices varient en difficulté, allant de deux à six choix visuels, et permettent de développer le sens de l’observation, le vocabulaire alimentaire ainsi que la compréhension des formes et couleurs typiques des fruits.
@@ -43,9 +44,10 @@ l10n:
     details:
       icon: recognition_cooked_fruits
       title: Fruits on the Plate
-      subtitle:
+      subtitle: Matching whole fruits with their cut or cooked forms
       abstract: |
         This curriculum is designed to help participants visually recognize fruits in prepared dishes.
+
       description: |
         Through a series of observation and association tasks, participants learn to identify fruits featured in plated meals or desserts.
         The exercises increase in difficulty, from two to six visual options, and support the development of visual attention, food-related vocabulary, and the ability to distinguish shapes and colors associated with common fruits.
