@@ -8,7 +8,7 @@ import SwiftUI
 // MARK: - NewActivityManager
 
 @Observable
-public class ActivityExercisesCoordinator {
+public class ActivityCoordinator {
     // MARK: Lifecycle
 
     public init(payload: ActivityPayload) {

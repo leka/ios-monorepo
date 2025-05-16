@@ -9,12 +9,12 @@ import Yams
 
 // MARK: - ActivityManager_Tests
 
-@Suite struct ActivityManager_Tests {
+@Suite struct ActivityCoordinator_Tests {
     // MARK: Lifecycle
 
     init() async throws {
         self.payload = try YAMLDecoder().decode(ActivityPayload.self, from: self.kActivityYaml)
-        self.activityManager = ActivityExercisesCoordinator(payload: self.payload)
+        self.activityCoordinator = ActivityCoordinator(payload: self.payload)
     }
 
     // MARK: Internal
@@ -198,53 +198,53 @@ import Yams
         """
 
     let payload: ActivityPayload
-    let activityManager: ActivityExercisesCoordinator
+    let activityCoordinator: ActivityCoordinator
 
     @Test func initFromPayload() async throws {
-        #expect(self.activityManager.numberOfGroups == 2)
-        #expect(self.activityManager.numberOfExercisesInCurrentGroup == 3)
+        #expect(self.activityCoordinator.numberOfGroups == 2)
+        #expect(self.activityCoordinator.numberOfExercisesInCurrentGroup == 3)
     }
 
     @Test func nextExercise() async throws {
-        self.activityManager.nextExercise()
+        self.activityCoordinator.nextExercise()
 
-        #expect(self.activityManager.currentGroupIndex == 0)
-        #expect(self.activityManager.currentExerciseIndex == 1)
+        #expect(self.activityCoordinator.currentGroupIndex == 0)
+        #expect(self.activityCoordinator.currentExerciseIndex == 1)
     }
 
     @Test func nextExerciseAfterLast() async throws {
-        self.activityManager.currentGroupIndex = 1
-        self.activityManager.currentExerciseIndex = 2
+        self.activityCoordinator.currentGroupIndex = 1
+        self.activityCoordinator.currentExerciseIndex = 2
 
-        self.activityManager.nextExercise()
+        self.activityCoordinator.nextExercise()
 
-        #expect(self.activityManager.currentGroupIndex == 1)
-        #expect(self.activityManager.currentExerciseIndex == 2)
+        #expect(self.activityCoordinator.currentGroupIndex == 1)
+        #expect(self.activityCoordinator.currentExerciseIndex == 2)
     }
 
     @Test func previousExerciseAfterNext() async throws {
-        self.activityManager.nextExercise()
-        self.activityManager.previousExercise()
+        self.activityCoordinator.nextExercise()
+        self.activityCoordinator.previousExercise()
 
-        #expect(self.activityManager.currentGroupIndex == 0)
-        #expect(self.activityManager.currentExerciseIndex == 0)
+        #expect(self.activityCoordinator.currentGroupIndex == 0)
+        #expect(self.activityCoordinator.currentExerciseIndex == 0)
     }
 
     @Test func previousExerciseWhenFirst() async throws {
-        self.activityManager.previousExercise()
+        self.activityCoordinator.previousExercise()
 
-        #expect(self.activityManager.currentGroupIndex == 0)
-        #expect(self.activityManager.currentExerciseIndex == 0)
+        #expect(self.activityCoordinator.currentGroupIndex == 0)
+        #expect(self.activityCoordinator.currentExerciseIndex == 0)
     }
 
     @Test func isLastExercise() async throws {
-        self.activityManager.currentGroupIndex = 1
-        self.activityManager.currentExerciseIndex = 2
+        self.activityCoordinator.currentGroupIndex = 1
+        self.activityCoordinator.currentExerciseIndex = 2
 
-        #expect(self.activityManager.isLastExercise)
+        #expect(self.activityCoordinator.isLastExercise)
     }
 
     @Test func isFirstExercise() async throws {
-        #expect(self.activityManager.isFirstExercise)
+        #expect(self.activityCoordinator.isFirstExercise)
     }
 }

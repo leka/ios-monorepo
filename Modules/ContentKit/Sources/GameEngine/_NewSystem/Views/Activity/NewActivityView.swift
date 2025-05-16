@@ -10,9 +10,9 @@ import SwiftUI
 public struct NewActivityView: View {
     // MARK: Lifecycle
 
-    public init(activity: NewActivity, manager: ActivityExercisesCoordinator) {
+    public init(activity: NewActivity, coordinator: ActivityCoordinator) {
         self.activity = activity
-        self.activityManager = manager
+        self.activityCoordinator = coordinator
     }
 
     // MARK: Public
@@ -21,10 +21,10 @@ public struct NewActivityView: View {
         ZStack(alignment: .bottomTrailing) {
             VStack(spacing: 10) {
                 VStack {
-                    NewActivityProgressBar(manager: self.activityManager)
+                    NewActivityProgressBar(coordinator: self.activityCoordinator)
                 }
 
-                self.activityManager.currentExerciseView
+                self.activityCoordinator.currentExerciseView
             }
         }
         .frame(maxWidth: .infinity)
@@ -43,20 +43,20 @@ public struct NewActivityView: View {
 
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    self.activityManager.previousExercise()
+                    self.activityCoordinator.previousExercise()
                 } label: {
                     Image(systemName: "arrow.backward")
                 }
-                .disabled(self.activityManager.isFirstExercise)
+                .disabled(self.activityCoordinator.isFirstExercise)
             }
 
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    self.activityManager.nextExercise()
+                    self.activityCoordinator.nextExercise()
                 } label: {
                     Image(systemName: "arrow.forward")
                 }
-                .disabled(self.activityManager.isLastExercise)
+                .disabled(self.activityCoordinator.isLastExercise)
             }
 
             ToolbarItem(placement: .topBarTrailing) {
@@ -70,7 +70,7 @@ public struct NewActivityView: View {
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 logGEK.debug("Activity started")
-                self.activityManager.activityStage.send(.start)
+                self.activityCoordinator.activityStage.send(.start)
             }
         }
     }
@@ -81,7 +81,7 @@ public struct NewActivityView: View {
 
     // MARK: Private
 
-    private var activityManager: ActivityExercisesCoordinator
+    private var activityCoordinator: ActivityCoordinator
 
     private let activity: NewActivity
 }
@@ -276,11 +276,11 @@ public struct NewActivityView: View {
 
         NavigationStack {
             if let activity = NewActivity(yaml: kActivityYaml) {
-                let manager = ActivityExercisesCoordinator(payload: activity.payload)
+                let coordinator = ActivityCoordinator(payload: activity.payload)
 
-                NewActivityView(activity: activity, manager: manager)
+                NewActivityView(activity: activity, coordinator: coordinator)
                     .onAppear {
-                        manager.activityStage
+                        coordinator.activityStage
                             .receive(on: DispatchQueue.main)
                             .sink { stage in
                                 switch stage {
