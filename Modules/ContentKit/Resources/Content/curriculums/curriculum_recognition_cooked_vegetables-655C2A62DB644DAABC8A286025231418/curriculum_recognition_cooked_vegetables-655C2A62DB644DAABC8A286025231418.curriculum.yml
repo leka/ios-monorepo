@@ -32,7 +32,7 @@ l10n:
     details:
       icon: recognition_cooked_vegetables
       title: Les légumes dans l'assiette
-      subtitle:
+      subtitle: Associer les légumes entiers à leurs formes découpées ou cuisinées
       abstract: |
         Ce parcours vise à renforcer la capacité de la personne accompagnée à reconnaître visuellement les légumes à partir de plats cuisinés.
       description: |
@@ -43,7 +43,7 @@ l10n:
     details:
       icon: recognition_cooked_vegetables
       title: Vegetables on the Plate
-      subtitle:
+      subtitle: Matching whole vegetables with their cut or cooked forms
       abstract: |
         This curriculum is designed to help participants visually recognize fruits in prepared dishes.
       description: |
