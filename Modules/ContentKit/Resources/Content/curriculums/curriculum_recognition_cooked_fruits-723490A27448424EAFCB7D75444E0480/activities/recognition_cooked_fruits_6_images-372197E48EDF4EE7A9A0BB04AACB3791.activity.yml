@@ -1,0 +1,367 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 372197E48EDF4EE7A9A0BB04AACB3791
+name: recognition_cooked_fruits_6_images
+
+created_at: "2024-03-04T18:07:12.519229"
+last_edited_at: "2024-09-27T15:25:22.743770"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - association
+  - recognition
+
+tags:
+  - food
+  - fruits
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_cooked_fruits
+
+      title: Les fruits dans l'assiette
+      subtitle: 6 images
+
+      short_description: |
+        Observe l’image de gauche. Quels fruits reconnais-tu dans l’assiette ?
+
+      description: |
+        Dans cette activité, une image montre une assiette contenant un ou plusieurs fruits. L'objectif est de reconnaître les fruits représentés et de les sélectionner parmi les choix proposés. Cela aide le participant à développer ses compétences d'observation, de reconnaissance visuelle et d’association.
+
+      instructions: |
+        - Encouragez le participant à observer attentivement l’image de l’assiette à gauche.
+        - Demandez-lui de sélectionner les icônes à droite représentant les fruits qu’il reconnaît dans l’assiette.
+        - Lorsque la ou les bonnes réponses sont sélectionnées, Leka lance un renforçateur positif pour valoriser l’identification correcte.
+
+  - locale: en_US
+    details:
+      icon: recognition_cooked_fruits
+
+      title: Fruits on the Plate
+      subtitle: 6 images
+
+      short_description: |
+        Look at the image on the left. Which fruits can you recognize on the plate?
+
+      description: |
+        In this activity, an image shows a plate containing one or more fruits. The goal is to recognize the fruits in the image and select them from the available choices. This activity supports visual recognition, observation skills, and fruit identification.
+
+      instructions: |
+        - Encourage the participant to carefully observe the image of the plate on the left.
+        - Ask them to select the icons on the right that represent the fruits they recognize from the plate.
+        - When the correct fruits are selected, Leka will trigger positive reinforcement to reward accurate recognition.
+
+exercises_payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Observe l’assiette à gauche. Quel fruit vois-tu ?
+            - locale: en_US
+              value: Look at the plate on the left. What fruit do you see?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: recognition_cooked_fruits_apple_pie
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: recognition_fruits_photo_apple
+                type: image
+                is_right_answer: true
+              - value: recognition_fruits_photo_banana
+                type: image
+              - value: recognition_fruits_photo_kiwi
+                type: image
+              - value: recognition_fruits_photo_melon
+                type: image
+              - value: recognition_fruits_photo_orange
+                type: image
+              - value: recognition_fruits_photo_pear
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Observe l’assiette à gauche. Quel fruit vois-tu ?
+            - locale: en_US
+              value: Look at the plate on the left. What fruit do you see?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: recognition_cooked_fruits_banana
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: recognition_fruits_photo_banana
+                type: image
+                is_right_answer: true
+              - value: recognition_fruits_photo_apple
+                type: image
+              - value: recognition_fruits_photo_kiwi
+                type: image
+              - value: recognition_fruits_photo_melon
+                type: image
+              - value: recognition_fruits_photo_orange
+                type: image
+              - value: recognition_fruits_photo_pear
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Observe l’assiette à gauche. Quel fruit vois-tu ?
+            - locale: en_US
+              value: Look at the plate on the left. What fruit do you see?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: recognition_cooked_fruits_kiwi
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: recognition_fruits_photo_kiwi
+                type: image
+                is_right_answer: true
+              - value: recognition_fruits_photo_apple
+                type: image
+              - value: recognition_fruits_photo_banana
+                type: image
+              - value: recognition_fruits_photo_melon
+                type: image
+              - value: recognition_fruits_photo_orange
+                type: image
+              - value: recognition_fruits_photo_pear
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Observe l’assiette à gauche. Quel fruit vois-tu ?
+            - locale: en_US
+              value: Look at the plate on the left. What fruit do you see?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: recognition_cooked_fruits_melon
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: recognition_fruits_photo_melon
+                type: image
+                is_right_answer: true
+              - value: recognition_fruits_photo_apple
+                type: image
+              - value: recognition_fruits_photo_banana
+                type: image
+              - value: recognition_fruits_photo_kiwi
+                type: image
+              - value: recognition_fruits_photo_orange
+                type: image
+              - value: recognition_fruits_photo_pear
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Observe l’assiette à gauche. Quel fruit vois-tu ?
+            - locale: en_US
+              value: Look at the plate on the left. What fruit do you see?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: recognition_cooked_fruits_orange
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: recognition_fruits_photo_orange
+                type: image
+                is_right_answer: true
+              - value: recognition_fruits_photo_apple
+                type: image
+              - value: recognition_fruits_photo_banana
+                type: image
+              - value: recognition_fruits_photo_kiwi
+                type: image
+              - value: recognition_fruits_photo_melon
+                type: image
+              - value: recognition_fruits_photo_pear
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Observe l’assiette à gauche. Quel fruit vois-tu ?
+            - locale: en_US
+              value: Look at the plate on the left. What fruit do you see?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: recognition_cooked_fruits_pear
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: recognition_fruits_photo_pear
+                type: image
+                is_right_answer: true
+              - value: recognition_fruits_photo_apple
+                type: image
+              - value: recognition_fruits_photo_banana
+                type: image
+              - value: recognition_fruits_photo_kiwi
+                type: image
+              - value: recognition_fruits_photo_melon
+                type: image
+              - value: recognition_fruits_photo_orange
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Observe l’assiette à gauche. Quel fruit vois-tu ?
+            - locale: en_US
+              value: Look at the plate on the left. What fruit do you see?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: recognition_cooked_fruits_pineapple
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: recognition_fruits_photo_pineapple
+                type: image
+                is_right_answer: true
+              - value: recognition_fruits_photo_apple
+                type: image
+              - value: recognition_fruits_photo_banana
+                type: image
+              - value: recognition_fruits_photo_kiwi
+                type: image
+              - value: recognition_fruits_photo_melon
+                type: image
+              - value: recognition_fruits_photo_orange
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Observe l’assiette à gauche. Quel fruit vois-tu ?
+            - locale: en_US
+              value: Look at the plate on the left. What fruit do you see?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: recognition_cooked_fruits_strawberry_pie
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: recognition_fruits_photo_strawberry
+                type: image
+                is_right_answer: true
+              - value: recognition_fruits_photo_apple
+                type: image
+              - value: recognition_fruits_photo_banana
+                type: image
+              - value: recognition_fruits_photo_kiwi
+                type: image
+              - value: recognition_fruits_photo_melon
+                type: image
+              - value: recognition_fruits_photo_orange
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Observe l’assiette à gauche. Quel fruit vois-tu ?
+            - locale: en_US
+              value: Look at the plate on the left. What fruit do you see?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: recognition_cooked_fruits_strawberry
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: recognition_fruits_photo_strawberry
+                type: image
+                is_right_answer: true
+              - value: recognition_fruits_photo_apple
+                type: image
+              - value: recognition_fruits_photo_banana
+                type: image
+              - value: recognition_fruits_photo_kiwi
+                type: image
+              - value: recognition_fruits_photo_melon
+                type: image
+              - value: recognition_fruits_photo_orange
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Observe l’assiette à gauche. Quel fruit vois-tu ?
+            - locale: en_US
+              value: Look at the plate on the left. What fruit do you see?
+          interface: observeThenTouchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: recognition_cooked_fruits_watermelon
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: recognition_fruits_photo_watermelon
+                type: image
+                is_right_answer: true
+              - value: recognition_fruits_photo_apple
+                type: image
+              - value: recognition_fruits_photo_banana
+                type: image
+              - value: recognition_fruits_photo_kiwi
+                type: image
+              - value: recognition_fruits_photo_melon
+                type: image
+              - value: recognition_fruits_photo_orange
+                type: image
