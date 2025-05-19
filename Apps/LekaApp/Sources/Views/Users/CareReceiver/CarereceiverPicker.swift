@@ -102,7 +102,7 @@ struct CarereceiverPicker: View {
 
             Button {
                 self.dismiss()
-                self.navigation.selectedCategory = .carereceivers
+                self.navigation.setSelectedCategory(.carereceivers)
             } label: {
                 Text(l10n.CarereceiverPicker.CreateFirstCarereceiver.buttonLabel)
             }

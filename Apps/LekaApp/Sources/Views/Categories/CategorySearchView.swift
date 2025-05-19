@@ -17,8 +17,8 @@ struct CategorySearchView: View {
             if self.query.isEmpty {
                 ScrollView(showsIndicators: true) {
                     SkillsGridView(skills: self.skills, onActivitySelected: { activity in
-                        self.navigation.currentActivity = activity
-                        self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+                        self.navigation.setCurrentActivity(activity)
+                        self.navigation.setFullScreenCoverContent(.activityView(carereceivers: []))
                     })
                 }
                 .navigationTitle(String(l10n.CategorySearchView.browseSkillstitle.characters))
@@ -29,8 +29,8 @@ struct CategorySearchView: View {
                                    skills: self.searchSkillsResults,
                                    curriculums: self.searchCurriculumResults,
                                    onStartActivity: { activity in
-                                       self.navigation.currentActivity = activity
-                                       self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+                                       self.navigation.setCurrentActivity(activity)
+                                       self.navigation.setFullScreenCoverContent(.activityView(carereceivers: []))
                                    })
                 }
             }

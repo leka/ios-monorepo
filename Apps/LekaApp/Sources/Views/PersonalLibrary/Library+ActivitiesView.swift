@@ -24,10 +24,10 @@ struct LibraryActivitiesView: View {
         } else {
             LibraryActivityListView(activities: self.activities) { activity in
                 if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
-                    self.navigation.sheetContent = .carereceiverPicker(activity: activity, story: nil)
+                    self.navigation.setSheetContent(.carereceiverPicker(activity: activity, story: nil))
                 } else {
-                    self.navigation.currentActivity = activity
-                    self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+                    self.navigation.setCurrentActivity(activity)
+                    self.navigation.setFullScreenCoverContent(.activityView(carereceivers: []))
                 }
             }
         }

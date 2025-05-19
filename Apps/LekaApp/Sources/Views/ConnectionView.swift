@@ -76,7 +76,7 @@ struct ConnectionView: View {
                     self.libraryManager.initializeLibraryListener()
                     AnalyticsManager.logEventLogin()
                     self.authManagerViewModel.userAction = .none
-                    self.navigation.fullScreenCoverContent = nil
+                    self.navigation.setFullScreenCoverContent(nil)
                 }
             }
             .onAppear {
