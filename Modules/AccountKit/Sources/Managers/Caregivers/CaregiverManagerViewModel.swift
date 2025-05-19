@@ -15,16 +15,22 @@ public class CaregiverManagerViewModel {
 
     // MARK: Public
 
-    public var caregivers: [Caregiver] = []
-    public var currentCaregiver: Caregiver?
-    public var errorMessage: String = ""
+    public private(set) var caregivers: [Caregiver] = []
+    public private(set) var currentCaregiver: Caregiver?
     public var showErrorAlert = false
-    public var isLoading: Bool = false
+    public private(set) var isLoading: Bool = false
+
+    // MARK: Public Setter Method
+
+    public func setIsLoading(_ loading: Bool) {
+        self.isLoading = loading
+    }
 
     // MARK: Private
 
     @ObservationIgnored private var cancellables = Set<AnyCancellable>()
     @ObservationIgnored private let caregiverManager = CaregiverManager.shared
+    private var errorMessage: String = ""
 
     private func subscribeToManager() {
         self.caregiverManager.caregiverList
