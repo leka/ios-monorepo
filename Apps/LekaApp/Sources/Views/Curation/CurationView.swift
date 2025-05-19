@@ -57,8 +57,7 @@ struct CurationView: View {
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 30)
-                .padding(.bottom)
+                .padding([.horizontal, .bottom])
             }
 
             VStack(alignment: .leading, spacing: 30) {
@@ -102,9 +101,8 @@ struct CurationView: View {
                             CurationViewFactory(section: section)
 
                             Divider()
-                                .padding(.horizontal)
+                                .padding(.horizontal, self.kDividerPadding)
                         }
-                        .padding(.horizontal)
                     }
                 }
             }
@@ -118,6 +116,7 @@ struct CurationView: View {
     @ObservedObject private var styleManager: StyleManager = .shared
 
     private let curation: CategoryCuration
+    private let kDividerPadding: CGFloat = 100
 }
 
 // MARK: - l10n.CurationView

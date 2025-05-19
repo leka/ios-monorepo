@@ -61,8 +61,8 @@ public struct CurationViewFactory: View {
                             }
                         }
                     }
+                    .padding()
                 }
-                .padding()
             case .verticalGrid:
                 LazyVGrid(columns: self.columns, spacing: 10) {
                     ForEach(self.section.items) { item in
