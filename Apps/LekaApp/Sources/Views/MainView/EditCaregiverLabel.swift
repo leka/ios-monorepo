@@ -136,11 +136,12 @@ extension l10n {
         EmptyView()
     })
     .onAppear {
-        let caregiverManagerViewModel = CaregiverManagerViewModel()
-        caregiverManagerViewModel.currentCaregiver = Caregiver(
+        let caregiverManager = CaregiverManager.shared
+        let caregiver = Caregiver(
             firstName: "Joe",
             lastName: "Bidjobba",
             avatar: Avatars.categories[0].avatars[2]
         )
+        caregiverManager.setCurrentCaregiver(to: caregiver)
     }
 }
