@@ -27,7 +27,7 @@ extension EditCaregiverView {
                 ForEach(ColorTheme.allCases, id: \.self) { color in
                     ColorCircleView(color: color.color, isSelected: self.selectedColor == color.color)
                         .onTapGesture {
-                            self.styleManager.accentColor = color.color
+                            self.styleManager.setAccentColor(color.color)
                             self.caregiver.colorTheme = color
                         }
                 }

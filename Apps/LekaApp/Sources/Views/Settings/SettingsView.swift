@@ -251,8 +251,8 @@ struct SettingsView: View {
         self.caregiverManager.resetData()
         self.carereceiverManager.resetData()
         self.libraryManager.resetData()
-        self.styleManager.accentColor = DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
-        self.styleManager.colorScheme = .light
+        self.styleManager.setAccentColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
+        self.styleManager.setColorScheme(.light)
     }
 
     private var errorAlertTitle: String {

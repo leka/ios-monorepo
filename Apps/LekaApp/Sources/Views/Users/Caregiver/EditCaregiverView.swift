@@ -104,8 +104,8 @@ struct EditCaregiverView: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button(String(l10n.EditCaregiverView.closeButtonLabel.characters)) {
-                    self.styleManager.colorScheme = self.caregiverManagerViewModel.currentCaregiver!.colorScheme
-                    self.styleManager.accentColor = self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color
+                    self.styleManager.setColorScheme(self.caregiverManagerViewModel.currentCaregiver!.colorScheme)
+                    self.styleManager.setAccentColor(self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color)
                     self.dismiss()
                 }
             }

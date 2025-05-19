@@ -397,8 +397,8 @@ struct MainView: View {
             self.persistentDataManager.lastActiveCaregiverID = currentCaregiver?.id
             self.persistentDataManager.updateLastActiveTimestamp()
             if currentCaregiver != nil {
-                self.styleManager.colorScheme = self.caregiverManagerViewModel.currentCaregiver!.colorScheme
-                self.styleManager.accentColor = self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color
+                self.styleManager.setColorScheme(self.caregiverManagerViewModel.currentCaregiver!.colorScheme)
+                self.styleManager.setAccentColor(self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color)
             }
             self.libraryManager.initializeLibraryListener()
         }
