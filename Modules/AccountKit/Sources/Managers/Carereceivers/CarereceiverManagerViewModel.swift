@@ -16,15 +16,15 @@ public class CarereceiverManagerViewModel {
 
     // MARK: Public
 
-    public var carereceivers: [Carereceiver] = []
-    public var currentCarereceivers: [Carereceiver] = []
-    public var errorMessage: String = ""
+    public private(set) var carereceivers: [Carereceiver] = []
+    public private(set) var currentCarereceivers: [Carereceiver] = []
     public var showErrorAlert = false
 
     // MARK: Private
 
     @ObservationIgnored private var cancellables = Set<AnyCancellable>()
     @ObservationIgnored private let carereceiverManager = CarereceiverManager.shared
+    private var errorMessage: String = ""
 
     private func subscribeToManager() {
         self.carereceiverManager.carereceiverList
