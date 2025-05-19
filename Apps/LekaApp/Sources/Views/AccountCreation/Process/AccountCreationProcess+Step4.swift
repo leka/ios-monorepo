@@ -30,7 +30,7 @@ extension AccountCreationProcess {
             .multilineTextAlignment(.center)
             .frame(maxWidth: .infinity, alignment: .center)
             .onDisappear {
-                self.authManagerViewModel.userAction = .none
+                self.authManagerViewModel.setUserAction(.none)
                 self.navigation.sheetContent = .caregiverPicker
                 // TODO: (@dev/team): might not be needed, could be remoded
                 self.navigation.fullScreenCoverContent = nil

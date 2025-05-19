@@ -52,7 +52,7 @@ struct WelcomeView: View {
             }
         }
         .onAppear {
-            self.authManagerViewModel.userAction = .none
+            self.authManagerViewModel.setUserAction(.none)
             self.setupVideo()
         }
     }

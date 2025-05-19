@@ -53,7 +53,7 @@ struct AccountCreationView: View {
             }
         }
         .onAppear {
-            self.authManagerViewModel.userAction = .userIsSigningUp
+            self.authManagerViewModel.setUserAction(.userIsSigningUp)
         }
         .onDisappear {
             self.authManagerViewModel.resetErrorMessage()
