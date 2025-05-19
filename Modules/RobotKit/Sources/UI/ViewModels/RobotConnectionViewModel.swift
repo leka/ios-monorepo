@@ -20,6 +20,12 @@ public class RobotConnectionViewModel {
 
     // MARK: Public
 
+    public private(set) var connectedDiscovery: RobotDiscoveryModel? {
+        didSet {
+            self.connected = self.connectedDiscovery != nil
+        }
+    }
+
     public func select(discovery: RobotDiscoveryModel) {
         if self.selectedDiscovery == discovery {
             self.selectedDiscovery = nil
@@ -116,20 +122,18 @@ public class RobotConnectionViewModel {
         self.connectToRobot()
     }
 
+    public func setRobotDiscoveries(_ discoveries: [RobotDiscoveryModel]) {
+        self.robotDiscoveries = discoveries
+    }
+
     // MARK: Internal
 
-    var robotDiscoveries: [RobotDiscoveryModel] = []
-    var selectedDiscovery: RobotDiscoveryModel?
+    private(set) var robotDiscoveries: [RobotDiscoveryModel] = []
+    private(set) var selectedDiscovery: RobotDiscoveryModel?
 
-    var connected: Bool = false
-    var connectingToRestartingRobot: Bool = false
-    var managerState: CBManagerState = .unknown
-
-    var connectedDiscovery: RobotDiscoveryModel? {
-        didSet {
-            self.connected = self.connectedDiscovery != nil
-        }
-    }
+    private(set) var connected: Bool = false
+    private(set) var connectingToRestartingRobot: Bool = false
+    private(set) var managerState: CBManagerState = .unknown
 
     // MARK: Private
 
