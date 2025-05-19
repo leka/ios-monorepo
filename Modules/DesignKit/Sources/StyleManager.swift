@@ -18,22 +18,18 @@ public class StyleManager {
 
     public static let shared = StyleManager(accentColor: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
 
-    public var accentColor: Color?
-    public var colorScheme: ColorScheme
+    public private(set) var accentColor: Color?
+    public private(set) var colorScheme: ColorScheme
 
     public func setDefaultColorScheme(_ colorScheme: ColorScheme) {
         self.colorScheme = colorScheme
     }
 
-    public func toggleAccentColor() {
-        self.accentColor = if self.accentColor == nil {
-            DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
-        } else {
-            nil
-        }
+    public func setAccentColor(_ color: Color?) {
+        self.accentColor = color
     }
 
-    public func toggleColorScheme() {
-        self.colorScheme = self.colorScheme == .light ? .dark : .light
+    public func setColorScheme(_ scheme: ColorScheme) {
+        self.colorScheme = scheme
     }
 }
