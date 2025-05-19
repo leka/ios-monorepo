@@ -28,7 +28,7 @@ struct NoAccountConnectedLabel: View {
                 .multilineTextAlignment(.center)
 
             Button(String(l10n.NoAccountConnectedLabel.buttonLabel.characters)) {
-                self.navigation.fullScreenCoverContent = .welcomeView
+                self.navigation.setFullScreenCoverContent(.welcomeView)
             }
             .buttonStyle(.bordered)
         }

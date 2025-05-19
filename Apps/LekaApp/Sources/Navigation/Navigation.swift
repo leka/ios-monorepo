@@ -94,17 +94,14 @@ class Navigation {
 
     static let shared = Navigation()
 
-    var disableUICompletly: Bool = false
     var demoMode: Bool = false
-    var categories = Category.allCases
-
+    // TODO: (@ladislas) No 'private(set)' because used as modal trigger
     var sheetContent: SheetContent?
     var fullScreenCoverContent: FullScreenCoverContent?
-
-    var currentActivity: Activity?
-    var currentStory: Story?
-
     var navigateToAccountCreationProcess: Bool = false
+
+    private(set) var currentActivity: Activity?
+    private(set) var currentStory: Story?
 
     var selectedCategory: Category? = .home {
         willSet {
@@ -129,12 +126,41 @@ class Navigation {
         }
     }
 
+    func setSheetContent(_ content: SheetContent?) {
+        self.sheetContent = content
+    }
+
+    func setFullScreenCoverContent(_ content: FullScreenCoverContent?) {
+        self.fullScreenCoverContent = content
+    }
+
+    func setCurrentActivity(_ activity: Activity?) {
+        self.currentActivity = activity
+    }
+
+    func setCurrentStory(_ story: Story?) {
+        self.currentStory = story
+    }
+
+    func setNavigateToAccountCreationProcess(_ value: Bool) {
+        self.navigateToAccountCreationProcess = value
+    }
+
+    func setSelectedCategory(_ category: Category?) {
+        self.selectedCategory = category
+    }
+
+    func setPath(_ path: NavigationPath) {
+        self.path = path
+    }
+
     // MARK: Private
 
     @ObservationIgnored private var authManager: AuthManager = .shared
     @ObservationIgnored private var authManagerViewModel: AuthManagerViewModel = .shared
     @ObservationIgnored private var cancellables: Set<AnyCancellable> = []
     @ObservationIgnored private var isProgrammaticNavigation: Bool = false
+    @ObservationIgnored private var disableUICompletly: Bool = false
 
     private var pushPopNoAnimationTransaction: Transaction {
         var transaction = Transaction(animation: nil)

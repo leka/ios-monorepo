@@ -20,7 +20,7 @@ extension AccountCreationProcess {
                 Text(l10n.AccountCreationProcess.Step4.message)
 
                 Button(String(l10n.AccountCreationProcess.Step4.discoverContentButton.characters)) {
-                    self.navigation.fullScreenCoverContent = nil
+                    self.navigation.setFullScreenCoverContent(nil)
                     self.dismiss()
                 }
                 .buttonStyle(.bordered)
@@ -33,8 +33,8 @@ extension AccountCreationProcess {
                 self.authManagerViewModel.setUserAction(.none)
                 self.navigation.sheetContent = .caregiverPicker
                 // TODO: (@dev/team): might not be needed, could be remoded
-                self.navigation.fullScreenCoverContent = nil
-                self.navigation.navigateToAccountCreationProcess = false
+                self.navigation.setFullScreenCoverContent(nil)
+                self.navigation.setNavigateToAccountCreationProcess(false)
             }
         }
 

@@ -63,7 +63,7 @@ struct AccountCreationView: View {
                   message: Text(l10n.AccountCreationView.EmailVerificationAlert.message),
                   dismissButton: .default(Text(l10n.AccountCreationView.EmailVerificationAlert.dismissButton)) {
                       AnalyticsManager.logEventSignUp()
-                      self.navigation.navigateToAccountCreationProcess = true
+                      self.navigation.setNavigateToAccountCreationProcess(true)
                   })
         }
     }
