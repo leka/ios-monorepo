@@ -23,18 +23,36 @@ public class AuthManagerViewModel {
 
     // MARK: - User
 
-    public var userAuthenticationState: AuthManager.AuthenticationState = .unknown
-    public var userAction: AuthManager.UserAction?
-    public var userEmailIsVerified = false
-    public var reAuthenticationSucceeded: Bool = false
+    public private(set) var userAuthenticationState: AuthManager.AuthenticationState = .unknown
+    public private(set) var userAction: AuthManager.UserAction?
+    public private(set) var userEmailIsVerified = false
+    public private(set) var reAuthenticationSucceeded: Bool = false
 
     // MARK: - Alerts
 
+    public private(set) var isLoading: Bool = false
+
+    // TODO(@dev/team): Move the following to Views if relevant
     public var showErrorAlert = false
+    public var resetPasswordSucceeded: Bool = false
     public var showErrorMessage = false
     public var showActionRequestAlert = false
-    public var resetPasswordSucceeded: Bool = false
-    public var isLoading: Bool = false
+
+    public func setLoading(_ loading: Bool) {
+        self.isLoading = loading
+    }
+
+    public func setUserAction(_ action: AuthManager.UserAction?) {
+        self.userAction = action
+    }
+
+    public func setUserEmailIsVerified(_ value: Bool) {
+        self.userEmailIsVerified = value
+    }
+
+    public func setReAuthenticationSucceeded(_ value: Bool) {
+        self.reAuthenticationSucceeded = value
+    }
 
     public func resetErrorMessage() {
         self.showErrorAlert = false
@@ -113,11 +131,12 @@ public class AuthManagerViewModel {
     }
 
     private func resetState() {
-        self.userAction = .none
-        self.userEmailIsVerified = false
         self.showActionRequestAlert = false
         self.showErrorAlert = false
         self.showErrorMessage = false
+
+        self.userAction = .none
+        self.userEmailIsVerified = false
         self.reAuthenticationSucceeded = false
     }
 }

@@ -93,7 +93,7 @@ struct SettingsView: View {
                     {
                         Button(role: .destructive) {
                             self.authManager.sendPasswordResetEmail(to: self.authManager.currentUserEmail ?? "")
-                            self.authManagerViewModel.userAction = .userIsResettingPassword
+                            self.authManagerViewModel.setUserAction(.userIsResettingPassword)
                             self.showConfirmCredentialsChange = false
                         } label: {
                             Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.alertChangePasswordButtonLabel)
@@ -107,7 +107,7 @@ struct SettingsView: View {
                            isPresented: self.$authManagerViewModel.resetPasswordSucceeded)
                     {
                         Button("OK", role: .cancel) {
-                            self.authManagerViewModel.userAction = .none
+                            self.authManagerViewModel.setUserAction(.none)
                         }
                     } message: {
                         Text(l10n.SettingsView.CredentialsSection.ChangeCredentials.changePasswordSuccessAlertMessage)
@@ -119,7 +119,7 @@ struct SettingsView: View {
                 if self.authManagerViewModel.userAuthenticationState == .loggedIn {
                     Button {
                         self.showConfirmDisconnection = true
-                        self.authManagerViewModel.userAction = .userIsSigningOut
+                        self.authManagerViewModel.setUserAction(.userIsSigningOut)
                     } label: {
                         Label(String(l10n.SettingsView.AccountSection.LogOut.buttonLabel.characters),
                               systemImage: "rectangle.portrait.and.arrow.forward")
@@ -141,7 +141,7 @@ struct SettingsView: View {
 
                     Button(role: .destructive) {
                         self.showReAuthenticate = true
-                        self.authManagerViewModel.userAction = .userIsReAuthenticating
+                        self.authManagerViewModel.setUserAction(.userIsReAuthenticating)
                     } label: {
                         Label(String(l10n.SettingsView.AccountSection.DeleteAccount.buttonLabel.characters), systemImage: "trash")
                             .foregroundStyle(.red)
@@ -149,7 +149,7 @@ struct SettingsView: View {
                     .sheet(isPresented: self.$showReAuthenticate) {
                         guard self.authManagerViewModel.reAuthenticationSucceeded else {
                             if self.authManagerViewModel.userAction == .userIsReAuthenticating {
-                                self.authManagerViewModel.userAction = .none
+                                self.authManagerViewModel.setUserAction(.none)
                             }
                             return
                         }
@@ -164,7 +164,7 @@ struct SettingsView: View {
                             String(l10n.SettingsView.AccountSection.DeleteAccount.alertCancelButtonLabel.characters),
                             role: .cancel
                         ) {
-                            self.authManagerViewModel.userAction = .none
+                            self.authManagerViewModel.setUserAction(.none)
                         }
                         Button(
                             String(l10n.SettingsView.AccountSection.DeleteAccount.alertDeleteButtonLabel.characters),
@@ -179,7 +179,7 @@ struct SettingsView: View {
                 } else {
                     Button(String(l10n.SettingsView.AccountSection.LogInSignUp.buttonLabel.characters), systemImage: "person.fill") {
                         self.dismiss()
-                        self.authManagerViewModel.userAction = .userIsSigningIn
+                        self.authManagerViewModel.setUserAction(.userIsSigningIn)
                         self.navigation.fullScreenCoverContent = .welcomeView
                     }
                 }
@@ -221,7 +221,7 @@ struct SettingsView: View {
                isPresented: self.$authManagerViewModel.showErrorAlert)
         {
             Button("OK", role: .cancel) {
-                self.authManagerViewModel.userAction = .none
+                self.authManagerViewModel.setUserAction(.none)
             }
         } message: {
             Text(self.errorAlertMessage)

@@ -36,7 +36,7 @@ struct ReAuthenticationView: View {
 
                 Button {
                     self.showConfirmResetPassword = true
-                    self.authManagerViewModel.userAction = .userIsResettingPassword
+                    self.authManagerViewModel.setUserAction(.userIsResettingPassword)
                 } label: {
                     Text(l10n.ReAuthenticationView.passwordForgottenButton)
                         .font(.footnote)
@@ -57,7 +57,7 @@ struct ReAuthenticationView: View {
                         String(l10n.ReAuthenticationView.cancelResetPasswordButtonLabel.characters),
                         role: .cancel
                     ) {
-                        self.authManagerViewModel.userAction = .userIsReAuthenticating
+                        self.authManagerViewModel.setUserAction(.userIsReAuthenticating)
                     }
                 } message: {
                     Text(l10n.ReAuthenticationView.confirmResetPasswordAlertMessage)
