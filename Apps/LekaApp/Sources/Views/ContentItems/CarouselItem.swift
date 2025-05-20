@@ -62,7 +62,7 @@ public struct CarouselItem: View {
                 Image(uiImage: self.icon)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 240, height: 240)
+                    .frame(width: 260, height: 260)
 
                 HStack {
                     VStack(alignment: .leading) {
@@ -73,6 +73,8 @@ public struct CarouselItem: View {
                         Text(self.subtitle ?? "")
                             .font(.caption2)
                             .foregroundStyle(.white)
+
+                        Spacer()
                     }
 
                     Spacer()
@@ -81,7 +83,7 @@ public struct CarouselItem: View {
                 .background(
                     Color(uiColor: self.icon.averageColor!)
                 )
-                .frame(width: 240, height: 60)
+                .frame(width: 260, height: 50)
                 .fixedSize()
             }
             .clipShape(RoundedRectangle(cornerRadius: 15))

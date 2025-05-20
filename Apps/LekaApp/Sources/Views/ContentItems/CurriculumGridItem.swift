@@ -8,35 +8,24 @@ import DesignKit
 import SwiftUI
 import UtilsKit
 
-// MARK: - ActivityGridItem
+// MARK: - CurriculumGridItem
 
-public struct ActivityGridItem: View {
+public struct CurriculumGridItem: View {
     // MARK: Lifecycle
 
     public init?(_ content: CurationItemModel) {
         switch content.contentType {
-            case .activity:
-                guard let activity = Activity(id: content.id) else {
-                    log.error("Content \(content.id) is labeled as activity but not decoded as such ")
+            case .curriculum:
+                guard let curriculum = Curriculum(id: content.id) else {
+                    log.error("Content \(content.id) is labeled as curriculum but not decoded as such ")
                     return nil
                 }
                 self.curationItem = content
-                self.icon = activity.details.iconImage
-                self.title = activity.details.title
-                self.subtitle = activity.details.subtitle
-                self.shape = Circle()
-            case .story:
-                guard let story = Story(id: content.id) else {
-                    log.error("Content \(content.id) is labeled as story but not decoded as such ")
-                    return nil
-                }
-                self.curationItem = content
-                self.icon = story.details.iconImage
-                self.title = story.details.title
-                self.subtitle = story.details.subtitle
-                self.shape = RoundedRectangle(cornerRadius: 10 / 57 * self.kIconSize)
+                self.icon = curriculum.details.iconImage
+                self.title = curriculum.details.title
+                self.subtitle = curriculum.details.subtitle
             default:
-                log.error("Content \(content.id) is not an activity or a story and cannot be decoded as ActivityGridItem")
+                log.error("Content \(content.id) is not a curriculum and cannot be decoded as CurriculumGridItem")
                 return nil
         }
     }
@@ -66,7 +55,7 @@ public struct ActivityGridItem: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: self.kIconSize)
-                .clipShape(AnyShape(self.shape))
+                .clipShape(RoundedRectangle(cornerRadius: 10 / 57 * self.kIconSize))
 
             VStack(alignment: .leading) {
                 Text(self.title)
@@ -75,6 +64,7 @@ public struct ActivityGridItem: View {
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
+            .multilineTextAlignment(.leading)
             .padding(.horizontal)
 
             Spacer()
@@ -94,8 +84,7 @@ public struct ActivityGridItem: View {
 
     private var curationItem: CurationItemModel
     private var icon: UIImage
-    private var shape: any Shape
-    private let kIconSize: CGFloat = 50
+    private let kIconSize: CGFloat = 100
     private var title: String
     private var subtitle: String?
 
@@ -104,33 +93,31 @@ public struct ActivityGridItem: View {
 
 #Preview {
     let curations: [CurationItemModel] = [
-        .init(id: "CBBCDFA8DC8C462794904F6E5E0638AB", contentType: .activity),
-        .init(id: "60C133CB19F94BA0864DFA9BF6E7F696", contentType: .story),
-        .init(id: "D91BDA161F8E455CA8A71881F1D2E923", contentType: .activity),
-        .init(id: "CBBCDFA8DC8C462794904F6E5E0638AB", contentType: .activity),
-        .init(id: "60C133CB19F94BA0864DFA9BF6E7F696", contentType: .story),
-        .init(id: "D91BDA161F8E455CA8A71881F1D2E923", contentType: .activity),
-        .init(id: "CBBCDFA8DC8C462794904F6E5E0638AB", contentType: .activity),
-        .init(id: "60C133CB19F94BA0864DFA9BF6E7F696", contentType: .story),
-        .init(id: "D91BDA161F8E455CA8A71881F1D2E923", contentType: .activity),
-        .init(id: "Wrong UUID", contentType: .activity),
-        .init(id: "CBBCDFA8DC8C462794904F6E5E0638AB", contentType: .activity),
-        .init(id: "60C133CB19F94BA0864DFA9BF6E7F696", contentType: .story),
-        .init(id: "D91BDA161F8E455CA8A71881F1D2E923", contentType: .activity),
         .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
-        .init(id: "D91BDA161F8E455CA8A71881F1D2E923", contentType: .activity),
+        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
+        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
+        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
+        .init(id: "7C75908B86D748A283AA080D40642BE7", contentType: .curriculum),
+        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
+        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
+        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
+        .init(id: "Wrong UUID", contentType: .curriculum),
+        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
+        .init(id: "7C75908B86D748A283AA080D40642BE7", contentType: .curriculum),
+        .init(id: "60C133CB19F94BA0864DFA9BF6E7F696", contentType: .story),
+        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
     ]
 
     ScrollView {
         ScrollView(.horizontal, showsIndicators: false) {
-            LazyHGrid(rows: Array(repeating: GridItem(), count: 3), spacing: 10) {
+            LazyHGrid(rows: Array(repeating: GridItem(), count: 2), spacing: 10) {
                 ForEach(Array(curations.enumerated()), id: \.offset) { index, item in
                     VStack {
-                        ActivityGridItem(item)
-                        let isNotLast = ((index + 1) % 3) != 0
+                        CurriculumGridItem(item)
+                        let isNotLast = ((index + 1) % 2) != 0
                         if isNotLast {
                             Divider()
-                                .padding(.leading, 90)
+                                .padding(.leading, 150)
                         }
                     }
                 }

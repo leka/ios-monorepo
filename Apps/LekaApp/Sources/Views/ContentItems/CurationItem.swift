@@ -5,7 +5,7 @@
 import ContentKit
 import SwiftUI
 
-// MARK: - TileItem
+// MARK: - CurationItem
 
 public struct CurationItem: View {
     // MARK: Lifecycle
@@ -20,7 +20,7 @@ public struct CurationItem: View {
             self.title = curation.details.title
             self.color = curation.color
         } else {
-            log.error("Content \(content.id) is a not curation and cannot be decoded as TileItem")
+            log.error("Content \(content.id) is a not a curation and cannot be decoded as CurationItem")
             return nil
         }
     }

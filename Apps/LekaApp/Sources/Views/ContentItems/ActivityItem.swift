@@ -14,16 +14,6 @@ public struct ActivityItem: View {
 
     public init?(_ content: CurationItemModel) {
         switch content.contentType {
-            case .curriculum:
-                guard let curriculum = Curriculum(id: content.id) else {
-                    log.error("Content \(content.id) is labeled as curriculum but not decoded as such ")
-                    return nil
-                }
-                self.curationItem = content
-                self.icon = curriculum.details.iconImage
-                self.title = curriculum.details.title
-                self.subtitle = curriculum.details.subtitle
-                self.shape = RoundedRectangle(cornerRadius: 10 / 57 * self.kIconSize)
             case .activity:
                 guard let activity = Activity(id: content.id) else {
                     log.error("Content \(content.id) is labeled as activity but not decoded as such ")
@@ -45,7 +35,7 @@ public struct ActivityItem: View {
                 self.subtitle = story.details.subtitle
                 self.shape = RoundedRectangle(cornerRadius: 10 / 57 * self.kIconSize)
             default:
-                log.error("Content \(content.id) is a curation and cannot be decoded as ListItem")
+                log.error("Content \(content.id) is not an activity or a story and cannot be decoded as ActivityItem")
                 return nil
         }
     }
@@ -59,7 +49,6 @@ public struct ActivityItem: View {
                 .scaledToFit()
                 .clipShape(AnyShape(self.shape))
                 .frame(width: self.kIconSize)
-                .padding(.bottom, 15)
 
             HStack(spacing: 5) {
                 Text(self.title)
@@ -84,7 +73,9 @@ public struct ActivityItem: View {
 
             Spacer()
         }
-        .padding(.vertical)
+        .frame(width: self.kIconSize, alignment: .leading)
+        .lineLimit(0)
+        .fixedSize()
     }
 
     // MARK: Private
