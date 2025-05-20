@@ -19,7 +19,7 @@ l10n:
       description:
 
 content:
-  - component: vertical_content_list
+  - component: carousel
     l10n:
       - locale: fr_FR
         details:
@@ -39,7 +39,7 @@ content:
       - value: super_simon-C6EABAC161CD44C290B32202DFDCDAF6
         type: curriculum
 
-  - component: vertical_content_list
+  - component: vertical_activity_grid
     l10n:
       - locale: fr_FR
         details:

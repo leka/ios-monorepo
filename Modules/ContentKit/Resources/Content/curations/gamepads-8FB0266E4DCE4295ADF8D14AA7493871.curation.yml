@@ -19,7 +19,7 @@ l10n:
       description: Operate the Leka robot with interactive and fun gamepads.
 
 content:
-  - component: vertical_content_list
+  - component: vertical_activity_grid
     l10n:
       - locale: fr_FR
         details:

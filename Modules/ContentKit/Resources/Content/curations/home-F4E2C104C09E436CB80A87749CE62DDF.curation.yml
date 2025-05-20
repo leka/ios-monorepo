@@ -32,6 +32,8 @@ content:
           subtitle:
           description: Our most relevant picks, just for you.
     items:
+      - value: color_mediator-2CE6B5E98AFD45E0B2CD87727DB6D5C2
+        type: activity
       - value: curriculum_recognition_family_members-AD1A9E2D874C47AEB3445D80E34DC702
         type: curriculum
       - value: curriculum_recognition_garden_items-A1006027902E44C0B38BC3D3BAEDD4F6
@@ -43,7 +45,7 @@ content:
       - value: curriculum_animal_memory-7C75908B86D748A283AA080D40642BE7
         type: curriculum
 
-  - component: horizontal_card_list
+  - component: horizontal_curriculum_list
     l10n:
       - locale: fr_FR
         details:
@@ -56,8 +58,6 @@ content:
           subtitle:
           description: The latest to explore.
     items:
-      - value: color_mediator-2CE6B5E98AFD45E0B2CD87727DB6D5C2
-        type: activity
       - value: curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
         type: curriculum
       - value: curriculum_leka_weather_robot-ED4C900D4ACB426384DC76F182BC19A5
@@ -65,7 +65,7 @@ content:
       - value: curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
         type: curriculum
 
-  - component: horizontal_column_list
+  - component: horizontal_curriculum_grid
     l10n:
       - locale: fr_FR
         details:
@@ -90,7 +90,7 @@ content:
       - value: curriculum_recognition_sounds_emotions-2D48CCB418BF4808BCB16148C901C617
         type: curriculum
 
-  - component: horizontal_column_list
+  - component: horizontal_activity_list
     l10n:
       - locale: fr_FR
         details:

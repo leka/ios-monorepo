@@ -19,16 +19,16 @@ l10n:
       description:
 
 content:
-  - component: vertical_content_list
+  - component: vertical_curriculum_grid
     l10n:
       - locale: fr_FR
         details:
-          title: Corps et besoins
+          title:
           subtitle:
           description:
       - locale: en_US
         details:
-          title: Body and needs
+          title:
           subtitle:
           description:
     items:

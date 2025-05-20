@@ -19,18 +19,18 @@ l10n:
       description:
 
 content:
-  - component: vertical_tile_grid
+  - component: vertical_curation_grid
     l10n:
       - locale: fr_FR
         details:
-          title: Par objectif pédagogique
+          title: Retrouvez les contenus adaptés selon les objectifs pédagogiques de la personne accompagnée
           subtitle:
-          description: Retrouvez les contenus adaptés selon les objectifs pédagogiques de la personne accompagnée
+          description:
       - locale: en_US
         details:
-          title: By learning objective
+          title: Find content tailored to the learning objectives of the person you're supporting.
           subtitle:
-          description: Find content tailored to the learning objectives of the person you're supporting.
+          description:
     items:
       - value: cognition_and_academic_learning-4D4D3C30F4704417A9DDD4B8AD30EE62
         type: curation

@@ -19,7 +19,7 @@ l10n:
       description:
 
 content:
-  - component: vertical_content_list
+  - component: vertical_activity_grid
     l10n:
       - locale: fr_FR
         details:
@@ -37,7 +37,7 @@ content:
       - value: hide_and_seek-4BFA2AC3390E49248DD022E27008F118
         type: activity
 
-  - component: vertical_content_list
+  - component: vertical_activity_grid
     l10n:
       - locale: fr_FR
         details:

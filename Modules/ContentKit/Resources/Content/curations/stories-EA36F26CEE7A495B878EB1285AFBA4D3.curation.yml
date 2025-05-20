@@ -19,7 +19,7 @@ l10n:
       description: A collection of captivating, interactive stories filled with colors, music, and fun activities that stimulate readers' creativity and learning.
 
 content:
-  - component: vertical_content_list
+  - component: vertical_activity_grid
     l10n:
       - locale: fr_FR
         details:

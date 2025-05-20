@@ -19,7 +19,7 @@ l10n:
       description:
 
 content:
-  - component: horizontal_column_list
+  - component: horizontal_activity_grid
     l10n:
       - locale: fr_FR
         details:
@@ -49,7 +49,7 @@ content:
       - value: recognition_bathroom_items_health_products-64D5048EC16A4FF99D13F04D7B1CB71F
         type: activity
 
-  - component: vertical_content_list
+  - component: vertical_activity_grid
     l10n:
       - locale: fr_FR
         details:
@@ -69,7 +69,7 @@ content:
       - value: sequencing_daily_life_dressing_up-A33F20A81F8F478E8B705F7FAB807965
         type: activity
 
-  - component: horizontal_card_list
+  - component: horizontal_curriculum_list
     l10n:
       - locale: fr_FR
         details:

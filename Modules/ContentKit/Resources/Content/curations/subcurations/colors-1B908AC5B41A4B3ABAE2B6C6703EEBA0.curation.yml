@@ -19,16 +19,16 @@ l10n:
       description:
 
 content:
-  - component: vertical_content_list
+  - component: vertical_curriculum_grid
     l10n:
       - locale: fr_FR
         details:
-          title: Couleurs
+          title:
           subtitle:
           description:
       - locale: en_US
         details:
-          title: Colors
+          title:
           subtitle:
           description:
     items:

@@ -19,16 +19,16 @@ l10n:
       description:
 
 content:
-  - component: vertical_content_list
+  - component: vertical_curriculum_grid
     l10n:
       - locale: fr_FR
         details:
-          title: Moyens de transport
+          title:
           subtitle:
           description:
       - locale: en_US
         details:
-          title: Modes of transportation
+          title:
           subtitle:
           description:
     items:

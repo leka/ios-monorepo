@@ -19,7 +19,7 @@ l10n:
       description:
 
 content:
-  - component: vertical_content_list
+  - component: vertical_activity_grid
     l10n:
       - locale: fr_FR
         details:
@@ -39,7 +39,7 @@ content:
       - value: xylophone_pentatonic-7C1DDED6C6D44913B9A7D4EB4AEE8F6B
         type: activity
 
-  - component: horizontal_card_list
+  - component: horizontal_curriculum_list
     l10n:
       - locale: fr_FR
         details:
