@@ -124,13 +124,13 @@ public struct CurationViewFactory: View {
             case .carouselItem:
                 CarouselItem(curation)
             case .cardItem:
-                CardItem(curation)
+                CurriculumItem(curation)
             case .contentGridItem:
-                ContentGridItem(curation)
+                ActivityItem(curation)
             case .columnListItem:
-                ColumnListItem(curation)
+                ActivityGridItem(curation)
             case .tileItem:
-                TileItem(curation)
+                CurationItem(curation)
         }
     }
 

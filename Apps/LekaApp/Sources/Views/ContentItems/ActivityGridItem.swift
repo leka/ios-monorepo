@@ -6,10 +6,11 @@ import AccountKit
 import ContentKit
 import DesignKit
 import SwiftUI
+import UtilsKit
 
-// MARK: - ContentGridItem
+// MARK: - ActivityGridItem
 
-public struct ContentGridItem: View {
+public struct ActivityGridItem: View {
     // MARK: Lifecycle
 
     public init?(_ content: CurationItemModel) {
@@ -45,7 +46,7 @@ public struct ContentGridItem: View {
                 self.subtitle = story.details.subtitle
                 self.shape = RoundedRectangle(cornerRadius: 10 / 57 * self.kIconSize)
             default:
-                log.error("Content \(content.id) is a curation and cannot be decoded as ListItem")
+                log.error("Content \(content.id) is a curation and cannot be decoded as ColumnListItem")
                 return nil
         }
     }
@@ -53,38 +54,49 @@ public struct ContentGridItem: View {
     // MARK: Public
 
     public var body: some View {
-        VStack {
+        HStack(spacing: 0) {
+            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id,
+               self.libraryManagerViewModel.isContentFavorited(
+                   by: currentCaregiverID,
+                   contentID: curationItem.id
+               )
+            {
+                Image(systemName: "star.fill")
+                    .font(.system(size: 10))
+                    .foregroundColor(self.styleManager.accentColor ?? .blue)
+                    .frame(width: 10)
+                    .padding(.trailing)
+            } else {
+                Color.clear
+                    .frame(width: 10)
+                    .padding(.trailing)
+            }
+
             Image(uiImage: self.icon)
                 .resizable()
                 .scaledToFit()
-                .clipShape(AnyShape(self.shape))
                 .frame(width: self.kIconSize)
-                .padding(.bottom, 15)
+                .clipShape(AnyShape(self.shape))
 
-            HStack(spacing: 5) {
+            VStack(alignment: .leading) {
                 Text(self.title)
-                    .font(.headline)
-                    .foregroundStyle(Color.primary)
+                    .font(.body)
 
-                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id,
-                   self.libraryManagerViewModel.isContentFavorited(
-                       by: currentCaregiverID,
-                       contentID: self.curationItem.id
-                   )
-                {
-                    Text(Image(systemName: "star.fill"))
-                        .font(.caption)
-                        .foregroundColor(self.styleManager.accentColor ?? .blue)
-                }
+                Text(self.subtitle ?? "")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
             }
-
-            Text(self.subtitle ?? "")
-                .font(.body)
-                .foregroundStyle(Color.secondary)
+            .padding(.horizontal)
 
             Spacer()
+
+            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                ContentItemMenu(self.curationItem, caregiverID: currentCaregiverID)
+            }
         }
-        .padding(.vertical)
+        .frame(height: self.kIconSize)
+        .frame(minWidth: 350, maxWidth: .infinity)
+        .contentShape(Rectangle())
     }
 
     // MARK: Private
@@ -95,7 +107,7 @@ public struct ContentGridItem: View {
     private var curationItem: CurationItemModel
     private var icon: UIImage
     private var shape: any Shape
-    private let kIconSize: CGFloat = 180
+    private let kIconSize: CGFloat = 50
     private var title: String
     private var subtitle: String?
 
@@ -118,10 +130,14 @@ public struct ContentGridItem: View {
         .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
     ]
 
-    return ScrollView(.horizontal) {
-        HStack {
-            ForEach(curations) { curation in
-                ContentGridItem(curation)
+    ScrollView(.horizontal, showsIndicators: false) {
+        HStack(spacing: 30) {
+            ForEach(curations.chunked(into: 3), id: \.self) { chunk in
+                VStack {
+                    ForEach(chunk) { curation in
+                        ActivityGridItem(curation)
+                    }
+                }
             }
         }
     }

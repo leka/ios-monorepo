@@ -26,7 +26,7 @@ struct AllDraftActivitiesView: View {
                                 self.navigation.currentActivity = activity
                                 self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
                             })) {
-                                ContentGridItem(CurationItemModel(id: activity.uuid, contentType: .activity))
+                                ActivityItem(CurationItemModel(id: activity.uuid, contentType: .activity))
                             }
                     }
                 }

@@ -82,9 +82,9 @@ public struct CurationSeeMoreFactory: View {
             case .carouselItem:
                 CarouselItem(curation)
             case .tileItem:
-                TileItem(curation)
+                CurationItem(curation)
             default:
-                ContentGridItem(curation)
+                ActivityItem(curation)
         }
     }
 

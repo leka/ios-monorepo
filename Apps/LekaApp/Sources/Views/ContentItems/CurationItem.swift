@@ -7,7 +7,7 @@ import SwiftUI
 
 // MARK: - TileItem
 
-public struct TileItem: View {
+public struct CurationItem: View {
     // MARK: Lifecycle
 
     public init?(_ content: CurationItemModel) {
@@ -69,7 +69,7 @@ public struct TileItem: View {
     ]
     return HStack {
         ForEach(curations) { curation in
-            TileItem(curation)
+            CurationItem(curation)
         }
     }
 }
