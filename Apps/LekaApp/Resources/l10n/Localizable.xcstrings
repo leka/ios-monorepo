@@ -1699,20 +1699,20 @@
                 }
             }
         },
-        "lekaapp.empty_favorites_placedholder_view.button_instruction": {
+        "lekaapp.empty_favorites_placedholder_view.add_items": {
             "comment": "Favorites Instruction suffix",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "button on any activity, curriculum, or story to add them to your Favorites."
+                        "value": "button on any content to add them to your Favorites."
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "dans n'importe quelle activit\u00e9, parcours ou histoire pour les ajouter \u00e0 vos Favoris."
+                        "value": "dans n'importe quel contenu pour les ajouter \u00e0 vos Favoris."
                     }
                 }
             }
@@ -1771,19 +1771,20 @@
                 }
             }
         },
-        "lekaapp.empty_library_placedholder_view.button_instruction": {
-            "comment": "Instruction suffix",
+        "lekaapp.empty_library_placedholder_view.add_items": {
+            "comment": "Add instruction suffix",
+            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "translated",
-                        "value": "button on any activity, curriculum, or story to add them to your Library."
+                        "state": "new",
+                        "value": "button on any content to add them to your Library."
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "dans n'importe quelle activit\u00e9, parcours ou histoire pour les ajouter \u00e0 votre Biblioth\u00e8que."
+                        "value": "dans n'importe quel contenu pour les ajouter \u00e0 votre Biblioth\u00e8que."
                     }
                 }
             }

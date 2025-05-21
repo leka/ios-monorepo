@@ -55,7 +55,7 @@ struct EmptyFavoritesPlaceholderView: View {
                 Image(systemName: "ellipsis.circle")
                     .foregroundColor(self.styleManager.accentColor ?? .blue)
                     .accessibility(label: Text("More Options"))
-                Text(l10n.EmptyFavoritesPlaceholderView.buttonInstruction)
+                Text(l10n.EmptyFavoritesPlaceholderView.addItems)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
@@ -90,9 +90,9 @@ extension l10n {
             value: "Tap the",
             comment: "Favorites Instruction prefix"
         )
-        static let buttonInstruction = LocalizedString(
-            "lekaapp.empty_favorites_placedholder_view.button_instruction",
-            value: "button on any activity, curriculum, or story to add them to your Favorites.",
+        static let addItems = LocalizedString(
+            "lekaapp.empty_favorites_placedholder_view.add_items",
+            value: "button on any content to add them to your Favorites.",
             comment: "Favorites Instruction suffix"
         )
         static let removeItems = LocalizedString(
