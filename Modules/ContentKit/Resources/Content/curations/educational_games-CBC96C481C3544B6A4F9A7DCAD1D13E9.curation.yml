@@ -19,7 +19,7 @@ l10n:
       description: Explore instant favorites like Color Bingo, Dance Freeze, and Hide And Seek, ideal for relaxation and fun after work sessions.
 
 content:
-  - component: vertical_content_list
+  - component: vertical_activity_grid
     l10n:
       - locale: fr_FR
         details:

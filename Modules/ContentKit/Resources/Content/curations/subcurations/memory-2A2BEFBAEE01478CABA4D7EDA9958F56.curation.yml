@@ -19,16 +19,16 @@ l10n:
       description:
 
 content:
-  - component: vertical_content_list
+  - component: carousel
     l10n:
       - locale: fr_FR
         details:
-          title: Mémoire
+          title:
           subtitle:
           description:
       - locale: en_US
         details:
-          title: Memory
+          title:
           subtitle:
           description:
     items:

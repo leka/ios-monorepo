@@ -99,9 +99,6 @@ struct CurationView: View {
                             }
 
                             CurationViewFactory(section: section)
-
-                            Divider()
-                                .padding(.horizontal, self.kDividerPadding)
                         }
                     }
                 }

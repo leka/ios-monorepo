@@ -19,7 +19,7 @@ l10n:
       description:
 
 content:
-  - component: horizontal_card_list
+  - component: horizontal_curriculum_list
     l10n:
       - locale: fr_FR
         details:
@@ -41,7 +41,7 @@ content:
       - value: curriculum_order_by_size_different_animals-3158E58D908E43D29967B04D29C21912
         type: curriculum
 
-  - component: horizontal_card_list
+  - component: horizontal_curriculum_list
     l10n:
       - locale: fr_FR
         details:
@@ -63,7 +63,7 @@ content:
       - value: curriculum_sort_sweet_and_salty-5ED0AFBEC4504F6EBA52B26C65ED93CC
         type: curriculum
 
-  - component: horizontal_card_list
+  - component: horizontal_curriculum_list
     l10n:
       - locale: fr_FR
         details:
@@ -85,7 +85,7 @@ content:
       - value: curriculum_memory_christmas-EFC444BBDEF24E08813FF472FFA5365D
         type: curriculum
 
-  - component: horizontal_card_list
+  - component: horizontal_curriculum_list
     l10n:
       - locale: fr_FR
         details:

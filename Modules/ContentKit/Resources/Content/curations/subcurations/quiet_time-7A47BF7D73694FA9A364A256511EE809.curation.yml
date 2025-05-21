@@ -19,7 +19,7 @@ l10n:
       description:
 
 content:
-  - component: vertical_content_list
+  - component: vertical_activity_grid
     l10n:
       - locale: fr_FR
         details:
@@ -45,7 +45,7 @@ content:
       - value: hanna_plays_music-CB8EB22A988049FB900AD5B66F78B00F
         type: story
 
-  - component: vertical_content_list
+  - component: vertical_activity_grid
     l10n:
       - locale: fr_FR
         details:

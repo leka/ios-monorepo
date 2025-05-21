@@ -19,7 +19,7 @@ l10n:
       description:
 
 content:
-  - component: horizontal_column_list
+  - component: horizontal_activity_grid
     l10n:
       - locale: fr_FR
         details:
@@ -45,7 +45,7 @@ content:
       - value: recognition_emotions_robot_leka_1-DE8FD427EB8A4A828E1967C22748840A
         type: activity
 
-  - component: horizontal_card_list
+  - component: horizontal_curriculum_grid
     l10n:
       - locale: fr_FR
         details:
@@ -71,7 +71,7 @@ content:
       - value: curriculum_recognition_emotions_in_context-A135163C8D8646DE95D0854FD5E155EB
         type: curriculum
 
-  - component: vertical_content_list
+  - component: vertical_activity_grid
     l10n:
       - locale: fr_FR
         details:

@@ -19,16 +19,16 @@ l10n:
       description:
 
 content:
-  - component: vertical_tile_grid
+  - component: vertical_curation_grid
     l10n:
       - locale: fr_FR
         details:
-          title: Cognition et apprentissages scolaires
+          title:
           subtitle:
           description:
       - locale: en_US
         details:
-          title: Cognition and academic learning
+          title:
           subtitle:
           description:
     items:

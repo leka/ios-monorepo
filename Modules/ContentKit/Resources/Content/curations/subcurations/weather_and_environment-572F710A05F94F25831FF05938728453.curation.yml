@@ -19,7 +19,7 @@ l10n:
       description:
 
 content:
-  - component: vertical_content_list
+  - component: vertical_activity_grid
     l10n:
       - locale: fr_FR
         details:
@@ -37,7 +37,7 @@ content:
       - value: recognition_weather_and_time_meteo_4_images-030525AA798F4E0D8EDAFAF3939471F9
         type: activity
 
-  - component: vertical_content_list
+  - component: vertical_activity_grid
     l10n:
       - locale: fr_FR
         details:
@@ -53,7 +53,7 @@ content:
       - value: recognition_weather_and_time_hot_and_cold-18DA1F9028CF447E819507B0A6562F2E
         type: activity
 
-  - component: vertical_content_list
+  - component: vertical_activity_grid
     l10n:
       - locale: fr_FR
         details:

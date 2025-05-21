@@ -19,7 +19,7 @@ l10n:
       description:
 
 content:
-  - component: horizontal_card_list
+  - component: horizontal_curriculum_grid
     l10n:
       - locale: fr_FR
         details:
@@ -47,7 +47,7 @@ content:
       - value: curriculum_receptive_language_identify_number_quantity-4499A9AFB56B4476969B96CE32F5314C
         type: curriculum
 
-  - component: horizontal_column_list
+  - component: horizontal_activity_grid
     l10n:
       - locale: fr_FR
         details:
@@ -75,7 +75,7 @@ content:
       - value: recognition_the_ice_floe_1-8D8DDB52F3FD41169688C2811CCD2D66
         type: activity
 
-  - component: horizontal_column_list
+  - component: horizontal_activity_list
     l10n:
       - locale: fr_FR
         details:
@@ -97,7 +97,7 @@ content:
       - value: recognition_garden_items_1-34E696B157354C76B9613F4C7E185BEE
         type: activity
 
-  - component: horizontal_column_list
+  - component: horizontal_activity_list
     l10n:
       - locale: fr_FR
         details:

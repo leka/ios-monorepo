@@ -94,11 +94,14 @@ public extension CategoryCuration {
 
         public enum ComponentType: String, Codable {
             case carousel
-            case horizontalColumnList = "horizontal_column_list"
-            case horizontalCardList = "horizontal_card_list"
-            case verticalContentList = "vertical_content_list"
-            case verticalTileGrid = "vertical_tile_grid"
-            case horizontalTileGrid = "horizontal_tile_grid"
+            case horizontalCurriculumGrid = "horizontal_curriculum_grid"
+            case horizontalActivityGrid = "horizontal_activity_grid"
+            case horizontalCurriculumList = "horizontal_curriculum_list"
+            case horizontalActivityList = "horizontal_activity_list"
+            case horizontalCurationList = "horizontal_curation_list"
+            case verticalCurriculumGrid = "vertical_curriculum_grid"
+            case verticalActivityGrid = "vertical_activity_grid"
+            case verticalCurationGrid = "vertical_curation_grid"
         }
 
         public let id = UUID()

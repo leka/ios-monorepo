@@ -43,6 +43,51 @@ class Navigation: ObservableObject {
         self.subscribeAuthentificationStateUpdates()
     }
 
+    // MARK: Public
+
+    public func onStartActivity(_ activity: Activity) {
+        if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.demoMode {
+            self.sheetContent = .carereceiverPicker(activity: activity, story: nil)
+        } else {
+            self.currentActivity = activity
+            self.fullScreenCoverContent = .activityView(carereceivers: [])
+        }
+    }
+
+    public func onStartStory(_ story: Story) {
+        if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.demoMode {
+            self.sheetContent = .carereceiverPicker(activity: nil, story: story)
+        } else {
+            self.currentStory = story
+            self.fullScreenCoverContent = .storyView(carereceivers: [])
+        }
+    }
+
+    public func curationDestination(_ curation: CurationItemModel) -> any View {
+        switch curation.contentType {
+            case .curriculum:
+                guard let curriculum = Curriculum(id: curation.id) else {
+                    return Text("Curriculum \(curation.id) not found")
+                }
+                return CurriculumDetailsView(curriculum: curriculum, onStartActivity: self.onStartActivity)
+            case .activity:
+                guard let activity = Activity(id: curation.id) else {
+                    return Text("Activity \(curation.id) not found")
+                }
+                return ActivityDetailsView(activity: activity, onStartActivity: self.onStartActivity)
+            case .story:
+                guard let story = Story(id: curation.id) else {
+                    return Text("Story \(curation.id) not found")
+                }
+                return StoryDetailsView(story: story, onStartStory: self.onStartStory)
+            case .curation:
+                guard let curation = CategoryCuration(id: curation.id) else {
+                    return Text("Curation \(curation.id) not found")
+                }
+                return CurationView(curation: curation)
+        }
+    }
+
     // MARK: Internal
 
     static let shared = Navigation()
@@ -85,6 +130,7 @@ class Navigation: ObservableObject {
     // MARK: Private
 
     private var authManager: AuthManager = .shared
+    private var authManagerViewModel: AuthManagerViewModel = .shared
     private var cancellables: Set<AnyCancellable> = []
 
     private var isProgrammaticNavigation: Bool = false

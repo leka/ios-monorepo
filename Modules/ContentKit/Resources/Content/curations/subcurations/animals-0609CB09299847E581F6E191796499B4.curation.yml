@@ -19,16 +19,16 @@ l10n:
       description:
 
 content:
-  - component: vertical_content_list
+  - component: vertical_curriculum_grid
     l10n:
       - locale: fr_FR
         details:
-          title: Animaux
+          title:
           subtitle:
           description:
       - locale: en_US
         details:
-          title: Animals
+          title:
           subtitle:
           description:
     items:

@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK: - CardItem
 
-public struct CardItem: View {
+public struct CurriculumItem: View {
     // MARK: Lifecycle
 
     public init?(_ content: CurationItemModel) {
@@ -24,29 +24,8 @@ public struct CardItem: View {
                 self.icon = curriculum.details.iconImage
                 self.title = curriculum.details.title
                 self.subtitle = curriculum.details.subtitle
-                self.shape = RoundedRectangle(cornerRadius: 8)
-            case .activity:
-                guard let activity = Activity(id: content.id) else {
-                    log.error("Content \(content.id) is labeled as activity but not decoded as such ")
-                    return nil
-                }
-                self.curationItem = content
-                self.icon = activity.details.iconImage
-                self.title = activity.details.title
-                self.subtitle = activity.details.subtitle
-                self.shape = Circle()
-            case .story:
-                guard let story = Story(id: content.id) else {
-                    log.error("Content \(content.id) is labeled as story but not decoded as such ")
-                    return nil
-                }
-                self.curationItem = content
-                self.icon = story.details.iconImage
-                self.title = story.details.title
-                self.subtitle = story.details.subtitle
-                self.shape = RoundedRectangle(cornerRadius: 8)
             default:
-                log.error("Content \(content.id) is a curation and cannot be decoded as CardItem")
+                log.error("Content \(content.id) is not a curriculum and cannot be decoded as CurriculumItem")
                 return nil
         }
     }
@@ -58,7 +37,7 @@ public struct CardItem: View {
             Image(uiImage: self.icon)
                 .resizable()
                 .scaledToFit()
-                .clipShape(AnyShape(self.shape))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
                 .frame(maxWidth: self.kIconSize)
 
             HStack {
@@ -94,7 +73,6 @@ public struct CardItem: View {
 
     private var curationItem: CurationItemModel
     private var icon: UIImage
-    private var shape: any Shape
     private var title: String
     private var subtitle: String?
     private let kIconSize: CGFloat = 180
@@ -114,7 +92,7 @@ public struct CardItem: View {
     return ScrollView(.horizontal) {
         HStack {
             ForEach(curations) { curation in
-                CardItem(curation)
+                CurriculumItem(curation)
             }
         }
     }

@@ -5,9 +5,9 @@
 import ContentKit
 import SwiftUI
 
-// MARK: - TileItem
+// MARK: - CurationItem
 
-public struct TileItem: View {
+public struct CurationItem: View {
     // MARK: Lifecycle
 
     public init?(_ content: CurationItemModel) {
@@ -20,7 +20,7 @@ public struct TileItem: View {
             self.title = curation.details.title
             self.color = curation.color
         } else {
-            log.error("Content \(content.id) is a not curation and cannot be decoded as TileItem")
+            log.error("Content \(content.id) is a not a curation and cannot be decoded as CurationItem")
             return nil
         }
     }
@@ -69,7 +69,7 @@ public struct TileItem: View {
     ]
     return HStack {
         ForEach(curations) { curation in
-            TileItem(curation)
+            CurationItem(curation)
         }
     }
 }

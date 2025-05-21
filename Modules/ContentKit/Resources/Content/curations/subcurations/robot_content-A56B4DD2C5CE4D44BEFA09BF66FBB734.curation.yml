@@ -19,7 +19,7 @@ l10n:
       description:
 
 content:
-  - component: horizontal_column_list
+  - component: horizontal_activity_grid
     l10n:
       - locale: fr_FR
         details:
@@ -49,7 +49,7 @@ content:
       - value: color_mediator-2CE6B5E98AFD45E0B2CD87727DB6D5C2
         type: activity
 
-  - component: horizontal_card_list
+  - component: horizontal_curriculum_grid
     l10n:
       - locale: fr_FR
         details:

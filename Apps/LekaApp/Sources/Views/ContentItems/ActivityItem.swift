@@ -6,25 +6,14 @@ import AccountKit
 import ContentKit
 import DesignKit
 import SwiftUI
-import UtilsKit
 
-// MARK: - ColumnListItem
+// MARK: - ActivityItem
 
-public struct ColumnListItem: View {
+public struct ActivityItem: View {
     // MARK: Lifecycle
 
     public init?(_ content: CurationItemModel) {
         switch content.contentType {
-            case .curriculum:
-                guard let curriculum = Curriculum(id: content.id) else {
-                    log.error("Content \(content.id) is labeled as curriculum but not decoded as such ")
-                    return nil
-                }
-                self.curationItem = content
-                self.icon = curriculum.details.iconImage
-                self.title = curriculum.details.title
-                self.subtitle = curriculum.details.subtitle
-                self.shape = RoundedRectangle(cornerRadius: 10 / 57 * self.kIconSize)
             case .activity:
                 guard let activity = Activity(id: content.id) else {
                     log.error("Content \(content.id) is labeled as activity but not decoded as such ")
@@ -46,7 +35,7 @@ public struct ColumnListItem: View {
                 self.subtitle = story.details.subtitle
                 self.shape = RoundedRectangle(cornerRadius: 10 / 57 * self.kIconSize)
             default:
-                log.error("Content \(content.id) is a curation and cannot be decoded as ColumnListItem")
+                log.error("Content \(content.id) is not an activity or a story and cannot be decoded as ActivityItem")
                 return nil
         }
     }
@@ -54,49 +43,39 @@ public struct ColumnListItem: View {
     // MARK: Public
 
     public var body: some View {
-        HStack(spacing: 0) {
-            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id,
-               self.libraryManagerViewModel.isContentFavorited(
-                   by: currentCaregiverID,
-                   contentID: curationItem.id
-               )
-            {
-                Image(systemName: "star.fill")
-                    .font(.system(size: 10))
-                    .foregroundColor(self.styleManager.accentColor ?? .blue)
-                    .frame(width: 10)
-                    .padding(.trailing)
-            } else {
-                Color.clear
-                    .frame(width: 10)
-                    .padding(.trailing)
-            }
-
+        VStack {
             Image(uiImage: self.icon)
                 .resizable()
                 .scaledToFit()
-                .frame(width: self.kIconSize)
                 .clipShape(AnyShape(self.shape))
+                .frame(width: self.kIconSize)
 
-            VStack(alignment: .leading) {
+            HStack(spacing: 5) {
                 Text(self.title)
-                    .font(.body)
+                    .font(.headline)
+                    .foregroundStyle(Color.primary)
 
-                Text(self.subtitle ?? "")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id,
+                   self.libraryManagerViewModel.isContentFavorited(
+                       by: currentCaregiverID,
+                       contentID: self.curationItem.id
+                   )
+                {
+                    Text(Image(systemName: "star.fill"))
+                        .font(.caption)
+                        .foregroundColor(self.styleManager.accentColor ?? .blue)
+                }
             }
-            .padding()
+
+            Text(self.subtitle ?? "")
+                .font(.body)
+                .foregroundStyle(Color.secondary)
 
             Spacer()
-
-            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                ContentItemMenu(self.curationItem, caregiverID: currentCaregiverID)
-            }
         }
-        .frame(height: 60)
-        .frame(minWidth: 200, maxWidth: .infinity)
-        .contentShape(Rectangle())
+        .frame(width: self.kIconSize, alignment: .leading)
+        .lineLimit(0)
+        .fixedSize()
     }
 
     // MARK: Private
@@ -107,7 +86,7 @@ public struct ColumnListItem: View {
     private var curationItem: CurationItemModel
     private var icon: UIImage
     private var shape: any Shape
-    private let kIconSize: CGFloat = 60
+    private let kIconSize: CGFloat = 180
     private var title: String
     private var subtitle: String?
 
@@ -130,15 +109,10 @@ public struct ColumnListItem: View {
         .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
     ]
 
-    ScrollView(.horizontal, showsIndicators: false) {
-        HStack(spacing: 30) {
-            ForEach(curations.chunked(into: 3), id: \.self) { chunk in
-                VStack {
-                    ForEach(chunk) { curation in
-                        ColumnListItem(curation)
-                        Divider()
-                    }
-                }
+    return ScrollView(.horizontal) {
+        HStack {
+            ForEach(curations) { curation in
+                ActivityItem(curation)
             }
         }
     }

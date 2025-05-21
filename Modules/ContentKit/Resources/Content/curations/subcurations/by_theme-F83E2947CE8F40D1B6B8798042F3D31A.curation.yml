@@ -19,16 +19,16 @@ l10n:
       description:
 
 content:
-  - component: vertical_tile_grid
+  - component: vertical_curation_grid
     l10n:
       - locale: fr_FR
         details:
-          title: Par thème
+          title:
           subtitle:
           description:
       - locale: en_US
         details:
-          title: By theme
+          title:
           subtitle:
           description:
     items:

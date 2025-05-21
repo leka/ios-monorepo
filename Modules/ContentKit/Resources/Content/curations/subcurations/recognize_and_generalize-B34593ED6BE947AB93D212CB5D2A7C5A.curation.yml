@@ -19,16 +19,16 @@ l10n:
       description:
 
 content:
-  - component: vertical_tile_grid
+  - component: vertical_curation_grid
     l10n:
       - locale: fr_FR
         details:
-          title: Reconnaitre et généraliser
+          title:
           subtitle:
           description:
       - locale: en_US
         details:
-          title: Recognize and generalize
+          title:
           subtitle:
           description:
     items:

@@ -31,7 +31,7 @@ public struct ActivityGridView: View {
                                 ]
                             )
                     ) {
-                        ContentGridItem(CurationItemModel(id: activity.id, contentType: .activity))
+                        ActivityItem(CurationItemModel(id: activity.id, contentType: .activity))
                     }
                     .logEventScreenView(
                         screenName: "activity_details",
