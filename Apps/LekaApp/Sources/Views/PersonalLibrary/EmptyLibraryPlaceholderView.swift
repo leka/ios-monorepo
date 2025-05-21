@@ -55,7 +55,7 @@ struct EmptyLibraryPlaceholderView: View {
                 Image(systemName: "ellipsis.circle")
                     .foregroundColor(self.styleManager.accentColor ?? .blue)
                     .accessibility(label: Text("More Options"))
-                Text(l10n.EmptyLibraryPlaceholderView.buttonInstruction)
+                Text(l10n.EmptyLibraryPlaceholderView.addItems)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
@@ -90,10 +90,10 @@ extension l10n {
             value: "Tap the",
             comment: "Instruction prefix"
         )
-        static let buttonInstruction = LocalizedString(
-            "lekaapp.empty_library_placedholder_view.button_instruction",
-            value: "button on any activity, curriculum, or story to add them to your Library.",
-            comment: "Instruction suffix"
+        static let addItems = LocalizedString(
+            "lekaapp.empty_library_placedholder_view.add_items",
+            value: "button on any content to add them to your Library.",
+            comment: "Add instruction suffix"
         )
         static let removeItems = LocalizedString(
             "lekaapp.empty_library_placedholder_view.remove_items",
