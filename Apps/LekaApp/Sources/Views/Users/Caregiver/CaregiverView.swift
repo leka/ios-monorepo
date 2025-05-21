@@ -52,10 +52,10 @@ struct CaregiverView: View {
                         .navigationBarTitleDisplayMode(.inline)
                 }
             }
-            .onChange(of: self.caregiverManagerViewModel.caregivers, perform: { caregivers in
-                guard !caregivers.isEmpty else { return }
-                self.caregiver = caregivers.first(where: { $0.id == self.caregiver.id })!
-            })
+            .onChange(of: self.caregiverManagerViewModel.caregivers) {
+                guard !self.caregiverManagerViewModel.caregivers.isEmpty else { return }
+                self.caregiver = self.caregiverManagerViewModel.caregivers.first(where: { $0.id == self.caregiver.id })!
+            }
 
             Divider()
 

@@ -45,8 +45,8 @@ struct MainView: View {
                         }
                     }
                     .id("caregiverLabel")
-                    .onChange(of: self.authManagerViewModel.userAuthenticationState) { _, newState in
-                        if newState == .loggedOut {
+                    .onChange(of: self.authManagerViewModel.userAuthenticationState) {
+                        if self.authManagerViewModel.userAuthenticationState == .loggedOut {
                             withAnimation {
                                 scrollViewProxy.scrollTo("caregiverLabel", anchor: .top)
                             }
@@ -355,11 +355,11 @@ struct MainView: View {
             }
             self.persistentDataManager.checkInactivity()
         }
-        .onChange(of: self.scenePhase) { newPhase in
+        .onChange(of: self.scenePhase) {
             guard self.authManagerViewModel.userAuthenticationState == .loggedIn else {
                 return
             }
-            switch newPhase {
+            switch self.scenePhase {
                 case .active:
                     self.persistentDataManager.checkInactivity()
                 case .inactive,
@@ -392,10 +392,10 @@ struct MainView: View {
                 self.caregiverManager.setCurrentCaregiver(byID: storedCaregiverID)
             }
         }
-        .onChange(of: self.caregiverManagerViewModel.currentCaregiver) { currentCaregiver in
-            self.persistentDataManager.lastActiveCaregiverID = currentCaregiver?.id
+        .onChange(of: self.caregiverManagerViewModel.currentCaregiver) {
+            self.persistentDataManager.lastActiveCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id
             self.persistentDataManager.updateLastActiveTimestamp()
-            if currentCaregiver != nil {
+            if self.caregiverManagerViewModel.currentCaregiver != nil {
                 self.styleManager.setColorScheme(self.caregiverManagerViewModel.currentCaregiver!.colorScheme)
                 self.styleManager.setAccentColor(self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color)
             }

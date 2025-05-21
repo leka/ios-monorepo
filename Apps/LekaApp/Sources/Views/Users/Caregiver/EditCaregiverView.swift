@@ -37,8 +37,8 @@ struct EditCaregiverView: View {
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
                             .focused(self.$focused)
-                            .onChange(of: self.focused) { focused in
-                                if !focused {
+                            .onChange(of: self.focused) {
+                                if !self.focused {
                                     self.caregiver.firstName = self.caregiver.firstName.trimLeadingAndTrailingWhitespaces()
                                 }
                             }
@@ -51,8 +51,8 @@ struct EditCaregiverView: View {
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
                             .focused(self.$focused)
-                            .onChange(of: self.focused) { focused in
-                                if !focused {
+                            .onChange(of: self.focused) {
+                                if !self.focused {
                                     self.caregiver.lastName = self.caregiver.lastName.trimLeadingAndTrailingWhitespaces()
                                 }
                             }
@@ -64,9 +64,9 @@ struct EditCaregiverView: View {
                             .autocorrectionDisabled()
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
-                            .onChange(of: self.caregiver.email) { newValue in
+                            .onChange(of: self.caregiver.email) {
                                 withAnimation {
-                                    self.isWhitespacesErrorMessageVisible = newValue.containsInvalidCharacters()
+                                    self.isWhitespacesErrorMessageVisible = self.caregiver.email.containsInvalidCharacters()
                                 }
                             }
                     }
@@ -85,9 +85,9 @@ struct EditCaregiverView: View {
                         in: ...Date(),
                         displayedComponents: [.date]
                     )
-                    .onChange(of: self.birthdate, perform: { _ in
+                    .onChange(of: self.birthdate) {
                         self.caregiver.birthdate = self.birthdate
-                    })
+                    }
                 }
 
                 Section {

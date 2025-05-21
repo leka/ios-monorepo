@@ -74,8 +74,8 @@ struct CreateCarereceiverView: View {
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
                             .focused(self.$focused)
-                            .onChange(of: self.focused) { focused in
-                                if !focused {
+                            .onChange(of: self.focused) {
+                                if !self.focused {
                                     self.newCarereceiver.username = self.newCarereceiver.username.trimLeadingAndTrailingWhitespaces()
                                 }
                             }
