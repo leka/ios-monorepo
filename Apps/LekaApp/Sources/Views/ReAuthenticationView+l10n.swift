@@ -4,8 +4,6 @@
 
 import LocalizationKit
 
-// swiftlint:disable line_length
-
 extension l10n {
     enum ReAuthenticationView {
         static let title = LocalizedString(
@@ -72,5 +70,3 @@ extension l10n {
         )
     }
 }
-
-// swiftlint:enable line_length

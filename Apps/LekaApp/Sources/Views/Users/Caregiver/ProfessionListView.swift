@@ -58,6 +58,7 @@ struct ProfessionListView: View {
 }
 
 #Preview {
+    @Previewable
     @State var caregiver = Caregiver(professions: [
         Professions.list[0].id,
         Professions.list[1].id,
