@@ -72,21 +72,43 @@ class Navigation {
                     return Text("Curriculum \(curation.id) not found")
                 }
                 return CurriculumDetailsView(curriculum: curriculum, onStartActivity: self.onStartActivity)
+                    .logEventScreenView(
+                        screenName: "curriculum_details",
+                        context: .splitView,
+                        parameters: [
+                            "lk_curriculum_id": "\(curriculum.name)-\(curriculum.id)",
+                        ]
+                    )
             case .activity:
                 guard let activity = Activity(id: curation.id) else {
                     return Text("Activity \(curation.id) not found")
                 }
                 return ActivityDetailsView(activity: activity, onStartActivity: self.onStartActivity)
+                    .logEventScreenView(
+                        screenName: "activity_details",
+                        context: .splitView,
+                        parameters: ["lk_activity_id": "\(activity.name)-\(activity.id)"]
+                    )
             case .story:
                 guard let story = Story(id: curation.id) else {
                     return Text("Story \(curation.id) not found")
                 }
                 return StoryDetailsView(story: story, onStartStory: self.onStartStory)
+                    .logEventScreenView(
+                        screenName: "story_details",
+                        context: .splitView,
+                        parameters: ["lk_story_id": "\(story.name)-\(story.id)"]
+                    )
             case .curation:
                 guard let curation = CategoryCuration(id: curation.id) else {
                     return Text("Curation \(curation.id) not found")
                 }
                 return CurationView(curation: curation)
+                    .logEventScreenView(
+                        screenName: "curation",
+                        context: .splitView,
+                        parameters: ["lk_curation_id": "\(curation.id)"]
+                    )
         }
     }
 
