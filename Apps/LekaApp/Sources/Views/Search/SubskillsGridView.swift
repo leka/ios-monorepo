@@ -13,9 +13,15 @@ import UtilsKit
 public struct SubskillsGridView: View {
     // MARK: Lifecycle
 
-    public init(subskills: [Skill]? = nil, onActivitySelected: ((Activity) -> Void)?) {
+    public init(subskills: [Skill]? = nil) {
         self.subskills = subskills ?? []
-        self.onActivitySelected = onActivitySelected
+        guard let firstSubskill = subskills?.first else {
+            self.mainSkillActivities = []
+            return
+        }
+        self.mainSkillActivities = self.activities.filter {
+            $0.skills.contains(firstSubskill)
+        }.map { ContentCategory.CurationPayload(for: CurationItemModel(id: $0.id, contentType: .activity)) }
     }
 
     // MARK: Public
@@ -48,7 +54,7 @@ public struct SubskillsGridView: View {
                             Section {
                                 let subskillActivities = self.activities.filter {
                                     $0.skills.contains(subskill)
-                                }
+                                }.map { ContentCategory.CurationPayload(for: CurationItemModel(id: $0.id, contentType: .activity)) }
                                 if !subskillActivities.isEmpty {
                                     VStack(alignment: .leading) {
                                         VStack(alignment: .leading) {
@@ -63,7 +69,7 @@ public struct SubskillsGridView: View {
                                         .padding(.horizontal)
                                         .padding(.horizontal)
 
-                                        ActivityHorizontalListView(activities: subskillActivities, onStartActivity: self.onActivitySelected)
+                                        HorizontalActivityList(items: subskillActivities)
 
                                         Divider()
                                             .padding(.horizontal)
@@ -74,21 +80,8 @@ public struct SubskillsGridView: View {
                         }
                     }
                 } else {
-                    ScrollView(showsIndicators: true) {
-                        VStack(alignment: .leading, spacing: 30) {
-                            LazyVGrid(columns: Array(repeating: GridItem(), count: 3)) {
-                                ForEach(self.activities.filter {
-                                    $0.skills.contains(self.subskills[0])
-                                }) { activity in
-                                    NavigationLink(destination:
-                                        ActivityDetailsView(activity: activity, onStartActivity: self.onActivitySelected))
-                                    {
-                                        ActivityItem(CurationItemModel(id: activity.uuid, contentType: .activity))
-                                    }
-                                }
-                            }
-                            .padding(.horizontal)
-                        }
+                    ScrollView(showsIndicators: false) {
+                        VerticalActivityGrid(items: self.mainSkillActivities)
                     }
                 }
             }
@@ -104,22 +97,18 @@ public struct SubskillsGridView: View {
         $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
     }
 
+    let mainSkillActivities: [ContentCategory.CurationPayload]
     let subskills: [Skill]
-    let onActivitySelected: ((Activity) -> Void)?
 
     // MARK: Private
 
     private var styleManager: StyleManager = .shared
-    private let columns = Array(repeating: GridItem(), count: 2)
 }
 
 #Preview {
     NavigationStack {
         SubskillsGridView(
-            subskills: Skills.primarySkillsList,
-            onActivitySelected: { _ in
-                print("Activity Selected")
-            }
+            subskills: Skills.primarySkillsList
         )
     }
 }

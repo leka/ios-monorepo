@@ -12,15 +12,13 @@ import SwiftUI
 public struct SearchGridView: View {
     // MARK: Lifecycle
 
-    public init(activities: [Activity]? = nil,
-                skills: [Skill]? = nil,
-                curriculums: [Curriculum]? = nil,
-                onStartActivity: ((Activity) -> Void)?)
+    public init(skills: [Skill]? = nil,
+                activities: [Activity]? = nil,
+                curriculums: [Curriculum]? = nil)
     {
-        self.activities = activities ?? []
         self.skills = skills ?? []
-        self.curriculums = curriculums ?? []
-        self.onStartActivity = onStartActivity
+        self.activities = activities?.map { ContentCategory.CurationPayload(for: CurationItemModel(id: $0.id, contentType: .activity)) } ?? []
+        self.curriculums = curriculums?.map { ContentCategory.CurationPayload(for: CurationItemModel(id: $0.id, contentType: .curriculum)) } ?? []
     }
 
     // MARK: Public
@@ -42,7 +40,7 @@ public struct SearchGridView: View {
                     Spacer()
                     NavigationLink(destination:
                         ScrollView(showsIndicators: true) {
-                            ActivityGridView(activities: self.activities, onStartActivity: self.onStartActivity)
+                            VerticalActivityGrid(items: self.activities)
                                 .navigationTitle(String(l10n.SearchGridView.activitiesTitle.characters))
                         }
                     ) {
@@ -51,7 +49,7 @@ public struct SearchGridView: View {
                 }
                 .padding(.horizontal)
 
-                ActivityHorizontalListView(activities: self.activities, onStartActivity: self.onStartActivity)
+                HorizontalActivityList(items: self.activities)
             }
 
             if !self.curriculums.isEmpty {
@@ -61,7 +59,7 @@ public struct SearchGridView: View {
                     Spacer()
                     NavigationLink(destination:
                         ScrollView(showsIndicators: true) {
-                            CurriculumGridView(curriculums: self.curriculums, onStartActivity: self.onStartActivity)
+                            VerticalCurriculumGrid(items: self.curriculums)
                                 .navigationTitle(String(l10n.SearchGridView.curriculumsTitle.characters))
                         }
                     ) {
@@ -70,7 +68,7 @@ public struct SearchGridView: View {
                 }
                 .padding(.horizontal)
 
-                CurriculumHorizontalListView(curriculums: self.curriculums, onStartActivity: self.onStartActivity)
+                HorizontalCurriculumList(items: self.curriculums)
             }
 
             if !self.skills.isEmpty {
@@ -81,7 +79,7 @@ public struct SearchGridView: View {
                 }
                 .padding(.horizontal)
 
-                SkillsGridView(skills: self.skills, onActivitySelected: self.onStartActivity)
+                SkillsGridView(skills: self.skills)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -89,14 +87,9 @@ public struct SearchGridView: View {
 
     // MARK: Internal
 
-    let activities: [Activity]
     let skills: [Skill]
-    let curriculums: [Curriculum]
-    let onStartActivity: ((Activity) -> Void)?
-
-    // MARK: Private
-
-    private var styleManager: StyleManager = .shared
+    let activities: [ContentCategory.CurationPayload]
+    let curriculums: [ContentCategory.CurationPayload]
 }
 
 // MARK: - l10n.SearchGridView
@@ -128,12 +121,9 @@ extension l10n {
 #Preview {
     NavigationStack {
         SearchGridView(
-            activities: Array(ContentKit.allActivities.values),
             skills: Skills.primarySkillsList,
-            curriculums: Array(ContentKit.allCurriculums.values),
-            onStartActivity: { _ in
-                print("Activity Started")
-            }
+            activities: Array(ContentKit.allActivities.values),
+            curriculums: Array(ContentKit.allCurriculums.values)
         )
     }
 }

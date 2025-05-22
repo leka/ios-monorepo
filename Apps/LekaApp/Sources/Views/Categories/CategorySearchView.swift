@@ -15,23 +15,18 @@ struct CategorySearchView: View {
     var body: some View {
         Group {
             if self.query.isEmpty {
-                ScrollView(showsIndicators: true) {
-                    SkillsGridView(skills: self.skills, onActivitySelected: { activity in
-                        self.navigation.setCurrentActivity(activity)
-                        self.navigation.setFullScreenCoverContent(.activityView(carereceivers: []))
-                    })
+                ScrollView(showsIndicators: false) {
+                    SkillsGridView(skills: self.skills)
                 }
                 .navigationTitle(String(l10n.CategorySearchView.browseSkillstitle.characters))
                 .font(.title.bold())
             } else {
-                ScrollView(showsIndicators: true) {
-                    SearchGridView(activities: self.searchActivityResults,
-                                   skills: self.searchSkillsResults,
-                                   curriculums: self.searchCurriculumResults,
-                                   onStartActivity: { activity in
-                                       self.navigation.setCurrentActivity(activity)
-                                       self.navigation.setFullScreenCoverContent(.activityView(carereceivers: []))
-                                   })
+                ScrollView(showsIndicators: false) {
+                    SearchGridView(
+                        skills: self.searchSkillsResults,
+                        activities: self.searchActivityResults,
+                        curriculums: self.searchCurriculumResults
+                    )
                 }
             }
         }
@@ -113,7 +108,6 @@ struct CategorySearchView: View {
     private let activities: [Activity] = Array(ContentKit.allPublishedActivities.values)
     private let curriculums: [Curriculum] = Array(ContentKit.allPublishedCurriculums.values)
     private let skills: [Skill] = Skills.primarySkillsList
-    private var navigation: Navigation = .shared
 
     @State private var query = ""
 }

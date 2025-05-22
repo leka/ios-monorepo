@@ -13,9 +13,8 @@ import UtilsKit
 public struct SkillsGridView: View {
     // MARK: Lifecycle
 
-    public init(skills: [Skill]? = nil, onActivitySelected: ((Activity) -> Void)?) {
+    public init(skills: [Skill]? = nil) {
         self.skills = skills ?? []
-        self.onActivitySelected = onActivitySelected
     }
 
     // MARK: Public
@@ -29,7 +28,7 @@ public struct SkillsGridView: View {
                 }
                 if !filteredActivities.isEmpty {
                     NavigationLink(destination:
-                        SubskillsGridView(subskills: subskills, onActivitySelected: self.onActivitySelected)
+                        SubskillsGridView(subskills: subskills)
                     ) {
                         GroupBox {
                             VStack {
@@ -70,11 +69,9 @@ public struct SkillsGridView: View {
     }
 
     let skills: [Skill]
-    let onActivitySelected: ((Activity) -> Void)?
 
     // MARK: Private
 
-    private var styleManager: StyleManager = .shared
     private let columns = Array(repeating: GridItem(), count: 3)
 }
 
@@ -91,10 +88,7 @@ extension l10n {
 #Preview {
     NavigationStack {
         SkillsGridView(
-            skills: Skills.primarySkillsList,
-            onActivitySelected: { _ in
-                print("Activity Selected")
-            }
+            skills: Skills.primarySkillsList
         )
     }
 }
