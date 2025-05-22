@@ -66,4 +66,4 @@ extension l10n {
     }
 }
 
-// swiftlint:enable nesting line_length
+// swiftlint:enable nesting

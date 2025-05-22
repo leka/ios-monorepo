@@ -204,8 +204,8 @@ struct SettingsView: View {
                     .font(.footnote)
             }
         }
-        .onChange(of: self.authManagerViewModel.userAuthenticationState) { _, newState in
-            if newState == .loggedOut {
+        .onChange(of: self.authManagerViewModel.userAuthenticationState) {
+            if self.authManagerViewModel.userAuthenticationState == .loggedOut {
                 self.persistentDataManager.clearUserData()
                 self.reset()
             }

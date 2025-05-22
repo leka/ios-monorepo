@@ -5,7 +5,7 @@
 import LocalizationKit
 import SwiftUI
 
-// swiftlint:disable nesting line_length
+// swiftlint:disable nesting
 
 extension l10n {
     enum StoryView {
@@ -40,4 +40,4 @@ extension l10n {
     }
 }
 
-// swiftlint:enable nesting line_length
+// swiftlint:enable nesting

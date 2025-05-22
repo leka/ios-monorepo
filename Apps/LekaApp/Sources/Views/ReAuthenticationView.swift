@@ -76,8 +76,8 @@ struct ReAuthenticationView: View {
             .buttonStyle(.borderedProminent)
             .tint(.red)
         }
-        .onChange(of: self.authManagerViewModel.reAuthenticationSucceeded) { success in
-            if success {
+        .onChange(of: self.authManagerViewModel.reAuthenticationSucceeded) {
+            if self.authManagerViewModel.reAuthenticationSucceeded {
                 self.dismiss()
             }
         }

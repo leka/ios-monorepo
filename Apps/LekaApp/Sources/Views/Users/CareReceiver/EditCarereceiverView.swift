@@ -33,8 +33,8 @@ struct EditCarereceiverView: View {
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
                             .focused(self.$focused)
-                            .onChange(of: self.focused) { focused in
-                                if !focused {
+                            .onChange(of: self.focused) {
+                                if !self.focused {
                                     self.modifiedCarereceiver.username = self.modifiedCarereceiver.username.trimLeadingAndTrailingWhitespaces()
                                 }
                             }

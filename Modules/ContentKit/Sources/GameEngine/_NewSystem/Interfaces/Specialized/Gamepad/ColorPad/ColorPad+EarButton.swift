@@ -32,8 +32,8 @@ extension ColorPad {
                         .frame(width: CGFloat(self.buttonPressed ? 65 : 0), height: CGFloat(self.buttonPressed ? 65 : 0))
                 )
                 .animation(.easeInOut(duration: 0.2), value: self.buttonPressed ? 65 : 0)
-                .onChange(of: self.padState) { state in
-                    if state == .fullyPressed {
+                .onChange(of: self.padState) {
+                    if self.padState == .fullyPressed {
                         self.buttonPressed = true
                         self.robot.shine(self.selectedEar)
                     } else {

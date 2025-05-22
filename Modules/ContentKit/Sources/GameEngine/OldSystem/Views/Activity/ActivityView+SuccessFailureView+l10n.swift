@@ -6,8 +6,6 @@ import LocalizationKit
 
 // MARK: - l10n.SuccessFailureView
 
-// swiftlint:disable line_length
-
 extension l10n {
     enum SuccessFailureView {
         static let successPercentageLabel = LocalizedStringInterpolation("game_engine_kit.success_failure_view.success_percentage_label",
@@ -31,5 +29,3 @@ extension l10n {
                                                      comment: "Success and Failure view quit button label")
     }
 }
-
-// swiftlint:enable line_length

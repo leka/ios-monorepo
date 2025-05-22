@@ -59,8 +59,8 @@ public struct RobotConnectionView: View {
         .onDisappear {
             self.viewModel.stopScanning()
         }
-        .onChange(of: self.scenePhase) { newPhase in
-            if newPhase == .active {
+        .onChange(of: self.scenePhase) {
+            if self.scenePhase == .active {
                 self.viewModel.tryToConnectToRobotConnectedInAnotherApp()
             }
         }

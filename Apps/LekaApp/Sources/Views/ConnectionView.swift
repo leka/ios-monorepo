@@ -68,8 +68,8 @@ struct ConnectionView: View {
                 .disabled(self.isConnectionDisabled || self.authManagerViewModel.isLoading)
                 .buttonStyle(.borderedProminent)
             }
-            .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
-                if newValue == .loggedIn {
+            .onChange(of: self.authManagerViewModel.userAuthenticationState) {
+                if self.authManagerViewModel.userAuthenticationState == .loggedIn {
                     self.caregiverManager.initializeCaregiversListener()
                     self.carereceiverManager.initializeCarereceiversListener()
                     self.rootAccountManager.initializeRootAccountListener()

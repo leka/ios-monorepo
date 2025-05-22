@@ -108,9 +108,9 @@ public struct ColorMediatorView: View {
             HStack {
                 Toggle("", isOn: self.$isShuffleModeActivated)
                     .labelsHidden()
-                    .onChange(of: self.isShuffleModeActivated) { isShuffleModeActivated in
+                    .onChange(of: self.isShuffleModeActivated) {
                         self.resetGame()
-                        if !isShuffleModeActivated { return }
+                        if !self.isShuffleModeActivated { return }
                         self.shuffledSelectedColors = self.selectedColors.shuffled()
                     }
                 Image(systemName: "shuffle")

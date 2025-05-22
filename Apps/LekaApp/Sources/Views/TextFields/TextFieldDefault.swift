@@ -21,8 +21,8 @@ struct TextFieldDefault: View {
                 .textFieldStyle(.roundedBorder)
                 .autocorrectionDisabled()
                 .focused(self.$focused)
-                .onChange(of: self.focused) { focused in
-                    if !focused {
+                .onChange(of: self.focused) {
+                    if !self.focused {
                         self.entry = self.entry.trimLeadingAndTrailingWhitespaces()
                     }
                 }

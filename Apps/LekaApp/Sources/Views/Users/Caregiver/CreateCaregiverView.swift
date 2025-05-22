@@ -72,8 +72,8 @@ struct CreateCaregiverView: View {
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
                             .focused(self.$focused)
-                            .onChange(of: self.focused) { focused in
-                                if !focused {
+                            .onChange(of: self.focused) {
+                                if !self.focused {
                                     self.newCaregiver.firstName = self.newCaregiver.firstName.trimLeadingAndTrailingWhitespaces()
                                 }
                             }
@@ -86,8 +86,8 @@ struct CreateCaregiverView: View {
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
                             .focused(self.$focused)
-                            .onChange(of: self.focused) { focused in
-                                if !focused {
+                            .onChange(of: self.focused) {
+                                if !self.focused {
                                     self.newCaregiver.lastName = self.newCaregiver.lastName.trimLeadingAndTrailingWhitespaces()
                                 }
                             }
@@ -99,8 +99,8 @@ struct CreateCaregiverView: View {
                             .autocorrectionDisabled()
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
-                            .onChange(of: self.newCaregiver.email) { newValue in
-                                self.isWhitespacesErrorMessageVisible = newValue.containsInvalidCharacters()
+                            .onChange(of: self.newCaregiver.email) {
+                                self.isWhitespacesErrorMessageVisible = self.newCaregiver.email.containsInvalidCharacters()
                             }
                     }
                 } footer: {
@@ -116,9 +116,9 @@ struct CreateCaregiverView: View {
                         in: ...Date(),
                         displayedComponents: [.date]
                     )
-                    .onChange(of: self.birthdate, perform: { _ in
+                    .onChange(of: self.birthdate) {
                         self.newCaregiver.birthdate = self.birthdate
-                    })
+                    }
                 }
 
                 Section {

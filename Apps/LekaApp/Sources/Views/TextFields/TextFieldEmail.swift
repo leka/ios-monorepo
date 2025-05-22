@@ -40,8 +40,8 @@ struct TextFieldEmail: View {
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
                 .focused(self.$focused)
-                .onChange(of: self.focused) { focused in
-                    if !focused {
+                .onChange(of: self.focused) {
+                    if !self.focused {
                         self.entry = self.entry.trimLeadingAndTrailingWhitespaces()
                     }
                 }
