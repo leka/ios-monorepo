@@ -91,11 +91,10 @@ struct EditCaregiverLabel: View {
 
     // MARK: Private
 
+    private var navigation: Navigation = .shared
     private var styleManager: StyleManager = .shared
 
-    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
-
-    private var navigation: Navigation = .shared
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 }
 
 // MARK: - l10n.ChangeCaregiverProfile
@@ -137,11 +136,12 @@ extension l10n {
         EmptyView()
     })
     .onAppear {
-        let caregiverManagerViewModel = CaregiverManagerViewModel()
-        caregiverManagerViewModel.currentCaregiver = Caregiver(
+        let caregiverManager = CaregiverManager.shared
+        let caregiver = Caregiver(
             firstName: "Joe",
             lastName: "Bidjobba",
             avatar: Avatars.categories[0].avatars[2]
         )
+        caregiverManager.setCurrentCaregiver(to: caregiver)
     }
 }
