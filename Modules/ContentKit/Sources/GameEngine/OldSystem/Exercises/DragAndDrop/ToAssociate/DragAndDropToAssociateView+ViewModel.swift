@@ -2,6 +2,8 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+// swiftlint:disable line_length
+
 import Combine
 import SwiftUI
 
@@ -28,7 +30,7 @@ extension DragAndDropToAssociateView {
         public func onChoiceDropped(
             choice: GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate, destination: GameplayAssociateCategoriesChoiceModelDragAndDropToAssociate
         ) {
-            var newChoice = choice
+            let newChoice = choice
             newChoice.destination = destination
             self.gameplay.process(choice: newChoice)
         }
@@ -63,3 +65,5 @@ extension DragAndDropToAssociateView {
         }
     }
 }
+
+// swiftlint:enable line_length
