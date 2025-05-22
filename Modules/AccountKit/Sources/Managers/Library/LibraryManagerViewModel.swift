@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import Observation
 import SwiftUI
 
 // MARK: - LibraryManagerViewModel
@@ -25,19 +26,15 @@ public class LibraryManagerViewModel {
 
     public static let shared = LibraryManagerViewModel()
 
-    public var currentLibrary: Library?
-    public var activities: [SavedActivity] = []
-    public var curriculums: [SavedCurriculum] = []
-    public var stories: [SavedStory] = []
+    public private(set) var activities: [SavedActivity] = []
+    public private(set) var curriculums: [SavedCurriculum] = []
+    public private(set) var stories: [SavedStory] = []
+    public private(set) var isLoading: Bool = false
+    public private(set) var alertType: RemoveAlertType = .none
+    public private(set) var itemToRemove: LibraryItem?
 
-    public var errorMessage: String = ""
     public var showErrorAlert: Bool = false
-    public var isLoading: Bool = false
-
-    // Alert-related properties
     public var showRemoveAlert: Bool = false
-    public var alertType: RemoveAlertType = .none
-    public var itemToRemove: LibraryItem?
 
     public func isContentSaved(id: String) -> Bool {
         self.activities.contains { $0.id == id } ||
@@ -92,8 +89,10 @@ public class LibraryManagerViewModel {
 
     // MARK: Private
 
-    private var cancellables = Set<AnyCancellable>()
-    private let libraryManager = LibraryManager.shared
+    @ObservationIgnored private var cancellables = Set<AnyCancellable>()
+    @ObservationIgnored private let libraryManager = LibraryManager.shared
+    private var currentLibrary: Library?
+    private var errorMessage: String = ""
 
     private func subscribeToManager() {
         self.libraryManager.currentLibrary
