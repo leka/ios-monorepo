@@ -40,14 +40,14 @@ struct ConnectionView: View {
 
                         Button(role: .destructive) {
                             self.showResetPassword = true
-                            self.authManagerViewModel.userAction = .userIsResettingPassword
+                            self.authManagerViewModel.setUserAction(.userIsResettingPassword)
                         } label: {
                             Text(l10n.ConnectionView.passwordForgottenButton)
                                 .font(.footnote)
                                 .underline()
                         }
                         .sheet(isPresented: self.$showResetPassword) {
-                            self.authManagerViewModel.userAction = .userIsSigningIn
+                            self.authManagerViewModel.setUserAction(.userIsSigningIn)
                         } content: {
                             ForgotPasswordView(email: self.email)
                         }
@@ -75,12 +75,12 @@ struct ConnectionView: View {
                     self.rootAccountManager.initializeRootAccountListener()
                     self.libraryManager.initializeLibraryListener()
                     AnalyticsManager.logEventLogin()
-                    self.authManagerViewModel.userAction = .none
                     self.navigation.setFullScreenCoverContent(nil)
+                    self.authManagerViewModel.setUserAction(.none)
                 }
             }
             .onAppear {
-                self.authManagerViewModel.userAction = .userIsSigningIn
+                self.authManagerViewModel.setUserAction(.none)
             }
             .onDisappear {
                 self.authManagerViewModel.resetErrorMessage()
@@ -94,12 +94,11 @@ struct ConnectionView: View {
     @State private var password: String = ""
     @State private var forgotPasswordEmail: String = ""
 
-    @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
-
     @State private var showResetPassword: Bool = false
 
     private var navigation: Navigation = .shared
     private var authManager: AuthManager = .shared
+    private var authManagerViewModel: AuthManagerViewModel = .shared
     private var rootAccountManager: RootAccountManager = .shared
     private var libraryManager: LibraryManager = .shared
     private var caregiverManager: CaregiverManager = .shared

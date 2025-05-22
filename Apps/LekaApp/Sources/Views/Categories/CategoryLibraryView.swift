@@ -11,7 +11,8 @@ struct CategoryLibraryView: View {
     @State var category: Navigation.Category
 
     @State var libraryManagerViewModel: LibraryManagerViewModel = .shared
-    @ObservedObject var authManagerViewModel = AuthManagerViewModel.shared
+
+    var authManagerViewModel: AuthManagerViewModel = .shared
 
     var body: some View {
         if self.authManagerViewModel.userAuthenticationState == .loggedIn {

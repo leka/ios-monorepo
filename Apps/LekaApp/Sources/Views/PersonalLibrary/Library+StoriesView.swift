@@ -35,10 +35,9 @@ struct LibraryStoriesView: View {
 
     // MARK: Private
 
-    @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
-
     private var navigation: Navigation = .shared
     private var viewModel: LibraryManagerViewModel
+    private var authManagerViewModel: AuthManagerViewModel = .shared
 
     private var stories: [Story] {
         self.viewModel.stories.compactMap { savedStories in

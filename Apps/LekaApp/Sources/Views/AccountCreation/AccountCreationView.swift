@@ -53,7 +53,7 @@ struct AccountCreationView: View {
             }
         }
         .onAppear {
-            self.authManagerViewModel.userAction = .userIsSigningUp
+            self.authManagerViewModel.setUserAction(.userIsSigningUp)
         }
         .onDisappear {
             self.authManagerViewModel.resetErrorMessage()
@@ -73,12 +73,11 @@ struct AccountCreationView: View {
     @State private var email: String = ""
     @State private var password: String = ""
 
-    @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
-
     @State private var isVerificationEmailAlertPresented: Bool = false
 
     private var navigation: Navigation = .shared
     private var authManager = AuthManager.shared
+    private var authManagerViewModel: AuthManagerViewModel = .shared
     private var rootAccountManager = RootAccountManager.shared
     private var libraryManager = LibraryManager.shared
 

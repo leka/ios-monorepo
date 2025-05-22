@@ -30,8 +30,8 @@ extension AccountCreationProcess {
             .multilineTextAlignment(.center)
             .frame(maxWidth: .infinity, alignment: .center)
             .onDisappear {
-                self.authManagerViewModel.userAction = .none
                 self.navigation.setSheetContent(.caregiverPicker)
+                self.authManagerViewModel.setUserAction(.none)
                 // TODO: (@dev/team): might not be needed, could be remoded
                 self.navigation.setFullScreenCoverContent(nil)
                 self.navigation.setNavigateToAccountCreationProcess(false)
@@ -42,9 +42,8 @@ extension AccountCreationProcess {
 
         @Environment(\.dismiss) private var dismiss
 
-        @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
-
         private var navigation = Navigation.shared
+        private var authManagerViewModel: AuthManagerViewModel = .shared
     }
 }
 

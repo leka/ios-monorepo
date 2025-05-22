@@ -69,8 +69,9 @@ struct TextFieldPassword: View {
 
     @FocusState private var focused: Bool
 
-    @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
     @State private var isSecured: Bool = true
+
+    @Bindable private var authManagerViewModel: AuthManagerViewModel = .shared
 }
 
 #Preview {

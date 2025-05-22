@@ -36,10 +36,9 @@ struct LibraryCurriculumsView: View {
 
     // MARK: Private
 
-    @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
-
     private var navigation: Navigation = .shared
     private var viewModel: LibraryManagerViewModel
+    private var authManagerViewModel: AuthManagerViewModel = .shared
 
     private var curriculums: [Curriculum] {
         self.viewModel.curriculums.compactMap { savedCurriculums in

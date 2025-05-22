@@ -30,9 +30,8 @@ struct MainView: View {
     @State private var isDeveloperSectionExpanded: Bool = true
     @State private var isDemoSectionExpanded: Bool = true
 
-    @ObservedObject var authManagerViewModel = AuthManagerViewModel.shared
-
     @Bindable var navigation: Navigation = .shared
+    var authManagerViewModel: AuthManagerViewModel = .shared
 
     var body: some View {
         NavigationSplitView {
@@ -46,8 +45,8 @@ struct MainView: View {
                         }
                     }
                     .id("caregiverLabel")
-                    .onReceive(self.authManagerViewModel.$userAuthenticationState) { state in
-                        if state == .loggedOut {
+                    .onChange(of: self.authManagerViewModel.userAuthenticationState) { _, newState in
+                        if newState == .loggedOut {
                             withAnimation {
                                 scrollViewProxy.scrollTo("caregiverLabel", anchor: .top)
                             }

@@ -5,10 +5,12 @@
 import Combine
 import Foundation
 import LocalizationKit
+import Observation
 
 // MARK: - AuthManagerViewModel
 
-public class AuthManagerViewModel: ObservableObject {
+@Observable
+public class AuthManagerViewModel {
     // MARK: Lifecycle
 
     public init() {
@@ -17,22 +19,40 @@ public class AuthManagerViewModel: ObservableObject {
 
     // MARK: Public
 
-    public static let shared = AuthManagerViewModel()
+    @ObservationIgnored public static let shared = AuthManagerViewModel()
 
     // MARK: - User
 
-    @Published public var userAuthenticationState: AuthManager.AuthenticationState = .unknown
-    @Published public var userAction: AuthManager.UserAction?
-    @Published public var userEmailIsVerified = false
-    @Published public var reAuthenticationSucceeded: Bool = false
+    public private(set) var userAuthenticationState: AuthManager.AuthenticationState = .unknown
+    public private(set) var userAction: AuthManager.UserAction?
+    public private(set) var userEmailIsVerified = false
+    public private(set) var reAuthenticationSucceeded: Bool = false
 
     // MARK: - Alerts
 
-    @Published public var showErrorAlert = false
-    @Published public var showErrorMessage = false
-    @Published public var showActionRequestAlert = false
-    @Published public var resetPasswordSucceeded: Bool = false
-    @Published public var isLoading: Bool = false
+    public private(set) var isLoading: Bool = false
+
+    // TODO(@dev/team): Move the following to Views if relevant
+    public var showErrorAlert = false
+    public var resetPasswordSucceeded: Bool = false
+    public var showErrorMessage = false
+    public var showActionRequestAlert = false
+
+    public func setLoading(_ loading: Bool) {
+        self.isLoading = loading
+    }
+
+    public func setUserAction(_ action: AuthManager.UserAction?) {
+        self.userAction = action
+    }
+
+    public func setUserEmailIsVerified(_ value: Bool) {
+        self.userEmailIsVerified = value
+    }
+
+    public func setReAuthenticationSucceeded(_ value: Bool) {
+        self.reAuthenticationSucceeded = value
+    }
 
     public func resetErrorMessage() {
         self.showErrorAlert = false
@@ -41,8 +61,8 @@ public class AuthManagerViewModel: ObservableObject {
 
     // MARK: Private
 
-    private let authManager: AuthManager = .shared
-    private var cancellables = Set<AnyCancellable>()
+    @ObservationIgnored private let authManager: AuthManager = .shared
+    @ObservationIgnored private var cancellables = Set<AnyCancellable>()
 
     private func subscribeToAuthManager() {
         self.authManager.authenticationStatePublisher
@@ -69,7 +89,10 @@ public class AuthManagerViewModel: ObservableObject {
 
         self.authManager.isLoadingPublisher
             .receive(on: DispatchQueue.main)
-            .assign(to: &self.$isLoading)
+            .sink { [weak self] isLoading in
+                self?.isLoading = isLoading
+            }
+            .store(in: &self.cancellables)
 
         self.authManager.emailVerificationStatePublisher
             .receive(on: DispatchQueue.main)
@@ -108,11 +131,12 @@ public class AuthManagerViewModel: ObservableObject {
     }
 
     private func resetState() {
-        self.userAction = .none
-        self.userEmailIsVerified = false
         self.showActionRequestAlert = false
         self.showErrorAlert = false
         self.showErrorMessage = false
+
+        self.userAction = .none
+        self.userEmailIsVerified = false
         self.reAuthenticationSucceeded = false
     }
 }
