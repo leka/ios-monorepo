@@ -13,6 +13,7 @@ extension EditCaregiverView {
     struct AppearanceRow: View {
         // MARK: Internal
 
+        var styleManager: StyleManager = .shared
         @Binding var caregiver: Caregiver
 
         var body: some View {
@@ -24,16 +25,12 @@ extension EditCaregiverView {
                 Toggle("", isOn: Binding(
                     get: { self.styleManager.colorScheme == .dark },
                     set: {
-                        self.styleManager.colorScheme = $0 ? .dark : .light
+                        self.styleManager.setColorScheme($0 ? .dark : .light)
                         self.caregiver.colorScheme = $0 ? .dark : .light
                     }
                 ))
             }
         }
-
-        // MARK: Private
-
-        @ObservedObject private var styleManager: StyleManager = .shared
     }
 }
 

@@ -92,9 +92,9 @@ struct CarereceiverList: View {
     // MARK: Private
 
     private let columns = Array(repeating: GridItem(), count: 4)
+    private var styleManager: StyleManager = .shared
 
     @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
-    @ObservedObject private var styleManager: StyleManager = .shared
     @State private var isCarereceiverCreationPresented: Bool = false
 }
 

@@ -62,7 +62,7 @@ extension ActionButtonView {
 
         // MARK: Private
 
-        @StateObject private var styleManager: StyleManager = .shared
+        private var styleManager: StyleManager = .shared
     }
 }
 

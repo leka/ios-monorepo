@@ -153,7 +153,6 @@ public struct ConnectedRobotView: View {
 
     // MARK: Private
 
-    @StateObject private var styleManager: StyleManager = .shared
     @State private var newRobotName: String = ""
     @State private var presentAlertRenameRobot: Bool = false
 

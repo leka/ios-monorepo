@@ -75,7 +75,8 @@ extension DanceFreezeView {
         // MARK: Private
 
         @Binding private var motion: Motion
-        @ObservedObject private var styleManager: StyleManager = .shared
+
+        private var styleManager: StyleManager = .shared
     }
 }
 

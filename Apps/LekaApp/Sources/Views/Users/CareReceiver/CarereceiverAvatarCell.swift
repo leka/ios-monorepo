@@ -56,8 +56,7 @@ struct CarereceiverAvatarCell: View {
 
     // MARK: Private
 
-    @ObservedObject private var styleManager: StyleManager = .shared
-
+    private var styleManager: StyleManager = .shared
     private let strokeColor: Color = .init(light: UIColor.systemGray3, dark: UIColor.systemGray2)
 }
 

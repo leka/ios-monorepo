@@ -16,8 +16,8 @@ public extension ColorMediatorView {
         private let colors: [Robot.Color] = [.red, .blue, .green, .yellow, .orange, .pink]
         private let buttonSize: CGFloat = 140
 
-        @ObservedObject private var styleManager: StyleManager = .shared
         @State var selectedColors: [Robot.Color]
+        var styleManager: StyleManager = .shared
         var onSelected: ([Robot.Color]) -> Void
 
         public var body: some View {

@@ -15,6 +15,7 @@ extension EditCaregiverView {
     struct AccentColorRow: View {
         // MARK: Internal
 
+        var styleManager: StyleManager = .shared
         @Binding var caregiver: Caregiver
 
         var body: some View {
@@ -26,14 +27,12 @@ extension EditCaregiverView {
                 ForEach(ColorTheme.allCases, id: \.self) { color in
                     ColorCircleView(color: color.color, isSelected: self.selectedColor == color.color)
                         .onTapGesture {
-                            self.styleManager.accentColor = color.color
+                            self.styleManager.setAccentColor(color.color)
                             self.caregiver.colorTheme = color
                         }
                 }
             }
         }
-
-        // MARK: Private
 
         // MARK: - ColorCircleView
 
@@ -52,8 +51,6 @@ extension EditCaregiverView {
                 .animation(.easeIn, value: self.isSelected)
             }
         }
-
-        @ObservedObject private var styleManager: StyleManager = .shared
 
         private var selectedColor: Color {
             self.styleManager.accentColor ?? .clear

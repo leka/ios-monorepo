@@ -71,8 +71,7 @@ struct EmptyLibraryPlaceholderView: View {
 
     // MARK: Private
 
-    @ObservedObject private var styleManager: StyleManager = .shared
-
+    private var styleManager: StyleManager = .shared
     private let icon: Icon
 }
 

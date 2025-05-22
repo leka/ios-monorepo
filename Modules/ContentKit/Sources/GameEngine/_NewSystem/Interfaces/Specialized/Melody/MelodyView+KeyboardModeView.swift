@@ -75,7 +75,8 @@ extension MelodyView {
         // MARK: Private
 
         @Binding private var keyboard: KeyboardType
-        @ObservedObject private var styleManager: StyleManager = .shared
+
+        private var styleManager: StyleManager = .shared
     }
 }
 

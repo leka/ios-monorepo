@@ -242,17 +242,17 @@ struct SettingsView: View {
     private let carereceiverManager: CarereceiverManager = .shared
     private var libraryManager: LibraryManager = .shared
     private let persistentDataManager: PersistentDataManager = .shared
+    private var styleManager: StyleManager = .shared
 
     @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
-    @ObservedObject private var styleManager: StyleManager = .shared
     @ObservedObject private var navigation = Navigation.shared
 
     private func reset() {
         self.caregiverManager.resetData()
         self.carereceiverManager.resetData()
         self.libraryManager.resetData()
-        self.styleManager.accentColor = DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
-        self.styleManager.colorScheme = .light
+        self.styleManager.setAccentColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
+        self.styleManager.setColorScheme(.light)
     }
 
     private var errorAlertTitle: String {

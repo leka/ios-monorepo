@@ -396,8 +396,8 @@ struct MainView: View {
             self.persistentDataManager.lastActiveCaregiverID = currentCaregiver?.id
             self.persistentDataManager.updateLastActiveTimestamp()
             if currentCaregiver != nil {
-                self.styleManager.colorScheme = self.caregiverManagerViewModel.currentCaregiver!.colorScheme
-                self.styleManager.accentColor = self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color
+                self.styleManager.setColorScheme(self.caregiverManagerViewModel.currentCaregiver!.colorScheme)
+                self.styleManager.setAccentColor(self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color)
             }
             self.libraryManager.initializeLibraryListener()
         }
@@ -406,8 +406,6 @@ struct MainView: View {
     // MARK: Private
 
     @Environment(\.scenePhase) private var scenePhase
-
-    @ObservedObject private var styleManager: StyleManager = .shared
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
     @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
@@ -418,6 +416,7 @@ struct MainView: View {
 
     @Bindable private var libraryManagerViewModel: LibraryManagerViewModel = .shared
 
+    private var styleManager: StyleManager = .shared
     private var persistentDataManager: PersistentDataManager = .shared
     private var caregiverManager: CaregiverManager = .shared
     private var carereceiverManager: CarereceiverManager = .shared

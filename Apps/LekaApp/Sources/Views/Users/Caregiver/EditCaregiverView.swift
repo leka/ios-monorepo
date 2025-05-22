@@ -104,8 +104,8 @@ struct EditCaregiverView: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button(String(l10n.EditCaregiverView.closeButtonLabel.characters)) {
-                    self.styleManager.colorScheme = self.caregiverManagerViewModel.currentCaregiver!.colorScheme
-                    self.styleManager.accentColor = self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color
+                    self.styleManager.setColorScheme(self.caregiverManagerViewModel.currentCaregiver!.colorScheme)
+                    self.styleManager.setAccentColor(self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color)
                     self.dismiss()
                 }
             }
@@ -130,9 +130,9 @@ struct EditCaregiverView: View {
     @State private var isAvatarPickerPresented = false
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
-    @ObservedObject private var styleManager: StyleManager = .shared
     @State private var birthdate: Date
 
+    private var styleManager: StyleManager = .shared
     private var caregiverManager: CaregiverManager = .shared
 
     private var placeholderFirstName = Text(String(l10n.CaregiverCreation.caregiverPlaceholderFirstName.characters))
