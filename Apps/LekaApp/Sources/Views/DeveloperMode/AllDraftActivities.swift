@@ -2,44 +2,22 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import AccountKit
 import ContentKit
-import LocalizationKit
 import SwiftUI
 
-// MARK: - SampleActivityListView
+// MARK: - AllDraftActivitiesView
 
 struct AllDraftActivitiesView: View {
-    // MARK: Internal
-
-    let activities: [Activity] = ContentKit.allDraftActivities.values.sorted {
+    let activities: [ContentCategory.CurationPayload] = ContentKit.allDraftActivities.values.sorted {
         $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
-    }
+    }.map { ContentCategory.CurationPayload(for: CurationItemModel(id: $0.id, contentType: .activity)) }
 
     var body: some View {
-        ScrollView(showsIndicators: true) {
-            VStack(alignment: .leading, spacing: 30) {
-                LazyVGrid(columns: self.columns) {
-                    ForEach(self.activities) { activity in
-                        NavigationLink(destination:
-                            ActivityDetailsView(activity: activity, onStartActivity: { activity in
-                                self.navigation.setCurrentActivity(activity)
-                                self.navigation.setFullScreenCoverContent(.activityView(carereceivers: []))
-                            })) {
-                                ActivityItem(CurationItemModel(id: activity.uuid, contentType: .activity))
-                            }
-                    }
-                }
-                .padding(.horizontal)
-            }
+        ScrollView(showsIndicators: false) {
+            VerticalActivityGrid(items: self.activities)
         }
         .navigationTitle("Draft Activities")
     }
-
-    // MARK: Private
-
-    private var navigation: Navigation = .shared
-    private var columns = Array(repeating: GridItem(), count: 3)
 }
 
 #Preview {
