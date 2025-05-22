@@ -3,9 +3,11 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import Observation
 import SwiftUI
 
-public class ConnectedRobotInformationViewModel: ObservableObject {
+@Observable
+public class ConnectedRobotInformationViewModel {
     // MARK: Lifecycle
 
     public init(robot: Robot = .shared) {
@@ -15,47 +17,66 @@ public class ConnectedRobotInformationViewModel: ObservableObject {
 
     // MARK: Public
 
-    @Published public var isNotConnected: Bool = true
+    public private(set) var isNotConnected: Bool = true
 
-    @Published public var name: String = "(n/a)"
-    @Published public var serialNumber: String = "(n/a)"
-    @Published public var osVersion: String = "(n/a)"
+    public private(set) var name: String = "(n/a)"
+    public private(set) var serialNumber: String = "(n/a)"
+    public private(set) var osVersion: String = "(n/a)"
+    public private(set) var battery: Int = 0
+    public private(set) var isCharging: Bool = false
+    public private(set) var isConnected: Bool = false
 
-    @Published public var battery: Int = 0
-    @Published public var isCharging: Bool = false
+    public func setName(_ name: String) {
+        self.name = name
+    }
 
-    @Published public var isConnected: Bool = false {
-        didSet {
-            self.isNotConnected = !self.isConnected
-        }
+    public func setSerialNumber(_ serialNumber: String) {
+        self.serialNumber = serialNumber
+    }
+
+    public func setOSVersion(_ osVersion: String) {
+        self.osVersion = osVersion
+    }
+
+    public func setBattery(_ battery: Int) {
+        self.battery = battery
+    }
+
+    public func setIsCharging(_ charging: Bool) {
+        self.isCharging = charging
+    }
+
+    public func setIsConnected(_ connected: Bool) {
+        self.isConnected = connected
+        self.isNotConnected = !connected
     }
 
     // MARK: Internal
 
-    let robot: Robot
+    @ObservationIgnored let robot: Robot
 
     // MARK: Private
 
-    private var cancellables: Set<AnyCancellable> = []
+    @ObservationIgnored private var cancellables: Set<AnyCancellable> = []
 
     private func getRobotInformation() {
         self.robot.isConnected
             .receive(on: DispatchQueue.main)
             .sink { isConnected in
-                self.isConnected = isConnected
+                self.setIsConnected(isConnected)
                 guard self.isNotConnected else { return }
-                self.name = "(not connected)"
-                self.serialNumber = ""
-                self.osVersion = ""
-                self.battery = 0
-                self.isCharging = false
+                self.setName("(not connected)")
+                self.setSerialNumber("")
+                self.setOSVersion("")
+                self.setBattery(0)
+                self.setIsCharging(false)
             }
             .store(in: &self.cancellables)
 
         self.robot.name
             .receive(on: DispatchQueue.main)
             .sink {
-                self.name = $0
+                self.setName($0)
             }
             .store(in: &self.cancellables)
 
@@ -63,9 +84,9 @@ public class ConnectedRobotInformationViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink {
                 if let version = $0 {
-                    self.osVersion = "\(version.major).\(version.minor)"
+                    self.setOSVersion("\(version.major).\(version.minor)")
                 } else {
-                    self.osVersion = "(n/a)"
+                    self.setOSVersion("(n/a)")
                 }
             }
             .store(in: &self.cancellables)
@@ -73,21 +94,21 @@ public class ConnectedRobotInformationViewModel: ObservableObject {
         self.robot.battery
             .receive(on: DispatchQueue.main)
             .sink {
-                self.battery = $0
+                self.setBattery($0)
             }
             .store(in: &self.cancellables)
 
         self.robot.isCharging
             .receive(on: DispatchQueue.main)
             .sink {
-                self.isCharging = $0
+                self.setIsCharging($0)
             }
             .store(in: &self.cancellables)
 
         self.robot.serialNumber
             .receive(on: DispatchQueue.main)
             .sink {
-                self.serialNumber = $0
+                self.setSerialNumber($0)
             }
             .store(in: &self.cancellables)
     }

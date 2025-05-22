@@ -7,7 +7,7 @@ import RobotKit
 import SwiftUI
 
 struct ConnectedRobotInformationView: View {
-    @StateObject var viewModel: ConnectedRobotInformationViewModel = .init()
+    @State var viewModel: ConnectedRobotInformationViewModel = .init()
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
