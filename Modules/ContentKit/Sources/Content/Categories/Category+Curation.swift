@@ -135,6 +135,12 @@ public extension ContentCategory {
     struct CurationPayload: Codable, Identifiable {
         // MARK: Lifecycle
 
+        public init(for curation: CurationItemModel) {
+            self.value = curation.id
+            self.type = curation.contentType
+            self.curation = CurationItemModel(id: self.value, contentType: self.type)
+        }
+
         public init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
 
