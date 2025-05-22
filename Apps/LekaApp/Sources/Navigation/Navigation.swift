@@ -5,6 +5,7 @@
 import AccountKit
 import Combine
 import ContentKit
+import Observation
 import SwiftUI
 
 // MARK: - FullScreenCoverContent
@@ -36,7 +37,8 @@ enum SheetContent: Hashable, Identifiable {
 
 // MARK: - Navigation
 
-class Navigation: ObservableObject {
+@Observable
+class Navigation {
     // MARK: Lifecycle
 
     private init() {
@@ -92,17 +94,14 @@ class Navigation: ObservableObject {
 
     static let shared = Navigation()
 
-    @Published var disableUICompletly: Bool = false
-    @Published var demoMode: Bool = false
-    @Published var categories = Category.allCases
+    var demoMode: Bool = false
+    // TODO: (@ladislas) No 'private(set)' because used as modal trigger
+    var sheetContent: SheetContent?
+    var fullScreenCoverContent: FullScreenCoverContent?
+    var navigateToAccountCreationProcess: Bool = false
 
-    @Published var sheetContent: SheetContent?
-    @Published var fullScreenCoverContent: FullScreenCoverContent?
-
-    @Published var currentActivity: Activity?
-    @Published var currentStory: Story?
-
-    @Published var navigateToAccountCreationProcess: Bool = false
+    private(set) var currentActivity: Activity?
+    private(set) var currentStory: Story?
 
     var selectedCategory: Category? = .home {
         willSet {
@@ -118,7 +117,7 @@ class Navigation: ObservableObject {
         }
     }
 
-    @Published var path: NavigationPath = .init() {
+    var path: NavigationPath = .init() {
         willSet {
             self.disableUICompletly = true
         }
@@ -127,13 +126,41 @@ class Navigation: ObservableObject {
         }
     }
 
+    func setSheetContent(_ content: SheetContent?) {
+        self.sheetContent = content
+    }
+
+    func setFullScreenCoverContent(_ content: FullScreenCoverContent?) {
+        self.fullScreenCoverContent = content
+    }
+
+    func setCurrentActivity(_ activity: Activity?) {
+        self.currentActivity = activity
+    }
+
+    func setCurrentStory(_ story: Story?) {
+        self.currentStory = story
+    }
+
+    func setNavigateToAccountCreationProcess(_ value: Bool) {
+        self.navigateToAccountCreationProcess = value
+    }
+
+    func setSelectedCategory(_ category: Category?) {
+        self.selectedCategory = category
+    }
+
+    func setPath(_ path: NavigationPath) {
+        self.path = path
+    }
+
     // MARK: Private
 
-    private var authManager: AuthManager = .shared
-    private var authManagerViewModel: AuthManagerViewModel = .shared
-    private var cancellables: Set<AnyCancellable> = []
-
-    private var isProgrammaticNavigation: Bool = false
+    @ObservationIgnored private var authManager: AuthManager = .shared
+    @ObservationIgnored private var authManagerViewModel: AuthManagerViewModel = .shared
+    @ObservationIgnored private var cancellables: Set<AnyCancellable> = []
+    @ObservationIgnored private var isProgrammaticNavigation: Bool = false
+    @ObservationIgnored private var disableUICompletly: Bool = false
 
     private var pushPopNoAnimationTransaction: Transaction {
         var transaction = Transaction(animation: nil)

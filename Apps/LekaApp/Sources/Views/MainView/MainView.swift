@@ -30,8 +30,9 @@ struct MainView: View {
     @State private var isDeveloperSectionExpanded: Bool = true
     @State private var isDemoSectionExpanded: Bool = true
 
-    @ObservedObject var navigation: Navigation = .shared
     @ObservedObject var authManagerViewModel = AuthManagerViewModel.shared
+
+    @Bindable var navigation: Navigation = .shared
 
     var body: some View {
         NavigationSplitView {
@@ -54,7 +55,7 @@ struct MainView: View {
                     }
 
                     Button {
-                        self.navigation.sheetContent = .robotConnection
+                        self.navigation.setSheetContent(.robotConnection)
                     } label: {
                         RobotConnectionLabel()
                     }
@@ -110,7 +111,7 @@ struct MainView: View {
 
                     VStack(alignment: .center, spacing: 20) {
                         Button {
-                            self.navigation.sheetContent = .settings
+                            self.navigation.setSheetContent(.settings)
                         } label: {
                             SettingsLabel()
                         }
@@ -259,9 +260,9 @@ struct MainView: View {
             }
         }
         .fullScreenCover(item: self.$navigation.fullScreenCoverContent) {
-            self.navigation.fullScreenCoverContent = nil
-            self.navigation.currentActivity = nil
-            self.navigation.currentStory = nil
+            self.navigation.setFullScreenCoverContent(nil)
+            self.navigation.setCurrentActivity(nil)
+            self.navigation.setCurrentStory(nil)
         } content: { content in
             switch content {
                 case .welcomeView:
@@ -282,7 +283,7 @@ struct MainView: View {
             }
         }
         .sheet(item: self.$navigation.sheetContent) {
-            self.navigation.sheetContent = nil
+            self.navigation.setSheetContent(nil)
         } content: { content in
             NavigationStack {
                 switch content {
@@ -328,20 +329,20 @@ struct MainView: View {
                             // nothing to do
                         }, onSelected: { carereceivers in
                             self.carereceiverManager.setCurrentCarereceivers(to: carereceivers)
-                            self.navigation.currentActivity = activity
-                            self.navigation.currentStory = story
+                            self.navigation.setCurrentActivity(activity)
+                            self.navigation.setCurrentStory(story)
                             if self.navigation.currentActivity != nil {
-                                self.navigation.fullScreenCoverContent = .activityView(carereceivers: carereceivers)
+                                self.navigation.setFullScreenCoverContent(.activityView(carereceivers: carereceivers))
                             } else if self.navigation.currentStory != nil {
-                                self.navigation.fullScreenCoverContent = .storyView(carereceivers: carereceivers)
+                                self.navigation.setFullScreenCoverContent(.storyView(carereceivers: carereceivers))
                             }
                         }, onSkip: {
-                            self.navigation.currentActivity = activity
-                            self.navigation.currentStory = story
+                            self.navigation.setCurrentActivity(activity)
+                            self.navigation.setCurrentStory(story)
                             if self.navigation.currentActivity != nil {
-                                self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+                                self.navigation.setFullScreenCoverContent(.activityView(carereceivers: []))
                             } else if self.navigation.currentStory != nil {
-                                self.navigation.fullScreenCoverContent = .storyView(carereceivers: [])
+                                self.navigation.setFullScreenCoverContent(.storyView(carereceivers: []))
                             }
                         })
                         .logEventScreenView(screenName: "carereceiver_picker", context: .sheet)
@@ -383,10 +384,10 @@ struct MainView: View {
                 guard self.navigation.sheetContent == nil, self.navigation.fullScreenCoverContent == nil else {
                     return
                 }
-                self.navigation.sheetContent = .caregiverPicker
+                self.navigation.setSheetContent(.caregiverPicker)
             } else {
                 guard let storedCaregiverID = self.persistentDataManager.lastActiveCaregiverID else {
-                    self.navigation.sheetContent = .caregiverPicker
+                    self.navigation.setSheetContent(.caregiverPicker)
                     return
                 }
                 self.caregiverManager.setCurrentCaregiver(byID: storedCaregiverID)

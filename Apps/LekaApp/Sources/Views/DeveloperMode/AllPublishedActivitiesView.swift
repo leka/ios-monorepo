@@ -23,8 +23,8 @@ struct AllPublishedActivitiesView: View {
                     ForEach(self.activities) { activity in
                         NavigationLink(destination:
                             ActivityDetailsView(activity: activity, onStartActivity: { activity in
-                                self.navigation.currentActivity = activity
-                                self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+                                self.navigation.setCurrentActivity(activity)
+                                self.navigation.setFullScreenCoverContent(.activityView(carereceivers: []))
                             })) {
                                 ActivityItem(CurationItemModel(id: activity.uuid, contentType: .activity))
                             }
@@ -38,8 +38,7 @@ struct AllPublishedActivitiesView: View {
 
     // MARK: Private
 
-    @ObservedObject private var navigation: Navigation = .shared
-
+    private var navigation: Navigation = .shared
     private var columns = Array(repeating: GridItem(), count: 3)
 }
 

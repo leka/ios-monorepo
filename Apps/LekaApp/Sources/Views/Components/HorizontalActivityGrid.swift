@@ -38,7 +38,7 @@ public struct HorizontalActivityGrid: View {
 
     // MARK: Private
 
-    @StateObject private var navigation: Navigation = .shared
+    @State private var navigation: Navigation = .shared
 
     private var numberOfRows: Int {
         switch self.items.count {

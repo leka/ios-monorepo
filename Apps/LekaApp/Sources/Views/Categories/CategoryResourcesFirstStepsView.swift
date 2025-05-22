@@ -66,8 +66,7 @@ struct CategoryResourcesFirstStepsView: View {
 
     private let category: CategoryResources = ContentKit.allResources["first_steps"]!
     private var styleManager: StyleManager = .shared
-
-    @ObservedObject private var navigation: Navigation = .shared
+    private var navigation: Navigation = .shared
 }
 
 #Preview {

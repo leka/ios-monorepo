@@ -24,10 +24,10 @@ struct FavoriteStoriesView: View {
         } else {
             LibraryStoryListView(stories: self.stories) { story in
                 if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
-                    self.navigation.sheetContent = .carereceiverPicker(activity: nil, story: story)
+                    self.navigation.setSheetContent(.carereceiverPicker(activity: nil, story: story))
                 } else {
-                    self.navigation.currentStory = story
-                    self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+                    self.navigation.setCurrentStory(story)
+                    self.navigation.setFullScreenCoverContent(.activityView(carereceivers: []))
                 }
             }
         }
@@ -35,11 +35,11 @@ struct FavoriteStoriesView: View {
 
     // MARK: Private
 
-    @ObservedObject private var navigation: Navigation = .shared
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
+    private var navigation: Navigation = .shared
     private var viewModel: LibraryManagerViewModel
 
     private var stories: [Story] {

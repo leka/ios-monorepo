@@ -24,10 +24,10 @@ struct FavoriteCurriculumsView: View {
                 CurriculumGridView(curriculums: self.curriculums, onStartActivity: {
                     activity in
                     if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
-                        self.navigation.sheetContent = .carereceiverPicker(activity: activity, story: nil)
+                        self.navigation.setSheetContent(.carereceiverPicker(activity: activity, story: nil))
                     } else {
-                        self.navigation.currentActivity = activity
-                        self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+                        self.navigation.setCurrentActivity(activity)
+                        self.navigation.setFullScreenCoverContent(.activityView(carereceivers: []))
                     }
                 })
             }
@@ -36,11 +36,11 @@ struct FavoriteCurriculumsView: View {
 
     // MARK: Private
 
-    @ObservedObject private var navigation: Navigation = .shared
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
 
     @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
+    private var navigation: Navigation = .shared
     private var viewModel: LibraryManagerViewModel
 
     private var curriculums: [Curriculum] {

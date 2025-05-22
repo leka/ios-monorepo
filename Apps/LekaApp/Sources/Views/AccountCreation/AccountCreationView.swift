@@ -63,7 +63,7 @@ struct AccountCreationView: View {
                   message: Text(l10n.AccountCreationView.EmailVerificationAlert.message),
                   dismissButton: .default(Text(l10n.AccountCreationView.EmailVerificationAlert.dismissButton)) {
                       AnalyticsManager.logEventSignUp()
-                      self.navigation.navigateToAccountCreationProcess = true
+                      self.navigation.setNavigateToAccountCreationProcess(true)
                   })
         }
     }
@@ -74,10 +74,10 @@ struct AccountCreationView: View {
     @State private var password: String = ""
 
     @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
-    @ObservedObject private var navigation: Navigation = .shared
 
     @State private var isVerificationEmailAlertPresented: Bool = false
 
+    private var navigation: Navigation = .shared
     private var authManager = AuthManager.shared
     private var rootAccountManager = RootAccountManager.shared
     private var libraryManager = LibraryManager.shared

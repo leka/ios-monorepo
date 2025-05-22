@@ -76,7 +76,7 @@ struct ConnectionView: View {
                     self.libraryManager.initializeLibraryListener()
                     AnalyticsManager.logEventLogin()
                     self.authManagerViewModel.userAction = .none
-                    self.navigation.fullScreenCoverContent = nil
+                    self.navigation.setFullScreenCoverContent(nil)
                 }
             }
             .onAppear {
@@ -95,10 +95,10 @@ struct ConnectionView: View {
     @State private var forgotPasswordEmail: String = ""
 
     @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
-    @ObservedObject private var navigation: Navigation = .shared
 
     @State private var showResetPassword: Bool = false
 
+    private var navigation: Navigation = .shared
     private var authManager: AuthManager = .shared
     private var rootAccountManager: RootAccountManager = .shared
     private var libraryManager: LibraryManager = .shared

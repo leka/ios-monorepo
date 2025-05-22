@@ -31,7 +31,7 @@ public struct CarouselView: View {
 
     // MARK: Private
 
-    @StateObject private var navigation: Navigation = .shared
+    @State private var navigation: Navigation = .shared
 }
 
 #Preview {
