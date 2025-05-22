@@ -49,7 +49,7 @@ public struct ActivityView: View {
             .blur(radius: self.blurRadius)
             .opacity(self.opacity)
             .onChange(of: self.viewModel.isReinforcerAnimationVisible) {
-                if $0 {
+                if self.viewModel.isReinforcerAnimationVisible {
                     withAnimation(.easeInOut.delay(0.5)) {
                         self.blurRadius = 20
                     }
@@ -60,7 +60,7 @@ public struct ActivityView: View {
                 }
             }
             .onChange(of: self.viewModel.isCurrentActivityCompleted) {
-                if $0 {
+                if self.viewModel.isCurrentActivityCompleted {
                     withAnimation {
                         self.opacity = 0
                     }

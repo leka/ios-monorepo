@@ -65,8 +65,8 @@ extension ColorPad {
                         .frame(width: 300, height: 300)
                 )
                 .animation(Animation.easeInOut(duration: 0.2), value: self.buttonPressed ? 25 : 0)
-                .onChange(of: self.padState) { state in
-                    if state == .fullyPressed {
+                .onChange(of: self.padState) {
+                    if self.padState == .fullyPressed {
                         self.buttonPressed = true
                         self.robot.shine(self.section)
                     } else {

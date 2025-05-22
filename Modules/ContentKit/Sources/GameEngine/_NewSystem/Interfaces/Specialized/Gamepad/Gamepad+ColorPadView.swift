@@ -23,7 +23,7 @@ extension Gamepad {
                                     Robot.shared.shine(.all(in: color))
                                 }
                             }
-                            .onChange(of: self.reinforcerTriggered) { _ in
+                            .onChange(of: self.reinforcerTriggered) {
                                 if self.reinforcerTriggered {
                                     self.selectedColor = nil
                                     Robot.shared.blacken(.all)

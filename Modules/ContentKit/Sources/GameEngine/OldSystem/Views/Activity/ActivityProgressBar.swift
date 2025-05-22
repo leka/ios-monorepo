@@ -30,8 +30,8 @@ struct ActivityProgressBar: View {
                             isCurrentlyPlaying: .constant(isCurrentlyPlaying)
                         )
                         .padding(6)
-                        .onChange(of: self.viewModel.currentExerciseSharedData.state) { newState in
-                            if case let .completed(level) = newState {
+                        .onChange(of: self.viewModel.currentExerciseSharedData.state) {
+                            if case let .completed(level) = self.viewModel.currentExerciseSharedData.state {
                                 withAnimation(.snappy.delay(self.viewModel.delayAfterReinforcerAnimation)) {
                                     self.currentColor = self.completionLevelToColor(level: level)
                                 }
