@@ -39,7 +39,7 @@ public struct CurriculumGridView: View {
                         type: .curriculum,
                         id: curriculum.id,
                         name: curriculum.name,
-                        origin: .personalLibrary
+                        origin: Navigation.shared.selectedCategory?.rawValue
                     )
                 })
             }

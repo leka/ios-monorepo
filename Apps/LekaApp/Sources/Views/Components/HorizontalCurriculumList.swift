@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AnalyticsKit
 import ContentKit
 import SwiftUI
 
@@ -19,6 +20,14 @@ public struct HorizontalCurriculumList: View {
                     ) {
                         CurriculumItem(item)
                     }
+                    .simultaneousGesture(TapGesture().onEnded {
+                        AnalyticsManager.logEventSelectContent(
+                            type: .curriculum,
+                            id: item.id,
+                            name: item.name,
+                            origin: self.navigation.selectedCategory?.rawValue
+                        )
+                    })
                 }
             }
             .padding()

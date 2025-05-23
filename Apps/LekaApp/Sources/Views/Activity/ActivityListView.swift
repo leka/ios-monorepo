@@ -42,7 +42,7 @@ public struct ActivityListView: View {
                                 type: .activity,
                                 id: activity.id,
                                 name: activity.name,
-                                origin: .generalLibrary
+                                origin: Navigation.shared.selectedCategory?.rawValue
                             )
                         })
 

@@ -74,7 +74,7 @@ public struct LibraryStoryListView: View {
                         type: .story,
                         id: story.id,
                         name: story.name,
-                        origin: .personalLibrary
+                        origin: Navigation.shared.selectedCategory?.rawValue
                     )
                 })
             }

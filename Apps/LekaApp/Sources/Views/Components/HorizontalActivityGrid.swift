@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AnalyticsKit
 import ContentKit
 import SwiftUI
 
@@ -26,6 +27,14 @@ public struct HorizontalActivityGrid: View {
                             }
                         }
                     }
+                    .simultaneousGesture(TapGesture().onEnded {
+                        AnalyticsManager.logEventSelectContent(
+                            type: item.contentType == .activity ? .activity : .story,
+                            id: item.id,
+                            name: item.name,
+                            origin: self.navigation.selectedCategory?.rawValue
+                        )
+                    })
                 }
             }
             .padding()

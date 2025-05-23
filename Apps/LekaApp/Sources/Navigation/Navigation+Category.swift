@@ -5,30 +5,30 @@
 import SwiftUI
 
 extension Navigation {
-    enum Category: Hashable, Identifiable, CaseIterable {
+    enum Category: String, Hashable, Identifiable, CaseIterable {
         // ? Content
         case home
         case explore
         case objectives
         case search
-        case educationalGames
+        case educationalGames = "educational_games"
         case stories
         case gamepads
 
         // ? Library
-        case libraryCurriculums
-        case libraryActivities
-        case libraryStories
-        case libraryFavorites
+        case libraryCurriculums = "library_curriculums"
+        case libraryActivities = "library_activities"
+        case libraryStories = "library_stories"
+        case libraryFavorites = "library_favorites"
 
         // ? Monitoring
         case caregivers
         case carereceivers
 
         // ? Resources
-        case resourcesFirstSteps
-        case resourcesVideo
-        case resourcesDeepDive
+        case resourcesFirstSteps = "resources_first_steps"
+        case resourcesVideo = "resources_video"
+        case resourcesDeepDive = "resources_deep_dive"
 
         // ? DEVELOPER_MODE + TESTFLIGHT_BUILD
         case curationSandbox

@@ -43,7 +43,7 @@ public struct ResourceFileView: View {
                 type: .resourceFile,
                 id: self.resource.id.uuidString,
                 name: self.resource.title,
-                origin: .resources
+                origin: Navigation.shared.selectedCategory?.rawValue
             )
         }
         .quickLookPreview(self.$url)
