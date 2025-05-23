@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import AccountKit
+import AnalyticsKit
 import Combine
 import ContentKit
 import SwiftUI
