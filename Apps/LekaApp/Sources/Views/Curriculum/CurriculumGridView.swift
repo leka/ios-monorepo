@@ -32,7 +32,7 @@ public struct CurriculumGridView: View {
                             ]
                         )
                 ) {
-                    CurriculumItem(CurationItemModel(id: curriculum.id, contentType: .curriculum))
+                    CurriculumItem(CurationItemModel(id: curriculum.id, name: curriculum.name, contentType: .curriculum))
                 }
                 .simultaneousGesture(TapGesture().onEnded {
                     AnalyticsManager.logEventSelectContent(

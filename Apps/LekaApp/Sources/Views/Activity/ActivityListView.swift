@@ -48,7 +48,7 @@ public struct ActivityListView: View {
 
                         if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                             ContentItemMenu(
-                                CurationItemModel(id: activity.id, contentType: .activity),
+                                CurationItemModel(id: activity.id, name: activity.name, contentType: .activity),
                                 caregiverID: currentCaregiverID
                             )
                             .frame(width: 40)

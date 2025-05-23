@@ -83,7 +83,7 @@ public struct LibraryStoryListView: View {
             if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                 TableColumn("") { story in
                     ContentItemMenu(
-                        CurationItemModel(id: story.id, contentType: .story),
+                        CurationItemModel(id: story.id, name: story.name, contentType: .story),
                         caregiverID: currentCaregiverID
                     )
                 }

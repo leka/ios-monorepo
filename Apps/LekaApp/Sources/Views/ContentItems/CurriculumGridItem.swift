@@ -93,19 +93,19 @@ public struct CurriculumGridItem: View {
 
 #Preview {
     let curations: [CurationItemModel] = [
-        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
-        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
-        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
-        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
-        .init(id: "7C75908B86D748A283AA080D40642BE7", contentType: .curriculum),
-        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
-        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
-        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
-        .init(id: "Wrong UUID", contentType: .curriculum),
-        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
-        .init(id: "7C75908B86D748A283AA080D40642BE7", contentType: .curriculum),
-        .init(id: "60C133CB19F94BA0864DFA9BF6E7F696", contentType: .story),
-        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
+        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", name: "", contentType: .curriculum),
+        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", name: "", contentType: .curriculum),
+        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", name: "", contentType: .curriculum),
+        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", name: "", contentType: .curriculum),
+        .init(id: "7C75908B86D748A283AA080D40642BE7", name: "", contentType: .curriculum),
+        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", name: "", contentType: .curriculum),
+        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", name: "", contentType: .curriculum),
+        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", name: "", contentType: .curriculum),
+        .init(id: "Wrong UUID", name: "", contentType: .curriculum),
+        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", name: "", contentType: .curriculum),
+        .init(id: "7C75908B86D748A283AA080D40642BE7", name: "", contentType: .curriculum),
+        .init(id: "60C133CB19F94BA0864DFA9BF6E7F696", name: "", contentType: .story),
+        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", name: "", contentType: .curriculum),
     ]
 
     ScrollView {

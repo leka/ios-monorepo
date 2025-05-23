@@ -8,9 +8,9 @@ import SwiftUI
 // MARK: - AllDraftActivitiesView
 
 struct AllDraftActivitiesView: View {
-    let activities: [ContentCategory.CurationPayload] = ContentKit.allDraftActivities.values.sorted {
+    let activities: [CurationItemModel] = ContentKit.allDraftActivities.values.sorted {
         $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
-    }.map { ContentCategory.CurationPayload(for: CurationItemModel(id: $0.id, contentType: .activity)) }
+    }.map { CurationItemModel(id: $0.id, name: $0.name, contentType: .activity) }
 
     var body: some View {
         ScrollView(showsIndicators: false) {

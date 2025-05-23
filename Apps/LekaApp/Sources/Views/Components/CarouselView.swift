@@ -15,9 +15,9 @@ public struct CarouselView: View {
             LazyHStack(spacing: 15) {
                 ForEach(self.items.prefix(8)) { item in
                     NavigationLink(destination:
-                        AnyView(self.navigation.curationDestination(item.curation))
+                        AnyView(self.navigation.curationDestination(item))
                     ) {
-                        CarouselItem(item.curation)
+                        CarouselItem(item)
                     }
                 }
             }
@@ -27,7 +27,7 @@ public struct CarouselView: View {
 
     // MARK: Internal
 
-    let items: [ContentCategory.CurationPayload]
+    let items: [CurationItemModel]
 
     // MARK: Private
 

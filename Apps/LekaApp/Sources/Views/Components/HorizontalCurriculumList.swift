@@ -15,9 +15,9 @@ public struct HorizontalCurriculumList: View {
             LazyHStack(spacing: 20) {
                 ForEach(self.items.prefix(8)) { item in
                     NavigationLink(destination:
-                        AnyView(self.navigation.curationDestination(item.curation))
+                        AnyView(self.navigation.curationDestination(item))
                     ) {
-                        CurriculumItem(item.curation)
+                        CurriculumItem(item)
                     }
                 }
             }
@@ -27,7 +27,7 @@ public struct HorizontalCurriculumList: View {
 
     // MARK: Internal
 
-    let items: [ContentCategory.CurationPayload]
+    let items: [CurationItemModel]
 
     // MARK: Private
 

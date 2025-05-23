@@ -107,7 +107,7 @@ public struct LibraryActivityListView: View {
             if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                 TableColumn("") { activity in
                     ContentItemMenu(
-                        CurationItemModel(id: activity.uuid, contentType: .activity),
+                        CurationItemModel(id: activity.uuid, name: activity.name, contentType: .activity),
                         caregiverID: currentCaregiverID
                     )
                 }

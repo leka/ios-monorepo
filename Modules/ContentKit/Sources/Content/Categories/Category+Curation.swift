@@ -7,23 +7,7 @@ import SwiftUI
 import UtilsKit
 import Yams
 
-// MARK: - CurationItemModel
-
 // swiftlint:disable nesting
-
-public struct CurationItemModel: Identifiable, Hashable, Equatable {
-    // MARK: Lifecycle
-
-    public init(id: String, contentType: ContentType) {
-        self.id = id
-        self.contentType = contentType
-    }
-
-    // MARK: Public
-
-    public let id: String
-    public var contentType: ContentType = .curation
-}
 
 // MARK: - CategoryCuration
 
@@ -81,7 +65,7 @@ public extension CategoryCuration {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.componentType = try container.decode(ComponentType.self, forKey: .component)
             self.l10n = try container.decode([ContentCategory.LocalizedDetails].self, forKey: .l10n)
-            self.items = try container.decode([ContentCategory.CurationPayload].self, forKey: .items)
+            self.items = try container.decode([CurationItemModel].self, forKey: .items)
         }
 
         // MARK: Public
@@ -106,7 +90,7 @@ public extension CategoryCuration {
 
         public let id = UUID()
         public let componentType: ComponentType
-        public let items: [ContentCategory.CurationPayload]
+        public let items: [CurationItemModel]
 
         public var details: ContentCategory.Details {
             self.details(in: LocalizationKit.l10n.language)
@@ -129,56 +113,40 @@ public extension CategoryCuration {
     }
 }
 
-// MARK: - ContentCategory.CurationPayload
+// MARK: - CurationItemModel
 
-public extension ContentCategory {
-    struct CurationPayload: Codable, Identifiable {
-        // MARK: Lifecycle
+public struct CurationItemModel: Decodable, Identifiable, Equatable, Hashable {
+    // MARK: Lifecycle
 
-        public init(for curation: CurationItemModel) {
-            self.value = curation.id
-            self.type = curation.contentType
-            self.curation = CurationItemModel(id: self.value, contentType: self.type)
-        }
-
-        public init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-
-            self.value = try container.decode(String.self, forKey: .value)
-                .split(separator: "-")
-                .last!
-                .trimmingCharacters(in: .whitespaces)
-
-            let typeString = try container.decode(String.self, forKey: .type)
-            self.type = ContentType(rawValue: typeString) ?? .activity
-            self.curation = CurationItemModel(id: self.value, contentType: self.type)
-        }
-
-        // MARK: Public
-
-        public let id = UUID()
-        public var value: String
-        public let type: ContentType
-        public var curation: CurationItemModel
-
-        // MARK: Internal
-
-        enum CodingKeys: String, CodingKey {
-            case value
-            case type
-        }
-    }
-}
-
-// MARK: - ContentCategory.CurationPayload + Equatable, Hashable
-
-extension ContentCategory.CurationPayload: Equatable, Hashable {
-    public static func == (lhs: Self, rhs: Self) -> Bool {
-        lhs.id == rhs.id
+    public init(id: String, name: String, contentType: ContentType) {
+        self.id = id
+        self.name = name
+        self.contentType = contentType
     }
 
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        let nameAndID = try container.decode(String.self, forKey: .value)
+            .split(separator: "-")
+
+        self.id = nameAndID.last!.trimmingCharacters(in: .whitespaces)
+        self.name = nameAndID.first!.trimmingCharacters(in: .whitespaces)
+        let typeString = try container.decode(String.self, forKey: .type)
+        self.contentType = ContentType(rawValue: typeString) ?? .activity
+    }
+
+    // MARK: Public
+
+    public let id: String
+    public let name: String
+    public let contentType: ContentType
+
+    // MARK: Internal
+
+    enum CodingKeys: String, CodingKey {
+        case value
+        case type
     }
 }
 

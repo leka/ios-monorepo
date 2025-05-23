@@ -14,9 +14,9 @@ public struct VerticalCurationGrid: View {
         LazyVGrid(columns: self.columns, spacing: 10) {
             ForEach(self.items) { item in
                 NavigationLink(destination:
-                    AnyView(self.navigation.curationDestination(item.curation))
+                    AnyView(self.navigation.curationDestination(item))
                 ) {
-                    CurationItem(item.curation)
+                    CurationItem(item)
                 }
             }
         }
@@ -25,7 +25,7 @@ public struct VerticalCurationGrid: View {
 
     // MARK: Internal
 
-    let items: [ContentCategory.CurationPayload]
+    let items: [CurationItemModel]
 
     // MARK: Private
 

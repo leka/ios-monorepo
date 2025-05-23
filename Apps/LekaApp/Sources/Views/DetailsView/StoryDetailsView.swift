@@ -21,7 +21,7 @@ public struct StoryDetailsView: View {
     // MARK: Public
 
     public var body: some View {
-        InfoDetailsView(CurationItemModel(id: self.story.id, contentType: .story))
+        InfoDetailsView(CurationItemModel(id: self.story.id, name: self.story.name, contentType: .story))
             .toolbar {
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                     ToolbarItemGroup {
@@ -35,7 +35,7 @@ public struct StoryDetailsView: View {
                         }
 
                         ContentItemMenu(
-                            CurationItemModel(id: self.story.uuid, contentType: .story),
+                            CurationItemModel(id: self.story.uuid, name: self.story.name, contentType: .story),
                             caregiverID: currentCaregiverID
                         )
                     }
