@@ -57,7 +57,7 @@ public struct CurriculumItem: View {
                 }
             }
 
-            Text(self.subtitle ?? "")
+            Text(self.subtitle ?? " ")
                 .font(.body)
                 .foregroundStyle(Color.secondary)
         }

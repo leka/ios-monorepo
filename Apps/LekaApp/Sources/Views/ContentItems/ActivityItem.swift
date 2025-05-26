@@ -67,7 +67,7 @@ public struct ActivityItem: View {
                 }
             }
 
-            Text(self.subtitle ?? "")
+            Text(self.subtitle ?? " ")
                 .font(.body)
                 .foregroundStyle(Color.secondary)
 
