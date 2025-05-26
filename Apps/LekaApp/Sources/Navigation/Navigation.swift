@@ -5,7 +5,6 @@
 import AccountKit
 import Combine
 import ContentKit
-import Observation
 import SwiftUI
 
 // MARK: - FullScreenCoverContent
