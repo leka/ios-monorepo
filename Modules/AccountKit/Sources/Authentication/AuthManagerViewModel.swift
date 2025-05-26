@@ -5,7 +5,6 @@
 import Combine
 import Foundation
 import LocalizationKit
-import Observation
 
 // MARK: - AuthManagerViewModel
 

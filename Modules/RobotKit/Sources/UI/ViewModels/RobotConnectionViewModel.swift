@@ -6,7 +6,6 @@ import BLEKit
 import Combine
 import CoreBluetooth
 import Foundation
-import Observation
 
 @Observable
 public class RobotConnectionViewModel {
