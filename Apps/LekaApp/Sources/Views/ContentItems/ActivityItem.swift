@@ -12,7 +12,8 @@ import SwiftUI
 public struct ActivityItem: View {
     // MARK: Lifecycle
 
-    public init?(_ content: CurationItemModel) {
+    public init?(_ content: CurationItemModel, size: CGFloat = 180) {
+        self.iconSize = size
         switch content.contentType {
             case .activity:
                 guard let activity = Activity(id: content.id) else {
@@ -33,7 +34,7 @@ public struct ActivityItem: View {
                 self.icon = story.details.iconImage
                 self.title = story.details.title
                 self.subtitle = story.details.subtitle
-                self.shape = RoundedRectangle(cornerRadius: 10 / 57 * self.kIconSize)
+                self.shape = RoundedRectangle(cornerRadius: 10 / 57 * self.iconSize)
             default:
                 log.error("Content \(content.id) is not an activity or a story and cannot be decoded as ActivityItem")
                 return nil
@@ -48,7 +49,7 @@ public struct ActivityItem: View {
                 .resizable()
                 .scaledToFit()
                 .clipShape(AnyShape(self.shape))
-                .frame(width: self.kIconSize)
+                .frame(width: self.iconSize)
 
             HStack(spacing: 5) {
                 Text(self.title)
@@ -73,7 +74,7 @@ public struct ActivityItem: View {
 
             Spacer()
         }
-        .frame(width: self.kIconSize, alignment: .leading)
+        .frame(width: self.width, alignment: .center)
         .lineLimit(0)
         .fixedSize()
     }
@@ -86,7 +87,8 @@ public struct ActivityItem: View {
     private var curationItem: CurationItemModel
     private var icon: UIImage
     private var shape: any Shape
-    private let kIconSize: CGFloat = 180
+    private let iconSize: CGFloat
+    private let width: CGFloat = 180
     private var title: String
     private var subtitle: String?
 
@@ -109,10 +111,19 @@ public struct ActivityItem: View {
         .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", name: "", contentType: .curriculum),
     ]
 
-    return ScrollView(.horizontal) {
-        HStack {
-            ForEach(curations) { curation in
-                ActivityItem(curation)
+    return VStack {
+        ScrollView(.horizontal) {
+            HStack {
+                ForEach(curations) { curation in
+                    ActivityItem(curation)
+                }
+            }
+        }
+        ScrollView(.horizontal) {
+            HStack {
+                ForEach(curations.shuffled()) { curation in
+                    ActivityItem(curation, size: 120)
+                }
             }
         }
     }
