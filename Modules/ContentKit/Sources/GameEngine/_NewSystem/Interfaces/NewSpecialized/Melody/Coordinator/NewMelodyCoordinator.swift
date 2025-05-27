@@ -33,6 +33,7 @@ class NewMelodyCoordinator: ExerciseSharedDataProtocol {
     // MARK: Internal
 
     let songs: [MidiRecordingPlayerSong]
+    var selectedSong: MidiRecordingPlayerSong?
     var instrument: MIDIInstrument
     var midiPlayer: MIDIPlayer
     var currentNoteNumber: MIDINoteNumber = 0
@@ -41,7 +42,13 @@ class NewMelodyCoordinator: ExerciseSharedDataProtocol {
     var didComplete: PassthroughSubject<Void, Never> = .init()
 
     func setupMelody(midiRecording: MidiRecordingPlayerSong) {
+        guard self.selectedSong != midiRecording else { return }
+
+        self.selectedSong = midiRecording
         let midiFile = Bundle.module.url(forResource: midiRecording.audio, withExtension: "mid")!
+        self.currentNoteIndex = 0
+        self.progress.send(0.0)
+        self.isMelodyPlaying.send(false)
         self.midiPlayer.loadMIDIFile(fileURL: midiFile, tempo: self.kTempo)
         self.midiNotes = self.midiPlayer.getMidiNotes()
         self.octaveGap = self.getOctaveGap(self.midiNotes.first!.noteNumber)
@@ -159,8 +166,14 @@ class NewMelodyCoordinator: ExerciseSharedDataProtocol {
 }
 
 #Preview {
-    let song = MidiRecordingPlayerSong(song: "Under_The_Moonlight")
-    let coordinator = NewMelodyCoordinator(instrument: .xylophone, songs: [song])
+    let songs = [
+        MidiRecordingPlayerSong(song: "Under_The_Moonlight"),
+        MidiRecordingPlayerSong(song: "A_Green_Mouse"),
+        MidiRecordingPlayerSong(song: "Twinkle_Twinkle_Little_Star"),
+        MidiRecordingPlayerSong(song: "Oh_The_Crocodiles"),
+        MidiRecordingPlayerSong(song: "Happy_Birthday"),
+    ]
+    let coordinator = NewMelodyCoordinator(instrument: .xylophone, songs: songs)
     let viewModel = NewMelodyViewViewModel(coordinator: coordinator)
 
     return NewMelodyView(viewModel: viewModel)

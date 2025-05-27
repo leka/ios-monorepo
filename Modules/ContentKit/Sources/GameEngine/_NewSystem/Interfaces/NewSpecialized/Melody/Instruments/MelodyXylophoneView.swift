@@ -18,59 +18,51 @@ struct MelodyXylophoneView: View {
 
     public var body: some View {
         ZStack {
-            VStack(spacing: 50) {
-                ContinuousProgressBar(progress: self.viewModel.progress)
-                    .animation(.easeOut, value: self.viewModel.progress)
-                    .padding(.horizontal)
-
-                HStack(spacing: self.kTilesSpacing) {
-                    ForEach(self.viewModel.selectedSong.song.scale.enumerated().map { $0 }, id: \.0) { index, note in
-                        Button {
-                            self.viewModel.onTileTapped(noteNumber: note)
-                        } label: {
-                            self.viewModel.tileColors[index].screen
-                        }
-                        .buttonStyle(
-                            XylophoneTileButtonStyle(
-                                index: index,
-                                tileNumber: self.viewModel.selectedSong.song.scale.count,
-                                tileWidth: 100,
-                                isTappable: self.viewModel.scale.contains(note)
-                            )
-                        )
-                        .disabled(!self.viewModel.isTappable)
-                        .modifier(
-                            KeyboardModeModifier(
-                                isPartial: self.viewModel.keyboardMode == .partial, isDisabled: !self.viewModel.scale.contains(note)
-                            )
-                        )
-                        .compositingGroup()
+            HStack(spacing: self.kTilesSpacing) {
+                ForEach(Array(self.viewModel.selectedSong.song.scale.enumerated()), id: \.offset) { index, note in
+                    Button {
+                        self.viewModel.onTileTapped(noteNumber: note)
+                    } label: {
+                        self.viewModel.tileColors[index].screen
                     }
+                    .buttonStyle(
+                        XylophoneTileButtonStyle(
+                            index: index,
+                            tileNumber: self.viewModel.selectedSong.song.scale.count,
+                            tileWidth: 100,
+                            isTappable: self.viewModel.scale.contains(note)
+                        )
+                    )
+                    .disabled(!self.viewModel.isTappable)
+                    .modifier(
+                        KeyboardModeModifier(
+                            isPartial: self.viewModel.keyboardMode == .partial, isDisabled: !self.viewModel.scale.contains(note)
+                        )
+                    )
+                    .compositingGroup()
                 }
             }
             .blur(radius: self.viewModel.showPlayButton ? 10 : 0)
             .disabled(self.viewModel.showPlayButton)
 
-            if self.viewModel.showPlayButton {
-                VStack(spacing: 50) {
-                    MelodyPlayerButton(showModal: self.$viewModel.showPlayButton, isMelodyPlaying: self.viewModel.isMelodyPlaying) {
-                        self.viewModel.playSong()
-                    }
+            VStack(spacing: 50) {
+                MelodyPlayerButton(viewModel: self.viewModel)
 
-                    if self.viewModel.progress != 1.0 {
-                        Button {
-                            self.viewModel.showPlayButton = false
-                            self.viewModel.stopMelody()
-                            self.viewModel.startMelody()
-                        } label: {
-                            CapsuleColoredButtonLabel(String(l10n.MelodyView.skipButtonLabel.characters), color: .orange)
-                        }
+                if self.viewModel.progress != 1.0 {
+                    Button {
+                        self.viewModel.showPlayButton = false
+                        self.viewModel.stop()
+                        self.viewModel.start()
+                    } label: {
+                        CapsuleColoredButtonLabel(String(l10n.MelodyView.skipButtonLabel.characters), color: .orange)
                     }
                 }
             }
+            .opacity(self.viewModel.showPlayButton ? 1 : 0)
+            .animation(.easeOut, value: self.viewModel.showPlayButton)
         }
         .onDisappear {
-            self.viewModel.stopMelody()
+            self.viewModel.stop()
         }
     }
 

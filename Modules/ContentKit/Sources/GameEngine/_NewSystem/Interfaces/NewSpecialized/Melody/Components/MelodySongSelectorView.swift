@@ -12,16 +12,15 @@ import SwiftUI
 struct MelodySongSelectorView: View {
     // MARK: Lifecycle
 
-    init(songs: [MidiRecordingPlayerSong], selectedMidiRecording: Binding<MidiRecordingPlayerSong>) {
-        self.songs = songs
-        self._selectedMidiRecording = selectedMidiRecording
+    init(viewModel: NewMelodyViewViewModel) {
+        self.viewModel = viewModel
     }
 
     // MARK: Internal
 
-    @Binding var selectedMidiRecording: MidiRecordingPlayerSong
+    @Environment(\.dismiss) var dismiss
 
-    let songs: [MidiRecordingPlayerSong]
+    let viewModel: NewMelodyViewViewModel
 
     let columns = [
         GridItem(.flexible(), alignment: .topLeading),
@@ -29,28 +28,44 @@ struct MelodySongSelectorView: View {
     ]
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(l10n.MelodyView.musicSelectionTitle)
-                .font(.headline)
-
-            Divider()
-
+        NavigationStack {
             ScrollView {
-                LazyVGrid(columns: self.columns, alignment: .leading) {
-                    ForEach(self.songs, id: \.self) { midiRecording in
-                        ListRowSong(midiRecording: midiRecording, isSelected: midiRecording == self.selectedMidiRecording)
+                ContentKitAsset.Exercises.Melody.imageIllustration.swiftUIImage
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 200)
+                    .padding(.bottom, 50)
+
+                LazyVGrid(columns: self.columns, alignment: .center) {
+                    ForEach(self.viewModel.songs, id: \.self) { midiRecording in
+                        ListRowSong(midiRecording: midiRecording, isSelected: midiRecording == self.viewModel.selectedSong)
                             .foregroundColor(
-                                midiRecording == self.selectedMidiRecording
+                                midiRecording == self.viewModel.selectedSong
                                     ? self.styleManager.accentColor! : .primary
                             )
                             .onTapGesture {
                                 withAnimation {
-                                    self.selectedMidiRecording = midiRecording
+                                    self.viewModel.selectedSong = midiRecording
                                 }
                             }
                     }
                 }
+                .padding(.horizontal, 50)
             }
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text(l10n.MelodySongSelectorView.selectorTitle)
+                        .font(.body.bold())
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        self.dismiss()
+                    } label: {
+                        Text(l10n.MelodySongSelectorView.confirmButtonLabel)
+                    }
+                }
+            }
+            .interactiveDismissDisabled()
         }
     }
 
@@ -99,13 +114,36 @@ private struct ListRowSong: View {
     }
 }
 
+// MARK: - l10n.MelodySongSelectorView
+
+extension l10n {
+    enum MelodySongSelectorView {
+        static let selectorTitle = LocalizedString("game_engine_kit.melody_song_selector_view.selector_title",
+                                                   bundle: ContentKitResources.bundle,
+                                                   value: "Select your song",
+                                                   comment: "Selector song title in DanceFreeze")
+
+        static let confirmButtonLabel = LocalizedString("game_engine_kit.melody_song_selector_view.confirm_button_label",
+                                                        bundle: ContentKitResources.bundle,
+                                                        value: "Confirm",
+                                                        comment: "Confirm button label for song selector sheet in DanceFreeze")
+    }
+}
+
 #Preview {
-    MelodySongSelectorView(
-        songs: [
-            MidiRecordingPlayerSong(song: "Under_The_Moonlight"),
-            MidiRecordingPlayerSong(song: "A_Green_Mouse"),
-            MidiRecordingPlayerSong(song: "Twinkle_Twinkle_Little_Star"),
-        ],
-        selectedMidiRecording: .constant(MidiRecordingPlayerSong(song: "Under_The_Moonlight"))
-    )
+    let songs = [
+        MidiRecordingPlayerSong(song: "Under_The_Moonlight"),
+        MidiRecordingPlayerSong(song: "A_Green_Mouse"),
+        MidiRecordingPlayerSong(song: "Twinkle_Twinkle_Little_Star"),
+        MidiRecordingPlayerSong(song: "Oh_The_Crocodiles"),
+        MidiRecordingPlayerSong(song: "Happy_Birthday"),
+    ]
+
+    let coordinator = NewMelodyCoordinator(instrument: .xylophone, songs: songs)
+    let viewModel = NewMelodyViewViewModel(coordinator: coordinator)
+
+    Text("Empty View")
+        .sheet(isPresented: .constant(true)) {
+            MelodySongSelectorView(viewModel: viewModel)
+        }
 }

@@ -179,11 +179,6 @@ extension ExerciseYAMLs {
 
     static let kMelodyYaml: String =
         """
-          instructions:
-            - locale: fr_FR
-              value: Joue les notes de la même couleur que Leka
-            - locale: en_US
-              value: Play the notes of the same color as Leka
           interface: melody
           payload:
             instrument: xylophone
