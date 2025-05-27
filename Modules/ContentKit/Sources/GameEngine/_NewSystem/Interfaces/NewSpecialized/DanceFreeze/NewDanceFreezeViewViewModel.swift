@@ -26,33 +26,37 @@ class NewDanceFreezeViewViewModel {
                 self.isDancing = $0
             }
             .store(in: &self.cancellables)
-        self.coordinator.isAuto
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] in
-                guard let self else { return }
-                self.isAuto = $0
-            }
-            .store(in: &self.cancellables)
     }
 
     // MARK: Internal
 
     var progress: CGFloat = 0.0
     var isDancing: Bool = false
-    var isAuto: Bool = false
 
     let songs: [DanceFreezeSong]
 
-    func setupDanceFreeze(audio: AudioManager.AudioType, motion: DanceFreezeMotion, stage: DanceFreezeStage) {
-        self.coordinator.setupDanceFreeze(audio: audio, motion: motion, stage: stage)
+    func setup(audio: AudioManager.AudioType, isAuto: Bool) {
+        self.coordinator.setup(audio: audio, isAuto: isAuto)
     }
 
-    func onDanceFreezeToggle() {
-        self.coordinator.processDanceFreezeToggle()
+    func updateMotionMode(isMovementEnabled: Bool) {
+        self.coordinator.updateMotionMode(isMovementEnabled: isMovementEnabled)
     }
 
-    func completeDanceFreeze() {
-        self.coordinator.completeDanceFreeze()
+    func updateAutoMode(isAuto: Bool) {
+        self.coordinator.updateAutoMode(isAuto: isAuto)
+    }
+
+    func pause() {
+        self.coordinator.pause()
+    }
+
+    func onSwitchDanceState() {
+        self.coordinator.switchDanceState()
+    }
+
+    func complete() {
+        self.coordinator.complete()
     }
 
     // MARK: Private
