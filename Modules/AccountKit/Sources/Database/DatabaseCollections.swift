@@ -10,13 +10,13 @@ public enum DatabaseCollection: String {
     case activityCompletionData = "ACTIVITY_COMPLETION_DATA"
     case caregivers = "CAREGIVERS"
     case carereceivers = "CARE_RECEIVERS"
-    case libraries = "LIBRARIES"
+    case sharedLibraries = "SHARED_LIBRARIES"
     case rootAccounts = "ROOT_ACCOUNTS"
 }
 
-// MARK: - LibrarySubCollection
+// MARK: - SharedLibrarySubCollection
 
-public enum LibrarySubCollection: String {
+public enum SharedLibrarySubCollection: String {
     case curriculums = "CURRICULUMS"
     case activities = "ACTIVITIES"
     case stories = "STORIES"

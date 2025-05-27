@@ -136,21 +136,21 @@ public class DatabaseOperations {
         return subject.eraseToAnyPublisher()
     }
 
-    public func getCurrentLibrary() -> AnyPublisher<Library, Error> {
-        let subject = PassthroughSubject<Library, Error>()
+    public func getCurrentSharedLibrary() -> AnyPublisher<SharedLibrary, Error> {
+        let subject = PassthroughSubject<SharedLibrary, Error>()
 
         guard let currentUserID = Auth.auth().currentUser?.uid else {
             subject.send(completion: .failure(DatabaseError.customError("User not authenticated")))
             return subject.eraseToAnyPublisher()
         }
 
-        let listenerKey = "LIBRARIES_QUERY_\(currentUserID)"
+        let listenerKey = "SHARED_LIBRARIES_QUERY_\(currentUserID)"
         if let existingListener = listenerRegistrations[listenerKey] {
             existingListener.remove()
             self.listenerRegistrations.removeValue(forKey: listenerKey)
         }
 
-        let listener = self.database.collection(DatabaseCollection.libraries.rawValue)
+        let listener = self.database.collection(DatabaseCollection.sharedLibraries.rawValue)
             .whereField("root_owner_uid", isEqualTo: currentUserID)
             .limit(to: 1)
             .addSnapshotListener { querySnapshot, error in
@@ -159,12 +159,12 @@ public class DatabaseOperations {
                     subject.send(completion: .failure(error))
                 } else if let querySnapshot, !querySnapshot.documents.isEmpty {
                     do {
-                        let library = try querySnapshot.documents.first?.data(as: Library.self)
-                        if let library {
-                            log.info("Library document fetched successfully for user \(currentUserID). 🎉")
-                            subject.send(library)
+                        let sharedLibrary = try querySnapshot.documents.first?.data(as: SharedLibrary.self)
+                        if let sharedLibrary {
+                            log.info("Shared Library document fetched successfully for user \(currentUserID). 🎉")
+                            subject.send(sharedLibrary)
                         } else {
-                            log.error("Library document could not be decoded.")
+                            log.error("Shared Library document could not be decoded.")
                             subject.send(completion: .failure(DatabaseError.decodeError))
                         }
                     } catch {
@@ -172,7 +172,7 @@ public class DatabaseOperations {
                         subject.send(completion: .failure(error))
                     }
                 } else {
-                    log.error("Library document not found for user \(currentUserID).")
+                    log.error("Shared Library document not found for user \(currentUserID).")
                     subject.send(completion: .failure(DatabaseError.documentNotFound))
                 }
             }
@@ -184,16 +184,16 @@ public class DatabaseOperations {
 
     // swiftlint:disable large_tuple
 
-    public func listenToAllLibrarySubCollections(libraryID: String) -> AnyPublisher<([SavedCurriculum], [SavedActivity], [SavedStory]), Error> {
-        let curriculumPublisher: AnyPublisher<[SavedCurriculum], Error> = self.listenToLibrarySubCollection(
+    public func listenToAllSharedLibrarySubCollections(libraryID: String) -> AnyPublisher<([SavedCurriculum], [SavedActivity], [SavedStory]), Error> {
+        let curriculumPublisher: AnyPublisher<[SavedCurriculum], Error> = self.listenToSharedLibrarySubCollection(
             libraryID: libraryID,
             subCollection: .curriculums
         )
-        let activityPublisher: AnyPublisher<[SavedActivity], Error> = self.listenToLibrarySubCollection(
+        let activityPublisher: AnyPublisher<[SavedActivity], Error> = self.listenToSharedLibrarySubCollection(
             libraryID: libraryID,
             subCollection: .activities
         )
-        let storyPublisher: AnyPublisher<[SavedStory], Error> = self.listenToLibrarySubCollection(
+        let storyPublisher: AnyPublisher<[SavedStory], Error> = self.listenToSharedLibrarySubCollection(
             libraryID: libraryID,
             subCollection: .stories
         )
@@ -257,8 +257,8 @@ public class DatabaseOperations {
         self.listenerRegistrations.removeAll()
     }
 
-    public func addItemToLibrarySubCollection(libraryID: String, item: LibraryItem) -> AnyPublisher<Void, Error> {
-        let libraryRef = self.database.collection(DatabaseCollection.libraries.rawValue).document(libraryID)
+    public func addItemToSharedLibrarySubCollection(libraryID: String, item: SharedLibraryItem) -> AnyPublisher<Void, Error> {
+        let libraryRef = self.database.collection(DatabaseCollection.sharedLibraries.rawValue).document(libraryID)
         let subCollectionRef = libraryRef.collection(item.subCollection.rawValue)
         let itemRef = subCollectionRef.document(item.id)
 
@@ -275,7 +275,7 @@ public class DatabaseOperations {
                 }
 
                 batch.updateData(
-                    [Library.CodingKeys.lastEditedAt.rawValue: FieldValue.serverTimestamp()],
+                    [SharedLibrary.CodingKeys.lastEditedAt.rawValue: FieldValue.serverTimestamp()],
                     forDocument: libraryRef
                 )
 
@@ -296,12 +296,12 @@ public class DatabaseOperations {
         .eraseToAnyPublisher()
     }
 
-    public func removeItemFromLibrarySubCollection(
+    public func removeItemFromSharedLibrarySubCollection(
         libraryID: String,
-        subCollection: LibrarySubCollection,
+        subCollection: SharedLibrarySubCollection,
         itemID: String
     ) -> AnyPublisher<Void, Error> {
-        let libraryRef = self.database.collection(DatabaseCollection.libraries.rawValue).document(libraryID)
+        let libraryRef = self.database.collection(DatabaseCollection.sharedLibraries.rawValue).document(libraryID)
         let subCollectionRef = libraryRef.collection(subCollection.rawValue)
 
         return Future<Void, Error> { promise in
@@ -325,7 +325,7 @@ public class DatabaseOperations {
                     batch.deleteDocument(document.reference)
 
                     batch.updateData(
-                        [Library.CodingKeys.lastEditedAt.rawValue: FieldValue.serverTimestamp()],
+                        [SharedLibrary.CodingKeys.lastEditedAt.rawValue: FieldValue.serverTimestamp()],
                         forDocument: libraryRef
                     )
 
@@ -345,13 +345,13 @@ public class DatabaseOperations {
 
     // MARK: Favorites
 
-    public func addLibraryItemToFavorites(
+    public func addSharedLibraryItemToFavorites(
         libraryID: String,
-        subCollection: LibrarySubCollection,
+        subCollection: SharedLibrarySubCollection,
         itemID: String,
         caregiverID: String
     ) -> AnyPublisher<Void, Error> {
-        let libraryRef = self.database.collection(DatabaseCollection.libraries.rawValue).document(libraryID)
+        let libraryRef = self.database.collection(DatabaseCollection.sharedLibraries.rawValue).document(libraryID)
         let subCollectionRef = libraryRef.collection(subCollection.rawValue)
 
         return Future<Void, Error> { promise in
@@ -378,7 +378,7 @@ public class DatabaseOperations {
                         forDocument: document.reference
                     )
                     batch.updateData(
-                        [Library.CodingKeys.lastEditedAt.rawValue: timestamp],
+                        [SharedLibrary.CodingKeys.lastEditedAt.rawValue: timestamp],
                         forDocument: libraryRef
                     )
 
@@ -396,13 +396,13 @@ public class DatabaseOperations {
         .eraseToAnyPublisher()
     }
 
-    public func removeLibraryItemFromFavorites(
+    public func removeSharedLibraryItemFromFavorites(
         libraryID: String,
-        subCollection: LibrarySubCollection,
+        subCollection: SharedLibrarySubCollection,
         itemID: String,
         caregiverID: String
     ) -> AnyPublisher<Void, Error> {
-        let libraryRef = self.database.collection(DatabaseCollection.libraries.rawValue).document(libraryID)
+        let libraryRef = self.database.collection(DatabaseCollection.sharedLibraries.rawValue).document(libraryID)
         let subCollectionRef = libraryRef.collection(subCollection.rawValue)
 
         return Future<Void, Error> { promise in
@@ -427,7 +427,7 @@ public class DatabaseOperations {
                         forDocument: document.reference
                     )
                     batch.updateData(
-                        [Library.CodingKeys.lastEditedAt.rawValue: FieldValue.serverTimestamp()],
+                        [SharedLibrary.CodingKeys.lastEditedAt.rawValue: FieldValue.serverTimestamp()],
                         forDocument: libraryRef
                     )
 
@@ -450,9 +450,9 @@ public class DatabaseOperations {
     private let database = Firestore.firestore()
     private var listenerRegistrations = [String: ListenerRegistration]()
 
-    private func listenToLibrarySubCollection<T: Decodable>(
+    private func listenToSharedLibrarySubCollection<T: Decodable>(
         libraryID: String,
-        subCollection: LibrarySubCollection
+        subCollection: SharedLibrarySubCollection
     ) -> AnyPublisher<[T], Error> {
         let subject = PassthroughSubject<[T], Error>()
 
@@ -467,7 +467,7 @@ public class DatabaseOperations {
             self.listenerRegistrations.removeValue(forKey: listenerKey)
         }
 
-        let listener = self.database.collection(DatabaseCollection.libraries.rawValue)
+        let listener = self.database.collection(DatabaseCollection.sharedLibraries.rawValue)
             .document(libraryID)
             .collection(subCollection.rawValue)
             .addSnapshotListener { snapshot, error in

@@ -7,29 +7,29 @@ import Foundation
 
 // swiftlint:disable type_body_length file_length
 
-public class LibraryManager {
+public class SharedLibraryManager {
     // MARK: Lifecycle
 
     private init() {
-        self.initializeLibraryListener()
+        self.initializeSharedLibraryListener()
     }
 
     // MARK: Public
 
-    public static let shared = LibraryManager()
+    public static let shared = SharedLibraryManager()
 
-    public var currentLibrary = CurrentValueSubject<Library?, Never>(nil)
+    public var currentSharedLibrary = CurrentValueSubject<SharedLibrary?, Never>(nil)
     public var savedActivities = CurrentValueSubject<[SavedActivity], Never>([])
     public var savedCurriculums = CurrentValueSubject<[SavedCurriculum], Never>([])
     public var savedStories = CurrentValueSubject<[SavedStory], Never>([])
     public let isLoading = PassthroughSubject<Bool, Never>()
     public var fetchError = PassthroughSubject<Error, Never>()
 
-    public func initializeLibraryListener() {
-        self.dbOps.getCurrentLibrary()
+    public func initializeSharedLibraryListener() {
+        self.dbOps.getCurrentSharedLibrary()
             .handleLoadingState(using: self.isLoading)
-            .handleEvents(receiveOutput: { [weak self] library in
-                self?.subscribeToAllSubCollections(libraryID: library.id!)
+            .handleEvents(receiveOutput: { [weak self] sharedLibrary in
+                self?.subscribeToAllSubCollections(sharedLibraryID: sharedLibrary.id!)
             })
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
@@ -37,20 +37,20 @@ public class LibraryManager {
                         break
                     case let .failure(error):
                         if case DatabaseError.documentNotFound = error {
-                            self?.createLibrary(library: Library())
+                            self?.createSharedLibrary(library: SharedLibrary())
                         } else {
                             self?.fetchError.send(error)
                         }
                 }
-            }, receiveValue: { [weak self] library in
+            }, receiveValue: { [weak self] sharedLibrary in
                 guard let self else { return }
-                self.currentLibrary.send(library)
+                self.currentSharedLibrary.send(sharedLibrary)
             })
             .store(in: &self.cancellables)
     }
 
-    public func subscribeToAllSubCollections(libraryID: String) {
-        self.dbOps.listenToAllLibrarySubCollections(libraryID: libraryID)
+    public func subscribeToAllSubCollections(sharedLibraryID: String) {
+        self.dbOps.listenToAllSharedLibrarySubCollections(libraryID: sharedLibraryID)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
@@ -65,8 +65,8 @@ public class LibraryManager {
             .store(in: &self.cancellables)
     }
 
-    public func createLibrary(library: Library) {
-        self.dbOps.create(data: library, in: .libraries)
+    public func createSharedLibrary(library: SharedLibrary) {
+        self.dbOps.create(data: library, in: .sharedLibraries)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
                     self?.fetchError.send(error)
@@ -80,8 +80,8 @@ public class LibraryManager {
     // MARK: - Curriculums
 
     public func addCurriculum(curriculumID: String, caregiverID: String) {
-        guard let libraryID = currentLibrary.value?.id else {
-            self.fetchError.send(DatabaseError.customError("Library not found"))
+        guard let sharedLibraryID = currentSharedLibrary.value?.id else {
+            self.fetchError.send(DatabaseError.customError("Shared Library not found"))
             return
         }
 
@@ -92,8 +92,8 @@ public class LibraryManager {
             favoritedBy: [:]
         )
 
-        self.dbOps.addItemToLibrarySubCollection(
-            libraryID: libraryID,
+        self.dbOps.addItemToSharedLibrarySubCollection(
+            libraryID: sharedLibraryID,
             item: .curriculum(newCurriculum)
         )
         .sink(receiveCompletion: { [weak self] completion in
@@ -107,13 +107,13 @@ public class LibraryManager {
     }
 
     public func removeCurriculum(curriculumID: String) {
-        guard let libraryID = currentLibrary.value?.id else {
-            self.fetchError.send(DatabaseError.customError("Library not found"))
+        guard let sharedLibraryID = currentSharedLibrary.value?.id else {
+            self.fetchError.send(DatabaseError.customError("Shared Library not found"))
             return
         }
 
-        self.dbOps.removeItemFromLibrarySubCollection(
-            libraryID: libraryID,
+        self.dbOps.removeItemFromSharedLibrarySubCollection(
+            libraryID: sharedLibraryID,
             subCollection: .curriculums,
             itemID: curriculumID
         )
@@ -127,9 +127,9 @@ public class LibraryManager {
         .store(in: &self.cancellables)
     }
 
-    public func addCurriculumToLibraryAsFavorite(curriculumID: String, caregiverID: String) {
-        guard let libraryID = currentLibrary.value?.id else {
-            self.fetchError.send(DatabaseError.customError("Library not found"))
+    public func addCurriculumToSharedLibraryAsFavorite(curriculumID: String, caregiverID: String) {
+        guard let sharedLibraryID = currentSharedLibrary.value?.id else {
+            self.fetchError.send(DatabaseError.customError("Shared Library not found"))
             return
         }
 
@@ -143,8 +143,8 @@ public class LibraryManager {
                 favoritedBy: [caregiverID: Date()]
             )
 
-            self.dbOps.addItemToLibrarySubCollection(
-                libraryID: libraryID,
+            self.dbOps.addItemToSharedLibrarySubCollection(
+                libraryID: sharedLibraryID,
                 item: .curriculum(newCurriculum)
             )
             .sink(receiveCompletion: { [weak self] completion in
@@ -161,13 +161,13 @@ public class LibraryManager {
     }
 
     public func removeCurriculumFromFavorites(curriculumID: String, caregiverID: String) {
-        guard let libraryID = currentLibrary.value?.id else {
-            self.fetchError.send(DatabaseError.customError("Library not found"))
+        guard let sharedLibraryID = currentSharedLibrary.value?.id else {
+            self.fetchError.send(DatabaseError.customError("Shared Library not found"))
             return
         }
 
-        self.dbOps.removeLibraryItemFromFavorites(
-            libraryID: libraryID,
+        self.dbOps.removeSharedLibraryItemFromFavorites(
+            libraryID: sharedLibraryID,
             subCollection: .curriculums,
             itemID: curriculumID,
             caregiverID: caregiverID
@@ -185,8 +185,8 @@ public class LibraryManager {
     // MARK: - Activities + Gamepads
 
     public func addActivity(activityID: String, caregiverID: String) {
-        guard let libraryID = currentLibrary.value?.id else {
-            self.fetchError.send(DatabaseError.customError("Library not found"))
+        guard let sharedLibraryID = currentSharedLibrary.value?.id else {
+            self.fetchError.send(DatabaseError.customError("Shared Library not found"))
             return
         }
 
@@ -196,8 +196,8 @@ public class LibraryManager {
             addedAt: Date(),
             favoritedBy: [:]
         )
-        self.dbOps.addItemToLibrarySubCollection(
-            libraryID: libraryID,
+        self.dbOps.addItemToSharedLibrarySubCollection(
+            libraryID: sharedLibraryID,
             item: .activity(newActivity)
         )
         .sink(receiveCompletion: { [weak self] completion in
@@ -211,13 +211,13 @@ public class LibraryManager {
     }
 
     public func removeActivity(activityID: String) {
-        guard let libraryID = currentLibrary.value?.id else {
+        guard let sharedLibraryID = currentSharedLibrary.value?.id else {
             self.fetchError.send(DatabaseError.customError("Library not found"))
             return
         }
 
-        self.dbOps.removeItemFromLibrarySubCollection(
-            libraryID: libraryID,
+        self.dbOps.removeItemFromSharedLibrarySubCollection(
+            libraryID: sharedLibraryID,
             subCollection: .activities,
             itemID: activityID
         )
@@ -231,8 +231,8 @@ public class LibraryManager {
         .store(in: &self.cancellables)
     }
 
-    public func addActivityToLibraryAsFavorite(activityID: String, caregiverID: String) {
-        guard let libraryID = currentLibrary.value?.id else {
+    public func addActivityToSharedLibraryAsFavorite(activityID: String, caregiverID: String) {
+        guard let sharedLibraryID = currentSharedLibrary.value?.id else {
             self.fetchError.send(DatabaseError.customError("Library not found"))
             return
         }
@@ -247,8 +247,8 @@ public class LibraryManager {
                 favoritedBy: [caregiverID: Date()]
             )
 
-            self.dbOps.addItemToLibrarySubCollection(
-                libraryID: libraryID,
+            self.dbOps.addItemToSharedLibrarySubCollection(
+                libraryID: sharedLibraryID,
                 item: .activity(newActivity)
             )
             .sink(receiveCompletion: { [weak self] completion in
@@ -265,13 +265,13 @@ public class LibraryManager {
     }
 
     public func removeActivityFromFavorites(activityID: String, caregiverID: String) {
-        guard let libraryID = currentLibrary.value?.id else {
-            self.fetchError.send(DatabaseError.customError("Library not found"))
+        guard let sharedLibraryID = currentSharedLibrary.value?.id else {
+            self.fetchError.send(DatabaseError.customError("Shared Library not found"))
             return
         }
 
-        self.dbOps.removeLibraryItemFromFavorites(
-            libraryID: libraryID,
+        self.dbOps.removeSharedLibraryItemFromFavorites(
+            libraryID: sharedLibraryID,
             subCollection: .activities,
             itemID: activityID,
             caregiverID: caregiverID
@@ -289,8 +289,8 @@ public class LibraryManager {
     // MARK: - Stories
 
     public func addStory(storyID: String, caregiverID: String) {
-        guard let libraryID = currentLibrary.value?.id else {
-            self.fetchError.send(DatabaseError.customError("Library not found"))
+        guard let sharedLibraryID = currentSharedLibrary.value?.id else {
+            self.fetchError.send(DatabaseError.customError("SharedLibrary not found"))
             return
         }
 
@@ -301,8 +301,8 @@ public class LibraryManager {
             favoritedBy: [:]
         )
 
-        self.dbOps.addItemToLibrarySubCollection(
-            libraryID: libraryID,
+        self.dbOps.addItemToSharedLibrarySubCollection(
+            libraryID: sharedLibraryID,
             item: .story(newStory)
         )
         .sink(receiveCompletion: { [weak self] completion in
@@ -316,13 +316,13 @@ public class LibraryManager {
     }
 
     public func removeStory(storyID: String) {
-        guard let libraryID = currentLibrary.value?.id else {
-            self.fetchError.send(DatabaseError.customError("Library not found"))
+        guard let sharedLibraryID = currentSharedLibrary.value?.id else {
+            self.fetchError.send(DatabaseError.customError("Shared Library not found"))
             return
         }
 
-        self.dbOps.removeItemFromLibrarySubCollection(
-            libraryID: libraryID,
+        self.dbOps.removeItemFromSharedLibrarySubCollection(
+            libraryID: sharedLibraryID,
             subCollection: .stories,
             itemID: storyID
         )
@@ -336,9 +336,9 @@ public class LibraryManager {
         .store(in: &self.cancellables)
     }
 
-    public func addStoryToLibraryAsFavorite(storyID: String, caregiverID: String) {
-        guard let libraryID = currentLibrary.value?.id else {
-            self.fetchError.send(DatabaseError.customError("Library not found"))
+    public func addStoryToSharedLibraryAsFavorite(storyID: String, caregiverID: String) {
+        guard let sharedLibraryID = currentSharedLibrary.value?.id else {
+            self.fetchError.send(DatabaseError.customError("Shared Library not found"))
             return
         }
 
@@ -352,8 +352,8 @@ public class LibraryManager {
                 favoritedBy: [caregiverID: Date()]
             )
 
-            self.dbOps.addItemToLibrarySubCollection(
-                libraryID: libraryID,
+            self.dbOps.addItemToSharedLibrarySubCollection(
+                libraryID: sharedLibraryID,
                 item: .story(newStory)
             )
             .sink(receiveCompletion: { [weak self] completion in
@@ -370,13 +370,13 @@ public class LibraryManager {
     }
 
     public func removeStoryFromFavorites(storyID: String, caregiverID: String) {
-        guard let libraryID = currentLibrary.value?.id else {
-            self.fetchError.send(DatabaseError.customError("Library not found"))
+        guard let sharedLibraryID = currentSharedLibrary.value?.id else {
+            self.fetchError.send(DatabaseError.customError("Shared Library not found"))
             return
         }
 
-        self.dbOps.removeLibraryItemFromFavorites(
-            libraryID: libraryID,
+        self.dbOps.removeSharedLibraryItemFromFavorites(
+            libraryID: sharedLibraryID,
             subCollection: .stories,
             itemID: storyID,
             caregiverID: caregiverID
@@ -394,7 +394,7 @@ public class LibraryManager {
     // MARK: - Reset Data
 
     public func resetData() {
-        self.currentLibrary.send(nil)
+        self.currentSharedLibrary.send(nil)
         self.savedActivities.send([])
         self.savedCurriculums.send([])
         self.savedStories.send([])
@@ -409,13 +409,13 @@ public class LibraryManager {
     private var cancellables = Set<AnyCancellable>()
 
     private func addSavedCurriculumToFavorites(curriculumID: String, caregiverID: String) {
-        guard let libraryID = currentLibrary.value?.id else {
-            self.fetchError.send(DatabaseError.customError("Library not found"))
+        guard let sharedLibraryID = currentSharedLibrary.value?.id else {
+            self.fetchError.send(DatabaseError.customError("Shared Library not found"))
             return
         }
 
-        self.dbOps.addLibraryItemToFavorites(
-            libraryID: libraryID,
+        self.dbOps.addSharedLibraryItemToFavorites(
+            libraryID: sharedLibraryID,
             subCollection: .curriculums,
             itemID: curriculumID,
             caregiverID: caregiverID
@@ -431,13 +431,13 @@ public class LibraryManager {
     }
 
     private func addSavedActivityToFavorites(activityID: String, caregiverID: String) {
-        guard let libraryID = currentLibrary.value?.id else {
-            self.fetchError.send(DatabaseError.customError("Library not found"))
+        guard let sharedLibraryID = currentSharedLibrary.value?.id else {
+            self.fetchError.send(DatabaseError.customError("Shared Library not found"))
             return
         }
 
-        self.dbOps.addLibraryItemToFavorites(
-            libraryID: libraryID,
+        self.dbOps.addSharedLibraryItemToFavorites(
+            libraryID: sharedLibraryID,
             subCollection: .activities,
             itemID: activityID,
             caregiverID: caregiverID
@@ -453,13 +453,13 @@ public class LibraryManager {
     }
 
     private func addSavedStoryToFavorites(storyID: String, caregiverID: String) {
-        guard let libraryID = currentLibrary.value?.id else {
-            self.fetchError.send(DatabaseError.customError("Library not found"))
+        guard let sharedLibraryID = currentSharedLibrary.value?.id else {
+            self.fetchError.send(DatabaseError.customError("Shared Library not found"))
             return
         }
 
-        self.dbOps.addLibraryItemToFavorites(
-            libraryID: libraryID,
+        self.dbOps.addSharedLibraryItemToFavorites(
+            libraryID: sharedLibraryID,
             subCollection: .stories,
             itemID: storyID,
             caregiverID: caregiverID

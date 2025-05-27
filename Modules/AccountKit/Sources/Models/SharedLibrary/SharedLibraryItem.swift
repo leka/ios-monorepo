@@ -4,7 +4,7 @@
 
 import Foundation
 
-public enum LibraryItem {
+public enum SharedLibraryItem {
     case activity(SavedActivity)
     case curriculum(SavedCurriculum)
     case story(SavedStory)
@@ -19,7 +19,7 @@ public enum LibraryItem {
         }
     }
 
-    public var subCollection: LibrarySubCollection {
+    public var subCollection: SharedLibrarySubCollection {
         switch self {
             case .activity: .activities
             case .curriculum: .curriculums
