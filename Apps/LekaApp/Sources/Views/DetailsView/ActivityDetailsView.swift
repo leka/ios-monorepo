@@ -26,7 +26,7 @@ public struct ActivityDetailsView: View {
             .toolbar {
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                     ToolbarItemGroup {
-                        if self.libraryManagerViewModel.isActivityFavoritedByCurrentCaregiver(
+                        if self.sharedLibraryManagerViewModel.isActivityFavoritedByCurrentCaregiver(
                             activityID: self.activity.id,
                             caregiverID: currentCaregiverID
                         ) {
@@ -67,7 +67,7 @@ public struct ActivityDetailsView: View {
     @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var styleManager: StyleManager = .shared
-    private var libraryManagerViewModel: LibraryManagerViewModel = .shared
+    private var sharedLibraryManagerViewModel: SharedLibraryManagerViewModel = .shared
 
     private let activity: Activity
 }

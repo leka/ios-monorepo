@@ -9,9 +9,9 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - LibraryActivityListView
+// MARK: - SharedLibraryActivityListView
 
-public struct LibraryActivityListView: View {
+public struct SharedLibraryActivityListView: View {
     // MARK: Lifecycle
 
     public init(activities: [Activity]? = nil, onStartActivity: ((Activity) -> Void)?) {
@@ -33,7 +33,7 @@ public struct LibraryActivityListView: View {
                         )
                 ) {
                     HStack(spacing: 10) {
-                        if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id, self.libraryManagerViewModel
+                        if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id, self.sharedLibraryManagerViewModel
                             .isActivityFavoritedByCurrentCaregiver(
                                 activityID: activity.id,
                                 caregiverID: currentCaregiverID
@@ -167,7 +167,7 @@ public struct LibraryActivityListView: View {
     @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var styleManager: StyleManager = .shared
-    private var libraryManagerViewModel: LibraryManagerViewModel = .shared
+    private var sharedLibraryManagerViewModel: SharedLibraryManagerViewModel = .shared
 }
 
 // MARK: - l10n.LibraryActivityListView
@@ -185,7 +185,7 @@ extension l10n {
         Text("Sidebar")
     } detail: {
         NavigationStack {
-            LibraryActivityListView(
+            SharedLibraryActivityListView(
                 activities: Array(ContentKit.allActivities.values),
                 onStartActivity: { _ in
                     print("Activity Started")

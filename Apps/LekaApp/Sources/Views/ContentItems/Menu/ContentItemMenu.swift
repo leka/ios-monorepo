@@ -22,7 +22,7 @@ public struct ContentItemMenu: View {
 
     public var body: some View {
         Menu {
-            self.addOrRemoveLibraryButton(self.curationItem, caregiverID: self.caregiverID)
+            self.addOrRemoveSharedLibraryButton(self.curationItem, caregiverID: self.caregiverID)
             Divider()
             self.addOrRemoveFavoriteButton(self.curationItem, caregiverID: self.caregiverID)
         } label: {
@@ -41,25 +41,24 @@ public struct ContentItemMenu: View {
     @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var styleManager: StyleManager = .shared
-    private var libraryManagerViewModel: LibraryManagerViewModel = .shared
-    private var libraryManager: LibraryManager = .shared
+    private var sharedLibraryManagerViewModel: SharedLibraryManagerViewModel = .shared
 
     private let curationItem: CurationItemModel
     private let caregiverID: String
 
     @ViewBuilder
-    private func addOrRemoveLibraryButton(_ curation: CurationItemModel, caregiverID: String) -> some View {
-        let libraryItem = LibraryManager.getLibraryItem(from: curation, caregiverID: caregiverID)
+    private func addOrRemoveSharedLibraryButton(_ curation: CurationItemModel, caregiverID: String) -> some View {
+        let libraryItem = SharedLibraryManager.getSharedLibraryItem(from: curation, caregiverID: caregiverID)
 
-        if self.libraryManagerViewModel.isContentSaved(id: curation.id) {
+        if self.sharedLibraryManagerViewModel.isContentSaved(id: curation.id) {
             Button(role: .destructive) {
-                self.libraryManagerViewModel.requestItemRemoval(libraryItem, caregiverID: caregiverID)
+                self.sharedLibraryManagerViewModel.requestItemRemoval(libraryItem, caregiverID: caregiverID)
             } label: {
                 Label(String(l10n.ContentItemMenu.removeFromLibraryButtonLabel.characters), systemImage: "trash")
             }
         } else {
             Button {
-                self.libraryManagerViewModel.addItemToLibrary(libraryItem)
+                self.sharedLibraryManagerViewModel.addItemToSharedLibrary(libraryItem)
             } label: {
                 Label(String(l10n.ContentItemMenu.addToLibraryButtonLabel.characters), systemImage: "plus")
             }
@@ -68,20 +67,20 @@ public struct ContentItemMenu: View {
 
     @ViewBuilder
     private func addOrRemoveFavoriteButton(_ curation: CurationItemModel, caregiverID: String) -> some View {
-        let libraryItem = LibraryManager.getLibraryItem(from: curation, caregiverID: caregiverID)
+        let libraryItem = SharedLibraryManager.getSharedLibraryItem(from: curation, caregiverID: caregiverID)
 
-        if self.libraryManagerViewModel.isContentFavorited(
+        if self.sharedLibraryManagerViewModel.isContentFavorited(
             by: caregiverID,
             contentID: curation.id
         ) {
             Button {
-                self.libraryManagerViewModel.removeItemFromFavorites(libraryItem)
+                self.sharedLibraryManagerViewModel.removeItemFromFavorites(libraryItem)
             } label: {
                 Label(String(l10n.ContentItemMenu.undoFavoriteButtonLabel.characters), systemImage: "star.slash")
             }
         } else {
             Button {
-                self.libraryManagerViewModel.addItemToFavorite(libraryItem)
+                self.sharedLibraryManagerViewModel.addItemToFavorite(libraryItem)
             } label: {
                 Label(String(l10n.ContentItemMenu.favoriteButtonLabel.characters), systemImage: "star")
             }
@@ -89,24 +88,24 @@ public struct ContentItemMenu: View {
     }
 }
 
-public extension LibraryManager {
-    static func getLibraryItem(from curationItem: CurationItemModel, caregiverID: String) -> AccountKit.LibraryItem {
-        var libraryItem: AccountKit.LibraryItem = .activity(SavedActivity(id: "", caregiverID: ""))
+public extension SharedLibraryManager {
+    static func getSharedLibraryItem(from curationItem: CurationItemModel, caregiverID: String) -> AccountKit.SharedLibraryItem {
+        var libraryItem: AccountKit.SharedLibraryItem = .activity(SavedActivity(id: "", caregiverID: ""))
         switch curationItem.contentType {
             case .curriculum:
-                libraryItem = LibraryItem.curriculum(
+                libraryItem = SharedLibraryItem.curriculum(
                     SavedCurriculum(id: curationItem.id, caregiverID: caregiverID)
                 )
             case .activity:
-                libraryItem = LibraryItem.activity(
+                libraryItem = SharedLibraryItem.activity(
                     SavedActivity(id: curationItem.id, caregiverID: caregiverID)
                 )
             case .story:
-                libraryItem = LibraryItem.story(
+                libraryItem = SharedLibraryItem.story(
                     SavedStory(id: curationItem.id, caregiverID: caregiverID)
                 )
             default:
-                log.error("Library item conversion - Unsupported content type")
+                log.error("Shared Library item conversion - Unsupported content type")
         }
         return libraryItem
     }

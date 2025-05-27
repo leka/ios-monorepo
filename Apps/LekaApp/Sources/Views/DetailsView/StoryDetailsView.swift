@@ -25,7 +25,7 @@ public struct StoryDetailsView: View {
             .toolbar {
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                     ToolbarItemGroup {
-                        if self.libraryManagerViewModel.isStoryFavoritedByCurrentCaregiver(
+                        if self.sharedLibraryManagerViewModel.isStoryFavoritedByCurrentCaregiver(
                             storyID: self.story.uuid,
                             caregiverID: currentCaregiverID
                         ) {
@@ -65,7 +65,7 @@ public struct StoryDetailsView: View {
     @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var styleManager: StyleManager = .shared
-    private var libraryManagerViewModel: LibraryManagerViewModel = .shared
+    private var sharedLibraryManagerViewModel: SharedLibraryManagerViewModel = .shared
     private let story: Story
 }
 

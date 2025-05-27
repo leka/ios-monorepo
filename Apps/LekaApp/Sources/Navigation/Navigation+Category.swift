@@ -15,11 +15,11 @@ extension Navigation {
         case stories
         case gamepads
 
-        // ? Library
-        case libraryCurriculums = "library_curriculums"
-        case libraryActivities = "library_activities"
-        case libraryStories = "library_stories"
-        case libraryFavorites = "library_favorites"
+        // ? sharedLibrary
+        case sharedLibraryCurriculums = "shared_library_curriculums"
+        case sharedLibraryActivities = "shared_library_activities"
+        case sharedLibraryStories = "shared_library_stories"
+        case sharedLibraryFavorites = "shared_library_favorites"
 
         // ? Monitoring
         case caregivers

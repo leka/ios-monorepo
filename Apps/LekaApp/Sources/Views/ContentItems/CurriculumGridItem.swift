@@ -35,7 +35,7 @@ public struct CurriculumGridItem: View {
     public var body: some View {
         HStack(spacing: 0) {
             if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id,
-               self.libraryManagerViewModel.isContentFavorited(
+               self.sharedLibraryManagerViewModel.isContentFavorited(
                    by: currentCaregiverID,
                    contentID: curationItem.id
                )
@@ -88,7 +88,7 @@ public struct CurriculumGridItem: View {
     private var title: String
     private var subtitle: String?
 
-    private var libraryManagerViewModel: LibraryManagerViewModel = .shared
+    private var sharedLibraryManagerViewModel: SharedLibraryManagerViewModel = .shared
 }
 
 #Preview {

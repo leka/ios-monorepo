@@ -242,7 +242,7 @@ struct SettingsView: View {
     private let authManager = AuthManager.shared
     private let caregiverManager: CaregiverManager = .shared
     private let carereceiverManager: CarereceiverManager = .shared
-    private var libraryManager: LibraryManager = .shared
+    private var sharedLibraryManager: SharedLibraryManager = .shared
     private let persistentDataManager: PersistentDataManager = .shared
     private var styleManager: StyleManager = .shared
 
@@ -251,7 +251,7 @@ struct SettingsView: View {
     private func reset() {
         self.caregiverManager.resetData()
         self.carereceiverManager.resetData()
-        self.libraryManager.resetData()
+        self.sharedLibraryManager.resetData()
         self.styleManager.setAccentColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
         self.styleManager.setColorScheme(.light)
     }

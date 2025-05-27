@@ -7,10 +7,10 @@ import ContentKit
 import LocalizationKit
 import SwiftUI
 
-struct CategoryLibraryView: View {
+struct CategorySharedLibraryView: View {
     @State var category: Navigation.Category
 
-    @State var libraryManagerViewModel: LibraryManagerViewModel = .shared
+    @State var sharedLibraryManagerViewModel: SharedLibraryManagerViewModel = .shared
 
     var authManagerViewModel: AuthManagerViewModel = .shared
 
@@ -18,17 +18,17 @@ struct CategoryLibraryView: View {
         if self.authManagerViewModel.userAuthenticationState == .loggedIn {
             Group {
                 switch self.category {
-                    case .libraryCurriculums:
-                        LibraryCurriculumsView(viewModel: self.libraryManagerViewModel)
+                    case .sharedLibraryCurriculums:
+                        SharedLibraryCurriculumsView(viewModel: self.sharedLibraryManagerViewModel)
                             .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.libraryCurriculums.characters))
-                    case .libraryStories:
-                        LibraryStoriesView(viewModel: self.libraryManagerViewModel)
+                    case .sharedLibraryStories:
+                        SharedLibraryStoriesView(viewModel: self.sharedLibraryManagerViewModel)
                             .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.libraryStories.characters))
-                    case .libraryActivities:
-                        LibraryActivitiesView(viewModel: self.libraryManagerViewModel)
+                    case .sharedLibraryActivities:
+                        SharedLibraryActivitiesView(viewModel: self.sharedLibraryManagerViewModel)
                             .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.libraryActivities.characters))
                     default:
-                        LibraryFavoritesView(viewModel: self.libraryManagerViewModel)
+                        SharedLibraryFavoritesView(viewModel: self.sharedLibraryManagerViewModel)
                             .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.libraryFavorites.characters))
                 }
             }
@@ -40,5 +40,5 @@ struct CategoryLibraryView: View {
 }
 
 #Preview {
-    CategoryLibraryView(category: .educationalGames)
+    CategorySharedLibraryView(category: .educationalGames)
 }

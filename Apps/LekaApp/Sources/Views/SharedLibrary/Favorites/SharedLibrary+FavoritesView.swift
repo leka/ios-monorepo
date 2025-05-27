@@ -6,12 +6,12 @@ import AccountKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - LibraryFavoritesView
+// MARK: - SharedLibraryFavoritesView
 
-struct LibraryFavoritesView: View {
+struct SharedLibraryFavoritesView: View {
     // MARK: Lifecycle
 
-    init(viewModel: LibraryManagerViewModel) {
+    init(viewModel: SharedLibraryManagerViewModel) {
         self.viewModel = viewModel
     }
 
@@ -41,7 +41,7 @@ struct LibraryFavoritesView: View {
 
     @State private var selectedCategory: FavoriteCategory = .activities
 
-    private var viewModel: LibraryManagerViewModel
+    private var viewModel: SharedLibraryManagerViewModel
 
     @ViewBuilder
     private func contentView(for category: FavoriteCategory) -> some View {
@@ -57,9 +57,9 @@ struct LibraryFavoritesView: View {
 }
 
 #Preview {
-    let viewModel = LibraryManagerViewModel()
+    let viewModel = SharedLibraryManagerViewModel()
     NavigationStack {
-        LibraryFavoritesView(viewModel: viewModel)
+        SharedLibraryFavoritesView(viewModel: viewModel)
     }
 }
 

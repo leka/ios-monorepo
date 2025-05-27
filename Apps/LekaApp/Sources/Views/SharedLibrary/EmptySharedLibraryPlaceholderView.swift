@@ -6,9 +6,9 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - EmptyLibraryPlaceholderView
+// MARK: - EmptySharedLibraryPlaceholderView
 
-struct EmptyLibraryPlaceholderView: View {
+struct EmptySharedLibraryPlaceholderView: View {
     // MARK: Lifecycle
 
     init(icon: Icon) {
@@ -103,5 +103,5 @@ extension l10n {
 }
 
 #Preview {
-    EmptyLibraryPlaceholderView(icon: .stories)
+    EmptySharedLibraryPlaceholderView(icon: .stories)
 }

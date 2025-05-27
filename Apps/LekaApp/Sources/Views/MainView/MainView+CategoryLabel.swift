@@ -59,19 +59,19 @@ extension MainView {
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.gamepads.characters)
                     self.systemImage = "gamecontroller"
 
-                case .libraryCurriculums:
+                case .sharedLibraryCurriculums:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.libraryCurriculums.characters)
                     self.systemImage = "graduationcap.fill"
 
-                case .libraryActivities:
+                case .sharedLibraryActivities:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.libraryActivities.characters)
                     self.systemImage = "dice.fill"
 
-                case .libraryStories:
+                case .sharedLibraryStories:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.libraryStories.characters)
                     self.systemImage = "text.book.closed.fill"
 
-                case .libraryFavorites:
+                case .sharedLibraryFavorites:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.libraryFavorites.characters)
                     self.systemImage = "star.fill"
 

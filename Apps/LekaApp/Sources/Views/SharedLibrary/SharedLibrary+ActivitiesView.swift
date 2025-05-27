@@ -7,12 +7,10 @@ import ContentKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - PersonalLibraryActivitiesView
-
-struct LibraryActivitiesView: View {
+struct SharedLibraryActivitiesView: View {
     // MARK: Lifecycle
 
-    init(viewModel: LibraryManagerViewModel) {
+    init(viewModel: SharedLibraryManagerViewModel) {
         self.viewModel = viewModel
     }
 
@@ -20,9 +18,9 @@ struct LibraryActivitiesView: View {
 
     var body: some View {
         if self.activities.isEmpty {
-            EmptyLibraryPlaceholderView(icon: .activities)
+            EmptySharedLibraryPlaceholderView(icon: .activities)
         } else {
-            LibraryActivityListView(activities: self.activities) { activity in
+            SharedLibraryActivityListView(activities: self.activities) { activity in
                 if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
                     self.navigation.setSheetContent(.carereceiverPicker(activity: activity, story: nil))
                 } else {
@@ -36,7 +34,7 @@ struct LibraryActivitiesView: View {
     // MARK: Private
 
     private var navigation: Navigation = .shared
-    private var viewModel: LibraryManagerViewModel
+    private var viewModel: SharedLibraryManagerViewModel
     private var authManagerViewModel: AuthManagerViewModel = .shared
 
     private var activities: [Activity] {
@@ -50,8 +48,8 @@ struct LibraryActivitiesView: View {
 }
 
 #Preview {
-    let viewModel = LibraryManagerViewModel()
+    let viewModel = SharedLibraryManagerViewModel()
     NavigationStack {
-        LibraryActivitiesView(viewModel: viewModel)
+        SharedLibraryActivitiesView(viewModel: viewModel)
     }
 }

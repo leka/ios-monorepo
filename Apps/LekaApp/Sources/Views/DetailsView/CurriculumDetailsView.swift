@@ -145,7 +145,7 @@ public struct CurriculumDetailsView: View {
         .toolbar {
             if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                 ToolbarItemGroup {
-                    if self.libraryManagerViewModel.isCurriculumFavoritedByCurrentCaregiver(
+                    if self.sharedLibraryManagerViewModel.isCurriculumFavoritedByCurrentCaregiver(
                         curriculumID: self.curriculum.uuid,
                         caregiverID: currentCaregiverID
                     ) {
@@ -176,7 +176,7 @@ public struct CurriculumDetailsView: View {
     @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var styleManager: StyleManager = .shared
-    private var libraryManagerViewModel: LibraryManagerViewModel = .shared
+    private var sharedLibraryManagerViewModel: SharedLibraryManagerViewModel = .shared
     private let curriculum: Curriculum
 
     private let kIconSize: CGFloat = 150

@@ -10,7 +10,7 @@ import SwiftUI
 struct FavoriteCurriculumsView: View {
     // MARK: Lifecycle
 
-    init(viewModel: LibraryManagerViewModel) {
+    init(viewModel: SharedLibraryManagerViewModel) {
         self.viewModel = viewModel
     }
 
@@ -39,7 +39,7 @@ struct FavoriteCurriculumsView: View {
     @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var navigation: Navigation = .shared
-    private var viewModel: LibraryManagerViewModel
+    private var viewModel: SharedLibraryManagerViewModel
     private var authManagerViewModel: AuthManagerViewModel = .shared
 
     private var curriculums: [Curriculum] {
@@ -63,6 +63,6 @@ struct FavoriteCurriculumsView: View {
 }
 
 #Preview {
-    let viewModel = LibraryManagerViewModel()
-    LibraryCurriculumsView(viewModel: viewModel)
+    let viewModel = SharedLibraryManagerViewModel()
+    SharedLibraryCurriculumsView(viewModel: viewModel)
 }

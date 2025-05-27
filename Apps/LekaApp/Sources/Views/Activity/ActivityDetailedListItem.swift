@@ -22,7 +22,7 @@ public struct ActivityDetailedListItem: View {
     public var body: some View {
         HStack(spacing: 0) {
             if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id,
-               self.libraryManagerViewModel.isContentFavorited(
+               self.sharedLibraryManagerViewModel.isContentFavorited(
                    by: currentCaregiverID,
                    contentID: self.activity.id
                )
@@ -97,7 +97,7 @@ public struct ActivityDetailedListItem: View {
 
     private let kIconSize: CGFloat = 60
     private var styleManager: StyleManager = .shared
-    private var libraryManagerViewModel: LibraryManagerViewModel = .shared
+    private var sharedLibraryManagerViewModel: SharedLibraryManagerViewModel = .shared
 }
 
 #Preview {
