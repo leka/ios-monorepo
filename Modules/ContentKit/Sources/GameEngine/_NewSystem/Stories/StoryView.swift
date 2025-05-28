@@ -71,7 +71,7 @@ public struct StoryView: View {
             Text(l10n.StoryView.QuitStoryAlert.message)
         }
         .sheet(isPresented: self.$isInfoSheetPresented) {
-            InfoDetailsView(CurationItemModel(id: self.currentStory.id, contentType: .story))
+            InfoDetailsView(CurationItemModel(id: self.currentStory.id, name: self.currentStory.name, contentType: .story))
                 .logEventScreenView(
                     screenName: "story_details",
                     context: .sheet,

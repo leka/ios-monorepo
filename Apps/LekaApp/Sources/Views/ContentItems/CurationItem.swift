@@ -62,10 +62,10 @@ public struct CurationItem: View {
 
 #Preview {
     let curations: [CurationItemModel] = [
-        .init(id: "0E1860BB217C4E2DA93AF366B1D1F283", contentType: .curation),
-        .init(id: "E2C641B879A248C982AA0C93B21A690A", contentType: .curation),
-        .init(id: "181519A691954BAC8C4825E660E91E45", contentType: .curation),
-        .init(id: "Wrong UUID", contentType: .activity),
+        .init(id: "0E1860BB217C4E2DA93AF366B1D1F283", name: "", contentType: .curation),
+        .init(id: "E2C641B879A248C982AA0C93B21A690A", name: "", contentType: .curation),
+        .init(id: "181519A691954BAC8C4825E660E91E45", name: "", contentType: .curation),
+        .init(id: "Wrong UUID", name: "", contentType: .activity),
     ]
     return HStack {
         ForEach(curations) { curation in

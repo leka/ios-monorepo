@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AnalyticsKit
 import ContentKit
 import SwiftUI
 
@@ -14,10 +15,18 @@ public struct VerticalCurationGrid: View {
         LazyVGrid(columns: self.columns, spacing: 10) {
             ForEach(self.items) { item in
                 NavigationLink(destination:
-                    AnyView(self.navigation.curationDestination(item.curation))
+                    AnyView(self.navigation.curationDestination(item))
                 ) {
-                    CurationItem(item.curation)
+                    CurationItem(item)
                 }
+                .simultaneousGesture(TapGesture().onEnded {
+                    AnalyticsManager.logEventSelectContent(
+                        type: .curation,
+                        id: item.id,
+                        name: item.name,
+                        origin: self.navigation.selectedCategory?.rawValue
+                    )
+                })
             }
         }
         .padding()
@@ -25,7 +34,7 @@ public struct VerticalCurationGrid: View {
 
     // MARK: Internal
 
-    let items: [ContentCategory.CurationPayload]
+    let items: [CurationItemModel]
 
     // MARK: Private
 

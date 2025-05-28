@@ -42,13 +42,13 @@ public struct ActivityListView: View {
                                 type: .activity,
                                 id: activity.id,
                                 name: activity.name,
-                                origin: .generalLibrary
+                                origin: Navigation.shared.selectedCategory?.rawValue
                             )
                         })
 
                         if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                             ContentItemMenu(
-                                CurationItemModel(id: activity.id, contentType: .activity),
+                                CurationItemModel(id: activity.id, name: activity.name, contentType: .activity),
                                 caregiverID: currentCaregiverID
                             )
                             .frame(width: 40)

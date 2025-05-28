@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AnalyticsKit
 import ContentKit
 import SwiftUI
 
@@ -15,10 +16,10 @@ public struct HorizontalCurriculumGrid: View {
             LazyHGrid(rows: self.rows, spacing: 20) {
                 ForEach(Array(self.items.prefix(15).enumerated()), id: \.offset) { index, item in
                     NavigationLink(destination:
-                        AnyView(self.navigation.curationDestination(item.curation))
+                        AnyView(self.navigation.curationDestination(item))
                     ) {
                         VStack {
-                            CurriculumGridItem(item.curation)
+                            CurriculumGridItem(item)
                             let isNotLast = (index + 1) % self.numberOfRows != 0
                             if isNotLast {
                                 Divider()
@@ -26,6 +27,14 @@ public struct HorizontalCurriculumGrid: View {
                             }
                         }
                     }
+                    .simultaneousGesture(TapGesture().onEnded {
+                        AnalyticsManager.logEventSelectContent(
+                            type: .curriculum,
+                            id: item.id,
+                            name: item.name,
+                            origin: self.navigation.selectedCategory?.rawValue
+                        )
+                    })
                 }
             }
             .padding()
@@ -34,7 +43,7 @@ public struct HorizontalCurriculumGrid: View {
 
     // MARK: Internal
 
-    let items: [ContentCategory.CurationPayload]
+    let items: [CurationItemModel]
 
     // MARK: Private
 

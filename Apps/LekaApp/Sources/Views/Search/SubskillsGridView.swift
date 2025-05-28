@@ -21,7 +21,7 @@ public struct SubskillsGridView: View {
         }
         self.mainSkillActivities = self.activities.filter {
             $0.skills.contains(firstSubskill)
-        }.map { ContentCategory.CurationPayload(for: CurationItemModel(id: $0.id, contentType: .activity)) }
+        }.map { CurationItemModel(id: $0.id, name: $0.name, contentType: .activity) }
     }
 
     // MARK: Public
@@ -54,7 +54,7 @@ public struct SubskillsGridView: View {
                             Section {
                                 let subskillActivities = self.activities.filter {
                                     $0.skills.contains(subskill)
-                                }.map { ContentCategory.CurationPayload(for: CurationItemModel(id: $0.id, contentType: .activity)) }
+                                }.map { CurationItemModel(id: $0.id, name: $0.name, contentType: .activity) }
                                 if !subskillActivities.isEmpty {
                                     VStack(alignment: .leading) {
                                         VStack(alignment: .leading) {
@@ -97,7 +97,7 @@ public struct SubskillsGridView: View {
         $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
     }
 
-    let mainSkillActivities: [ContentCategory.CurationPayload]
+    let mainSkillActivities: [CurationItemModel]
     let subskills: [Skill]
 
     // MARK: Private

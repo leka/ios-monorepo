@@ -155,7 +155,7 @@ public struct CurriculumDetailsView: View {
                     }
 
                     ContentItemMenu(
-                        CurationItemModel(id: self.curriculum.uuid, contentType: .curriculum),
+                        CurationItemModel(id: self.curriculum.uuid, name: self.curriculum.name, contentType: .curriculum),
                         caregiverID: currentCaregiverID
                     )
                 }

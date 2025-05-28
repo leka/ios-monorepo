@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import AnalyticsKit
 import ContentKit
 import SwiftUI
 
@@ -15,10 +16,18 @@ public struct HorizontalActivityList: View {
             LazyHStack(spacing: 20) {
                 ForEach(self.items.prefix(8)) { item in
                     NavigationLink(destination:
-                        AnyView(self.navigation.curationDestination(item.curation))
+                        AnyView(self.navigation.curationDestination(item))
                     ) {
-                        ActivityItem(item.curation)
+                        ActivityItem(item)
                     }
+                    .simultaneousGesture(TapGesture().onEnded {
+                        AnalyticsManager.logEventSelectContent(
+                            type: item.contentType == .activity ? .activity : .story,
+                            id: item.id,
+                            name: item.name,
+                            origin: self.navigation.selectedCategory?.rawValue
+                        )
+                    })
                 }
             }
             .padding()
@@ -27,7 +36,7 @@ public struct HorizontalActivityList: View {
 
     // MARK: Internal
 
-    let items: [ContentCategory.CurationPayload]
+    let items: [CurationItemModel]
 
     // MARK: Private
 

@@ -17,8 +17,8 @@ public struct SearchGridView: View {
                 curriculums: [Curriculum]? = nil)
     {
         self.skills = skills ?? []
-        self.activities = activities?.map { ContentCategory.CurationPayload(for: CurationItemModel(id: $0.id, contentType: .activity)) } ?? []
-        self.curriculums = curriculums?.map { ContentCategory.CurationPayload(for: CurationItemModel(id: $0.id, contentType: .curriculum)) } ?? []
+        self.activities = activities?.map { CurationItemModel(id: $0.id, name: $0.name, contentType: .activity) } ?? []
+        self.curriculums = curriculums?.map { CurationItemModel(id: $0.id, name: $0.name, contentType: .curriculum) } ?? []
     }
 
     // MARK: Public
@@ -88,8 +88,8 @@ public struct SearchGridView: View {
     // MARK: Internal
 
     let skills: [Skill]
-    let activities: [ContentCategory.CurationPayload]
-    let curriculums: [ContentCategory.CurationPayload]
+    let activities: [CurationItemModel]
+    let curriculums: [CurationItemModel]
 }
 
 // MARK: - l10n.SearchGridView

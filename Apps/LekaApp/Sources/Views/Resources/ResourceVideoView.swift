@@ -34,7 +34,7 @@ public struct ResourceVideoView: View {
                                     type: .resourceVideo,
                                     id: self.resource.id.uuidString,
                                     name: self.resource.title,
-                                    origin: .resources
+                                    origin: Navigation.shared.selectedCategory?.rawValue
                                 )
                             }
                         }

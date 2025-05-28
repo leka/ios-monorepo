@@ -95,18 +95,18 @@ public struct ActivityItem: View {
 
 #Preview {
     let curations: [CurationItemModel] = [
-        .init(id: "CBBCDFA8DC8C462794904F6E5E0638AB", contentType: .activity),
-        .init(id: "7C75908B86D748A283AA080D40642BE7", contentType: .curriculum),
-        .init(id: "60C133CB19F94BA0864DFA9BF6E7F696", contentType: .story),
-        .init(id: "D91BDA161F8E455CA8A71881F1D2E923", contentType: .activity),
-        .init(id: "Wrong UUID", contentType: .activity),
-        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
-        .init(id: "CBBCDFA8DC8C462794904F6E5E0638AB", contentType: .activity),
-        .init(id: "7C75908B86D748A283AA080D40642BE7", contentType: .curriculum),
-        .init(id: "60C133CB19F94BA0864DFA9BF6E7F696", contentType: .story),
-        .init(id: "D91BDA161F8E455CA8A71881F1D2E923", contentType: .activity),
-        .init(id: "Wrong UUID", contentType: .activity),
-        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", contentType: .curriculum),
+        .init(id: "CBBCDFA8DC8C462794904F6E5E0638AB", name: "", contentType: .activity),
+        .init(id: "7C75908B86D748A283AA080D40642BE7", name: "", contentType: .curriculum),
+        .init(id: "60C133CB19F94BA0864DFA9BF6E7F696", name: "", contentType: .story),
+        .init(id: "D91BDA161F8E455CA8A71881F1D2E923", name: "", contentType: .activity),
+        .init(id: "Wrong UUID", name: "", contentType: .activity),
+        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", name: "", contentType: .curriculum),
+        .init(id: "CBBCDFA8DC8C462794904F6E5E0638AB", name: "", contentType: .activity),
+        .init(id: "7C75908B86D748A283AA080D40642BE7", name: "", contentType: .curriculum),
+        .init(id: "60C133CB19F94BA0864DFA9BF6E7F696", name: "", contentType: .story),
+        .init(id: "D91BDA161F8E455CA8A71881F1D2E923", name: "", contentType: .activity),
+        .init(id: "Wrong UUID", name: "", contentType: .activity),
+        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", name: "", contentType: .curriculum),
     ]
 
     return ScrollView(.horizontal) {

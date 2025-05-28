@@ -22,7 +22,7 @@ public struct ActivityDetailsView: View {
     // MARK: Public
 
     public var body: some View {
-        InfoDetailsView(CurationItemModel(id: self.activity.id, contentType: .activity))
+        InfoDetailsView(CurationItemModel(id: self.activity.id, name: self.activity.name, contentType: .activity))
             .toolbar {
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                     ToolbarItemGroup {
@@ -36,7 +36,7 @@ public struct ActivityDetailsView: View {
                         }
 
                         ContentItemMenu(
-                            CurationItemModel(id: self.activity.id, contentType: .activity),
+                            CurationItemModel(id: self.activity.id, name: self.activity.name, contentType: .activity),
                             caregiverID: currentCaregiverID
                         )
                     }
