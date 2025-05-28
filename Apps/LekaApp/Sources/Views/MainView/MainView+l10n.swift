@@ -25,10 +25,10 @@ extension l10n {
                 static let caregivers = LocalizedString("lekaapp.main_view.sidebar.category_label.caregivers", value: "Caregivers", comment: "The title of the category 'Caregivers'")
                 static let carereceivers = LocalizedString("lekaapp.main_view.sidebar.category_label.carereceivers", value: "Care Receivers", comment: "The title of the category 'Care Receivers'")
                 static let none = LocalizedString("lekaapp.main_view.sidebar.category_label.none", value: "Select a category", comment: "The title of the category 'none'")
-                static let libraryFavorites = LocalizedString("lekaapp.main_view.sidebar.category_label.library_favorites", value: "Favorites", comment: "The title of the category 'Library Favorites'")
-                static let libraryCurriculums = LocalizedString("lekaapp.main_view.sidebar.category_label.library_curriculums", value: "Curriculums", comment: "The title of the category 'Library Curriculums'")
-                static let libraryActivities = LocalizedString("lekaapp.main_view.sidebar.category_label.library_activities", value: "Activities", comment: "The title of the category 'Library Activities'")
-                static let libraryStories = LocalizedString("lekaapp.main_view.sidebar.category_label.library_stories", value: "Stories", comment: "The title of the category 'Library Stories'")
+                static let sharedLibraryFavorites = LocalizedString("lekaapp.main_view.sidebar.category_label.shared_library_favorites", value: "Favorites", comment: "The title of the category 'Shared Library Favorites'")
+                static let sharedLibraryCurriculums = LocalizedString("lekaapp.main_view.sidebar.category_label.shared_library_curriculums", value: "Curriculums", comment: "The title of the category 'Shared Library Curriculums'")
+                static let sharedLibraryActivities = LocalizedString("lekaapp.main_view.sidebar.category_label.shared_library_activities", value: "Activities", comment: "The title of the category 'Shared Library Activities'")
+                static let sharedLibraryStories = LocalizedString("lekaapp.main_view.sidebar.category_label.shared_library_stories", value: "Stories", comment: "The title of the category 'Shared Library Stories'")
             }
 
             static let navigationTitle = LocalizedString("lekaapp.main_view.sidebar.navigation_title", value: "Leka App", comment: "The title of the sidebar")
@@ -39,11 +39,11 @@ extension l10n {
 
             static let sectionUsers = LocalizedString("lekaapp.main_view.sidebar.section.monitoring", value: "Users", comment: "The title of the section 'Users'")
 
-            static let sectionLibrary = LocalizedString("lekaapp.main_view.sidebar.section.library", value: "Library", comment: "The title of the section 'Library'")
+            static let sectionSharedLibrary = LocalizedString("lekaapp.main_view.sidebar.section.shared_library", value: "Shared Library", comment: "The title of the section 'Shared Library'")
         }
 
         enum DetailView {
-            static let disconnectedLibraryMessage = LocalizedString("lekaapp.main_view.detailView.disconnected_library_message", value: "Log in to your account to access your personal library.", comment: "The message to invite users to connect to display the Library")
+            static let disconnectedSharedLibraryMessage = LocalizedString("lekaapp.main_view.detailView.disconnected_shared_library_message", value: "Log in to your account to access your shared library.", comment: "The message to invite users to connect to display the Shared Library")
         }
 
         enum AppUpdateAlert {
@@ -75,7 +75,7 @@ extension l10n {
 
             static let confirmMessage = LocalizedString(
                 "lekaapp.main_view.removal_alert.confirm_message",
-                value: "You have marked this item as a favorite. Are you sure you want to remove it from your library?",
+                value: "You have marked this item as a favorite. Are you sure you want to remove it from the shared library?",
                 comment: "Message of the alert when a user is about to remove a favorited item"
             )
 

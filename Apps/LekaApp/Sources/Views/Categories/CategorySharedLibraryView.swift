@@ -20,21 +20,21 @@ struct CategorySharedLibraryView: View {
                 switch self.category {
                     case .sharedLibraryCurriculums:
                         SharedLibraryCurriculumsView(viewModel: self.sharedLibraryManagerViewModel)
-                            .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.libraryCurriculums.characters))
+                            .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.sharedLibraryCurriculums.characters))
                     case .sharedLibraryStories:
                         SharedLibraryStoriesView(viewModel: self.sharedLibraryManagerViewModel)
-                            .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.libraryStories.characters))
+                            .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.sharedLibraryStories.characters))
                     case .sharedLibraryActivities:
                         SharedLibraryActivitiesView(viewModel: self.sharedLibraryManagerViewModel)
-                            .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.libraryActivities.characters))
+                            .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.sharedLibraryActivities.characters))
                     default:
                         SharedLibraryFavoritesView(viewModel: self.sharedLibraryManagerViewModel)
-                            .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.libraryFavorites.characters))
+                            .navigationTitle(String(l10n.MainView.Sidebar.CategoryLabel.sharedLibraryFavorites.characters))
                 }
             }
         } else {
-            Text(String(l10n.MainView.DetailView.disconnectedLibraryMessage.characters))
-                .navigationTitle(String(l10n.MainView.Sidebar.sectionLibrary.characters))
+            Text(String(l10n.MainView.DetailView.disconnectedSharedLibraryMessage.characters))
+                .navigationTitle(String(l10n.MainView.Sidebar.sectionSharedLibrary.characters))
         }
     }
 }

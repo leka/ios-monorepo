@@ -75,11 +75,11 @@ enum FavoriteCategory: String, CaseIterable {
     var localizedName: String {
         switch self {
             case .activities:
-                String(l10n.MainView.Sidebar.CategoryLabel.libraryActivities.characters)
+                String(l10n.MainView.Sidebar.CategoryLabel.sharedLibraryActivities.characters)
             case .curriculums:
-                String(l10n.MainView.Sidebar.CategoryLabel.libraryCurriculums.characters)
+                String(l10n.MainView.Sidebar.CategoryLabel.sharedLibraryCurriculums.characters)
             case .stories:
-                String(l10n.MainView.Sidebar.CategoryLabel.libraryStories.characters)
+                String(l10n.MainView.Sidebar.CategoryLabel.sharedLibraryStories.characters)
         }
     }
 }

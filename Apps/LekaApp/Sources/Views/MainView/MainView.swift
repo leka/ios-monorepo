@@ -24,7 +24,7 @@ struct MainView: View {
     // MARK: Internal
 
     @State private var isContentSectionExpanded: Bool = true
-    @State private var isLibrarySectionExpanded: Bool = true
+    @State private var isSharedLibrarySectionExpanded: Bool = true
     @State private var isUserSectionExpanded: Bool = true
     @State private var isResourcesSectionExpanded: Bool = true
     @State private var isDeveloperSectionExpanded: Bool = true
@@ -70,7 +70,7 @@ struct MainView: View {
                         CategoryLabel(category: .gamepads)
                     }
 
-                    Section(String(l10n.MainView.Sidebar.sectionLibrary.characters), isExpanded: self.$isLibrarySectionExpanded) {
+                    Section(String(l10n.MainView.Sidebar.sectionSharedLibrary.characters), isExpanded: self.$isSharedLibrarySectionExpanded) {
                         CategoryLabel(category: .sharedLibraryFavorites)
                         CategoryLabel(category: .sharedLibraryCurriculums)
                         CategoryLabel(category: .sharedLibraryActivities)

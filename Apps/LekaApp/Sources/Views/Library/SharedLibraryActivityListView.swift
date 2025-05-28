@@ -23,7 +23,7 @@ public struct SharedLibraryActivityListView: View {
 
     public var body: some View {
         Table(self.activities) {
-            TableColumn(String(l10n.Library.titleColumnLabel.characters)) { activity in
+            TableColumn(String(l10n.SharedLibrary.titleColumnLabel.characters)) { activity in
                 NavigationLink(destination:
                     ActivityDetailsView(activity: activity, onStartActivity: self.onStartActivity)
                         .logEventScreenView(
@@ -121,7 +121,7 @@ public struct SharedLibraryActivityListView: View {
                 } label: {
                     HStack(spacing: 6) {
                         Image(systemName: "play.fill")
-                        Text(l10n.LibraryActivityListView.playButtonLabel)
+                        Text(l10n.SharedLibraryActivityListView.playButtonLabel)
                             .font(.callout)
                     }
                     .foregroundColor(.lkGreen)
@@ -170,13 +170,13 @@ public struct SharedLibraryActivityListView: View {
     private var sharedLibraryManagerViewModel: SharedLibraryManagerViewModel = .shared
 }
 
-// MARK: - l10n.LibraryActivityListView
+// MARK: - l10n.SharedLibraryActivityListView
 
 extension l10n {
-    enum LibraryActivityListView {
-        static let playButtonLabel = LocalizedString("lekaapp.library_activity_list_view.play_button_label",
+    enum SharedLibraryActivityListView {
+        static let playButtonLabel = LocalizedString("lekaapp.shared_library_activity_list_view.play_button_label",
                                                      value: "Play",
-                                                     comment: "Play button label on Library Activity List view")
+                                                     comment: "Play button label on Shared Library Activity List view")
     }
 }
 

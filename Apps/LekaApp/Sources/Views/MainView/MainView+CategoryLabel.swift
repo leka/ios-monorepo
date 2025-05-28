@@ -60,19 +60,19 @@ extension MainView {
                     self.systemImage = "gamecontroller"
 
                 case .sharedLibraryCurriculums:
-                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.libraryCurriculums.characters)
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.sharedLibraryCurriculums.characters)
                     self.systemImage = "graduationcap.fill"
 
                 case .sharedLibraryActivities:
-                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.libraryActivities.characters)
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.sharedLibraryActivities.characters)
                     self.systemImage = "dice.fill"
 
                 case .sharedLibraryStories:
-                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.libraryStories.characters)
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.sharedLibraryStories.characters)
                     self.systemImage = "text.book.closed.fill"
 
                 case .sharedLibraryFavorites:
-                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.libraryFavorites.characters)
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.sharedLibraryFavorites.characters)
                     self.systemImage = "star.fill"
 
                 case .caregivers:

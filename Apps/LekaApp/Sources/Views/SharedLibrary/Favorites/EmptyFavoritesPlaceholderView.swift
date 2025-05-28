@@ -80,7 +80,7 @@ struct EmptyFavoritesPlaceholderView: View {
 extension l10n {
     enum EmptyFavoritesPlaceholderView {
         static let FavoritesAreEmpty = LocalizedString(
-            "lekaapp.empty_favorites_placedholder_view.library_is_empty",
+            "lekaapp.empty_favorites_placedholder_view.favorites_are_empty",
             value: "Your Favorites are Empty",
             comment: "Empty Favorites title"
         )

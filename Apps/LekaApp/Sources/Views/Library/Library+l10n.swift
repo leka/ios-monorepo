@@ -5,11 +5,11 @@
 import LocalizationKit
 
 extension l10n {
-    enum Library {
+    enum SharedLibrary {
         static let titleColumnLabel = LocalizedString(
-            "lekaapp.library.title_column_label",
+            "lekaapp.shared_library.title_column_label",
             value: "Title",
-            comment: "Title Column header label in the Library table views"
+            comment: "Title Column header label in the Shared Library table views"
         )
     }
 }

@@ -23,7 +23,7 @@ public struct SharedLibraryStoryListView: View {
 
     public var body: some View {
         Table(self.stories) {
-            TableColumn(String(l10n.Library.titleColumnLabel.characters)) { story in
+            TableColumn(String(l10n.SharedLibrary.titleColumnLabel.characters)) { story in
                 NavigationLink(destination:
                     StoryDetailsView(story: story, onStartStory: self.onStartStory)
                         .logEventScreenView(

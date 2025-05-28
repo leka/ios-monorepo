@@ -54,13 +54,13 @@ public struct ContentItemMenu: View {
             Button(role: .destructive) {
                 self.sharedLibraryManagerViewModel.requestItemRemoval(libraryItem, caregiverID: caregiverID)
             } label: {
-                Label(String(l10n.ContentItemMenu.removeFromLibraryButtonLabel.characters), systemImage: "trash")
+                Label(String(l10n.ContentItemMenu.removeFromSharedLibraryButtonLabel.characters), systemImage: "trash")
             }
         } else {
             Button {
                 self.sharedLibraryManagerViewModel.addItemToSharedLibrary(libraryItem)
             } label: {
-                Label(String(l10n.ContentItemMenu.addToLibraryButtonLabel.characters), systemImage: "plus")
+                Label(String(l10n.ContentItemMenu.addToSharedLibraryButtonLabel.characters), systemImage: "plus")
             }
         }
     }
@@ -115,17 +115,17 @@ public extension SharedLibraryManager {
 
 extension l10n {
     enum ContentItemMenu {
-        static let addToLibraryButtonLabel = LocalizedString(
-            "lekaapp.content_item_menu.add_to_library_button_label",
+        static let addToSharedLibraryButtonLabel = LocalizedString(
+            "lekaapp.content_item_menu.add_to_shared_library_button_label",
             bundle: ContentKitResources.bundle,
-            value: "Add to Library",
-            comment: "Button label to add an item to the library"
+            value: "Add to Shared Library",
+            comment: "Button label to add an item to the shared library"
         )
 
-        static let removeFromLibraryButtonLabel = LocalizedString(
-            "lekaapp.content_item_menu.remove_from_library_button_label",
-            value: "Remove from Library",
-            comment: "Button label to remove an item from the library"
+        static let removeFromSharedLibraryButtonLabel = LocalizedString(
+            "lekaapp.content_item_menu.remove_from_shared_library_button_label",
+            value: "Remove from Shared Library",
+            comment: "Button label to remove an item from the shared library"
         )
 
         static let favoriteButtonLabel = LocalizedString(
