@@ -1,0 +1,53 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 50DC12AA75AA4ED48928FBAFB73CA7EF
+name: curriculum_recognition_alphabet_letters_a_to_f
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2025-05-28T10:38:43.447242"
+authors:
+  - leka
+
+skills:
+  - recognition
+  - association/matching
+
+tags:
+  - alphabet_letters
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_alphabet_letters
+      title: Lettres de l'alphabet (A à F)
+      subtitle: Reconnaitre et associer les lettres
+      abstract: |
+        Ce parcours vise à renforcer la reconnaissance des lettres de l'alphabet de A à F à travers des représentations visuelles simples.
+      description: |
+        À travers des activités interactives présentées sur l'écran de l’iPad, les participants sont invités à observer et à identifier des lettres parmi des choix proposés. L’objectif est de reconnaître les lettres affichées, de les associer à leur forme identique, et de renforcer les capacités d’attention, de discrimination visuelle et de reconnaissance des lettres de l’alphabet, en se concentrant ici uniquement sur les lettres de **a à f**.
+
+  - locale: en_US
+    details:
+      icon: recognition_alphabet_letters
+      title: Alphabet Letters (A to F)
+      subtitle: Recognize and match letters
+      abstract: |
+        This curriculum aims to strengthen recognition of the alphabet Letters from A to F through simple visual representations.
+      description: |
+        Through interactive activities displayed on the iPad screen, participants are invited to observe and identify letters among a set of options. The goal is to recognize the displayed letter, match it to its identical form, and develop attention, visual discrimination, and letter recognition skills—specifically focused on the letters from **a to f**.
+
+activities:
+  - recognition_alphabet_letters_2_images_a_to_f-176042E5B8A14C58B2BD7AD9114960A1
+  - recognition_alphabet_letters_4_images_a_to_f-CF4CEEEA19A84D8F99F90405870CE5A3
+  - recognition_alphabet_letters_6_images_a_to_f-404A8AE6A4A44DD8A523DB2C522293AB
