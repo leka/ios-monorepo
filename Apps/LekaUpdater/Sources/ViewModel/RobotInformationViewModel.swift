@@ -20,10 +20,10 @@ class RobotInformationViewModel {
 
     // MARK: Internal
 
-    var robotSerialNumber = "n/a"
-    var robotBattery = "n/a"
-    var robotOsVersion = "n/a"
-    var robotIsCharging = "n/a"
+    private(set) var robotSerialNumber = "n/a"
+    private(set) var robotBattery = "n/a"
+    private(set) var robotOsVersion = "n/a"
+    private(set) var robotIsCharging = "n/a"
 
     // MARK: Private
 

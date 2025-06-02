@@ -25,11 +25,11 @@ class InformationViewModel {
 
     // MARK: Internal
 
-    var isRobotConnected: Bool = false
-    var showRobotCannotBeUpdated: Bool = false
-    var showRobotNeedsUpdate: Bool = true
-    var robotName: String = "n/a"
-    var robotOSVersion: String = ""
+    private(set) var isRobotConnected: Bool = false
+    private(set) var showRobotCannotBeUpdated: Bool = false
+    private(set) var showRobotNeedsUpdate: Bool = true
+    private(set) var robotName: String = "n/a"
+    private(set) var robotOSVersion: String = ""
 
     // MARK: Private
 

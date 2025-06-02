@@ -30,8 +30,8 @@ class RequirementsViewModel {
     let robotBatteryMinimumLevelImage = LekaUpdaterAsset.Assets.robotBatteryQuarter1.swiftUIImage
     let robotBatteryMinimumLevelText = l10n.update.requirements.robotBatteryMinimumLevelText
 
-    var robotIsReadyToUpdate = false
-    var robotIsNotReadyToUpdate = true
+    private(set) var robotIsReadyToUpdate = false
+    private(set) var robotIsNotReadyToUpdate = true
 
     // MARK: Private
 

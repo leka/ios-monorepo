@@ -18,18 +18,25 @@ class UpdateStatusViewModel {
         self.subscribeToRobotIsChargingUpdates()
     }
 
-    // MARK: Public
+    // MARK: Internal
+
+    enum UpdateStatus {
+        case sendingFile
+        case rebootingRobot
+        case updateFinished
+        case error
+    }
 
     // MARK: - Public variables
 
-    public var updatingStatus: UpdateStatus = .sendingFile
-    public var sendingFileProgression: Float = 0.0
-    public var showAlert: Bool = false
+    private(set) var updatingStatus: UpdateStatus = .sendingFile
+    private(set) var error: UpdateProcessError = .none
+    private(set) var errorInstructions: String = ""
 
-    public var error: UpdateProcessError = .none
-    public var errorInstructions: String = ""
+    var sendingFileProgression: Float = 0.0
+    var showAlert: Bool = false
 
-    public var stepNumber: Int {
+    var stepNumber: Int {
         switch self.updatingStatus {
             case .sendingFile:
                 1
@@ -42,19 +49,10 @@ class UpdateStatusViewModel {
         }
     }
 
-    public func startUpdate() {
+    func startUpdate() {
         UIApplication.shared.isIdleTimerDisabled = true
 
         self.updateProcessController.startUpdate()
-    }
-
-    // MARK: Internal
-
-    enum UpdateStatus {
-        case sendingFile
-        case rebootingRobot
-        case updateFinished
-        case error
     }
 
     // MARK: Private
