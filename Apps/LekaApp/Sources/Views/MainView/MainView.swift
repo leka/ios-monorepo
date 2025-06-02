@@ -237,19 +237,19 @@ struct MainView: View {
 
                     case .sharedLibraryCurriculums:
                         CategorySharedLibraryView(category: .sharedLibraryCurriculums)
-                            .logEventScreenView(screenName: "library_curriculums", context: .splitView)
+                            .logEventScreenView(screenName: "shared_library_curriculums", context: .splitView)
 
                     case .sharedLibraryActivities:
                         CategorySharedLibraryView(category: .sharedLibraryActivities)
-                            .logEventScreenView(screenName: "library_activities", context: .splitView)
+                            .logEventScreenView(screenName: "shared_library_activities", context: .splitView)
 
                     case .sharedLibraryStories:
                         CategorySharedLibraryView(category: .sharedLibraryStories)
-                            .logEventScreenView(screenName: "library_stories", context: .splitView)
+                            .logEventScreenView(screenName: "shared_library_stories", context: .splitView)
 
                     case .sharedLibraryFavorites:
                         CategorySharedLibraryView(category: .sharedLibraryFavorites)
-                            .logEventScreenView(screenName: "library_favorites", context: .splitView)
+                            .logEventScreenView(screenName: "shared_library_favorites", context: .splitView)
 
                     case .none:
                         Text(l10n.MainView.Sidebar.CategoryLabel.home)
