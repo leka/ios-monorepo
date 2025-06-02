@@ -7,6 +7,8 @@ import LocalizationKit
 import SVGView
 import SwiftUI
 
+// MARK: - DanceFreezeSongSelectorView
+
 struct DanceFreezeSongSelectorView: View {
     // MARK: Lifecycle
 
@@ -16,6 +18,8 @@ struct DanceFreezeSongSelectorView: View {
     }
 
     // MARK: Internal
+
+    @Environment(\.dismiss) var dismiss
 
     @Binding var selectedAudioRecording: DanceFreezeSong
 
@@ -27,14 +31,15 @@ struct DanceFreezeSongSelectorView: View {
     let songs: [DanceFreezeSong]
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(l10n.DanceFreezeView.musicSelectionTitle)
-                .font(.headline)
-
-            Divider()
-
+        NavigationStack {
             ScrollView {
-                LazyVGrid(columns: self.columns, alignment: .leading) {
+                ContentKitAsset.Exercises.DanceFreeze.imageIllustration.swiftUIImage
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 200)
+                    .padding(.bottom, 50)
+
+                LazyVGrid(columns: self.columns, alignment: .center) {
                     ForEach(self.songs, id: \.self) { audioRecording in
                         ListRowSong(audioRecording: audioRecording, isSelected: audioRecording == self.selectedAudioRecording)
                             .foregroundColor(
@@ -48,9 +53,23 @@ struct DanceFreezeSongSelectorView: View {
                             }
                     }
                 }
+                .padding(.horizontal, 50)
             }
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text(l10n.DanceFreezeSongSelectorView.selectorTitle)
+                        .font(.body.bold())
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        self.dismiss()
+                    } label: {
+                        Text(l10n.DanceFreezeSongSelectorView.confirmButtonLabel)
+                    }
+                }
+            }
+            .interactiveDismissDisabled()
         }
-        .padding(.horizontal, 40)
     }
 
     // MARK: Private
@@ -94,6 +113,22 @@ struct DanceFreezeSongSelectorView: View {
     }
 
     private var styleManager: StyleManager = .shared
+}
+
+// MARK: - l10n.DanceFreezeSongSelectorView
+
+extension l10n {
+    enum DanceFreezeSongSelectorView {
+        static let selectorTitle = LocalizedString("game_engine_kit.dance_freeze_song_selector_view.selector_title",
+                                                   bundle: ContentKitResources.bundle,
+                                                   value: "Select your song",
+                                                   comment: "Selector song title in DanceFreeze")
+
+        static let confirmButtonLabel = LocalizedString("game_engine_kit.dance_freeze_song_selector_view.confirm_button_label",
+                                                        bundle: ContentKitResources.bundle,
+                                                        value: "Confirm",
+                                                        comment: "Confirm button label for song selector sheet in DanceFreeze")
+    }
 }
 
 #Preview {

@@ -22,22 +22,38 @@ public class NewDanceFreezeCoordinator: ExerciseSharedDataProtocol {
 
     public private(set) var progress = CurrentValueSubject<CGFloat, Never>(0.0)
     public private(set) var isDancing = CurrentValueSubject<Bool, Never>(false)
-    public private(set) var isAuto = CurrentValueSubject<Bool, Never>(false)
 
-    public func setupDanceFreeze(audio: AudioManager.AudioType, motion: DanceFreezeMotion, stage: DanceFreezeStage) {
-        self.audioData = audio
-        self.motionMode = motion
+    public func setup(audio: AudioManager.AudioType, isAuto: Bool) {
+        if self.audioData != audio {
+            self.audioData = audio
+            self.audioManager.stop()
+            self.subscribeToAudioManagerProgress()
+        }
+        self.isAuto = isAuto
         self.isDancing.send(true)
-        self.subscribeToAudioManagerProgress()
-        if stage == .automaticMode {
-            self.isAuto.send(true)
+    }
+
+    public func updateMotionMode(isMovementEnabled: Bool) {
+        self.isMovementEnabled = isMovementEnabled
+    }
+
+    public func updateAutoMode(isAuto: Bool) {
+        self.isAuto = isAuto
+        if self.isAuto {
             self.randomSwitch()
         }
     }
 
-    public func processDanceFreezeToggle() {
+    public func pause() {
+        self.isAuto = false
+        self.audioManager.pause()
+        self.isDancing.send(false)
+        self.robotManager.freeze()
+    }
+
+    public func switchDanceState() {
         guard self.progress.value < 1.0 else {
-            self.completeDanceFreeze()
+            self.complete()
             return
         }
 
@@ -58,7 +74,7 @@ public class NewDanceFreezeCoordinator: ExerciseSharedDataProtocol {
 
     let songs: [DanceFreezeSong]
 
-    func completeDanceFreeze() {
+    func complete() {
         self.isDancing.send(false)
         self.didComplete.send()
         self.isComplete = true
@@ -71,7 +87,8 @@ public class NewDanceFreezeCoordinator: ExerciseSharedDataProtocol {
     private var robotManager = DanceFreezeRobotManager()
     private var audioManager: AudioManager = .shared
     private var audioData: AudioManager.AudioType?
-    private var motionMode: DanceFreezeMotion = .rotation
+    private var isMovementEnabled: Bool = false
+    private var isAuto: Bool = false
     private var isComplete: Bool = false
     private var cancellables: Set<AnyCancellable> = []
 
@@ -82,19 +99,19 @@ public class NewDanceFreezeCoordinator: ExerciseSharedDataProtocol {
                 guard let self else { return }
                 self.progress.send($0.percentage)
                 if self.progress.value >= 1.0 {
-                    self.completeDanceFreeze()
+                    self.complete()
                 }
             }
             .store(in: &self.cancellables)
     }
 
     private func randomSwitch() {
-        if !self.isComplete {
+        if !self.isComplete, self.isAuto {
             let rand = Double.random(in: 3..<(self.isDancing.value ? 8 : 5))
 
             DispatchQueue.main.asyncAfter(deadline: .now() + rand) {
-                if !self.isComplete {
-                    self.processDanceFreezeToggle()
+                if !self.isComplete, self.isAuto {
+                    self.switchDanceState()
                     self.randomSwitch()
                 }
             }
@@ -102,11 +119,10 @@ public class NewDanceFreezeCoordinator: ExerciseSharedDataProtocol {
     }
 
     private func robotDance() {
-        switch self.motionMode {
-            case .rotation:
-                self.robotRotation()
-            case .movement:
-                self.robotMovement()
+        if self.isMovementEnabled {
+            self.robotMovement()
+        } else {
+            self.robotRotation()
         }
 
         self.robotLightFrenzy()

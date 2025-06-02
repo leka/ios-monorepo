@@ -546,6 +546,42 @@
                 }
             }
         },
+        "game_engine_kit.dance_freeze_song_selector_view.confirm_button_label": {
+            "comment": "Confirm button label for song selector sheet in DanceFreeze",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Confirm"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Confirmer"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.dance_freeze_song_selector_view.selector_title": {
+            "comment": "Selector song title in DanceFreeze",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Select your song"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Choisis ta musique"
+                    }
+                }
+            }
+        },
         "game_engine_kit.dance_freeze_view.auto_button_label": {
             "comment": "DanceFreezeView auto button label",
             "localizations": {
@@ -988,6 +1024,60 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "\u274c ERREUR\nType non impl\u00e9ment\u00e9"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.new_dance_freeze_view.automatic_toggle_label": {
+            "comment": "Label of toggle that switch on/off mode in DanceFreeze",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Automatic"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Automatique"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.new_dance_freeze_view.change_music_button_label": {
+            "comment": "Label of button that changes music in DanceFreeze",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Change music"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Changer de musique"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.new_dance_freeze_view.movement_toggle_label": {
+            "comment": "Label of toggle that switch on/off movement in DanceFreeze",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Movement"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "D\u00e9placement"
                     }
                 }
             }
