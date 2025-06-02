@@ -219,7 +219,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     // MARK: Lifecycle
 
     override init() {
-        self.firmwareDataSize = globalFirmwareManager.data.count
+        self.firmwareDataSize = globalFirmwareManager.data.value.count
 
         self.currentPacket = 0
 
@@ -295,7 +295,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     }
 
     private func subscribeToFirmwareDataUpdates() {
-        globalFirmwareManager.$data
+        globalFirmwareManager.data
             .receive(on: DispatchQueue.main)
             .sink { data in
                 self.firmwareDataSize = data.count
@@ -322,7 +322,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
             self.currentPacket < self.expectedCompletePackets
                 ? startIndex + self.maximumPacketSize - 1 : startIndex + self.expectedRemainingBytes - 1
 
-        let dataToSend = globalFirmwareManager.data[startIndex...endIndex]
+        let dataToSend = globalFirmwareManager.data.value[startIndex...endIndex]
 
         if let characteristic {
             Robot.shared.connectedPeripheral?.send(dataToSend, forCharacteristic: characteristic)
