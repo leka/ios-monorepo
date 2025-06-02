@@ -18,7 +18,7 @@ public struct HorizontalActivityList: View {
                     NavigationLink(destination:
                         AnyView(self.navigation.curationDestination(item))
                     ) {
-                        ActivityItem(item)
+                        ActivityItem(item, size: 100)
                     }
                     .simultaneousGesture(TapGesture().onEnded {
                         AnalyticsManager.logEventSelectContent(
