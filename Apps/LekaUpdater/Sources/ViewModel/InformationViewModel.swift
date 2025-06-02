@@ -7,7 +7,8 @@ import Foundation
 import RobotKit
 import Version
 
-class InformationViewModel: ObservableObject {
+@Observable
+class InformationViewModel {
     // MARK: Lifecycle
 
     init() {
@@ -24,14 +25,15 @@ class InformationViewModel: ObservableObject {
 
     // MARK: Internal
 
-    @Published var isRobotConnected: Bool = false
-    @Published var showRobotCannotBeUpdated: Bool = false
-    @Published var showRobotNeedsUpdate: Bool = true
-    @Published var robotName: String = "n/a"
-    @Published var robotOSVersion: String = ""
+    var isRobotConnected: Bool = false
+    var showRobotCannotBeUpdated: Bool = false
+    var showRobotNeedsUpdate: Bool = true
+    var robotName: String = "n/a"
+    var robotOSVersion: String = ""
 
     // MARK: Private
 
+    @ObservationIgnored
     private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToRobotConnection() {

@@ -8,7 +8,8 @@ import LocalizationKit
 import RobotKit
 import SwiftUI
 
-class UpdateStatusViewModel: ObservableObject {
+@Observable
+class UpdateStatusViewModel {
     // MARK: Lifecycle
 
     init() {
@@ -21,12 +22,12 @@ class UpdateStatusViewModel: ObservableObject {
 
     // MARK: - Public variables
 
-    @Published public var updatingStatus: UpdateStatus = .sendingFile
-    @Published public var sendingFileProgression: Float = 0.0
-    @Published public var showAlert: Bool = false
+    public var updatingStatus: UpdateStatus = .sendingFile
+    public var sendingFileProgression: Float = 0.0
+    public var showAlert: Bool = false
 
-    @Published public var error: UpdateProcessError = .none
-    @Published public var errorInstructions: String = ""
+    public var error: UpdateProcessError = .none
+    public var errorInstructions: String = ""
 
     public var stepNumber: Int {
         switch self.updatingStatus {
@@ -60,8 +61,10 @@ class UpdateStatusViewModel: ObservableObject {
 
     // MARK: - Private variables
 
+    @ObservationIgnored
     private var updateProcessController = UpdateProcessController()
 
+    @ObservationIgnored
     private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToStateUpdates() {

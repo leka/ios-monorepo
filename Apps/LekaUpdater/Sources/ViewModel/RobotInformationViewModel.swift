@@ -7,7 +7,8 @@ import Foundation
 import LocalizationKit
 import RobotKit
 
-class RobotInformationViewModel: ObservableObject {
+@Observable
+class RobotInformationViewModel {
     // MARK: Lifecycle
 
     init() {
@@ -19,13 +20,14 @@ class RobotInformationViewModel: ObservableObject {
 
     // MARK: Internal
 
-    @Published var robotSerialNumber = "n/a"
-    @Published var robotBattery = "n/a"
-    @Published var robotOsVersion = "n/a"
-    @Published var robotIsCharging = "n/a"
+    var robotSerialNumber = "n/a"
+    var robotBattery = "n/a"
+    var robotOsVersion = "n/a"
+    var robotIsCharging = "n/a"
 
     // MARK: Private
 
+    @ObservationIgnored
     private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToRobotSerialNumberUpdates() {

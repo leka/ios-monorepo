@@ -8,7 +8,8 @@ import LocalizationKit
 import RobotKit
 import SwiftUI
 
-class RequirementsViewModel: ObservableObject {
+@Observable
+class RequirementsViewModel {
     // MARK: Lifecycle
 
     init() {
@@ -29,11 +30,12 @@ class RequirementsViewModel: ObservableObject {
     let robotBatteryMinimumLevelImage = LekaUpdaterAsset.Assets.robotBatteryQuarter1.swiftUIImage
     let robotBatteryMinimumLevelText = l10n.update.requirements.robotBatteryMinimumLevelText
 
-    @Published var robotIsReadyToUpdate = false
-    @Published var robotIsNotReadyToUpdate = true
+    var robotIsReadyToUpdate = false
+    var robotIsNotReadyToUpdate = true
 
     // MARK: Private
 
+    @ObservationIgnored
     private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToRobotBatteryUpdates() {
