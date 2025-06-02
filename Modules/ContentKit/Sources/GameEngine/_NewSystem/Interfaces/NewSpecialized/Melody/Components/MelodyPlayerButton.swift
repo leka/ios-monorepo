@@ -5,20 +5,17 @@
 import SwiftUI
 
 struct MelodyPlayerButton: View {
-    @Binding var showModal: Bool
-    @State var isMelodyPlaying: Bool
-
-    let action: () -> Void
+    let viewModel: NewMelodyViewViewModel
 
     var body: some View {
         VStack {
             Button {
-                self.action()
+                self.viewModel.playSong()
                 withAnimation {
-                    self.isMelodyPlaying.toggle()
+                    self.viewModel.isMelodyPlaying.toggle()
                 }
             } label: {
-                Image(systemName: self.isMelodyPlaying ? "speaker.wave.2.circle" : "play.circle.fill")
+                Image(systemName: self.viewModel.isMelodyPlaying ? "speaker.wave.2.circle" : "play.circle.fill")
                     .resizable()
                     .scaledToFit()
                     .background {
@@ -26,14 +23,18 @@ struct MelodyPlayerButton: View {
                             .fill(.white)
                     }
             }
-            .disabled(self.isMelodyPlaying)
+            .disabled(self.viewModel.isMelodyPlaying)
             .frame(width: 300)
+            .shadow(radius: 5)
         }
     }
 }
 
 #Preview {
-    MelodyPlayerButton(showModal: .constant(true), isMelodyPlaying: false) {
-        print("Play !")
-    }
+    let songs: [MidiRecordingPlayerSong] = [
+        MidiRecordingPlayerSong(song: "Under_The_Moonlight"),
+    ]
+    let coordinator = NewMelodyCoordinator(instrument: .xylophone, songs: songs)
+    let viewModel = NewMelodyViewViewModel(coordinator: coordinator)
+    MelodyPlayerButton(viewModel: viewModel)
 }

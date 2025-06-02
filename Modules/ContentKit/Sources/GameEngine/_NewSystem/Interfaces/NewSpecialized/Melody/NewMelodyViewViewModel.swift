@@ -39,15 +39,19 @@ class NewMelodyViewViewModel {
     let songs: [MidiRecordingPlayerSong]
     let tileColors: [Robot.Color]
 
-    func setupMelody() {
+    func setup() {
         self.coordinator.setupMelody(midiRecording: self.selectedSong)
+    }
+
+    func updateKeyboardMode(isKeyboardFull: Bool) {
+        self.keyboardMode = isKeyboardFull ? .full : .partial
     }
 
     func playSong() {
         self.coordinator.playMIDIRecording()
     }
 
-    func startMelody() {
+    func start() {
         self.coordinator.startActivity()
     }
 
@@ -55,7 +59,7 @@ class NewMelodyViewViewModel {
         self.coordinator.onTileTapped(noteNumber: noteNumber)
     }
 
-    func stopMelody() {
+    func stop() {
         self.coordinator.stop()
     }
 

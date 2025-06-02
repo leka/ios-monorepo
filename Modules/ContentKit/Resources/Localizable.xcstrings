@@ -908,6 +908,42 @@
                 }
             }
         },
+        "game_engine_kit.melody_song_selector_view.confirm_button_label": {
+            "comment": "Confirm button label for song selector sheet in DanceFreeze",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Confirm"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Confirmer"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.melody_song_selector_view.selector_title": {
+            "comment": "Selector song title in DanceFreeze",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Select your song"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Choisis ta musique"
+                    }
+                }
+            }
+        },
         "game_engine_kit.melody_view.keyboard_full": {
             "comment": "MelodyView keyboard full keyboard label",
             "localizations": {
@@ -1078,6 +1114,42 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "D\u00e9placement"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.new_melody_view.change_music_button_label": {
+            "comment": "Label of button that changes music in Melody",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Change music"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Changer de musique"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.new_melody_view.full_keyboard_toggle_label": {
+            "comment": "Label of toggle that switch on/off full keyboard in Melody",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Full keyboard"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Clavier complet"
                     }
                 }
             }
