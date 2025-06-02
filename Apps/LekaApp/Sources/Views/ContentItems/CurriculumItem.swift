@@ -46,7 +46,7 @@ public struct CurriculumItem: View {
                     .foregroundStyle(Color.primary)
 
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                    if self.libraryManagerViewModel.isContentFavorited(
+                    if self.sharedLibraryManagerViewModel.isContentFavorited(
                         by: currentCaregiverID,
                         contentID: self.curationItem.id
                     ) {
@@ -77,7 +77,7 @@ public struct CurriculumItem: View {
     private var subtitle: String?
     private let kIconSize: CGFloat = 180
 
-    private var libraryManagerViewModel: LibraryManagerViewModel = .shared
+    private var sharedLibraryManagerViewModel: SharedLibraryManagerViewModel = .shared
 }
 
 #Preview {

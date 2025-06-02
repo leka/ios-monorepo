@@ -56,7 +56,7 @@ public struct ActivityItem: View {
                     .foregroundStyle(Color.primary)
 
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id,
-                   self.libraryManagerViewModel.isContentFavorited(
+                   self.sharedLibraryManagerViewModel.isContentFavorited(
                        by: currentCaregiverID,
                        contentID: self.curationItem.id
                    )
@@ -90,7 +90,7 @@ public struct ActivityItem: View {
     private var title: String
     private var subtitle: String?
 
-    private var libraryManagerViewModel: LibraryManagerViewModel = .shared
+    private var sharedLibraryManagerViewModel: SharedLibraryManagerViewModel = .shared
 }
 
 #Preview {

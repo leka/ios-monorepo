@@ -73,7 +73,7 @@ struct ConnectionView: View {
                     self.caregiverManager.initializeCaregiversListener()
                     self.carereceiverManager.initializeCarereceiversListener()
                     self.rootAccountManager.initializeRootAccountListener()
-                    self.libraryManager.initializeLibraryListener()
+                    self.sharedLibraryManager.initializeSharedLibraryListener()
                     AnalyticsManager.logEventLogin()
                     self.navigation.setFullScreenCoverContent(nil)
                     self.authManagerViewModel.setUserAction(.none)
@@ -100,7 +100,7 @@ struct ConnectionView: View {
     private var authManager: AuthManager = .shared
     private var authManagerViewModel: AuthManagerViewModel = .shared
     private var rootAccountManager: RootAccountManager = .shared
-    private var libraryManager: LibraryManager = .shared
+    private var sharedLibraryManager: SharedLibraryManager = .shared
     private var caregiverManager: CaregiverManager = .shared
     private var carereceiverManager: CarereceiverManager = .shared
 

@@ -7,10 +7,10 @@ import ContentKit
 import LocalizationKit
 import SwiftUI
 
-struct LibraryCurriculumsView: View {
+struct SharedLibraryCurriculumsView: View {
     // MARK: Lifecycle
 
-    init(viewModel: LibraryManagerViewModel) {
+    init(viewModel: SharedLibraryManagerViewModel) {
         self.viewModel = viewModel
     }
 
@@ -18,7 +18,7 @@ struct LibraryCurriculumsView: View {
 
     var body: some View {
         if self.curriculums.isEmpty {
-            EmptyLibraryPlaceholderView(icon: .curriculums)
+            EmptySharedLibraryPlaceholderView(icon: .curriculums)
         } else {
             ScrollView(showsIndicators: true) {
                 CurriculumGridView(curriculums: self.curriculums, onStartActivity: {
@@ -37,7 +37,7 @@ struct LibraryCurriculumsView: View {
     // MARK: Private
 
     private var navigation: Navigation = .shared
-    private var viewModel: LibraryManagerViewModel
+    private var viewModel: SharedLibraryManagerViewModel
     private var authManagerViewModel: AuthManagerViewModel = .shared
 
     private var curriculums: [Curriculum] {
@@ -51,6 +51,6 @@ struct LibraryCurriculumsView: View {
 }
 
 #Preview {
-    let viewModel = LibraryManagerViewModel()
-    LibraryCurriculumsView(viewModel: viewModel)
+    let viewModel = SharedLibraryManagerViewModel()
+    SharedLibraryCurriculumsView(viewModel: viewModel)
 }

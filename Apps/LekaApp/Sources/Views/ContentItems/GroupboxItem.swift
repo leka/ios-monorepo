@@ -68,7 +68,7 @@ public struct GroupboxItem: View {
                     Spacer()
 
                     if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                        if self.libraryManagerViewModel.isContentFavorited(
+                        if self.sharedLibraryManagerViewModel.isContentFavorited(
                             by: currentCaregiverID,
                             contentID: self.curationItem.id
                         ) {
@@ -107,7 +107,7 @@ public struct GroupboxItem: View {
                             Image(systemName: "checkmark.circle.fill")
                                 .font(.title3)
                                 .foregroundStyle(Color.secondary)
-                                .opacity(self.libraryManagerViewModel.isContentSaved(id: self.curationItem.id) ? 1 : 0)
+                                .opacity(self.sharedLibraryManagerViewModel.isContentSaved(id: self.curationItem.id) ? 1 : 0)
 
                             Spacer()
 
@@ -142,7 +142,7 @@ public struct GroupboxItem: View {
     private let kIconSize: CGFloat = 120
 
     private var styleManager: StyleManager = .shared
-    private var libraryManagerViewModel: LibraryManagerViewModel = .shared
+    private var sharedLibraryManagerViewModel: SharedLibraryManagerViewModel = .shared
 }
 
 // MARK: - l10n.GroupboxItem

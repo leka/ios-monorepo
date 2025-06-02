@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-public extension Library {
+public extension SharedLibrary {
     init(
         id: String? = nil,
         rootOwnerUid: String = "",

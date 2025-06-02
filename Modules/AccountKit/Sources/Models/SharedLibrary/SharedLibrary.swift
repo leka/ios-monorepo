@@ -5,7 +5,7 @@
 import FirebaseFirestore
 import SwiftUI
 
-public struct Library: DatabaseDocument, Hashable {
+public struct SharedLibrary: DatabaseDocument, Hashable {
     // MARK: Public
 
     @ServerTimestamp public var createdAt: Date?

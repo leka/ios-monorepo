@@ -9,9 +9,9 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - LibraryStoryListView
+// MARK: - SharedLibraryStoryListView
 
-public struct LibraryStoryListView: View {
+public struct SharedLibraryStoryListView: View {
     // MARK: Lifecycle
 
     public init(stories: [Story]? = nil, onStartStory: ((Story) -> Void)?) {
@@ -23,7 +23,7 @@ public struct LibraryStoryListView: View {
 
     public var body: some View {
         Table(self.stories) {
-            TableColumn(String(l10n.Library.titleColumnLabel.characters)) { story in
+            TableColumn(String(l10n.SharedLibrary.titleColumnLabel.characters)) { story in
                 NavigationLink(destination:
                     StoryDetailsView(story: story, onStartStory: self.onStartStory)
                         .logEventScreenView(
@@ -34,7 +34,7 @@ public struct LibraryStoryListView: View {
                 ) {
                     HStack(spacing: 10) {
                         if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id,
-                           self.libraryManagerViewModel.isStoryFavoritedByCurrentCaregiver(
+                           self.sharedLibraryManagerViewModel.isStoryFavoritedByCurrentCaregiver(
                                storyID: story.id,
                                caregiverID: currentCaregiverID
                            )
@@ -123,7 +123,7 @@ public struct LibraryStoryListView: View {
     @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var styleManager: StyleManager = .shared
-    private var libraryManagerViewModel: LibraryManagerViewModel = .shared
+    private var sharedLibraryManagerViewModel: SharedLibraryManagerViewModel = .shared
 }
 
 // MARK: - l10n.StoryListView
@@ -141,7 +141,7 @@ extension l10n {
         Text("Sidebar")
     } detail: {
         NavigationStack {
-            LibraryStoryListView(
+            SharedLibraryStoryListView(
                 stories: Array(ContentKit.allStories.values),
                 onStartStory: { _ in
                     print("Story Started")

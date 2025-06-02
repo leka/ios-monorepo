@@ -24,7 +24,7 @@ struct MainView: View {
     // MARK: Internal
 
     @State private var isContentSectionExpanded: Bool = true
-    @State private var isLibrarySectionExpanded: Bool = true
+    @State private var isSharedLibrarySectionExpanded: Bool = true
     @State private var isUserSectionExpanded: Bool = true
     @State private var isResourcesSectionExpanded: Bool = true
     @State private var isDeveloperSectionExpanded: Bool = true
@@ -70,11 +70,11 @@ struct MainView: View {
                         CategoryLabel(category: .gamepads)
                     }
 
-                    Section(String(l10n.MainView.Sidebar.sectionLibrary.characters), isExpanded: self.$isLibrarySectionExpanded) {
-                        CategoryLabel(category: .libraryFavorites)
-                        CategoryLabel(category: .libraryCurriculums)
-                        CategoryLabel(category: .libraryActivities)
-                        CategoryLabel(category: .libraryStories)
+                    Section(String(l10n.MainView.Sidebar.sectionSharedLibrary.characters), isExpanded: self.$isSharedLibrarySectionExpanded) {
+                        CategoryLabel(category: .sharedLibraryFavorites)
+                        CategoryLabel(category: .sharedLibraryCurriculums)
+                        CategoryLabel(category: .sharedLibraryActivities)
+                        CategoryLabel(category: .sharedLibraryStories)
                     }
 
                     if self.authManagerViewModel.userAuthenticationState == .loggedIn {
@@ -154,7 +154,7 @@ struct MainView: View {
                     }
                 )
             }
-            .alert(isPresented: self.$libraryManagerViewModel.showRemoveAlert) {
+            .alert(isPresented: self.$sharedLibraryManagerViewModel.showRemoveAlert) {
                 self.createRemovalAlert()
             }
         } detail: {
@@ -235,21 +235,21 @@ struct MainView: View {
                     case .demo:
                         DiscoverLekaView(demoMode: self.navigation.demoMode)
 
-                    case .libraryCurriculums:
-                        CategoryLibraryView(category: .libraryCurriculums)
-                            .logEventScreenView(screenName: "library_curriculums", context: .splitView)
+                    case .sharedLibraryCurriculums:
+                        CategorySharedLibraryView(category: .sharedLibraryCurriculums)
+                            .logEventScreenView(screenName: "shared_library_curriculums", context: .splitView)
 
-                    case .libraryActivities:
-                        CategoryLibraryView(category: .libraryActivities)
-                            .logEventScreenView(screenName: "library_activities", context: .splitView)
+                    case .sharedLibraryActivities:
+                        CategorySharedLibraryView(category: .sharedLibraryActivities)
+                            .logEventScreenView(screenName: "shared_library_activities", context: .splitView)
 
-                    case .libraryStories:
-                        CategoryLibraryView(category: .libraryStories)
-                            .logEventScreenView(screenName: "library_stories", context: .splitView)
+                    case .sharedLibraryStories:
+                        CategorySharedLibraryView(category: .sharedLibraryStories)
+                            .logEventScreenView(screenName: "shared_library_stories", context: .splitView)
 
-                    case .libraryFavorites:
-                        CategoryLibraryView(category: .libraryFavorites)
-                            .logEventScreenView(screenName: "library_favorites", context: .splitView)
+                    case .sharedLibraryFavorites:
+                        CategorySharedLibraryView(category: .sharedLibraryFavorites)
+                            .logEventScreenView(screenName: "shared_library_favorites", context: .splitView)
 
                     case .none:
                         Text(l10n.MainView.Sidebar.CategoryLabel.home)
@@ -399,7 +399,7 @@ struct MainView: View {
                 self.styleManager.setColorScheme(self.caregiverManagerViewModel.currentCaregiver!.colorScheme)
                 self.styleManager.setAccentColor(self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color)
             }
-            self.libraryManager.initializeLibraryListener()
+            self.sharedLibraryManager.initializeSharedLibraryListener()
         }
     }
 
@@ -415,26 +415,26 @@ struct MainView: View {
 
     @State private var rootAccountViewModel = RootAccountManagerViewModel()
 
-    @Bindable private var libraryManagerViewModel: LibraryManagerViewModel = .shared
+    @Bindable private var sharedLibraryManagerViewModel: SharedLibraryManagerViewModel = .shared
 
     private var styleManager: StyleManager = .shared
     private var persistentDataManager: PersistentDataManager = .shared
     private var caregiverManager: CaregiverManager = .shared
     private var carereceiverManager: CarereceiverManager = .shared
-    private var libraryManager: LibraryManager = .shared
+    private var sharedLibraryManager: SharedLibraryManager = .shared
 
     private func createRemovalAlert() -> Alert {
-        guard let itemToRemove = self.libraryManagerViewModel.itemToRemove else {
+        guard let itemToRemove = self.sharedLibraryManagerViewModel.itemToRemove else {
             return Alert(title: Text(l10n.MainView.RemovalAlert.errorTitle))
         }
 
-        switch self.libraryManagerViewModel.alertType {
+        switch self.sharedLibraryManagerViewModel.alertType {
             case .confirmPersonalFavorite:
                 return Alert(
                     title: Text(l10n.MainView.RemovalAlert.confirmTitle),
                     message: Text(l10n.MainView.RemovalAlert.confirmMessage),
                     primaryButton: .destructive(Text(l10n.MainView.RemovalAlert.confirmAction)) {
-                        self.libraryManagerViewModel.removeItemFromLibrary(itemToRemove)
+                        self.sharedLibraryManagerViewModel.removeItemFromSharedLibrary(itemToRemove)
                     },
                     secondaryButton: .cancel()
                 )

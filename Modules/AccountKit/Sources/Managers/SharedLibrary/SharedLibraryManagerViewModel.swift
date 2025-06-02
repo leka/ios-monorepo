@@ -5,10 +5,10 @@
 import Combine
 import SwiftUI
 
-// MARK: - LibraryManagerViewModel
+// MARK: - SharedLibraryManagerViewModel
 
 @Observable
-public class LibraryManagerViewModel {
+public class SharedLibraryManagerViewModel {
     // MARK: Lifecycle
 
     public init() {
@@ -23,14 +23,14 @@ public class LibraryManagerViewModel {
         case informOthersFavorited
     }
 
-    public static let shared = LibraryManagerViewModel()
+    public static let shared = SharedLibraryManagerViewModel()
 
     public private(set) var activities: [SavedActivity] = []
     public private(set) var curriculums: [SavedCurriculum] = []
     public private(set) var stories: [SavedStory] = []
     public private(set) var isLoading: Bool = false
     public private(set) var alertType: RemoveAlertType = .none
-    public private(set) var itemToRemove: LibraryItem?
+    public private(set) var itemToRemove: SharedLibraryItem?
 
     public var showErrorAlert: Bool = false
     public var showRemoveAlert: Bool = false
@@ -89,47 +89,47 @@ public class LibraryManagerViewModel {
     // MARK: Private
 
     @ObservationIgnored private var cancellables = Set<AnyCancellable>()
-    @ObservationIgnored private let libraryManager = LibraryManager.shared
-    private var currentLibrary: Library?
+    @ObservationIgnored private let sharedLibraryManager = SharedLibraryManager.shared
+    private var currentSharedLibrary: SharedLibrary?
     private var errorMessage: String = ""
 
     private func subscribeToManager() {
-        self.libraryManager.currentLibrary
+        self.sharedLibraryManager.currentSharedLibrary
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] library in
-                self?.currentLibrary = library
+                self?.currentSharedLibrary = library
             })
             .store(in: &self.cancellables)
 
-        self.libraryManager.savedCurriculums
+        self.sharedLibraryManager.savedCurriculums
             .receive(on: RunLoop.main)
             .sink(receiveValue: { [weak self] curriculums in
                 self?.curriculums = curriculums
             })
             .store(in: &self.cancellables)
 
-        self.libraryManager.savedActivities
+        self.sharedLibraryManager.savedActivities
             .receive(on: RunLoop.main)
             .sink { [weak self] activities in
                 self?.activities = activities
             }
             .store(in: &self.cancellables)
 
-        self.libraryManager.savedStories
+        self.sharedLibraryManager.savedStories
             .receive(on: RunLoop.main)
             .sink { [weak self] stories in
                 self?.stories = stories
             }
             .store(in: &self.cancellables)
 
-        self.libraryManager.isLoading
+        self.sharedLibraryManager.isLoading
             .receive(on: DispatchQueue.main)
             .sink { [weak self] isLoading in
                 self?.isLoading = isLoading
             }
             .store(in: &self.cancellables)
 
-        self.libraryManager.fetchError
+        self.sharedLibraryManager.fetchError
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] error in
                 self?.handleError(error)
@@ -143,7 +143,7 @@ public class LibraryManagerViewModel {
                 case let .customError(message):
                     self.errorMessage = message
                 case .documentNotFound:
-                    self.errorMessage = "The requested library could not be found. Consider creating one."
+                    self.errorMessage = "The requested shared library could not be found. Consider creating one."
                 case .decodeError:
                     self.errorMessage = "There was an error decoding the library data."
                 case .encodeError:
@@ -156,48 +156,48 @@ public class LibraryManagerViewModel {
     }
 }
 
-public extension LibraryManagerViewModel {
-    func addItemToLibrary(_ item: LibraryItem) {
+public extension SharedLibraryManagerViewModel {
+    func addItemToSharedLibrary(_ item: SharedLibraryItem) {
         switch item {
             case let .activity(activity):
-                self.libraryManager.addActivity(
+                self.sharedLibraryManager.addActivity(
                     activityID: activity.id,
                     caregiverID: activity.caregiverID
                 )
             case let .curriculum(curriculum):
-                self.libraryManager.addCurriculum(
+                self.sharedLibraryManager.addCurriculum(
                     curriculumID: curriculum.id,
                     caregiverID: curriculum.caregiverID
                 )
             case let .story(story):
-                self.libraryManager.addStory(
+                self.sharedLibraryManager.addStory(
                     storyID: story.id,
                     caregiverID: story.caregiverID
                 )
         }
     }
 
-    func addItemToFavorite(_ item: LibraryItem) {
+    func addItemToFavorite(_ item: SharedLibraryItem) {
         switch item {
             case let .activity(activity):
-                self.libraryManager.addActivityToLibraryAsFavorite(
+                self.sharedLibraryManager.addActivityToSharedLibraryAsFavorite(
                     activityID: activity.id,
                     caregiverID: activity.caregiverID
                 )
             case let .curriculum(curriculum):
-                self.libraryManager.addCurriculumToLibraryAsFavorite(
+                self.sharedLibraryManager.addCurriculumToSharedLibraryAsFavorite(
                     curriculumID: curriculum.id,
                     caregiverID: curriculum.caregiverID
                 )
             case let .story(story):
-                self.libraryManager.addStoryToLibraryAsFavorite(
+                self.sharedLibraryManager.addStoryToSharedLibraryAsFavorite(
                     storyID: story.id,
                     caregiverID: story.caregiverID
                 )
         }
     }
 
-    func requestItemRemoval(_ item: LibraryItem, caregiverID: String) {
+    func requestItemRemoval(_ item: SharedLibraryItem, caregiverID: String) {
         if self.isItemFavoritedByOthers(item: item, caregiverID: caregiverID) {
             self.alertType = .informOthersFavorited
         } else if self.isItemFavoritedByCurrentCaregiver(item: item, caregiverID: caregiverID),
@@ -205,7 +205,7 @@ public extension LibraryManagerViewModel {
         {
             self.alertType = .confirmPersonalFavorite
         } else {
-            self.removeItemFromLibrary(item)
+            self.removeItemFromSharedLibrary(item)
             return
         }
 
@@ -213,28 +213,28 @@ public extension LibraryManagerViewModel {
         self.showRemoveAlert = true
     }
 
-    func removeItemFromLibrary(_ item: LibraryItem) {
+    func removeItemFromSharedLibrary(_ item: SharedLibraryItem) {
         switch item {
             case let .activity(activity):
-                self.libraryManager.removeActivity(activityID: activity.id)
+                self.sharedLibraryManager.removeActivity(activityID: activity.id)
             case let .curriculum(curriculum):
-                self.libraryManager.removeCurriculum(curriculumID: curriculum.id)
+                self.sharedLibraryManager.removeCurriculum(curriculumID: curriculum.id)
             case let .story(story):
-                self.libraryManager.removeStory(storyID: story.id)
+                self.sharedLibraryManager.removeStory(storyID: story.id)
         }
 
         self.itemToRemove = nil
         self.showRemoveAlert = false
     }
 
-    func removeItemFromFavorites(_ item: LibraryItem) {
+    func removeItemFromFavorites(_ item: SharedLibraryItem) {
         switch item {
             case let .activity(activity):
-                self.libraryManager.removeActivityFromFavorites(activityID: activity.id, caregiverID: activity.caregiverID)
+                self.sharedLibraryManager.removeActivityFromFavorites(activityID: activity.id, caregiverID: activity.caregiverID)
             case let .curriculum(curriculum):
-                self.libraryManager.removeCurriculumFromFavorites(curriculumID: curriculum.id, caregiverID: curriculum.caregiverID)
+                self.sharedLibraryManager.removeCurriculumFromFavorites(curriculumID: curriculum.id, caregiverID: curriculum.caregiverID)
             case let .story(story):
-                self.libraryManager.removeStoryFromFavorites(storyID: story.id, caregiverID: story.caregiverID)
+                self.sharedLibraryManager.removeStoryFromFavorites(storyID: story.id, caregiverID: story.caregiverID)
         }
 
         self.itemToRemove = nil
@@ -243,17 +243,17 @@ public extension LibraryManagerViewModel {
 
     // MARK: - Favorite Status Checks
 
-    private func isItemFavoritedByCurrentCaregiver(item: LibraryItem, caregiverID: String) -> Bool {
+    private func isItemFavoritedByCurrentCaregiver(item: SharedLibraryItem, caregiverID: String) -> Bool {
         let favoritingCaregivers = self.getFavoritingCaregivers(for: item)
         return favoritingCaregivers.contains(caregiverID)
     }
 
-    private func isItemFavoritedByOthers(item: LibraryItem, caregiverID: String) -> Bool {
+    private func isItemFavoritedByOthers(item: SharedLibraryItem, caregiverID: String) -> Bool {
         let favoritingCaregivers = self.getFavoritingCaregivers(for: item)
         return favoritingCaregivers.contains(where: { $0 != caregiverID })
     }
 
-    private func getFavoritingCaregivers(for item: LibraryItem) -> [String] {
+    private func getFavoritingCaregivers(for item: SharedLibraryItem) -> [String] {
         switch item {
             case let .activity(activity):
                 self.getFavoritingCaregiversForActivity(activityID: activity.id)

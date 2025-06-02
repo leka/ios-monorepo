@@ -9,9 +9,9 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - LibraryActivityListView
+// MARK: - SharedLibraryActivityListView
 
-public struct LibraryActivityListView: View {
+public struct SharedLibraryActivityListView: View {
     // MARK: Lifecycle
 
     public init(activities: [Activity]? = nil, onStartActivity: ((Activity) -> Void)?) {
@@ -23,7 +23,7 @@ public struct LibraryActivityListView: View {
 
     public var body: some View {
         Table(self.activities) {
-            TableColumn(String(l10n.Library.titleColumnLabel.characters)) { activity in
+            TableColumn(String(l10n.SharedLibrary.titleColumnLabel.characters)) { activity in
                 NavigationLink(destination:
                     ActivityDetailsView(activity: activity, onStartActivity: self.onStartActivity)
                         .logEventScreenView(
@@ -33,7 +33,7 @@ public struct LibraryActivityListView: View {
                         )
                 ) {
                     HStack(spacing: 10) {
-                        if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id, self.libraryManagerViewModel
+                        if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id, self.sharedLibraryManagerViewModel
                             .isActivityFavoritedByCurrentCaregiver(
                                 activityID: activity.id,
                                 caregiverID: currentCaregiverID
@@ -121,7 +121,7 @@ public struct LibraryActivityListView: View {
                 } label: {
                     HStack(spacing: 6) {
                         Image(systemName: "play.fill")
-                        Text(l10n.LibraryActivityListView.playButtonLabel)
+                        Text(l10n.SharedLibraryActivityListView.playButtonLabel)
                             .font(.callout)
                     }
                     .foregroundColor(.lkGreen)
@@ -167,16 +167,16 @@ public struct LibraryActivityListView: View {
     @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var styleManager: StyleManager = .shared
-    private var libraryManagerViewModel: LibraryManagerViewModel = .shared
+    private var sharedLibraryManagerViewModel: SharedLibraryManagerViewModel = .shared
 }
 
-// MARK: - l10n.LibraryActivityListView
+// MARK: - l10n.SharedLibraryActivityListView
 
 extension l10n {
-    enum LibraryActivityListView {
-        static let playButtonLabel = LocalizedString("lekaapp.library_activity_list_view.play_button_label",
+    enum SharedLibraryActivityListView {
+        static let playButtonLabel = LocalizedString("lekaapp.shared_library_activity_list_view.play_button_label",
                                                      value: "Play",
-                                                     comment: "Play button label on Library Activity List view")
+                                                     comment: "Play button label on Shared Library Activity List view")
     }
 }
 
@@ -185,7 +185,7 @@ extension l10n {
         Text("Sidebar")
     } detail: {
         NavigationStack {
-            LibraryActivityListView(
+            SharedLibraryActivityListView(
                 activities: Array(ContentKit.allActivities.values),
                 onStartActivity: { _ in
                     print("Activity Started")

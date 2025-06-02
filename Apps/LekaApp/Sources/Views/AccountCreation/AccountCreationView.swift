@@ -47,8 +47,8 @@ struct AccountCreationView: View {
             if self.authManagerViewModel.userAuthenticationState == .loggedIn {
                 self.rootAccountManager.createRootAccount(rootAccount: RootAccount())
                 self.rootAccountManager.initializeRootAccountListener()
-                self.libraryManager.createLibrary(library: Library())
-                self.libraryManager.initializeLibraryListener()
+                self.sharedLibraryManager.createSharedLibrary(library: SharedLibrary())
+                self.sharedLibraryManager.initializeSharedLibraryListener()
                 self.isVerificationEmailAlertPresented = true
             }
         }
@@ -79,7 +79,7 @@ struct AccountCreationView: View {
     private var authManager = AuthManager.shared
     private var authManagerViewModel: AuthManagerViewModel = .shared
     private var rootAccountManager = RootAccountManager.shared
-    private var libraryManager = LibraryManager.shared
+    private var sharedLibraryManager = SharedLibraryManager.shared
 
     private var isCreationDisabled: Bool {
         self.email.isInvalidEmail() || self.password.isInvalidPassword()
