@@ -21,8 +21,8 @@ public class CarereceiverManagerViewModel {
 
     // MARK: Private
 
-    @ObservationIgnored private var cancellables = Set<AnyCancellable>()
-    @ObservationIgnored private let carereceiverManager = CarereceiverManager.shared
+    private let carereceiverManager = CarereceiverManager.shared
+    private var cancellables = Set<AnyCancellable>()
     private var errorMessage: String = ""
 
     private func subscribeToManager() {

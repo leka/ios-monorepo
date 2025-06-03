@@ -178,11 +178,11 @@ class Navigation {
 
     // MARK: Private
 
-    @ObservationIgnored private var authManager: AuthManager = .shared
-    @ObservationIgnored private var authManagerViewModel: AuthManagerViewModel = .shared
-    @ObservationIgnored private var cancellables: Set<AnyCancellable> = []
-    @ObservationIgnored private var isProgrammaticNavigation: Bool = false
-    @ObservationIgnored private var disableUICompletly: Bool = false
+    private var authManager: AuthManager = .shared
+    private var authManagerViewModel: AuthManagerViewModel = .shared
+    private var cancellables: Set<AnyCancellable> = []
+    private var isProgrammaticNavigation: Bool = false
+    private var disableUICompletly: Bool = false
 
     private var pushPopNoAnimationTransaction: Transaction {
         var transaction = Transaction(animation: nil)

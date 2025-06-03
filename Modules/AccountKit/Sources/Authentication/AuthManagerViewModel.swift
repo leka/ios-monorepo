@@ -18,7 +18,7 @@ public class AuthManagerViewModel {
 
     // MARK: Public
 
-    @ObservationIgnored public static let shared = AuthManagerViewModel()
+    public static let shared = AuthManagerViewModel()
 
     // MARK: - User
 
@@ -60,8 +60,8 @@ public class AuthManagerViewModel {
 
     // MARK: Private
 
-    @ObservationIgnored private let authManager: AuthManager = .shared
-    @ObservationIgnored private var cancellables = Set<AnyCancellable>()
+    private let authManager: AuthManager = .shared
+    private var cancellables = Set<AnyCancellable>()
 
     private func subscribeToAuthManager() {
         self.authManager.authenticationStatePublisher
