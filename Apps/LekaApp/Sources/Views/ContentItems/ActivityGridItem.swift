@@ -70,10 +70,11 @@ public struct ActivityGridItem: View {
 
             VStack(alignment: .leading) {
                 Text(self.title)
+                    .foregroundStyle(Color.primary)
 
                 Text(self.subtitle ?? "")
                     .font(.caption)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(Color.secondary)
             }
             .padding(.horizontal)
 

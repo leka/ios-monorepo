@@ -67,7 +67,7 @@ public struct CarouselItem: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text(self.title)
-                            .font(.callout.bold())
+                            .font(.headline)
                             .foregroundStyle(.white)
 
                         Text(self.subtitle ?? "")
