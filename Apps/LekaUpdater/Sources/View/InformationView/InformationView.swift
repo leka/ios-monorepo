@@ -13,7 +13,7 @@ import Version
 struct InformationView: View {
     // MARK: Internal
 
-    @StateObject var viewModel = InformationViewModel()
+    @State var viewModel = InformationViewModel()
     @Binding var isConnectionViewPresented: Bool
     @Binding var isUpdateStatusViewPresented: Bool
 

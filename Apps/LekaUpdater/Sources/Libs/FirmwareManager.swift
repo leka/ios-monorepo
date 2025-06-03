@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import Combine
 import CryptoKit
 import Foundation
 import RobotKit
@@ -16,10 +17,10 @@ enum RobotUpdateStatus {
 
 // MARK: - FirmwareManager
 
-class FirmwareManager: ObservableObject {
+class FirmwareManager {
     // MARK: Public
 
-    @Published public var data = Data()
+    public var data = CurrentValueSubject<Data, Never>(Data())
 
     public var major: UInt8 {
         UInt8(self.currentVersion.major)
@@ -34,7 +35,7 @@ class FirmwareManager: ObservableObject {
     }
 
     public var sha256: String {
-        SHA256.hash(data: self.data).compactMap { String(format: "%02x", $0) }.joined()
+        SHA256.hash(data: self.data.value).compactMap { String(format: "%02x", $0) }.joined()
     }
 
     public func load() -> Bool {
@@ -43,7 +44,7 @@ class FirmwareManager: ObservableObject {
         }
 
         do {
-            self.data = try Data(contentsOf: fileURL)
+            self.data.value = try Data(contentsOf: fileURL)
             return true
         } catch {
             return false

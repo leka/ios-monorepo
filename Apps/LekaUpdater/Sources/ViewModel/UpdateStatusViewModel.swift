@@ -8,7 +8,8 @@ import LocalizationKit
 import RobotKit
 import SwiftUI
 
-class UpdateStatusViewModel: ObservableObject {
+@Observable
+class UpdateStatusViewModel {
     // MARK: Lifecycle
 
     init() {
@@ -17,18 +18,25 @@ class UpdateStatusViewModel: ObservableObject {
         self.subscribeToRobotIsChargingUpdates()
     }
 
-    // MARK: Public
+    // MARK: Internal
+
+    enum UpdateStatus {
+        case sendingFile
+        case rebootingRobot
+        case updateFinished
+        case error
+    }
 
     // MARK: - Public variables
 
-    @Published public var updatingStatus: UpdateStatus = .sendingFile
-    @Published public var sendingFileProgression: Float = 0.0
-    @Published public var showAlert: Bool = false
+    private(set) var updatingStatus: UpdateStatus = .sendingFile
+    private(set) var error: UpdateProcessError = .none
+    private(set) var errorInstructions: String = ""
 
-    @Published public var error: UpdateProcessError = .none
-    @Published public var errorInstructions: String = ""
+    var sendingFileProgression: Float = 0.0
+    var showAlert: Bool = false
 
-    public var stepNumber: Int {
+    var stepNumber: Int {
         switch self.updatingStatus {
             case .sendingFile:
                 1
@@ -41,19 +49,10 @@ class UpdateStatusViewModel: ObservableObject {
         }
     }
 
-    public func startUpdate() {
+    func startUpdate() {
         UIApplication.shared.isIdleTimerDisabled = true
 
         self.updateProcessController.startUpdate()
-    }
-
-    // MARK: Internal
-
-    enum UpdateStatus {
-        case sendingFile
-        case rebootingRobot
-        case updateFinished
-        case error
     }
 
     // MARK: Private
@@ -61,7 +60,6 @@ class UpdateStatusViewModel: ObservableObject {
     // MARK: - Private variables
 
     private var updateProcessController = UpdateProcessController()
-
     private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToStateUpdates() {

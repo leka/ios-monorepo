@@ -7,7 +7,8 @@ import Foundation
 import LocalizationKit
 import RobotKit
 
-class RobotInformationViewModel: ObservableObject {
+@Observable
+class RobotInformationViewModel {
     // MARK: Lifecycle
 
     init() {
@@ -19,10 +20,10 @@ class RobotInformationViewModel: ObservableObject {
 
     // MARK: Internal
 
-    @Published var robotSerialNumber = "n/a"
-    @Published var robotBattery = "n/a"
-    @Published var robotOsVersion = "n/a"
-    @Published var robotIsCharging = "n/a"
+    private(set) var robotSerialNumber = "n/a"
+    private(set) var robotBattery = "n/a"
+    private(set) var robotOsVersion = "n/a"
+    private(set) var robotIsCharging = "n/a"
 
     // MARK: Private
 

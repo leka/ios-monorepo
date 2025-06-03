@@ -10,7 +10,7 @@ import SwiftUI
 // MARK: - RobotUpdateAvailableView
 
 struct RobotUpdateAvailableView: View {
-    @StateObject private var requirementsViewModel = RequirementsViewModel()
+    @State private var requirementsViewModel = RequirementsViewModel()
 
     @Binding var isUpdateStatusViewPresented: Bool
 

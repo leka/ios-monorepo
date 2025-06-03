@@ -7,7 +7,8 @@ import SwiftUI
 
 // MARK: - UpdateStatusDemoViewModel
 
-class UpdateStatusDemoViewModel: ObservableObject {
+@Observable
+class UpdateStatusDemoViewModel {
     // MARK: Lifecycle
 
     init() {
@@ -18,8 +19,8 @@ class UpdateStatusDemoViewModel: ObservableObject {
 
     // MARK: Public
 
-    @Published public var state = ""
-    @Published public var error: String = ""
+    public var state = ""
+    public var error: String = ""
 
     public func startUpdate() {
         self.updateProcessController.startUpdate()
@@ -103,7 +104,7 @@ struct UpdateStatusDemoView: View {
 
     // MARK: Private
 
-    @StateObject private var viewModel = UpdateStatusDemoViewModel()
+    @State private var viewModel = UpdateStatusDemoViewModel()
 }
 
 // MARK: - UpdateStatusDemoView_Previews

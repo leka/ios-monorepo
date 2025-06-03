@@ -28,7 +28,7 @@ struct RobotInformationView: View {
 
     // MARK: Private
 
-    @StateObject private var viewModel = RobotInformationViewModel()
+    @State private var viewModel = RobotInformationViewModel()
 }
 
 // MARK: - RobotInformationView_Previews

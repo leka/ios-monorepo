@@ -10,7 +10,7 @@ import Version
 // MARK: - RobotStateView
 
 struct RobotStateView: View {
-    @StateObject var viewModel: InformationViewModel
+    @State var viewModel: InformationViewModel
 
     var body: some View {
         VStack(alignment: .center, spacing: 20) {

@@ -9,7 +9,7 @@ import SwiftUI
 // MARK: - UpdateStatusView
 
 struct UpdateStatusView: View {
-    @StateObject private var viewModel = UpdateStatusViewModel()
+    @State private var viewModel = UpdateStatusViewModel()
 
     @Binding var isConnectionViewPresented: Bool
     @Binding var isUpdateStatusViewPresented: Bool
@@ -57,7 +57,7 @@ struct UpdateStatusView: View {
             VStack {
                 switch self.viewModel.updatingStatus {
                     case .sendingFile:
-                        SendingFileContentView(progress: self.$viewModel.sendingFileProgression)
+                        SendingFileContentView(progress: self.viewModel.sendingFileProgression)
                     case .rebootingRobot:
                         RebootingContentView()
                     case .updateFinished:
