@@ -53,7 +53,6 @@ public struct ActivityItem: View {
 
             HStack(spacing: 5) {
                 Text(self.title)
-                    .font(.headline)
                     .foregroundStyle(Color.primary)
 
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id,
@@ -69,7 +68,7 @@ public struct ActivityItem: View {
             }
 
             Text(self.subtitle ?? " ")
-                .font(.body)
+                .font(.caption)
                 .foregroundStyle(Color.secondary)
 
             Spacer()

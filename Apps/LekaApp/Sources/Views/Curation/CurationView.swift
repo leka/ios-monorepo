@@ -51,9 +51,10 @@ struct CurationView: View {
                     VStack(alignment: .leading) {
                         Text(self.curation.details.subtitle)
                             .font(.title2)
+                            .foregroundStyle(Color.primary)
 
                         Text(self.curation.details.description)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(Color.secondary)
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -69,7 +70,6 @@ struct CurationView: View {
                                     HStack {
                                         Text(section.details.title)
                                             .font(.title2)
-                                            .foregroundStyle(self.styleManager.accentColor!)
 
                                         if section.details.subtitle != "" {
                                             Divider()

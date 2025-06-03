@@ -59,10 +59,11 @@ public struct CurriculumGridItem: View {
 
             VStack(alignment: .leading) {
                 Text(self.title)
+                    .foregroundStyle(Color.primary)
 
                 Text(self.subtitle ?? "")
                     .font(.caption)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(Color.secondary)
             }
             .multilineTextAlignment(.leading)
             .padding(.horizontal)

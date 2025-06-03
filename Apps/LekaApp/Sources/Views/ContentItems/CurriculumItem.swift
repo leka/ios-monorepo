@@ -42,7 +42,6 @@ public struct CurriculumItem: View {
 
             HStack {
                 Text(self.title)
-                    .font(.headline)
                     .foregroundStyle(Color.primary)
 
                 if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
@@ -58,7 +57,7 @@ public struct CurriculumItem: View {
             }
 
             Text(self.subtitle ?? " ")
-                .font(.body)
+                .font(.caption)
                 .foregroundStyle(Color.secondary)
         }
         .frame(width: self.kIconSize, alignment: .leading)
