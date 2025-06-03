@@ -50,8 +50,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk",
       "state" : {
-        "revision" : "fbd463894af94d90eb4d6a4e54080459a8179519",
-        "version" : "11.12.0"
+        "revision" : "3663b1aa6c7a1bed67ee80fd09dc6d0f9c3bb660",
+        "version" : "11.13.0"
       }
     },
     {
@@ -68,8 +68,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleAppMeasurement.git",
       "state" : {
-        "revision" : "f7460ea630bddf172115c28493ae8b3798d95ce3",
-        "version" : "11.12.0"
+        "revision" : "543071966b3fb6613a2fc5c6e7112d1e998184a7",
+        "version" : "11.13.0"
       }
     },
     {
@@ -86,8 +86,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleUtilities.git",
       "state" : {
-        "revision" : "53156c7ec267db846e6b64c9f4c4e31ba4cf75eb",
-        "version" : "8.0.2"
+        "revision" : "60da361632d0de02786f709bdc0c4df340f7613e",
+        "version" : "8.1.0"
       }
     },
     {
@@ -131,8 +131,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/airbnb/lottie-ios",
       "state" : {
-        "revision" : "047aa81b77adcbf583a966dfef620d17650cc656",
-        "version" : "4.5.1"
+        "revision" : "a004050748dc197c56256a14dca49a035d74726c",
+        "version" : "4.5.2"
       }
     },
     {
@@ -185,8 +185,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-argument-parser",
       "state" : {
-        "revision" : "41982a3656a71c768319979febd796c6fd111d5c",
-        "version" : "1.5.0"
+        "revision" : "011f0c765fb46d9cac61bca19be0527e99c98c8b",
+        "version" : "1.5.1"
       }
     },
     {
@@ -257,8 +257,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/jpsim/Yams",
       "state" : {
-        "revision" : "b4b8042411dc7bbb696300a34a4bf3ba1b7ad19b",
-        "version" : "5.3.1"
+        "revision" : "9281f8c99aff4f4a55dce22ae29b1181c935caa5",
+        "version" : "6.0.0"
       }
     },
     {

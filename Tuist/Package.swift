@@ -45,11 +45,11 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/jpsim/Yams",
-            exact: "5.3.1"
+            exact: "6.0.0"
         ),
         .package(
             url: "https://github.com/airbnb/lottie-ios",
-            exact: "4.5.1"
+            exact: "4.5.2"
         ),
         .package(
             url: "https://github.com/gonzalezreal/swift-markdown-ui",
@@ -57,7 +57,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/apple/swift-argument-parser",
-            exact: "1.5.0"
+            exact: "1.5.1"
         ),
         .package(
             url: "https://github.com/StarryInternet/CombineCoreBluetooth",
@@ -81,7 +81,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/firebase/firebase-ios-sdk",
-            exact: "11.12.0"
+            exact: "11.13.0"
         ),
         .package(
             url: "https://github.com/OlehKorchytskyi/Fit",
