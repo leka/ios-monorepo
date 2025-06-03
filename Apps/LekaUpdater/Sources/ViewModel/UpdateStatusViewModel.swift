@@ -59,10 +59,7 @@ class UpdateStatusViewModel {
 
     // MARK: - Private variables
 
-    @ObservationIgnored
     private var updateProcessController = UpdateProcessController()
-
-    @ObservationIgnored
     private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToStateUpdates() {

@@ -33,7 +33,6 @@ class InformationViewModel {
 
     // MARK: Private
 
-    @ObservationIgnored
     private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToRobotConnection() {

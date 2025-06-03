@@ -35,7 +35,6 @@ class RequirementsViewModel {
 
     // MARK: Private
 
-    @ObservationIgnored
     private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToRobotBatteryUpdates() {

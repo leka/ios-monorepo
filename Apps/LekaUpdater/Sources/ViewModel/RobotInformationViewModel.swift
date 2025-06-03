@@ -27,7 +27,6 @@ class RobotInformationViewModel {
 
     // MARK: Private
 
-    @ObservationIgnored
     private var cancellables: Set<AnyCancellable> = []
 
     private func subscribeToRobotSerialNumberUpdates() {

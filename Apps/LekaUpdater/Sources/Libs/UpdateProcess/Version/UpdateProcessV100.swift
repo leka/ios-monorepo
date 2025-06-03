@@ -195,7 +195,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
         self.expectedRemainingBytes == 0 ? self.expectedCompletePackets : self.expectedCompletePackets + 1
     }
 
-    private var _progression: Float {
+    private var computedProgression: Float {
         Float(self.currentPacket) / Float(self.expectedPackets)
     }
 
@@ -221,8 +221,8 @@ private class StateSendingFile: GKState, StateEventProcessor {
             return
         }
 
-        self.progression.send(self._progression)
-        if self._progression < 1.0 {
+        self.progression.send(self.computedProgression)
+        if self.computedProgression < 1.0 {
             self.sendNextPacket()
         } else {
             self.process(event: .fileSent)
