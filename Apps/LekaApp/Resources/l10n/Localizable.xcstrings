@@ -445,6 +445,24 @@
                 }
             }
         },
+        "lekaapp.activity_details_view.related_curriculum_section_title": {
+            "comment": "ActivityDetailsView 'related curriculum' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Related Curriculums"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Parcours associ\u00e9s"
+                    }
+                }
+            }
+        },
         "lekaapp.activity_details_view.start_activity_button_label": {
             "comment": "Start activity button label on Activity Details view",
             "extractionState": "extracted_with_value",

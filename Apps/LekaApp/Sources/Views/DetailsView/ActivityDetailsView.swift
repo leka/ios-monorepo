@@ -29,6 +29,14 @@ public struct ActivityDetailsView: View {
             Section(String(l10n.ActivityDetailsView.instructionsSectionTitle.characters)) {
                 Markdown(self.activity.details.instructions)
             }
+
+            if self.activity.curriculums.isNotEmpty {
+                Section(String(l10n.ActivityDetailsView.relatedCurriculumSectionTitle.characters)) {
+                    HorizontalCurriculumGrid(items: self.activity.curriculums.map {
+                        CurationItemModel(id: $0, name: "", contentType: .curriculum)
+                    })
+                }
+            }
         }
         .toolbar {
             if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
@@ -90,6 +98,10 @@ extension l10n {
         static let instructionsSectionTitle = LocalizedString("lekaapp.activity_details_view.instructions_section_title",
                                                               value: "Instructions",
                                                               comment: "ActivityDetailsView 'instructions' section title")
+
+        static let relatedCurriculumSectionTitle = LocalizedString("lekaapp.activity_details_view.related_curriculum_section_title",
+                                                                   value: "Related Curriculums",
+                                                                   comment: "ActivityDetailsView 'related curriculum' section title")
     }
 }
 
