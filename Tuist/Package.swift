@@ -56,10 +56,6 @@ let package = Package(
             exact: "2.4.1"
         ),
         .package(
-            url: "https://github.com/apple/swift-argument-parser",
-            exact: "1.5.1"
-        ),
-        .package(
             url: "https://github.com/StarryInternet/CombineCoreBluetooth",
             exact: "0.8.0"
         ),
@@ -98,10 +94,6 @@ let package = Package(
         .package(
             url: "https://github.com/SvenTiigi/YouTubePlayerKit",
             exact: "2.0.0"
-        ),
-        .package(
-            url: "https://github.com/lukepistrol/SFSymbolsMacro",
-            exact: "0.5.4"
         ),
     ]
 )

@@ -172,30 +172,12 @@
       }
     },
     {
-      "identity" : "sfsymbolsmacro",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/lukepistrol/SFSymbolsMacro",
-      "state" : {
-        "revision" : "b858ef2d14bb75537635644a38c47f5dce6f32ab",
-        "version" : "0.5.4"
-      }
-    },
-    {
       "identity" : "svgview",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/exyte/SVGView",
       "state" : {
         "revision" : "6465962facdd25cb96eaebc35603afa2f15d2c0d",
         "version" : "1.0.6"
-      }
-    },
-    {
-      "identity" : "swift-argument-parser",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-argument-parser",
-      "state" : {
-        "revision" : "011f0c765fb46d9cac61bca19be0527e99c98c8b",
-        "version" : "1.5.1"
       }
     },
     {
@@ -232,15 +214,6 @@
       "state" : {
         "revision" : "d72aed98f8253ec1aa9ea1141e28150f408cf17f",
         "version" : "1.29.0"
-      }
-    },
-    {
-      "identity" : "swift-syntax",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/swiftlang/swift-syntax",
-      "state" : {
-        "revision" : "0687f71944021d616d34d922343dcef086855920",
-        "version" : "600.0.1"
       }
     },
     {
