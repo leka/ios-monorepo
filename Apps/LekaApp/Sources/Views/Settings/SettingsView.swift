@@ -95,7 +95,7 @@ struct SettingsView: View {
                             systemImage: "envelope"
                         ) {
                             self.showChangeEmail = true
-                            self.authManagerViewModel.userAction = .userIsReAuthenticating
+                            self.authManagerViewModel.setUserAction(.userIsReAuthenticating)
                         }
                         .sheet(isPresented: self.$showChangeEmail) {
                             ChangeEmailView()
