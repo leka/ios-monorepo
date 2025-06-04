@@ -88,9 +88,9 @@ exercises_payload:
               type: speech
               value:
                 - locale: fr_FR
-                  utterance: "A"
+                  utterance: "a"
                 - locale: en_US
-                  utterance: "A"
+                  utterance: "a"
           payload:
             shuffle_choices: true
             choices:
@@ -117,9 +117,9 @@ exercises_payload:
               type: speech
               value:
                 - locale: fr_FR
-                  utterance: "B"
+                  utterance: "b"
                 - locale: en_US
-                  utterance: "B"
+                  utterance: "b"
           payload:
             shuffle_choices: true
             choices:
@@ -146,9 +146,9 @@ exercises_payload:
               type: speech
               value:
                 - locale: fr_FR
-                  utterance: "C"
+                  utterance: "c"
                 - locale: en_US
-                  utterance: "C"
+                  utterance: "c"
           payload:
             shuffle_choices: true
             choices:
@@ -175,9 +175,9 @@ exercises_payload:
               type: speech
               value:
                 - locale: fr_FR
-                  utterance: "D"
+                  utterance: "d"
                 - locale: en_US
-                  utterance: "D"
+                  utterance: "d"
           payload:
             shuffle_choices: true
             choices:
@@ -204,9 +204,9 @@ exercises_payload:
               type: speech
               value:
                 - locale: fr_FR
-                  utterance: "E"
+                  utterance: "e"
                 - locale: en_US
-                  utterance: "E"
+                  utterance: "e"
           payload:
             shuffle_choices: true
             choices:
@@ -233,9 +233,9 @@ exercises_payload:
               type: speech
               value:
                 - locale: fr_FR
-                  utterance: "F"
+                  utterance: "f"
                 - locale: en_US
-                  utterance: "F"
+                  utterance: "f"
           payload:
             shuffle_choices: true
             choices:
