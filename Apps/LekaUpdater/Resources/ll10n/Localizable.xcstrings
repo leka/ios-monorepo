@@ -193,6 +193,24 @@
                 }
             }
         },
+        "information.start_roll_back_button": {
+            "comment": "Start roll back button",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Go back to previous version"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Revenir \u00e0 la version pr\u00e9c\u00e9dente"
+                    }
+                }
+            }
+        },
         "information.start_update_button": {
             "comment": "Start update button",
             "localizations": {
@@ -292,6 +310,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "\ud83e\udd16 Aucun robot connect\u00e9 \ud83d\udeab"
+                    }
+                }
+            }
+        },
+        "information.status.robot_roll_back_available": {
+            "comment": "Robot firmware roll back available text",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "\ud83d\udd19 Go back to previous version \ud83d\udce6"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\ud83d\udd19 Revenir \u00e0 la version pr\u00e9c\u00e9dente \ud83d\udce6"
                     }
                 }
             }

@@ -66,8 +66,11 @@ struct InformationView: View {
                     }
                 }
 
-                if self.viewModel.isRobotConnected {
+                if self.viewModel.showRobotNeedsUpdate, self.viewModel.isRobotConnected {
                     SwitchRobotButton(isRobotConnected: true, isConnectionViewPresented: self.$isConnectionViewPresented)
+                } else if self.viewModel.showRobotCanRollBack, self.viewModel.isRobotConnected {
+                    RobotRollBackAvailableView(isUpdateStatusViewPresented: self.$isUpdateStatusViewPresented)
+                        .padding(.vertical, 10)
                 }
 
                 LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage

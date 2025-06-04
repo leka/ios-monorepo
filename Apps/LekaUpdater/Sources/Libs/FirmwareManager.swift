@@ -22,6 +22,8 @@ class FirmwareManager {
 
     public var data = CurrentValueSubject<Data, Never>(Data())
 
+    public var currentVersion = Robot.kLatestFirmwareVersion
+
     public var major: UInt8 {
         UInt8(self.currentVersion.major)
     }
@@ -52,8 +54,6 @@ class FirmwareManager {
     }
 
     // MARK: Internal
-
-    let currentVersion = Robot.kLatestFirmwareVersion
 
     func compareWith(version: Version?) -> RobotUpdateStatus {
         guard let version else {

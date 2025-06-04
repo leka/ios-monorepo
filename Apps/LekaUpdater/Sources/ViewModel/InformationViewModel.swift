@@ -28,6 +28,7 @@ class InformationViewModel {
     private(set) var isRobotConnected: Bool = false
     private(set) var showRobotCannotBeUpdated: Bool = false
     private(set) var showRobotNeedsUpdate: Bool = true
+    private(set) var showRobotCanRollBack: Bool = false
     private(set) var robotName: String = "n/a"
     private(set) var robotOSVersion: String = ""
 
@@ -59,6 +60,7 @@ class InformationViewModel {
             .sink { robotOsVersion in
                 self.updateShowRobotCannotBeUpdated(robotOsVersion: robotOsVersion)
                 self.updateShowRobotNeedsUpdate(robotOsVersion: robotOsVersion)
+                self.updateShowRobotCanRollBack(robotOsVersion: robotOsVersion)
                 self.robotOSVersion = robotOsVersion?.description ?? "(n/a)"
             }
             .store(in: &self.cancellables)
@@ -78,6 +80,16 @@ class InformationViewModel {
             self.showRobotNeedsUpdate = isRobotNeedsUpdate && isUpdateProcessAvailable
         } else {
             self.showRobotNeedsUpdate = false
+        }
+    }
+
+    private func updateShowRobotCanRollBack(robotOsVersion: Version?) {
+        if let robotOsVersion {
+            let isUpdateProcessAvailable = UpdateProcessController.availableVersions.contains(robotOsVersion)
+            let isRobotCanRollBack = globalFirmwareManager.compareWith(version: robotOsVersion) == .upToDate
+            self.showRobotCanRollBack = isRobotCanRollBack && isUpdateProcessAvailable
+        } else {
+            self.showRobotCanRollBack = false
         }
     }
 }
