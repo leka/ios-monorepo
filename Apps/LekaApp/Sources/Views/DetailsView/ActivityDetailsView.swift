@@ -7,6 +7,7 @@ import AnalyticsKit
 import ContentKit
 import DesignKit
 import LocalizationKit
+import MarkdownUI
 import SwiftUI
 
 // MARK: - ActivityDetailsView
@@ -22,40 +23,54 @@ public struct ActivityDetailsView: View {
     // MARK: Public
 
     public var body: some View {
-        InfoDetailsView(CurationItemModel(id: self.activity.id, name: self.activity.name, contentType: .activity))
-            .toolbar {
-                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                    ToolbarItemGroup {
-                        if self.sharedLibraryManagerViewModel.isActivityFavoritedByCurrentCaregiver(
-                            activityID: self.activity.id,
-                            caregiverID: currentCaregiverID
-                        ) {
-                            Image(systemName: "star.circle")
-                                .font(.system(size: 21))
-                                .foregroundColor(self.styleManager.accentColor ?? .blue)
-                        }
+        List {
+            InfoDetailsView(CurationItemModel(id: self.activity.id, name: self.activity.name, contentType: .activity))
 
-                        ContentItemMenu(
-                            CurationItemModel(id: self.activity.id, name: self.activity.name, contentType: .activity),
-                            caregiverID: currentCaregiverID
-                        )
-                    }
-                }
+            Section(String(l10n.ActivityDetailsView.instructionsSectionTitle.characters)) {
+                Markdown(self.activity.details.instructions)
+            }
 
-                ToolbarItem {
-                    Button {
-                        self.onStartActivity?(self.activity)
-                        AnalyticsManager.logEventActivityLaunch(id: self.activity.id, name: self.activity.name, origin: .detailsViewButton)
-                    } label: {
-                        Image(systemName: "play.fill")
-                        Text(l10n.ActivityDetailsView.startActivityButtonLabel)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .tint(.lkGreen)
-                    .disabled(self.onStartActivity == nil)
-                    .opacity(self.onStartActivity == nil ? 0 : 1)
+            if self.activity.curriculums.isNotEmpty {
+                Section(String(l10n.ActivityDetailsView.relatedCurriculumSectionTitle.characters)) {
+                    HorizontalCurriculumGrid(items: self.activity.curriculums.map {
+                        CurationItemModel(id: $0, name: "", contentType: .curriculum)
+                    })
                 }
             }
+        }
+        .toolbar {
+            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
+                ToolbarItemGroup {
+                    if self.sharedLibraryManagerViewModel.isActivityFavoritedByCurrentCaregiver(
+                        activityID: self.activity.id,
+                        caregiverID: currentCaregiverID
+                    ) {
+                        Image(systemName: "star.circle")
+                            .font(.system(size: 21))
+                            .foregroundColor(self.styleManager.accentColor ?? .blue)
+                    }
+
+                    ContentItemMenu(
+                        CurationItemModel(id: self.activity.id, name: self.activity.name, contentType: .activity),
+                        caregiverID: currentCaregiverID
+                    )
+                }
+            }
+
+            ToolbarItem {
+                Button {
+                    self.onStartActivity?(self.activity)
+                    AnalyticsManager.logEventActivityLaunch(id: self.activity.id, name: self.activity.name, origin: .detailsViewButton)
+                } label: {
+                    Image(systemName: "play.fill")
+                    Text(l10n.ActivityDetailsView.startActivityButtonLabel)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.lkGreen)
+                .disabled(self.onStartActivity == nil)
+                .opacity(self.onStartActivity == nil ? 0 : 1)
+            }
+        }
     }
 
     // MARK: Internal
@@ -79,6 +94,14 @@ extension l10n {
         static let startActivityButtonLabel = LocalizedString("lekaapp.activity_details_view.start_activity_button_label",
                                                               value: "Start activity",
                                                               comment: "Start activity button label on Activity Details view")
+
+        static let instructionsSectionTitle = LocalizedString("lekaapp.activity_details_view.instructions_section_title",
+                                                              value: "Instructions",
+                                                              comment: "ActivityDetailsView 'instructions' section title")
+
+        static let relatedCurriculumSectionTitle = LocalizedString("lekaapp.activity_details_view.related_curriculum_section_title",
+                                                                   value: "Related Curriculums",
+                                                                   comment: "ActivityDetailsView 'related curriculum' section title")
     }
 }
 

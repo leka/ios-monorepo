@@ -74,6 +74,24 @@
                 }
             }
         },
+        "content_kit.info_details_view.activities_section_title": {
+            "comment": "InfoDetailsView 'activities' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Activities"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Activit\u00e9s"
+                    }
+                }
+            }
+        },
         "content_kit.info_details_view.authors_section_title": {
             "comment": "InfoDetailsView 'authors' section title",
             "extractionState": "extracted_with_value",
@@ -110,20 +128,38 @@
                 }
             }
         },
-        "content_kit.info_details_view.instructions_section_title": {
-            "comment": "InfoDetailsView 'instructions' section title",
+        "content_kit.info_details_view.see_less_label": {
+            "comment": "See less button label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Instructions"
+                        "value": "See less"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Instructions"
+                        "value": "Voir moins"
+                    }
+                }
+            }
+        },
+        "content_kit.info_details_view.see_more_label": {
+            "comment": "See more button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "See more"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Voir plus"
                     }
                 }
             }
