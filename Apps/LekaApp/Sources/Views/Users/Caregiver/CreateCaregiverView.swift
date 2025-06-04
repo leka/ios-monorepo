@@ -35,7 +35,6 @@ class CreateCaregiverViewModel {
 
     // MARK: Private
 
-    @ObservationIgnored
     private var cancellables = Set<AnyCancellable>()
 }
 

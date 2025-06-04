@@ -19,8 +19,8 @@ public class RootAccountManagerViewModel {
 
     // MARK: Private
 
-    @ObservationIgnored private var cancellables = Set<AnyCancellable>()
-    @ObservationIgnored private let rootAccountManager = RootAccountManager.shared
+    private var cancellables = Set<AnyCancellable>()
+    private let rootAccountManager = RootAccountManager.shared
 
     private func subscribeToManager() {
         self.rootAccountManager.fetchErrorPublisher

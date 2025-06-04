@@ -36,7 +36,7 @@ class CreateCarereceiverViewModel {
 
     // MARK: Private
 
-    @ObservationIgnored private var cancellables = Set<AnyCancellable>()
+    private var cancellables = Set<AnyCancellable>()
 }
 
 // MARK: - CreateCarereceiverView

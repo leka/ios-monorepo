@@ -38,7 +38,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @Observable
 public final class UpdateManager {
-    @ObservationIgnored
     static let shared = UpdateManager()
 
     var appUpdateStatus: UpdateStatusFetcher.Status = .upToDate

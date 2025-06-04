@@ -52,11 +52,11 @@ public class ConnectedRobotInformationViewModel {
 
     // MARK: Internal
 
-    @ObservationIgnored let robot: Robot
+    let robot: Robot
 
     // MARK: Private
 
-    @ObservationIgnored private var cancellables: Set<AnyCancellable> = []
+    private var cancellables: Set<AnyCancellable> = []
 
     private func getRobotInformation() {
         self.robot.isConnected

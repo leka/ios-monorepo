@@ -136,11 +136,11 @@ public class RobotConnectionViewModel {
 
     // MARK: Private
 
-    @ObservationIgnored private let robot = Robot.shared
-    @ObservationIgnored private let bleManager = BLEManager.shared
+    private let robot = Robot.shared
+    private let bleManager = BLEManager.shared
 
-    @ObservationIgnored private var cancellables: Set<AnyCancellable> = []
-    @ObservationIgnored private var scanCancellable: AnyCancellable?
+    private var cancellables: Set<AnyCancellable> = []
+    private var scanCancellable: AnyCancellable?
 
     private func subscribeToManagerState() {
         self.bleManager.state

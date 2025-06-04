@@ -88,8 +88,8 @@ public class SharedLibraryManagerViewModel {
 
     // MARK: Private
 
-    @ObservationIgnored private var cancellables = Set<AnyCancellable>()
-    @ObservationIgnored private let sharedLibraryManager = SharedLibraryManager.shared
+    private var cancellables = Set<AnyCancellable>()
+    private let sharedLibraryManager = SharedLibraryManager.shared
     private var currentSharedLibrary: SharedLibrary?
     private var errorMessage: String = ""
 
