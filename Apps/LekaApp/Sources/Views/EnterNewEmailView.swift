@@ -34,7 +34,7 @@ struct EnterNewEmailView: View {
                 title: Text(l10n.AccountCreationView.EmailVerificationAlert.title),
                 message: Text(l10n.AccountCreationView.EmailVerificationAlert.message),
                 dismissButton: .default(Text(l10n.AccountCreationView.EmailVerificationAlert.dismissButton)) {
-                    self.authManagerVM.userAction = .none
+                    self.authManagerVM.setUserAction(.none)
                     self.dismiss()
                 }
             )
@@ -46,8 +46,7 @@ struct EnterNewEmailView: View {
     @State private var newEmail: String = ""
     @State private var showVerificationAlert = false
 
-    @ObservedObject private var authManagerVM = AuthManagerViewModel.shared
-
+    private var authManagerVM = AuthManagerViewModel.shared
     private var authManager = AuthManager.shared
 
     private var isSubmissionDisabled: Bool {

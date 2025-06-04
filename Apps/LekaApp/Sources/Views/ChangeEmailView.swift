@@ -42,7 +42,7 @@ struct ChangeEmailView: View {
 
                 Button {
                     self.showConfirmResetPassword = true
-                    self.authManagerViewModel.userAction = .userIsResettingPassword
+                    self.authManagerViewModel.setUserAction(.userIsResettingPassword)
                 } label: {
                     Text(l10n.ReAuthenticationView.passwordForgottenButton)
                         .font(.footnote)
@@ -58,7 +58,7 @@ struct ChangeEmailView: View {
                     }
 
                     Button(String(l10n.ReAuthenticationView.cancelResetPasswordButtonLabel.characters), role: .cancel) {
-                        self.authManagerViewModel.userAction = .userIsReAuthenticating
+                        self.authManagerViewModel.setUserAction(.userIsReAuthenticating)
                     }
                 } message: {
                     Text(l10n.ReAuthenticationView.confirmResetPasswordAlertMessage)
@@ -79,7 +79,7 @@ struct ChangeEmailView: View {
         .onChange(of: self.authManagerViewModel.reAuthenticationSucceeded) { _, newValue in
             if newValue {
                 self.showEnterNewEmailSheet = true
-                self.authManagerViewModel.userAction = .userIsChangingEmail
+                self.authManagerViewModel.setUserAction(.userIsChangingEmail)
             }
         }
         .sheet(isPresented: self.$showEnterNewEmailSheet, onDismiss: {
@@ -91,12 +91,12 @@ struct ChangeEmailView: View {
 
     // MARK: Private
 
-    @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
     @State private var password: String = ""
     @State private var showConfirmResetPassword: Bool = false
     @State private var showEnterNewEmailSheet: Bool = false
 
     private let authManager = AuthManager.shared
+    private var authManagerViewModel: AuthManagerViewModel = .shared
 
     private func submitForm() {
         self.authManager.reAuthenticateCurrentUser(password: self.password)
