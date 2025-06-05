@@ -4,9 +4,7 @@
 
 import AccountKit
 import ContentKit
-import DesignKit
 import SwiftUI
-import UtilsKit
 
 // MARK: - CurriculumGridItem
 
@@ -34,22 +32,7 @@ public struct CurriculumGridItem: View {
 
     public var body: some View {
         HStack(spacing: 0) {
-            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id,
-               self.sharedLibraryManagerViewModel.isContentFavorited(
-                   by: currentCaregiverID,
-                   contentID: curationItem.id
-               )
-            {
-                Image(systemName: "star.fill")
-                    .font(.system(size: 10))
-                    .foregroundColor(self.styleManager.accentColor ?? .blue)
-                    .frame(width: 10)
-                    .padding(.trailing)
-            } else {
-                Color.clear
-                    .frame(width: 10)
-                    .padding(.trailing)
-            }
+            FavoriteListIcon(self.curationItem)
 
             Image(uiImage: self.icon)
                 .resizable()
@@ -80,7 +63,6 @@ public struct CurriculumGridItem: View {
 
     // MARK: Private
 
-    @State private var styleManager: StyleManager = .shared
     @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private var curationItem: CurationItemModel
@@ -88,8 +70,6 @@ public struct CurriculumGridItem: View {
     private let kIconSize: CGFloat = 100
     private var title: String
     private var subtitle: String?
-
-    private var sharedLibraryManagerViewModel: SharedLibraryManagerViewModel = .shared
 }
 
 #Preview {
