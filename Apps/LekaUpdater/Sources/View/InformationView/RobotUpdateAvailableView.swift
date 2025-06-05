@@ -17,7 +17,6 @@ struct RobotUpdateAvailableView: View {
     var body: some View {
         VStack {
             Button {
-                globalFirmwareManager.currentVersion = Robot.kLatestFirmwareVersion
                 self.isUpdateStatusViewPresented = true
             } label: {
                 Text(l10n.information.startUpdateButton)

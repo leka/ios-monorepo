@@ -22,6 +22,9 @@ struct ContentView: View {
             NavigationStack {
                 RobotConnectionView()
             }
+            .onAppear {
+                globalFirmwareManager.currentVersion = Robot.kLatestFirmwareVersion
+            }
         }
         .fullScreenCover(isPresented: self.$isUpdateStatusViewPresented) {
             NavigationStack {
