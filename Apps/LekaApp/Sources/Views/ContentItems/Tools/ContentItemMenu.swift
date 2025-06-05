@@ -38,8 +38,6 @@ public struct ContentItemMenu: View {
 
     // MARK: Private
 
-    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
-
     private var styleManager: StyleManager = .shared
     private var sharedLibraryManagerViewModel: SharedLibraryManagerViewModel = .shared
 
