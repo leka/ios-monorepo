@@ -17,33 +17,25 @@ struct SharedLibraryStoriesView: View {
     // MARK: Internal
 
     var body: some View {
-        if self.stories.isEmpty {
+        if self.items.isEmpty {
             EmptySharedLibraryPlaceholderView(icon: .stories)
         } else {
-            SharedLibraryStoryListView(stories: self.stories) { story in
-                if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
-                    self.navigation.setSheetContent(.carereceiverPicker(activity: nil, story: story))
-                } else {
-                    self.navigation.setCurrentStory(story)
-                    self.navigation.setFullScreenCoverContent(.activityView(carereceivers: []))
-                }
-            }
+            VerticalActivityTable(items: self.items)
         }
     }
 
     // MARK: Private
 
-    private var navigation: Navigation = .shared
     private var viewModel: SharedLibraryManagerViewModel
-    private var authManagerViewModel: AuthManagerViewModel = .shared
 
-    private var stories: [Story] {
+    private var items: [CurationItemModel] {
         self.viewModel.stories.compactMap { savedStories in
             ContentKit.allStories[savedStories.id]
         }
         .sorted {
             $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
         }
+        .map { CurationItemModel(id: $0.id, name: $0.name, contentType: .story) }
     }
 }
 

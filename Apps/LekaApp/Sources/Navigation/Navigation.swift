@@ -71,7 +71,7 @@ class Navigation {
                 guard let curriculum = Curriculum(id: curation.id) else {
                     return Text("Curriculum \(curation.id) not found")
                 }
-                return CurriculumDetailsView(curriculum: curriculum, onStartActivity: self.onStartActivity)
+                return CurriculumDetailsView(curriculum: curriculum)
                     .logEventScreenView(
                         screenName: "curriculum_details",
                         context: .splitView,

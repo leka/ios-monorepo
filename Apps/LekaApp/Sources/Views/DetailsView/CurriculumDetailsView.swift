@@ -15,9 +15,8 @@ import SwiftUI
 public struct CurriculumDetailsView: View {
     // MARK: Lifecycle
 
-    public init(curriculum: Curriculum, onStartActivity: ((Activity) -> Void)? = nil) {
+    public init(curriculum: Curriculum) {
         self.curriculum = curriculum
-        self.onStartActivity = onStartActivity
     }
 
     // MARK: Public
@@ -28,9 +27,11 @@ public struct CurriculumDetailsView: View {
 
             Section(String(l10n.CurriculumDetailsView.activitiesSectionTitle.characters)) {
                 ScrollView(showsIndicators: true) {
-                    ActivityListView(
-                        activities: self.curriculum.activities.compactMap { Activity(id: $0) },
-                        onStartActivity: self.onStartActivity
+                    VerticalActivityList(items:
+                        self.curriculum.activities.compactMap {
+                            guard let activity = Activity(id: $0) else { return nil }
+                            return CurationItemModel(id: activity.id, name: activity.name, contentType: .activity)
+                        }
                     )
                 }
             }
@@ -55,10 +56,6 @@ public struct CurriculumDetailsView: View {
             }
         }
     }
-
-    // MARK: Internal
-
-    var onStartActivity: ((Activity) -> Void)?
 
     // MARK: Private
 

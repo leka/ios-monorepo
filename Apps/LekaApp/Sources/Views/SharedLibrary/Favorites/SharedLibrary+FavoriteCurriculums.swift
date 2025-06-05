@@ -4,7 +4,6 @@
 
 import AccountKit
 import ContentKit
-import LocalizationKit
 import SwiftUI
 
 struct FavoriteCurriculumsView: View {
@@ -17,19 +16,11 @@ struct FavoriteCurriculumsView: View {
     // MARK: Internal
 
     var body: some View {
-        if self.curriculums.isEmpty {
+        if self.items.isEmpty {
             EmptyFavoritesPlaceholderView(icon: .curriculums)
         } else {
             ScrollView(showsIndicators: true) {
-                CurriculumGridView(curriculums: self.curriculums, onStartActivity: {
-                    activity in
-                    if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
-                        self.navigation.setSheetContent(.carereceiverPicker(activity: activity, story: nil))
-                    } else {
-                        self.navigation.setCurrentActivity(activity)
-                        self.navigation.setFullScreenCoverContent(.activityView(carereceivers: []))
-                    }
-                })
+                VerticalCurriculumGrid(items: self.items)
             }
         }
     }
@@ -38,23 +29,21 @@ struct FavoriteCurriculumsView: View {
 
     @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
-    private var navigation: Navigation = .shared
     private var viewModel: SharedLibraryManagerViewModel
-    private var authManagerViewModel: AuthManagerViewModel = .shared
 
-    private var curriculums: [Curriculum] {
+    private var items: [CurationItemModel] {
         if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
             self.viewModel.curriculums.compactMap { savedCurriculum in
                 guard self.viewModel.isCurriculumFavoritedByCurrentCaregiver(
                     curriculumID: savedCurriculum.id,
                     caregiverID: currentCaregiverID
-                ) else {
+                ), let curriculum = ContentKit.allPublishedCurriculums[savedCurriculum.id] else {
                     return nil
                 }
-                return ContentKit.allPublishedCurriculums[savedCurriculum.id]
+                return CurationItemModel(id: curriculum.id, name: curriculum.name, contentType: .curriculum)
             }
             .sorted {
-                $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
+                $0.name.compare($1.name, locale: NSLocale.current) == .orderedAscending
             }
         } else {
             []
