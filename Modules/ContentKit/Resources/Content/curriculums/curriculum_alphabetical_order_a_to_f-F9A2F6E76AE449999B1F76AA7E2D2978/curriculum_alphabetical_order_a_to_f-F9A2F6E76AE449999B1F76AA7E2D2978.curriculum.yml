@@ -1,0 +1,59 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: F9A2F6E76AE449999B1F76AA7E2D2978
+name: curriculum_alphabetical_order_a_to_f
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2025-05-15T14:43:09.498997"
+authors:
+  - leka
+
+skills:
+  - association
+  - association/ordering
+
+tags:
+  - alphabet_letters
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: alphabetical_order_a_to_f
+      title: Ordre alphabétique de A à Z
+      subtitle: Mettre des lettres dans l'ordre alphabétique
+      abstract: |
+        Activité éducative où les participants apprennent à remettre des lettres dans l'ordre alphabétique.
+      description: |
+        Cette activité vise à enseigner aux participants à classer des lettres dans l'ordre alphabétique à travers une interaction ludique et intuitive.
+        - Deux à six lettres, parmi celles de A à F, sont affichées dans un ordre aléatoire.
+        - Le participant doit glisser et déposer chaque lettre dans la bonne séquence alphabétique.
+        - Une fois les lettres correctement placées, Leka célèbre la réussite en lançant un renforçateur positif pour encourager l'apprentissage.
+
+  - locale: en_US
+    details:
+      icon: alphabetical_order_a_to_f
+      title: Alphabetical Order from A to Z
+      subtitle: Arrange letters in alphabetical order
+      abstract: |
+        Educational activity where participants learn to arrange letters in alphabetical order.
+      description: |
+        This activity is designed to teach participants how to sort letters in alphabetical order through an engaging and intuitive interaction.
+        - Two to six letters (from A to F) are displayed in a random order.
+        - The participant must drag and drop each letter into the correct alphabetical sequence.
+        - Once the letters are correctly arranged, Leka celebrates the success by triggering a positive reinforcer to encourage learning.
+
+activities:
+  - alphabetical_order_a_to_f_2-02DDE7C59C264CCE867EA65580313CD1
+  - alphabetical_order_a_to_f_4-0CBC058299834FD39E8D22230A5252E7
+  - alphabetical_order_a_to_f_6-A96B4F744ECB4C52914183A7993683CC
