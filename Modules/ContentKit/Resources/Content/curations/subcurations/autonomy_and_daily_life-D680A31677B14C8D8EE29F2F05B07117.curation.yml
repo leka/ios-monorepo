@@ -68,6 +68,8 @@ content:
         type: activity
       - value: sequencing_daily_life_dressing_up-A33F20A81F8F478E8B705F7FAB807965
         type: activity
+      - value: sequencing_daily_life_toilets-8D126A04F37D4E8BA498EE4758E071AC
+        type: activity
 
   - component: horizontal_curriculum_list
     l10n:

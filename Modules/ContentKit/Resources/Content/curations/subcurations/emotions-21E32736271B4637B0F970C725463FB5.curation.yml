@@ -70,6 +70,8 @@ content:
         type: curriculum
       - value: curriculum_recognition_emotions_in_context-A135163C8D8646DE95D0854FD5E155EB
         type: curriculum
+      - value: curriculum_recognition_sounds_emotions-2D48CCB418BF4808BCB16148C901C617
+        type: curriculum
 
   - component: vertical_activity_grid
     l10n:
