@@ -1,0 +1,40 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 4B7973C2A256491FA3FCEF70A43362B8
+icon: books.vertical.fill
+color: 0xF48FB1
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Français
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: English
+      subtitle:
+      description:
+
+content:
+  - component: vertical_curriculum_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: L'alphabet
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: The alphabet
+          subtitle:
+          description:
+    items:
+      - value: curriculum_recognition_alphabet_letters_a_to_f-50DC12AA75AA4ED48928FBAFB73CA7EF
+        type: curriculum
+      - value: curriculum_alphabet_letters_sounds_a_to_f-C157BAD4AA044EE89A941B1D868FFEB7
+        type: curriculum
+      - value: curriculum_alphabetical_order_a_to_f-F9A2F6E76AE449999B1F76AA7E2D2978
+        type: curriculum

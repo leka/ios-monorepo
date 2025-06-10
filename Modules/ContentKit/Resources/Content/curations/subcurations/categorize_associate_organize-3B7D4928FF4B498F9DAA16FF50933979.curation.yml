@@ -40,6 +40,16 @@ content:
         type: curriculum
       - value: curriculum_order_by_size_different_animals-3158E58D908E43D29967B04D29C21912
         type: curriculum
+      - value: curriculum_order_by_size_animals-1FAED1FF14134571849325B6EC9197B5
+        type: curriculum
+      - value: curriculum_order_by_size_different_animals-3158E58D908E43D29967B04D29C21912
+        type: curriculum
+      - value: curriculum_ordering_steps_to_bake_a_cake-1F908FA3349B476DA1EE4CDC60B5B632
+        type: curriculum
+      - value: curriculum_ordering_the_steps_of_a_session_with_leka-211497313FDB4094990330D2387D1CA3
+        type: curriculum
+      - value: curriculum_alphabetical_order_a_to_f-F9A2F6E76AE449999B1F76AA7E2D2978
+        type: curriculum
 
   - component: horizontal_curriculum_list
     l10n:

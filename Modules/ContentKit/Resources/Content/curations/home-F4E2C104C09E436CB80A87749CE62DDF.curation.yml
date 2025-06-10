@@ -44,6 +44,8 @@ content:
         type: curriculum
       - value: curriculum_animal_memory-7C75908B86D748A283AA080D40642BE7
         type: curriculum
+      - value: sequencing_daily_life_toilets-8D126A04F37D4E8BA498EE4758E071AC
+        type: activity
 
   - component: horizontal_curriculum_list
     l10n:
@@ -58,6 +60,20 @@ content:
           subtitle:
           description: The latest to explore.
     items:
+      - value: curriculum_recognition_alphabet_letters_a_to_f-50DC12AA75AA4ED48928FBAFB73CA7EF
+        type: curriculum
+      - value: curriculum_alphabet_letters_sounds_a_to_f-C157BAD4AA044EE89A941B1D868FFEB7
+        type: curriculum
+      - value: curriculum_alphabetical_order_a_to_f-F9A2F6E76AE449999B1F76AA7E2D2978
+        type: curriculum
+      - value: curriculum_ordering_steps_to_bake_a_cake-1F908FA3349B476DA1EE4CDC60B5B632
+        type: curriculum
+      - value: curriculum_ordering_the_steps_of_a_session_with_leka-211497313FDB4094990330D2387D1CA3
+        type: curriculum
+      - value: curriculum_recognition_cooked_fruits-C0D2DAE8152F4CAE863EAEBF815354BA
+        type: curriculum
+      - value: curriculum_recognition_cooked_vegetables-655C2A62DB644DAABC8A286025231418
+        type: curriculum
       - value: curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
         type: curriculum
       - value: curriculum_leka_weather_robot-ED4C900D4ACB426384DC76F182BC19A5
@@ -77,17 +93,20 @@ content:
           title: Most Popular Curriculums
           subtitle:
           description: The most completed curriculums among professionals in your field.
-
     items:
       - value: curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
         type: curriculum
       - value: curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
         type: curriculum
+      - value: curriculum_recognition_emotions_in_context-A135163C8D8646DE95D0854FD5E155EB
+        type: curriculum
       - value: curriculum_recognition_body_parts-80761A1D62BF4C6980BF20E7D9BE52B8
         type: curriculum
-      - value: super_simon-C6EABAC161CD44C290B32202DFDCDAF6
-        type: curriculum
       - value: curriculum_recognition_sounds_emotions-2D48CCB418BF4808BCB16148C901C617
+        type: curriculum
+      - value: curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
+        type: curriculum
+      - value: super_simon-C6EABAC161CD44C290B32202DFDCDAF6
         type: curriculum
 
   - component: horizontal_activity_list
@@ -102,7 +121,6 @@ content:
           title: Most Popular Educational Games
           subtitle:
           description: The most completed educational games among professionals in your field.
-
     items:
       - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
         type: activity

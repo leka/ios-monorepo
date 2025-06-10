@@ -38,3 +38,9 @@ content:
         type: curriculum
       - value: curriculum_sort_sweet_and_salty-5ED0AFBEC4504F6EBA52B26C65ED93CC
         type: curriculum
+      - value: curriculum_recognition_cooked_fruits-C0D2DAE8152F4CAE863EAEBF815354BA
+        type: curriculum
+      - value: curriculum_recognition_cooked_vegetables-655C2A62DB644DAABC8A286025231418
+        type: curriculum
+      - value: curriculum_ordering_steps_to_bake_a_cake-1F908FA3349B476DA1EE4CDC60B5B632
+        type: curriculum

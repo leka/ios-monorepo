@@ -4,7 +4,7 @@
 
 uuid: 5BB0578E7F54453687311F4858849A30
 icon: sensor.tag.radiowaves.forward.fill
-color: 0xC8E6C9
+color: 0x81C784
 
 l10n:
   - locale: fr_FR
