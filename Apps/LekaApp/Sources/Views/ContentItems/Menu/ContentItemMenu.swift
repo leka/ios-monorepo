@@ -117,7 +117,6 @@ extension l10n {
     enum ContentItemMenu {
         static let addToSharedLibraryButtonLabel = LocalizedString(
             "lekaapp.content_item_menu.add_to_shared_library_button_label",
-            bundle: ContentKitResources.bundle,
             value: "Add to Shared Library",
             comment: "Button label to add an item to the shared library"
         )
