@@ -4,7 +4,6 @@
 
 import AccountKit
 import ContentKit
-import LocalizationKit
 import SwiftUI
 
 // MARK: - FavoriteActivitiesView
@@ -19,17 +18,10 @@ struct FavoriteActivitiesView: View {
     // MARK: Internal
 
     var body: some View {
-        if self.activities.isEmpty {
+        if self.items.isEmpty {
             EmptyFavoritesPlaceholderView(icon: .activities)
         } else {
-            SharedLibraryActivityListView(activities: self.activities) { activity in
-                if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
-                    self.navigation.setSheetContent(.carereceiverPicker(activity: activity, story: nil))
-                } else {
-                    self.navigation.setCurrentActivity(activity)
-                    self.navigation.setFullScreenCoverContent(.activityView(carereceivers: []))
-                }
-            }
+            VerticalActivityTable(items: self.items)
         }
     }
 
@@ -37,23 +29,21 @@ struct FavoriteActivitiesView: View {
 
     @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
-    private var navigation: Navigation = .shared
     private var viewModel: SharedLibraryManagerViewModel
-    private var authManagerViewModel: AuthManagerViewModel = .shared
 
-    private var activities: [Activity] {
+    private var items: [CurationItemModel] {
         if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
             self.viewModel.activities.compactMap { savedActivity in
                 guard self.viewModel.isActivityFavoritedByCurrentCaregiver(
                     activityID: savedActivity.id,
                     caregiverID: currentCaregiverID
-                ) else {
+                ), let activity = ContentKit.allPublishedActivities[savedActivity.id] else {
                     return nil
                 }
-                return ContentKit.allPublishedActivities[savedActivity.id]
+                return CurationItemModel(id: activity.id, name: activity.name, contentType: .activity)
             }
             .sorted {
-                $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
+                $0.name.compare($1.name, locale: NSLocale.current) == .orderedAscending
             }
         } else {
             []

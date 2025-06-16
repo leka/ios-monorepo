@@ -2,10 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import AccountKit
 import ContentKit
-import DesignKit
-import LocalizationKit
 import SwiftUI
 
 // MARK: - CardItem
@@ -44,16 +41,7 @@ public struct CurriculumItem: View {
                 Text(self.title)
                     .foregroundStyle(Color.primary)
 
-                if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                    if self.sharedLibraryManagerViewModel.isContentFavorited(
-                        by: currentCaregiverID,
-                        contentID: self.curationItem.id
-                    ) {
-                        Image(systemName: "star.fill")
-                            .font(.system(size: 10))
-                            .foregroundColor(self.styleManager.accentColor ?? .blue)
-                    }
-                }
+                FavoriteIcon(self.curationItem)
             }
 
             Text(self.subtitle ?? " ")
@@ -67,16 +55,11 @@ public struct CurriculumItem: View {
 
     // MARK: Private
 
-    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
-
-    private var styleManager: StyleManager = .shared
     private var curationItem: CurationItemModel
     private var icon: UIImage
     private var title: String
     private var subtitle: String?
     private let kIconSize: CGFloat = 180
-
-    private var sharedLibraryManagerViewModel: SharedLibraryManagerViewModel = .shared
 }
 
 #Preview {

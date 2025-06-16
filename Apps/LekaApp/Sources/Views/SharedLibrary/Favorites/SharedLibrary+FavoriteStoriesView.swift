@@ -4,7 +4,6 @@
 
 import AccountKit
 import ContentKit
-import LocalizationKit
 import SwiftUI
 
 // MARK: - FavoriteStoriesView
@@ -19,17 +18,10 @@ struct FavoriteStoriesView: View {
     // MARK: Internal
 
     var body: some View {
-        if self.stories.isEmpty {
+        if self.items.isEmpty {
             EmptyFavoritesPlaceholderView(icon: .stories)
         } else {
-            SharedLibraryStoryListView(stories: self.stories) { story in
-                if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
-                    self.navigation.setSheetContent(.carereceiverPicker(activity: nil, story: story))
-                } else {
-                    self.navigation.setCurrentStory(story)
-                    self.navigation.setFullScreenCoverContent(.activityView(carereceivers: []))
-                }
-            }
+            VerticalActivityTable(items: self.items)
         }
     }
 
@@ -37,23 +29,21 @@ struct FavoriteStoriesView: View {
 
     @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
-    private var navigation: Navigation = .shared
     private var viewModel: SharedLibraryManagerViewModel
-    private var authManagerViewModel: AuthManagerViewModel = .shared
 
-    private var stories: [Story] {
+    private var items: [CurationItemModel] {
         if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
             self.viewModel.stories.compactMap { savedStory in
                 guard self.viewModel.isStoryFavoritedByCurrentCaregiver(
                     storyID: savedStory.id,
                     caregiverID: currentCaregiverID
-                ) else {
+                ), let story = ContentKit.allStories[savedStory.id] else {
                     return nil
                 }
-                return ContentKit.allStories[savedStory.id]
+                return CurationItemModel(id: story.id, name: story.name, contentType: .story)
             }
             .sorted {
-                $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
+                $0.name.compare($1.name, locale: NSLocale.current) == .orderedAscending
             }
         } else {
             []

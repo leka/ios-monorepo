@@ -4,7 +4,6 @@
 
 import AccountKit
 import ContentKit
-import LocalizationKit
 import SwiftUI
 
 struct SharedLibraryActivitiesView: View {
@@ -17,33 +16,25 @@ struct SharedLibraryActivitiesView: View {
     // MARK: Internal
 
     var body: some View {
-        if self.activities.isEmpty {
+        if self.items.isEmpty {
             EmptySharedLibraryPlaceholderView(icon: .activities)
         } else {
-            SharedLibraryActivityListView(activities: self.activities) { activity in
-                if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
-                    self.navigation.setSheetContent(.carereceiverPicker(activity: activity, story: nil))
-                } else {
-                    self.navigation.setCurrentActivity(activity)
-                    self.navigation.setFullScreenCoverContent(.activityView(carereceivers: []))
-                }
-            }
+            VerticalActivityTable(items: self.items)
         }
     }
 
     // MARK: Private
 
-    private var navigation: Navigation = .shared
     private var viewModel: SharedLibraryManagerViewModel
-    private var authManagerViewModel: AuthManagerViewModel = .shared
 
-    private var activities: [Activity] {
+    private var items: [CurationItemModel] {
         self.viewModel.activities.compactMap { savedActivity in
             ContentKit.allPublishedActivities[savedActivity.id]
         }
         .sorted {
             $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
         }
+        .map { CurationItemModel(id: $0.id, name: $0.name, contentType: .activity) }
     }
 }
 

@@ -4,7 +4,6 @@
 
 import AccountKit
 import ContentKit
-import LocalizationKit
 import SwiftUI
 
 struct SharedLibraryCurriculumsView: View {
@@ -17,36 +16,27 @@ struct SharedLibraryCurriculumsView: View {
     // MARK: Internal
 
     var body: some View {
-        if self.curriculums.isEmpty {
+        if self.items.isEmpty {
             EmptySharedLibraryPlaceholderView(icon: .curriculums)
         } else {
             ScrollView(showsIndicators: true) {
-                CurriculumGridView(curriculums: self.curriculums, onStartActivity: {
-                    activity in
-                    if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.navigation.demoMode {
-                        self.navigation.setSheetContent(.carereceiverPicker(activity: activity, story: nil))
-                    } else {
-                        self.navigation.setCurrentActivity(activity)
-                        self.navigation.setFullScreenCoverContent(.activityView(carereceivers: []))
-                    }
-                })
+                VerticalCurriculumGrid(items: self.items)
             }
         }
     }
 
     // MARK: Private
 
-    private var navigation: Navigation = .shared
     private var viewModel: SharedLibraryManagerViewModel
-    private var authManagerViewModel: AuthManagerViewModel = .shared
 
-    private var curriculums: [Curriculum] {
+    private var items: [CurationItemModel] {
         self.viewModel.curriculums.compactMap { savedCurriculums in
             ContentKit.allCurriculums[savedCurriculums.id]
         }
         .sorted {
             $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
         }
+        .map { CurationItemModel(id: $0.id, name: $0.name, contentType: .curriculum) }
     }
 }
 

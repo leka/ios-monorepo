@@ -4,9 +4,7 @@
 
 import AccountKit
 import ContentKit
-import DesignKit
 import SwiftUI
-import UtilsKit
 
 // MARK: - ActivityGridItem
 
@@ -45,22 +43,7 @@ public struct ActivityGridItem: View {
 
     public var body: some View {
         HStack(spacing: 0) {
-            if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id,
-               self.sharedLibraryManagerViewModel.isContentFavorited(
-                   by: currentCaregiverID,
-                   contentID: curationItem.id
-               )
-            {
-                Image(systemName: "star.fill")
-                    .font(.system(size: 10))
-                    .foregroundColor(self.styleManager.accentColor ?? .blue)
-                    .frame(width: 10)
-                    .padding(.trailing)
-            } else {
-                Color.clear
-                    .frame(width: 10)
-                    .padding(.trailing)
-            }
+            FavoriteListIcon(self.curationItem)
 
             Image(uiImage: self.icon)
                 .resizable()
@@ -92,15 +75,12 @@ public struct ActivityGridItem: View {
 
     @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
-    private var styleManager: StyleManager = .shared
     private var curationItem: CurationItemModel
     private var icon: UIImage
     private var shape: any Shape
     private let kIconSize: CGFloat = 50
     private var title: String
     private var subtitle: String?
-
-    private var sharedLibraryManagerViewModel: SharedLibraryManagerViewModel = .shared
 }
 
 #Preview {

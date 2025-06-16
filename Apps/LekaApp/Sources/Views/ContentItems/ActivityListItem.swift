@@ -4,14 +4,15 @@
 
 import ContentKit
 import SwiftUI
+import UtilsKit
 
-// MARK: - ActivityItem
+// MARK: - ActivityListItem
 
-public struct ActivityItem: View {
+public struct ActivityListItem: View {
     // MARK: Lifecycle
 
-    public init?(_ content: CurationItemModel, size: CGFloat = 180) {
-        self.iconSize = size
+    public init?(_ content: CurationItemModel, number: Int? = nil) {
+        self.number = number
         switch content.contentType {
             case .activity:
                 guard let activity = Activity(id: content.id) else {
@@ -32,9 +33,9 @@ public struct ActivityItem: View {
                 self.icon = story.details.iconImage
                 self.title = story.details.title
                 self.subtitle = story.details.subtitle
-                self.shape = RoundedRectangle(cornerRadius: 10 / 57 * self.iconSize)
+                self.shape = RoundedRectangle(cornerRadius: 10 / 57 * self.kIconSize)
             default:
-                log.error("Content \(content.id) is not an activity or a story and cannot be decoded as ActivityItem")
+                log.error("Content \(content.id) is not an activity or a story and cannot be decoded as ActivityListItem")
                 return nil
         }
     }
@@ -42,38 +43,53 @@ public struct ActivityItem: View {
     // MARK: Public
 
     public var body: some View {
-        VStack {
+        HStack(spacing: 0) {
+            FavoriteListIcon(self.curationItem)
+
+            if let number = self.number {
+                Text("\(number)")
+                    .font(.headline)
+                    .foregroundStyle(Color.secondary)
+                    .padding(.trailing)
+            }
+
             Image(uiImage: self.icon)
                 .resizable()
                 .scaledToFit()
+                .frame(width: self.kIconSize)
                 .clipShape(AnyShape(self.shape))
-                .frame(width: self.iconSize)
 
-            HStack(spacing: 5) {
+            VStack(alignment: .leading) {
                 Text(self.title)
                     .foregroundStyle(Color.primary)
 
-                FavoriteIcon(self.curationItem)
+                Text(self.subtitle ?? "")
+                    .font(.caption)
+                    .foregroundColor(Color.secondary)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal)
 
-            Text(self.subtitle ?? " ")
-                .font(.caption)
-                .foregroundStyle(Color.secondary)
+            if let activity = Activity(id: curationItem.id) {
+                IconImageView(image: ContentKit.getGestureIconUIImage(for: activity))
 
-            Spacer()
+                IconImageView(image: ContentKit.getFocusIconUIImage(for: activity, ofType: .ears))
+
+                IconImageView(image: ContentKit.getFocusIconUIImage(for: activity, ofType: .robot))
+            }
         }
-        .frame(width: self.width, alignment: .center)
-        .lineLimit(0)
-        .fixedSize()
+        .frame(height: 60)
+        .frame(minWidth: 100, maxWidth: .infinity)
+        .contentShape(Rectangle())
     }
 
     // MARK: Private
 
     private var curationItem: CurationItemModel
+    private let number: Int?
     private var icon: UIImage
     private var shape: any Shape
-    private let iconSize: CGFloat
-    private let width: CGFloat = 180
+    private let kIconSize: CGFloat = 50
     private var title: String
     private var subtitle: String?
 }
@@ -81,33 +97,26 @@ public struct ActivityItem: View {
 #Preview {
     let curations: [CurationItemModel] = [
         .init(id: "CBBCDFA8DC8C462794904F6E5E0638AB", name: "", contentType: .activity),
-        .init(id: "7C75908B86D748A283AA080D40642BE7", name: "", contentType: .curriculum),
         .init(id: "60C133CB19F94BA0864DFA9BF6E7F696", name: "", contentType: .story),
         .init(id: "D91BDA161F8E455CA8A71881F1D2E923", name: "", contentType: .activity),
-        .init(id: "Wrong UUID", name: "", contentType: .activity),
-        .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", name: "", contentType: .curriculum),
         .init(id: "CBBCDFA8DC8C462794904F6E5E0638AB", name: "", contentType: .activity),
-        .init(id: "7C75908B86D748A283AA080D40642BE7", name: "", contentType: .curriculum),
+        .init(id: "60C133CB19F94BA0864DFA9BF6E7F696", name: "", contentType: .story),
+        .init(id: "D91BDA161F8E455CA8A71881F1D2E923", name: "", contentType: .activity),
+        .init(id: "CBBCDFA8DC8C462794904F6E5E0638AB", name: "", contentType: .activity),
         .init(id: "60C133CB19F94BA0864DFA9BF6E7F696", name: "", contentType: .story),
         .init(id: "D91BDA161F8E455CA8A71881F1D2E923", name: "", contentType: .activity),
         .init(id: "Wrong UUID", name: "", contentType: .activity),
+        .init(id: "CBBCDFA8DC8C462794904F6E5E0638AB", name: "", contentType: .activity),
+        .init(id: "60C133CB19F94BA0864DFA9BF6E7F696", name: "", contentType: .story),
+        .init(id: "D91BDA161F8E455CA8A71881F1D2E923", name: "", contentType: .activity),
         .init(id: "B6F2027A304C44F5B3C482EAFCD8DE7E", name: "", contentType: .curriculum),
+        .init(id: "D91BDA161F8E455CA8A71881F1D2E923", name: "", contentType: .activity),
     ]
 
-    return VStack {
-        ScrollView(.horizontal) {
-            HStack {
-                ForEach(curations) { curation in
-                    ActivityItem(curation)
-                }
-            }
+    ScrollView {
+        ForEach(Array(curations.enumerated()), id: \.offset) { _, item in
+            ActivityListItem(item)
         }
-        ScrollView(.horizontal) {
-            HStack {
-                ForEach(curations.shuffled()) { curation in
-                    ActivityItem(curation, size: 120)
-                }
-            }
-        }
+        .padding()
     }
 }
