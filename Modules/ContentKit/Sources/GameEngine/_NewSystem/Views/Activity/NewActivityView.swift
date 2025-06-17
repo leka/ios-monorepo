@@ -211,9 +211,9 @@ public struct NewActivityView: View {
             - group:
                 - instructions:
                     - locale: fr_FR
-                      value: Touche les emojis qui sont identiques
+                      value: Glisse et dépose les emojis identiques ensemble
                     - locale: en_US
-                      value: Tap the emojis that are the same
+                      value: Drag and drop the same emojis together
                   interface: dragAndDropGrid
                   gameplay: associateCategories
                   payload:
@@ -239,9 +239,9 @@ public struct NewActivityView: View {
                         category: catC
                 - instructions:
                     - locale: fr_FR
-                      value: Touche les emojis qui sont identiques
+                      value: Glisse et dépose les émojis dans la zone correspondante
                     - locale: en_US
-                      value: Tap the emojis that are the same
+                      value: Drag and drop the emojis in the correct zone
                   interface: dragAndDropGridWithZones
                   gameplay: associateCategories
                   payload:
