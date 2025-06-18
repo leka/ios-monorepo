@@ -104,10 +104,6 @@ public class ActivityCoordinator {
             self.currentGroupIndex += 1
         }
 
-        if self.currentGroupIndex >= self.groups.count {
-            self.currentGroupIndex = 0
-        }
-
         self.currentExercise = self.groups[self.currentGroupIndex].group[self.currentExerciseIndex]
         self.setExerciseCoordinator(CurrentExerciseCoordinator(exercise: self.currentExercise))
     }
@@ -120,10 +116,6 @@ public class ActivityCoordinator {
         if self.currentExerciseIndex < 0 {
             self.currentExerciseIndex = self.groups[self.currentGroupIndex].group.count - 1
             self.currentGroupIndex -= 1
-        }
-
-        if self.currentGroupIndex < 0 {
-            self.currentGroupIndex = self.groups.count - 1
         }
 
         self.currentExercise = self.groups[self.currentGroupIndex].group[self.currentExerciseIndex]
