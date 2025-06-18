@@ -68,9 +68,9 @@ public struct NewActivityView: View {
             }
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                logGEK.debug("Activity started")
-                self.activityCoordinator.activityStage.send(.start)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                logGEK.debug("Activity did start")
+                self.activityCoordinator.activityEvent.send(.didStart)
             }
         }
     }
@@ -150,124 +150,125 @@ public struct NewActivityView: View {
                       - value: 🐷
                         type: emoji
                         category: catC
-                - instructions:
-                    - locale: fr_FR
-                      value: Glisse et dépose les emojis identiques ensemble
-                    - locale: en_US
-                      value: Drag and drop the same emojis together
-                  interface: dragAndDropGrid
-                  gameplay: associateCategories
-                  payload:
-                    shuffle_choices: true
-                    choices:
-                      - value: 🐶
-                        type: emoji
-                        category: catA
-                      - value: 🐶
-                        type: emoji
-                        category: catA
-                      - value: 🐱
-                        type: emoji
-                        category: catB
-                      - value: 🐱
-                        type: emoji
-                        category: catB
-                      - value: 🐷
-                        type: emoji
-                        category: catC
-                      - value: 🐷
-                        type: emoji
-                        category: catC
-                - instructions:
-                    - locale: fr_FR
-                      value: Glisse et dépose les émojis dans la zone correspondante
-                    - locale: en_US
-                      value: Drag and drop the emojis in the correct zone
-                  interface: dragAndDropGridWithZones
-                  gameplay: associateCategories
-                  payload:
-                    shuffle_choices: true
-                    choices:
-                      - value: 🐶
-                        type: emoji
-                        category: catA
-                        is_dropzone: true
-                      - value: 🐶
-                        type: emoji
-                        category: catA
-                      - value: 🐱
-                        type: emoji
-                        category: catB
-                        is_dropzone: true
-                      - value: 🐱
-                        type: emoji
-                        category: catB
-                      - value: 🐷
-                        type: emoji
-                        category: catC
-                      - value: 🐷
-                        type: emoji
-                        category: catC
-            - group:
-                - instructions:
-                    - locale: fr_FR
-                      value: Glisse et dépose les emojis identiques ensemble
-                    - locale: en_US
-                      value: Drag and drop the same emojis together
-                  interface: dragAndDropGrid
-                  gameplay: associateCategories
-                  payload:
-                    shuffle_choices: true
-                    choices:
-                      - value: 🐶
-                        type: emoji
-                        category: catA
-                      - value: 🐶
-                        type: emoji
-                        category: catA
-                      - value: 🐱
-                        type: emoji
-                        category: catB
-                      - value: 🐱
-                        type: emoji
-                        category: catB
-                      - value: 🐷
-                        type: emoji
-                        category: catC
-                      - value: 🐷
-                        type: emoji
-                        category: catC
-                - instructions:
-                    - locale: fr_FR
-                      value: Glisse et dépose les émojis dans la zone correspondante
-                    - locale: en_US
-                      value: Drag and drop the emojis in the correct zone
-                  interface: dragAndDropGridWithZones
-                  gameplay: associateCategories
-                  payload:
-                    shuffle_choices: true
-                    choices:
-                      - value: 🐶
-                        type: emoji
-                        category: catA
-                        is_dropzone: true
-                      - value: 🐶
-                        type: emoji
-                        category: catA
-                      - value: 🐱
-                        type: emoji
-                        category: catB
-                        is_dropzone: true
-                      - value: 🐱
-                        type: emoji
-                        category: catB
-                      - value: 🐷
-                        type: emoji
-                        category: catC
-                      - value: 🐷
-                        type: emoji
-                        category: catC
         """
+//                - instructions:
+//                    - locale: fr_FR
+//                      value: Glisse et dépose les emojis identiques ensemble
+//                    - locale: en_US
+//                      value: Drag and drop the same emojis together
+//                  interface: dragAndDropGrid
+//                  gameplay: associateCategories
+//                  payload:
+//                    shuffle_choices: true
+//                    choices:
+//                      - value: 🐶
+//                        type: emoji
+//                        category: catA
+//                      - value: 🐶
+//                        type: emoji
+//                        category: catA
+//                      - value: 🐱
+//                        type: emoji
+//                        category: catB
+//                      - value: 🐱
+//                        type: emoji
+//                        category: catB
+//                      - value: 🐷
+//                        type: emoji
+//                        category: catC
+//                      - value: 🐷
+//                        type: emoji
+//                        category: catC
+//                - instructions:
+//                    - locale: fr_FR
+//                      value: Glisse et dépose les émojis dans la zone correspondante
+//                    - locale: en_US
+//                      value: Drag and drop the emojis in the correct zone
+//                  interface: dragAndDropGridWithZones
+//                  gameplay: associateCategories
+//                  payload:
+//                    shuffle_choices: true
+//                    choices:
+//                      - value: 🐶
+//                        type: emoji
+//                        category: catA
+//                        is_dropzone: true
+//                      - value: 🐶
+//                        type: emoji
+//                        category: catA
+//                      - value: 🐱
+//                        type: emoji
+//                        category: catB
+//                        is_dropzone: true
+//                      - value: 🐱
+//                        type: emoji
+//                        category: catB
+//                      - value: 🐷
+//                        type: emoji
+//                        category: catC
+//                      - value: 🐷
+//                        type: emoji
+//                        category: catC
+//            - group:
+//                - instructions:
+//                    - locale: fr_FR
+//                      value: Glisse et dépose les emojis identiques ensemble
+//                    - locale: en_US
+//                      value: Drag and drop the same emojis together
+//                  interface: dragAndDropGrid
+//                  gameplay: associateCategories
+//                  payload:
+//                    shuffle_choices: true
+//                    choices:
+//                      - value: 🐶
+//                        type: emoji
+//                        category: catA
+//                      - value: 🐶
+//                        type: emoji
+//                        category: catA
+//                      - value: 🐱
+//                        type: emoji
+//                        category: catB
+//                      - value: 🐱
+//                        type: emoji
+//                        category: catB
+//                      - value: 🐷
+//                        type: emoji
+//                        category: catC
+//                      - value: 🐷
+//                        type: emoji
+//                        category: catC
+//                - instructions:
+//                    - locale: fr_FR
+//                      value: Glisse et dépose les émojis dans la zone correspondante
+//                    - locale: en_US
+//                      value: Drag and drop the emojis in the correct zone
+//                  interface: dragAndDropGridWithZones
+//                  gameplay: associateCategories
+//                  payload:
+//                    shuffle_choices: true
+//                    choices:
+//                      - value: 🐶
+//                        type: emoji
+//                        category: catA
+//                        is_dropzone: true
+//                      - value: 🐶
+//                        type: emoji
+//                        category: catA
+//                      - value: 🐱
+//                        type: emoji
+//                        category: catB
+//                        is_dropzone: true
+//                      - value: 🐱
+//                        type: emoji
+//                        category: catB
+//                      - value: 🐷
+//                        type: emoji
+//                        category: catC
+//                      - value: 🐷
+//                        type: emoji
+//                        category: catC
+//        """
 
     import Yams
 
@@ -280,15 +281,15 @@ public struct NewActivityView: View {
 
                 NewActivityView(activity: activity, coordinator: coordinator)
                     .onAppear {
-                        coordinator.activityStage
+                        coordinator.activityEvent
                             .receive(on: DispatchQueue.main)
-                            .sink { stage in
-                                switch stage {
-                                    case .start:
-                                        logGEK.debug("Publisher - Activity started")
+                            .sink { event in
+                                switch event {
+                                    case .didStart:
+                                        logGEK.debug("Publisher - Activity did start")
 
-                                    case .end:
-                                        logGEK.debug("Publisher - Activity ended")
+                                    case .didEnd:
+                                        logGEK.debug("Publisher - Activity did end")
                                 }
                             }
                             .store(in: &cancellables)

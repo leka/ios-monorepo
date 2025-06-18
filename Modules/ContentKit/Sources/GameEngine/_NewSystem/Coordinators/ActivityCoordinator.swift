@@ -38,9 +38,9 @@ public class ActivityCoordinator {
 
     // MARK: Public
 
-    public enum ActivityStage {
-        case start
-        case end // swiftlint:disable:this identifier_name
+    public enum ActivityEvent {
+        case didStart
+        case didEnd
     }
 
     public var currentGroupIndex: Int = 0
@@ -48,7 +48,7 @@ public class ActivityCoordinator {
 
     public let groupSizeEnumeration: [Int]
 
-    public var activityStage = PassthroughSubject<ActivityStage, Never>()
+    public var activityEvent = PassthroughSubject<ActivityEvent, Never>()
 
     public var numberOfGroups: Int {
         self.groupSizeEnumeration.count
@@ -88,14 +88,19 @@ public class ActivityCoordinator {
 
         self.currentExerciseCoordinator.didComplete
             .receive(on: DispatchQueue.main)
-            .sink {
+            .sink { [weak self] in
+                guard let self else { return }
                 logGEK.info("Current exercise completed 🎉️")
+                self.nextExercise()
             }
             .store(in: &self.cancellables)
     }
 
     func nextExercise() {
-        guard !self.isLastExercise else { return }
+        guard !self.isLastExercise else {
+            self.activityEvent.send(.didEnd)
+            return
+        }
 
         self.currentExerciseIndex += 1
 
