@@ -38,6 +38,8 @@ public class TTSCoordinatorOpenPlay: TTSGameplayCoordinatorProtocol {
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
     public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(false)
 
+    public var didComplete: PassthroughSubject<Void, Never> = .init()
+
     public func processUserSelection(choiceID: UUID) {
         var choiceState: State {
             if let index = currentChoices.firstIndex(where: { $0 == choiceID }) {
@@ -79,6 +81,13 @@ public class TTSCoordinatorOpenPlay: TTSGameplayCoordinatorProtocol {
                 self.uiModel.value.choices[index] = TTSUIChoiceModel(id: id, view: view)
             }
         }
+
+        // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            logGEK.debug("Exercise completed")
+            self.didComplete.send()
+        }
+
         let onReinforcerCompleted: () -> Void = {
             self.resetCurrentChoices()
             for choice in self.rawChoices {

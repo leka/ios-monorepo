@@ -47,6 +47,8 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
     public private(set) var uiModel = CurrentValueSubject<DnDOneToOneUIModel, Never>(.zero)
     public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
 
+    public var didComplete: PassthroughSubject<Void, Never> = .init()
+
     public func setAlreadyOrderedNodes() {
         self.rawChoices.forEach { choice in
             if choice.alreadyOrdered {
@@ -89,6 +91,14 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
                     self.disableValidation()
                     self.updateChoiceState(for: choiceID, to: .idle)
                     self.currentOrderedChoices[index] = nil
+                }
+            }
+
+            if self.gameplay.isCompleted.value {
+                // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    logGEK.debug("Exercise completed")
+                    self.didComplete.send()
                 }
             }
         }

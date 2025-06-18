@@ -24,6 +24,7 @@ public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinat
     // MARK: Public
 
     public var action: Exercise.Action
+    public var didComplete: PassthroughSubject<Void, Never> = .init()
 
     public func enableMagicCardDetection() {
         self.robot.magicCard
@@ -36,8 +37,12 @@ public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinat
     }
 
     public func validateCorrectAnswer() {
-        // TODO: (@HPezz/@ladislas) Implement end of exercise through coordinator
-        Robot.shared.run(.fire)
+        // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            logGEK.debug("Exercise completed")
+            self.didComplete.send()
+            Robot.shared.run(.fire)
+        }
     }
 
     // MARK: Private

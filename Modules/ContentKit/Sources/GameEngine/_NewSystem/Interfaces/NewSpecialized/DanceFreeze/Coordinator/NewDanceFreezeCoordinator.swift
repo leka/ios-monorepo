@@ -75,8 +75,12 @@ public class NewDanceFreezeCoordinator: ExerciseSharedDataProtocol {
     let songs: [DanceFreezeSong]
 
     func complete() {
+        // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            logGEK.debug("Exercise completed")
+            self.didComplete.send()
+        }
         self.isDancing.send(false)
-        self.didComplete.send()
         self.isComplete = true
         self.robotManager.stopRobot()
         self.audioManager.stop()

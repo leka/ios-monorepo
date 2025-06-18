@@ -35,6 +35,8 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
     public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
 
+    public var didComplete: PassthroughSubject<Void, Never> = .init()
+
     public func processUserSelection(choiceID: UUID) {
         if let index = self.currentOrderedChoices.firstIndex(of: choiceID) {
             self.currentOrderedChoices.remove(at: index)
@@ -63,6 +65,11 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
         if self.gameplay.isCompleted.value {
             for (indice, id) in self.currentOrderedChoices.enumerated() {
                 self.updateChoiceState(for: id, to: .correct(order: indice + 1))
+            }
+            // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                logGEK.debug("Exercise completed")
+                self.didComplete.send()
             }
         } else {
             self.currentOrderedChoices.forEach { id in
