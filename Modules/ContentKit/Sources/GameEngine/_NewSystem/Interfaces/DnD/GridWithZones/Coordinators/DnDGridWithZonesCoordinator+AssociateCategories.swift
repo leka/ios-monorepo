@@ -15,6 +15,7 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
     public init(choices: [CoordinatorAssociateCategoriesChoiceModel], action: Exercise.Action? = nil, validationEnabled: Bool? = nil) {
         let dropZones = choices.filter(\.isDropzone)
         let nodes = choices.filter { $0.isDropzone == false }
+        self.rawDropZones = Array(dropZones)
         self.rawChoices = Array(nodes)
 
         self.gameplay = NewGameplayAssociateCategories(choices: choices.map {
@@ -76,7 +77,7 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
 
     public func validateUserSelection() {
         let results = self.gameplay.process(choiceIDs: self.currentlySelectedChoices)
-        logGEK.debug("Validate user selection")
+
         for (categoryIndex, category) in self.currentlySelectedChoices.enumerated() {
             for choiceID in category {
                 if let result = results.first(where: { $0.id == choiceID }), result.isCategoryCorrect {
@@ -102,6 +103,7 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
 
     private let gameplay: NewGameplayAssociateCategories
     private let rawChoices: [CoordinatorAssociateCategoriesChoiceModel]
+    private let rawDropZones: [CoordinatorAssociateCategoriesChoiceModel]
 
     private var currentlySelectedChoices: [[UUID]] = []
     private var alreadyValidatedChoices: [[UUID]] = []
@@ -135,9 +137,8 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
 
     private func handleIncorrectChoice(_ choiceID: UUID) {
         guard let choice = self.rawChoices.first(where: { $0.id == choiceID }) else { return }
-        let categoryChoices = self.rawChoices.filter { $0.category == choice.category }
 
-        if categoryChoices.count > 1 {
+        if self.rawDropZones.contains(where: { $0.category == choice.category }) {
             self.updateChoiceState(for: choiceID, to: .idle)
         } else {
             self.updateChoiceState(for: choiceID, to: .wrong)
