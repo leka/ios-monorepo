@@ -2,81 +2,26 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import ContentKit
 import RobotKit
 import SwiftUI
 
 struct ContentView: View {
-    @State var selection: Int = 0
+    // MARK: Internal
+
     @State var isConnectionSheetPresented: Bool = false
+    @State var isActivityPresented: Bool = false
 
     var body: some View {
         NavigationStack {
-            TabView(selection: self.$selection) {
-                ScrollView {
-                    VStack(alignment: .leading) {
-                        Text("YAML - Choose your gameplay")
-                            .font(.largeTitle)
-                            .multilineTextAlignment(.center)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-
-                        TTSYAMLExercises()
-                        DnDYAMLExercises()
-                        SpecializedExercises()
-                    }
-                }
-                .tabItem {
-                    Image(systemName: "text.word.spacing")
-                    Text("Choose your YAML activity")
-                }
-                .tag(0)
-
-                ScrollView {
-                    VStack(alignment: .leading) {
-                        Text("Choose your gameplay")
-                            .font(.largeTitle)
-                            .multilineTextAlignment(.center)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-
-                        OpenPlayExercises()
-
-                        MagicCardExercises()
-
-                        TTSExercises()
-
-                        ActionThenTTSExercises()
-
-                        ActionThenTTSThenValidateExercises()
-
-                        DnDExercises()
-
-                        ActionThenDnDGridExercises()
-
-                        ActionThenDnDGridWithZoneExercises()
-
-                        ActionThenDnDOneToOneExercises()
-                    }
-                }
-                .tabItem {
-                    Image(systemName: "gamecontroller")
-                    Text("Choose your template")
-                }
-                .tag(1)
-
-                VStack {
-                    Text("Choose your template")
-                        .font(.largeTitle)
-                        .multilineTextAlignment(.center)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                    ActivityTemplateList()
-                }
-                .tabItem {
-                    Image(systemName: "list.clipboard")
-                    Text("Choose your template")
-                }
-                .tag(2)
+            Button {
+                self.isActivityPresented = true
+                let newgekyaml = Bundle.main.url(forResource: "new_gek_activity", withExtension: "yml")
+                let content = try? String(contentsOf: newgekyaml!, encoding: .utf8)
+                log.debug("\(content ?? "No YAML file found")")
+                self.navigation.setCurrentActivity(NewActivity(yaml: content!)!)
+            } label: {
+                Text("Activity")
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -93,7 +38,14 @@ struct ContentView: View {
                     .navigationBarTitleDisplayMode(.inline)
             }
         }
+        .fullScreenCover(isPresented: self.$isActivityPresented) {
+            YAMLActivities()
+        }
     }
+
+    // MARK: Private
+
+    private var navigation: Navigation = .shared
 }
 
 #Preview {
