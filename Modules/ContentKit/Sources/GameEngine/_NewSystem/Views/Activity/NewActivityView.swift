@@ -27,6 +27,7 @@ public struct NewActivityView: View {
                 self.activityCoordinator.currentExerciseView
             }
         }
+        .id(self.activityCoordinator.currentExerciseIndex)
         .frame(maxWidth: .infinity)
         .background(.lkBackground)
         .ignoresSafeArea(.all, edges: .bottom)
