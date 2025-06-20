@@ -74,19 +74,11 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
         for choiceID in self.currentlySelectedChoices {
             self.updateChoiceState(for: choiceID, to: .correct)
         }
-        let onReinforcerCompleted: () -> Void = {
-            self.currentlySelectedChoices = []
-            for choiceID in self.rawChoices.map(\.id) {
-                self.updateChoiceState(for: choiceID, to: .idle)
-            }
-            self.updateValidationState()
-        }
 
         // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             logGEK.debug("Exercise completed")
             self.didComplete.send()
-            Robot.shared.run(.rainbow, onReinforcerCompleted: onReinforcerCompleted)
         }
     }
 

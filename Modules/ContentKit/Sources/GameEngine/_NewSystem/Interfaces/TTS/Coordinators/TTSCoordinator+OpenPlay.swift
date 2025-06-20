@@ -87,27 +87,6 @@ public class TTSCoordinatorOpenPlay: TTSGameplayCoordinatorProtocol {
             logGEK.debug("Exercise completed")
             self.didComplete.send()
         }
-
-        let onReinforcerCompleted: () -> Void = {
-            self.resetCurrentChoices()
-            for choice in self.rawChoices {
-                guard let index = self.uiModel.value.choices.firstIndex(where: { $0.id == choice.id }) else { return }
-
-                let view = ChoiceView(value: choice.value,
-                                      type: choice.type,
-                                      size: self.uiModel.value.choiceSize(for: self.rawChoices.count),
-                                      state: .idle)
-
-                withAnimation {
-                    self.uiModel.value.choices[index] = TTSUIChoiceModel(id: choice.id, view: view)
-                }
-            }
-            if self.minimumToSelect == 0 {
-                self.validationEnabled.send(true)
-            }
-        }
-
-        Robot.shared.run(.rainbow, onReinforcerCompleted: onReinforcerCompleted)
     }
 
     // MARK: Private
@@ -118,10 +97,6 @@ public class TTSCoordinatorOpenPlay: TTSGameplayCoordinatorProtocol {
     private var currentChoices: [UUID] = []
 
     private var cancellables = Set<AnyCancellable>()
-
-    private func resetCurrentChoices() {
-        self.currentChoices = []
-    }
 }
 
 extension TTSCoordinatorOpenPlay {
