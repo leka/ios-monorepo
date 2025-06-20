@@ -32,7 +32,10 @@ public class CurrentExerciseCoordinator {
                             switch gameplay {
                                 case .associateCategories:
                                     let model = CoordinatorAssociateCategoriesModel(data: payload)
-                                    let coordinator = TTSCoordinatorAssociateCategories(model: model)
+                                    let coordinator = TTSCoordinatorAssociateCategories(
+                                        model: model,
+                                        action: exercise.action
+                                    )
                                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                                     TTSView(viewModel: viewModel)
@@ -47,7 +50,10 @@ public class CurrentExerciseCoordinator {
 
                                 case .findTheRightAnswers:
                                     let model = CoordinatorFindTheRightAnswersModel(data: payload)
-                                    let coordinator = TTSCoordinatorFindTheRightAnswers(model: model)
+                                    let coordinator = TTSCoordinatorFindTheRightAnswers(
+                                        model: model,
+                                        action: exercise.action
+                                    )
                                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                                     TTSView(viewModel: viewModel)
@@ -62,7 +68,10 @@ public class CurrentExerciseCoordinator {
 
                                 case .findTheRightOrder:
                                     let model = CoordinatorFindTheRightOrderModel(data: payload)
-                                    let coordinator = TTSCoordinatorFindTheRightOrder(model: model)
+                                    let coordinator = TTSCoordinatorFindTheRightOrder(
+                                        model: model,
+                                        action: exercise.action
+                                    )
                                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                                     TTSView(viewModel: viewModel)
@@ -77,7 +86,10 @@ public class CurrentExerciseCoordinator {
 
                                 case .openPlay:
                                     let model = CoordinatorOpenPlayModel(data: payload)
-                                    let coordinator = TTSCoordinatorOpenPlay(model: model)
+                                    let coordinator = TTSCoordinatorOpenPlay(
+                                        model: model,
+                                        action: exercise.action
+                                    )
                                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                                     TTSView(viewModel: viewModel)
@@ -95,7 +107,10 @@ public class CurrentExerciseCoordinator {
                             switch gameplay {
                                 case .associateCategories:
                                     let model = CoordinatorAssociateCategoriesModel(data: payload)
-                                    let coordinator = DnDGridCoordinatorAssociateCategories(model: model)
+                                    let coordinator = DnDGridCoordinatorAssociateCategories(
+                                        model: model,
+                                        action: exercise.action
+                                    )
                                     let viewModel = DnDGridViewModel(coordinator: coordinator)
 
                                     DnDGridView(viewModel: viewModel)
@@ -116,7 +131,10 @@ public class CurrentExerciseCoordinator {
                             switch gameplay {
                                 case .associateCategories:
                                     let model = CoordinatorAssociateCategoriesModel(data: payload)
-                                    let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(model: model)
+                                    let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(
+                                        model: model,
+                                        action: exercise.action
+                                    )
                                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 
                                     DnDGridWithZonesView(viewModel: viewModel)
@@ -131,7 +149,10 @@ public class CurrentExerciseCoordinator {
 
                                 case .openPlay:
                                     let model = CoordinatorOpenPlayModel(data: payload)
-                                    let coordinator = DnDGridWithZonesCoordinatorOpenPlay(model: model)
+                                    let coordinator = DnDGridWithZonesCoordinatorOpenPlay(
+                                        model: model,
+                                        action: exercise.action
+                                    )
                                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 
                                     DnDGridWithZonesView(viewModel: viewModel)
@@ -152,7 +173,10 @@ public class CurrentExerciseCoordinator {
                             switch gameplay {
                                 case .findTheRightOrder:
                                     let model = CoordinatorFindTheRightOrderModel(data: payload)
-                                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(model: model)
+                                    let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(
+                                        model: model,
+                                        action: exercise.action
+                                    )
                                     let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
 
                                     DnDOneToOneView(viewModel: viewModel)
