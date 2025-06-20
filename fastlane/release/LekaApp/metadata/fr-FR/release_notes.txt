@@ -1,21 +1,38 @@
-## IMPORTANT
+## Nouveautés dans Leka v2.0.0
 
-La version 1.17.0 est la dernière à prendre en charge iOS 16. Les prochaines versions de Leka nécessiteront iOS 18 ou supérieur.
+Nous sommes ravis de vous présenter une mise à jour majeure de l’application Leka, conçue pour rendre votre expérience plus fluide et encore mieux adaptée à vos besoins.
 
-## Nouvelles Fonctionnalités
+## Une nouvelle expérience de découverte de contenus
 
-- Activité Colo rMediator : Ajout d'une nouvelle activité appelée « ColorMediator » pour enrichir l’expérience autour de la reconnaissance des couleurs.
-- Parcours Météo : Introduction du nouveau parcours « La météo avec Leka » pour enrichir le contenu éducatif avec des activités sur la météo.
-- Mise à jour du jeu Memory : Expérience de jeu améliorée avec des visuels mis à jour et des interactions plus fluides.
+Trouver l’activité adaptée devient plus simple et plus intuitif grâce à trois nouvelles sections :
 
-## Améliorations
+- Accueil : accédez en un clin d'œil aux nouveautés et aux contenus mis en avant.
+- Explorer : parcourez tous les contenus classés par type, comme les activités 100 % robot, sensorielles, en groupe, ou de fin de séance.
+- Objectifs pédagogiques : découvrez des contenus organisés selon les grands objectifs de développement, comme la cognition, la mémoire ou la généralisation.
 
-- Icônes améliorées : Mise à jour des icônes des gestes et des objectifs pour améliorer la clarté visuelle.
-- Amélioration du bouton « Démarrer » : Amélioration de la clarté et de l'apparence du bouton « Démarrer » dans la liste des activités, le rendant plus léger et plus simple à utiliser.
-- Interaction utilisateur améliorée : Ajustement de la sélection des aidants et des bénéficiaires pour garantir que les sélections soient intentionnelles, nécessitant désormais une pression directe.
-- Espacement amélioré : Augmentation de l'espacement entre les réponses à glisser-déposer dans les activités de classement pour une meilleure utilisation.
+Grâce à cette nouvelle organisation, vous repérez plus facilement les contenus qui vous correspondent — et en découvrez de nouveaux au passage.
 
-## Corrections de Bugs
+## Bibliothèque partagée pour votre équipe
 
-- Correction DanceFreeze : Résolution d'un problème affectant le comportement de fin d'exercice dans les activités DanceFreeze.
-- Lisibilité en mode sombre : Amélioration de la lisibilité des histoires en mode sombre.
+Très attendue, la bibliothèque partagée fait son arrivée !
+
+Enregistrez, organisez et retrouvez vos contenus éducatifs importants, accessibles à toute votre équipe professionnelle.
+
+Organisez vos contenus enregistrés en :
+
+- Parcours
+- Activités
+- Histoires
+
+## Des favoris rien que pour vous
+
+Vous souhaitez retrouver facilement les contenus qui fonctionnent le mieux dans vos accompagnements ?
+
+Vous pouvez désormais ajouter n’importe quel contenu à vos favoris pour y accéder plus rapidement. Et ces favoris sont personnels : vous seul y avez accès.
+
+## Version minimale requise d’iPadOS
+
+Leka nécessite désormais iPadOS 17.4 ou une version ultérieure afin de prendre en charge les dernières fonctionnalités et améliorations de performance.
+
+Mettez l’application à jour dès maintenant pour profiter de toutes ces nouveautés.
+Merci d’utiliser Leka !

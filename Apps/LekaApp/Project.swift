@@ -11,7 +11,7 @@ let kLekaApp: App = if Environment.productionBuild.getBoolean(
     default: false
 ) {
     .init(
-        version: "1.17.0",
+        version: "2.0.0",
         bundleId: "io.leka.apf.app.LekaApp",
         name: "Leka",
         urlSchemes: "LekaApp",
