@@ -47,7 +47,7 @@ public struct ActivityListItem: View {
             FavoriteListIcon(self.curationItem)
 
             if let number = self.number {
-                Text("\(number)")
+                Text("\(number + 1)")
                     .font(.headline)
                     .foregroundStyle(Color.secondary)
                     .padding(.trailing)
