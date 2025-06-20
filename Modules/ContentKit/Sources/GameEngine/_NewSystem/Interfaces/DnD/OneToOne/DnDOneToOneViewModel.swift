@@ -38,7 +38,7 @@ public class DnDOneToOneViewModel: ObservableObject {
     @Published var choices: [DnDAnswerNode] = []
     @Published var dropzones: [DnDDropZoneNode] = []
 
-    let action: Exercise.Action?
+    let action: NewExerciseAction?
 
     func setAlreadyOrderedNodes() {
         self.coordinator.setAlreadyOrderedNodes()

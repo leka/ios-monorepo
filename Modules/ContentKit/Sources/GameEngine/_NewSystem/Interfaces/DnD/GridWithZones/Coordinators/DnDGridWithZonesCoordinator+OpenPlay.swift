@@ -13,7 +13,7 @@ import SwiftUI
 public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorOpenPlayChoiceModel], action: Exercise.Action? = nil, minimumToSelect: Int = 0, maximumToSelect: Int? = nil) {
+    public init(choices: [CoordinatorOpenPlayChoiceModel], action: NewExerciseAction? = nil, minimumToSelect: Int = 0, maximumToSelect: Int? = nil) {
         let dropZones = choices.filter(\.isDropzone)
         let nodes = choices.filter { $0.isDropzone == false }
         self.rawChoices = Array(nodes)
@@ -41,7 +41,7 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
         }
     }
 
-    public convenience init(model: CoordinatorOpenPlayModel, action: Exercise.Action? = nil, minimumToSelect: Int = 0, maximumToSelect: Int? = nil) {
+    public convenience init(model: CoordinatorOpenPlayModel, action: NewExerciseAction? = nil, minimumToSelect: Int = 0, maximumToSelect: Int? = nil) {
         self.init(choices: model.choices, action: action, minimumToSelect: minimumToSelect, maximumToSelect: maximumToSelect)
     }
 

@@ -12,7 +12,7 @@ import SwiftUI
 public struct DnDOneToOneUIModel {
     static let zero = DnDOneToOneUIModel(action: nil, choices: [])
 
-    var action: Exercise.Action?
+    var action: NewExerciseAction?
     var choices: [DnDAnswerNode]
 
     func choiceSize(for numberOfChoices: Int) -> CGSize {

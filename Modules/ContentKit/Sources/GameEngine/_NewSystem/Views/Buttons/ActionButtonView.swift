@@ -10,7 +10,7 @@ import SwiftUI
 struct ActionButtonView: View {
     // MARK: Lifecycle
 
-    init(action: Exercise.Action) {
+    init(action: NewExerciseAction) {
         self.action = action
     }
 
@@ -37,7 +37,7 @@ struct ActionButtonView: View {
 
     // MARK: Private
 
-    private let action: Exercise.Action
+    private let action: NewExerciseAction
 }
 
 // MARK: ActionButtonView.Style

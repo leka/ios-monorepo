@@ -10,7 +10,7 @@ import SwiftUI
 public struct DnDGridWithZonesUIDropzoneModel {
     static let zero = DnDGridWithZonesUIDropzoneModel(action: nil, zones: [])
 
-    var action: Exercise.Action?
+    var action: NewExerciseAction?
     var zones: [DnDDropZoneNode]
 
     func zoneSize(for numberOfChoices: Int) -> CGSize {

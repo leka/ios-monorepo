@@ -111,7 +111,7 @@ extension l10n {
     // MARK: - MagicCardEmptyCoordinator
 
     class MagicCardEmptyCoordinator: MagicCardGameplayCoordinatorProtocol {
-        var action = Exercise.Action.robot(type: .image("robotFaceDisgusted"))
+        var action = NewExerciseAction.robot(type: .image("robotFaceDisgusted"))
         func enableMagicCardDetection() {}
         func validateCorrectAnswer() {}
     }

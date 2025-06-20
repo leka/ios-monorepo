@@ -38,7 +38,7 @@ public class DnDGridWithZonesViewModel: ObservableObject {
     @Published var choices: [DnDAnswerNode] = []
     @Published var dropzones: [DnDDropZoneNode] = []
 
-    let action: Exercise.Action?
+    let action: NewExerciseAction?
 
     func onTouch(_ event: DnDTouchEvent, choiceID: UUID, destinationID: UUID? = nil) {
         self.coordinator.onTouch(event, choiceID: choiceID, destinationID: destinationID)

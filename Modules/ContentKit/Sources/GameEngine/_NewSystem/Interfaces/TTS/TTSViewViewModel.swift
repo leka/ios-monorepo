@@ -36,7 +36,7 @@ public class TTSViewViewModel: ObservableObject {
     @Published var validationEnabled: Bool?
     @Published var choices: [TTSUIChoiceModel]
 
-    let action: Exercise.Action?
+    let action: NewExerciseAction?
 
     func onTapped(choice: TTSUIChoiceModel) {
         self.coordinator.processUserSelection(choiceID: choice.id)

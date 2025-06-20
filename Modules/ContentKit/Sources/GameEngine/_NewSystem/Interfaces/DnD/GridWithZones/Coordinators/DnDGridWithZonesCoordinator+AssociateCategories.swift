@@ -12,7 +12,7 @@ import SwiftUI
 public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorAssociateCategoriesChoiceModel], action: Exercise.Action? = nil, validationEnabled: Bool? = nil) {
+    public init(choices: [CoordinatorAssociateCategoriesChoiceModel], action: NewExerciseAction? = nil, validationEnabled: Bool? = nil) {
         let dropZones = choices.filter(\.isDropzone)
         let nodes = choices.filter { $0.isDropzone == false }
         self.rawDropZones = Array(dropZones)
@@ -43,7 +43,7 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
         }
     }
 
-    public convenience init(model: CoordinatorAssociateCategoriesModel, action: Exercise.Action? = nil, validationEnabled: Bool? = nil) {
+    public convenience init(model: CoordinatorAssociateCategoriesModel, action: NewExerciseAction? = nil, validationEnabled: Bool? = nil) {
         self.init(choices: model.choices, action: action, validationEnabled: validationEnabled)
     }
 
