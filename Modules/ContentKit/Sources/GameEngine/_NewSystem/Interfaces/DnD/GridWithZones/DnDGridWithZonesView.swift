@@ -41,13 +41,12 @@ public struct DnDGridWithZonesView: View {
                         .opacity(0.4)
                         .frame(maxHeight: 500)
                         .padding(.vertical, 20)
-                }
 
-                Spacer()
+                    Spacer()
+                }
 
                 GeometryReader { proxy in
                     SpriteView(scene: self.makeScene(size: proxy.size), options: [.allowsTransparency])
-                        .frame(width: proxy.size.width, height: proxy.size.height)
                         .onAppear {
                             self.scene = DnDGridWithZonesBaseScene(viewModel: self.viewModel)
                         }
@@ -56,7 +55,9 @@ public struct DnDGridWithZonesView: View {
                 .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
                 .allowsHitTesting(self.viewModel.didTriggerAction)
 
-                Spacer()
+                if self.viewModel.action != nil {
+                    Spacer()
+                }
             }
 
             // TODO: (@HPezz) Change into manual/automatic enum

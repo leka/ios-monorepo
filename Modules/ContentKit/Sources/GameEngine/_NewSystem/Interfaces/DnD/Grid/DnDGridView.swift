@@ -39,22 +39,23 @@ public struct DnDGridView: View {
                     .opacity(0.4)
                     .frame(maxHeight: 500)
                     .padding(.vertical, 20)
-            }
 
-            Spacer()
+                Spacer()
+            }
 
             GeometryReader { proxy in
                 SpriteView(scene: self.makeScene(size: proxy.size), options: [.allowsTransparency])
-                    .frame(width: proxy.size.width, height: proxy.size.height)
                     .onAppear {
-                        self.scene = self.getScene(for: self.viewModel.choices.count, size: proxy.size)
+                        self.scene = self.getScene(for: self.viewModel.choices.count)
                     }
             }
             .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
             .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
             .allowsHitTesting(self.viewModel.didTriggerAction)
 
-            Spacer()
+            if self.viewModel.action != nil {
+                Spacer()
+            }
         }
     }
 
@@ -71,7 +72,7 @@ public struct DnDGridView: View {
         return finalScene
     }
 
-    private func getScene(for choiceCount: Int, size _: CGSize) -> SKScene {
+    private func getScene(for choiceCount: Int) -> SKScene {
         switch choiceCount {
             case 2:
                 DnDGridTwoChoicesScene(viewModel: self.viewModel)
