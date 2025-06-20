@@ -117,10 +117,8 @@ exercises_payload:
                 category: catB
               - value: 🐷
                 type: emoji
-                category: catC
               - value: 🐷
                 type: emoji
-                category: catC
     - group:
         - instructions:
             - locale: fr_FR
@@ -176,7 +174,5 @@ exercises_payload:
                 category: catB
               - value: 🐷
                 type: emoji
-                category: catC
               - value: 🐷
                 type: emoji
-                category: catC
