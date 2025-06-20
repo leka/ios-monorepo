@@ -45,6 +45,7 @@ public class ActivityCoordinator {
 
     public var currentGroupIndex: Int = 0
     public var currentExerciseIndex: Int = 0
+    public var isExerciseCompleted: Bool = false
 
     public let groupSizeEnumeration: [Int]
 
@@ -91,7 +92,7 @@ public class ActivityCoordinator {
             .sink { [weak self] in
                 guard let self else { return }
                 logGEK.info("Current exercise completed 🎉️")
-                self.nextExercise()
+                self.isExerciseCompleted = true
             }
             .store(in: &self.cancellables)
     }
@@ -102,6 +103,7 @@ public class ActivityCoordinator {
             return
         }
 
+        self.isExerciseCompleted = false
         self.currentExerciseIndex += 1
 
         if self.currentExerciseIndex >= self.groups[self.currentGroupIndex].group.count {
@@ -116,6 +118,7 @@ public class ActivityCoordinator {
     func previousExercise() {
         guard !self.isFirstExercise else { return }
 
+        self.isExerciseCompleted = false
         self.currentExerciseIndex -= 1
 
         if self.currentExerciseIndex < 0 {
