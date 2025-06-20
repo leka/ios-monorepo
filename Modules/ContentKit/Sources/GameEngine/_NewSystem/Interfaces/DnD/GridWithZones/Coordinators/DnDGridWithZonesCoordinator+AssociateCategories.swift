@@ -52,6 +52,8 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
     public private(set) var uiModel = CurrentValueSubject<DnDGridWithZonesUIModel, Never>(.zero)
     public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
 
+    public var didComplete: PassthroughSubject<Void, Never> = .init()
+
     public func onTouch(_ event: DnDTouchEvent, choiceID: UUID, destinationID: UUID? = nil) {
         switch event {
             case .began:
@@ -74,7 +76,7 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
 
     public func validateUserSelection() {
         let results = self.gameplay.process(choiceIDs: self.currentlySelectedChoices)
-
+        logGEK.debug("Validate user selection")
         for (categoryIndex, category) in self.currentlySelectedChoices.enumerated() {
             for choiceID in category {
                 if let result = results.first(where: { $0.id == choiceID }), result.isCategoryCorrect {
@@ -86,6 +88,14 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
             }
         }
         self.disableValidation()
+
+        if self.gameplay.isCompleted.value {
+            // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                logGEK.debug("Exercise completed")
+                self.didComplete.send()
+            }
+        }
     }
 
     // MARK: Private

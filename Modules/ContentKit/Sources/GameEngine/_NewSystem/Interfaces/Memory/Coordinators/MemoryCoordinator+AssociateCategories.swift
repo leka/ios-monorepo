@@ -33,6 +33,8 @@ public class MemoryCoordinatorAssociateCategories: MemoryGameplayCoordinatorProt
 
     public private(set) var uiModel = CurrentValueSubject<MemoryUIModel, Never>(.zero)
 
+    public var didComplete: PassthroughSubject<Void, Never> = .init()
+
     public func processUserSelection(choiceID: UUID) {
         guard let choice = self.rawChoices.first(where: { $0.id == choiceID }) else {
             return
@@ -68,7 +70,11 @@ public class MemoryCoordinatorAssociateCategories: MemoryGameplayCoordinatorProt
                 }
 
                 if self.gameplay.isCompleted.value {
-                    logGEK.info("Exercise completed")
+                    // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        logGEK.debug("Exercise completed")
+                        self.didComplete.send()
+                    }
                 }
             }
         } else {

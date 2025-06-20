@@ -8,7 +8,7 @@ import SwiftUI
 // MARK: - NewActivityManager
 
 @Observable
-public class ActivityExercisesCoordinator {
+public class ActivityCoordinator {
     // MARK: Lifecycle
 
     public init(payload: ActivityPayload) {
@@ -38,10 +38,17 @@ public class ActivityExercisesCoordinator {
 
     // MARK: Public
 
+    public enum ActivityEvent {
+        case didStart
+        case didEnd
+    }
+
     public var currentGroupIndex: Int = 0
     public var currentExerciseIndex: Int = 0
 
     public let groupSizeEnumeration: [Int]
+
+    public var activityEvent = PassthroughSubject<ActivityEvent, Never>()
 
     public var numberOfGroups: Int {
         self.groupSizeEnumeration.count
@@ -81,24 +88,25 @@ public class ActivityExercisesCoordinator {
 
         self.currentExerciseCoordinator.didComplete
             .receive(on: DispatchQueue.main)
-            .sink {
+            .sink { [weak self] in
+                guard let self else { return }
                 logGEK.info("Current exercise completed 🎉️")
+                self.nextExercise()
             }
             .store(in: &self.cancellables)
     }
 
     func nextExercise() {
-        guard !self.isLastExercise else { return }
+        guard !self.isLastExercise else {
+            self.activityEvent.send(.didEnd)
+            return
+        }
 
         self.currentExerciseIndex += 1
 
         if self.currentExerciseIndex >= self.groups[self.currentGroupIndex].group.count {
             self.currentExerciseIndex = 0
             self.currentGroupIndex += 1
-        }
-
-        if self.currentGroupIndex >= self.groups.count {
-            self.currentGroupIndex = 0
         }
 
         self.currentExercise = self.groups[self.currentGroupIndex].group[self.currentExerciseIndex]
@@ -113,10 +121,6 @@ public class ActivityExercisesCoordinator {
         if self.currentExerciseIndex < 0 {
             self.currentExerciseIndex = self.groups[self.currentGroupIndex].group.count - 1
             self.currentGroupIndex -= 1
-        }
-
-        if self.currentGroupIndex < 0 {
-            self.currentGroupIndex = self.groups.count - 1
         }
 
         self.currentExercise = self.groups[self.currentGroupIndex].group[self.currentExerciseIndex]

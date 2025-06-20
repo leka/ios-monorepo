@@ -32,6 +32,8 @@ public class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorPr
 
     public private(set) var uiModel = CurrentValueSubject<DnDGridUIModel, Never>(.zero)
 
+    public var didComplete: PassthroughSubject<Void, Never> = .init()
+
     public func onTouch(_ event: DnDTouchEvent, choiceID: UUID, destinationID: UUID? = nil) {
         switch event {
             case .began:
@@ -81,7 +83,11 @@ public class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorPr
             self.alreadyValidatedChoices = self.currentlySelectedChoices
 
             if self.gameplay.isCompleted.value {
-                logGEK.debug("Exercise completed")
+                // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    logGEK.debug("Exercise completed")
+                    self.didComplete.send()
+                }
             }
         } else {
             self.handleIncorrectChoice(choiceID)

@@ -51,6 +51,8 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
     public private(set) var uiModel = CurrentValueSubject<DnDGridWithZonesUIModel, Never>(.zero)
     public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(false)
 
+    public var didComplete: PassthroughSubject<Void, Never> = .init()
+
     public func onTouch(_ event: DnDTouchEvent, choiceID: UUID, destinationID: UUID? = nil) {
         switch event {
             case .began:
@@ -80,7 +82,12 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
             self.updateValidationState()
         }
 
-        Robot.shared.run(.rainbow, onReinforcerCompleted: onReinforcerCompleted)
+        // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            logGEK.debug("Exercise completed")
+            self.didComplete.send()
+            Robot.shared.run(.rainbow, onReinforcerCompleted: onReinforcerCompleted)
+        }
     }
 
     // MARK: Private

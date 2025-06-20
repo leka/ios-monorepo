@@ -10,18 +10,18 @@ import SwiftUI
 struct NewActivityProgressBar: View {
     // MARK: Internal
 
-    var manager: ActivityExercisesCoordinator
+    var coordinator: ActivityCoordinator
 
     var body: some View {
         HStack(spacing: 0) {
             Spacer()
-            ForEach(0..<self.manager.numberOfGroups, id: \.self) { groupIndex in
+            ForEach(0..<self.coordinator.numberOfGroups, id: \.self) { groupIndex in
                 HStack(spacing: 0) {
-                    ForEach(0..<self.manager.groupSizeEnumeration[groupIndex], id: \.self) { exerciseIndex in
+                    ForEach(0..<self.coordinator.groupSizeEnumeration[groupIndex], id: \.self) { exerciseIndex in
                         let markerColor = self.progressBarMarkerColor(group: groupIndex, exercise: exerciseIndex)
 
-                        let isCurrentGroup = groupIndex == self.manager.currentGroupIndex
-                        let isCurrentExercise = isCurrentGroup && exerciseIndex == self.manager.currentExerciseIndex
+                        let isCurrentGroup = groupIndex == self.coordinator.currentGroupIndex
+                        let isCurrentExercise = isCurrentGroup && exerciseIndex == self.coordinator.currentExerciseIndex
 //                        let isNotYetCompleted = self.manager.currentExerciseSharedData.isExerciseNotYetCompleted
 
                         let isCurrentlyPlaying = isCurrentExercise
@@ -41,7 +41,7 @@ struct NewActivityProgressBar: View {
 //                            }
 //                        }
 
-                        if exerciseIndex < self.manager.groupSizeEnumeration[groupIndex] - 1 {
+                        if exerciseIndex < self.coordinator.groupSizeEnumeration[groupIndex] - 1 {
                             Spacer().frame(maxWidth: 100)
                         }
                     }
@@ -49,7 +49,7 @@ struct NewActivityProgressBar: View {
                 .frame(height: self.height)
                 .background(DesignKitAsset.Colors.progressBar.swiftUIColor, in: Capsule())
 
-                if groupIndex < self.manager.numberOfGroups - 1 {
+                if groupIndex < self.coordinator.numberOfGroups - 1 {
                     Spacer().frame(minWidth: 20, maxWidth: 60)
                 }
             }

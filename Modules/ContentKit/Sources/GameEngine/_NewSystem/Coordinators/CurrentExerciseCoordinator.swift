@@ -66,6 +66,14 @@ public class CurrentExerciseCoordinator {
                                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                                     TTSView(viewModel: viewModel)
+                                        .onAppear {
+                                            coordinator.didComplete
+                                                .receive(on: DispatchQueue.main)
+                                                .sink { [weak self] in
+                                                    self?.didComplete.send()
+                                                }
+                                                .store(in: &self.cancellables)
+                                        }
 
                                 case .openPlay:
                                     let model = CoordinatorOpenPlayModel(data: payload)
@@ -73,6 +81,14 @@ public class CurrentExerciseCoordinator {
                                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                                     TTSView(viewModel: viewModel)
+                                        .onAppear {
+                                            coordinator.didComplete
+                                                .receive(on: DispatchQueue.main)
+                                                .sink { [weak self] in
+                                                    self?.didComplete.send()
+                                                }
+                                                .store(in: &self.cancellables)
+                                        }
                             }
 
                         case .dragAndDropGrid:
@@ -83,6 +99,14 @@ public class CurrentExerciseCoordinator {
                                     let viewModel = DnDGridViewModel(coordinator: coordinator)
 
                                     DnDGridView(viewModel: viewModel)
+                                        .onAppear {
+                                            coordinator.didComplete
+                                                .receive(on: DispatchQueue.main)
+                                                .sink { [weak self] in
+                                                    self?.didComplete.send()
+                                                }
+                                                .store(in: &self.cancellables)
+                                        }
 
                                 default:
                                     ExerciseInterfaceGameplayNotSupportedView(interface: interface, gameplay: gameplay)
@@ -96,6 +120,14 @@ public class CurrentExerciseCoordinator {
                                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 
                                     DnDGridWithZonesView(viewModel: viewModel)
+                                        .onAppear {
+                                            coordinator.didComplete
+                                                .receive(on: DispatchQueue.main)
+                                                .sink { [weak self] in
+                                                    self?.didComplete.send()
+                                                }
+                                                .store(in: &self.cancellables)
+                                        }
 
                                 case .openPlay:
                                     let model = CoordinatorOpenPlayModel(data: payload)
@@ -103,6 +135,14 @@ public class CurrentExerciseCoordinator {
                                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 
                                     DnDGridWithZonesView(viewModel: viewModel)
+                                        .onAppear {
+                                            coordinator.didComplete
+                                                .receive(on: DispatchQueue.main)
+                                                .sink { [weak self] in
+                                                    self?.didComplete.send()
+                                                }
+                                                .store(in: &self.cancellables)
+                                        }
 
                                 default:
                                     ExerciseInterfaceGameplayNotSupportedView(interface: interface, gameplay: gameplay)
@@ -116,7 +156,14 @@ public class CurrentExerciseCoordinator {
                                     let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
 
                                     DnDOneToOneView(viewModel: viewModel)
-
+                                        .onAppear {
+                                            coordinator.didComplete
+                                                .receive(on: DispatchQueue.main)
+                                                .sink { [weak self] in
+                                                    self?.didComplete.send()
+                                                }
+                                                .store(in: &self.cancellables)
+                                        }
                                 default:
                                     ExerciseInterfaceGameplayNotSupportedView(interface: interface, gameplay: gameplay)
                             }
@@ -129,6 +176,14 @@ public class CurrentExerciseCoordinator {
                                     let viewModel = NewMemoryViewViewModel(coordinator: coordinator)
 
                                     NewMemoryView(viewModel: viewModel)
+                                        .onAppear {
+                                            coordinator.didComplete
+                                                .receive(on: DispatchQueue.main)
+                                                .sink { [weak self] in
+                                                    self?.didComplete.send()
+                                                }
+                                                .store(in: &self.cancellables)
+                                        }
 
                                 default:
                                     ExerciseInterfaceGameplayNotSupportedView(interface: interface, gameplay: gameplay)
