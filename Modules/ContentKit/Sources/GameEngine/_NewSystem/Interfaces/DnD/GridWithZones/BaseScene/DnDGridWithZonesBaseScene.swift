@@ -103,7 +103,7 @@ class DnDGridWithZonesBaseScene: SKScene {
     }
 
     func setChoicePosition(_ index: Int) -> CGPoint {
-        CGPoint(x: self.spacer * CGFloat(index + 1), y: 3 * size.height / 4)
+        CGPoint(x: self.spacer * CGFloat(index + 1), y: 4 * size.height / 5)
     }
 
     func layoutDropZones() {
@@ -111,7 +111,7 @@ class DnDGridWithZonesBaseScene: SKScene {
             let dropzonesNumber = self.viewModel.dropzones.count
             let posX = CGFloat(2 * index + 1) * size.width / CGFloat(2 * dropzonesNumber)
 
-            dropzone.position = CGPoint(x: posX, y: size.height / 4)
+            dropzone.position = CGPoint(x: posX, y: size.height / 3)
 
             addChild(dropzone)
             self.dropZonesNodes.append(dropzone)
