@@ -11,7 +11,7 @@ import SwiftUI
 public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [MagicCardCoordinatorFindTheRightAnswersChoiceModel], action: Exercise.Action) {
+    public init(choices: [MagicCardCoordinatorFindTheRightAnswersChoiceModel], action: NewExerciseAction) {
         self.rawChoices = choices
 
         self.gameplay = NewGameplayFindTheRightAnswers(
@@ -23,7 +23,7 @@ public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinat
 
     // MARK: Public
 
-    public var action: Exercise.Action
+    public var action: NewExerciseAction
     public var didComplete: PassthroughSubject<Void, Never> = .init()
 
     public func enableMagicCardDetection() {
@@ -70,7 +70,7 @@ public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinat
 
     let coordinator = MagicCardCoordinatorFindTheRightAnswers(
         choices: kDefaultChoices,
-        action: Exercise.Action.robot(type: .image("robotFaceDisgusted"))
+        action: NewExerciseAction.robot(type: .image("robotFaceDisgusted"))
     )
     let viewModel = MagicCardViewViewModel(coordinator: coordinator)
 

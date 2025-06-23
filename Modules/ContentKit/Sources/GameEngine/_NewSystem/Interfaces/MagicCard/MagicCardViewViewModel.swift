@@ -19,7 +19,7 @@ public class MagicCardViewViewModel: ObservableObject {
 
     @Published var didTriggerAction = true
 
-    let action: Exercise.Action
+    let action: NewExerciseAction
 
     func enableMagicCardDetection() {
         self.coordinator.enableMagicCardDetection()

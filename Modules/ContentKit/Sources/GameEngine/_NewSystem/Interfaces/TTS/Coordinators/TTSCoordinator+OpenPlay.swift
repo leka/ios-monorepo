@@ -11,7 +11,7 @@ import SwiftUI
 public class TTSCoordinatorOpenPlay: TTSGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorOpenPlayChoiceModel], action: Exercise.Action? = nil, minimumToSelect: Int = 0, maximumToSelect: Int? = nil) {
+    public init(choices: [CoordinatorOpenPlayChoiceModel], action: NewExerciseAction? = nil, minimumToSelect: Int = 0, maximumToSelect: Int? = nil) {
         self.rawChoices = choices
 
         self.uiModel.value.action = action
@@ -29,7 +29,7 @@ public class TTSCoordinatorOpenPlay: TTSGameplayCoordinatorProtocol {
         }
     }
 
-    public convenience init(model: CoordinatorOpenPlayModel, action: Exercise.Action? = nil, minimumToSelect: Int = 0, maximumToSelect: Int? = nil) {
+    public convenience init(model: CoordinatorOpenPlayModel, action: NewExerciseAction? = nil, minimumToSelect: Int = 0, maximumToSelect: Int? = nil) {
         self.init(choices: model.choices, action: action, minimumToSelect: minimumToSelect, maximumToSelect: maximumToSelect)
     }
 

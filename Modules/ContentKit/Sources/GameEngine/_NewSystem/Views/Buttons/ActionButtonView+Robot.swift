@@ -13,7 +13,7 @@ extension ActionButtonView {
     struct RobotButton: View {
         // MARK: Lifecycle
 
-        init(actionType: Exercise.Action.RobotActionType) {
+        init(actionType: NewExerciseAction.RobotActionType) {
             self.actionType = actionType
         }
 
@@ -21,7 +21,7 @@ extension ActionButtonView {
 
         @State var robotWasTapped: Bool = false
 
-        let actionType: Exercise.Action.RobotActionType
+        let actionType: NewExerciseAction.RobotActionType
 
         var body: some View {
             Button {

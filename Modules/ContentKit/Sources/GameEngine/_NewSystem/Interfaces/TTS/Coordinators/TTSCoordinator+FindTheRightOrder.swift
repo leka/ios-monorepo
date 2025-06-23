@@ -10,7 +10,7 @@ import SwiftUI
 public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorFindTheRightOrderChoiceModel], action: Exercise.Action? = nil, validationEnabled: Bool? = nil) {
+    public init(choices: [CoordinatorFindTheRightOrderChoiceModel], action: NewExerciseAction? = nil, validationEnabled: Bool? = nil) {
         self.rawChoices = choices
         self.gameplay = NewGameplayFindTheRightOrder(
             choices: choices.map { .init(id: $0.id) }
@@ -26,7 +26,7 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
         self.validationEnabled.value = validationEnabled
     }
 
-    public convenience init(model: CoordinatorFindTheRightOrderModel, action: Exercise.Action? = nil, validationEnabled: Bool? = nil) {
+    public convenience init(model: CoordinatorFindTheRightOrderModel, action: NewExerciseAction? = nil, validationEnabled: Bool? = nil) {
         self.init(choices: model.choices, action: action, validationEnabled: validationEnabled)
     }
 

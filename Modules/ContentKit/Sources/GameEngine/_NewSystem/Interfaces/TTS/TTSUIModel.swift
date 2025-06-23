@@ -31,7 +31,7 @@ public struct TTSUIChoiceModel: Identifiable {
 public struct TTSUIModel {
     static let zero = TTSUIModel(action: nil, choices: [])
 
-    var action: Exercise.Action?
+    var action: NewExerciseAction?
     var choices: [TTSUIChoiceModel]
 
     // swiftlint:disable cyclomatic_complexity

@@ -10,7 +10,7 @@ import SwiftUI
 public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol, ExerciseCompletionObservable {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorAssociateCategoriesChoiceModel], action: Exercise.Action? = nil) {
+    public init(choices: [CoordinatorAssociateCategoriesChoiceModel], action: NewExerciseAction? = nil) {
         self.rawChoices = choices
 
         self.gameplay = NewGameplayAssociateCategories(choices: choices.map {
@@ -27,7 +27,7 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol, 
         }
     }
 
-    public convenience init(model: CoordinatorAssociateCategoriesModel, action: Exercise.Action? = nil) {
+    public convenience init(model: CoordinatorAssociateCategoriesModel, action: NewExerciseAction? = nil) {
         self.init(choices: model.choices, action: action)
     }
 

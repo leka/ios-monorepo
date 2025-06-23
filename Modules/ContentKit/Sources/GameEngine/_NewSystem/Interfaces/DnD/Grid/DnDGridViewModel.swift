@@ -34,7 +34,7 @@ public class DnDGridViewModel: ObservableObject {
     @Published var didTriggerAction = false
     @Published var choices: [DnDAnswerNode] = []
 
-    let action: Exercise.Action?
+    let action: NewExerciseAction?
 
     // MARK: Private
 

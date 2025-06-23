@@ -18,7 +18,7 @@ struct MagicCardExercises: View {
                 NavigationLink {
                     let coordinator = MagicCardCoordinatorFindTheRightAnswers(
                         choices: ExerciseData.kFindTheRightAnswersMagicCardNumbers,
-                        action: Exercise.Action.robot(type: .image("magicCardNumbers5Five"))
+                        action: NewExerciseAction.robot(type: .image("magicCardNumbers5Five"))
                     )
                     let viewModel = MagicCardViewViewModel(coordinator: coordinator)
 
@@ -32,7 +32,7 @@ struct MagicCardExercises: View {
                 NavigationLink {
                     let coordinator = MagicCardCoordinatorFindTheRightAnswers(
                         choices: ExerciseData.kFindTheRightAnswersMagicCardColors,
-                        action: Exercise.Action.robot(type: .image("magicCardColorsOrangePaint"))
+                        action: NewExerciseAction.robot(type: .image("magicCardColorsOrangePaint"))
                     )
                     let viewModel = MagicCardViewViewModel(coordinator: coordinator)
 
@@ -46,7 +46,7 @@ struct MagicCardExercises: View {
                 NavigationLink {
                     let coordinator = MagicCardCoordinatorFindTheRightAnswers(
                         choices: ExerciseData.kFindTheRightAnswersMagicCardColors,
-                        action: Exercise.Action.robot(type: .color("red"))
+                        action: NewExerciseAction.robot(type: .color("red"))
                     )
                     let viewModel = MagicCardViewViewModel(coordinator: coordinator)
 
@@ -60,7 +60,7 @@ struct MagicCardExercises: View {
                 NavigationLink {
                     let coordinator = MagicCardCoordinatorFindTheRightAnswers(
                         choices: ExerciseData.kFindTheRightAnswersMagicCardEmotions,
-                        action: Exercise.Action.robot(type: .image("robotFaceDisgusted"))
+                        action: NewExerciseAction.robot(type: .image("robotFaceDisgusted"))
                     )
                     let viewModel = MagicCardViewViewModel(coordinator: coordinator)
 
@@ -74,7 +74,7 @@ struct MagicCardExercises: View {
                 NavigationLink {
                     let coordinator = MagicCardCoordinatorFindTheRightAnswers(
                         choices: ExerciseData.kFindTheRightAnswersMagicCardNumbers,
-                        action: Exercise.Action.robot(type: .spots(5))
+                        action: NewExerciseAction.robot(type: .spots(5))
                     )
                     let viewModel = MagicCardViewViewModel(coordinator: coordinator)
 
@@ -88,7 +88,7 @@ struct MagicCardExercises: View {
                 NavigationLink {
                     let coordinator = MagicCardCoordinatorFindTheRightAnswers(
                         choices: ExerciseData.kFindTheRightAnswersMagicCardNumbers,
-                        action: Exercise.Action.robot(type: .flash(5))
+                        action: NewExerciseAction.robot(type: .flash(5))
                     )
                     let viewModel = MagicCardViewViewModel(coordinator: coordinator)
 

@@ -9,7 +9,7 @@ import RobotKit
 // MARK: - MagicCardGameplayCoordinatorProtocol
 
 public protocol MagicCardGameplayCoordinatorProtocol {
-    var action: Exercise.Action { get }
+    var action: NewExerciseAction { get }
     func enableMagicCardDetection()
     func validateCorrectAnswer()
 }

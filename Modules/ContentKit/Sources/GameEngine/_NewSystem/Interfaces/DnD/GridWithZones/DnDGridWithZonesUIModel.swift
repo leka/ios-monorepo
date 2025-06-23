@@ -10,7 +10,7 @@ import SwiftUI
 public struct DnDGridWithZonesUIModel {
     static let zero = DnDGridWithZonesUIModel(action: nil, choices: [])
 
-    var action: Exercise.Action?
+    var action: NewExerciseAction?
     var choices: [DnDAnswerNode]
 
     // swiftlint:disable cyclomatic_complexity
