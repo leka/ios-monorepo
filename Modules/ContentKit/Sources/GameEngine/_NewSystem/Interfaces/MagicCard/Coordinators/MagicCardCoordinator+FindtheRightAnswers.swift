@@ -41,7 +41,6 @@ public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinat
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             logGEK.debug("Exercise completed")
             self.didComplete.send()
-            Robot.shared.run(.fire)
         }
     }
 

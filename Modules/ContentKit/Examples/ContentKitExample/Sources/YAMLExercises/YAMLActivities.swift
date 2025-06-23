@@ -15,6 +15,8 @@ var YAMLActivitiesCancellables = Set<AnyCancellable>()
 struct YAMLActivities: View {
     // MARK: Internal
 
+    @State var activityDidEnd: Bool = false
+
     var body: some View {
         NavigationStack {
             if let activity = self.navigation.currentActivity, let coordinator = self.navigation.currentCoordinator {
@@ -30,9 +32,13 @@ struct YAMLActivities: View {
                                         log.debug("Publisher - Activity did start")
                                     case .didEnd:
                                         log.debug("Publisher - Activity did end")
+                                        self.activityDidEnd = true
                                 }
                             }
                             .store(in: &YAMLActivitiesCancellables)
+                    }
+                    .fullScreenCover(isPresented: self.$activityDidEnd) {
+                        self.endOfActivityScoreView
                     }
             } else {
                 Text("Activity not recognized")
@@ -43,6 +49,16 @@ struct YAMLActivities: View {
     // MARK: Private
 
     private var navigation: Navigation = .shared
+
+    @ViewBuilder
+    private var endOfActivityScoreView: some View {
+        // TODO: (@ladislas, @HPezz) Add success condition & percentage when implemented
+        if true {
+            SuccessView(percentage: 90)
+        } else {
+            FailureView(percentage: 30)
+        }
+    }
 }
 
 #Preview {

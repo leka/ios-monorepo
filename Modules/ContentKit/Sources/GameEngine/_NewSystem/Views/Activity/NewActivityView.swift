@@ -26,39 +26,85 @@ public struct NewActivityView: View {
 
                 self.activityCoordinator.currentExerciseView
             }
+            .id(self.activityCoordinator.currentExerciseIndex)
+            .disabled(self.activityCoordinator.isExerciseCompleted)
+            .blur(radius: self.blurRadius)
+            .onChange(of: self.isReinforcerPresented) {
+                if self.isReinforcerPresented {
+                    withAnimation(.easeInOut.delay(0.5)) {
+                        self.blurRadius = 20
+                    }
+                } else {
+                    withAnimation {
+                        self.blurRadius = 0
+                    }
+                }
+            }
+
+            if self.isReinforcerPresented {
+                ReinforcerView(isLastExercise: self.activityCoordinator.isLastExercise,
+                               onContinue: {
+                                   self.activityCoordinator.nextExercise()
+                               },
+                               onDismiss: {
+                                   self.isReinforcerPresented = false
+                               })
+            }
+
+            if self.activityCoordinator.isExerciseCompleted, !self.isReinforcerPresented {
+                ContinueButton {
+                    self.activityCoordinator.nextExercise()
+                }
+                .transition(
+                    .asymmetric(
+                        insertion: .opacity.animation(.snappy.delay(0.75)),
+                        removal: .identity
+                    )
+                )
+            }
         }
-        .id(self.activityCoordinator.currentExerciseIndex)
         .frame(maxWidth: .infinity)
         .background(.lkBackground)
         .ignoresSafeArea(.all, edges: .bottom)
         .navigationTitle(self.activity.name)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
+            ToolbarItem(placement: .topBarLeading) {
                 Button {
-                    // TODO: (@dev-ios) implement reinforcer toggle
+                    // TODO: (@HPezz) Add alert to prevent for misclick
+                    self.dismiss()
                 } label: {
-                    Image(systemName: "livephoto")
+                    Image(systemName: "xmark.circle")
                 }
             }
 
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    self.activityCoordinator.previousExercise()
-                } label: {
-                    Image(systemName: "arrow.backward")
+            #if DEVELOPER_MODE
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        // TODO: (@dev-ios) implement reinforcer toggle
+                    } label: {
+                        Image(systemName: "livephoto")
+                    }
                 }
-                .disabled(self.activityCoordinator.isFirstExercise)
-            }
 
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    self.activityCoordinator.nextExercise()
-                } label: {
-                    Image(systemName: "arrow.forward")
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        self.activityCoordinator.previousExercise()
+                    } label: {
+                        Image(systemName: "arrow.backward")
+                    }
+                    .disabled(self.activityCoordinator.isFirstExercise)
                 }
-                .disabled(self.activityCoordinator.isLastExercise)
-            }
+
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        self.activityCoordinator.nextExercise()
+                    } label: {
+                        Image(systemName: "arrow.forward")
+                    }
+                    .disabled(self.activityCoordinator.isLastExercise)
+                }
+            #endif
 
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
@@ -74,16 +120,21 @@ public struct NewActivityView: View {
                 self.activityCoordinator.activityEvent.send(.didStart)
             }
         }
+        .onChange(of: self.activityCoordinator.isExerciseCompleted) {
+            withAnimation {
+                self.isReinforcerPresented = self.activityCoordinator.isExerciseCompleted
+            }
+        }
     }
-
-    // MARK: Internal
-
-    @Environment(\.dismiss) var dismiss
 
     // MARK: Private
 
-    private var activityCoordinator: ActivityCoordinator
+    @Environment(\.dismiss) private var dismiss
 
+    @State private var blurRadius: CGFloat = 0
+    @State private var isReinforcerPresented: Bool = false
+
+    private var activityCoordinator: ActivityCoordinator
     private let activity: NewActivity
 }
 
@@ -152,124 +203,6 @@ public struct NewActivityView: View {
                         type: emoji
                         category: catC
         """
-//                - instructions:
-//                    - locale: fr_FR
-//                      value: Glisse et dépose les emojis identiques ensemble
-//                    - locale: en_US
-//                      value: Drag and drop the same emojis together
-//                  interface: dragAndDropGrid
-//                  gameplay: associateCategories
-//                  payload:
-//                    shuffle_choices: true
-//                    choices:
-//                      - value: 🐶
-//                        type: emoji
-//                        category: catA
-//                      - value: 🐶
-//                        type: emoji
-//                        category: catA
-//                      - value: 🐱
-//                        type: emoji
-//                        category: catB
-//                      - value: 🐱
-//                        type: emoji
-//                        category: catB
-//                      - value: 🐷
-//                        type: emoji
-//                        category: catC
-//                      - value: 🐷
-//                        type: emoji
-//                        category: catC
-//                - instructions:
-//                    - locale: fr_FR
-//                      value: Glisse et dépose les émojis dans la zone correspondante
-//                    - locale: en_US
-//                      value: Drag and drop the emojis in the correct zone
-//                  interface: dragAndDropGridWithZones
-//                  gameplay: associateCategories
-//                  payload:
-//                    shuffle_choices: true
-//                    choices:
-//                      - value: 🐶
-//                        type: emoji
-//                        category: catA
-//                        is_dropzone: true
-//                      - value: 🐶
-//                        type: emoji
-//                        category: catA
-//                      - value: 🐱
-//                        type: emoji
-//                        category: catB
-//                        is_dropzone: true
-//                      - value: 🐱
-//                        type: emoji
-//                        category: catB
-//                      - value: 🐷
-//                        type: emoji
-//                        category: catC
-//                      - value: 🐷
-//                        type: emoji
-//                        category: catC
-//            - group:
-//                - instructions:
-//                    - locale: fr_FR
-//                      value: Glisse et dépose les emojis identiques ensemble
-//                    - locale: en_US
-//                      value: Drag and drop the same emojis together
-//                  interface: dragAndDropGrid
-//                  gameplay: associateCategories
-//                  payload:
-//                    shuffle_choices: true
-//                    choices:
-//                      - value: 🐶
-//                        type: emoji
-//                        category: catA
-//                      - value: 🐶
-//                        type: emoji
-//                        category: catA
-//                      - value: 🐱
-//                        type: emoji
-//                        category: catB
-//                      - value: 🐱
-//                        type: emoji
-//                        category: catB
-//                      - value: 🐷
-//                        type: emoji
-//                        category: catC
-//                      - value: 🐷
-//                        type: emoji
-//                        category: catC
-//                - instructions:
-//                    - locale: fr_FR
-//                      value: Glisse et dépose les émojis dans la zone correspondante
-//                    - locale: en_US
-//                      value: Drag and drop the emojis in the correct zone
-//                  interface: dragAndDropGridWithZones
-//                  gameplay: associateCategories
-//                  payload:
-//                    shuffle_choices: true
-//                    choices:
-//                      - value: 🐶
-//                        type: emoji
-//                        category: catA
-//                        is_dropzone: true
-//                      - value: 🐶
-//                        type: emoji
-//                        category: catA
-//                      - value: 🐱
-//                        type: emoji
-//                        category: catB
-//                        is_dropzone: true
-//                      - value: 🐱
-//                        type: emoji
-//                        category: catB
-//                      - value: 🐷
-//                        type: emoji
-//                        category: catC
-//                      - value: 🐷
-//                        type: emoji
-//                        category: catC
-//        """
 
     import Yams
 

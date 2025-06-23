@@ -582,6 +582,24 @@
                 }
             }
         },
+        "game_engine_kit.continue_button.button_label": {
+            "comment": "The label of the continue button",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Continue"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Continuer"
+                    }
+                }
+            }
+        },
         "game_engine_kit.dance_freeze_song_selector_view.confirm_button_label": {
             "comment": "Confirm button label for song selector sheet in DanceFreeze",
             "extractionState": "extracted_with_value",
@@ -922,6 +940,132 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Avant"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.lottie_view.activity_end.failure_cheering_label": {
+            "comment": "ActivityEnd view cheering label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Try again!"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Essaie encore !"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.lottie_view.activity_end.quit_button_label": {
+            "comment": "ActivityEnd view quit button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Quit"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Quitter"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.lottie_view.activity_end.success_cheering_label": {
+            "comment": "ActivityEnd view cheering label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Well done, you've succeeded this activity!"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Bien jou\u00e9, tu as r\u00e9ussi l'activit\u00e9 !"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.lottie_view.activity_end.success_percentage_label": {
+            "comment": "ActivityEnd view success percentage label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "%.0f%% of success!"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "%.0f%% de succ\u00e8s !"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.lottie_view.reinforcer.continue_button": {
+            "comment": "The title of the continue button",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Continue"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Continuer"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.lottie_view.reinforcer.finish_button": {
+            "comment": "The title of the finish button",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Finish"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Terminer"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.lottie_view.reinforcer.hide_reinforcer_to_show_answers_button": {
+            "comment": "The title of the hide reinforcer to show answers button",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Review answers"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Revoir les r\u00e9ponses"
                     }
                 }
             }
