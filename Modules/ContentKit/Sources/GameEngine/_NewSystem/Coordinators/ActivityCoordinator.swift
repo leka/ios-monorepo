@@ -70,11 +70,7 @@ public class ActivityCoordinator {
 
     @ViewBuilder
     public var currentExerciseView: some View {
-        Spacer()
-
         self.currentExerciseCoordinator.exerciseView
-
-        Spacer()
     }
 
     // MARK: Internal

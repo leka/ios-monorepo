@@ -23,8 +23,6 @@ public class CurrentExerciseCoordinator {
                 ExerciseInstructionsButton(instructions: instructions)
             }
 
-            Spacer()
-
             if case let .general(interface) = self.exercise.interface {
                 if let gameplay = self.exercise.gameplay, let payload = self.exercise.payload {
                     switch interface {
@@ -47,6 +45,7 @@ public class CurrentExerciseCoordinator {
                                                 }
                                                 .store(in: &self.cancellables)
                                         }
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
 
                                 case .findTheRightAnswers:
                                     let model = CoordinatorFindTheRightAnswersModel(data: payload)
@@ -65,6 +64,7 @@ public class CurrentExerciseCoordinator {
                                                 }
                                                 .store(in: &self.cancellables)
                                         }
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
 
                                 case .findTheRightOrder:
                                     let model = CoordinatorFindTheRightOrderModel(data: payload)
@@ -83,6 +83,7 @@ public class CurrentExerciseCoordinator {
                                                 }
                                                 .store(in: &self.cancellables)
                                         }
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
 
                                 case .openPlay:
                                     let model = CoordinatorOpenPlayModel(data: payload)
@@ -101,6 +102,7 @@ public class CurrentExerciseCoordinator {
                                                 }
                                                 .store(in: &self.cancellables)
                                         }
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                             }
 
                         case .dragAndDropGrid:
@@ -208,6 +210,7 @@ public class CurrentExerciseCoordinator {
                                                 }
                                                 .store(in: &self.cancellables)
                                         }
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
 
                                 default:
                                     ExerciseInterfaceGameplayNotSupportedView(interface: interface, gameplay: gameplay)
@@ -300,8 +303,7 @@ public class CurrentExerciseCoordinator {
                 }
             }
         }
-
-        Spacer()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     // MARK: Internal
