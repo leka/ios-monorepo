@@ -40,16 +40,39 @@ public struct ActivityDetailsView: View {
         }
         .toolbar {
             if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
-                ToolbarItemGroup {
-                    if self.sharedLibraryManagerViewModel.isActivityFavoritedByCurrentCaregiver(
-                        activityID: self.activity.id,
-                        caregiverID: currentCaregiverID
-                    ) {
-                        Image(systemName: "star.circle")
-                            .font(.system(size: 21))
-                            .foregroundColor(self.styleManager.accentColor ?? .blue)
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    // Add to Library button
+                    let libraryItem = SharedLibraryManager.getSharedLibraryItem(from: CurationItemModel(id: self.activity.id, name: self.activity.name, contentType: .activity), caregiverID: currentCaregiverID)
+                    if self.sharedLibraryManagerViewModel.isContentSaved(id: self.activity.id) {
+                        Button(role: .destructive) {
+                            self.sharedLibraryManagerViewModel.requestItemRemoval(libraryItem, caregiverID: currentCaregiverID)
+                        } label: {
+                            Label(String(l10n.ContentItemMenu.removeFromSharedLibraryButtonLabel.characters), systemImage: "trash")
+                        }
+                    } else {
+                        Button {
+                            self.sharedLibraryManagerViewModel.addItemToSharedLibrary(libraryItem)
+                        } label: {
+                            Label(String(l10n.ContentItemMenu.addToSharedLibraryButtonLabel.characters), systemImage: "plus")
+                        }
                     }
 
+                    // Favorite button (star/star.fill)
+                    if self.sharedLibraryManagerViewModel.isContentFavorited(by: currentCaregiverID, contentID: self.activity.id) {
+                        Button {
+                            self.sharedLibraryManagerViewModel.removeItemFromFavorites(libraryItem)
+                        } label: {
+                            Label(String(l10n.ContentItemMenu.undoFavoriteButtonLabel.characters), systemImage: "star.fill")
+                        }
+                    } else {
+                        Button {
+                            self.sharedLibraryManagerViewModel.addItemToFavorite(libraryItem)
+                        } label: {
+                            Label(String(l10n.ContentItemMenu.favoriteButtonLabel.characters), systemImage: "star")
+                        }
+                    }
+
+                    // 3 dots menu
                     ContentItemMenu(
                         CurationItemModel(id: self.activity.id, name: self.activity.name, contentType: .activity),
                         caregiverID: currentCaregiverID
