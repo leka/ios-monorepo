@@ -1,0 +1,58 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 7297DE7F33F840AEBDB9D61942C1EAC9
+name: curriculum_alphabet_letters_sounds_2
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2024-07-19T11:36:03.177171"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+  - sensory_integration
+  - sensory_integration/hearing
+
+tags:
+  - alphabet_letters
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: letter_sounds_2
+      title: Sons des lettres 2
+      subtitle: L S T R N
+      abstract: |
+        Un parcours progressif pour apprendre à reconnaître les lettres de l’alphabet L S T R N à travers des activités interactives.
+
+      description: |
+        Ce parcours propose une série d’activités conçues pour aider le participant à associer le son des lettres à leur forme écrite. À l’aide d’instructions audio et d’illustrations visuelles, le participant est invité à écouter une lettre, puis à la retrouver sur l’écran. Une étape clé dans l’apprentissage de la lecture et de l’écriture.
+
+  - locale: en_US
+    details:
+      icon: letter_sounds_2
+      title: Letter Sounds 2
+      subtitle: L S T R N
+      abstract: |
+        A progressive curriculum to learn to recognize letters L S T R N through engaging interactive activities.
+
+      description: |
+        This curriculum offers a set of activities designed to help the care receiver match the sound of each letter with its written form. With audio instructions and visual choices, participants are prompted to listen to a letter and identify it on the screen — a foundational skill for reading and writing.
+
+activities:
+  - alphabet_letters_sounds_2_1-549072BAB1484863B7B51EC00873C82E
+  - alphabet_letters_sounds_2_2-BA1EA99BD0AA41E091A73ECF931FB6D9
+  - alphabet_letters_sounds_2_4-AC96CEBA0BA44B6FA5584D6AD4F72DFF
+  - alphabet_letters_sounds_2_5-0E5F9520C82740F18B29D2307E089226

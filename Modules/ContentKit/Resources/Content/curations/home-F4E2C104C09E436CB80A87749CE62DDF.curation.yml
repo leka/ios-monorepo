@@ -60,11 +60,11 @@ content:
           subtitle:
           description: The latest to explore.
     items:
-      - value: curriculum_recognition_alphabet_letters_a_to_f-50DC12AA75AA4ED48928FBAFB73CA7EF
+      - value: curriculum_recognition_alphabet_letters_1-27A711E56A4140C4A69FCAF0E4CD5410
         type: curriculum
-      - value: curriculum_alphabet_letters_sounds_a_to_f-C157BAD4AA044EE89A941B1D868FFEB7
+      - value: curriculum_alphabet_letters_sounds_1-C157BAD4AA044EE89A941B1D868FFEB7
         type: curriculum
-      - value: curriculum_alphabetical_order_a_to_f-F9A2F6E76AE449999B1F76AA7E2D2978
+      - value: curriculum_alphabetical_order-F9A2F6E76AE449999B1F76AA7E2D2978
         type: curriculum
       - value: curriculum_ordering_steps_to_bake_a_cake-1F908FA3349B476DA1EE4CDC60B5B632
         type: curriculum
