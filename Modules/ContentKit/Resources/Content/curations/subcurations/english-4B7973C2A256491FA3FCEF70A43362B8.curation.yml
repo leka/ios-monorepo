@@ -32,9 +32,25 @@ content:
           subtitle:
           description:
     items:
-      - value: curriculum_recognition_alphabet_letters_a_to_f-50DC12AA75AA4ED48928FBAFB73CA7EF
+      - value: curriculum_recognition_alphabet_letters_1-27A711E56A4140C4A69FCAF0E4CD5410
         type: curriculum
-      - value: curriculum_alphabet_letters_sounds_a_to_f-C157BAD4AA044EE89A941B1D868FFEB7
+      - value: curriculum_recognition_alphabet_letters_2-A711CBB12FC0428CB0ACF6F1904A49AD
         type: curriculum
-      - value: curriculum_alphabetical_order_a_to_f-F9A2F6E76AE449999B1F76AA7E2D2978
+      - value: curriculum_recognition_alphabet_letters_3-ECDA68596E6A44198E66285455162A3B
+        type: curriculum
+      - value: curriculum_recognition_alphabet_letters_4-23997B52E2C544C8AB1FA6F37F6C5409
+        type: curriculum
+      - value: curriculum_recognition_alphabet_letters_5-2B6FFBF984D14AAEA7BDAD5A5456A67A
+        type: curriculum
+      - value: curriculum_alphabet_letters_sounds_1-C157BAD4AA044EE89A941B1D868FFEB7
+        type: curriculum
+      - value: curriculum_alphabet_letters_sounds_2-7297DE7F33F840AEBDB9D61942C1EAC9
+        type: curriculum
+      - value: curriculum_alphabet_letters_sounds_3-6285451C82354C86910B5F3773E7D8E7
+        type: curriculum
+      - value: curriculum_alphabet_letters_sounds_4-AFEA06A2B0D44C6381EC7F0556A580AE
+        type: curriculum
+      - value: curriculum_alphabet_letters_sounds_5-EB625985B0CD4510A1DCC8CECE1996C4
+        type: curriculum
+      - value: curriculum_alphabetical_order-F9A2F6E76AE449999B1F76AA7E2D2978
         type: curriculum

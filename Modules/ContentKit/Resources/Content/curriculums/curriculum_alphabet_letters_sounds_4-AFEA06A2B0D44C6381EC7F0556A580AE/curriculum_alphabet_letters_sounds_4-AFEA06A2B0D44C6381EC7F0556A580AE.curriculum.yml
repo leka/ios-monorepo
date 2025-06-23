@@ -1,0 +1,58 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: AFEA06A2B0D44C6381EC7F0556A580AE
+name: curriculum_alphabet_letters_sounds_4
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2024-07-19T11:36:03.177171"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+  - sensory_integration
+  - sensory_integration/hearing
+
+tags:
+  - alphabet_letters
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: letter_sounds_4
+      title: Sons des lettres 4
+      subtitle: G J F H Y
+      abstract: |
+        Un parcours progressif pour apprendre à reconnaître les lettres de l’alphabet G J F H Y à travers des activités interactives.
+
+      description: |
+        Ce parcours propose une série d’activités conçues pour aider le participant à associer le son des lettres à leur forme écrite. À l’aide d’instructions audio et d’illustrations visuelles, le participant est invité à écouter une lettre, puis à la retrouver sur l’écran. Une étape clé dans l’apprentissage de la lecture et de l’écriture.
+
+  - locale: en_US
+    details:
+      icon: letter_sounds_4
+      title: Letter Sounds 4
+      subtitle: G J F H Y
+      abstract: |
+        A progressive curriculum to learn to recognize letters G J F H Y through engaging interactive activities.
+
+      description: |
+        This curriculum offers a set of activities designed to help the care receiver match the sound of each letter with its written form. With audio instructions and visual choices, participants are prompted to listen to a letter and identify it on the screen — a foundational skill for reading and writing.
+
+activities:
+  - alphabet_letters_sounds_4_1-DDB97B17C7264ADEAF766777148EF20A
+  - alphabet_letters_sounds_4_2-1C906EBA61C14DDB892244DE91B2A88C
+  - alphabet_letters_sounds_4_4-BF16A7917F8941068F01660884B6A71A
+  - alphabet_letters_sounds_4_5-F564687D98664E0BABCF6D942ABFCA33

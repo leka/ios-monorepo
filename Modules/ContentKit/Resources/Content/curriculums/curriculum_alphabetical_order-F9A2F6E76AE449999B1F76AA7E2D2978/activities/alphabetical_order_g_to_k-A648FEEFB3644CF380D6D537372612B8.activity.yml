@@ -1,0 +1,98 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: A648FEEFB3644CF380D6D537372612B8
+name: alphabetical_order_g_to_k
+
+created_at: "2024-03-08T11:49:37.123525"
+last_edited_at: "2025-05-15T14:44:07.496511"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - association
+  - association/ordering
+
+tags:
+  - alphabet_letters
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: order_the_alphabet_letters_g_to_k
+
+      title: Ordonner les lettres de G à K
+      subtitle: 6 lettres
+
+      short_description: |
+        Glisser et déposer les lettres de G à K dans le bon ordre alphabétique
+
+      description: |
+        Le participant doit glisser et déposer les cinq lettres de G à K pour les remettre dans l'ordre alphabétique.
+
+      instructions: |
+        - Sur l'écran de l'iPad, les lettres de G à K sont présentées dans un ordre aléatoire.
+        - Chaque lettre est affichée sous forme d'image ou de caractère.
+        - Encouragez le participant à glisser chaque lettre dans la bonne position pour reformer l'ordre alphabétique de A à F.
+        - Une fois les lettres correctement ordonnées, Leka déclenche un renforçateur pour célébrer la réussite et encourager l'apprentissage.
+
+  - locale: en_US
+    details:
+      icon: order_the_alphabet_letters_g_to_k
+
+      title: Order the letters from G to K
+      subtitle: 6 letters
+
+      short_description: |
+        Drag and drop the letters from G to K into the correct alphabetical order
+
+      description: |
+        The participant must drag and drop the five letters from G to K into alphabetical order.
+
+      instructions: |
+        - On the iPad screen, the letters from G to K are shown in a random order.
+        - Each letter is displayed as an image or character.
+        - Encourage the participant to drag each letter to the correct position to form the alphabetical sequence from A to F.
+        - Once the letters are correctly ordered, Leka triggers a reinforcer to celebrate the success and encourage learning.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Remets les lettres dans l'ordre alphabétique
+            - locale: en_US
+              value: Put the letters in alphabetical order
+          interface: dragAndDropInOrder
+          gameplay: findTheRightOrder
+          payload:
+            choices:
+              - value: alphabetical_order_g
+                type: image
+              - value: alphabetical_order_h
+                type: image
+              - value: alphabetical_order_i
+                type: image
+              - value: alphabetical_order_j
+                type: image
+              - value: alphabetical_order_k
+                type: image

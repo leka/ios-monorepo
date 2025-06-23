@@ -1,0 +1,53 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: ECDA68596E6A44198E66285455162A3B
+name: curriculum_recognition_alphabet_letters_3
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2025-05-28T10:38:43.447242"
+authors:
+  - leka
+
+skills:
+  - recognition
+  - association/matching
+
+tags:
+  - alphabet_letters
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_alphabet_letters_3
+      title: Lettres de l'alphabet 3
+      subtitle: D P B C V
+      abstract: |
+        Ce parcours vise à renforcer la reconnaissance des lettres de l'alphabet D P B C V  à travers des représentations visuelles simples.
+      description: |
+        À travers des activités interactives présentées sur l'écran de l’iPad, les participants sont invités à observer et à identifier des lettres parmi des choix proposés. L’objectif est de reconnaître les lettres affichées, de les associer à leur forme identique, et de renforcer les capacités d’attention, de discrimination visuelle et de reconnaissance des lettres de l’alphabet, en se concentrant ici uniquement sur les lettres de **a à f**.
+
+  - locale: en_US
+    details:
+      icon: recognition_alphabet_letters_3
+      title: Alphabet Letters 3
+      subtitle: D P B C V
+      abstract: |
+        This curriculum aims to strengthen recognition of the alphabet Letters D P B C V  through simple visual representations.
+      description: |
+        Through interactive activities displayed on the iPad screen, participants are invited to observe and identify letters among a set of options. The goal is to recognize the displayed letter, match it to its identical form, and develop attention, visual discrimination, and letter recognition skills—specifically focused on the letters from **a to f**.
+
+activities:
+  - recognition_alphabet_letters_3_2-B4D3D7825AB945C7AC9629AFBA2C4C2F
+  - recognition_alphabet_letters_3_4-3163D0023FF145FB98A63E1F9151F53E
+  - recognition_alphabet_letters_3_6-9EA46A7739694BDEB66958FC702BC725
