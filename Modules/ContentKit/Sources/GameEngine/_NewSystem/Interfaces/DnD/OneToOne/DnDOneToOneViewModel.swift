@@ -16,6 +16,7 @@ public class DnDOneToOneViewModel: ObservableObject {
         self.action = coordinator.uiModel.value.action
         self.didTriggerAction = (self.action == nil) ? true : false
         self.coordinator = coordinator
+        self.validation = coordinator.validation
         self.coordinator.uiModel
             .receive(on: DispatchQueue.main)
             .sink { [weak self] model in
@@ -39,6 +40,7 @@ public class DnDOneToOneViewModel: ObservableObject {
     @Published var dropzones: [DnDDropZoneNode] = []
 
     let action: NewExerciseAction?
+    let validation: NewExerciseOptions.Validation
 
     func setAlreadyOrderedNodes() {
         self.coordinator.setAlreadyOrderedNodes()

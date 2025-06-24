@@ -19,7 +19,7 @@ public struct TTSView: View {
 
     public var body: some View {
         let interface = Interface(rawValue: viewModel.choices.count)
-        VStack(alignment: .center) {
+        ZStack(alignment: .bottomTrailing) {
             HStack(spacing: 0) {
                 if let action = self.viewModel.action {
                     Button {
@@ -44,71 +44,71 @@ public struct TTSView: View {
                         .padding(.vertical, 20)
                 }
 
-                Spacer()
+                Group {
+                    switch interface {
+                        case .oneChoice:
+                            OneChoiceView(viewModel: self.viewModel)
+                                .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                                .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                                .allowsHitTesting(self.viewModel.didTriggerAction)
 
-                switch interface {
-                    case .oneChoice:
-                        OneChoiceView(viewModel: self.viewModel)
-                            .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
-                            .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
-                            .allowsHitTesting(self.viewModel.didTriggerAction)
+                        case .twoChoices:
+                            TwoChoicesView(viewModel: self.viewModel)
+                                .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                                .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                                .allowsHitTesting(self.viewModel.didTriggerAction)
 
-                    case .twoChoices:
-                        TwoChoicesView(viewModel: self.viewModel)
-                            .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
-                            .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
-                            .allowsHitTesting(self.viewModel.didTriggerAction)
+                        case .threeChoices:
+                            ThreeChoicesView(viewModel: self.viewModel)
+                                .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                                .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                                .allowsHitTesting(self.viewModel.didTriggerAction)
 
-                    case .threeChoices:
-                        ThreeChoicesView(viewModel: self.viewModel)
-                            .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
-                            .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
-                            .allowsHitTesting(self.viewModel.didTriggerAction)
+                        case .fourChoices:
+                            FourChoicesView(viewModel: self.viewModel)
+                                .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                                .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                                .allowsHitTesting(self.viewModel.didTriggerAction)
 
-                    case .fourChoices:
-                        FourChoicesView(viewModel: self.viewModel)
-                            .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
-                            .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
-                            .allowsHitTesting(self.viewModel.didTriggerAction)
+                        case .fiveChoices:
+                            FiveChoicesView(viewModel: self.viewModel)
+                                .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                                .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                                .allowsHitTesting(self.viewModel.didTriggerAction)
 
-                    case .fiveChoices:
-                        FiveChoicesView(viewModel: self.viewModel)
-                            .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
-                            .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
-                            .allowsHitTesting(self.viewModel.didTriggerAction)
+                        case .sixChoices:
+                            SixChoicesView(viewModel: self.viewModel)
+                                .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                                .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                                .allowsHitTesting(self.viewModel.didTriggerAction)
 
-                    case .sixChoices:
-                        SixChoicesView(viewModel: self.viewModel)
-                            .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
-                            .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
-                            .allowsHitTesting(self.viewModel.didTriggerAction)
-
-                    default:
-                        ProgressView()
+                        default:
+                            ProgressView()
+                    }
                 }
-
-                Spacer()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
 
-            // TODO: (@HPezz) Change into manual/automatic enum
-            if let validationEnabled = self.viewModel.validationEnabled {
+            if self.viewModel.validation.type == .manual,
+               let validationEnabled = self.viewModel.validationEnabled
+            {
                 Button {
                     self.viewModel.onValidate()
                 } label: {
                     Text(l10n.ExerciseView.validateButtonLabel)
                         .font(.title2.bold())
                         .foregroundColor(.white)
-                        .frame(width: 100, height: 30)
+                        .frame(width: 100, height: 25)
                         .padding()
                         .background(
                             Capsule()
-                                .fill(validationEnabled ? .green : .gray.opacity(0.3))
+                                .fill(validationEnabled ? .cyan : .gray.opacity(0.3))
                                 .shadow(radius: 1)
                         )
                 }
                 .animation(.easeOut(duration: 0.3), value: validationEnabled)
                 .disabled(!validationEnabled)
-                .padding(20)
+                .padding()
             }
         }
     }

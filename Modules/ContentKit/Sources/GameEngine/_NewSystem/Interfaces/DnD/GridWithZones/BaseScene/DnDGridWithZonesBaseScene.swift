@@ -109,9 +109,9 @@ class DnDGridWithZonesBaseScene: SKScene {
     func layoutDropZones() {
         for (index, dropzone) in self.viewModel.dropzones.enumerated() {
             let dropzonesNumber = self.viewModel.dropzones.count
-            let posX = CGFloat(2 * index + 1) * size.width / CGFloat(2 * dropzonesNumber)
+            let dropzoneSpacer = size.width / CGFloat(dropzonesNumber + 1)
 
-            dropzone.position = CGPoint(x: posX, y: size.height / 3)
+            dropzone.position = CGPoint(x: dropzoneSpacer * CGFloat(index + 1), y: size.height / 3)
 
             addChild(dropzone)
             self.dropZonesNodes.append(dropzone)

@@ -100,11 +100,11 @@ class DnDOneToOneBaseScene: SKScene {
     }
 
     func setChoicePosition(_ index: Int) -> CGPoint {
-        CGPoint(x: self.spacer * CGFloat(index + 1), y: size.height - self.viewModel.choices[0].size.height * 0.8)
+        CGPoint(x: self.spacer * CGFloat(index + 1), y: 4 * size.height / 5)
     }
 
     func setDropZonePosition(_ index: Int) -> CGPoint {
-        CGPoint(x: self.spacer * CGFloat(index + 1), y: self.viewModel.choices[0].size.height * 0.8)
+        CGPoint(x: self.spacer * CGFloat(index + 1), y: size.height / 4)
     }
 
     // MARK: Private
