@@ -32,7 +32,8 @@ public class CurrentExerciseCoordinator {
                                     let model = CoordinatorAssociateCategoriesModel(data: payload)
                                     let coordinator = TTSCoordinatorAssociateCategories(
                                         model: model,
-                                        action: exercise.action
+                                        action: exercise.action,
+                                        validation: self.exercise.options?.validation ?? .init()
                                     )
                                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -51,7 +52,8 @@ public class CurrentExerciseCoordinator {
                                     let model = CoordinatorFindTheRightAnswersModel(data: payload)
                                     let coordinator = TTSCoordinatorFindTheRightAnswers(
                                         model: model,
-                                        action: exercise.action
+                                        action: exercise.action,
+                                        validation: self.exercise.options?.validation ?? .init()
                                     )
                                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -70,7 +72,8 @@ public class CurrentExerciseCoordinator {
                                     let model = CoordinatorFindTheRightOrderModel(data: payload)
                                     let coordinator = TTSCoordinatorFindTheRightOrder(
                                         model: model,
-                                        action: exercise.action
+                                        action: exercise.action,
+                                        validation: self.exercise.options?.validation ?? .init()
                                     )
                                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -89,7 +92,8 @@ public class CurrentExerciseCoordinator {
                                     let model = CoordinatorOpenPlayModel(data: payload)
                                     let coordinator = TTSCoordinatorOpenPlay(
                                         model: model,
-                                        action: exercise.action
+                                        action: exercise.action,
+                                        validation: self.exercise.options?.validation ?? .init()
                                     )
                                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -135,7 +139,8 @@ public class CurrentExerciseCoordinator {
                                     let model = CoordinatorAssociateCategoriesModel(data: payload)
                                     let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(
                                         model: model,
-                                        action: exercise.action
+                                        action: exercise.action,
+                                        validation: self.exercise.options?.validation ?? .init()
                                     )
                                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 
@@ -153,7 +158,8 @@ public class CurrentExerciseCoordinator {
                                     let model = CoordinatorOpenPlayModel(data: payload)
                                     let coordinator = DnDGridWithZonesCoordinatorOpenPlay(
                                         model: model,
-                                        action: exercise.action
+                                        action: exercise.action,
+                                        validation: self.exercise.options?.validation ?? .init()
                                     )
                                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 
@@ -177,7 +183,8 @@ public class CurrentExerciseCoordinator {
                                     let model = CoordinatorFindTheRightOrderModel(data: payload)
                                     let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(
                                         model: model,
-                                        action: exercise.action
+                                        action: exercise.action,
+                                        validation: self.exercise.options?.validation ?? .init()
                                     )
                                     let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
 
