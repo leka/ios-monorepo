@@ -21,7 +21,6 @@ extension ExerciseYAMLs {
             value: magicCardNumbers5Five
         options:
           shuffle_choices: true
-          validate: true
         payload:
           choices:
             - value: number_1
@@ -49,7 +48,6 @@ extension ExerciseYAMLs {
             value: magicCardColorsOrangePaint
         options:
           shuffle_choices: true
-          validate: true
         payload:
           choices:
             - value: color_red
@@ -77,7 +75,6 @@ extension ExerciseYAMLs {
             value: red
         options:
           shuffle_choices: true
-          validate: true
         payload:
           choices:
             - value: color_red
@@ -105,7 +102,6 @@ extension ExerciseYAMLs {
             value: robotFaceDisgusted
         options:
           shuffle_choices: true
-          validate: true
         payload:
           choices:
             - value: emotion_anger_leka
@@ -132,7 +128,6 @@ extension ExerciseYAMLs {
             value: 4
         options:
           shuffle_choices: true
-          validate: true
         payload:
           choices:
             - value: number_1
@@ -160,7 +155,6 @@ extension ExerciseYAMLs {
             value: 3
         options:
           shuffle_choices: true
-          validate: true
         payload:
           choices:
             - value: number_1

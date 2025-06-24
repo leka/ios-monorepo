@@ -18,7 +18,7 @@ struct ActionThenTTSThenValidateExercises: View {
                     let coordinator = TTSCoordinatorFindTheRightAnswers(
                         choices: ExerciseData.kFindTheRightAnswersChoicesEmojis,
                         action: .ipad(type: .image("sport_dance_player_man")),
-                        validationEnabled: false
+                        validation: .init(type: .manual)
                     )
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -33,7 +33,7 @@ struct ActionThenTTSThenValidateExercises: View {
                     let coordinator = TTSCoordinatorFindTheRightAnswers(
                         choices: ExerciseData.kFindTheRightAnswersChoicesSFSymbols,
                         action: .ipad(type: .sfsymbol("star")),
-                        validationEnabled: false
+                        validation: .init(type: .manual)
                     )
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -48,7 +48,7 @@ struct ActionThenTTSThenValidateExercises: View {
                     let coordinator = TTSCoordinatorFindTheRightAnswers(
                         choices: ExerciseData.kFindTheRightAnswersChoicesDefault,
                         action: .ipad(type: .audio("sound_animal_duck")),
-                        validationEnabled: false
+                        validation: .init(type: .manual)
                     )
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -63,7 +63,7 @@ struct ActionThenTTSThenValidateExercises: View {
                     let coordinator = TTSCoordinatorFindTheRightAnswers(
                         choices: ExerciseData.kFindTheRightAnswersChoicesImages,
                         action: .ipad(type: .speech("happy")),
-                        validationEnabled: false
+                        validation: .init(type: .manual)
                     )
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -78,7 +78,7 @@ struct ActionThenTTSThenValidateExercises: View {
                     let coordinator = TTSCoordinatorFindTheRightAnswers(
                         choices: ExerciseData.kFindTheRightAnswersChoicesColors,
                         action: .robot(type: .color("blue")),
-                        validationEnabled: false
+                        validation: .init(type: .manual)
                     )
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -93,7 +93,7 @@ struct ActionThenTTSThenValidateExercises: View {
                     let coordinator = TTSCoordinatorFindTheRightAnswers(
                         choices: ExerciseData.kFindTheRightAnswersChoicesImages,
                         action: .robot(type: .image("robotFaceHappy")),
-                        validationEnabled: false
+                        validation: .init(type: .manual)
                     )
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
