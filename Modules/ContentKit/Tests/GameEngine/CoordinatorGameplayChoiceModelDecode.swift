@@ -28,7 +28,8 @@ final class CoordinatorGameplayModelDecode: XCTestCase {
                     utterance: "put the bananas together"
             options:
               shuffle_choices: true
-              validate: true
+              validation:
+                type: manual
             payload:
               choices:
                 - value: 🍉
@@ -75,7 +76,8 @@ final class CoordinatorGameplayModelDecode: XCTestCase {
                     utterance: "put the bananas together"
             options:
               shuffle_choices: true
-              validate: true
+              validation:
+                type: manual
             payload:
               choices:
                 - value: 🍉
@@ -126,7 +128,6 @@ final class CoordinatorGameplayModelDecode: XCTestCase {
                     utterance: "put the bananas together"
             options:
               shuffle_choices: true
-              validate: true
             payload:
               choices:
                 - value: 1.circle
@@ -171,7 +172,10 @@ final class CoordinatorGameplayModelDecode: XCTestCase {
                     utterance: "put the bananas together"
             options:
               shuffle_choices: true
-              validate: true
+              validation:
+                type: manual
+                minimumToSelect: 2
+                maximumToSelect: 3
             payload:
               choices:
                 - value: 🍉
