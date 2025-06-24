@@ -1,0 +1,38 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 3201B894830F4EB99FEB324F9EE2F9A3
+icon: figure.disc.sports
+color: 0x4DB6AC
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Métiers et sports
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Professions and sports
+      subtitle:
+      description:
+
+content:
+  - component: vertical_curriculum_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title:
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title:
+          subtitle:
+          description:
+    items:
+      - value: curriculum_recognition_professions-92ACC48ED3A041DE959EA5C2E8600441
+        type: curriculum
+      - value: curriculum_recognition_sports-C7F3963541234712A2701C0EB9E2EEAE
+        type: curriculum

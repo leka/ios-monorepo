@@ -1,0 +1,62 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: EFBB68F0B3D84A32B08A688CC2F9B8F0
+icon: hand.draw.fill
+color: 0x81C784
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Motricité fine
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Fine motor skills
+      subtitle:
+      description:
+
+content:
+  - component: carousel
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Activités pour travailler le pointage fonctionnel
+          subtitle:
+          description: Le pointage fonctionnel consiste à réaliser des actions comme actionner un interrupteur, appuyer sur un écran tactile ou pointer une lettre sur un clavier.
+      - locale: en_US
+        details:
+          title: Activities to develop functional pointing
+          subtitle:
+          description: Functional pointing involves performing actions such as pressing a switch, tapping on a touchscreen, or pointing to a letter on a keyboard.
+    items:
+      - value: color_bingo-69760D1DA61849E3926E3A939BBEF0CE
+        type: curriculum
+      - value: melody-CB995F829411449AB32E6B8A688E3DDB
+        type: activity
+      - value: super_simon-C6EABAC161CD44C290B32202DFDCDAF6
+        type: curriculum
+
+  - component: vertical_activity_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Activités pour s'entraîner au glisser-déposer sur la tablette
+          subtitle:
+          description: Les contenus glisser-déposer consistent à déplacer un élément avec le doigt sur un écran tactile pour le déposer à un endroit précis. Cela nécessite souvent un apprentissage et fait appel à la motricité fine ainsi qu'à la dextérité.
+      - locale: en_US
+        details:
+          title: Activities to practice drag and drop on the tablet
+          subtitle:
+          description: Drag-and-drop contents involve moving an item with a finger across a touchscreen to place it precisely somewhere. This often requires learning and engages fine motor skills and dexterity.
+    items:
+      - value: categorization_sorting_fruits_vegetables_basket_1_one_choice-A3652A06FC4F4E9081E462987106A92A
+        type: activity
+      - value: categorization_sort_through_functional_category_1_image-DA072AA227724969AE41ECF7BDAA7F91
+        type: activity
+      - value: order_by_size_animals_squirrel-8D855D878B8F49E38F8EFCCBBF0B5E29
+        type: activity
+      - value: categorization_sort_through_categories_of_2_images-1B6F2B9A59A64317884FD3F6C446262C
+        type: activity

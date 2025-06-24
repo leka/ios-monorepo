@@ -12,7 +12,7 @@ public struct RobotConnectionView: View {
     // MARK: Lifecycle
 
     public init(viewModel: RobotConnectionViewModel = RobotConnectionViewModel()) {
-        _viewModel = StateObject(wrappedValue: viewModel)
+        _viewModel = State(wrappedValue: viewModel)
     }
 
     // MARK: Public
@@ -59,8 +59,8 @@ public struct RobotConnectionView: View {
         .onDisappear {
             self.viewModel.stopScanning()
         }
-        .onChange(of: self.scenePhase) { newPhase in
-            if newPhase == .active {
+        .onChange(of: self.scenePhase) {
+            if self.scenePhase == .active {
                 self.viewModel.tryToConnectToRobotConnectedInAnotherApp()
             }
         }
@@ -92,13 +92,12 @@ public struct RobotConnectionView: View {
 
     @Environment(\.scenePhase) var scenePhase
 
-    @StateObject var viewModel: RobotConnectionViewModel
+    @State var viewModel: RobotConnectionViewModel
     @Environment(\.dismiss) var dismiss
 
     // MARK: Private
 
-    @StateObject private var robotViewModel: ConnectedRobotInformationViewModel = .init(
-        robot: .shared)
+    @Bindable private var robotViewModel: ConnectedRobotInformationViewModel = .init(robot: .shared)
 
     private let columns: [GridItem] = [
         GridItem(),

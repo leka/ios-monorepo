@@ -1,0 +1,118 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+id: first_steps
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Premiers Pas
+      subtitle: Les Ressources sont les supports que nous mettons à la disposion de l'ensemble des accompagnants.
+      description: Les ressources donnent les clés d'une utilisation optimale de la solution Leka !
+  - locale: en_US
+    details:
+      title: First Steps
+      subtitle: Resources are the tools we provide to all caregivers.
+      description: Resources provide the keys to optimal use of the Leka solution!
+
+content:
+  - id: robot_charging
+    l10n:
+      - locale: fr_FR
+        details:
+          title: 1 - Le chargement du robot
+          subtitle:
+          description: Apprenez à mettre en charge votre robot !
+      - locale: en_US
+        details:
+          title: 1 - Charging the robot
+          subtitle:
+          description: Learn how to charge your robot!
+    resources:
+      - resource:
+          - locale: fr_FR
+            details:
+              icon: battery.100percent.bolt
+              title: La mise en charge
+              value: https://www.youtube.com/watch?v=M0v0VzWjIYU
+              type: video
+          - locale: en_US
+            details:
+              icon: battery.100percent.bolt
+              title: Charging
+              value: https://www.youtube.com/watch?v=zYL-eG7Z1d8
+              type: video
+      - resource:
+          - locale: fr_FR
+            details:
+              icon: battery.100percent.bolt
+              title: La fiche de chargement
+              description: Découvrez la fiche de chargement de votre robot !
+              value: robot_charging_FR
+              type: file
+              illustration: robot_charging
+          - locale: en_US
+            details:
+              icon: battery.100percent.bolt
+              title: The charging sheet
+              description: Discover the charging sheet for your robot!
+              value: robot_charging_EN
+              type: file
+              illustration: robot_charging
+  - id: bluetooth_connection
+    l10n:
+      - locale: fr_FR
+        details:
+          title: 2 - La connexion tablette-robot
+          subtitle:
+          description: Découvrez comment connecter l'application Leka à votre robot !
+      - locale: en_US
+        details:
+          title: 2 - Tablet-robot connection
+          subtitle:
+          description: Discover how to connect the Leka app to your robot!
+    resources:
+      - resource:
+          - locale: fr_FR
+            details:
+              icon: book.and.wrench
+              title: Le guide du Bluetooth
+              description: Découvrez comment connecter l'application à votre robot !
+              value: bluetooth_connection_FR
+              type: file
+              illustration: bluetooth_connection
+          - locale: en_US
+            details:
+              icon: book.and.wrench
+              title: The Bluetooth guide
+              description: Discover how to connect the app to your robot!
+              value: bluetooth_connection_EN
+              type: file
+              illustration: bluetooth_connection
+  - id: emergency_stop
+    l10n:
+      - locale: fr_FR
+        details:
+          title: 3 - Redémarrer le robot
+          subtitle:
+          description: En cas de bug, utilisez la carte Stop pour redémarrer votre robot !
+      - locale: en_US
+        details:
+          title: 3 - Restarting the robot
+          subtitle:
+          description: In case of a bug, use the Stop card to restart your robot!
+    resources:
+      - resource:
+          - locale: fr_FR
+            details:
+              icon: book.and.wrench
+              title: L'utilisation de la carte "STOP"
+              value: https://www.youtube.com/watch?v=nVAotKJs8cM
+              type: video
+          - locale: en_US
+            details:
+              icon: book.and.wrench
+              title: Use of the "STOP" card
+              value: https://www.youtube.com/watch?v=QE5TFLv7RqA
+              type: video

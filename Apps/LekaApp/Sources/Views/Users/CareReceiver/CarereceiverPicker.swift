@@ -87,11 +87,11 @@ struct CarereceiverPicker: View {
         case skip
     }
 
-    @StateObject private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
-    @ObservedObject private var navigation: Navigation = .shared
+    @State private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
     @State private var selectedCarereceiver: [Carereceiver]
     @State private var action: ActionType?
 
+    private var navigation: Navigation = .shared
     private let columns = Array(repeating: GridItem(spacing: -20), count: 4)
 
     private var noCarereceiverView: some View {
@@ -102,7 +102,7 @@ struct CarereceiverPicker: View {
 
             Button {
                 self.dismiss()
-                self.navigation.selectedCategory = .carereceivers
+                self.navigation.setSelectedCategory(.carereceivers)
             } label: {
                 Text(l10n.CarereceiverPicker.CreateFirstCarereceiver.buttonLabel)
             }

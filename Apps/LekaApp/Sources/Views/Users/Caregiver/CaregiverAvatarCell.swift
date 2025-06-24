@@ -40,7 +40,7 @@ struct CaregiverAvatarCell: View {
 
     // MARK: Private
 
-    @ObservedObject private var styleManager: StyleManager = .shared
+    private var styleManager: StyleManager = .shared
 }
 
 #Preview {

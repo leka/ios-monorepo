@@ -1,0 +1,40 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 29A4584EAF5B43F6AA8693BED7327D9A
+icon: headphones
+color: 0xA5D6A7
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Sons
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Sounds
+      subtitle:
+      description:
+
+content:
+  - component: vertical_curriculum_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title:
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title:
+          subtitle:
+          description:
+    items:
+      - value: curriculum_recognition_sounds_musical_instruments-6A5EF209D00942F4AEEA4AEC6DAC052A
+        type: curriculum
+      - value: curriculum_recognition_sounds_emotions-2D48CCB418BF4808BCB16148C901C617
+        type: curriculum
+      - value: curriculum_recognition_sounds_animals-FED25D9B424E42019F03593FE0D65AEE
+        type: curriculum

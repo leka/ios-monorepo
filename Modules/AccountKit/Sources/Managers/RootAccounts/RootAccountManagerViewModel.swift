@@ -5,7 +5,8 @@
 import Combine
 import SwiftUI
 
-public class RootAccountManagerViewModel: ObservableObject {
+@Observable
+public class RootAccountManagerViewModel {
     // MARK: Lifecycle
 
     public init() {
@@ -14,7 +15,7 @@ public class RootAccountManagerViewModel: ObservableObject {
 
     // MARK: Public
 
-    @Published public var errorMessage: String = ""
+    public var errorMessage: String = ""
 
     // MARK: Private
 

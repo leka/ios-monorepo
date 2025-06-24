@@ -1,0 +1,70 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 572F710A05F94F25831FF05938728453
+icon: sun.rain
+color: 0x90CAF9
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Météo et environnement
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Weather and environment
+      subtitle:
+      description:
+
+content:
+  - component: vertical_activity_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Activités autours de la météo
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Activities about the weather
+          subtitle:
+          description:
+    items:
+      - value: recognition_weather_and_time_meteo_2_images-900AB87351824FACB2E289F426056034
+        type: activity
+      - value: recognition_weather_and_time_meteo_4_images-030525AA798F4E0D8EDAFAF3939471F9
+        type: activity
+
+  - component: vertical_activity_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Activités autours des températures
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Activities about temperatures
+          subtitle:
+          description:
+    items:
+      - value: recognition_weather_and_time_hot_and_cold-18DA1F9028CF447E819507B0A6562F2E
+        type: activity
+
+  - component: vertical_activity_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Activités autours du jour et de la nuit
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Activities about day and night
+          subtitle:
+          description:
+    items:
+      - value: recognition_weather_and_time_day_night-7710D57FB7214D4F90246463F20773D1
+        type: activity

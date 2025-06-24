@@ -3,12 +3,12 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import ContentKit
-import GameEngineKit
 import SwiftUI
 
 // MARK: - DebugImageListViewViewModel
 
-class DebugImageListViewViewModel: ObservableObject {
+@Observable
+class DebugImageListViewViewModel {
     // MARK: Lifecycle
 
     init(images: [String]) {
@@ -17,10 +17,10 @@ class DebugImageListViewViewModel: ObservableObject {
 
     // MARK: Internal
 
-    @Published var cellSize: CGFloat = 300
-    @Published var cellState: GameplayChoiceState = .idle
-    @Published var cellBackgroundColor: Color?
-    @Published var images: [String]
+    private(set) var cellSize: CGFloat = 300
+    private(set) var cellState: GameplayChoiceState = .idle
+    private(set) var cellBackgroundColor: Color?
+    var images: [String]
 
     func getImageNameFromPath(path: String) -> String {
         let components = path.components(separatedBy: "/")
@@ -48,7 +48,7 @@ struct DebugImageListView: View {
     // MARK: Lifecycle
 
     init(images: [String]) {
-        self._viewModel = StateObject(wrappedValue: DebugImageListViewViewModel(images: images))
+        _viewModel = State(initialValue: DebugImageListViewViewModel(images: images))
     }
 
     // MARK: Internal
@@ -115,7 +115,7 @@ struct DebugImageListView: View {
 
     // MARK: Private
 
-    @StateObject private var viewModel: DebugImageListViewViewModel
+    @State private var viewModel: DebugImageListViewViewModel
 
     private let columns = Array(repeating: GridItem(), count: 3)
 }

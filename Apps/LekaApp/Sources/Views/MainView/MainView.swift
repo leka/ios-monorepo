@@ -7,12 +7,11 @@ import AnalyticsKit
 import Combine
 import ContentKit
 import DesignKit
-import GameEngineKit
 import LocalizationKit
 import RobotKit
 import SwiftUI
 
-// swiftlint:disable type_body_length
+// swiftlint:disable type_body_length file_length
 
 extension Bundle {
     static var version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
@@ -24,10 +23,15 @@ extension Bundle {
 struct MainView: View {
     // MARK: Internal
 
-    @State var isResourcesCollapsed: Bool = true
-    @ObservedObject var navigation: Navigation = .shared
-    @ObservedObject var authManagerViewModel = AuthManagerViewModel.shared
-    @StateObject var viewModel: ViewModel = .init()
+    @State private var isContentSectionExpanded: Bool = true
+    @State private var isSharedLibrarySectionExpanded: Bool = true
+    @State private var isUserSectionExpanded: Bool = true
+    @State private var isResourcesSectionExpanded: Bool = true
+    @State private var isDeveloperSectionExpanded: Bool = true
+    @State private var isDemoSectionExpanded: Bool = true
+
+    @Bindable var navigation: Navigation = .shared
+    var authManagerViewModel: AuthManagerViewModel = .shared
 
     var body: some View {
         NavigationSplitView {
@@ -41,8 +45,8 @@ struct MainView: View {
                         }
                     }
                     .id("caregiverLabel")
-                    .onReceive(self.authManagerViewModel.$userAuthenticationState) { state in
-                        if state == .loggedOut {
+                    .onChange(of: self.authManagerViewModel.userAuthenticationState) {
+                        if self.authManagerViewModel.userAuthenticationState == .loggedOut {
                             withAnimation {
                                 scrollViewProxy.scrollTo("caregiverLabel", anchor: .top)
                             }
@@ -50,40 +54,37 @@ struct MainView: View {
                     }
 
                     Button {
-                        self.navigation.sheetContent = .robotConnection
+                        self.navigation.setSheetContent(.robotConnection)
                     } label: {
                         RobotConnectionLabel()
                     }
                     .listRowInsets(EdgeInsets(top: 0, leading: -8, bottom: -8, trailing: -8))
 
-                    Section(String(l10n.MainView.Sidebar.sectionInformation.characters)) {
+                    Section(String(l10n.MainView.Sidebar.sectionContent.characters), isExpanded: self.$isContentSectionExpanded) {
                         CategoryLabel(category: .home)
+                        CategoryLabel(category: .explore)
+                        CategoryLabel(category: .objectives)
                         CategoryLabel(category: .search)
-                    }
-
-                    Section(String(l10n.MainView.Sidebar.sectionContent.characters)) {
-                        CategoryLabel(category: .curriculums)
                         CategoryLabel(category: .educationalGames)
                         CategoryLabel(category: .stories)
                         CategoryLabel(category: .gamepads)
                     }
 
-                    #if DEVELOPER_MODE || TESTFLIGHT_BUILD
-                        Section(String(l10n.MainView.Sidebar.sectionLibrary.characters)) {
-                            CategoryLabel(category: .libraryCurriculums)
-                            CategoryLabel(category: .libraryActivities)
-                            CategoryLabel(category: .libraryStories)
-                        }
-                    #endif
+                    Section(String(l10n.MainView.Sidebar.sectionSharedLibrary.characters), isExpanded: self.$isSharedLibrarySectionExpanded) {
+                        CategoryLabel(category: .sharedLibraryFavorites)
+                        CategoryLabel(category: .sharedLibraryCurriculums)
+                        CategoryLabel(category: .sharedLibraryActivities)
+                        CategoryLabel(category: .sharedLibraryStories)
+                    }
 
                     if self.authManagerViewModel.userAuthenticationState == .loggedIn {
-                        Section(String(l10n.MainView.Sidebar.sectionUsers.characters)) {
+                        Section(String(l10n.MainView.Sidebar.sectionUsers.characters), isExpanded: self.$isUserSectionExpanded) {
                             CategoryLabel(category: .caregivers)
                             CategoryLabel(category: .carereceivers)
                         }
                     }
 
-                    Section(String(l10n.MainView.Sidebar.sectionResources.characters)) {
+                    Section(String(l10n.MainView.Sidebar.sectionResources.characters), isExpanded: self.$isResourcesSectionExpanded) {
                         CategoryLabel(category: .resourcesFirstSteps)
                         CategoryLabel(category: .resourcesVideo)
                         CategoryLabel(category: .resourcesDeepDive)
@@ -91,7 +92,8 @@ struct MainView: View {
 
                     #if DEVELOPER_MODE || TESTFLIGHT_BUILD
                         if !self.navigation.demoMode {
-                            Section("Developer Mode") {
+                            Section("Developer Mode", isExpanded: self.$isDeveloperSectionExpanded) {
+                                CategoryLabel(category: .curationSandbox)
                                 CategoryLabel(category: .allTemplateActivities)
                                 CategoryLabel(category: .allDraftActivities)
                                 CategoryLabel(category: .allPublishedActivities)
@@ -100,7 +102,7 @@ struct MainView: View {
                                 CategoryLabel(category: .news)
                             }
                         } else {
-                            Section("Demo mode") {
+                            Section("Demo mode", isExpanded: self.$isDemoSectionExpanded) {
                                 CategoryLabel(category: .demo)
                             }
                         }
@@ -108,7 +110,7 @@ struct MainView: View {
 
                     VStack(alignment: .center, spacing: 20) {
                         Button {
-                            self.navigation.sheetContent = .settings
+                            self.navigation.setSheetContent(.settings)
                         } label: {
                             SettingsLabel()
                         }
@@ -152,12 +154,23 @@ struct MainView: View {
                     }
                 )
             }
+            .alert(isPresented: self.$sharedLibraryManagerViewModel.showRemoveAlert) {
+                self.createRemovalAlert()
+            }
         } detail: {
             NavigationStack(path: self.$navigation.path) {
                 switch self.navigation.selectedCategory {
                     case .home:
-                        CategoryHome()
+                        CurationView(.home)
                             .logEventScreenView(screenName: "home", context: .splitView)
+
+                    case .explore:
+                        CurationView(.explore)
+                            .logEventScreenView(screenName: "explore", context: .splitView)
+
+                    case .objectives:
+                        CurationView(.objectives)
+                            .logEventScreenView(screenName: "objectives", context: .splitView)
 
                     case .search:
                         CategorySearchView()
@@ -175,20 +188,16 @@ struct MainView: View {
                         CategoryResourcesDeepDiveView()
                             .logEventScreenView(screenName: "resources_deep_dive", context: .splitView)
 
-                    case .curriculums:
-                        CategoryCurriculumsView()
-                            .logEventScreenView(screenName: "curriculums", context: .splitView)
-
                     case .educationalGames:
-                        CategoryEducationalGamesView()
+                        CurationView(.educationalGames)
                             .logEventScreenView(screenName: "educational_games", context: .splitView)
 
                     case .stories:
-                        CategoryStoriesView()
+                        CurationView(.stories)
                             .logEventScreenView(screenName: "stories", context: .splitView)
 
                     case .gamepads:
-                        CategoryGamepadsView()
+                        CurationView(.gamepads)
                             .logEventScreenView(screenName: "gamepads", context: .splitView)
 
                     case .caregivers:
@@ -200,6 +209,9 @@ struct MainView: View {
                             .logEventScreenView(screenName: "carereceivers", context: .splitView)
 
                     // ? DEVELOPER_MODE + TESTFLIGHT_BUILD
+                    case .curationSandbox:
+                        CurationView(.sandbox)
+
                     case .allPublishedActivities:
                         AllPublishedActivitiesView()
 
@@ -223,17 +235,21 @@ struct MainView: View {
                     case .demo:
                         DiscoverLekaView(demoMode: self.navigation.demoMode)
 
-                    case .libraryCurriculums:
-                        CategoryLibraryView(category: .libraryCurriculums)
-                            .logEventScreenView(screenName: "library_curriculums", context: .splitView)
+                    case .sharedLibraryCurriculums:
+                        CategorySharedLibraryView(category: .sharedLibraryCurriculums)
+                            .logEventScreenView(screenName: "shared_library_curriculums", context: .splitView)
 
-                    case .libraryActivities:
-                        CategoryLibraryView(category: .libraryActivities)
-                            .logEventScreenView(screenName: "library_activities", context: .splitView)
+                    case .sharedLibraryActivities:
+                        CategorySharedLibraryView(category: .sharedLibraryActivities)
+                            .logEventScreenView(screenName: "shared_library_activities", context: .splitView)
 
-                    case .libraryStories:
-                        CategoryLibraryView(category: .libraryStories)
-                            .logEventScreenView(screenName: "library_stories", context: .splitView)
+                    case .sharedLibraryStories:
+                        CategorySharedLibraryView(category: .sharedLibraryStories)
+                            .logEventScreenView(screenName: "shared_library_stories", context: .splitView)
+
+                    case .sharedLibraryFavorites:
+                        CategorySharedLibraryView(category: .sharedLibraryFavorites)
+                            .logEventScreenView(screenName: "shared_library_favorites", context: .splitView)
 
                     case .none:
                         Text(l10n.MainView.Sidebar.CategoryLabel.home)
@@ -243,28 +259,30 @@ struct MainView: View {
             }
         }
         .fullScreenCover(item: self.$navigation.fullScreenCoverContent) {
-            self.navigation.fullScreenCoverContent = nil
-            self.navigation.currentActivity = nil
-            self.navigation.currentStory = nil
+            self.navigation.setFullScreenCoverContent(nil)
+            self.navigation.setCurrentActivity(nil)
+            self.navigation.setCurrentStory(nil)
         } content: { content in
-            NavigationStack {
-                switch content {
-                    case .welcomeView:
+            switch content {
+                case .welcomeView:
+                    NavigationStack {
                         WelcomeView()
                             .logEventScreenView(screenName: "welcome", context: .fullScreenCover)
+                    }
 
-                    case let .activityView(carereceivers):
+                case let .activityView(carereceivers):
+                    NavigationStack {
                         ActivityView(activity: self.navigation.currentActivity!, reinforcer: carereceivers.first?.reinforcer ?? .rainbow)
                             .logEventScreenView(screenName: "activity", context: .fullScreenCover)
+                    }
 
-                    case .storyView:
-                        StoryView(story: self.navigation.currentStory!)
-                            .logEventScreenView(screenName: "story", context: .fullScreenCover)
-                }
+                case .storyView:
+                    StoryView(story: self.navigation.currentStory!)
+                        .logEventScreenView(screenName: "story", context: .fullScreenCover)
             }
         }
         .sheet(item: self.$navigation.sheetContent) {
-            self.navigation.sheetContent = nil
+            self.navigation.setSheetContent(nil)
         } content: { content in
             NavigationStack {
                 switch content {
@@ -310,21 +328,20 @@ struct MainView: View {
                             // nothing to do
                         }, onSelected: { carereceivers in
                             self.carereceiverManager.setCurrentCarereceivers(to: carereceivers)
-                            self.navigation.currentActivity = activity
-                            self.navigation.currentStory = story
+                            self.navigation.setCurrentActivity(activity)
+                            self.navigation.setCurrentStory(story)
                             if self.navigation.currentActivity != nil {
-                                self.navigation.fullScreenCoverContent = .activityView(carereceivers: carereceivers)
+                                self.navigation.setFullScreenCoverContent(.activityView(carereceivers: carereceivers))
                             } else if self.navigation.currentStory != nil {
-                                self.navigation.fullScreenCoverContent = .storyView(carereceivers: carereceivers)
+                                self.navigation.setFullScreenCoverContent(.storyView(carereceivers: carereceivers))
                             }
-
                         }, onSkip: {
-                            self.navigation.currentActivity = activity
-                            self.navigation.currentStory = story
+                            self.navigation.setCurrentActivity(activity)
+                            self.navigation.setCurrentStory(story)
                             if self.navigation.currentActivity != nil {
-                                self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
+                                self.navigation.setFullScreenCoverContent(.activityView(carereceivers: []))
                             } else if self.navigation.currentStory != nil {
-                                self.navigation.fullScreenCoverContent = .storyView(carereceivers: [])
+                                self.navigation.setFullScreenCoverContent(.storyView(carereceivers: []))
                             }
                         })
                         .logEventScreenView(screenName: "carereceiver_picker", context: .sheet)
@@ -338,11 +355,11 @@ struct MainView: View {
             }
             self.persistentDataManager.checkInactivity()
         }
-        .onChange(of: self.scenePhase) { newPhase in
+        .onChange(of: self.scenePhase) {
             guard self.authManagerViewModel.userAuthenticationState == .loggedIn else {
                 return
             }
-            switch newPhase {
+            switch self.scenePhase {
                 case .active:
                     self.persistentDataManager.checkInactivity()
                 case .inactive,
@@ -355,34 +372,34 @@ struct MainView: View {
                     break
             }
         }
-        .onReceive(self.caregiverManagerViewModel.$caregivers, perform: { _ in
+        .onChange(of: self.caregiverManagerViewModel.caregivers) {
             if self.authManagerViewModel.userAuthenticationState == .loggedIn {
                 self.persistentDataManager.checkInactivity()
             }
-        })
+        }
         .onReceive(self.persistentDataManager.inactivityTimeoutPublisher) { isTimedOut in
             if isTimedOut {
                 self.caregiverManager.resetCurrentCaregiver()
                 guard self.navigation.sheetContent == nil, self.navigation.fullScreenCoverContent == nil else {
                     return
                 }
-                self.navigation.sheetContent = .caregiverPicker
+                self.navigation.setSheetContent(.caregiverPicker)
             } else {
                 guard let storedCaregiverID = self.persistentDataManager.lastActiveCaregiverID else {
-                    self.navigation.sheetContent = .caregiverPicker
+                    self.navigation.setSheetContent(.caregiverPicker)
                     return
                 }
                 self.caregiverManager.setCurrentCaregiver(byID: storedCaregiverID)
             }
         }
-        .onChange(of: self.caregiverManagerViewModel.currentCaregiver) { currentCaregiver in
-            self.persistentDataManager.lastActiveCaregiverID = currentCaregiver?.id
+        .onChange(of: self.caregiverManagerViewModel.currentCaregiver) {
+            self.persistentDataManager.lastActiveCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id
             self.persistentDataManager.updateLastActiveTimestamp()
-            if currentCaregiver != nil {
-                self.styleManager.colorScheme = self.caregiverManagerViewModel.currentCaregiver!.colorScheme
-                self.styleManager.accentColor = self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color
+            if self.caregiverManagerViewModel.currentCaregiver != nil {
+                self.styleManager.setColorScheme(self.caregiverManagerViewModel.currentCaregiver!.colorScheme)
+                self.styleManager.setAccentColor(self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color)
             }
-            self.libraryManager.initializeLibraryListener()
+            self.sharedLibraryManager.initializeSharedLibraryListener()
         }
     }
 
@@ -390,23 +407,53 @@ struct MainView: View {
 
     @Environment(\.scenePhase) private var scenePhase
 
-    @ObservedObject private var styleManager: StyleManager = .shared
-
-    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
-    @StateObject private var rootAccountViewModel = RootAccountManagerViewModel()
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     @State private var showingAppUpdateAlert: Bool = false
     @State private var showingOSUpdateAlert: Bool = false
     @State private var updateAlertHasBeenShown: Bool = false
 
+    @State private var rootAccountViewModel = RootAccountManagerViewModel()
+
+    @Bindable private var sharedLibraryManagerViewModel: SharedLibraryManagerViewModel = .shared
+
+    private var styleManager: StyleManager = .shared
     private var persistentDataManager: PersistentDataManager = .shared
     private var caregiverManager: CaregiverManager = .shared
     private var carereceiverManager: CarereceiverManager = .shared
-    private var libraryManager: LibraryManager = .shared
-}
+    private var sharedLibraryManager: SharedLibraryManager = .shared
 
-// swiftlint:enable type_body_length
+    private func createRemovalAlert() -> Alert {
+        guard let itemToRemove = self.sharedLibraryManagerViewModel.itemToRemove else {
+            return Alert(title: Text(l10n.MainView.RemovalAlert.errorTitle))
+        }
+
+        switch self.sharedLibraryManagerViewModel.alertType {
+            case .confirmPersonalFavorite:
+                return Alert(
+                    title: Text(l10n.MainView.RemovalAlert.confirmTitle),
+                    message: Text(l10n.MainView.RemovalAlert.confirmMessage),
+                    primaryButton: .destructive(Text(l10n.MainView.RemovalAlert.confirmAction)) {
+                        self.sharedLibraryManagerViewModel.removeItemFromSharedLibrary(itemToRemove)
+                    },
+                    secondaryButton: .cancel()
+                )
+
+            case .informOthersFavorited:
+                return Alert(
+                    title: Text(l10n.MainView.RemovalAlert.cannotRemoveTitle),
+                    message: Text(l10n.MainView.RemovalAlert.cannotRemoveMessage),
+                    dismissButton: .default(Text(l10n.MainView.RemovalAlert.okAction))
+                )
+
+            case .none:
+                return Alert(title: Text(l10n.MainView.RemovalAlert.errorTitle))
+        }
+    }
+}
 
 #Preview {
     MainView()
 }
+
+// swiftlint:enable type_body_length file_length

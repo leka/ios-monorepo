@@ -2,34 +2,22 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import AccountKit
 import ContentKit
-import GameEngineKit
-import LocalizationKit
 import SwiftUI
 
-// MARK: - SampleActivityListView
+// MARK: - AllTemplateActivitiesView
 
 struct AllTemplateActivitiesView: View {
-    // MARK: Internal
-
-    let activities: [Activity] = ContentKit.allTemplateActivities.sorted {
+    let activities: [CurationItemModel] = ContentKit.allTemplateActivities.values.sorted {
         $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
-    }
+    }.map { CurationItemModel(id: $0.id, name: $0.name, contentType: .activity) }
 
     var body: some View {
-        ScrollView(showsIndicators: true) {
-            ActivityGridView(activities: self.activities, onStartActivity: { activity in
-                self.navigation.currentActivity = activity
-                self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
-            })
+        ScrollView(showsIndicators: false) {
+            VerticalActivityGrid(items: self.activities)
         }
         .navigationTitle("Template Activities")
     }
-
-    // MARK: Private
-
-    @ObservedObject private var navigation: Navigation = .shared
 }
 
 #Preview {

@@ -7,7 +7,7 @@ import Foundation
 public extension RobotConnectionViewModel {
     static func mock() -> RobotConnectionViewModel {
         let viewModel = RobotConnectionViewModel()
-        viewModel.robotDiscoveries = [
+        viewModel.setRobotDiscoveries([
             .mock(),
             .mock(),
             .mock(),
@@ -16,7 +16,7 @@ public extension RobotConnectionViewModel {
             .mock(),
             .mock(),
             .mock(),
-        ]
+        ])
         return viewModel
     }
 }

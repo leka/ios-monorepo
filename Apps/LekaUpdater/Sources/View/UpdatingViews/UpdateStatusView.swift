@@ -9,9 +9,10 @@ import SwiftUI
 // MARK: - UpdateStatusView
 
 struct UpdateStatusView: View {
-    @StateObject private var viewModel = UpdateStatusViewModel()
+    @State private var viewModel = UpdateStatusViewModel()
 
     @Binding var isConnectionViewPresented: Bool
+    @Binding var isUpdateStatusViewPresented: Bool
 
     var body: some View {
         VStack {
@@ -56,16 +57,17 @@ struct UpdateStatusView: View {
             VStack {
                 switch self.viewModel.updatingStatus {
                     case .sendingFile:
-                        SendingFileContentView(progress: self.$viewModel.sendingFileProgression)
+                        SendingFileContentView(progress: self.viewModel.sendingFileProgression)
                     case .rebootingRobot:
                         RebootingContentView()
                     case .updateFinished:
-                        UpdateFinishedContentView(isConnectionViewPresented: self.$isConnectionViewPresented)
+                        UpdateFinishedContentView(isUpdateStatusViewPresented: self.$isUpdateStatusViewPresented,
+                                                  isConnectionViewPresented: self.$isConnectionViewPresented)
                     case .error:
                         ErrorContentView(
-                            errorDescription: self.viewModel.errorDescription,
-                            errorInstruction: self.viewModel.errorInstructions,
-                            isConnectionViewPresented: self.$isConnectionViewPresented
+                            error: self.viewModel.error,
+                            isConnectionViewPresented: self.$isConnectionViewPresented,
+                            isUpdateStatusViewPresented: self.$isUpdateStatusViewPresented
                         )
                 }
                 Spacer()
@@ -99,6 +101,6 @@ struct UpdateStatusView: View {
 
 #Preview {
     NavigationStack {
-        UpdateStatusView(isConnectionViewPresented: .constant(false))
+        UpdateStatusView(isConnectionViewPresented: .constant(false), isUpdateStatusViewPresented: .constant(true))
     }
 }

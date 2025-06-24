@@ -17,7 +17,7 @@ struct EditCaregiverLabel: View {
         VStack(alignment: .leading) {
             if let caregiver = self.caregiverManagerViewModel.currentCaregiver {
                 Button {
-                    self.navigation.sheetContent = .editCaregiver
+                    self.navigation.setSheetContent(.editCaregiver)
                 } label: {
                     HStack(spacing: 10) {
                         Image(uiImage: Avatars.iconToUIImage(icon: caregiver.avatar))
@@ -45,7 +45,7 @@ struct EditCaregiverLabel: View {
                 }
             } else if self.caregiverManagerViewModel.caregivers.isEmpty {
                 Button {
-                    self.navigation.sheetContent = .caregiverPicker
+                    self.navigation.setSheetContent(.caregiverPicker)
                 } label: {
                     VStack(spacing: 10) {
                         Image(systemName: "person.crop.circle.badge.plus")
@@ -62,7 +62,7 @@ struct EditCaregiverLabel: View {
                 }
             } else {
                 Button {
-                    self.navigation.sheetContent = .caregiverPicker
+                    self.navigation.setSheetContent(.caregiverPicker)
                 } label: {
                     VStack(spacing: 10) {
                         Image(systemName: "person.crop.circle.badge.questionmark")
@@ -83,7 +83,7 @@ struct EditCaregiverLabel: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("", systemImage: "person.2.gobackward") {
-                    self.navigation.sheetContent = .caregiverPicker
+                    self.navigation.setSheetContent(.caregiverPicker)
                 }
             }
         }
@@ -91,10 +91,10 @@ struct EditCaregiverLabel: View {
 
     // MARK: Private
 
-    @ObservedObject private var styleManager: StyleManager = .shared
-    @ObservedObject private var navigation: Navigation = .shared
+    private var navigation: Navigation = .shared
+    private var styleManager: StyleManager = .shared
 
-    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 }
 
 // MARK: - l10n.ChangeCaregiverProfile
@@ -136,11 +136,12 @@ extension l10n {
         EmptyView()
     })
     .onAppear {
-        let caregiverManagerViewModel = CaregiverManagerViewModel()
-        caregiverManagerViewModel.currentCaregiver = Caregiver(
+        let caregiverManager = CaregiverManager.shared
+        let caregiver = Caregiver(
             firstName: "Joe",
             lastName: "Bidjobba",
             avatar: Avatars.categories[0].avatars[2]
         )
+        caregiverManager.setCurrentCaregiver(to: caregiver)
     }
 }

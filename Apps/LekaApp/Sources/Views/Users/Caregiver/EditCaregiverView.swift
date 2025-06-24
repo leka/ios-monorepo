@@ -13,7 +13,7 @@ struct EditCaregiverView: View {
     // MARK: Lifecycle
 
     init(caregiver: Caregiver) {
-        self._viewModel = StateObject(wrappedValue: EditCaregiverViewViewModel(caregiver: caregiver))
+        self._caregiver = State(wrappedValue: caregiver)
         self._birthdate = State(wrappedValue: caregiver.birthdate ?? Date.now)
     }
 
@@ -30,43 +30,43 @@ struct EditCaregiverView: View {
 
                 Section {
                     LabeledContent(String(l10n.CaregiverCreation.caregiverFirstNameLabel.characters)) {
-                        TextField("", text: self.$viewModel.caregiver.firstName, prompt: self.placeholderFirstName)
+                        TextField("", text: self.$caregiver.firstName, prompt: self.placeholderFirstName)
                             .textContentType(.givenName)
                             .textInputAutocapitalization(.words)
                             .autocorrectionDisabled()
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
                             .focused(self.$focused)
-                            .onChange(of: self.focused) { focused in
-                                if !focused {
-                                    self.viewModel.caregiver.firstName = self.viewModel.caregiver.firstName.trimLeadingAndTrailingWhitespaces()
+                            .onChange(of: self.focused) {
+                                if !self.focused {
+                                    self.caregiver.firstName = self.caregiver.firstName.trimLeadingAndTrailingWhitespaces()
                                 }
                             }
                     }
                     LabeledContent(String(l10n.CaregiverCreation.caregiverLastNameLabel.characters)) {
-                        TextField("", text: self.$viewModel.caregiver.lastName, prompt: self.placeholderLastName)
+                        TextField("", text: self.$caregiver.lastName, prompt: self.placeholderLastName)
                             .textContentType(.familyName)
                             .textInputAutocapitalization(.words)
                             .autocorrectionDisabled()
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
                             .focused(self.$focused)
-                            .onChange(of: self.focused) { focused in
-                                if !focused {
-                                    self.viewModel.caregiver.lastName = self.viewModel.caregiver.lastName.trimLeadingAndTrailingWhitespaces()
+                            .onChange(of: self.focused) {
+                                if !self.focused {
+                                    self.caregiver.lastName = self.caregiver.lastName.trimLeadingAndTrailingWhitespaces()
                                 }
                             }
                     }
                     LabeledContent(String(l10n.CaregiverCreation.caregiverEmailLabel.characters)) {
-                        TextField("", text: self.$viewModel.caregiver.email, prompt: self.placeholderEmail)
+                        TextField("", text: self.$caregiver.email, prompt: self.placeholderEmail)
                             .textContentType(.emailAddress)
                             .textInputAutocapitalization(.never)
                             .autocorrectionDisabled()
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
-                            .onChange(of: self.viewModel.caregiver.email) { newValue in
+                            .onChange(of: self.caregiver.email) {
                                 withAnimation {
-                                    self.isWhitespacesErrorMessageVisible = newValue.containsInvalidCharacters()
+                                    self.isWhitespacesErrorMessageVisible = self.caregiver.email.containsInvalidCharacters()
                                 }
                             }
                     }
@@ -85,18 +85,18 @@ struct EditCaregiverView: View {
                         in: ...Date(),
                         displayedComponents: [.date]
                     )
-                    .onChange(of: self.birthdate, perform: { _ in
-                        self.viewModel.caregiver.birthdate = self.birthdate
-                    })
+                    .onChange(of: self.birthdate) {
+                        self.caregiver.birthdate = self.birthdate
+                    }
                 }
 
                 Section {
-                    ProfessionListView(caregiver: self.$viewModel.caregiver)
+                    ProfessionListView(caregiver: self.$caregiver)
                 }
 
                 Section {
-                    AppearanceRow(caregiver: self.$viewModel.caregiver)
-                    AccentColorRow(caregiver: self.$viewModel.caregiver)
+                    AppearanceRow(caregiver: self.$caregiver)
+                    AccentColorRow(caregiver: self.$caregiver)
                 }
             }
         }
@@ -104,14 +104,14 @@ struct EditCaregiverView: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button(String(l10n.EditCaregiverView.closeButtonLabel.characters)) {
-                    self.styleManager.colorScheme = self.caregiverManagerViewModel.currentCaregiver!.colorScheme
-                    self.styleManager.accentColor = self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color
+                    self.styleManager.setColorScheme(self.caregiverManagerViewModel.currentCaregiver!.colorScheme)
+                    self.styleManager.setAccentColor(self.caregiverManagerViewModel.currentCaregiver!.colorTheme.color)
                     self.dismiss()
                 }
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button(String(l10n.EditCaregiverView.saveButtonLabel.characters)) {
-                    self.caregiverManager.updateCaregiver(caregiver: self.viewModel.caregiver)
+                    self.caregiverManager.updateCaregiver(caregiver: self.caregiver)
                     self.dismiss()
                 }
             }
@@ -126,12 +126,13 @@ struct EditCaregiverView: View {
     @FocusState private var focused: Bool
     @State private var isWhitespacesErrorMessageVisible = false
 
-    @StateObject private var viewModel: EditCaregiverViewViewModel
-    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @State private var caregiver: Caregiver
+    @State private var isAvatarPickerPresented = false
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
-    @ObservedObject private var styleManager: StyleManager = .shared
     @State private var birthdate: Date
 
+    private var styleManager: StyleManager = .shared
     private var caregiverManager: CaregiverManager = .shared
 
     private var placeholderFirstName = Text(String(l10n.CaregiverCreation.caregiverPlaceholderFirstName.characters))
@@ -142,40 +143,25 @@ struct EditCaregiverView: View {
 
     private var avatarPickerButton: some View {
         Button {
-            self.viewModel.isAvatarPickerPresented = true
+            self.isAvatarPickerPresented = true
         } label: {
             VStack(alignment: .center, spacing: 15) {
-                AvatarPicker.ButtonLabel(image: self.viewModel.caregiver.avatar)
+                AvatarPicker.ButtonLabel(image: self.caregiver.avatar)
                 Text(l10n.CaregiverCreation.avatarChoiceButton)
                     .font(.headline)
             }
         }
-        .sheet(isPresented: self.$viewModel.isAvatarPickerPresented) {
+        .sheet(isPresented: self.$isAvatarPickerPresented) {
             NavigationStack {
-                AvatarPicker(selectedAvatar: self.viewModel.caregiver.avatar,
+                AvatarPicker(selectedAvatar: self.caregiver.avatar,
                              onSelect: { avatar in
-                                 self.viewModel.caregiver.avatar = avatar
+                                 self.caregiver.avatar = avatar
                              })
                              .navigationBarTitleDisplayMode(.inline)
             }
         }
         .frame(maxWidth: .infinity, alignment: .center)
     }
-}
-
-// MARK: - EditCaregiverViewViewModel
-
-class EditCaregiverViewViewModel: ObservableObject {
-    // MARK: Lifecycle
-
-    init(caregiver: Caregiver) {
-        self.caregiver = caregiver
-    }
-
-    // MARK: Internal
-
-    @Published var caregiver: Caregiver
-    @Published var isAvatarPickerPresented: Bool = false
 }
 
 #Preview {

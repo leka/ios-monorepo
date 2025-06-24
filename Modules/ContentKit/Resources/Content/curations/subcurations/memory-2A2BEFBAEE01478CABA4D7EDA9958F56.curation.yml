@@ -1,0 +1,42 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 2A2BEFBAEE01478CABA4D7EDA9958F56
+icon: brain
+color: 0xF48FB1
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Mémoire
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Memory
+      subtitle:
+      description:
+
+content:
+  - component: carousel
+    l10n:
+      - locale: fr_FR
+        details:
+          title:
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title:
+          subtitle:
+          description:
+    items:
+      - value: super_simon_4_colors-B39DDA35800849F7A40F651E411D30CD
+        type: activity
+      - value: super_simon_6_colors-9EFAAC01288F41C0ACACCA5094FAD8E7
+        type: activity
+      - value: curriculum_animal_memory-7C75908B86D748A283AA080D40642BE7
+        type: curriculum
+      - value: curriculum_memory_christmas-EFC444BBDEF24E08813FF472FFA5365D
+        type: curriculum

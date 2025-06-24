@@ -8,7 +8,7 @@ import SwiftUI
 // MARK: - RequirementsView
 
 struct RequirementsView: View {
-    @StateObject var viewModel: RequirementsViewModel
+    @State var viewModel: RequirementsViewModel
 
     var body: some View {
         VStack {

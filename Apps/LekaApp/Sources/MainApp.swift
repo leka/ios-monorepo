@@ -36,11 +36,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 // MARK: - UpdateManager
 
-class UpdateManager: ObservableObject {
+@Observable
+public final class UpdateManager {
     static let shared = UpdateManager()
 
-    @Published var appUpdateStatus: UpdateStatusFetcher.Status = .upToDate
-    @Published var osUpdateStatus: UpdateStatusFetcher.Status = .upToDate
+    var appUpdateStatus: UpdateStatusFetcher.Status = .upToDate
+    var osUpdateStatus: UpdateStatusFetcher.Status = .upToDate
 }
 
 // MARK: - LekaApp
@@ -58,8 +59,8 @@ struct LekaApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
     @Environment(\.colorScheme) var colorScheme
-    @StateObject var updateManager: UpdateManager = .shared
-    @ObservedObject var styleManager: StyleManager = .shared
+
+    var styleManager: StyleManager = .shared
 
     var body: some Scene {
         WindowGroup {
@@ -79,6 +80,8 @@ struct LekaApp: App {
                                 _ = ContentKit.allActivities
                                 _ = ContentKit.allCurriculums
                                 _ = ContentKit.allStories
+                                _ = ContentKit.allCurations
+                                _ = ContentKit.allResources
                             }
                         }
                 }
@@ -120,6 +123,8 @@ struct LekaApp: App {
     }
 
     // MARK: Private
+
+    @State private var updateManager: UpdateManager = .shared
 
     @State private var loaderOpacity: Double = 1.0
     @State private var showMainView: Bool = false

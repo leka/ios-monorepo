@@ -28,7 +28,7 @@ struct NoAccountConnectedLabel: View {
                 .multilineTextAlignment(.center)
 
             Button(String(l10n.NoAccountConnectedLabel.buttonLabel.characters)) {
-                self.navigation.fullScreenCoverContent = .welcomeView
+                self.navigation.setFullScreenCoverContent(.welcomeView)
             }
             .buttonStyle(.bordered)
         }
@@ -37,8 +37,8 @@ struct NoAccountConnectedLabel: View {
 
     // MARK: Private
 
-    @ObservedObject private var styleManager: StyleManager = .shared
-    @ObservedObject var navigation = Navigation.shared
+    private var styleManager: StyleManager = .shared
+    var navigation = Navigation.shared
 }
 
 // MARK: - l10n.NoAccountConnectedLabel

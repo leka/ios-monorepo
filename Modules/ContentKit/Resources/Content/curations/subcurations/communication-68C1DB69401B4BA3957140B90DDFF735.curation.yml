@@ -1,0 +1,120 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 68C1DB69401B4BA3957140B90DDFF735
+icon: person.line.dotted.person
+color: 0xBA68C8
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Communication
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Communication
+      subtitle:
+      description:
+
+content:
+  - component: horizontal_curriculum_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Parcours de langage réceptif
+          subtitle: Comprendre les consignes et les informations entendues
+          description:
+      - locale: en_US
+        details:
+          title: Receptive language curriculums
+          subtitle: Understanding spoken instructions and information
+          description:
+    items:
+      - value: curriculum_receptive_language_identity_familiar_nouns-1607BEA72CC14285AB709C567E1BE5E7
+        type: curriculum
+      - value: curriculum_receptive_language_identify_objects_by_function-9B35D447AB6C402DB13BA66E4F7F4E05
+        type: curriculum
+      - value: curriculum_receptive_language_ing_verbs-2B927C344CA94CD993DDB7AC4C7F46FD
+        type: curriculum
+      - value: curriculum_receptive_language_identify_positional_concepts-BC1E66BCFB994A76AF09C446407D8ECF
+        type: curriculum
+      - value: curriculum_receptive_language_identify_opposites-5B73795D20984208AF07C4686089266E
+        type: curriculum
+      - value: curriculum_receptive_language_identify_objects_by_color-506EA3B894AE46EBAE4BE4AFFC65233F
+        type: curriculum
+      - value: curriculum_receptive_language_identify_number_quantity-4499A9AFB56B4476969B96CE32F5314C
+        type: curriculum
+
+  - component: horizontal_activity_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Activités pour enrichir le vocabulaire
+          subtitle: Les animaux
+          description:
+      - locale: en_US
+        details:
+          title: Vocabulary enrichment activities
+          subtitle: Animals
+          description:
+    items:
+      - value: animal_recognition_farm_animals_1-4719436B24BA4876804DC6A734BA7E76
+        type: activity
+      - value: animal_recognition_forest_animals_1-3A4F8EBF04424890B2EBF25DA6EC531A
+        type: activity
+      - value: animal_recognition_insects_1-14B267712FD3424E99DFEEFE27A37463
+        type: activity
+      - value: animal_recognition_pets_1-03C46293135143BF81BA579682B9E78C
+        type: activity
+      - value: animal_animal_recognition_savannah_animals_1-945961648A2746688D36698AD0B82F86
+        type: activity
+      - value: animal_recognition_sea_animals_1-EC749D20F1114F78A10FCB58E49AA034
+        type: activity
+      - value: recognition_the_ice_floe_1-8D8DDB52F3FD41169688C2811CCD2D66
+        type: activity
+
+  - component: horizontal_activity_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Activités pour enrichir le vocabulaire
+          subtitle: Le corps humain, la famille, les moyens de transport, le jardin
+          description:
+      - locale: en_US
+        details:
+          title: Vocabulary enrichment activities
+          subtitle: The human body, family, means of transport, and garden
+          description:
+    items:
+      - value: recognition_body_parts_1-756B84801C32483FABEA6E5BC5DF7081
+        type: activity
+      - value: recognition_family_members_1-4B35157189D24260A943E8C510250460
+        type: activity
+      - value: recognition_modes_of_transportation_1-0F5E9FE3202D4F5197F7C93B8945329C
+        type: activity
+      - value: recognition_garden_items_1-34E696B157354C76B9613F4C7E185BEE
+        type: activity
+
+  - component: horizontal_activity_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Activités pour enrichir le vocabulaire
+          subtitle: Les vacances et festivités
+          description:
+      - locale: en_US
+        details:
+          title: Vocabulary enrichment activities
+          subtitle: Holidays and celebrations
+          description:
+    items:
+      - value: recognition_seaside_holidays_1-E8B904158A0D48E785C398FEEB51F007
+        type: activity
+      - value: recognition_halloween_1-5E9C3E7866BC47E8931701F244459AF6
+        type: activity
+      - value: recognition_christmas_1-6000423931E84518BD3A840B7D2FE172
+        type: activity
+      - value: recognition_winter_holidays_1-9C5A3D5EA2DC47A1905C013133AEF72C
+        type: activity

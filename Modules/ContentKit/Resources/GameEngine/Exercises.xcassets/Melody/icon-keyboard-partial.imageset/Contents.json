@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "icon-keyboard-partial.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

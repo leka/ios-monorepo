@@ -1,0 +1,291 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 4B476A0DFDC044B98DCBC631FF4EA27B
+icon: wrench.and.screwdriver
+color: 0xFFEEFF
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Accueil
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Home
+      subtitle:
+      description:
+
+content:
+  - component: carousel
+    l10n:
+      - locale: fr_FR
+        details:
+          title:
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title:
+          subtitle:
+          description:
+    items:
+      - value: curriculum_recognition_family_members-AD1A9E2D874C47AEB3445D80E34DC702
+        type: curriculum
+      - value: curriculum_recognition_garden_items-A1006027902E44C0B38BC3D3BAEDD4F6
+        type: curriculum
+      - value: curriculum_sort_objects_by_location-CC406024F40C4834A66BB7C8F0E8C0AD
+        type: curriculum
+      - value: curriculum_recognition_seaside_holidays-B1BA5597BC594082AECE293AD25CFA89
+        type: curriculum
+      - value: curriculum_animal_memory-7C75908B86D748A283AA080D40642BE7
+        type: curriculum
+      - value: curriculum_recognition_family_members-AD1A9E2D874C47AEB3445D80E34DC702
+        type: curriculum
+      - value: curriculum_recognition_garden_items-A1006027902E44C0B38BC3D3BAEDD4F6
+        type: curriculum
+      - value: curriculum_sort_objects_by_location-CC406024F40C4834A66BB7C8F0E8C0AD
+        type: curriculum
+      - value: curriculum_recognition_seaside_holidays-B1BA5597BC594082AECE293AD25CFA89
+        type: curriculum
+      - value: curriculum_animal_memory-7C75908B86D748A283AA080D40642BE7
+        type: curriculum
+
+  - component: horizontal_activity_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Les parcours les plus populaires
+          subtitle:
+          description: Les parcours les plus suivis par les professionnels de votre secteur.
+      - locale: en_US
+        details:
+          title: Most Popular Curriculums
+          subtitle:
+          description: The most completed curriculums among professionals in your field.
+
+    items:
+      - value: color_mediator-2CE6B5E98AFD45E0B2CD87727DB6D5C2
+        type: activity
+      - value: color_music_pad-8439D1EE7DD846ACB048145089F34C33
+        type: activity
+      - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
+        type: activity
+      - value: color_mediator-2CE6B5E98AFD45E0B2CD87727DB6D5C2
+        type: activity
+      - value: color_music_pad-8439D1EE7DD846ACB048145089F34C33
+        type: activity
+      - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
+        type: activity
+
+  - component: horizontal_curriculum_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Nouveautés
+          subtitle:
+          description: Les derniers ajouts à découvrir.
+      - locale: en_US
+        details:
+          title: New Arrivals
+          subtitle:
+          description: The latest to explore.
+    items:
+      - value: curriculum_animal_recognition_insects-D4B717CBC9B5484490A2E86B32D400AE
+        type: curriculum
+      - value: curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
+        type: curriculum
+      - value: curriculum_leka_weather_robot-ED4C900D4ACB426384DC76F182BC19A5
+        type: curriculum
+      - value: curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
+        type: curriculum
+      - value: curriculum_animal_recognition_insects-D4B717CBC9B5484490A2E86B32D400AE
+        type: curriculum
+      - value: curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
+        type: curriculum
+      - value: curriculum_animal_recognition_insects-D4B717CBC9B5484490A2E86B32D400AE
+        type: curriculum
+      - value: curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
+        type: curriculum
+      - value: curriculum_leka_weather_robot-ED4C900D4ACB426384DC76F182BC19A5
+        type: curriculum
+      - value: curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
+        type: curriculum
+      - value: curriculum_animal_recognition_insects-D4B717CBC9B5484490A2E86B32D400AE
+        type: curriculum
+      - value: curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
+        type: curriculum
+
+  - component: horizontal_activity_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Les parcours les plus populaires
+          subtitle:
+          description: Les parcours les plus suivis par les professionnels de votre secteur.
+      - locale: en_US
+        details:
+          title: Most Popular Curriculums
+          subtitle:
+          description: The most completed curriculums among professionals in your field.
+
+    items:
+      - value: color_mediator-2CE6B5E98AFD45E0B2CD87727DB6D5C2
+        type: activity
+      - value: color_music_pad-8439D1EE7DD846ACB048145089F34C33
+        type: activity
+      - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
+        type: activity
+      - value: melody-CB995F829411449AB32E6B8A688E3DDB
+        type: activity
+      - value: discover_leka-89CEA9FE20624659B1307B633641BC90
+        type: activity
+      - value: color_mediator-2CE6B5E98AFD45E0B2CD87727DB6D5C2
+        type: activity
+      - value: color_music_pad-8439D1EE7DD846ACB048145089F34C33
+        type: activity
+      - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
+        type: activity
+      - value: melody-CB995F829411449AB32E6B8A688E3DDB
+        type: activity
+      - value: discover_leka-89CEA9FE20624659B1307B633641BC90
+        type: activity
+      - value: color_mediator-2CE6B5E98AFD45E0B2CD87727DB6D5C2
+        type: activity
+      - value: color_music_pad-8439D1EE7DD846ACB048145089F34C33
+        type: activity
+      - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
+        type: activity
+      - value: melody-CB995F829411449AB32E6B8A688E3DDB
+        type: activity
+      - value: discover_leka-89CEA9FE20624659B1307B633641BC90
+        type: activity
+      - value: color_mediator-2CE6B5E98AFD45E0B2CD87727DB6D5C2
+        type: activity
+      - value: color_music_pad-8439D1EE7DD846ACB048145089F34C33
+        type: activity
+      - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
+        type: activity
+      - value: melody-CB995F829411449AB32E6B8A688E3DDB
+        type: activity
+      - value: discover_leka-89CEA9FE20624659B1307B633641BC90
+        type: activity
+
+  - component: horizontal_activity_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Les jeux éducatifs les plus populaires
+          subtitle:
+          description: Les jeux éducatifs les plus suivis par les professionnels de votre secteur.
+      - locale: en_US
+        details:
+          title: Most Popular Educational Games
+          subtitle:
+          description: The most completed educational games among professionals in your field.
+
+    items:
+      - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
+        type: activity
+      - value: melody-CB995F829411449AB32E6B8A688E3DDB
+        type: activity
+      - value: color_music_pad-8439D1EE7DD846ACB048145089F34C33
+        type: activity
+      - value: hide_and_seek-4BFA2AC3390E49248DD022E27008F118
+        type: activity
+      - value: xylophone_pentatonic-7C1DDED6C6D44913B9A7D4EB4AEE8F6B
+        type: activity
+      - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
+        type: activity
+
+  - component: horizontal_curriculum_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Nouveautés
+          subtitle:
+          description: Les derniers ajouts à découvrir.
+      - locale: en_US
+        details:
+          title: New Arrivals
+          subtitle:
+          description: The latest to explore.
+    items:
+      - value: curriculum_animal_recognition_insects-D4B717CBC9B5484490A2E86B32D400AE
+        type: curriculum
+      - value: curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
+        type: curriculum
+      - value: curriculum_leka_weather_robot-ED4C900D4ACB426384DC76F182BC19A5
+        type: curriculum
+      - value: curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
+        type: curriculum
+      - value: curriculum_animal_recognition_insects-D4B717CBC9B5484490A2E86B32D400AE
+        type: curriculum
+      - value: curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
+        type: curriculum
+      - value: curriculum_animal_recognition_insects-D4B717CBC9B5484490A2E86B32D400AE
+        type: curriculum
+      - value: curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
+        type: curriculum
+      - value: curriculum_leka_weather_robot-ED4C900D4ACB426384DC76F182BC19A5
+        type: curriculum
+      - value: curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
+        type: curriculum
+      - value: curriculum_animal_recognition_insects-D4B717CBC9B5484490A2E86B32D400AE
+        type: curriculum
+      - value: curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
+        type: curriculum
+
+  - component: vertical_curation_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Par objectif pédagogique
+          subtitle:
+          description: Retrouvez les contenus adaptés selon les objectifs pédagogiques de la personne accompagnée
+      - locale: en_US
+        details:
+          title: by learning objective
+          subtitle:
+          description: Find content tailored to the learning objectives of the person you're supporting.
+    items:
+      - value: cognition_and_academic_learning-4D4D3C30F4704417A9DDD4B8AD30EE62
+        type: curation
+      - value: communication-68C1DB69401B4BA3957140B90DDFF735
+        type: curation
+      - value: autonomy_and_daily_life-D680A31677B14C8D8EE29F2F05B07117
+        type: curation
+      - value: social_interactions-DEDDFB10F16348A19ECB1B9736377193
+        type: curation
+      - value: emotions-21E32736271B4637B0F970C725463FB5
+        type: curation
+      - value: motor_skills_and_sensory_processing-500410B6BF98489E9F42BD797F24F3BE
+        type: curation
+
+  - component: horizontal_curation_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Explorer
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Explore
+          subtitle:
+          description:
+    items:
+      - value: robot_content-A56B4DD2C5CE4D44BEFA09BF66FBB734
+        type: curation
+      - value: sensory_processing-5BB0578E7F54453687311F4858849A30
+        type: curation
+      - value: in_group-9D0EBC777B7843FFA19D08916793F06B
+        type: curation
+      - value: end_of_session-1E23125988EC4CE0A011A0845D2CCDE6
+        type: curation
+      - value: quiet_time-7A47BF7D73694FA9A364A256511EE809
+        type: curation
+      - value: by_theme-F83E2947CE8F40D1B6B8798042F3D31A
+        type: curation

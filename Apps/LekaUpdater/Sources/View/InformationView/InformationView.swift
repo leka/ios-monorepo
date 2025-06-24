@@ -13,91 +13,78 @@ import Version
 struct InformationView: View {
     // MARK: Internal
 
-    @StateObject var viewModel = InformationViewModel()
+    @State var viewModel = InformationViewModel()
     @Binding var isConnectionViewPresented: Bool
     @Binding var isUpdateStatusViewPresented: Bool
 
     var body: some View {
         VStack {
             ScrollView {
-                VStack(alignment: .center, spacing: 10) {
-                    if self.viewModel.showRobotCannotBeUpdated {
-                        RobotCannotBeUpdatedIllustration(size: 200)
+                RobotStateView(viewModel: self.viewModel)
 
-                        Text(self.viewModel.robotName)
-                            .font(.title3)
+                if self.viewModel.showRobotNeedsUpdate, self.viewModel.isRobotConnected {
+                    RobotUpdateAvailableView(isUpdateStatusViewPresented: self.$isUpdateStatusViewPresented)
+                        .padding(.vertical, 10)
+                }
 
-                        Text(
-                            l10n.information.status.robotCannotBeUpdatedText.characters
-                                + " - (LekaOS v\(self.viewModel.robotOSVersion))"
+                if !self.viewModel.isRobotConnected {
+                    SwitchRobotButton(isRobotConnected: false, isConnectionViewPresented: self.$isConnectionViewPresented)
+                }
+
+                if self.viewModel.isRobotConnected {
+                    RobotInformationView()
+                        .padding()
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(.lkStroke, lineWidth: 3)
                         )
-                        .font(.title2)
-                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 3)
+                        .padding(.vertical, 10)
+                }
 
-                    } else if self.viewModel.showRobotNeedsUpdate {
-                        RobotNeedsUpdateIllustration(size: 200)
-
-                        Text(self.viewModel.robotName)
-                            .font(.title3)
-
-                        Text(l10n.information.status.robotUpdateAvailable)
-                            .font(.title2)
-                    } else {
-                        RobotUpToDateIllustration(size: 200)
-
-                        Text(self.viewModel.robotName)
-                            .font(.title3)
-
-                        Text(l10n.information.status.robotIsUpToDate)
-                            .font(.title2)
+                VStack(alignment: .leading, spacing: 0) {
+                    Section {
+                        DisclosureGroup {
+                            ChangelogView()
+                                .padding()
+                        } label: {
+                            Text(l10n.information.changelogDisclosureTitle)
+                                .foregroundStyle(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
+                        }
+                        .accentColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
+                        .padding()
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(.lkStroke, lineWidth: 3)
+                        )
+                        .padding(.horizontal, 3)
+                        .padding(.vertical, 10)
+                    } header: {
+                        Text(l10n.information.changelogSectionTitle)
+                            .font(.headline)
+                            .padding(.horizontal)
                     }
                 }
-                .padding([.bottom], 10)
 
-                RobotInformationView()
-                    .padding()
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(.lkStroke, lineWidth: 3)
-                    )
-                    .padding([.horizontal], 3)
-                    .padding([.vertical], 10)
-
-                DisclosureGroup {
-                    ChangelogView()
-                        .padding()
-                } label: {
-                    Text(l10n.information.changelogSectionTitle)
-                        .foregroundStyle(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
-                }
-                .accentColor(DesignKitAsset.Colors.lekaSkyBlue.swiftUIColor)
-                .padding()
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(.lkStroke, lineWidth: 3)
-                )
-                .padding([.horizontal], 3)
-                .padding([.vertical], 10)
-
-                if self.viewModel.showRobotNeedsUpdate {
-                    RobotUpdateAvailableView(isUpdateStatusViewPresented: self.$isUpdateStatusViewPresented)
-                        .padding([.vertical], 10)
+                if self.viewModel.showRobotNeedsUpdate, self.viewModel.isRobotConnected {
+                    SwitchRobotButton(isRobotConnected: true, isConnectionViewPresented: self.$isConnectionViewPresented)
+                } else if self.viewModel.showRobotCanRollBack, self.viewModel.isRobotConnected {
+                    RobotRollBackAvailableView(isUpdateStatusViewPresented: self.$isUpdateStatusViewPresented)
+                        .padding(.vertical, 10)
                 }
 
-                VStack {
-                    LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 70)
-                        .padding(35)
-                }
+                LekaUpdaterAsset.Assets.lekaUpdaterIcon.swiftUIImage
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 70)
+                    .padding(35)
             }
-            .padding([.horizontal], 20)
+            .padding(.horizontal, 20)
         }
         .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
         .background(.lkBackground)
-        .onChange(of: self.isViewVisible) { isVisible in
-            if isVisible { self.viewModel.onViewReappear() }
+        .onChange(of: self.isViewVisible) {
+            if self.isViewVisible { self.viewModel.onViewReappear() }
         }
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -108,17 +95,6 @@ struct InformationView: View {
                     Text(l10n.main.appDescription)
                 }
                 .foregroundColor(.lkNavigationTitle)
-            }
-
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    self.isConnectionViewPresented = true
-                } label: {
-                    HStack {
-                        Image(systemName: "chevron.backward")
-                        Text(l10n.toolbar.connectionButton)
-                    }
-                }
             }
         }
     }

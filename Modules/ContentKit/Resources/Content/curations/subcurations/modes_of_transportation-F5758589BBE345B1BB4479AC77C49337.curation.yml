@@ -1,0 +1,36 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: F5758589BBE345B1BB4479AC77C49337
+icon: car.fill
+color: 0xD29CDC
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Moyens de transport
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Modes of transportation
+      subtitle:
+      description:
+
+content:
+  - component: vertical_curriculum_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title:
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title:
+          subtitle:
+          description:
+    items:
+      - value: curriculum_recognition_modes_of_transportation-B20B0721C37644E9A0168481421893F8
+        type: curriculum

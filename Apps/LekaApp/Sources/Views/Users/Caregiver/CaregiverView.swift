@@ -13,6 +13,7 @@ struct CaregiverView: View {
     // MARK: Internal
 
     @Environment(\.dismiss) var dismiss
+    var styleManager: StyleManager = .shared
     @State var caregiver: Caregiver
 
     var body: some View {
@@ -51,10 +52,10 @@ struct CaregiverView: View {
                         .navigationBarTitleDisplayMode(.inline)
                 }
             }
-            .onChange(of: self.caregiverManagerViewModel.caregivers, perform: { caregivers in
-                guard !caregivers.isEmpty else { return }
-                self.caregiver = caregivers.first(where: { $0.id == self.caregiver.id })!
-            })
+            .onChange(of: self.caregiverManagerViewModel.caregivers) {
+                guard !self.caregiverManagerViewModel.caregivers.isEmpty else { return }
+                self.caregiver = self.caregiverManagerViewModel.caregivers.first(where: { $0.id == self.caregiver.id })!
+            }
 
             Divider()
 
@@ -75,8 +76,7 @@ struct CaregiverView: View {
     // MARK: Private
 
     private let strokeColor: Color = .init(light: UIColor.systemGray3, dark: UIColor.systemGray2)
-    @ObservedObject private var styleManager: StyleManager = .shared
-    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
     @State private var isEditCaregiverViewPresented = false
 }
 

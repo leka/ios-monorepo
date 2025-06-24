@@ -27,7 +27,7 @@ public struct ModuleExample {
 public extension Project {
     static func module(
         name: String,
-        deploymentTargets: DeploymentTargets = .iOS("16.0"),
+        deploymentTargets: DeploymentTargets = .iOS("17.4"),
         destinations: Destinations = [.iPad, .macWithiPadDesign],
         infoPlist: [String: Plist.Value] = [:],
         settings: SettingsDictionary = [:],
@@ -81,7 +81,7 @@ public extension Project {
 
 private func makeFrameworkTargets(
     name: String,
-    deploymentTargets: DeploymentTargets = .iOS("16.0"),
+    deploymentTargets: DeploymentTargets = .iOS("17.4"),
     destinations: Destinations = [.iPad, .macWithiPadDesign],
     infoPlist: [String: Plist.Value] = [:],
     settings: SettingsDictionary = [:],
@@ -120,9 +120,7 @@ private func makeFrameworkTargets(
         sources: ["Tests/**"],
         resources: [],
         scripts: TargetScript.linters(),
-        dependencies: [
-            .target(name: name),
-        ]
+        dependencies: [.target(name: "\(name)")]
     )
 
     return [module, tests]

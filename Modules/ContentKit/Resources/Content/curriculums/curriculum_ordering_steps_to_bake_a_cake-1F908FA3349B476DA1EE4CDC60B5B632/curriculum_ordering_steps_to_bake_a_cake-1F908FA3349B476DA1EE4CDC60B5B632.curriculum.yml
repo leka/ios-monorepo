@@ -1,0 +1,61 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 1F908FA3349B476DA1EE4CDC60B5B632
+name: curriculum_ordering_steps_to_bake_a_cake
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-09-27T17:53:03.453431"
+authors:
+  - leka
+
+skills:
+  - association
+  - association/ordering
+  - time_and_temporality_understanding
+
+tags:
+  - food
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: ordering_steps_cake_recipe
+      title: Ordonner les étapes pour faire un gâteau
+      subtitle: Mettre en ordre chronologique des étapes pour faire un gâteau
+      abstract: |
+        Activité éducative où les participants apprennent à organiser des étapes dans l'ordre chronologique.
+      description: |
+        Cette activité vise à enseigner aux participants à ordonner des étapes chronologiquement à travers une interaction intuitive.
+        - Trois à six étapes sont affichées de manière désordonnée.
+        - Le participant doit glisser et déposer chaque étape dans la bonne séquence chronologique.
+        - Une fois les étapes correctement placées, Leka célèbre la réussite en lançant un renforçateur positif pour encourager l'apprentissage.
+
+  - locale: en_US
+    details:
+      icon: ordering_steps_cake_recipe
+      title: Ordering stages to bake a cake
+      subtitle: Arrange stages in chronological order to bake a cake
+      abstract: |
+        Educational activity where participants learn to organize steps in chronological order.
+
+      description: |
+        This activity is designed to teach participants how to arrange steps chronologically through an intuitive interaction.
+        - Three to six steps are displayed in a mixed-up order.
+        - The participant must drag and drop each step into the correct chronological sequence.
+        - Once the steps are correctly placed, Leka celebrates the success by triggering a positive reinforcer to encourage learning.
+
+activities:
+  - ordering_the_steps_to_bake_a_cake_3-6D2AE6C2B8C149BC8203017FEC6D03DA
+  - ordering_the_steps_to_bake_a_cake_4-D2C0BEB66B0542EAB4CBD13DF032868F
+  - ordering_the_steps_to_bake_a_cake_6-975C7C5C653F41AEBDBBC6B2FFB90C37

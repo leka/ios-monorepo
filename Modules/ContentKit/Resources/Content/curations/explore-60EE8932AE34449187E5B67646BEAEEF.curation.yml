@@ -1,0 +1,68 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 60EE8932AE34449187E5B67646BEAEEF
+icon: safari
+color: 0xFFEEFF
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Explorer
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Explore
+      subtitle:
+      description:
+
+content:
+  - component: vertical_curation_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title:
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title:
+          subtitle:
+          description:
+    items:
+      - value: robot_content-A56B4DD2C5CE4D44BEFA09BF66FBB734
+        type: curation
+      - value: sensory_processing-5BB0578E7F54453687311F4858849A30
+        type: curation
+      - value: in_group-9D0EBC777B7843FFA19D08916793F06B
+        type: curation
+      - value: end_of_session-1E23125988EC4CE0A011A0845D2CCDE6
+        type: curation
+      - value: quiet_time-7A47BF7D73694FA9A364A256511EE809
+        type: curation
+      - value: colors-1B908AC5B41A4B3ABAE2B6C6703EEBA0
+        type: curation
+      - value: animals-0609CB09299847E581F6E191796499B4
+        type: curation
+      - value: emotions-21E32736271B4637B0F970C725463FB5
+        type: curation
+      - value: modes_of_transportation-F5758589BBE345B1BB4479AC77C49337
+        type: curation
+      - value: everyday_objects-B693E6225E20474C977B9DA6298667AE
+        type: curation
+      - value: holidays_and_festivities-F7F2B8BFB65D403E929B3FD24380BC3B
+        type: curation
+      - value: professions_and_sports-3201B894830F4EB99FEB324F9EE2F9A3
+        type: curation
+      - value: body_and_needs-7A20223EC3004DD1B765666B8F96428C
+        type: curation
+      - value: food-29B819A94EA649DA963A55A33D833676
+        type: curation
+      - value: family-A92F6E5239214E26BF5E33D9F8D7972F
+        type: curation
+      - value: weather_and_environment-572F710A05F94F25831FF05938728453
+        type: curation
+      - value: sounds-29A4584EAF5B43F6AA8693BED7327D9A
+        type: curation

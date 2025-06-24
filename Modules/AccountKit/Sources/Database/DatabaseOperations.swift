@@ -6,6 +6,8 @@ import Combine
 import FirebaseAuth
 import FirebaseFirestore
 
+// swiftlint:disable file_length type_body_length
+
 public class DatabaseOperations {
     // MARK: Lifecycle
 
@@ -134,21 +136,21 @@ public class DatabaseOperations {
         return subject.eraseToAnyPublisher()
     }
 
-    public func getCurrentLibrary() -> AnyPublisher<Library, Error> {
-        let subject = PassthroughSubject<Library, Error>()
+    public func getCurrentSharedLibrary() -> AnyPublisher<SharedLibrary, Error> {
+        let subject = PassthroughSubject<SharedLibrary, Error>()
 
         guard let currentUserID = Auth.auth().currentUser?.uid else {
             subject.send(completion: .failure(DatabaseError.customError("User not authenticated")))
             return subject.eraseToAnyPublisher()
         }
 
-        let listenerKey = "LIBRARIES_QUERY_\(currentUserID)"
+        let listenerKey = "SHARED_LIBRARIES_QUERY_\(currentUserID)"
         if let existingListener = listenerRegistrations[listenerKey] {
             existingListener.remove()
             self.listenerRegistrations.removeValue(forKey: listenerKey)
         }
 
-        let listener = self.database.collection(DatabaseCollection.libraries.rawValue)
+        let listener = self.database.collection(DatabaseCollection.sharedLibraries.rawValue)
             .whereField("root_owner_uid", isEqualTo: currentUserID)
             .limit(to: 1)
             .addSnapshotListener { querySnapshot, error in
@@ -157,12 +159,12 @@ public class DatabaseOperations {
                     subject.send(completion: .failure(error))
                 } else if let querySnapshot, !querySnapshot.documents.isEmpty {
                     do {
-                        let library = try querySnapshot.documents.first?.data(as: Library.self)
-                        if let library {
-                            log.info("Library document fetched successfully for user \(currentUserID). 🎉")
-                            subject.send(library)
+                        let sharedLibrary = try querySnapshot.documents.first?.data(as: SharedLibrary.self)
+                        if let sharedLibrary {
+                            log.info("Shared Library document fetched successfully for user \(currentUserID). 🎉")
+                            subject.send(sharedLibrary)
                         } else {
-                            log.error("Library document could not be decoded.")
+                            log.error("Shared Library document could not be decoded.")
                             subject.send(completion: .failure(DatabaseError.decodeError))
                         }
                     } catch {
@@ -170,7 +172,7 @@ public class DatabaseOperations {
                         subject.send(completion: .failure(error))
                     }
                 } else {
-                    log.error("Library document not found for user \(currentUserID).")
+                    log.error("Shared Library document not found for user \(currentUserID).")
                     subject.send(completion: .failure(DatabaseError.documentNotFound))
                 }
             }
@@ -180,10 +182,21 @@ public class DatabaseOperations {
         return subject.eraseToAnyPublisher()
     }
 
-    public func listenToAllLibrarySubCollections(libraryID: String) -> AnyPublisher<([SavedCurriculum], [SavedActivity], [SavedStory]), Error> {
-        let curriculumPublisher: AnyPublisher<[SavedCurriculum], Error> = self.listenToLibrarySubCollection(libraryID: libraryID, subCollection: .curriculums)
-        let activityPublisher: AnyPublisher<[SavedActivity], Error> = self.listenToLibrarySubCollection(libraryID: libraryID, subCollection: .activities)
-        let storyPublisher: AnyPublisher<[SavedStory], Error> = self.listenToLibrarySubCollection(libraryID: libraryID, subCollection: .stories)
+    // swiftlint:disable large_tuple
+
+    public func listenToAllSharedLibrarySubCollections(libraryID: String) -> AnyPublisher<([SavedCurriculum], [SavedActivity], [SavedStory]), Error> {
+        let curriculumPublisher: AnyPublisher<[SavedCurriculum], Error> = self.listenToSharedLibrarySubCollection(
+            libraryID: libraryID,
+            subCollection: .curriculums
+        )
+        let activityPublisher: AnyPublisher<[SavedActivity], Error> = self.listenToSharedLibrarySubCollection(
+            libraryID: libraryID,
+            subCollection: .activities
+        )
+        let storyPublisher: AnyPublisher<[SavedStory], Error> = self.listenToSharedLibrarySubCollection(
+            libraryID: libraryID,
+            subCollection: .stories
+        )
 
         return Publishers.CombineLatest(curriculumPublisher,
                                         Publishers.CombineLatest(activityPublisher, storyPublisher))
@@ -193,6 +206,8 @@ public class DatabaseOperations {
             }
             .eraseToAnyPublisher()
     }
+
+    // swiftlint:enable large_tuple
 
     public func getCurrentRootAccount() -> AnyPublisher<RootAccount, Error> {
         let subject = PassthroughSubject<RootAccount, Error>()
@@ -242,47 +257,51 @@ public class DatabaseOperations {
         self.listenerRegistrations.removeAll()
     }
 
-    public func addItemToLibrarySubCollection(
-        libraryID: String,
-        subCollection: LibrarySubCollection,
-        item: some Encodable
-    ) -> AnyPublisher<Void, Error> {
-        let libraryRef = self.database.collection(DatabaseCollection.libraries.rawValue).document(libraryID)
-        let itemRef = libraryRef.collection(subCollection.rawValue).document()
+    public func addItemToSharedLibrarySubCollection(libraryID: String, item: SharedLibraryItem) -> AnyPublisher<Void, Error> {
+        let libraryRef = self.database.collection(DatabaseCollection.sharedLibraries.rawValue).document(libraryID)
+        let subCollectionRef = libraryRef.collection(item.subCollection.rawValue)
+        let itemRef = subCollectionRef.document(item.id)
 
         return Future<Void, Error> { promise in
             let batch = self.database.batch()
             do {
-                try batch.setData(from: item, forDocument: itemRef)
+                switch item {
+                    case let .activity(activity):
+                        try batch.setData(from: activity, forDocument: itemRef)
+                    case let .curriculum(curriculum):
+                        try batch.setData(from: curriculum, forDocument: itemRef)
+                    case let .story(story):
+                        try batch.setData(from: story, forDocument: itemRef)
+                }
 
                 batch.updateData(
-                    [Library.CodingKeys.lastEditedAt.rawValue: FieldValue.serverTimestamp()],
+                    [SharedLibrary.CodingKeys.lastEditedAt.rawValue: FieldValue.serverTimestamp()],
                     forDocument: libraryRef
                 )
 
                 batch.commit { error in
                     if let error {
-                        log.error("Failed to add item to sub-collection \(subCollection.rawValue) and update last_edited_at: \(error.localizedDescription)")
+                        log.error("Failed to add \(item.subCollection.rawValue) item: \(error.localizedDescription)")
                         promise(.failure(DatabaseError.customError(error.localizedDescription)))
                     } else {
-                        log.info("Item added to sub-collection \(subCollection.rawValue) and library's last_edited_at updated successfully.")
+                        log.info("\(item.subCollection.rawValue) item added successfully.")
                         promise(.success(()))
                     }
                 }
             } catch {
-                log.error("Failed to encode item for sub-collection \(subCollection.rawValue): \(error.localizedDescription)")
+                log.error("Failed to encode \(item.subCollection.rawValue) item: \(error.localizedDescription)")
                 promise(.failure(DatabaseError.encodeError))
             }
         }
         .eraseToAnyPublisher()
     }
 
-    public func removeItemFromLibrarySubCollection(
+    public func removeItemFromSharedLibrarySubCollection(
         libraryID: String,
-        subCollection: LibrarySubCollection,
+        subCollection: SharedLibrarySubCollection,
         itemID: String
     ) -> AnyPublisher<Void, Error> {
-        let libraryRef = self.database.collection(DatabaseCollection.libraries.rawValue).document(libraryID)
+        let libraryRef = self.database.collection(DatabaseCollection.sharedLibraries.rawValue).document(libraryID)
         let subCollectionRef = libraryRef.collection(subCollection.rawValue)
 
         return Future<Void, Error> { promise in
@@ -306,7 +325,7 @@ public class DatabaseOperations {
                     batch.deleteDocument(document.reference)
 
                     batch.updateData(
-                        [Library.CodingKeys.lastEditedAt.rawValue: FieldValue.serverTimestamp()],
+                        [SharedLibrary.CodingKeys.lastEditedAt.rawValue: FieldValue.serverTimestamp()],
                         forDocument: libraryRef
                     )
 
@@ -324,14 +343,116 @@ public class DatabaseOperations {
         .eraseToAnyPublisher()
     }
 
+    // MARK: Favorites
+
+    public func addSharedLibraryItemToFavorites(
+        libraryID: String,
+        subCollection: SharedLibrarySubCollection,
+        itemID: String,
+        caregiverID: String
+    ) -> AnyPublisher<Void, Error> {
+        let libraryRef = self.database.collection(DatabaseCollection.sharedLibraries.rawValue).document(libraryID)
+        let subCollectionRef = libraryRef.collection(subCollection.rawValue)
+
+        return Future<Void, Error> { promise in
+            subCollectionRef
+                .whereField("uuid", isEqualTo: itemID)
+                .getDocuments { snapshot, error in
+                    if let error {
+                        log.error("Error fetching item \(itemID) from \(subCollection.rawValue): \(error.localizedDescription)")
+                        promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                        return
+                    }
+
+                    guard let document = snapshot?.documents.first else {
+                        log.error("No item found with id \(itemID) in \(subCollection.rawValue)")
+                        promise(.failure(DatabaseError.documentNotFound))
+                        return
+                    }
+
+                    let timestamp = FieldValue.serverTimestamp()
+
+                    let batch = self.database.batch()
+                    batch.updateData(
+                        ["favorited_by.\(caregiverID)": timestamp],
+                        forDocument: document.reference
+                    )
+                    batch.updateData(
+                        [SharedLibrary.CodingKeys.lastEditedAt.rawValue: timestamp],
+                        forDocument: libraryRef
+                    )
+
+                    batch.commit { error in
+                        if let error {
+                            log.error("Failed to favorite item \(itemID): \(error.localizedDescription)")
+                            promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                        } else {
+                            log.info("Item \(itemID) favorited by caregiver \(caregiverID).")
+                            promise(.success(()))
+                        }
+                    }
+                }
+        }
+        .eraseToAnyPublisher()
+    }
+
+    public func removeSharedLibraryItemFromFavorites(
+        libraryID: String,
+        subCollection: SharedLibrarySubCollection,
+        itemID: String,
+        caregiverID: String
+    ) -> AnyPublisher<Void, Error> {
+        let libraryRef = self.database.collection(DatabaseCollection.sharedLibraries.rawValue).document(libraryID)
+        let subCollectionRef = libraryRef.collection(subCollection.rawValue)
+
+        return Future<Void, Error> { promise in
+            subCollectionRef
+                .whereField("uuid", isEqualTo: itemID)
+                .getDocuments { snapshot, error in
+                    if let error {
+                        log.error("Error fetching item \(itemID) from \(subCollection.rawValue): \(error.localizedDescription)")
+                        promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                        return
+                    }
+
+                    guard let document = snapshot?.documents.first else {
+                        log.error("No item found with id \(itemID) in \(subCollection.rawValue)")
+                        promise(.failure(DatabaseError.documentNotFound))
+                        return
+                    }
+
+                    let batch = self.database.batch()
+                    batch.updateData(
+                        ["favorited_by.\(caregiverID)": FieldValue.delete()],
+                        forDocument: document.reference
+                    )
+                    batch.updateData(
+                        [SharedLibrary.CodingKeys.lastEditedAt.rawValue: FieldValue.serverTimestamp()],
+                        forDocument: libraryRef
+                    )
+
+                    batch.commit { error in
+                        if let error {
+                            log.error("Failed to remove favorite for item \(itemID): \(error.localizedDescription)")
+                            promise(.failure(DatabaseError.customError(error.localizedDescription)))
+                        } else {
+                            log.info("Item \(itemID) unfavorited by caregiver \(caregiverID).")
+                            promise(.success(()))
+                        }
+                    }
+                }
+        }
+        .eraseToAnyPublisher()
+    }
+
     // MARK: Private
 
     private let database = Firestore.firestore()
     private var listenerRegistrations = [String: ListenerRegistration]()
 
-    private func listenToLibrarySubCollection<T: Decodable>(
+    private func listenToSharedLibrarySubCollection<T: Decodable>(
         libraryID: String,
-        subCollection: LibrarySubCollection
+        subCollection: SharedLibrarySubCollection
     ) -> AnyPublisher<[T], Error> {
         let subject = PassthroughSubject<[T], Error>()
 
@@ -346,7 +467,7 @@ public class DatabaseOperations {
             self.listenerRegistrations.removeValue(forKey: listenerKey)
         }
 
-        let listener = self.database.collection(DatabaseCollection.libraries.rawValue)
+        let listener = self.database.collection(DatabaseCollection.sharedLibraries.rawValue)
             .document(libraryID)
             .collection(subCollection.rawValue)
             .addSnapshotListener { snapshot, error in
@@ -366,3 +487,5 @@ public class DatabaseOperations {
         return subject.eraseToAnyPublisher()
     }
 }
+
+// swiftlint:enable file_length type_body_length

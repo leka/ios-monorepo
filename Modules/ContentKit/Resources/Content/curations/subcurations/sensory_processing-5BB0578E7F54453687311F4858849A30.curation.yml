@@ -1,0 +1,60 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 5BB0578E7F54453687311F4858849A30
+icon: sensor.tag.radiowaves.forward.fill
+color: 0x81C784
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Sensorialité
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Sensory processing
+      subtitle:
+      description:
+
+content:
+  - component: vertical_activity_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Activités autour du toucher et des lumières colorées
+          subtitle:
+          description: Stimulez le toucher et l'interaction avec des activités autour des lumières colorées.
+      - locale: en_US
+        details:
+          title: Activities involving touch and colorful lights
+          subtitle:
+          description: Stimulate touch and interaction through activities with colorful lights.
+    items:
+      - value: color_music_pad-8439D1EE7DD846ACB048145089F34C33
+        type: activity
+      - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
+        type: activity
+      - value: xylophone_pentatonic-7C1DDED6C6D44913B9A7D4EB4AEE8F6B
+        type: activity
+
+  - component: horizontal_curriculum_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Parcours autour des sons
+          subtitle:
+          description: Découvrez des activités basées sur l'écoute et la reconnaissance de sons.
+      - locale: en_US
+        details:
+          title: Sound-based curriculums
+          subtitle:
+          description: Explore activities focused on listening and recognizing sounds.
+    items:
+      - value: curriculum_recognition_sounds_emotions-2D48CCB418BF4808BCB16148C901C617
+        type: curriculum
+      - value: curriculum_recognition_sounds_animals-FED25D9B424E42019F03593FE0D65AEE
+        type: curriculum
+      - value: curriculum_recognition_sounds_musical_instruments-6A5EF209D00942F4AEEA4AEC6DAC052A
+        type: curriculum

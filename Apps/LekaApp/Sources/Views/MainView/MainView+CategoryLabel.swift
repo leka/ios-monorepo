@@ -19,6 +19,14 @@ extension MainView {
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.home.characters)
                     self.systemImage = "house"
 
+                case .explore:
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.explore.characters)
+                    self.systemImage = "safari"
+
+                case .objectives:
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.objectives.characters)
+                    self.systemImage = "target"
+
                 case .search:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.search.characters)
                     self.systemImage = "magnifyingglass"
@@ -39,10 +47,6 @@ extension MainView {
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.resourcesDeepDive.characters)
                     self.systemImage = "paperclip"
 
-                case .curriculums:
-                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.curriculums.characters)
-                    self.systemImage = "graduationcap"
-
                 case .educationalGames:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.educationalGames.characters)
                     self.systemImage = "dice"
@@ -55,17 +59,21 @@ extension MainView {
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.gamepads.characters)
                     self.systemImage = "gamecontroller"
 
-                case .libraryCurriculums:
-                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.libraryCurriculums.characters)
+                case .sharedLibraryCurriculums:
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.sharedLibraryCurriculums.characters)
                     self.systemImage = "graduationcap.fill"
 
-                case .libraryActivities:
-                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.libraryActivities.characters)
+                case .sharedLibraryActivities:
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.sharedLibraryActivities.characters)
                     self.systemImage = "dice.fill"
 
-                case .libraryStories:
-                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.stories.characters)
+                case .sharedLibraryStories:
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.sharedLibraryStories.characters)
                     self.systemImage = "text.book.closed.fill"
+
+                case .sharedLibraryFavorites:
+                    self.title = String(l10n.MainView.Sidebar.CategoryLabel.sharedLibraryFavorites.characters)
+                    self.systemImage = "star.fill"
 
                 case .caregivers:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.caregivers.characters)
@@ -74,6 +82,10 @@ extension MainView {
                 case .carereceivers:
                     self.title = String(l10n.MainView.Sidebar.CategoryLabel.carereceivers.characters)
                     self.systemImage = "figure.2.arms.open"
+
+                case .curationSandbox:
+                    self.title = "Curation Sandbox"
+                    self.systemImage = "wrench.and.screwdriver"
 
                 case .allPublishedActivities:
                     self.title = "Published Activities"

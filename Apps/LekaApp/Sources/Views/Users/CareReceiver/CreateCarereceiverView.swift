@@ -10,7 +10,8 @@ import SwiftUI
 
 // MARK: - CreateCarereceiverViewModel
 
-class CreateCarereceiverViewModel: ObservableObject {
+@Observable
+class CreateCarereceiverViewModel {
     // MARK: Internal
 
     var carereceiverManager: CarereceiverManager = .shared
@@ -73,8 +74,8 @@ struct CreateCarereceiverView: View {
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
                             .focused(self.$focused)
-                            .onChange(of: self.focused) { focused in
-                                if !focused {
+                            .onChange(of: self.focused) {
+                                if !self.focused {
                                     self.newCarereceiver.username = self.newCarereceiver.username.trimLeadingAndTrailingWhitespaces()
                                 }
                             }
@@ -127,13 +128,12 @@ struct CreateCarereceiverView: View {
     // MARK: Private
 
     @State private var isCarereceiverCreated: Bool = false
-    @StateObject private var viewModel = CreateCarereceiverViewModel()
+    @State private var viewModel = CreateCarereceiverViewModel()
 
     @FocusState private var focused: Bool
 
     @State private var newCarereceiver = Carereceiver()
     @State private var isAvatarPickerPresented: Bool = false
-    @State private var cancellables = Set<AnyCancellable>()
 
     private var placeholderName = Text(String(String(l10n.CarereceiverCreation.carereceiverPlaceholderName.characters)))
 

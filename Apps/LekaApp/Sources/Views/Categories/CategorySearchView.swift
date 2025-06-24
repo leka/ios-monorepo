@@ -15,23 +15,18 @@ struct CategorySearchView: View {
     var body: some View {
         Group {
             if self.query.isEmpty {
-                ScrollView(showsIndicators: true) {
-                    SkillsGridView(skills: self.skills, onActivitySelected: { activity in
-                        self.navigation.currentActivity = activity
-                        self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
-                    })
+                ScrollView(showsIndicators: false) {
+                    SkillsGridView(skills: self.skills)
                 }
                 .navigationTitle(String(l10n.CategorySearchView.browseSkillstitle.characters))
                 .font(.title.bold())
             } else {
-                ScrollView(showsIndicators: true) {
-                    SearchGridView(activities: self.searchActivityResults,
-                                   skills: self.searchSkillsResults,
-                                   curriculums: self.searchCurriculumResults,
-                                   onStartActivity: { activity in
-                                       self.navigation.currentActivity = activity
-                                       self.navigation.fullScreenCoverContent = .activityView(carereceivers: [])
-                                   })
+                ScrollView(showsIndicators: false) {
+                    SearchGridView(
+                        skills: self.searchSkillsResults,
+                        activities: self.searchActivityResults,
+                        curriculums: self.searchCurriculumResults
+                    )
                 }
             }
         }
@@ -110,12 +105,11 @@ struct CategorySearchView: View {
     private let kSubtitleWeight = 3
     private let kTagWeight = 5
 
-    private let activities: [Activity] = ContentKit.allPublishedActivities
-    private let curriculums: [Curriculum] = ContentKit.allPublishedCurriculums
+    private let activities: [Activity] = Array(ContentKit.allPublishedActivities.values)
+    private let curriculums: [Curriculum] = Array(ContentKit.allPublishedCurriculums.values)
     private let skills: [Skill] = Skills.primarySkillsList
 
     @State private var query = ""
-    @ObservedObject private var navigation: Navigation = .shared
 }
 
 // MARK: - l10n.CategorySearchView

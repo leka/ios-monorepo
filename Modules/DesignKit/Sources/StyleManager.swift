@@ -4,7 +4,8 @@
 
 import SwiftUI
 
-public class StyleManager: ObservableObject {
+@Observable
+public class StyleManager {
     // MARK: Lifecycle
 
     public init(accentColor: Color? = nil, colorScheme: ColorScheme = .light) {
@@ -16,22 +17,18 @@ public class StyleManager: ObservableObject {
 
     public static let shared = StyleManager(accentColor: DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
 
-    @Published public var accentColor: Color?
-    @Published public var colorScheme: ColorScheme
+    public private(set) var accentColor: Color?
+    public private(set) var colorScheme: ColorScheme
 
     public func setDefaultColorScheme(_ colorScheme: ColorScheme) {
         self.colorScheme = colorScheme
     }
 
-    public func toggleAccentColor() {
-        self.accentColor = if self.accentColor == nil {
-            DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor
-        } else {
-            nil
-        }
+    public func setAccentColor(_ color: Color?) {
+        self.accentColor = color
     }
 
-    public func toggleColorScheme() {
-        self.colorScheme = self.colorScheme == .light ? .dark : .light
+    public func setColorScheme(_ scheme: ColorScheme) {
+        self.colorScheme = scheme
     }
 }

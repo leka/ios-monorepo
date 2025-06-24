@@ -5,7 +5,8 @@
 import Combine
 import SwiftUI
 
-public class CarereceiverManagerViewModel: ObservableObject {
+@Observable
+public class CarereceiverManagerViewModel {
     // MARK: Lifecycle
 
     public init() {
@@ -14,15 +15,15 @@ public class CarereceiverManagerViewModel: ObservableObject {
 
     // MARK: Public
 
-    @Published public var carereceivers: [Carereceiver] = []
-    @Published public var currentCarereceivers: [Carereceiver] = []
-    @Published public var errorMessage: String = ""
-    @Published public var showErrorAlert = false
+    public private(set) var carereceivers: [Carereceiver] = []
+    public private(set) var currentCarereceivers: [Carereceiver] = []
+    public var showErrorAlert = false
 
     // MARK: Private
 
-    private var cancellables = Set<AnyCancellable>()
     private let carereceiverManager = CarereceiverManager.shared
+    private var cancellables = Set<AnyCancellable>()
+    private var errorMessage: String = ""
 
     private func subscribeToManager() {
         self.carereceiverManager.carereceiverList

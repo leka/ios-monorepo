@@ -39,7 +39,7 @@ public extension Project {
         name: String,
         version: String = "1.0.0",
         bundleId: String? = nil,
-        deploymentTargets: DeploymentTargets = .iOS("16.6"),
+        deploymentTargets: DeploymentTargets = .iOS("17.4"),
         destinations: Destinations = [.iPad, .macWithiPadDesign],
         infoPlist: [String: Plist.Value] = [:],
         resources: [ResourceFileElement] = [],
@@ -82,9 +82,7 @@ public extension Project {
             sources: ["Tests/**"],
             resources: [],
             scripts: TargetScript.linters(),
-            dependencies: [
-                .target(name: "\(name)"),
-            ] + dependencies
+            dependencies: [.target(name: "\(name)")] + dependencies
         )
 
         return Project(

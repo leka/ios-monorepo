@@ -1,0 +1,44 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 4D4D3C30F4704417A9DDD4B8AD30EE62
+icon: brain.head.profile
+color: 0xF48FB1
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Cognition et apprentissages scolaires
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Cognition and academic learning
+      subtitle:
+      description:
+
+content:
+  - component: vertical_curation_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title:
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title:
+          subtitle:
+          description:
+    items:
+      - value: categorize_associate_organize-3B7D4928FF4B498F9DAA16FF50933979
+        type: curation
+      - value: recognize_and_generalize-B34593ED6BE947AB93D212CB5D2A7C5A
+        type: curation
+      - value: memory-2A2BEFBAEE01478CABA4D7EDA9958F56
+        type: curation
+      - value: mathematics-9D3BC84542E44614922FE450EC2F7F58
+        type: curation
+      - value: english-4B7973C2A256491FA3FCEF70A43362B8
+        type: curation

@@ -1,0 +1,118 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 3B7D4928FF4B498F9DAA16FF50933979
+icon: brain.head.profile
+color: 0xF48FB1
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Catégoriser, associer, organiser
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Categorize, associate, organize
+      subtitle:
+      description:
+
+content:
+  - component: horizontal_curriculum_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Parcours pour ordonner
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Ordering paths
+          subtitle:
+          description:
+    items:
+      - value: curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
+        type: curriculum
+      - value: curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
+        type: curriculum
+      - value: curriculum_order_by_size_animals-1FAED1FF14134571849325B6EC9197B5
+        type: curriculum
+      - value: curriculum_order_by_size_different_animals-3158E58D908E43D29967B04D29C21912
+        type: curriculum
+      - value: curriculum_order_by_size_animals-1FAED1FF14134571849325B6EC9197B5
+        type: curriculum
+      - value: curriculum_order_by_size_different_animals-3158E58D908E43D29967B04D29C21912
+        type: curriculum
+      - value: curriculum_ordering_steps_to_bake_a_cake-1F908FA3349B476DA1EE4CDC60B5B632
+        type: curriculum
+      - value: curriculum_ordering_the_steps_of_a_session_with_leka-211497313FDB4094990330D2387D1CA3
+        type: curriculum
+      - value: curriculum_alphabetical_order_a_to_f-F9A2F6E76AE449999B1F76AA7E2D2978
+        type: curriculum
+
+  - component: horizontal_curriculum_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Parcours pour trier
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Sorting paths
+          subtitle:
+          description:
+    items:
+      - value: curriculum_categorization_sorting_fruits_vegetables_basket-E6A322DC7A6E48518CED2CA2D3D2A595
+        type: curriculum
+      - value: curriculum_categorization_sort_through_functional_category-64388748AF714B4880B8C7B6DD6D93F3
+        type: curriculum
+      - value: curriculum_sort_objects_by_location-CC406024F40C4834A66BB7C8F0E8C0AD
+        type: curriculum
+      - value: curriculum_sort_sweet_and_salty-5ED0AFBEC4504F6EBA52B26C65ED93CC
+        type: curriculum
+
+  - component: horizontal_curriculum_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Parcours pour apparier
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Matching paths
+          subtitle:
+          description:
+    items:
+      - value: curriculum_categorization_sort_through-88C512E99B61485D93A7AD8C34ED6A76
+        type: curriculum
+      - value: color_bingo-69760D1DA61849E3926E3A939BBEF0CE
+        type: curriculum
+      - value: curriculum_animal_memory-7C75908B86D748A283AA080D40642BE7
+        type: curriculum
+      - value: curriculum_memory_christmas-EFC444BBDEF24E08813FF472FFA5365D
+        type: curriculum
+
+  - component: horizontal_curriculum_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Parcours pour faire des associations logiques
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Logical association paths
+          subtitle:
+          description:
+    items:
+      - value: curriculum_leka_weather_robot-ED4C900D4ACB426384DC76F182BC19A5
+        type: curriculum
+      - value: curriculum_recognition_basic_physiological_needs-B697FEE9EF7946A2B704673FEEAA0824
+        type: curriculum
+      - value: curriculum_recognition_professions-92ACC48ED3A041DE959EA5C2E8600441
+        type: curriculum
+      - value: curriculum_recognition_sports-C7F3963541234712A2701C0EB9E2EEAE
+        type: curriculum

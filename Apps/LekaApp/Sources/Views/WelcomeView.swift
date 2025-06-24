@@ -52,16 +52,18 @@ struct WelcomeView: View {
             }
         }
         .onAppear {
-            self.authManagerViewModel.userAction = .none
+            self.authManagerViewModel.setUserAction(.none)
             self.setupVideo()
         }
     }
 
     // MARK: Private
 
-    @ObservedObject private var navigation: Navigation = .shared
-    @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
-    @StateObject private var caregiverManagerViewModel = CaregiverManagerViewModel()
+    private var authManagerViewModel: AuthManagerViewModel = .shared
+
+    @Bindable private var navigation: Navigation = .shared
+
+    @State private var caregiverManagerViewModel = CaregiverManagerViewModel()
 
     private func setupVideo() {
         self.player.play()

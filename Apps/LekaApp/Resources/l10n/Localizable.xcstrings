@@ -427,6 +427,60 @@
                 }
             }
         },
+        "lekaapp.activity_details_view.instructions_section_title": {
+            "comment": "ActivityDetailsView 'instructions' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Instructions"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Instructions"
+                    }
+                }
+            }
+        },
+        "lekaapp.activity_details_view.related_curriculum_section_title": {
+            "comment": "ActivityDetailsView 'related curriculum' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Related Curriculums"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Parcours associ\u00e9s"
+                    }
+                }
+            }
+        },
+        "lekaapp.activity_details_view.start_activity_button_label": {
+            "comment": "Start activity button label on Activity Details view",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Start activity"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "D\u00e9marrer l\u2019activit\u00e9"
+                    }
+                }
+            }
+        },
         "lekaapp.avatar_picker.close_button_label": {
             "comment": "Avatar picker close button label",
             "localizations": {
@@ -1311,6 +1365,114 @@
                 }
             }
         },
+        "lekaapp.content_item_menu.add_to_shared_library_button_label": {
+            "comment": "Button label to add an item to the shared library",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Add to Shared Library"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Ajouter \u00e0 la Librairie Partag\u00e9e"
+                    }
+                }
+            }
+        },
+        "lekaapp.content_item_menu.favorite_button_label": {
+            "comment": "Button label to mark an item as favorite",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Favorite"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Ajouter aux Favoris"
+                    }
+                }
+            }
+        },
+        "lekaapp.content_item_menu.remove_from_shared_library_button_label": {
+            "comment": "Button label to remove an item from the shared library",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Remove from Shared Library"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Supprimer de la Librairie Partag\u00e9e"
+                    }
+                }
+            }
+        },
+        "lekaapp.content_item_menu.undo_favorite_button_label": {
+            "comment": "Button label to remove an item from favorites",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Undo Favorite"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Retirer des Favoris"
+                    }
+                }
+            }
+        },
+        "lekaapp.curation_view.see_all_label": {
+            "comment": "CurationView's 'See all' button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "See all"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Voir plus"
+                    }
+                }
+            }
+        },
+        "lekaapp.curriculum_details_view.activities_section_title": {
+            "comment": "CurriculumDetailsView 'activities' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Activities"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Activit\u00e9s"
+                    }
+                }
+            }
+        },
         "lekaapp.edit_caregiver_view.appearance_section.accent_color_row.title": {
             "comment": "AccentColor Row title",
             "localizations": {
@@ -1447,63 +1609,139 @@
                 }
             }
         },
-        "lekaapp.empty_library_placedholder_view.button_instruction": {
-            "comment": "Instruction suffix",
+        "lekaapp.empty_favorites_placedholder_view.add_items": {
+            "comment": "Favorites Instruction suffix",
+            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "translated",
-                        "value": "button on any activity, curriculum, or story to add them to your Library."
+                        "state": "new",
+                        "value": "button on any content to add them to your Favorites."
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "dans n'importe quelle activit\u00e9, parcours ou histoire pour les ajouter \u00e0 votre Biblioth\u00e8que."
+                        "value": "dans n'importe quel contenu pour les ajouter \u00e0 vos Favoris."
                     }
                 }
             }
         },
-        "lekaapp.empty_library_placedholder_view.library_is_empty": {
-            "comment": "Empty library title",
+        "lekaapp.empty_favorites_placedholder_view.favorites_are_empty": {
+            "comment": "Empty Favorites title",
+            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "translated",
-                        "value": "Your Library is Empty"
+                        "state": "new",
+                        "value": "Your Favorites are Empty"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Votre Biblioth\u00e8que est vide"
+                        "value": "Votre liste de Favoris est vide"
                     }
                 }
             }
         },
-        "lekaapp.empty_library_placedholder_view.remove_items": {
+        "lekaapp.empty_favorites_placedholder_view.remove_items": {
+            "comment": "Favorites Removal instruction",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "You can remove items from your Favorites using the same button."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Vous pouvez supprimer des \u00e9l\u00e9ments de votre liste de Favoris en utilisant le m\u00eame bouton."
+                    }
+                }
+            }
+        },
+        "lekaapp.empty_favorites_placedholder_view.tap_the": {
+            "comment": "Favorites Instruction prefix",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Tap the"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Appuyez sur le bouton"
+                    }
+                }
+            }
+        },
+        "lekaapp.empty_shared_library_placedholder_view.add_items": {
+            "comment": "Add instruction suffix",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "button on any content to add them to your Shared Library."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "dans n'importe quel contenu pour les ajouter \u00e0 votre Biblioth\u00e8que Partag\u00e9e."
+                    }
+                }
+            }
+        },
+        "lekaapp.empty_shared_library_placedholder_view.remove_items": {
             "comment": "Removal instruction",
+            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "translated",
-                        "value": "You can remove items from your Library using the same button."
+                        "state": "new",
+                        "value": "You can remove items from your Shared Library using the same button."
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Vous pouvez supprimer des \u00e9l\u00e9ments de votre Biblioth\u00e8que en utilisant le m\u00eame bouton."
+                        "value": "Vous pouvez supprimer des \u00e9l\u00e9ments de votre Biblioth\u00e8que Partag\u00e9e en utilisant le m\u00eame bouton."
                     }
                 }
             }
         },
-        "lekaapp.empty_library_placedholder_view.tap_the": {
-            "comment": "Instruction prefix",
+        "lekaapp.empty_shared_library_placedholder_view.shared_library_is_empty": {
+            "comment": "Empty shared library title",
+            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
+                        "state": "new",
+                        "value": "Your shared Library is Empty"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
                         "state": "translated",
+                        "value": "Votre Biblioth\u00e8que Partag\u00e9e est vide"
+                    }
+                }
+            }
+        },
+        "lekaapp.empty_shared_library_placedholder_view.tap_the": {
+            "comment": "Instruction prefix",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
                         "value": "Tap the"
                     }
                 },
@@ -1702,13 +1940,14 @@
                 }
             }
         },
-        "lekaapp.main_view.detailView.disconnected_library_message": {
-            "comment": "The message to invite users to connect to display the Library",
+        "lekaapp.main_view.detailView.disconnected_shared_library_message": {
+            "comment": "The message to invite users to connect to display the Shared Library",
+            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "translated",
-                        "value": "Log in to your account to access your personal library."
+                        "state": "new",
+                        "value": "Log in to your account to access your shared library."
                     }
                 },
                 "fr": {
@@ -1787,6 +2026,132 @@
                 }
             }
         },
+        "lekaapp.main_view.removal_alert.cannot_remove_message": {
+            "comment": "Message of the alert when an item cannot be removed because it is favorited by others",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "This item is favorited by other caregivers. You cannot remove it."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Ceci a \u00e9t\u00e9 ajout\u00e9 aux favoris d\u2019autres utilisateurs. Vous ne pouvez pas le supprimer."
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.removal_alert.cannot_remove_title": {
+            "comment": "Title of the alert when an item cannot be removed due to being favorited by others",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Cannot Remove Item"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Suppression impossible"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.removal_alert.confirm_action": {
+            "comment": "Action button text for confirming item removal",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Remove"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Supprimer"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.removal_alert.confirm_message": {
+            "comment": "Message of the alert when a user is about to remove a favorited item",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "You have marked this item as a favorite. Are you sure you want to remove it from the shared library?"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Vous avez ajout\u00e9 ceci \u00e0 vos favoris. \u00cates-vous certain(e) de vouloir le supprimer de la biblioth\u00e8que partag\u00e9e ?"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.removal_alert.confirm_title": {
+            "comment": "Title of the alert when a user is about to remove a favorited item",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Confirm Removal"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Confirmer la suppression"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.removal_alert.error_title": {
+            "comment": "Title of the alert when an error occurs during item removal",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Error"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Erreur"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.removal_alert.ok_action": {
+            "comment": "OK button text for alerts",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "OK"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "OK"
+                    }
+                }
+            }
+        },
         "lekaapp.main_view.sidebar.category_label.caregivers": {
             "comment": "The title of the category 'Caregivers'",
             "localizations": {
@@ -1855,6 +2220,24 @@
                 }
             }
         },
+        "lekaapp.main_view.sidebar.category_label.explore": {
+            "comment": "The title of the category 'Explore'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Explore"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Explorer"
+                    }
+                }
+            }
+        },
         "lekaapp.main_view.sidebar.category_label.gamepads": {
             "comment": "The title of the category 'Gamepads'",
             "localizations": {
@@ -1889,57 +2272,6 @@
                 }
             }
         },
-        "lekaapp.main_view.sidebar.category_label.library_activities": {
-            "comment": "The title of the category 'Library Activities'",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Activities"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Activit\u00e9s"
-                    }
-                }
-            }
-        },
-        "lekaapp.main_view.sidebar.category_label.library_curriculums": {
-            "comment": "The title of the category 'Library Curriculums'",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Curriculums"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Parcours"
-                    }
-                }
-            }
-        },
-        "lekaapp.main_view.sidebar.category_label.library_stories": {
-            "comment": "The title of the category 'Library Stories'",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Stories"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Histoires"
-                    }
-                }
-            }
-        },
         "lekaapp.main_view.sidebar.category_label.news": {
             "comment": "The title of the category 'News'",
             "localizations": {
@@ -1970,6 +2302,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "S\u00e9lectionnez une cat\u00e9gorie"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.objectives": {
+            "comment": "The title of the category 'Learning Objectives'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Learning Objectives"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Objectifs P\u00e9dagogiques"
                     }
                 }
             }
@@ -2042,6 +2392,78 @@
                 }
             }
         },
+        "lekaapp.main_view.sidebar.category_label.shared_library_activities": {
+            "comment": "The title of the category 'Shared Library Activities'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Activities"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Activit\u00e9s"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.shared_library_curriculums": {
+            "comment": "The title of the category 'Shared Library Curriculums'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Curriculums"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Parcours"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.shared_library_favorites": {
+            "comment": "The title of the category 'Shared Library Favorites'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Favorites"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Favoris"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.category_label.shared_library_stories": {
+            "comment": "The title of the category 'Shared Library Stories'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Stories"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Histoires"
+                    }
+                }
+            }
+        },
         "lekaapp.main_view.sidebar.category_label.stories": {
             "comment": "The title of the category 'Stories'",
             "localizations": {
@@ -2093,40 +2515,6 @@
                 }
             }
         },
-        "lekaapp.main_view.sidebar.section.information": {
-            "comment": "The title of the section 'Information'",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Information"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Informations"
-                    }
-                }
-            }
-        },
-        "lekaapp.main_view.sidebar.section.library": {
-            "comment": "The title of the section 'Library'",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Library"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Biblioth\u00e8que"
-                    }
-                }
-            }
-        },
         "lekaapp.main_view.sidebar.section.monitoring": {
             "comment": "The title of the section 'Users'",
             "localizations": {
@@ -2140,6 +2528,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Utilisateurs"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.sidebar.section.shared_library": {
+            "comment": "The title of the section 'Shared Library'",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Shared Library"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Biblioth\u00e8que Partag\u00e9e"
                     }
                 }
             }
@@ -2276,6 +2682,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Liste des professions"
+                    }
+                }
+            }
+        },
+        "lekaapp.quick_start_button.play_button_label": {
+            "comment": "Play button label on QuickStartButton",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Play"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Jouer"
                     }
                 }
             }
@@ -2497,6 +2921,96 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Connectez-vous \u00e0 votre Leka"
+                    }
+                }
+            }
+        },
+        "lekaapp.search_grid_view.activities_title": {
+            "comment": "SearchGridView 'activities' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Activities"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Activit\u00e9s"
+                    }
+                }
+            }
+        },
+        "lekaapp.search_grid_view.curriculums_title": {
+            "comment": "SearchGridView 'curriculums' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Curriculums"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Parcours"
+                    }
+                }
+            }
+        },
+        "lekaapp.search_grid_view.no_results": {
+            "comment": "SearchGridView 'see all' button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Oops! No results found."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "D\u00e9sol\u00e9 ! Aucun r\u00e9sultat trouv\u00e9."
+                    }
+                }
+            }
+        },
+        "lekaapp.search_grid_view.see_all_label": {
+            "comment": "SearchGridView 'see all' button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "See all"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Voir tout"
+                    }
+                }
+            }
+        },
+        "lekaapp.search_grid_view.skills_title": {
+            "comment": "SearchGridView 'skills' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Skills"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Comp\u00e9tences"
                     }
                 }
             }
@@ -3011,6 +3525,60 @@
                 }
             }
         },
+        "lekaapp.story_details_view.instructions_section_title": {
+            "comment": "StoryDetailsView 'instructions' section title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Instructions"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Instructions"
+                    }
+                }
+            }
+        },
+        "lekaapp.story_details_view.start_story_button_label": {
+            "comment": "Start Story button label on Sample Story List view",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Start story"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "D\u00e9marrer l\u2019histoire"
+                    }
+                }
+            }
+        },
+        "lekaapp.vertical_activity_table.title_column_label": {
+            "comment": "Title Column header label in the Vertical Activity Table views",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Title"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Titre"
+                    }
+                }
+            }
+        },
         "lekaapp.welcome_view.create_account_button": {
             "comment": "Create account button on WelcomeView",
             "localizations": {
@@ -3194,6 +3762,47 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "S\u00e9lectionner un Accompagnant"
+                    }
+                }
+            }
+        },
+        "lekapp.skills_grid_view.activity_count_label": {
+            "comment": "Activity count label of SkillsGridView",
+            "localizations": {
+                "en": {
+                    "variations": {
+                        "plural": {
+                            "one": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activity"
+                                }
+                            },
+                            "other": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activities"
+                                }
+                            }
+                        }
+                    }
+                },
+                "fr": {
+                    "variations": {
+                        "plural": {
+                            "one": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activit\u00e9"
+                                }
+                            },
+                            "other": {
+                                "stringUnit": {
+                                    "state": "translated",
+                                    "value": "%d activit\u00e9s"
+                                }
+                            }
+                        }
                     }
                 }
             }

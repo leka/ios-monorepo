@@ -1,0 +1,95 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 48598D7E11E340DDA4643A1557D1E8BE
+name: ordering_the_steps_of_a_session_with_leka_3
+
+created_at: "2024-03-08T11:49:37.123525"
+last_edited_at: "2025-05-15T14:44:07.496511"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - association
+  - association/ordering
+  - time_and_temporality_understanding
+
+tags:
+  - school
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: sequencing_session_with_leka
+
+      title: Ordonner les étapes d'une séance avec Leka
+      subtitle: 3 étapes
+
+      short_description: |
+        Glisser et déposer les étapes d'une séance avec Leka dans le bon ordre
+
+      description: |
+        Le participant doit glisser et déposer les étapes de la séance dans le bon ordre chronologique.
+
+      instructions: |
+        - Sur l'écran de l'iPad, quatre étapes sont présentées de manière désordonnée.
+        - Chaque étape est représentée par une image.
+        - Encouragez le participant à glisser chaque étape dans la zone correcte pour ordonner chronologiquement les étapes de la séance.
+        - Après avoir placé chaque étape correctement, Leka lance un renforçateur pour célébrer cette réussite et encourager l'apprentissage.
+
+  - locale: en_US
+    details:
+      icon: sequencing_session_with_leka
+
+      title: Ordering the steps of a session with Leka
+      subtitle: 3 steps
+
+      short_description: |
+        Drag and drop the stages of life in the correct order.
+
+      description: |
+        The participant must drag and drop the stages of life in the correct chronological order.
+
+      instructions: |
+        - On the iPad screen, four steps are displayed in a mixed-up order.
+        - Each step is represented by an image.
+        - Encourage the participant to drag each step into the correct area to arrange the session steps in chronological order.
+        - After all the steps are correctly placed, Leka triggers a reinforcer to celebrate the success and encourage learning.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Remets les étapes de la séance dans l'ordre
+            - locale: en_US
+              value: Put the stages of the session back in order
+          interface: dragAndDropInOrder
+          gameplay: findTheRightOrder
+          payload:
+            choices:
+              - value: sequencing_session_with_leka_1
+                type: image
+              - value: sequencing_session_with_leka_2
+                type: image
+              - value: sequencing_session_with_leka_4
+                type: image

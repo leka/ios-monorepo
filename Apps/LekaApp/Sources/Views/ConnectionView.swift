@@ -15,12 +15,6 @@ import SwiftUI
 // ? the same applies for both login/signup
 // ? re-enable autofill modifiers in TextFields when OK (textContentType)
 
-class ConnectionViewViewModel: ObservableObject {
-    @Published var email: String = ""
-    @Published var password: String = ""
-    @Published var forgotPasswordEmail: String = ""
-}
-
 // MARK: - ConnectionView
 
 struct ConnectionView: View {
@@ -39,23 +33,23 @@ struct ConnectionView: View {
                 }
 
                 VStack {
-                    TextFieldEmail(entry: self.$viewModel.email)
+                    TextFieldEmail(entry: self.$email)
 
                     VStack {
-                        TextFieldPassword(entry: self.$viewModel.password)
+                        TextFieldPassword(entry: self.$password)
 
                         Button(role: .destructive) {
                             self.showResetPassword = true
-                            self.authManagerViewModel.userAction = .userIsResettingPassword
+                            self.authManagerViewModel.setUserAction(.userIsResettingPassword)
                         } label: {
                             Text(l10n.ConnectionView.passwordForgottenButton)
                                 .font(.footnote)
                                 .underline()
                         }
                         .sheet(isPresented: self.$showResetPassword) {
-                            self.authManagerViewModel.userAction = .userIsSigningIn
+                            self.authManagerViewModel.setUserAction(.userIsSigningIn)
                         } content: {
-                            ForgotPasswordView(email: self.viewModel.email)
+                            ForgotPasswordView(email: self.email)
                         }
                     }
                 }
@@ -74,19 +68,19 @@ struct ConnectionView: View {
                 .disabled(self.isConnectionDisabled || self.authManagerViewModel.isLoading)
                 .buttonStyle(.borderedProminent)
             }
-            .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
-                if newValue == .loggedIn {
+            .onChange(of: self.authManagerViewModel.userAuthenticationState) {
+                if self.authManagerViewModel.userAuthenticationState == .loggedIn {
                     self.caregiverManager.initializeCaregiversListener()
                     self.carereceiverManager.initializeCarereceiversListener()
                     self.rootAccountManager.initializeRootAccountListener()
-                    self.libraryManager.initializeLibraryListener()
+                    self.sharedLibraryManager.initializeSharedLibraryListener()
                     AnalyticsManager.logEventLogin()
-                    self.authManagerViewModel.userAction = .none
-                    self.navigation.fullScreenCoverContent = nil
+                    self.navigation.setFullScreenCoverContent(nil)
+                    self.authManagerViewModel.setUserAction(.none)
                 }
             }
             .onAppear {
-                self.authManagerViewModel.userAction = .userIsSigningIn
+                self.authManagerViewModel.setUserAction(.none)
             }
             .onDisappear {
                 self.authManagerViewModel.resetErrorMessage()
@@ -96,24 +90,26 @@ struct ConnectionView: View {
 
     // MARK: Private
 
-    @StateObject private var viewModel = ConnectionViewViewModel()
-    @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
-    @ObservedObject private var navigation: Navigation = .shared
+    @State private var email: String = ""
+    @State private var password: String = ""
+    @State private var forgotPasswordEmail: String = ""
 
     @State private var showResetPassword: Bool = false
 
+    private var navigation: Navigation = .shared
     private var authManager: AuthManager = .shared
+    private var authManagerViewModel: AuthManagerViewModel = .shared
     private var rootAccountManager: RootAccountManager = .shared
-    private var libraryManager: LibraryManager = .shared
+    private var sharedLibraryManager: SharedLibraryManager = .shared
     private var caregiverManager: CaregiverManager = .shared
     private var carereceiverManager: CarereceiverManager = .shared
 
     private var isConnectionDisabled: Bool {
-        self.viewModel.email.isEmpty || self.viewModel.password.isEmpty
+        self.email.isEmpty || self.password.isEmpty
     }
 
     private func submitForm() {
-        self.authManager.signIn(email: self.viewModel.email, password: self.viewModel.password)
+        self.authManager.signIn(email: self.email, password: self.password)
     }
 }
 

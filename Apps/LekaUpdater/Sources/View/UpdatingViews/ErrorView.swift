@@ -10,40 +10,86 @@ import SwiftUI
 
 struct ErrorIllustration: View {
     var body: some View {
-        Image(systemName: "exclamationmark.octagon.fill")
+        LekaUpdaterAsset.Assets.updateError.swiftUIImage
             .resizable()
             .scaledToFit()
-            .foregroundColor(.red)
     }
 }
 
 // MARK: - ErrorContentView
 
 struct ErrorContentView: View {
-    @Environment(\.dismiss) var dismiss
+    // MARK: Lifecycle
 
-    public let errorDescription: String
-    public let errorInstruction: String
+    init(
+        error: UpdateProcessError,
+        isConnectionViewPresented: Binding<Bool>,
+        isUpdateStatusViewPresented: Binding<Bool>
+    ) {
+        self.error = error
+        self._isConnectionViewPresented = isConnectionViewPresented
+        self._isUpdateStatusViewPresented = isUpdateStatusViewPresented
+        switch error {
+            case .failedToLoadFile:
+                self.errorDescription = String(l10n.update.error.failedToLoadFileDescription.characters)
+                self.errorInstructions = String(
+                    l10n.update.error.failedToLoadFileInstructions.characters)
+                self.errorButtonLabel = String(l10n.update.error.checkUpdateButtonLabel.characters)
+
+            case .robotNotUpToDate:
+                self.errorDescription = String(l10n.update.error.robotNotUpToDateDescription.characters)
+                self.errorInstructions = String(
+                    l10n.update.error.robotNotUpToDateInstructions.characters)
+                self.errorButtonLabel = String(l10n.update.error.backToConnectionButtonLabel.characters)
+
+            case .updateProcessNotAvailable:
+                self.errorDescription = String(
+                    l10n.update.error.updateProcessNotAvailableDescription.characters)
+                self.errorInstructions = String(
+                    l10n.update.error.updateProcessNotAvailableInstructions.characters)
+                self.errorButtonLabel = String(l10n.update.error.closeButtonLabel.characters)
+
+            case .robotUnexpectedDisconnection:
+                self.errorDescription = String(
+                    l10n.update.error.robotUnexpectedDisconnectionDescription.characters)
+                self.errorInstructions = String(
+                    l10n.update.error.robotUnexpectedDisconnectionInstructions.characters)
+                self.errorButtonLabel = String(l10n.update.error.closeButtonLabel.characters)
+
+            default:
+                self.errorDescription = String(l10n.update.error.unknownErrorDescription.characters)
+                self.errorInstructions = String(l10n.update.error.unknownErrorInstructions.characters)
+                self.errorButtonLabel = String(l10n.update.error.closeButtonLabel.characters)
+        }
+    }
+
+    // MARK: Internal
 
     @Binding var isConnectionViewPresented: Bool
+    @Binding var isUpdateStatusViewPresented: Bool
+
+    let error: UpdateProcessError
 
     var body: some View {
         VStack(spacing: 15) {
-            Text(self.errorDescription)
+            Text(self.errorInstructions)
                 .font(.title2)
                 .bold()
                 .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.center)
 
-            Text(self.errorInstruction)
+            Text(self.errorDescription)
                 .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.center)
 
             Button {
-                self.dismiss()
-                self.isConnectionViewPresented = true
+                if self.error == .failedToLoadFile, let url = URL(string: "https://apps.apple.com/app/leka/id6446940339") {
+                    UIApplication.shared.open(url)
+                }
+                self.isUpdateStatusViewPresented = false
+                self.isConnectionViewPresented = self.error == .robotNotUpToDate
             } label: {
-                Text(l10n.update.errorBackButtonTitle)
+                Text(self.errorButtonLabel)
                     .padding(.horizontal)
                     .foregroundColor(.white)
                     .frame(height: 50)
@@ -55,32 +101,31 @@ struct ErrorContentView: View {
             .shadow(radius: 3, y: 4)
         }
     }
+
+    // MARK: Private
+
+    private let errorDescription: String
+    private let errorInstructions: String
+    private let errorButtonLabel: String
 }
 
 // MARK: - ErrorView_Previews
 
-struct ErrorView_Previews: PreviewProvider {
-    @State static var isConnectionViewPresented = false
+#Preview {
+    VStack(spacing: 40) {
+        ErrorIllustration()
+            .frame(height: 250)
 
-    static let errorDescription = l10n.update.errorDescription
-    static let errorActionRequired = l10n.update.errorCallToAction
+        Text(l10n.update.errorTitle)
+            .font(.title)
+            .bold()
+            .monospacedDigit()
 
-    static var previews: some View {
-        VStack(spacing: 40) {
-            ErrorIllustration()
-                .frame(height: 250)
-
-            Text(l10n.update.errorTitle)
-                .font(.title)
-                .bold()
-                .monospacedDigit()
-
-            ErrorContentView(
-                errorDescription: String(errorDescription.characters),
-                errorInstruction: String(errorActionRequired.characters),
-                isConnectionViewPresented: $isConnectionViewPresented
-            )
-            .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
-        }
+        ErrorContentView(
+            error: .unknown,
+            isConnectionViewPresented: .constant(false),
+            isUpdateStatusViewPresented: .constant(true)
+        )
+        .foregroundColor(DesignKitAsset.Colors.darkGray.swiftUIColor)
     }
 }

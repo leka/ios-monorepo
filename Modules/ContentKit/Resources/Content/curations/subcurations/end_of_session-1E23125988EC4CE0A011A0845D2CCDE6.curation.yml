@@ -1,0 +1,42 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 1E23125988EC4CE0A011A0845D2CCDE6
+icon: face.smiling.inverse
+color: 0xBA68C8
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Fin de séance
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: End of session
+      subtitle:
+      description:
+
+content:
+  - component: vertical_activity_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Finir la séance en s'amusant
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Wrapping up the session with some fun
+          subtitle:
+          description:
+    items:
+      - value: color_music_pad-8439D1EE7DD846ACB048145089F34C33
+        type: activity
+      - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
+        type: activity
+      - value: xylophone_pentatonic-7C1DDED6C6D44913B9A7D4EB4AEE8F6B
+        type: activity
+      - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
+        type: activity

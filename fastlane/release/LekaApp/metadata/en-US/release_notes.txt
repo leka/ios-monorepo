@@ -1,21 +1,37 @@
-## IMPORTANT
+## What’s New in Leka v2.0.0
 
-Version 1.17.0 is the last version to support iOS 16. Future versions of Leka will require iOS 18+.
+We’re excited to bring you a major update to the Leka app, designed to make your experience smoother and more tailored than ever.
 
-## New Features
+## New Content Discovery Experience
 
-- ColorMediator Activity: Added a new activity called "ColorMediator" to enhance color recognition experiences.
-- Weather Curriculum: Introduced the new curriculum "Weather with Leka" to enrich educational content with weather-related activities.
-- Memory Game Update: Improved the Memory game experience with updated visuals and smoother interactions.
+Finding the right activity is now easier and more intuitive with three all-new content sections:
 
-## Improvements
+- Home: Access the latest and featured content at a glance.
+- Explore: Browse all activities by type, including robot-only, sensory play, group sessions, and more.
+- Educational Objectives: Discover content organized by key developmental goals like cognition, memory, and generalization.
 
-- Enhanced Icons: Updated gesture and focus icons to improve visual clarity.
-- Start Button Improvements: Improved the clarity and appearance of the "Start" button in activity list, making it lighter and easier to interact with.
-- User Interaction Enhancements: Adjusted caregiver and care receiver selection to ensure selections are intentional, now requiring direct taps.
-- Improved Spacing: Increased spacing between draggable answers in ordering activities for better usability.
+With this new layout, you’ll uncover relevant content more efficiently and even discover new experiences along the way.
 
-## Bug Fixes
+## Shared Library for your team
 
-- DanceFreeze Fix: Resolved an issue affecting the end-of-exercise behavior in DanceFreeze activities.
-- Dark Mode Readability: Improved readability of stories when the app is in dark mode.
+By popular demand, we’re introducing the Shared Library.
+Save, organize, and access your favorite educational content across your professional team.
+
+Organize your saved content into:
+
+- Curriculums
+- Activities
+- Stories
+
+## Favorites, Just for You
+
+Want to keep track of what works best for your sessions?
+
+You can now favorite any content to find them even faster! And it’s saved just for you, meaning your list remains personal and private.
+
+## Minimum iPadOS Requirement
+
+Leka now requires iPadOS 17.4 or later to support the latest features and performance improvements.
+
+Update today to take advantage of these new features and enhancements.
+Thank you for using Leka!

@@ -2,121 +2,38 @@
     "version": "1.0",
     "sourceLanguage": "en",
     "strings": {
-        "connection.connect_button": {
-            "comment": "Connect button",
+        "connection.another_robot": {
+            "comment": "Connect another robot button label",
+            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "translated",
-                        "value": "Connect"
+                        "state": "new",
+                        "value": "Disconnect and connect another robot"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Se connecter"
+                        "value": "Se d\u00e9connecter et choisir un autre robot"
                     }
                 }
             }
         },
-        "connection.continue_button": {
-            "comment": "Continue button",
+        "connection.new_robot": {
+            "comment": "Connect a robot button label",
+            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "translated",
-                        "value": "Continue"
+                        "state": "new",
+                        "value": "Connect to your robot"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Continuer"
-                    }
-                }
-            }
-        },
-        "connection.disconnect_button": {
-            "comment": "Disconnect button",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Disconnect"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Se d\u00e9connecter"
-                    }
-                }
-            }
-        },
-        "connection.no_robots_found_text": {
-            "comment": "No robount found text",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "No robots found..."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Aucun robot trouv\u00e9..."
-                    }
-                }
-            }
-        },
-        "connection.robot_discovery_version": {
-            "comment": "Discovery version LekaOS v...",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "LekaOS v%@"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "LekaOS v%@"
-                    }
-                }
-            }
-        },
-        "connection.search_button": {
-            "comment": "Search button",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Search"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Rechercher"
-                    }
-                }
-            }
-        },
-        "connection.search_invite_text": {
-            "comment": "Search invite text",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Press the Search button to find robots around you"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Lancer une recherche pour trouver les robots autour de vous !"
+                        "value": "Se connecter \u00e0 un robot"
                     }
                 }
             }
@@ -155,6 +72,24 @@
                 }
             }
         },
+        "information.changelog_disclosure_title": {
+            "comment": "Changelog disclosure title of latest firmware update",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Changelog"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Liste des changements apport\u00e9s"
+                    }
+                }
+            }
+        },
         "information.changelog_not_found_text": {
             "comment": "Changelog not found text",
             "localizations": {
@@ -173,18 +108,19 @@
             }
         },
         "information.changelog_section_title": {
-            "comment": "Changelog of latest firmware update",
+            "comment": "Changelog section title of latest firmware update",
+            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "translated",
-                        "value": "Changelog"
+                        "state": "new",
+                        "value": "New features"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Liste des changements apport\u00e9s"
+                        "value": "Nouveaut\u00e9s"
                     }
                 }
             }
@@ -253,6 +189,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Version: %@"
+                    }
+                }
+            }
+        },
+        "information.start_roll_back_button": {
+            "comment": "Start roll back button",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Go back to previous version"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Revenir \u00e0 la version pr\u00e9c\u00e9dente"
                     }
                 }
             }
@@ -342,6 +296,42 @@
                 }
             }
         },
+        "information.status.robot_not_connected": {
+            "comment": "Robot not connected text",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "\ud83e\udd16 No robot connected \ud83d\udeab"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\ud83e\udd16 Aucun robot connect\u00e9 \ud83d\udeab"
+                    }
+                }
+            }
+        },
+        "information.status.robot_roll_back_available": {
+            "comment": "Robot firmware roll back available text",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "\ud83d\udd19 Go back to previous version \ud83d\udce6"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\ud83d\udd19 Revenir \u00e0 la version pr\u00e9c\u00e9dente \ud83d\udce6"
+                    }
+                }
+            }
+        },
         "information.status.robot_update_available": {
             "comment": "Robot firmware update available text",
             "localizations": {
@@ -394,87 +384,110 @@
                 }
             }
         },
-        "toolbar.connection_button": {
-            "comment": "Connection toolbar button",
+        "update.error.back_to_connection_button_label": {
+            "comment": "Update error back to connection view button",
+            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "translated",
-                        "value": "Connection"
+                        "state": "new",
+                        "value": "Return to robot connection page"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Connexion"
+                        "value": "Retour \u00e0 la page de connexion"
                     }
                 }
             }
         },
-        "update.error": {
-            "comment": "Update error",
+        "update.error.check_update_button_label": {
+            "comment": "Check for update button label",
+            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "translated",
-                        "value": "An error has occurred"
+                        "state": "new",
+                        "value": "Check for updates"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Une erreur s'est produite"
+                        "value": "V\u00e9rifier les mises \u00e0 jour"
                     }
                 }
             }
         },
-        "update.error.failed_to_load_file": {
+        "update.error.close_button_label": {
+            "comment": "Update error close button",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Close"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Fermer"
+                    }
+                }
+            }
+        },
+        "update.error.failed_to_load_file_description": {
             "comment": "Failed to load file",
+            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "translated",
-                        "value": "Robot update file cannot be opened\n(Error code #0001)"
+                        "state": "new",
+                        "value": "Error code #0001: Robot update file cannot be opened"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Le fichier de mise \u00e0 jour du robot ne peut pas \u00eatre ouvert\n(Code erreur #0001)"
+                        "value": "Code erreur #0001: Le fichier de mise \u00e0 jour du robot ne peut pas \u00eatre ouvert"
                     }
                 }
             }
         },
         "update.error.failed_to_load_file_instructions": {
             "comment": "Failed to load file instructions",
+            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "translated",
-                        "value": "Please reinstall the app"
+                        "state": "new",
+                        "value": "Ensure your app is up to date"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Veuillez r\u00e9installer l'application"
+                        "value": "V\u00e9rifier que votre application est \u00e0 jour"
                     }
                 }
             }
         },
-        "update.error.robot_not_up_to_date": {
+        "update.error.robot_not_up_to_date_description": {
             "comment": "Robot not up to date",
+            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "translated",
-                        "value": "Update failed\n(Error code #0002)"
+                        "state": "new",
+                        "value": "Error code #0002: Update failed"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Echec de la mise \u00e0 jour\n(Code erreur #0002)"
+                        "value": "Code erreur #0002: Echec de la mise \u00e0 jour"
                     }
                 }
             }
@@ -496,53 +509,56 @@
                 }
             }
         },
-        "update.error.robot_unexpected_disconnection": {
+        "update.error.robot_unexpected_disconnection_description": {
             "comment": "Robot unexpected disconnection",
+            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "translated",
-                        "value": "The robot has been disconnected\n(Error code #0004)"
+                        "state": "new",
+                        "value": "Error code #0004: The robot has been disconnected"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Le robot s'est d\u00e9connect\u00e9 de mani\u00e8re inattendue\n(Code erreur #0004)"
+                        "value": "Code erreur #0004: Le robot s'est d\u00e9connect\u00e9 de mani\u00e8re inattendue"
                     }
                 }
             }
         },
         "update.error.robot_unexpected_disconnection_instructions": {
             "comment": "Robot unexpected disconnection instructions",
+            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "translated",
-                        "value": "Restart the robot using the \"Emergency stop\" card,\nreconnect the robot and restart the process"
+                        "state": "new",
+                        "value": "Restart the robot using the \"Emergency stop\" card\nReconnect the robot \nRestart the process"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Red\u00e9marrer le robot \u00e0 l'aide de la carte \\\"Arr\u00eat d'urgence\\\",\nreconnectez le robot et relancez le processus"
+                        "value": "Red\u00e9marrer le robot \u00e0 l'aide de la carte \\\"Arr\u00eat d'urgence\\\"\nReconnectez le robot\nRelancez le processus"
                     }
                 }
             }
         },
-        "update.error.unknown_error": {
+        "update.error.unknown_error_description": {
             "comment": "unknown error",
+            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "translated",
-                        "value": "An unknown error has occurred\n(Error code #0000)"
+                        "state": "new",
+                        "value": "Error code #0000: An unknown error has occurred"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Une erreur inconnue s'est produite\n(Code erreur #0000)"
+                        "value": "Code erreur #0000: Une erreur inconnue s'est produite"
                     }
                 }
             }
@@ -564,19 +580,20 @@
                 }
             }
         },
-        "update.error.update_process_not_available": {
+        "update.error.update_process_not_available_description": {
             "comment": "Update process not available",
+            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "translated",
-                        "value": "Update process not recognized or not available\n(Error code #0003)"
+                        "state": "new",
+                        "value": "Error code #0003: Update process not recognized or not available"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Processus de mise \u00e0 jour non disponible ou inconnu\n(Code erreur #0003)"
+                        "value": "Code erreur #0003: Processus de mise \u00e0 jour non disponible ou inconnu"
                     }
                 }
             }
@@ -598,53 +615,20 @@
                 }
             }
         },
-        "update.error_back_button": {
-            "comment": "Update error back button",
+        "update.error_title": {
+            "comment": "Update error",
+            "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
-                        "state": "translated",
-                        "value": "Return to robot connection page"
+                        "state": "new",
+                        "value": "Oops... Something went wrong."
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Revenir \u00e0 la page de connexion"
-                    }
-                }
-            }
-        },
-        "update.error_call_to_action": {
-            "comment": "Update error call to action",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Contact technical support"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Contactez le support technique"
-                    }
-                }
-            }
-        },
-        "update.error_description": {
-            "comment": "Update error description",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Unknown error"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Erreur inconnue"
+                        "value": "Oups\u2026 Une erreur est survenue."
                     }
                 }
             }

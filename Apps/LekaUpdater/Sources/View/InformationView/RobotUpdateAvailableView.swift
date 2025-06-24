@@ -10,16 +10,12 @@ import SwiftUI
 // MARK: - RobotUpdateAvailableView
 
 struct RobotUpdateAvailableView: View {
-    @StateObject private var requirementsViewModel = RequirementsViewModel()
+    @State private var requirementsViewModel = RequirementsViewModel()
 
     @Binding var isUpdateStatusViewPresented: Bool
 
     var body: some View {
         VStack {
-            Text(l10n.information.status.robotUpdateAvailable)
-                .font(.title3)
-                .padding([.bottom])
-
             Button {
                 self.isUpdateStatusViewPresented = true
             } label: {
@@ -39,7 +35,6 @@ struct RobotUpdateAvailableView: View {
                 RequirementsView(viewModel: self.requirementsViewModel)
             }
         }
-        .padding()
     }
 }
 

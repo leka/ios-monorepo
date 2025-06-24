@@ -1,0 +1,50 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: B693E6225E20474C977B9DA6298667AE
+icon: house.fill
+color: 0xFFD54F
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Objets du quotidien
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Everyday objects
+      subtitle:
+      description:
+
+content:
+  - component: vertical_activity_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Cuisine, chambre, salle de bain
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title: Kitchen, bedroom, bathroom
+          subtitle:
+          description:
+    items:
+      - value: recognition_kitchen_items_tableware-6E87124002B34BC18520CDD94BFB8D07
+        type: activity
+      - value: recognition_kitchen_items_kitchen_utensils-A9BC9B8ED47F4EA3A1760EFCCCBE0977
+        type: activity
+      - value: recognition_kitchen_items_household_appliances-2CBFAD17B01F4288AAE9CCCE37088FEC
+        type: activity
+      - value: recognition_bedroom_items_child_room-6826466C1F7E443087E24C261E778549
+        type: activity
+      - value: recognition_bedroom_items_adult_room-DA0E26666CA6480FAEC81115D12AB9CD
+        type: activity
+      - value: recognition_bathroom_items_toiletry_products-4B6E4CFBF36841008EC9DDC1E60822EF
+        type: activity
+      - value: recognition_bathroom_items_bathroom_furniture-5A9BCAC2BE954E89A9179AFD9034BD7D
+        type: activity
+      - value: recognition_bathroom_items_health_products-64D5048EC16A4FF99D13F04D7B1CB71F
+        type: activity

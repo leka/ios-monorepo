@@ -50,7 +50,7 @@ struct ForgotPasswordView: View {
                isPresented: self.$authManagerViewModel.resetPasswordSucceeded)
         {
             Button("OK", role: .cancel) {
-                self.authManagerViewModel.userAction = .none
+                self.authManagerViewModel.setUserAction(.none)
                 self.dismiss()
             }
         } message: {
@@ -67,7 +67,7 @@ struct ForgotPasswordView: View {
 
     // MARK: Private
 
-    @ObservedObject private var authManagerViewModel: AuthManagerViewModel = .shared
+    @Bindable private var authManagerViewModel: AuthManagerViewModel = .shared
 
     private var authManager: AuthManager = .shared
 

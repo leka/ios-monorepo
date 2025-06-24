@@ -1,0 +1,38 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 1B908AC5B41A4B3ABAE2B6C6703EEBA0
+icon: paintbrush.pointed.fill
+color: 0xA5D6A7
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Couleurs
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Colors
+      subtitle:
+      description:
+
+content:
+  - component: vertical_curriculum_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title:
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title:
+          subtitle:
+          description:
+    items:
+      - value: color_bingo-69760D1DA61849E3926E3A939BBEF0CE
+        type: curriculum
+      - value: curriculum_receptive_language_identify_objects_by_color-506EA3B894AE46EBAE4BE4AFFC65233F
+        type: curriculum

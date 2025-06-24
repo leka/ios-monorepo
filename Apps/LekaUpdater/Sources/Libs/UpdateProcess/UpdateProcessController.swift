@@ -20,6 +20,7 @@ enum UpdateProcessStage {
 // MARK: - UpdateProcessError
 
 enum UpdateProcessError: Error {
+    case none
     case unknown
     case updateProcessNotAvailable
 

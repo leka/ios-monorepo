@@ -132,7 +132,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
     // MARK: Lifecycle
 
     override init() {
-        let dataSize = globalFirmwareManager.data.count
+        let dataSize = globalFirmwareManager.data.value.count
 
         self.expectedCompletePackets = Int(floor(Double(dataSize / self.maximumPacketSize)))
         self.expectedRemainingBytes = Int(dataSize % self.maximumPacketSize)
@@ -195,12 +195,12 @@ private class StateSendingFile: GKState, StateEventProcessor {
         self.expectedRemainingBytes == 0 ? self.expectedCompletePackets : self.expectedCompletePackets + 1
     }
 
-    private var _progression: Float {
+    private var computedProgression: Float {
         Float(self.currentPacket) / Float(self.expectedPackets)
     }
 
     private func subscribeToFirmwareDataUpdates() {
-        globalFirmwareManager.$data
+        globalFirmwareManager.data
             .receive(on: DispatchQueue.main)
             .sink { data in
                 let dataSize = data.count
@@ -221,8 +221,8 @@ private class StateSendingFile: GKState, StateEventProcessor {
             return
         }
 
-        self.progression.send(self._progression)
-        if self._progression < 1.0 {
+        self.progression.send(self.computedProgression)
+        if self.computedProgression < 1.0 {
             self.sendNextPacket()
         } else {
             self.process(event: .fileSent)
@@ -245,7 +245,7 @@ private class StateSendingFile: GKState, StateEventProcessor {
             self.currentPacket < self.expectedCompletePackets
                 ? startIndex + self.maximumPacketSize - 1 : startIndex + self.expectedRemainingBytes - 1
 
-        let dataToSend = globalFirmwareManager.data[startIndex...endIndex]
+        let dataToSend = globalFirmwareManager.data.value[startIndex...endIndex]
 
         Robot.shared.connectedPeripheral?.send(dataToSend, forCharacteristic: self.characteristic)
     }
@@ -287,7 +287,13 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
         let majorCharacteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.versionMajor,
             serviceUUID: BLESpecs.FirmwareUpdate.service,
-            onWrite: self.setMinor
+            onWrite: {
+                log.debug("Major characteristic written, dispatching setMinor")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    log.debug("Inside dispatchqueue, about to setMinor")
+                    self.setMinor()
+                }
+            }
         )
 
         Robot.shared.connectedPeripheral?.send(majorData, forCharacteristic: majorCharacteristic)
@@ -299,7 +305,13 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
         let minorCharacteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.versionMinor,
             serviceUUID: BLESpecs.FirmwareUpdate.service,
-            onWrite: self.setRevision
+            onWrite: {
+                log.debug("Minor characteristic written, dispatching setRevision")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    log.debug("Inside dispatchqueue, about to setRevision")
+                    self.setRevision()
+                }
+            }
         )
 
         Robot.shared.connectedPeripheral?.send(minorData, forCharacteristic: minorCharacteristic)
@@ -311,7 +323,13 @@ private class StateApplyingUpdate: GKState, StateEventProcessor {
         let revisionCharacteristic = CharacteristicModelWriteOnly(
             characteristicUUID: BLESpecs.FirmwareUpdate.Characteristics.versionRevision,
             serviceUUID: BLESpecs.FirmwareUpdate.service,
-            onWrite: self.applyUpdate
+            onWrite: {
+                log.debug("Revision characteristic written, dispatching applyUpdate")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    log.debug("Inside dispatchqueue, about to applyUpdate")
+                    self.applyUpdate()
+                }
+            }
         )
 
         Robot.shared.connectedPeripheral?.send(revisionData, forCharacteristic: revisionCharacteristic)

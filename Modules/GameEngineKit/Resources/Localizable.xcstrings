@@ -796,6 +796,24 @@
                 }
             }
         },
+        "game_engine_kit.melody_view.skip_button_label": {
+            "comment": "Skip button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Skip"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Passer"
+                    }
+                }
+            }
+        },
         "game_engine_kit.melody_view.song_selector_title": {
             "comment": "MelodyView music selection title",
             "localizations": {
@@ -843,6 +861,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Touche Leka"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.story_view.finish_button_label": {
+            "comment": "Finish story button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Finish"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Terminer"
                     }
                 }
             }

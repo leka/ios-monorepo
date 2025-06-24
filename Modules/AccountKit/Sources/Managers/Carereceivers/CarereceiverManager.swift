@@ -63,8 +63,7 @@ public class CarereceiverManager {
                 if case let .failure(error) = completion {
                     self.fetchError.send(error)
                 }
-            }, receiveValue: { [weak self] in
-                guard let self else { return }
+            }, receiveValue: { _ in
                 AnalyticsManager.logEventCarereceiverEdit(carereceivers: carereceiver.id!)
             })
             .store(in: &self.cancellables)

@@ -18,5 +18,8 @@
     "makefile.configureOnOpen": false,
     "sweetpad.tuist.autogenerate": false,
     "sweetpad.format.path": "swiftformat",
-    "sweetpad.format.args": ["--quiet", "${file}"]
+    "sweetpad.format.args": ["--quiet", "${file}"],
+    "yaml.schemas": {
+        "https://json.schemastore.org/yamllint.json": ["*.yaml", "*.yml"]
+    }
 }

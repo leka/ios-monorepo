@@ -1,0 +1,136 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: F4E2C104C09E436CB80A87749CE62DDF
+icon: house
+color: 0xFFEEFF
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Accueil
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Home
+      subtitle:
+      description:
+
+content:
+  - component: carousel
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Sélection du moment
+          subtitle:
+          description: Nos contenus les plus pertinents, choisis pour vous.
+      - locale: en_US
+        details:
+          title: Top Picks
+          subtitle:
+          description: Our most relevant picks, just for you.
+    items:
+      - value: color_mediator-2CE6B5E98AFD45E0B2CD87727DB6D5C2
+        type: activity
+      - value: curriculum_recognition_family_members-AD1A9E2D874C47AEB3445D80E34DC702
+        type: curriculum
+      - value: curriculum_recognition_garden_items-A1006027902E44C0B38BC3D3BAEDD4F6
+        type: curriculum
+      - value: curriculum_sort_objects_by_location-CC406024F40C4834A66BB7C8F0E8C0AD
+        type: curriculum
+      - value: curriculum_recognition_seaside_holidays-B1BA5597BC594082AECE293AD25CFA89
+        type: curriculum
+      - value: curriculum_animal_memory-7C75908B86D748A283AA080D40642BE7
+        type: curriculum
+      - value: sequencing_daily_life_toilets-8D126A04F37D4E8BA498EE4758E071AC
+        type: activity
+
+  - component: horizontal_curriculum_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Nouveautés
+          subtitle:
+          description: Les derniers ajouts à découvrir.
+      - locale: en_US
+        details:
+          title: New Arrivals
+          subtitle:
+          description: The latest to explore.
+    items:
+      - value: curriculum_recognition_alphabet_letters_1-27A711E56A4140C4A69FCAF0E4CD5410
+        type: curriculum
+      - value: curriculum_alphabet_letters_sounds_1-C157BAD4AA044EE89A941B1D868FFEB7
+        type: curriculum
+      - value: curriculum_alphabetical_order-F9A2F6E76AE449999B1F76AA7E2D2978
+        type: curriculum
+      - value: curriculum_ordering_steps_to_bake_a_cake-1F908FA3349B476DA1EE4CDC60B5B632
+        type: curriculum
+      - value: curriculum_ordering_the_steps_of_a_session_with_leka-211497313FDB4094990330D2387D1CA3
+        type: curriculum
+      - value: curriculum_recognition_cooked_fruits-C0D2DAE8152F4CAE863EAEBF815354BA
+        type: curriculum
+      - value: curriculum_recognition_cooked_vegetables-655C2A62DB644DAABC8A286025231418
+        type: curriculum
+      - value: curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
+        type: curriculum
+      - value: curriculum_leka_weather_robot-ED4C900D4ACB426384DC76F182BC19A5
+        type: curriculum
+      - value: curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
+        type: curriculum
+
+  - component: horizontal_curriculum_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Les parcours les plus populaires
+          subtitle:
+          description: Les parcours les plus suivis par les professionnels de votre secteur.
+      - locale: en_US
+        details:
+          title: Most Popular Curriculums
+          subtitle:
+          description: The most completed curriculums among professionals in your field.
+    items:
+      - value: curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
+        type: curriculum
+      - value: curriculum_sequencing_daily_life-FCAD78F080624326B00169811C4C5622
+        type: curriculum
+      - value: curriculum_recognition_emotions_in_context-A135163C8D8646DE95D0854FD5E155EB
+        type: curriculum
+      - value: curriculum_recognition_body_parts-80761A1D62BF4C6980BF20E7D9BE52B8
+        type: curriculum
+      - value: curriculum_recognition_sounds_emotions-2D48CCB418BF4808BCB16148C901C617
+        type: curriculum
+      - value: curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
+        type: curriculum
+      - value: super_simon-C6EABAC161CD44C290B32202DFDCDAF6
+        type: curriculum
+
+  - component: horizontal_activity_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Les jeux éducatifs les plus populaires
+          subtitle:
+          description: Les jeux éducatifs les plus suivis par les professionnels de votre secteur.
+      - locale: en_US
+        details:
+          title: Most Popular Educational Games
+          subtitle:
+          description: The most completed educational games among professionals in your field.
+    items:
+      - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
+        type: activity
+      - value: melody-CB995F829411449AB32E6B8A688E3DDB
+        type: activity
+      - value: color_music_pad-8439D1EE7DD846ACB048145089F34C33
+        type: activity
+      - value: hide_and_seek-4BFA2AC3390E49248DD022E27008F118
+        type: activity
+      - value: xylophone_pentatonic-7C1DDED6C6D44913B9A7D4EB4AEE8F6B
+        type: activity
+      - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
+        type: activity

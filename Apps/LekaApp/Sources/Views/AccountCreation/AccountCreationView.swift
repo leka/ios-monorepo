@@ -8,13 +8,6 @@ import DesignKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - AccountCreationViewViewModel
-
-class AccountCreationViewViewModel: ObservableObject {
-    @Published var email: String = ""
-    @Published var password: String = ""
-}
-
 // MARK: - AccountCreationView
 
 struct AccountCreationView: View {
@@ -32,8 +25,8 @@ struct AccountCreationView: View {
             }
 
             VStack(spacing: 15) {
-                TextFieldEmail(entry: self.$viewModel.email)
-                TextFieldPassword(entry: self.$viewModel.password)
+                TextFieldEmail(entry: self.$email)
+                TextFieldPassword(entry: self.$password)
             }
             .frame(width: 400)
             .disableAutocorrection(true)
@@ -50,17 +43,17 @@ struct AccountCreationView: View {
             .disabled(self.isCreationDisabled || self.authManagerViewModel.isLoading)
             .buttonStyle(.borderedProminent)
         }
-        .onChange(of: self.authManagerViewModel.userAuthenticationState) { newValue in
-            if newValue == .loggedIn {
+        .onChange(of: self.authManagerViewModel.userAuthenticationState) {
+            if self.authManagerViewModel.userAuthenticationState == .loggedIn {
                 self.rootAccountManager.createRootAccount(rootAccount: RootAccount())
                 self.rootAccountManager.initializeRootAccountListener()
-                self.libraryManager.createLibrary(library: Library())
-                self.libraryManager.initializeLibraryListener()
+                self.sharedLibraryManager.createSharedLibrary(library: SharedLibrary())
+                self.sharedLibraryManager.initializeSharedLibraryListener()
                 self.isVerificationEmailAlertPresented = true
             }
         }
         .onAppear {
-            self.authManagerViewModel.userAction = .userIsSigningUp
+            self.authManagerViewModel.setUserAction(.userIsSigningUp)
         }
         .onDisappear {
             self.authManagerViewModel.resetErrorMessage()
@@ -70,30 +63,30 @@ struct AccountCreationView: View {
                   message: Text(l10n.AccountCreationView.EmailVerificationAlert.message),
                   dismissButton: .default(Text(l10n.AccountCreationView.EmailVerificationAlert.dismissButton)) {
                       AnalyticsManager.logEventSignUp()
-                      self.navigation.navigateToAccountCreationProcess = true
+                      self.navigation.setNavigateToAccountCreationProcess(true)
                   })
         }
     }
 
     // MARK: Private
 
-    @StateObject private var viewModel = AccountCreationViewViewModel()
-
-    @ObservedObject private var authManagerViewModel = AuthManagerViewModel.shared
-    @ObservedObject private var navigation: Navigation = .shared
+    @State private var email: String = ""
+    @State private var password: String = ""
 
     @State private var isVerificationEmailAlertPresented: Bool = false
 
+    private var navigation: Navigation = .shared
     private var authManager = AuthManager.shared
+    private var authManagerViewModel: AuthManagerViewModel = .shared
     private var rootAccountManager = RootAccountManager.shared
-    private var libraryManager = LibraryManager.shared
+    private var sharedLibraryManager = SharedLibraryManager.shared
 
     private var isCreationDisabled: Bool {
-        self.viewModel.email.isInvalidEmail() || self.viewModel.password.isInvalidPassword()
+        self.email.isInvalidEmail() || self.password.isInvalidPassword()
     }
 
     private func submitForm() {
-        self.authManager.signUp(email: self.viewModel.email, password: self.viewModel.password)
+        self.authManager.signUp(email: self.email, password: self.password)
     }
 }
 

@@ -18,7 +18,7 @@ public extension SettingsDictionary {
             ],
             "LOCALIZED_STRING_SWIFTUI_SUPPORT": "NO",
             "OTHER_LDFLAGS": [
-                "-ObjC",
+                "$(inherited) -ObjC",
             ],
         ]
 

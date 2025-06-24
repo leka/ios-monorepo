@@ -10,7 +10,8 @@ import SwiftUI
 
 // MARK: - CreateCaregiverViewModel
 
-class CreateCaregiverViewModel: ObservableObject {
+@Observable
+class CreateCaregiverViewModel {
     // MARK: Internal
 
     var caregiverManager: CaregiverManager = .shared
@@ -52,8 +53,6 @@ struct CreateCaregiverView: View {
 
     var onClose: (() -> Void)?
 
-    var caregiverManager: CaregiverManager = .shared
-
     var body: some View {
         VStack(spacing: 40) {
             Form {
@@ -72,8 +71,8 @@ struct CreateCaregiverView: View {
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
                             .focused(self.$focused)
-                            .onChange(of: self.focused) { focused in
-                                if !focused {
+                            .onChange(of: self.focused) {
+                                if !self.focused {
                                     self.newCaregiver.firstName = self.newCaregiver.firstName.trimLeadingAndTrailingWhitespaces()
                                 }
                             }
@@ -86,8 +85,8 @@ struct CreateCaregiverView: View {
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
                             .focused(self.$focused)
-                            .onChange(of: self.focused) { focused in
-                                if !focused {
+                            .onChange(of: self.focused) {
+                                if !self.focused {
                                     self.newCaregiver.lastName = self.newCaregiver.lastName.trimLeadingAndTrailingWhitespaces()
                                 }
                             }
@@ -99,8 +98,8 @@ struct CreateCaregiverView: View {
                             .autocorrectionDisabled()
                             .multilineTextAlignment(.trailing)
                             .foregroundStyle(Color.secondary)
-                            .onChange(of: self.newCaregiver.email) { newValue in
-                                self.isWhitespacesErrorMessageVisible = newValue.containsInvalidCharacters()
+                            .onChange(of: self.newCaregiver.email) {
+                                self.isWhitespacesErrorMessageVisible = self.newCaregiver.email.containsInvalidCharacters()
                             }
                     }
                 } footer: {
@@ -116,9 +115,9 @@ struct CreateCaregiverView: View {
                         in: ...Date(),
                         displayedComponents: [.date]
                     )
-                    .onChange(of: self.birthdate, perform: { _ in
+                    .onChange(of: self.birthdate) {
                         self.newCaregiver.birthdate = self.birthdate
-                    })
+                    }
                 }
 
                 Section {
@@ -161,7 +160,7 @@ struct CreateCaregiverView: View {
     // MARK: Private
 
     @State private var isCaregiverCreated: Bool = false
-    @StateObject private var viewModel = CreateCaregiverViewModel()
+    @State private var viewModel = CreateCaregiverViewModel()
 
     @FocusState private var focused: Bool
     @State private var isWhitespacesErrorMessageVisible = false

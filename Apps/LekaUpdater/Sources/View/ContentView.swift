@@ -2,12 +2,13 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import RobotKit
 import SwiftUI
 
 // MARK: - ContentView
 
 struct ContentView: View {
-    @State var isConnectionViewPresented = true
+    @State var isConnectionViewPresented = false
     @State var isUpdateStatusViewPresented = false
 
     var body: some View {
@@ -16,15 +17,18 @@ struct ContentView: View {
                 isConnectionViewPresented: self.$isConnectionViewPresented,
                 isUpdateStatusViewPresented: self.$isUpdateStatusViewPresented
             )
-            .fullScreenCover(isPresented: self.$isConnectionViewPresented) {
-                NavigationStack {
-                    ConnectionView()
-                }
+        }
+        .sheet(isPresented: self.$isConnectionViewPresented) {
+            NavigationStack {
+                RobotConnectionView()
             }
-            .fullScreenCover(isPresented: self.$isUpdateStatusViewPresented) {
-                NavigationStack {
-                    UpdateStatusView(isConnectionViewPresented: self.$isConnectionViewPresented)
-                }
+            .onAppear {
+                globalFirmwareManager.currentVersion = Robot.kLatestFirmwareVersion
+            }
+        }
+        .fullScreenCover(isPresented: self.$isUpdateStatusViewPresented) {
+            NavigationStack {
+                UpdateStatusView(isConnectionViewPresented: self.$isConnectionViewPresented, isUpdateStatusViewPresented: self.$isUpdateStatusViewPresented)
             }
         }
     }
