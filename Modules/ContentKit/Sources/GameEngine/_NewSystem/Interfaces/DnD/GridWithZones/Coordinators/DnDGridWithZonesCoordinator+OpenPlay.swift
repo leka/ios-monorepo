@@ -13,16 +13,17 @@ import SwiftUI
 public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorOpenPlayChoiceModel], action: NewExerciseAction? = nil, minimumToSelect: Int = 0, maximumToSelect: Int? = nil) {
+    public init(choices: [CoordinatorOpenPlayChoiceModel], action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .init()) {
         let dropZones = choices.filter(\.isDropzone)
         let nodes = choices.filter { $0.isDropzone == false }
         self.rawChoices = Array(nodes)
+        self.validation = validation
 
         self.uiModel.value.action = action
         self.uiDropZoneModel.action = action
 
-        self.minimumToSelect = minimumToSelect
-        self.maximumToSelect = maximumToSelect ?? choices.count
+        self.minimumToSelect = validation.minimumToSelect ?? 0
+        self.maximumToSelect = validation.maximumToSelect ?? choices.count
 
         self.uiDropZoneModel.zones = dropZones.map { dropzone in
             DnDDropZoneNode(
@@ -34,15 +35,19 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
             )
         }
 
-        self.updateValidationState()
+        if validation.type == .manual {
+            self.updateValidationState()
+        } else {
+            self.validationEnabled.value = nil
+        }
 
         self.uiModel.value.choices = nodes.map { choice in
             DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiModel.value.choiceSize(for: nodes.count))
         }
     }
 
-    public convenience init(model: CoordinatorOpenPlayModel, action: NewExerciseAction? = nil, minimumToSelect: Int = 0, maximumToSelect: Int? = nil) {
-        self.init(choices: model.choices, action: action, minimumToSelect: minimumToSelect, maximumToSelect: maximumToSelect)
+    public convenience init(model: CoordinatorOpenPlayModel, action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .init()) {
+        self.init(choices: model.choices, action: action, validation: validation)
     }
 
     // MARK: Public
@@ -50,6 +55,7 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
     public private(set) var uiDropZoneModel: DnDGridWithZonesUIDropzoneModel = .zero
     public private(set) var uiModel = CurrentValueSubject<DnDGridWithZonesUIModel, Never>(.zero)
     public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(false)
+    public private(set) var validation: NewExerciseOptions.Validation
 
     public var didComplete: PassthroughSubject<Void, Never> = .init()
 

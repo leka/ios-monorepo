@@ -12,11 +12,12 @@ import SwiftUI
 public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorAssociateCategoriesChoiceModel], action: NewExerciseAction? = nil, validationEnabled: Bool? = nil) {
+    public init(choices: [CoordinatorAssociateCategoriesChoiceModel], action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .init()) {
         let dropZones = choices.filter(\.isDropzone)
         let nodes = choices.filter { $0.isDropzone == false }
         self.rawDropZones = Array(dropZones)
         self.rawChoices = Array(nodes)
+        self.validation = validation
 
         self.gameplay = NewGameplayAssociateCategories(choices: choices.map {
             .init(id: $0.id, category: $0.category)
@@ -36,22 +37,23 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
                 size: self.uiDropZoneModel.zoneSize(for: dropZones.count)
             )
         }
-        self.validationEnabled.value = validationEnabled
+        self.validationEnabled.value = (validation.type == .manual) ? false : nil
 
         self.uiModel.value.choices = nodes.map { choice in
             DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiModel.value.choiceSize(for: nodes.count))
         }
     }
 
-    public convenience init(model: CoordinatorAssociateCategoriesModel, action: NewExerciseAction? = nil, validationEnabled: Bool? = nil) {
-        self.init(choices: model.choices, action: action, validationEnabled: validationEnabled)
+    public convenience init(model: CoordinatorAssociateCategoriesModel, action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .init()) {
+        self.init(choices: model.choices, action: action, validation: validation)
     }
 
     // MARK: Public
 
     public private(set) var uiDropZoneModel: DnDGridWithZonesUIDropzoneModel = .zero
     public private(set) var uiModel = CurrentValueSubject<DnDGridWithZonesUIModel, Never>(.zero)
-    public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
+    public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(.none)
+    public private(set) var validation: NewExerciseOptions.Validation
 
     public var didComplete: PassthroughSubject<Void, Never> = .init()
 
@@ -62,7 +64,6 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
                 self.currentlySelectedChoices.enumerated().forEach { categoryIndex, category in
                     if let index = category.firstIndex(of: choiceID) {
                         self.currentlySelectedChoices[categoryIndex].remove(at: index)
-                        self.disableValidation()
                     }
                 }
             case .ended:
@@ -88,9 +89,11 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
                 }
             }
         }
-        self.disableValidation()
 
         if self.gameplay.isCompleted.value {
+            if self.validationEnabled.value != nil {
+                self.validationEnabled.send(false)
+            }
             // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 logGEK.debug("Exercise completed")
@@ -119,11 +122,9 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
         }
         self.currentlySelectedChoices[destinationIndex].append(choiceID)
 
-        if self.validationEnabled.value != nil {
+        if self.validationEnabled.value != .none {
             self.updateChoiceState(for: choiceID, to: .selected(dropZone: self.uiDropZoneModel.zones[destinationIndex]))
-            if self.areAllCategorizableChoiceSelected() {
-                self.validationEnabled.send(true)
-            }
+            self.validationEnabled.send(true)
         } else {
             self.validateUserSelection()
         }
@@ -145,18 +146,6 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
         }
 
         self.removeChoice(with: choiceID)
-    }
-
-    private func areAllCategorizableChoiceSelected() -> Bool {
-        let categorizableChoices = self.rawChoices.filter { $0.category != nil }.map(\.id)
-        let selectedChoices = self.currentlySelectedChoices.flatMap { $0.dropFirst() }
-        return Set(categorizableChoices).isSubset(of: Set(selectedChoices))
-    }
-
-    private func disableValidation() {
-        if self.validationEnabled.value != nil {
-            self.validationEnabled.send(false)
-        }
     }
 
     private func removeChoice(with choiceID: UUID) {

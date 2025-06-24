@@ -10,8 +10,9 @@ import SwiftUI
 public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol, ExerciseCompletionObservable {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorFindTheRightAnswersChoiceModel], action: NewExerciseAction? = nil, validationEnabled: Bool? = nil) {
+    public init(choices: [CoordinatorFindTheRightAnswersChoiceModel], action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .init()) {
         self.rawChoices = choices
+        self.validation = validation
         self.gameplay = NewGameplayFindTheRightAnswers(
             choices: choices
                 .map { .init(id: $0.id, isRightAnswer: $0.isRightAnswer)
@@ -25,17 +26,18 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol, 
                                   state: .idle)
             return TTSUIChoiceModel(id: choice.id, view: view)
         }
-        self.validationEnabled.value = validationEnabled
+        self.validationEnabled.value = (validation.type == .manual) ? false : nil
     }
 
-    public convenience init(model: CoordinatorFindTheRightAnswersModel, action: NewExerciseAction? = nil, validationEnabled: Bool? = nil) {
-        self.init(choices: model.choices, action: action, validationEnabled: validationEnabled)
+    public convenience init(model: CoordinatorFindTheRightAnswersModel, action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .init()) {
+        self.init(choices: model.choices, action: action, validation: validation)
     }
 
     // MARK: Public
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
     public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
+    public private(set) var validation: NewExerciseOptions.Validation
 
     public var didComplete: PassthroughSubject<Void, Never> = .init()
 
@@ -84,6 +86,9 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol, 
         }
 
         if self.gameplay.isCompleted.value {
+            if self.validationEnabled.value != nil {
+                self.validationEnabled.send(false)
+            }
             // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 logGEK.debug("Exercise completed")
