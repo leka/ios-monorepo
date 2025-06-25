@@ -8,7 +8,7 @@ import SwiftUI
 
 // MARK: - ChangeEmailView
 
-struct ChangeEmailView: View {
+struct ConfirmChangeEmailView: View {
     // MARK: Internal
 
     @Environment(\.dismiss) var dismiss
@@ -23,10 +23,10 @@ struct ChangeEmailView: View {
                         .frame(width: 50, height: 50)
                         .foregroundColor(.blue)
 
-                    Text(l10n.ChangeEmailView.title)
+                    Text(l10n.ConfirmChangeEmailView.title)
                         .font(.title)
 
-                    Text(l10n.ChangeEmailView.contextMessage)
+                    Text(l10n.ConfirmChangeEmailView.contextMessage)
                         .font(.body)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 20)
@@ -70,33 +70,28 @@ struct ChangeEmailView: View {
             Button {
                 self.submitForm()
             } label: {
-                Text(String(l10n.ChangeEmailView.reauthAndChangeEmailButton.characters))
+                Text(String(l10n.ConfirmChangeEmailView.reauthAndChangeEmailButton.characters))
                     .loadingIndicator(isLoading: self.authManagerViewModel.isLoading)
             }
             .disabled(self.password.isEmpty || self.authManagerViewModel.isLoading)
             .buttonStyle(.borderedProminent)
         }
-        .onChange(of: self.authManagerViewModel.reAuthenticationSucceeded) { _, newValue in
-            if newValue {
-                self.showEnterNewEmailSheet = true
-                self.authManagerViewModel.setUserAction(.userIsChangingEmail)
-            }
-        }
-        .sheet(isPresented: self.$showEnterNewEmailSheet, onDismiss: {
+        .onChange(of: self.authManagerViewModel.reAuthenticationSucceeded) {
+            self.authManagerViewModel.setUserAction(.none)
             self.dismiss()
-        }, content: {
-            EnterNewEmailView()
-        })
+        }
+        .onDisappear {
+            self.authManagerViewModel.showErrorMessage = false
+        }
     }
 
     // MARK: Private
 
     @State private var password: String = ""
     @State private var showConfirmResetPassword: Bool = false
-    @State private var showEnterNewEmailSheet: Bool = false
 
-    private let authManager = AuthManager.shared
     private var authManagerViewModel: AuthManagerViewModel = .shared
+    private let authManager = AuthManager.shared
 
     private func submitForm() {
         self.authManager.reAuthenticateCurrentUser(password: self.password)

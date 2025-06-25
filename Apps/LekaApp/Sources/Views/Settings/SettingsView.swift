@@ -98,7 +98,7 @@ struct SettingsView: View {
                             self.authManagerViewModel.setUserAction(.userIsReAuthenticating)
                         }
                         .sheet(isPresented: self.$showChangeEmail) {
-                            ChangeEmailView()
+                            EnterNewEmailView()
                         }
                     }
 

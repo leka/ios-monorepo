@@ -4,18 +4,16 @@
 
 import LocalizationKit
 
-// swiftlint:disable line_length
-
 extension l10n {
-    enum ChangeEmailView {
+    enum ConfirmChangeEmailView {
         static let title = LocalizedString(
-            "lekaapp.change_email_view.title",
+            "lekaapp.confirm_change_email_view.title",
             value: "Confirm Email Change",
-            comment: "ChangeEmailView title"
+            comment: "ConfirmChangeEmailView title"
         )
 
         static let contextMessage = LocalizedString(
-            "lekaapp.change_email_view.context_message",
+            "lekaapp.confirm_change_email_view.context_message",
             value: """
                 Please confirm your identity by entering your password.
 
@@ -24,15 +22,13 @@ extension l10n {
                 **All profiles linked to this account will be affected.**
                 *Please be certain.*
                 """,
-            comment: "ChangeEmailView context message"
+            comment: "ConfirmChangeEmailView context message"
         )
 
         static let reauthAndChangeEmailButton = LocalizedString(
-            "lekaapp.change_email_view.reauth_and_change_email_button",
+            "lekaapp.confirm_change_email_view.reauth_and_change_email_button",
             value: "Continue",
-            comment: "ChangeEmailView reauth button label"
+            comment: "ConfirmChangeEmailView reauth button label"
         )
     }
 }
-
-// swiftlint:enable line_length
