@@ -97,9 +97,7 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
             }
 
             if self.gameplay.isCompleted.value {
-                if self.validationEnabled.value != nil {
-                    self.validationEnabled.send(false)
-                }
+                self.validationEnabled.send(nil)
                 // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     logGEK.debug("Exercise completed")

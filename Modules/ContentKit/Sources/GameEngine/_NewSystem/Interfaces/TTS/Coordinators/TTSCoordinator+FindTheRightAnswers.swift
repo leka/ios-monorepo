@@ -86,8 +86,8 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol, 
         }
 
         if self.gameplay.isCompleted.value {
-            if self.validationEnabled.value != nil {
-                self.validationEnabled.send(false)
+            withAnimation {
+                self.validationEnabled.send(nil)
             }
             // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

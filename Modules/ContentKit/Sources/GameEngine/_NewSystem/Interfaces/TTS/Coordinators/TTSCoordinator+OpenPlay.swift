@@ -89,9 +89,9 @@ public class TTSCoordinatorOpenPlay: TTSGameplayCoordinatorProtocol {
             }
         }
 
+        self.validationEnabled.send(nil)
         // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.validationEnabled.send(false)
             logGEK.debug("Exercise completed")
             self.didComplete.send()
         }

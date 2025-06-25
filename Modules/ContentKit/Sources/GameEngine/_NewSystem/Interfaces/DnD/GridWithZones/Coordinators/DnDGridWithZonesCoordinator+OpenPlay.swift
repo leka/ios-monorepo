@@ -76,12 +76,13 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
     }
 
     public func validateUserSelection() {
-        self.validationEnabled.send(false)
         for choiceID in self.currentlySelectedChoices {
             self.updateChoiceState(for: choiceID, to: .correct)
         }
 
         // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
+
+        self.validationEnabled.send(nil)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             logGEK.debug("Exercise completed")
             self.didComplete.send()

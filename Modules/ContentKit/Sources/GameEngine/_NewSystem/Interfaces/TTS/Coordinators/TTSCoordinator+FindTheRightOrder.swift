@@ -68,9 +68,8 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
             for (indice, id) in self.currentOrderedChoices.enumerated() {
                 self.updateChoiceState(for: id, to: .correct(order: indice + 1))
             }
-            if self.validationEnabled.value != nil {
-                self.validationEnabled.send(false)
-            }
+
+            self.validationEnabled.send(nil)
             // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 logGEK.debug("Exercise completed")

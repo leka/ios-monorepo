@@ -91,9 +91,7 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
         }
 
         if self.gameplay.isCompleted.value {
-            if self.validationEnabled.value != nil {
-                self.validationEnabled.send(false)
-            }
+            self.validationEnabled.send(nil)
             // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 logGEK.debug("Exercise completed")
@@ -122,7 +120,7 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
         }
         self.currentlySelectedChoices[destinationIndex].append(choiceID)
 
-        if self.validationEnabled.value != .none {
+        if self.validationEnabled.value != nil {
             self.updateChoiceState(for: choiceID, to: .selected(dropZone: self.uiDropZoneModel.zones[destinationIndex]))
             self.validationEnabled.send(true)
         } else {
