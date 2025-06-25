@@ -12,42 +12,93 @@ fastlane_require 'open3'
 
 default_platform(:ios)
 
+# MARK: - Configuration Constants
+
+# Root directory of the project (parent of fastlane directory)
 ROOT_DIR = File.expand_path('..', Dir.pwd).to_s.freeze
 
+# Git reference used as base for changelog generation
+# Set via BASE_REF environment variable, defaults to 'develop' 
 GIT_BASE_REF = ENV.fetch('BASE_REF', 'develop')
 
+# Bundle IDs for production apps that can be released to App Store
 RELEASE_BUNDLE_IDS = [
-  'io.leka.apf.app.LekaApp',
-  'io.leka.apf.app.LekaApp.beta',
-  'io.leka.apf.app.LekaUpdater'
+  'io.leka.apf.app.LekaApp',        # Main Leka App for end users
+  'io.leka.apf.app.LekaApp.beta',   # Beta version for TestFlight
+  'io.leka.apf.app.LekaUpdater'     # Leka robot updater app
 ].freeze
 
+# Wildcard bundle ID pattern for development certificates
+# Covers all Leka apps during development
 DEVELOPMENT_WILDCARD_BUNDLE_ID = 'io.leka.apf.*'
 
+# MARK: - Environment Variables Documentation
+#
+# The following environment variables are used by fastlane lanes:
+#
+# CI Configuration:
+# - CI: Set to 'true' when running in CI environment
+# - FASTLANE_KEYCHAIN_PASSWORD: Password for the fastlane keychain
+# - FASTLANE_SKIP_UPDATE_CHECK: Set to '1' to skip fastlane update checks
+#
+# App Store Connect API:
+# - APP_STORE_CONNECT_API_KEY_ID: Key ID for App Store Connect API
+# - APP_STORE_CONNECT_ISSUER_ID: Issuer ID for App Store Connect API  
+# - APP_STORE_CONNECT_API_KEY_CONTENT: Private key content for API authentication
+# - APP_STORE_CONNECT_API_KEY_ID_RELEASE_APP_STORE: Separate key ID for release uploads
+# - APP_STORE_CONNECT_API_KEY_CONTENT_RELEASE_APP_STORE: Separate key content for releases
+#
+# Code Signing (Match):
+# - MATCH_PASSWORD: Password for the certificates repository
+# - MATCH_GIT_BASIC_AUTHORIZATION: Basic auth token for accessing certificates repo
+#
+# Pull Request Information:
+# - PR_NUMBER: Pull request number (set by GitHub Actions)
+# - BASE_REF: Base branch for comparison (defaults to 'develop')
+#
+# Tuist Configuration:
+# Various TUIST_* environment variables are set programmatically to configure
+# the build system behavior for different contexts (development, beta, production)
+
 platform :ios do
-  desc "Placeholder lane to make sure fastlane's working"
+  # MARK: - Utility Lanes
+  
+  desc "Test lane to verify fastlane configuration is working correctly"
+  desc "Usage: fastlane helloworld"
+  desc "This lane performs a basic connectivity test and displays configuration information"
   lane :helloworld do
     UI.important "Hello, Fastlane! (from #{Dir.pwd}, root: #{ROOT_DIR})"
   end
 
-  desc 'Sync certificates'
+  # MARK: - Certificate Management Lanes
+
+  desc "Synchronize certificates and provisioning profiles from the certificates repository"
+  desc "This lane downloads existing certificates without creating new ones"
+  desc "Options:"
+  desc " - release: [Boolean] If true, also syncs App Store certificates (default: false)"
+  desc "Usage: fastlane sync_certificates release:true"
+  desc "Note: Requires MATCH_PASSWORD and MATCH_GIT_BASIC_AUTHORIZATION environment variables"
   lane :sync_certificates do |options|
     UI.important 'Delete local provisioning profiles'
 
+    # Create a temporary keychain for certificate operations
+    # This keychain is deleted after the operation completes (in CI)
     create_keychain(
       name: 'io.leka.fastlane.keychain',
-      timeout: 0,
-      unlock: true,
+      timeout: 0,                    # Never timeout
+      unlock: true,                  # Keep keychain unlocked
       password: ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil)
     )
 
+    # Sync development certificates for all Leka apps
     match(
       type: 'development',
       app_identifier: DEVELOPMENT_WILDCARD_BUNDLE_ID,
-      readonly: true,
+      readonly: true,                # Don't create new certificates
       keychain_name: 'io.leka.fastlane.keychain'
     )
 
+    # Optionally sync App Store certificates for production releases
     if options[:release]
       match(
         type: 'appstore',
@@ -58,21 +109,29 @@ platform :ios do
     end
   end
 
-  desc 'Create certificates'
+  desc "Create new certificates and provisioning profiles"
+  desc "This lane generates new certificates when needed (e.g., for new devices)"
+  desc "Options:"
+  desc " - release: [Boolean] If true, also creates App Store certificates (default: false)"
+  desc "Usage: fastlane create_certificates release:true"
+  desc "Note: Use with caution as this can invalidate existing certificates"
   lane :create_certificates do |options|
+    # Create temporary keychain (same as sync_certificates)
     create_keychain(
       name: 'io.leka.fastlane.keychain',
       timeout: 0,
       unlock: true
     )
 
+    # Force creation of development certificates for new devices
     match(
       type: 'development',
       app_identifier: DEVELOPMENT_WILDCARD_BUNDLE_ID,
-      force_for_new_devices: true,
+      force_for_new_devices: true,   # Create new profiles if devices were added
       keychain_name: 'io.leka.fastlane.keychain'
     )
 
+    # Optionally create App Store certificates
     if options[:release]
       match(
         type: 'appstore',
@@ -82,63 +141,121 @@ platform :ios do
     end
   end
 
-  desc 'Submit new internal beta app'
+  # MARK: - Release Lanes
+
+  desc "Build and submit internal beta versions to TestFlight"
+  desc "This lane builds apps in beta configuration and uploads them to TestFlight for internal testing"
+  desc ""
+  desc "Process Overview:"
+  desc "1. Validates target parameter and sets up build configuration"
+  desc "2. Generates Xcode project using Tuist with beta settings"
+  desc "3. Configures App Store Connect API authentication"
+  desc "4. Determines build number using commit SHA encoding system"
+  desc "5. Builds the app with App Store export method"
+  desc "6. Uploads to TestFlight with changelog"
+  desc "7. Cleans up temporary keychain"
+  desc ""
+  desc "Build Number System:"
+  desc "Build numbers follow the format 'MAJOR.COMMIT_SHA_DECIMAL' where:"
+  desc "- MAJOR: Incremented for each build (starts from latest TestFlight build + 1)"
+  desc "- COMMIT_SHA_DECIMAL: First 10 hex chars of commit SHA converted to decimal"
+  desc "This allows tracking which commit each build came from"
+  desc ""
+  desc "Options:"
+  desc " - targets: [String] Comma-separated list of targets to build, or 'all' for all targets"
+  desc "           Available targets: LekaApp, LekaUpdater"
+  desc "           Example: 'LekaApp,LekaUpdater' or 'all'"
+  desc ""
+  desc "Environment Variables Required:"
+  desc " - APP_STORE_CONNECT_API_KEY_ID: API key ID for TestFlight uploads"
+  desc " - APP_STORE_CONNECT_ISSUER_ID: Issuer ID for App Store Connect API"  
+  desc " - APP_STORE_CONNECT_API_KEY_CONTENT: Private key content for API"
+  desc " - FASTLANE_KEYCHAIN_PASSWORD: Password for temporary keychain"
+  desc " - MATCH_PASSWORD: Password for certificates repository"
+  desc " - MATCH_GIT_BASIC_AUTHORIZATION: Auth token for certificates repo"
+  desc ""
+  desc "Usage Examples:"
+  desc " fastlane beta_internal targets:LekaApp"
+  desc " fastlane beta_internal targets:LekaApp,LekaUpdater" 
+  desc " fastlane beta_internal targets:all"
+  desc ""
+  desc "Note: This lane is typically triggered by GitHub Actions on PR labels or develop branch pushes"
   lane :beta_internal do |options|
+    # Validate required parameter
     UI.user_error! 'A target must be specified, for example: LekaApp, LekaUpdater, etc.' if options[:targets].nil?
 
     apps = []
 
     UI.header 'Step: Set targets to build'
+    
+    # Parse target specification
     if options[:targets] == 'all'
+      # Build all available apps by extracting from bundle IDs
       apps = RELEASE_BUNDLE_IDS.map { |app| File.extname(app.to_s).delete('.') }
       UI.important 'All targets will be built:'
     else
+      # Build specified apps only
       apps += options[:targets].split(',')
       UI.important 'The following targets will be built:'
     end
     UI.important apps.to_s
 
+    # Process each app individually
     apps.each do |app|
+      # Beta apps use .beta suffix to distinguish from production releases
       app_bundle_id = "io.leka.apf.app.#{app}.beta"
       app_xcodeproj = "#{ROOT_DIR}/Apps/#{app}/#{app}.xcodeproj"
 
       UI.header "Step: Generate, build & upload target: #{app} / #{app_bundle_id} / #{app_xcodeproj}"
 
+      # MARK: - Tuist Project Generation
+      # Generate Xcode project using Tuist with beta-specific configuration
       Dir.chdir('..') do
-        ENV['TUIST_TURN_OFF_LINTERS'] = 'TRUE'
-        ENV['TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG'] = 'FALSE'
-        ENV['TUIST_GENERATE_L10N_SCHEMES'] = 'FALSE'
-        ENV['TUIST_GENERATE_EXAMPLE_TARGETS'] = 'FALSE'
-        ENV['TUIST_DEVELOPER_MODE'] = 'TRUE'
-        ENV['TUIST_TESTFLIGHT_BUILD'] = 'TRUE'
-        ENV['TUIST_PRODUCTION_BUILD'] = 'FALSE'
-        ENV['TUIST_FASTLANE_BUILD'] = 'TRUE'
-        ENV['TUIST_FASTLANE_MATCH_APP_BUNDLE_ID'] = app_bundle_id.to_s
+        # Configure Tuist environment variables for beta builds
+        ENV['TUIST_TURN_OFF_LINTERS'] = 'TRUE'                      # Skip linting for faster builds
+        ENV['TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG'] = 'FALSE'  # Use static libraries
+        ENV['TUIST_GENERATE_L10N_SCHEMES'] = 'FALSE'                # Skip localization schemes  
+        ENV['TUIST_GENERATE_EXAMPLE_TARGETS'] = 'FALSE'             # Skip example targets
+        ENV['TUIST_DEVELOPER_MODE'] = 'TRUE'                        # Enable developer features
+        ENV['TUIST_TESTFLIGHT_BUILD'] = 'TRUE'                      # Mark as TestFlight build
+        ENV['TUIST_PRODUCTION_BUILD'] = 'FALSE'                     # Not a production build
+        ENV['TUIST_FASTLANE_BUILD'] = 'TRUE'                        # Built via fastlane
+        ENV['TUIST_FASTLANE_MATCH_APP_BUNDLE_ID'] = app_bundle_id.to_s  # Bundle ID for signing
+        
+        # Generate project without opening Xcode and without binary cache for clean builds
         system('tuist', 'generate', '--no-open', '--no-binary-cache', app.to_s)
       end
 
       begin
+        # MARK: - CI Environment Setup
         if ENV['CI']
+          # Configure App Store Connect API authentication for TestFlight uploads
           app_store_connect_api_key(
             key_id: ENV.fetch('APP_STORE_CONNECT_API_KEY_ID', nil),
             issuer_id: ENV.fetch('APP_STORE_CONNECT_ISSUER_ID', nil),
             key_content: ENV.fetch('APP_STORE_CONNECT_API_KEY_CONTENT', nil)
           )
 
+          # Unlock the keychain containing signing certificates
           unlock_keychain(
             path: 'io.leka.fastlane.keychain',
             password: ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil)
           )
 
+          # Set partition list for keychain access (required for code signing)
           UI.header 'Step: keychain security set-key-partition-list'
           system('security', 'set-key-partition-list', '-S', 'apple-tool:,apple:', '-s', '-k',
                  ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil), 'io.leka.fastlane.keychain')
         end
 
+        # MARK: - Pull Request Information
+        # Determine PR number for changelog context
+        # This affects how changelogs are generated (PR-based vs commit-based)
         pr_number = lambda {
           if ENV['PR_NUMBER'] && !ENV['PR_NUMBER'].empty?
             pr_number = ENV['PR_NUMBER']
           else
+            # Try to get PR number using GitHub CLI
             `gh pr view --json number -q .number`.strip.tap do |output|
               output.replace('NO_PR') if output.empty?
               pr_number = output
@@ -146,58 +263,81 @@ platform :ios do
           end
         }.call
 
+        # MARK: - Version and Build Number Management
         UI.header 'Step: Create verson and new build number'
 
+        # Get current version from Xcode project (e.g., "1.2.3")
         version_number = get_version_number(xcodeproj: app_xcodeproj.to_s)
+        
+        # Get the latest build number from TestFlight for this version
+        # This is used as base for incrementing to the next build number
         latest_build_number = latest_testflight_build_number(
           app_identifier: app_bundle_id.to_s,
           version: version_number
         ).to_s
+        
+        # Generate new build number using commit SHA encoding
+        # See create_new_build_number lane for detailed explanation
         new_build_number = create_new_build_number(latest_build_number: latest_build_number)
+        
+        # Create date stamp for IPA filename
         build_date = Time.new.strftime('%Y_%m_%d')
 
         UI.important "Next release for: #{app_bundle_id}"
         UI.important "Version number: #{version_number}"
         UI.important "Build number: #{new_build_number}"
 
+        # MARK: - Changelog Generation
+        # Generate changelog for TestFlight description
+        # This includes git log between commits with proper formatting
         testflight_changelog = generate_changelogs(
-          release_type: 'beta',
-          target: app,
-          version_number: version_number,
-          latest_build_number: latest_build_number,
-          new_build_number: new_build_number,
-          pr_number: pr_number
+          release_type: 'beta',                    # Indicates this is a beta release
+          target: app,                             # App name for changelog
+          version_number: version_number,          # Version for display
+          latest_build_number: latest_build_number, # Previous build for comparison
+          new_build_number: new_build_number,      # New build number
+          pr_number: pr_number                     # PR context for changelog
         )
 
         UI.message testflight_changelog
 
+        # MARK: - Build Configuration
+        # Update build number in Xcode project
         increment_build_number(
           build_number: new_build_number,
           xcodeproj: app_xcodeproj.to_s
         )
 
+        # Build the app with App Store distribution
         build_app(
-          export_method: 'app-store',
+          export_method: 'app-store',              # Required for TestFlight
           export_options: {
             provisioningProfiles: {
+              # Use match-generated provisioning profile
               app_bundle_id.to_s => "match AppStore #{app_bundle_id}"
             }
           },
-          workspace: 'ios-monorepo.xcworkspace',
-          scheme: app,
-          output_directory: './.build',
+          workspace: 'ios-monorepo.xcworkspace',   # Generated by Tuist
+          scheme: app,                             # App target scheme
+          output_directory: './.build',            # Build output directory
+          # IPA filename includes date, app name, version for easy identification
           output_name: "#{build_date}-#{app}-beta-v#{version_number}-#{new_build_number}"
         )
 
+        # MARK: - TestFlight Upload
+        # Upload the built IPA to TestFlight
         upload_to_testflight(
           app_identifier: app_bundle_id.to_s,
           ipa: "./.build/#{build_date}-#{app}-beta-v#{version_number}-#{new_build_number}.ipa",
-          skip_waiting_for_build_processing: true,
-          distribute_external: false,
-          groups: %w[LekaTeam],
-          changelog: testflight_changelog
+          skip_waiting_for_build_processing: true, # Don't wait for Apple processing
+          distribute_external: false,              # Internal testing only
+          groups: %w[LekaTeam],                    # TestFlight testing group
+          changelog: testflight_changelog          # Generated changelog
         )
       ensure
+        # MARK: - Cleanup
+        # Always clean up the temporary keychain in CI environments
+        # This prevents keychain accumulation and potential security issues
         next unless ENV['CI']
 
         delete_keychain(
@@ -207,8 +347,47 @@ platform :ios do
     end
   end
 
-  desc 'Release new app version to App Store Connect'
+  desc "Build and release production versions to the App Store"
+  desc "This lane builds apps in production configuration and submits them to App Store Connect"
+  desc ""
+  desc "Process Overview:"
+  desc "1. Validates single target parameter (only one app can be released at a time)"
+  desc "2. Generates Xcode project using Tuist with production settings"
+  desc "3. Configures App Store Connect API with release-specific credentials"
+  desc "4. Determines build number and generates comprehensive changelog"
+  desc "5. Builds the app with App Store export method"
+  desc "6. Uploads to App Store Connect with metadata and screenshots"
+  desc "7. Submits for review with automatic release configuration"
+  desc "8. Cleans up temporary keychain"
+  desc ""
+  desc "Key Differences from beta_internal:"
+  desc "- Uses production bundle IDs (without .beta suffix)"
+  desc "- Uses separate API credentials for enhanced security"
+  desc "- Includes metadata and screenshot uploads"
+  desc "- Submits directly for App Store review"
+  desc "- Configured for automatic release after approval"
+  desc ""
+  desc "Options:"
+  desc " - target: [String] Single target to release (required)"
+  desc "           Available targets: LekaApp, LekaUpdater"
+  desc "           Example: 'LekaApp' (only one target allowed)"
+  desc ""
+  desc "Environment Variables Required:"
+  desc " - APP_STORE_CONNECT_API_KEY_ID_RELEASE_APP_STORE: Separate API key for releases"
+  desc " - APP_STORE_CONNECT_ISSUER_ID: Issuer ID for App Store Connect API"
+  desc " - APP_STORE_CONNECT_API_KEY_CONTENT_RELEASE_APP_STORE: Release-specific private key"
+  desc " - FASTLANE_KEYCHAIN_PASSWORD: Password for temporary keychain"
+  desc " - MATCH_PASSWORD: Password for certificates repository"
+  desc " - MATCH_GIT_BASIC_AUTHORIZATION: Auth token for certificates repo"
+  desc ""
+  desc "Usage Examples:"
+  desc " fastlane release target:LekaApp"
+  desc " fastlane release target:LekaUpdater"
+  desc ""
+  desc "Note: This lane is typically triggered by GitHub Actions on specific PR labels"
+  desc "      Only one app can be released at a time for better control and review"
   lane :release do |options|
+    # Validate required parameter - only one app can be released at a time
     UI.user_error! 'A target must be specified, for example: LekaApp, LekaUpdater, etc.' if options[:target].nil?
     UI.user_error! 'Only one app can be released at a time' if options[:target].split(',').count > 1
 
@@ -217,26 +396,32 @@ platform :ios do
     UI.header 'Step: Set target to build'
     UI.important "The following targets will be built: #{app}"
 
+    # Production apps use the base bundle ID (no .beta suffix)
     app_bundle_id = "io.leka.apf.app.#{app}"
     app_xcodeproj = "#{ROOT_DIR}/Apps/#{app}/#{app}.xcodeproj"
 
     UI.header "Step: Generate, build & upload target: #{app} / #{app_bundle_id} / #{app_xcodeproj}"
 
+    # MARK: - Tuist Project Generation for Production
     Dir.chdir('..') do
-      ENV['TUIST_TURN_OFF_LINTERS'] = 'TRUE'
-      ENV['TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG'] = 'FALSE'
-      ENV['TUIST_GENERATE_L10N_SCHEMES'] = 'FALSE'
-      ENV['TUIST_GENERATE_EXAMPLE_TARGETS'] = 'FALSE'
-      ENV['TUIST_DEVELOPER_MODE'] = 'FALSE'
-      ENV['TUIST_TESTFLIGHT_BUILD'] = 'FALSE'
-      ENV['TUIST_PRODUCTION_BUILD'] = 'TRUE'
-      ENV['TUIST_FASTLANE_BUILD'] = 'TRUE'
-      ENV['TUIST_FASTLANE_MATCH_APP_BUNDLE_ID'] = app_bundle_id.to_s
+      # Configure Tuist environment variables for production builds
+      ENV['TUIST_TURN_OFF_LINTERS'] = 'TRUE'                      # Skip linting for release builds
+      ENV['TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG'] = 'FALSE'  # Use static libraries  
+      ENV['TUIST_GENERATE_L10N_SCHEMES'] = 'FALSE'                # Skip localization schemes
+      ENV['TUIST_GENERATE_EXAMPLE_TARGETS'] = 'FALSE'             # Skip example targets
+      ENV['TUIST_DEVELOPER_MODE'] = 'FALSE'                       # Disable developer features
+      ENV['TUIST_TESTFLIGHT_BUILD'] = 'FALSE'                     # Not a TestFlight build
+      ENV['TUIST_PRODUCTION_BUILD'] = 'TRUE'                      # Production build
+      ENV['TUIST_FASTLANE_BUILD'] = 'TRUE'                        # Built via fastlane
+      ENV['TUIST_FASTLANE_MATCH_APP_BUNDLE_ID'] = app_bundle_id.to_s  # Bundle ID for signing
+      
       system('tuist', 'generate', '--no-open', '--no-binary-cache', app.to_s)
     end
 
     begin
+      # MARK: - CI Environment Setup (Production)
       if ENV['CI']
+        # Use separate API credentials for production releases (enhanced security)
         app_store_connect_api_key(
           key_id: ENV.fetch('APP_STORE_CONNECT_API_KEY_ID_RELEASE_APP_STORE', nil),
           issuer_id: ENV.fetch('APP_STORE_CONNECT_ISSUER_ID', nil),
@@ -245,7 +430,7 @@ platform :ios do
 
         unlock_keychain(
           path: 'io.leka.fastlane.keychain',
-          password: ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil)
+          password: ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil) 
         )
 
         UI.header 'Step: keychain security set-key-partition-list'
@@ -253,6 +438,7 @@ platform :ios do
                ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil), 'io.leka.fastlane.keychain')
       end
 
+      # Get PR number (same logic as beta_internal)
       pr_number = lambda {
         if ENV['PR_NUMBER'] && !ENV['PR_NUMBER'].empty?
           pr_number = ENV['PR_NUMBER']
@@ -264,11 +450,12 @@ platform :ios do
         end
       }.call
 
+      # MARK: - Version and Build Number Management (Production)
       UI.header 'Step: Create verson and new build number'
 
       version_number = get_version_number(xcodeproj: app_xcodeproj.to_s)
       latest_build_number = latest_testflight_build_number(
-        app_identifier: app_bundle_id.to_s,
+        app_identifier: app_bundle_id.to_s,      # Note: production bundle ID
         version: version_number
       ).to_s
       new_build_number = create_new_build_number(latest_build_number: latest_build_number)
@@ -279,10 +466,11 @@ platform :ios do
       UI.important "Build number: #{new_build_number}"
       UI.important "Metadata path: #{ROOT_DIR}/fastlane/release/#{app}/metadata"
 
-      # capture_screenshots # ? not working yet
+      # capture_screenshots # ? not working yet - TODO: investigate screenshot automation
 
+      # Generate changelog for release (includes GitHub and Slack variants)
       generate_changelogs(
-        release_type: 'release',
+        release_type: 'release',                 # Indicates production release
         target: app,
         version_number: version_number,
         latest_build_number: latest_build_number,
@@ -290,6 +478,7 @@ platform :ios do
         pr_number: pr_number
       )
 
+      # Update build number and build the app (same as beta)
       increment_build_number(
         build_number: new_build_number,
         xcodeproj: app_xcodeproj.to_s
@@ -305,29 +494,37 @@ platform :ios do
         workspace: 'ios-monorepo.xcworkspace',
         scheme: app,
         output_directory: './.build',
+        # Note: 'release' in filename instead of 'beta'
         output_name: "#{build_date}-#{app}-release-v#{version_number}-#{new_build_number}"
       )
 
+      # MARK: - App Store Submission with Full Metadata
+      # This uploads the app with complete App Store metadata and submits for review
       upload_to_app_store(
-        force: true,
+        force: true,                             # Force upload even if warnings
         app_identifier: app_bundle_id.to_s,
         ipa: "./.build/#{build_date}-#{app}-release-v#{version_number}-#{new_build_number}.ipa",
-        metadata_path: "#{ROOT_DIR}/fastlane/release/#{app}/metadata",
-        screenshots_path: "#{ROOT_DIR}/fastlane/release/#{app}/screenshots",
-        reject_if_possible: true,
-        submit_for_review: true,
-        automatic_release: true,
+        metadata_path: "#{ROOT_DIR}/fastlane/release/#{app}/metadata",      # App Store descriptions, keywords, etc.
+        screenshots_path: "#{ROOT_DIR}/fastlane/release/#{app}/screenshots", # App Store screenshots
+        reject_if_possible: true,                # Reject existing build if in review
+        submit_for_review: true,                 # Automatically submit for Apple review
+        automatic_release: true,                 # Release automatically after approval
         app_rating_config_path: "#{ROOT_DIR}/fastlane/release/#{app}/metadata/app_rating_config.json",
+        
+        # App Store Review submission information
         submission_information: {
-          export_compliance_uses_encryption: false,
-          add_id_info_uses_idfa: false,
-          content_rights_contains_third_party_content: true,
-          content_rights_has_rights: true
+          export_compliance_uses_encryption: false,        # No encryption export restrictions
+          add_id_info_uses_idfa: false,                   # No advertising identifier usage
+          content_rights_contains_third_party_content: true,  # Contains third-party content
+          content_rights_has_rights: true                 # We have rights to the content
         },
+        
+        # Run precheck validations before submission
         run_precheck_before_submit: true,
-        precheck_include_in_app_purchases: false
+        precheck_include_in_app_purchases: false         # No in-app purchases to validate
       )
     ensure
+      # MARK: - Cleanup (same as beta_internal)
       next unless ENV['CI']
 
       delete_keychain(
@@ -336,7 +533,35 @@ platform :ios do
     end
   end
 
-  desc 'Generate changelogs for TestFlight, Github and Slack'
+  # MARK: - Changelog and Utility Lanes
+
+  desc "Generate changelogs for TestFlight, GitHub, and Slack notifications"
+  desc "This lane creates formatted changelogs by analyzing git commit history between builds"
+  desc ""
+  desc "Changelog System Overview:"
+  desc "The system generates three different changelog formats:"
+  desc "1. TestFlight: Plain text for app submission notes (no emojis/markdown)"
+  desc "2. GitHub: Markdown formatted for PR comments and releases"
+  desc "3. Slack: Slack-formatted with emojis for team notifications"
+  desc ""
+  desc "Git History Analysis:"
+  desc "- For PR builds: Compares HEAD commit to base branch (usually develop)"
+  desc "- For direct pushes: Compares to previous TestFlight build commit"
+  desc "- Uses git_log_to_notes.py script to format commit messages"
+  desc "- Handles edge cases like force pushes and missing commits"
+  desc ""
+  desc "Options (all required):"
+  desc " - release_type: [String] 'beta' or 'release' to determine formatting"
+  desc " - target: [String] App name for display in changelog"
+  desc " - version_number: [String] App version number"
+  desc " - latest_build_number: [String] Previous build for comparison"
+  desc " - new_build_number: [String] New build number"
+  desc " - pr_number: [String] PR number or 'NO_PR' for direct pushes"
+  desc ""
+  desc "Returns: TestFlight changelog text"
+  desc "Side Effects: In CI, writes all three changelog formats to GITHUB_ENV"
+  desc ""
+  desc "Usage: This lane is called internally by beta_internal and release lanes"
   lane :generate_changelogs do |options|
     UI.important options
 
@@ -491,14 +716,53 @@ platform :ios do
     changelog_for_test_flight
   end
 
-  desc 'Convert commit hash to decimal representation of the first 11 hex characters'
+  # MARK: - Build Number Management System
+  #
+  # The Leka iOS project uses a unique build number system that encodes commit SHA 
+  # information directly into the build number. This allows tracking exactly which
+  # commit each build came from, which is crucial for debugging and rollbacks.
+  #
+  # Build Number Format: "MAJOR.COMMIT_SHA_DECIMAL"
+  # - MAJOR: Sequential number starting from 1, incremented for each build
+  # - COMMIT_SHA_DECIMAL: First 10 hex characters of commit SHA converted to decimal
+  #
+  # Example:
+  # - Commit SHA: a1b2c3d4e5f6789...
+  # - Short hash: a1b2c3d4e5 (first 10 hex chars)
+  # - Decimal: 694847286757 (hex to decimal conversion)
+  # - Build number: 123.694847286757
+  #
+  # Benefits:
+  # - Bidirectional conversion between build numbers and commit SHAs
+  # - Each build number uniquely identifies its source commit
+  # - Supports rollbacks and debugging by commit reference
+  # - Maintains compatibility with App Store build number requirements
+
+  desc "Convert commit SHA to decimal for build number encoding"
+  desc "Takes a full 40-character commit SHA and converts the first 10 hex characters"
+  desc "to decimal representation for use in build numbers."
+  desc ""
+  desc "Process:"
+  desc "1. Extract first 10 hex characters from commit SHA"
+  desc "2. Convert hex to decimal"
+  desc "3. Validate decimal fits within build number constraints"
+  desc "4. Verify round-trip conversion works correctly"
+  desc ""
+  desc "Options:"
+  desc " - long_hash: [String] Full 40-character commit SHA (required)"
+  desc ""
+  desc "Returns: Decimal string representation of commit SHA"
+  desc "Example: commit_sha_to_decimal(long_hash: 'a1b2c3d4e5f6789...')"
   lane :commit_sha_to_decimal do |options|
+    # Validate input parameter
     UI.user_error! 'A long_hash must be specified' if options[:long_hash].nil?
 
     long_hash = options[:long_hash].to_s
 
+    # Validate commit SHA length (must be full 40-character hash)
     UI.crash! 'Commit hash must be 40 characters' if long_hash.length < 40
 
+    # Extract first 10 hex characters and convert to decimal
     short_hash = long_hash.slice(0, 10)
     short_hash_decimal = short_hash.to_i(16).to_s
 
@@ -506,48 +770,90 @@ platform :ios do
     UI.message "Short hash:       #{short_hash}"
     UI.message "Short hash (dec): #{short_hash_decimal}"
 
+    # Validate decimal representation fits in build number constraints
+    # App Store has specific limits on build number length
     UI.crash! 'Short hash dec must be shorter than 13 characters' if short_hash_decimal.length > 13
 
+    # Verify round-trip conversion works (quality assurance)
     control_hash = build_number_to_commit_sha(build_number: "1234.#{short_hash_decimal}")
-
     UI.crash! 'Short hash and control hash are NOT equal' unless control_hash.to_s == short_hash.to_s
 
     UI.success "Short hash (dec): #{short_hash_decimal}"
     short_hash_decimal
   end
 
-  desc 'Convert decimal representation of the first 11 hex characters to commit hash'
+  desc "Convert decimal build number component back to commit SHA"
+  desc "Reverse operation of commit_sha_to_decimal - extracts commit SHA from build number"
+  desc ""
+  desc "Process:"
+  desc "1. Parse decimal component from build number (after the dot)"
+  desc "2. Convert decimal back to hexadecimal"
+  desc "3. Pad with leading zeros to get 10-character hash"
+  desc "4. Validate result meets constraints"
+  desc ""
+  desc "Options:"
+  desc " - build_number: [String] Build number in format 'MAJOR.DECIMAL' (required)"
+  desc ""
+  desc "Returns: 10-character hex string representing commit SHA prefix"
+  desc "Example: build_number_to_commit_sha(build_number: '123.694847286757')"
   lane :build_number_to_commit_sha do |options|
+    # Validate input parameter
     UI.user_error! 'A build number must be specified' if options[:build_number].nil?
 
     build_number = options[:build_number].to_s
 
+    # Extract decimal component (everything after the last dot)
     short_hash_decimal = build_number.split('.').last
 
+    # Validate decimal component length
     UI.crash! 'Short hash dec must be shorter than 13 characters' if short_hash_decimal.length > 13
 
+    # Convert decimal back to hexadecimal and pad to 10 characters
     short_hash = short_hash_decimal.to_i.to_s(16).rjust(10, '0')
 
+    # Validate hex result length
     UI.crash! 'Short hash must be shorter than 10 characters' if short_hash.length > 11
 
     UI.success "Short hash (hex): #{short_hash}"
     short_hash
   end
 
-  desc 'Create new build number'
+  desc "Generate new build number for the current commit"
+  desc "Creates a new build number by incrementing the major version and encoding the current commit SHA"
+  desc ""
+  desc "Process:"
+  desc "1. Parse latest build number to get major version"
+  desc "2. Increment major version by 1"
+  desc "3. Get current commit SHA from git"
+  desc "4. Convert commit SHA to decimal using commit_sha_to_decimal"
+  desc "5. Combine major version and decimal SHA: 'MAJOR.SHA_DECIMAL'"
+  desc "6. Validate final build number meets App Store constraints"
+  desc ""
+  desc "Options:"
+  desc " - latest_build_number: [String] Previous build number for increment base (required)"
+  desc ""
+  desc "Returns: New build number string in format 'MAJOR.SHA_DECIMAL'"
+  desc "Example: create_new_build_number(latest_build_number: '122.694847286757')"
+  desc "         might return '123.845739204821' for current commit"
   lane :create_new_build_number do |options|
+    # Validate input parameter
     UI.user_error! 'A build number must be specified' if options[:latest_build_number].nil?
 
     latest_build_number = options[:latest_build_number].to_s
 
+    # Increment major version (first part before the dot)
     new_build_number_major = latest_build_number.split('.').first.to_i + 1
 
+    # Get current commit SHA from git
     last_commit_sha = last_git_commit[:commit_hash]
 
+    # Convert current commit SHA to decimal representation
     short_commit_sha_dec = commit_sha_to_decimal(long_hash: last_commit_sha)
 
+    # Combine major version and SHA decimal
     new_build_number = "#{new_build_number_major}.#{short_commit_sha_dec}"
 
+    # Validate final build number meets App Store constraints (max 18 characters)
     UI.crash! 'Build number must be 18 characters max' if new_build_number.length > 18
 
     UI.success "New build number: #{new_build_number}"
