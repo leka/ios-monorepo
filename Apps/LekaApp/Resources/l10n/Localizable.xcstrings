@@ -1263,8 +1263,8 @@
                 }
             }
         },
-        "lekaapp.change_email_view.context_message": {
-            "comment": "ChangeEmailView context message",
+        "lekaapp.confirm_change_email_view.context_message": {
+            "comment": "ConfirmChangeEmailView context message",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -1281,8 +1281,8 @@
                 }
             }
         },
-        "lekaapp.change_email_view.reauth_and_change_email_button": {
-            "comment": "ChangeEmailView reauth button label",
+        "lekaapp.confirm_change_email_view.reauth_and_change_email_button": {
+            "comment": "ConfirmChangeEmailView reauth button label",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -1299,8 +1299,8 @@
                 }
             }
         },
-        "lekaapp.change_email_view.title": {
-            "comment": "ChangeEmailView title",
+        "lekaapp.confirm_change_email_view.title": {
+            "comment": "ConfirmChangeEmailView title",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -1807,6 +1807,60 @@
                 }
             }
         },
+        "lekaapp.enter_new_email_view.change_email_failure.alert_dismiss_Button": {
+            "comment": "Change Email failure alert dismiss button",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "OK"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "OK"
+                    }
+                }
+            }
+        },
+        "lekaapp.enter_new_email_view.change_email_failure.alert_message": {
+            "comment": "Change Email failure alert message",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "We encountered an issue while attempting to update your email.\nPlease try again later or contact support if the problem persists."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Nous avons rencontr\u00e9 un probl\u00e8me lors de la mise \u00e0 jour de votre Email. Veuillez r\u00e9essayer. \nSi le probl\u00e8me persiste, contactez notre \u00e9quipe d'assistance pour obtenir de l'aide."
+                    }
+                }
+            }
+        },
+        "lekaapp.enter_new_email_view.change_email_failure.alert_title": {
+            "comment": "Change Email failure alert title",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Changing your email address failed"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "\u00c9chec de changement d\u2019Email"
+                    }
+                }
+            }
+        },
         "lekaapp.enter_new_email_view.confirm_button": {
             "comment": "Button to confirm email change",
             "extractionState": "extracted_with_value",
@@ -1821,6 +1875,24 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Confirmer le nouvel email"
+                    }
+                }
+            }
+        },
+        "lekaapp.enter_new_email_view.context_message": {
+            "comment": "Context message to invite the user to type their new email",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Please type your new Email."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Veuillez saisir votre nouvel Email."
                     }
                 }
             }
