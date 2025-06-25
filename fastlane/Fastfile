@@ -27,7 +27,7 @@ DEVELOPMENT_WILDCARD_BUNDLE_ID = 'io.leka.apf.*'
 platform :ios do
   desc "Placeholder lane to make sure fastlane's working"
   lane :helloworld do
-    UI.important "Hello, Fastlane! (from #{Dir.pwd}, root: #{ROOT_DIR}"
+    UI.important "Hello, Fastlane! (from #{Dir.pwd}, root: #{ROOT_DIR})"
   end
 
   desc 'Sync certificates'
