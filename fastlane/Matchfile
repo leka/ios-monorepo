@@ -1,11 +1,32 @@
 # frozen_string_literal: true
 
-# Leka - iOS Monorepo
+# Leka - iOS Monorepo  
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
+# Fastlane Match Configuration
+# For more information about match options, see:
+# https://docs.fastlane.tools/actions/match/
+
+# Git repository containing encrypted certificates and provisioning profiles
+# This should be a private repository with restricted access
 git_url('https://github.com/leka/certificates')
 
+# Storage mode - 'git' stores certificates in a Git repository
+# Alternative modes: 'google_cloud', 's3', 'gitlab_secure_files'
 storage_mode('git')
 
+# Default certificate type
+# Override this in individual lane calls as needed
 type('development')
+
+# Additional match configuration
+# Uncomment and configure as needed:
+#
+# app_identifier(['io.leka.apf.*'])      # Bundle IDs to manage
+# readonly(false)                        # Set to true to prevent new certificate creation
+# force_for_new_devices(false)          # Force new profiles when devices added
+# clone_branch_directly(false)          # Clone specific branch instead of master
+# shallow_clone(false)                  # Use shallow clone for faster downloads
+# skip_confirmation(false)              # Skip confirmation prompts
+# verbose(false)                        # Enable verbose output

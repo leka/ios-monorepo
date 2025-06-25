@@ -61,6 +61,168 @@ DEVELOPMENT_WILDCARD_BUNDLE_ID = 'io.leka.apf.*'
 # the build system behavior for different contexts (development, beta, production)
 
 platform :ios do
+  # MARK: - Helper Functions
+  # These functions extract common functionality used across multiple lanes
+  # to reduce code duplication and improve maintainability
+
+  private_lane :setup_keychain do
+    """
+    Creates and configures the temporary keychain used for code signing.
+    This keychain is automatically cleaned up in CI environments.
+    """
+    create_keychain(
+      name: 'io.leka.fastlane.keychain',
+      timeout: 0,                    # Never timeout
+      unlock: true,                  # Keep keychain unlocked
+      password: ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil)
+    )
+  end
+
+  private_lane :cleanup_keychain do
+    """
+    Removes the temporary keychain in CI environments.
+    This prevents keychain accumulation and potential security issues.
+    """
+    return unless ENV['CI']
+    
+    delete_keychain(name: 'io.leka.fastlane.keychain')
+  end
+
+  private_lane :detect_pr_number do
+    """
+    Determines the pull request number for changelog context.
+    Returns PR number from environment or GitHub CLI, or 'NO_PR' if none found.
+    """
+    if ENV['PR_NUMBER'] && !ENV['PR_NUMBER'].empty?
+      ENV['PR_NUMBER']
+    else
+      `gh pr view --json number -q .number`.strip.tap do |output|
+        output.replace('NO_PR') if output.empty?
+      end
+    end
+  end
+
+  private_lane :configure_tuist_environment do |options|
+    """
+    Sets up Tuist environment variables for project generation.
+    
+    Parameters:
+    - build_type: 'beta' or 'release' to configure appropriate settings
+    - app_bundle_id: Bundle ID for match configuration
+    """
+    build_type = options[:build_type]
+    app_bundle_id = options[:app_bundle_id]
+    
+    # Common settings for all builds
+    ENV['TUIST_TURN_OFF_LINTERS'] = 'TRUE'
+    ENV['TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG'] = 'FALSE'
+    ENV['TUIST_GENERATE_L10N_SCHEMES'] = 'FALSE'
+    ENV['TUIST_GENERATE_EXAMPLE_TARGETS'] = 'FALSE'
+    ENV['TUIST_FASTLANE_BUILD'] = 'TRUE'
+    ENV['TUIST_FASTLANE_MATCH_APP_BUNDLE_ID'] = app_bundle_id.to_s
+    
+    # Build-type specific settings
+    if build_type == 'beta'
+      ENV['TUIST_DEVELOPER_MODE'] = 'TRUE'
+      ENV['TUIST_TESTFLIGHT_BUILD'] = 'TRUE'
+      ENV['TUIST_PRODUCTION_BUILD'] = 'FALSE'
+    elsif build_type == 'release'
+      ENV['TUIST_DEVELOPER_MODE'] = 'FALSE'
+      ENV['TUIST_TESTFLIGHT_BUILD'] = 'FALSE'
+      ENV['TUIST_PRODUCTION_BUILD'] = 'TRUE'
+    else
+      UI.user_error! "Invalid build_type: #{build_type}. Must be 'beta' or 'release'"
+    end
+  end
+
+  private_lane :setup_app_store_connect_auth do |options|
+    """
+    Configures App Store Connect API authentication for uploads.
+    Uses different credentials for beta vs release for enhanced security.
+    
+    Parameters:
+    - auth_type: 'beta' or 'release' to select appropriate credentials
+    """
+    return unless ENV['CI']
+    
+    auth_type = options[:auth_type]
+    
+    if auth_type == 'beta'
+      app_store_connect_api_key(
+        key_id: ENV.fetch('APP_STORE_CONNECT_API_KEY_ID', nil),
+        issuer_id: ENV.fetch('APP_STORE_CONNECT_ISSUER_ID', nil),
+        key_content: ENV.fetch('APP_STORE_CONNECT_API_KEY_CONTENT', nil)
+      )
+    elsif auth_type == 'release'
+      app_store_connect_api_key(
+        key_id: ENV.fetch('APP_STORE_CONNECT_API_KEY_ID_RELEASE_APP_STORE', nil),
+        issuer_id: ENV.fetch('APP_STORE_CONNECT_ISSUER_ID', nil),
+        key_content: ENV.fetch('APP_STORE_CONNECT_API_KEY_CONTENT_RELEASE_APP_STORE', nil)
+      )
+    else
+      UI.user_error! "Invalid auth_type: #{auth_type}. Must be 'beta' or 'release'"
+    end
+
+    # Unlock keychain and set partition list for code signing
+    unlock_keychain(
+      path: 'io.leka.fastlane.keychain',
+      password: ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil)
+    )
+
+    UI.header 'Step: keychain security set-key-partition-list'
+    system('security', 'set-key-partition-list', '-S', 'apple-tool:,apple:', '-s', '-k',
+           ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil), 'io.leka.fastlane.keychain')
+  end
+
+  private_lane :validate_build_environment do
+    """
+    Validates that all required environment variables are present for CI builds.
+    Provides clear error messages for missing configuration.
+    """
+    return unless ENV['CI']
+    
+    required_vars = [
+      'FASTLANE_KEYCHAIN_PASSWORD',
+      'MATCH_PASSWORD', 
+      'MATCH_GIT_BASIC_AUTHORIZATION',
+      'APP_STORE_CONNECT_ISSUER_ID'
+    ]
+    
+    missing_vars = required_vars.select { |var| ENV[var].nil? || ENV[var].empty? }
+    
+    unless missing_vars.empty?
+      UI.user_error! "Missing required environment variables: #{missing_vars.join(', ')}"
+    end
+  end
+
+  private_lane :validate_targets do |targets_string|
+    """
+    Validates target parameter and returns array of valid targets.
+    
+    Parameters:
+    - targets_string: Comma-separated target list or 'all'
+    
+    Returns: Array of valid target names
+    """
+    UI.user_error! 'A target must be specified, for example: LekaApp, LekaUpdater, etc.' if targets_string.nil?
+    
+    available_targets = RELEASE_BUNDLE_IDS.map { |app| File.extname(app.to_s).delete('.') }
+    
+    if targets_string == 'all'
+      available_targets
+    else
+      targets = targets_string.split(',').map(&:strip)
+      invalid_targets = targets - available_targets
+      
+      unless invalid_targets.empty?
+        UI.user_error! "Invalid targets: #{invalid_targets.join(', ')}. Available targets: #{available_targets.join(', ')}"
+      end
+      
+      targets
+    end
+  end
+
+  # MARK: - Utility Lanes
   # MARK: - Utility Lanes
   
   desc "Test lane to verify fastlane configuration is working correctly"
@@ -81,14 +243,8 @@ platform :ios do
   lane :sync_certificates do |options|
     UI.important 'Delete local provisioning profiles'
 
-    # Create a temporary keychain for certificate operations
-    # This keychain is deleted after the operation completes (in CI)
-    create_keychain(
-      name: 'io.leka.fastlane.keychain',
-      timeout: 0,                    # Never timeout
-      unlock: true,                  # Keep keychain unlocked
-      password: ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil)
-    )
+    # Use helper function for keychain setup
+    setup_keychain
 
     # Sync development certificates for all Leka apps
     match(
@@ -116,12 +272,8 @@ platform :ios do
   desc "Usage: fastlane create_certificates release:true"
   desc "Note: Use with caution as this can invalidate existing certificates"
   lane :create_certificates do |options|
-    # Create temporary keychain (same as sync_certificates)
-    create_keychain(
-      name: 'io.leka.fastlane.keychain',
-      timeout: 0,
-      unlock: true
-    )
+    # Use helper function for keychain setup
+    setup_keychain
 
     # Force creation of development certificates for new devices
     match(
@@ -181,24 +333,12 @@ platform :ios do
   desc ""
   desc "Note: This lane is typically triggered by GitHub Actions on PR labels or develop branch pushes"
   lane :beta_internal do |options|
-    # Validate required parameter
-    UI.user_error! 'A target must be specified, for example: LekaApp, LekaUpdater, etc.' if options[:targets].nil?
-
-    apps = []
+    # Validate environment and parameters
+    validate_build_environment
+    apps = validate_targets(options[:targets])
 
     UI.header 'Step: Set targets to build'
-    
-    # Parse target specification
-    if options[:targets] == 'all'
-      # Build all available apps by extracting from bundle IDs
-      apps = RELEASE_BUNDLE_IDS.map { |app| File.extname(app.to_s).delete('.') }
-      UI.important 'All targets will be built:'
-    else
-      # Build specified apps only
-      apps += options[:targets].split(',')
-      UI.important 'The following targets will be built:'
-    end
-    UI.important apps.to_s
+    UI.important "The following targets will be built: #{apps}"
 
     # Process each app individually
     apps.each do |app|
@@ -211,16 +351,11 @@ platform :ios do
       # MARK: - Tuist Project Generation
       # Generate Xcode project using Tuist with beta-specific configuration
       Dir.chdir('..') do
-        # Configure Tuist environment variables for beta builds
-        ENV['TUIST_TURN_OFF_LINTERS'] = 'TRUE'                      # Skip linting for faster builds
-        ENV['TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG'] = 'FALSE'  # Use static libraries
-        ENV['TUIST_GENERATE_L10N_SCHEMES'] = 'FALSE'                # Skip localization schemes  
-        ENV['TUIST_GENERATE_EXAMPLE_TARGETS'] = 'FALSE'             # Skip example targets
-        ENV['TUIST_DEVELOPER_MODE'] = 'TRUE'                        # Enable developer features
-        ENV['TUIST_TESTFLIGHT_BUILD'] = 'TRUE'                      # Mark as TestFlight build
-        ENV['TUIST_PRODUCTION_BUILD'] = 'FALSE'                     # Not a production build
-        ENV['TUIST_FASTLANE_BUILD'] = 'TRUE'                        # Built via fastlane
-        ENV['TUIST_FASTLANE_MATCH_APP_BUNDLE_ID'] = app_bundle_id.to_s  # Bundle ID for signing
+        # Configure Tuist for beta builds using helper function
+        configure_tuist_environment(
+          build_type: 'beta',
+          app_bundle_id: app_bundle_id
+        )
         
         # Generate project without opening Xcode and without binary cache for clean builds
         system('tuist', 'generate', '--no-open', '--no-binary-cache', app.to_s)
@@ -228,40 +363,12 @@ platform :ios do
 
       begin
         # MARK: - CI Environment Setup
-        if ENV['CI']
-          # Configure App Store Connect API authentication for TestFlight uploads
-          app_store_connect_api_key(
-            key_id: ENV.fetch('APP_STORE_CONNECT_API_KEY_ID', nil),
-            issuer_id: ENV.fetch('APP_STORE_CONNECT_ISSUER_ID', nil),
-            key_content: ENV.fetch('APP_STORE_CONNECT_API_KEY_CONTENT', nil)
-          )
-
-          # Unlock the keychain containing signing certificates
-          unlock_keychain(
-            path: 'io.leka.fastlane.keychain',
-            password: ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil)
-          )
-
-          # Set partition list for keychain access (required for code signing)
-          UI.header 'Step: keychain security set-key-partition-list'
-          system('security', 'set-key-partition-list', '-S', 'apple-tool:,apple:', '-s', '-k',
-                 ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil), 'io.leka.fastlane.keychain')
-        end
+        # Use helper function for App Store Connect authentication
+        setup_app_store_connect_auth(auth_type: 'beta')
 
         # MARK: - Pull Request Information
-        # Determine PR number for changelog context
-        # This affects how changelogs are generated (PR-based vs commit-based)
-        pr_number = lambda {
-          if ENV['PR_NUMBER'] && !ENV['PR_NUMBER'].empty?
-            pr_number = ENV['PR_NUMBER']
-          else
-            # Try to get PR number using GitHub CLI
-            `gh pr view --json number -q .number`.strip.tap do |output|
-              output.replace('NO_PR') if output.empty?
-              pr_number = output
-            end
-          end
-        }.call
+        # Use helper function to determine PR number for changelog context
+        pr_number = detect_pr_number
 
         # MARK: - Version and Build Number Management
         UI.header 'Step: Create verson and new build number'
@@ -336,13 +443,8 @@ platform :ios do
         )
       ensure
         # MARK: - Cleanup
-        # Always clean up the temporary keychain in CI environments
-        # This prevents keychain accumulation and potential security issues
-        next unless ENV['CI']
-
-        delete_keychain(
-          name: 'io.leka.fastlane.keychain'
-        )
+        # Use helper function to clean up the temporary keychain
+        cleanup_keychain
       end
     end
   end
@@ -387,14 +489,18 @@ platform :ios do
   desc "Note: This lane is typically triggered by GitHub Actions on specific PR labels"
   desc "      Only one app can be released at a time for better control and review"
   lane :release do |options|
-    # Validate required parameter - only one app can be released at a time
+    # Validate environment and parameters
+    validate_build_environment
+    
+    # Validate and get single target for release
     UI.user_error! 'A target must be specified, for example: LekaApp, LekaUpdater, etc.' if options[:target].nil?
     UI.user_error! 'Only one app can be released at a time' if options[:target].split(',').count > 1
 
-    app = options[:target].split(',').first
+    targets = validate_targets(options[:target])
+    app = targets.first
 
     UI.header 'Step: Set target to build'
-    UI.important "The following targets will be built: #{app}"
+    UI.important "The following target will be built: #{app}"
 
     # Production apps use the base bundle ID (no .beta suffix)
     app_bundle_id = "io.leka.apf.app.#{app}"
@@ -404,51 +510,22 @@ platform :ios do
 
     # MARK: - Tuist Project Generation for Production
     Dir.chdir('..') do
-      # Configure Tuist environment variables for production builds
-      ENV['TUIST_TURN_OFF_LINTERS'] = 'TRUE'                      # Skip linting for release builds
-      ENV['TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG'] = 'FALSE'  # Use static libraries  
-      ENV['TUIST_GENERATE_L10N_SCHEMES'] = 'FALSE'                # Skip localization schemes
-      ENV['TUIST_GENERATE_EXAMPLE_TARGETS'] = 'FALSE'             # Skip example targets
-      ENV['TUIST_DEVELOPER_MODE'] = 'FALSE'                       # Disable developer features
-      ENV['TUIST_TESTFLIGHT_BUILD'] = 'FALSE'                     # Not a TestFlight build
-      ENV['TUIST_PRODUCTION_BUILD'] = 'TRUE'                      # Production build
-      ENV['TUIST_FASTLANE_BUILD'] = 'TRUE'                        # Built via fastlane
-      ENV['TUIST_FASTLANE_MATCH_APP_BUNDLE_ID'] = app_bundle_id.to_s  # Bundle ID for signing
+      # Configure Tuist for production builds using helper function
+      configure_tuist_environment(
+        build_type: 'release',
+        app_bundle_id: app_bundle_id
+      )
       
       system('tuist', 'generate', '--no-open', '--no-binary-cache', app.to_s)
     end
 
     begin
       # MARK: - CI Environment Setup (Production)
-      if ENV['CI']
-        # Use separate API credentials for production releases (enhanced security)
-        app_store_connect_api_key(
-          key_id: ENV.fetch('APP_STORE_CONNECT_API_KEY_ID_RELEASE_APP_STORE', nil),
-          issuer_id: ENV.fetch('APP_STORE_CONNECT_ISSUER_ID', nil),
-          key_content: ENV.fetch('APP_STORE_CONNECT_API_KEY_CONTENT_RELEASE_APP_STORE', nil)
-        )
+      # Use helper function for App Store Connect authentication (release credentials)
+      setup_app_store_connect_auth(auth_type: 'release')
 
-        unlock_keychain(
-          path: 'io.leka.fastlane.keychain',
-          password: ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil) 
-        )
-
-        UI.header 'Step: keychain security set-key-partition-list'
-        system('security', 'set-key-partition-list', '-S', 'apple-tool:,apple:', '-s', '-k',
-               ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil), 'io.leka.fastlane.keychain')
-      end
-
-      # Get PR number (same logic as beta_internal)
-      pr_number = lambda {
-        if ENV['PR_NUMBER'] && !ENV['PR_NUMBER'].empty?
-          pr_number = ENV['PR_NUMBER']
-        else
-          `gh pr view --json number -q .number`.strip.tap do |output|
-            output.replace('NO_PR') if output.empty?
-            pr_number = output
-          end
-        end
-      }.call
+      # Get PR number using helper function (same logic as beta_internal)
+      pr_number = detect_pr_number
 
       # MARK: - Version and Build Number Management (Production)
       UI.header 'Step: Create verson and new build number'
@@ -525,11 +602,7 @@ platform :ios do
       )
     ensure
       # MARK: - Cleanup (same as beta_internal)
-      next unless ENV['CI']
-
-      delete_keychain(
-        name: 'io.leka.fastlane.keychain'
-      )
+      cleanup_keychain
     end
   end
 
