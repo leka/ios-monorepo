@@ -57,6 +57,10 @@ public class AuthManager {
         self.authenticationState.eraseToAnyPublisher()
     }
 
+    public var sendEmailUpdatePublisher: AnyPublisher<Bool, Never> {
+        self.sendEmailUpdate.eraseToAnyPublisher()
+    }
+
     public func signUp(email: String, password: String) {
         self.loadingStatePublisher.send(true)
         self.auth.createUser(withEmail: email, password: password)
@@ -170,11 +174,13 @@ public class AuthManager {
         user.sendEmailVerification(beforeUpdatingEmail: newEmail) { [weak self] error in
             self?.loadingStatePublisher.send(false)
             if let error {
-                log.error("Failed to send verification email before updating email: \(error.localizedDescription)")
+                self?.sendEmailUpdate.send(false)
                 self?.authenticationError.send(error)
+                log.error("Failed to send verification email before updating email: \(error.localizedDescription)")
             } else {
-                log.info("Verification email sent to \(newEmail). Email will update once verified.")
+                self?.sendEmailUpdate.send(true)
                 self?.analyticsEvent.send(.didRequestEmailChange)
+                log.info("Verification email sent to \(newEmail). Email will update once verified.")
             }
         }
     }
@@ -222,6 +228,7 @@ public class AuthManager {
     private let emailVerificationState = PassthroughSubject<Bool, Never>()
     private let reAuthenticationState = PassthroughSubject<Bool, Never>()
     private let passwordResetEmail = PassthroughSubject<Bool, Never>()
+    private let sendEmailUpdate = PassthroughSubject<Bool, Never>()
     private let auth = Auth.auth()
     private var cancellables = Set<AnyCancellable>()
 
