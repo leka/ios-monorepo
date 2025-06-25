@@ -11,13 +11,21 @@ import SwiftUI
 public class TTSCoordinatorOpenPlay: TTSGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorOpenPlayChoiceModel], action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .init()) {
+    public init(choices: [CoordinatorOpenPlayChoiceModel], action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .manualWithSelectionLimit()) {
         self.rawChoices = choices
         self.validation = validation
 
         self.uiModel.value.action = action
-        self.minimumToSelect = validation.minimumToSelect ?? 0
-        self.maximumToSelect = validation.maximumToSelect ?? choices.count
+
+        if case let .manualWithSelectionLimit(minimumToSelect, maximumToSelect) = validation {
+            self.minimumToSelect = minimumToSelect ?? 0
+            self.maximumToSelect = maximumToSelect ?? choices.count
+            if self.minimumToSelect == 0 { self.validationEnabled.send(true) } else { self.validationEnabled.send(false) }
+        } else {
+            self.minimumToSelect = 0
+            self.maximumToSelect = choices.count
+        }
+
         self.uiModel.value.choices = choices.map { choice in
             let view = ChoiceView(value: choice.value,
                                   type: choice.type,
@@ -25,14 +33,9 @@ public class TTSCoordinatorOpenPlay: TTSGameplayCoordinatorProtocol {
                                   state: .idle)
             return TTSUIChoiceModel(id: choice.id, view: view)
         }
-        if validation.type == .manual {
-            if self.minimumToSelect == 0 { self.validationEnabled.send(true) } else { self.validationEnabled.send(false) }
-        } else {
-            self.validationEnabled.send(nil)
-        }
     }
 
-    public convenience init(model: CoordinatorOpenPlayModel, action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .init()) {
+    public convenience init(model: CoordinatorOpenPlayModel, action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .manualWithSelectionLimit()) {
         self.init(choices: model.choices, action: action, validation: validation)
     }
 

@@ -52,7 +52,7 @@ struct DnDExercises: View {
                 NavigationLink {
                     let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(
                         choices: ExerciseData.kAssociateCategoriesWithZonesChoicesEmojis,
-                        validation: .init(type: .manual)
+                        validation: .manual
                     )
                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 
@@ -65,7 +65,7 @@ struct DnDExercises: View {
 
                 NavigationLink {
                     let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(choices: ExerciseData.kFindTheRightOrderChoicesEmojis,
-                                                                              validation: .init(type: .manual))
+                                                                              validation: .manual)
                     let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
 
                     return DnDOneToOneView(viewModel: viewModel)

@@ -33,7 +33,7 @@ public class CurrentExerciseCoordinator {
                                     let coordinator = TTSCoordinatorAssociateCategories(
                                         model: model,
                                         action: exercise.action,
-                                        validation: self.exercise.options?.validation ?? .init()
+                                        validation: self.exercise.options?.validation ?? .automatic
                                     )
                                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -53,7 +53,7 @@ public class CurrentExerciseCoordinator {
                                     let coordinator = TTSCoordinatorFindTheRightAnswers(
                                         model: model,
                                         action: exercise.action,
-                                        validation: self.exercise.options?.validation ?? .init()
+                                        validation: self.exercise.options?.validation ?? .automatic
                                     )
                                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -73,7 +73,7 @@ public class CurrentExerciseCoordinator {
                                     let coordinator = TTSCoordinatorFindTheRightOrder(
                                         model: model,
                                         action: exercise.action,
-                                        validation: self.exercise.options?.validation ?? .init()
+                                        validation: self.exercise.options?.validation ?? .automatic
                                     )
                                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -93,7 +93,7 @@ public class CurrentExerciseCoordinator {
                                     let coordinator = TTSCoordinatorOpenPlay(
                                         model: model,
                                         action: exercise.action,
-                                        validation: self.exercise.options?.validation ?? .init()
+                                        validation: self.exercise.options?.validation ?? .automatic
                                     )
                                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -140,7 +140,7 @@ public class CurrentExerciseCoordinator {
                                     let coordinator = DnDGridWithZonesCoordinatorAssociateCategories(
                                         model: model,
                                         action: exercise.action,
-                                        validation: self.exercise.options?.validation ?? .init()
+                                        validation: self.exercise.options?.validation ?? .automatic
                                     )
                                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 
@@ -159,7 +159,7 @@ public class CurrentExerciseCoordinator {
                                     let coordinator = DnDGridWithZonesCoordinatorOpenPlay(
                                         model: model,
                                         action: exercise.action,
-                                        validation: self.exercise.options?.validation ?? .init()
+                                        validation: self.exercise.options?.validation ?? .automatic
                                     )
                                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 
@@ -184,7 +184,7 @@ public class CurrentExerciseCoordinator {
                                     let coordinator = DnDOneToOneCoordinatorFindTheRightOrder(
                                         model: model,
                                         action: exercise.action,
-                                        validation: self.exercise.options?.validation ?? .init()
+                                        validation: self.exercise.options?.validation ?? .automatic
                                     )
                                     let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
 

@@ -56,7 +56,7 @@ public struct DnDOneToOneView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
 
-            if self.viewModel.validation.type == .manual,
+            if self.viewModel.validation != .automatic,
                let validationEnabled = self.viewModel.validationEnabled
             {
                 Button {

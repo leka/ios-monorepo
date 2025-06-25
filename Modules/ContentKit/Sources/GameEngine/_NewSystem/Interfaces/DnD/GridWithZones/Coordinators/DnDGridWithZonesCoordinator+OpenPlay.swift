@@ -13,7 +13,7 @@ import SwiftUI
 public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorOpenPlayChoiceModel], action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .init()) {
+    public init(choices: [CoordinatorOpenPlayChoiceModel], action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .manualWithSelectionLimit()) {
         let dropZones = choices.filter(\.isDropzone)
         let nodes = choices.filter { $0.isDropzone == false }
         self.rawChoices = Array(nodes)
@@ -22,8 +22,14 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
         self.uiModel.value.action = action
         self.uiDropZoneModel.action = action
 
-        self.minimumToSelect = validation.minimumToSelect ?? 0
-        self.maximumToSelect = validation.maximumToSelect ?? choices.count
+        if case let .manualWithSelectionLimit(minimumToSelect, maximumToSelect) = validation {
+            self.minimumToSelect = minimumToSelect ?? 0
+            self.maximumToSelect = maximumToSelect ?? choices.count
+            self.updateValidationState()
+        } else {
+            self.minimumToSelect = 0
+            self.maximumToSelect = choices.count
+        }
 
         self.uiDropZoneModel.zones = dropZones.map { dropzone in
             DnDDropZoneNode(
@@ -35,18 +41,12 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
             )
         }
 
-        if validation.type == .manual {
-            self.updateValidationState()
-        } else {
-            self.validationEnabled.value = nil
-        }
-
         self.uiModel.value.choices = nodes.map { choice in
             DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiModel.value.choiceSize(for: nodes.count))
         }
     }
 
-    public convenience init(model: CoordinatorOpenPlayModel, action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .init()) {
+    public convenience init(model: CoordinatorOpenPlayModel, action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .manualWithSelectionLimit()) {
         self.init(choices: model.choices, action: action, validation: validation)
     }
 

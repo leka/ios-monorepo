@@ -12,7 +12,7 @@ import SwiftUI
 public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorAssociateCategoriesChoiceModel], action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .init()) {
+    public init(choices: [CoordinatorAssociateCategoriesChoiceModel], action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .automatic) {
         let dropZones = choices.filter(\.isDropzone)
         let nodes = choices.filter { $0.isDropzone == false }
         self.rawDropZones = Array(dropZones)
@@ -37,14 +37,14 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
                 size: self.uiDropZoneModel.zoneSize(for: dropZones.count)
             )
         }
-        self.validationEnabled.value = (validation.type == .manual) ? false : nil
+        self.validationEnabled.value = (validation == .manual) ? false : nil
 
         self.uiModel.value.choices = nodes.map { choice in
             DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiModel.value.choiceSize(for: nodes.count))
         }
     }
 
-    public convenience init(model: CoordinatorAssociateCategoriesModel, action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .init()) {
+    public convenience init(model: CoordinatorAssociateCategoriesModel, action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .automatic) {
         self.init(choices: model.choices, action: action, validation: validation)
     }
 

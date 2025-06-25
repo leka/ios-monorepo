@@ -4,10 +4,13 @@
 
 // MARK: - NewExerciseOptions
 
-public struct NewExerciseOptions: Codable {
+public struct NewExerciseOptions: Decodable {
     // MARK: Lifecycle
 
-    public init(shuffleChoices: Bool = true, validation: Validation = .init()) {
+    public init(
+        shuffleChoices: Bool = true,
+        validation: Validation = .automatic
+    ) {
         self.shuffleChoices = shuffleChoices
         self.validation = validation
     }
@@ -16,46 +19,61 @@ public struct NewExerciseOptions: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         self.shuffleChoices = try container.decodeIfPresent(Bool.self, forKey: .shuffleChoices) ?? true
-        self.validation = try container.decodeIfPresent(Validation.self, forKey: .validation) ?? .init()
+        self.validation = try container.decodeIfPresent(Validation.self, forKey: .validation) ?? .automatic
     }
 
     // MARK: Public
 
-    public struct Validation: Codable, Equatable {
-        // MARK: Lifecycle
+    public enum Validation: Decodable, Equatable {
+        case automatic
+        case manual
+        case manualWithSelectionLimit(minimumToSelect: Int? = nil, maximumToSelect: Int? = nil)
 
-        public init(type: ValidationType = .automatic, minimumToSelect: Int? = nil, maximumToSelect: Int? = nil) {
-            self.type = type
-            self.minimumToSelect = minimumToSelect
-            self.maximumToSelect = maximumToSelect
-        }
+        // MARK: Lifecycle
 
         public init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
 
-            self.type = try container.decodeIfPresent(ValidationType.self, forKey: .type) ?? .automatic
-            self.minimumToSelect = try container.decodeIfPresent(Int.self, forKey: .minimumToSelect)
-            self.maximumToSelect = try container.decodeIfPresent(Int.self, forKey: .maximumToSelect)
+            let type = try container.decodeIfPresent(TypeValue.self, forKey: .type) ?? .automatic
+
+            switch type {
+                case .automatic:
+                    self = .automatic
+
+                case .manual:
+                    let minimum = try container.decodeIfPresent(Int.self, forKey: .minimumToSelect)
+                    let maximum = try container.decodeIfPresent(Int.self, forKey: .maximumToSelect)
+
+                    if minimum != nil || maximum != nil {
+                        self = .manualWithSelectionLimit(minimumToSelect: minimum, maximumToSelect: maximum)
+                    } else {
+                        self = .manual
+                    }
+            }
         }
 
-        // MARK: Public
+        // MARK: Private
 
-        public enum ValidationType: String, Codable {
+        // MARK: Codable
+
+        private enum CodingKeys: String, CodingKey {
+            case type
+            case minimumToSelect
+            case maximumToSelect
+        }
+
+        private enum TypeValue: String, Codable {
             case automatic
             case manual
         }
-
-        public let type: ValidationType
-        public let minimumToSelect: Int?
-        public let maximumToSelect: Int?
     }
 
     public let shuffleChoices: Bool
     public let validation: Validation
 
-    // MARK: Internal
+    // MARK: Private
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case shuffleChoices = "shuffle_choices"
         case validation
     }
