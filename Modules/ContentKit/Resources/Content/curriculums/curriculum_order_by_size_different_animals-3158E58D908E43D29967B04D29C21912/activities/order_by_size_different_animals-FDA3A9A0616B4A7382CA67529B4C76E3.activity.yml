@@ -86,9 +86,9 @@ exercises_payload:
           gameplay: findTheRightOrder
           payload:
             choices:
-              - value: order_by_size_different_animals_fish
-                type: image
               - value: order_by_size_different_animals_squirrel
+                type: image
+              - value: order_by_size_different_animals_dog
                 type: image
               - value: order_by_size_different_animals_giraffe
                 type: image
