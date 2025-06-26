@@ -62,8 +62,7 @@ struct TTSExercises: View {
                 }
 
                 NavigationLink {
-                    let coordinator = TTSCoordinatorFindTheRightAnswers(choices: ExerciseData.kFindTheRightAnswersChoicesDefault,
-                                                                        validation: .manual)
+                    let coordinator = TTSCoordinatorFindTheRightAnswers(choices: ExerciseData.kFindTheRightAnswersChoicesDefault)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                     return TTSView(viewModel: viewModel)
@@ -74,8 +73,7 @@ struct TTSExercises: View {
                 }
 
                 NavigationLink {
-                    let coordinator = TTSCoordinatorFindTheRightOrder(choices: ExerciseData.kFindTheRightOrderChoicesSFSymbols,
-                                                                      validation: .manual)
+                    let coordinator = TTSCoordinatorFindTheRightOrder(choices: ExerciseData.kFindTheRightOrderChoicesSFSymbols)
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                     return TTSView(viewModel: viewModel)

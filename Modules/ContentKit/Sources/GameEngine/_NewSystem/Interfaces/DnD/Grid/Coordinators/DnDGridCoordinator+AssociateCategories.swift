@@ -11,21 +11,22 @@ import SwiftUI
 public class DnDGridCoordinatorAssociateCategories: DnDGridGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorAssociateCategoriesChoiceModel], action: NewExerciseAction? = nil) {
-        self.rawChoices = choices
+    public init(choices: [CoordinatorAssociateCategoriesChoiceModel], action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
+        let options = options ?? NewExerciseOptions()
+        self.rawChoices = options.shuffleChoices ? choices.shuffled() : choices
 
-        self.gameplay = NewGameplayAssociateCategories(choices: choices.map {
+        self.gameplay = NewGameplayAssociateCategories(choices: self.rawChoices.map {
             .init(id: $0.id, category: $0.category)
         })
 
         self.uiModel.value.action = action
-        self.uiModel.value.choices = choices.map { choice in
+        self.uiModel.value.choices = self.rawChoices.map { choice in
             DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiModel.value.choiceSize(for: self.rawChoices.count))
         }
     }
 
-    public convenience init(model: CoordinatorAssociateCategoriesModel, action: NewExerciseAction? = nil) {
-        self.init(choices: model.choices, action: action)
+    public convenience init(model: CoordinatorAssociateCategoriesModel, action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
+        self.init(choices: model.choices, action: action, options: options)
     }
 
     // MARK: Public

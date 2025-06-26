@@ -13,16 +13,18 @@ import SwiftUI
 public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorOpenPlayChoiceModel], action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .manualWithSelectionLimit()) {
+    public init(choices: [CoordinatorOpenPlayChoiceModel], action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
+        let options = options ?? NewExerciseOptions()
         let dropZones = choices.filter(\.isDropzone)
         let nodes = choices.filter { $0.isDropzone == false }
-        self.rawChoices = Array(nodes)
-        self.validation = validation
+        let rawDropzones = options.shuffleChoices ? Array(dropZones).shuffled() : Array(dropZones)
+        self.rawChoices = options.shuffleChoices ? Array(nodes).shuffled() : Array(nodes)
+        self.validation = options.validation
 
         self.uiModel.value.action = action
         self.uiDropZoneModel.action = action
 
-        if case let .manualWithSelectionLimit(minimumToSelect, maximumToSelect) = validation {
+        if case let .manualWithSelectionLimit(minimumToSelect, maximumToSelect) = self.validation {
             self.minimumToSelect = minimumToSelect ?? 0
             self.maximumToSelect = maximumToSelect ?? choices.count
             self.updateValidationState()
@@ -31,7 +33,7 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
             self.maximumToSelect = choices.count
         }
 
-        self.uiDropZoneModel.zones = dropZones.map { dropzone in
+        self.uiDropZoneModel.zones = rawDropzones.map { dropzone in
             DnDDropZoneNode(
                 id: dropzone.id,
                 value: dropzone.value,
@@ -41,13 +43,13 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
             )
         }
 
-        self.uiModel.value.choices = nodes.map { choice in
+        self.uiModel.value.choices = self.rawChoices.map { choice in
             DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiModel.value.choiceSize(for: nodes.count))
         }
     }
 
-    public convenience init(model: CoordinatorOpenPlayModel, action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .manualWithSelectionLimit()) {
-        self.init(choices: model.choices, action: action, validation: validation)
+    public convenience init(model: CoordinatorOpenPlayModel, action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
+        self.init(choices: model.choices, action: action, options: options)
     }
 
     // MARK: Public

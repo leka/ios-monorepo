@@ -11,9 +11,10 @@ import SwiftUI
 public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorFindTheRightOrderChoiceModel], action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .automatic) {
+    public init(choices: [CoordinatorFindTheRightOrderChoiceModel], action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
+        let options = options ?? NewExerciseOptions()
         self.rawChoices = choices
-        self.validation = validation
+        self.validation = options.validation
 
         self.gameplay = NewGameplayFindTheRightOrder(choices: choices.map { .init(id: $0.id) })
 
@@ -31,15 +32,18 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
             DnDDropZoneNode(node: node)
         }
 
-        self.uiModel.value.choices.shuffle()
-        self.validationEnabled.value = (validation == .manual) ? false : nil
+        self.validationEnabled.value = (self.validation == .manual) ? false : nil
+
+        if options.shuffleChoices {
+            self.uiModel.value.choices.shuffle()
+        }
 
         self.currentOrderedChoices = Array(repeating: nil, count: self.gameplay.orderedChoices.count)
         self.alreadyValidatedChoices = Array(repeating: nil, count: self.gameplay.orderedChoices.count)
     }
 
-    public convenience init(model: CoordinatorFindTheRightOrderModel, action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .automatic) {
-        self.init(choices: model.choices, action: action, validation: validation)
+    public convenience init(model: CoordinatorFindTheRightOrderModel, action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
+        self.init(choices: model.choices, action: action, options: options)
     }
 
     // MARK: Public

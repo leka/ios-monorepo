@@ -10,25 +10,26 @@ import SwiftUI
 public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorFindTheRightOrderChoiceModel], action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .automatic) {
-        self.rawChoices = choices
-        self.validation = validation
+    public init(choices: [CoordinatorFindTheRightOrderChoiceModel], action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
+        let options = options ?? NewExerciseOptions()
+        self.rawChoices = options.shuffleChoices ? choices.shuffled() : choices
+        self.validation = options.validation
         self.gameplay = NewGameplayFindTheRightOrder(
-            choices: choices.map { .init(id: $0.id) }
+            choices: self.rawChoices.map { .init(id: $0.id) }
         )
         self.uiModel.value.action = action
-        self.uiModel.value.choices = choices.map { choice in
+        self.uiModel.value.choices = self.rawChoices.map { choice in
             let view = ChoiceView(value: choice.value,
                                   type: choice.type,
                                   size: self.uiModel.value.choiceSize(for: choices.count),
                                   state: .idle)
             return TTSUIChoiceModel(id: choice.id, view: view)
         }
-        self.validationEnabled.value = (validation == .manual) ? false : nil
+        self.validationEnabled.value = (self.validation == .manual) ? false : nil
     }
 
-    public convenience init(model: CoordinatorFindTheRightOrderModel, action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .automatic) {
-        self.init(choices: model.choices, action: action, validation: validation)
+    public convenience init(model: CoordinatorFindTheRightOrderModel, action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
+        self.init(choices: model.choices, action: action, options: options)
     }
 
     // MARK: Public
