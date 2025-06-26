@@ -52,6 +52,13 @@ public class AnalyticsManager {
         case carereceiversSelect
         case carereceiverSkipSelect
 
+        case sharedLibraryAddActivity
+        case sharedLibraryRemoveActivity
+        case sharedLibraryAddCurriculum
+        case sharedLibraryRemoveCurriculum
+        case sharedLibraryAddStory
+        case sharedLibraryRemoveStory
+
         // MARK: Internal
 
         var name: String {
@@ -107,6 +114,19 @@ public class AnalyticsManager {
                     "carereceivers_select"
                 case .carereceiverSkipSelect:
                     "carereceiver_skip_select"
+
+                case .sharedLibraryAddActivity:
+                    "shared_library_add_activity"
+                case .sharedLibraryRemoveActivity:
+                    "shared_library_remove_activity"
+                case .sharedLibraryAddCurriculum:
+                    "shared_library_add_curriculum"
+                case .sharedLibraryRemoveCurriculum:
+                    "shared_library_remove_curriculum"
+                case .sharedLibraryAddStory:
+                    "shared_library_add_story"
+                case .sharedLibraryRemoveStory:
+                    "shared_library_remove_story"
             }
         }
     }
