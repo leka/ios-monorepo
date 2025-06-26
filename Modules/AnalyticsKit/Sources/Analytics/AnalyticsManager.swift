@@ -59,6 +59,13 @@ public class AnalyticsManager {
         case sharedLibraryAddStory
         case sharedLibraryRemoveStory
 
+        case sharedLibraryAddActivityToFavorites
+        case sharedLibraryRemoveActivityFromFavorites
+        case sharedLibraryAddCurriculumToFavorites
+        case sharedLibraryRemoveCurriculumFromFavorites
+        case sharedLibraryAddStoryToFavorites
+        case sharedLibraryRemoveStoryFromFavorites
+
         // MARK: Internal
 
         var name: String {
@@ -127,6 +134,19 @@ public class AnalyticsManager {
                     "shared_library_add_story"
                 case .sharedLibraryRemoveStory:
                     "shared_library_remove_story"
+
+                case .sharedLibraryAddActivityToFavorites:
+                    "shared_library_add_activity_to_favorites"
+                case .sharedLibraryRemoveActivityFromFavorites:
+                    "shared_library_remove_activity_from_favorites"
+                case .sharedLibraryAddCurriculumToFavorites:
+                    "shared_library_add_curriculum_to_favorites"
+                case .sharedLibraryRemoveCurriculumFromFavorites:
+                    "shared_library_remove_curriculum_from_favorites"
+                case .sharedLibraryAddStoryToFavorites:
+                    "shared_library_add_story_to_favorites"
+                case .sharedLibraryRemoveStoryFromFavorites:
+                    "shared_library_remove_story_from_favorites"
             }
         }
     }
