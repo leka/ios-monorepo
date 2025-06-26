@@ -58,7 +58,7 @@ public struct CurriculumDetailsView: View {
                     // Favorite button (star/star.fill)
                     if self.sharedLibraryManagerViewModel.isContentFavorited(by: currentCaregiverID, contentID: self.curriculum.uuid) {
                         Button {
-                            self.sharedLibraryManagerViewModel.removeItemFromFavorites(libraryItem)
+                            self.sharedLibraryManagerViewModel.removeItemFromFavorites(libraryItem, caregiverID: currentCaregiverID)
                         } label: {
                             Label(String(l10n.ContentItemMenu.undoFavoriteButtonLabel.characters), systemImage: "star.fill")
                         }

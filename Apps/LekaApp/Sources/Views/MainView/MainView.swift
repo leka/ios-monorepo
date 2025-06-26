@@ -428,13 +428,20 @@ struct MainView: View {
             return Alert(title: Text(l10n.MainView.RemovalAlert.errorTitle))
         }
 
+        guard let caregiverID = self.caregiverManagerViewModel.currentCaregiver?.id else {
+            return Alert(title: Text(l10n.MainView.RemovalAlert.errorTitle))
+        }
+
         switch self.sharedLibraryManagerViewModel.alertType {
             case .confirmPersonalFavorite:
                 return Alert(
                     title: Text(l10n.MainView.RemovalAlert.confirmTitle),
                     message: Text(l10n.MainView.RemovalAlert.confirmMessage),
                     primaryButton: .destructive(Text(l10n.MainView.RemovalAlert.confirmAction)) {
-                        self.sharedLibraryManagerViewModel.removeItemFromSharedLibrary(itemToRemove)
+                        self.sharedLibraryManagerViewModel.removeItemFromSharedLibrary(
+                            itemToRemove,
+                            caregiverID: caregiverID
+                        )
                     },
                     secondaryButton: .cancel()
                 )

@@ -72,7 +72,7 @@ public struct ContentItemMenu: View {
             contentID: curation.id
         ) {
             Button {
-                self.sharedLibraryManagerViewModel.removeItemFromFavorites(libraryItem)
+                self.sharedLibraryManagerViewModel.removeItemFromFavorites(libraryItem, caregiverID: caregiverID)
             } label: {
                 Label(String(l10n.ContentItemMenu.undoFavoriteButtonLabel.characters), systemImage: "star.slash")
             }
@@ -88,19 +88,19 @@ public struct ContentItemMenu: View {
 
 public extension SharedLibraryManager {
     static func getSharedLibraryItem(from curationItem: CurationItemModel, caregiverID: String) -> AccountKit.SharedLibraryItem {
-        var libraryItem: AccountKit.SharedLibraryItem = .activity(SavedActivity(id: "", caregiverID: ""))
+        var libraryItem: AccountKit.SharedLibraryItem = .activity(SavedActivity(id: "", name: "", caregiverID: ""))
         switch curationItem.contentType {
             case .curriculum:
                 libraryItem = SharedLibraryItem.curriculum(
-                    SavedCurriculum(id: curationItem.id, caregiverID: caregiverID)
+                    SavedCurriculum(id: curationItem.id, name: curationItem.name, caregiverID: caregiverID)
                 )
             case .activity:
                 libraryItem = SharedLibraryItem.activity(
-                    SavedActivity(id: curationItem.id, caregiverID: caregiverID)
+                    SavedActivity(id: curationItem.id, name: curationItem.name, caregiverID: caregiverID)
                 )
             case .story:
                 libraryItem = SharedLibraryItem.story(
-                    SavedStory(id: curationItem.id, caregiverID: caregiverID)
+                    SavedStory(id: curationItem.id, name: curationItem.name, caregiverID: caregiverID)
                 )
             default:
                 log.error("Shared Library item conversion - Unsupported content type")

@@ -19,6 +19,14 @@ public enum SharedLibraryItem {
         }
     }
 
+    public var name: String {
+        switch self {
+            case let .activity(activity): activity.name
+            case let .curriculum(curriculum): curriculum.name
+            case let .story(story): story.name
+        }
+    }
+
     public var subCollection: SharedLibrarySubCollection {
         switch self {
             case .activity: .activities

@@ -162,16 +162,19 @@ public extension SharedLibraryManagerViewModel {
             case let .activity(activity):
                 self.sharedLibraryManager.addActivity(
                     activityID: activity.id,
+                    name: activity.name,
                     caregiverID: activity.caregiverID
                 )
             case let .curriculum(curriculum):
                 self.sharedLibraryManager.addCurriculum(
                     curriculumID: curriculum.id,
+                    name: curriculum.name,
                     caregiverID: curriculum.caregiverID
                 )
             case let .story(story):
                 self.sharedLibraryManager.addStory(
                     storyID: story.id,
+                    name: story.name,
                     caregiverID: story.caregiverID
                 )
         }
@@ -182,16 +185,19 @@ public extension SharedLibraryManagerViewModel {
             case let .activity(activity):
                 self.sharedLibraryManager.addActivityToSharedLibraryAsFavorite(
                     activityID: activity.id,
+                    name: activity.name,
                     caregiverID: activity.caregiverID
                 )
             case let .curriculum(curriculum):
                 self.sharedLibraryManager.addCurriculumToSharedLibraryAsFavorite(
                     curriculumID: curriculum.id,
+                    name: curriculum.name,
                     caregiverID: curriculum.caregiverID
                 )
             case let .story(story):
                 self.sharedLibraryManager.addStoryToSharedLibraryAsFavorite(
                     storyID: story.id,
+                    name: story.name,
                     caregiverID: story.caregiverID
                 )
         }
@@ -205,7 +211,7 @@ public extension SharedLibraryManagerViewModel {
         {
             self.alertType = .confirmPersonalFavorite
         } else {
-            self.removeItemFromSharedLibrary(item)
+            self.removeItemFromSharedLibrary(item, caregiverID: caregiverID)
             return
         }
 
@@ -213,28 +219,28 @@ public extension SharedLibraryManagerViewModel {
         self.showRemoveAlert = true
     }
 
-    func removeItemFromSharedLibrary(_ item: SharedLibraryItem) {
+    func removeItemFromSharedLibrary(_ item: SharedLibraryItem, caregiverID: String) {
         switch item {
             case let .activity(activity):
-                self.sharedLibraryManager.removeActivity(activityID: activity.id)
+                self.sharedLibraryManager.removeActivity(activityID: activity.id, name: activity.name, caregiverID: caregiverID)
             case let .curriculum(curriculum):
-                self.sharedLibraryManager.removeCurriculum(curriculumID: curriculum.id)
+                self.sharedLibraryManager.removeCurriculum(curriculumID: curriculum.id, name: curriculum.name, caregiverID: caregiverID)
             case let .story(story):
-                self.sharedLibraryManager.removeStory(storyID: story.id)
+                self.sharedLibraryManager.removeStory(storyID: story.id, name: story.name, caregiverID: caregiverID)
         }
 
         self.itemToRemove = nil
         self.showRemoveAlert = false
     }
 
-    func removeItemFromFavorites(_ item: SharedLibraryItem) {
+    func removeItemFromFavorites(_ item: SharedLibraryItem, caregiverID: String) {
         switch item {
             case let .activity(activity):
-                self.sharedLibraryManager.removeActivityFromFavorites(activityID: activity.id, caregiverID: activity.caregiverID)
+                self.sharedLibraryManager.removeActivityFromFavorites(activityID: activity.id, name: activity.name, caregiverID: caregiverID)
             case let .curriculum(curriculum):
-                self.sharedLibraryManager.removeCurriculumFromFavorites(curriculumID: curriculum.id, caregiverID: curriculum.caregiverID)
+                self.sharedLibraryManager.removeCurriculumFromFavorites(curriculumID: curriculum.id, name: curriculum.name, caregiverID: caregiverID)
             case let .story(story):
-                self.sharedLibraryManager.removeStoryFromFavorites(storyID: story.id, caregiverID: story.caregiverID)
+                self.sharedLibraryManager.removeStoryFromFavorites(storyID: story.id, name: story.name, caregiverID: caregiverID)
         }
 
         self.itemToRemove = nil
