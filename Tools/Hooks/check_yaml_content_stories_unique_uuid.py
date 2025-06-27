@@ -16,5 +16,11 @@ STORY_PATTERN = "*.story.yml"
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
+
+def main() -> int:
+    """Check story UUID uniqueness"""
+    return check_uuids(DIRECTORY_PATH, STORY_PATTERN, "story")
+
+
 if __name__ == "__main__":
-    sys.exit(check_uuids(DIRECTORY_PATH, STORY_PATTERN, "story"))
+    sys.exit(main())
