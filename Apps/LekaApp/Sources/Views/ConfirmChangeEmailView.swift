@@ -6,9 +6,9 @@ import AccountKit
 import LocalizationKit
 import SwiftUI
 
-// MARK: - ReAuthenticationView
+// MARK: - ChangeEmailView
 
-struct ReAuthenticationView: View {
+struct ConfirmChangeEmailView: View {
     // MARK: Internal
 
     @Environment(\.dismiss) var dismiss
@@ -17,16 +17,16 @@ struct ReAuthenticationView: View {
         VStack(alignment: .center, spacing: 30) {
             VStack(spacing: 10) {
                 VStack(spacing: 40) {
-                    Image(systemName: "exclamationmark.lock")
+                    Image(systemName: "envelope")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 50, height: 50)
                         .foregroundColor(.blue)
 
-                    Text(l10n.ReAuthenticationView.title)
+                    Text(l10n.ConfirmChangeEmailView.title)
                         .font(.title)
 
-                    Text(l10n.ReAuthenticationView.contextMessage)
+                    Text(l10n.ConfirmChangeEmailView.contextMessage)
                         .font(.body)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 20)
@@ -51,18 +51,13 @@ struct ReAuthenticationView: View {
                 .alert(String(l10n.ReAuthenticationView.confirmResetPasswordAlertTitle.characters),
                        isPresented: self.$showConfirmResetPassword)
                 {
-                    Button(
-                        String(l10n.ReAuthenticationView.resetPasswordButtonLabel.characters),
-                        role: .destructive
-                    ) {
+                    Button(String(l10n.ReAuthenticationView.resetPasswordButtonLabel.characters), role: .destructive) {
                         self.authManager.sendPasswordResetEmail(to: self.authManager.currentUserEmail ?? "")
                         self.showConfirmResetPassword = false
                         self.dismiss()
                     }
-                    Button(
-                        String(l10n.ReAuthenticationView.cancelResetPasswordButtonLabel.characters),
-                        role: .cancel
-                    ) {
+
+                    Button(String(l10n.ReAuthenticationView.cancelResetPasswordButtonLabel.characters), role: .cancel) {
                         self.authManagerViewModel.setUserAction(.userIsReAuthenticating)
                     }
                 } message: {
@@ -75,17 +70,18 @@ struct ReAuthenticationView: View {
             Button {
                 self.submitForm()
             } label: {
-                Text(String(l10n.ReAuthenticationView.reauthAndDeleteAccountButton.characters))
+                Text(String(l10n.ConfirmChangeEmailView.reauthAndChangeEmailButton.characters))
                     .loadingIndicator(isLoading: self.authManagerViewModel.isLoading)
             }
-            .disabled(self.isConnectionDisabled || self.authManagerViewModel.isLoading)
+            .disabled(self.password.isEmpty || self.authManagerViewModel.isLoading)
             .buttonStyle(.borderedProminent)
-            .tint(.red)
         }
         .onChange(of: self.authManagerViewModel.reAuthenticationSucceeded) {
-            if self.authManagerViewModel.reAuthenticationSucceeded {
-                self.dismiss()
-            }
+            self.authManagerViewModel.setUserAction(.none)
+            self.dismiss()
+        }
+        .onDisappear {
+            self.authManagerViewModel.showErrorMessage = false
         }
     }
 
@@ -94,21 +90,10 @@ struct ReAuthenticationView: View {
     @State private var password: String = ""
     @State private var showConfirmResetPassword: Bool = false
 
-    private var authManager: AuthManager = .shared
     private var authManagerViewModel: AuthManagerViewModel = .shared
-
-    private var isConnectionDisabled: Bool {
-        self.password.isEmpty
-    }
+    private let authManager = AuthManager.shared
 
     private func submitForm() {
         self.authManager.reAuthenticateCurrentUser(password: self.password)
     }
-}
-
-#Preview {
-    Text("Hello, World!")
-        .sheet(isPresented: .constant(true)) {
-            ReAuthenticationView()
-        }
 }

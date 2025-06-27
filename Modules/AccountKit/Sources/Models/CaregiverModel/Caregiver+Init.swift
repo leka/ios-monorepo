@@ -15,7 +15,8 @@ public extension Caregiver {
         avatar: String = "",
         professions: [String] = [],
         colorScheme: ColorScheme = .light,
-        colorTheme: ColorTheme = .darkBlue
+        colorTheme: ColorTheme = .darkBlue,
+        isAdmin: Bool = false
     ) {
         self.id = id
         self.rootOwnerUid = rootOwnerUid
@@ -27,5 +28,6 @@ public extension Caregiver {
         self.professions = professions
         self.colorScheme = colorScheme
         self.colorTheme = colorTheme
+        self.isAdmin = isAdmin
     }
 }

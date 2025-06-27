@@ -31,6 +31,7 @@ public class AuthManager {
         case userIsSigningOut
         case userIsReAuthenticating
         case userIsResettingPassword
+        case userIsChangingEmail
         case userIsDeletingAccount
     }
 
@@ -42,6 +43,10 @@ public class AuthManager {
 
     public var authenticationStatePublisher: AnyPublisher<AuthenticationState, Never> {
         self.authenticationState.eraseToAnyPublisher()
+    }
+
+    public var sendEmailUpdatePublisher: AnyPublisher<Bool, Never> {
+        self.sendEmailUpdate.eraseToAnyPublisher()
     }
 
     public func signUp(email: String, password: String) {
@@ -143,9 +148,37 @@ public class AuthManager {
                 log.error("Failed to send password reset email: \(error.localizedDescription)")
                 self?.authenticationError.send(error)
                 self?.passwordResetEmail.send(false)
+                CrashlyticsManager.recordError(error)
             } else {
                 log.info("Password reset email sent successfully.")
                 self?.passwordResetEmail.send(true)
+                AnalyticsManager.logEventRequestPasswordChange()
+            }
+        }
+    }
+
+    public func sendEmailVerificationBeforeUpdatingEmail(to newEmail: String) {
+        guard let user = self.auth.currentUser else {
+            let errorMessage = "No authenticated user found for email update."
+            log.error("\(errorMessage)")
+            self.authenticationError.send(AuthenticationError.custom(message: errorMessage))
+            CrashlyticsManager.log(message: errorMessage)
+            return
+        }
+
+        self.loadingStatePublisher.send(true)
+
+        user.sendEmailVerification(beforeUpdatingEmail: newEmail) { [weak self] error in
+            self?.loadingStatePublisher.send(false)
+            if let error {
+                log.error("Failed to send verification email before updating email: \(error.localizedDescription)")
+                self?.authenticationError.send(error)
+                self?.sendEmailUpdate.send(false)
+                CrashlyticsManager.recordError(error)
+            } else {
+                log.info("Verification email sent to \(newEmail). Email will update once verified.")
+                self?.sendEmailUpdate.send(true)
+                AnalyticsManager.logEventRequestEmailChange()
             }
         }
     }
@@ -196,6 +229,7 @@ public class AuthManager {
     private let emailVerificationState = PassthroughSubject<Bool, Never>()
     private let reAuthenticationState = PassthroughSubject<Bool, Never>()
     private let passwordResetEmail = PassthroughSubject<Bool, Never>()
+    private let sendEmailUpdate = PassthroughSubject<Bool, Never>()
     private let auth = Auth.auth()
     private var cancellables = Set<AnyCancellable>()
 

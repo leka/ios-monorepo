@@ -34,6 +34,8 @@ public class AnalyticsManager {
         case signup
         case skipAuthentication
         case accountDelete
+        case emailChange
+        case passwordChange
 
         case screenView
 
@@ -92,6 +94,10 @@ public class AnalyticsManager {
                     "skip_authentication"
                 case .accountDelete:
                     "account_delete"
+                case .emailChange:
+                    "email_change"
+                case .passwordChange:
+                    "password_change"
 
                 case .screenView:
                     AnalyticsEventScreenView // ? "screen_view"
