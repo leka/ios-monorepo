@@ -52,6 +52,20 @@ public class AnalyticsManager {
         case carereceiversSelect
         case carereceiverSkipSelect
 
+        case sharedLibraryAddActivity
+        case sharedLibraryRemoveActivity
+        case sharedLibraryAddCurriculum
+        case sharedLibraryRemoveCurriculum
+        case sharedLibraryAddStory
+        case sharedLibraryRemoveStory
+
+        case sharedLibraryAddActivityToFavorites
+        case sharedLibraryRemoveActivityFromFavorites
+        case sharedLibraryAddCurriculumToFavorites
+        case sharedLibraryRemoveCurriculumFromFavorites
+        case sharedLibraryAddStoryToFavorites
+        case sharedLibraryRemoveStoryFromFavorites
+
         // MARK: Internal
 
         var name: String {
@@ -107,6 +121,32 @@ public class AnalyticsManager {
                     "carereceivers_select"
                 case .carereceiverSkipSelect:
                     "carereceiver_skip_select"
+
+                case .sharedLibraryAddActivity:
+                    "shared_library_add_activity"
+                case .sharedLibraryRemoveActivity:
+                    "shared_library_remove_activity"
+                case .sharedLibraryAddCurriculum:
+                    "shared_library_add_curriculum"
+                case .sharedLibraryRemoveCurriculum:
+                    "shared_library_remove_curriculum"
+                case .sharedLibraryAddStory:
+                    "shared_library_add_story"
+                case .sharedLibraryRemoveStory:
+                    "shared_library_remove_story"
+
+                case .sharedLibraryAddActivityToFavorites:
+                    "shared_library_add_activity_to_favorites"
+                case .sharedLibraryRemoveActivityFromFavorites:
+                    "shared_library_remove_activity_from_favorites"
+                case .sharedLibraryAddCurriculumToFavorites:
+                    "shared_library_add_curriculum_to_favorites"
+                case .sharedLibraryRemoveCurriculumFromFavorites:
+                    "shared_library_remove_curriculum_from_favorites"
+                case .sharedLibraryAddStoryToFavorites:
+                    "shared_library_add_story_to_favorites"
+                case .sharedLibraryRemoveStoryFromFavorites:
+                    "shared_library_remove_story_from_favorites"
             }
         }
     }
