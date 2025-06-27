@@ -10,11 +10,12 @@ import SwiftUI
 public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol, ExerciseCompletionObservable {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorAssociateCategoriesChoiceModel], action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .automatic) {
-        self.rawChoices = choices
-        self.validation = validation
+    public init(choices: [CoordinatorAssociateCategoriesChoiceModel], action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
+        let options = options ?? NewExerciseOptions()
+        self.rawChoices = options.shuffleChoices ? choices.shuffled() : choices
+        self.validation = options.validation
 
-        self.gameplay = NewGameplayAssociateCategories(choices: choices.map {
+        self.gameplay = NewGameplayAssociateCategories(choices: self.rawChoices.map {
             .init(id: $0.id, category: $0.category)
         })
 
@@ -26,11 +27,11 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol, 
                                   state: .idle)
             return TTSUIChoiceModel(id: choice.id, view: view)
         }
-        self.validationEnabled.value = (validation == .manual) ? false : nil
+        self.validationEnabled.value = (self.validation == .manual) ? false : nil
     }
 
-    public convenience init(model: CoordinatorAssociateCategoriesModel, action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .automatic) {
-        self.init(choices: model.choices, action: action, validation: validation)
+    public convenience init(model: CoordinatorAssociateCategoriesModel, action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
+        self.init(choices: model.choices, action: action, options: options)
     }
 
     // MARK: Public

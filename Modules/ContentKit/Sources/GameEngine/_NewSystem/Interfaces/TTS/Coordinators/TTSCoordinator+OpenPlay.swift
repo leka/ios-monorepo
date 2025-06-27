@@ -11,13 +11,14 @@ import SwiftUI
 public class TTSCoordinatorOpenPlay: TTSGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorOpenPlayChoiceModel], action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .manualWithSelectionLimit()) {
-        self.rawChoices = choices
-        self.validation = validation
+    public init(choices: [CoordinatorOpenPlayChoiceModel], action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
+        let options = options ?? NewExerciseOptions()
+        self.rawChoices = options.shuffleChoices ? choices.shuffled() : choices
+        self.validation = options.validation
 
         self.uiModel.value.action = action
 
-        if case let .manualWithSelectionLimit(minimumToSelect, maximumToSelect) = validation {
+        if case let .manualWithSelectionLimit(minimumToSelect, maximumToSelect) = self.validation {
             self.minimumToSelect = minimumToSelect ?? 0
             self.maximumToSelect = maximumToSelect ?? choices.count
             if self.minimumToSelect == 0 { self.validationEnabled.send(true) } else { self.validationEnabled.send(false) }
@@ -26,7 +27,7 @@ public class TTSCoordinatorOpenPlay: TTSGameplayCoordinatorProtocol {
             self.maximumToSelect = choices.count
         }
 
-        self.uiModel.value.choices = choices.map { choice in
+        self.uiModel.value.choices = self.rawChoices.map { choice in
             let view = ChoiceView(value: choice.value,
                                   type: choice.type,
                                   size: self.uiModel.value.choiceSize(for: choices.count),
@@ -35,8 +36,8 @@ public class TTSCoordinatorOpenPlay: TTSGameplayCoordinatorProtocol {
         }
     }
 
-    public convenience init(model: CoordinatorOpenPlayModel, action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .manualWithSelectionLimit()) {
-        self.init(choices: model.choices, action: action, validation: validation)
+    public convenience init(model: CoordinatorOpenPlayModel, action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
+        self.init(choices: model.choices, action: action, options: options)
     }
 
     // MARK: Public

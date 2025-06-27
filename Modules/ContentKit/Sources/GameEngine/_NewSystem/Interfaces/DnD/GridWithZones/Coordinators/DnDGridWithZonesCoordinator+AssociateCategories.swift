@@ -12,24 +12,30 @@ import SwiftUI
 public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorAssociateCategoriesChoiceModel], action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .automatic) {
-        let dropZones = choices.filter(\.isDropzone)
-        let nodes = choices.filter { $0.isDropzone == false }
+    public init(choices: [CoordinatorAssociateCategoriesChoiceModel], action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
+        let options = options ?? NewExerciseOptions()
+        let shuffledChoices = options.shuffleChoices ? choices.shuffled() : choices
+
+        let dropZones = shuffledChoices.filter(\.isDropzone)
+        let nodes = shuffledChoices.filter { $0.isDropzone == false }
         self.rawDropZones = Array(dropZones)
         self.rawChoices = Array(nodes)
-        self.validation = validation
+        self.validation = options.validation
 
-        self.gameplay = NewGameplayAssociateCategories(choices: choices.map {
+        self.gameplay = NewGameplayAssociateCategories(choices: shuffledChoices.map {
             .init(id: $0.id, category: $0.category)
         })
 
         self.uiModel.value.action = action
         self.uiDropZoneModel.action = action
 
-        self.uiDropZoneModel.zones = dropZones.map { dropzone in
+        self.rawDropZones.forEach { dropzone in
             self.currentlySelectedChoices.append([dropzone.id])
             self.alreadyValidatedChoices.append([dropzone.id])
-            return DnDDropZoneNode(
+        }
+
+        self.uiDropZoneModel.zones = self.rawDropZones.map { dropzone in
+            DnDDropZoneNode(
                 id: dropzone.id,
                 value: dropzone.value,
                 type: dropzone.type,
@@ -37,15 +43,15 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
                 size: self.uiDropZoneModel.zoneSize(for: dropZones.count)
             )
         }
-        self.validationEnabled.value = (validation == .manual) ? false : nil
+        self.validationEnabled.value = (self.validation == .manual) ? false : nil
 
-        self.uiModel.value.choices = nodes.map { choice in
+        self.uiModel.value.choices = self.rawChoices.map { choice in
             DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiModel.value.choiceSize(for: nodes.count))
         }
     }
 
-    public convenience init(model: CoordinatorAssociateCategoriesModel, action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .automatic) {
-        self.init(choices: model.choices, action: action, validation: validation)
+    public convenience init(model: CoordinatorAssociateCategoriesModel, action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
+        self.init(choices: model.choices, action: action, options: options)
     }
 
     // MARK: Public

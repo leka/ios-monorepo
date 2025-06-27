@@ -17,7 +17,7 @@ struct OpenPlayExercises: View {
                 NavigationLink {
                     let coordinator = TTSCoordinatorOpenPlay(
                         choices: ExerciseData.kOpenPlayDefault,
-                        validation: .manualWithSelectionLimit(minimumToSelect: 1, maximumToSelect: 3)
+                        options: NewExerciseOptions(shuffleChoices: true, validation: .manualWithSelectionLimit(minimumToSelect: 1, maximumToSelect: 3))
                     )
                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
@@ -31,7 +31,7 @@ struct OpenPlayExercises: View {
                 NavigationLink {
                     let coordinator = DnDGridWithZonesCoordinatorOpenPlay(
                         choices: ExerciseData.kOpenPlayWithZonesChoicesEmojis,
-                        validation: .manualWithSelectionLimit(minimumToSelect: 1, maximumToSelect: 4)
+                        options: NewExerciseOptions(shuffleChoices: true, validation: .manualWithSelectionLimit(minimumToSelect: 1, maximumToSelect: 3))
                     )
                     let viewModel = DnDGridWithZonesViewModel(coordinator: coordinator)
 

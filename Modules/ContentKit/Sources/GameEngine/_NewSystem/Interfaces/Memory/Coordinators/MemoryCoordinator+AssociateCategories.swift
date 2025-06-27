@@ -10,9 +10,10 @@ import SwiftUI
 public class MemoryCoordinatorAssociateCategories: MemoryGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorAssociateCategoriesChoiceModel]) {
-        self.rawChoices = choices
-        self.gameplay = NewGameplayAssociateCategories(choices: choices.map {
+    public init(choices: [CoordinatorAssociateCategoriesChoiceModel], options: NewExerciseOptions? = nil) {
+        let options = options ?? NewExerciseOptions()
+        self.rawChoices = options.shuffleChoices ? choices.shuffled() : choices
+        self.gameplay = NewGameplayAssociateCategories(choices: self.rawChoices.map {
             .init(id: $0.id, category: $0.category)
         })
 
@@ -25,8 +26,8 @@ public class MemoryCoordinatorAssociateCategories: MemoryGameplayCoordinatorProt
         }
     }
 
-    public convenience init(model: CoordinatorAssociateCategoriesModel) {
-        self.init(choices: model.choices)
+    public convenience init(model: CoordinatorAssociateCategoriesModel, options: NewExerciseOptions? = nil) {
+        self.init(choices: model.choices, options: options)
     }
 
     // MARK: Public
