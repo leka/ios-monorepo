@@ -24,7 +24,12 @@ public struct DnDGridWithZonesUIDropzoneModel {
                         CGSize(width: 200, height: 150)
                 }
             case .none:
-                CGSize(width: 400, height: 300)
+                switch numberOfChoices {
+                    case 1:
+                        CGSize(width: 400, height: 300)
+                    default:
+                        CGSize(width: 340, height: 255)
+                }
             case .ipad(type: .audio),
                  .ipad(type: .speech),
                  .robot:

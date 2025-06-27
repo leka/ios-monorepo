@@ -18,7 +18,8 @@ extension ExerciseYAMLs {
         gameplay: findTheRightOrder
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: sequencing_dressing_up_1
@@ -50,7 +51,8 @@ extension ExerciseYAMLs {
             value: sport_dance_player_man
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: sequencing_dressing_up_1
@@ -83,7 +85,8 @@ extension ExerciseYAMLs {
             value: star
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: 1
@@ -118,7 +121,8 @@ extension ExerciseYAMLs {
             value: sound_animal_duck
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: 1.circle
@@ -148,7 +152,8 @@ extension ExerciseYAMLs {
             value: red blue yellow
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: red
@@ -175,7 +180,8 @@ extension ExerciseYAMLs {
             value: blue
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: 🏊
@@ -202,7 +208,8 @@ extension ExerciseYAMLs {
             value: robotFaceHappy
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: 1.circle
@@ -227,7 +234,8 @@ extension ExerciseYAMLs {
         gameplay: findTheRightOrder
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
         payload:
           choices:
             - value: sequencing_dressing_up_1
@@ -259,7 +267,8 @@ extension ExerciseYAMLs {
             value: sport_dance_player_man
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
         payload:
           choices:
             - value: sequencing_dressing_up_1
@@ -292,7 +301,8 @@ extension ExerciseYAMLs {
             value: star
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
         payload:
           choices:
             - value: 1
@@ -327,7 +337,8 @@ extension ExerciseYAMLs {
             value: sound_animal_duck
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
         payload:
           choices:
             - value: 1.circle
@@ -357,7 +368,8 @@ extension ExerciseYAMLs {
             value: red blue yellow
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
         payload:
           choices:
             - value: red
@@ -384,7 +396,8 @@ extension ExerciseYAMLs {
             value: blue
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
         payload:
           choices:
             - value: 🏊
@@ -411,7 +424,8 @@ extension ExerciseYAMLs {
             value: robotFaceHappy
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
         payload:
           choices:
             - value: 1.circle

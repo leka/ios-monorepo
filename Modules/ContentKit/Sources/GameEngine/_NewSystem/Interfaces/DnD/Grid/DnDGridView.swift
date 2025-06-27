@@ -39,8 +39,6 @@ public struct DnDGridView: View {
                     .opacity(0.4)
                     .frame(maxHeight: 500)
                     .padding(.vertical, 20)
-
-                Spacer()
             }
 
             GeometryReader { proxy in
@@ -52,10 +50,7 @@ public struct DnDGridView: View {
             .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
             .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
             .allowsHitTesting(self.viewModel.didTriggerAction)
-
-            if self.viewModel.action != nil {
-                Spacer()
-            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 

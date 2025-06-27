@@ -16,7 +16,8 @@ extension ExerciseYAMLs {
         gameplay: findTheRightAnswers
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: emotion_picto_angry_leka
@@ -43,7 +44,8 @@ extension ExerciseYAMLs {
         gameplay: findTheRightAnswers
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
         payload:
           choices:
             - value: emotion_picto_angry_leka
@@ -75,7 +77,8 @@ extension ExerciseYAMLs {
             value: sport_dance_player_man
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: 🕺
@@ -103,7 +106,8 @@ extension ExerciseYAMLs {
             value: star
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: square
@@ -133,7 +137,8 @@ extension ExerciseYAMLs {
             value: sound_animal_duck
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: Cow
@@ -168,7 +173,8 @@ extension ExerciseYAMLs {
             value: happy
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: emotion_picto_angry_leka
@@ -200,7 +206,8 @@ extension ExerciseYAMLs {
             value: blue
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: blue
@@ -226,7 +233,8 @@ extension ExerciseYAMLs {
             value: robotFaceHappy
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: emotion_picto_angry_leka
@@ -258,7 +266,8 @@ extension ExerciseYAMLs {
             value: sport_dance_player_man
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
         payload:
           choices:
             - value: 🕺
@@ -286,7 +295,8 @@ extension ExerciseYAMLs {
             value: star
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
         payload:
           choices:
             - value: square
@@ -316,7 +326,8 @@ extension ExerciseYAMLs {
             value: sound_animal_duck
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
         payload:
           choices:
             - value: Cow
@@ -351,7 +362,8 @@ extension ExerciseYAMLs {
             value: happy
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
         payload:
           choices:
             - value: emotion_picto_angry_leka
@@ -383,7 +395,8 @@ extension ExerciseYAMLs {
             value: blue
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
         payload:
           choices:
             - value: blue
@@ -409,7 +422,8 @@ extension ExerciseYAMLs {
             value: robotFaceHappy
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
         payload:
           choices:
             - value: emotion_picto_angry_leka
@@ -436,7 +450,8 @@ extension ExerciseYAMLs {
         gameplay: associateCategories
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: pictograms-weather-sun_yellow-0106
@@ -470,7 +485,8 @@ extension ExerciseYAMLs {
         gameplay: findTheRightOrder
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: 🏊
@@ -492,7 +508,8 @@ extension ExerciseYAMLs {
         gameplay: findTheRightOrder
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
         payload:
           choices:
             - value: 🏊
@@ -514,7 +531,8 @@ extension ExerciseYAMLs {
         gameplay: associateCategories
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: 🍉
@@ -554,7 +572,9 @@ extension ExerciseYAMLs {
         gameplay: openPlay
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
+            minimumToSelect: 2
         payload:
           choices:
             - value: 🐯

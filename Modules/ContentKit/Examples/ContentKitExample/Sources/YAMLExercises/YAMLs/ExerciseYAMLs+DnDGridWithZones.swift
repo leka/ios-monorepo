@@ -18,7 +18,8 @@ extension ExerciseYAMLs {
         gameplay: associateCategories
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: emotion_picto_angry_leka
@@ -62,7 +63,8 @@ extension ExerciseYAMLs {
             value: sport_dance_player_man
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: 🕺
@@ -109,7 +111,8 @@ extension ExerciseYAMLs {
             value: star
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: 🕺
@@ -144,7 +147,8 @@ extension ExerciseYAMLs {
             value: sound_animal_duck
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: Vache
@@ -191,7 +195,8 @@ extension ExerciseYAMLs {
             value: happy
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: cloud.sun
@@ -238,7 +243,8 @@ extension ExerciseYAMLs {
             value: blue
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: blue
@@ -281,7 +287,8 @@ extension ExerciseYAMLs {
             value: robotFaceHappy
         options:
           shuffle_choices: true
-          validate: false
+          validation:
+            type: automatic
         payload:
           choices:
             - value: 🏃‍♂️
@@ -311,7 +318,8 @@ extension ExerciseYAMLs {
         gameplay: associateCategories
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
         payload:
           choices:
             - value: emotion_picto_angry_leka
@@ -355,7 +363,8 @@ extension ExerciseYAMLs {
             value: sport_dance_player_man
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
         payload:
           choices:
             - value: 🕺
@@ -402,7 +411,8 @@ extension ExerciseYAMLs {
             value: star
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
         payload:
           choices:
             - value: 🕺
@@ -437,7 +447,8 @@ extension ExerciseYAMLs {
             value: sound_animal_duck
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
         payload:
           choices:
             - value: Vache
@@ -484,7 +495,8 @@ extension ExerciseYAMLs {
             value: happy
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
         payload:
           choices:
             - value: cloud.sun
@@ -531,7 +543,8 @@ extension ExerciseYAMLs {
             value: blue
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
         payload:
           choices:
             - value: blue
@@ -574,7 +587,8 @@ extension ExerciseYAMLs {
             value: robotFaceHappy
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
         payload:
           choices:
             - value: 🏃‍♂️
@@ -604,7 +618,9 @@ extension ExerciseYAMLs {
         gameplay: openPlay
         options:
           shuffle_choices: true
-          validate: true
+          validation:
+            type: manual
+            minimumToSelect: 1
         payload:
           choices:
             - value: 😍

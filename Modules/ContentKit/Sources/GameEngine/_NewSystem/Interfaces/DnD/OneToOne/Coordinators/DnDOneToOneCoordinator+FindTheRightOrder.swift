@@ -11,8 +11,9 @@ import SwiftUI
 public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorFindTheRightOrderChoiceModel], action: NewExerciseAction? = nil, validationEnabled: Bool? = nil) {
+    public init(choices: [CoordinatorFindTheRightOrderChoiceModel], action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .automatic) {
         self.rawChoices = choices
+        self.validation = validation
 
         self.gameplay = NewGameplayFindTheRightOrder(choices: choices.map { .init(id: $0.id) })
 
@@ -31,14 +32,14 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
         }
 
         self.uiModel.value.choices.shuffle()
-        self.validationEnabled.value = validationEnabled
+        self.validationEnabled.value = (validation == .manual) ? false : nil
 
         self.currentOrderedChoices = Array(repeating: nil, count: self.gameplay.orderedChoices.count)
         self.alreadyValidatedChoices = Array(repeating: nil, count: self.gameplay.orderedChoices.count)
     }
 
-    public convenience init(model: CoordinatorFindTheRightOrderModel, action: NewExerciseAction? = nil, validationEnabled: Bool? = nil) {
-        self.init(choices: model.choices, action: action, validationEnabled: validationEnabled)
+    public convenience init(model: CoordinatorFindTheRightOrderModel, action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .automatic) {
+        self.init(choices: model.choices, action: action, validation: validation)
     }
 
     // MARK: Public
@@ -46,6 +47,7 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
     public private(set) var uiDropZones: [DnDDropZoneNode] = []
     public private(set) var uiModel = CurrentValueSubject<DnDOneToOneUIModel, Never>(.zero)
     public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
+    public private(set) var validation: NewExerciseOptions.Validation
 
     public var didComplete: PassthroughSubject<Void, Never> = .init()
 
@@ -95,6 +97,7 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
             }
 
             if self.gameplay.isCompleted.value {
+                self.validationEnabled.send(nil)
                 // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     logGEK.debug("Exercise completed")

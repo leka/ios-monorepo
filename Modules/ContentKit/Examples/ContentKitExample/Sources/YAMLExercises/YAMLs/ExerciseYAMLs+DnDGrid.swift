@@ -16,7 +16,6 @@ extension ExerciseYAMLs {
         gameplay: associateCategories
         options:
           shuffle_choices: true
-          validate: false
         payload:
           choices:
             - value: Whale
@@ -55,7 +54,6 @@ extension ExerciseYAMLs {
             value: landscape_cloud_lake
         options:
           shuffle_choices: true
-          validate: false
         payload:
           choices:
             - value: Whale
@@ -94,7 +92,6 @@ extension ExerciseYAMLs {
             value: star
         options:
           shuffle_choices: true
-          validate: false
         payload:
           choices:
             - value: pictograms-weather-sun_yellow-0106
@@ -133,7 +130,6 @@ extension ExerciseYAMLs {
             value: sound_animal_duck
         options:
           shuffle_choices: true
-          validate: false
         payload:
           choices:
             - value: star
@@ -172,7 +168,6 @@ extension ExerciseYAMLs {
             value: fruits
         options:
           shuffle_choices: true
-          validate: false
         payload:
           choices:
             - value: 🍉
@@ -211,7 +206,6 @@ extension ExerciseYAMLs {
             value: blue
         options:
           shuffle_choices: true
-          validate: false
         payload:
           choices:
             - value: blue
@@ -246,7 +240,6 @@ extension ExerciseYAMLs {
             value: robotFaceHappy
         options:
           shuffle_choices: true
-          validate: false
         payload:
           choices:
             - value: emotion_picto_sad_leka

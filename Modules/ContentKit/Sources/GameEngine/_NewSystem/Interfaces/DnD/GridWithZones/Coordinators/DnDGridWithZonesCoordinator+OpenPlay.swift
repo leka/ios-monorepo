@@ -13,16 +13,23 @@ import SwiftUI
 public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [CoordinatorOpenPlayChoiceModel], action: NewExerciseAction? = nil, minimumToSelect: Int = 0, maximumToSelect: Int? = nil) {
+    public init(choices: [CoordinatorOpenPlayChoiceModel], action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .manualWithSelectionLimit()) {
         let dropZones = choices.filter(\.isDropzone)
         let nodes = choices.filter { $0.isDropzone == false }
         self.rawChoices = Array(nodes)
+        self.validation = validation
 
         self.uiModel.value.action = action
         self.uiDropZoneModel.action = action
 
-        self.minimumToSelect = minimumToSelect
-        self.maximumToSelect = maximumToSelect ?? choices.count
+        if case let .manualWithSelectionLimit(minimumToSelect, maximumToSelect) = validation {
+            self.minimumToSelect = minimumToSelect ?? 0
+            self.maximumToSelect = maximumToSelect ?? choices.count
+            self.updateValidationState()
+        } else {
+            self.minimumToSelect = 0
+            self.maximumToSelect = choices.count
+        }
 
         self.uiDropZoneModel.zones = dropZones.map { dropzone in
             DnDDropZoneNode(
@@ -34,15 +41,13 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
             )
         }
 
-        self.updateValidationState()
-
         self.uiModel.value.choices = nodes.map { choice in
             DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiModel.value.choiceSize(for: nodes.count))
         }
     }
 
-    public convenience init(model: CoordinatorOpenPlayModel, action: NewExerciseAction? = nil, minimumToSelect: Int = 0, maximumToSelect: Int? = nil) {
-        self.init(choices: model.choices, action: action, minimumToSelect: minimumToSelect, maximumToSelect: maximumToSelect)
+    public convenience init(model: CoordinatorOpenPlayModel, action: NewExerciseAction? = nil, validation: NewExerciseOptions.Validation = .manualWithSelectionLimit()) {
+        self.init(choices: model.choices, action: action, validation: validation)
     }
 
     // MARK: Public
@@ -50,6 +55,7 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
     public private(set) var uiDropZoneModel: DnDGridWithZonesUIDropzoneModel = .zero
     public private(set) var uiModel = CurrentValueSubject<DnDGridWithZonesUIModel, Never>(.zero)
     public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(false)
+    public private(set) var validation: NewExerciseOptions.Validation
 
     public var didComplete: PassthroughSubject<Void, Never> = .init()
 
@@ -70,12 +76,13 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
     }
 
     public func validateUserSelection() {
-        self.validationEnabled.send(false)
         for choiceID in self.currentlySelectedChoices {
             self.updateChoiceState(for: choiceID, to: .correct)
         }
 
         // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
+
+        self.validationEnabled.send(nil)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             logGEK.debug("Exercise completed")
             self.didComplete.send()

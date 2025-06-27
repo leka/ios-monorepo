@@ -29,6 +29,7 @@ import Foundation
 
         var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
         var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
+        var validation: NewExerciseOptions.Validation = .automatic
 
         func validateUserSelection() {
             logGEK.debug("Choice validated")
