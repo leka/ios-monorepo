@@ -13,68 +13,48 @@ Validates profession definition files against JTD schema and checks for:
 # SPDX-License-Identifier: Apache-2.0
 
 import sys
-import logging
-from typing import List
 
+from modules.base_validator import main_entry_point
+from modules.definition_validators import SimpleListDefinitionValidator
 from modules.definitions import is_definition_list_valid
-from modules.utils import get_files
-from modules.yaml import is_jtd_schema_compliant
 
 # Constants
 JTD_SCHEMA = "Specs/jtd/professions.jtd.json"
 
-logging.basicConfig(level=logging.INFO, format='%(message)s')
-logger = logging.getLogger(__name__)
 
-
-def check_profession_definitions(filename: str) -> bool:
-    """
-    Check profession definitions in a YAML file.
-
-    Args:
-        filename: Path to the YAML file to check
-
-    Returns:
-        bool: True if file is valid, False otherwise
-    """
-    try:
-        file_is_valid = True
-
-        if not is_jtd_schema_compliant(filename, JTD_SCHEMA):
-            logger.error(f"\n❌ Schema validation failed for {filename}")
-            file_is_valid = False
-
+class ProfessionsDefinitionValidator(SimpleListDefinitionValidator):
+    """Validator for profession definitions."""
+    
+    def __init__(self):
+        super().__init__(
+            schema_path=JTD_SCHEMA,
+            validator_name="profession definition",
+            check_duplicates=True,
+            enable_sorting=True
+        )
+    
+    def validate_definitions(self, filename: str) -> bool:
+        """
+        Validate profession definitions including SHA validation.
+        
+        Args:
+            filename: Path to the YAML file to validate
+            
+        Returns:
+            bool: True if valid, False otherwise
+        """
+        # First run the SHA validation from definitions module
         if not is_definition_list_valid(filename):
-            logger.error(f"\n❌ Definition list validation failed for {filename}")
-            file_is_valid = False
-
-        return file_is_valid
-
-    except (OSError, IOError) as e:
-        logger.error(f"Error processing {filename}: {e}")
-        return False
+            self.logger.error(f"\n❌ Definition list validation failed for {filename}")
+            return False
+        
+        # Then run the standard list validation
+        return super().validate_definitions(filename)
 
 
 def main() -> int:
     """Validate profession definition files"""
-    files: List[str] = get_files()
-
-    if not files:
-        logger.info("\n✅ No profession definition files to check!")
-        return 0
-
-    logger.info(f"\nChecking {len(files)} profession definition files...")
-
-    has_errors = False
-    for file in files:
-        if not check_profession_definitions(file):
-            has_errors = True
-
-    if has_errors:
-        return 1
-
-    logger.info("\n✅ All profession definition files are valid!")
-    return 0
+    return main_entry_point(ProfessionsDefinitionValidator)
 
 
 if __name__ == "__main__":
