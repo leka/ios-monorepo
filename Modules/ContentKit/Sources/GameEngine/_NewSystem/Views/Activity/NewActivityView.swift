@@ -35,9 +35,7 @@ public struct NewActivityView: View {
                         self.blurRadius = 20
                     }
                 } else {
-                    withAnimation {
-                        self.blurRadius = 0
-                    }
+                    self.blurRadius = 0
                 }
             }
 
@@ -121,9 +119,7 @@ public struct NewActivityView: View {
             }
         }
         .onChange(of: self.activityCoordinator.isExerciseCompleted) {
-            withAnimation {
-                self.isReinforcerPresented = self.activityCoordinator.isExerciseCompleted
-            }
+            self.isReinforcerPresented = self.activityCoordinator.isExerciseCompleted
         }
     }
 
