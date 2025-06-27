@@ -4,6 +4,28 @@
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-apple_id('apple.apf@leka.io') # Apple Developer Portal username
-team_id('GKQJXACKX7') # Developer Portal Team ID
-itc_team_id('124055768') # App Store Connect Team ID
+# Fastlane App Configuration
+# For more information about available options, see:
+# https://docs.fastlane.tools/advanced/Appfile/
+
+# Apple Developer Portal configuration
+apple_id('apple.apf@leka.io')          # Apple ID for authentication
+team_id('GKQJXACKX7')                  # Developer Portal Team ID (APF France handicap)
+
+# App Store Connect configuration  
+itc_team_id('124055768')               # App Store Connect Team ID
+
+# Additional configuration options:
+# For apps with multiple targets, you can specify different settings:
+#
+# for_platform :ios do
+#   for_lane :beta do
+#     apple_id('beta@leka.io')
+#   end
+# end
+#
+# JSON key file authentication (alternative to username/password):
+# json_key_file('/path/to/key.json')
+#
+# Specify Apple ID for specific bundle identifiers:
+# app_identifier(['io.leka.apf.app.LekaApp', 'io.leka.apf.app.LekaUpdater'])

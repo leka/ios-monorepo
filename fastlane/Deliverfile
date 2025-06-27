@@ -4,12 +4,31 @@
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-# If you want to have even more control, check out the documentation
+# Fastlane Deliverfile Configuration
+# For more information about deliver options, see:
 # https://docs.fastlane.tools/actions/deliver/
 
-username('apple.apf@leka.io') # your Apple ID user
+# Apple ID for App Store Connect authentication
+username('apple.apf@leka.io')
 
-submit_for_review(false)
-automatic_release(false)
+# App Store release configuration
+# These settings control automatic release behavior
+submit_for_review(false)    # Don't auto-submit for review (handled in lanes)
+automatic_release(false)    # Don't auto-release (handled in lanes) 
 
+# Supported locales for app metadata
+# Add new locales here as they become available
 languages(%w[en-US fr-FR])
+
+# App Store review configuration
+# Automatically answer common review questions
+submission_information({
+  export_compliance_uses_encryption: false,           # No encryption export restrictions
+  add_id_info_uses_idfa: false,                      # No advertising identifier usage  
+  content_rights_contains_third_party_content: true, # Contains third-party content
+  content_rights_has_rights: true                    # We have rights to the content
+})
+
+# Precheck configuration to validate before submission
+run_precheck_before_submit(true)      # Run validations before submitting
+precheck_include_in_app_purchases(false)  # No in-app purchases to validate
