@@ -5,7 +5,21 @@
 import Combine
 import SwiftUI
 
-// MARK: - NewActivityManager
+// MARK: - ActivityEvent
+
+public enum ActivityEvent {
+    case didStart
+    case didEnd
+}
+
+// MARK: - ExerciseEvent
+
+public enum ExerciseEvent {
+    case didStart
+    case didEnd(groupIndex: Int, exerciseIndex: Int, withSuccess: Bool)
+}
+
+// MARK: - ActivityCoordinator
 
 @Observable
 public class ActivityCoordinator {
@@ -38,11 +52,6 @@ public class ActivityCoordinator {
 
     // MARK: Public
 
-    public enum ActivityEvent {
-        case didStart
-        case didEnd
-    }
-
     public var currentGroupIndex: Int = 0
     public var currentExerciseIndex: Int = 0
     public var isExerciseCompleted: Bool = false
@@ -50,6 +59,9 @@ public class ActivityCoordinator {
     public let groupSizeEnumeration: [Int]
 
     public var activityEvent = PassthroughSubject<ActivityEvent, Never>()
+    public var exerciseEvent = PassthroughSubject<ExerciseEvent, Never>()
+
+    public var cancellables = Set<AnyCancellable>()
 
     public var numberOfGroups: Int {
         self.groupSizeEnumeration.count
@@ -82,6 +94,7 @@ public class ActivityCoordinator {
 
     func setExerciseCoordinator(_ coordinator: CurrentExerciseCoordinator) {
         self.currentExerciseCoordinator = coordinator
+        self.exerciseEvent.send(.didStart)
 
         self.currentExerciseCoordinator.didComplete
             .receive(on: DispatchQueue.main)
@@ -89,6 +102,11 @@ public class ActivityCoordinator {
                 guard let self else { return }
                 logGEK.info("Current exercise completed 🎉️")
                 self.isExerciseCompleted = true
+                self.exerciseEvent.send(.didEnd(
+                    groupIndex: self.currentGroupIndex,
+                    exerciseIndex: self.currentExerciseIndex,
+                    withSuccess: true
+                ))
             }
             .store(in: &self.cancellables)
     }
@@ -127,8 +145,6 @@ public class ActivityCoordinator {
     }
 
     // MARK: Private
-
-    private var cancellables = Set<AnyCancellable>()
 
     private var currentExerciseCoordinator: CurrentExerciseCoordinator
 }

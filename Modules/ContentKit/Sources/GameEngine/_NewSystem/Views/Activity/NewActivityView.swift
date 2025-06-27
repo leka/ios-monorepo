@@ -25,8 +25,8 @@ public struct NewActivityView: View {
                 }
 
                 self.activityCoordinator.currentExerciseView
+                    .id(self.activityCoordinator.currentExerciseIndex)
             }
-            .id(self.activityCoordinator.currentExerciseIndex)
             .disabled(self.activityCoordinator.isExerciseCompleted)
             .blur(radius: self.blurRadius)
             .onChange(of: self.isReinforcerPresented) {
