@@ -16,5 +16,11 @@ ACTIVITY_PATTERN = "*.activity.yml"
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
+
+def main() -> int:
+    """Check activity UUID uniqueness"""
+    return check_uuids(DIRECTORY_PATH, ACTIVITY_PATTERN, "activity")
+
+
 if __name__ == "__main__":
-    sys.exit(check_uuids(DIRECTORY_PATH, ACTIVITY_PATTERN, "activity"))
+    sys.exit(main())
