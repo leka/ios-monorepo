@@ -50,13 +50,13 @@ public struct ContentItemMenu: View {
 
         if self.sharedLibraryManagerViewModel.isContentSaved(id: curation.id) {
             Button(role: .destructive) {
-                self.sharedLibraryManagerViewModel.requestItemRemoval(libraryItem, caregiverID: caregiverID)
+                self.sharedLibraryManagerViewModel.requestItemRemoval(libraryItem, name: curation.name, caregiverID: caregiverID)
             } label: {
                 Label(String(l10n.ContentItemMenu.removeFromSharedLibraryButtonLabel.characters), systemImage: "trash")
             }
         } else {
             Button {
-                self.sharedLibraryManagerViewModel.addItemToSharedLibrary(libraryItem)
+                self.sharedLibraryManagerViewModel.addItemToSharedLibrary(libraryItem, name: curation.name)
             } label: {
                 Label(String(l10n.ContentItemMenu.addToSharedLibraryButtonLabel.characters), systemImage: "plus")
             }
@@ -72,13 +72,13 @@ public struct ContentItemMenu: View {
             contentID: curation.id
         ) {
             Button {
-                self.sharedLibraryManagerViewModel.removeItemFromFavorites(libraryItem, caregiverID: caregiverID)
+                self.sharedLibraryManagerViewModel.removeItemFromFavorites(libraryItem, name: curation.name, caregiverID: caregiverID)
             } label: {
                 Label(String(l10n.ContentItemMenu.undoFavoriteButtonLabel.characters), systemImage: "star.slash")
             }
         } else {
             Button {
-                self.sharedLibraryManagerViewModel.addItemToFavorite(libraryItem)
+                self.sharedLibraryManagerViewModel.addItemToFavorite(libraryItem, name: curation.name)
             } label: {
                 Label(String(l10n.ContentItemMenu.favoriteButtonLabel.characters), systemImage: "star")
             }
@@ -88,19 +88,19 @@ public struct ContentItemMenu: View {
 
 public extension SharedLibraryManager {
     static func getSharedLibraryItem(from curationItem: CurationItemModel, caregiverID: String) -> AccountKit.SharedLibraryItem {
-        var libraryItem: AccountKit.SharedLibraryItem = .activity(SavedActivity(id: "", name: "", caregiverID: ""))
+        var libraryItem: AccountKit.SharedLibraryItem = .activity(SavedActivity(id: "", caregiverID: ""))
         switch curationItem.contentType {
             case .curriculum:
                 libraryItem = SharedLibraryItem.curriculum(
-                    SavedCurriculum(id: curationItem.id, name: curationItem.name, caregiverID: caregiverID)
+                    SavedCurriculum(id: curationItem.id, caregiverID: caregiverID)
                 )
             case .activity:
                 libraryItem = SharedLibraryItem.activity(
-                    SavedActivity(id: curationItem.id, name: curationItem.name, caregiverID: caregiverID)
+                    SavedActivity(id: curationItem.id, caregiverID: caregiverID)
                 )
             case .story:
                 libraryItem = SharedLibraryItem.story(
-                    SavedStory(id: curationItem.id, name: curationItem.name, caregiverID: caregiverID)
+                    SavedStory(id: curationItem.id, caregiverID: caregiverID)
                 )
             default:
                 log.error("Shared Library item conversion - Unsupported content type")

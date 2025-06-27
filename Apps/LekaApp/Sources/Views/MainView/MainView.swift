@@ -428,6 +428,10 @@ struct MainView: View {
             return Alert(title: Text(l10n.MainView.RemovalAlert.errorTitle))
         }
 
+        guard let itemToRemoveName = self.sharedLibraryManagerViewModel.itemToRemoveName else {
+            return Alert(title: Text(l10n.MainView.RemovalAlert.errorTitle))
+        }
+
         guard let caregiverID = self.caregiverManagerViewModel.currentCaregiver?.id else {
             return Alert(title: Text(l10n.MainView.RemovalAlert.errorTitle))
         }
@@ -440,6 +444,7 @@ struct MainView: View {
                     primaryButton: .destructive(Text(l10n.MainView.RemovalAlert.confirmAction)) {
                         self.sharedLibraryManagerViewModel.removeItemFromSharedLibrary(
                             itemToRemove,
+                            name: itemToRemoveName,
                             caregiverID: caregiverID
                         )
                     },

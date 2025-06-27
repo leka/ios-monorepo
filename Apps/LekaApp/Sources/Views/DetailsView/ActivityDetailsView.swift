@@ -45,13 +45,13 @@ public struct ActivityDetailsView: View {
                     let libraryItem = SharedLibraryManager.getSharedLibraryItem(from: CurationItemModel(id: self.activity.id, name: self.activity.name, contentType: .activity), caregiverID: currentCaregiverID)
                     if self.sharedLibraryManagerViewModel.isContentSaved(id: self.activity.id) {
                         Button(role: .destructive) {
-                            self.sharedLibraryManagerViewModel.requestItemRemoval(libraryItem, caregiverID: currentCaregiverID)
+                            self.sharedLibraryManagerViewModel.requestItemRemoval(libraryItem, name: self.activity.name, caregiverID: currentCaregiverID)
                         } label: {
                             Label(String(l10n.ContentItemMenu.removeFromSharedLibraryButtonLabel.characters), systemImage: "trash")
                         }
                     } else {
                         Button {
-                            self.sharedLibraryManagerViewModel.addItemToSharedLibrary(libraryItem)
+                            self.sharedLibraryManagerViewModel.addItemToSharedLibrary(libraryItem, name: self.activity.name)
                         } label: {
                             Label(String(l10n.ContentItemMenu.addToSharedLibraryButtonLabel.characters), systemImage: "plus")
                         }
@@ -60,13 +60,13 @@ public struct ActivityDetailsView: View {
                     // Favorite button (star/star.fill)
                     if self.sharedLibraryManagerViewModel.isContentFavorited(by: currentCaregiverID, contentID: self.activity.id) {
                         Button {
-                            self.sharedLibraryManagerViewModel.removeItemFromFavorites(libraryItem, caregiverID: currentCaregiverID)
+                            self.sharedLibraryManagerViewModel.removeItemFromFavorites(libraryItem, name: self.activity.name, caregiverID: currentCaregiverID)
                         } label: {
                             Label(String(l10n.ContentItemMenu.undoFavoriteButtonLabel.characters), systemImage: "star.fill")
                         }
                     } else {
                         Button {
-                            self.sharedLibraryManagerViewModel.addItemToFavorite(libraryItem)
+                            self.sharedLibraryManagerViewModel.addItemToFavorite(libraryItem, name: self.activity.name)
                         } label: {
                             Label(String(l10n.ContentItemMenu.favoriteButtonLabel.characters), systemImage: "star")
                         }

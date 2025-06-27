@@ -88,7 +88,6 @@ public class SharedLibraryManager {
 
         let newCurriculum = SavedCurriculum(
             id: curriculumID,
-            name: name,
             caregiverID: caregiverID,
             addedAt: Date(),
             favoritedBy: [:]
@@ -151,7 +150,6 @@ public class SharedLibraryManager {
         guard alreadyInTheLibrary else {
             let newCurriculum = SavedCurriculum(
                 id: curriculumID,
-                name: name,
                 caregiverID: caregiverID,
                 addedAt: Date(),
                 favoritedBy: [caregiverID: Date()]
@@ -215,7 +213,6 @@ public class SharedLibraryManager {
 
         let newActivity = SavedActivity(
             id: activityID,
-            name: name,
             caregiverID: caregiverID,
             addedAt: Date(),
             favoritedBy: [:]
@@ -274,7 +271,6 @@ public class SharedLibraryManager {
         guard alreadyInTheLibrary else {
             let newActivity = SavedActivity(
                 id: activityID,
-                name: name,
                 caregiverID: caregiverID,
                 addedAt: Date(),
                 favoritedBy: [caregiverID: Date()]
@@ -338,7 +334,6 @@ public class SharedLibraryManager {
 
         let newStory = SavedStory(
             id: storyID,
-            name: name,
             caregiverID: caregiverID,
             addedAt: Date(),
             favoritedBy: [:]
@@ -398,7 +393,6 @@ public class SharedLibraryManager {
         guard alreadyInTheLibrary else {
             let newStory = SavedStory(
                 id: storyID,
-                name: name,
                 caregiverID: caregiverID,
                 addedAt: Date(),
                 favoritedBy: [caregiverID: Date()]

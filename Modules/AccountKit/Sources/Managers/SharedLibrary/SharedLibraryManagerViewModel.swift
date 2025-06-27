@@ -31,6 +31,7 @@ public class SharedLibraryManagerViewModel {
     public private(set) var isLoading: Bool = false
     public private(set) var alertType: RemoveAlertType = .none
     public private(set) var itemToRemove: SharedLibraryItem?
+    public private(set) var itemToRemoveName: String?
 
     public var showErrorAlert: Bool = false
     public var showRemoveAlert: Bool = false
@@ -157,53 +158,53 @@ public class SharedLibraryManagerViewModel {
 }
 
 public extension SharedLibraryManagerViewModel {
-    func addItemToSharedLibrary(_ item: SharedLibraryItem) {
+    func addItemToSharedLibrary(_ item: SharedLibraryItem, name: String) {
         switch item {
             case let .activity(activity):
                 self.sharedLibraryManager.addActivity(
                     activityID: activity.id,
-                    name: activity.name,
+                    name: name,
                     caregiverID: activity.caregiverID
                 )
             case let .curriculum(curriculum):
                 self.sharedLibraryManager.addCurriculum(
                     curriculumID: curriculum.id,
-                    name: curriculum.name,
+                    name: name,
                     caregiverID: curriculum.caregiverID
                 )
             case let .story(story):
                 self.sharedLibraryManager.addStory(
                     storyID: story.id,
-                    name: story.name,
+                    name: name,
                     caregiverID: story.caregiverID
                 )
         }
     }
 
-    func addItemToFavorite(_ item: SharedLibraryItem) {
+    func addItemToFavorite(_ item: SharedLibraryItem, name: String) {
         switch item {
             case let .activity(activity):
                 self.sharedLibraryManager.addActivityToSharedLibraryAsFavorite(
                     activityID: activity.id,
-                    name: activity.name,
+                    name: name,
                     caregiverID: activity.caregiverID
                 )
             case let .curriculum(curriculum):
                 self.sharedLibraryManager.addCurriculumToSharedLibraryAsFavorite(
                     curriculumID: curriculum.id,
-                    name: curriculum.name,
+                    name: name,
                     caregiverID: curriculum.caregiverID
                 )
             case let .story(story):
                 self.sharedLibraryManager.addStoryToSharedLibraryAsFavorite(
                     storyID: story.id,
-                    name: story.name,
+                    name: name,
                     caregiverID: story.caregiverID
                 )
         }
     }
 
-    func requestItemRemoval(_ item: SharedLibraryItem, caregiverID: String) {
+    func requestItemRemoval(_ item: SharedLibraryItem, name: String, caregiverID: String) {
         if self.isItemFavoritedByOthers(item: item, caregiverID: caregiverID) {
             self.alertType = .informOthersFavorited
         } else if self.isItemFavoritedByCurrentCaregiver(item: item, caregiverID: caregiverID),
@@ -211,39 +212,42 @@ public extension SharedLibraryManagerViewModel {
         {
             self.alertType = .confirmPersonalFavorite
         } else {
-            self.removeItemFromSharedLibrary(item, caregiverID: caregiverID)
+            self.removeItemFromSharedLibrary(item, name: name, caregiverID: caregiverID)
             return
         }
 
         self.itemToRemove = item
+        self.itemToRemoveName = name
         self.showRemoveAlert = true
     }
 
-    func removeItemFromSharedLibrary(_ item: SharedLibraryItem, caregiverID: String) {
+    func removeItemFromSharedLibrary(_ item: SharedLibraryItem, name: String, caregiverID: String) {
         switch item {
             case let .activity(activity):
-                self.sharedLibraryManager.removeActivity(activityID: activity.id, name: activity.name, caregiverID: caregiverID)
+                self.sharedLibraryManager.removeActivity(activityID: activity.id, name: name, caregiverID: caregiverID)
             case let .curriculum(curriculum):
-                self.sharedLibraryManager.removeCurriculum(curriculumID: curriculum.id, name: curriculum.name, caregiverID: caregiverID)
+                self.sharedLibraryManager.removeCurriculum(curriculumID: curriculum.id, name: name, caregiverID: caregiverID)
             case let .story(story):
-                self.sharedLibraryManager.removeStory(storyID: story.id, name: story.name, caregiverID: caregiverID)
+                self.sharedLibraryManager.removeStory(storyID: story.id, name: name, caregiverID: caregiverID)
         }
 
         self.itemToRemove = nil
+        self.itemToRemoveName = nil
         self.showRemoveAlert = false
     }
 
-    func removeItemFromFavorites(_ item: SharedLibraryItem, caregiverID: String) {
+    func removeItemFromFavorites(_ item: SharedLibraryItem, name: String, caregiverID: String) {
         switch item {
             case let .activity(activity):
-                self.sharedLibraryManager.removeActivityFromFavorites(activityID: activity.id, name: activity.name, caregiverID: caregiverID)
+                self.sharedLibraryManager.removeActivityFromFavorites(activityID: activity.id, name: name, caregiverID: caregiverID)
             case let .curriculum(curriculum):
-                self.sharedLibraryManager.removeCurriculumFromFavorites(curriculumID: curriculum.id, name: curriculum.name, caregiverID: caregiverID)
+                self.sharedLibraryManager.removeCurriculumFromFavorites(curriculumID: curriculum.id, name: name, caregiverID: caregiverID)
             case let .story(story):
-                self.sharedLibraryManager.removeStoryFromFavorites(storyID: story.id, name: story.name, caregiverID: caregiverID)
+                self.sharedLibraryManager.removeStoryFromFavorites(storyID: story.id, name: name, caregiverID: caregiverID)
         }
 
         self.itemToRemove = nil
+        self.itemToRemoveName = nil
         self.showRemoveAlert = false
     }
 
