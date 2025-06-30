@@ -16,5 +16,11 @@ CURRICULUM_PATTERN = "*.curriculum.yml"
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
+
+def main() -> int:
+    """Check curriculum UUID uniqueness"""
+    return check_uuids(DIRECTORY_PATH, CURRICULUM_PATTERN, "curriculum")
+
+
 if __name__ == "__main__":
-    sys.exit(check_uuids(DIRECTORY_PATH, CURRICULUM_PATTERN, "curriculum"))
+    sys.exit(main())
