@@ -39,7 +39,7 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol, 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
     public private(set) var validationState = CurrentValueSubject<ValidationState, Never>(.disabled)
 
-    public var didComplete: PassthroughSubject<Void, Never> = .init()
+    public var didComplete: PassthroughSubject<ExerciseCompletionData?, Never> = .init()
 
     public func processUserSelection(choiceID: UUID) {
         if self.validationState.value == .hidden {
@@ -63,6 +63,8 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol, 
     }
 
     public func validateUserSelection() {
+        self.completionData.numberOfTrials += 1
+
         let choiceIDs = self.currentChoices.compactMap { choice in
             self.rawChoices.first(where: { $0.id == choice })?.id
         }
@@ -92,7 +94,7 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol, 
             // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 logGEK.debug("Exercise completed")
-                self.didComplete.send()
+                self.didComplete.send(self.completionData)
             }
         }
     }
@@ -105,6 +107,8 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol, 
 
     private var currentChoices: [UUID] = []
     private let rawChoices: [CoordinatorFindTheRightAnswersChoiceModel]
+
+    private var completionData: ExerciseCompletionData = .init()
 
     private func resetCurrentChoices() {
         self.currentChoices = []

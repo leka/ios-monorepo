@@ -41,7 +41,7 @@ public class CurrentExerciseCoordinator {
                                         .onAppear {
                                             coordinator.didComplete
                                                 .receive(on: DispatchQueue.main)
-                                                .sink { [weak self] in
+                                                .sink { [weak self] _ in
                                                     self?.didComplete.send()
                                                 }
                                                 .store(in: &self.cancellables)
@@ -61,7 +61,7 @@ public class CurrentExerciseCoordinator {
                                         .onAppear {
                                             coordinator.didComplete
                                                 .receive(on: DispatchQueue.main)
-                                                .sink { [weak self] in
+                                                .sink { [weak self] _ in
                                                     self?.didComplete.send()
                                                 }
                                                 .store(in: &self.cancellables)
@@ -81,7 +81,7 @@ public class CurrentExerciseCoordinator {
                                         .onAppear {
                                             coordinator.didComplete
                                                 .receive(on: DispatchQueue.main)
-                                                .sink { [weak self] in
+                                                .sink { [weak self] _ in
                                                     self?.didComplete.send()
                                                 }
                                                 .store(in: &self.cancellables)

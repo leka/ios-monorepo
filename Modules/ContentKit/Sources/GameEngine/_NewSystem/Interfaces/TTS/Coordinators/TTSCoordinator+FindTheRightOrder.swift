@@ -41,7 +41,7 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
     public private(set) var validationState = CurrentValueSubject<ValidationState, Never>(.hidden)
 
-    public var didComplete: PassthroughSubject<Void, Never> = .init()
+    public var didComplete: PassthroughSubject<ExerciseCompletionData, Never> = .init()
 
     public func processUserSelection(choiceID: UUID) {
         if let index = self.currentOrderedChoices.firstIndex(of: choiceID) {
@@ -66,6 +66,8 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
     }
 
     public func validateUserSelection() {
+        self.completionData.numberOfTrials += 1
+
         _ = self.gameplay.process(choiceIDs: self.currentOrderedChoices)
 
         if self.gameplay.isCompleted.value {
@@ -77,7 +79,7 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
             // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 logGEK.debug("Exercise completed")
-                self.didComplete.send()
+                self.didComplete.send(self.completionData)
             }
         } else {
             self.currentOrderedChoices.forEach { id in
@@ -93,6 +95,8 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
     private var currentOrderedChoices: [UUID] = []
     private let gameplay: NewGameplayFindTheRightOrder
     private let rawChoices: [CoordinatorFindTheRightOrderChoiceModel]
+
+    private var completionData: ExerciseCompletionData = .init()
 
     private var currentOrderedChoicesIndex: Int {
         self.currentOrderedChoices.count
