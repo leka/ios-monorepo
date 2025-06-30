@@ -26,11 +26,12 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
         if case let .manualWithSelectionLimit(minimumToSelect, maximumToSelect) = options.validation {
             self.minimumToSelect = minimumToSelect ?? 0
             self.maximumToSelect = maximumToSelect ?? choices.count
-            self.updateValidationState()
         } else {
             self.minimumToSelect = 0
             self.maximumToSelect = choices.count
         }
+
+        self.updateValidationState()
 
         self.uiDropZoneModel.zones = rawDropzones.map { dropzone in
             DnDDropZoneNode(
