@@ -132,6 +132,7 @@ public class CurrentExerciseCoordinator {
 
                                 default:
                                     ExerciseInterfaceGameplayNotSupportedView(interface: interface, gameplay: gameplay)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                             }
 
                         case .dragAndDropGridWithZones:
@@ -176,6 +177,7 @@ public class CurrentExerciseCoordinator {
 
                                 default:
                                     ExerciseInterfaceGameplayNotSupportedView(interface: interface, gameplay: gameplay)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                             }
 
                         case .dragAndDropOneToOne:
@@ -200,6 +202,7 @@ public class CurrentExerciseCoordinator {
                                         }
                                 default:
                                     ExerciseInterfaceGameplayNotSupportedView(interface: interface, gameplay: gameplay)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                             }
 
                         case .memory:
@@ -225,6 +228,7 @@ public class CurrentExerciseCoordinator {
 
                                 default:
                                     ExerciseInterfaceGameplayNotSupportedView(interface: interface, gameplay: gameplay)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                             }
 
                         case .magicCards:
