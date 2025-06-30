@@ -55,9 +55,7 @@ public struct DnDGridWithZonesView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
 
-            if self.viewModel.validation != .automatic,
-               let validationEnabled = self.viewModel.validationEnabled
-            {
+            if self.viewModel.validationState != .hidden {
                 Button {
                     self.viewModel.onValidate()
                 } label: {
@@ -68,12 +66,12 @@ public struct DnDGridWithZonesView: View {
                         .padding()
                         .background(
                             Capsule()
-                                .fill(validationEnabled ? .cyan : .gray.opacity(0.3))
+                                .fill(self.viewModel.validationState == .enabled ? .cyan : .gray.opacity(0.3))
                                 .shadow(radius: 1)
                         )
                 }
-                .animation(.easeOut(duration: 0.3), value: validationEnabled)
-                .disabled(!validationEnabled)
+                .animation(.easeOut(duration: 0.3), value: self.viewModel.validationState)
+                .disabled(self.viewModel.validationState == .disabled)
                 .padding()
             }
         }

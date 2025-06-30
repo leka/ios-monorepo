@@ -15,7 +15,6 @@ public class TTSViewViewModel: ObservableObject {
         self.action = coordinator.uiModel.value.action
         self.didTriggerAction = (self.action == nil) ? true : false
         self.coordinator = coordinator
-        self.validation = coordinator.validation
         self.coordinator.uiModel
             .receive(on: DispatchQueue.main)
             .sink { [weak self] model in
@@ -23,10 +22,10 @@ public class TTSViewViewModel: ObservableObject {
             }
             .store(in: &self.cancellables)
 
-        self.coordinator.validationEnabled
+        self.coordinator.validationState
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] validationEnabled in
-                self?.validationEnabled = validationEnabled
+            .sink { [weak self] validationState in
+                self?.validationState = validationState
             }
             .store(in: &self.cancellables)
     }
@@ -34,11 +33,10 @@ public class TTSViewViewModel: ObservableObject {
     // MARK: Internal
 
     @Published var didTriggerAction = false
-    @Published var validationEnabled: Bool?
+    @Published var validationState: ValidationState = .hidden
     @Published var choices: [TTSUIChoiceModel]
 
     let action: NewExerciseAction?
-    let validation: NewExerciseOptions.Validation
 
     func onTapped(choice: TTSUIChoiceModel) {
         self.coordinator.processUserSelection(choiceID: choice.id)
