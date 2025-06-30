@@ -41,8 +41,8 @@ public class CurrentExerciseCoordinator {
                                         .onAppear {
                                             coordinator.didComplete
                                                 .receive(on: DispatchQueue.main)
-                                                .sink { [weak self] _ in
-                                                    self?.didComplete.send()
+                                                .sink { [weak self] completionData in
+                                                    self?.didComplete.send(completionData)
                                                 }
                                                 .store(in: &self.cancellables)
                                         }
@@ -61,8 +61,8 @@ public class CurrentExerciseCoordinator {
                                         .onAppear {
                                             coordinator.didComplete
                                                 .receive(on: DispatchQueue.main)
-                                                .sink { [weak self] _ in
-                                                    self?.didComplete.send()
+                                                .sink { [weak self] completionData in
+                                                    self?.didComplete.send(completionData)
                                                 }
                                                 .store(in: &self.cancellables)
                                         }
@@ -81,8 +81,8 @@ public class CurrentExerciseCoordinator {
                                         .onAppear {
                                             coordinator.didComplete
                                                 .receive(on: DispatchQueue.main)
-                                                .sink { [weak self] _ in
-                                                    self?.didComplete.send()
+                                                .sink { [weak self] completionData in
+                                                    self?.didComplete.send(completionData)
                                                 }
                                                 .store(in: &self.cancellables)
                                         }
@@ -102,7 +102,7 @@ public class CurrentExerciseCoordinator {
                                             coordinator.didComplete
                                                 .receive(on: DispatchQueue.main)
                                                 .sink { [weak self] in
-                                                    self?.didComplete.send()
+                                                    self?.didComplete.send(nil)
                                                 }
                                                 .store(in: &self.cancellables)
                                         }
@@ -125,7 +125,7 @@ public class CurrentExerciseCoordinator {
                                             coordinator.didComplete
                                                 .receive(on: DispatchQueue.main)
                                                 .sink { [weak self] in
-                                                    self?.didComplete.send()
+                                                    self?.didComplete.send(nil)
                                                 }
                                                 .store(in: &self.cancellables)
                                         }
@@ -151,7 +151,7 @@ public class CurrentExerciseCoordinator {
                                             coordinator.didComplete
                                                 .receive(on: DispatchQueue.main)
                                                 .sink { [weak self] in
-                                                    self?.didComplete.send()
+                                                    self?.didComplete.send(nil)
                                                 }
                                                 .store(in: &self.cancellables)
                                         }
@@ -170,7 +170,7 @@ public class CurrentExerciseCoordinator {
                                             coordinator.didComplete
                                                 .receive(on: DispatchQueue.main)
                                                 .sink { [weak self] in
-                                                    self?.didComplete.send()
+                                                    self?.didComplete.send(nil)
                                                 }
                                                 .store(in: &self.cancellables)
                                         }
@@ -196,7 +196,7 @@ public class CurrentExerciseCoordinator {
                                             coordinator.didComplete
                                                 .receive(on: DispatchQueue.main)
                                                 .sink { [weak self] in
-                                                    self?.didComplete.send()
+                                                    self?.didComplete.send(nil)
                                                 }
                                                 .store(in: &self.cancellables)
                                         }
@@ -220,7 +220,7 @@ public class CurrentExerciseCoordinator {
                                             coordinator.didComplete
                                                 .receive(on: DispatchQueue.main)
                                                 .sink { [weak self] in
-                                                    self?.didComplete.send()
+                                                    self?.didComplete.send(nil)
                                                 }
                                                 .store(in: &self.cancellables)
                                         }
@@ -257,7 +257,7 @@ public class CurrentExerciseCoordinator {
                                 coordinator.didComplete
                                     .receive(on: DispatchQueue.main)
                                     .sink { [weak self] in
-                                        self?.didComplete.send()
+                                        self?.didComplete.send(nil)
                                     }
                                     .store(in: &self.cancellables)
                             }
@@ -270,7 +270,7 @@ public class CurrentExerciseCoordinator {
                                 coordinator.didComplete
                                     .receive(on: DispatchQueue.main)
                                     .sink { [weak self] in
-                                        self?.didComplete.send()
+                                        self?.didComplete.send(nil)
                                     }
                                     .store(in: &self.cancellables)
                             }
@@ -286,7 +286,7 @@ public class CurrentExerciseCoordinator {
                                 coordinator.didComplete
                                     .receive(on: DispatchQueue.main)
                                     .sink { [weak self] in
-                                        self?.didComplete.send()
+                                        self?.didComplete.send(nil)
                                     }
                                     .store(in: &self.cancellables)
                             }
@@ -311,7 +311,7 @@ public class CurrentExerciseCoordinator {
                                 coordinator.didComplete
                                     .receive(on: DispatchQueue.main)
                                     .sink { [weak self] in
-                                        self?.didComplete.send()
+                                        self?.didComplete.send(nil)
                                     }
                                     .store(in: &self.cancellables)
                             }
@@ -325,7 +325,7 @@ public class CurrentExerciseCoordinator {
 
     var cancellables = Set<AnyCancellable>()
 
-    var didComplete: PassthroughSubject<Void, Never> = .init()
+    var didComplete: PassthroughSubject<ExerciseCompletionData?, Never> = .init()
 
     // MARK: Private
 
