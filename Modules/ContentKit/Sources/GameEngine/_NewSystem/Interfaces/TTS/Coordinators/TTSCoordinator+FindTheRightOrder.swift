@@ -12,18 +12,21 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
 
     public init(choices: [CoordinatorFindTheRightOrderChoiceModel], action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
         let options = options ?? NewExerciseOptions()
-        self.rawChoices = options.shuffleChoices ? choices.shuffled() : choices
+        self.rawChoices = choices
         self.validation = options.validation
         self.gameplay = NewGameplayFindTheRightOrder(
-            choices: self.rawChoices.map { .init(id: $0.id) }
+            choices: choices.map { .init(id: $0.id) }
         )
         self.uiModel.value.action = action
-        self.uiModel.value.choices = self.rawChoices.map { choice in
+        self.uiModel.value.choices = choices.map { choice in
             let view = ChoiceView(value: choice.value,
                                   type: choice.type,
                                   size: self.uiModel.value.choiceSize(for: choices.count),
                                   state: .idle)
             return TTSUIChoiceModel(id: choice.id, view: view)
+        }
+        if options.shuffleChoices {
+            self.uiModel.value.choices.shuffle()
         }
         self.validationEnabled.value = (self.validation == .manual) ? false : nil
     }
@@ -96,7 +99,8 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
     }
 
     private func updateChoiceState(for choiceID: UUID, to state: State) {
-        guard let index = self.rawChoices.firstIndex(where: { $0.id == choiceID }) else { return }
+        guard let index = self.rawChoices.firstIndex(where: { $0.id == choiceID }),
+              let uiModelIndex = self.uiModel.value.choices.firstIndex(where: { $0.id == choiceID }) else { return }
 
         let view = ChoiceView(value: self.rawChoices[index].value,
                               type: self.rawChoices[index].type,
@@ -104,9 +108,9 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
                               state: state)
 
         if case .correct = state {
-            self.uiModel.value.choices[index] = TTSUIChoiceModel(id: choiceID, view: view, disabled: true)
+            self.uiModel.value.choices[uiModelIndex] = TTSUIChoiceModel(id: choiceID, view: view, disabled: true)
         } else {
-            self.uiModel.value.choices[index] = TTSUIChoiceModel(id: choiceID, view: view, disabled: false)
+            self.uiModel.value.choices[uiModelIndex] = TTSUIChoiceModel(id: choiceID, view: view, disabled: false)
         }
     }
 }
