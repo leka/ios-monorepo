@@ -56,48 +56,56 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol, 
         self.selectedChoices.append(choice)
         self.updateChoiceState(for: choice, to: .selected)
 
-        guard self.selectedChoices.count > 1 else {
-            return
+        if self.validationState.value == .hidden {
+            self.validateUserSelection()
+        } else {
+            self.validationState.send(self.selectedChoices.isNotEmpty ? .enabled : .disabled)
         }
+    }
 
+    public func validateUserSelection() {
         let results = self.gameplay.process(choiceIDs: [self.selectedChoices.map(\.id)])
-        let categoryGroupSize = self.rawChoices.filter { $0.category == choice.category }.count
+        guard let firstSelectedChoice = self.selectedChoices.first else { return }
+        let categoryGroupSize = self.rawChoices.filter { $0.category == firstSelectedChoice.category }.count
 
         let choicesToProcess = self.selectedChoices
 
         if results.allSatisfy(\.isCategoryCorrect) {
-            logGEK.debug("Correct category")
             if self.selectedChoices.count == categoryGroupSize {
                 self.selectedChoices.removeAll()
-                logGEK.debug("Category completed")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.validationState.send(.disabled)
                     choicesToProcess.forEach { choice in
                         self.updateChoiceState(for: choice, to: .correct)
                     }
                 }
 
                 if self.gameplay.isCompleted.value {
-                    self.validationState.send(.hidden)
                     // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.validationState.send(.hidden)
                         logGEK.debug("Exercise completed")
                         self.didComplete.send(self.completionData)
                     }
                 }
+            } else if self.validationState.value != .hidden {
+                self.selectedChoices.removeAll()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                    self.validationState.send(.disabled)
+                    choicesToProcess.forEach { choice in
+                        self.updateChoiceState(for: choice, to: .idle)
+                    }
+                }
             }
         } else {
-            logGEK.debug("Incorrect category")
             self.selectedChoices.removeAll()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                self.validationState.send(.disabled)
                 choicesToProcess.forEach { choice in
                     self.updateChoiceState(for: choice, to: .idle)
                 }
             }
         }
-    }
-
-    public func validateUserSelection() {
-        // Nothing to do
     }
 
     // MARK: Private
