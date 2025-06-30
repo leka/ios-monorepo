@@ -13,7 +13,6 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol, 
     public init(choices: [CoordinatorAssociateCategoriesChoiceModel], action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
         let options = options ?? NewExerciseOptions()
         self.rawChoices = options.shuffleChoices ? choices.shuffled() : choices
-        self.validation = options.validation
 
         self.gameplay = NewGameplayAssociateCategories(choices: self.rawChoices.map {
             .init(id: $0.id, category: $0.category)
@@ -27,7 +26,7 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol, 
                                   state: .idle)
             return TTSUIChoiceModel(id: choice.id, view: view)
         }
-        self.validationEnabled.value = (self.validation == .manual) ? false : nil
+        self.validationState.value = (options.validation == .manual) ? .disabled : .hidden
     }
 
     public convenience init(model: CoordinatorAssociateCategoriesModel, action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
@@ -37,8 +36,7 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol, 
     // MARK: Public
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
-    public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
-    public private(set) var validation: NewExerciseOptions.Validation
+    public private(set) var validationState = CurrentValueSubject<ValidationState, Never>(.hidden)
 
     public var didComplete: PassthroughSubject<Void, Never> = .init()
 
@@ -77,7 +75,7 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol, 
                 }
 
                 if self.gameplay.isCompleted.value {
-                    self.validationEnabled.send(nil)
+                    self.validationState.send(.hidden)
                     // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         logGEK.debug("Exercise completed")

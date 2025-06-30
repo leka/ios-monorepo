@@ -14,7 +14,6 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
     public init(choices: [CoordinatorFindTheRightOrderChoiceModel], action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
         let options = options ?? NewExerciseOptions()
         self.rawChoices = choices
-        self.validation = options.validation
 
         self.gameplay = NewGameplayFindTheRightOrder(choices: choices.map { .init(id: $0.id) })
 
@@ -32,7 +31,7 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
             DnDDropZoneNode(node: node)
         }
 
-        self.validationEnabled.value = (self.validation == .manual) ? false : nil
+        self.validationState.value = (options.validation == .manual) ? .disabled : .hidden
 
         if options.shuffleChoices {
             self.uiModel.value.choices.shuffle()
@@ -50,8 +49,7 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
 
     public private(set) var uiDropZones: [DnDDropZoneNode] = []
     public private(set) var uiModel = CurrentValueSubject<DnDOneToOneUIModel, Never>(.zero)
-    public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
-    public private(set) var validation: NewExerciseOptions.Validation
+    public private(set) var validationState = CurrentValueSubject<ValidationState, Never>(.hidden)
 
     public var didComplete: PassthroughSubject<Void, Never> = .init()
 
@@ -101,7 +99,7 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
             }
 
             if self.gameplay.isCompleted.value {
-                self.validationEnabled.send(nil)
+                self.validationState.send(.hidden)
                 // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     logGEK.debug("Exercise completed")
@@ -126,10 +124,10 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
 
         self.order(choiceID: choiceID, dropZoneIndex: destinationIndex)
         if self.currentOrderedChoices.doesNotContain(nil) {
-            if self.validationEnabled.value == nil {
+            if self.validationState.value == .hidden {
                 self.validateUserSelection()
             } else {
-                self.validationEnabled.send(true)
+                self.validationState.send(.enabled)
             }
         }
     }
@@ -145,8 +143,8 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
     }
 
     private func disableValidation() {
-        if self.validationEnabled.value != nil {
-            self.validationEnabled.send(false)
+        if self.validationState.value != .hidden {
+            self.validationState.send(.disabled)
         }
     }
 

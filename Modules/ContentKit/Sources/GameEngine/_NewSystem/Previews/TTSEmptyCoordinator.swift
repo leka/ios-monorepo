@@ -28,7 +28,7 @@ import Foundation
         // MARK: Internal
 
         var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
-        var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
+        var validationState = CurrentValueSubject<ValidationState, Never>(.hidden)
         var validation: NewExerciseOptions.Validation = .automatic
 
         func validateUserSelection() {

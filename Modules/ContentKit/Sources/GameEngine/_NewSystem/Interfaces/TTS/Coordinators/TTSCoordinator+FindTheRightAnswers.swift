@@ -13,7 +13,7 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol, 
     public init(choices: [CoordinatorFindTheRightAnswersChoiceModel], action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
         let options = options ?? NewExerciseOptions()
         self.rawChoices = options.shuffleChoices ? choices.shuffled() : choices
-        self.validation = options.validation
+
         self.gameplay = NewGameplayFindTheRightAnswers(
             choices: self.rawChoices
                 .map { .init(id: $0.id, isRightAnswer: $0.isRightAnswer)
@@ -27,7 +27,7 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol, 
                                   state: .idle)
             return TTSUIChoiceModel(id: choice.id, view: view)
         }
-        self.validationEnabled.value = (self.validation == .manual) ? false : nil
+        self.validationState.value = (options.validation == .manual) ? .disabled : .hidden
     }
 
     public convenience init(model: CoordinatorFindTheRightAnswersModel, action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
@@ -37,13 +37,12 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol, 
     // MARK: Public
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
-    public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
-    public private(set) var validation: NewExerciseOptions.Validation
+    public private(set) var validationState = CurrentValueSubject<ValidationState, Never>(.disabled)
 
     public var didComplete: PassthroughSubject<Void, Never> = .init()
 
     public func processUserSelection(choiceID: UUID) {
-        if self.validationEnabled.value == nil {
+        if self.validationState.value == .hidden {
             self.currentChoices.removeAll()
             self.currentChoices.append(choiceID)
             self.validateUserSelection()
@@ -59,7 +58,7 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol, 
             }
 
             self.updateChoiceState(for: choiceID, to: choiceState)
-            self.validationEnabled.send(self.currentChoices.isNotEmpty)
+            self.validationState.send(self.currentChoices.isNotEmpty ? .enabled : .disabled)
         }
     }
 
@@ -70,7 +69,7 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol, 
 
         let results = self.gameplay.process(choiceIDs: choiceIDs)
 
-        if self.validationEnabled.value != nil {
+        if self.validationState.value != .hidden {
             guard results.allSatisfy(\.isCorrect), self.gameplay.isCompleted.value else {
                 results.forEach { result in
                     self.updateChoiceState(for: result.id, to: .idle)
@@ -88,7 +87,7 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol, 
 
         if self.gameplay.isCompleted.value {
             withAnimation {
-                self.validationEnabled.send(nil)
+                self.validationState.send(.hidden)
             }
             // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -109,7 +108,7 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol, 
 
     private func resetCurrentChoices() {
         self.currentChoices = []
-        self.validationEnabled.value = false
+        self.validationState.send(.disabled)
     }
 
     private func updateChoiceState(for choiceID: UUID, to state: State) {
