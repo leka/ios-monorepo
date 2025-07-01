@@ -7,8 +7,7 @@ import Foundation
 
 public protocol DnDOneToOneGameplayCoordinatorProtocol {
     var uiModel: CurrentValueSubject<DnDOneToOneUIModel, Never> { get }
-    var validationEnabled: CurrentValueSubject<Bool?, Never> { get }
-    var validation: NewExerciseOptions.Validation { get }
+    var validationState: CurrentValueSubject<ValidationState, Never> { get }
     var uiDropZones: [DnDDropZoneNode] { get }
     func setAlreadyOrderedNodes()
     func onTouch(_ event: DnDTouchEvent, choiceID: UUID, destinationID: UUID?)

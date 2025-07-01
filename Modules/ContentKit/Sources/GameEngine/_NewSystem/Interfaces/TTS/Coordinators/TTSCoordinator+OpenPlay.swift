@@ -14,14 +14,13 @@ public class TTSCoordinatorOpenPlay: TTSGameplayCoordinatorProtocol {
     public init(choices: [CoordinatorOpenPlayChoiceModel], action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
         let options = options ?? NewExerciseOptions()
         self.rawChoices = options.shuffleChoices ? choices.shuffled() : choices
-        self.validation = options.validation
 
         self.uiModel.value.action = action
 
-        if case let .manualWithSelectionLimit(minimumToSelect, maximumToSelect) = self.validation {
+        if case let .manualWithSelectionLimit(minimumToSelect, maximumToSelect) = options.validation {
             self.minimumToSelect = minimumToSelect ?? 0
             self.maximumToSelect = maximumToSelect ?? choices.count
-            if self.minimumToSelect == 0 { self.validationEnabled.send(true) } else { self.validationEnabled.send(false) }
+            if self.minimumToSelect == 0 { self.validationState.send(.enabled) } else { self.validationState.send(.disabled) }
         } else {
             self.minimumToSelect = 0
             self.maximumToSelect = choices.count
@@ -43,8 +42,7 @@ public class TTSCoordinatorOpenPlay: TTSGameplayCoordinatorProtocol {
     // MARK: Public
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
-    public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(false)
-    public private(set) var validation: NewExerciseOptions.Validation
+    public private(set) var validationState = CurrentValueSubject<ValidationState, Never>(.disabled)
 
     public var didComplete: PassthroughSubject<Void, Never> = .init()
 
@@ -69,14 +67,14 @@ public class TTSCoordinatorOpenPlay: TTSGameplayCoordinatorProtocol {
         self.uiModel.value.choices[index] = TTSUIChoiceModel(id: choiceID, view: view)
 
         if self.currentChoices.count < self.minimumToSelect || self.currentChoices.count > self.maximumToSelect {
-            self.validationEnabled.send(false)
+            self.validationState.send(.disabled)
         } else {
-            self.validationEnabled.send(true)
+            self.validationState.send(.enabled)
         }
     }
 
     public func validateUserSelection() {
-        self.validationEnabled.send(false)
+        self.validationState.send(.disabled)
         for id in self.currentChoices {
             guard let index = self.uiModel.value.choices.firstIndex(where: { $0.id == id }) else { return }
 
@@ -90,7 +88,7 @@ public class TTSCoordinatorOpenPlay: TTSGameplayCoordinatorProtocol {
             }
         }
 
-        self.validationEnabled.send(nil)
+        self.validationState.send(.hidden)
         // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             logGEK.debug("Exercise completed")

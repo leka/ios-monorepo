@@ -20,7 +20,6 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
         let nodes = shuffledChoices.filter { $0.isDropzone == false }
         self.rawDropZones = Array(dropZones)
         self.rawChoices = Array(nodes)
-        self.validation = options.validation
 
         self.gameplay = NewGameplayAssociateCategories(choices: shuffledChoices.map {
             .init(id: $0.id, category: $0.category)
@@ -43,7 +42,7 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
                 size: self.uiDropZoneModel.zoneSize(for: dropZones.count)
             )
         }
-        self.validationEnabled.value = (self.validation == .manual) ? false : nil
+        self.validationState.value = (options.validation == .manual) ? .disabled : .hidden
 
         self.uiModel.value.choices = self.rawChoices.map { choice in
             DnDAnswerNode(id: choice.id, value: choice.value, type: choice.type, size: self.uiModel.value.choiceSize(for: nodes.count))
@@ -58,8 +57,7 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
 
     public private(set) var uiDropZoneModel: DnDGridWithZonesUIDropzoneModel = .zero
     public private(set) var uiModel = CurrentValueSubject<DnDGridWithZonesUIModel, Never>(.zero)
-    public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(.none)
-    public private(set) var validation: NewExerciseOptions.Validation
+    public private(set) var validationState = CurrentValueSubject<ValidationState, Never>(.hidden)
 
     public var didComplete: PassthroughSubject<Void, Never> = .init()
 
@@ -97,7 +95,7 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
         }
 
         if self.gameplay.isCompleted.value {
-            self.validationEnabled.send(nil)
+            self.validationState.send(.hidden)
             // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 logGEK.debug("Exercise completed")
@@ -126,9 +124,9 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
         }
         self.currentlySelectedChoices[destinationIndex].append(choiceID)
 
-        if self.validationEnabled.value != nil {
+        if self.validationState.value != .hidden {
             self.updateChoiceState(for: choiceID, to: .selected(dropZone: self.uiDropZoneModel.zones[destinationIndex]))
-            self.validationEnabled.send(true)
+            self.validationState.send(.enabled)
         } else {
             self.validateUserSelection()
         }

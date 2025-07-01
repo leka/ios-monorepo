@@ -19,12 +19,11 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
         let nodes = choices.filter { $0.isDropzone == false }
         let rawDropzones = options.shuffleChoices ? Array(dropZones).shuffled() : Array(dropZones)
         self.rawChoices = options.shuffleChoices ? Array(nodes).shuffled() : Array(nodes)
-        self.validation = options.validation
 
         self.uiModel.value.action = action
         self.uiDropZoneModel.action = action
 
-        if case let .manualWithSelectionLimit(minimumToSelect, maximumToSelect) = self.validation {
+        if case let .manualWithSelectionLimit(minimumToSelect, maximumToSelect) = options.validation {
             self.minimumToSelect = minimumToSelect ?? 0
             self.maximumToSelect = maximumToSelect ?? choices.count
             self.updateValidationState()
@@ -56,8 +55,7 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
 
     public private(set) var uiDropZoneModel: DnDGridWithZonesUIDropzoneModel = .zero
     public private(set) var uiModel = CurrentValueSubject<DnDGridWithZonesUIModel, Never>(.zero)
-    public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(false)
-    public private(set) var validation: NewExerciseOptions.Validation
+    public private(set) var validationState = CurrentValueSubject<ValidationState, Never>(.disabled)
 
     public var didComplete: PassthroughSubject<Void, Never> = .init()
 
@@ -84,7 +82,7 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
 
         // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
 
-        self.validationEnabled.send(nil)
+        self.validationState.send(.hidden)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             logGEK.debug("Exercise completed")
             self.didComplete.send()
@@ -117,9 +115,9 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
 
     private func updateValidationState() {
         if self.currentlySelectedChoices.count < self.minimumToSelect || self.currentlySelectedChoices.count > self.maximumToSelect {
-            self.validationEnabled.send(false)
+            self.validationState.send(.disabled)
         } else {
-            self.validationEnabled.send(true)
+            self.validationState.send(.enabled)
         }
     }
 }

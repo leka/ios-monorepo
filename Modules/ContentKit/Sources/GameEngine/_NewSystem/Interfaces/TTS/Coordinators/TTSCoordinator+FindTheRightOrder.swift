@@ -13,7 +13,7 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
     public init(choices: [CoordinatorFindTheRightOrderChoiceModel], action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
         let options = options ?? NewExerciseOptions()
         self.rawChoices = choices
-        self.validation = options.validation
+
         self.gameplay = NewGameplayFindTheRightOrder(
             choices: choices.map { .init(id: $0.id) }
         )
@@ -28,7 +28,8 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
         if options.shuffleChoices {
             self.uiModel.value.choices.shuffle()
         }
-        self.validationEnabled.value = (self.validation == .manual) ? false : nil
+
+        self.validationState.value = (options.validation == .manual) ? .disabled : .hidden
     }
 
     public convenience init(model: CoordinatorFindTheRightOrderModel, action: NewExerciseAction? = nil, options: NewExerciseOptions? = nil) {
@@ -38,8 +39,7 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
     // MARK: Public
 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
-    public private(set) var validationEnabled = CurrentValueSubject<Bool?, Never>(nil)
-    public private(set) var validation: NewExerciseOptions.Validation
+    public private(set) var validationState = CurrentValueSubject<ValidationState, Never>(.hidden)
 
     public var didComplete: PassthroughSubject<Void, Never> = .init()
 
@@ -56,8 +56,8 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
             self.updateChoiceState(for: id, to: .selected(order: index + 1))
         }
 
-        if self.validationEnabled.value != nil {
-            self.validationEnabled.send(self.currentOrderedChoices.isNotEmpty)
+        if self.validationState.value != .hidden {
+            self.validationState.send(self.currentOrderedChoices.isNotEmpty ? .enabled : .disabled)
         } else {
             if self.currentOrderedChoicesIndex == self.rawChoices.count {
                 self.validateUserSelection()
@@ -73,7 +73,7 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
                 self.updateChoiceState(for: id, to: .correct(order: indice + 1))
             }
 
-            self.validationEnabled.send(nil)
+            self.validationState.send(.hidden)
             // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 logGEK.debug("Exercise completed")

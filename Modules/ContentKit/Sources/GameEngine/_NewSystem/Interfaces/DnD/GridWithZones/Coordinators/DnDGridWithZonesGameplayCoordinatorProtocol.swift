@@ -8,8 +8,7 @@ import Foundation
 // swiftlint:disable:next type_name
 public protocol DnDGridWithZonesGameplayCoordinatorProtocol {
     var uiModel: CurrentValueSubject<DnDGridWithZonesUIModel, Never> { get }
-    var validationEnabled: CurrentValueSubject<Bool?, Never> { get }
-    var validation: NewExerciseOptions.Validation { get }
+    var validationState: CurrentValueSubject<ValidationState, Never> { get }
     var uiDropZoneModel: DnDGridWithZonesUIDropzoneModel { get }
     func onTouch(_ event: DnDTouchEvent, choiceID: UUID, destinationID: UUID?)
     func validateUserSelection()
