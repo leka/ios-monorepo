@@ -233,8 +233,27 @@ public class CurrentExerciseCoordinator {
 
                         case .magicCards:
                             switch gameplay {
+                                case .findTheRightAnswers:
+                                    let model = MagicCardCoordinatorFindTheRightAnswersModel(data: payload)
+                                    let coordinator = MagicCardCoordinatorFindTheRightAnswers(
+                                        model: model,
+                                        action: exercise.action
+                                    )
+                                    let viewModel = MagicCardViewViewModel(coordinator: coordinator)
+
+                                    MagicCardView(viewModel: viewModel)
+                                        .onAppear {
+                                            coordinator.didComplete
+                                                .receive(on: DispatchQueue.main)
+                                                .sink { [weak self] in
+                                                    self?.didComplete.send(nil)
+                                                }
+                                                .store(in: &self.cancellables)
+                                        }
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+
                                 default:
-                                    ExercisePlaceholderView()
+                                    ExerciseInterfaceGameplayNotSupportedView(interface: interface, gameplay: gameplay)
                             }
                     }
                 } else {

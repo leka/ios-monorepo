@@ -11,7 +11,7 @@ import SwiftUI
 public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [MagicCardCoordinatorFindTheRightAnswersChoiceModel], action: NewExerciseAction) {
+    public init(choices: [MagicCardCoordinatorFindTheRightAnswersChoiceModel], action: NewExerciseAction? = nil) {
         self.rawChoices = choices
 
         self.gameplay = NewGameplayFindTheRightAnswers(
@@ -21,9 +21,13 @@ public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinat
         self.action = action
     }
 
+    public convenience init(model: MagicCardCoordinatorFindTheRightAnswersModel, action: NewExerciseAction? = nil) {
+        self.init(choices: model.choices, action: action)
+    }
+
     // MARK: Public
 
-    public var action: NewExerciseAction
+    public var action: NewExerciseAction?
     public var didComplete: PassthroughSubject<Void, Never> = .init()
 
     public func enableMagicCardDetection() {

@@ -20,67 +20,55 @@ public struct MagicCardView: View {
     // MARK: Public
 
     public var body: some View {
-        VStack(alignment: .center) {
-            Text(l10n.MagicCardView.instructions)
-                .font(.title3.bold())
-                .multilineTextAlignment(.center)
-                .padding()
-
-            Spacer()
-
+        ZStack(alignment: .bottom) {
             HStack(spacing: 0) {
-                Spacer()
-
-                Button {
-                    // nothing to do
-                }
-                label: {
-                    ActionButtonView(action: self.viewModel.action)
-                        .frame(width: 300, height: 300)
-                }
-                .simultaneousGesture(
-                    TapGesture()
-                        .onEnded { _ in
-                            withAnimation {
-                                self.viewModel.didTriggerAction = true
-                                self.viewModel.enableMagicCardDetection()
+                if let action = self.viewModel.action {
+                    Button {
+                        // nothing to do
+                    }
+                    label: {
+                        ActionButtonView(action: action)
+                            .frame(width: 300, height: 300)
+                    }
+                    .simultaneousGesture(
+                        TapGesture()
+                            .onEnded { _ in
+                                withAnimation {
+                                    self.viewModel.didTriggerAction = true
+                                    self.viewModel.enableMagicCardDetection()
+                                }
                             }
-                        }
-                )
-
-                Spacer()
+                    )
+                }
 
                 Divider()
                     .opacity(0.4)
                     .frame(maxHeight: 500)
                     .padding(.vertical, 20)
 
-                Spacer()
-
                 Image(uiImage: DesignKitAsset.Images.robotMagicCard.image)
                     .resizable()
                     .frame(width: 300, height: 300)
-
-                Spacer()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-
-            Spacer()
 
             Button {
                 self.viewModel.onValidateCorrectAnswer()
+                self.isCorrectAnswerButtonPresented = false
             } label: {
-                Text(l10n.ExerciseView.validateCorrectAnswerButtonLabel)
+                Text(l10n.MagicCardView.correctAnswerButtonLabel)
                     .font(.title2.bold())
-                    .foregroundColor(.white)
-                    .frame(height: 30)
+                    .frame(maxWidth: 400, maxHeight: 40)
                     .padding()
-                    .background(
-                        Capsule()
-                            .fill(.orange)
-                            .shadow(radius: 1)
+                    .overlay(
+                        Capsule().stroke(.cyan, lineWidth: 2)
                     )
             }
-            .padding(20)
+            .padding()
+            .offset(x: 100)
+            .disabled(self.viewModel.didTriggerAction == false)
+            .opacity(self.isCorrectAnswerButtonPresented ? 1 : 0)
+            .animation(.easeInOut(duration: 0.2).delay(0.75), value: self.isCorrectAnswerButtonPresented)
         }
         .onDisappear {
             Robot.shared.stopLights()
@@ -91,19 +79,17 @@ public struct MagicCardView: View {
     // MARK: Private
 
     @StateObject private var viewModel: MagicCardViewViewModel
+    @State private var isCorrectAnswerButtonPresented: Bool = true
 }
 
 // MARK: - l10n.MagicCardView
 
 extension l10n {
     enum MagicCardView {
-        static let instructions = LocalizedString("game_engine_kit.magic_card_view.instructions",
-                                                  bundle: ContentKitResources.bundle,
-                                                  value: """
-                                                      Bring the magic card to the robot's forehead
-                                                      to validate the answer.
-                                                      """,
-                                                  comment: "MagicCardView instructions")
+        static let correctAnswerButtonLabel = LocalizedString("game_engine_kit.magic_card_view.reinforcer",
+                                                              bundle: ContentKitResources.bundle,
+                                                              value: "✅ Validate & Play Reinforcer 🎉",
+                                                              comment: "The button label to validate a correct answer")
     }
 }
 
@@ -111,7 +97,7 @@ extension l10n {
     // MARK: - MagicCardEmptyCoordinator
 
     class MagicCardEmptyCoordinator: MagicCardGameplayCoordinatorProtocol {
-        var action = NewExerciseAction.robot(type: .image("robotFaceDisgusted"))
+        var action: NewExerciseAction? = NewExerciseAction.robot(type: .image("robotFaceDisgusted"))
         func enableMagicCardDetection() {}
         func validateCorrectAnswer() {}
     }

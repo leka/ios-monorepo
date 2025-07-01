@@ -824,7 +824,7 @@
             }
         },
         "game_engine_kit.exercise_view.validate_button_label": {
-            "comment": "The label for the validate button to confirm selected choices",
+            "comment": "The button label to confirm selected choices",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
@@ -837,24 +837,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Valider"
-                    }
-                }
-            }
-        },
-        "game_engine_kit.exercise_view.validate_correct_answer_button_label": {
-            "comment": "The label for the validate correct answer button to validate a good behavior",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "Validate Correct Answer"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Valider la bonne r\u00e9ponse"
                     }
                 }
             }
@@ -1070,20 +1052,20 @@
                 }
             }
         },
-        "game_engine_kit.magic_card_view.instructions": {
-            "comment": "MagicCardView instructions",
+        "game_engine_kit.magic_card_view.reinforcer": {
+            "comment": "The button label to validate a correct answer",
             "extractionState": "extracted_with_value",
             "localizations": {
                 "en": {
                     "stringUnit": {
                         "state": "new",
-                        "value": "Bring the magic card to the robot's forehead\nto validate the answer."
+                        "value": "\u2705 Validate & Play Reinforcer \ud83c\udf89"
                     }
                 },
                 "fr": {
                     "stringUnit": {
                         "state": "translated",
-                        "value": "Apporter la carte magique sur le front du robot\npour valider la r\u00e9ponse."
+                        "value": "\u2705 Valider & Lancer le Renfor\u00e7ateur \ud83c\udf89"
                     }
                 }
             }
