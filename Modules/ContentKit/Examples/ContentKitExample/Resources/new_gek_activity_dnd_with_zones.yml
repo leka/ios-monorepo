@@ -1,0 +1,42 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: F8C90919AF204155A170D3957BABE7D6
+name: TestActivityMock
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: "Glisse et dépose les emojis dans la zone correspondante 🌲🌵🌴"
+            - locale: en_US
+              value: "Drag and drop the emojis in the correct zone 🌲🌵🌴"
+          interface: dragAndDropGridWithZones
+          gameplay: associateCategories
+          payload:
+            choices:
+              - value: 🌲
+                type: emoji
+                category: catA
+                is_dropzone: true
+              - value: 🌲
+                type: emoji
+                category: catA
+              - value: 🌵
+                type: emoji
+                category: catB
+                is_dropzone: true
+              - value: 🌵
+                type: emoji
+                category: catB
+              - value: 🌴
+                type: emoji
+                category: catC
+                is_dropzone: true
+              - value: 🌴
+                type: emoji
+                category: catC

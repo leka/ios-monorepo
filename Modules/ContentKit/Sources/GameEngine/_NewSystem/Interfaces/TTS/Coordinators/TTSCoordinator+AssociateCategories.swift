@@ -38,12 +38,14 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol, 
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
     public private(set) var validationState = CurrentValueSubject<ValidationState, Never>(.hidden)
 
-    public var didComplete: PassthroughSubject<Void, Never> = .init()
+    public var didComplete: PassthroughSubject<ExerciseCompletionData?, Never> = .init()
 
     public func processUserSelection(choiceID: UUID) {
         guard let choice = self.rawChoices.first(where: { $0.id == choiceID }) else {
             return
         }
+
+        self.completionData.numberOfTrials += 1
 
         guard !self.selectedChoices.contains(where: { $0.id == choice.id }) else {
             self.selectedChoices.removeAll { $0.id == choice.id }
@@ -79,7 +81,7 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol, 
                     // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         logGEK.debug("Exercise completed")
-                        self.didComplete.send()
+                        self.didComplete.send(self.completionData)
                     }
                 }
             }
@@ -106,6 +108,8 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol, 
 
     private let rawChoices: [CoordinatorAssociateCategoriesChoiceModel]
     private var selectedChoices: [CoordinatorAssociateCategoriesChoiceModel] = []
+
+    private var completionData: ExerciseCompletionData = .init()
 
     private func updateChoiceState(for choice: CoordinatorAssociateCategoriesChoiceModel, to state: State) {
         guard let index = self.rawChoices.firstIndex(where: { $0.id == choice.id }) else { return }

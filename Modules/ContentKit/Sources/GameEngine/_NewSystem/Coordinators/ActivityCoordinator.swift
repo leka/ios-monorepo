@@ -85,10 +85,14 @@ public class ActivityCoordinator {
 
         self.currentExerciseCoordinator.didComplete
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] in
-                guard let self else { return }
-                logGEK.info("Current exercise completed 🎉️")
-                self.isExerciseCompleted = true
+            .sink { [weak self] completionData in
+                if let completionData {
+                    logGEK.info("Current exercise completed 🎉️ - \(completionData)")
+
+                } else {
+                    logGEK.info("Current exercise completed 🎉️ - no data")
+                }
+                self?.isExerciseCompleted = true
             }
             .store(in: &self.cancellables)
     }
