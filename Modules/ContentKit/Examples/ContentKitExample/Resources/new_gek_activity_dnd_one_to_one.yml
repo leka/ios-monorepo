@@ -1,0 +1,90 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 1EA920DB6F664C5D8AAD1C0B12AF4DA3
+name: TestActivityMock
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - instructions:
+          - locale: fr_FR
+            value: "Trie du préféré au moins aimé"
+          - locale: en_US
+            value: "Sort from your most favorite to your least favorite"
+          interface: dragAndDropOneToOne
+          gameplay: openPlay
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: 🍔
+                type: emoji
+              - value: 🥐
+                type: emoji
+              - value: 🍣
+                type: emoji
+              - value: 🍕
+                type: emoji
+              - value: 🍦
+                type: emoji
+              - value: 🍫
+                type: emoji
+        - instructions:
+          - locale: fr_FR
+            value: "Retrouvez l'ordre du triathlon"
+          - locale: en_US
+            value: "Find the triathlon right order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          action:
+            type: robot
+            value:
+              type: color
+              value: blue
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: 🏊
+                type: emoji
+              - value: 🚴
+                type: emoji
+              - value: 🏃‍♂️
+                type: emoji
+
+        - instructions:
+          - locale: fr_FR
+            value: "Met les choix dans le bon ordre"
+          - locale: en_US
+            value: "Find the right order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          action:
+            type: ipad
+            value:
+              type: sfsymbol
+              value: star
+          options:
+            shuffle_choices: true
+            validation:
+              type: manual
+          payload:
+            choices:
+              - value: 1
+                type: text
+                already_ordered: true
+              - value: 2
+                type: text
+              - value: 3
+                type: text
+              - value: 4
+                type: text
+              - value: 5
+                type: text
+                already_ordered: true
+              - value: 6
+                type: text
