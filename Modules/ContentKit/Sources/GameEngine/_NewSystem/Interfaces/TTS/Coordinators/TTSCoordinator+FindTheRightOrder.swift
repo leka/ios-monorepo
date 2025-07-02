@@ -41,7 +41,7 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
     public private(set) var validationState = CurrentValueSubject<ValidationState, Never>(.hidden)
 
-    public var didComplete: PassthroughSubject<ExerciseCompletionData, Never> = .init()
+    public var didComplete: PassthroughSubject<ExerciseCompletionData?, Never> = .init()
 
     public func processUserSelection(choiceID: UUID) {
         if let index = self.currentOrderedChoices.firstIndex(of: choiceID) {
