@@ -5,6 +5,26 @@
 import DesignKit
 import SwiftUI
 
+// MARK: - NewActivityProgressBarMarker
+
+struct NewActivityProgressBarMarker: View {
+    var color: Color
+    var isCurrentlyPlaying: Bool
+
+    var body: some View {
+        Circle()
+            .stroke(Color.white, lineWidth: 3)
+            .background(self.color, in: Circle())
+            .overlay {
+                Circle()
+                    .fill(DesignKitAsset.Colors.chevron.swiftUIColor)
+                    .padding(4)
+                    .scaleEffect(self.isCurrentlyPlaying ? 1 : 0.01)
+                    .animation(.easeIn(duration: 0.5).delay(0.2), value: self.isCurrentlyPlaying)
+            }
+    }
+}
+
 // MARK: - NewActivityProgressBar
 
 struct NewActivityProgressBar: View {
@@ -27,10 +47,10 @@ struct NewActivityProgressBar: View {
                         let isCurrentlyPlaying = isCurrentExercise
 //                        && isNotYetCompleted
 
-                        ActivityProgressBarMarker(
+                        NewActivityProgressBarMarker(
                             color: (isCurrentGroup && isCurrentExercise)
-                                ? self.$currentColor : .constant(markerColor),
-                            isCurrentlyPlaying: .constant(isCurrentlyPlaying)
+                                ? self.currentColor : markerColor,
+                            isCurrentlyPlaying: isCurrentlyPlaying
                         )
                         .padding(6)
 //                        .onChange(of: self.manager.currentExerciseIndex) { newState in
