@@ -94,7 +94,7 @@ struct RobotControlView: View {
                     Text("Magic Cards")
                         .font(.title)
                     HStack(alignment: .center, spacing: 30) {
-                        Text("ID: 0x\(String(format: "%04X", self.viewModel.magicCard.id))")
+                        Text("ID: 0x\(String(format: "%04X", self.viewModel.magicCard.rawValue))")
                             .monospacedDigit()
                         self.viewModel.magicCardImage
                             .resizable()
