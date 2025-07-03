@@ -5,7 +5,7 @@
 import Combine
 import SwiftUI
 
-// MARK: - NewActivityManager
+// MARK: - ActivityCoordinator
 
 @Observable
 public class ActivityCoordinator {
@@ -26,6 +26,11 @@ public class ActivityCoordinator {
         self.currentExerciseCoordinator = CurrentExerciseCoordinator(exercise: firstExercise)
 
         self.setExerciseCoordinator(self.currentExerciseCoordinator)
+
+        self.exercisesCompletionData = Array(
+            repeating: [],
+            count: self.groups.count
+        )
     }
 
     public convenience init(payload: Data) {
@@ -50,6 +55,8 @@ public class ActivityCoordinator {
     public let groupSizeEnumeration: [Int]
 
     public var activityEvent = PassthroughSubject<ActivityEvent, Never>()
+
+    public var exercisesCompletionData: [[(level: ExerciseCompletionLevel, data: ExerciseCompletionData?)]] = []
 
     public var numberOfGroups: Int {
         self.groupSizeEnumeration.count
@@ -86,13 +93,12 @@ public class ActivityCoordinator {
         self.currentExerciseCoordinator.didComplete
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completionData in
-                if let completionData {
-                    logGEK.info("Current exercise completed 🎉️ - \(completionData)")
+                guard let self else { return }
 
-                } else {
-                    logGEK.info("Current exercise completed 🎉️ - no data")
-                }
-                self?.isExerciseCompleted = true
+                logGEK.info("Current exercise completed 🎉️ - \(completionData)")
+                self.exercisesCompletionData[self.currentGroupIndex].append(completionData)
+
+                self.isExerciseCompleted = true
             }
             .store(in: &self.cancellables)
     }
@@ -100,6 +106,7 @@ public class ActivityCoordinator {
     func nextExercise() {
         guard !self.isLastExercise else {
             self.activityEvent.send(.didEnd)
+            logGEK.info("Activity completed 🎉️ - \(self.exercisesCompletionData)")
             return
         }
 
