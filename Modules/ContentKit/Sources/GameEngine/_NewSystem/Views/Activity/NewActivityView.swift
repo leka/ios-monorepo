@@ -20,8 +20,10 @@ public struct NewActivityView: View {
     public var body: some View {
         ZStack(alignment: .bottomTrailing) {
             VStack(spacing: 10) {
-                VStack {
-                    NewActivityProgressBar(coordinator: self.activityCoordinator)
+                if self.activityCoordinator.numberOfExercisesInCurrentGroup > 1 {
+                    VStack {
+                        NewActivityProgressBar(coordinator: self.activityCoordinator)
+                    }
                 }
 
                 self.activityCoordinator.currentExerciseView
@@ -30,7 +32,7 @@ public struct NewActivityView: View {
             .disabled(self.activityCoordinator.isExerciseCompleted)
             .blur(radius: self.blurRadius)
             .onChange(of: self.isReinforcerPresented) {
-                if self.isReinforcerPresented {
+                if self.isReinforcerPresented, self.activityCoordinator.isReinforcerAnimationEnabled {
                     withAnimation(.easeInOut.delay(0.5)) {
                         self.blurRadius = 20
                     }
@@ -39,7 +41,7 @@ public struct NewActivityView: View {
                 }
             }
 
-            if self.isReinforcerPresented {
+            if self.isReinforcerPresented, self.activityCoordinator.isReinforcerAnimationEnabled {
                 ReinforcerView(isLastExercise: self.activityCoordinator.isLastExercise,
                                onContinue: {
                                    self.activityCoordinator.nextExercise()
@@ -49,7 +51,7 @@ public struct NewActivityView: View {
                                })
             }
 
-            if self.activityCoordinator.isExerciseCompleted, !self.isReinforcerPresented {
+            if self.activityCoordinator.isExerciseCompleted, !self.isReinforcerPresented || !self.activityCoordinator.isReinforcerAnimationEnabled {
                 ContinueButton {
                     self.activityCoordinator.nextExercise()
                 }
@@ -79,9 +81,13 @@ public struct NewActivityView: View {
             #if DEVELOPER_MODE
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        // TODO: (@dev-ios) implement reinforcer toggle
+                        self.activityCoordinator.isReinforcerAnimationEnabled.toggle()
                     } label: {
-                        Image(systemName: "livephoto")
+                        if self.activityCoordinator.isReinforcerAnimationEnabled {
+                            Image(systemName: "livephoto")
+                        } else {
+                            Image(systemName: "livephoto.slash")
+                        }
                     }
                 }
 

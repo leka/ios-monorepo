@@ -4,6 +4,7 @@
 
 import DesignKit
 import SwiftUI
+import UtilsKit
 
 // MARK: - NewActivityProgressBarMarker
 
@@ -16,11 +17,11 @@ struct NewActivityProgressBarMarker: View {
             .stroke(Color.white, lineWidth: 3)
             .background(self.color, in: Circle())
             .overlay {
-                Circle()
-                    .fill(DesignKitAsset.Colors.chevron.swiftUIColor)
-                    .padding(4)
-                    .scaleEffect(self.isCurrentlyPlaying ? 1 : 0.01)
-                    .animation(.easeIn(duration: 0.5).delay(0.2), value: self.isCurrentlyPlaying)
+                if self.isCurrentlyPlaying {
+                    Circle()
+                        .fill(DesignKitAsset.Colors.chevron.swiftUIColor)
+                        .padding(4)
+                }
             }
     }
 }
@@ -40,26 +41,11 @@ struct NewActivityProgressBar: View {
                     ForEach(0..<self.coordinator.groupSizeEnumeration[groupIndex], id: \.self) { exerciseIndex in
                         let markerColor = self.progressBarMarkerColor(group: groupIndex, exercise: exerciseIndex)
 
-                        let isCurrentGroup = groupIndex == self.coordinator.currentGroupIndex
-                        let isCurrentExercise = isCurrentGroup && exerciseIndex == self.coordinator.currentExerciseIndex
-//                        let isNotYetCompleted = self.manager.currentExerciseSharedData.isExerciseNotYetCompleted
-
-                        let isCurrentlyPlaying = isCurrentExercise
-//                        && isNotYetCompleted
-
                         NewActivityProgressBarMarker(
-                            color: (isCurrentGroup && isCurrentExercise)
-                                ? self.currentColor : markerColor,
-                            isCurrentlyPlaying: isCurrentlyPlaying
+                            color: markerColor,
+                            isCurrentlyPlaying: self.isCurrentlyPlaying(group: groupIndex, exercise: exerciseIndex)
                         )
                         .padding(6)
-//                        .onChange(of: self.manager.currentExerciseIndex) { newState in
-//                            if case let .completed(level) = newState {
-//                                withAnimation(.snappy.delay(self.manager.delayAfterReinforcerAnimation)) {
-//                                    self.currentColor = self.completionLevelToColor(level: level)
-//                                }
-//                            }
-//                        }
 
                         if exerciseIndex < self.coordinator.groupSizeEnumeration[groupIndex] - 1 {
                             Spacer().frame(maxWidth: 100)
@@ -81,9 +67,7 @@ struct NewActivityProgressBar: View {
 
     private let height: CGFloat = 30
 
-    @State private var currentColor: Color = .white
-
-    private func completionLevelToColor(level: ExerciseState.CompletionLevel?) -> Color {
+    private func completionLevelToColor(level: ExerciseCompletionLevel?) -> Color {
         switch level {
             case .excellent:
                 .green
@@ -93,21 +77,28 @@ struct NewActivityProgressBar: View {
                  .belowAverage,
                  .fail:
                 .red
-            case .nonApplicable,
-                 .none:
-                .gray
+            case .notApplicable:
+                .green
+            case .none:
+                .white
         }
     }
 
-    private func progressBarMarkerColor(group _: Int, exercise _: Int) -> Color {
-//        if let completedExerciseSharedData = self.manager.completedExercisesSharedData.first(where: {
-//            $0.groupIndex == group
-//                && $0.exerciseIndex == exercise
-//        }) {
-//            self.completionLevelToColor(level: completedExerciseSharedData.completionLevel)
-//        } else {
-//            .white
-//        }
-        .white
+    private func isCurrentlyPlaying(group: Int, exercise: Int) -> Bool {
+        let isCurrentGroup = group == self.coordinator.currentGroupIndex
+        let isCurrentExercise = isCurrentGroup && exercise == self.coordinator.currentExerciseIndex
+        let isCurrentlyPlaying = isCurrentGroup && isCurrentExercise
+
+        let isExerciseCompleted = self.coordinator.isExerciseCompleted
+
+        return isCurrentlyPlaying && !isExerciseCompleted
+    }
+
+    private func progressBarMarkerColor(group: Int, exercise: Int) -> Color {
+        if let level = self.coordinator.exercisesCompletionData[safe: group]?[safe: exercise]?.level {
+            self.completionLevelToColor(level: level)
+        } else {
+            .white
+        }
     }
 }

@@ -54,6 +54,8 @@ public class ActivityCoordinator {
 
     public let groupSizeEnumeration: [Int]
 
+    public var isReinforcerAnimationEnabled: Bool = true
+
     public var activityEvent = PassthroughSubject<ActivityEvent, Never>()
 
     public var exercisesCompletionData: [[(level: ExerciseCompletionLevel, data: ExerciseCompletionData?)]] = []
@@ -66,13 +68,17 @@ public class ActivityCoordinator {
         self.groups[self.currentGroupIndex].group.count
     }
 
-    public var isLastExercise: Bool {
-        self.currentGroupIndex == self.groups.count - 1
-            && self.currentExerciseIndex == self.groups[self.currentGroupIndex].group.count - 1
+    public var totalNumberOfExercises: Int {
+        self.groupSizeEnumeration.reduce(0, +)
     }
 
     public var isFirstExercise: Bool {
         self.currentGroupIndex == 0 && self.currentExerciseIndex == 0
+    }
+
+    public var isLastExercise: Bool {
+        self.currentGroupIndex == self.groups.count - 1
+            && self.currentExerciseIndex == self.groups[self.currentGroupIndex].group.count - 1
     }
 
     @ViewBuilder
