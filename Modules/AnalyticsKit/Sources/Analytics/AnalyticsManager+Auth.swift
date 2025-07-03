@@ -34,4 +34,16 @@ public extension AnalyticsManager {
 
         logEvent(.accountDelete, parameters: params)
     }
+
+    static func logEventRequestEmailChange(parameters: [String: Any] = [:]) {
+        let params: [String: Any] = [:].merging(parameters) { _, new in new }
+
+        logEvent(.emailChange, parameters: params)
+    }
+
+    static func logEventRequestPasswordChange(parameters: [String: Any] = [:]) {
+        let params: [String: Any] = [:].merging(parameters) { _, new in new }
+
+        logEvent(.passwordChange, parameters: params)
+    }
 }
