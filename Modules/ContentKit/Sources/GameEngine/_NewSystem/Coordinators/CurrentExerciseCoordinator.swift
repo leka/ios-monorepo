@@ -219,6 +219,27 @@ public class CurrentExerciseCoordinator {
                                                 }
                                                 .store(in: &self.cancellables)
                                         }
+
+                                case .openPlay:
+                                    let model = CoordinatorOpenPlayModel(data: payload)
+                                    let coordinator = DnDOneToOneCoordinatorOpenPlay(
+                                        model: model,
+                                        action: exercise.action,
+                                        options: self.exercise.options
+                                    )
+                                    let viewModel = DnDOneToOneViewModel(coordinator: coordinator)
+
+                                    DnDOneToOneView(viewModel: viewModel)
+                                        .onAppear {
+                                            coordinator.didComplete
+                                                .receive(on: DispatchQueue.main)
+                                                .sink { [weak self] in
+                                                    self?.didComplete.send(nil)
+                                                }
+                                                .store(in: &self.cancellables)
+                                        }
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+
                                 default:
                                     ExerciseInterfaceGameplayNotSupportedView(interface: interface, gameplay: gameplay)
                                         .frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -20,11 +20,12 @@ public class TTSCoordinatorOpenPlay: TTSGameplayCoordinatorProtocol {
         if case let .manualWithSelectionLimit(minimumToSelect, maximumToSelect) = options.validation {
             self.minimumToSelect = minimumToSelect ?? 0
             self.maximumToSelect = maximumToSelect ?? choices.count
-            if self.minimumToSelect == 0 { self.validationState.send(.enabled) } else { self.validationState.send(.disabled) }
         } else {
             self.minimumToSelect = 0
             self.maximumToSelect = choices.count
         }
+
+        if self.minimumToSelect == 0 { self.validationState.send(.enabled) } else { self.validationState.send(.disabled) }
 
         self.uiModel.value.choices = self.rawChoices.map { choice in
             let view = ChoiceView(value: choice.value,
