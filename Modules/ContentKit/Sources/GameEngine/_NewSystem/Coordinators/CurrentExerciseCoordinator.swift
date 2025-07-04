@@ -102,6 +102,26 @@ public class CurrentExerciseCoordinator {
                                         }
                                         .frame(maxWidth: .infinity, maxHeight: .infinity)
 
+                                case .countTheRightNumber:
+                                    let model = CoordinatorCountTheRightNumberModel(data: payload)
+                                    let coordinator = TTSCoordinatorCountTheRightNumber(
+                                        model: model,
+                                        action: exercise.action,
+                                        options: self.exercise.options
+                                    )
+                                    let viewModel = TTSViewViewModel(coordinator: coordinator)
+
+                                    TTSView(viewModel: viewModel)
+                                        .onAppear {
+                                            coordinator.didComplete
+                                                .receive(on: DispatchQueue.main)
+                                                .sink { [weak self] completionData in
+                                                    self?.didComplete.send((.excellent, completionData))
+                                                }
+                                                .store(in: &self.cancellables)
+                                        }
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+
                                 case .openPlay:
                                     let model = CoordinatorOpenPlayModel(data: payload)
                                     let coordinator = TTSCoordinatorOpenPlay(
@@ -266,7 +286,7 @@ public class CurrentExerciseCoordinator {
                                             coordinator.didComplete
                                                 .receive(on: DispatchQueue.main)
                                                 .sink { [weak self] in
-                                                    self?.didComplete.send(nil)
+                                                    self?.didComplete.send((.notApplicable, nil))
                                                 }
                                                 .store(in: &self.cancellables)
                                         }

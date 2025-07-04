@@ -9,6 +9,49 @@ exercises_payload:
     shuffle_exercises: false
     shuffle_groups: false
   exercise_groups:
+    # MARK: - TTS + countTheRightNumber
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: "Touche 2 🍎 et 2 🍌"
+            - locale: en_US
+              value: "Tap 2 🍎 and 2 🍌"
+          interface: touchToSelect
+          gameplay: countTheRightNumber
+          options:
+            shuffle_choices: true
+            validation:
+              type: automatic
+          payload:
+            choices:
+              - value: 🍎
+                type: emoji
+                number: 4
+                expected: 2
+              - value: 🍌
+                type: emoji
+                number: 2
+                expected: 2
+        - instructions:
+            - locale: fr_FR
+              value: "Touche 3 🍎"
+            - locale: en_US
+              value: "Tap 3 🍎"
+          interface: touchToSelect
+          gameplay: countTheRightNumber
+          options:
+            shuffle_choices: false
+            validation:
+              type: manual
+          payload:
+            choices:
+              - value: 🍎
+                type: emoji
+                number: 4
+                expected: 3
+              - value: 🍌
+                type: emoji
+                number: 2
     # MARK: - TTS + findTheRightAnswers
     - group:
         - instructions:
