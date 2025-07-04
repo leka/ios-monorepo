@@ -91,6 +91,34 @@ struct RobotControlView: View {
                 }
 
                 VStack(alignment: .leading, spacing: 5) {
+                    Text("Behaviors")
+                        .font(.title)
+                    HStack {
+                        RobotControlActionButton(title: "Magic Card detected", image: "figure.wave", tint: .orange) {
+                            self.robot.run(.magicCardDetected)
+                        }
+                        RobotControlActionButton(title: "BLE Connection without video", image: "figure.wave", tint: .green) {
+                            self.robot.run(.bleConnectionWithoutVideo)
+                        }
+                        RobotControlActionButton(title: "Launching", image: "figure.wave", tint: .indigo) {
+                            self.robot.run(.launching)
+                        }
+                        RobotControlActionButton(title: "Low battery", image: "figure.wave", tint: .teal) {
+                            self.robot.run(.lowBattery)
+                        }
+                        RobotControlActionButton(title: "Charging full", image: "figure.wave", tint: .orange) {
+                            self.robot.run(.chargingFull)
+                        }
+                        RobotControlActionButton(title: "Medium low battery", image: "figure.wave", tint: .green) {
+                            self.robot.run(.mediumLowBattery)
+                        }
+                        RobotControlActionButton(title: "BLE Connection with video", image: "figure.wave", tint: .indigo) {
+                            self.robot.run(.bleConnectionWithVideo)
+                        }
+                    }
+                }
+
+                VStack(alignment: .leading, spacing: 5) {
                     Text("Magic Cards")
                         .font(.title)
                     HStack(alignment: .center, spacing: 30) {
