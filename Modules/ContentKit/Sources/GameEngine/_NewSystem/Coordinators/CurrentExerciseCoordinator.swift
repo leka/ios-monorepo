@@ -5,17 +5,6 @@
 import Combine
 import SwiftUI
 
-// MARK: - ExerciseEvaluationLevel
-
-public enum ExerciseEvaluationLevel {
-    case fail
-    case belowAverage
-    case average
-    case good
-    case excellent
-    case notApplicable
-}
-
 // MARK: - CurrentExerciseCoordinator
 
 public class CurrentExerciseCoordinator {
