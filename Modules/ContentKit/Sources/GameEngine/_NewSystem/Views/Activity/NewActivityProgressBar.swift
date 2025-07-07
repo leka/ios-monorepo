@@ -72,10 +72,11 @@ struct NewActivityProgressBar: View {
             case .excellent:
                 .green
             case .good:
-                .orange
+                .yellow
             case .average,
-                 .belowAverage,
-                 .fail:
+                 .belowAverage:
+                .orange
+            case .fail:
                 .red
             case .notApplicable:
                 .green
