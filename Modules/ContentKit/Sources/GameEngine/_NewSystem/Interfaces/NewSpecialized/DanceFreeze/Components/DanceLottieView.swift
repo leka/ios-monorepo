@@ -14,6 +14,7 @@ struct DanceLottieView: View {
             speed: 0.5,
             loopMode: .loop
         )
+        .resizable()
     }
 
     // MARK: Private
