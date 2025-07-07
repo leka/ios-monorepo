@@ -27,7 +27,7 @@ SKILLS_FILE = Path("Modules/ContentKit/Resources/Content/definitions/skills.yml"
 
 class SkillsDefinitionValidator(RecursiveDefinitionValidator):
     """Validator for skill definitions with recursive subskill support."""
-    
+
     def __init__(self):
         super().__init__(
             schema_path=JTD_SCHEMA,
@@ -35,14 +35,14 @@ class SkillsDefinitionValidator(RecursiveDefinitionValidator):
             validator_name="skill definition",
             child_key="subskills"
         )
-    
+
     def validate_definitions(self, filename: str) -> bool:
         """
         Validate skill definitions including SHA validation.
-        
+
         Args:
             filename: Path to the YAML file to validate
-            
+
         Returns:
             bool: True if valid, False otherwise
         """
@@ -50,7 +50,7 @@ class SkillsDefinitionValidator(RecursiveDefinitionValidator):
         if not is_definition_list_valid(filename):
             self.logger.error(f"\n❌ Definition list validation failed for {filename}")
             return False
-        
+
         # Then run the standard recursive validation
         return super().validate_definitions(filename)
 
@@ -58,10 +58,10 @@ class SkillsDefinitionValidator(RecursiveDefinitionValidator):
 def get_all_skills():
     """
     Get list of all skill IDs including subskills.
-    
+
     Returns:
         List of skill IDs
-        
+
     Note: This function is kept for backward compatibility.
     Use SkillsDefinitionValidator().get_all_ids() for new code.
     """

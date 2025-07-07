@@ -28,13 +28,13 @@ AVATAR_IMAGE_DIRECTORY = Path("Modules/AccountKit/Resources/avatars/images")
 
 class AvatarsDefinitionValidator(BaseYamlValidator):
     """Validator for avatar definitions with image file validation."""
-    
+
     def __init__(self):
         super().__init__(
             schema_path=JTD_SCHEMA,
             validator_name="avatar definition"
         )
-    
+
     def find_image(self, image: str) -> Optional[Path]:
         """
         Find the image file in the avatars directory.
@@ -57,7 +57,7 @@ class AvatarsDefinitionValidator(BaseYamlValidator):
         except (OSError, IOError) as e:
             self.logger.error(f"Error searching for image {image_filename}: {e}")
         return None
-    
+
     def list_image_names(self, data: Dict) -> List[str]:
         """
         Extract list of image names from the YAML data.
@@ -74,14 +74,14 @@ class AvatarsDefinitionValidator(BaseYamlValidator):
             for avatar in avatars:
                 images.append(avatar)
         return images
-    
+
     def validate_file(self, filename: str) -> bool:
         """
         Validate avatar definitions file.
-        
+
         Args:
             filename: Path to the YAML file to validate
-            
+
         Returns:
             bool: True if file is valid, False otherwise
         """

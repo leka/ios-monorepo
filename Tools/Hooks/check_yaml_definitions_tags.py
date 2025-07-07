@@ -26,7 +26,7 @@ TAGS_FILE = Path("Modules/ContentKit/Resources/Content/definitions/tags.yml")
 
 class TagsDefinitionValidator(RecursiveDefinitionValidator):
     """Validator for tag definitions with recursive subtag support."""
-    
+
     def __init__(self):
         super().__init__(
             schema_path=JTD_SCHEMA,
@@ -39,10 +39,10 @@ class TagsDefinitionValidator(RecursiveDefinitionValidator):
 def get_all_tags():
     """
     Get list of all tag IDs including subtags.
-    
+
     Returns:
         List of tag IDs
-        
+
     Note: This function is kept for backward compatibility.
     Use TagsDefinitionValidator().get_all_ids() for new code.
     """

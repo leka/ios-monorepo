@@ -16,7 +16,7 @@ JTD_SCHEMA = "Specs/jtd/story.jtd.json"
 
 class StoryContentValidator(ContentValidator):
     """Validator for story content files."""
-    
+
     def __init__(self):
         super().__init__(
             schema_path=JTD_SCHEMA,

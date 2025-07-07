@@ -24,7 +24,7 @@ JTD_SCHEMA = "Specs/jtd/robot_assets.jtd.json"
 
 class RobotAssetsDefinitionValidator(SimpleListDefinitionValidator):
     """Validator for robot asset definitions with ID and name uniqueness."""
-    
+
     def __init__(self):
         super().__init__(
             schema_path=JTD_SCHEMA,
@@ -38,16 +38,16 @@ class RobotAssetsDefinitionValidator(SimpleListDefinitionValidator):
 def get_all_robot_assets_ids():
     """
     Get list of all robot asset IDs from robot_assets.yml.
-    
+
     Returns:
         List of robot asset IDs
-        
+
     Note: This function is kept for backward compatibility.
     Use RobotAssetsDefinitionValidator for new code.
     """
     from pathlib import Path
     from modules.yaml import load_yaml
-    
+
     robot_assets_file = Path("Modules/ContentKit/Resources/Content/definitions/robot_assets.yml")
     try:
         robot_assets = load_yaml(robot_assets_file)
@@ -66,16 +66,16 @@ def get_all_robot_assets_ids():
 def get_all_robot_assets_names():
     """
     Get list of all robot asset names from robot_assets.yml.
-    
+
     Returns:
         List of robot asset names
-        
+
     Note: This function is kept for backward compatibility.
     Use RobotAssetsDefinitionValidator for new code.
     """
     from pathlib import Path
     from modules.yaml import load_yaml
-    
+
     robot_assets_file = Path("Modules/ContentKit/Resources/Content/definitions/robot_assets.yml")
     try:
         robot_assets = load_yaml(robot_assets_file)

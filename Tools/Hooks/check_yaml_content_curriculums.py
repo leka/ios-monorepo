@@ -18,34 +18,34 @@ JTD_SCHEMA = "Specs/jtd/curriculum.jtd.json"
 
 class CurriculumContentValidator(ContentValidator):
     """Validator for curriculum content files."""
-    
+
     def __init__(self):
         super().__init__(
             schema_path=JTD_SCHEMA,
             validator_name="curriculum",
             content_type="curriculum"
         )
-    
+
     def validate_content_specific(self, content: Dict[str, Any], filename: str) -> bool:
         """
         Curriculum-specific validation for activities.
-        
+
         Args:
             content: Loaded YAML content
             filename: Path to the YAML file
-            
+
         Returns:
             bool: True if valid, False otherwise
         """
         file_is_valid = True
-        
+
         # Check for missing activities
         if missing_activities := find_missing_activities(content):
             file_is_valid = False
             print(f"\n❌ Found activities that do not exist in {filename}")
             for activity in missing_activities:
                 print(f"  - {activity}")
-        
+
         return file_is_valid
 
 
