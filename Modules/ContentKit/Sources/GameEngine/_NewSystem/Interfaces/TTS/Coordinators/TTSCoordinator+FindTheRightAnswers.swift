@@ -4,6 +4,7 @@
 
 import Combine
 import SwiftUI
+import UtilsKit
 
 // MARK: - TTSCoordinatorFindTheRightAnswers
 
@@ -167,6 +168,54 @@ extension TTSCoordinatorFindTheRightAnswers {
         private let type: ChoiceType
         private let size: CGFloat
         private let state: State
+    }
+}
+
+extension TTSCoordinatorFindTheRightAnswers: ExerciseEvaluationStrategy {
+    public func evaluate(in context: EvaluationContext = .practice) -> ExerciseEvaluationLevel {
+        let numberOfTrials = self.completionData.numberOfTrials
+        let numberOfAllowedTrials = self.getNumberOfAllowedTrials(from: self.getEvaluationLUT(for: context))
+
+        let trialsPercentage = Double(numberOfAllowedTrials) / Double(numberOfTrials) * 100.0
+
+        switch trialsPercentage {
+            case 90...:
+                return .excellent
+            case 80..<90:
+                return .good
+            case 70..<80:
+                return .average
+            case 60..<70:
+                return .belowAverage
+            default:
+                return .fail
+        }
+    }
+
+    private func getEvaluationLUT(for context: EvaluationContext) -> EvaluationLUT {
+        switch context {
+            default:
+                [
+                    1: [1: 1],
+                    2: [1: 1, 2: 2],
+                    3: [1: 1, 2: 2, 3: 3],
+                    4: [1: 2, 2: 2, 3: 3, 4: 4],
+                    5: [1: 2, 2: 3, 3: 3, 4: 4, 5: 5],
+                    6: [1: 3, 2: 3, 3: 4, 4: 4, 5: 5, 6: 6],
+                ]
+        }
+    }
+
+    private func getNumberOfAllowedTrials(from table: EvaluationLUT) -> Int {
+        let numberOfRightAnswers = self.rawChoices.filter(\.isRightAnswer).count
+        let numberOfChoices = self.rawChoices.count
+
+        guard let number = table[numberOfChoices]?[numberOfRightAnswers] else {
+            logGEK.error("No number of allowed trials found for \(numberOfChoices) choices and \(numberOfRightAnswers) right answers")
+            fatalError("No number of allowed trials found for \(numberOfChoices) choices and \(numberOfRightAnswers) right answers")
+        }
+
+        return number
     }
 }
 

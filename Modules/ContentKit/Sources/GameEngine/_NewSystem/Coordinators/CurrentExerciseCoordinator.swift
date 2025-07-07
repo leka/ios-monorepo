@@ -5,17 +5,6 @@
 import Combine
 import SwiftUI
 
-// MARK: - ExerciseCompletionLevel
-
-public enum ExerciseCompletionLevel {
-    case fail
-    case belowAverage
-    case average
-    case good
-    case excellent
-    case notApplicable
-}
-
 // MARK: - CurrentExerciseCoordinator
 
 public class CurrentExerciseCoordinator {
@@ -74,8 +63,8 @@ public class CurrentExerciseCoordinator {
                                             coordinator.didComplete
                                                 .receive(on: DispatchQueue.main)
                                                 .sink { [weak self] completionData in
-                                                    // TODO: (@ladislas) implement calculation
-                                                    self?.didComplete.send((.excellent, completionData))
+                                                    let evaluationLevel = coordinator.evaluate(in: .practice)
+                                                    self?.didComplete.send((evaluationLevel, completionData))
                                                 }
                                                 .store(in: &self.cancellables)
                                         }
@@ -369,7 +358,7 @@ public class CurrentExerciseCoordinator {
 
     var cancellables = Set<AnyCancellable>()
 
-    var didComplete: PassthroughSubject<(ExerciseCompletionLevel, ExerciseCompletionData?), Never> = .init()
+    var didComplete: PassthroughSubject<(ExerciseEvaluationLevel, ExerciseCompletionData?), Never> = .init()
 
     // MARK: Private
 
