@@ -5,9 +5,9 @@
 import Combine
 import SwiftUI
 
-// MARK: - ExerciseCompletionLevel
+// MARK: - ExerciseEvaluationLevel
 
-public enum ExerciseCompletionLevel {
+public enum ExerciseEvaluationLevel {
     case fail
     case belowAverage
     case average
@@ -369,7 +369,7 @@ public class CurrentExerciseCoordinator {
 
     var cancellables = Set<AnyCancellable>()
 
-    var didComplete: PassthroughSubject<(ExerciseCompletionLevel, ExerciseCompletionData?), Never> = .init()
+    var didComplete: PassthroughSubject<(ExerciseEvaluationLevel, ExerciseCompletionData?), Never> = .init()
 
     // MARK: Private
 

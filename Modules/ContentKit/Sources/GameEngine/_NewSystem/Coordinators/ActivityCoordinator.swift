@@ -58,7 +58,7 @@ public class ActivityCoordinator {
 
     public var activityEvent = PassthroughSubject<ActivityEvent, Never>()
 
-    public var exercisesCompletionData: [[(level: ExerciseCompletionLevel, data: ExerciseCompletionData?)]] = []
+    public var exercisesCompletionData: [[(level: ExerciseEvaluationLevel, data: ExerciseCompletionData?)]] = []
 
     public var numberOfGroups: Int {
         self.groupSizeEnumeration.count
