@@ -55,9 +55,7 @@ struct NewDanceFreezeView: View {
             ContinuousProgressBar(progress: self.viewModel.progress)
                 .padding(20)
 
-            Button {
-                self.viewModel.onSwitchDanceState()
-            } label: {
+            Group {
                 if self.viewModel.isDancing {
                     DanceLottieView()
                 } else {
@@ -65,6 +63,9 @@ struct NewDanceFreezeView: View {
                 }
             }
             .disabled(self.isAuto)
+            .onTapGesture {
+                self.viewModel.onSwitchDanceState()
+            }
         }
         .onChange(of: self.isAuto) {
             self.viewModel.updateAutoMode(isAuto: self.isAuto)
