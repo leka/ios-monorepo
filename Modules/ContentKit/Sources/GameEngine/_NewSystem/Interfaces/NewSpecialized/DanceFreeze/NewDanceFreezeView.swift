@@ -81,6 +81,7 @@ struct NewDanceFreezeView: View {
             .onDisappear {
                 self.viewModel.setup(audio: .file(name: self.selectedAudioRecording.audio), isAuto: self.isAuto)
                 self.viewModel.onSwitchDanceState()
+                self.isAuto = false
             }
         }
         .onDisappear {
