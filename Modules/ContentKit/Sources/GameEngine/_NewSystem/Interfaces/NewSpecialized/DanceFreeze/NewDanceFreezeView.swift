@@ -19,52 +19,63 @@ struct NewDanceFreezeView: View {
     // MARK: Public
 
     public var body: some View {
-        VStack {
-            HStack(spacing: 0) {
-                Button {
-                    self.isMusicSelectorPresented = true
-                    self.viewModel.pause()
-                } label: {
-                    Label(String(l10n.NewDanceFreezeView.changeMusicButtonLabel.characters), systemImage: "music.quarternote.3")
-                }
-                .padding(20)
-                .background(Capsule().fill(.background).shadow(radius: 3))
-
-                Toggle(isOn: self.$isMovementEnabled) {
-                    HStack(alignment: .center) {
-                        ContentKitAsset.Exercises.DanceFreeze.iconMotionModeMovement.swiftUIImage
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                        Text(l10n.NewDanceFreezeView.movementToggleLabel)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                }
-
-                Toggle(isOn: self.$isAuto) {
-                    HStack(alignment: .center) {
-                        Image(uiImage: UIImage(named: "touch_to_select.gesture.icon.png", in: .module, with: nil)!)
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                        Text(l10n.NewDanceFreezeView.automaticToggleLabel)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                }
-            }
-            .padding(.horizontal, 200)
-
-            ContinuousProgressBar(progress: self.viewModel.progress)
-                .padding(20)
-
-            Button {
-                self.viewModel.onSwitchDanceState()
-            } label: {
+        ZStack(alignment: .top) {
+            Group {
                 if self.viewModel.isDancing {
                     DanceLottieView()
                 } else {
                     FreezeLottieView()
                 }
             }
+            .ignoresSafeArea()
             .disabled(self.isAuto)
+            .onTapGesture {
+                self.viewModel.onSwitchDanceState()
+            }
+
+            VStack {
+                HStack(spacing: 25) {
+                    Button {
+                        self.isMusicSelectorPresented = true
+                        self.viewModel.pause()
+                    } label: {
+                        Label(String(l10n.NewDanceFreezeView.changeMusicButtonLabel.characters), systemImage: "music.quarternote.3")
+                    }
+                    .padding(23)
+                    .background(Capsule().fill(.background.opacity(0.7)))
+
+                    Toggle(isOn: self.$isMovementEnabled) {
+                        HStack(alignment: .center) {
+                            ContentKitAsset.Exercises.DanceFreeze.iconMotionModeMovement.swiftUIImage
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                            Text(l10n.NewDanceFreezeView.movementToggleLabel)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                    }
+                    .padding(.vertical, 7)
+                    .padding(.trailing, 15)
+                    .background(Capsule().fill(.background.opacity(0.7)))
+
+                    Toggle(isOn: self.$isAuto) {
+                        HStack(alignment: .center) {
+                            Image(uiImage: UIImage(named: "touch_to_select.gesture.icon.png", in: .module, with: nil)!)
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                            Text(l10n.NewDanceFreezeView.automaticToggleLabel)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                    }
+                    .padding(.vertical, 7)
+                    .padding(.trailing, 15)
+                    .background(Capsule().fill(.background.opacity(0.7)))
+                }
+                .padding(.top, 20)
+                .padding(.horizontal, 200)
+
+                ContinuousProgressBar(progress: self.viewModel.progress)
+                    .padding(20)
+            }
         }
         .onChange(of: self.isAuto) {
             self.viewModel.updateAutoMode(isAuto: self.isAuto)
@@ -80,6 +91,7 @@ struct NewDanceFreezeView: View {
             .onDisappear {
                 self.viewModel.setup(audio: .file(name: self.selectedAudioRecording.audio), isAuto: self.isAuto)
                 self.viewModel.onSwitchDanceState()
+                self.isAuto = false
             }
         }
         .onDisappear {
@@ -94,7 +106,7 @@ struct NewDanceFreezeView: View {
     @State private var isMusicSelectorPresented: Bool = true
     @State private var selectedAudioRecording: DanceFreezeSong
 
-    private var viewModel: NewDanceFreezeViewViewModel
+    @State private var viewModel: NewDanceFreezeViewViewModel
 }
 
 // MARK: - l10n.NewDanceFreezeView

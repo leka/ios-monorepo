@@ -53,7 +53,7 @@ struct DanceFreezeSongSelectorView: View {
                             }
                     }
                 }
-                .padding(.horizontal, 50)
+                .padding(.horizontal, 30)
             }
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -95,16 +95,16 @@ struct DanceFreezeSongSelectorView: View {
         var body: some View {
             HStack {
                 Image(systemName: self.isSelected ? "checkmark.circle.fill" : "circle")
-                    .imageScale(.large)
+                    .imageScale(.medium)
                 if self.image.isRasterImageFile {
                     Image(uiImage: UIImage(named: self.image)!)
                         .resizable()
                         .scaledToFit()
-                        .frame(maxWidth: 100)
+                        .frame(maxWidth: 80)
                 } else if self.image.isVectorImageFile {
                     SVGView(contentsOf: URL(fileURLWithPath: self.image))
                         .scaledToFit()
-                        .frame(maxWidth: 100)
+                        .frame(maxWidth: 80)
                 }
                 Text(self.text)
             }

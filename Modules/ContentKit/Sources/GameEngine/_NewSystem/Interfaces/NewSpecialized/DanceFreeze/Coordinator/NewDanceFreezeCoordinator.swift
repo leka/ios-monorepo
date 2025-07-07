@@ -62,9 +62,11 @@ public class NewDanceFreezeCoordinator: ExerciseSharedDataProtocol {
             self.isDancing.send(false)
             self.robotManager.freeze()
         } else {
-            self.audioManager.play(self.audioData!)
+            guard let audioData = self.audioData else { return }
+            self.audioManager.play(audioData)
             self.isDancing.send(true)
             self.robotDance()
+            self.robotLightFrenzy()
         }
     }
 
@@ -128,8 +130,6 @@ public class NewDanceFreezeCoordinator: ExerciseSharedDataProtocol {
         } else {
             self.robotRotation()
         }
-
-        self.robotLightFrenzy()
     }
 
     private func robotLightFrenzy() {
@@ -148,7 +148,7 @@ public class NewDanceFreezeCoordinator: ExerciseSharedDataProtocol {
         let duration = self.robotManager.rotationDance()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
-            self.robotRotation()
+            self.robotDance()
         }
     }
 
@@ -158,7 +158,7 @@ public class NewDanceFreezeCoordinator: ExerciseSharedDataProtocol {
         let duration = self.robotManager.movementDance()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
-            self.robotMovement()
+            self.robotDance()
         }
     }
 }

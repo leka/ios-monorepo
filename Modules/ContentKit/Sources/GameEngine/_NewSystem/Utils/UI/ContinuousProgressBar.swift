@@ -12,12 +12,12 @@ struct ContinuousProgressBar: View {
     var body: some View {
         GeometryReader { geometry in
             Capsule()
-                .fill(DesignKitAsset.Colors.progressBar.swiftUIColor)
+                .fill(DesignKitAsset.Colors.progressBar.swiftUIColor.opacity(0.6))
                 .frame(height: self.kHeight)
                 .frame(width: geometry.size.width)
                 .overlay(alignment: .leading) {
                     Capsule()
-                        .fill(.green)
+                        .fill(.green.opacity(0.8))
                         .frame(maxWidth: geometry.size.width * self.progress)
                         .padding(8)
                 }
