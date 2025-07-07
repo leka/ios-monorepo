@@ -10,18 +10,18 @@ struct HideAndSeekLottieView: View {
     // MARK: Internal
 
     var body: some View {
-        VStack {
-            Text(l10n.HideAndSeekView.Player.instructions)
+        ZStack(alignment: .top) {
+            LottieView(animation: self.animation, speed: 0.5)
+                .resizable()
+
+            Text(l10n.NewHideAndSeekView.instructionsLabel)
                 .font(.headline)
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
-                .padding(.top, 30)
-
-            LottieView(animation: self.animation, speed: 0.5)
+                .padding(.top, 70)
         }
         .background(.black)
-        .clipShape(RoundedRectangle(cornerRadius: 20))
-        .padding(10)
+        .ignoresSafeArea()
     }
 
     // MARK: Private

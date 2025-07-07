@@ -5,6 +5,8 @@
 import LocalizationKit
 import SwiftUI
 
+// MARK: - NewHideAndSeekView
+
 struct NewHideAndSeekView: View {
     // MARK: Lifecycle
 
@@ -14,67 +16,89 @@ struct NewHideAndSeekView: View {
 
     // MARK: Internal
 
-    enum HideAndSeekStage {
-        case toHide
-        case hidden
-    }
-
     var body: some View {
-        switch self.stage {
-            case .toHide:
+        ZStack {
+            ZStack {
+                HideAndSeekLottieView()
+
+                HStack {
+                    Spacer()
+                    VStack(spacing: 70) {
+                        HideAndSeekStimulationButton(stimulation: Stimulation.light) {
+                            self.viewModel.triggerLight()
+                        }
+                        HideAndSeekStimulationButton(stimulation: Stimulation.motion) {
+                            self.viewModel.triggerMotion()
+                        }
+                    }
+                    .padding(.trailing, 60)
+                }
+
                 VStack {
-                    Text(l10n.HideAndSeekView.Launcher.instructions)
-                        .font(.headline)
-                    ContentKitAsset.Exercises.HideAndSeek.imageIllustration.swiftUIImage
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 500, height: 500)
+                    Spacer()
 
                     Button {
-                        self.stage = .hidden
+                        self.viewModel.completeHideAndSeek()
                     } label: {
-                        CapsuleColoredButtonLabel(String(l10n.HideAndSeekView.Launcher.okButtonLabel.characters).uppercased(), color: .cyan)
+                        CapsuleColoredButtonLabel(String(l10n.NewHideAndSeekView.foundButtonLabel.characters).uppercased(), color: .cyan)
                     }
+                    .padding(.bottom)
                 }
-                .scaledToFill()
-            case .hidden:
-                ZStack {
-                    HideAndSeekLottieView()
-                        .padding(.horizontal, 30)
+            }
+            .blur(radius: self.blurRadius)
 
-                    HStack {
-                        Spacer()
-                        VStack(spacing: 70) {
-                            HideAndSeekStimulationButton(stimulation: Stimulation.light) {
-                                self.viewModel.triggerLight()
-                            }
-                            HideAndSeekStimulationButton(stimulation: Stimulation.motion) {
-                                self.viewModel.triggerMotion()
-                            }
-                        }
-                        .padding(.trailing, 60)
-                    }
-
-                    VStack {
-                        Spacer()
-
-                        Button {
-                            self.viewModel.completeHideAndSeek()
-                        } label: {
-                            CapsuleColoredButtonLabel(String(l10n.HideAndSeekView.Player.foundButtonLabel.characters).uppercased(), color: .cyan)
-                        }
-                        .padding(.vertical, 30)
-                    }
+            if !self.isRobotHidden {
+                Button {
+                    self.isRobotHidden = true
+                } label: {
+                    CapsuleColoredButtonLabel(String(l10n.NewHideAndSeekView.instructionsButtonLabel.characters), color: .cyan)
                 }
-                .padding(.vertical, 40)
+            }
+        }
+        .onChange(of: self.isRobotHidden) {
+            if !self.isRobotHidden {
+                withAnimation(.easeInOut.delay(0.5)) {
+                    self.blurRadius = 20
+                }
+            } else {
+                self.blurRadius = 0
+            }
         }
     }
 
     // MARK: Private
 
-    @State private var stage: HideAndSeekStage = .toHide
+    @State private var isRobotHidden: Bool = false
+    @State private var blurRadius: CGFloat = 20
 
     private let viewModel: NewHideAndSeekViewViewModel
+}
+
+// MARK: - l10n.NewHideAndSeekView
+
+extension l10n {
+    enum NewHideAndSeekView {
+        static let instructionsButtonLabel = LocalizedString("game_engine_kit.hide_and_seek_view.instructions_button_label",
+                                                             bundle: ContentKitResources.bundle,
+                                                             value: "Press when Leka is hidden",
+                                                             comment: "HideAndSeekView Launcher instructions button label")
+
+        static let instructionsLabel = LocalizedString("game_engine_kit.hide_and_seek_view.instructions",
+                                                       bundle: ContentKitResources.bundle,
+                                                       value: """
+                                                           Encourage the care receiver to seek Leka.
+
+                                                           You can throw a reinforcer to give him a visual and/or audible clue.
+
+                                                           Press FOUND! once the robot found.
+                                                           """,
+                                                       comment: "HideAndSeekView instructions when Leka is hidden")
+
+        static let foundButtonLabel = LocalizedString("game_engine_kit.hide_and_seek_view.found_button_label",
+                                                      bundle: ContentKitResources.bundle,
+                                                      value: "Found!",
+                                                      comment: "HideAndSeekView Player Found Button label")
+    }
 }
 
 #Preview {
