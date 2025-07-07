@@ -62,7 +62,8 @@ public class NewDanceFreezeCoordinator: ExerciseSharedDataProtocol {
             self.isDancing.send(false)
             self.robotManager.freeze()
         } else {
-            self.audioManager.play(self.audioData!)
+            guard let audioData = self.audioData else { return }
+            self.audioManager.play(audioData)
             self.isDancing.send(true)
             self.robotDance()
             self.robotLightFrenzy()
