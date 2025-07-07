@@ -96,7 +96,7 @@ struct NewDanceFreezeView: View {
     @State private var isMusicSelectorPresented: Bool = true
     @State private var selectedAudioRecording: DanceFreezeSong
 
-    private var viewModel: NewDanceFreezeViewViewModel
+    @State private var viewModel: NewDanceFreezeViewViewModel
 }
 
 // MARK: - l10n.NewDanceFreezeView
