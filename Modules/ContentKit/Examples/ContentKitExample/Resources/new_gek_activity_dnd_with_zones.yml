@@ -17,12 +17,51 @@ exercises_payload:
               value: "Drag and drop the emojis in the correct zone 🌲🌵🌴"
           interface: dragAndDropGridWithZones
           gameplay: associateCategories
+          options:
+            shuffle_choices: true
+            validation:
+              type: manual
           payload:
             choices:
               - value: 🌲
                 type: emoji
                 category: catA
                 is_dropzone: true
+              - value: 🍍
+                type: emoji
+              - value: 🌲
+                type: emoji
+                category: catA
+              - value: 🌵
+                type: emoji
+                category: catB
+                is_dropzone: true
+              - value: 🌵
+                type: emoji
+                category: catB
+              - value: 🌴
+                type: emoji
+                category: catC
+                is_dropzone: true
+              - value: 🌴
+                type: emoji
+                category: catC
+        - instructions:
+            - locale: fr_FR
+              value: "Glisse et dépose les emojis dans la zone correspondante 🌲🌵🌴"
+            - locale: en_US
+              value: "Drag and drop the emojis in the correct zone 🌲🌵🌴"
+          interface: dragAndDropGridWithZones
+          gameplay: associateCategories
+          payload:
+            choices:
+              - value: 🌲
+                type: emoji
+                category: catA
+                is_dropzone: true
+              - value: 🌲
+                type: emoji
+                category: catA
               - value: 🌲
                 type: emoji
                 category: catA
