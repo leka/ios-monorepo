@@ -6,7 +6,12 @@
 # SPDX-License-Identifier: Apache-2.0
 
 import hashlib
+import logging
 from modules.yaml import load_yaml, dump_yaml
+
+# Setup logger for definitions functions
+logging.basicConfig(level=logging.INFO, format='%(message)s')
+default_logger = logging.getLogger(__name__)
 
 
 def sort_list_by_id(data):
@@ -40,13 +45,16 @@ def compute_sha(id_value, sha_length=4):
     return sha
 
 
-def validate_and_update_sha(entry, shas_set, sha_length=4, file=None):
+def validate_and_update_sha(entry, shas_set, sha_length=4, file=None, logger=None):
     """
     Validate and update the sha for a single entry.
     Adds sha if missing or incorrect.
     Returns True if modified, False otherwise.
     Also updates shas_set with the sha.
     """
+    if logger is None:
+        logger = default_logger
+
     modified = False
     id_value = entry.get("id", "")
     expected_sha = compute_sha(id_value, sha_length=sha_length)
@@ -57,7 +65,7 @@ def validate_and_update_sha(entry, shas_set, sha_length=4, file=None):
         entry["sha"] = expected_sha
         modified = True
         if file:
-            print(f"🔧 Updated sha for id '{id_value}' to '{expected_sha}' in {file}.")
+            logger.info(f"🔧 Updated sha for id '{id_value}' to '{expected_sha}' in {file}.")
 
     # Check for duplicate shas
     if expected_sha in shas_set:
@@ -66,11 +74,14 @@ def validate_and_update_sha(entry, shas_set, sha_length=4, file=None):
     return modified, None  # No duplicate
 
 
-def process_entries(entries, shas_set, sha_length=4, file=None):
+def process_entries(entries, shas_set, sha_length=4, file=None, logger=None):
     """
     Recursively process a list of entries and their subskills.
     Returns a tuple (modified, duplicate_shas).
     """
+    if logger is None:
+        logger = default_logger
+
     modified = False
     duplicate_shas = set()
 
@@ -80,12 +91,12 @@ def process_entries(entries, shas_set, sha_length=4, file=None):
         entries[:] = sorted_entries
         modified = True
         if file:
-            print(f"📂 Sorted entries in {file} by 'id'.")
+            logger.info(f"📂 Sorted entries in {file} by 'id'.")
 
     for entry in entries:
         # Validate and update sha
         entry_modified, duplicate_sha = validate_and_update_sha(
-            entry, shas_set, sha_length=sha_length, file=file
+            entry, shas_set, sha_length=sha_length, file=file, logger=logger
         )
         if entry_modified:
             modified = True
@@ -95,7 +106,7 @@ def process_entries(entries, shas_set, sha_length=4, file=None):
         # Recursively process subskills
         if "subskills" in entry and isinstance(entry["subskills"], list):
             sub_modified, sub_duplicates = process_entries(
-                entry["subskills"], shas_set, sha_length=sha_length, file=file
+                entry["subskills"], shas_set, sha_length=sha_length, file=file, logger=logger
             )
             if sub_modified:
                 modified = True
@@ -104,11 +115,14 @@ def process_entries(entries, shas_set, sha_length=4, file=None):
     return modified, duplicate_shas
 
 
-def is_definition_list_valid(file, sha_length=4):
+def is_definition_list_valid(file, sha_length=4, logger=None):
     """
     Check definitions, validate and update shas, and check for collisions.
     Returns True if the file is valid, False otherwise.
     """
+    if logger is None:
+        logger = default_logger
+
     file_is_valid = True
     data = load_yaml(file)
     modified = False
@@ -118,7 +132,7 @@ def is_definition_list_valid(file, sha_length=4):
     # Process the main list and all subskills
     if "list" in data and isinstance(data["list"], list):
         list_modified, list_duplicates = process_entries(
-            data["list"], shas_set, sha_length=sha_length, file=file
+            data["list"], shas_set, sha_length=sha_length, file=file, logger=logger
         )
         if list_modified:
             modified = True
@@ -137,22 +151,22 @@ def is_definition_list_valid(file, sha_length=4):
     duplicate_ids = find_duplicate_ids(ids)
     if duplicate_ids:
         file_is_valid = False
-        print(f"\n❌ There are duplicate ids in {file}:")
+        logger.error(f"\n❌ There are duplicate ids in {file}:")
         for duplicate_id in duplicate_ids:
-            print(f"   - {duplicate_id}")
+            logger.error(f"   - {duplicate_id}")
 
     # If any shas were duplicated
     if duplicate_shas:
         file_is_valid = False
-        print(f"\n❌ There are sha collisions in {file}:")
+        logger.error(f"\n❌ There are sha collisions in {file}:")
         for sha in duplicate_shas:
-            print(f"   - {sha}")
+            logger.error(f"   - {sha}")
 
     # If modifications were made, dump the updated YAML
     if modified:
         dump_yaml(file, data)
-        print(f"📝 Updated shas in {file}.")
+        logger.info(f"📝 Updated shas in {file}.")
         file_is_valid = False
-        print(f"\n⚠️  Changes were made to {file}. Please review and re-commit.")
+        logger.warning(f"\n⚠️  Changes were made to {file}. Please review and re-commit.")
 
     return file_is_valid

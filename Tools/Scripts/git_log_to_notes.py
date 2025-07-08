@@ -6,9 +6,15 @@
 # SPDX-License-Identifier: Apache-2.0
 
 import argparse
+import logging
 import re
 import subprocess
 import sys
+
+
+# Setup logging
+logging.basicConfig(level=logging.INFO, format='%(message)s')
+logger = logging.getLogger(__name__)
 
 
 def parse_arguments():
@@ -89,10 +95,10 @@ def main():
     success, message = git_log(args.first_commit, args.last_commit, args.remove_emojis)
 
     if not success:
-        print(message, file=sys.stderr)
+        logger.error(message)
         return 1
 
-    print(message)
+    logger.info(message)
     return 0
 
 

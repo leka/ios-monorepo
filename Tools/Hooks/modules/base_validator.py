@@ -1,0 +1,126 @@
+#!/usr/bin/python3
+"""
+Base classes for validation scripts.
+
+Provides common functionality and patterns used across all validation scripts
+to reduce duplication and improve maintainability.
+"""
+
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+import logging
+from abc import ABC, abstractmethod
+from typing import List, Optional
+
+from modules.utils import get_files
+
+
+class BaseValidator(ABC):
+    """
+    Base class for all validation scripts.
+
+    Provides common patterns like:
+    - Standard logging setup
+    - File processing loop
+    - Error aggregation
+    - Consistent exit codes and messaging
+    """
+
+    def __init__(self, validator_name: str = "file"):
+        """
+        Initialize the validator.
+
+        Args:
+            validator_name: Name for logging messages (e.g., "xcstrings", "YAML")
+        """
+        self.validator_name = validator_name
+
+        # Setup consistent logging
+        logging.basicConfig(level=logging.INFO, format='%(message)s')
+        self.logger = logging.getLogger(__name__)
+
+    @abstractmethod
+    def validate_file(self, filename: str) -> bool:
+        """
+        Validate a single file.
+
+        Args:
+            filename: Path to the file to validate
+
+        Returns:
+            bool: True if file is valid, False otherwise
+        """
+        pass
+
+    def should_process_file(self, filename: str) -> bool:
+        """
+        Check if a file should be processed by this validator.
+
+        Override this method to filter files (e.g., only process specific filenames).
+
+        Args:
+            filename: Path to the file
+
+        Returns:
+            bool: True if file should be processed
+        """
+        return True
+
+    def run(self) -> int:
+        """
+        Main entry point for the validator.
+
+        Gets files from command line, validates each one, and returns appropriate exit code.
+
+        Returns:
+            int: 0 if all files valid, 1 if any validation errors
+        """
+        files: List[str] = get_files()
+
+        if not files:
+            self.logger.info(f"\n✅ No {self.validator_name} files to check!")
+            return 0
+
+        # Filter files if needed
+        files_to_process = [f for f in files if self.should_process_file(f)]
+
+        if not files_to_process:
+            self.logger.info(f"\n✅ No {self.validator_name} files to check!")
+            return 0
+
+        self.logger.info(f"\nChecking {len(files_to_process)} {self.validator_name} files...")
+
+        has_errors = False
+        for file in files_to_process:
+            try:
+                if not self.validate_file(file):
+                    has_errors = True
+            except Exception as e:
+                self.logger.error(f"Error processing {file}: {e}")
+                has_errors = True
+
+        if has_errors:
+            return 1
+
+        self.logger.info(f"\n✅ All {self.validator_name} files are valid!")
+        return 0
+
+def main_entry_point(validator_class: type, *args, **kwargs) -> int:
+    """
+    Standard main function for validator scripts.
+
+    Args:
+        validator_class: Class that inherits from BaseValidator
+        *args, **kwargs: Arguments to pass to validator constructor
+
+    Returns:
+        int: Exit code from validator
+    """
+    try:
+        validator = validator_class(*args, **kwargs)
+        return validator.run()
+    except Exception as e:
+        logging.error(f"Fatal error: {e}")
+        return 1
