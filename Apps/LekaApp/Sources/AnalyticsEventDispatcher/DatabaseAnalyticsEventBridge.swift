@@ -67,7 +67,7 @@ final class DatabaseAnalyticsEventBridge {
 
             case let .didRemoveCurriculumFromFavorites(payload):
                 let name = Curriculum(id: payload.id)?.name ?? "Unknown"
-                AnalyticsManager.logEventSharedLibraryRemoveCurriculumFromFavotites(
+                AnalyticsManager.logEventSharedLibraryRemoveCurriculumFromFavorites(
                     id: payload.id,
                     name: name,
                     caregiver: payload.caregiverID
@@ -123,7 +123,7 @@ final class DatabaseAnalyticsEventBridge {
 
             case let .didAddStoryToFavorites(payload):
                 let name = Story(id: payload.id)?.name ?? "Unknown"
-                AnalyticsManager.logEventSharedLibraryAddStoryToFavotites(
+                AnalyticsManager.logEventSharedLibraryAddStoryToFavorites(
                     id: payload.id,
                     name: name,
                     caregiver: payload.caregiverID
@@ -131,7 +131,7 @@ final class DatabaseAnalyticsEventBridge {
 
             case let .didRemoveStoryFromFavorites(payload):
                 let name = Story(id: payload.id)?.name ?? "Unknown"
-                AnalyticsManager.logEventSharedLibraryRemoveStoryFromFavotites(
+                AnalyticsManager.logEventSharedLibraryRemoveStoryFromFavorites(
                     id: payload.id,
                     name: name,
                     caregiver: payload.caregiverID
