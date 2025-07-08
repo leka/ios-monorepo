@@ -15,7 +15,7 @@ Handles common patterns in definition validation including:
 from pathlib import Path
 from typing import Dict, List, Any, Optional
 
-from modules.base_validator import BaseYamlValidator
+from modules.base_yaml_validator import BaseYamlValidator
 from modules.definitions import find_duplicate_ids, sort_list_by_id
 from modules.yaml import load_yaml, dump_yaml
 

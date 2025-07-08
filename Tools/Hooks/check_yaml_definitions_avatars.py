@@ -17,7 +17,8 @@ import sys
 from pathlib import Path
 from typing import Dict, List, Optional
 
-from modules.base_validator import main_entry_point, BaseYamlValidator
+from modules.base_validator import main_entry_point
+from modules.base_yaml_validator import BaseYamlValidator
 from modules.definitions import find_duplicate_ids
 from modules.yaml import load_yaml
 

@@ -17,7 +17,7 @@ Handles common patterns in content validation including:
 from multiprocessing import Pool, cpu_count
 from typing import List, Dict, Any
 
-from modules.base_validator import BaseYamlValidator
+from modules.base_yaml_validator import BaseYamlValidator
 from modules.content import (
     is_created_at_present,
     is_last_edited_at_present,

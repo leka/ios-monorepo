@@ -107,50 +107,6 @@ class BaseValidator(ABC):
         self.logger.info(f"\n✅ All {self.validator_name} files are valid!")
         return 0
 
-
-class BaseYamlValidator(BaseValidator):
-    """
-    Base class for YAML validation scripts.
-
-    Provides common patterns like:
-    - JTD schema validation
-    - YAML-specific file processing
-    - Inherits all BaseValidator functionality
-    """
-
-    def __init__(self, schema_path: Optional[str] = None, validator_name: str = "YAML"):
-        """
-        Initialize the YAML validator.
-
-        Args:
-            schema_path: Path to JTD schema file for validation (optional)
-            validator_name: Name for logging messages (e.g., "tag definition", "activity")
-        """
-        super().__init__(validator_name)
-        self.schema_path = schema_path
-
-    def validate_schema(self, filename: str) -> bool:
-        """
-        Validate file against JTD schema if schema is configured.
-
-        Args:
-            filename: Path to YAML file to validate
-
-        Returns:
-            bool: True if valid or no schema configured, False if validation failed
-        """
-        if not self.schema_path:
-            return True
-
-        # Import here to avoid circular dependencies and unnecessary imports for non-YAML validators
-        from modules.yaml import is_jtd_schema_compliant
-
-        if not is_jtd_schema_compliant(filename, self.schema_path, self.logger):
-            self.logger.error(f"\n❌ Schema validation failed for {filename}")
-            return False
-        return True
-
-
 def main_entry_point(validator_class: type, *args, **kwargs) -> int:
     """
     Standard main function for validator scripts.
