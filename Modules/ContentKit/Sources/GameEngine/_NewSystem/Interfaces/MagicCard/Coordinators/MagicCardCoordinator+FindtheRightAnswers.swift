@@ -60,6 +60,10 @@ public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinat
         guard let choiceID = self.rawChoices.first(where: { $0.value == magicCard }) else { return }
 
         _ = self.gameplay.process(choiceIDs: [choiceID.id])
+
+        if self.gameplay.isCompleted.value {
+            self.validateCorrectAnswer()
+        }
     }
 }
 
