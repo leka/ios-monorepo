@@ -75,7 +75,7 @@ def get_modified_files(content_type):
 
         return modified_files
     except subprocess.CalledProcessError as e:
-        print(f"Error running git diff: {e.stderr}")
+        logging.error(f"Error running git diff: {e.stderr}")
         return []
 
 

@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """
-Base classes for YAML validation scripts.
+Base classes for validation scripts.
 
-Provides common functionality and patterns used across all check_yaml_* scripts
+Provides common functionality and patterns used across all validation scripts
 to reduce duplication and improve maintainability.
 """
 
@@ -18,58 +18,37 @@ from modules.utils import get_files
 from modules.yaml import is_jtd_schema_compliant
 
 
-class BaseYamlValidator(ABC):
+class BaseValidator(ABC):
     """
-    Base class for YAML validation scripts.
+    Base class for all validation scripts.
 
     Provides common patterns like:
     - Standard logging setup
-    - JTD schema validation
     - File processing loop
     - Error aggregation
     - Consistent exit codes and messaging
     """
 
-    def __init__(self, schema_path: Optional[str] = None, validator_name: str = "YAML"):
+    def __init__(self, validator_name: str = "file"):
         """
         Initialize the validator.
 
         Args:
-            schema_path: Path to JTD schema file for validation (optional)
-            validator_name: Name for logging messages (e.g., "tag definition", "activity")
+            validator_name: Name for logging messages (e.g., "xcstrings", "YAML")
         """
-        self.schema_path = schema_path
         self.validator_name = validator_name
 
         # Setup consistent logging
         logging.basicConfig(level=logging.INFO, format='%(message)s')
         self.logger = logging.getLogger(__name__)
 
-    def validate_schema(self, filename: str) -> bool:
-        """
-        Validate file against JTD schema if schema is configured.
-
-        Args:
-            filename: Path to YAML file to validate
-
-        Returns:
-            bool: True if valid or no schema configured, False if validation failed
-        """
-        if not self.schema_path:
-            return True
-
-        if not is_jtd_schema_compliant(filename, self.schema_path, self.logger):
-            self.logger.error(f"\n❌ Schema validation failed for {filename}")
-            return False
-        return True
-
     @abstractmethod
     def validate_file(self, filename: str) -> bool:
         """
-        Validate a single YAML file.
+        Validate a single file.
 
         Args:
-            filename: Path to the YAML file to validate
+            filename: Path to the file to validate
 
         Returns:
             bool: True if file is valid, False otherwise
@@ -130,12 +109,52 @@ class BaseYamlValidator(ABC):
         return 0
 
 
+class BaseYamlValidator(BaseValidator):
+    """
+    Base class for YAML validation scripts.
+
+    Provides common patterns like:
+    - JTD schema validation
+    - YAML-specific file processing
+    - Inherits all BaseValidator functionality
+    """
+
+    def __init__(self, schema_path: Optional[str] = None, validator_name: str = "YAML"):
+        """
+        Initialize the YAML validator.
+
+        Args:
+            schema_path: Path to JTD schema file for validation (optional)
+            validator_name: Name for logging messages (e.g., "tag definition", "activity")
+        """
+        super().__init__(validator_name)
+        self.schema_path = schema_path
+
+    def validate_schema(self, filename: str) -> bool:
+        """
+        Validate file against JTD schema if schema is configured.
+
+        Args:
+            filename: Path to YAML file to validate
+
+        Returns:
+            bool: True if valid or no schema configured, False if validation failed
+        """
+        if not self.schema_path:
+            return True
+
+        if not is_jtd_schema_compliant(filename, self.schema_path, self.logger):
+            self.logger.error(f"\n❌ Schema validation failed for {filename}")
+            return False
+        return True
+
+
 def main_entry_point(validator_class: type, *args, **kwargs) -> int:
     """
     Standard main function for validator scripts.
 
     Args:
-        validator_class: Class that inherits from BaseYamlValidator
+        validator_class: Class that inherits from BaseValidator
         *args, **kwargs: Arguments to pass to validator constructor
 
     Returns:
