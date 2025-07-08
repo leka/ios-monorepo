@@ -19,6 +19,7 @@ final class DatabaseAnalyticsEventBridge {
 
     public func subscribeToDatabaseEvents() {
         self.subscribeToSharedLibraryEvents()
+        self.subscribeToCaregiverEvents()
     }
 
     // MARK: Internal
@@ -33,6 +34,14 @@ final class DatabaseAnalyticsEventBridge {
         SharedLibraryManager.shared.eventPublisher
             .sink { [weak self] event in
                 self?.handleSharedLibrary(event: event)
+            }
+            .store(in: &self.cancellables)
+    }
+
+    private func subscribeToCaregiverEvents() {
+        CaregiverManager.shared.eventPublisher
+            .sink { [weak self] event in
+                self?.handleCaregiver(event: event)
             }
             .store(in: &self.cancellables)
     }
@@ -140,4 +149,30 @@ final class DatabaseAnalyticsEventBridge {
     }
 
     // swiftlint:enable cyclomatic_complexity function_body_length
+
+    private func handleCaregiver(event: CaregiverManager.Event) {
+        switch event {
+            case let .didCreateCaregiver(id):
+                AnalyticsManager.logEventCaregiverCreate(id: id)
+
+            case let .didEditCaregiver(caregiver):
+                AnalyticsManager.logEventCaregiverEdit(caregiver: caregiver)
+
+            case let .didSelectCaregiver(previous, new):
+                AnalyticsManager.logEventCaregiverSelect(from: previous, to: new)
+                AnalyticsManager.setDefaultEventParameterCaregiverUid(new)
+
+                guard let caregiver = CaregiverManager.shared.currentCaregiver.value else { return }
+                AnalyticsManager.setUserPropertyCaregiverProfessions(
+                    values: caregiver.professions.compactMap { Professions.profession(for: $0)?.sha }
+                )
+
+            case .didResetCaregiver:
+                AnalyticsManager.setDefaultEventParameterCaregiverUid(nil)
+                AnalyticsManager.setUserPropertyCaregiverProfessions(values: [])
+
+            case let .didUpdateCaregiverProperties(professions):
+                AnalyticsManager.setUserPropertyCaregiverProfessions(values: professions)
+        }
+    }
 }
