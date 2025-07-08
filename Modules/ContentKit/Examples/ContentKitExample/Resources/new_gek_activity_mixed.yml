@@ -1,0 +1,72 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: BFBCFFBF7D8543FA8EBC08D93EA92A84
+name: TestActivityMock
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardNumbers5Five
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+              - value: number_2
+              - value: number_3
+              - value: number_4
+              - value: number_5
+                is_right_answer: true
+              - value: number_6
+        - instructions:
+            - locale: fr_FR
+              value: "Trouve l'ordre correct du triathlon"
+            - locale: en_US
+              value: "Find the correct order of thriathlon"
+          interface: memory
+          gameplay: associateCategories
+          options:
+            shuffle_choices: true
+            validation:
+              type: automatic
+          payload:
+            choices:
+              - value: 🍉
+                type: emoji
+                category: catA
+              - value: 🍖
+                type: emoji
+                category: catD
+              - value: 🐕
+                type: emoji
+                category: catB
+              - value: 🍉
+                type: emoji
+                category: catA
+              - value: 🍖
+                type: emoji
+                category: catD
+              - value: 🐕
+                type: emoji
+                category: catB
+              - value: 🍹
+                type: emoji
+                category: catC
+              - value: 🍹
+                type: emoji
+                category: catC

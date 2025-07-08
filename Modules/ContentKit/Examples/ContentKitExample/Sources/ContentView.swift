@@ -64,6 +64,16 @@ struct ContentView: View {
                 } label: {
                     Text("Drag and Drop One to One")
                 }
+
+                Button {
+                    self.isActivityPresented = true
+                    let newgekyaml = Bundle.main.url(forResource: "new_gek_activity_mixed", withExtension: "yml")
+                    let content = try? String(contentsOf: newgekyaml!, encoding: .utf8)
+                    log.debug("\(content ?? "No YAML file found")")
+                    self.navigation.setCurrentActivity(NewActivity(yaml: content!)!)
+                } label: {
+                    Text("Mixed")
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
