@@ -294,7 +294,7 @@ def find_missing_exercise_assets(
         """Recursively searches the data structure for missing assets, tracking their source."""
         if isinstance(data, dict):
             # Special handling for actions
-            if source == "action" :
+            if source == "action":
                 action_data = data
                 if (
                     isinstance(action_data, dict)
