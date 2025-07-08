@@ -841,6 +841,60 @@
                 }
             }
         },
+        "game_engine_kit.hide_and_seek_view.found_button_label": {
+            "comment": "HideAndSeekView Player Found Button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Found!"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Trouv\u00e9 !"
+                    }
+                }
+            }
+        },
+        "game_engine_kit.hide_and_seek_view.instructions": {
+            "comment": "HideAndSeekView instructions when Leka is hidden",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Encourage the care receiver to seek Leka.\n\nYou can throw a reinforcer to give him a visual and/or audible clue.\n\nPress FOUND! once the robot found."
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Incite la personne accompagn\u00e9e \u00e0 chercher Leka.\n\nTu peux lancer un renfor\u00e7ateur pour lui donner un indice visuel et/ou sonore.\n\nAppuie sur \"TROUV\u00c9\" une fois le robot trouv\u00e9."
+                    }
+                }
+            }
+        },
+        "game_engine_kit.hide_and_seek_view.instructions_button_label": {
+            "comment": "HideAndSeekView Launcher instructions button label",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Press when Leka is hidden"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Appuie quand Leka est cach\u00e9"
+                    }
+                }
+            }
+        },
         "game_engine_kit.hide_and_seek_view.launcher.instructions": {
             "comment": "HideAndSeekView Launcher instructions",
             "localizations": {
