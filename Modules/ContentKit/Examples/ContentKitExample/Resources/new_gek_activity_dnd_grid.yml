@@ -37,3 +37,30 @@ exercises_payload:
               - value: 🏈
                 type: emoji
                 category: catC
+        - instructions:
+            - locale: fr_FR
+              value: "Glisse et dépose les sports identiques ensemble ⚽️🏀"
+            - locale: en_US
+              value: "Drag and drop the same sports together ⚽️🏀"
+          interface: dragAndDropGrid
+          gameplay: associateCategories
+          payload:
+            choices:
+              - value: ⚽️
+                type: emoji
+                category: catA
+              - value: ⚽️
+                type: emoji
+                category: catA
+              - value: 🏀
+                type: emoji
+                category: catB
+              - value: 🏀
+                type: emoji
+                category: catB
+              - value: 🏀
+                type: emoji
+                category: catB
+              - value: 🏈
+                type: emoji
+                category: catC
