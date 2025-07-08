@@ -175,9 +175,9 @@ public class CurrentExerciseCoordinator {
                                         .onAppear {
                                             coordinator.didComplete
                                                 .receive(on: DispatchQueue.main)
-                                                .sink { [weak self] in
-                                                    // TODO: (@ladislas) implement completion data
-                                                    self?.didComplete.send((.notApplicable, nil))
+                                                .sink { [weak self] completionData in
+                                                    let evaluationLevel = coordinator.evaluate(in: .practice)
+                                                    self?.didComplete.send((evaluationLevel, completionData))
                                                 }
                                                 .store(in: &self.cancellables)
                                         }
