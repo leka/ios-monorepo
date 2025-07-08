@@ -37,7 +37,8 @@
         "$l10n/details": {
             "properties": {
                 "title": {
-                    "type": "string"
+                    "type": "string",
+                    "nullable": true
                 },
                 "subtitle": {
                     "type": "string",
