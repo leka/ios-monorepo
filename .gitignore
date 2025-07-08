@@ -92,6 +92,10 @@ Tuist/Signing
 # scan temporary files
 **/fastlane/test_output
 
+# Ruby dependencies
+vendor/bundle
+.bundle
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
