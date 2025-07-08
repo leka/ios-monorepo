@@ -79,21 +79,21 @@ class ContentValidator(BaseYamlValidator):
             with open(filename, "r", encoding="utf8") as file:
                 content = yaml.load(file)
         except Exception as e:
-            print(f"\n❌ Error loading {filename}: {e}")
+            self.logger.error(f"❌ Error loading {filename}: {e}")
             return False
 
         # UUID validation
         if differing_uuids := is_uuid_same_as_filename(content, filename):
             file_is_valid = False
             content_uuid, filename_uuid = differing_uuids
-            print(f"\n❌ {self.content_type.title()} uuid and filename uuid are not the same in {filename}")
-            print(f"uuid:     {content_uuid}")
-            print(f"filename: {filename_uuid}")
+            self.logger.error(f"❌ {self.content_type.title()} uuid and filename uuid are not the same in {filename}")
+            self.logger.error(f"uuid:     {content_uuid}")
+            self.logger.error(f"filename: {filename_uuid}")
 
         if not is_uuid_valid(content["uuid"]):
             file_is_valid = False
-            print(f"\n❌ uuid not valid in {filename}")
-            print(f"uuid: {content['uuid']}")
+            self.logger.error(f"❌ uuid not valid in {filename}")
+            self.logger.error(f"uuid: {content['uuid']}")
 
         # Name validation
         if differing_names := is_name_same_as_filename(content, filename):
