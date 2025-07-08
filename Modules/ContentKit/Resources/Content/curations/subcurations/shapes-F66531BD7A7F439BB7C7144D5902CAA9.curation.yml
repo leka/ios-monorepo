@@ -1,0 +1,38 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: F66531BD7A7F439BB7C7144D5902CAA9
+icon: triangle
+color: 0xA5D6A7
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Formes
+      subtitle:
+      description:
+  - locale: en_US
+    details:
+      title: Shapes
+      subtitle:
+      description:
+
+content:
+  - component: vertical_curriculum_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title:
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title:
+          subtitle:
+          description:
+    items:
+      - value: curriculum_shape_recognition-785607C27B1449A1B12F10302A754486
+        type: curriculum
+      - value: curriculum_visual_discrimination_shapes_and_colors-B142C14603F246C7B88C169E2CD3FF74
+        type: curriculum

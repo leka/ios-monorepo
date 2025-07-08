@@ -1,0 +1,56 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 785607C27B1449A1B12F10302A754486
+name: curriculum_shape_recognition
+
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2024-09-27T17:53:03.463714"
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - geometric_shapes
+  - colors
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: shape_recognition
+      title: Les formes
+      subtitle: Reconnaître formes, couleurs et contours
+      abstract: |
+        Ce parcours vise à développer la reconnaissance des formes, des couleurs, et des caractéristiques visuelles comme les contours ou le remplissage.
+      description: |
+        À travers des activités visuelles et interactives sur tablette, les participants sont amenés à identifier, associer ou différencier des formes selon divers critères : forme identique, couleur, remplissage ou contour. Ce parcours développe la discrimination visuelle, la mémoire et l’attention.
+
+  - locale: en_US
+    details:
+      icon: shape_recognition
+      title: Shapes
+      subtitle: Recognize shapes, colors, and outlines
+      abstract: |
+        This curriculum aims to develop shape recognition, color matching, and visual features such as outline or fill.
+      description: |
+        Through visual and interactive activities on the tablet, participants are encouraged to identify, match, or differentiate shapes based on various criteria: identical shape, color, filled or outlined. This program supports visual discrimination, memory, and attention development.
+
+activities:
+  - shape_recognition_2_images-6C1B88C482F749E69BE121CA3181E268
+  - shape_recognition_4_images-28E85D51E1F441A29F38AA2F246ED67A
+  - shape_recognition_filled_and_unfilled_shapes_2_images-4CCA0C2662814FCE8B63979BF88472C1
+  - shape_recognition_filled_and_unfilled_shapes_4_images-CFA4165855C7429C9C806CD0A2E15A30
+  - shape_recognition_identical_shapes_and_colors_2_images-289E486B17D9441CBFCEB859B569F2BD
+  - shape_recognition_identical_shapes_and_colors_4_images-605AB303F60C48708CDFF5991BF93F28

@@ -60,6 +60,10 @@ content:
           subtitle:
           description: The latest to explore.
     items:
+      - value: curriculum_shape_recognition-785607C27B1449A1B12F10302A754486
+        type: curriculum
+      - value: curriculum_visual_discrimination_shapes_and_colors-B142C14603F246C7B88C169E2CD3FF74
+        type: curriculum
       - value: curriculum_recognition_alphabet_letters_1-27A711E56A4140C4A69FCAF0E4CD5410
         type: curriculum
       - value: curriculum_alphabet_letters_sounds_1-C157BAD4AA044EE89A941B1D868FFEB7
