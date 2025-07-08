@@ -176,6 +176,7 @@ GEM
     nkf (0.2.0)
     optparse (0.6.0)
     os (1.1.4)
+    ostruct (0.6.2)
     parallel (1.27.0)
     parser (3.3.8.0)
       ast (~> 2.4.1)
@@ -254,6 +255,7 @@ DEPENDENCIES
   fastlane (~> 2.228.0)
   logger
   mutex_m
+  ostruct
   rubocop
 
 BUNDLED WITH
