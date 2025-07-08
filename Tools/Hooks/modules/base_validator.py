@@ -15,7 +15,6 @@ from abc import ABC, abstractmethod
 from typing import List, Optional
 
 from modules.utils import get_files
-from modules.yaml import is_jtd_schema_compliant
 
 
 class BaseValidator(ABC):
@@ -142,6 +141,9 @@ class BaseYamlValidator(BaseValidator):
         """
         if not self.schema_path:
             return True
+
+        # Import here to avoid circular dependencies and unnecessary imports for non-YAML validators
+        from modules.yaml import is_jtd_schema_compliant
 
         if not is_jtd_schema_compliant(filename, self.schema_path, self.logger):
             self.logger.error(f"\n❌ Schema validation failed for {filename}")
