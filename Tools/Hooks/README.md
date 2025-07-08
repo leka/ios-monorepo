@@ -63,7 +63,7 @@ These scripts validate definition files that define reusable entities:
 - **Files**: `tags.yml`
 - **Special**: Handles nested subtag structures
 
-#### `check_yaml_definitions_skills.py`  
+#### `check_yaml_definitions_skills.py`
 - **Purpose**: Validates skill definitions with recursive subskill support
 - **Checks**: Schema compliance, unique IDs (including subskills), SHA validation, recursive sorting
 - **Files**: `skills.yml`
@@ -102,7 +102,7 @@ These scripts validate content files (activities, stories, curriculums):
 - **Special**: Uses multiprocessing, validates exercise assets
 
 #### `check_yaml_content_curriculums.py`
-- **Purpose**: Validates curriculum content files  
+- **Purpose**: Validates curriculum content files
 - **Checks**: All common content validation + activity reference validation
 - **Files**: `*.curriculum.yml`
 - **Special**: Uses multiprocessing, validates activity references
@@ -122,7 +122,7 @@ These scripts check for duplicate UUIDs across content files:
 - **Implementation**: Wrapper around `uuid_checker.check_uuids()`
 
 #### `check_yaml_content_curriculums_unique_uuid.py`
-- **Purpose**: Check UUID uniqueness across curriculum files  
+- **Purpose**: Check UUID uniqueness across curriculum files
 - **Implementation**: Wrapper around `uuid_checker.check_uuids()`
 
 #### `check_yaml_content_stories_unique_uuid.py`
@@ -135,7 +135,7 @@ These scripts check for duplicate UUIDs across content files:
 - **Examples**:
   ```bash
   python3 check_yaml_uuid_uniqueness.py activity "*.activity.yml"
-  python3 check_yaml_uuid_uniqueness.py curriculum "*.curriculum.yml" 
+  python3 check_yaml_uuid_uniqueness.py curriculum "*.curriculum.yml"
   python3 check_yaml_uuid_uniqueness.py story "*.story.yml"
   ```
 
@@ -172,7 +172,7 @@ if sorted_list := sort_list_by_id(data["list"]):
 ### Error Reporting
 Consistent error reporting with emojis:
 - ✅ Success messages
-- ❌ Error messages  
+- ❌ Error messages
 - 💡 Information messages (e.g., sorting applied)
 
 ## Usage
@@ -227,10 +227,10 @@ with Pool(processes=workers) as pool:
    class MyCustomValidator(BaseYamlValidator):
        def __init__(self):
            super().__init__(
-               schema_path="path/to/schema.jtd.json", 
+               schema_path="path/to/schema.jtd.json",
                validator_name="my custom"
            )
-       
+
        def validate_file(self, filename: str) -> bool:
            # Custom validation logic
            pass
@@ -242,10 +242,10 @@ with Pool(processes=workers) as pool:
        def __init__(self):
            super().__init__(
                schema_path="path/to/schema.jtd.json",
-               validator_name="my content", 
+               validator_name="my content",
                content_type="my_type"
            )
-       
+
        def validate_content_specific(self, content, filename):
            # Content-specific validation
            pass
