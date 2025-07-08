@@ -99,9 +99,9 @@ class ContentValidator(BaseYamlValidator):
         if differing_names := is_name_same_as_filename(content, filename):
             file_is_valid = False
             content_name, filename_name = differing_names
-            print(f"\n❌ {self.content_type.title()} name and filename name are not the same in {filename}")
-            print(f"name:     {content_name}")
-            print(f"filename: {filename_name}")
+            self.logger.error(f"❌ {self.content_type.title()} name and filename name are not the same in {filename}")
+            self.logger.error(f"name:     {content_name}")
+            self.logger.error(f"filename: {filename_name}")
 
         # Timestamp validation and management
         if not is_created_at_present(content):
