@@ -58,7 +58,7 @@ class BaseYamlValidator(ABC):
         if not self.schema_path:
             return True
 
-        if not is_jtd_schema_compliant(filename, self.schema_path):
+        if not is_jtd_schema_compliant(filename, self.schema_path, self.logger):
             self.logger.error(f"\n❌ Schema validation failed for {filename}")
             return False
         return True

@@ -47,7 +47,7 @@ class SkillsDefinitionValidator(RecursiveDefinitionValidator):
             bool: True if valid, False otherwise
         """
         # First run the SHA validation from definitions module
-        if not is_definition_list_valid(filename):
+        if not is_definition_list_valid(filename, logger=self.logger):
             self.logger.error(f"\n❌ Definition list validation failed for {filename}")
             return False
 

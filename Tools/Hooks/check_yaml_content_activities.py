@@ -42,9 +42,9 @@ class ActivityContentValidator(ContentValidator):
         # Check for missing exercise assets
         if missing_exercise_assets := find_missing_exercise_assets(content):
             file_is_valid = False
-            print(f"\n❌ The following assets do not exist in {filename}")
+            self.logger.error(f"\n❌ The following assets do not exist in {filename}")
             for asset in missing_exercise_assets:
-                print(f"   - {asset['source']} - {asset['type']} - {asset['value']}")
+                self.logger.error(f"   - {asset['source']} - {asset['type']} - {asset['value']}")
 
         return file_is_valid
 

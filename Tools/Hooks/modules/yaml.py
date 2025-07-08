@@ -7,8 +7,13 @@
 
 import os
 import subprocess
+import logging
 
 import ruamel.yaml
+
+# Setup logger for yaml functions
+logging.basicConfig(level=logging.INFO, format='%(message)s')
+default_logger = logging.getLogger(__name__)
 
 
 def create_yaml_object():
@@ -42,9 +47,11 @@ def dump_yaml(filename, data):
         yaml.dump(data, file)
 
 
-def is_jtd_schema_compliant(filename, schema):
+def is_jtd_schema_compliant(filename, schema, logger=None):
     """Validate a YAML file with a JTD schema."""
     file_is_compliant = True
+    if logger is None:
+        logger = default_logger
 
     os.environ["FORCE_COLOR"] = "true"
     cmd = f"ajv validate --verbose --all-errors --spec=jtd -s {schema} -d {filename}"
@@ -53,8 +60,8 @@ def is_jtd_schema_compliant(filename, schema):
 
     if result.returncode != 0:
         error = result.stderr.decode("utf-8")
-        print(f"\n❌ File does not match the schema {schema}")
-        print(error)
+        logger.error(f"\n❌ File does not match the schema {schema}")
+        logger.error(error)
         file_is_compliant = False
 
     return file_is_compliant

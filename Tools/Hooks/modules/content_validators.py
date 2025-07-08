@@ -106,58 +106,58 @@ class ContentValidator(BaseYamlValidator):
         # Timestamp validation and management
         if not is_created_at_present(content):
             file_is_valid = False
-            print(f"\n❌ Missing key created_at in {filename}")
+            self.logger.error(f"\n❌ Missing key created_at in {filename}")
             if timestamp := add_created_at(content):
-                print(f"Add created_at: {timestamp}")
+                self.logger.info(f"Add created_at: {timestamp}")
                 with open(filename, "w", encoding="utf8") as file:
                     yaml.dump(content, file)
 
         if not is_last_edited_at_present(content):
             file_is_valid = False
-            print(f"\n❌ Missing key last_edited_at in {filename}")
+            self.logger.error(f"\n❌ Missing key last_edited_at in {filename}")
             if timestamp := add_last_edited_at(content):
-                print(f"Add last_edited_at: {timestamp}")
+                self.logger.info(f"Add last_edited_at: {timestamp}")
                 with open(filename, "w", encoding="utf8") as file:
                     yaml.dump(content, file)
 
         if is_file_modified(filename) and (timestamp := update_last_edited_at(content)):
             file_is_valid = False
-            print(f"\n❌ last_edited_at is not up to date in {filename}")
-            print(f"Update last_edited_at: {timestamp}")
+            self.logger.error(f"\n❌ last_edited_at is not up to date in {filename}")
+            self.logger.info(f"Update last_edited_at: {timestamp}")
             with open(filename, "w", encoding="utf8") as file:
                 yaml.dump(content, file)
 
         # Cross-reference validation
         if missing_skills := find_missing_skills(content["skills"]):
             file_is_valid = False
-            print(f"\n❌ The following skills do not exist in {filename}")
+            self.logger.error(f"\n❌ The following skills do not exist in {filename}")
             for skill in missing_skills:
-                print(f"   - {skill}")
+                self.logger.error(f"   - {skill}")
 
         if missing_tags := find_missing_tags(content["tags"]):
             file_is_valid = False
-            print(f"\n❌ The following tags do not exist in {filename}")
+            self.logger.error(f"\n❌ The following tags do not exist in {filename}")
             for tag in missing_tags:
-                print(f"   - {tag}")
+                self.logger.error(f"   - {tag}")
 
         if missing_icons := find_missing_icons(content, of_type=self.content_type):
             file_is_valid = False
-            print(f"\n❌ The following icons do not exist in {filename}")
+            self.logger.error(f"\n❌ The following icons do not exist in {filename}")
             for icon in missing_icons:
-                print(f"   - {icon}")
+                self.logger.error(f"   - {icon}")
 
         # String validation
         if strings_with_newline := find_string_values_starting_with_newline(content):
             file_is_valid = False
-            print(f"\n❌ Found strings starting with newline in {filename}")
+            self.logger.error(f"\n❌ Found strings starting with newline in {filename}")
             for string in strings_with_newline:
-                print(f"  - {string}")
+                self.logger.error(f"  - {string}")
 
         if empty_string_values := find_empty_string_values(content):
             file_is_valid = False
-            print(f"\n❌ Found empty strings in {filename}")
+            self.logger.error(f"\n❌ Found empty strings in {filename}")
             for string in empty_string_values:
-                print(f"  - {string}")
+                self.logger.error(f"  - {string}")
 
         # Content-specific validation (override in subclasses)
         if not self.validate_content_specific(content, filename):
@@ -202,18 +202,18 @@ class ContentValidator(BaseYamlValidator):
         files: List[str] = get_files()
 
         if not files:
-            print(f"\n✅ No {self.validator_name} files to check!")
+            self.logger.info(f"\n✅ No {self.validator_name} files to check!")
             return 0
 
         # Filter files if needed
         files_to_process = [f for f in files if self.should_process_file(f)]
 
         if not files_to_process:
-            print(f"\n✅ No {self.validator_name} files to check!")
+            self.logger.info(f"\n✅ No {self.validator_name} files to check!")
             return 0
 
         workers = max(1, cpu_count() - 1)
-        print(f"\nChecking {len(files_to_process)} files using {workers} workers...")
+        self.logger.info(f"\nChecking {len(files_to_process)} files using {workers} workers...")
 
         with Pool(processes=workers) as pool:
             results = pool.map(self.validate_content_item, files_to_process)
@@ -223,5 +223,5 @@ class ContentValidator(BaseYamlValidator):
         if has_errors:
             return 1
 
-        print(f"\n✅ All checked {self.validator_name} files are valid!")
+        self.logger.info(f"\n✅ All checked {self.validator_name} files are valid!")
         return 0

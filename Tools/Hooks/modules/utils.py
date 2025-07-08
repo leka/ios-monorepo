@@ -7,12 +7,17 @@
 
 import sys
 import subprocess
+import logging
+
+# Setup logger for utility functions
+logging.basicConfig(level=logging.INFO, format='%(message)s')
+logger = logging.getLogger(__name__)
 
 
 def get_files():
     """Get the files from the command line arguments."""
     if len(sys.argv) <= 1:
-        print("\n❌ No file specified")
+        logger.error("\n❌ No file specified")
         sys.exit(1)
 
     files = sys.argv[1:]

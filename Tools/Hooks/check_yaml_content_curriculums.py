@@ -42,9 +42,9 @@ class CurriculumContentValidator(ContentValidator):
         # Check for missing activities
         if missing_activities := find_missing_activities(content):
             file_is_valid = False
-            print(f"\n❌ Found activities that do not exist in {filename}")
+            self.logger.error(f"\n❌ Found activities that do not exist in {filename}")
             for activity in missing_activities:
-                print(f"  - {activity}")
+                self.logger.error(f"  - {activity}")
 
         return file_is_valid
 
