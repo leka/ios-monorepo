@@ -662,6 +662,8 @@ platform :ios do
 
     if status_git_log_with_emojis.success? && status_git_log_no_emojis.success?
       UI.success 'Logs generated successfully'
+      UI.message "git_log_with_emojis:\n#{git_log_with_emojis}"
+      UI.message "git_log_no_emojis:\n#{git_log_no_emojis}"
     else
       UI.error 'Could not fetch the changes and generate the logs'
       UI.error stderr_git_log_with_emojis.rstrip
