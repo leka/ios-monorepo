@@ -98,7 +98,7 @@ def main():
         logger.error(message)
         return 1
 
-    logger.info(message)
+    print(message)
     return 0
 
 
