@@ -20,6 +20,7 @@ final class DatabaseAnalyticsEventBridge {
     public func subscribeToDatabaseEvents() {
         self.subscribeToSharedLibraryEvents()
         self.subscribeToCaregiverEvents()
+        self.subscribeToCarereceiverEvents()
     }
 
     // MARK: Internal
@@ -42,6 +43,14 @@ final class DatabaseAnalyticsEventBridge {
         CaregiverManager.shared.eventPublisher
             .sink { [weak self] event in
                 self?.handleCaregiver(event: event)
+            }
+            .store(in: &self.cancellables)
+    }
+
+    private func subscribeToCarereceiverEvents() {
+        CarereceiverManager.shared.eventPublisher
+            .sink { [weak self] event in
+                self?.handleCarereceiver(event: event)
             }
             .store(in: &self.cancellables)
     }
@@ -175,4 +184,21 @@ final class DatabaseAnalyticsEventBridge {
                 AnalyticsManager.setUserPropertyCaregiverProfessions(values: professions)
         }
     }
+
+    // swiftlint:disable identifier_name
+
+    private func handleCarereceiver(event: CarereceiverManager.Event) {
+        switch event {
+            case let .didCreateCarereceiver(id):
+                AnalyticsManager.logEventCarereceiverCreate(id: id)
+
+            case let .didUpdateCarereceiver(id):
+                AnalyticsManager.logEventCarereceiverEdit(carereceiver: id)
+
+            case let .didSelectCarereceivers(ids):
+                AnalyticsManager.logEventCarereceiversSelect(carereceivers: ids)
+        }
+    }
+
+    // swiftlint:enable identifier_name
 }
