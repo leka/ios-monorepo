@@ -68,6 +68,7 @@ struct LekaApp: App {
                 if self.showMainView {
                     MainView()
                         .onAppear {
+                            DatabaseAnalyticsEventBridge.shared.subscribeToDatabaseEvents()
                             self.styleManager.setDefaultColorScheme(self.colorScheme)
                         }
                         .tint(self.styleManager.accentColor)

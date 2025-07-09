@@ -108,7 +108,7 @@ public extension AnalyticsManager {
         logEvent(.sharedLibraryAddCurriculumToFavorites, parameters: params)
     }
 
-    static func logEventSharedLibraryRemoveCurriculumFromFavotites(
+    static func logEventSharedLibraryRemoveCurriculumFromFavorites(
         id: String,
         name: String,
         caregiver: String,
@@ -152,7 +152,7 @@ public extension AnalyticsManager {
         logEvent(.sharedLibraryRemoveStory, parameters: params)
     }
 
-    static func logEventSharedLibraryAddStoryToFavotites(
+    static func logEventSharedLibraryAddStoryToFavorites(
         id: String,
         name: String,
         caregiver: String,
@@ -166,7 +166,7 @@ public extension AnalyticsManager {
         logEvent(.sharedLibraryAddStoryToFavorites, parameters: params)
     }
 
-    static func logEventSharedLibraryRemoveStoryFromFavotites(
+    static func logEventSharedLibraryRemoveStoryFromFavorites(
         id: String,
         name: String,
         caregiver: String,

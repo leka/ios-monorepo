@@ -2,7 +2,6 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import AnalyticsKit
 import Combine
 import Foundation
 
@@ -17,7 +16,35 @@ public class SharedLibraryManager {
 
     // MARK: Public
 
+    public enum Event {
+        case didAddCurriculumToSharedLibrary(Payload)
+        case didRemoveCurriculumFromSharedLibrary(Payload)
+        case didAddCurriculumToFavorites(Payload)
+        case didRemoveCurriculumFromFavorites(Payload)
+        case didAddActivityToSharedLibrary(Payload)
+        case didRemoveActivityFromSharedLibrary(Payload)
+        case didAddActivityToFavorites(Payload)
+        case didRemoveActivityFromFavorites(Payload)
+        case didAddStoryToSharedLibrary(Payload)
+        case didRemoveStoryFromSharedLibrary(Payload)
+        case didAddStoryToFavorites(Payload)
+        case didRemoveStoryFromFavorites(Payload)
+
+        // MARK: Public
+
+        // swiftlint:disable nesting
+
+        public struct Payload {
+            public let id: String
+            public let caregiverID: String
+        }
+
+        // swiftlint:enable nesting
+    }
+
     public static let shared = SharedLibraryManager()
+
+    public var eventPublisher = PassthroughSubject<Event, Never>()
 
     public var currentSharedLibrary = CurrentValueSubject<SharedLibrary?, Never>(nil)
     public var savedActivities = CurrentValueSubject<[SavedActivity], Never>([])
@@ -81,7 +108,7 @@ public class SharedLibraryManager {
 
     // MARK: - Curriculums
 
-    public func addCurriculum(curriculumID: String, name: String, caregiverID: String) {
+    public func addCurriculum(curriculumID: String, name _: String, caregiverID: String) {
         guard let sharedLibraryID = currentSharedLibrary.value?.id else {
             self.fetchError.send(DatabaseError.customError("Shared Library not found"))
             return
@@ -107,17 +134,16 @@ public class SharedLibraryManager {
             },
             receiveValue: {
                 log.info("Curriculum \(curriculumID) added successfully.")
-                AnalyticsKit.AnalyticsManager.logEventSharedLibraryAddCurriculum(
+                self.eventPublisher.send(.didAddCurriculumToSharedLibrary(.init(
                     id: curriculumID,
-                    name: name,
-                    caregiver: caregiverID
-                )
+                    caregiverID: caregiverID
+                )))
             }
         )
         .store(in: &self.cancellables)
     }
 
-    public func removeCurriculum(curriculumID: String, name: String, caregiverID: String) {
+    public func removeCurriculum(curriculumID: String, name _: String, caregiverID: String) {
         guard let sharedLibraryID = currentSharedLibrary.value?.id else {
             self.fetchError.send(DatabaseError.customError("Shared Library not found"))
             return
@@ -135,11 +161,10 @@ public class SharedLibraryManager {
             }
         }, receiveValue: {
             log.info("Curriculum \(curriculumID) removed successfully.")
-            AnalyticsKit.AnalyticsManager.logEventSharedLibraryRemoveCurriculum(
+            self.eventPublisher.send(.didRemoveCurriculumFromSharedLibrary(.init(
                 id: curriculumID,
-                name: name,
-                caregiver: caregiverID
-            )
+                caregiverID: caregiverID
+            )))
         })
         .store(in: &self.cancellables)
     }
@@ -171,11 +196,10 @@ public class SharedLibraryManager {
                 }
             }, receiveValue: {
                 log.info("Curriculum \(curriculumID) added and favorited successfully.")
-                AnalyticsKit.AnalyticsManager.logEventSharedLibraryAddCurriculum(
+                self.eventPublisher.send(.didAddCurriculumToSharedLibrary(.init(
                     id: curriculumID,
-                    name: name,
-                    caregiver: caregiverID
-                )
+                    caregiverID: caregiverID
+                )))
             })
             .store(in: &self.cancellables)
             return
@@ -183,7 +207,7 @@ public class SharedLibraryManager {
         self.addSavedCurriculumToFavorites(curriculumID: curriculumID, name: name, caregiverID: caregiverID)
     }
 
-    public func removeCurriculumFromFavorites(curriculumID: String, name: String, caregiverID: String) {
+    public func removeCurriculumFromFavorites(curriculumID: String, name _: String, caregiverID: String) {
         guard let sharedLibraryID = currentSharedLibrary.value?.id else {
             self.fetchError.send(DatabaseError.customError("Shared Library not found"))
             return
@@ -202,18 +226,17 @@ public class SharedLibraryManager {
             }
         }, receiveValue: {
             log.info("Curriculum \(curriculumID) removed from favorites successfully.")
-            AnalyticsKit.AnalyticsManager.logEventSharedLibraryRemoveCurriculumFromFavotites(
+            self.eventPublisher.send(.didRemoveCurriculumFromFavorites(.init(
                 id: curriculumID,
-                name: name,
-                caregiver: caregiverID
-            )
+                caregiverID: caregiverID
+            )))
         })
         .store(in: &self.cancellables)
     }
 
     // MARK: - Activities + Gamepads
 
-    public func addActivity(activityID: String, name: String, caregiverID: String) {
+    public func addActivity(activityID: String, name _: String, caregiverID: String) {
         guard let sharedLibraryID = currentSharedLibrary.value?.id else {
             self.fetchError.send(DatabaseError.customError("Shared Library not found"))
             return
@@ -236,16 +259,15 @@ public class SharedLibraryManager {
             }
         }, receiveValue: {
             log.info("Activity \(activityID) added successfully.")
-            AnalyticsKit.AnalyticsManager.logEventSharedLibraryAddActivity(
+            self.eventPublisher.send(.didAddActivityToSharedLibrary(.init(
                 id: activityID,
-                name: name,
-                caregiver: caregiverID
-            )
+                caregiverID: caregiverID
+            )))
         })
         .store(in: &self.cancellables)
     }
 
-    public func removeActivity(activityID: String, name: String, caregiverID: String) {
+    public func removeActivity(activityID: String, name _: String, caregiverID: String) {
         guard let sharedLibraryID = currentSharedLibrary.value?.id else {
             self.fetchError.send(DatabaseError.customError("Library not found"))
             return
@@ -263,11 +285,10 @@ public class SharedLibraryManager {
             }
         }, receiveValue: {
             log.info("Activity \(activityID) removed successfully.")
-            AnalyticsKit.AnalyticsManager.logEventSharedLibraryRemoveActivity(
+            self.eventPublisher.send(.didRemoveActivityFromSharedLibrary(.init(
                 id: activityID,
-                name: name,
-                caregiver: caregiverID
-            )
+                caregiverID: caregiverID
+            )))
         })
         .store(in: &self.cancellables)
     }
@@ -299,11 +320,10 @@ public class SharedLibraryManager {
                 }
             }, receiveValue: {
                 log.info("Activity \(activityID) added and favorited successfully.")
-                AnalyticsKit.AnalyticsManager.logEventSharedLibraryAddActivityToFavorites(
+                self.eventPublisher.send(.didAddActivityToFavorites(.init(
                     id: activityID,
-                    name: name,
-                    caregiver: caregiverID
-                )
+                    caregiverID: caregiverID
+                )))
             })
             .store(in: &self.cancellables)
             return
@@ -311,7 +331,7 @@ public class SharedLibraryManager {
         self.addSavedActivityToFavorites(activityID: activityID, name: name, caregiverID: caregiverID)
     }
 
-    public func removeActivityFromFavorites(activityID: String, name: String, caregiverID: String) {
+    public func removeActivityFromFavorites(activityID: String, name _: String, caregiverID: String) {
         guard let sharedLibraryID = currentSharedLibrary.value?.id else {
             self.fetchError.send(DatabaseError.customError("Shared Library not found"))
             return
@@ -330,18 +350,17 @@ public class SharedLibraryManager {
             }
         }, receiveValue: {
             log.info("Activity \(activityID) removed from favorites successfully.")
-            AnalyticsKit.AnalyticsManager.logEventSharedLibraryRemoveActivityFromFavorites(
+            self.eventPublisher.send(.didRemoveActivityFromFavorites(.init(
                 id: activityID,
-                name: name,
-                caregiver: caregiverID
-            )
+                caregiverID: caregiverID
+            )))
         })
         .store(in: &self.cancellables)
     }
 
     // MARK: - Stories
 
-    public func addStory(storyID: String, name: String, caregiverID: String) {
+    public func addStory(storyID: String, name _: String, caregiverID: String) {
         guard let sharedLibraryID = currentSharedLibrary.value?.id else {
             self.fetchError.send(DatabaseError.customError("SharedLibrary not found"))
             return
@@ -365,16 +384,15 @@ public class SharedLibraryManager {
             }
         }, receiveValue: {
             log.info("Story \(storyID) added successfully.")
-            AnalyticsKit.AnalyticsManager.logEventSharedLibraryAddStory(
+            self.eventPublisher.send(.didAddStoryToSharedLibrary(.init(
                 id: storyID,
-                name: name,
-                caregiver: caregiverID
-            )
+                caregiverID: caregiverID
+            )))
         })
         .store(in: &self.cancellables)
     }
 
-    public func removeStory(storyID: String, name: String, caregiverID: String) {
+    public func removeStory(storyID: String, name _: String, caregiverID: String) {
         guard let sharedLibraryID = currentSharedLibrary.value?.id else {
             self.fetchError.send(DatabaseError.customError("Shared Library not found"))
             return
@@ -392,11 +410,10 @@ public class SharedLibraryManager {
             }
         }, receiveValue: {
             log.info("Story \(storyID) removed successfully.")
-            AnalyticsKit.AnalyticsManager.logEventSharedLibraryRemoveStory(
+            self.eventPublisher.send(.didRemoveStoryFromSharedLibrary(.init(
                 id: storyID,
-                name: name,
-                caregiver: caregiverID
-            )
+                caregiverID: caregiverID
+            )))
         })
         .store(in: &self.cancellables)
     }
@@ -428,11 +445,10 @@ public class SharedLibraryManager {
                 }
             }, receiveValue: {
                 log.info("Story \(storyID) added and favorited successfully.")
-                AnalyticsKit.AnalyticsManager.logEventSharedLibraryAddStory(
+                self.eventPublisher.send(.didAddStoryToSharedLibrary(.init(
                     id: storyID,
-                    name: name,
-                    caregiver: caregiverID
-                )
+                    caregiverID: caregiverID
+                )))
             })
             .store(in: &self.cancellables)
             return
@@ -440,7 +456,7 @@ public class SharedLibraryManager {
         self.addSavedStoryToFavorites(storyID: storyID, name: name, caregiverID: caregiverID)
     }
 
-    public func removeStoryFromFavorites(storyID: String, name: String, caregiverID: String) {
+    public func removeStoryFromFavorites(storyID: String, name _: String, caregiverID: String) {
         guard let sharedLibraryID = currentSharedLibrary.value?.id else {
             self.fetchError.send(DatabaseError.customError("Shared Library not found"))
             return
@@ -459,11 +475,10 @@ public class SharedLibraryManager {
             }
         }, receiveValue: {
             log.info("Story \(storyID) removed from favorites successfully.")
-            AnalyticsKit.AnalyticsManager.logEventSharedLibraryRemoveStoryFromFavotites(
+            self.eventPublisher.send(.didRemoveStoryFromFavorites(.init(
                 id: storyID,
-                name: name,
-                caregiver: caregiverID
-            )
+                caregiverID: caregiverID
+            )))
         })
         .store(in: &self.cancellables)
     }
@@ -485,7 +500,7 @@ public class SharedLibraryManager {
     private let dbOps = DatabaseOperations.shared
     private var cancellables = Set<AnyCancellable>()
 
-    private func addSavedCurriculumToFavorites(curriculumID: String, name: String, caregiverID: String) {
+    private func addSavedCurriculumToFavorites(curriculumID: String, name _: String, caregiverID: String) {
         guard let sharedLibraryID = currentSharedLibrary.value?.id else {
             self.fetchError.send(DatabaseError.customError("Shared Library not found"))
             return
@@ -504,16 +519,15 @@ public class SharedLibraryManager {
             }
         }, receiveValue: {
             log.info("Curriculum \(curriculumID) added to favorites successfully.")
-            AnalyticsKit.AnalyticsManager.logEventSharedLibraryAddCurriculumToFavorites(
+            self.eventPublisher.send(.didAddCurriculumToFavorites(.init(
                 id: curriculumID,
-                name: name,
-                caregiver: caregiverID
-            )
+                caregiverID: caregiverID
+            )))
         })
         .store(in: &self.cancellables)
     }
 
-    private func addSavedActivityToFavorites(activityID: String, name: String, caregiverID: String) {
+    private func addSavedActivityToFavorites(activityID: String, name _: String, caregiverID: String) {
         guard let sharedLibraryID = currentSharedLibrary.value?.id else {
             self.fetchError.send(DatabaseError.customError("Shared Library not found"))
             return
@@ -532,16 +546,15 @@ public class SharedLibraryManager {
             }
         }, receiveValue: {
             log.info("Activity \(activityID) added to favorites successfully.")
-            AnalyticsKit.AnalyticsManager.logEventSharedLibraryAddActivityToFavorites(
+            self.eventPublisher.send(.didAddActivityToFavorites(.init(
                 id: activityID,
-                name: name,
-                caregiver: caregiverID
-            )
+                caregiverID: caregiverID
+            )))
         })
         .store(in: &self.cancellables)
     }
 
-    private func addSavedStoryToFavorites(storyID: String, name: String, caregiverID: String) {
+    private func addSavedStoryToFavorites(storyID: String, name _: String, caregiverID: String) {
         guard let sharedLibraryID = currentSharedLibrary.value?.id else {
             self.fetchError.send(DatabaseError.customError("Shared Library not found"))
             return
@@ -560,11 +573,10 @@ public class SharedLibraryManager {
             }
         }, receiveValue: {
             log.info("Story \(storyID) added to favorites successfully.")
-            AnalyticsKit.AnalyticsManager.logEventSharedLibraryAddStoryToFavotites(
+            self.eventPublisher.send(.didAddStoryToFavorites(.init(
                 id: storyID,
-                name: name,
-                caregiver: caregiverID
-            )
+                caregiverID: caregiverID
+            )))
         })
         .store(in: &self.cancellables)
     }
