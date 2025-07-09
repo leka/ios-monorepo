@@ -27,6 +27,7 @@ public class CaregiverManager {
             .handleLoadingState(using: self.isLoading)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
+                    log.error("There was an error while initializing caregivers listener: \(error)")
                     self?.fetchError.send(error)
                 }
             }, receiveValue: { [weak self] fetchedCaregivers in
@@ -43,6 +44,7 @@ public class CaregiverManager {
         self.dbOps.read(from: .caregivers, documentID: documentID)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
+                    log.error("There was an error while fetching caregiver \(documentID): \(error)")
                     self?.fetchError.send(error)
                 }
             }, receiveValue: { [weak self] fetchedCaregiver in
@@ -64,6 +66,7 @@ public class CaregiverManager {
             }
             .handleEvents(receiveOutput: { [weak self] newCaregiver in
                 self?.initializeCaregiversListener()
+                log.info("Caregiver \(newCaregiver.id!) created successfully.")
                 AnalyticsManager.logEventCaregiverCreate(id: newCaregiver.id!)
             })
             .eraseToAnyPublisher()
@@ -84,9 +87,11 @@ public class CaregiverManager {
         self.dbOps.update(id: caregiver.id!, data: caregiverData, collection: .caregivers)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
+                    log.error("There was an error while updating caregiver \(caregiver.id ?? "unknown"): \(error)")
                     self.fetchError.send(error)
                 }
             }, receiveValue: { _ in
+                log.info("Caregiver \(caregiver.id!) updated successfully.")
                 AnalyticsManager.logEventCaregiverEdit(caregiver: caregiver.id!)
             })
             .store(in: &self.cancellables)
@@ -96,10 +101,11 @@ public class CaregiverManager {
         self.dbOps.delete(from: .caregivers, documentID: documentID)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
+                    log.error("There was an error while deleting caregiver \(documentID): \(error)")
                     self.fetchError.send(error)
                 }
             }, receiveValue: {
-                // Nothing to do
+                log.info("Caregiver \(documentID) deleted successfully.")
             })
             .store(in: &self.cancellables)
     }
@@ -113,6 +119,7 @@ public class CaregiverManager {
             return
         }
 
+        log.info("Caregiver \(caregiverID) set as current.")
         AnalyticsManager.logEventCaregiverSelect(from: previousCaregiverID, to: caregiverID)
         AnalyticsManager.setDefaultEventParameterCaregiverUid(caregiverID)
         AnalyticsManager
@@ -128,6 +135,7 @@ public class CaregiverManager {
         }
         self.currentCaregiver.send(currentCaregiver)
 
+        log.info("Caregiver \(currentCaregiver.id!) set as current.")
         AnalyticsManager.logEventCaregiverSelect(from: previousCaregiverID, to: currentCaregiver.id!)
         AnalyticsManager.setDefaultEventParameterCaregiverUid(currentCaregiver.id)
         AnalyticsManager.setUserPropertyCaregiverProfessions(
@@ -137,6 +145,7 @@ public class CaregiverManager {
 
     public func resetCurrentCaregiver() {
         self.currentCaregiver.send(nil)
+        log.info("Current caregiver reset.")
         AnalyticsManager.setDefaultEventParameterCaregiverUid(nil)
         AnalyticsManager.setUserPropertyCaregiverProfessions(values: [])
     }

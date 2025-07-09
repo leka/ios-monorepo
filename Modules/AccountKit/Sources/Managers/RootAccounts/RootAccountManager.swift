@@ -20,10 +20,12 @@ public class RootAccountManager {
             .handleLoadingState(using: self.loadingStatePublisher)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
+                    log.error("There was an error while initializing root account listener: \(error)")
                     self?.fetchErrorSubject.send(error)
                 }
             }, receiveValue: { [weak self] rootAccount in
                 guard let self else { return }
+                log.info("Root account \(String(describing: rootAccount.id)) successfully loaded.")
                 self.currentRootAccount.send(rootAccount)
             })
             .store(in: &self.cancellables)
@@ -33,9 +35,11 @@ public class RootAccountManager {
         self.dbOps.create(data: rootAccount, in: .rootAccounts)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
+                    log.error("There was an error while creating root account \(String(describing: rootAccount.id)): \(error)")
                     self?.fetchErrorSubject.send(error)
                 }
             }, receiveValue: { _ in
+                log.info("Root account \(String(describing: rootAccount.id)) successfully created.")
                 // Handle successful creation from within the dashboard if needed
             })
             .store(in: &self.cancellables)

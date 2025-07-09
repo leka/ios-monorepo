@@ -19,9 +19,11 @@ public class ActivityCompletionDataManager {
         self.dbOps.observeAll(from: .activityCompletionData)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
+                    log.error("There was an error while initializing activity completion data listener: \(error)")
                     self?.fetchErrorSubject.send(error)
                 }
             }, receiveValue: { [weak self] fetchedData in
+                log.info("Activity completion data successfully loaded.")
                 self?.activityCompletionDataListSubject.send(fetchedData)
             })
             .store(in: &self.cancellables)
@@ -39,7 +41,7 @@ public class ActivityCompletionDataManager {
                     .eraseToAnyPublisher()
             }
             .handleEvents(receiveOutput: { _ in
-                // Nothing to do
+                log.info("Activity completion data for activity \(String(describing: data.id)) saved successfully.")
             })
             .eraseToAnyPublisher()
     }

@@ -55,7 +55,7 @@ public class SharedLibraryManager {
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
-                    print("Error listening to sub-collections: \(error)")
+                    log.error("There was an error while listening to sub-collections: \(error)")
                 }
             }, receiveValue: { [weak self] curriculums, activities, stories in
                 guard let self else { return }
@@ -70,6 +70,7 @@ public class SharedLibraryManager {
         self.dbOps.create(data: library, in: .sharedLibraries)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
+                    log.error("There was an error while creating the shared library: \(error)")
                     self?.fetchError.send(error)
                 }
             }, receiveValue: { _ in
@@ -100,10 +101,12 @@ public class SharedLibraryManager {
         .sink(
             receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
+                    log.error("There was an error while adding curriculum \(curriculumID): \(error)")
                     self?.fetchError.send(error)
                 }
             },
             receiveValue: {
+                log.info("Curriculum \(curriculumID) added successfully.")
                 AnalyticsKit.AnalyticsManager.logEventSharedLibraryAddCurriculum(
                     id: curriculumID,
                     name: name,
@@ -127,9 +130,11 @@ public class SharedLibraryManager {
         )
         .sink(receiveCompletion: { [weak self] completion in
             if case let .failure(error) = completion {
+                log.error("There was an error while removing curriculum \(curriculumID): \(error)")
                 self?.fetchError.send(error)
             }
         }, receiveValue: {
+            log.info("Curriculum \(curriculumID) removed successfully.")
             AnalyticsKit.AnalyticsManager.logEventSharedLibraryRemoveCurriculum(
                 id: curriculumID,
                 name: name,
@@ -161,6 +166,7 @@ public class SharedLibraryManager {
             )
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
+                    log.error("There was an error while adding and favoriting curriculum \(curriculumID): \(error)")
                     self?.fetchError.send(error)
                 }
             }, receiveValue: {
@@ -191,9 +197,11 @@ public class SharedLibraryManager {
         )
         .sink(receiveCompletion: { [weak self] completion in
             if case let .failure(error) = completion {
+                log.error("There was an error while removing curriculum \(curriculumID) from favorites: \(error)")
                 self?.fetchError.send(error)
             }
         }, receiveValue: {
+            log.info("Curriculum \(curriculumID) removed from favorites successfully.")
             AnalyticsKit.AnalyticsManager.logEventSharedLibraryRemoveCurriculumFromFavotites(
                 id: curriculumID,
                 name: name,
@@ -223,9 +231,11 @@ public class SharedLibraryManager {
         )
         .sink(receiveCompletion: { [weak self] completion in
             if case let .failure(error) = completion {
+                log.error("There was an error while adding activity \(activityID): \(error)")
                 self?.fetchError.send(error)
             }
         }, receiveValue: {
+            log.info("Activity \(activityID) added successfully.")
             AnalyticsKit.AnalyticsManager.logEventSharedLibraryAddActivity(
                 id: activityID,
                 name: name,
@@ -248,9 +258,11 @@ public class SharedLibraryManager {
         )
         .sink(receiveCompletion: { [weak self] completion in
             if case let .failure(error) = completion {
+                log.error("There was an error while removing activity \(activityID): \(error)")
                 self?.fetchError.send(error)
             }
         }, receiveValue: {
+            log.info("Activity \(activityID) removed successfully.")
             AnalyticsKit.AnalyticsManager.logEventSharedLibraryRemoveActivity(
                 id: activityID,
                 name: name,
@@ -282,6 +294,7 @@ public class SharedLibraryManager {
             )
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
+                    log.error("There was an error while adding and favoriting activity \(activityID): \(error)")
                     self?.fetchError.send(error)
                 }
             }, receiveValue: {
@@ -312,9 +325,11 @@ public class SharedLibraryManager {
         )
         .sink(receiveCompletion: { [weak self] completion in
             if case let .failure(error) = completion {
+                log.error("There was an error while removing activity \(activityID) from favorites: \(error)")
                 self?.fetchError.send(error)
             }
         }, receiveValue: {
+            log.info("Activity \(activityID) removed from favorites successfully.")
             AnalyticsKit.AnalyticsManager.logEventSharedLibraryRemoveActivityFromFavorites(
                 id: activityID,
                 name: name,
@@ -345,9 +360,11 @@ public class SharedLibraryManager {
         )
         .sink(receiveCompletion: { [weak self] completion in
             if case let .failure(error) = completion {
+                log.error("There was an error while adding story \(storyID): \(error)")
                 self?.fetchError.send(error)
             }
         }, receiveValue: {
+            log.info("Story \(storyID) added successfully.")
             AnalyticsKit.AnalyticsManager.logEventSharedLibraryAddStory(
                 id: storyID,
                 name: name,
@@ -370,9 +387,11 @@ public class SharedLibraryManager {
         )
         .sink(receiveCompletion: { [weak self] completion in
             if case let .failure(error) = completion {
+                log.error("There was an error while removing story \(storyID): \(error)")
                 self?.fetchError.send(error)
             }
         }, receiveValue: {
+            log.info("Story \(storyID) removed successfully.")
             AnalyticsKit.AnalyticsManager.logEventSharedLibraryRemoveStory(
                 id: storyID,
                 name: name,
@@ -404,6 +423,7 @@ public class SharedLibraryManager {
             )
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
+                    log.error("There was an error while adding and favoriting story \(storyID): \(error)")
                     self?.fetchError.send(error)
                 }
             }, receiveValue: {
@@ -434,9 +454,11 @@ public class SharedLibraryManager {
         )
         .sink(receiveCompletion: { [weak self] completion in
             if case let .failure(error) = completion {
+                log.error("There was an error while removing story \(storyID) from favorites: \(error)")
                 self?.fetchError.send(error)
             }
         }, receiveValue: {
+            log.info("Story \(storyID) removed from favorites successfully.")
             AnalyticsKit.AnalyticsManager.logEventSharedLibraryRemoveStoryFromFavotites(
                 id: storyID,
                 name: name,
@@ -477,9 +499,11 @@ public class SharedLibraryManager {
         )
         .sink(receiveCompletion: { [weak self] completion in
             if case let .failure(error) = completion {
+                log.error("There was an error while adding curriculum \(curriculumID) to favorites: \(error)")
                 self?.fetchError.send(error)
             }
         }, receiveValue: {
+            log.info("Curriculum \(curriculumID) added to favorites successfully.")
             AnalyticsKit.AnalyticsManager.logEventSharedLibraryAddCurriculumToFavorites(
                 id: curriculumID,
                 name: name,
@@ -503,9 +527,11 @@ public class SharedLibraryManager {
         )
         .sink(receiveCompletion: { [weak self] completion in
             if case let .failure(error) = completion {
+                log.error("There was an error while adding activity \(activityID) to favorites: \(error)")
                 self?.fetchError.send(error)
             }
         }, receiveValue: {
+            log.info("Activity \(activityID) added to favorites successfully.")
             AnalyticsKit.AnalyticsManager.logEventSharedLibraryAddActivityToFavorites(
                 id: activityID,
                 name: name,
@@ -529,9 +555,11 @@ public class SharedLibraryManager {
         )
         .sink(receiveCompletion: { [weak self] completion in
             if case let .failure(error) = completion {
+                log.error("There was an error while adding story \(storyID) to favorites: \(error)")
                 self?.fetchError.send(error)
             }
         }, receiveValue: {
+            log.info("Story \(storyID) added to favorites successfully.")
             AnalyticsKit.AnalyticsManager.logEventSharedLibraryAddStoryToFavotites(
                 id: storyID,
                 name: name,

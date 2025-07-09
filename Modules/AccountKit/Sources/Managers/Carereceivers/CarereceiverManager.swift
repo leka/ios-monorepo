@@ -24,6 +24,7 @@ public class CarereceiverManager {
         self.dbOps.observeAll(from: .carereceivers)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
+                    log.error("There was an error while initializing carereceivers listener: \(error)")
                     self?.fetchError.send(error)
                 }
             }, receiveValue: { [weak self] fetchedCarereceivers in
@@ -61,9 +62,11 @@ public class CarereceiverManager {
         self.dbOps.update(id: carereceiver.id!, data: carereceiverData, collection: .carereceivers)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
+                    log.error("There was an error while updating carereceiver \(carereceiver.id!): \(error)")
                     self.fetchError.send(error)
                 }
             }, receiveValue: { _ in
+                log.info("Carereceiver \(carereceiver.id!) successfully updated.")
                 AnalyticsManager.logEventCarereceiverEdit(carereceivers: carereceiver.id!)
             })
             .store(in: &self.cancellables)
@@ -73,10 +76,11 @@ public class CarereceiverManager {
         self.dbOps.delete(from: .carereceivers, documentID: documentID)
             .sink(receiveCompletion: { completion in
                 if case let .failure(error) = completion {
+                    log.error("There was an error while deleting carereceiver \(documentID): \(error)")
                     self.fetchError.send(error)
                 }
             }, receiveValue: {
-                // Nothing to do
+                log.info("Carereceiver \(documentID) successfully deleted.")
             })
             .store(in: &self.cancellables)
     }
