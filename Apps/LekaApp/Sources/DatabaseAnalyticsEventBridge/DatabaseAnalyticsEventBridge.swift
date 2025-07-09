@@ -18,6 +18,9 @@ final class DatabaseAnalyticsEventBridge {
     // MARK: Public
 
     public func subscribeToDatabaseEvents() {
+        self.subscribeToAuthEvents()
+        self.subscribeToCaregiverEvents()
+        self.subscribeToCarereceiverEvents()
         self.subscribeToSharedLibraryEvents()
     }
 
@@ -33,6 +36,30 @@ final class DatabaseAnalyticsEventBridge {
         SharedLibraryManager.shared.eventPublisher
             .sink { [weak self] event in
                 self?.handleSharedLibrary(event: event)
+            }
+            .store(in: &self.cancellables)
+    }
+
+    private func subscribeToCaregiverEvents() {
+        CaregiverManager.shared.eventPublisher
+            .sink { [weak self] event in
+                self?.handleCaregiver(event: event)
+            }
+            .store(in: &self.cancellables)
+    }
+
+    private func subscribeToCarereceiverEvents() {
+        CarereceiverManager.shared.eventPublisher
+            .sink { [weak self] event in
+                self?.handleCarereceiver(event: event)
+            }
+            .store(in: &self.cancellables)
+    }
+
+    private func subscribeToAuthEvents() {
+        AuthManager.shared.analyticsEvent
+            .sink { [weak self] event in
+                self?.handleAuth(event: event)
             }
             .store(in: &self.cancellables)
     }
@@ -140,4 +167,83 @@ final class DatabaseAnalyticsEventBridge {
     }
 
     // swiftlint:enable cyclomatic_complexity function_body_length
+
+    private func handleCaregiver(event: CaregiverManager.Event) {
+        switch event {
+            case let .didCreateCaregiver(id):
+                AnalyticsManager.logEventCaregiverCreate(id: id)
+
+            case let .didEditCaregiver(caregiver):
+                AnalyticsManager.logEventCaregiverEdit(caregiver: caregiver)
+
+            case let .didSelectCaregiver(previous, new):
+                AnalyticsManager.logEventCaregiverSelect(from: previous, to: new)
+                AnalyticsManager.setDefaultEventParameterCaregiverUid(new)
+
+                guard let caregiver = CaregiverManager.shared.currentCaregiver.value else { return }
+                AnalyticsManager.setUserPropertyCaregiverProfessions(
+                    values: caregiver.professions.compactMap { Professions.profession(for: $0)?.sha }
+                )
+
+            case .didResetCaregiver:
+                AnalyticsManager.setDefaultEventParameterCaregiverUid(nil)
+                AnalyticsManager.setUserPropertyCaregiverProfessions(values: [])
+
+            case let .didUpdateCaregiverProperties(professions):
+                AnalyticsManager.setUserPropertyCaregiverProfessions(values: professions)
+        }
+    }
+
+    // swiftlint:disable identifier_name
+
+    private func handleCarereceiver(event: CarereceiverManager.Event) {
+        switch event {
+            case let .didCreateCarereceiver(id):
+                AnalyticsManager.logEventCarereceiverCreate(id: id)
+
+            case let .didUpdateCarereceiver(id):
+                AnalyticsManager.logEventCarereceiverEdit(carereceiver: id)
+
+            case let .didSelectCarereceivers(ids):
+                AnalyticsManager.logEventCarereceiversSelect(carereceivers: ids)
+        }
+    }
+
+    private func handleAuth(event: AuthManager.Event) {
+        switch event {
+            case let .didDetectLoggedInState(uid):
+                AnalyticsManager.setUserID(uid)
+                AnalyticsManager.setUserPropertyUserIsLoggedIn(value: true)
+                AnalyticsManager.setDefaultEventParameterRootOwnerUid(uid)
+
+            case .didDetectLoggedOutState:
+                AnalyticsManager.setUserID(nil)
+                AnalyticsManager.setUserPropertyUserIsLoggedIn(value: false)
+                AnalyticsManager.clearDefaultEventParameters()
+
+            case let .didSignUp(uid):
+                AnalyticsManager.setUserID(uid)
+                AnalyticsManager.setUserPropertyUserIsLoggedIn(value: true)
+                AnalyticsManager.setDefaultEventParameterRootOwnerUid(uid)
+
+            case let .didSignIn(uid):
+                AnalyticsManager.setUserID(uid)
+                AnalyticsManager.setUserPropertyUserIsLoggedIn(value: true)
+                AnalyticsManager.setDefaultEventParameterRootOwnerUid(uid)
+
+            case .didSignOut:
+                AnalyticsManager.logEventLogout()
+                AnalyticsManager.setUserID(nil)
+                AnalyticsManager.setUserPropertyUserIsLoggedIn(value: false)
+                AnalyticsManager.clearDefaultEventParameters()
+
+            case .didDeleteAccount:
+                AnalyticsManager.logEventAccountDelete()
+                AnalyticsManager.setUserID(nil)
+                AnalyticsManager.setUserPropertyUserIsLoggedIn(value: false)
+                AnalyticsManager.clearDefaultEventParameters()
+        }
+    }
+
+    // swiftlint:enable identifier_name
 }

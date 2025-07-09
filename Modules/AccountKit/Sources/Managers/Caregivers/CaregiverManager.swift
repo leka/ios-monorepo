@@ -2,7 +2,6 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import AnalyticsKit
 import Combine
 import Foundation
 
@@ -15,7 +14,17 @@ public class CaregiverManager {
 
     // MARK: Public
 
+    public enum Event {
+        case didCreateCaregiver(id: String)
+        case didEditCaregiver(id: String)
+        case didSelectCaregiver(previous: String?, new: String)
+        case didResetCaregiver
+        case didUpdateCaregiverProperties(professions: [String])
+    }
+
     public static let shared = CaregiverManager()
+
+    public var eventPublisher = PassthroughSubject<Event, Never>()
 
     public var caregiverList = CurrentValueSubject<[Caregiver], Never>([])
     public var currentCaregiver = CurrentValueSubject<Caregiver?, Never>(nil)
@@ -67,7 +76,7 @@ public class CaregiverManager {
             .handleEvents(receiveOutput: { [weak self] newCaregiver in
                 self?.initializeCaregiversListener()
                 log.info("Caregiver \(newCaregiver.id!) created successfully.")
-                AnalyticsManager.logEventCaregiverCreate(id: newCaregiver.id!)
+                self?.eventPublisher.send(.didCreateCaregiver(id: newCaregiver.id!))
             })
             .eraseToAnyPublisher()
     }
@@ -92,7 +101,7 @@ public class CaregiverManager {
                 }
             }, receiveValue: { _ in
                 log.info("Caregiver \(caregiver.id!) updated successfully.")
-                AnalyticsManager.logEventCaregiverEdit(caregiver: caregiver.id!)
+                self.eventPublisher.send(.didEditCaregiver(id: caregiver.id!))
             })
             .store(in: &self.cancellables)
     }
@@ -120,12 +129,10 @@ public class CaregiverManager {
         }
 
         log.info("Caregiver \(caregiverID) set as current.")
-        AnalyticsManager.logEventCaregiverSelect(from: previousCaregiverID, to: caregiverID)
-        AnalyticsManager.setDefaultEventParameterCaregiverUid(caregiverID)
-        AnalyticsManager
-            .setUserPropertyCaregiverProfessions(
-                values: caregiver.professions.compactMap { Professions.profession(for: $0)?.sha }
-            )
+        self.eventPublisher.send(.didSelectCaregiver(previous: previousCaregiverID, new: caregiverID))
+        self.eventPublisher.send(.didUpdateCaregiverProperties(
+            professions: caregiver.professions.compactMap { Professions.profession(for: $0)?.sha }
+        ))
     }
 
     public func setCurrentCaregiver(byID id: String) {
@@ -136,18 +143,16 @@ public class CaregiverManager {
         self.currentCaregiver.send(currentCaregiver)
 
         log.info("Caregiver \(currentCaregiver.id!) set as current.")
-        AnalyticsManager.logEventCaregiverSelect(from: previousCaregiverID, to: currentCaregiver.id!)
-        AnalyticsManager.setDefaultEventParameterCaregiverUid(currentCaregiver.id)
-        AnalyticsManager.setUserPropertyCaregiverProfessions(
-            values: currentCaregiver.professions.compactMap { Professions.profession(for: $0)?.sha }
-        )
+        self.eventPublisher.send(.didSelectCaregiver(previous: previousCaregiverID, new: currentCaregiver.id!))
+        self.eventPublisher.send(.didUpdateCaregiverProperties(
+            professions: currentCaregiver.professions.compactMap { Professions.profession(for: $0)?.sha }
+        ))
     }
 
     public func resetCurrentCaregiver() {
         self.currentCaregiver.send(nil)
         log.info("Current caregiver reset.")
-        AnalyticsManager.setDefaultEventParameterCaregiverUid(nil)
-        AnalyticsManager.setUserPropertyCaregiverProfessions(values: [])
+        self.eventPublisher.send(.didResetCaregiver)
     }
 
     public func resetData() {

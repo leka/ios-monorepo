@@ -2,7 +2,6 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import AnalyticsKit
 import Combine
 import FirebaseAuth
 import FirebaseAuthCombineSwift
@@ -34,7 +33,18 @@ public class AuthManager {
         case userIsDeletingAccount
     }
 
+    public enum Event {
+        case didSignUp(uid: String)
+        case didSignIn(uid: String)
+        case didSignOut
+        case didDeleteAccount
+        case didDetectLoggedInState(uid: String)
+        case didDetectLoggedOutState
+    }
+
     public static let shared = AuthManager()
+
+    public let analyticsEvent = PassthroughSubject<Event, Never>()
 
     public var currentUserEmail: String? {
         self.auth.currentUser?.email
@@ -61,9 +71,7 @@ public class AuthManager {
                 log.info("User \(result.user.uid) signed-up successfully. 🎉")
                 self?.authenticationState.send(.loggedIn)
                 self?.sendEmailVerification()
-                AnalyticsManager.setUserID(result.user.uid)
-                AnalyticsManager.setUserPropertyUserIsLoggedIn(value: true)
-                AnalyticsManager.setDefaultEventParameterRootOwnerUid(result.user.uid)
+                self?.analyticsEvent.send(.didSignUp(uid: result.user.uid))
             })
             .store(in: &self.cancellables)
     }
@@ -79,9 +87,7 @@ public class AuthManager {
                 log.info("User \(user.uid) signed-in successfully. 🎉")
                 self?.authenticationState.send(.loggedIn)
                 self?.emailVerificationState.send(user.isEmailVerified)
-                AnalyticsManager.setUserID(user.uid)
-                AnalyticsManager.setUserPropertyUserIsLoggedIn(value: true)
-                AnalyticsManager.setDefaultEventParameterRootOwnerUid(user.uid)
+                self?.analyticsEvent.send(.didSignIn(uid: user.uid))
             }
         }
     }
@@ -91,10 +97,7 @@ public class AuthManager {
             try self.auth.signOut()
             log.info("User was successfully signed out.")
             self.authenticationState.send(.loggedOut)
-            AnalyticsManager.logEventLogout()
-            AnalyticsManager.setUserID(nil)
-            AnalyticsManager.setUserPropertyUserIsLoggedIn(value: false)
-            AnalyticsManager.clearDefaultEventParameters()
+            self.analyticsEvent.send(.didSignOut)
         } catch {
             log.error("Sign out failed: \(error.localizedDescription)")
             self.authenticationError.send(error)
@@ -158,10 +161,7 @@ public class AuthManager {
             } else {
                 log.info("Account deleted successfully.")
                 self?.authenticationState.send(.loggedOut)
-                AnalyticsManager.logEventAccountDelete()
-                AnalyticsManager.setUserID(nil)
-                AnalyticsManager.setUserPropertyUserIsLoggedIn(value: false)
-                AnalyticsManager.clearDefaultEventParameters()
+                self?.analyticsEvent.send(.didDeleteAccount)
             }
         }
     }
@@ -203,17 +203,13 @@ public class AuthManager {
         guard let user else {
             log.info("⛓️‍💥User is logged out.")
             self.authenticationState.send(.loggedOut)
-            AnalyticsManager.setUserID(nil)
-            AnalyticsManager.setUserPropertyUserIsLoggedIn(value: false)
-            AnalyticsManager.clearDefaultEventParameters()
+            self.analyticsEvent.send(.didDetectLoggedOutState)
             return
         }
 
         log.info("🔗️ User is logged in.")
         self.authenticationState.send(.loggedIn)
         self.emailVerificationState.send(user.isEmailVerified)
-        AnalyticsManager.setUserID(user.uid)
-        AnalyticsManager.setUserPropertyUserIsLoggedIn(value: true)
-        AnalyticsManager.setDefaultEventParameterRootOwnerUid(user.uid)
+        self.analyticsEvent.send(.didDetectLoggedInState(uid: user.uid))
     }
 }

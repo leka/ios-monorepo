@@ -43,9 +43,9 @@ public extension AnalyticsManager {
         logEvent(.carereceiverCreate, parameters: params)
     }
 
-    static func logEventCarereceiverEdit(carereceivers: String, parameters: [String: Any] = [:]) {
+    static func logEventCarereceiverEdit(carereceiver: String, parameters: [String: Any] = [:]) {
         let params: [String: Any] = [
-            "lk_carereceiver_id_edited": carereceivers,
+            "lk_carereceiver_id_edited": carereceiver,
         ].merging(parameters) { _, new in new }
 
         logEvent(.carereceiverEdit, parameters: params)

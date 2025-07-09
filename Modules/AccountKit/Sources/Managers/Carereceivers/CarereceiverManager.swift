@@ -2,8 +2,9 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-import AnalyticsKit
 import Combine
+
+// swiftlint:disable identifier_name nesting
 
 public class CarereceiverManager {
     // MARK: Lifecycle
@@ -14,7 +15,15 @@ public class CarereceiverManager {
 
     // MARK: Public
 
+    public enum Event {
+        case didCreateCarereceiver(id: String)
+        case didUpdateCarereceiver(id: String)
+        case didSelectCarereceivers(ids: [String])
+    }
+
     public static let shared = CarereceiverManager()
+
+    public var eventPublisher = PassthroughSubject<Event, Never>()
 
     public var carereceiverList = CurrentValueSubject<[Carereceiver], Never>([])
     public var currentCarereceivers = CurrentValueSubject<[Carereceiver], Never>([])
@@ -46,7 +55,7 @@ public class CarereceiverManager {
             }
             .handleEvents(receiveOutput: { [weak self] newCarereceiver in
                 self?.initializeCarereceiversListener()
-                AnalyticsManager.logEventCarereceiverCreate(id: newCarereceiver.id!)
+                self?.eventPublisher.send(.didCreateCarereceiver(id: newCarereceiver.id!))
                 log.info("Carereceiver \(newCarereceiver.id!) successfully created.")
             })
             .eraseToAnyPublisher()
@@ -66,8 +75,8 @@ public class CarereceiverManager {
                     self.fetchError.send(error)
                 }
             }, receiveValue: { _ in
+                self.eventPublisher.send(.didUpdateCarereceiver(id: carereceiver.id!))
                 log.info("Carereceiver \(carereceiver.id!) successfully updated.")
-                AnalyticsManager.logEventCarereceiverEdit(carereceivers: carereceiver.id!)
             })
             .store(in: &self.cancellables)
     }
@@ -88,7 +97,7 @@ public class CarereceiverManager {
     public func setCurrentCarereceivers(to carereceivers: [Carereceiver]) {
         self.currentCarereceivers.send(carereceivers)
         let carereceiverIDs = carereceivers.compactMap(\.id)
-        AnalyticsManager.logEventCarereceiversSelect(carereceivers: carereceiverIDs)
+        self.eventPublisher.send(.didSelectCarereceivers(ids: carereceiverIDs))
     }
 
     public func resetData() {
@@ -104,3 +113,5 @@ public class CarereceiverManager {
     private let dbOps = DatabaseOperations.shared
     private var cancellables = Set<AnyCancellable>()
 }
+
+// swiftlint:enable identifier_name nesting
