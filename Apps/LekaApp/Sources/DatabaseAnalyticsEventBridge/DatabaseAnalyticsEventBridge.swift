@@ -18,9 +18,10 @@ final class DatabaseAnalyticsEventBridge {
     // MARK: Public
 
     public func subscribeToDatabaseEvents() {
-        self.subscribeToSharedLibraryEvents()
+        self.subscribeToAuthEvents()
         self.subscribeToCaregiverEvents()
         self.subscribeToCarereceiverEvents()
+        self.subscribeToSharedLibraryEvents()
     }
 
     // MARK: Internal
@@ -51,6 +52,14 @@ final class DatabaseAnalyticsEventBridge {
         CarereceiverManager.shared.eventPublisher
             .sink { [weak self] event in
                 self?.handleCarereceiver(event: event)
+            }
+            .store(in: &self.cancellables)
+    }
+
+    private func subscribeToAuthEvents() {
+        AuthManager.shared.analyticsEvent
+            .sink { [weak self] event in
+                self?.handleAuth(event: event)
             }
             .store(in: &self.cancellables)
     }
@@ -197,6 +206,42 @@ final class DatabaseAnalyticsEventBridge {
 
             case let .didSelectCarereceivers(ids):
                 AnalyticsManager.logEventCarereceiversSelect(carereceivers: ids)
+        }
+    }
+
+    private func handleAuth(event: AuthManager.Event) {
+        switch event {
+            case let .didDetectLoggedInState(uid):
+                AnalyticsManager.setUserID(uid)
+                AnalyticsManager.setUserPropertyUserIsLoggedIn(value: true)
+                AnalyticsManager.setDefaultEventParameterRootOwnerUid(uid)
+
+            case .didDetectLoggedOutState:
+                AnalyticsManager.setUserID(nil)
+                AnalyticsManager.setUserPropertyUserIsLoggedIn(value: false)
+                AnalyticsManager.clearDefaultEventParameters()
+
+            case let .didSignUp(uid):
+                AnalyticsManager.setUserID(uid)
+                AnalyticsManager.setUserPropertyUserIsLoggedIn(value: true)
+                AnalyticsManager.setDefaultEventParameterRootOwnerUid(uid)
+
+            case let .didSignIn(uid):
+                AnalyticsManager.setUserID(uid)
+                AnalyticsManager.setUserPropertyUserIsLoggedIn(value: true)
+                AnalyticsManager.setDefaultEventParameterRootOwnerUid(uid)
+
+            case .didSignOut:
+                AnalyticsManager.logEventLogout()
+                AnalyticsManager.setUserID(nil)
+                AnalyticsManager.setUserPropertyUserIsLoggedIn(value: false)
+                AnalyticsManager.clearDefaultEventParameters()
+
+            case .didDeleteAccount:
+                AnalyticsManager.logEventAccountDelete()
+                AnalyticsManager.setUserID(nil)
+                AnalyticsManager.setUserPropertyUserIsLoggedIn(value: false)
+                AnalyticsManager.clearDefaultEventParameters()
         }
     }
 
