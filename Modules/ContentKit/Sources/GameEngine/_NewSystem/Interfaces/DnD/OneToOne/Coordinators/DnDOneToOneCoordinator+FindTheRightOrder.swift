@@ -51,7 +51,7 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
     public private(set) var uiModel = CurrentValueSubject<DnDOneToOneUIModel, Never>(.zero)
     public private(set) var validationState = CurrentValueSubject<ValidationState, Never>(.hidden)
 
-    public var didComplete: PassthroughSubject<Void, Never> = .init()
+    public var didComplete: PassthroughSubject<ExerciseCompletionData?, Never> = .init()
 
     public func setAlreadyOrderedNodes() {
         self.rawChoices.forEach { choice in
@@ -83,6 +83,7 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
     }
 
     public func validateUserSelection() {
+        self.completionData.numberOfTrials += 1
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             let results = self.gameplay.process(choiceIDs: self.currentOrderedChoices.map { $0! })
 
@@ -103,7 +104,7 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
                 // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     logGEK.debug("Exercise completed")
-                    self.didComplete.send()
+                    self.didComplete.send(self.completionData)
                 }
             }
         }
@@ -114,6 +115,9 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
     private let gameplay: NewGameplayFindTheRightOrder
 
     private let rawChoices: [CoordinatorFindTheRightOrderChoiceModel]
+
+    private var completionData: ExerciseCompletionData = .init()
+
     private var currentOrderedChoices: [UUID?] = []
     private var alreadyValidatedChoices: [UUID?] = []
 
@@ -212,5 +216,52 @@ extension DnDOneToOneCoordinatorFindTheRightOrder {
     private func triggerCorrectBehavior(for node: DnDAnswerNode, in dropzone: SKSpriteNode) {
         node.snapToCenter(dropZone: dropzone)
         node.isDraggable = false
+    }
+}
+
+extension DnDOneToOneCoordinatorFindTheRightOrder: ExerciseEvaluationStrategy {
+    public func evaluate(in context: EvaluationContext = .practice) -> ExerciseEvaluationLevel {
+        let numberOfTrials = self.completionData.numberOfTrials
+        let numberOfAllowedTrials = self.getNumberOfAllowedTrials(from: self.getEvaluationLUT(for: context))
+
+        let trialsPercentage = Double(numberOfAllowedTrials) / Double(numberOfTrials) * 100.0
+
+        switch trialsPercentage {
+            case 90...:
+                return .excellent
+            case 80..<90:
+                return .good
+            case 70..<80:
+                return .average
+            case 60..<70:
+                return .belowAverage
+            default:
+                return .fail
+        }
+    }
+
+    private func getEvaluationLUT(for context: EvaluationContext) -> EvaluationLUT {
+        switch context {
+            default:
+                [
+                    1: [1: 1],
+                    2: [2: 1],
+                    3: [3: 1],
+                    4: [4: 2],
+                    5: [5: 2],
+                    6: [6: 2],
+                ]
+        }
+    }
+
+    private func getNumberOfAllowedTrials(from table: EvaluationLUT) -> Int {
+        let numberOfChoices = self.rawChoices.count
+
+        guard let number = table[numberOfChoices]?[numberOfChoices] else {
+            logGEK.error("No number of allowed trials found for \(numberOfChoices) choices")
+            fatalError("No number of allowed trials found for \(numberOfChoices) choices")
+        }
+
+        return number
     }
 }

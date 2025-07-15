@@ -47,7 +47,7 @@ public class DnDOneToOneCoordinatorOpenPlay: DnDOneToOneGameplayCoordinatorProto
     public private(set) var uiModel = CurrentValueSubject<DnDOneToOneUIModel, Never>(.zero)
     public private(set) var validationState = CurrentValueSubject<ValidationState, Never>(.disabled)
 
-    public var didComplete: PassthroughSubject<Void, Never> = .init()
+    public var didComplete: PassthroughSubject<ExerciseCompletionData?, Never> = .init()
 
     public func setAlreadyOrderedNodes() {
         // TODO: (@HPezz) - Implement already ordered nodes if needed w/ correct choice model
@@ -83,7 +83,7 @@ public class DnDOneToOneCoordinatorOpenPlay: DnDOneToOneGameplayCoordinatorProto
             // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 logGEK.debug("Exercise completed")
-                self.didComplete.send()
+                self.didComplete.send(self.completionData)
             }
         }
     }
@@ -91,6 +91,9 @@ public class DnDOneToOneCoordinatorOpenPlay: DnDOneToOneGameplayCoordinatorProto
     // MARK: Private
 
     private let rawChoices: [CoordinatorOpenPlayChoiceModel]
+
+    private var completionData: ExerciseCompletionData = .init()
+
     private var currentOrderedChoices: [UUID?] = []
     private var alreadyValidatedChoices: [UUID?] = []
 
@@ -189,5 +192,11 @@ extension DnDOneToOneCoordinatorOpenPlay {
     private func triggerCorrectBehavior(for node: DnDAnswerNode, in dropzone: SKSpriteNode) {
         node.snapToCenter(dropZone: dropzone)
         node.isDraggable = false
+    }
+}
+
+extension DnDOneToOneCoordinatorOpenPlay: ExerciseEvaluationStrategy {
+    public func evaluate(in _: EvaluationContext = .practice) -> ExerciseEvaluationLevel {
+        .notApplicable
     }
 }
