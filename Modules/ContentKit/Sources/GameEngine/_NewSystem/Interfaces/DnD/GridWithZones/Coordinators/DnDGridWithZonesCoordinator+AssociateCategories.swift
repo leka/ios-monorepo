@@ -89,6 +89,13 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
                     self.updateChoiceState(for: result.id, to: .correct(dropZone: self.uiDropZoneModel.zones[categoryIndex]))
                     self.alreadyValidatedChoices[categoryIndex].append(result.id)
                 } else {
+                    if self.validationState.value != .hidden {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            results.forEach { self.updateChoiceState(for: $0.id, to: .idle) }
+                        }
+                        self.resetCurrentChoices()
+                        return
+                    }
                     self.handleIncorrectChoice(choiceID)
                 }
             }
@@ -157,6 +164,16 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
                 break
             }
         }
+    }
+
+    private func resetCurrentChoices() {
+        self.currentlySelectedChoices = []
+        self.alreadyValidatedChoices = []
+        self.rawDropZones.forEach { dropzone in
+            self.currentlySelectedChoices.append([dropzone.id])
+            self.alreadyValidatedChoices.append([dropzone.id])
+        }
+        self.validationState.send(.disabled)
     }
 }
 
