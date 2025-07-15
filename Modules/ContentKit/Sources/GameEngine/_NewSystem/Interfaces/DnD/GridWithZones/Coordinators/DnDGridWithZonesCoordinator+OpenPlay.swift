@@ -58,7 +58,7 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
     public private(set) var uiModel = CurrentValueSubject<DnDGridWithZonesUIModel, Never>(.zero)
     public private(set) var validationState = CurrentValueSubject<ValidationState, Never>(.disabled)
 
-    public var didComplete: PassthroughSubject<Void, Never> = .init()
+    public var didComplete: PassthroughSubject<ExerciseCompletionData?, Never> = .init()
 
     public func onTouch(_ event: DnDTouchEvent, choiceID: UUID, destinationID: UUID? = nil) {
         switch event {
@@ -86,7 +86,7 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
         self.validationState.send(.hidden)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             logGEK.debug("Exercise completed")
-            self.didComplete.send()
+            self.didComplete.send(self.completionData)
         }
     }
 
@@ -96,6 +96,8 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
     private let minimumToSelect: Int
     private let maximumToSelect: Int
 
+    private var completionData: ExerciseCompletionData = .init()
+
     private var currentlySelectedChoices: [UUID] = []
 
     private func processUserDropOnDestination(choiceID: UUID, destinationID: UUID) {
@@ -104,6 +106,8 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
         self.currentlySelectedChoices.removeAll(where: { $0 == choiceID })
         self.currentlySelectedChoices.append(choiceID)
         self.updateChoiceState(for: choiceID, to: .selected(dropZone: self.uiDropZoneModel.zones[destinationIndex]))
+
+        self.completionData.numberOfTrials += 1
 
         self.updateValidationState()
     }
@@ -154,5 +158,11 @@ extension DnDGridWithZonesCoordinatorOpenPlay {
 
     private func triggerCorrectBehavior(for node: DnDAnswerNode) {
         node.isDraggable = false
+    }
+}
+
+extension DnDGridWithZonesCoordinatorOpenPlay: ExerciseEvaluationStrategy {
+    public func evaluate(in _: EvaluationContext = .practice) -> ExerciseEvaluationLevel {
+        .notApplicable
     }
 }

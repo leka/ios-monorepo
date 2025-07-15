@@ -79,3 +79,35 @@ exercises_payload:
               - value: 🌴
                 type: emoji
                 category: catC
+        - instructions:
+            - locale: fr_FR
+              value: "Glisse et dépose les aliments que tu aimes et que tu n'aimes pas"
+            - locale: en_US
+              value: "Drag and drop food that you like & than you dislike"
+          interface: dragAndDropGridWithZones
+          gameplay: openPlay
+          options:
+            shuffle_choices: true
+            validation:
+              type: manual
+              minimumToSelect: 1
+          payload:
+            choices:
+              - value: 😍
+                type: emoji
+                is_dropzone: true
+              - value: ☹️
+                type: emoji
+                is_dropzone: true
+              - value: 🍏
+                type: emoji
+              - value: 🌮
+                type: emoji
+              - value: 🍓
+                type: emoji
+              - value: 🍩
+                type: emoji
+              - value: 🍊
+                type: emoji
+              - value: 💩
+                type: emoji

@@ -59,7 +59,7 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
     public private(set) var uiModel = CurrentValueSubject<DnDGridWithZonesUIModel, Never>(.zero)
     public private(set) var validationState = CurrentValueSubject<ValidationState, Never>(.hidden)
 
-    public var didComplete: PassthroughSubject<Void, Never> = .init()
+    public var didComplete: PassthroughSubject<ExerciseCompletionData?, Never> = .init()
 
     public func onTouch(_ event: DnDTouchEvent, choiceID: UUID, destinationID: UUID? = nil) {
         switch event {
@@ -82,6 +82,7 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
 
     public func validateUserSelection() {
         let results = self.gameplay.process(choiceIDs: self.currentlySelectedChoices)
+        self.completionData.numberOfTrials += 1
 
         for (categoryIndex, category) in self.currentlySelectedChoices.enumerated() {
             for choiceID in category {
@@ -106,7 +107,7 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
             // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 logGEK.debug("Exercise completed")
-                self.didComplete.send()
+                self.didComplete.send(self.completionData)
             }
         }
     }
@@ -116,6 +117,8 @@ public class DnDGridWithZonesCoordinatorAssociateCategories: DnDGridWithZonesGam
     private let gameplay: NewGameplayAssociateCategories
     private let rawChoices: [CoordinatorAssociateCategoriesChoiceModel]
     private let rawDropZones: [CoordinatorAssociateCategoriesChoiceModel]
+
+    private var completionData: ExerciseCompletionData = .init()
 
     private var currentlySelectedChoices: [[UUID]] = []
     private var alreadyValidatedChoices: [[UUID]] = []
@@ -209,5 +212,53 @@ extension DnDGridWithZonesCoordinatorAssociateCategories {
     private func triggerCorrectBehavior(for node: DnDAnswerNode, in dropzone: SKSpriteNode) {
         node.repositionInside(dropZone: dropzone)
         node.isDraggable = false
+    }
+}
+
+extension DnDGridWithZonesCoordinatorAssociateCategories: ExerciseEvaluationStrategy {
+    public func evaluate(in context: EvaluationContext = .practice) -> ExerciseEvaluationLevel {
+        let numberOfTrials = self.completionData.numberOfTrials
+        let numberOfAllowedTrials = self.getNumberOfAllowedTrials(from: self.getEvaluationLUT(for: context))
+
+        let trialsPercentage = Double(numberOfAllowedTrials) / Double(numberOfTrials) * 100.0
+
+        switch trialsPercentage {
+            case 90...:
+                return .excellent
+            case 80..<90:
+                return .good
+            case 70..<80:
+                return .average
+            case 60..<70:
+                return .belowAverage
+            default:
+                return .fail
+        }
+    }
+
+    private func getEvaluationLUT(for context: EvaluationContext) -> EvaluationLUT {
+        switch context {
+            default:
+                [
+                    1: [1: 1],
+                    2: [1: 1, 2: 2],
+                    3: [1: 1, 2: 2, 3: 3],
+                    4: [1: 2, 2: 2, 3: 3, 4: 4],
+                    5: [1: 2, 2: 3, 3: 3, 4: 4, 5: 5],
+                    6: [1: 3, 2: 3, 3: 4, 4: 4, 5: 5, 6: 6],
+                ]
+        }
+    }
+
+    private func getNumberOfAllowedTrials(from table: EvaluationLUT) -> Int {
+        let numberOfRightAnswers = self.rawChoices.filter { $0.category != .none }.count
+        let numberOfChoices = self.rawChoices.count
+
+        guard let number = table[numberOfChoices]?[numberOfRightAnswers] else {
+            logGEK.error("No number of allowed trials found for \(numberOfChoices) choices and \(numberOfRightAnswers) right answers")
+            fatalError("No number of allowed trials found for \(numberOfChoices) choices and \(numberOfRightAnswers) right answers")
+        }
+
+        return number
     }
 }
