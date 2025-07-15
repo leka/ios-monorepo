@@ -56,9 +56,9 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol, 
         self.selectedChoices.append(choice)
         self.updateChoiceState(for: choice, to: .selected)
 
-        if self.validationState.value == .hidden {
+        if self.validationState.value == .hidden, self.selectedChoices.count > 1 {
             self.validateUserSelection()
-        } else {
+        } else if self.validationState.value != .hidden {
             self.validationState.send(self.selectedChoices.isNotEmpty ? .enabled : .disabled)
         }
     }
@@ -74,7 +74,7 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol, 
             if self.selectedChoices.count == categoryGroupSize {
                 self.selectedChoices.removeAll()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.validationState.send(.disabled)
+                    self.disableValidationState()
                     choicesToProcess.forEach { choice in
                         self.updateChoiceState(for: choice, to: .correct)
                     }
@@ -100,7 +100,7 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol, 
         } else {
             self.selectedChoices.removeAll()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                self.validationState.send(.disabled)
+                self.disableValidationState()
                 choicesToProcess.forEach { choice in
                     self.updateChoiceState(for: choice, to: .idle)
                 }
@@ -128,6 +128,12 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol, 
                               state: state)
 
         self.uiModel.value.choices[index] = TTSUIChoiceModel(id: choice.id, view: view, disabled: state == .correct)
+    }
+
+    private func disableValidationState() {
+        if self.validationState.value != .hidden {
+            self.validationState.send(.disabled)
+        }
     }
 }
 
