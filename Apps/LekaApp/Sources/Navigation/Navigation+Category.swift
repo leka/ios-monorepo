@@ -35,6 +35,7 @@ extension Navigation {
         case allPublishedActivities
         case allDraftActivities
         case allTemplateActivities
+        case allNewActivities
         case rasterImageList
         case vectorImageList
         case news
