@@ -68,10 +68,10 @@ struct NewMemoryChoiceViewDefaultIdle: View {
                 .rotation3DEffect(Angle(degrees: self.degreeCardFront), axis: (x: self.nearZeroFloat, y: 1, z: self.nearZeroFloat))
         }
         .onAppear {
-            withAnimation(.linear(duration: self.kDuration).delay(self.kDuration)) {
+            withAnimation(.linear(duration: self.kDuration).delay(self.kDelay + self.kDuration)) {
                 self.degreeCardBack = 0.0
             }
-            withAnimation(.linear(duration: self.kDuration)) {
+            withAnimation(.linear(duration: self.kDuration).delay(self.kDelay)) {
                 self.degreeCardFront = 90.0
             }
         }
@@ -83,6 +83,7 @@ struct NewMemoryChoiceViewDefaultIdle: View {
     private let type: ChoiceType
     private let size: CGFloat
     private let kDuration: Double = 0.2
+    private let kDelay: Double = 2.0
     private let nearZeroFloat: CGFloat = 0.0001
 }
 

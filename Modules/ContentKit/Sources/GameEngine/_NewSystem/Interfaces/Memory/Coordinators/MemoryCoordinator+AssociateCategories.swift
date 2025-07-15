@@ -34,7 +34,7 @@ public class MemoryCoordinatorAssociateCategories: MemoryGameplayCoordinatorProt
 
     public private(set) var uiModel = CurrentValueSubject<MemoryUIModel, Never>(.zero)
 
-    public var didComplete: PassthroughSubject<Void, Never> = .init()
+    public var didComplete: PassthroughSubject<ExerciseCompletionData?, Never> = .init()
 
     public func processUserSelection(choiceID: UUID) {
         guard let choice = self.rawChoices.first(where: { $0.id == choiceID }) else {
@@ -60,26 +60,23 @@ public class MemoryCoordinatorAssociateCategories: MemoryGameplayCoordinatorProt
         let choicesToProcess = self.selectedChoices
 
         if results.allSatisfy(\.isCategoryCorrect) {
-            logGEK.debug("Correct category")
             if self.selectedChoices.count == categoryGroupSize {
+                self.completionData.numberOfTrials += 1
                 self.selectedChoices.removeAll()
-                logGEK.debug("Category completed")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    choicesToProcess.forEach { choice in
-                        self.updateChoiceState(for: choice.id, to: .correct)
-                    }
+                choicesToProcess.forEach { choice in
+                    self.updateChoiceState(for: choice.id, to: .correct)
                 }
 
                 if self.gameplay.isCompleted.value {
                     // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         logGEK.debug("Exercise completed")
-                        self.didComplete.send()
+                        self.didComplete.send(self.completionData)
                     }
                 }
             }
         } else {
-            logGEK.debug("Incorrect category")
+            self.completionData.numberOfTrials += 1
             self.selectedChoices.removeAll()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                 choicesToProcess.forEach { choice in
@@ -96,6 +93,8 @@ public class MemoryCoordinatorAssociateCategories: MemoryGameplayCoordinatorProt
     private let gameplay: NewGameplayAssociateCategories
     private let rawChoices: [CoordinatorAssociateCategoriesChoiceModel]
 
+    private var completionData: ExerciseCompletionData = .init()
+
     private var selectedChoices: [CoordinatorAssociateCategoriesChoiceModel] = []
 
     private func updateChoiceState(for choiceID: UUID, to state: State) {
@@ -106,7 +105,7 @@ public class MemoryCoordinatorAssociateCategories: MemoryGameplayCoordinatorProt
                               size: self.uiModel.value.choiceSize(for: self.rawChoices.count),
                               state: state)
 
-        self.uiModel.value.choices[index] = MemoryUIChoiceModel(id: choiceID, view: view, disabled: state == .correct)
+        self.uiModel.value.choices[index] = MemoryUIChoiceModel(id: choiceID, view: view, disabled: state != .idle)
     }
 }
 
@@ -145,6 +144,59 @@ extension MemoryCoordinatorAssociateCategories {
         private let size: CGFloat
         private let type: ChoiceType
         private let state: State
+    }
+}
+
+extension MemoryCoordinatorAssociateCategories: ExerciseEvaluationStrategy {
+    public func evaluate(in context: EvaluationContext = .practice) -> ExerciseEvaluationLevel {
+        let numberOfTrials = self.completionData.numberOfTrials
+        let numberOfAllowedTrials = self.getNumberOfAllowedTrials(from: self.getEvaluationLUT(for: context))
+
+        let trialsPercentage = Double(numberOfAllowedTrials) / Double(numberOfTrials) * 100.0
+
+        switch trialsPercentage {
+            case 90...:
+                return .excellent
+            case 80..<90:
+                return .good
+            case 70..<80:
+                return .average
+            case 60..<70:
+                return .belowAverage
+            default:
+                return .fail
+        }
+    }
+
+    private func getEvaluationLUT(for context: EvaluationContext) -> EvaluationLUT {
+        switch context {
+            default:
+                [
+                    2: [1: 1],
+                    4: [1: 1, 2: 4],
+                    6: [1: 1, 2: 6, 3: 6],
+                    8: [1: 1, 2: 8, 4: 8],
+                ]
+        }
+    }
+
+    private func getNumberOfAllowedTrials(from table: EvaluationLUT) -> Int {
+        let numberOfRightAnswers = self.getNumberOfRightAnswers(choices: self.rawChoices)
+        let numberOfChoices = self.rawChoices.count
+
+        guard let number = table[numberOfChoices]?[numberOfRightAnswers] else {
+            logGEK.error("No number of allowed trials found for \(numberOfChoices) choices and \(numberOfRightAnswers) right answers")
+            fatalError("No number of allowed trials found for \(numberOfChoices) choices and \(numberOfRightAnswers) right answers")
+        }
+
+        return number
+    }
+
+    func getNumberOfRightAnswers(choices: [CoordinatorAssociateCategoriesChoiceModel]) -> Int {
+        let numberOfCategories = Set(choices.map(\.category)).count
+        let numberOfCategorizableChoices = choices.map { $0.category != .none }.count
+
+        return numberOfCategorizableChoices - numberOfCategories
     }
 }
 
