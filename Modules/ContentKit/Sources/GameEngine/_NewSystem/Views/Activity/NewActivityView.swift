@@ -20,7 +20,7 @@ public struct NewActivityView: View {
     public var body: some View {
         ZStack(alignment: .bottomTrailing) {
             VStack(spacing: 10) {
-                if self.activityCoordinator.numberOfExercisesInCurrentGroup > 1 {
+                if self.activityCoordinator.numberOfExercisesInCurrentGroup > 1 || self.activityCoordinator.numberOfGroups > 1 {
                     VStack {
                         NewActivityProgressBar(coordinator: self.activityCoordinator)
                     }
