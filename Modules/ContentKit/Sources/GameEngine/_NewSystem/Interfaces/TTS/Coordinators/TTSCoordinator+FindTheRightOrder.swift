@@ -166,6 +166,53 @@ extension TTSCoordinatorFindTheRightOrder {
     }
 }
 
+extension TTSCoordinatorFindTheRightOrder: ExerciseEvaluationStrategy {
+    public func evaluate(in context: EvaluationContext = .practice) -> ExerciseEvaluationLevel {
+        let numberOfTrials = self.completionData.numberOfTrials
+        let numberOfAllowedTrials = self.getNumberOfAllowedTrials(from: self.getEvaluationLUT(for: context))
+
+        let trialsPercentage = Double(numberOfAllowedTrials) / Double(numberOfTrials) * 100.0
+
+        switch trialsPercentage {
+            case 90...:
+                return .excellent
+            case 80..<90:
+                return .good
+            case 70..<80:
+                return .average
+            case 60..<70:
+                return .belowAverage
+            default:
+                return .fail
+        }
+    }
+
+    private func getEvaluationLUT(for context: EvaluationContext) -> EvaluationLUT {
+        switch context {
+            default:
+                [
+                    1: [1: 1],
+                    2: [2: 1],
+                    3: [3: 1],
+                    4: [4: 2],
+                    5: [5: 2],
+                    6: [6: 2],
+                ]
+        }
+    }
+
+    private func getNumberOfAllowedTrials(from table: EvaluationLUT) -> Int {
+        let numberOfChoices = self.rawChoices.count
+
+        guard let number = table[numberOfChoices]?[numberOfChoices] else {
+            logGEK.error("No number of allowed trials found for \(numberOfChoices) choices")
+            fatalError("No number of allowed trials found for \(numberOfChoices) choices")
+        }
+
+        return number
+    }
+}
+
 #Preview {
     let kDefaultChoices: [CoordinatorFindTheRightOrderChoiceModel] = [
         .init(value: "Choice 3", alreadyOrdered: false),

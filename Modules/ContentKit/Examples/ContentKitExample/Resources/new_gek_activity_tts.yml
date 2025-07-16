@@ -154,3 +154,32 @@ exercises_payload:
               - value: 🎉
                 type: emoji
                 category: catB
+
+    # MARK: - TTS + openPlay
+    - group:
+      - instructions:
+        - locale: fr_FR
+          value: "Choisis les animaux que tu aimes"
+        - locale: en_US
+          value: "Select animals that you love"
+        interface: touchToSelect
+        gameplay: openPlay
+        options:
+          shuffle_choices: true
+          validation:
+            type: manual
+            minimumToSelect: 2
+        payload:
+          choices:
+            - value: 🐯
+              type: emoji
+            - value: 🐹
+              type: emoji
+            - value: 🐷
+              type: emoji
+            - value: 🐱
+              type: emoji
+            - value: 🐰
+              type: emoji
+            - value: 🐮
+              type: emoji

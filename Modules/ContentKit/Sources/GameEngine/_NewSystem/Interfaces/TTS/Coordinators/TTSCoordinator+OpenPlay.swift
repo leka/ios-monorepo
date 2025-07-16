@@ -45,7 +45,7 @@ public class TTSCoordinatorOpenPlay: TTSGameplayCoordinatorProtocol {
     public private(set) var uiModel = CurrentValueSubject<TTSUIModel, Never>(.zero)
     public private(set) var validationState = CurrentValueSubject<ValidationState, Never>(.disabled)
 
-    public var didComplete: PassthroughSubject<Void, Never> = .init()
+    public var didComplete: PassthroughSubject<ExerciseCompletionData?, Never> = .init()
 
     public func processUserSelection(choiceID: UUID) {
         var choiceState: State {
@@ -59,6 +59,8 @@ public class TTSCoordinatorOpenPlay: TTSGameplayCoordinatorProtocol {
         }
 
         guard let index = self.uiModel.value.choices.firstIndex(where: { $0.id == choiceID }) else { return }
+
+        self.completionData.numberOfTrials += 1
 
         let view = ChoiceView(value: self.rawChoices[index].value,
                               type: self.rawChoices[index].type,
@@ -93,13 +95,16 @@ public class TTSCoordinatorOpenPlay: TTSGameplayCoordinatorProtocol {
         // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             logGEK.debug("Exercise completed")
-            self.didComplete.send()
+            self.didComplete.send(self.completionData)
         }
     }
 
     // MARK: Private
 
     private let rawChoices: [CoordinatorOpenPlayChoiceModel]
+
+    private var completionData: ExerciseCompletionData = .init()
+
     private let minimumToSelect: Int
     private let maximumToSelect: Int
     private var currentChoices: [UUID] = []
@@ -146,6 +151,12 @@ extension TTSCoordinatorOpenPlay {
         private let type: ChoiceType
         private let size: CGFloat
         private let state: State
+    }
+}
+
+extension TTSCoordinatorOpenPlay: ExerciseEvaluationStrategy {
+    public func evaluate(in _: EvaluationContext = .practice) -> ExerciseEvaluationLevel {
+        .notApplicable
     }
 }
 
