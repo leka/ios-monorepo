@@ -97,6 +97,7 @@ struct MainView: View {
                                 CategoryLabel(category: .allTemplateActivities)
                                 CategoryLabel(category: .allDraftActivities)
                                 CategoryLabel(category: .allPublishedActivities)
+                                CategoryLabel(category: .allNewActivities)
                                 CategoryLabel(category: .rasterImageList)
                                 CategoryLabel(category: .vectorImageList)
                                 CategoryLabel(category: .news)
@@ -220,6 +221,9 @@ struct MainView: View {
 
                     case .allTemplateActivities:
                         AllTemplateActivitiesView()
+
+                    case .allNewActivities:
+                        AllNewActivities()
 
                     case .rasterImageList:
                         DebugImageListView(images: ContentKit.listRasterImages())

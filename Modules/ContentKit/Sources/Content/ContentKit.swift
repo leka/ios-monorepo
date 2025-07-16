@@ -17,6 +17,7 @@ public enum ContentKit {
     public static let allPublishedActivities: [String: Activity] = ContentKit.listAllPublishedActivities() ?? [:]
     public static let allDraftActivities: [String: Activity] = ContentKit.listAllDraftActivities() ?? [:]
     public static let allTemplateActivities: [String: Activity] = ContentKit.listAllTemplateActivities() ?? [:]
+    public static let allNewActivities: [String: NewActivity] = ContentKit.listAllNewActivities() ?? [:]
     public static let allCurriculums: [String: Curriculum] = ContentKit.listCurriculums() ?? [:]
     public static let allPublishedCurriculums: [String: Curriculum] = ContentKit.listAllPublishedCurriculums() ?? [:]
     public static let allDraftCurriculums: [String: Curriculum] = ContentKit.listAllDraftCurriculums() ?? [:]
@@ -120,6 +121,27 @@ public enum ContentKit {
             } catch {
                 logCK.error("Error decoding file: \(file) with error:\n\(error)")
             }
+        }
+
+        return activities
+    }
+
+    private static func listAllNewActivities() -> [String: NewActivity]? {
+        let bundle = Bundle.module
+        let files = bundle.paths(forResourcesOfType: "new_activity.yml", inDirectory: nil)
+
+        var activities: [String: NewActivity] = [:]
+
+        for file in files {
+            let data = try? String(contentsOfFile: file, encoding: .utf8)
+
+            guard let data else {
+                logCK.error("Error reading file: \(file)")
+                continue
+            }
+
+            let activity = NewActivity(yaml: data)!
+            activities[activity.id] = activity
         }
 
         return activities

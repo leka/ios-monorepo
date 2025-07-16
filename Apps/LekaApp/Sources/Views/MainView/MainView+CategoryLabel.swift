@@ -99,6 +99,10 @@ extension MainView {
                     self.title = "Template Activities"
                     self.systemImage = "list.bullet.below.rectangle"
 
+                case .allNewActivities:
+                    self.title = "New Activities"
+                    self.systemImage = "sparkles"
+
                 case .rasterImageList:
                     self.title = "Raster Image List"
                     self.systemImage = "photo.circle"
