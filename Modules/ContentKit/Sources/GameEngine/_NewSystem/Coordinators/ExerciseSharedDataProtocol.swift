@@ -5,5 +5,5 @@
 import Combine
 
 protocol ExerciseSharedDataProtocol {
-    var didComplete: PassthroughSubject<Void, Never> { get }
+    var didComplete: PassthroughSubject<ExerciseCompletionData?, Never> { get }
 }
