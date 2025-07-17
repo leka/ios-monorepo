@@ -242,7 +242,32 @@ public class AuthManager {
 
         log.info("🔗️ User is logged in.")
         self.authenticationState.send(.loggedIn)
-        self.emailVerificationState.send(user.isEmailVerified)
-        self.analyticsEvent.send(.didDetectLoggedInState(uid: user.uid))
+
+        user.reload { [weak self] error in
+            guard let self else { return }
+
+            if let nsError = error as NSError? {
+                if nsError.code == AuthErrorCode.userTokenExpired.rawValue ||
+                    nsError.code == AuthErrorCode.userNotFound.rawValue
+                {
+                    log.warning("⚠️ User session is no longer valid. Forcing logout.")
+                    self.signOut()
+                    return
+                } else {
+                    log.error("Error reloading user: \(nsError.localizedDescription)")
+                    self.authenticationError.send(nsError)
+                    return
+                }
+            }
+
+            guard let refreshedUser = self.auth.currentUser else {
+                log.warning("⚠️ User session was invalidated silently. Forcing logout.")
+                self.signOut()
+                return
+            }
+
+            self.emailVerificationState.send(refreshedUser.isEmailVerified)
+            self.analyticsEvent.send(.didDetectLoggedInState(uid: refreshedUser.uid))
+        }
     }
 }
