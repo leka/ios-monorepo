@@ -9,14 +9,20 @@ import Foundation
 public struct CoordinatorFindTheRightOrderChoiceModel: Identifiable, Equatable {
     // MARK: Lifecycle
 
-    public init(id: UUID = UUID(), value: String, type: ChoiceType = .text, alreadyOrdered: Bool = false) {
+    public init(id: UUID = UUID(), value: String, type: ChoiceType = .text, state: State = .unanswered) {
         self.id = id
         self.value = value
         self.type = type
-        self.alreadyOrdered = alreadyOrdered
+        self.state = state
     }
 
     // MARK: Public
+
+    public enum State: String, Codable {
+        case unanswered
+        case hint
+        case answered
+    }
 
     public let id: UUID
 
@@ -26,7 +32,7 @@ public struct CoordinatorFindTheRightOrderChoiceModel: Identifiable, Equatable {
 
     let value: String
     let type: ChoiceType
-    let alreadyOrdered: Bool
+    let state: State
 }
 
 // MARK: Decodable
@@ -37,7 +43,7 @@ extension CoordinatorFindTheRightOrderChoiceModel: Decodable {
 
         self.value = try container.decode(String.self, forKey: .value)
         self.type = try container.decodeIfPresent(ChoiceType.self, forKey: .type) ?? .text
-        self.alreadyOrdered = try container.decodeIfPresent(Bool.self, forKey: .alreadyOrdered) ?? false
+        self.state = try container.decodeIfPresent(State.self, forKey: .state) ?? .unanswered
 
         self.id = UUID()
     }
@@ -45,6 +51,6 @@ extension CoordinatorFindTheRightOrderChoiceModel: Decodable {
     enum CodingKeys: String, CodingKey {
         case value
         case type
-        case alreadyOrdered = "already_ordered"
+        case state
     }
 }
