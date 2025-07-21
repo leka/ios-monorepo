@@ -31,12 +31,33 @@ public class DnDDropZoneNode: SKSpriteNode {
         self.position = position
     }
 
-    init(node: DnDAnswerNode, position: CGPoint = .zero) {
+    init(node: DnDAnswerNode, position: CGPoint = .zero, showTransparency: Bool = false) {
         self.id = node.id
-        let image = DnDDropZoneNode.createRoundedRectImage(size: node.size)
-        let texture = SKTexture(image: image)
-        super.init(texture: texture, color: .clear, size: node.size)
+
+        let backgroundImage = DnDDropZoneNode.createRoundedRectImage(size: node.size)
+        let backgroundTexture = SKTexture(image: backgroundImage)
+
+        super.init(texture: backgroundTexture, color: .clear, size: node.size)
+        self.name = node.name
         self.position = position
+        if showTransparency, let value = node.name {
+            let overlayTexture: SKTexture = switch node.type {
+                case .image:
+                    Self.createImageTexture(value: value, size: node.size)
+                case .sfsymbol:
+                    Self.createSFSymbolTexture(value: value, size: node.size)
+                case .text:
+                    Self.createTextTexture(value: value, size: node.size)
+                case .emoji:
+                    Self.createEmojiTexture(value: value, size: node.size)
+                case .color:
+                    Self.createColorTexture(value: value, size: node.size)
+            }
+            let overlayNode = SKSpriteNode(texture: overlayTexture)
+            overlayNode.alpha = 0.3
+            overlayNode.size = node.size
+            self.addChild(overlayNode)
+        }
     }
 
     @available(*, unavailable)
@@ -133,7 +154,7 @@ extension DnDDropZoneNode {
                 .paragraphStyle: paragraphStyle,
             ]
 
-            let textRect = rect.offsetBy(dx: 0, dy: (rect.height - size.height * 0.8) / 2)
+            let textRect = rect.offsetBy(dx: 0, dy: (rect.height - size.height) / 2)
             (value as NSString).draw(in: textRect, withAttributes: attributes)
         }
 
