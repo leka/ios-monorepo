@@ -27,8 +27,8 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
             )
         }
 
-        self.uiDropZones = self.uiModel.value.choices.map { node in
-            DnDDropZoneNode(node: node)
+        self.uiDropZones = self.uiModel.value.choices.enumerated().map { index, node in
+            DnDDropZoneNode(node: node, showTransparency: choices[index].state == .hint)
         }
 
         self.validationState.value = (options.validation == .manual) ? .disabled : .hidden
@@ -55,7 +55,7 @@ public class DnDOneToOneCoordinatorFindTheRightOrder: DnDOneToOneGameplayCoordin
 
     public func setAlreadyOrderedNodes() {
         self.rawChoices.forEach { choice in
-            if choice.alreadyOrdered {
+            if choice.state == .answered {
                 guard let index = self.uiDropZones.firstIndex(where: { $0.id == choice.id }) else { return }
                 self.updateChoiceState(for: choice.id, to: .correct(order: index))
                 self.currentOrderedChoices[index] = choice.id
