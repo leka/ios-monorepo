@@ -215,12 +215,12 @@ extension TTSCoordinatorFindTheRightOrder: ExerciseEvaluationStrategy {
 
 #Preview {
     let kDefaultChoices: [CoordinatorFindTheRightOrderChoiceModel] = [
-        .init(value: "Choice 3", alreadyOrdered: false),
-        .init(value: "Choice 2", alreadyOrdered: false),
-        .init(value: "Choice 5", alreadyOrdered: true),
-        .init(value: "Choice 1", alreadyOrdered: false),
-        .init(value: "Choice 6", alreadyOrdered: false),
-        .init(value: "Choice 4", alreadyOrdered: false),
+        .init(value: "Choice 3"),
+        .init(value: "Choice 2"),
+        .init(value: "Choice 5"),
+        .init(value: "Choice 1"),
+        .init(value: "Choice 6"),
+        .init(value: "Choice 4"),
     ]
 
     let coordinator = TTSCoordinatorFindTheRightOrder(choices: kDefaultChoices)

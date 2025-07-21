@@ -76,7 +76,7 @@ exercises_payload:
             choices:
               - value: "1"
                 type: text
-                already_ordered: true
+                state: hint
               - value: "2"
                 type: text
               - value: "3"
@@ -85,6 +85,6 @@ exercises_payload:
                 type: text
               - value: "5"
                 type: text
-                already_ordered: true
+                state: answered
               - value: "6"
                 type: text
