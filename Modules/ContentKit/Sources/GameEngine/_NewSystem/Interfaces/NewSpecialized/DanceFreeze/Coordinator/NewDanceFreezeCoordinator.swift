@@ -23,6 +23,8 @@ public class NewDanceFreezeCoordinator: ExerciseSharedDataProtocol {
     public private(set) var progress = CurrentValueSubject<CGFloat, Never>(0.0)
     public private(set) var isDancing = CurrentValueSubject<Bool, Never>(false)
 
+    public var didComplete: PassthroughSubject<ExerciseCompletionData?, Never> = .init()
+
     public func setup(audio: AudioManager.AudioType, isAuto: Bool) {
         if self.audioData != audio {
             self.audioData = audio
@@ -72,15 +74,13 @@ public class NewDanceFreezeCoordinator: ExerciseSharedDataProtocol {
 
     // MARK: Internal
 
-    var didComplete: PassthroughSubject<Void, Never> = .init()
-
     let songs: [DanceFreezeSong]
 
     func complete() {
         // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             logGEK.debug("Exercise completed")
-            self.didComplete.send()
+            self.didComplete.send(self.completionData)
         }
         self.isDancing.send(false)
         self.isComplete = true
@@ -89,6 +89,9 @@ public class NewDanceFreezeCoordinator: ExerciseSharedDataProtocol {
     }
 
     // MARK: Private
+
+    // TODO: (@ladislas, @HPezz) Add completion data for selected music for instance
+    private var completionData: ExerciseCompletionData = .init()
 
     private var robotManager = DanceFreezeRobotManager()
     private var audioManager: AudioManager = .shared
@@ -160,6 +163,14 @@ public class NewDanceFreezeCoordinator: ExerciseSharedDataProtocol {
         DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
             self.robotDance()
         }
+    }
+}
+
+// MARK: ExerciseEvaluationStrategy
+
+extension NewDanceFreezeCoordinator: ExerciseEvaluationStrategy {
+    public func evaluate(in _: EvaluationContext = .practice) -> ExerciseEvaluationLevel {
+        .notApplicable
     }
 }
 

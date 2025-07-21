@@ -1,0 +1,20 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: B02C20751EE843B9A3BF6844DCA2A737
+name: Super Simon
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Joue les couleurs de Leka dans le même ordre
+            - locale: en_US
+              value: Play Leka's colors in the same order
+          interface: superSimon
+          payload:
+            level: medium

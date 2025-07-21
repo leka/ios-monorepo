@@ -39,7 +39,7 @@ class NewMelodyCoordinator: ExerciseSharedDataProtocol {
     var currentNoteNumber: MIDINoteNumber = 0
     let tileColors: [Robot.Color] = [.pink, .red, .orange, .yellow, .green, .lightBlue, .blue, .purple]
 
-    var didComplete: PassthroughSubject<Void, Never> = .init()
+    var didComplete: PassthroughSubject<ExerciseCompletionData?, Never> = .init()
 
     func setupMelody(midiRecording: MidiRecordingPlayerSong) {
         guard self.selectedSong != midiRecording else { return }
@@ -110,7 +110,7 @@ class NewMelodyCoordinator: ExerciseSharedDataProtocol {
                         // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             logGEK.debug("Exercise completed")
-                            self.didComplete.send()
+                            self.didComplete.send(self.completionData)
                         }
                         self.isMelodyPlaying.send(false)
                         self.showPlayButton.send(false)
@@ -124,6 +124,9 @@ class NewMelodyCoordinator: ExerciseSharedDataProtocol {
     }
 
     // MARK: Private
+
+    // TODO: (@ladislas, @HPezz) Add completion data for selected music for instance
+    private var completionData: ExerciseCompletionData = .init()
 
     private let kTempo: Double = 100
     private let kDefaultOctave: UInt8 = 2
@@ -166,6 +169,14 @@ class NewMelodyCoordinator: ExerciseSharedDataProtocol {
         }
 
         return Array(uniqueDict.keys).sorted()
+    }
+}
+
+// MARK: ExerciseEvaluationStrategy
+
+extension NewMelodyCoordinator: ExerciseEvaluationStrategy {
+    public func evaluate(in _: EvaluationContext = .practice) -> ExerciseEvaluationLevel {
+        .notApplicable
     }
 }
 

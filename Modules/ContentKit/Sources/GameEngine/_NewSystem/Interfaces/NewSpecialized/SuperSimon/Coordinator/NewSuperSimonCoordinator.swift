@@ -83,24 +83,9 @@ class NewSuperSimonCoordinator: ExerciseSharedDataProtocol {
 
     // MARK: Internal
 
-    var didComplete: PassthroughSubject<Void, Never> = .init()
+    var didComplete: PassthroughSubject<ExerciseCompletionData?, Never> = .init()
 
     var gameState: CurrentValueSubject<SuperSimonGameState, Never> = .init(.showingColorSequence)
-
-    let completePaletteColorChoice: [String] = ["red", "blue", "green", "yellow", "purple", "orange"]
-    let availablePaletteColorChoice: [String]
-
-    var completeColorSequence: [CoordinatorSuperSimonChoiceModel] = []
-    var currentColorSequence: [CoordinatorSuperSimonChoiceModel] = []
-
-    let rawChoices: [CoordinatorSuperSimonChoiceModel]
-    var sequenceIndex: Int = 0
-    let sequenceLength = 6
-
-    let robot = Robot.shared
-    let player: MIDIPlayer = .init(instrument: .xylophone)
-
-    var workItem: DispatchWorkItem?
 
     func generateColorSequence() {
         for _ in 1...self.sequenceLength {
@@ -127,7 +112,7 @@ class NewSuperSimonCoordinator: ExerciseSharedDataProtocol {
             // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 logGEK.debug("Exercise completed")
-                self.didComplete.send()
+                self.didComplete.send(self.completionData)
             }
         } else if self.sequenceIndex == self.currentColorSequence.count {
             self.startNextSequence()
@@ -173,6 +158,27 @@ class NewSuperSimonCoordinator: ExerciseSharedDataProtocol {
             }
         }
     }
+
+    // MARK: Private
+
+    private let completePaletteColorChoice: [String] = ["red", "blue", "green", "yellow", "purple", "orange"]
+    private let availablePaletteColorChoice: [String]
+
+    private var completeColorSequence: [CoordinatorSuperSimonChoiceModel] = []
+    private var currentColorSequence: [CoordinatorSuperSimonChoiceModel] = []
+
+    private let rawChoices: [CoordinatorSuperSimonChoiceModel]
+
+    // TODO: (@ladislas, @HPezz) Implement completion data notation for super simon
+    private var completionData: ExerciseCompletionData = .init()
+
+    private var sequenceIndex: Int = 0
+    private let sequenceLength = 6
+
+    private let robot = Robot.shared
+    private let player: MIDIPlayer = .init(instrument: .xylophone)
+
+    private var workItem: DispatchWorkItem?
 }
 
 extension NewSuperSimonCoordinator {
@@ -214,5 +220,11 @@ extension NewSuperSimonCoordinator {
         private let type: ChoiceType
         private let size: CGFloat
         private let state: State
+    }
+}
+
+extension NewSuperSimonCoordinator: ExerciseEvaluationStrategy {
+    public func evaluate(in _: EvaluationContext = .practice) -> ExerciseEvaluationLevel {
+        .notApplicable
     }
 }
