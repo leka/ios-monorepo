@@ -50,8 +50,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk",
       "state" : {
-        "revision" : "45d327fcbe7793747295346c2209ad419bdead74",
-        "version" : "11.14.0"
+        "revision" : "4e62da1e5e6baf61674d3f5ae23d6d60c19f9c4a",
+        "version" : "12.0.0"
       }
     },
     {
@@ -68,8 +68,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/googleads/google-ads-on-device-conversion-ios-sdk",
       "state" : {
-        "revision" : "70a7857886f065a40486a7607268781c49db04ae",
-        "version" : "2.0.0"
+        "revision" : "428d8bb138e00f9a3f4f61cc6cd8863607524f65",
+        "version" : "2.1.0"
       }
     },
     {
@@ -77,8 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleAppMeasurement.git",
       "state" : {
-        "revision" : "406f72d0d5e9445fd1cf782db3e9e338cee2bed4",
-        "version" : "11.14.0"
+        "revision" : "63c18311aac00032f15f5ce431c9e83ada96c386",
+        "version" : "12.0.0"
       }
     },
     {
@@ -230,8 +230,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mxcl/Version",
       "state" : {
-        "revision" : "303a0f916772545e1e8667d3104f83be708a723c",
-        "version" : "2.1.0"
+        "revision" : "67ce582bb9de70e1eb2ee41fd71aad3b5f86d97b",
+        "version" : "2.2.0"
       }
     },
     {
@@ -239,8 +239,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/jpsim/Yams",
       "state" : {
-        "revision" : "9281f8c99aff4f4a55dce22ae29b1181c935caa5",
-        "version" : "6.0.0"
+        "revision" : "f4d4d6827d36092d151ad7f6fef1991c1b7192f6",
+        "version" : "6.0.2"
       }
     },
     {
@@ -248,8 +248,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SvenTiigi/YouTubePlayerKit",
       "state" : {
-        "revision" : "29ef4217810e15ce8c7fce6608a1eecd0935b621",
-        "version" : "2.0.0"
+        "revision" : "a0f3f0996c2d752faa654b69b82acaa444bed922",
+        "version" : "2.0.1"
       }
     }
   ],
