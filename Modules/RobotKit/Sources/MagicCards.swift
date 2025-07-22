@@ -93,6 +93,19 @@ public enum MagicCard: UInt16, CaseIterable {
         }
         self = match
     }
+
+    // MARK: Public
+
+    public var imageAssetName: String {
+        let language = Locale.current.language.languageCode?.identifier == "fr" ? "FR" : "EN"
+        return "\(self.rawName)_\(language)"
+    }
+
+    // MARK: Private
+
+    private var rawName: String {
+        String(describing: self)
+    }
 }
 
 // swiftlint:enable identifier_name
