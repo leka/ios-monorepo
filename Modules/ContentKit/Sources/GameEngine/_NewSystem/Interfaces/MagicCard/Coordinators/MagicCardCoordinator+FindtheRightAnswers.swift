@@ -18,7 +18,14 @@ public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinat
             choices: choices
                 .map { .init(id: $0.id, isRightAnswer: $0.isRightAnswer)
                 })
-        self.action = action
+
+        self.uiModel.value.action = action
+        self.uiModel.value.choices = self.rawChoices.map { choice in
+            let view = ChoiceView(card: choice.value,
+                                  size: self.uiModel.value.choiceSize(for: self.gameplay.choices.count),
+                                  state: .idle)
+            return MagicCardUIChoiceModel(id: choice.id, view: view)
+        }
     }
 
     public convenience init(model: MagicCardCoordinatorFindTheRightAnswersModel, action: NewExerciseAction? = nil) {
@@ -27,24 +34,38 @@ public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinat
 
     // MARK: Public
 
-    public var action: NewExerciseAction?
+    public private(set) var uiModel = CurrentValueSubject<MagicCardUIModel, Never>(.zero)
+
     public var didComplete: PassthroughSubject<ExerciseCompletionData?, Never> = .init()
 
     public func enableMagicCardDetection() {
         self.robot.magicCard
             .receive(on: DispatchQueue.main)
             .sink { [weak self] card in
-                if self!.gameplay.isCompleted.value { return }
-                self!.processUserSelection(magicCard: card)
+                guard let self,
+                      !self.gameplay.isCompleted.value,
+                      let choiceID = self.rawChoices.first(where: { $0.value == card })?.id else { return }
+                self.processUserSelection(cardID: choiceID)
             }
             .store(in: &self.cancellables)
     }
 
-    public func validateCorrectAnswer() {
-        // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            logGEK.debug("Exercise completed")
-            self.didComplete.send(self.completionData)
+    public func processUserSelection(cardID: UUID) {
+        // TODO: (@HPezz) - Implement architecture that counts only once a card
+        self.completionData.numberOfTrials += 1
+
+        let results = self.gameplay.process(choiceIDs: [cardID])
+
+        results.forEach { result in
+            self.updateChoiceState(for: result.id, to: result.isCorrect ? .correct : .wrong)
+        }
+
+        if self.gameplay.isCompleted.value {
+            // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                logGEK.debug("Exercise completed")
+                self.didComplete.send(self.completionData)
+            }
         }
     }
 
@@ -58,17 +79,55 @@ public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinat
 
     private var completionData: ExerciseCompletionData = .init()
 
-    private func processUserSelection(magicCard: MagicCard) {
-        guard let choiceID = self.rawChoices.first(where: { $0.value == magicCard }) else { return }
+    private func updateChoiceState(for choiceID: UUID, to state: State) {
+        guard let index = self.rawChoices.firstIndex(where: { $0.id == choiceID }) else { return }
 
-        // TODO: (@HPezz) - Implement architecture that counts only once a card
-        self.completionData.numberOfTrials += 1
+        let view = ChoiceView(card: self.rawChoices[index].value,
+                              size: self.uiModel.value.choiceSize(for: self.rawChoices.count),
+                              state: state)
 
-        _ = self.gameplay.process(choiceIDs: [choiceID.id])
+        let isChoiceDisabled = (state == .correct || state == .wrong)
+        self.uiModel.value.choices[index] = MagicCardUIChoiceModel(id: choiceID, view: view, disabled: isChoiceDisabled)
+    }
+}
 
-        if self.gameplay.isCompleted.value {
-            self.validateCorrectAnswer()
+extension MagicCardCoordinatorFindTheRightAnswers {
+    enum State {
+        case idle
+        case selected
+        case correct
+        case wrong
+    }
+
+    struct ChoiceView: View {
+        // MARK: Lifecycle
+
+        init(card: MagicCard, size: CGFloat, state: State) {
+            self.card = card
+            self.size = size
+            self.state = state
         }
+
+        // MARK: Internal
+
+        var body: some View {
+            switch self.state {
+                case .correct:
+                    MagicCardChoiceViewDefaultCorrect(magicCard: self.card, size: self.size)
+                case .wrong:
+                    MagicCardChoiceViewDefaultWrong(magicCard: self.card, size: self.size)
+                case .selected:
+                    MagicCardChoiceViewDefaultSelected(magicCard: self.card, size: self.size)
+                case .idle:
+                    MagicCardChoiceViewDefaultIdle(magicCard: self.card, size: self.size)
+            }
+        }
+
+        // MARK: Private
+
+        private let card: MagicCard
+        private let size: CGFloat
+        private let state: State
     }
 }
 
