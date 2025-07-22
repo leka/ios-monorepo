@@ -74,17 +74,111 @@ exercises_payload:
               type: manual
           payload:
             choices:
-              - value: "1"
+              - value: 1.circle
+                type: sfsymbol
+                state: hint
+              - value: 2.circle
+                type: sfsymbol
+              - value: 3.circle
+                type: sfsymbol
+              - value: 4.circle
+                type: sfsymbol
+              - value: 5.circle
+                type: sfsymbol
+                state: answered
+              - value: 6.circle
+                type: sfsymbol
+
+        - instructions:
+          - locale: fr_FR
+            value: "Met les choix dans le bon ordre"
+          - locale: en_US
+            value: "Find the right order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          payload:
+            choices:
+              - value: sequencing_dressing_up_1
+                type: image
+                state: hint
+              - value: sequencing_dressing_up_2
+                type: image
+                state: unanswered
+              - value: sequencing_dressing_up_3
+                type: image
+                state: unanswered
+              - value: sequencing_dressing_up_4
+                type: image
+                state: answered
+              - value: sequencing_dressing_up_5
+                type: image
+                state: unanswered
+
+        - instructions:
+          - locale: fr_FR
+            value: "Met les choix dans le bon ordre"
+          - locale: en_US
+            value: "Find the right order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: One
                 type: text
-                already_ordered: true
-              - value: "2"
+                state: hint
+              - value: Two
                 type: text
-              - value: "3"
+              - value: Three
                 type: text
-              - value: "4"
+              - value: Four
                 type: text
-              - value: "5"
+                state: answered
+              - value: Five
                 type: text
-                already_ordered: true
-              - value: "6"
-                type: text
+
+        - instructions:
+          - locale: fr_FR
+            value: "Met les choix dans le bon ordre"
+          - locale: en_US
+            value: "Find the right order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: 🏊
+                type: emoji
+                state: hint
+              - value: 🚴
+                type: emoji
+                state: hint
+              - value: 🏃‍♂️
+                type: emoji
+                state: hint
+
+        - instructions:
+          - locale: fr_FR
+            value: "Retrouvez l'ordre Bleu, Jaune, Rouge et Violet"
+          - locale: en_US
+            value: "Find the order Blue, Yellow, Red and Purple "
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: blue
+                type: color
+                state: hint
+              - value: yellow
+                type: color
+                state: hint
+              - value: red
+                type: color
+                state: hint
+              - value: purple
+                type: color
+                state: hint
