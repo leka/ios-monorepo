@@ -1106,24 +1106,6 @@
                 }
             }
         },
-        "game_engine_kit.magic_card_view.reinforcer": {
-            "comment": "The button label to validate a correct answer",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "\u2705 Validate & Play Reinforcer \ud83c\udf89"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "\u2705 Valider & Lancer le Renfor\u00e7ateur \ud83c\udf89"
-                    }
-                }
-            }
-        },
         "game_engine_kit.melody_song_selector_view.confirm_button_label": {
             "comment": "Confirm button label for song selector sheet in DanceFreeze",
             "extractionState": "extracted_with_value",
