@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 uuid: A9C39DD0204A4342913731391AFAA453
-name: DnDWithZones
+name: DnDWithZones_Mixed
 exercises_payload:
   options:
     shuffle_exercises: false

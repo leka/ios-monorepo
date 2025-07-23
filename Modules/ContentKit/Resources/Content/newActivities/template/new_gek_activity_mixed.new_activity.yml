@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 uuid: BFBCFFBF7D8543FA8EBC08D93EA92A84
-name: Mixed
+name: Generalized_Mixed
 exercises_payload:
   options:
     shuffle_exercises: false

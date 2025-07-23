@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 uuid: DC590F29942C4487A21B681D25CC4DF9
-name: Dance Freeze
+name: Specialized_DanceFreeze
 exercises_payload:
   options:
     shuffle_exercises: false

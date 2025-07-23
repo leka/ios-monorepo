@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 uuid: B02C20751EE843B9A3BF6844DCA2A737
-name: Super Simon
+name: Specialized_SuperSimon
 exercises_payload:
   options:
     shuffle_exercises: false

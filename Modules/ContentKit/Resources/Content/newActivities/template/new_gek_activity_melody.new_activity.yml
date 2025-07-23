@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 uuid: CE8DE3572E9643049A543CC06D1AF4CD
-name: Melody
+name: Specialized_Melody
 exercises_payload:
   options:
     shuffle_exercises: false
