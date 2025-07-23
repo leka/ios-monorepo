@@ -1,0 +1,225 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: DCFA0AD70106426481F7199F0B4FD723
+name: TTS_SFSymbol
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+    # MARK: - TTS + findTheRightAnswers
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: "Touche le soleil"
+            - locale: en_US
+              value: "Tap the sun"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          options:
+            shuffle_choices: true
+            validation:
+              type: automatic
+          payload:
+            choices:
+              - value: sun.max.fill
+                type: sfsymbol
+                is_right_answer: true
+        - instructions:
+            - locale: fr_FR
+              value: "Écoute puis touche la bonne météo"
+            - locale: en_US
+              value: "Listen then touch the correct weather"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Ensoleillé"
+                - locale: en_US
+                  utterance: "Sunny"
+          options:
+            shuffle_choices: true
+            validation:
+              type: manual
+          payload:
+            choices:
+              - value: sun.max.fill
+                type: sfsymbol
+                is_right_answer: true
+              - value: cloud.drizzle.fill
+                type: sfsymbol
+        - instructions:
+            - locale: fr_FR
+              value: "Observe et trouve les bon fruits"
+            - locale: en_US
+              value: "Observe and find the correct fruits"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: sun.rain.fill
+          options:
+            shuffle_choices: true
+            validation:
+              type: automatic
+          payload:
+            choices:
+              - value: sun.rain.fill
+                type: sfsymbol
+                is_right_answer: true
+              - value: cloud.drizzle.fill
+                type: sfsymbol
+              - value: sun.rain.fill
+                type: sfsymbol
+                is_right_answer: true
+    # MARK: - TTS + findTheRightOrder
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: "Touche les chiffres dans le bon ordre"
+            - locale: en_US
+              value: "Put the numbers in the right order"
+          interface: touchToSelect
+          gameplay: findTheRightOrder
+          options:
+            shuffle_choices: true
+            validation:
+              type: automatic
+          payload:
+            choices:
+              - value: 1.circle.fill
+                type: sfsymbol
+              - value: 2.circle.fill
+                type: sfsymbol
+              - value: 3.circle.fill
+                type: sfsymbol
+              - value: 4.circle.fill
+                type: sfsymbol
+              - value: 5.circle.fill
+                type: sfsymbol
+        - instructions:
+            - locale: fr_FR
+              value: "Touche les chiffres dans le bon ordre"
+            - locale: en_US
+              value: "Put the numbers in the right order"
+          interface: touchToSelect
+          gameplay: findTheRightOrder
+          options:
+            shuffle_choices: true
+            validation:
+              type: manual
+          payload:
+            choices:
+              - value: 1.circle.fill
+                type: sfsymbol
+              - value: 2.circle.fill
+                type: sfsymbol
+              - value: 3.circle.fill
+                type: sfsymbol
+              - value: 4.circle.fill
+                type: sfsymbol
+              - value: 5.circle.fill
+                type: sfsymbol
+              - value: 6.circle.fill
+                type: sfsymbol
+
+    # MARK: - TTS + associateCategories
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: "Touche les symbols qui sont identiques"
+            - locale: en_US
+              value: "Tap the symbols that are the same"
+          interface: touchToSelect
+          gameplay: associateCategories
+          options:
+            shuffle_choices: true
+            validation:
+              type: automatic
+          payload:
+            choices:
+              - value: airplane
+                type: sfsymbol
+                category: catA
+              - value: airplane
+                type: sfsymbol
+                category: catA
+              - value: ferry.fill
+                type: sfsymbol
+                category: catB
+              - value: ferry.fill
+                type: sfsymbol
+                category: catB
+              - value: ferry.fill
+                type: sfsymbol
+                category: catB
+              - value: car.fill
+                type: sfsymbol
+        - instructions:
+            - locale: fr_FR
+              value: "Touche les sfsymbols qui sont identiques"
+            - locale: en_US
+              value: "Tap the sfsymbols that are the same"
+          interface: touchToSelect
+          gameplay: associateCategories
+          options:
+            shuffle_choices: true
+            validation:
+              type: manual
+          payload:
+            choices:
+              - value: airplane
+                type: sfsymbol
+                category: catA
+              - value: airplane
+                type: sfsymbol
+                category: catA
+              - value: ferry.fill
+                type: sfsymbol
+                category: catB
+              - value: ferry.fill
+                type: sfsymbol
+                category: catB
+              - value: airplane
+                type: sfsymbol
+                category: catA
+              - value: ferry.fill
+                type: sfsymbol
+                category: catB
+
+    # MARK: - TTS + openPlay
+    - group:
+      - instructions:
+        - locale: fr_FR
+          value: "Choisis au moins 2 véhicules que tu aimes"
+        - locale: en_US
+          value: "Select at least 2 vehicles that you love"
+        interface: touchToSelect
+        gameplay: openPlay
+        options:
+          shuffle_choices: true
+          validation:
+            type: manual
+            minimumToSelect: 2
+        payload:
+          choices:
+            - value: airplane
+              type: sfsymbol
+            - value: bicycle
+              type: sfsymbol
+            - value: bus
+              type: sfsymbol
+            - value: scooter
+              type: sfsymbol
+            - value: sailboat.fill
+              type: sfsymbol
+            - value: car.fill
+              type: sfsymbol
