@@ -1,0 +1,13 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 898C40234B1742F081021270501CFDB4
+name: Specialized_ColorMusicPad
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - interface: colorMusicPad

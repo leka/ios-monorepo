@@ -1,0 +1,18 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 2BEF9F1D778B46A996A32C8EA7955677
+name: Gamepad_ArrowAndColor
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - instructions:
+              - locale: fr_FR
+                value: Contrôle Leka avec la télécommande, fais-le se déplacer, changer de couleur ou lance le renforçateur de ton choix
+              - locale: en_US
+                value: Control Leka with the remote control, make him move, change color or throw the reinforcer of your choice
+          interface: gamepadArrowPadColorPad
