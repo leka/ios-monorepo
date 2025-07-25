@@ -70,7 +70,7 @@ public enum MagicCard: UInt16, CaseIterable {
     case vegetable_carrot_orange = 0x0032
     case vegetable_potato_yellow = 0x0033
     case vegetable_salad_green = 0x0034
-    case vegetable_mushroom_grey = 0x0035
+    case vegetable_mushroom_gray = 0x0035
     case fruit_strawberry_red = 0x0036
     case fruit_cherry_pink = 0x0037
     case fruit_apple_green = 0x0038
@@ -92,6 +92,19 @@ public enum MagicCard: UInt16, CaseIterable {
             return
         }
         self = match
+    }
+
+    // MARK: Public
+
+    public var imageAssetName: String {
+        let language = Locale.current.language.languageCode?.identifier == "fr" ? "FR" : "EN"
+        return "\(self.rawName)_\(language)"
+    }
+
+    // MARK: Private
+
+    private var rawName: String {
+        String(describing: self)
     }
 }
 
