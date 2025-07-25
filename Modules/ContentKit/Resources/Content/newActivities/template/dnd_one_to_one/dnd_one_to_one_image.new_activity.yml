@@ -1,0 +1,135 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 84C7738194114208847DB7354DB65187
+name: DnDOneToOne_Image
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - instructions:
+          - locale: fr_FR
+            value: "Place l'image dans la case en dessous"
+          - locale: en_US
+            value: "Put the image in the case below"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: pictograms-foods-fruits-apple_red-0101
+                type: image
+        - instructions:
+          - locale: fr_FR
+            value: "Classe ces animaux du plus petit au plus grand"
+          - locale: en_US
+            value: "Sort those animals from smallest to tallest"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: order_by_size_different_insects_ladybug
+                type: image
+              - value: order_by_size_different_animals_snail
+                type: image
+              - value: order_by_size_different_animals_squirrel
+                type: image
+              - value: order_by_size_different_animals_dog
+                type: image
+              - value: order_by_size_different_animals_cow
+                type: image
+              - value: order_by_size_different_animals_giraffe
+                type: image
+        - instructions:
+          - locale: fr_FR
+            value: "Classe ces animaux selon l'ordre de l'image"
+          - locale: en_US
+            value: "Sort those animals according to the arrow"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          options:
+            shuffle_choices: true
+          action:
+            type: ipad
+            value:
+              type: image
+              value: arrow.down.right
+          payload:
+            choices:
+              - value: order_by_size_different_animals_giraffe
+                type: image
+              - value: order_by_size_different_animals_cow
+                type: image
+              - value: order_by_size_different_animals_dog
+                type: image
+              - value: order_by_size_different_animals_squirrel
+                type: image
+              - value: order_by_size_different_animals_snail
+                type: image
+              - value: order_by_size_different_insects_ladybug
+                type: image
+        - instructions:
+          - locale: fr_FR
+            value: "Trie de votre fruit préféré au moins aimé"
+          - locale: en_US
+            value: "Sort from your most favorite fruit to your least favorite one"
+          interface: dragAndDropOneToOne
+          gameplay: openPlay
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: pictograms-foods-fruits-kiwi_green-00F8
+                type: image
+              - value: pictograms-foods-fruits-melon_green-0103
+                type: image
+              - value: pictograms-foods-fruits-strawberry_red-00FD
+                type: image
+              - value: pictograms-foods-fruits-pineapple_orange-00F9
+                type: image
+              - value: pictograms-foods-fruits-grape_purple-00FE
+                type: image
+              - value: pictograms-foods-fruits-banana_yellow-00FB
+                type: image
+
+        - instructions:
+          - locale: fr_FR
+            value: "Écoutez et retrouvez l'ordre"
+          - locale: en_US
+            value: "Listen  and find the right order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Triste, Joie, Dégout, Colère, Peur"
+                - locale: en_US
+                  utterance: "Sad, Joy, Disgust, Angry, Fear"
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: emotion_picture_adult_sad_hortense
+                type: image
+                state: hint
+              - value: emotion_picture_adult_joy_ladislas
+                type: image
+                state: hint
+              - value: emotion_picture_adult_disgust_hugo
+                type: image
+                state: hint
+              - value: emotion_picture_adult_angry_lucie
+                type: image
+                state: hint
+              - value: emotion_picture_adult_fear_yann
+                type: image
+                state: hint
