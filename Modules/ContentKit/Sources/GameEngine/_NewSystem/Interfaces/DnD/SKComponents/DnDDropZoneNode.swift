@@ -33,7 +33,6 @@ public class DnDDropZoneNode: SKSpriteNode {
 
     init(node: DnDAnswerNode, position: CGPoint = .zero, showTransparency: Bool = false) {
         self.id = node.id
-
         let backgroundImage = DnDDropZoneNode.createRoundedRectImage(size: node.size)
         let backgroundTexture = SKTexture(image: backgroundImage)
 
@@ -99,8 +98,20 @@ extension DnDDropZoneNode {
     }
 
     private static func createSFSymbolTexture(value: String, size: CGSize) -> SKTexture {
-        guard let image = UIImage(systemName: value, withConfiguration: UIImage.SymbolConfiguration(pointSize: size.height * 0.6)) else {
-            fatalError("SFSymbol not found")
+        let renderer = UIGraphicsImageRenderer(size: size)
+        let image = renderer.image { _ in
+            let configuration = UIImage.SymbolConfiguration(scale: .large)
+            guard let symbolImage = UIImage(systemName: value, withConfiguration: configuration) else {
+                fatalError("SFSymbol not found")
+            }
+
+            let imageSize = symbolImage.size
+            let scale = min(size.width / imageSize.width, size.height / imageSize.height)
+            let scaledSize = CGSize(width: imageSize.width * scale, height: imageSize.height * scale)
+            let origin = CGPoint(x: (size.width - scaledSize.width) / 2,
+                                 y: (size.height - scaledSize.height) / 2)
+
+            symbolImage.draw(in: CGRect(origin: origin, size: scaledSize))
         }
 
         return SKTexture(image: image)
