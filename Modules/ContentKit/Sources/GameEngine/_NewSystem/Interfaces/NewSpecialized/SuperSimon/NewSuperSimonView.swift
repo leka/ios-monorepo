@@ -26,64 +26,64 @@ struct NewSuperSimonView: View {
 
     var body: some View {
         let interface = Interface(rawValue: viewModel.choices.count)
+        ZStack {
+            HStack(spacing: 0) {
+                Button {
+                    self.viewModel.onRobotTapped()
+                } label: {
+                    Image(uiImage: DesignKitAsset.Images.robotFaceAction.image)
+                        .resizable()
+                        .renderingMode(.template)
+                        .foregroundStyle(self.styleManager.accentColor!)
+                        .frame(width: 130, height: 130)
+                        .padding(10)
+                }
+                .frame(width: 200)
+                .disabled(self.viewModel.disableRobot)
+                .opacity(self.viewModel.disableRobot ? 0.3 : 1.0)
+                .buttonStyle(ActionButtonStyle(progress: 0.0))
+                .animation(.spring(response: 0.3, dampingFraction: 0.45), value: self.viewModel.disableRobot)
+                .scaleEffect(self.viewModel.disableRobot ? 0.95 : 1.0, anchor: .center)
+                .shadow(
+                    color: .accentColor.opacity(0.2),
+                    radius: self.viewModel.disableRobot ? 6 : 3, x: 0, y: 3
+                )
 
-        HStack(spacing: 0) {
-            Button {
-                self.viewModel.onRobotTapped()
-            } label: {
-                Image(uiImage: DesignKitAsset.Images.robotFaceAction.image)
-                    .resizable()
-                    .renderingMode(.template)
-                    .foregroundStyle(self.styleManager.accentColor!)
-                    .frame(width: 130, height: 130)
-                    .padding(10)
+                Divider()
+                    .opacity(0.4)
+                    .frame(maxHeight: 500)
+                    .padding(.vertical, 20)
+
+                Group {
+                    switch interface {
+                        case .twoChoices:
+                            TwoChoicesView(viewModel: self.viewModel)
+                                .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                                .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                                .allowsHitTesting(self.viewModel.didTriggerAction)
+
+                        case .fourChoices:
+                            FourChoicesView(viewModel: self.viewModel)
+                                .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                                .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                                .allowsHitTesting(self.viewModel.didTriggerAction)
+
+                        case .sixChoices:
+                            SixChoicesView(viewModel: self.viewModel)
+                                .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                                .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                                .allowsHitTesting(self.viewModel.didTriggerAction)
+
+                        default:
+                            Text(l10n.NewSuperSimonView.typeUnknownError)
+                                .multilineTextAlignment(.center)
+                                .onAppear {
+                                    logGEK.error("Interface \(interface) not implemented")
+                                }
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .frame(width: 200)
-            .disabled(self.viewModel.disableRobot)
-            .opacity(self.viewModel.disableRobot ? 0.3 : 1.0)
-            .buttonStyle(ActionButtonStyle(progress: 0.0))
-            .animation(.spring(response: 0.3, dampingFraction: 0.45), value: self.viewModel.disableRobot)
-            .scaleEffect(self.viewModel.disableRobot ? 0.95 : 1.0, anchor: .center)
-            .shadow(
-                color: .accentColor.opacity(0.2),
-                radius: self.viewModel.disableRobot ? 6 : 3, x: 0, y: 3
-            )
-
-            Divider()
-                .opacity(0.4)
-                .frame(maxHeight: 500)
-                .padding(.vertical, 20)
-
-            Spacer()
-
-            switch interface {
-                case .twoChoices:
-                    TwoChoicesView(viewModel: self.viewModel)
-                        .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
-                        .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
-                        .allowsHitTesting(self.viewModel.didTriggerAction)
-
-                case .fourChoices:
-                    FourChoicesView(viewModel: self.viewModel)
-                        .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
-                        .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
-                        .allowsHitTesting(self.viewModel.didTriggerAction)
-
-                case .sixChoices:
-                    SixChoicesView(viewModel: self.viewModel)
-                        .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
-                        .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
-                        .allowsHitTesting(self.viewModel.didTriggerAction)
-
-                default:
-                    Text(l10n.NewSuperSimonView.typeUnknownError)
-                        .multilineTextAlignment(.center)
-                        .onAppear {
-                            logGEK.error("Interface \(interface) not implemented")
-                        }
-            }
-
-            Spacer()
         }
     }
 

@@ -45,29 +45,29 @@ struct NewDanceFreezeView: View {
                     .background(Capsule().fill(.background.opacity(0.7)))
 
                     Toggle(isOn: self.$isMovementEnabled) {
-                        HStack(alignment: .center) {
+                        HStack {
                             ContentKitAsset.Exercises.DanceFreeze.iconMotionModeMovement.swiftUIImage
                                 .resizable()
                                 .frame(width: 50, height: 50)
                             Text(l10n.NewDanceFreezeView.movementToggleLabel)
                         }
-                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .frame(maxWidth: .infinity, alignment: .center)
                     }
-                    .padding(.vertical, 7)
-                    .padding(.trailing, 15)
+                    .padding(.vertical)
+                    .padding(.trailing)
                     .background(Capsule().fill(.background.opacity(0.7)))
 
                     Toggle(isOn: self.$isAuto) {
-                        HStack(alignment: .center) {
+                        HStack {
                             Image(uiImage: UIImage(named: "touch_to_select.gesture.icon.png", in: .module, with: nil)!)
                                 .resizable()
                                 .frame(width: 50, height: 50)
                             Text(l10n.NewDanceFreezeView.automaticToggleLabel)
                         }
-                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .frame(maxWidth: .infinity, alignment: .center)
                     }
-                    .padding(.vertical, 7)
-                    .padding(.trailing, 15)
+                    .padding(.vertical)
+                    .padding(.trailing)
                     .background(Capsule().fill(.background.opacity(0.7)))
                 }
                 .padding(.top, 20)

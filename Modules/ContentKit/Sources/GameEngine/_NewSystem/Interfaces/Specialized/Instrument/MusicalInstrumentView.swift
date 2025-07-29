@@ -49,6 +49,7 @@ struct MusicalInstrumentView: View {
         switch self.instrument {
             case .xylophone:
                 XylophoneView(midiPlayer: self.midiPlayer, scale: self.scale)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 }

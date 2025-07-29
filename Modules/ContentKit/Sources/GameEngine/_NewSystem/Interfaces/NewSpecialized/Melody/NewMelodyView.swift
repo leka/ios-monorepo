@@ -50,7 +50,7 @@ public struct NewMelodyView: View {
                 .padding()
 
             MelodyXylophoneView(viewModel: self.viewModel)
-                .padding(.vertical, 50)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .onChange(of: self.isKeyboardFull) {
             self.viewModel.updateKeyboardMode(isKeyboardFull: self.isKeyboardFull)
