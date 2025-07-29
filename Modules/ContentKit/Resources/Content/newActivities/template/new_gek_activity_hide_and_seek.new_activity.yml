@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 uuid: A7E41AE22FD4464B96991F2FED87AC10
-name: Hide & Seek
+name: Specialized_Hide&Seek
 exercises_payload:
   options:
     shuffle_exercises: false

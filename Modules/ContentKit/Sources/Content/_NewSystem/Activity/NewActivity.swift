@@ -7,7 +7,7 @@ import UtilsKit
 
 // MARK: - NewActivity
 
-public struct NewActivity: Identifiable {
+public struct NewActivity: Identifiable, Hashable {
     // MARK: Lifecycle
 
     public init(id: String, name: String, payload: Data) {

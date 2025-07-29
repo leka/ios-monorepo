@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 uuid: 1EA920DB6F664C5D8AAD1C0B12AF4DA3
-name: DnDOneToOne
+name: DnDOneToOne_Mixed
 exercises_payload:
   options:
     shuffle_exercises: false

@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 uuid: B4EFFD292A154740895703F67CED3FCF
-name: DnDGrid
+name: DnDGrid_Mixed
 exercises_payload:
   options:
     shuffle_exercises: false

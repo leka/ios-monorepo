@@ -13,20 +13,37 @@ var allNewActivitiescancellables = Set<AnyCancellable>()
 // MARK: - AllNewActivities
 
 struct AllNewActivities: View {
-    let activities: [NewActivity] = ContentKit.allNewActivities.values.map { $0 }
+    static let sortedActivities: [NewActivity] = ContentKit.allNewActivities.values.map { $0 }.sorted { $0.name < $1.name }
+    static let groupedActivities = Dictionary(grouping: sortedActivities) { String($0.name.prefix { $0.isLetter }) }.values.map(Array.init)
 
     @State private var activityDidEnd: Bool = false
     @State var isActivityPresented: Bool = false
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 30) {
-                ForEach(self.activities, id: \.id) { activity in
-                    Button {
-                        self.isActivityPresented = true
-                        self.navigation.setCurrentNewActivity(activity)
-                    } label: {
-                        Text(activity.name)
+            ScrollView(showsIndicators: false) {
+                ForEach(AllNewActivities.groupedActivities, id: \.self) { activities in
+                    Section {
+                        let randomColor = Color.random()
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text(activities[0].name.prefix { $0.isLetter })
+                                .font(.title2)
+                                .padding(.horizontal)
+
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                LazyHStack {
+                                    ForEach(activities, id: \.id) { activity in
+                                        Button {
+                                            self.isActivityPresented = true
+                                            self.navigation.setCurrentNewActivity(activity)
+                                        } label: {
+                                            ActivityButtonLabel(text: String(activity.name.split(separator: "_").last!), color: randomColor)
+                                        }
+                                        .padding()
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -35,7 +52,7 @@ struct AllNewActivities: View {
             NavigationStack {
                 if let activity = self.navigation.currentNewActivity, let coordinator = self.navigation.currentNewCoordinator {
                     NewActivityView(activity: activity, coordinator: coordinator)
-                        .navigationTitle("Mixed exercises")
+                        .navigationTitle(activity.name)
                         .navigationBarTitleDisplayMode(.inline)
                         .onAppear {
                             coordinator.activityEvent
@@ -72,6 +89,21 @@ struct AllNewActivities: View {
             SuccessView(percentage: 90)
         } else {
             FailureView(percentage: 30)
+        }
+    }
+
+    private struct ActivityButtonLabel: View {
+        let text: String
+        let color: Color
+
+        var body: some View {
+            Text(self.text)
+                .foregroundColor(.white)
+                .fixedSize(horizontal: false, vertical: true)
+                .multilineTextAlignment(.center)
+                .frame(width: 150, height: 100)
+                .padding()
+                .background(Capsule().fill(self.color).shadow(radius: 1))
         }
     }
 }
