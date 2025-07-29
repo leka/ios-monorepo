@@ -56,10 +56,9 @@ public struct NewMelodyView: View {
             self.viewModel.updateKeyboardMode(isKeyboardFull: self.isKeyboardFull)
         }
         .sheet(isPresented: self.$isMusicSelectorPresented) {
+            self.viewModel.setup()
+        } content: {
             MelodySongSelectorView(viewModel: self.viewModel)
-                .onDisappear {
-                    self.viewModel.setup()
-                }
         }
         .onDisappear {
             self.viewModel.stop()

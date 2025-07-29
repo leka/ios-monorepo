@@ -84,15 +84,14 @@ struct NewDanceFreezeView: View {
             self.viewModel.updateMotionMode(isMovementEnabled: self.isMovementEnabled)
         }
         .sheet(isPresented: self.$isMusicSelectorPresented) {
+            self.viewModel.setup(audio: .file(name: self.selectedAudioRecording.audio), isAuto: self.isAuto)
+            self.viewModel.onSwitchDanceState()
+            self.isAuto = false
+        } content: {
             DanceFreezeSongSelectorView(
                 songs: self.viewModel.songs,
                 selectedAudioRecording: self.$selectedAudioRecording
             )
-            .onDisappear {
-                self.viewModel.setup(audio: .file(name: self.selectedAudioRecording.audio), isAuto: self.isAuto)
-                self.viewModel.onSwitchDanceState()
-                self.isAuto = false
-            }
         }
         .onDisappear {
             self.viewModel.complete()
