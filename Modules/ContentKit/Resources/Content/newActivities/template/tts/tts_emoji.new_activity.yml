@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 uuid: F8C90919AF204155A170D3957BABE7D6
-name: TTS_Mixed
+name: TTS_Emoji
 exercises_payload:
   options:
     shuffle_exercises: false
@@ -27,20 +27,22 @@ exercises_payload:
               - value: 🍎
                 type: emoji
                 is_right_answer: true
-              - value: 🍌
-                type: emoji
-              - value: 🍎
-                type: emoji
-                is_right_answer: true
-              - value: 🍍
-                type: emoji
         - instructions:
             - locale: fr_FR
-              value: "Touche les fruits 🍎"
+              value: "Écoute puis touche le bon fruit"
             - locale: en_US
-              value: "Tap the fruits 🍎"
+              value: "Listen then touch the correct fruit"
           interface: touchToSelect
           gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Pomme"
+                - locale: en_US
+                  utterance: "Apple"
           options:
             shuffle_choices: true
             validation:
@@ -52,11 +54,32 @@ exercises_payload:
                 is_right_answer: true
               - value: 🍌
                 type: emoji
+        - instructions:
+            - locale: fr_FR
+              value: "Observe et trouve les bon fruits"
+            - locale: en_US
+              value: "Observe and find the correct fruits"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: pictograms-foods-fruits-apple_red-0101
+          options:
+            shuffle_choices: true
+            validation:
+              type: automatic
+          payload:
+            choices:
               - value: 🍎
                 type: emoji
                 is_right_answer: true
-              - value: 🍍
+              - value: 🍌
                 type: emoji
+              - value: 🍎
+                type: emoji
+                is_right_answer: true
     # MARK: - TTS + findTheRightOrder
     - group:
         - instructions:
@@ -72,14 +95,16 @@ exercises_payload:
               type: automatic
           payload:
             choices:
-              - value: 1.circle
-                type: sfsymbol
-              - value: 2.circle
-                type: sfsymbol
-              - value: 3.circle
-                type: sfsymbol
-              - value: 4.circle
-                type: sfsymbol
+              - value: 1️⃣
+                type: emoji
+              - value: 2️⃣
+                type: emoji
+              - value: 3️⃣
+                type: emoji
+              - value: 4️⃣
+                type: emoji
+              - value: 5️⃣
+                type: emoji
         - instructions:
             - locale: fr_FR
               value: "Touche les chiffres dans le bon ordre"
@@ -93,22 +118,26 @@ exercises_payload:
               type: manual
           payload:
             choices:
-              - value: 1.circle
-                type: sfsymbol
-              - value: 2.circle
-                type: sfsymbol
-              - value: 3.circle
-                type: sfsymbol
-              - value: 4.circle
-                type: sfsymbol
+              - value: 1️⃣
+                type: emoji
+              - value: 2️⃣
+                type: emoji
+              - value: 3️⃣
+                type: emoji
+              - value: 4️⃣
+                type: emoji
+              - value: 5️⃣
+                type: emoji
+              - value: 6️⃣
+                type: emoji
 
     # MARK: - TTS + associateCategories
     - group:
         - instructions:
             - locale: fr_FR
-              value: "Touche les emojis qui sont identiques "
+              value: "Touche les emojis qui sont identiques"
             - locale: en_US
-              value: "Tap the emojis that are the same "
+              value: "Tap the emojis that are the same"
           interface: touchToSelect
           gameplay: associateCategories
           options:
@@ -129,6 +158,11 @@ exercises_payload:
               - value: 🎉
                 type: emoji
                 category: catB
+              - value: 🎉
+                type: emoji
+                category: catB
+              - value: 🦃
+                type: emoji
         - instructions:
             - locale: fr_FR
               value: "Touche les emojis qui sont identiques 🎈🎈🎉🎉"
@@ -154,14 +188,20 @@ exercises_payload:
               - value: 🎉
                 type: emoji
                 category: catB
+              - value: 🎈
+                type: emoji
+                category: catA
+              - value: 🎉
+                type: emoji
+                category: catB
 
     # MARK: - TTS + openPlay
     - group:
       - instructions:
         - locale: fr_FR
-          value: "Choisis les animaux que tu aimes"
+          value: "Choisis au moins 2 animaux que tu aimes"
         - locale: en_US
-          value: "Select animals that you love"
+          value: "Select at least 2 animals that you love"
         interface: touchToSelect
         gameplay: openPlay
         options:
