@@ -32,7 +32,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: curriculum_memory_house_old_objects
+      icon: curriculum_memory_houseold_items
       title: Memory des objets de la maison
       subtitle: Travailler la mémoire et l'attention
       abstract: |
@@ -42,7 +42,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: curriculum_memory_house_old_objects
+      icon: curriculum_memory_houseold_items
       title: Houseold items Memory
       subtitle: Improving memory and attention
       abstract: |
