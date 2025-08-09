@@ -97,9 +97,9 @@ exercises_payload:
                 is_right_answer: true
               - value: body_parts_leg
                 type: image
-              - value: body_parts_ear
+              - value: body_parts_foot
                 type: image
-              - value: body_parts_eye
+              - value: body_parts_hand
                 type: image
 
         - instructions:
@@ -153,69 +153,11 @@ exercises_payload:
               - value: body_parts_shoulders
                 type: image
                 is_right_answer: true
-              - value: body_parts_ear
-                type: image
-              - value: body_parts_mouth
-                type: image
-              - value: body_parts_nose
-                type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Ecoute et touche la partie du corps demandée
-            - locale: en_US
-              value: Listen and touch the requested body part
-          interface: listenThenTouchToSelect
-          gameplay: findTheRightAnswers
-          action:
-            type: ipad
-            value:
-              type: speech
-              value:
-                - locale: fr_FR
-                  utterance: "l'oreille"
-                - locale: en_US
-                  utterance: "the ear"
-          payload:
-            shuffle_choices: true
-            choices:
-              - value: body_parts_ear
-                type: image
-                is_right_answer: true
-              - value: body_parts_nose
-                type: image
-              - value: body_parts_face
-                type: image
-              - value: body_parts_hand
-                type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Ecoute et touche la partie du corps demandée
-            - locale: en_US
-              value: Listen and touch the requested body part
-          interface: listenThenTouchToSelect
-          gameplay: findTheRightAnswers
-          action:
-            type: ipad
-            value:
-              type: speech
-              value:
-                - locale: fr_FR
-                  utterance: "l'œil"
-                - locale: en_US
-                  utterance: "the eye"
-          payload:
-            shuffle_choices: true
-            choices:
-              - value: body_parts_eye
-                type: image
-                is_right_answer: true
-              - value: body_parts_face
-                type: image
               - value: body_parts_leg
                 type: image
-              - value: body_parts_shoulders
+              - value: body_parts_foot
+                type: image
+              - value: body_parts_hand
                 type: image
 
         - instructions:
@@ -240,11 +182,11 @@ exercises_payload:
               - value: body_parts_face
                 type: image
                 is_right_answer: true
-              - value: body_parts_eye
+              - value: body_parts_arm
                 type: image
-              - value: body_parts_mouth
+              - value: body_parts_hand
                 type: image
-              - value: body_parts_nose
+              - value: body_parts_leg
                 type: image
 
         - instructions:
@@ -273,7 +215,7 @@ exercises_payload:
                 type: image
               - value: body_parts_arm
                 type: image
-              - value: body_parts_ear
+              - value: body_parts_belly
                 type: image
 
         - instructions:
@@ -300,7 +242,7 @@ exercises_payload:
                 is_right_answer: true
               - value: body_parts_belly
                 type: image
-              - value: body_parts_eye
+              - value: body_parts_face
                 type: image
               - value: body_parts_leg
                 type: image
@@ -331,63 +273,5 @@ exercises_payload:
                 type: image
               - value: body_parts_arm
                 type: image
-              - value: body_parts_mouth
-                type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Ecoute et touche la partie du corps demandée
-            - locale: en_US
-              value: Listen and touch the requested body part
-          interface: listenThenTouchToSelect
-          gameplay: findTheRightAnswers
-          action:
-            type: ipad
-            value:
-              type: speech
-              value:
-                - locale: fr_FR
-                  utterance: "la bouche"
-                - locale: en_US
-                  utterance: "the mouth"
-          payload:
-            shuffle_choices: true
-            choices:
-              - value: body_parts_mouth
-                type: image
-                is_right_answer: true
-              - value: body_parts_nose
-                type: image
-              - value: body_parts_ear
-                type: image
-              - value: body_parts_eye
-                type: image
-
-        - instructions:
-            - locale: fr_FR
-              value: Ecoute et touche la partie du corps demandée
-            - locale: en_US
-              value: Listen and touch the requested body part
-          interface: listenThenTouchToSelect
-          gameplay: findTheRightAnswers
-          action:
-            type: ipad
-            value:
-              type: speech
-              value:
-                - locale: fr_FR
-                  utterance: "le nez"
-                - locale: en_US
-                  utterance: "the nose"
-          payload:
-            shuffle_choices: true
-            choices:
-              - value: body_parts_nose
-                type: image
-                is_right_answer: true
-              - value: body_parts_mouth
-                type: image
-              - value: body_parts_face
-                type: image
-              - value: body_parts_arm
+              - value: body_parts_hand
                 type: image
