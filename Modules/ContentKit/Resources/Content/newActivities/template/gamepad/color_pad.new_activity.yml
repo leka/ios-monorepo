@@ -1,0 +1,18 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 56DB8C94409246FF9927BA6596271F49
+name: Gamepad_Color
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - instructions:
+              - locale: fr_FR
+                value: Change la couleur de Leka en appuyant sur les boutons de couleur
+              - locale: en_US
+                value: Change Leka's color by pressing the color buttons
+          interface: gamepadColorPad

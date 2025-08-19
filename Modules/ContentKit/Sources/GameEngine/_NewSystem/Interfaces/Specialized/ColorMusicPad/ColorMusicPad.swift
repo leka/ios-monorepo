@@ -32,7 +32,7 @@ struct ColorMusicPad: View {
     private let colors: [Robot.Color] = [.lightPink, .red, .orange, .yellow, .green, .mint, .lightBlue, .blue, .purple, .pink]
     private let columns = Array(repeating: GridItem(), count: 5)
     private let kHorizontalSpacing: CGFloat = 0
-    private let kTileWidth: CGFloat = 220
+    private let kTileWidth: CGFloat = 250
     private let kTileHeight: CGFloat = 600
 }
 

@@ -1,0 +1,21 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 1A5E39284E994863993D4E609E9A1B79
+name: Specialized_Xylophone
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Joue du Xylophone avec Leka
+            - locale: en_US
+              value: Play the Xylophone with Leka
+          interface: musicalInstruments
+          payload:
+            instrument: xylophone
+            scale: majorHeptatonic

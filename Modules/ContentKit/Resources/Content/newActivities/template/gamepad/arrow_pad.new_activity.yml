@@ -1,0 +1,18 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 96208E24B1704F4593D5BA5A284E4D9B
+name: Gamepad_Arrow
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Appuie sur une des flèches pour téléguider Leka dans la direction de ton choix
+            - locale: en_US
+              value: Press one of the arrows to remotely guide Leka in the direction of your choice
+          interface: gamepadArrowPad
