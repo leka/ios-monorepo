@@ -28,6 +28,7 @@ public struct NewActivityView: View {
 
                 self.activityCoordinator.currentExerciseView
             }
+            .compositingGroup()
             .id(self.activityCoordinator.currentExerciseIndex)
             .disabled(self.activityCoordinator.isExerciseCompleted)
             .blur(radius: self.blurRadius)
