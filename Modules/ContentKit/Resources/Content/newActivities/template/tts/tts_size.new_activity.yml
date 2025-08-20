@@ -1,0 +1,542 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 37169C976FE24A9B981490D67F14F22F
+name: TTS_Size
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+    # MARK: - TTS
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: "Touch the red(s)"
+            - locale: en_US
+              value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          options:
+            shuffle_choices: true
+            validation:
+              type: automatic
+          payload:
+            choices:
+              - value: red
+                type: color
+                is_right_answer: true
+        - instructions:
+          - locale: fr_FR
+            value: "Touch the red(s)"
+          - locale: en_US
+            value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            choices:
+              - value: red
+                type: color
+                is_right_answer: true
+              - value: purple
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Touch the red(s)"
+          - locale: en_US
+            value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            choices:
+              - value: blue
+                type: color
+              - value: green
+                type: color
+              - value: red
+                type: color
+                is_right_answer: true
+        - instructions:
+          - locale: fr_FR
+            value: "Touch the red(s)"
+          - locale: en_US
+            value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            choices:
+              - value: red
+                type: color
+                is_right_answer: true
+              - value: purple
+                type: color
+              - value: pink
+                type: color
+              - value: yellow
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Touch the red(s)"
+          - locale: en_US
+            value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            choices:
+              - value: green
+                type: color
+              - value: red
+                type: color
+                is_right_answer: true
+              - value: purple
+                type: color
+              - value: pink
+                type: color
+              - value: yellow
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Touch the red(s)"
+          - locale: en_US
+            value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          payload:
+            choices:
+              - value: blue
+                type: color
+              - value: green
+                type: color
+              - value: red
+                type: color
+                is_right_answer: true
+              - value: purple
+                type: color
+              - value: pink
+                type: color
+              - value: yellow
+                type: color
+
+    # MARK: - TTS + Validate
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: "Touch the red(s)"
+            - locale: en_US
+              value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          options:
+            shuffle_choices: true
+            validation:
+              type: manual
+          payload:
+            choices:
+              - value: red
+                type: color
+                is_right_answer: true
+        - instructions:
+          - locale: fr_FR
+            value: "Touch the red(s)"
+          - locale: en_US
+            value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          options:
+            shuffle_choices: true
+            validation:
+              type: manual
+          payload:
+            choices:
+              - value: red
+                type: color
+                is_right_answer: true
+              - value: purple
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Touch the red(s)"
+          - locale: en_US
+            value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          options:
+            shuffle_choices: true
+            validation:
+              type: manual
+          payload:
+            choices:
+              - value: blue
+                type: color
+              - value: green
+                type: color
+              - value: red
+                type: color
+                is_right_answer: true
+        - instructions:
+          - locale: fr_FR
+            value: "Touch the red(s)"
+          - locale: en_US
+            value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          options:
+            shuffle_choices: true
+            validation:
+              type: manual
+          payload:
+            choices:
+              - value: red
+                type: color
+                is_right_answer: true
+              - value: purple
+                type: color
+              - value: pink
+                type: color
+              - value: yellow
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Touch the red(s)"
+          - locale: en_US
+            value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          options:
+            shuffle_choices: true
+            validation:
+              type: manual
+          payload:
+            choices:
+              - value: green
+                type: color
+              - value: red
+                type: color
+                is_right_answer: true
+              - value: purple
+                type: color
+              - value: pink
+                type: color
+              - value: yellow
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Touch the red(s)"
+          - locale: en_US
+            value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          options:
+            shuffle_choices: true
+            validation:
+              type: manual
+          payload:
+            choices:
+              - value: blue
+                type: color
+              - value: green
+                type: color
+              - value: red
+                type: color
+                is_right_answer: true
+              - value: purple
+                type: color
+              - value: pink
+                type: color
+              - value: yellow
+                type: color
+
+    # MARK: - TTS + Listen
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: "Touch the red(s)"
+            - locale: en_US
+              value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Rouge"
+                - locale: en_US
+                  utterance: "Red"
+          payload:
+            choices:
+              - value: red
+                type: color
+                is_right_answer: true
+        - instructions:
+          - locale: fr_FR
+            value: "Touch the red(s)"
+          - locale: en_US
+            value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Rouge"
+                - locale: en_US
+                  utterance: "Red"
+          payload:
+            choices:
+              - value: red
+                type: color
+                is_right_answer: true
+              - value: purple
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Touch the red(s)"
+          - locale: en_US
+            value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Rouge"
+                - locale: en_US
+                  utterance: "Red"
+          payload:
+            choices:
+              - value: blue
+                type: color
+              - value: green
+                type: color
+              - value: red
+                type: color
+                is_right_answer: true
+        - instructions:
+          - locale: fr_FR
+            value: "Touch the red(s)"
+          - locale: en_US
+            value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Rouge"
+                - locale: en_US
+                  utterance: "Red"
+          payload:
+            choices:
+              - value: red
+                type: color
+                is_right_answer: true
+              - value: purple
+                type: color
+              - value: pink
+                type: color
+              - value: yellow
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Touch the red(s)"
+          - locale: en_US
+            value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Rouge"
+                - locale: en_US
+                  utterance: "Red"
+          payload:
+            choices:
+              - value: green
+                type: color
+              - value: red
+                type: color
+                is_right_answer: true
+              - value: purple
+                type: color
+              - value: pink
+                type: color
+              - value: yellow
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Touch the red(s)"
+          - locale: en_US
+            value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Rouge"
+                - locale: en_US
+                  utterance: "Red"
+          payload:
+            choices:
+              - value: blue
+                type: color
+              - value: green
+                type: color
+              - value: red
+                type: color
+                is_right_answer: true
+              - value: purple
+                type: color
+              - value: pink
+                type: color
+              - value: yellow
+                type: color
+
+    # MARK: - TTS + Observe
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: "Touch the red(s)"
+            - locale: en_US
+              value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: pictograms-foods-fruits-apple_red-0101
+          payload:
+            choices:
+              - value: red
+                type: color
+                is_right_answer: true
+        - instructions:
+          - locale: fr_FR
+            value: "Touch the red(s)"
+          - locale: en_US
+            value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: pictograms-foods-fruits-apple_red-0101
+          payload:
+            choices:
+              - value: red
+                type: color
+                is_right_answer: true
+              - value: purple
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Touch the red(s)"
+          - locale: en_US
+            value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: pictograms-foods-fruits-apple_red-0101
+          payload:
+            choices:
+              - value: blue
+                type: color
+              - value: green
+                type: color
+              - value: red
+                type: color
+                is_right_answer: true
+        - instructions:
+          - locale: fr_FR
+            value: "Touch the red(s)"
+          - locale: en_US
+            value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: pictograms-foods-fruits-apple_red-0101
+          payload:
+            choices:
+              - value: red
+                type: color
+                is_right_answer: true
+              - value: purple
+                type: color
+              - value: pink
+                type: color
+              - value: yellow
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Touch the red(s)"
+          - locale: en_US
+            value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: pictograms-foods-fruits-apple_red-0101
+          payload:
+            choices:
+              - value: green
+                type: color
+              - value: red
+                type: color
+                is_right_answer: true
+              - value: purple
+                type: color
+              - value: pink
+                type: color
+              - value: yellow
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Touch the red(s)"
+          - locale: en_US
+            value: "Touch the red(s)"
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: pictograms-foods-fruits-apple_red-0101
+          payload:
+            choices:
+              - value: blue
+                type: color
+              - value: green
+                type: color
+              - value: red
+                type: color
+                is_right_answer: true
+              - value: purple
+                type: color
+              - value: pink
+                type: color
+              - value: yellow
+                type: color
