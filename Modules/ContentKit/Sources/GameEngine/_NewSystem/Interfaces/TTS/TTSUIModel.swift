@@ -3,7 +3,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import DeviceKit
 import SwiftUI
+import UtilsKit
 
 // MARK: - TTSUIChoiceModel
 
@@ -34,48 +36,129 @@ public struct TTSUIModel {
     var action: NewExerciseAction?
     var choices: [TTSUIChoiceModel]
 
-    // swiftlint:disable cyclomatic_complexity
+    // swiftlint:disable cyclomatic_complexity function_body_length
 
     func choiceSize(for numberOfChoices: Int) -> CGFloat {
-        switch self.action {
-            case .ipad(type: .image),
-                 .ipad(type: .sfsymbol):
-                switch numberOfChoices {
-                    case 1:
-                        250
-                    case 2...4:
-                        180
-                    case 5...6:
-                        120
+        switch Device.current.getDeviceSize() {
+            case .small:
+                switch self.action {
+                    case .ipad(type: .image),
+                         .ipad(type: .sfsymbol):
+                        switch numberOfChoices {
+                            case 1:
+                                250
+                            case 2...4:
+                                180
+                            case 5...6:
+                                140
+                            default:
+                                140
+                        }
+                    case .none:
+                        switch numberOfChoices {
+                            case 1...2:
+                                300
+                            case 3...6:
+                                240
+                            default:
+                                240
+                        }
+                    case .ipad(type: .audio),
+                         .ipad(type: .speech),
+                         .robot:
+                        switch numberOfChoices {
+                            case 1...2:
+                                300
+                            case 3...4:
+                                240
+                            case 5...6:
+                                190
+                            default:
+                                190
+                        }
                     default:
-                        120
+                        140
                 }
-            case .none:
-                switch numberOfChoices {
-                    case 1...2:
-                        300
-                    case 3...6:
-                        240
+            case .medium:
+                switch self.action {
+                    case .ipad(type: .image),
+                         .ipad(type: .sfsymbol):
+                        switch numberOfChoices {
+                            case 1:
+                                270
+                            case 2...4:
+                                230
+                            case 5...6:
+                                150
+                            default:
+                                150
+                        }
+                    case .none:
+                        switch numberOfChoices {
+                            case 1...2:
+                                320
+                            case 3...6:
+                                260
+                            default:
+                                260
+                        }
+                    case .ipad(type: .audio),
+                         .ipad(type: .speech),
+                         .robot:
+                        switch numberOfChoices {
+                            case 1...2:
+                                320
+                            case 3...4:
+                                260
+                            case 5...6:
+                                220
+                            default:
+                                220
+                        }
                     default:
-                        240
+                        150
                 }
-            case .ipad(type: .audio),
-                 .ipad(type: .speech),
-                 .robot:
-                switch numberOfChoices {
-                    case 1...2:
-                        300
-                    case 3...4:
-                        240
-                    case 5...6:
-                        190
+            case .large:
+                switch self.action {
+                    case .ipad(type: .image),
+                         .ipad(type: .sfsymbol):
+                        switch numberOfChoices {
+                            case 1:
+                                350
+                            case 2...4:
+                                270
+                            case 5...6:
+                                230
+                            default:
+                                230
+                        }
+                    case .none:
+                        switch numberOfChoices {
+                            case 1...2:
+                                370
+                            case 3...6:
+                                310
+                            default:
+                                310
+                        }
+                    case .ipad(type: .audio),
+                         .ipad(type: .speech),
+                         .robot:
+                        switch numberOfChoices {
+                            case 1...2:
+                                370
+                            case 3...4:
+                                310
+                            case 5...6:
+                                260
+                            default:
+                                260
+                        }
                     default:
-                        190
+                        230
                 }
-            default:
-                140
         }
     }
 
-    // swiftlint:enable cyclomatic_complexity
+    // swiftlint:enable cyclomatic_complexity function_body_length
 }

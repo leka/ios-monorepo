@@ -19,6 +19,7 @@ extension TTSView {
                 choice.view
             }
             .disabled(choice.disabled)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 }
