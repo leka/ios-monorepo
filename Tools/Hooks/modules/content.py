@@ -343,3 +343,38 @@ def find_missing_exercise_assets(
     missing_assets = []
     recursive_search(data, missing_assets)
     return missing_assets
+
+
+def find_missing_content_items(data):
+    """Find missing content items referenced in curation sections"""
+    missing_items = []
+    
+    search_path = Path(CONTENTKIT_DIRECTORY)
+    
+    # Extract all items from content sections
+    if "content" not in data:
+        return missing_items
+        
+    for section in data["content"]:
+        if "items" not in section:
+            continue
+            
+        for item in section["items"]:
+            content_type = item.get("type", "")
+            content_value = item.get("value", "")
+            
+            if not content_type or not content_value:
+                continue
+                
+            # Search for the content file
+            content_filename = f"{content_value}.{content_type}.yml"
+            matching_files = list(search_path.rglob(content_filename))
+            
+            if not matching_files:
+                missing_items.append({
+                    "value": content_value,
+                    "type": content_type,
+                    "expected_filename": content_filename
+                })
+    
+    return missing_items

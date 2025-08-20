@@ -209,3 +209,26 @@ repos:
         files: .*\.story\.yml
         types: [yaml]
         pass_filenames: false
+
+      - id: check_yaml_content_curations
+        name: Check curation.yml files
+        description: |
+          This hook checks curation.yml files for:
+            - uuid and filename consistency
+            - jtd schema validation
+            - missing referenced content items
+        entry: python3 Tools/Hooks/check_yaml_content_curations.py
+        language: python
+        additional_dependencies: ["ruamel.yaml"]
+        files: .*\.curation\.yml
+        types: [yaml]
+
+      - id: check_yaml_content_curations_unique_uuid
+        name: Check curation.yml files for unique uuid
+        description: |
+          This hook checks curation.yml files for unique uuid
+        entry: python3 Tools/Hooks/check_yaml_content_curations_unique_uuid.py
+        language: python
+        files: .*\.curation\.yml
+        types: [yaml]
+        pass_filenames: false
