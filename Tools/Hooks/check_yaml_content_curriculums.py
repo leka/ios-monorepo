@@ -10,7 +10,7 @@ from typing import Dict, Any
 
 from modules.base_validator import main_entry_point
 from modules.content_validators import ContentValidator
-from modules.content import find_missing_activities
+from modules.content import find_missing_activities, find_unreferenced_activities
 
 # Constants
 JTD_SCHEMA = "Specs/jtd/curriculum.jtd.json"
@@ -44,6 +44,13 @@ class CurriculumContentValidator(ContentValidator):
             file_is_valid = False
             self.logger.error(f"\n❌ Found activities that do not exist in {filename}")
             for activity in missing_activities:
+                self.logger.error(f"  - {activity}")
+
+        # Check for unreferenced activities
+        if unreferenced_activities := find_unreferenced_activities(content, filename):
+            file_is_valid = False
+            self.logger.error(f"\n❌ Found activities in directory that are not referenced in {filename}")
+            for activity in unreferenced_activities:
                 self.logger.error(f"  - {activity}")
 
         return file_is_valid

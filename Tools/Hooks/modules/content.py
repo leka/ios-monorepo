@@ -343,3 +343,46 @@ def find_missing_exercise_assets(
     missing_assets = []
     recursive_search(data, missing_assets)
     return missing_assets
+
+
+def find_unreferenced_activities(data: Dict[str, Any], curriculum_file_path: str) -> List[str]:
+    """
+    Find activities in the curriculum directory that are not referenced in the curriculum YAML.
+
+    Args:
+        data: Loaded curriculum YAML content
+        curriculum_file_path: Path to the curriculum YAML file
+
+    Returns:
+        List[str]: List of activity names that exist in the activities directory but are not referenced
+    """
+    # Get the referenced activity names from the curriculum YAML
+    referenced_activities = set(data.get("activities", []))
+
+    # Get the curriculum directory path
+    curriculum_dir = Path(curriculum_file_path).parent
+    activities_dir = curriculum_dir / "activities"
+
+    # If activities directory doesn't exist, no unreferenced activities
+    if not activities_dir.exists():
+        return []
+
+    # Find all .activity.yml files in the activities directory
+    activity_files = list(activities_dir.glob("*.activity.yml"))
+
+    # Extract activity names from filenames (format: name-UUID.activity.yml -> name-UUID)
+    found_activity_names = []
+    for activity_file in activity_files:
+        filename = activity_file.name
+        if filename.endswith(".activity.yml"):
+            # Remove .activity.yml extension to get the full activity name
+            activity_name = filename.replace(".activity.yml", "")
+            found_activity_names.append(activity_name)
+
+    # Find activities that exist in directory but are not referenced in curriculum
+    unreferenced_activities = []
+    for activity_name in found_activity_names:
+        if activity_name not in referenced_activities:
+            unreferenced_activities.append(activity_name)
+
+    return unreferenced_activities
