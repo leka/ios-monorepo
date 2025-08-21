@@ -1,0 +1,55 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 5113375006BA45C08A6DA2199196B9D3
+name: DnDGrid_Color
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+  - group:
+    - instructions:
+        - locale: fr_FR
+          value: "Associe les couleurs identiques "
+        - locale: en_US
+          value: "Match the identical colors "
+      interface: dragAndDropGrid
+      gameplay: associateCategories
+      payload:
+        choices:
+          - value: blue
+            type: color
+            category: catA
+          - value: blue
+            type: color
+            category: catA
+
+    - instructions:
+        - locale: fr_FR
+          value: "Glisse chaque couleur avec sa jumelle "
+        - locale: en_US
+          value: "Drag and drop each color with its match "
+      interface: dragAndDropGrid
+      gameplay: associateCategories
+      payload:
+        choices:
+          - value: yellow
+            type: color
+            category: catA
+          - value: yellow
+            type: color
+            category: catA
+          - value: orange
+            type: color
+            category: catB
+          - value: orange
+            type: color
+            category: catB
+          - value: blue
+            type: color
+            category: catC
+          - value: blue
+            type: color
+            category: catC

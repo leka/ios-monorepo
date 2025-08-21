@@ -1,0 +1,67 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 84719EA0312345E58A0CF4B7A2203730
+name: DnDGrid_Image
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: "Glisse et dépose les émotions identiques ensemble"
+            - locale: en_US
+              value: "Drag and drop the same emotions together"
+          interface: dragAndDropGrid
+          gameplay: associateCategories
+          payload:
+            choices:
+              - value: emotion_picture_adult_sad_hortense
+                type: image
+                category: catA
+              - value: emotion_picture_adult_sad_yann
+                type: image
+                category: catA
+              - value: emotion_picture_adult_disgust_hugo
+                type: image
+                category: catB
+              - value: emotion_picture_adult_disgust_ladislas
+                type: image
+                category: catB
+              - value: emotion_picture_adult_angry_lucie
+                type: image
+                category: catC
+              - value: emotion_picture_adult_angry_hortense
+                type: image
+                category: catC
+
+        - instructions:
+            - locale: fr_FR
+              value: "Glisse et dépose les emotions identiques ensemble"
+            - locale: en_US
+              value: "Drag and drop the same emotions together"
+          interface: dragAndDropGrid
+          gameplay: associateCategories
+          payload:
+            choices:
+              - value: emotion_picture_adult_sad_hortense
+                type: image
+                category: catA
+              - value: emotion_picture_adult_sad_yann
+                type: image
+                category: catA
+              - value: emotion_picture_adult_disgust_lucie
+                type: image
+                category: catB
+              - value: emotion_picture_adult_disgust_hugo
+                type: image
+                category: catB
+              - value: emotion_picture_adult_disgust_ladislas
+                type: image
+                category: catB
+              - value: emotion_picture_adult_angry_lucie
+                type: image
+                category: catC

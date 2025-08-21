@@ -2,8 +2,8 @@
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-uuid: B4EFFD292A154740895703F67CED3FCF
-name: DnDGrid_Mixed
+uuid: E04FD2009E2E471AA597B44D04BCB229
+name: DnDGrid_SFSymbol
 exercises_payload:
   options:
     shuffle_exercises: false
@@ -12,55 +12,55 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: "Glisse et dépose les sports identiques ensemble ⚽️🏀🏈"
+              value: "Glisse et dépose les véhicules identiques ensemble "
             - locale: en_US
-              value: "Drag and drop the same sports together ⚽️🏀🏈"
+              value: "Drag and drop the same vehicles together "
           interface: dragAndDropGrid
           gameplay: associateCategories
           payload:
             choices:
-              - value: ⚽️
+              - value: scooter
                 type: emoji
                 category: catA
-              - value: ⚽️
+              - value: scooter
                 type: emoji
                 category: catA
-              - value: 🏀
+              - value: bicycle
                 type: emoji
                 category: catB
-              - value: 🏀
+              - value: bicycle
                 type: emoji
                 category: catB
-              - value: 🏈
+              - value: bus
                 type: emoji
                 category: catC
-              - value: 🏈
+              - value: bus
                 type: emoji
                 category: catC
         - instructions:
             - locale: fr_FR
-              value: "Glisse et dépose les sports identiques ensemble ⚽️🏀"
+              value: "Glisse et dépose les véhicules identiques ensemble "
             - locale: en_US
-              value: "Drag and drop the same sports together ⚽️🏀"
+              value: "Drag and drop the same vehicles together "
           interface: dragAndDropGrid
           gameplay: associateCategories
           payload:
             choices:
-              - value: ⚽️
+              - value: bicycle
                 type: emoji
                 category: catA
-              - value: ⚽️
+              - value: bicycle
                 type: emoji
                 category: catA
-              - value: 🏀
+              - value: scooter
                 type: emoji
                 category: catB
-              - value: 🏀
+              - value: scooter
                 type: emoji
                 category: catB
-              - value: 🏀
+              - value: scooter
                 type: emoji
                 category: catB
-              - value: 🏈
+              - value: bus
                 type: emoji
                 category: catC
