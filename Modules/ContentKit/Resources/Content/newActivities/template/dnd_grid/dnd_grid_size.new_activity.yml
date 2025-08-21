@@ -1,0 +1,395 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: B1AF3B19E98E47AFA2C57F0ECB57A949
+name: DnDGrid_Size
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+      - instructions:
+          - locale: fr_FR
+            value: "Associe les couleurs identiques "
+          - locale: en_US
+            value: "Match the identical colors "
+        interface: dragAndDropGrid
+        gameplay: associateCategories
+        payload:
+          choices:
+            - value: blue
+              type: color
+              category: catA
+            - value: blue
+              type: color
+              category: catA
+      - instructions:
+          - locale: fr_FR
+            value: "Associe les couleurs identiques "
+          - locale: en_US
+            value: "Match the identical colors "
+        interface: dragAndDropGrid
+        gameplay: associateCategories
+        payload:
+          choices:
+            - value: yellow
+              type: color
+              category: catA
+            - value: yellow
+              type: color
+              category: catA
+            - value: orange
+              type: color
+      - instructions:
+          - locale: fr_FR
+            value: "Associe les couleurs identiques "
+          - locale: en_US
+            value: "Match the identical colors "
+        interface: dragAndDropGrid
+        gameplay: associateCategories
+        payload:
+          choices:
+            - value: yellow
+              type: color
+              category: catA
+            - value: yellow
+              type: color
+              category: catA
+            - value: orange
+              type: color
+              category: catB
+            - value: orange
+              type: color
+              category: catB
+      - instructions:
+          - locale: fr_FR
+            value: "Associe les couleurs identiques "
+          - locale: en_US
+            value: "Match the identical colors "
+        interface: dragAndDropGrid
+        gameplay: associateCategories
+        payload:
+          choices:
+            - value: yellow
+              type: color
+              category: catA
+            - value: yellow
+              type: color
+              category: catA
+            - value: orange
+              type: color
+              category: catB
+            - value: orange
+              type: color
+              category: catB
+            - value: blue
+              type: color
+      - instructions:
+          - locale: fr_FR
+            value: "Associe les couleurs identiques "
+          - locale: en_US
+            value: "Match the identical colors "
+        interface: dragAndDropGrid
+        gameplay: associateCategories
+        payload:
+          choices:
+            - value: yellow
+              type: color
+              category: catA
+            - value: yellow
+              type: color
+              category: catA
+            - value: orange
+              type: color
+              category: catB
+            - value: orange
+              type: color
+              category: catB
+            - value: blue
+              type: color
+              category: catC
+            - value: blue
+              type: color
+              category: catC
+
+    - group:
+      - instructions:
+          - locale: fr_FR
+            value: "Associe les couleurs identiques "
+          - locale: en_US
+            value: "Match the identical colors "
+        interface: dragAndDropGrid
+        gameplay: associateCategories
+        action:
+          type: ipad
+          value:
+            type: speech
+            value:
+              - locale: fr_FR
+                utterance: "Yes"
+              - locale: en_US
+                utterance: "Yes"
+        payload:
+          choices:
+            - value: blue
+              type: color
+              category: catA
+            - value: blue
+              type: color
+              category: catA
+      - instructions:
+          - locale: fr_FR
+            value: "Associe les couleurs identiques "
+          - locale: en_US
+            value: "Match the identical colors "
+        interface: dragAndDropGrid
+        gameplay: associateCategories
+        action:
+          type: ipad
+          value:
+            type: speech
+            value:
+              - locale: fr_FR
+                utterance: "Yes"
+              - locale: en_US
+                utterance: "Yes"
+        payload:
+          choices:
+            - value: yellow
+              type: color
+              category: catA
+            - value: yellow
+              type: color
+              category: catA
+            - value: orange
+              type: color
+      - instructions:
+          - locale: fr_FR
+            value: "Associe les couleurs identiques "
+          - locale: en_US
+            value: "Match the identical colors "
+        interface: dragAndDropGrid
+        gameplay: associateCategories
+        action:
+          type: ipad
+          value:
+            type: speech
+            value:
+              - locale: fr_FR
+                utterance: "Yes"
+              - locale: en_US
+                utterance: "Yes"
+        payload:
+          choices:
+            - value: yellow
+              type: color
+              category: catA
+            - value: yellow
+              type: color
+              category: catA
+            - value: orange
+              type: color
+              category: catB
+            - value: orange
+              type: color
+              category: catB
+      - instructions:
+          - locale: fr_FR
+            value: "Associe les couleurs identiques "
+          - locale: en_US
+            value: "Match the identical colors "
+        interface: dragAndDropGrid
+        gameplay: associateCategories
+        action:
+          type: ipad
+          value:
+            type: speech
+            value:
+              - locale: fr_FR
+                utterance: "Yes"
+              - locale: en_US
+                utterance: "Yes"
+        payload:
+          choices:
+            - value: yellow
+              type: color
+              category: catA
+            - value: yellow
+              type: color
+              category: catA
+            - value: orange
+              type: color
+              category: catB
+            - value: orange
+              type: color
+              category: catB
+            - value: blue
+              type: color
+      - instructions:
+          - locale: fr_FR
+            value: "Associe les couleurs identiques "
+          - locale: en_US
+            value: "Match the identical colors "
+        interface: dragAndDropGrid
+        gameplay: associateCategories
+        action:
+          type: ipad
+          value:
+            type: speech
+            value:
+              - locale: fr_FR
+                utterance: "Yes"
+              - locale: en_US
+                utterance: "Yes"
+        payload:
+          choices:
+            - value: yellow
+              type: color
+              category: catA
+            - value: yellow
+              type: color
+              category: catA
+            - value: orange
+              type: color
+              category: catB
+            - value: orange
+              type: color
+              category: catB
+            - value: blue
+              type: color
+              category: catC
+            - value: blue
+              type: color
+              category: catC
+
+    - group:
+      - instructions:
+          - locale: fr_FR
+            value: "Associe les couleurs identiques "
+          - locale: en_US
+            value: "Match the identical colors "
+        interface: dragAndDropGrid
+        gameplay: associateCategories
+        action:
+          type: ipad
+          value:
+            type: image
+            value: hands_on
+        payload:
+          choices:
+            - value: blue
+              type: color
+              category: catA
+            - value: blue
+              type: color
+              category: catA
+      - instructions:
+          - locale: fr_FR
+            value: "Associe les couleurs identiques "
+          - locale: en_US
+            value: "Match the identical colors "
+        interface: dragAndDropGrid
+        gameplay: associateCategories
+        action:
+          type: ipad
+          value:
+            type: image
+            value: hands_on
+        payload:
+          choices:
+            - value: yellow
+              type: color
+              category: catA
+            - value: yellow
+              type: color
+              category: catA
+            - value: orange
+              type: color
+      - instructions:
+          - locale: fr_FR
+            value: "Associe les couleurs identiques "
+          - locale: en_US
+            value: "Match the identical colors "
+        interface: dragAndDropGrid
+        gameplay: associateCategories
+        action:
+          type: ipad
+          value:
+            type: image
+            value: hands_on
+        payload:
+          choices:
+            - value: yellow
+              type: color
+              category: catA
+            - value: yellow
+              type: color
+              category: catA
+            - value: orange
+              type: color
+              category: catB
+            - value: orange
+              type: color
+              category: catB
+      - instructions:
+          - locale: fr_FR
+            value: "Associe les couleurs identiques "
+          - locale: en_US
+            value: "Match the identical colors "
+        interface: dragAndDropGrid
+        gameplay: associateCategories
+        action:
+          type: ipad
+          value:
+            type: image
+            value: hands_on
+        payload:
+          choices:
+            - value: yellow
+              type: color
+              category: catA
+            - value: yellow
+              type: color
+              category: catA
+            - value: orange
+              type: color
+              category: catB
+            - value: orange
+              type: color
+              category: catB
+            - value: blue
+              type: color
+      - instructions:
+          - locale: fr_FR
+            value: "Associe les couleurs identiques "
+          - locale: en_US
+            value: "Match the identical colors "
+        interface: dragAndDropGrid
+        gameplay: associateCategories
+        action:
+          type: ipad
+          value:
+            type: image
+            value: hands_on
+        payload:
+          choices:
+            - value: yellow
+              type: color
+              category: catA
+            - value: yellow
+              type: color
+              category: catA
+            - value: orange
+              type: color
+              category: catB
+            - value: orange
+              type: color
+              category: catB
+            - value: blue
+              type: color
+              category: catC
+            - value: blue
+              type: color
+              category: catC
