@@ -20,22 +20,22 @@ exercises_payload:
           payload:
             choices:
               - value: scooter
-                type: emoji
+                type: sfsymbol
                 category: catA
               - value: scooter
-                type: emoji
+                type: sfsymbol
                 category: catA
               - value: bicycle
-                type: emoji
+                type: sfsymbol
                 category: catB
               - value: bicycle
-                type: emoji
+                type: sfsymbol
                 category: catB
               - value: bus
-                type: emoji
+                type: sfsymbol
                 category: catC
               - value: bus
-                type: emoji
+                type: sfsymbol
                 category: catC
         - instructions:
             - locale: fr_FR
@@ -47,20 +47,20 @@ exercises_payload:
           payload:
             choices:
               - value: bicycle
-                type: emoji
+                type: sfsymbol
                 category: catA
               - value: bicycle
-                type: emoji
+                type: sfsymbol
                 category: catA
               - value: scooter
-                type: emoji
+                type: sfsymbol
                 category: catB
               - value: scooter
-                type: emoji
+                type: sfsymbol
                 category: catB
               - value: scooter
-                type: emoji
+                type: sfsymbol
                 category: catB
               - value: bus
-                type: emoji
+                type: sfsymbol
                 category: catC
