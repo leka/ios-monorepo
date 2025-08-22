@@ -8,5 +8,8 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 let project = Project.module(
-    name: "UtilsKit"
+    name: "UtilsKit",
+    dependencies: [
+        .external(name: "DeviceKit"),
+    ]
 )
