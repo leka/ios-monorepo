@@ -29,9 +29,9 @@ jobs:
           lfs: false
 
       - name: Set up mise
-        uses: jdx/mise-action@v2
+        uses: jdx/mise-action@v3
         with:
-          version: 2025.1.7
+          version: 2025.8.20
           install: true
           cache: true
 
