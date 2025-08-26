@@ -29,7 +29,7 @@ env:
 jobs:
   build:
     name: build
-    runs-on: macos-latest
+    runs-on: macos-15
     strategy:
       fail-fast: false
       matrix:
@@ -127,7 +127,7 @@ jobs:
 
       - name: Config Xcode
         run: |
-          xcodes select 16.1
+          xcodes select 16.4
           defaults write com.apple.dt.XCBuild IgnoreFileSystemDeviceInodeChanges -bool YES
 
       - name: tuist install

@@ -30,7 +30,7 @@ env:
 jobs:
   inspect:
     name: inspect
-    runs-on: macos-latest
+    runs-on: macos-15
 
     steps:
       - name: Checkout
@@ -53,7 +53,7 @@ jobs:
 
       - name: Config Xcode
         run: |
-          xcodes select 16.1
+          xcodes select 16.4
           defaults write com.apple.dt.XCBuild IgnoreFileSystemDeviceInodeChanges -bool YES
 
       - name: tuist install
