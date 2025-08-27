@@ -107,11 +107,18 @@ class DnDGridWithZonesBaseScene: SKScene {
     }
 
     func layoutDropZones() {
+        let horizontalPadding = 3 * self.viewModel.dropzones[0].size.width / 4
+        let verticalPosition = 3 * self.viewModel.dropzones[0].size.height / 5
+        let dropzonesNumber = self.viewModel.dropzones.count
+        let dropzoneSpacer = size.width / CGFloat(dropzonesNumber + 1)
         for (index, dropzone) in self.viewModel.dropzones.enumerated() {
-            let dropzonesNumber = self.viewModel.dropzones.count
-            let dropzoneSpacer = size.width / CGFloat(dropzonesNumber + 1)
-
-            dropzone.position = CGPoint(x: dropzoneSpacer * CGFloat(index + 1), y: size.height / 3)
+            if index == 0, self.viewModel.dropzones.count > 1 {
+                dropzone.position = CGPoint(x: horizontalPadding, y: verticalPosition)
+            } else if index == dropzonesNumber - 1, self.viewModel.dropzones.count > 1 {
+                dropzone.position = CGPoint(x: size.width - horizontalPadding, y: verticalPosition)
+            } else {
+                dropzone.position = CGPoint(x: dropzoneSpacer * CGFloat(index + 1), y: verticalPosition)
+            }
 
             addChild(dropzone)
             self.dropZonesNodes.append(dropzone)
