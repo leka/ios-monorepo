@@ -2,8 +2,8 @@
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-uuid: A9C39DD0204A4342913731391AFAA453
-name: DnDWithZones_Mixed
+uuid: 93D84E01C4AA4A029B61539F156C2A71
+name: DnDGridWithZones_Emoji
 exercises_payload:
   options:
     shuffle_exercises: false
@@ -12,9 +12,67 @@ exercises_payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: "Glisse et dépose les emojis dans la zone correspondante 🌲🌵🌴"
+              value: "Glisse et dépose les emojis dans la zone correspondante"
             - locale: en_US
-              value: "Drag and drop the emojis in the correct zone 🌲🌵🌴"
+              value: "Drag and drop the emojis in the correct zone"
+          interface: dragAndDropGridWithZones
+          gameplay: associateCategories
+          options:
+            shuffle_choices: true
+            validation:
+              type: automatic
+          payload:
+            choices:
+              - value: 🏞️
+                type: emoji
+                category: catA
+                is_dropzone: true
+              - value: 🌲
+                type: emoji
+                category: catA
+              - value: ☘️
+                type: emoji
+                category: catA
+              - value: 🏢
+                type: emoji
+        - instructions:
+            - locale: fr_FR
+              value: "Glisse et dépose les emojis dans la zone correspondante"
+            - locale: en_US
+              value: "Drag and drop the emojis in the correct zone"
+          interface: dragAndDropGridWithZones
+          gameplay: associateCategories
+          options:
+            shuffle_choices: true
+            validation:
+              type: automatic
+          payload:
+            choices:
+              - value: 🏞️
+                type: emoji
+                category: catA
+                is_dropzone: true
+              - value: 🌲
+                type: emoji
+                category: catA
+              - value: ☘️
+                type: emoji
+                category: catA
+              - value: 🏙️
+                type: emoji
+                category: catB
+                is_dropzone: true
+              - value: 🏢
+                type: emoji
+                category: catB
+              - value: 🏫
+                type: emoji
+                category: catB
+        - instructions:
+            - locale: fr_FR
+              value: "Glisse et dépose les emojis dans la zone correspondante"
+            - locale: en_US
+              value: "Drag and drop the emojis in the correct zone"
           interface: dragAndDropGridWithZones
           gameplay: associateCategories
           options:
@@ -23,60 +81,34 @@ exercises_payload:
               type: manual
           payload:
             choices:
-              - value: 🌲
+              - value: 🏞️
                 type: emoji
                 category: catA
                 is_dropzone: true
-              - value: 🍍
-                type: emoji
               - value: 🌲
                 type: emoji
                 category: catA
-              - value: 🌵
+              - value: ☘️
+                type: emoji
+                category: catA
+              - value: 🏙️
                 type: emoji
                 category: catB
                 is_dropzone: true
-              - value: 🌵
+              - value: 🏢
                 type: emoji
                 category: catB
-              - value: 🌴
+              - value: 🏫
+                type: emoji
+                category: catB
+              - value: 🌌
                 type: emoji
                 category: catC
                 is_dropzone: true
-              - value: 🌴
+              - value: ⭐
                 type: emoji
                 category: catC
-        - instructions:
-            - locale: fr_FR
-              value: "Glisse et dépose les emojis dans la zone correspondante 🌲🌵🌴"
-            - locale: en_US
-              value: "Drag and drop the emojis in the correct zone 🌲🌵🌴"
-          interface: dragAndDropGridWithZones
-          gameplay: associateCategories
-          payload:
-            choices:
-              - value: 🌲
-                type: emoji
-                category: catA
-                is_dropzone: true
-              - value: 🌲
-                type: emoji
-                category: catA
-              - value: 🌲
-                type: emoji
-                category: catA
-              - value: 🌵
-                type: emoji
-                category: catB
-                is_dropzone: true
-              - value: 🌵
-                type: emoji
-                category: catB
-              - value: 🌴
-                type: emoji
-                category: catC
-                is_dropzone: true
-              - value: 🌴
+              - value: 🌙
                 type: emoji
                 category: catC
         - instructions:
