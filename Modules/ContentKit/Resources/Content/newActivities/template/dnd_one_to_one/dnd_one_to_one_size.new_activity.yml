@@ -1,0 +1,504 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: BE178E6DEC39436C968CBA28534EEAF5
+name: DnDOneToOne_Size
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          payload:
+            choices:
+              - value: yellow
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          payload:
+            choices:
+              - value: orange
+                type: color
+              - value: green
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          payload:
+            choices:
+              - value: purple
+                type: color
+              - value: orange
+                type: color
+              - value: green
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          payload:
+            choices:
+              - value: red
+                type: color
+              - value: purple
+                type: color
+              - value: orange
+                type: color
+              - value: green
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          payload:
+            choices:
+              - value: yellow
+                type: color
+              - value: red
+                type: color
+              - value: purple
+                type: color
+              - value: orange
+                type: color
+              - value: green
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          payload:
+            choices:
+              - value: blue
+                type: color
+              - value: yellow
+                type: color
+              - value: red
+                type: color
+              - value: purple
+                type: color
+              - value: orange
+                type: color
+              - value: green
+                type: color
+
+    - group:
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          options:
+            validation:
+              type: manual
+          payload:
+            choices:
+              - value: yellow
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          options:
+            validation:
+              type: manual
+          payload:
+            choices:
+              - value: orange
+                type: color
+              - value: green
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          options:
+            validation:
+              type: manual
+          payload:
+            choices:
+              - value: purple
+                type: color
+              - value: orange
+                type: color
+              - value: green
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          options:
+            validation:
+              type: manual
+          payload:
+            choices:
+              - value: red
+                type: color
+              - value: purple
+                type: color
+              - value: orange
+                type: color
+              - value: green
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          options:
+            validation:
+              type: manual
+          payload:
+            choices:
+              - value: yellow
+                type: color
+              - value: red
+                type: color
+              - value: purple
+                type: color
+              - value: orange
+                type: color
+              - value: green
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          options:
+            validation:
+              type: manual
+          payload:
+            choices:
+              - value: blue
+                type: color
+              - value: yellow
+                type: color
+              - value: red
+                type: color
+              - value: purple
+                type: color
+              - value: orange
+                type: color
+              - value: green
+                type: color
+
+    - group:
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Jaune"
+                - locale: en_US
+                  utterance: "Yellow"
+          payload:
+            choices:
+              - value: yellow
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Orange, Vert"
+                - locale: en_US
+                  utterance: "Orange, Green"
+          payload:
+            choices:
+              - value: orange
+                type: color
+              - value: green
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Violet, Orange, Vert"
+                - locale: en_US
+                  utterance: "Purple, Orange, Green"
+          payload:
+            choices:
+              - value: purple
+                type: color
+              - value: orange
+                type: color
+              - value: green
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Rouge, Violet, Orange, Vert"
+                - locale: en_US
+                  utterance: "Red, Purple, Orange, Green"
+          payload:
+            choices:
+              - value: red
+                type: color
+              - value: purple
+                type: color
+              - value: orange
+                type: color
+              - value: green
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Jaune, Rouge, Violet, Orange, Vert"
+                - locale: en_US
+                  utterance: "Yellow, Red, Purple, Orange, Green"
+          payload:
+            choices:
+              - value: yellow
+                type: color
+              - value: red
+                type: color
+              - value: purple
+                type: color
+              - value: orange
+                type: color
+              - value: green
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          action:
+            type: ipad
+            value:
+              type: speech
+              value:
+                - locale: fr_FR
+                  utterance: "Bleu, Jaune, Rouge, Violet, Orange, Vert"
+                - locale: en_US
+                  utterance: "Blue, Yellow, Red, Purple, Orange, Green"
+          payload:
+            choices:
+              - value: blue
+                type: color
+              - value: yellow
+                type: color
+              - value: red
+                type: color
+              - value: purple
+                type: color
+              - value: orange
+                type: color
+              - value: green
+                type: color
+
+    - group:
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          action:
+            type: ipad
+            value:
+              type: image
+              value: hands_on
+          payload:
+            choices:
+              - value: yellow
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          action:
+            type: ipad
+            value:
+              type: image
+              value: hands_on
+          payload:
+            choices:
+              - value: orange
+                type: color
+              - value: green
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          action:
+            type: ipad
+            value:
+              type: image
+              value: hands_on
+          payload:
+            choices:
+              - value: purple
+                type: color
+              - value: orange
+                type: color
+              - value: green
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          action:
+            type: ipad
+            value:
+              type: image
+              value: hands_on
+          payload:
+            choices:
+              - value: red
+                type: color
+              - value: purple
+                type: color
+              - value: orange
+                type: color
+              - value: green
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          action:
+            type: ipad
+            value:
+              type: image
+              value: hands_on
+          payload:
+            choices:
+              - value: yellow
+                type: color
+              - value: red
+                type: color
+              - value: purple
+                type: color
+              - value: orange
+                type: color
+              - value: green
+                type: color
+        - instructions:
+          - locale: fr_FR
+            value: "Place dans le bon ordre"
+          - locale: en_US
+            value: "Put in the correct order"
+          interface: dragAndDropOneToOne
+          gameplay: findTheRightOrder
+          action:
+            type: ipad
+            value:
+              type: image
+              value: hands_on
+          payload:
+            choices:
+              - value: blue
+                type: color
+              - value: yellow
+                type: color
+              - value: red
+                type: color
+              - value: purple
+                type: color
+              - value: orange
+                type: color
+              - value: green
+                type: color
