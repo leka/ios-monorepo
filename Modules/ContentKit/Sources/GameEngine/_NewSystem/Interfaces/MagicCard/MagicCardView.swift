@@ -21,74 +21,76 @@ public struct MagicCardView: View {
 
     public var body: some View {
         let interface = Interface(rawValue: viewModel.choices.count)
-        HStack(spacing: 0) {
-            if let action = self.viewModel.action {
-                Button {
-                    // nothing to do
-                }
-                label: {
-                    ActionButtonView(action: action)
-                        .frame(width: 300, height: 300)
-                }
-                .simultaneousGesture(
-                    TapGesture()
-                        .onEnded { _ in
-                            withAnimation {
-                                self.viewModel.didTriggerAction = true
-                                self.viewModel.enableMagicCardDetection()
+        ZStack {
+            HStack(spacing: 0) {
+                if let action = self.viewModel.action {
+                    Button {
+                        // nothing to do
+                    }
+                    label: {
+                        ActionButtonView(action: action)
+                            .padding(20)
+                    }
+                    .simultaneousGesture(
+                        TapGesture()
+                            .onEnded { _ in
+                                withAnimation {
+                                    self.viewModel.didTriggerAction = true
+                                    self.viewModel.enableMagicCardDetection()
+                                }
                             }
-                        }
-                )
+                    )
 
-                Divider()
-                    .opacity(0.4)
-                    .frame(maxHeight: 500)
-                    .padding(.vertical, 20)
-            }
-
-            Group {
-                switch interface {
-                    case .oneChoice:
-                        OneChoiceView(viewModel: self.viewModel)
-                            .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
-                            .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
-                            .allowsHitTesting(self.viewModel.didTriggerAction)
-
-                    case .twoChoices:
-                        TwoChoicesView(viewModel: self.viewModel)
-                            .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
-                            .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
-                            .allowsHitTesting(self.viewModel.didTriggerAction)
-
-                    case .threeChoices:
-                        ThreeChoicesView(viewModel: self.viewModel)
-                            .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
-                            .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
-                            .allowsHitTesting(self.viewModel.didTriggerAction)
-
-                    case .fourChoices:
-                        FourChoicesView(viewModel: self.viewModel)
-                            .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
-                            .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
-                            .allowsHitTesting(self.viewModel.didTriggerAction)
-
-                    case .fiveChoices:
-                        FiveChoicesView(viewModel: self.viewModel)
-                            .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
-                            .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
-                            .allowsHitTesting(self.viewModel.didTriggerAction)
-
-                    case .sixChoices:
-                        SixChoicesView(viewModel: self.viewModel)
-                            .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
-                            .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
-                            .allowsHitTesting(self.viewModel.didTriggerAction)
-
-                    default:
-                        ProgressView()
+                    Divider()
+                        .opacity(0.4)
+                        .frame(maxHeight: 500)
+                        .padding(.vertical, 20)
                 }
+
+                Group {
+                    switch interface {
+                        case .oneChoice:
+                            OneChoiceView(viewModel: self.viewModel)
+                                .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                                .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                                .allowsHitTesting(self.viewModel.didTriggerAction)
+
+                        case .twoChoices:
+                            TwoChoicesView(viewModel: self.viewModel)
+                                .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                                .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                                .allowsHitTesting(self.viewModel.didTriggerAction)
+
+                        case .threeChoices:
+                            ThreeChoicesView(viewModel: self.viewModel)
+                                .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                                .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                                .allowsHitTesting(self.viewModel.didTriggerAction)
+
+                        case .fourChoices:
+                            FourChoicesView(viewModel: self.viewModel)
+                                .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                                .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                                .allowsHitTesting(self.viewModel.didTriggerAction)
+
+                        case .fiveChoices:
+                            FiveChoicesView(viewModel: self.viewModel)
+                                .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                                .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                                .allowsHitTesting(self.viewModel.didTriggerAction)
+
+                        case .sixChoices:
+                            SixChoicesView(viewModel: self.viewModel)
+                                .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                                .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                                .allowsHitTesting(self.viewModel.didTriggerAction)
+
+                        default:
+                            ProgressView()
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .onDisappear {
             Robot.shared.stopLights()

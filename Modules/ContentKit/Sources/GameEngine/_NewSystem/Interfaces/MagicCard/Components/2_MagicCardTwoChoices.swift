@@ -9,12 +9,10 @@ import SwiftUI
 
 extension MagicCardView {
     struct TwoChoicesView: View {
-        // MARK: Internal
-
         @ObservedObject var viewModel: MagicCardViewViewModel
 
         var body: some View {
-            HStack(spacing: self.kHorizontalSpacing) {
+            HStack {
                 ForEach(self.viewModel.choices) { choice in
                     Button {
                         self.viewModel.onTapped(cardID: choice.id)
@@ -22,13 +20,10 @@ extension MagicCardView {
                         choice.view
                     }
                     .disabled(choice.disabled)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             }
         }
-
-        // MARK: Private
-
-        private let kHorizontalSpacing: CGFloat = 150
     }
 }
 
