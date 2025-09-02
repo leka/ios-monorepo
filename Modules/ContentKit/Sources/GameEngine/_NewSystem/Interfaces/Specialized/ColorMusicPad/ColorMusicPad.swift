@@ -4,6 +4,7 @@
 
 import AudioKit
 import DesignKit
+import DeviceKit
 import RobotKit
 import SwiftUI
 
@@ -32,7 +33,7 @@ struct ColorMusicPad: View {
     private let colors: [Robot.Color] = [.lightPink, .red, .orange, .yellow, .green, .mint, .lightBlue, .blue, .purple, .pink]
     private let columns = Array(repeating: GridItem(), count: 5)
     private let kHorizontalSpacing: CGFloat = 0
-    private let kTileWidth: CGFloat = 250
+    private let kTileWidth: CGFloat = Device.current.getDeviceSize() == .large ? 300 : 250
     private let kTileHeight: CGFloat = 600
 }
 

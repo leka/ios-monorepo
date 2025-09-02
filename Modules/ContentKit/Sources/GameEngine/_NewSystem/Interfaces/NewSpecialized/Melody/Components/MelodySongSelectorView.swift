@@ -50,7 +50,7 @@ struct MelodySongSelectorView: View {
                             }
                     }
                 }
-                .padding(.horizontal, 50)
+                .padding(.horizontal, 30)
             }
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -103,14 +103,15 @@ private struct ListRowSong: View {
                 Image(uiImage: UIImage(named: self.image)!)
                     .resizable()
                     .scaledToFit()
-                    .frame(maxWidth: 100)
+                    .frame(maxWidth: 80)
             } else if self.image.isVectorImageFile {
                 SVGView(contentsOf: URL(fileURLWithPath: self.image))
                     .scaledToFit()
-                    .frame(maxWidth: 100)
+                    .frame(maxWidth: 80)
             }
             Text(self.text)
         }
+        .frame(maxHeight: 150)
     }
 }
 
