@@ -1,0 +1,259 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: BFBCFFBF7D8543FA8EBC08D93EA92A84
+name: MagicCard_Size
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardNumbers1One
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+                is_right_answer: true
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardNumbers1One
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+                is_right_answer: true
+              - value: number_2
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardNumbers1One
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+                is_right_answer: true
+              - value: number_2
+              - value: number_3
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardNumbers1One
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+                is_right_answer: true
+              - value: number_2
+              - value: number_3
+              - value: number_4
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardNumbers1One
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+                is_right_answer: true
+              - value: number_2
+              - value: number_3
+              - value: number_4
+              - value: number_5
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardNumbers1One
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+                is_right_answer: true
+              - value: number_2
+              - value: number_3
+              - value: number_4
+              - value: number_5
+              - value: number_6
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: enumeration_candy_one
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+                is_right_answer: true
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: enumeration_candy_one
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+                is_right_answer: true
+              - value: number_2
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: enumeration_candy_one
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+                is_right_answer: true
+              - value: number_2
+              - value: number_3
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: enumeration_candy_one
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+                is_right_answer: true
+              - value: number_2
+              - value: number_3
+              - value: number_4
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: enumeration_candy_one
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+                is_right_answer: true
+              - value: number_2
+              - value: number_3
+              - value: number_4
+              - value: number_5
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: enumeration_candy_one
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+                is_right_answer: true
+              - value: number_2
+              - value: number_3
+              - value: number_4
+              - value: number_5
+              - value: number_6
