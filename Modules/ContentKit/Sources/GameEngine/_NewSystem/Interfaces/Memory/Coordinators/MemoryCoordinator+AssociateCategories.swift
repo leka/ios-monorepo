@@ -173,30 +173,26 @@ extension MemoryCoordinatorAssociateCategories: ExerciseEvaluationStrategy {
             default:
                 [
                     2: [1: 1],
+                    3: [1: 1],
                     4: [1: 1, 2: 4],
+                    5: [1: 1, 2: 4],
                     6: [1: 1, 2: 6, 3: 6],
-                    8: [1: 1, 2: 8, 4: 8],
+                    7: [1: 1, 2: 6, 3: 6],
+                    8: [1: 1, 2: 8, 3: 8, 4: 8],
                 ]
         }
     }
 
     private func getNumberOfAllowedTrials(from table: EvaluationLUT) -> Int {
-        let numberOfRightAnswers = self.getNumberOfRightAnswers(choices: self.rawChoices)
+        let numberOfCategories = Set(self.rawChoices.map(\.category)).count
         let numberOfChoices = self.rawChoices.count
 
-        guard let number = table[numberOfChoices]?[numberOfRightAnswers] else {
-            logGEK.error("No number of allowed trials found for \(numberOfChoices) choices and \(numberOfRightAnswers) right answers")
-            fatalError("No number of allowed trials found for \(numberOfChoices) choices and \(numberOfRightAnswers) right answers")
+        guard let number = table[numberOfChoices]?[numberOfCategories] else {
+            logGEK.error("No number of allowed trials found for \(numberOfChoices) choices and \(numberOfCategories) categories")
+            fatalError("No number of allowed trials found for \(numberOfChoices) choices and \(numberOfCategories)  categories")
         }
 
         return number
-    }
-
-    func getNumberOfRightAnswers(choices: [CoordinatorAssociateCategoriesChoiceModel]) -> Int {
-        let numberOfCategories = Set(choices.map(\.category)).count
-        let numberOfCategorizableChoices = choices.map { $0.category != .none }.count
-
-        return numberOfCategorizableChoices - numberOfCategories
     }
 }
 
