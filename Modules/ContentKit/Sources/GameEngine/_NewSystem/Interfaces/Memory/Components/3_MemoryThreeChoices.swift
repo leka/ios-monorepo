@@ -9,19 +9,18 @@ import SwiftUI
 
 extension NewMemoryView {
     struct ThreeChoicesView: View {
-        // MARK: Internal
-
         @ObservedObject var viewModel: NewMemoryViewViewModel
 
         var body: some View {
-            VStack(spacing: self.kVerticalSpacing) {
-                HStack(spacing: self.kHorizontalSpacing) {
+            VStack {
+                HStack {
                     ForEach(self.viewModel.choices[0...1]) { choice in
                         choice.view
                             .onTapGesture {
                                 self.viewModel.onTapped(choice: choice)
                             }
                             .disabled(choice.disabled)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                 }
 
@@ -30,12 +29,8 @@ extension NewMemoryView {
                         self.viewModel.onTapped(choice: self.viewModel.choices[2])
                     }
                     .disabled(self.viewModel.choices[2].disabled)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
-
-        // MARK: Private
-
-        private let kHorizontalSpacing: CGFloat = 80
-        private let kVerticalSpacing: CGFloat = 40
     }
 }

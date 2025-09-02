@@ -48,6 +48,7 @@ public struct NewMemoryView: View {
                     ProgressView()
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     // MARK: Internal
