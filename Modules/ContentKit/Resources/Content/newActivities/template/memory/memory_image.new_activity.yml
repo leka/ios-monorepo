@@ -1,0 +1,47 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 1F6E606D0B4D4F7E914E5D64ABBEB939
+name: Memory_Image
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+      - instructions:
+          - locale: fr_FR
+            value: "Trouve les paires"
+          - locale: en_US
+            value: "Find the pairs"
+        interface: memory
+        gameplay: associateCategories
+        options:
+          shuffle_choices: true
+        payload:
+          choices:
+            - value: emotion_drawing_child_angry_hugo
+              type: image
+              category: catA
+            - value: emotion_drawing_child_fear_zoe
+              type: image
+              category: catD
+            - value: emotion_drawing_child_disgust_moussa
+              type: image
+              category: catB
+            - value: emotion_drawing_child_angry_hugo
+              type: image
+              category: catA
+            - value: emotion_drawing_child_fear_zoe
+              type: image
+              category: catD
+            - value: emotion_drawing_child_disgust_moussa
+              type: image
+              category: catB
+            - value: emotion_drawing_child_joy_louna
+              type: image
+              category: catC
+            - value: emotion_drawing_child_joy_louna
+              type: image
+              category: catC

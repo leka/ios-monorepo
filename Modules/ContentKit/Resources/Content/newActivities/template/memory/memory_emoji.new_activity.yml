@@ -1,0 +1,47 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 0152AC6C9D084523A8EA95A27CC29B24
+name: Memory_Emoji
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+      - instructions:
+          - locale: fr_FR
+            value: "Trouve les paires"
+          - locale: en_US
+            value: "Find the pairs"
+        interface: memory
+        gameplay: associateCategories
+        options:
+          shuffle_choices: true
+        payload:
+          choices:
+            - value: 🍉
+              type: emoji
+              category: catA
+            - value: 🍖
+              type: emoji
+              category: catD
+            - value: 🐕
+              type: emoji
+              category: catB
+            - value: 🍉
+              type: emoji
+              category: catA
+            - value: 🍖
+              type: emoji
+              category: catD
+            - value: 🐕
+              type: emoji
+              category: catB
+            - value: 🍹
+              type: emoji
+              category: catC
+            - value: 🍹
+              type: emoji
+              category: catC
