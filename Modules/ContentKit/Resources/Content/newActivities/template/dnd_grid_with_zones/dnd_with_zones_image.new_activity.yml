@@ -1,0 +1,151 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: C01DA94C254346ADBF26DEE2A00A9963
+name: DnDGridWithZones_Image
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: "Mets les images similaires dans le panier"
+            - locale: en_US
+              value: "Put the images that are similar in the basket"
+          interface: dragAndDropGridWithZones
+          gameplay: associateCategories
+          options:
+            shuffle_choices: true
+            validation:
+              type: automatic
+          payload:
+            choices:
+              - value: dropzone_basket
+                type: image
+                category: catA
+                is_dropzone: true
+              - value: pictograms-foods-vegetables-carrot_orange-00E6
+                type: image
+                category: catA
+              - value: pictograms-foods-vegetables-carrot_orange-00E6
+                type: image
+                category: catA
+              - value: pictograms-foods-fruits-apple_green-0100
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: "Mets les images dans les bonnes pièces"
+            - locale: en_US
+              value: "Group the objects with the places"
+          interface: dragAndDropGridWithZones
+          gameplay: associateCategories
+          options:
+            shuffle_choices: true
+            validation:
+              type: automatic
+          payload:
+            choices:
+              - value: dropzone_bedroom
+                type: image
+                category: catA
+                is_dropzone: true
+              - value: pictograms-objects-house-bedroom-bed_blue-01A5
+                type: image
+                category: catA
+              - value: pictograms-objects-house-bedroom-pillow_white-01A7
+                type: image
+                category: catA
+              - value: pictograms-objects-house-bedroom-toy_wagon_brown-01A6
+                type: image
+                category: catA
+              - value: dropzone_bathroom
+                type: image
+                category: catB
+                is_dropzone: true
+              - value: pictograms-objects-bathroom-towel_blue-00C0
+                type: image
+                category: catB
+              - value: pictograms-objects-bathroom-toothbrush_blue-00C5
+                type: image
+                category: catB
+              - value: pictograms-objects-bathroom-soap_bottle_pink-00C6
+                type: image
+                category: catB
+        - instructions:
+            - locale: fr_FR
+              value: "Glisse et dépose les images dans la zone correspondante"
+            - locale: en_US
+              value: "Drag and drop the images in the correct zone"
+          interface: dragAndDropGridWithZones
+          gameplay: associateCategories
+          options:
+            shuffle_choices: true
+            validation:
+              type: manual
+          payload:
+            choices:
+              - value: dropzone_bedroom
+                type: image
+                category: catA
+                is_dropzone: true
+              - value: pictograms-objects-house-bedroom-pillow_white-01A7
+                type: image
+                category: catA
+              - value: pictograms-objects-house-bedroom-toy_wagon_brown-01A6
+                type: image
+                category: catA
+              - value: dropzone_bathroom
+                type: image
+                category: catB
+                is_dropzone: true
+              - value: pictograms-objects-bathroom-toothbrush_blue-00C5
+                type: image
+                category: catB
+              - value: pictograms-objects-bathroom-soap_bottle_pink-00C6
+                type: image
+                category: catB
+              - value: dropzone_kitchen
+                type: image
+                category: catC
+                is_dropzone: true
+              - value: pictograms-objects-house-kitchen-cooking_pot-0190
+                type: image
+                category: catC
+              - value: pictograms-objects-house-kitchen-frying_pan_red-0195
+                type: image
+                category: catC
+        - instructions:
+            - locale: fr_FR
+              value: "Glisse et dépose les instruments que tu aimes et que tu n'aimes pas"
+            - locale: en_US
+              value: "Drag and drop musical instruments that you like & than you dislike"
+          interface: dragAndDropGridWithZones
+          gameplay: openPlay
+          options:
+            shuffle_choices: true
+            validation:
+              type: manual
+              minimumToSelect: 1
+          payload:
+            choices:
+              - value: 😍
+                type: emoji
+                is_dropzone: true
+              - value: ☹️
+                type: emoji
+                is_dropzone: true
+              - value: pictograms-objects-musical_instrument-accordion_orange-013A
+                type: image
+              - value: pictograms-objects-musical_instrument-flute_brown-0136
+                type: image
+              - value: pictograms-objects-musical_instrument-guitar_brown-0134
+                type: image
+              - value: pictograms-objects-musical_instrument-saxophone_yellow-013C
+                type: image
+              - value: pictograms-objects-musical_instrument-violin_brown-013D
+                type: image
+              - value: pictograms-objects-musical_instrument-xylophone_brown-0137
+                type: image

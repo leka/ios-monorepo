@@ -1,0 +1,105 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: F3B680FE89AC418895BE369949928833
+name: DnDGridWithZones_SFSymbol
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: "Mets les sfsymbols similaires dans le panier"
+            - locale: en_US
+              value: "Put the sfsymbols that are similar in the basket"
+          interface: dragAndDropGridWithZones
+          gameplay: associateCategories
+          options:
+            shuffle_choices: true
+            validation:
+              type: automatic
+          payload:
+            choices:
+              - value: basket.fill
+                type: sfsymbol
+                category: catA
+                is_dropzone: true
+              - value: bicycle
+                type: sfsymbol
+                category: catA
+              - value: bicycle
+                type: sfsymbol
+                category: catA
+              - value: bus.doubledecker
+                type: sfsymbol
+        - instructions:
+            - locale: fr_FR
+              value: "Tri les véhicules en fonction de leur rapidité"
+            - locale: en_US
+              value: "Group the vehicles according to their speed"
+          interface: dragAndDropGridWithZones
+          gameplay: associateCategories
+          options:
+            shuffle_choices: true
+            validation:
+              type: manual
+          payload:
+            choices:
+              - value: hare
+                type: sfsymbol
+                category: catA
+                is_dropzone: true
+              - value: airplane
+                type: sfsymbol
+                category: catA
+              - value: motorcycle
+                type: sfsymbol
+                category: catA
+              - value: car
+                type: sfsymbol
+                category: catA
+              - value: tortoise
+                type: sfsymbol
+                category: catB
+                is_dropzone: true
+              - value: scooter
+                type: sfsymbol
+                category: catB
+              - value: bicycle
+                type: sfsymbol
+                category: catB
+        - instructions:
+            - locale: fr_FR
+              value: "Glisse et dépose les véhicules que tu aimes et que tu n'aimes pas"
+            - locale: en_US
+              value: "Drag and drop vehicles that you like & than you dislike"
+          interface: dragAndDropGridWithZones
+          gameplay: openPlay
+          options:
+            shuffle_choices: true
+            validation:
+              type: manual
+              minimumToSelect: 1
+          payload:
+            choices:
+              - value: 😍
+                type: emoji
+                is_dropzone: true
+              - value: ☹️
+                type: emoji
+                is_dropzone: true
+              - value: bicycle
+                type: sfsymbol
+              - value: car
+                type: sfsymbol
+              - value: airplane
+                type: sfsymbol
+              - value: scooter
+                type: sfsymbol
+              - value: motorcycle
+                type: sfsymbol
+              - value: bus
+                type: sfsymbol
