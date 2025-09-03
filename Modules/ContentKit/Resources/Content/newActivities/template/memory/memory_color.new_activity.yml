@@ -1,0 +1,44 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 92787141FB994D158FD8F4852ECEC89E
+name: Memory_Color
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+      - instructions:
+          - locale: fr_FR
+            value: "Trouve les paires"
+          - locale: en_US
+            value: "Find the pairs"
+        interface: memory
+        gameplay: associateCategories
+        options:
+          shuffle_choices: true
+        payload:
+          choices:
+            - value: red
+              type: color
+              category: catA
+            - value: blue
+              type: color
+              category: catC
+            - value: yellow
+              type: color
+              category: catB
+            - value: red
+              type: color
+              category: catA
+            - value: blue
+              type: color
+              category: catC
+            - value: yellow
+              type: color
+              category: catB
+            - value: yellow
+              type: color
+              category: catB

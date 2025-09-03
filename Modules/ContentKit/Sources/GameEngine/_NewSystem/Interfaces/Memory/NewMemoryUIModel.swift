@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import DeviceKit
 import SwiftUI
 
 // MARK: - MemoryUIChoiceModel
@@ -33,18 +34,49 @@ public struct MemoryUIModel {
 
     var choices: [MemoryUIChoiceModel]
 
+    // swiftlint:disable cyclomatic_complexity
+
     func choiceSize(for numberOfChoices: Int) -> CGFloat {
-        switch numberOfChoices {
-            case 1...2:
-                300
-            case 3:
-                280
-            case 4...6:
-                240
-            case 7...8:
-                200
-            default:
-                200
+        switch Device.current.getDeviceSize() {
+            case .small:
+                switch numberOfChoices {
+                    case 1...2:
+                        300
+                    case 3...6:
+                        230
+                    case 7...8:
+                        210
+                    default:
+                        200
+                }
+            case .medium:
+                switch numberOfChoices {
+                    case 1...2:
+                        350
+                    case 3:
+                        270
+                    case 4...6:
+                        260
+                    case 7...8:
+                        220
+                    default:
+                        220
+                }
+            case .large:
+                switch numberOfChoices {
+                    case 1...2:
+                        450
+                    case 3...6:
+                        350
+                    case 5...6:
+                        320
+                    case 7...8:
+                        280
+                    default:
+                        250
+                }
         }
     }
 }
+
+// swiftlint:enable cyclomatic_complexity

@@ -1,0 +1,180 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 267F5C5705DA452FBB585F31E1543EB9
+name: Memory_Size
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+      - instructions:
+          - locale: fr_FR
+            value: "Trouve les paires"
+          - locale: en_US
+            value: "Find the pairs"
+        interface: memory
+        gameplay: associateCategories
+        payload:
+          choices:
+            - value: red
+              type: color
+              category: catA
+            - value: red
+              type: color
+              category: catA
+      - instructions:
+          - locale: fr_FR
+            value: "Trouve les paires"
+          - locale: en_US
+            value: "Find the pairs"
+        interface: memory
+        gameplay: associateCategories
+        payload:
+          choices:
+            - value: red
+              type: color
+              category: catA
+            - value: red
+              type: color
+              category: catA
+            - value: red
+              type: color
+              category: catA
+      - instructions:
+          - locale: fr_FR
+            value: "Trouve les paires"
+          - locale: en_US
+            value: "Find the pairs"
+        interface: memory
+        gameplay: associateCategories
+        payload:
+          choices:
+            - value: red
+              type: color
+              category: catA
+            - value: yellow
+              type: color
+              category: catB
+            - value: red
+              type: color
+              category: catA
+            - value: yellow
+              type: color
+              category: catB
+      - instructions:
+          - locale: fr_FR
+            value: "Trouve les paires"
+          - locale: en_US
+            value: "Find the pairs"
+        interface: memory
+        gameplay: associateCategories
+        payload:
+          choices:
+            - value: red
+              type: color
+              category: catA
+            - value: yellow
+              type: color
+              category: catB
+            - value: yellow
+              type: color
+              category: catB
+            - value: red
+              type: color
+              category: catA
+            - value: yellow
+              type: color
+              category: catB
+      - instructions:
+          - locale: fr_FR
+            value: "Trouve les paires"
+          - locale: en_US
+            value: "Find the pairs"
+        interface: memory
+        gameplay: associateCategories
+        payload:
+          choices:
+            - value: red
+              type: color
+              category: catA
+            - value: yellow
+              type: color
+              category: catB
+            - value: red
+              type: color
+              category: catA
+            - value: yellow
+              type: color
+              category: catB
+            - value: purple
+              type: color
+              category: catC
+            - value: purple
+              type: color
+              category: catC
+      - instructions:
+          - locale: fr_FR
+            value: "Trouve les paires"
+          - locale: en_US
+            value: "Find the pairs"
+        interface: memory
+        gameplay: associateCategories
+        payload:
+          choices:
+            - value: red
+              type: color
+              category: catA
+            - value: yellow
+              type: color
+              category: catB
+            - value: red
+              type: color
+              category: catA
+            - value: purple
+              type: color
+              category: catC
+            - value: yellow
+              type: color
+              category: catB
+            - value: purple
+              type: color
+              category: catC
+            - value: purple
+              type: color
+              category: catC
+      - instructions:
+          - locale: fr_FR
+            value: "Trouve les paires"
+          - locale: en_US
+            value: "Find the pairs"
+        interface: memory
+        gameplay: associateCategories
+        payload:
+          choices:
+            - value: red
+              type: color
+              category: catA
+            - value: green
+              type: color
+              category: catD
+            - value: yellow
+              type: color
+              category: catB
+            - value: red
+              type: color
+              category: catA
+            - value: green
+              type: color
+              category: catD
+            - value: yellow
+              type: color
+              category: catB
+            - value: purple
+              type: color
+              category: catC
+            - value: purple
+              type: color
+              category: catC

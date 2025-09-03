@@ -18,6 +18,7 @@ extension NewMemoryView {
                     self.viewModel.onTapped(choice: choice)
                 }
                 .disabled(choice.disabled)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 }
