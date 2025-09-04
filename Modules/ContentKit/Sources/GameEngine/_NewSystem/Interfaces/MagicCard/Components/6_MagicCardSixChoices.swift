@@ -9,13 +9,11 @@ import SwiftUI
 
 extension MagicCardView {
     struct SixChoicesView: View {
-        // MARK: Internal
-
         @ObservedObject var viewModel: MagicCardViewViewModel
 
         var body: some View {
-            VStack(spacing: self.kVerticalSpacing) {
-                HStack(spacing: self.kHorizontalSpacing) {
+            VStack {
+                HStack {
                     ForEach(self.viewModel.choices[0...2]) { choice in
                         Button {
                             self.viewModel.onTapped(cardID: choice.id)
@@ -23,10 +21,11 @@ extension MagicCardView {
                             choice.view
                         }
                         .disabled(choice.disabled)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                 }
 
-                HStack(spacing: self.kHorizontalSpacing) {
+                HStack {
                     ForEach(self.viewModel.choices[3...5]) { choice in
                         Button {
                             self.viewModel.onTapped(cardID: choice.id)
@@ -34,15 +33,11 @@ extension MagicCardView {
                             choice.view
                         }
                         .disabled(choice.disabled)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                 }
             }
         }
-
-        // MARK: Private
-
-        private let kHorizontalSpacing: CGFloat = 60
-        private let kVerticalSpacing: CGFloat = 40
     }
 }
 
