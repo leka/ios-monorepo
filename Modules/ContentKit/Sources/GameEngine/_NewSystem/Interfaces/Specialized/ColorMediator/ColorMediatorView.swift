@@ -3,24 +3,26 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import DesignKit
+import DeviceKit
 import LocalizationKit
 import RobotKit
 import SwiftUI
+import UtilsKit
 
 public struct ColorMediatorView: View {
     // MARK: Public
 
     public var body: some View {
-        VStack(spacing: 30) {
+        VStack {
             HStack(spacing: 60) {
                 self.colorSelectorButton
                 ColorBar(colors: self.isShuffleModeActivated ? self.shuffledSelectedColors : self.selectedColors, size: 30)
                 self.shuffleButton
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-            Spacer()
-            HStack(spacing: 300) {
-                VStack(spacing: 20) {
+            HStack {
+                VStack {
                     if self.isPlaying {
                         ActionButton(.next, text: String(l10n.ColorMediatorView.nextButtonLabel.characters)) {
                             Robot.shared.blacken(.all)
@@ -50,11 +52,12 @@ public struct ColorMediatorView: View {
                     }
                     .disabled(!self.isPlaying)
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
 
                 VStack {
                     ZStack {
                         self.currentColor.screen
-                            .frame(width: 300, height: 300)
+                            .frame(width: self.colorMediatorFrame, height: self.colorMediatorFrame)
                             .clipShape(Circle())
                             .shadow(radius: 1)
                             .shadow(color: self.currentColor.screen, radius: self.remainingTime == 0 ? 20 : 0)
@@ -68,12 +71,11 @@ public struct ColorMediatorView: View {
                     Text(l10n.ColorMediatorView.robotColorLabel)
                         .foregroundStyle(.secondary)
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
 
-            Spacer()
-
             ReinforcerBarButton()
-                .padding(.bottom, 20)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .onAppear {
             self.isColorSelectorPresented = true
@@ -81,7 +83,7 @@ public struct ColorMediatorView: View {
         .sheet(isPresented: self.$isColorSelectorPresented) {
             ColorSelector(selectedColors: self.selectedColors, onSelected: { colors in self.selectedColors = colors })
         }
-        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     // MARK: Internal
@@ -165,6 +167,7 @@ public struct ColorMediatorView: View {
     @State var timer: Timer?
 
     private let backgroundColor: Color = .init(light: UIColor.white, dark: UIColor.systemGray5)
+    private let colorMediatorFrame: CGFloat = Device.current.getDeviceSize() == .small ? 250 : 300
 }
 
 #Preview {
