@@ -28,10 +28,12 @@ public struct Curriculum: Decodable, Identifiable {
         self.lastEditedAt = try container.decode(Date.self, forKey: .lastEditedAt)
         self.status = try container.decode(Status.self, forKey: .status)
 
-        self.authors = try container.decode([String].self, forKey: .authors)
+        let authorIDs = try container.decode([String].self, forKey: .authors)
+        self.authors = authorIDs.compactMap { Authors.authors(id: $0) }
         let skillsIDs = try container.decode([String].self, forKey: .skills)
         self.skills = skillsIDs.compactMap { Skills.skill(id: $0) }
-        self.hmi = try container.decode([String].self, forKey: .hmi)
+        let hmiIDs = try container.decode([String].self, forKey: .hmi)
+        self.hmi = hmiIDs.compactMap { HMI.hmi(id: $0) }
         let tagsIDs = try container.decode([String].self, forKey: .tags)
         self.tags = tagsIDs.compactMap { Tags.tag(id: $0) }
 
@@ -54,15 +56,15 @@ public struct Curriculum: Decodable, Identifiable {
     public let lastEditedAt: Date
     public let status: Status
 
-    public let authors: [String] // TODO: (@ladislas) - implement authors
+    public let authors: [Author]
     public let skills: [Skill]
-    public let hmi: [String] // TODO: (@ladislas) - implement hmi
+    public let hmi: [HMIDetails]
     public let tags: [Tag]
 
     public let locales: [Locale]
     public let l10n: [LocalizedDetails]
 
-    public let activities: [String] // TODO: (@ladislas) - implement activities
+    public let activities: [String]
 
     public var id: String { self.uuid }
     public var languages: [Locale.LanguageCode] { self.locales.compactMap(\.language.languageCode) }

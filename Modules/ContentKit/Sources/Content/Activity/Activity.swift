@@ -31,11 +31,14 @@ public struct Activity: Decodable, Identifiable {
         self.lastEditedAt = try container.decode(Date.self, forKey: .lastEditedAt)
         self.status = try container.decode(Status.self, forKey: .status)
 
-        self.authors = try container.decode([String].self, forKey: .authors)
+        let authorIDs = try container.decode([String].self, forKey: .authors)
+        self.authors = authorIDs.compactMap { Authors.authors(id: $0) }
         let skillsIDs = try container.decode([String].self, forKey: .skills)
         self.skills = skillsIDs.compactMap { Skills.skill(id: $0) }
-        self.hmi = try container.decode([String].self, forKey: .hmi)
-        self.types = try container.decode([String].self, forKey: .types)
+        let hmiIDs = try container.decode([String].self, forKey: .hmi)
+        self.hmi = hmiIDs.compactMap { HMI.hmi(id: $0) }
+        let typeIDs = try container.decode([String].self, forKey: .types)
+        self.types = typeIDs.compactMap { ActivityTypes.type(id: $0) }
         let tagsIDs = try container.decode([String].self, forKey: .tags)
         self.tags = tagsIDs.compactMap { Tags.tag(id: $0) }
 
@@ -54,10 +57,10 @@ public struct Activity: Decodable, Identifiable {
     public let lastEditedAt: Date
     public let status: Status
 
-    public let authors: [String] // TODO: (@ladislas) - implement authors
+    public let authors: [Author]
     public let skills: [Skill]
-    public let hmi: [String] // TODO: (@ladislas) - implement hmi
-    public let types: [String] // TODO: (@ladislas) - implement types
+    public let hmi: [HMIDetails]
+    public let types: [ActivityType]
     public let tags: [Tag]
 
     public let locales: [Locale]

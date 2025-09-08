@@ -14,7 +14,7 @@ public class Authors: Codable {
     // MARK: Lifecycle
 
     private init() {
-        self.container = Self.loadHMI()
+        self.container = Self.loadAuthors()
     }
 
     // MARK: Public
@@ -23,7 +23,7 @@ public class Authors: Codable {
         shared.container.list
     }
 
-    public static func hmi(id: String) -> Author? {
+    public static func authors(id: String) -> Author? {
         self.list.first(where: { $0.id == id })
     }
 
@@ -37,7 +37,7 @@ public class Authors: Codable {
 
     private let container: AuthorsContainer
 
-    private static func loadHMI() -> AuthorsContainer {
+    private static func loadAuthors() -> AuthorsContainer {
         if let fileURL = Bundle.module.url(forResource: "authors", withExtension: "yml") {
             do {
                 let yamlString = try String(contentsOf: fileURL, encoding: .utf8)
@@ -48,7 +48,7 @@ public class Authors: Codable {
                 return AuthorsContainer(list: [])
             }
         } else {
-            logCK.error("hmi.yml not found")
+            logCK.error("authors.yml not found")
             return AuthorsContainer(list: [])
         }
     }
@@ -110,5 +110,17 @@ public extension Author {
 
         let locale: Locale
         let description: String
+    }
+}
+
+// MARK: Hashable, Equatable
+
+extension Author: Hashable, Equatable {
+    public static func == (lhs: Author, rhs: Author) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
     }
 }
