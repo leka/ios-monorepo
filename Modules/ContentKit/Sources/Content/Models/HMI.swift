@@ -106,3 +106,15 @@ public extension HMIDetails {
         let description: String
     }
 }
+
+// MARK: Hashable, Equatable
+
+extension HMIDetails: Hashable, Equatable {
+    public static func == (lhs: HMIDetails, rhs: HMIDetails) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
+    }
+}

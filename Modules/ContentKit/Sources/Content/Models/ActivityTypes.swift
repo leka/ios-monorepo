@@ -106,3 +106,15 @@ public extension ActivityType {
         let description: String
     }
 }
+
+// MARK: Hashable, Equatable
+
+extension ActivityType: Hashable, Equatable {
+    public static func == (lhs: ActivityType, rhs: ActivityType) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
+    }
+}

@@ -137,8 +137,6 @@ public struct InfoDetailsView: View {
                 Spacer()
                 Fit(itemSpacing: .viewSpacing(minimum: 15)) {
                     ForEach(self.authors, id: \.self) { author in
-                        let author = Authors.hmi(id: author)!
-
                         TagView(title: author.name, systemImage: "info.circle") {
                             self.selectedAuthor = author
                         }
@@ -188,7 +186,7 @@ public struct InfoDetailsView: View {
     private let title: String
     private let subtitle: String?
     private let skills: [Skill]
-    private let authors: [String]
+    private let authors: [Author]
     private let abstract: String
     private let description: String
     private var activityCount: Int?
