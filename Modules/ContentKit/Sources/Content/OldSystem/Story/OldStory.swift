@@ -7,20 +7,20 @@ import LocalizationKit
 import UIKit
 import Yams
 
-// MARK: - Story
+// MARK: - OldStory
 
 // swiftlint:disable nesting
 
-public struct Story: Decodable, Identifiable {
+public struct OldStory: Decodable, Identifiable {
     // MARK: Lifecycle
 
-    public init?(id: String) {
-        if let story = ContentKit.allStories[id] {
-            self = story
-        } else {
-            return nil
-        }
-    }
+//    public init?(id: String) {
+//        if let story = ContentKit.allStories[id] {
+//            self = story
+//        } else {
+//            return nil
+//        }
+//    }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -103,18 +103,18 @@ public struct Story: Decodable, Identifiable {
     }
 }
 
-// MARK: Story.Status
+// MARK: OldStory.Status
 
-public extension Story {
+public extension OldStory {
     enum Status: String, Decodable {
         case draft
         case published
     }
 }
 
-// MARK: Story.LocalizedDetails
+// MARK: OldStory.LocalizedDetails
 
-public extension Story {
+public extension OldStory {
     struct LocalizedDetails: Decodable {
         // MARK: Lifecycle
 
@@ -124,7 +124,7 @@ public extension Story {
             let localeString = try container.decode(String.self, forKey: .locale)
             self.locale = Locale(identifier: localeString)
 
-            self.details = try container.decode(Story.Details.self, forKey: .details)
+            self.details = try container.decode(OldStory.Details.self, forKey: .details)
         }
 
         // MARK: Public
@@ -143,9 +143,9 @@ public extension Story {
     }
 }
 
-// MARK: Story.Details
+// MARK: OldStory.Details
 
-public extension Story {
+public extension OldStory {
     struct Details: Decodable {
         // MARK: Public
 
@@ -176,7 +176,7 @@ public extension Story {
 
 // MARK: Hashable
 
-extension Story: Hashable {
+extension OldStory: Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(self.id)
     }
@@ -184,8 +184,8 @@ extension Story: Hashable {
 
 // MARK: Equatable
 
-extension Story: Equatable {
-    public static func == (lhs: Story, rhs: Story) -> Bool {
+extension OldStory: Equatable {
+    public static func == (lhs: OldStory, rhs: OldStory) -> Bool {
         lhs.uuid == rhs.uuid
     }
 }
