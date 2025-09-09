@@ -6,18 +6,18 @@ import Foundation
 import LocalizationKit
 import UIKit
 
-// MARK: - Curriculum
+// MARK: - OldCurriculum
 
-public struct Curriculum: Decodable, Identifiable {
+public struct OldCurriculum: Decodable, Identifiable {
     // MARK: Lifecycle
 
-    public init?(id: String) {
-        if let curriculum = ContentKit.allCurriculums[id] {
-            self = curriculum
-        } else {
-            return nil
-        }
-    }
+//    public init?(id: String) {
+//        if let curriculum = ContentKit.allCurriculums[id] {
+//            self = curriculum
+//        } else {
+//            return nil
+//        }
+//    }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -100,9 +100,9 @@ public struct Curriculum: Decodable, Identifiable {
     }
 }
 
-// MARK: Curriculum.Status
+// MARK: OldCurriculum.Status
 
-public extension Curriculum {
+public extension OldCurriculum {
     enum Status: String, Decodable {
         case draft
         case published
@@ -110,9 +110,9 @@ public extension Curriculum {
     }
 }
 
-// MARK: Curriculum.LocalizedDetails
+// MARK: OldCurriculum.LocalizedDetails
 
-public extension Curriculum {
+public extension OldCurriculum {
     struct LocalizedDetails: Decodable {
         // MARK: Lifecycle
 
@@ -122,7 +122,7 @@ public extension Curriculum {
             let localeString = try container.decode(String.self, forKey: .locale)
             self.locale = Locale(identifier: localeString)
 
-            self.details = try container.decode(Curriculum.Details.self, forKey: .details)
+            self.details = try container.decode(OldCurriculum.Details.self, forKey: .details)
         }
 
         // MARK: Public
@@ -141,9 +141,9 @@ public extension Curriculum {
     }
 }
 
-// MARK: Curriculum.Details
+// MARK: OldCurriculum.Details
 
-public extension Curriculum {
+public extension OldCurriculum {
     struct Details: Decodable {
         // MARK: Public
 
@@ -173,7 +173,7 @@ public extension Curriculum {
 
 // MARK: Hashable
 
-extension Curriculum: Hashable {
+extension OldCurriculum: Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(self.uuid)
     }
@@ -181,8 +181,8 @@ extension Curriculum: Hashable {
 
 // MARK: Equatable
 
-extension Curriculum: Equatable {
-    public static func == (lhs: Curriculum, rhs: Curriculum) -> Bool {
+extension OldCurriculum: Equatable {
+    public static func == (lhs: OldCurriculum, rhs: OldCurriculum) -> Bool {
         lhs.uuid == rhs.uuid
     }
 }
