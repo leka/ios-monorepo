@@ -4,7 +4,75 @@
 
 uuid: BE178E6DEC39436C968CBA28534EEAF5
 name: DnDOneToOne_Size
-exercises_payload:
+
+version: 2.0.0
+created_at: "2024-03-01T14:00:38.160396"
+last_edited_at: "2025-02-25T17:24:54.289606"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - association
+
+tags:
+  - colors
+
+hmi:
+  - robot
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: activity_template_icon_name
+
+      title: Test
+      subtitle: Lorem ipsum dolor sit amet
+
+      short_description: |
+        Quisque nulla nulla, consequat vitae faucibus ut, congue eu diam. Pellentesque ultricies sapien eu viverra interdum
+
+      description: |
+        Quisque nulla nulla, consequat vitae faucibus ut, congue eu diam. Pellentesque ultricies sapien eu viverra interdum.
+        Vestibulum quis lorem non odio posuere condimentum. Aliquam dictum enim scelerisque sapien sodales, quis tincidunt tortor tempus.
+        Vestibulum sollicitudin ornare tristique. Sed quis sem sed nunc blandit laoreet.
+        Morbi laoreet risus ex, quis ultrices libero condimentum sed. Ut sed magna ac nunc tempus mollis.
+
+      instructions: |
+        - Integer hendrerit massa sollicitudin massa tincidunt semper.
+        - Pellentesque tortor tortor, dignissim vitae velit eget, viverra bibendum mauris.
+        - Nulla sed gravida ligula.
+
+  - locale: en_US
+    details:
+      icon: activity_template_icon_name
+
+      title: Test
+      subtitle: Lorem ipsum dolor sit amet
+
+      short_description: |
+        Quisque nulla nulla, consequat vitae faucibus ut, congue eu diam. Pellentesque ultricies sapien eu viverra interdum
+
+      description: |
+        Quisque nulla nulla, consequat vitae faucibus ut, congue eu diam. Pellentesque ultricies sapien eu viverra interdum.
+        Vestibulum quis lorem non odio posuere condimentum. Aliquam dictum enim scelerisque sapien sodales, quis tincidunt tortor tempus.
+        Vestibulum sollicitudin ornare tristique. Sed quis sem sed nunc blandit laoreet.
+        Morbi laoreet risus ex, quis ultrices libero condimentum sed. Ut sed magna ac nunc tempus mollis.
+
+      instructions: |
+        - Integer hendrerit massa sollicitudin massa tincidunt semper.
+        - Pellentesque tortor tortor, dignissim vitae velit eget, viverra bibendum mauris.
+        - Nulla sed gravida ligula.
+
+payload:
   options:
     shuffle_exercises: false
     shuffle_groups: false
