@@ -7,7 +7,7 @@ import LocalizationKit
 
 // MARK: - NewExerciseAction
 
-public enum NewExerciseAction: Decodable, Equatable {
+public enum NewExerciseAction: Decodable, Equatable, Hashable {
     case ipad(type: TabletActionType)
     case robot(type: RobotActionType)
 
@@ -32,7 +32,7 @@ public enum NewExerciseAction: Decodable, Equatable {
         case ipad
     }
 
-    public enum TabletActionType: Decodable, Equatable {
+    public enum TabletActionType: Decodable, Equatable, Hashable {
         case color(String)
         case image(String)
         case emoji(String)
@@ -41,7 +41,7 @@ public enum NewExerciseAction: Decodable, Equatable {
         case speech(String)
     }
 
-    public enum RobotActionType: Decodable, Equatable {
+    public enum RobotActionType: Decodable, Equatable, Hashable {
         case color(String)
         case image(String)
         case flash(Int)
