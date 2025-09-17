@@ -2,7 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-public enum NewExerciseInterface: Decodable, Equatable {
+public enum NewExerciseInterface: Decodable, Equatable, Hashable {
     case general(GeneralInterface)
     case specialized(SpecializedInterface)
 

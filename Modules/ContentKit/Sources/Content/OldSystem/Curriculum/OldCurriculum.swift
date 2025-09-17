@@ -5,22 +5,19 @@
 import Foundation
 import LocalizationKit
 import UIKit
-import Yams
 
-// MARK: - Story
+// MARK: - OldCurriculum
 
-// swiftlint:disable nesting
-
-public struct Story: Decodable, Identifiable {
+public struct OldCurriculum: Decodable, Identifiable {
     // MARK: Lifecycle
 
-    public init?(id: String) {
-        if let story = ContentKit.allStories[id] {
-            self = story
-        } else {
-            return nil
-        }
-    }
+//    public init?(id: String) {
+//        if let curriculum = ContentKit.allCurriculums[id] {
+//            self = curriculum
+//        } else {
+//            return nil
+//        }
+//    }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -37,8 +34,6 @@ public struct Story: Decodable, Identifiable {
         self.skills = skillsIDs.compactMap { Skills.skill(id: $0) }
         let hmiIDs = try container.decode([String].self, forKey: .hmi)
         self.hmi = hmiIDs.compactMap { HMI.hmi(id: $0) }
-        let typeIDs = try container.decode([String].self, forKey: .types)
-        self.types = typeIDs.compactMap { ActivityTypes.type(id: $0) }
         let tagsIDs = try container.decode([String].self, forKey: .tags)
         self.tags = tagsIDs.compactMap { Tags.tag(id: $0) }
 
@@ -46,7 +41,11 @@ public struct Story: Decodable, Identifiable {
         self.locales = localeStrings.compactMap { Locale(identifier: $0) }
         self.l10n = try container.decode([LocalizedDetails].self, forKey: .l10n)
 
-        self.pages = try container.decode([Page].self, forKey: .pages)
+        self.activities = try container.decode([String].self, forKey: .activities).compactMap {
+            $0.split(separator: "-")
+                .last?
+                .trimmingCharacters(in: .whitespaces)
+        }
     }
 
     // MARK: Public
@@ -60,13 +59,12 @@ public struct Story: Decodable, Identifiable {
     public let authors: [Author]
     public let skills: [Skill]
     public let hmi: [HMIDetails]
-    public let types: [ActivityType]
     public let tags: [Tag]
 
     public let locales: [Locale]
     public let l10n: [LocalizedDetails]
 
-    public var pages: [Page]
+    public let activities: [String]
 
     public var id: String { self.uuid }
     public var languages: [Locale.LanguageCode] { self.locales.compactMap(\.language.languageCode) }
@@ -95,26 +93,26 @@ public struct Story: Decodable, Identifiable {
         case authors
         case skills
         case hmi
-        case types
         case tags
         case locales
         case l10n
-        case pages
+        case activities
     }
 }
 
-// MARK: Story.Status
+// MARK: OldCurriculum.Status
 
-public extension Story {
+public extension OldCurriculum {
     enum Status: String, Decodable {
         case draft
         case published
+        case template
     }
 }
 
-// MARK: Story.LocalizedDetails
+// MARK: OldCurriculum.LocalizedDetails
 
-public extension Story {
+public extension OldCurriculum {
     struct LocalizedDetails: Decodable {
         // MARK: Lifecycle
 
@@ -124,7 +122,7 @@ public extension Story {
             let localeString = try container.decode(String.self, forKey: .locale)
             self.locale = Locale(identifier: localeString)
 
-            self.details = try container.decode(Story.Details.self, forKey: .details)
+            self.details = try container.decode(OldCurriculum.Details.self, forKey: .details)
         }
 
         // MARK: Public
@@ -143,22 +141,22 @@ public extension Story {
     }
 }
 
-// MARK: Story.Details
+// MARK: OldCurriculum.Details
 
-public extension Story {
+public extension OldCurriculum {
     struct Details: Decodable {
         // MARK: Public
 
         public let icon: String
         public let title: String
         public let subtitle: String?
-        public let shortDescription: String
+        public let abstract: String
         public let description: String
-        public let instructions: String
 
+        // TODO: (@ladislas) use string path instead
         public var iconImage: UIImage {
-            UIImage(named: "\(self.icon).story.icon.png", in: .module, with: nil)
-                ?? UIImage(named: "placeholder.activity.icon.png", in: .module, with: nil)!
+            UIImage(named: "\(self.icon).curriculum.icon.png", in: .module, with: nil)
+                ?? UIImage(named: "placeholder.curriculum.icon.png", in: .module, with: nil)!
         }
 
         // MARK: Private
@@ -167,27 +165,24 @@ public extension Story {
             case icon
             case title
             case subtitle
-            case shortDescription = "short_description"
+            case abstract
             case description
-            case instructions
         }
     }
 }
 
 // MARK: Hashable
 
-extension Story: Hashable {
+extension OldCurriculum: Hashable {
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.id)
+        hasher.combine(self.uuid)
     }
 }
 
 // MARK: Equatable
 
-extension Story: Equatable {
-    public static func == (lhs: Story, rhs: Story) -> Bool {
+extension OldCurriculum: Equatable {
+    public static func == (lhs: OldCurriculum, rhs: OldCurriculum) -> Bool {
         lhs.uuid == rhs.uuid
     }
 }
-
-// swiftlint:enable nesting

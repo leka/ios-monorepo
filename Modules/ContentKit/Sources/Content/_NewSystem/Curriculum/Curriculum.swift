@@ -4,16 +4,16 @@
 
 import Foundation
 import LocalizationKit
-import UtilsKit
+import UIKit
 
-// MARK: - NewActivity
+// MARK: - Curriculum
 
-public struct NewActivity: Identifiable {
+public struct Curriculum: Identifiable {
     // MARK: Lifecycle
 
     public init?(id: String) {
-        if let activity = ContentKit.allNewActivities[id] {
-            self = activity
+        if let curriculum = ContentKit.allCurriculums[id] {
+            self = curriculum
         } else {
             return nil
         }
@@ -30,14 +30,12 @@ public struct NewActivity: Identifiable {
     public let authors: [Author]
     public let skills: [Skill]
     public let hmi: [HMIDetails]
-    public let types: [ActivityType]
     public let tags: [Tag]
 
     public let locales: [Locale]
     public let l10n: [LocalizedDetails]
 
-    public var curriculums: [String] = []
-    public let payload: Data
+    public let activities: [String]
 
     public var id: String { self.uuid }
     public var languages: [Locale.LanguageCode] { self.locales.compactMap(\.language.languageCode) }
@@ -54,20 +52,37 @@ public struct NewActivity: Identifiable {
 
         return details
     }
+
+    // MARK: Private
+
+    private enum CodingKeys: String, CodingKey {
+        case uuid
+        case name
+        case createdAt = "created_at"
+        case lastEditedAt = "last_edited_at"
+        case status
+        case authors
+        case skills
+        case hmi
+        case tags
+        case locales
+        case l10n
+        case activities
+    }
 }
 
 // MARK: Hashable
 
-extension NewActivity: Hashable {
+extension Curriculum: Hashable {
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.id)
+        hasher.combine(self.uuid)
     }
 }
 
 // MARK: Equatable
 
-extension NewActivity: Equatable {
-    public static func == (lhs: NewActivity, rhs: NewActivity) -> Bool {
+extension Curriculum: Equatable {
+    public static func == (lhs: Curriculum, rhs: Curriculum) -> Bool {
         lhs.uuid == rhs.uuid
     }
 }

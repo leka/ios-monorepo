@@ -4,16 +4,15 @@
 
 import Foundation
 import LocalizationKit
-import UtilsKit
 
-// MARK: - NewActivity
+// MARK: - Story
 
-public struct NewActivity: Identifiable {
+public struct Story: Identifiable {
     // MARK: Lifecycle
 
     public init?(id: String) {
-        if let activity = ContentKit.allNewActivities[id] {
-            self = activity
+        if let story = ContentKit.allStories[id] {
+            self = story
         } else {
             return nil
         }
@@ -36,8 +35,7 @@ public struct NewActivity: Identifiable {
     public let locales: [Locale]
     public let l10n: [LocalizedDetails]
 
-    public var curriculums: [String] = []
-    public let payload: Data
+    public var pages: [Page]
 
     public var id: String { self.uuid }
     public var languages: [Locale.LanguageCode] { self.locales.compactMap(\.language.languageCode) }
@@ -58,7 +56,7 @@ public struct NewActivity: Identifiable {
 
 // MARK: Hashable
 
-extension NewActivity: Hashable {
+extension Story: Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(self.id)
     }
@@ -66,8 +64,8 @@ extension NewActivity: Hashable {
 
 // MARK: Equatable
 
-extension NewActivity: Equatable {
-    public static func == (lhs: NewActivity, rhs: NewActivity) -> Bool {
+extension Story: Equatable {
+    public static func == (lhs: Story, rhs: Story) -> Bool {
         lhs.uuid == rhs.uuid
     }
 }
