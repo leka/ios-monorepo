@@ -177,6 +177,8 @@ extension TTSCoordinatorAssociateCategories {
     }
 }
 
+// MARK: ExerciseEvaluationStrategy
+
 extension TTSCoordinatorAssociateCategories: ExerciseEvaluationStrategy {
     public func evaluate(in context: EvaluationContext = .practice) -> ExerciseEvaluationLevel {
         let numberOfTrials = self.completionData.numberOfTrials
