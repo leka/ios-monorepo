@@ -54,8 +54,10 @@ public extension Project {
                     bundleId: "io.leka.apf.app.example.\(example.name)",
                     deploymentTargets: deploymentTargets,
                     infoPlist: .extendingDefault(with: InfoPlist.extendingBase(version: "1.0.0", with: infoPlist)),
-                    sources: ["Examples/\(example.name)/Sources/**"],
-                    resources: ["Examples/\(example.name)/Resources/**"],
+                    buildableFolders: [
+                        BuildableFolder(stringLiteral: "Examples/\(example.name)/Sources"),
+                        BuildableFolder(stringLiteral: "Examples/\(example.name)/Resources"),
+                    ],
                     scripts: TargetScript.linters(),
                     dependencies: [.target(name: name)] + example.dependencies,
                     settings:
@@ -104,8 +106,8 @@ private func makeFrameworkTargets(
         bundleId: "io.leka.apf.module.\(name)",
         deploymentTargets: deploymentTargets,
         infoPlist: .extendingDefault(with: InfoPlist.extendingBase(version: "1.0.0", with: infoPlist)),
-        sources: ["Sources/**"],
         resources: ["Resources/**"],
+        buildableFolders: ["Sources"],
         scripts: TargetScript.linters(),
         dependencies: dependencies,
         settings: .settings(base: .extendingBase(with: settings))
@@ -117,8 +119,7 @@ private func makeFrameworkTargets(
         product: .unitTests,
         bundleId: "io.leka.apf.framework.\(name)Tests",
         infoPlist: .extendingDefault(with: InfoPlist.extendingBase(version: "1.0.0", with: infoPlist)),
-        sources: ["Tests/**"],
-        resources: [],
+        buildableFolders: ["Tests"],
         scripts: TargetScript.linters(),
         dependencies: [.target(name: "\(name)")]
     )

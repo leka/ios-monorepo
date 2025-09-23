@@ -57,8 +57,8 @@ public extension Project {
             bundleId: bundleId ?? "io.leka.apf.app.\(name)",
             deploymentTargets: deploymentTargets,
             infoPlist: .extendingDefault(with: InfoPlist.extendingBase(version: version, with: infoPlist)),
-            sources: ["Sources/**"],
             resources: .resources(["Resources/**"] + resources),
+            buildableFolders: ["Sources"],
             scripts: TargetScript.linters() + scripts,
             // Combine default scripts with custom scripts
             dependencies: dependencies,
@@ -79,8 +79,7 @@ public extension Project {
             product: .unitTests,
             bundleId: "io.leka.apf.app.\(name)Tests",
             infoPlist: .extendingDefault(with: InfoPlist.extendingBase(version: version, with: infoPlist)),
-            sources: ["Tests/**"],
-            resources: [],
+            buildableFolders: ["Tests"],
             scripts: TargetScript.linters(),
             dependencies: [.target(name: "\(name)")] + dependencies
         )
