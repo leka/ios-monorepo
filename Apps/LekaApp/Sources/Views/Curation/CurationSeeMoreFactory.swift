@@ -9,8 +9,6 @@ import SwiftUI
 // MARK: - CurationSeeMoreFactory
 
 public struct CurationSeeMoreFactory: View {
-    // MARK: Lifecycle
-
     // MARK: Public
 
     public var body: some View {

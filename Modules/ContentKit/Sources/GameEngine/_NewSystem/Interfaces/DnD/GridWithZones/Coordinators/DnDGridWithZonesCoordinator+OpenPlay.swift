@@ -161,6 +161,8 @@ extension DnDGridWithZonesCoordinatorOpenPlay {
     }
 }
 
+// MARK: ExerciseEvaluationStrategy
+
 extension DnDGridWithZonesCoordinatorOpenPlay: ExerciseEvaluationStrategy {
     public func evaluate(in _: EvaluationContext = .practice) -> ExerciseEvaluationLevel {
         .notApplicable

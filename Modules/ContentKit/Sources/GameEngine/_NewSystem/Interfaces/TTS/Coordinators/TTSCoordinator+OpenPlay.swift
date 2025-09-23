@@ -154,6 +154,8 @@ extension TTSCoordinatorOpenPlay {
     }
 }
 
+// MARK: ExerciseEvaluationStrategy
+
 extension TTSCoordinatorOpenPlay: ExerciseEvaluationStrategy {
     public func evaluate(in _: EvaluationContext = .practice) -> ExerciseEvaluationLevel {
         .notApplicable

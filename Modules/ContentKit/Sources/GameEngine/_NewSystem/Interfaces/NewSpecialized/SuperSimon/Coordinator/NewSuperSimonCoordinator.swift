@@ -223,6 +223,8 @@ extension NewSuperSimonCoordinator {
     }
 }
 
+// MARK: ExerciseEvaluationStrategy
+
 extension NewSuperSimonCoordinator: ExerciseEvaluationStrategy {
     public func evaluate(in _: EvaluationContext = .practice) -> ExerciseEvaluationLevel {
         .notApplicable

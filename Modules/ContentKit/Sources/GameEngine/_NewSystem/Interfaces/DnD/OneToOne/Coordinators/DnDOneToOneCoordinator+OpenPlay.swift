@@ -195,6 +195,8 @@ extension DnDOneToOneCoordinatorOpenPlay {
     }
 }
 
+// MARK: ExerciseEvaluationStrategy
+
 extension DnDOneToOneCoordinatorOpenPlay: ExerciseEvaluationStrategy {
     public func evaluate(in _: EvaluationContext = .practice) -> ExerciseEvaluationLevel {
         .notApplicable

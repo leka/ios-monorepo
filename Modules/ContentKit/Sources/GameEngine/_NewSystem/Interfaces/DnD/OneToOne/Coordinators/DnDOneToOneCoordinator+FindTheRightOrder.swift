@@ -219,6 +219,8 @@ extension DnDOneToOneCoordinatorFindTheRightOrder {
     }
 }
 
+// MARK: ExerciseEvaluationStrategy
+
 extension DnDOneToOneCoordinatorFindTheRightOrder: ExerciseEvaluationStrategy {
     public func evaluate(in context: EvaluationContext = .practice) -> ExerciseEvaluationLevel {
         let numberOfTrials = self.completionData.numberOfTrials

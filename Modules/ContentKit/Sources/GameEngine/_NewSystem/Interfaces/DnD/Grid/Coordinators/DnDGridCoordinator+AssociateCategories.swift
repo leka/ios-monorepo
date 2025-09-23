@@ -162,6 +162,8 @@ extension DnDGridCoordinatorAssociateCategories {
     }
 }
 
+// MARK: ExerciseEvaluationStrategy
+
 extension DnDGridCoordinatorAssociateCategories: ExerciseEvaluationStrategy {
     public func evaluate(in context: EvaluationContext = .practice) -> ExerciseEvaluationLevel {
         let numberOfTrials = self.completionData.numberOfTrials

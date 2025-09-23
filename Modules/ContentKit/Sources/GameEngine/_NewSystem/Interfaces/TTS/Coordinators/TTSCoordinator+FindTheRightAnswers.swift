@@ -171,6 +171,8 @@ extension TTSCoordinatorFindTheRightAnswers {
     }
 }
 
+// MARK: ExerciseEvaluationStrategy
+
 extension TTSCoordinatorFindTheRightAnswers: ExerciseEvaluationStrategy {
     public func evaluate(in context: EvaluationContext = .practice) -> ExerciseEvaluationLevel {
         let numberOfTrials = self.completionData.numberOfTrials
