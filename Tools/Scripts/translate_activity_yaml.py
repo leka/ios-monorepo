@@ -250,6 +250,14 @@ def translate_activity_yaml(input_file: Path, output_file: Path) -> None:
     # Load old activity
     old_activity = load_yaml(input_file)
     
+    # Validate input is a v1.0.0 activity
+    if old_activity.get('version') != '1.0.0':
+        raise ValueError(f"Input file must be version 1.0.0, found: {old_activity.get('version')}")
+    
+    # Check if file is already using new payload structure
+    if 'payload' in old_activity and 'exercises_payload' not in old_activity:
+        raise ValueError("Input file appears to already be in new format (has 'payload' key instead of 'exercises_payload')")
+    
     # Create new activity structure
     new_activity = {}
     
@@ -302,15 +310,106 @@ def main():
     parser.add_argument(
         'input',
         type=Path,
-        help='Input activity YAML file (.activity.yml)'
+        nargs='?',
+        help='Input activity YAML file (.activity.yml) or directory containing .activity.yml files'
     )
     parser.add_argument(
         '-o', '--output',
         type=Path,
-        help='Output file path (defaults to input_name.new_activity.yml)'
+        help='Output file path (defaults to input_name.new_activity.yml) or output directory for batch processing'
+    )
+    parser.add_argument(
+        '--batch',
+        action='store_true',
+        help='Process all .activity.yml files in the input directory recursively'
+    )
+    parser.add_argument(
+        '--skip-existing',
+        action='store_true',
+        help='Skip files that already have a corresponding .new_activity.yml file'
+    )
+    parser.add_argument(
+        '--dry-run',
+        action='store_true',
+        help='Show what would be processed without actually translating files'
     )
     
     args = parser.parse_args()
+    
+    # Handle batch processing
+    if args.batch:
+        if not args.input:
+            print("❌ Error: Input directory required for batch processing")
+            sys.exit(1)
+        
+        if not args.input.exists():
+            print(f"❌ Error: Input directory {args.input} does not exist")
+            sys.exit(1)
+            
+        if not args.input.is_dir():
+            print(f"❌ Error: Input path {args.input} is not a directory")
+            sys.exit(1)
+        
+        # Find all .activity.yml files recursively
+        activity_files = list(args.input.rglob("*.activity.yml"))
+        
+        if not activity_files:
+            print(f"❌ No .activity.yml files found in {args.input}")
+            sys.exit(1)
+        
+        # Filter files based on skip-existing option
+        files_to_process = []
+        skipped_count = 0
+        
+        for file in activity_files:
+            output_name = file.name.replace('.activity.yml', '.new_activity.yml')
+            if args.output:
+                relative_path = file.relative_to(args.input)
+                output_file = args.output / relative_path.parent / output_name
+            else:
+                output_file = file.parent / output_name
+                
+            if args.skip_existing and output_file.exists():
+                skipped_count += 1
+                continue
+            
+            files_to_process.append((file, output_file))
+        
+        if skipped_count > 0:
+            print(f"⏭️  Skipped {skipped_count} files that already have corresponding .new_activity.yml files")
+        
+        print(f"🔍 Found {len(files_to_process)} activity files to process")
+        
+        if args.dry_run:
+            print("\n📝 Dry run - files that would be processed:")
+            for file, output_file in files_to_process:
+                print(f"  {file} → {output_file}")
+            return
+        
+        # Process all files
+        success_count = 0
+        error_count = 0
+        
+        for file, output_file in files_to_process:
+            try:
+                # Create output directory if needed
+                output_file.parent.mkdir(parents=True, exist_ok=True)
+                
+                translate_activity_yaml(file, output_file)
+                success_count += 1
+            except Exception as e:
+                print(f"❌ Error translating {file}: {e}")
+                error_count += 1
+        
+        print(f"\n✅ Batch processing complete: {success_count} successful, {error_count} errors")
+        if error_count > 0:
+            sys.exit(1)
+        return
+    
+    # Handle single file processing
+    if not args.input:
+        print("❌ Error: Input file required (use --help for usage)")
+        sys.exit(1)
     
     if not args.input.exists():
         print(f"❌ Error: Input file {args.input} does not exist")
