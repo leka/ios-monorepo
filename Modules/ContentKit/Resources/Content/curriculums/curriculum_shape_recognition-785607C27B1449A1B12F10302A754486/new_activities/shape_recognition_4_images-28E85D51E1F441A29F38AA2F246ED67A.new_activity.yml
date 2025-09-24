@@ -1,0 +1,179 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 2.0.0
+
+uuid: 28E85D51E1F441A29F38AA2F246ED67A
+name: shape_recognition_4_images
+
+created_at: "2024-03-04T18:07:12.519229"
+last_edited_at: "2025-07-08T16:22:35.901880"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - geometric_shapes
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: shape_recognition
+
+      title: Les formes
+      subtitle: 4 images
+
+      short_description: |
+        Regarde l'image de gauche. Touche la forme identique à droite.
+
+      description: |
+        Cette activité aide le participant à développer ses compétences en reconnaissance visuelle. Il s'agit d'identifier et de sélectionner la forme identique parmi plusieurs propositions. Cela permet de renforcer l'attention, la mémoire visuelle et la discrimination des formes.
+
+      instructions: |
+        - Encouragez le participant à observer attentivement la forme présentée à gauche.
+        - Demandez-lui de trouver et de toucher la même forme parmi celles affichées à droite.
+        - Lorsque la réponse est correcte, Leka initiera un renforçateur pour féliciter le participant.
+
+  - locale: en_US
+    details:
+      icon: shape_recognition
+
+      title: Shapes
+      subtitle: 4 images
+
+      short_description: |
+        Look at the image on the left. Touch the same shape on the right.
+
+      description: |
+        This activity helps the participant develop visual recognition skills. The task is to identify and select the matching shape from several options. It supports attention, visual memory, and shape discrimination.
+
+      instructions: |
+        - Encourage the participant to carefully observe the shape shown on the left.
+        - Ask them to find and touch the same shape among those displayed on the right.
+        - When the answer is correct, Leka will provide positive reinforcement to reward the participant.
+
+payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image de gauche. Touche la forme identique à droite.
+            - locale: en_US
+              value: Look at the image on the left. Touch the shape that is the same on the right.
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: shape_outlined_circle
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: shape_outlined_circle
+                type: image
+                is_right_answer: true
+              - value: shape_outlined_triangle
+                type: image
+              - value: shape_outlined_square
+                type: image
+              - value: shape_outlined_star
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image de gauche. Touche la forme identique à droite.
+            - locale: en_US
+              value: Look at the image on the left. Touch the shape that is the same on the right.
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: shape_outlined_square
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: shape_outlined_square
+                type: image
+                is_right_answer: true
+              - value: shape_outlined_star
+                type: image
+              - value: shape_outlined_circle
+                type: image
+              - value: shape_outlined_triangle
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image de gauche. Touche la forme identique à droite.
+            - locale: en_US
+              value: Look at the image on the left. Touch the shape that is the same on the right.
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: shape_outlined_triangle
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: shape_outlined_triangle
+                type: image
+                is_right_answer: true
+              - value: shape_outlined_circle
+                type: image
+              - value: shape_outlined_square
+                type: image
+              - value: shape_outlined_star
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image de gauche. Touche la forme identique à droite.
+            - locale: en_US
+              value: Look at the image on the left. Touch the shape that is the same on the right.
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: shape_outlined_star
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: shape_outlined_star
+                type: image
+                is_right_answer: true
+              - value: shape_outlined_circle
+                type: image
+              - value: shape_outlined_square
+                type: image
+              - value: shape_outlined_triangle
+                type: image
