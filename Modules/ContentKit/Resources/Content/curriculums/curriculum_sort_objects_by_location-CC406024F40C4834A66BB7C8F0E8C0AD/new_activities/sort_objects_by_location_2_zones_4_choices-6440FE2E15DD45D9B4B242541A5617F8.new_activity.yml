@@ -1,0 +1,232 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 2.0.0
+
+uuid: 6440FE2E15DD45D9B4B242541A5617F8
+name: sort_objects_by_location_2_zones_4_choices
+
+created_at: "2024-03-08T11:49:37.123541"
+last_edited_at: "2024-10-22T16:34:17.505959"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - association
+  - association/sorting
+
+tags:
+  - places
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: recognition_public_places_drag
+
+      title: Trier les objets par lieux
+      subtitle: 2 lieux - 4 objets
+
+      short_description: |
+        Placer les objets dans les bons endroits
+
+      description: |
+        Le participant doit glisser et déposer les objets demandés dans les lieux appropriés.
+
+      instructions: |
+        - Sur l'écran de l'iPad, une ou plusieurs images sont présentées à l'extérieur des zones de dépôt. Chaque image représente un objet que le participant doit placer dans le lieu approprié.
+        - Encouragez le participant à glisser chaque image dans la zone correcte.
+        - Après avoir placé l'image correctement, Leka lance un renforçateur pour célébrer cette réussite et encourager l'apprentissage.
+
+  - locale: en_US
+    details:
+      icon: recognition_public_places_drag
+
+      title: Sort Objects by Location
+      subtitle: 2 places - 4 objects
+
+      short_description: |
+        Place the objects in the right places
+
+      description: |
+        The participant should drag and drop objects into the correct public places.
+
+      instructions: |
+        - On the iPad screen, one or more images are displayed outside of the drop zones. Each image represents an object that the participant should place into the appropriate place.
+        - Encourage the participant to drag each image into the correct zone.
+        - After placing each image correctly, Leka provides a reinforcer to celebrate this success and encourage ongoing learning.
+
+payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Place les objets au bon endroit
+            - locale: en_US
+              value: Put the objects in the right place
+          interface: dragAndDropGridWithZones
+          gameplay: associateCategories
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: public_spaces_theater
+                type: image
+                category: catA
+                is_dropzone: true
+              - value: public_spaces_supermarket
+                type: image
+                category: catB
+                is_dropzone: true
+              - value: public_spaces_accessory_gloves
+                type: image
+                category: catA
+              - value: public_spaces_accessory_cart
+                type: image
+                category: catB
+              - value: public_spaces_accessory_light
+                type: image
+                category: catA
+              - value: public_spaces_accessory_milk
+                type: image
+                category: catB
+        - instructions:
+            - locale: fr_FR
+              value: Place les objets au bon endroit
+            - locale: en_US
+              value: Put the objects in the right place
+          interface: dragAndDropGridWithZones
+          gameplay: associateCategories
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: public_spaces_park
+                type: image
+                category: catA
+                is_dropzone: true
+              - value: public_spaces_swimmingpool
+                type: image
+                category: catB
+                is_dropzone: true
+              - value: public_spaces_accessory_bucket
+                type: image
+                category: catA
+              - value: public_spaces_accessory_swimming_goggles
+                type: image
+                category: catB
+              - value: public_spaces_accessory_ball
+                type: image
+                category: catA
+              - value: public_spaces_accessory_swimsuit
+                type: image
+                category: catB
+        - instructions:
+            - locale: fr_FR
+              value: Place les objets au bon endroit
+            - locale: en_US
+              value: Put the objects in the right place
+          interface: dragAndDropGridWithZones
+          gameplay: associateCategories
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: public_spaces_supermarket
+                type: image
+                category: catA
+                is_dropzone: true
+              - value: public_spaces_school
+                type: image
+                category: catB
+                is_dropzone: true
+              - value: public_spaces_accessory_cart
+                type: image
+                category: catA
+              - value: public_spaces_accessory_pencil_case
+                type: image
+                category: catB
+              - value: public_spaces_accessory_milk
+                type: image
+                category: catA
+              - value: public_spaces_accessory_bag
+                type: image
+                category: catB
+        - instructions:
+            - locale: fr_FR
+              value: Place les objets au bon endroit
+            - locale: en_US
+              value: Put the objects in the right place
+          interface: dragAndDropGridWithZones
+          gameplay: associateCategories
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: public_spaces_cinema
+                type: image
+                category: catA
+                is_dropzone: true
+              - value: public_spaces_swimmingpool
+                type: image
+                category: catB
+                is_dropzone: true
+              - value: public_spaces_accessory_popcorn
+                type: image
+                category: catA
+              - value: public_spaces_accessory_swimming_goggles
+                type: image
+                category: catB
+              - value: public_spaces_accessory_seat
+                type: image
+                category: catA
+              - value: public_spaces_accessory_swimsuit
+                type: image
+                category: catB
+        - instructions:
+            - locale: fr_FR
+              value: Place les objets au bon endroit
+            - locale: en_US
+              value: Put the objects in the right place
+          interface: dragAndDropGridWithZones
+          gameplay: associateCategories
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: public_spaces_cinema
+                type: image
+                category: catA
+                is_dropzone: true
+              - value: public_spaces_park
+                type: image
+                category: catB
+                is_dropzone: true
+              - value: public_spaces_accessory_popcorn
+                type: image
+                category: catA
+              - value: public_spaces_accessory_bucket
+                type: image
+                category: catB
+              - value: public_spaces_accessory_seat
+                type: image
+                category: catA
+              - value: public_spaces_accessory_ball
+                type: image
+                category: catB
