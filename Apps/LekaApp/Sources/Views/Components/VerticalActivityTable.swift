@@ -35,26 +35,26 @@ struct VerticalActivityTable: View {
             }
             .width(min: 400, ideal: 450, max: .infinity)
 
-            TableColumn("") { item in
-                if let activity = Activity(id: item.id) {
-                    IconImageView(image: ContentKit.getGestureIconUIImage(for: activity))
-                }
-            }
-            .width(40)
-
-            TableColumn("") { item in
-                if let activity = Activity(id: item.id) {
-                    IconImageView(image: ContentKit.getFocusIconUIImage(for: activity, ofType: .ears))
-                }
-            }
-            .width(40)
-
-            TableColumn("") { item in
-                if let activity = Activity(id: item.id) {
-                    IconImageView(image: ContentKit.getFocusIconUIImage(for: activity, ofType: .robot))
-                }
-            }
-            .width(60)
+//            TableColumn("") { item in
+//                if let activity = Activity(id: item.id) {
+//                    IconImageView(image: ContentKit.getNewGestureIconUIImage(for: activity))
+//                }
+//            }
+//            .width(40)
+//
+//            TableColumn("") { item in
+//                if let activity = Activity(id: item.id) {
+//                    IconImageView(image: ContentKit.getNewFocusIconUIImage(for: activity, ofType: .ears))
+//                }
+//            }
+//            .width(40)
+//
+//            TableColumn("") { item in
+//                if let activity = Activity(id: item.id) {
+//                    IconImageView(image: ContentKit.getNewFocusIconUIImage(for: activity, ofType: .robot))
+//                }
+//            }
+//            .width(60)
 
             if let currentCaregiverID = self.caregiverManagerViewModel.currentCaregiver?.id {
                 TableColumn("") { item in

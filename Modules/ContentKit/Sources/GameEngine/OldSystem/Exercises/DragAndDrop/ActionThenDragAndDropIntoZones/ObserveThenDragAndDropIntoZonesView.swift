@@ -8,7 +8,7 @@ import SwiftUI
 public struct ObserveThenDragAndDropIntoZonesView: View {
     // MARK: Lifecycle
 
-    public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
+    public init(exercise: OldExercise, data: ExerciseSharedData? = nil) {
         guard case let .ipad(type: .image(name)) = exercise.action else {
             logGEK.error("Exercise does not contain iPad audio action")
             fatalError("💥 Exercise does not contain iPad audio action")
@@ -50,6 +50,6 @@ public struct ObserveThenDragAndDropIntoZonesView: View {
     @State private var imageWasTapped = false
 
     private let image: String
-    private var exercise: Exercise
+    private var exercise: OldExercise
     private var exerciseSharedData: ExerciseSharedData?
 }

@@ -16,7 +16,7 @@ struct MusicalInstrumentView: View {
         _midiPlayer = StateObject(wrappedValue: MIDIPlayer(instrument: instrument))
     }
 
-    init(exercise: Exercise, data _: ExerciseSharedData? = nil) {
+    init(exercise: OldExercise, data _: ExerciseSharedData? = nil) {
         guard let payload = exercise.payload as? MusicalInstrument.Payload else {
             fatalError("Exercise payload is not .instrument")
         }

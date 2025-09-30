@@ -31,7 +31,7 @@ public extension ContentKit {
                     case .magicCards:
                         return "magic_card"
                 }
-            case let .specialized(interface):
+            case .specialized:
                 return "touch_to_select"
             default:
                 return ""
