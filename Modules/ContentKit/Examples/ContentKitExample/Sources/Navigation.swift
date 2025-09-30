@@ -13,14 +13,14 @@ class Navigation {
 
     private(set) var currentCoordinator: ActivityCoordinator?
 
-    private(set) var currentActivity: NewActivity? {
+    private(set) var currentActivity: Activity? {
         didSet {
             guard let activity = currentActivity else { return }
             self.currentCoordinator = ActivityCoordinator(payload: activity.payload)
         }
     }
 
-    func setCurrentActivity(_ activity: NewActivity) {
+    func setCurrentActivity(_ activity: Activity) {
         self.currentActivity = activity
     }
 }

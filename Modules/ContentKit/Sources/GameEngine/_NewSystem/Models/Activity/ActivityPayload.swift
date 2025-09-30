@@ -37,5 +37,5 @@ public struct ActivityOptions: Decodable {
 // MARK: - ExerciseGroup
 
 public struct ExerciseGroup: Decodable {
-    public let group: [NewExercise]
+    public let group: [Exercise]
 }

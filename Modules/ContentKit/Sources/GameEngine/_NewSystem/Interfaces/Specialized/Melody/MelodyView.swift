@@ -17,7 +17,7 @@ public struct MelodyView: View {
         self.data = nil
     }
 
-    init(exercise: Exercise, data: ExerciseSharedData? = nil) {
+    init(exercise: OldExercise, data: ExerciseSharedData? = nil) {
         guard let payload = exercise.payload as? MidiRecordingPlayer.Payload else {
             fatalError("Exercise payload is not .instrument")
         }

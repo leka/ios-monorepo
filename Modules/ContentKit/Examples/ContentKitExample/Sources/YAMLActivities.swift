@@ -20,7 +20,7 @@ struct YAMLActivities: View {
     var body: some View {
         NavigationStack {
             if let activity = self.navigation.currentActivity, let coordinator = self.navigation.currentCoordinator {
-                NewActivityView(activity: activity, coordinator: coordinator)
+                ActivityView(activity: activity, coordinator: coordinator)
                     .navigationTitle("Mixed exercises")
                     .navigationBarTitleDisplayMode(.inline)
                     .onAppear {
