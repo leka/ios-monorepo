@@ -7,11 +7,11 @@ import LocalizationKit
 import UIKit
 import Yams
 
-// MARK: - Activity
+// MARK: - OldActivity
 
 // swiftlint:disable nesting
 
-public struct Activity: Decodable, Identifiable {
+public struct OldActivity: Decodable, Identifiable {
     // MARK: Lifecycle
 
     public init?(id: String) {
@@ -105,9 +105,9 @@ public struct Activity: Decodable, Identifiable {
     }
 }
 
-// MARK: Activity.Status
+// MARK: OldActivity.Status
 
-public extension Activity {
+public extension OldActivity {
     enum Status: String, Decodable {
         case draft
         case published
@@ -115,9 +115,9 @@ public extension Activity {
     }
 }
 
-// MARK: Activity.LocalizedDetails
+// MARK: OldActivity.LocalizedDetails
 
-public extension Activity {
+public extension OldActivity {
     struct LocalizedDetails: Decodable {
         // MARK: Lifecycle
 
@@ -127,7 +127,7 @@ public extension Activity {
             let localeString = try container.decode(String.self, forKey: .locale)
             self.locale = Locale(identifier: localeString)
 
-            self.details = try container.decode(Activity.Details.self, forKey: .details)
+            self.details = try container.decode(OldActivity.Details.self, forKey: .details)
         }
 
         // MARK: Public
@@ -146,9 +146,9 @@ public extension Activity {
     }
 }
 
-// MARK: Activity.Details
+// MARK: OldActivity.Details
 
-public extension Activity {
+public extension OldActivity {
     struct Details: Decodable {
         // MARK: Public
 
@@ -177,9 +177,9 @@ public extension Activity {
     }
 }
 
-// MARK: Activity.ExercisesPayload
+// MARK: OldActivity.ExercisesPayload
 
-public extension Activity {
+public extension OldActivity {
     struct ExercisesPayload: Decodable {
         // MARK: Public
 
@@ -195,7 +195,7 @@ public extension Activity {
     }
 }
 
-public extension Activity.ExercisesPayload {
+public extension OldActivity.ExercisesPayload {
     struct Options: Decodable {
         // MARK: Public
 
@@ -213,13 +213,13 @@ public extension Activity.ExercisesPayload {
     struct ExerciseGroup: Decodable {
         // MARK: Lifecycle
 
-        public init(exercises: [Exercise]) {
+        public init(exercises: [OldExercise]) {
             self.exercises = exercises
         }
 
         // MARK: Public
 
-        public let exercises: [Exercise]
+        public let exercises: [OldExercise]
 
         // MARK: Private
 
@@ -229,18 +229,18 @@ public extension Activity.ExercisesPayload {
     }
 }
 
-// MARK: - Activity + Hashable
+// MARK: - OldActivity + Hashable
 
-extension Activity: Hashable {
+extension OldActivity: Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(self.id)
     }
 }
 
-// MARK: - Activity + Equatable
+// MARK: - OldActivity + Equatable
 
-extension Activity: Equatable {
-    public static func == (lhs: Activity, rhs: Activity) -> Bool {
+extension OldActivity: Equatable {
+    public static func == (lhs: OldActivity, rhs: OldActivity) -> Bool {
         lhs.uuid == rhs.uuid
     }
 }

@@ -13,7 +13,7 @@ public struct ListenThenTouchToSelectView: View {
         self.audioData = .file(name: audioRecording)
     }
 
-    public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
+    public init(exercise: OldExercise, data: ExerciseSharedData? = nil) {
         guard let payload = exercise.payload as? TouchToSelect.Payload else {
             logGEK.error("Payload not recognized: \(String(describing: exercise.payload))")
             fatalError("💥 Payload not recognized: \(String(describing: exercise.payload))")

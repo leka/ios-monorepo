@@ -5,9 +5,9 @@
 import Foundation
 import LocalizationKit
 
-// MARK: - Exercise
+// MARK: - OldExercise
 
-public struct Exercise: Decodable {
+public struct OldExercise: Decodable {
     // MARK: Lifecycle
 
     public init(from decoder: Decoder) throws {
@@ -107,9 +107,9 @@ public struct Exercise: Decodable {
     private let localizedInstructions: [LocalizedInstructions]?
 }
 
-// MARK: Exercise.LocalizedInstructions
+// MARK: OldExercise.LocalizedInstructions
 
-public extension Exercise {
+public extension OldExercise {
     struct LocalizedInstructions: Codable {
         // MARK: Lifecycle
 

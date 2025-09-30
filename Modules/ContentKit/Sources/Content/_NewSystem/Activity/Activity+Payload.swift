@@ -13,13 +13,13 @@ public struct NewActivityPayload {
 public struct NewExerciseGroup: Decodable {
     // MARK: Lifecycle
 
-    public init(exercises: [NewExercise]) {
+    public init(exercises: [Exercise]) {
         self.exercises = exercises
     }
 
     // MARK: Public
 
-    public let exercises: [NewExercise]
+    public let exercises: [Exercise]
 
     // MARK: Private
 

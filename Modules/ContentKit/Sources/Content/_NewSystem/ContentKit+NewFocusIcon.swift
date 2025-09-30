@@ -39,7 +39,7 @@ public extension ContentKit {
                          .image:
                         return "eye"
                 }
-            case let .robot(actionType):
+            case .robot:
                 return "robot"
             default:
                 return ""

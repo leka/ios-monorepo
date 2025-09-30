@@ -16,7 +16,7 @@ public struct DragAndDropToAssociateView: View {
         )
     }
 
-    public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
+    public init(exercise: OldExercise, data: ExerciseSharedData? = nil) {
         guard let payload = exercise.payload as? DragAndDropToAssociate.Payload else {
             fatalError("Exercise payload is not .association")
         }

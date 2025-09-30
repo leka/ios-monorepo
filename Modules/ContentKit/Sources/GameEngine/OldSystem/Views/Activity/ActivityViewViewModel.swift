@@ -9,7 +9,7 @@ import SwiftUI
 class ActivityViewViewModel: ObservableObject {
     // MARK: Lifecycle
 
-    init(activity: Activity) {
+    init(activity: OldActivity) {
         self.currentActivity = activity
 
         self.activityManager = CurrentActivityManager(activity: activity)
@@ -36,7 +36,7 @@ class ActivityViewViewModel: ObservableObject {
 
     // MARK: Internal
 
-    @Published var currentActivity: Activity
+    @Published var currentActivity: OldActivity
 
     @Published var totalGroups: Int
     @Published var currentGroupIndex: Int
@@ -45,8 +45,8 @@ class ActivityViewViewModel: ObservableObject {
     @Published var totalExercisesInCurrentGroup: Int
     @Published var currentExerciseIndexInCurrentGroup: Int
 
-    @Published var currentExercise: Exercise
-    @Published var currentExerciseInterface: Exercise.Interface
+    @Published var currentExercise: OldExercise
+    @Published var currentExerciseInterface: OldExercise.Interface
 
     @Published var completedExercisesSharedData: [ExerciseSharedData] = []
     @Published var currentExerciseSharedData: ExerciseSharedData

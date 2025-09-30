@@ -18,7 +18,7 @@ import SwiftUI
 public struct ActivityView: View {
     // MARK: Lifecycle
 
-    public init(activity: Activity, reinforcer: Robot.Reinforcer = .rainbow) {
+    public init(activity: OldActivity, reinforcer: Robot.Reinforcer = .rainbow) {
         self._viewModel = StateObject(wrappedValue: ActivityViewViewModel(activity: activity))
         self.reinforcer = reinforcer
     }
@@ -421,6 +421,6 @@ public struct ActivityView: View {
 
 #Preview {
     NavigationStack {
-        ActivityView(activity: Activity.mock)
+        ActivityView(activity: OldActivity.mock)
     }
 }

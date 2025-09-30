@@ -4,7 +4,7 @@
 
 import Foundation
 
-public extension NewExercise {
+public extension Exercise {
     struct LocalizedInstructions: Codable {
         // MARK: Lifecycle
 

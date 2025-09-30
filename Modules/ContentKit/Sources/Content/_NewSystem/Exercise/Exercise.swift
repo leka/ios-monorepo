@@ -4,9 +4,9 @@
 
 import Foundation
 
-// MARK: - NewExercise
+// MARK: - Exercise
 
-public struct NewExercise {
+public struct Exercise {
     public let instructions: String?
     public let interface: NewExerciseInterface
     public let gameplay: NewExerciseGameplay?

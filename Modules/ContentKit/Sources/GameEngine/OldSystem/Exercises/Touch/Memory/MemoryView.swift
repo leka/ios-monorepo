@@ -12,7 +12,7 @@ public struct MemoryView: View {
         _viewModel = StateObject(wrappedValue: MemoryViewViewModel(choices: choices))
     }
 
-    public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
+    public init(exercise: OldExercise, data: ExerciseSharedData? = nil) {
         guard let payload = exercise.payload as? Memory.Payload else {
             fatalError("Exercise payload is not .memory")
         }

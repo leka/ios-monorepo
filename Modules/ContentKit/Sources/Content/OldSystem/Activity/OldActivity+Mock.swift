@@ -4,10 +4,10 @@
 
 import Yams
 
-public extension Activity {
-    static var mock: Activity {
+public extension OldActivity {
+    static var mock: OldActivity {
         let data = mockActivityYaml.data(using: .utf8)!
-        let activity = try! YAMLDecoder().decode(Activity.self, from: data) // swiftlint:disable:this force_try
+        let activity = try! YAMLDecoder().decode(OldActivity.self, from: data) // swiftlint:disable:this force_try
         return activity
     }
 

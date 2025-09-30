@@ -4,7 +4,7 @@
 
 import Foundation
 
-public extension Exercise {
+public extension OldExercise {
     enum UIElementType: String, Codable {
         case image
         case text

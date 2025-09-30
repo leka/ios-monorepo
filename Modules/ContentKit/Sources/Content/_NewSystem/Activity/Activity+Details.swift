@@ -5,9 +5,9 @@
 import Foundation
 import UIKit
 
-// MARK: NewActivity.Details
+// MARK: Activity.Details
 
-public extension NewActivity {
+public extension Activity {
     struct Details: Decodable {
         // MARK: Public
 

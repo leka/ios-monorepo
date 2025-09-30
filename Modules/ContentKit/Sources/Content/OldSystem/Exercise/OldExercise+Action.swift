@@ -5,11 +5,11 @@
 import Foundation
 import LocalizationKit
 
-// MARK: - Exercise.Action
+// MARK: - OldExercise.Action
 
 // swiftlint:disable nesting cyclomatic_complexity
 
-public extension Exercise {
+public extension OldExercise {
     enum Action: Codable {
         case ipad(type: TabletActionType)
         case robot(type: RobotActionType)
@@ -160,9 +160,9 @@ public extension Exercise {
     }
 }
 
-// MARK: - Exercise.LocalizedSpeech
+// MARK: - OldExercise.LocalizedSpeech
 
-public extension Exercise {
+public extension OldExercise {
     struct LocalizedSpeech: Codable {
         // MARK: Lifecycle
 

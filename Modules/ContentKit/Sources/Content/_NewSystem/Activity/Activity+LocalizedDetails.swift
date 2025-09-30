@@ -4,9 +4,9 @@
 
 import Foundation
 
-// MARK: NewActivity.LocalizedDetails
+// MARK: Activity.LocalizedDetails
 
-public extension NewActivity {
+public extension Activity {
     struct LocalizedDetails: Decodable {
         // MARK: Lifecycle
 
@@ -16,7 +16,7 @@ public extension NewActivity {
             let localeString = try container.decode(String.self, forKey: .locale)
             self.locale = Locale(identifier: localeString)
 
-            self.details = try container.decode(NewActivity.Details.self, forKey: .details)
+            self.details = try container.decode(Activity.Details.self, forKey: .details)
         }
 
         // MARK: Public

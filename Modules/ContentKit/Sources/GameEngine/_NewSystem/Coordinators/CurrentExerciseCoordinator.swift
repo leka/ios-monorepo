@@ -10,7 +10,7 @@ import SwiftUI
 public class CurrentExerciseCoordinator {
     // MARK: Lifecycle
 
-    public init(exercise: NewExercise) {
+    public init(exercise: Exercise) {
         self.exercise = exercise
     }
 
@@ -384,5 +384,5 @@ public class CurrentExerciseCoordinator {
 
     // MARK: Private
 
-    private let exercise: NewExercise
+    private let exercise: Exercise
 }

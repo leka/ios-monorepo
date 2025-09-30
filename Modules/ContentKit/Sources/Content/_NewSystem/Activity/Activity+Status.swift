@@ -2,9 +2,9 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
-// MARK: NewActivity.Status
+// MARK: Activity.Status
 
-public extension NewActivity {
+public extension Activity {
     enum Status: String, Decodable {
         case draft
         case published

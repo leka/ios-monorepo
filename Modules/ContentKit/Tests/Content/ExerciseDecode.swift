@@ -88,7 +88,7 @@ let kTestExerciseMockTwo =
 
 final class ExerciseDecode: XCTestCase {
     func test_decodeAutomaticListenSpeechThenTTSShuffledWithYamlDecoder() throws {
-        let exercise = try YAMLDecoder().decode(NewExercise.self, from: kTestExerciseMockOne)
+        let exercise = try YAMLDecoder().decode(Exercise.self, from: kTestExerciseMockOne)
 
         XCTAssertEqual(exercise.interface, .general(.touchToSelect))
         XCTAssertEqual(exercise.gameplay, .findTheRightAnswers)
@@ -104,7 +104,7 @@ final class ExerciseDecode: XCTestCase {
     }
 
     func test_decodeAutomaticListenSpeechThenTTSShuffledFromYamlString() throws {
-        let exercise = NewExercise(yaml: kTestExerciseMockOne)
+        let exercise = Exercise(yaml: kTestExerciseMockOne)
 
         XCTAssertNotNil(exercise)
 
@@ -124,7 +124,7 @@ final class ExerciseDecode: XCTestCase {
     }
 
     func test_decodeDnDWithZonesOpenPlayWithYamlDecoder() throws {
-        let exercise = try YAMLDecoder().decode(NewExercise.self, from: kTestExerciseMockTwo)
+        let exercise = try YAMLDecoder().decode(Exercise.self, from: kTestExerciseMockTwo)
 
         XCTAssertEqual(exercise.interface, .general(.dragAndDropGridWithZones))
         XCTAssertEqual(exercise.gameplay, .openPlay)
@@ -136,7 +136,7 @@ final class ExerciseDecode: XCTestCase {
     }
 
     func test_decodeDnDWithZonesOpenPlayFromYamlString() throws {
-        let exercise = NewExercise(yaml: kTestExerciseMockTwo)
+        let exercise = Exercise(yaml: kTestExerciseMockTwo)
 
         XCTAssertNotNil(exercise)
 

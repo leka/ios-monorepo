@@ -13,8 +13,9 @@ var allNewActivitiescancellables = Set<AnyCancellable>()
 // MARK: - AllNewActivities
 
 struct AllNewActivities: View {
-    static let sortedActivities: [NewActivity] = ContentKit.allNewActivities.values.map { $0 }.sorted { $0.name < $1.name }
-    static let groupedActivities = Dictionary(grouping: sortedActivities) { String($0.name.prefix { $0.isLetter }) }.values.map(Array.init)
+    let activities: [CurationItemModel] = ContentKit.allNewActivities.values.sorted {
+        $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
+    }.map { CurationItemModel(id: $0.id, name: $0.name, contentType: .activity) }
 
     @State private var activityDidEnd: Bool = false
     @State var isActivityPresented: Bool = false
@@ -22,60 +23,10 @@ struct AllNewActivities: View {
     var body: some View {
         NavigationStack {
             ScrollView(showsIndicators: false) {
-                ForEach(AllNewActivities.groupedActivities, id: \.self) { activities in
-                    Section {
-                        let randomColor = Color.random()
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text(activities[0].name.prefix { $0.isLetter })
-                                .font(.title2)
-                                .padding(.horizontal)
-
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                LazyHStack {
-                                    ForEach(activities, id: \.id) { activity in
-                                        Button {
-                                            self.isActivityPresented = true
-                                            self.navigation.setCurrentNewActivity(activity)
-                                        } label: {
-                                            ActivityButtonLabel(text: String(activity.name.split(separator: "_").last!), color: randomColor)
-                                        }
-                                        .padding()
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                VerticalActivityGrid(items: self.activities)
             }
         }
-        .fullScreenCover(isPresented: self.$isActivityPresented) {
-            NavigationStack {
-                if let activity = self.navigation.currentNewActivity, let coordinator = self.navigation.currentNewCoordinator {
-                    NewActivityView(activity: activity, coordinator: coordinator)
-                        .navigationTitle(activity.name)
-                        .navigationBarTitleDisplayMode(.inline)
-                        .onAppear {
-                            coordinator.activityEvent
-                                .receive(on: DispatchQueue.main)
-                                .sink { event in
-                                    switch event {
-                                        case .didStart:
-                                            log.debug("Publisher - Activity did start")
-                                        case .didEnd:
-                                            log.debug("Publisher - Activity did end")
-                                            self.activityDidEnd = true
-                                    }
-                                }
-                                .store(in: &allNewActivitiescancellables)
-                        }
-                        .fullScreenCover(isPresented: self.$activityDidEnd) {
-                            self.endOfActivityScoreView
-                        }
-                } else {
-                    Text("Activity not recognized")
-                }
-            }
-        }
+        .navigationTitle("New Activities")
     }
 
     // MARK: Private

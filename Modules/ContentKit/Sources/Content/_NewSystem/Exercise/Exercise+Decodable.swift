@@ -7,9 +7,9 @@ import LocalizationKit
 import UtilsKit
 import Yams
 
-// MARK: - NewExercise + Decodable
+// MARK: - Exercise + Decodable
 
-extension NewExercise: Decodable {
+extension Exercise: Decodable {
     enum CodingKeys: String, CodingKey {
         case localizedInstructions = "instructions"
         case interface
@@ -49,7 +49,7 @@ extension NewExercise: Decodable {
     }
 
     public init?(yaml yamlString: String) {
-        if let exercise = try? YAMLDecoder().decode(NewExercise.self, from: yamlString) {
+        if let exercise = try? YAMLDecoder().decode(Exercise.self, from: yamlString) {
             self = exercise
         } else {
             return nil

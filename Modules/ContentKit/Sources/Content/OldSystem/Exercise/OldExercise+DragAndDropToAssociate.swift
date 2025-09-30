@@ -17,11 +17,11 @@ public enum DragAndDropToAssociate {
         public init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.value = try container.decode(String.self, forKey: .value)
-            self.type = try container.decode(Exercise.UIElementType.self, forKey: .type)
+            self.type = try container.decode(OldExercise.UIElementType.self, forKey: .type)
             self.category = try container.decodeIfPresent(Category.self, forKey: .category) ?? .none
         }
 
-        public init(value: String, type: Exercise.UIElementType, category: Category) {
+        public init(value: String, type: OldExercise.UIElementType, category: Category) {
             self.value = value
             self.type = type
             self.category = category
@@ -30,7 +30,7 @@ public enum DragAndDropToAssociate {
         // MARK: Public
 
         public let value: String
-        public let type: Exercise.UIElementType
+        public let type: OldExercise.UIElementType
         public let category: Category?
 
         // MARK: Private

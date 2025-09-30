@@ -276,8 +276,27 @@ struct MainView: View {
 
                 case let .activityView(carereceivers):
                     NavigationStack {
-                        ActivityView(activity: self.navigation.currentActivity!, reinforcer: carereceivers.first?.reinforcer ?? .rainbow)
-                            .logEventScreenView(screenName: "activity", context: .fullScreenCover)
+                        if let activity = self.navigation.currentActivity, let coordinator = self.navigation.currentNewCoordinator {
+                            NewActivityView(activity: activity, coordinator: coordinator)
+                                .navigationTitle(activity.name)
+                                .navigationBarTitleDisplayMode(.inline)
+                                .onAppear {
+                                    coordinator.activityEvent
+                                        .receive(on: DispatchQueue.main)
+                                        .sink { event in
+                                            switch event {
+                                                case .didStart:
+                                                    log.debug("Publisher - Activity did start")
+                                                case .didEnd:
+                                                    log.debug("Publisher - Activity did end")
+//                                                    self.activityDidEnd = true
+                                            }
+                                        }
+                                        .store(in: &allNewActivitiescancellables)
+                                }
+                        } else {
+                            Text("Activity not recognized")
+                        }
                     }
 
                 case .storyView:
@@ -334,7 +353,7 @@ struct MainView: View {
                             self.carereceiverManager.setCurrentCarereceivers(to: carereceivers)
                             self.navigation.setCurrentActivity(activity)
                             self.navigation.setCurrentStory(story)
-                            if self.navigation.currentActivity != nil {
+                            if self.navigation.setCurrentActivity != nil {
                                 self.navigation.setFullScreenCoverContent(.activityView(carereceivers: carereceivers))
                             } else if self.navigation.currentStory != nil {
                                 self.navigation.setFullScreenCoverContent(.storyView(carereceivers: carereceivers))
@@ -342,7 +361,7 @@ struct MainView: View {
                         }, onSkip: {
                             self.navigation.setCurrentActivity(activity)
                             self.navigation.setCurrentStory(story)
-                            if self.navigation.currentActivity != nil {
+                            if self.navigation.setCurrentActivity != nil {
                                 self.navigation.setFullScreenCoverContent(.activityView(carereceivers: []))
                             } else if self.navigation.currentStory != nil {
                                 self.navigation.setFullScreenCoverContent(.storyView(carereceivers: []))

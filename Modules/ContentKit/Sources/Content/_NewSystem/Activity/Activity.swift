@@ -6,9 +6,9 @@ import Foundation
 import LocalizationKit
 import UtilsKit
 
-// MARK: - NewActivity
+// MARK: - Activity
 
-public struct NewActivity: Identifiable {
+public struct Activity: Identifiable {
     // MARK: Lifecycle
 
     public init?(id: String) {
@@ -58,7 +58,7 @@ public struct NewActivity: Identifiable {
 
 // MARK: Hashable
 
-extension NewActivity: Hashable {
+extension Activity: Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(self.id)
     }
@@ -66,8 +66,8 @@ extension NewActivity: Hashable {
 
 // MARK: Equatable
 
-extension NewActivity: Equatable {
-    public static func == (lhs: NewActivity, rhs: NewActivity) -> Bool {
+extension Activity: Equatable {
+    public static func == (lhs: Activity, rhs: Activity) -> Bool {
         lhs.uuid == rhs.uuid
     }
 }

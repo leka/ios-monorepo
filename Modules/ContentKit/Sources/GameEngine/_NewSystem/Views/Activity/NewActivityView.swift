@@ -10,7 +10,7 @@ import SwiftUI
 public struct NewActivityView: View {
     // MARK: Lifecycle
 
-    public init(activity: NewActivity, coordinator: ActivityCoordinator) {
+    public init(activity: Activity, coordinator: ActivityCoordinator) {
         self.activity = activity
         self.activityCoordinator = coordinator
     }
@@ -138,7 +138,7 @@ public struct NewActivityView: View {
     @State private var isReinforcerPresented: Bool = false
 
     private var activityCoordinator: ActivityCoordinator
-    private let activity: NewActivity
+    private let activity: Activity
 }
 
 #if DEBUG
@@ -213,7 +213,7 @@ public struct NewActivityView: View {
         var cancellables = Set<AnyCancellable>()
 
         NavigationStack {
-            if let activity = NewActivity(yaml: kActivityYaml) {
+            if let activity = Activity(yaml: kActivityYaml) {
                 let coordinator = ActivityCoordinator(payload: activity.payload)
 
                 NewActivityView(activity: activity, coordinator: coordinator)

@@ -7,7 +7,7 @@ import LocalizationKit
 import UtilsKit
 import Yams
 
-extension NewActivity: Decodable {
+extension Activity: Decodable {
     enum CodingKeys: String, CodingKey {
         case uuid
         case name
@@ -55,7 +55,7 @@ extension NewActivity: Decodable {
     }
 
     public init?(yaml yamlString: String) {
-        if let activity = try? YAMLDecoder().decode(NewActivity.self, from: yamlString) {
+        if let activity = try? YAMLDecoder().decode(Activity.self, from: yamlString) {
             self = activity
         } else {
             return nil

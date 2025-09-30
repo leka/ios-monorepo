@@ -13,11 +13,12 @@ let logCK = LogKit.createLoggerFor(module: "ContentKit")
 public enum ContentKit {
     // MARK: Public
 
-    public static var allActivities: [String: Activity] = ContentKit.listAllActivities() ?? [:]
-    public static let allPublishedActivities: [String: Activity] = ContentKit.listAllPublishedActivities() ?? [:]
-    public static let allDraftActivities: [String: Activity] = ContentKit.listAllDraftActivities() ?? [:]
-    public static let allTemplateActivities: [String: Activity] = ContentKit.listAllTemplateActivities() ?? [:]
-    public static let allNewActivities: [String: NewActivity] = ContentKit.listAllNewActivities() ?? [:]
+    public static var allActivities: [String: OldActivity] = ContentKit.listAllActivities() ?? [:]
+    public static let allPublishedActivities: [String: OldActivity] = ContentKit.listAllPublishedActivities() ?? [:]
+    public static let allDraftActivities: [String: OldActivity] = ContentKit.listAllDraftActivities() ?? [:]
+    public static let allTemplateActivities: [String: OldActivity] = ContentKit.listAllTemplateActivities() ?? [:]
+    public static let allNewActivities: [String: Activity] = ContentKit.listAllNewActivities() ?? [:]
+    public static let allPublishedNewActivities: [String: Activity] = ContentKit.listAllPublishedNewActivities() ?? [:]
     public static let allCurriculums: [String: Curriculum] = ContentKit.listCurriculums() ?? [:]
     public static let allPublishedCurriculums: [String: Curriculum] = ContentKit.listAllPublishedCurriculums() ?? [:]
     public static let allDraftCurriculums: [String: Curriculum] = ContentKit.listAllDraftCurriculums() ?? [:]
@@ -101,9 +102,34 @@ public enum ContentKit {
         return curriculums
     }
 
-    private static func listAllActivities() -> [String: Activity]? {
+    private static func listAllActivities() -> [String: OldActivity]? {
         let bundle = Bundle.module
         let files = bundle.paths(forResourcesOfType: "activity.yml", inDirectory: nil)
+
+        var activities: [String: OldActivity] = [:]
+
+        for file in files {
+            let data = try? String(contentsOfFile: file, encoding: .utf8)
+
+            guard let data else {
+                logCK.error("Error reading file: \(file)")
+                continue
+            }
+
+            do {
+                let activity = try YAMLDecoder().decode(OldActivity.self, from: data)
+                activities[activity.uuid] = activity
+            } catch {
+                logCK.error("Error decoding file: \(file) with error:\n\(error)")
+            }
+        }
+
+        return activities
+    }
+
+    private static func listAllNewActivities() -> [String: Activity]? {
+        let bundle = Bundle.module
+        let files = bundle.paths(forResourcesOfType: "new_activity.yml", inDirectory: nil)
 
         var activities: [String: Activity] = [:]
 
@@ -115,47 +141,26 @@ public enum ContentKit {
                 continue
             }
 
-            do {
-                let activity = try YAMLDecoder().decode(Activity.self, from: data)
-                activities[activity.uuid] = activity
-            } catch {
-                logCK.error("Error decoding file: \(file) with error:\n\(error)")
-            }
-        }
-
-        return activities
-    }
-
-    private static func listAllNewActivities() -> [String: NewActivity]? {
-        let bundle = Bundle.module
-        let files = bundle.paths(forResourcesOfType: "new_activity.yml", inDirectory: nil)
-
-        var activities: [String: NewActivity] = [:]
-
-        for file in files {
-            let data = try? String(contentsOfFile: file, encoding: .utf8)
-
-            guard let data else {
-                logCK.error("Error reading file: \(file)")
-                continue
-            }
-
-            let activity = NewActivity(yaml: data)!
+            let activity = Activity(yaml: data)!
             activities[activity.id] = activity
         }
 
         return activities
     }
 
-    private static func listAllPublishedActivities() -> [String: Activity]? {
+    private static func listAllPublishedActivities() -> [String: OldActivity]? {
         self.allActivities.filter { $0.value.status == .published }
     }
 
-    private static func listAllDraftActivities() -> [String: Activity]? {
+    private static func listAllPublishedNewActivities() -> [String: Activity]? {
+        self.allNewActivities.filter { $0.value.status == .published }
+    }
+
+    private static func listAllDraftActivities() -> [String: OldActivity]? {
         self.allActivities.filter { $0.value.status == .draft }
     }
 
-    private static func listAllTemplateActivities() -> [String: Activity]? {
+    private static func listAllTemplateActivities() -> [String: OldActivity]? {
         self.allActivities.filter { $0.value.status == .template }
     }
 
