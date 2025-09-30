@@ -48,7 +48,7 @@ final class CoordinatorGameplayModelDecode: XCTestCase {
                   type: emoji
             """
 
-        let exercise = NewExercise(yaml: kExercise)!
+        let exercise = Exercise(yaml: kExercise)!
 
         let model = try JSONDecoder().decode(CoordinatorFindTheRightAnswersModel.self, from: exercise.payload!)
 
@@ -100,7 +100,7 @@ final class CoordinatorGameplayModelDecode: XCTestCase {
                   category: catB
             """
 
-        let exercise = NewExercise(yaml: kExercise)!
+        let exercise = Exercise(yaml: kExercise)!
 
         let model = try JSONDecoder().decode(CoordinatorAssociateCategoriesModel.self, from: exercise.payload!)
 
@@ -144,7 +144,7 @@ final class CoordinatorGameplayModelDecode: XCTestCase {
                   type: sfsymbol
             """
 
-        let exercise = NewExercise(yaml: kExercise)!
+        let exercise = Exercise(yaml: kExercise)!
 
         let model = try JSONDecoder().decode(CoordinatorFindTheRightOrderModel.self, from: exercise.payload!)
 
@@ -192,7 +192,7 @@ final class CoordinatorGameplayModelDecode: XCTestCase {
                   type: emoji
             """
 
-        let exercise = NewExercise(yaml: kExercise)!
+        let exercise = Exercise(yaml: kExercise)!
 
         let model = try JSONDecoder().decode(CoordinatorOpenPlayModel.self, from: exercise.payload!)
 

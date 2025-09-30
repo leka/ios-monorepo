@@ -12,7 +12,7 @@ struct HideAndSeekView: View {
         self.shared = ExerciseSharedData()
     }
 
-    init(exercise _: Exercise, data: ExerciseSharedData? = nil) {
+    init(exercise _: OldExercise, data: ExerciseSharedData? = nil) {
         self.stage = .toHide
         self.shared = data
     }

@@ -90,7 +90,7 @@ public extension StoryView.PageView {
                                 self.launchActivityButton(id: id)
                                     .fullScreenCover(isPresented: self.$launchActivity, content: {
                                         NavigationStack {
-                                            ActivityView(activity: ContentKit.allActivities[id]!)
+                                            OldActivityView(activity: ContentKit.allActivities[id]!)
                                         }
                                     })
                             default:

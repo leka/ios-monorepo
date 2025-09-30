@@ -122,11 +122,15 @@ class Navigation {
     var fullScreenCoverContent: FullScreenCoverContent?
     var navigateToAccountCreationProcess: Bool = false
 
-    private(set) var currentActivity: Activity?
     private(set) var currentStory: Story?
-
-    // ? DEVELOPER_MODE + TESTFLIGHT_BUILD
     private(set) var currentNewCoordinator: ActivityCoordinator?
+
+    private(set) var currentActivity: Activity? {
+        didSet {
+            guard let activity = currentActivity else { return }
+            self.currentNewCoordinator = ActivityCoordinator(payload: activity.payload)
+        }
+    }
 
     var selectedCategory: Category? = .home {
         willSet {
@@ -148,14 +152,6 @@ class Navigation {
         }
         didSet {
             self.disableUICompletly = false
-        }
-    }
-
-    // ? DEVELOPER_MODE + TESTFLIGHT_BUILD
-    private(set) var currentNewActivity: NewActivity? {
-        didSet {
-            guard let activity = currentNewActivity else { return }
-            self.currentNewCoordinator = ActivityCoordinator(payload: activity.payload)
         }
     }
 
@@ -185,11 +181,6 @@ class Navigation {
 
     func setPath(_ path: NavigationPath) {
         self.path = path
-    }
-
-    // ? DEVELOPER_MODE + TESTFLIGHT_BUILD
-    func setCurrentNewActivity(_ activity: NewActivity) {
-        self.currentNewActivity = activity
     }
 
     // MARK: Private

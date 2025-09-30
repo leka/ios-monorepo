@@ -9,7 +9,7 @@ import SwiftUI
 public struct RobotThenDragAndDropToAssociateView: View {
     // MARK: Lifecycle
 
-    public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
+    public init(exercise: OldExercise, data: ExerciseSharedData? = nil) {
         guard case let .robot(actionType) = exercise.action else {
             logGEK.error("Exercise does not contain robot action")
             fatalError("💥 Exercise does not contain robot action")
@@ -55,7 +55,7 @@ public struct RobotThenDragAndDropToAssociateView: View {
 
     @State private var robotWasTapped = false
 
-    private let actionType: Exercise.Action.RobotActionType
-    private var exercise: Exercise
+    private let actionType: OldExercise.Action.RobotActionType
+    private var exercise: OldExercise
     private var exerciseSharedData: ExerciseSharedData?
 }

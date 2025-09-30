@@ -16,7 +16,7 @@ public struct DanceFreezeView: View {
         self.data = nil
     }
 
-    public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
+    public init(exercise: OldExercise, data: ExerciseSharedData? = nil) {
         guard let payload = exercise.payload as? DanceFreeze.Payload else {
             fatalError("Exercise payload is not DanceFreeze.Payload")
         }

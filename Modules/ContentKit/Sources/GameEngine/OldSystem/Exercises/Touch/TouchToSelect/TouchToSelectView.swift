@@ -12,7 +12,7 @@ public struct TouchToSelectView: View {
         _viewModel = StateObject(wrappedValue: TouchToSelectViewViewModel(choices: choices, shuffle: shuffle))
     }
 
-    public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
+    public init(exercise: OldExercise, data: ExerciseSharedData? = nil) {
         guard let payload = exercise.payload as? TouchToSelect.Payload else {
             fatalError("Exercise payload is not .selection")
         }

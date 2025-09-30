@@ -9,12 +9,12 @@ import Foundation
 public class CurrentActivityManager {
     // MARK: Lifecycle
 
-    public init(activity: Activity) {
+    public init(activity: OldActivity) {
         var copyOfActivity = activity
 
         if copyOfActivity.exercisePayload.options.shuffleExercises {
             copyOfActivity.exercisePayload.exerciseGroups = copyOfActivity.exercisePayload.exerciseGroups.map {
-                Activity.ExercisesPayload.ExerciseGroup(exercises: $0.exercises.shuffled())
+                OldActivity.ExercisesPayload.ExerciseGroup(exercises: $0.exercises.shuffled())
             }
         }
 
@@ -31,7 +31,7 @@ public class CurrentActivityManager {
     public var currentGroupIndex: Int = 0
     public var currentExerciseIndexInCurrentGroup: Int = 0
 
-    public let activity: Activity
+    public let activity: OldActivity
 
     public var startTimestamp: Date?
 
@@ -43,7 +43,7 @@ public class CurrentActivityManager {
         self.activity.exercisePayload.exerciseGroups[self.currentGroupIndex].exercises.count
     }
 
-    public var currentExercise: Exercise {
+    public var currentExercise: OldExercise {
         self.activity.exercisePayload.exerciseGroups[self.currentGroupIndex].exercises[self.currentExerciseIndexInCurrentGroup]
     }
 

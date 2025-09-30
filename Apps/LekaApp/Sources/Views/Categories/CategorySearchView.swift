@@ -105,7 +105,7 @@ struct CategorySearchView: View {
     private let kSubtitleWeight = 3
     private let kTagWeight = 5
 
-    private let activities: [Activity] = Array(ContentKit.allPublishedActivities.values)
+    private let activities: [Activity] = Array(ContentKit.allPublishedNewActivities.values)
     private let curriculums: [Curriculum] = Array(ContentKit.allPublishedCurriculums.values)
     private let skills: [Skill] = Skills.primarySkillsList
 
