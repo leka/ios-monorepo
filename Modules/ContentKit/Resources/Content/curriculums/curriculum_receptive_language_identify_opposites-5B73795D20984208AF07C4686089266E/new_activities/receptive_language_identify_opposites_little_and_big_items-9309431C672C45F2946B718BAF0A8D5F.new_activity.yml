@@ -24,6 +24,9 @@ tags:
   - little
   - big
 
+accessibility:
+  - gesture: touch_to_select
+
 hmi:
   - tablet
 

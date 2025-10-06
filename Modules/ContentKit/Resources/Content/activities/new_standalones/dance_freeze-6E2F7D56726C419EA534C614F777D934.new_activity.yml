@@ -32,6 +32,9 @@ tags:
   - robot_movements
   - robot_colors
 
+accessibility:
+  - gesture: touch_to_select
+
 hmi:
   - robot
 

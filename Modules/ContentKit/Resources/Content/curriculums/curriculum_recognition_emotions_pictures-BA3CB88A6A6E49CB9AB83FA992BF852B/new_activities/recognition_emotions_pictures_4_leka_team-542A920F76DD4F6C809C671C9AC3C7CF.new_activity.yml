@@ -27,6 +27,9 @@ tags:
   - hugo
   - leka_team
 
+accessibility:
+  - gesture: touch_to_select
+
 hmi:
   - tablet
 

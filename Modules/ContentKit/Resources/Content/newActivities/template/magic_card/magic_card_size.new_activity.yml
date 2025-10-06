@@ -19,6 +19,10 @@ skills:
 tags:
   - colors
 
+accessibility:
+  - gesture: magic_card
+  - focus: mixed
+
 hmi:
   - robot
 

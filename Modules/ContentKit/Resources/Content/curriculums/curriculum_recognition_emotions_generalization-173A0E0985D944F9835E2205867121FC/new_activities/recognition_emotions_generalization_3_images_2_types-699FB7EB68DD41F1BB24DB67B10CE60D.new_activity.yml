@@ -25,6 +25,9 @@ tags:
   - characters
   - pictures
 
+accessibility:
+  - gesture: touch_to_select
+
 hmi:
   - tablet
 

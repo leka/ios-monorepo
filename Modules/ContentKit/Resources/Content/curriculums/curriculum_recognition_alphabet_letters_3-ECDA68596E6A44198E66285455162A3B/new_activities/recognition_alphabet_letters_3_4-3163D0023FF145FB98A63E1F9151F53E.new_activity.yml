@@ -21,6 +21,10 @@ skills:
 tags:
   - alphabet_letters
 
+accessibility:
+  - gesture: touch_to_select
+  - focus: eye
+
 hmi:
   - tablet
 

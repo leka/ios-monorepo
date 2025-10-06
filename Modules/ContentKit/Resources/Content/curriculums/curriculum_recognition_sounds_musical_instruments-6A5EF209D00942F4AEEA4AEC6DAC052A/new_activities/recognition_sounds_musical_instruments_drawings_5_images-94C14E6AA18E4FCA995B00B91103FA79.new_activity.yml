@@ -26,6 +26,10 @@ tags:
   - music
   - listening
 
+accessibility:
+  - gesture: touch_to_select
+  - focus: ear
+
 hmi:
   - tablet
 

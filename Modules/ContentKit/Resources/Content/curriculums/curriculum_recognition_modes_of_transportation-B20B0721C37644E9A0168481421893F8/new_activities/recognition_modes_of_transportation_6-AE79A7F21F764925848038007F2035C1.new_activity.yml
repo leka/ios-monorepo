@@ -20,6 +20,10 @@ skills:
 tags:
   - modes_of_transportation
 
+accessibility:
+  - gesture: touch_to_select
+  - focus: ear
+
 hmi:
   - tablet
 

@@ -25,6 +25,10 @@ tags:
   - physiological_needs
   - oscar
 
+accessibility:
+  - gesture: touch_to_select
+  - focus: eye
+
 hmi:
   - tablet
 

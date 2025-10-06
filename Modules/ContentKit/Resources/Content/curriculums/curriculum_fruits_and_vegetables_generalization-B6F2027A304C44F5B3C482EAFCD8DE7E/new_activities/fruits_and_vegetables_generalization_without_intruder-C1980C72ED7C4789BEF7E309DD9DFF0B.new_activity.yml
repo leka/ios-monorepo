@@ -23,6 +23,10 @@ tags:
   - vegetables
   - fruits
 
+accessibility:
+  - gesture: touch_to_select
+  - focus: ear
+
 hmi:
   - tablet
 

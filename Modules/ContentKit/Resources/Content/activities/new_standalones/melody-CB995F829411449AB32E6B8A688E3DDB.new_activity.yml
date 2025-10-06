@@ -30,6 +30,9 @@ tags:
   - standalone_activity
   - sensory_stimulation
 
+accessibility:
+  - gesture: touch_to_select
+
 hmi:
   - tablet_robot
 

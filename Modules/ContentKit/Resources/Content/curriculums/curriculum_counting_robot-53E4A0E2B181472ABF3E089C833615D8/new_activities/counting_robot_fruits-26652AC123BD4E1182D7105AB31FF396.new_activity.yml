@@ -23,8 +23,8 @@ tags:
   - numbers
 
 accessibility:
-  - gesture: mixed
-  - focus: mixed
+  - gesture: touch_to_select
+  - focus: robot
 
 hmi:
   - tablet_robot

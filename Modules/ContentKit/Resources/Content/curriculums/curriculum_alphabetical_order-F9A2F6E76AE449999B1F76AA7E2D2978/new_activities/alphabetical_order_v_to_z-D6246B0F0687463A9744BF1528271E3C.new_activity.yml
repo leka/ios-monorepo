@@ -21,6 +21,9 @@ skills:
 tags:
   - alphabet_letters
 
+accessibility:
+  - gesture: drag_and_drop
+
 hmi:
   - tablet
 

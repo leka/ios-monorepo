@@ -17,6 +17,11 @@ skills:
   - generalization
 tags:
   - fruits
+
+accessibility:
+  - gesture: touch_to_select
+  - focus: robot
+
 hmi:
   - tablet_robot
 types:
