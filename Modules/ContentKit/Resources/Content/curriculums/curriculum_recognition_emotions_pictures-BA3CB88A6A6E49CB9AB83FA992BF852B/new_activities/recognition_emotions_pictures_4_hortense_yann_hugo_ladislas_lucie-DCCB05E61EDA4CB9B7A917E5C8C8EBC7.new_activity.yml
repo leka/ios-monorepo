@@ -25,6 +25,9 @@ tags:
   - lucie
   - hugo
 
+accessibility:
+  gesture: touch_to_select
+
 hmi:
   - tablet
 

@@ -21,6 +21,10 @@ skills:
 tags:
   - family_members
 
+accessibility:
+  gesture: touch_to_select
+  focus: ear
+
 hmi:
   - tablet
 

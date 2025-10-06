@@ -21,6 +21,10 @@ tags:
   - geometric_shapes
   - colors
 
+accessibility:
+  gesture: touch_to_select
+  focus: eye
+
 hmi:
   - tablet
 

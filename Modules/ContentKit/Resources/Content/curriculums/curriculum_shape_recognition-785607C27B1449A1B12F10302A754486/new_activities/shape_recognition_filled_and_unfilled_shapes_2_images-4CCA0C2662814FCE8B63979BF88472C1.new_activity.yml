@@ -20,6 +20,10 @@ skills:
 tags:
   - geometric_shapes
 
+accessibility:
+  gesture: touch_to_select
+  focus: eye
+
 hmi:
   - tablet
 

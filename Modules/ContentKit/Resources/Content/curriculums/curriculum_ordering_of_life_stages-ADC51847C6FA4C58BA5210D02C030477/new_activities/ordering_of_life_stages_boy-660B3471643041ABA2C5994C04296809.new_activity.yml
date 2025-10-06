@@ -22,6 +22,9 @@ skills:
 tags:
   - family_members
 
+accessibility:
+  gesture: drag_and_drop
+
 hmi:
   - tablet
 

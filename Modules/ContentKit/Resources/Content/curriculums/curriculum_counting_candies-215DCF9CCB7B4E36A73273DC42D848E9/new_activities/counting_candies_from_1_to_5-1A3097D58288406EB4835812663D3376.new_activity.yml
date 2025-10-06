@@ -22,6 +22,10 @@ tags:
   - numbers
   - quantity
 
+accessibility:
+  gesture: touch_to_select
+  focus: eye
+
 hmi:
   - tablet
 

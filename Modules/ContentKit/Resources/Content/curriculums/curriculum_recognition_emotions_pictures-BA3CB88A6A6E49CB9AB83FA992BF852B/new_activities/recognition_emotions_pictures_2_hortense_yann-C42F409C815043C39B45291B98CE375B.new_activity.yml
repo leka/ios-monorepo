@@ -22,6 +22,9 @@ tags:
   - hortense
   - yann
 
+accessibility:
+  gesture: touch_to_select
+
 hmi:
   - tablet
 

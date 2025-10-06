@@ -24,6 +24,10 @@ tags:
   - numbers
   - digital_constellations
 
+accessibility:
+  gesture: touch_to_select
+  focus: eye
+
 hmi:
   - tablet
 

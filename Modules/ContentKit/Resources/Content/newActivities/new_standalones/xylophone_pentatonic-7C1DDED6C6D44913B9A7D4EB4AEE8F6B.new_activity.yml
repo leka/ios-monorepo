@@ -24,6 +24,9 @@ tags:
   - music
   - standalone_activity
 
+accessibility:
+  gesture: touch_to_select
+
 hmi:
   - tablet_robot
 

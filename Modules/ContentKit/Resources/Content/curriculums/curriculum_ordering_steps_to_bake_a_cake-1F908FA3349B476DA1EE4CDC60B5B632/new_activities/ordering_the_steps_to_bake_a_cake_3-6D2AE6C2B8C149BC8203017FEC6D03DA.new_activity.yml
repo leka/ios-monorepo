@@ -22,6 +22,9 @@ skills:
 tags:
   - food
 
+accessibility:
+  gesture: drag_and_drop
+
 hmi:
   - tablet
 
