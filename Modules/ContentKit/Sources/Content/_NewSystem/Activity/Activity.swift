@@ -29,6 +29,7 @@ public struct Activity: Identifiable {
 
     public let authors: [Author]
     public let skills: [Skill]
+    public let accessibility: Accessibility
     public let hmi: [HMIDetails]
     public let types: [ActivityType]
     public let tags: [Tag]
