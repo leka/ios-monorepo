@@ -16,6 +16,7 @@ extension Activity: Decodable {
         case status
         case authors
         case skills
+        case accessibility
         case hmi
         case types
         case tags
@@ -38,6 +39,7 @@ extension Activity: Decodable {
         self.authors = authorIDs.compactMap { Authors.authors(id: $0) }
         let skillsIDs = try container.decode([String].self, forKey: .skills)
         self.skills = skillsIDs.compactMap { Skills.skill(id: $0) }
+        self.accessibility = try container.decodeIfPresent(Accessibility.self, forKey: .accessibility)
         let hmiIDs = try container.decode([String].self, forKey: .hmi)
         self.hmi = hmiIDs.compactMap { HMI.hmi(id: $0) }
         let typeIDs = try container.decode([String].self, forKey: .types)

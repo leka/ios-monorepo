@@ -22,6 +22,10 @@ tags:
   - fruits
   - numbers
 
+accessibility:
+  - gesture: mixed
+  - focus: mixed
+
 hmi:
   - tablet_robot
 
