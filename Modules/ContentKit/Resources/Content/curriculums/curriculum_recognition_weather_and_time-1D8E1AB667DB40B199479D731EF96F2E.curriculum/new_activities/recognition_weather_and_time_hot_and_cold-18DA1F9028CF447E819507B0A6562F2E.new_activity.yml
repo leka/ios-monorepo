@@ -23,6 +23,10 @@ tags:
   - hot
   - cold
 
+accessibility:
+  gesture: touch_to_select
+  focus: eye
+
 hmi:
   - tablet
 

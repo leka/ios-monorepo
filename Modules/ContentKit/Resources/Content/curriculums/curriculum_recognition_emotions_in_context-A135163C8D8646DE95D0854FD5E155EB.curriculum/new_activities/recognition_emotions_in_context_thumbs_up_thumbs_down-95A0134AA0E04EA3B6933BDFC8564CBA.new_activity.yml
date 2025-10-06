@@ -25,6 +25,10 @@ tags:
   - thumbs_up
   - characters
 
+accessibility:
+  gesture: touch_to_select
+  focus: eye
+
 hmi:
   - tablet
 

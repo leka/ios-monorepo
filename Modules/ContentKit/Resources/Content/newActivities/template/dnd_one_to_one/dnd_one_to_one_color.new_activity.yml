@@ -19,6 +19,10 @@ skills:
 tags:
   - colors
 
+accessibility:
+  gesture: drag_and_drop
+  focus: mixed
+
 hmi:
   - robot
 

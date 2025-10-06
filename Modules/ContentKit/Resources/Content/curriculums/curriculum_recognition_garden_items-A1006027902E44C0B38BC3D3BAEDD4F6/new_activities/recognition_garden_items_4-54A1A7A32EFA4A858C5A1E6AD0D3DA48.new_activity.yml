@@ -22,6 +22,10 @@ tags:
   - home_objects
   - garden
 
+accessibility:
+  gesture: touch_to_select
+  focus: ear
+
 hmi:
   - tablet
 

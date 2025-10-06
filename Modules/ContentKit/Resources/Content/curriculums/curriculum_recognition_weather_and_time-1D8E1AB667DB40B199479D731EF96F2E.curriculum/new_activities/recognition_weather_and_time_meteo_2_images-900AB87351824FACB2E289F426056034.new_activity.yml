@@ -21,6 +21,10 @@ tags:
   - weather_elements
   - seasons
 
+accessibility:
+  gesture: touch_to_select
+  focus: eye
+
 hmi:
   - tablet
 

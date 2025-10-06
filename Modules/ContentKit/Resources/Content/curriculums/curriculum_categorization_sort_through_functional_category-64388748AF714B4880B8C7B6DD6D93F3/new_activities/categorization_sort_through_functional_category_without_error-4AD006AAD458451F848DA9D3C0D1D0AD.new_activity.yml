@@ -25,6 +25,9 @@ tags:
   - everyday_objects
   - home_objects
 
+accessibility:
+  gesture: drag_and_drop
+
 hmi:
   - tablet
 

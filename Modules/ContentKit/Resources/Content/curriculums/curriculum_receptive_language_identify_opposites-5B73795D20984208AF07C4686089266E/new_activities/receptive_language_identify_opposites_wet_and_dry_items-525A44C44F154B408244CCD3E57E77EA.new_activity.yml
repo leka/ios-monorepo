@@ -24,6 +24,9 @@ tags:
   - wet
   - dry
 
+accessibility:
+  gesture: touch_to_select
+
 hmi:
   - tablet
 

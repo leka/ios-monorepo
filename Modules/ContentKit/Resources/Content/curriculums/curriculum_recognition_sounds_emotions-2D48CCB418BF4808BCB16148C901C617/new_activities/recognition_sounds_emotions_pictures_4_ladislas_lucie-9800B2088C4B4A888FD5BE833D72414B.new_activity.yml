@@ -26,6 +26,10 @@ tags:
   - lucie
   - ladislas
 
+accessibility:
+  gesture: touch_to_select
+  focus: ear
+
 hmi:
   - tablet
 

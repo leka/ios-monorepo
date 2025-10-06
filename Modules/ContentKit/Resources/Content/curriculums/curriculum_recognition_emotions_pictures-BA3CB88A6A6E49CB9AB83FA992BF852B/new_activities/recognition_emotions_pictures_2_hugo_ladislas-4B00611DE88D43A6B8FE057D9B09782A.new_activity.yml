@@ -21,6 +21,9 @@ tags:
   - emotions
   - ladislas
 
+accessibility:
+  gesture: touch_to_select
+
 hmi:
   - tablet
 

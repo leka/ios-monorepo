@@ -25,6 +25,9 @@ tags:
   - fruits
   - vegetables
 
+accessibility:
+  gesture: drag_and_drop
+
 hmi:
   - tablet
 

@@ -20,6 +20,9 @@ skills: []
 tags:
   - template
 
+accessibility:
+  gesture: drag_and_drop
+
 hmi:
   - tablet
 
