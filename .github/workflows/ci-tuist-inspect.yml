@@ -53,7 +53,7 @@ jobs:
 
       - name: Config Xcode
         run: |
-          xcodes select 16.4
+          xcodes select 26.0.1
           defaults write com.apple.dt.XCBuild IgnoreFileSystemDeviceInodeChanges -bool YES
 
       - name: tuist install
