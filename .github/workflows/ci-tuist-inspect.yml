@@ -39,10 +39,10 @@ jobs:
           fetch-depth: 1
           lfs: true
 
-      - name: Setup mise
+      - name: Set up mise
         uses: jdx/mise-action@v3
         with:
-          version: 2025.8.20
+          version: 2025.10.7
           install: true
           cache: true
 
