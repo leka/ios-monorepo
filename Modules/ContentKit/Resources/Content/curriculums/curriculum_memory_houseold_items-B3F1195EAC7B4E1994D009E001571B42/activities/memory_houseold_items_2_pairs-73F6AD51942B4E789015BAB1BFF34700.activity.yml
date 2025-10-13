@@ -1,0 +1,171 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 1.0.0
+
+uuid: 73F6AD51942B4E789015BAB1BFF34700
+name: memory_houseold_items_2_pairs
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2025-08-09T19:29:51.720742"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - memory
+  - memory/short_term_memory
+  - attention
+  - attention/sustained_attention
+  - association
+  - association/matching
+
+tags:
+  - home_objects
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: curriculum_memory_houseold_items
+      title: Memory des objets de la maison
+      subtitle: 2 paires
+
+      short_description: |
+        Un jeu de mémoire engageant avec des images d'objets. Trouvez les paires correspondantes pour gagner.
+
+      description: |
+        Le Memory des objets de la maison est conçu pour améliorer la mémoire à court terme et l'attention. Ce jeu présente des images d'objets que les joueurs doivent associer en paires. C'est un excellent moyen de développer des compétences cognitives tout en s'amusant.
+
+      instructions: |
+        - Appuyez sur une carte pour la retourner.
+        - Trouvez la carte correspondante pour former une paire.
+        - Continuez jusqu'à ce que toutes les paires soient trouvées.
+
+  - locale: en_US
+    details:
+      icon: curriculum_memory_houseold_items
+      title: Houseold items Memory
+      subtitle: 2 pairs
+
+      short_description: |
+        An engaging memory game featuring home objects images. Find the matching pairs to win.
+
+      description: |
+        Houseold items Memory is designed to improve short-term memory and attention. This game features objects images that players must match in pairs. It’s a great way to develop cognitive skills while having fun.
+
+      instructions: |
+        - Tap a card to flip it.
+        - Find the matching card to form a pair.
+        - Continue until all pairs are found.
+
+exercises_payload:
+  options:
+    shuffle_exercises: false
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche les cartes pour les retourner et trouve les paires identiques
+            - locale: en_US
+              value: Tap the cards to flip them and find the identical pairs
+          interface: memory
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: memory_bedroom_accessory_bed
+                type: image
+                category: catA
+              - value: memory_bedroom_accessory_bed
+                type: image
+                category: catA
+              - value: memory_bedroom_accessory_pillow
+                type: image
+                category: catB
+              - value: memory_bedroom_accessory_pillow
+                type: image
+                category: catB
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche les cartes pour les retourner et trouve les paires identiques
+            - locale: en_US
+              value: Tap the cards to flip them and find the identical pairs
+          interface: memory
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: memory_bathroom_accessory_shower
+                type: image
+                category: catA
+              - value: memory_bathroom_accessory_shower
+                type: image
+                category: catA
+              - value: memory_bathroom_accessory_toothbrush
+                type: image
+                category: catB
+              - value: memory_bathroom_accessory_toothbrush
+                type: image
+                category: catB
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche les cartes pour les retourner et trouve les paires identiques
+            - locale: en_US
+              value: Tap the cards to flip them and find the identical pairs
+          interface: memory
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: memory_bathroom_accessory_toothpaste
+                type: image
+                category: catA
+              - value: memory_bathroom_accessory_toothpaste
+                type: image
+                category: catA
+              - value: memory_bedroom_accessory_clock
+                type: image
+                category: catB
+              - value: memory_bedroom_accessory_clock
+                type: image
+                category: catB
+
+        - instructions:
+            - locale: fr_FR
+              value: Touche les cartes pour les retourner et trouve les paires identiques
+            - locale: en_US
+              value: Tap the cards to flip them and find the identical pairs
+          interface: memory
+          gameplay: associateCategories
+          payload:
+            shuffle_choices: true
+            choices:
+              - value: memory_bathroom_accessory_toilet
+                type: image
+                category: catA
+              - value: memory_bathroom_accessory_toilet
+                type: image
+                category: catA
+              - value: memory_bathroom_accessory_shower
+                type: image
+                category: catB
+              - value: memory_bathroom_accessory_shower
+                type: image
+                category: catB

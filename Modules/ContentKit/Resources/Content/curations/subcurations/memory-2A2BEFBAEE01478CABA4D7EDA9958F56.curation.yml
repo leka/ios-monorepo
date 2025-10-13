@@ -38,5 +38,9 @@ content:
         type: activity
       - value: curriculum_animal_memory-7C75908B86D748A283AA080D40642BE7
         type: curriculum
+      - value: curriculum_memory_fruits-A65D2488E6544FC38A9FC64BE12E3361
+        type: curriculum
+      - value: curriculum_memory_houseold_items-B3F1195EAC7B4E1994D009E001571B42
+        type: curriculum
       - value: curriculum_memory_christmas-EFC444BBDEF24E08813FF472FFA5365D
         type: curriculum

@@ -1,0 +1,56 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: B3F1195EAC7B4E1994D009E001571B42
+name: curriculum_memory_houseold_items
+status: published
+
+created_at: "2024-03-21T15:12:35.579066"
+last_edited_at: "2025-08-09T19:32:12.066845"
+authors:
+  - leka
+
+skills:
+  - memory
+  - memory/short_term_memory
+  - attention
+  - attention/sustained_attention
+  - association
+  - association/matching
+
+tags:
+  - home_objects
+
+hmi:
+  - tablet
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: curriculum_memory_houseold_items
+      title: Memory des objets de la maison
+      subtitle: Travailler la mémoire et l'attention
+      abstract: |
+        Ce parcours est conçu pour améliorer la mémoire à court terme et l'attention à travers des jeux de mémoire avec des images d'objets. Il commence par des paires simples et augmente progressivement en difficulté.
+      description: |
+        Le parcours "Memory des objets de la maison" est une série d'activités conçues pour aider les participants à améliorer leur mémoire et leur attention. Chaque activité présente des images d'objets que les joueurs doivent associer en paires. Les niveaux de difficulté augmentent progressivement, commençant par une seule paire et allant jusqu'à quatre paires, pour offrir un défi croissant et maintenir l'engagement.
+
+  - locale: en_US
+    details:
+      icon: curriculum_memory_houseold_items
+      title: Houseold items Memory
+      subtitle: Improving memory and attention
+      abstract: |
+        This curriculum is designed to improve short-term memory and attention through memory games featuring objects images. It starts with simple pairs and gradually increases in difficulty.
+      description: |
+        The "Houseold items Memory" curriculum is a series of activities aimed at helping participants improve their memory and attention. Each activity features fruits images that players must match in pairs. The levels of difficulty gradually increase, starting with a single pair and progressing to four pairs, providing a growing challenge to keep participants engaged.
+
+activities:
+  - memory_houseold_items_1_pair-7C58A2F93B294213A54E0E25B12B6046
+  - memory_houseold_items_2_pairs-73F6AD51942B4E789015BAB1BFF34700
+  - memory_houseold_items_4_pairs-651C2C2A49204338A0F0ABC0D86DA9D0
