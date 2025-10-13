@@ -79,9 +79,9 @@ platform :ios do
   desc 'Removes the temporary keychain created for code signing.'
   desc 'This is used to prevent keychain accumulation in CI environments.'
   private_lane :cleanup_keychain do
-    return unless ENV['CI']
-
-    delete_keychain(name: 'io.leka.fastlane.keychain')
+    if ENV['CI']
+      delete_keychain(name: 'io.leka.fastlane.keychain')
+    end
   end
 
   desc 'Determines the pull request number for changelog context.'
@@ -133,52 +133,64 @@ platform :ios do
   desc 'Parameters:'
   desc '  - auth_type: [String] "beta" or "release" to select appropriate credentials'
   private_lane :setup_app_store_connect_auth do |options|
-    return unless ENV['CI']
+    if ENV['CI']
+      auth_type = options[:auth_type]
 
-    auth_type = options[:auth_type]
+      if auth_type == 'beta'
+        app_store_connect_api_key(
+          key_id: ENV.fetch('APP_STORE_CONNECT_API_KEY_ID', nil),
+          issuer_id: ENV.fetch('APP_STORE_CONNECT_ISSUER_ID', nil),
+          key_content: ENV.fetch('APP_STORE_CONNECT_API_KEY_CONTENT', nil)
+        )
+      elsif auth_type == 'release'
+        app_store_connect_api_key(
+          key_id: ENV.fetch('APP_STORE_CONNECT_API_KEY_ID_RELEASE_APP_STORE', nil),
+          issuer_id: ENV.fetch('APP_STORE_CONNECT_ISSUER_ID', nil),
+          key_content: ENV.fetch('APP_STORE_CONNECT_API_KEY_CONTENT_RELEASE_APP_STORE', nil)
+        )
+      else
+        UI.user_error! "Invalid auth_type: #{auth_type}. Must be 'beta' or 'release'"
+      end
 
-    if auth_type == 'beta'
-      app_store_connect_api_key(
-        key_id: ENV.fetch('APP_STORE_CONNECT_API_KEY_ID', nil),
-        issuer_id: ENV.fetch('APP_STORE_CONNECT_ISSUER_ID', nil),
-        key_content: ENV.fetch('APP_STORE_CONNECT_API_KEY_CONTENT', nil)
+      # Unlock keychain and set partition list for code signing
+      unlock_keychain(
+        path: 'io.leka.fastlane.keychain',
+        password: ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil)
       )
-    elsif auth_type == 'release'
-      app_store_connect_api_key(
-        key_id: ENV.fetch('APP_STORE_CONNECT_API_KEY_ID_RELEASE_APP_STORE', nil),
-        issuer_id: ENV.fetch('APP_STORE_CONNECT_ISSUER_ID', nil),
-        key_content: ENV.fetch('APP_STORE_CONNECT_API_KEY_CONTENT_RELEASE_APP_STORE', nil)
-      )
-    else
-      UI.user_error! "Invalid auth_type: #{auth_type}. Must be 'beta' or 'release'"
+
+      UI.header 'Step: keychain security set-key-partition-list'
+      system('security', 'set-key-partition-list', '-S', 'apple-tool:,apple:', '-s', '-k',
+             ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil), 'io.leka.fastlane.keychain')
     end
-
-    # Unlock keychain and set partition list for code signing
-    unlock_keychain(
-      path: 'io.leka.fastlane.keychain',
-      password: ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil)
-    )
-
-    UI.header 'Step: keychain security set-key-partition-list'
-    system('security', 'set-key-partition-list', '-S', 'apple-tool:,apple:', '-s', '-k',
-           ENV.fetch('FASTLANE_KEYCHAIN_PASSWORD', nil), 'io.leka.fastlane.keychain')
   end
 
-  desc 'Validates that all required environment variables are set for CI builds.'
+  desc 'Validates that all required environment variables are set for builds.'
   desc 'Provides clear error messages for missing configuration.'
-  private_lane :validate_build_environment do
-    return unless ENV['CI']
+  desc ''
+  desc 'Parameters:'
+  desc '- force_local: (optional) Set to true to skip validation when not in CI environment'
+  desc ''
+  desc 'Note: In CI environment, all variables are required. For local builds, validation'
+  desc '      can be bypassed by setting force_local: true'
+  private_lane :validate_build_environment do |options|
+    force_local = options[:force_local] || false
 
-    required_vars = %w[
-      FASTLANE_KEYCHAIN_PASSWORD
-      MATCH_PASSWORD
-      MATCH_GIT_BASIC_AUTHORIZATION
-      APP_STORE_CONNECT_ISSUER_ID
-    ]
+    # Skip validation if not in CI and force_local is true
+    if !ENV['CI'] && force_local
+      UI.important 'Running in local environment - skipping environment validation'
+    elsif ENV['CI'] || force_local
+      # Validate environment variables when in CI or when explicitly requested
+      required_vars = %w[
+        FASTLANE_KEYCHAIN_PASSWORD
+        MATCH_PASSWORD
+        MATCH_GIT_BASIC_AUTHORIZATION
+        APP_STORE_CONNECT_ISSUER_ID
+      ]
 
-    missing_vars = required_vars.select { |var| ENV[var].nil? || ENV[var].empty? }
+      missing_vars = required_vars.select { |var| ENV[var].nil? || ENV[var].empty? }
 
-    UI.user_error! "Missing required environment variables: #{missing_vars.join(', ')}" unless missing_vars.empty?
+      UI.user_error! "Missing required environment variables: #{missing_vars.join(', ')}" unless missing_vars.empty?
+    end
   end
 
   desc 'Validates target parameter and returns array of valid targets.'
@@ -306,7 +318,7 @@ platform :ios do
   desc '             Available targets: LekaApp, LekaUpdater'
   desc "             Example: 'LekaApp,LekaUpdater' or 'all'"
   desc ''
-  desc 'Environment Variables Required:'
+  desc 'Environment Variables Required (CI only):'
   desc '  - APP_STORE_CONNECT_API_KEY_ID: API key ID for TestFlight uploads'
   desc '  - APP_STORE_CONNECT_ISSUER_ID: Issuer ID for App Store Connect API'
   desc '  - APP_STORE_CONNECT_API_KEY_CONTENT: Private key content for API'
@@ -314,15 +326,21 @@ platform :ios do
   desc '  - MATCH_PASSWORD: Password for certificates repository'
   desc '  - MATCH_GIT_BASIC_AUTHORIZATION: Auth token for certificates repo'
   desc ''
+  desc 'Local Development:'
+  desc '  When running locally, environment validation is automatically skipped.'
+  desc '  Ensure you have proper code signing setup (certificates and profiles).'
+  desc ''
   desc 'Usage Examples:'
   desc '  fastlane beta_internal targets:LekaApp'
   desc '  fastlane beta_internal targets:LekaApp,LekaUpdater'
   desc '  fastlane beta_internal targets:all'
   desc ''
-  desc 'Note: This lane is typically triggered by GitHub Actions on PR labels or develop branch pushes'
+  desc 'Note: This lane can be run both locally and in CI. In CI environments,'
+  desc '      all environment variables are validated. For local development,'
+  desc '      environment validation is automatically skipped.'
   lane :beta_internal do |options|
     # Validate environment and parameters
-    validate_build_environment
+    validate_build_environment(force_local: true)
     apps = validate_targets(targets: options[:targets])
 
     UI.header 'Step: Set targets to build'
@@ -427,7 +445,8 @@ platform :ios do
           skip_waiting_for_build_processing: true, # Don't wait for Apple processing
           distribute_external: false,              # Internal testing only
           groups: %w[LekaTeam],                    # TestFlight testing group
-          changelog: testflight_changelog          # Generated changelog
+          changelog: testflight_changelog,          # Generated changelog
+          beta_app_description: "Automated TestFlight build for internal testing."
         )
       ensure
         # MARK: - Cleanup

@@ -41,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/devicekit/DeviceKit",
       "state" : {
-        "revision" : "513b9d7e7a1bd46504a1009bbab943b75ce2f195",
-        "version" : "5.6.0"
+        "revision" : "581df61650bc457ec00373a592a84be3e7468eb1",
+        "version" : "5.7.0"
       }
     },
     {
@@ -50,8 +50,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk",
       "state" : {
-        "revision" : "4e62da1e5e6baf61674d3f5ae23d6d60c19f9c4a",
-        "version" : "12.0.0"
+        "revision" : "541ac342abead313f2ce0ccf33278962b5c1e43c",
+        "version" : "12.4.0"
       }
     },
     {
@@ -68,8 +68,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/googleads/google-ads-on-device-conversion-ios-sdk",
       "state" : {
-        "revision" : "428d8bb138e00f9a3f4f61cc6cd8863607524f65",
-        "version" : "2.1.0"
+        "revision" : "2ba031f43ef88a7f6631c84d23794eb99751e891",
+        "version" : "3.1.0"
       }
     },
     {
@@ -77,8 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleAppMeasurement.git",
       "state" : {
-        "revision" : "63c18311aac00032f15f5ce431c9e83ada96c386",
-        "version" : "12.0.0"
+        "revision" : "52713644ce2831bb687ded4aefd5e5c9f15565c5",
+        "version" : "12.4.0"
       }
     },
     {
@@ -194,8 +194,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-log",
       "state" : {
-        "revision" : "3d8596ed08bd13520157f0355e35caed215ffbfa",
-        "version" : "1.6.3"
+        "revision" : "ce592ae52f982c847a4efc0dd881cc9eb32d29f2",
+        "version" : "1.6.4"
       }
     },
     {
@@ -239,8 +239,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/jpsim/Yams",
       "state" : {
-        "revision" : "f4d4d6827d36092d151ad7f6fef1991c1b7192f6",
-        "version" : "6.0.2"
+        "revision" : "51b5127c7fb6ffac106ad6d199aaa33c5024895f",
+        "version" : "6.2.0"
       }
     },
     {
@@ -248,8 +248,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SvenTiigi/YouTubePlayerKit",
       "state" : {
-        "revision" : "a0f3f0996c2d752faa654b69b82acaa444bed922",
-        "version" : "2.0.1"
+        "revision" : "8525623172a7018b7770e92297595607fafb6c0b",
+        "version" : "2.0.3"
       }
     }
   ],

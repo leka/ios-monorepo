@@ -114,9 +114,11 @@ public struct MagicCardView: View {
     @StateObject private var viewModel: MagicCardViewViewModel
 }
 
-#Preview {
-    let coordinator = MagicCardEmptyCoordinator()
-    let viewModel = MagicCardViewViewModel(coordinator: coordinator)
+#if DEBUG
+    #Preview {
+        let coordinator = MagicCardEmptyCoordinator()
+        let viewModel = MagicCardViewViewModel(coordinator: coordinator)
 
-    return MagicCardView(viewModel: viewModel)
-}
+        return MagicCardView(viewModel: viewModel)
+    }
+#endif // DEBUG

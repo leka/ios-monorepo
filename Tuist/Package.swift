@@ -45,7 +45,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/jpsim/Yams",
-            exact: "6.1.0"
+            exact: "6.2.0"
         ),
         .package(
             url: "https://github.com/airbnb/lottie-ios",
@@ -77,7 +77,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/firebase/firebase-ios-sdk",
-            exact: "12.3.0"
+            exact: "12.4.0"
         ),
         .package(
             url: "https://github.com/OlehKorchytskyi/Fit",
@@ -93,7 +93,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/SvenTiigi/YouTubePlayerKit",
-            exact: "2.0.2"
+            exact: "2.0.3"
         ),
     ]
 )

@@ -115,7 +115,7 @@ Options:
 
 
 
-Environment Variables Required:
+Environment Variables Required (CI only):
 
   - APP_STORE_CONNECT_API_KEY_ID: API key ID for TestFlight uploads
 
@@ -131,6 +131,14 @@ Environment Variables Required:
 
 
 
+Local Development:
+
+  When running locally, environment validation is automatically skipped.
+
+  Ensure you have proper code signing setup (certificates and profiles).
+
+
+
 Usage Examples:
 
   fastlane beta_internal targets:LekaApp
@@ -141,7 +149,11 @@ Usage Examples:
 
 
 
-Note: This lane is typically triggered by GitHub Actions on PR labels or develop branch pushes
+Note: This lane can be run both locally and in CI. In CI environments,
+
+      all environment variables are validated. For local development,
+
+      environment validation is automatically skipped.
 
 ### ios release
 
