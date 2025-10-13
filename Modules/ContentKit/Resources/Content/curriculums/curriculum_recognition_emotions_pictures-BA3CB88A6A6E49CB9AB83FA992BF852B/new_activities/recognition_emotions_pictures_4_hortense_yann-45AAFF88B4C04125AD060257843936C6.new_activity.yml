@@ -23,11 +23,10 @@ tags:
   - hortense
   - yann
 
-accessibility:
-  gesture: touch_to_select
 
 hmi:
-  - tablet
+  medium: tablet
+  gesture: touch_to_select
 
 types:
   - one_on_one

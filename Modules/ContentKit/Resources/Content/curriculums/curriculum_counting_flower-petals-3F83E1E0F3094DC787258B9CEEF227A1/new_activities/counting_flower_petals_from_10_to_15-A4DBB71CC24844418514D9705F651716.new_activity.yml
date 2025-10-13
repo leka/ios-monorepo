@@ -22,12 +22,11 @@ tags:
   - numbers
   - quantity
 
-accessibility:
-  gesture: touch_to_select
-  focus: eye
 
 hmi:
-  - tablet
+  medium: tablet
+  gesture: touch_to_select
+  focus: eye
 
 types:
   - one_on_one

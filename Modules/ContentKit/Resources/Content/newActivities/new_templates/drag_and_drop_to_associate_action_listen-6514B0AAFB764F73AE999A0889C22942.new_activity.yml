@@ -20,12 +20,11 @@ skills: []
 tags:
   - template
 
-accessibility:
-  gesture: drag_and_drop
-  focus: ear
 
 hmi:
-  - tablet
+  medium: tablet
+  gesture: drag_and_drop
+  focus: ear
 
 types:
   - one_on_one

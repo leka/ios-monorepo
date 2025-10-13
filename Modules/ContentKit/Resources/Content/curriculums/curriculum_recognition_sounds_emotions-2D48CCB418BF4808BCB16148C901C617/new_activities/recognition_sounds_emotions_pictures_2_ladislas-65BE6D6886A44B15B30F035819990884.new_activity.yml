@@ -25,12 +25,11 @@ skills:
 tags:
   - ladislas
 
-accessibility:
-  gesture: touch_to_select
-  focus: ear
 
 hmi:
-  - tablet
+  medium: tablet
+  gesture: touch_to_select
+  focus: ear
 
 types:
   - one_on_one

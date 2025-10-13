@@ -20,11 +20,10 @@ skills: []
 tags:
   - template
 
-accessibility:
-  gesture: drag_and_drop
 
 hmi:
-  - tablet
+  medium: tablet
+  gesture: drag_and_drop
 
 types:
   - one_on_one

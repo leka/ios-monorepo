@@ -19,11 +19,10 @@ skills:
 tags:
   - colors
 
-accessibility:
-  gesture: drag_and_drop
 
 hmi:
-  - robot
+  medium: robot
+  gesture: drag_and_drop
 
 types:
   - one_on_one

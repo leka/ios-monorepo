@@ -32,11 +32,10 @@ tags:
   - robot_movements
   - robot_colors
 
-accessibility:
-  gesture: touch_to_select
 
 hmi:
-  - robot
+  medium: robot
+  gesture: touch_to_select
 
 types:
   - group

@@ -19,12 +19,11 @@ skills:
 tags:
   - colors
 
-accessibility:
-  gesture: touch_to_select
-  focus: mixed
 
 hmi:
-  - robot
+  medium: robot
+  gesture: touch_to_select
+  focus: mixed
 
 types:
   - one_on_one

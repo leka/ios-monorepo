@@ -22,12 +22,11 @@ tags:
   - fruits
   - numbers
 
-accessibility:
-  gesture: touch_to_select
-  focus: robot
 
 hmi:
-  - tablet_robot
+  medium: tablet_robot
+  gesture: touch_to_select
+  focus: robot
 
 types:
   - one_on_one

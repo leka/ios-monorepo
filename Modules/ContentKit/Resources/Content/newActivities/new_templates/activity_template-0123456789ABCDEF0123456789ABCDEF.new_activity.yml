@@ -22,7 +22,7 @@ tags:
   - template
 
 hmi: # {{💡TO_DEFINE}}
-  - tablet
+  medium: tablet
 
 types: # {{💡TO_DEFINE}}
   - one_on_one

@@ -19,12 +19,11 @@ skills:
 tags:
   - colors
 
-accessibility:
-  gesture: drag_and_drop
-  focus: ear
 
 hmi:
-  - robot
+  medium: robot
+  gesture: drag_and_drop
+  focus: ear
 
 types:
   - one_on_one
