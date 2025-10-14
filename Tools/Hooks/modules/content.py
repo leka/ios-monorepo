@@ -151,7 +151,7 @@ def find_missing_icons(data: str, of_type: str):
     missing_icons = []
 
     for icon in icons:
-        if of_type == "activity":
+        if of_type == "activity" or of_type == "new_activity":
             icon_name = icon + ".activity"
         if of_type == "curriculum":
             icon_name = icon + ".curriculum"
