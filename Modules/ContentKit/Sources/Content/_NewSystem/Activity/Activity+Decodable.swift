@@ -16,7 +16,7 @@ extension Activity: Decodable {
         case status
         case authors
         case skills
-        case hmi
+        case interaction
         case types
         case tags
         case locales
@@ -38,8 +38,7 @@ extension Activity: Decodable {
         self.authors = authorIDs.compactMap { Authors.authors(id: $0) }
         let skillsIDs = try container.decode([String].self, forKey: .skills)
         self.skills = skillsIDs.compactMap { Skills.skill(id: $0) }
-        let hmiIDs = try container.decode([String].self, forKey: .hmi)
-        self.hmi = hmiIDs.compactMap { HMI.hmi(id: $0) }
+        self.interaction = try container.decode(Interaction.self, forKey: .interaction)
         let typeIDs = try container.decode([String].self, forKey: .types)
         self.types = typeIDs.compactMap { ActivityTypes.type(id: $0) }
         let tagsIDs = try container.decode([String].self, forKey: .tags)

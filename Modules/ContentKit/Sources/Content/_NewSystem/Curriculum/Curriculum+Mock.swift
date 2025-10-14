@@ -38,11 +38,6 @@ public extension Curriculum {
           - tag_two
           - tag_three
 
-        hmi:
-        - robot
-        - magic_cards
-        - tablet_robot
-
         l10n:
           - locale: fr_FR
             details:
