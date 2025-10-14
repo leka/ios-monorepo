@@ -20,8 +20,11 @@ skills:
 tags:
   - modes_of_transportation
 
-hmi:
-  - tablet
+
+interaction:
+  medium: tablet
+  input: touch_to_select
+  attention: listen
 
 types:
   - one_on_one

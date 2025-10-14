@@ -27,8 +27,10 @@ tags:
   - standalone_activity
   - sensory_stimulation
 
-hmi:
-  - robot
+
+interaction:
+  medium: robot
+  input: touch_to_select
 
 types:
   - group

@@ -20,8 +20,11 @@ skills:
 tags:
   - geometric_shapes
 
-hmi:
-  - tablet
+
+interaction:
+  medium: tablet
+  input: touch_to_select
+  attention: look
 
 types:
   - one_on_one
