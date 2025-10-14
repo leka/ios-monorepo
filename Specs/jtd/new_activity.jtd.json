@@ -1,0 +1,783 @@
+{
+    "properties": {
+        "version": {
+            "type": "string"
+        },
+        "uuid": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "created_at": {
+            "type": "string"
+        },
+        "last_edited_at": {
+            "type": "string"
+        },
+        "status": {
+            "ref": "$status"
+        },
+        "authors": {
+            "elements": {
+                "ref": "$author"
+            }
+        },
+        "skills": {
+            "elements": {
+                "ref": "$skill"
+            }
+        },
+        "tags": {
+            "elements": {
+                "ref": "$tag"
+            }
+        },
+        "interaction": {
+            "ref": "$interaction"
+        },
+        "types": {
+            "elements": {
+                "ref": "$activity_type"
+            }
+        },
+        "locales": {
+            "elements": {
+                "ref": "$locale"
+            }
+        },
+        "l10n": {
+            "elements": {
+                "ref": "$l10n"
+            }
+        },
+        "payload": {
+            "ref": "$payload"
+        }
+    },
+    "definitions": {
+        "$status": {
+            "enum": ["draft", "published", "template"]
+        },
+        "$author": {
+            "enum": ["leka", "aurore_kiesler", "julie_tuil"]
+        },
+        "$skill": {
+            "type": "string"
+        },
+        "$tag": {
+            "type": "string"
+        },
+        "$activity_type": {
+            "enum": ["one_on_one", "group"]
+        },
+        "$locale": {
+            "enum": ["en_US", "fr_FR"]
+        },
+        "$interaction": {
+            "properties": {
+                "medium": {
+                    "enum": [
+                        "robot",
+                        "tablet",
+                        "tablet_robot"
+                    ]
+                },
+                "input": {
+                    "enum": [
+                        "drag_and_drop",
+                        "magic_card",
+                        "touch_to_select"
+                    ]
+                }
+            },
+            "optionalProperties": {
+                "attention": {
+                    "enum": [
+                        "listen",
+                        "look",
+                        "mixed"
+                    ]
+                }
+            }
+        },
+        "$l10n": {
+            "properties": {
+                "locale": {
+                    "ref": "$locale"
+                },
+                "details": {
+                    "ref": "$l10n/details"
+                }
+            }
+        },
+        "$l10n/details": {
+            "properties": {
+                "icon": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "short_description": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "optionalProperties": {
+                "subtitle": {
+                    "type": "string",
+                    "nullable": true
+                },
+                "instructions": {
+                    "type": "string",
+                    "nullable": true
+                }
+            }
+        },
+        "$payload": {
+            "properties": {
+                "exercise_groups": {
+                    "elements": {
+                        "ref": "$exercise_group"
+                    }
+                }
+            },
+            "optionalProperties": {
+                "options": {
+                    "properties": {},
+                    "optionalProperties": {
+                        "shuffle_exercises": {
+                            "type": "boolean"
+                        },
+                        "shuffle_groups": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            }
+        },
+        "$exercise_group": {
+            "properties": {
+                "group": {
+                    "elements": {
+                        "ref": "$exercise"
+                    }
+                }
+            }
+        },
+        "$exercise": {
+            "discriminator": "interface",
+            "mapping": {
+                "touchToSelect": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        }
+                    },
+                    "properties": {
+                        "payload": {
+                            "ref": "$payload/touchToSelect"
+                        }
+                    }
+                },
+                "dragAndDropGrid": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        }
+                    },
+                    "properties": {
+                        "payload": {
+                            "ref": "$payload/dragAndDropGrid"
+                        }
+                    }
+                },
+                "dragAndDropGridWithZones": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        }
+                    },
+                    "properties": {
+                        "payload": {
+                            "ref": "$payload/dragAndDropGridWithZones"
+                        }
+                    }
+                },
+                "dragAndDropOneToOne": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        }
+                    },
+                    "properties": {
+                        "payload": {
+                            "ref": "$payload/dragAndDropOneToOne"
+                        }
+                    }
+                },
+                "memory": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        }
+                    },
+                    "properties": {
+                        "payload": {
+                            "ref": "$payload/memory"
+                        }
+                    }
+                },
+                "magicCards": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        }
+                    },
+                    "properties": {
+                        "payload": {
+                            "ref": "$payload/magicCards"
+                        }
+                    }
+                },
+                "musicalInstruments": {
+                    "properties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "payload": {
+                            "ref": "$exercise/payload/musicalInstruments"
+                        }
+                    }
+                },
+                "melody": {
+                    "properties": {
+                        "payload": {
+                            "ref": "$exercise/payload/melody"
+                        }
+                    }
+                },
+                "danceFreeze": {
+                    "properties": {
+                        "payload": {
+                            "ref": "$exercise/payload/danceFreeze"
+                        }
+                    }
+                },
+                "superSimon": {
+                    "properties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "payload": {
+                            "ref": "$exercise/payload/superSimon"
+                        }
+                    }
+                },
+                "pairing": {
+                    "properties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        }
+                    }
+                },
+                "hideAndSeek": {
+                    "properties": {}
+                },
+                "gamepadArrowPad": {
+                    "properties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        }
+                    }
+                },
+                "gamepadArrowPadColorPad": {
+                    "properties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        }
+                    }
+                },
+                "gamepadColorPad": {
+                    "properties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        }
+                    }
+                },
+                "gamepadJoyStickColorPad": {
+                    "properties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        }
+                    }
+                },
+                "colorMusicPad": {
+                    "properties": {}
+                },
+                "colorMediator": {
+                    "properties": {}
+                }
+            }
+        },
+        "$instruction": {
+            "properties": {
+                "locale": {
+                    "ref": "$locale"
+                },
+                "value": {
+                    "type": "string"
+                }
+            }
+        },
+        "$gameplay": {
+            "enum": [
+                "associateCategories",
+                "findTheRightAnswers",
+                "findTheRightOrder",
+                "openPlay"
+            ]
+        },
+        "$exercise_options": {
+            "properties": {},
+            "optionalProperties": {
+                "shuffle_choices": {
+                    "type": "boolean"
+                },
+                "validation": {
+                    "ref": "$exercise_validation"
+                }
+            }
+        },
+        "$exercise_validation": {
+            "discriminator": "type",
+            "mapping": {
+                "automatic": {
+                    "properties": {}
+                },
+                "manual": {
+                    "properties": {},
+                    "optionalProperties": {
+                        "minimumToSelect": {
+                            "type": "float64"
+                        },
+                        "maximumToSelect": {
+                            "type": "float64"
+                        }
+                    }
+                }
+            }
+        },
+        "$action": {
+            "discriminator": "type",
+            "mapping": {
+                "ipad": {
+                    "properties": {
+                        "value": {
+                            "ref": "$action/ipad"
+                        }
+                    }
+                },
+                "robot": {
+                    "properties": {
+                        "value": {
+                            "ref": "$action/robot"
+                        }
+                    }
+                }
+            }
+        },
+        "$action/ipad": {
+            "discriminator": "type",
+            "mapping": {
+                "audio": {
+                    "properties": {
+                        "value": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "image": {
+                    "properties": {
+                        "value": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "sfsymbol": {
+                    "properties": {
+                        "value": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "speech": {
+                    "properties": {
+                        "value": {
+                            "elements": {
+                                "ref": "$speech_line"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "$speech_line": {
+            "properties": {
+                "locale": {
+                    "ref": "$locale"
+                },
+                "utterance": {
+                    "type": "string"
+                }
+            }
+        },
+        "$action/robot": {
+            "discriminator": "type",
+            "mapping": {
+                "color": {
+                    "properties": {
+                        "value": {
+                            "enum": [
+                                "blue",
+                                "green",
+                                "orange",
+                                "purple",
+                                "red",
+                                "yellow"
+                            ]
+                        }
+                    }
+                },
+                "image": {
+                    "properties": {
+                        "value": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "$payload/touchToSelect": {
+            "properties": {
+                "choices": {
+                    "elements": {
+                        "ref": "$choice/touchToSelect"
+                    }
+                }
+            }
+        },
+        "$choice/touchToSelect": {
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "type": {
+                    "ref": "$choice_type"
+                }
+            },
+            "optionalProperties": {
+                "is_right_answer": {
+                    "type": "boolean"
+                },
+                "category": {
+                    "ref": "$category"
+                }
+            }
+        },
+        "$payload/dragAndDropGrid": {
+            "properties": {
+                "choices": {
+                    "elements": {
+                        "ref": "$choice/dragAndDropGrid"
+                    }
+                }
+            }
+        },
+        "$choice/dragAndDropGrid": {
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "type": {
+                    "ref": "$choice_type"
+                }
+            },
+            "optionalProperties": {
+                "category": {
+                    "ref": "$category"
+                }
+            }
+        },
+        "$payload/dragAndDropGridWithZones": {
+            "properties": {
+                "choices": {
+                    "elements": {
+                        "ref": "$choice/dragAndDropGridWithZones"
+                    }
+                }
+            }
+        },
+        "$choice/dragAndDropGridWithZones": {
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "type": {
+                    "ref": "$choice_type"
+                }
+            },
+            "optionalProperties": {
+                "category": {
+                    "ref": "$category"
+                },
+                "is_dropzone": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "$payload/dragAndDropOneToOne": {
+            "properties": {
+                "choices": {
+                    "elements": {
+                        "ref": "$choice/dragAndDropOneToOne"
+                    }
+                }
+            }
+        },
+        "$choice/dragAndDropOneToOne": {
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "type": {
+                    "ref": "$choice_type"
+                }
+            },
+            "optionalProperties": {
+                "state": {
+                    "ref": "$state"
+                }
+            }
+        },
+        "$payload/memory": {
+            "properties": {
+                "choices": {
+                    "elements": {
+                        "ref": "$choice/memory"
+                    }
+                }
+            }
+        },
+        "$choice/memory": {
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "type": {
+                    "ref": "$choice_type"
+                },
+                "category": {
+                    "ref": "$category"
+                }
+            }
+        },
+        "$payload/magicCards": {
+            "properties": {
+                "choices": {
+                    "elements": {
+                        "ref": "$choice/magicCard"
+                    }
+                }
+            }
+        },
+        "$choice/magicCard": {
+            "properties": {
+                "value": {
+                    "type": "string"
+                }
+            },
+            "optionalProperties": {
+                "is_right_answer": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "$choice_type": {
+            "enum": [
+                "color",
+                "emoji",
+                "image",
+                "sfsymbol"
+            ]
+        },
+        "$category": {
+            "enum": [
+                "catA",
+                "catB",
+                "catC",
+                "catD"
+            ]
+        },
+        "$state": {
+            "enum": [
+                "answered",
+                "hint",
+                "unanswered"
+            ]
+        },
+        "$exercise/payload/danceFreeze": {
+            "properties": {
+                "songs": {
+                    "elements": {
+                        "ref": "song"
+                    }
+                }
+            }
+        },
+        "$exercise/payload/musicalInstruments": {
+            "properties": {
+                "instrument": {
+                    "enum": ["xylophone"]
+                },
+                "scale": {
+                    "enum": ["majorHeptatonic", "majorPentatonic"]
+                }
+            }
+        },
+        "$exercise/payload/melody": {
+            "properties": {
+                "instrument": {
+                    "enum": ["xylophone"]
+                },
+                "songs": {
+                    "elements": {
+                        "ref": "song"
+                    }
+                }
+            }
+        },
+        "song": {
+            "properties": {
+                "audio": {
+                    "type": "string"
+                },
+                "labels": {
+                    "elements": {
+                        "ref": "label"
+                    }
+                }
+            }
+        },
+        "label": {
+            "properties": {
+                "locale": {
+                    "type": "string"
+                },
+                "value": {
+                    "ref": "localizedValues"
+                }
+            }
+        },
+        "localizedValues": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "icon": {
+                    "type": "string"
+                }
+            }
+        },
+        "$exercise/payload/superSimon": {
+            "properties": {
+                "level": {
+                    "enum": ["easy", "medium", "hard"]
+                }
+            }
+        }
+    }
+}

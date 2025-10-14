@@ -133,18 +133,31 @@ repos:
         additional_dependencies: ["ruamel.yaml"]
         files: tags.yml
 
-      - id: check_yaml_content_activities
-        name: Check activity.yml files
+      - id: check_yaml_content_new_activities
+        name: Check new_activity.yml files
         description: |
-          This hook checks activity.yml files for:
+          This hook checks new_activity.yml files for:
             - uuid and filename consistency
             - jtd schema validation
-        entry: python3 Tools/Hooks/check_yaml_content_activities.py
+        entry: python3 Tools/Hooks/check_yaml_content_new_activities.py
         language: python
         additional_dependencies: ["ruamel.yaml"]
-        files: .*\.activity\.yml
+        files: .*\.new_activity\.yml
         types: [yaml]
         pass_filenames: true
+
+      # - id: check_yaml_content_activities
+      #   name: Check activity.yml files
+      #   description: |
+      #     This hook checks activity.yml files for:
+      #       - uuid and filename consistency
+      #       - jtd schema validation
+      #   entry: python3 Tools/Hooks/check_yaml_content_activities.py
+      #   language: python
+      #   additional_dependencies: ["ruamel.yaml"]
+      #   files: .*\.activity\.yml
+      #   types: [yaml]
+      #   pass_filenames: true
 
       - id: check_yaml_content_activities_unique_uuid
         name: Check activity.yml files for unique uuid
