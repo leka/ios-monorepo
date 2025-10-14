@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import LocalizationKit
 import SwiftUI
 
 // MARK: - ActivityView
@@ -72,8 +73,7 @@ public struct ActivityView: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
-                    // TODO: (@HPezz) Add alert to prevent for misclick
-                    self.dismiss()
+                    self.isAlertPresented = true
                 } label: {
                     Image(systemName: "xmark.circle")
                 }
@@ -113,16 +113,42 @@ public struct ActivityView: View {
 
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    // TODO: (@dev-ios) implement activity information sheet toggle
+                    self.isInfoSheetPresented.toggle()
                 } label: {
                     Image(systemName: "info.circle")
                 }
             }
         }
+        .alert(String(l10n.ActivityView.QuitActivityAlert.title.characters), isPresented: self.$isAlertPresented) {
+            Button(String(l10n.ActivityView.QuitActivityAlert.cancelButtonLabel.characters), role: .cancel, action: {
+                self.isAlertPresented = false
+            })
+            Button(String(l10n.ActivityView.QuitActivityAlert.quitButtonLabel.characters), role: .destructive, action: {
+                self.dismiss()
+            })
+        } message: {
+            Text(l10n.ActivityView.QuitActivityAlert.message)
+        }
+        .sheet(isPresented: self.$isInfoSheetPresented) {
+            self.activityInformationSheet
+        }
+        .fullScreenCover(isPresented: self.$isActivitySummaryPresented) {
+            self.endOfActivityScoreView
+        }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 logGEK.debug("Activity did start")
                 self.activityCoordinator.activityEvent.send(.didStart)
+            }
+        }
+        .onReceive(self.activityCoordinator.activityEvent) { event in
+            switch event {
+                case .didStart:
+                    self.isActivitySummaryPresented = false
+                    self.isReinforcerPresented = false
+                case .didEnd:
+                    self.isReinforcerPresented = false
+                    self.isActivitySummaryPresented = true
             }
         }
         .onChange(of: self.activityCoordinator.isExerciseCompleted) {
@@ -135,6 +161,9 @@ public struct ActivityView: View {
     @Environment(\.dismiss) private var dismiss
 
     @State private var blurRadius: CGFloat = 0
+    @State private var isAlertPresented: Bool = false
+    @State private var isInfoSheetPresented: Bool = false
+    @State private var isActivitySummaryPresented: Bool = false
     @State private var isReinforcerPresented: Bool = false
 
     private var activityCoordinator: ActivityCoordinator
@@ -142,12 +171,61 @@ public struct ActivityView: View {
 
     @ViewBuilder
     private var endOfActivityScoreView: some View {
-        // TODO: (@ladislas, @HPezz) Add success condition & percentage when implemented
-        if true {
-            SuccessView(percentage: 90)
+        if self.didCompleteActivitySuccessfully {
+            SuccessView(percentage: self.activityCompletionSuccessPercentage)
         } else {
-            FailureView(percentage: 30)
+            FailureView(percentage: self.activityCompletionSuccessPercentage)
         }
+    }
+
+    @ViewBuilder
+    private var activityInformationSheet: some View {
+        if let detailsView = InfoDetailsView(
+            CurationItemModel(id: self.activity.id, name: self.activity.details.title, contentType: .activity)
+        ) {
+            detailsView
+                .logEventScreenView(
+                    screenName: "activity_details",
+                    context: .sheet,
+                    parameters: [
+                        "lk_activity_id": "\(self.activity.details.title)-\(self.activity.id)",
+                    ]
+                )
+        } else {
+            Text(l10n.ActivityView.InfoSheet.unavailableMessage)
+                .padding()
+        }
+    }
+
+    private var didCompleteActivitySuccessfully: Bool {
+        guard self.numberOfApplicableExercises > 0 else { return false }
+
+        let minimalSuccessRatio = 0.8
+        return Double(self.numberOfSuccessfulExercises) >= Double(self.numberOfApplicableExercises) * minimalSuccessRatio
+    }
+
+    private var activityCompletionSuccessPercentage: Double {
+        guard self.numberOfApplicableExercises > 0 else { return 0 }
+
+        return (Double(self.numberOfSuccessfulExercises) / Double(self.numberOfApplicableExercises)) * 100.0
+    }
+
+    private var numberOfSuccessfulExercises: Int {
+        self.applicableCompletedExercises.filter { completion in
+            completion.level == .excellent || completion.level == .good
+        }.count
+    }
+
+    private var completedExercises: [(level: ExerciseEvaluationLevel, data: ExerciseCompletionData?)] {
+        self.activityCoordinator.exercisesCompletionData.flatMap { $0 }
+    }
+
+    private var applicableCompletedExercises: [(level: ExerciseEvaluationLevel, data: ExerciseCompletionData?)] {
+        self.completedExercises.filter { $0.level != .notApplicable }
+    }
+
+    private var numberOfApplicableExercises: Int {
+        self.applicableCompletedExercises.count
     }
 }
 
