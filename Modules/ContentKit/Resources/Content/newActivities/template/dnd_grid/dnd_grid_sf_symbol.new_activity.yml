@@ -19,8 +19,10 @@ skills:
 tags:
   - colors
 
-hmi:
-  - robot
+
+interaction:
+  medium: tablet
+  input: drag_and_drop
 
 types:
   - one_on_one

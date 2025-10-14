@@ -21,8 +21,8 @@ skills: # {{💡TO_DEFINE}}
 tags:
   - template
 
-hmi: # {{💡TO_DEFINE}}
-  - tablet
+interaction: # {{💡TO_DEFINE}}
+  medium: tablet
 
 types: # {{💡TO_DEFINE}}
   - one_on_one

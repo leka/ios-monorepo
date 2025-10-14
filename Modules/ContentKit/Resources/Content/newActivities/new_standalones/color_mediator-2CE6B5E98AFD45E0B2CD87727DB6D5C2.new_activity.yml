@@ -24,8 +24,10 @@ tags:
   - colors
   - robot_colors
 
-hmi:
-  - robot
+
+interaction:
+  medium: robot
+  input: touch_to_select
 
 types:
   - one_on_one
