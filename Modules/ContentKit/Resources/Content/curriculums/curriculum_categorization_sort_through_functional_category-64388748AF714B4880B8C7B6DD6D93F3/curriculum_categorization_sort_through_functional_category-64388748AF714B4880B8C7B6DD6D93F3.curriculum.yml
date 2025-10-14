@@ -23,8 +23,6 @@ tags:
   - everyday_objects
   - home_objects
 
-hmi:
-  - tablet
 
 locales:
   - en_US

@@ -27,8 +27,6 @@ tags:
   - next_to
   - on
 
-hmi:
-  - tablet
 
 locales:
   - en_US

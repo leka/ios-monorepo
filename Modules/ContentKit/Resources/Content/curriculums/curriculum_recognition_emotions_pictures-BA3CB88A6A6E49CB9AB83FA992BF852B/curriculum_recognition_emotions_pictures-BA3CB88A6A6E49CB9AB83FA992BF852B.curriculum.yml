@@ -26,8 +26,6 @@ tags:
   - hugo
   - leka_team
 
-hmi:
-  - tablet
 
 locales:
   - en_US
