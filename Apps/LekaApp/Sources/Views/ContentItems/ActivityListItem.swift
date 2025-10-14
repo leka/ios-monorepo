@@ -70,13 +70,13 @@ public struct ActivityListItem: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal)
 
-//            if let activity = Activity(id: curationItem.id) {
-//                IconImageView(image: ContentKit.getNewGestureIconUIImage(for: activity.payload))
-//
-//                IconImageView(image: ContentKit.getNewFocusIconUIImage(for: activity.payload, ofType: .ears))
-//
-//                IconImageView(image: ContentKit.getNewFocusIconUIImage(for: activity.payload, ofType: .robot))
-//            }
+            if let activity = Activity(id: curationItem.id) {
+                IconImageView(image: ContentKit.getMediumUIImage(for: activity.interaction.medium))
+
+                IconImageView(image: ContentKit.getInputUIImage(for: activity.interaction.input))
+
+                IconImageView(image: ContentKit.getAttentionUIImage(for: activity.interaction.attention))
+            }
         }
         .frame(height: 60)
         .frame(minWidth: 100, maxWidth: .infinity)
