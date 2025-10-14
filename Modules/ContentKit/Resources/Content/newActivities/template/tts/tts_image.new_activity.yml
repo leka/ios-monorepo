@@ -19,8 +19,11 @@ skills:
 tags:
   - colors
 
-hmi:
-  - robot
+
+interaction:
+  medium: tablet
+  input: touch_to_select
+  attention: mixed
 
 types:
   - one_on_one

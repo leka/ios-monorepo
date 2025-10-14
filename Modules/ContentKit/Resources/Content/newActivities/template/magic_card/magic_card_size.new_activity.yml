@@ -19,8 +19,11 @@ skills:
 tags:
   - colors
 
-hmi:
-  - robot
+
+interaction:
+  medium: robot
+  input: magic_card
+  attention: mixed
 
 types:
   - one_on_one

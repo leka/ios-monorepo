@@ -30,8 +30,10 @@ tags:
   - standalone_activity
   - sensory_stimulation
 
-hmi:
-  - tablet_robot
+
+interaction:
+  medium: tablet_robot
+  input: touch_to_select
 
 types:
   - one_on_one
