@@ -21,8 +21,6 @@ skills:
 tags:
   - action_verbs
 
-hmi:
-  - tablet
 
 locales:
   - en_US

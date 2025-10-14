@@ -19,8 +19,6 @@ tags:
   - weather_elements
   - seasons
 
-hmi:
-  - tablet
 
 locales:
   - en_US

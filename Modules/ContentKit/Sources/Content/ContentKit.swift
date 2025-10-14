@@ -141,8 +141,12 @@ public enum ContentKit {
                 continue
             }
 
-            let activity = Activity(yaml: data)!
-            activities[activity.id] = activity
+            do {
+                let activity = try YAMLDecoder().decode(Activity.self, from: data)
+                activities[activity.id] = activity
+            } catch {
+                logCK.error("Error decoding file: \(file) with error:\n\(error)")
+            }
         }
 
         return activities

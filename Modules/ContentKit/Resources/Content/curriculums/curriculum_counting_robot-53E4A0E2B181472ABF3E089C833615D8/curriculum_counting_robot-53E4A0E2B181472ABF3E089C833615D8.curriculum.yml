@@ -22,8 +22,6 @@ tags:
   - fruits
   - clothes
 
-hmi:
-  - tablet_robot
 
 locales:
   - en_US

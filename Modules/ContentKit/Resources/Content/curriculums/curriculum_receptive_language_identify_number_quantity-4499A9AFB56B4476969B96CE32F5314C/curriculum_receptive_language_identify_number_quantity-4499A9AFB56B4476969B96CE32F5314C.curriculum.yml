@@ -23,8 +23,6 @@ tags:
   - quantity
   - digital_constellations
 
-hmi:
-  - tablet
 
 locales:
   - en_US
