@@ -19,8 +19,6 @@ skills:
 tags:
   - modes_of_transportation
 
-hmi:
-  - tablet
 
 locales:
   - en_US
