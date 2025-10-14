@@ -1,0 +1,1084 @@
+{
+    "properties": {
+        "version": {
+            "type": "string"
+        },
+        "uuid": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "created_at": {
+            "type": "string"
+        },
+        "last_edited_at": {
+            "type": "string"
+        },
+        "status": {
+            "ref": "$status"
+        },
+        "authors": {
+            "elements": {
+                "ref": "$author"
+            }
+        },
+        "skills": {
+            "elements": {
+                "ref": "$skill"
+            }
+        },
+        "tags": {
+            "elements": {
+                "ref": "$tag"
+            }
+        },
+        "interaction": {
+            "ref": "$interaction"
+        },
+        "types": {
+            "elements": {
+                "ref": "$activity_type"
+            }
+        },
+        "locales": {
+            "elements": {
+                "ref": "$locale"
+            }
+        },
+        "l10n": {
+            "elements": {
+                "ref": "$l10n"
+            }
+        },
+        "payload": {
+            "ref": "$payload"
+        }
+    },
+    "definitions": {
+        "$status": {
+            "enum": [
+                "published",
+                "template"
+            ]
+        },
+        "$author": {
+            "enum": [
+                "julie_tuil",
+                "leka"
+            ]
+        },
+        "$skill": {
+            "enum": [
+                "association",
+                "association/logical",
+                "association/matching",
+                "association/ordering",
+                "association/sorting",
+                "attention",
+                "attention/joint_attention",
+                "attention/sustained_attention",
+                "communication",
+                "communication/verbal_communication",
+                "communication/verbal_communication/receptive_language",
+                "communication/verbal_communication/receptive_language/oral_comprehension",
+                "counting",
+                "emotion_recognition",
+                "empathy",
+                "familiarization_with_leka",
+                "generalization",
+                "gross_motor_skills",
+                "inhibition",
+                "memory",
+                "memory/short_term_memory",
+                "recognition",
+                "relationship_tablet_robot",
+                "self_awareness",
+                "self_regulation",
+                "sensory_integration",
+                "sensory_integration/hearing",
+                "sensory_integration/touch",
+                "sensory_integration/vision",
+                "social_interactions",
+                "spatial_understanding",
+                "time_and_temporality_understanding",
+                "turn_taking"
+            ]
+        },
+        "$tag": {
+            "enum": [
+                "action_verbs",
+                "alphabet_letters",
+                "animals",
+                "autumn",
+                "bathroom",
+                "bedroom",
+                "behind",
+                "big",
+                "body_parts",
+                "characters",
+                "christmas",
+                "clean",
+                "clothes",
+                "cold",
+                "colors",
+                "cooking",
+                "dance",
+                "digital_constellations",
+                "dirty",
+                "dry",
+                "emotions",
+                "everyday_objects",
+                "family_members",
+                "festivities",
+                "food",
+                "fruits",
+                "gamepad",
+                "garden",
+                "geometric_shapes",
+                "holidays",
+                "home_objects",
+                "hortense",
+                "hot",
+                "hugo",
+                "in",
+                "kitchen",
+                "ladislas",
+                "leka_pictograms",
+                "leka_team",
+                "listening",
+                "little",
+                "louna",
+                "lucie",
+                "modes_of_transportation",
+                "mountain",
+                "moussa",
+                "music",
+                "musical_instruments",
+                "next_to",
+                "numbers",
+                "on",
+                "oscar",
+                "physiological_needs",
+                "pictures",
+                "places",
+                "professions",
+                "quantity",
+                "robot_colors",
+                "robot_movements",
+                "school",
+                "sea",
+                "seasons",
+                "sensory_stimulation",
+                "sports",
+                "standalone_activity",
+                "template",
+                "thumbs_down",
+                "thumbs_up",
+                "under",
+                "vegetables",
+                "weather_elements",
+                "wet",
+                "winter",
+                "yann",
+                "zoe"
+            ]
+        },
+        "$activity_type": {
+            "enum": [
+                "group",
+                "one_on_one"
+            ]
+        },
+        "$locale": {
+            "enum": [
+                "en_US",
+                "fr_FR"
+            ]
+        },
+        "$interaction": {
+            "properties": {
+                "medium": {
+                    "enum": [
+                        "robot",
+                        "tablet",
+                        "tablet_robot"
+                    ]
+                }
+            },
+            "optionalProperties": {
+                "input": {
+                    "enum": [
+                        "drag_and_drop",
+                        "magic_card",
+                        "touch_to_select"
+                    ]
+                },
+                "attention": {
+                    "enum": [
+                        "listen",
+                        "look",
+                        "mixed"
+                    ]
+                }
+            }
+        },
+        "$l10n": {
+            "properties": {
+                "locale": {
+                    "ref": "$locale"
+                },
+                "details": {
+                    "ref": "$l10n/details"
+                }
+            }
+        },
+        "$l10n/details": {
+            "properties": {
+                "icon": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "short_description": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "instructions": {
+                    "type": "string"
+                }
+            },
+            "optionalProperties": {
+                "subtitle": {
+                    "type": "string",
+                    "nullable": true
+                }
+            }
+        },
+        "$payload": {
+            "properties": {
+                "exercise_groups": {
+                    "elements": {
+                        "ref": "$exercise_group"
+                    }
+                }
+            },
+            "optionalProperties": {
+                "options": {
+                    "properties": {},
+                    "optionalProperties": {
+                        "shuffle_exercises": {
+                            "type": "boolean"
+                        },
+                        "shuffle_groups": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            }
+        },
+        "$exercise_group": {
+            "properties": {
+                "group": {
+                    "elements": {
+                        "ref": "$exercise"
+                    }
+                }
+            }
+        },
+        "$exercise": {
+            "discriminator": "interface",
+            "mapping": {
+                "touchToSelect": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        }
+                    },
+                    "properties": {
+                        "payload": {
+                            "ref": "$payload/touchToSelect"
+                        }
+                    }
+                },
+                "dragAndDropGrid": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        }
+                    },
+                    "properties": {
+                        "payload": {
+                            "ref": "$payload/dragAndDropGrid"
+                        }
+                    }
+                },
+                "dragAndDropGridWithZones": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        }
+                    },
+                    "properties": {
+                        "payload": {
+                            "ref": "$payload/dragAndDropGridWithZones"
+                        }
+                    }
+                },
+                "dragAndDropOneToOne": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        }
+                    },
+                    "properties": {
+                        "payload": {
+                            "ref": "$payload/dragAndDropOneToOne"
+                        }
+                    }
+                },
+                "memory": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        }
+                    },
+                    "properties": {
+                        "payload": {
+                            "ref": "$payload/memory"
+                        }
+                    }
+                },
+                "magicCards": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        }
+                    },
+                    "properties": {
+                        "payload": {
+                            "ref": "$payload/magicCards"
+                        }
+                    }
+                },
+                "musicalInstruments": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        }
+                    },
+                    "properties": {
+                        "payload": {
+                            "ref": "$payload/musicalInstruments"
+                        }
+                    }
+                },
+                "melody": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        }
+                    },
+                    "properties": {
+                        "payload": {
+                            "ref": "$payload/melody"
+                        }
+                    }
+                },
+                "danceFreeze": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        }
+                    },
+                    "properties": {
+                        "payload": {
+                            "ref": "$payload/danceFreeze"
+                        }
+                    }
+                },
+                "superSimon": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        }
+                    },
+                    "properties": {
+                        "payload": {
+                            "ref": "$payload/superSimon"
+                        }
+                    }
+                },
+                "pairing": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        }
+                    }
+                },
+                "colorMediator": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        },
+                        "payload": {
+                            "properties": {}
+                        }
+                    }
+                },
+                "colorMusicPad": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        },
+                        "payload": {
+                            "properties": {}
+                        }
+                    }
+                },
+                "hideAndSeek": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        },
+                        "payload": {
+                            "properties": {}
+                        }
+                    }
+                },
+                "gamepadArrowPad": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        },
+                        "payload": {
+                            "properties": {}
+                        }
+                    }
+                },
+                "gamepadArrowPadColorPad": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        },
+                        "payload": {
+                            "properties": {}
+                        }
+                    }
+                },
+                "gamepadColorPad": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        },
+                        "payload": {
+                            "properties": {}
+                        }
+                    }
+                },
+                "gamepadJoyStickColorPad": {
+                    "optionalProperties": {
+                        "instructions": {
+                            "elements": {
+                                "ref": "$instruction"
+                            }
+                        },
+                        "gameplay": {
+                            "ref": "$gameplay"
+                        },
+                        "action": {
+                            "ref": "$action"
+                        },
+                        "options": {
+                            "ref": "$exercise_options"
+                        },
+                        "payload": {
+                            "properties": {}
+                        }
+                    }
+                }
+            }
+        },
+        "$instruction": {
+            "properties": {
+                "locale": {
+                    "ref": "$locale"
+                },
+                "value": {
+                    "type": "string"
+                }
+            }
+        },
+        "$gameplay": {
+            "enum": [
+                "associateCategories",
+                "findTheRightAnswers",
+                "findTheRightOrder",
+                "openPlay"
+            ]
+        },
+        "$exercise_options": {
+            "properties": {},
+            "optionalProperties": {
+                "shuffle_choices": {
+                    "type": "boolean"
+                },
+                "validation": {
+                    "ref": "$exercise_validation"
+                }
+            }
+        },
+        "$exercise_validation": {
+            "discriminator": "type",
+            "mapping": {
+                "automatic": {
+                    "properties": {}
+                },
+                "manual": {
+                    "properties": {},
+                    "optionalProperties": {
+                        "minimumToSelect": {
+                            "type": "float64"
+                        },
+                        "maximumToSelect": {
+                            "type": "float64"
+                        }
+                    }
+                }
+            }
+        },
+        "$action": {
+            "discriminator": "type",
+            "mapping": {
+                "ipad": {
+                    "properties": {
+                        "value": {
+                            "ref": "$action/ipad"
+                        }
+                    }
+                },
+                "robot": {
+                    "properties": {
+                        "value": {
+                            "ref": "$action/robot"
+                        }
+                    }
+                }
+            }
+        },
+        "$action/ipad": {
+            "discriminator": "type",
+            "mapping": {
+                "audio": {
+                    "properties": {
+                        "value": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "image": {
+                    "properties": {
+                        "value": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "sfsymbol": {
+                    "properties": {
+                        "value": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "speech": {
+                    "properties": {
+                        "value": {
+                            "elements": {
+                                "ref": "$speech_line"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "$speech_line": {
+            "properties": {
+                "locale": {
+                    "ref": "$locale"
+                },
+                "utterance": {
+                    "type": "string"
+                }
+            }
+        },
+        "$action/robot": {
+            "discriminator": "type",
+            "mapping": {
+                "color": {
+                    "properties": {
+                        "value": {
+                            "enum": [
+                                "blue",
+                                "green",
+                                "orange",
+                                "purple",
+                                "red",
+                                "yellow"
+                            ]
+                        }
+                    }
+                },
+                "image": {
+                    "properties": {
+                        "value": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "$payload/touchToSelect": {
+            "properties": {
+                "choices": {
+                    "elements": {
+                        "ref": "$choice/touchToSelect"
+                    }
+                }
+            }
+        },
+        "$choice/touchToSelect": {
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "type": {
+                    "ref": "$choice_type"
+                }
+            },
+            "optionalProperties": {
+                "is_right_answer": {
+                    "type": "boolean"
+                },
+                "category": {
+                    "ref": "$category"
+                }
+            }
+        },
+        "$payload/dragAndDropGrid": {
+            "properties": {
+                "choices": {
+                    "elements": {
+                        "ref": "$choice/dragAndDropGrid"
+                    }
+                }
+            }
+        },
+        "$choice/dragAndDropGrid": {
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "type": {
+                    "ref": "$choice_type"
+                }
+            },
+            "optionalProperties": {
+                "category": {
+                    "ref": "$category"
+                }
+            }
+        },
+        "$payload/dragAndDropGridWithZones": {
+            "properties": {
+                "choices": {
+                    "elements": {
+                        "ref": "$choice/dragAndDropGridWithZones"
+                    }
+                }
+            }
+        },
+        "$choice/dragAndDropGridWithZones": {
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "type": {
+                    "ref": "$choice_type"
+                }
+            },
+            "optionalProperties": {
+                "category": {
+                    "ref": "$category"
+                },
+                "is_dropzone": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "$payload/dragAndDropOneToOne": {
+            "properties": {
+                "choices": {
+                    "elements": {
+                        "ref": "$choice/dragAndDropOneToOne"
+                    }
+                }
+            }
+        },
+        "$choice/dragAndDropOneToOne": {
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "type": {
+                    "ref": "$choice_type"
+                }
+            },
+            "optionalProperties": {
+                "state": {
+                    "ref": "$state"
+                }
+            }
+        },
+        "$payload/memory": {
+            "properties": {
+                "choices": {
+                    "elements": {
+                        "ref": "$choice/memory"
+                    }
+                }
+            }
+        },
+        "$choice/memory": {
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "type": {
+                    "ref": "$choice_type"
+                },
+                "category": {
+                    "ref": "$category"
+                }
+            }
+        },
+        "$payload/magicCards": {
+            "properties": {
+                "choices": {
+                    "elements": {
+                        "ref": "$choice/magicCard"
+                    }
+                }
+            }
+        },
+        "$choice/magicCard": {
+            "properties": {
+                "value": {
+                    "type": "string"
+                }
+            },
+            "optionalProperties": {
+                "is_right_answer": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "$payload/musicalInstruments": {
+            "properties": {
+                "instrument": {
+                    "ref": "$instrument"
+                },
+                "scale": {
+                    "ref": "$scale"
+                }
+            }
+        },
+        "$payload/melody": {
+            "properties": {
+                "instrument": {
+                    "ref": "$instrument"
+                },
+                "songs": {
+                    "elements": {
+                        "ref": "$song"
+                    }
+                }
+            }
+        },
+        "$payload/danceFreeze": {
+            "properties": {
+                "songs": {
+                    "elements": {
+                        "ref": "$song"
+                    }
+                }
+            }
+        },
+        "$payload/superSimon": {
+            "properties": {
+                "level": {
+                    "enum": [
+                        "easy",
+                        "hard",
+                        "medium"
+                    ]
+                }
+            }
+        },
+        "$song": {
+            "properties": {
+                "audio": {
+                    "type": "string"
+                },
+                "labels": {
+                    "elements": {
+                        "ref": "$song_label"
+                    }
+                }
+            }
+        },
+        "$song_label": {
+            "properties": {
+                "locale": {
+                    "ref": "$locale"
+                },
+                "value": {
+                    "ref": "$song_label_value"
+                }
+            }
+        },
+        "$song_label_value": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "icon": {
+                    "type": "string"
+                }
+            }
+        },
+        "$choice_type": {
+            "enum": [
+                "color",
+                "emoji",
+                "image",
+                "sfsymbol"
+            ]
+        },
+        "$category": {
+            "enum": [
+                "catA",
+                "catB",
+                "catC",
+                "catD"
+            ]
+        },
+        "$state": {
+            "enum": [
+                "answered",
+                "hint",
+                "unanswered"
+            ]
+        },
+        "$instrument": {
+            "enum": [
+                "xylophone"
+            ]
+        },
+        "$scale": {
+            "enum": [
+                "majorHeptatonic",
+                "majorPentatonic"
+            ]
+        }
+    }
+}
