@@ -22,8 +22,6 @@ extension Curriculum: Decodable {
         self.authors = authorIDs.compactMap { Authors.authors(id: $0) }
         let skillsIDs = try container.decode([String].self, forKey: .skills)
         self.skills = skillsIDs.compactMap { Skills.skill(id: $0) }
-        let hmiIDs = try container.decode([String].self, forKey: .hmi)
-        self.hmi = hmiIDs.compactMap { HMI.hmi(id: $0) }
         let tagsIDs = try container.decode([String].self, forKey: .tags)
         self.tags = tagsIDs.compactMap { Tags.tag(id: $0) }
 

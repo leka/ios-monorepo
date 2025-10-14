@@ -46,10 +46,9 @@ public extension Activity {
       - tag_two
       - tag_three
 
-    hmi:
-      - robot
-      - magic_cards
-      - tablet_robot
+    interaction:
+      medium: tablet
+      input: touch_to_select
 
     types:
       - one_on_one
