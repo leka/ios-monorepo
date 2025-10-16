@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Testing
-import Yams
 
 @testable import ContentKit
 
@@ -13,7 +12,8 @@ import Yams
     // MARK: Lifecycle
 
     init() async throws {
-        self.payload = try YAMLDecoder().decode(ActivityPayload.self, from: self.kActivityYaml)
+        guard let payload = ActivityPayload(yaml: self.kActivityYaml) else { fatalError("Unable to decode ActivityPayload from YAML") }
+        self.payload = payload
         self.activityCoordinator = ActivityCoordinator(payload: self.payload)
     }
 

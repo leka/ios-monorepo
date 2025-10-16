@@ -4,7 +4,21 @@
 
 // MARK: - ActivityPayload
 
+import Yams
+
+// MARK: - ActivityPayload
+
 public struct ActivityPayload: Decodable {
+    // MARK: Lifecycle
+
+    public init?(yaml yamlString: String) {
+        if let payload = try? YAMLDecoder().decode(ActivityPayload.self, from: yamlString) {
+            self = payload
+        } else {
+            return nil
+        }
+    }
+
     // MARK: Public
 
     public let exerciseGroups: [ExerciseGroup]

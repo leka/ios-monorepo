@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import XCTest
-import Yams
 
 @testable import ContentKit
 
@@ -48,10 +47,14 @@ let kActivityYaml = """
 
 final class ActivityPayloadDecode: XCTestCase {
     func testExample() throws {
-        let payload = try YAMLDecoder().decode(ActivityPayload.self, from: kActivityYaml)
+        let payload = ActivityPayload(yaml: kActivityYaml)
 
-        XCTAssertEqual(payload.exerciseGroups.count, 1)
-        XCTAssertEqual(payload.exerciseGroups[0].group.count, 1)
-        XCTAssertEqual(payload.options.shuffleExercises, false)
+        XCTAssertNotNil(payload)
+
+        if let payload {
+            XCTAssertEqual(payload.exerciseGroups.count, 1)
+            XCTAssertEqual(payload.exerciseGroups[0].group.count, 1)
+            XCTAssertEqual(payload.options.shuffleExercises, false)
+        }
     }
 }
