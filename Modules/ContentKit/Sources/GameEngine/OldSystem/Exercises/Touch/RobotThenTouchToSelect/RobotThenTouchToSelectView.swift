@@ -20,7 +20,7 @@ public struct RobotThenTouchToSelectView: View {
         self.actionType = .color("red")
     }
 
-    public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
+    public init(exercise: OldExercise, data: ExerciseSharedData? = nil) {
         guard let payload = exercise.payload as? TouchToSelect.Payload,
               case let .robot(actionType) = exercise.action
         else {
@@ -131,5 +131,5 @@ public struct RobotThenTouchToSelectView: View {
     @StateObject private var viewModel: TouchToSelectViewViewModel
     @State private var didSendCommandToRobot = false
 
-    private let actionType: Exercise.Action.RobotActionType
+    private let actionType: OldExercise.Action.RobotActionType
 }

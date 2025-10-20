@@ -23,8 +23,6 @@ tags:
   - fruits
   - vegetables
 
-hmi:
-  - tablet
 
 locales:
   - en_US

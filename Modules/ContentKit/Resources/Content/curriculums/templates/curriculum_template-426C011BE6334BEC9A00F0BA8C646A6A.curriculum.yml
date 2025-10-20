@@ -18,8 +18,6 @@ skills: # {{💡TO_DEFINE}}
 tags:
   - template
 
-hmi: # {{💡TO_DEFINE}}
-  - tablet
 
 locales:
   - en_US

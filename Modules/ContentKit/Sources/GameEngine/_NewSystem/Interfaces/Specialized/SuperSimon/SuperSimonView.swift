@@ -16,7 +16,7 @@ public struct SuperSimonView: View {
         _viewModel = StateObject(wrappedValue: SuperSimonViewViewModel(level: level, shuffle: shuffle))
     }
 
-    public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
+    public init(exercise: OldExercise, data: ExerciseSharedData? = nil) {
         guard let payload = exercise.payload as? SuperSimon.Payload else {
             logGEK.error("Exercise payload is not .selection")
             fatalError("💥 Exercise payload is not .selection")

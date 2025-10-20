@@ -4,7 +4,6 @@
 
 import Foundation
 import XCTest
-import Yams
 
 @testable import ContentKit
 
@@ -87,24 +86,8 @@ let kTestExerciseMockTwo =
 // MARK: - ExerciseDecode
 
 final class ExerciseDecode: XCTestCase {
-    func test_decodeAutomaticListenSpeechThenTTSShuffledWithYamlDecoder() throws {
-        let exercise = try YAMLDecoder().decode(NewExercise.self, from: kTestExerciseMockOne)
-
-        XCTAssertEqual(exercise.interface, .general(.touchToSelect))
-        XCTAssertEqual(exercise.gameplay, .findTheRightAnswers)
-
-        XCTAssertEqual(exercise.options?.shuffleChoices, true)
-        XCTAssertEqual(exercise.options?.validation.type, .automatic)
-
-        if case .some(.ipad) = exercise.action {
-            XCTAssertTrue(true)
-        } else {
-            XCTFail("Expected .ipad(type: .speech(_)) but got \(String(describing: exercise.action))")
-        }
-    }
-
     func test_decodeAutomaticListenSpeechThenTTSShuffledFromYamlString() throws {
-        let exercise = NewExercise(yaml: kTestExerciseMockOne)
+        let exercise = Exercise(yaml: kTestExerciseMockOne)
 
         XCTAssertNotNil(exercise)
 
@@ -113,7 +96,7 @@ final class ExerciseDecode: XCTestCase {
             XCTAssertEqual(exercise.gameplay, .findTheRightAnswers)
 
             XCTAssertEqual(exercise.options?.shuffleChoices, true)
-            XCTAssertEqual(exercise.options?.validation.type, .automatic)
+            XCTAssertEqual(exercise.options?.validation, .automatic)
 
             if case .some(.ipad) = exercise.action {
                 XCTAssertTrue(true)
@@ -123,20 +106,10 @@ final class ExerciseDecode: XCTestCase {
         }
     }
 
-    func test_decodeDnDWithZonesOpenPlayWithYamlDecoder() throws {
-        let exercise = try YAMLDecoder().decode(NewExercise.self, from: kTestExerciseMockTwo)
-
-        XCTAssertEqual(exercise.interface, .general(.dragAndDropGridWithZones))
-        XCTAssertEqual(exercise.gameplay, .openPlay)
-
-        XCTAssertEqual(exercise.options?.shuffleChoices, false)
-        XCTAssertEqual(exercise.options?.validation.type, .manual)
-        XCTAssertEqual(exercise.options?.validation.minimumToSelect, 2)
-        XCTAssertEqual(exercise.options?.validation.maximumToSelect, nil)
-    }
-
     func test_decodeDnDWithZonesOpenPlayFromYamlString() throws {
-        let exercise = NewExercise(yaml: kTestExerciseMockTwo)
+        let exercise = Exercise(yaml: kTestExerciseMockTwo)
+        var minimumToSelect: Int?
+        var maximumToSelect: Int?
 
         XCTAssertNotNil(exercise)
 
@@ -145,9 +118,9 @@ final class ExerciseDecode: XCTestCase {
             XCTAssertEqual(exercise.gameplay, .openPlay)
 
             XCTAssertEqual(exercise.options?.shuffleChoices, false)
-            XCTAssertEqual(exercise.options?.validation.type, .manual)
-            XCTAssertEqual(exercise.options?.validation.minimumToSelect, 2)
-            XCTAssertEqual(exercise.options?.validation.maximumToSelect, nil)
+            XCTAssertEqual(exercise.options?.validation, .manualWithSelectionLimit(minimumToSelect: minimumToSelect, maximumToSelect: maximumToSelect))
+            XCTAssertEqual(minimumToSelect, 2)
+            XCTAssertEqual(maximumToSelect, nil)
         }
     }
 }

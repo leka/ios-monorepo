@@ -23,8 +23,10 @@ tags:
   - fruits
   - food
 
-hmi:
-  - tablet
+
+interaction:
+  medium: tablet
+  input: drag_and_drop
 
 types:
   - one_on_one

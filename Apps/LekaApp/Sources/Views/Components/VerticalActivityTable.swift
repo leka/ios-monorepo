@@ -37,21 +37,21 @@ struct VerticalActivityTable: View {
 
             TableColumn("") { item in
                 if let activity = Activity(id: item.id) {
-                    IconImageView(image: ContentKit.getGestureIconUIImage(for: activity))
+                    IconImageView(image: ContentKit.getMediumUIImage(for: activity.interaction.medium))
                 }
             }
             .width(40)
 
             TableColumn("") { item in
                 if let activity = Activity(id: item.id) {
-                    IconImageView(image: ContentKit.getFocusIconUIImage(for: activity, ofType: .ears))
+                    IconImageView(image: ContentKit.getInputUIImage(for: activity.interaction.input))
                 }
             }
             .width(40)
 
             TableColumn("") { item in
                 if let activity = Activity(id: item.id) {
-                    IconImageView(image: ContentKit.getFocusIconUIImage(for: activity, ofType: .robot))
+                    IconImageView(image: ContentKit.getAttentionUIImage(for: activity.interaction.attention))
                 }
             }
             .width(60)

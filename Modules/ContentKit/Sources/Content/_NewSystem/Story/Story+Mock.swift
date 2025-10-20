@@ -28,8 +28,8 @@ public extension Story {
     skills:
       - familiarization_with_leka
 
-    hmi:
-      - tablet_robot
+    interaction:
+      medium: tablet_robot
 
     types:
       - one_on_one

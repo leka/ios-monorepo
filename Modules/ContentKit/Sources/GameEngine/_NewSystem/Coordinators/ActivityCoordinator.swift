@@ -91,7 +91,7 @@ public class ActivityCoordinator {
     let payload: ActivityPayload
     let groups: [ExerciseGroup]
 
-    var currentExercise: NewExercise
+    var currentExercise: Exercise
 
     func setExerciseCoordinator(_ coordinator: CurrentExerciseCoordinator) {
         self.currentExerciseCoordinator = coordinator

@@ -29,7 +29,6 @@ public struct Curriculum: Identifiable {
 
     public let authors: [Author]
     public let skills: [Skill]
-    public let hmi: [HMIDetails]
     public let tags: [Tag]
 
     public let locales: [Locale]

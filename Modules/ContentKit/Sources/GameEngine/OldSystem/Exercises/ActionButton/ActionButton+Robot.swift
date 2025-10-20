@@ -12,7 +12,7 @@ import SwiftUI
 struct ActionButtonRobot: View {
     // MARK: Lifecycle
 
-    init(actionType: Exercise.Action.RobotActionType, robotWasTapped: Binding<Bool>) {
+    init(actionType: OldExercise.Action.RobotActionType, robotWasTapped: Binding<Bool>) {
         self.actionType = actionType
         self._robotWasTapped = robotWasTapped
     }
@@ -21,7 +21,7 @@ struct ActionButtonRobot: View {
 
     @Binding var robotWasTapped: Bool
 
-    let actionType: Exercise.Action.RobotActionType
+    let actionType: OldExercise.Action.RobotActionType
 
     var body: some View {
         Button {

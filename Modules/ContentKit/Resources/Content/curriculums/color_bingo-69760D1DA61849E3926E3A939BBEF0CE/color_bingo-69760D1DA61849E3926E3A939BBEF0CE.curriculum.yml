@@ -23,8 +23,6 @@ tags:
   - colors
   - robot_colors
 
-hmi:
-  - tablet_robot
 
 locales:
   - en_US

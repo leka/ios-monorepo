@@ -24,8 +24,10 @@ tags:
   - sensory_stimulation
   - gamepad
 
-hmi:
-  - tablet_robot
+
+interaction:
+  medium: tablet_robot
+  input: touch_to_select
 
 types:
   - one_on_one

@@ -17,8 +17,6 @@ skills:
 tags:
   - weather_elements
 
-hmi:
-  - tablet_robot
 
 locales:
   - en_US

@@ -13,7 +13,7 @@ public struct ObserveThenTouchToSelectView: View {
         self.image = image
     }
 
-    public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
+    public init(exercise: OldExercise, data: ExerciseSharedData? = nil) {
         guard let payload = exercise.payload as? TouchToSelect.Payload else {
             logGEK.error("Invalid payload type: expected TouchToSelect.Payload, got \(type(of: exercise.payload))")
             fatalError("💥 Invalid payload type: expected TouchToSelect.Payload, got \(type(of: exercise.payload))")

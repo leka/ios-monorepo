@@ -6,17 +6,17 @@ import Foundation
 import UIKit
 
 public extension ContentKit {
-    static func getGestureIconUIImage(for activity: Activity) -> UIImage? {
+    static func getGestureIconUIImage(for activity: OldActivity) -> UIImage? {
         UIImage(named: "\(self.getGestureIcon(for: activity)).gesture.icon.png", in: .module, with: nil)
     }
 
-    private static func getInterface(for activity: Activity) -> Exercise.Interface? {
+    private static func getInterface(for activity: OldActivity) -> OldExercise.Interface? {
         let allInterfaces = activity.exercisePayload.exerciseGroups.flatMap { $0.exercises.map(\.interface) }
         let uniqueInterfaces = Set(allInterfaces)
         return uniqueInterfaces.count == 1 ? uniqueInterfaces.first : nil
     }
 
-    private static func getGestureIcon(for activity: Activity) -> String {
+    private static func getGestureIcon(for activity: OldActivity) -> String {
         let interface = self.getInterface(for: activity)
         switch interface {
             case .touchToSelect,

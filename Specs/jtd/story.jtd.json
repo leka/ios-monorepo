@@ -28,10 +28,8 @@
                 "ref": "$skill"
             }
         },
-        "hmi": {
-            "elements": {
-                "ref": "$hmi"
-            }
+        "interaction": {
+            "ref": "$interaction"
         },
         "types": {
             "elements": {
@@ -63,8 +61,14 @@
         "$author": {
             "enum": ["leka", "hanna_and_nagib"]
         },
-        "$hmi": {
+        "$medium": {
             "enum": ["robot", "tablet", "magic_cards", "tablet_robot"]
+        },
+        "$input": {
+            "enum": ["touch_to_select", "drag_and_drop", "magic_cards", "mixed"]
+        },
+        "$attention": {
+            "enum": ["look", "listen", "mixed"]
         },
         "$locale": {
             "enum": ["en_US", "fr_FR"]
@@ -79,6 +83,21 @@
                 },
                 "details": {
                     "ref": "$l10n/details"
+                }
+            }
+        },
+        "$interaction": {
+            "properties": {
+                "medium": {
+                    "ref": "$medium"
+                },
+                "input": {
+                    "ref": "$input"
+                }
+            },
+            "optionalProperties": {
+                "attention": {
+                    "ref": "$attention"
                 }
             }
         },

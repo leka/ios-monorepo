@@ -17,8 +17,12 @@ skills:
   - generalization
 tags:
   - vegetables
-hmi:
-  - tablet_robot
+
+
+interaction:
+  medium: tablet_robot
+  input: touch_to_select
+  attention: look
 types:
   - one_on_one
 locales:

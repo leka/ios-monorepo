@@ -29,8 +29,10 @@ tags:
   - next_to
   - on
 
-hmi:
-  - tablet
+
+interaction:
+  medium: tablet
+  input: touch_to_select
 
 types:
   - one_on_one

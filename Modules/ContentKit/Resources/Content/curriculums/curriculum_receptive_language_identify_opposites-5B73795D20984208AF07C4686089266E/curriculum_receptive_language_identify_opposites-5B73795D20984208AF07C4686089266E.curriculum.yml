@@ -28,8 +28,6 @@ tags:
   - wet
   - dry
 
-hmi:
-  - tablet
 
 locales:
   - en_US

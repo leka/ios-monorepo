@@ -4,7 +4,6 @@
 
 import Foundation
 import XCTest
-import Yams
 
 @testable import ContentKit
 
@@ -78,15 +77,8 @@ let kTestActivityMock: String =
 // MARK: - ActivityDecode
 
 final class ActivityDecode: XCTestCase {
-    func test_decodeWithYAMLDecoder() throws {
-        let activity = try YAMLDecoder().decode(NewActivity.self, from: kTestActivityMock)
-
-        XCTAssertEqual(activity.id, "F8C90919AF204155A170D3957BABE7D6")
-        XCTAssertEqual(activity.name, "TestActivityMock")
-    }
-
     func test_decodeFromYamlString() throws {
-        let activity = NewActivity(yaml: kTestActivityMock)
+        let activity = Activity(yaml: kTestActivityMock)
 
         XCTAssertNotNil(activity)
 

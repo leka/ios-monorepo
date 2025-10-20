@@ -275,10 +275,8 @@ struct MainView: View {
                     }
 
                 case let .activityView(carereceivers):
-                    NavigationStack {
-                        ActivityView(activity: self.navigation.currentActivity!, reinforcer: carereceivers.first?.reinforcer ?? .rainbow)
-                            .logEventScreenView(screenName: "activity", context: .fullScreenCover)
-                    }
+                    ActivityMonitorView()
+                        .logEventScreenView(screenName: "activity", context: .fullScreenCover)
 
                 case .storyView:
                     StoryView(story: self.navigation.currentStory!)

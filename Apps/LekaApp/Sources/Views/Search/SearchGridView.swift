@@ -122,7 +122,7 @@ extension l10n {
     NavigationStack {
         SearchGridView(
             skills: Skills.primarySkillsList,
-            activities: Array(ContentKit.allActivities.values),
+            activities: Array(ContentKit.allNewActivities.values),
             curriculums: Array(ContentKit.allCurriculums.values)
         )
     }

@@ -19,8 +19,6 @@ skills:
 tags:
   - emotions
 
-hmi:
-  - tablet_robot
 
 locales:
   - en_US

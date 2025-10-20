@@ -71,11 +71,11 @@ public struct ActivityListItem: View {
             .padding(.horizontal)
 
             if let activity = Activity(id: curationItem.id) {
-                IconImageView(image: ContentKit.getGestureIconUIImage(for: activity))
+                IconImageView(image: ContentKit.getMediumUIImage(for: activity.interaction.medium))
 
-                IconImageView(image: ContentKit.getFocusIconUIImage(for: activity, ofType: .ears))
+                IconImageView(image: ContentKit.getInputUIImage(for: activity.interaction.input))
 
-                IconImageView(image: ContentKit.getFocusIconUIImage(for: activity, ofType: .robot))
+                IconImageView(image: ContentKit.getAttentionUIImage(for: activity.interaction.attention))
             }
         }
         .frame(height: 60)

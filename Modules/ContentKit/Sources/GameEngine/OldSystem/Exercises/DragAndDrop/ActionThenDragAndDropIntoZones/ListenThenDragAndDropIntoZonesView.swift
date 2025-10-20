@@ -8,7 +8,7 @@ import SwiftUI
 public struct ListenThenDragAndDropIntoZonesView: View {
     // MARK: Lifecycle
 
-    public init(exercise: Exercise, data: ExerciseSharedData? = nil) {
+    public init(exercise: OldExercise, data: ExerciseSharedData? = nil) {
         self.exercise = exercise
         self.exerciseSharedData = data
 
@@ -58,7 +58,7 @@ public struct ListenThenDragAndDropIntoZonesView: View {
     @StateObject private var audioManagerViewModel = AudioManagerViewModel()
     @State private var audioHasBeenPlayed: Bool = false
 
-    private var exercise: Exercise
+    private var exercise: OldExercise
     private var exerciseSharedData: ExerciseSharedData?
     private let audioData: AudioManager.AudioType
 }

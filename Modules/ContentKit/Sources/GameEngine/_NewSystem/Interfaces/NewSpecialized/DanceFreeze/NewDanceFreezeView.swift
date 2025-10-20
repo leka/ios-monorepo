@@ -59,7 +59,7 @@ struct NewDanceFreezeView: View {
 
                     Toggle(isOn: self.$isAuto) {
                         HStack {
-                            Image(uiImage: UIImage(named: "touch_to_select.gesture.icon.png", in: .module, with: nil)!)
+                            Image(uiImage: UIImage(named: "touch_to_select.input.icon.png", in: .module, with: nil)!)
                                 .resizable()
                                 .frame(width: 50, height: 50)
                             Text(l10n.NewDanceFreezeView.automaticToggleLabel)

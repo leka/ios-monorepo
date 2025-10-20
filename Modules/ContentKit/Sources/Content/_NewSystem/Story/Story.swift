@@ -28,7 +28,7 @@ public struct Story: Identifiable {
 
     public let authors: [Author]
     public let skills: [Skill]
-    public let hmi: [HMIDetails]
+    public let interaction: Interaction
     public let types: [ActivityType]
     public let tags: [Tag]
 

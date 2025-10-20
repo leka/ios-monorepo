@@ -11,18 +11,18 @@ public extension ContentKit {
         case ears
     }
 
-    static func getFocusIconUIImage(for activity: Activity, ofType type: FocusIcon) -> UIImage? {
+    static func getFocusIconUIImage(for activity: OldActivity, ofType type: FocusIcon) -> UIImage? {
         let iconName = "\(self.getFocusIcon(for: activity, ofType: type)).focus.icon.png"
         return UIImage(named: iconName, in: .module, with: nil)
     }
 
-    private static func getInterface(for activity: Activity) -> Exercise.Interface? {
+    private static func getInterface(for activity: OldActivity) -> OldExercise.Interface? {
         let allInterfaces = activity.exercisePayload.exerciseGroups.flatMap { $0.exercises.map(\.interface) }
         let uniqueInterfaces = Set(allInterfaces)
         return uniqueInterfaces.count == 1 ? uniqueInterfaces.first : nil
     }
 
-    private static func getFocusIcon(for activity: Activity, ofType type: FocusIcon) -> String {
+    private static func getFocusIcon(for activity: OldActivity, ofType type: FocusIcon) -> String {
         let interface = self.getInterface(for: activity)
         switch type {
             case .robot:
