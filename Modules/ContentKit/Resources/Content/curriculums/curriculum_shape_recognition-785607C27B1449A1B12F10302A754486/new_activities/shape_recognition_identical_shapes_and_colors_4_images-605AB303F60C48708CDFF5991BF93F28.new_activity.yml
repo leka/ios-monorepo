@@ -1,0 +1,310 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 2.0.0
+
+uuid: 605AB303F60C48708CDFF5991BF93F28
+name: shape_recognition_identical_shapes_and_colors_4_images
+
+created_at: "2024-03-04T18:07:12.519229"
+last_edited_at: "2024-09-27T15:25:22.743770"
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+
+tags:
+  - geometric_shapes
+  - colors
+
+hmi:
+  - tablet
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: shapes_identical_colors_and_shapes_recognition
+
+      title: Les formes et couleurs
+      subtitle: 4 images
+
+      short_description: |
+        Regarde l'image de gauche. Touche la forme et la couleur identiques à droite.
+
+      description: |
+        Cette activité aide le participant à développer ses compétences en reconnaissance visuelle en combinant la forme et la couleur. Il s'agit d'identifier et de sélectionner l'objet ayant à la fois la même forme et la même couleur que celui affiché à gauche. Cela permet de renforcer l’attention visuelle, la mémoire et la discrimination des formes et des couleurs.
+
+      instructions: |
+        - Encouragez le participant à observer attentivement la forme et la couleur de l'objet présenté à gauche.
+        - Demandez-lui de trouver et de toucher l’objet ayant exactement la même forme et la même couleur parmi ceux affichés à droite.
+        - Lorsque la réponse est correcte, Leka initiera un renforçateur pour féliciter le participant.
+
+  - locale: en_US
+    details:
+      icon: shapes_identical_colors_and_shapes_recognition
+
+      title: Shapes and colors
+      subtitle: 4 images
+
+      short_description: |
+        Look at the image on the left. Touch the shape and color that are the same on the right.
+
+      description: |
+        This activity helps the participant develop visual recognition skills by combining shape and color. The task is to identify and select the object that matches both the shape and the color of the one shown on the left. It supports visual attention, memory, and the discrimination of shapes and colors.
+
+      instructions: |
+        - Encourage the participant to carefully observe both the shape and color of the object shown on the left.
+        - Ask them to find and touch the object on the right that has exactly the same shape and color.
+        - When the answer is correct, Leka will provide positive reinforcement to reward the participant.
+
+payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image de gauche. Touche la forme et la couleur identiques à droite.
+            - locale: en_US
+              value: Look at the image on the left. Touch the shape and color that are the same on the right.
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: shape_circle_blue
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: shape_circle_blue
+                type: image
+                is_right_answer: true
+              - value: shape_triangle_green
+                type: image
+              - value: shape_circle_red
+                type: image
+              - value: shape_star_blue
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image de gauche. Touche la forme et la couleur identiques à droite.
+            - locale: en_US
+              value: Look at the image on the left. Touch the shape and color that are the same on the right.
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: shape_circle_red
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: shape_circle_red
+                type: image
+                is_right_answer: true
+              - value: shape_star_purple
+                type: image
+              - value: shape_circle_blue
+                type: image
+              - value: shape_triangle_red
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image de gauche. Touche la forme et la couleur identiques à droite.
+            - locale: en_US
+              value: Look at the image on the left. Touch the shape and color that are the same on the right.
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: shape_triangle_green
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: shape_triangle_green
+                type: image
+                is_right_answer: true
+              - value: shape_star_green
+                type: image
+              - value: shape_circle_blue
+                type: image
+              - value: shape_triangle_red
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image de gauche. Touche la forme et la couleur identiques à droite.
+            - locale: en_US
+              value: Look at the image on the left. Touch the shape and color that are the same on the right.
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: shape_triangle_orange
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: shape_triangle_orange
+                type: image
+                is_right_answer: true
+              - value: shape_star_orange
+                type: image
+              - value: shape_circle_purple
+                type: image
+              - value: shape_triangle_red
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image de gauche. Touche la forme et la couleur identiques à droite.
+            - locale: en_US
+              value: Look at the image on the left. Touch the shape and color that are the same on the right.
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: shape_star_yellow
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: shape_star_yellow
+                type: image
+                is_right_answer: true
+              - value: shape_star_purple
+                type: image
+              - value: shape_circle_yellow
+                type: image
+              - value: shape_triangle_orange
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image de gauche. Touche la forme et la couleur identiques à droite.
+            - locale: en_US
+              value: Look at the image on the left. Touch the shape and color that are the same on the right.
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: shape_star_purple
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: shape_star_purple
+                type: image
+                is_right_answer: true
+              - value: shape_star_green
+                type: image
+              - value: shape_circle_purple
+                type: image
+              - value: shape_triangle_blue
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image de gauche. Touche la forme et la couleur identiques à droite.
+            - locale: en_US
+              value: Look at the image on the left. Touch the shape and color that are the same on the right.
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: shape_star_yellow
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: shape_star_yellow
+                type: image
+                is_right_answer: true
+              - value: shape_star_purple
+                type: image
+              - value: shape_circle_yellow
+                type: image
+              - value: shape_triangle_green
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image de gauche. Touche la forme et la couleur identiques à droite.
+            - locale: en_US
+              value: Look at the image on the left. Touch the shape and color that are the same on the right.
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: shape_square_purple
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: shape_square_purple
+                type: image
+                is_right_answer: true
+              - value: shape_star_purple
+                type: image
+              - value: shape_square_blue
+                type: image
+              - value: shape_triangle_red
+                type: image
+
+        - instructions:
+            - locale: fr_FR
+              value: Regarde l'image de gauche. Touche la forme et la couleur identiques à droite.
+            - locale: en_US
+              value: Look at the image on the left. Touch the shape and color that are the same on the right.
+          interface: touchToSelect
+          gameplay: findTheRightAnswers
+          action:
+            type: ipad
+            value:
+              type: image
+              value: shape_square_blue
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: shape_square_blue
+                type: image
+                is_right_answer: true
+              - value: shape_star_blue
+                type: image
+              - value: shape_square_orange
+                type: image
+              - value: shape_triangle_purple
+                type: image
