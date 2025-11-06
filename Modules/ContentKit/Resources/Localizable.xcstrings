@@ -1034,24 +1034,6 @@
                 }
             }
         },
-        "game_engine_kit.lottie_view.activity_end.success_percentage_label": {
-            "comment": "ActivityEnd view success percentage label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "%.0f%% of success!"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "%.0f%% de succ\u00e8s !"
-                    }
-                }
-            }
-        },
         "game_engine_kit.lottie_view.reinforcer.continue_button": {
             "comment": "The title of the continue button",
             "extractionState": "extracted_with_value",

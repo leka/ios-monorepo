@@ -4,16 +4,13 @@
 
 import LocalizationKit
 
+// swiftlint:disable nesting
+
 // MARK: - l10n.LottieAnimation
 
 extension l10n {
     enum LottieAnimation {
         enum ActivityEnd {
-            static let successPercentageLabel = LocalizedStringInterpolation("game_engine_kit.lottie_view.activity_end.success_percentage_label",
-                                                                             bundle: ContentKitResources.bundle,
-                                                                             value: "%.0f%% of success!",
-                                                                             comment: "ActivityEnd view success percentage label")
-
             static let successCheeringLabel = LocalizedString("game_engine_kit.lottie_view.activity_end.success_cheering_label",
                                                               bundle: ContentKitResources.bundle,
                                                               value: "Well done, you've succeeded this activity!",
@@ -54,3 +51,5 @@ extension l10n {
         }
     }
 }
+
+// swiftlint:enable nesting

@@ -275,8 +275,14 @@ struct MainView: View {
                     }
 
                 case let .activityView(carereceivers):
-                    ActivityMonitorView()
-                        .logEventScreenView(screenName: "activity", context: .fullScreenCover)
+                    if let activity = self.navigation.currentActivity, let coordinator = self.navigation.currentNewCoordinator {
+                        NavigationStack {
+                            ActivityView(activity: activity, coordinator: coordinator)
+                                .logEventScreenView(screenName: "activity", context: .fullScreenCover)
+                        }
+                    } else {
+                        Text("Activity not recognized")
+                    }
 
                 case .storyView:
                     StoryView(story: self.navigation.currentStory!)
