@@ -11,7 +11,7 @@ struct HideAndSeekLottieView: View {
 
     var body: some View {
         ZStack(alignment: .top) {
-            LottieView(animation: self.animation, speed: 0.5)
+            LottieView(animation: self.animation, speed: 0.5, loopMode: .loop)
                 .resizable()
 
             Text(l10n.NewHideAndSeekView.instructionsLabel)
