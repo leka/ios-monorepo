@@ -89,8 +89,9 @@ struct NewSuperSimonView: View {
 
     // MARK: Private
 
+    @State private var viewModel: NewSuperSimonViewViewModel
+
     private var styleManager: StyleManager = .shared
-    private let viewModel: NewSuperSimonViewViewModel
 }
 
 // MARK: - l10n.NewSuperSimonView
