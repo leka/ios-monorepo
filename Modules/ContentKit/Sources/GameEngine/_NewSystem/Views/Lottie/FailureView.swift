@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import LocalizationKit
 import Lottie
 import SwiftUI
@@ -34,15 +35,18 @@ public struct FailureView: View {
                 // TODO: (@mathieu) - Save displayable data in session
                 UIApplication.shared.dismissAll(animated: true)
             } label: {
-                Text(l10n.LottieAnimation.ActivityEnd.quitButtonLabel)
+                CapsuleColoredButtonLabel(String(l10n.LottieAnimation.ActivityEnd.quitButtonLabel.characters), color: self.styleManager.accentColor!)
             }
-            .buttonStyle(.borderedProminent)
         }
     }
 
     // MARK: Internal
 
     let percentage: Double
+
+    // MARK: Private
+
+    private let styleManager: StyleManager = .shared
 }
 
 #Preview {

@@ -2,6 +2,7 @@
 // Copyright APF France handicap
 // SPDX-License-Identifier: Apache-2.0
 
+import DesignKit
 import LocalizationKit
 import Lottie
 import SwiftUI
@@ -19,15 +20,9 @@ public struct SuccessView: View {
 
     public var body: some View {
         VStack {
-            VStack {
-                Text(l10n.LottieAnimation.ActivityEnd.successPercentageLabel(self.percentage))
-                    .font(.largeTitle)
-                    .foregroundStyle(.teal)
-                    .padding(10)
-                Text(l10n.SuccessFailureView.successCheeringLabel)
-                    .font(.largeTitle)
-            }
-            .padding(.top, 50)
+            Text(l10n.SuccessFailureView.successCheeringLabel)
+                .font(.largeTitle)
+                .padding(.top, 50)
 
             LottieView(
                 animation: .bravo,
@@ -40,15 +35,18 @@ public struct SuccessView: View {
                 // TODO: (@mathieu) - Save displayable data in session
                 UIApplication.shared.dismissAll(animated: true)
             } label: {
-                Text(l10n.LottieAnimation.ActivityEnd.quitButtonLabel)
+                CapsuleColoredButtonLabel(String(l10n.LottieAnimation.ActivityEnd.quitButtonLabel.characters), color: self.styleManager.accentColor!)
             }
-            .buttonStyle(.borderedProminent)
         }
     }
 
     // MARK: Internal
 
     let percentage: Double
+
+    // MARK: Private
+
+    private let styleManager: StyleManager = .shared
 }
 
 #Preview {

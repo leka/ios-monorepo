@@ -81,6 +81,19 @@ public class ActivityCoordinator {
             && self.currentExerciseIndex == self.groups[self.currentGroupIndex].group.count - 1
     }
 
+    public var activityCompletionSuccessPercentage: Double {
+        guard self.numberOfApplicableExercises > 0 else { return 100 }
+
+        return (Double(self.numberOfSuccessfulExercises) / Double(self.numberOfApplicableExercises)) * 100.0
+    }
+
+    public var didCompleteActivitySuccessfully: Bool {
+        guard self.numberOfApplicableExercises > 0 else { return true }
+
+        let minimalSuccessRatio = 0.8
+        return Double(self.numberOfSuccessfulExercises) >= Double(self.numberOfApplicableExercises) * minimalSuccessRatio
+    }
+
     @ViewBuilder
     public var currentExerciseView: some View {
         self.currentExerciseCoordinator.exerciseView
@@ -148,4 +161,22 @@ public class ActivityCoordinator {
     private var cancellables = Set<AnyCancellable>()
 
     private var currentExerciseCoordinator: CurrentExerciseCoordinator
+
+    private var numberOfSuccessfulExercises: Int {
+        self.applicableCompletedExercises.filter { completion in
+            completion.level == .excellent || completion.level == .good
+        }.count
+    }
+
+    private var completedExercises: [(level: ExerciseEvaluationLevel, data: ExerciseCompletionData?)] {
+        self.exercisesCompletionData.flatMap { $0 }
+    }
+
+    private var applicableCompletedExercises: [(level: ExerciseEvaluationLevel, data: ExerciseCompletionData?)] {
+        self.completedExercises.filter { $0.level != .notApplicable }
+    }
+
+    private var numberOfApplicableExercises: Int {
+        self.applicableCompletedExercises.count
+    }
 }
