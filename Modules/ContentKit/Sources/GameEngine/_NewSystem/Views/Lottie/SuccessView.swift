@@ -10,12 +10,6 @@ import SwiftUI
 // MARK: - SuccessView
 
 public struct SuccessView: View {
-    // MARK: Lifecycle
-
-    public init(percentage: Double) {
-        self.percentage = percentage
-    }
-
     // MARK: Public
 
     public var body: some View {
@@ -40,15 +34,11 @@ public struct SuccessView: View {
         }
     }
 
-    // MARK: Internal
-
-    let percentage: Double
-
     // MARK: Private
 
     private let styleManager: StyleManager = .shared
 }
 
 #Preview {
-    SuccessView(percentage: 65)
+    SuccessView()
 }

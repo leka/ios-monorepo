@@ -277,7 +277,7 @@ struct MainView: View {
                 case let .activityView(carereceivers):
                     if let activity = self.navigation.currentActivity, let coordinator = self.navigation.currentNewCoordinator {
                         NavigationStack {
-                            ActivityView(activity: activity, coordinator: coordinator)
+                            ActivityView(activity: activity, coordinator: coordinator, reinforcer: carereceivers.first?.reinforcer ?? .rainbow)
                                 .logEventScreenView(screenName: "activity", context: .fullScreenCover)
                         }
                     } else {

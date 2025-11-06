@@ -4,6 +4,7 @@
 
 import Combine
 import LocalizationKit
+import RobotKit
 import SwiftUI
 
 // MARK: - ActivityView
@@ -11,9 +12,10 @@ import SwiftUI
 public struct ActivityView: View {
     // MARK: Lifecycle
 
-    public init(activity: Activity, coordinator: ActivityCoordinator) {
+    public init(activity: Activity, coordinator: ActivityCoordinator, reinforcer: Robot.Reinforcer = .rainbow) {
         self.activity = activity
         self.activityCoordinator = coordinator
+        self.reinforcer = reinforcer
     }
 
     // MARK: Public
@@ -177,14 +179,15 @@ public struct ActivityView: View {
     @State private var isReinforcerPresented: Bool = false
 
     private var activityCoordinator: ActivityCoordinator
+    private let reinforcer: Robot.Reinforcer
     private let activity: Activity
 
     @ViewBuilder
     private var endOfActivityScoreView: some View {
         if self.activityCoordinator.didCompleteActivitySuccessfully {
-            SuccessView(percentage: self.activityCoordinator.activityCompletionSuccessPercentage)
+            SuccessView()
         } else {
-            FailureView(percentage: self.activityCoordinator.activityCompletionSuccessPercentage)
+            FailureView()
         }
     }
 }

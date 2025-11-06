@@ -12,7 +12,8 @@ import SwiftUI
 struct ReinforcerView: View {
     // MARK: Lifecycle
 
-    init(isLastExercise: Bool, onContinue: @escaping () -> Void, onDismiss: @escaping () -> Void) {
+    init(reinforcer: Robot.Reinforcer = .rainbow, isLastExercise: Bool, onContinue: @escaping () -> Void, onDismiss: @escaping () -> Void) {
+        self.reinforcer = reinforcer
         self.isLastExercise = isLastExercise
         self.onContinue = onContinue
         self.onDismiss = onDismiss
@@ -39,8 +40,7 @@ struct ReinforcerView: View {
                     )
                 )
                 .onAppear {
-                    // TODO: (@HPezz) Implement carereceiver reinforcer
-                    Robot.shared.run(.fire)
+                    Robot.shared.run(self.reinforcer)
                 }
 
                 VStack(spacing: 40) {
@@ -87,6 +87,8 @@ struct ReinforcerView: View {
     // MARK: Private
 
     @State private var isPresented: Bool = false
+
+    private let reinforcer: Robot.Reinforcer
 
     // TODO: (@ladislas, @HPezz) Reduce to 3.5 when interrupting reinforcer implemented
     private var kDelayAfterReinforcerAnimation: Double = 5.0

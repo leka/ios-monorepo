@@ -81,12 +81,6 @@ public class ActivityCoordinator {
             && self.currentExerciseIndex == self.groups[self.currentGroupIndex].group.count - 1
     }
 
-    public var activityCompletionSuccessPercentage: Double {
-        guard self.numberOfApplicableExercises > 0 else { return 100 }
-
-        return (Double(self.numberOfSuccessfulExercises) / Double(self.numberOfApplicableExercises)) * 100.0
-    }
-
     public var didCompleteActivitySuccessfully: Bool {
         guard self.numberOfApplicableExercises > 0 else { return true }
 
