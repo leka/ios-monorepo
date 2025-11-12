@@ -43,7 +43,7 @@ jobs:
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
-          lfs: true
+          lfs: false
 
       - name: Setup mise
         uses: jdx/mise-action@v3
