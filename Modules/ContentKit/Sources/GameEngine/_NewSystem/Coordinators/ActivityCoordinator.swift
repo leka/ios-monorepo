@@ -26,11 +26,6 @@ public class ActivityCoordinator {
         self.currentExerciseCoordinator = CurrentExerciseCoordinator(exercise: firstExercise)
 
         self.setExerciseCoordinator(self.currentExerciseCoordinator)
-
-        self.exercisesCompletionData = Array(
-            repeating: [],
-            count: self.groups.count
-        )
     }
 
     public convenience init(payload: Data) {
@@ -58,7 +53,7 @@ public class ActivityCoordinator {
 
     public var activityEvent = PassthroughSubject<ActivityEvent, Never>()
 
-    public var exercisesCompletionData: [[(level: ExerciseEvaluationLevel, data: ExerciseCompletionData?)]] = []
+    public var exercisesCompletionData: [Int: [Int: (level: ExerciseEvaluationLevel, data: ExerciseCompletionData?)]] = [:]
 
     public var numberOfGroups: Int {
         self.groupSizeEnumeration.count
@@ -85,7 +80,7 @@ public class ActivityCoordinator {
         guard self.numberOfApplicableExercises > 0 else { return true }
 
         let minimalSuccessRatio = 0.8
-        return Double(self.numberOfSuccessfulExercises) >= Double(self.numberOfApplicableExercises) * minimalSuccessRatio
+        return Double(self.numberOfSuccessfulExercises) / Double(self.numberOfApplicableExercises) >= minimalSuccessRatio
     }
 
     @ViewBuilder
@@ -109,7 +104,7 @@ public class ActivityCoordinator {
                 guard let self else { return }
 
                 logGEK.info("Current exercise completed 🎉️ - \(completionData)")
-                self.exercisesCompletionData[self.currentGroupIndex].append(completionData)
+                self.exercisesCompletionData[self.currentGroupIndex, default: [:]][self.currentExerciseIndex] = completionData
 
                 self.isExerciseCompleted = true
             }
@@ -163,7 +158,7 @@ public class ActivityCoordinator {
     }
 
     private var completedExercises: [(level: ExerciseEvaluationLevel, data: ExerciseCompletionData?)] {
-        self.exercisesCompletionData.flatMap { $0 }
+        self.exercisesCompletionData.flatMap(\.value.values)
     }
 
     private var applicableCompletedExercises: [(level: ExerciseEvaluationLevel, data: ExerciseCompletionData?)] {

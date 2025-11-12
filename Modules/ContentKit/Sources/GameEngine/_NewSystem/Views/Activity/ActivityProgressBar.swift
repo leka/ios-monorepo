@@ -96,7 +96,7 @@ struct ActivityProgressBar: View {
     }
 
     private func progressBarMarkerColor(group: Int, exercise: Int) -> Color {
-        if let level = self.coordinator.exercisesCompletionData[safe: group]?[safe: exercise]?.level {
+        if let level = self.coordinator.exercisesCompletionData[group]?[exercise]?.level {
             self.evaluationLevelToColor(level: level)
         } else {
             .white
