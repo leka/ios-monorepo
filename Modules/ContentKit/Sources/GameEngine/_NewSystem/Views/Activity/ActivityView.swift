@@ -3,6 +3,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Combine
+import LocalizationKit
+import RobotKit
 import SwiftUI
 
 // MARK: - ActivityView
@@ -10,9 +12,10 @@ import SwiftUI
 public struct ActivityView: View {
     // MARK: Lifecycle
 
-    public init(activity: Activity, coordinator: ActivityCoordinator) {
+    public init(activity: Activity, coordinator: ActivityCoordinator, reinforcer: Robot.Reinforcer = .rainbow) {
         self.activity = activity
         self.activityCoordinator = coordinator
+        self.reinforcer = reinforcer
     }
 
     // MARK: Public
@@ -72,8 +75,7 @@ public struct ActivityView: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
-                    // TODO: (@HPezz) Add alert to prevent for misclick
-                    self.dismiss()
+                    self.isAlertPresented = true
                 } label: {
                     Image(systemName: "xmark.circle")
                 }
@@ -113,16 +115,52 @@ public struct ActivityView: View {
 
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    // TODO: (@dev-ios) implement activity information sheet toggle
+                    self.isInfoSheetPresented.toggle()
                 } label: {
                     Image(systemName: "info.circle")
                 }
             }
         }
+        .alert(String(l10n.ActivityView.QuitActivityAlert.title.characters), isPresented: self.$isAlertPresented) {
+            Button(String(l10n.ActivityView.QuitActivityAlert.cancelButtonLabel.characters), role: .cancel, action: {
+                self.isAlertPresented = false
+            })
+            Button(String(l10n.ActivityView.QuitActivityAlert.quitButtonLabel.characters), role: .destructive, action: {
+                self.dismiss()
+            })
+        } message: {
+            Text(l10n.ActivityView.QuitActivityAlert.message)
+        }
+        .sheet(isPresented: self.$isInfoSheetPresented) {
+            ScrollView {
+                InfoDetailsView(CurationItemModel(id: self.activity.id, name: self.activity.details.title, contentType: .activity))
+                    .padding()
+                    .logEventScreenView(
+                        screenName: "activity_details",
+                        context: .sheet,
+                        parameters: [
+                            "lk_activity_id": "\(self.activity.details.title)-\(self.activity.id)",
+                        ]
+                    )
+            }
+        }
+        .fullScreenCover(isPresented: self.$isActivitySummaryPresented) {
+            self.endOfActivityScoreView
+        }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 logGEK.debug("Activity did start")
                 self.activityCoordinator.activityEvent.send(.didStart)
+            }
+        }
+        .onReceive(self.activityCoordinator.activityEvent) { event in
+            switch event {
+                case .didStart:
+                    self.isActivitySummaryPresented = false
+                    self.isReinforcerPresented = false
+                case .didEnd:
+                    self.isReinforcerPresented = false
+                    self.isActivitySummaryPresented = true
             }
         }
         .onChange(of: self.activityCoordinator.isExerciseCompleted) {
@@ -135,116 +173,49 @@ public struct ActivityView: View {
     @Environment(\.dismiss) private var dismiss
 
     @State private var blurRadius: CGFloat = 0
+    @State private var isAlertPresented: Bool = false
+    @State private var isInfoSheetPresented: Bool = false
+    @State private var isActivitySummaryPresented: Bool = false
     @State private var isReinforcerPresented: Bool = false
 
     private var activityCoordinator: ActivityCoordinator
+    private let reinforcer: Robot.Reinforcer
     private let activity: Activity
 
     @ViewBuilder
     private var endOfActivityScoreView: some View {
-        // TODO: (@ladislas, @HPezz) Add success condition & percentage when implemented
-        if true {
-            SuccessView(percentage: 90)
+        if self.activityCoordinator.didCompleteActivitySuccessfully {
+            SuccessView()
         } else {
-            FailureView(percentage: 30)
+            FailureView()
         }
     }
 }
 
 #if DEBUG
 
-    let kActivityYaml = """
-        uuid: F8C90919AF204155A170D3957BABE7D6
-        name: TestActivityMock
-        exercises_payload:
-          options:
-            shuffle_exercises: false
-            shuffle_groups: false
-
-          exercise_groups:
-            - group:
-                - instructions:
-                    - locale: fr_FR
-                      value: Touche les emojis du chien
-                    - locale: en_US
-                      value: Tap the dog emojis
-                  interface: touchToSelect
-                  gameplay: findTheRightAnswers
-                  payload:
-                    shuffle_choices: true
-                    choices:
-                      - value: 🐶
-                        type: emoji
-                        is_right_answer: true
-                      - value: 🐶
-                        type: emoji
-                        is_right_answer: true
-                      - value: 🐱
-                        type: emoji
-                      - value: 🐱
-                        type: emoji
-                      - value: 🐷
-                        type: emoji
-                      - value: 🐷
-                        type: emoji
-                - instructions:
-                    - locale: fr_FR
-                      value: Touche les emojis qui sont identiques
-                    - locale: en_US
-                      value: Tap the emojis that are the same
-                  interface: touchToSelect
-                  gameplay: associateCategories
-                  payload:
-                    shuffle_choices: true
-                    choices:
-                      - value: 🐶
-                        type: emoji
-                        category: catA
-                      - value: 🐶
-                        type: emoji
-                        category: catA
-                      - value: 🐱
-                        type: emoji
-                        category: catB
-                      - value: 🐱
-                        type: emoji
-                        category: catB
-                      - value: 🐷
-                        type: emoji
-                        category: catC
-                      - value: 🐷
-                        type: emoji
-                        category: catC
-        """
-
-    import Yams
-
     #Preview {
         var cancellables = Set<AnyCancellable>()
+        let activity = Activity.mock
 
         NavigationStack {
-            if let activity = Activity(yaml: kActivityYaml) {
-                let coordinator = ActivityCoordinator(payload: activity.payload)
+            let coordinator = ActivityCoordinator(payload: activity.payload)
 
-                ActivityView(activity: activity, coordinator: coordinator)
-                    .onAppear {
-                        coordinator.activityEvent
-                            .receive(on: DispatchQueue.main)
-                            .sink { event in
-                                switch event {
-                                    case .didStart:
-                                        logGEK.debug("Publisher - Activity did start")
+            ActivityView(activity: activity, coordinator: coordinator)
+                .onAppear {
+                    coordinator.activityEvent
+                        .receive(on: DispatchQueue.main)
+                        .sink { event in
+                            switch event {
+                                case .didStart:
+                                    logGEK.debug("Publisher - Activity did start")
 
-                                    case .didEnd:
-                                        logGEK.debug("Publisher - Activity did end")
-                                }
+                                case .didEnd:
+                                    logGEK.debug("Publisher - Activity did end")
                             }
-                            .store(in: &cancellables)
-                    }
-
-            } else {
-                Text("Invalid activity")
-            }
+                        }
+                        .store(in: &cancellables)
+                }
         }
     }
 
