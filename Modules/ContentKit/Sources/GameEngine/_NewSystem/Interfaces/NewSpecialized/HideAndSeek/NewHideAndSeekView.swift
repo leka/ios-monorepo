@@ -71,7 +71,7 @@ struct NewHideAndSeekView: View {
     @State private var isRobotHidden: Bool = false
     @State private var blurRadius: CGFloat = 20
 
-    private let viewModel: NewHideAndSeekViewViewModel
+    @State private var viewModel: NewHideAndSeekViewViewModel
 }
 
 // MARK: - l10n.NewHideAndSeekView
