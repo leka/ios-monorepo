@@ -147,7 +147,11 @@ public struct ActivityView: View {
             }
         }
         .fullScreenCover(isPresented: self.$isActivitySummaryPresented) {
-            self.endOfActivityScoreView
+            if self.activityCoordinator.completionStatus == .success {
+                SuccessView()
+            } else if self.activityCoordinator.completionStatus == .failure {
+                FailureView()
+            }
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -183,15 +187,6 @@ public struct ActivityView: View {
     private var activityCoordinator: ActivityCoordinator
     private let reinforcer: Robot.Reinforcer
     private let activity: Activity
-
-    @ViewBuilder
-    private var endOfActivityScoreView: some View {
-        if self.activityCoordinator.didCompleteActivitySuccessfully {
-            SuccessView()
-        } else {
-            FailureView()
-        }
-    }
 }
 
 #if DEBUG

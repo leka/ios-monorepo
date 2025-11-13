@@ -43,6 +43,11 @@ public class ActivityCoordinator {
         case didEnd
     }
 
+    public enum ActivityCompletionStatus {
+        case success
+        case failure
+    }
+
     public var currentGroupIndex: Int = 0
     public var currentExerciseIndex: Int = 0
     public var isExerciseCompleted: Bool = false
@@ -53,6 +58,7 @@ public class ActivityCoordinator {
 
     public var activityEvent = PassthroughSubject<ActivityEvent, Never>()
 
+    public var completionStatus: ActivityCompletionStatus?
     public var exercisesCompletionData: [Int: [Int: (level: ExerciseEvaluationLevel, data: ExerciseCompletionData?)]] = [:]
 
     public var numberOfGroups: Int {
@@ -74,13 +80,6 @@ public class ActivityCoordinator {
     public var isLastExercise: Bool {
         self.currentGroupIndex == self.groups.count - 1
             && self.currentExerciseIndex == self.groups[self.currentGroupIndex].group.count - 1
-    }
-
-    public var didCompleteActivitySuccessfully: Bool {
-        guard self.numberOfApplicableExercises > 0 else { return true }
-
-        let minimalSuccessRatio = 0.8
-        return Double(self.numberOfSuccessfulExercises) / Double(self.numberOfApplicableExercises) >= minimalSuccessRatio
     }
 
     @ViewBuilder
@@ -107,6 +106,9 @@ public class ActivityCoordinator {
                 self.exercisesCompletionData[self.currentGroupIndex, default: [:]][self.currentExerciseIndex] = completionData
 
                 self.isExerciseCompleted = true
+                if self.isLastExercise {
+                    self.computeActivityCompletionStatus()
+                }
             }
             .store(in: &self.cancellables)
     }
@@ -145,27 +147,25 @@ public class ActivityCoordinator {
         self.setExerciseCoordinator(CurrentExerciseCoordinator(exercise: self.currentExercise))
     }
 
+    func computeActivityCompletionStatus() {
+        let minimalSuccessRatio = 0.8
+
+        var completedExercises = self.exercisesCompletionData.flatMap(\.value.values)
+        let applicableCompletedExercises = completedExercises.filter { $0.level != .notApplicable }
+        let applicableExercisesCount = applicableCompletedExercises.count
+
+        guard applicableExercisesCount > 0 else { self.completionStatus = .success; return }
+
+        let successfulExercisesCount = applicableCompletedExercises.filter { completion in
+            completion.level == .excellent || completion.level == .good
+        }.count
+
+        self.completionStatus = Double(successfulExercisesCount) / Double(applicableExercisesCount) >= minimalSuccessRatio ? .success : .failure
+    }
+
     // MARK: Private
 
     private var cancellables = Set<AnyCancellable>()
 
     private var currentExerciseCoordinator: CurrentExerciseCoordinator
-
-    private var numberOfSuccessfulExercises: Int {
-        self.applicableCompletedExercises.filter { completion in
-            completion.level == .excellent || completion.level == .good
-        }.count
-    }
-
-    private var completedExercises: [(level: ExerciseEvaluationLevel, data: ExerciseCompletionData?)] {
-        self.exercisesCompletionData.flatMap(\.value.values)
-    }
-
-    private var applicableCompletedExercises: [(level: ExerciseEvaluationLevel, data: ExerciseCompletionData?)] {
-        self.completedExercises.filter { $0.level != .notApplicable }
-    }
-
-    private var numberOfApplicableExercises: Int {
-        self.applicableCompletedExercises.count
-    }
 }
