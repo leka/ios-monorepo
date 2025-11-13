@@ -81,13 +81,9 @@ public class DnDGridWithZonesCoordinatorOpenPlay: DnDGridWithZonesGameplayCoordi
             self.updateChoiceState(for: choiceID, to: .correct)
         }
 
-        // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
-
         self.validationState.send(.hidden)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            logGEK.debug("Exercise completed")
-            self.didComplete.send(self.completionData)
-        }
+        logGEK.debug("Exercise completed")
+        self.didComplete.send(self.completionData)
     }
 
     // MARK: Private

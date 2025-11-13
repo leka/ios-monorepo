@@ -82,12 +82,9 @@ public class TTSCoordinatorAssociateCategories: TTSGameplayCoordinatorProtocol, 
                 }
 
                 if self.gameplay.isCompleted.value {
-                    // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        self.validationState.send(.hidden)
-                        logGEK.debug("Exercise completed")
-                        self.didComplete.send(self.completionData)
-                    }
+                    self.validationState.send(.hidden)
+                    logGEK.debug("Exercise completed")
+                    self.didComplete.send(self.completionData)
                 }
             } else if self.validationState.value != .hidden {
                 self.selectedChoices.removeAll()

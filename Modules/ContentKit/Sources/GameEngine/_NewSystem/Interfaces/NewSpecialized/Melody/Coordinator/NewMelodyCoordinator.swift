@@ -107,11 +107,8 @@ class NewMelodyCoordinator: ExerciseSharedDataProtocol {
                     self.midiPlayer.play()
 
                     DispatchQueue.main.asyncAfter(deadline: .now() + self.midiPlayer.getDuration()) {
-                        // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            logGEK.debug("Exercise completed")
-                            self.didComplete.send(self.completionData)
-                        }
+                        logGEK.debug("Exercise completed")
+                        self.didComplete.send(self.completionData)
                         self.isMelodyPlaying.send(false)
                         self.showPlayButton.send(false)
                         self.robot.stopLights()

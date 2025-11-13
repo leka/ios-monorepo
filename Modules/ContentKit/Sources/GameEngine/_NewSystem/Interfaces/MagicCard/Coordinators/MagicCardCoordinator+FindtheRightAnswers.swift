@@ -61,11 +61,8 @@ public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinat
         }
 
         if self.gameplay.isCompleted.value {
-            // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                logGEK.debug("Exercise completed")
-                self.didComplete.send(self.completionData)
-            }
+            logGEK.debug("Exercise completed")
+            self.didComplete.send(self.completionData)
         }
     }
 

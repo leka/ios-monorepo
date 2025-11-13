@@ -109,11 +109,8 @@ class NewSuperSimonCoordinator: ExerciseSharedDataProtocol {
         }
 
         if self.sequenceIndex == self.completeColorSequence.count {
-            // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                logGEK.debug("Exercise completed")
-                self.didComplete.send(self.completionData)
-            }
+            logGEK.debug("Exercise completed")
+            self.didComplete.send(self.completionData)
         } else if self.sequenceIndex == self.currentColorSequence.count {
             self.startNextSequence()
         }

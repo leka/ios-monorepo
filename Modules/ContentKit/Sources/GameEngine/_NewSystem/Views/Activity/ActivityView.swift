@@ -37,7 +37,7 @@ public struct ActivityView: View {
             .blur(radius: self.blurRadius)
             .onChange(of: self.isReinforcerPresented) {
                 if self.isReinforcerPresented, self.activityCoordinator.isReinforcerAnimationEnabled {
-                    withAnimation(.easeInOut.delay(0.5)) {
+                    withAnimation(.easeInOut.delay(0.7)) {
                         self.blurRadius = 20
                     }
                 } else {
@@ -46,13 +46,15 @@ public struct ActivityView: View {
             }
 
             if self.isReinforcerPresented, self.activityCoordinator.isReinforcerAnimationEnabled {
-                ReinforcerView(isLastExercise: self.activityCoordinator.isLastExercise,
-                               onContinue: {
-                                   self.activityCoordinator.nextExercise()
-                               },
-                               onDismiss: {
-                                   self.isReinforcerPresented = false
-                               })
+                withAnimation(.easeInOut.delay(0.7)) {
+                    ReinforcerView(isLastExercise: self.activityCoordinator.isLastExercise,
+                                   onContinue: {
+                                       self.activityCoordinator.nextExercise()
+                                   },
+                                   onDismiss: {
+                                       self.isReinforcerPresented = false
+                                   })
+                }
             }
 
             if self.activityCoordinator.isExerciseCompleted, !self.isReinforcerPresented || !self.activityCoordinator.isReinforcerAnimationEnabled {

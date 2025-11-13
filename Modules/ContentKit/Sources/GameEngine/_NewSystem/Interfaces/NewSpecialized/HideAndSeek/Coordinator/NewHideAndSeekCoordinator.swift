@@ -18,11 +18,8 @@ class NewHideAndSeekCoordinator: ExerciseSharedDataProtocol {
     func completeHideAndSeek() {
         Robot.shared.stopMotion()
         Robot.shared.stopLights()
-        // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            logGEK.debug("Exercise completed")
-            self.didComplete.send(self.completionData)
-        }
+        logGEK.debug("Exercise completed")
+        self.didComplete.send(self.completionData)
     }
 
     func wiggle(for duration: CGFloat) {

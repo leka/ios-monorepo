@@ -76,11 +76,9 @@ public class TTSCoordinatorFindTheRightOrder: TTSGameplayCoordinatorProtocol {
             }
 
             self.validationState.send(.hidden)
-            // TODO: (@ladislas, @HPezz) Trigger didComplete on animation ended
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                logGEK.debug("Exercise completed")
-                self.didComplete.send(self.completionData)
-            }
+            logGEK.debug("Exercise completed")
+            self.didComplete.send(self.completionData)
+
         } else {
             self.currentOrderedChoices.forEach { id in
                 self.updateChoiceState(for: id, to: .idle)
