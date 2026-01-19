@@ -6,7 +6,7 @@
 
 source 'https://rubygems.org'
 
-gem 'fastlane', '~>2.228.0'
+gem 'fastlane', '~>2.231.0'
 
 gem 'abbrev'
 gem 'csv'
