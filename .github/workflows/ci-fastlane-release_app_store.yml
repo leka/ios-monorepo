@@ -109,7 +109,7 @@ jobs:
           token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
             channel: C041YEWNVJS
-            text: ${{ env.CHANGELOG_FOR_SLACK }}
+            text: "${{ env.CHANGELOG_FOR_SLACK }}"
 
       - name: remove label
         if: always()
