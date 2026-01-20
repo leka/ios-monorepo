@@ -1,0 +1,217 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 2.0.0
+
+uuid: 16016A86DA0A4F5FB5FF9E457CA7B1A4
+name: <Titre>
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2026-01-19T22:41:15.645198"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - <Skill 1>
+  - <Skill 2>
+  - <Skill 3>
+
+tags:
+  - <Tag 1>
+  - <Tag 2>
+
+interaction:
+  medium: tablet_robot
+  input: magic_card
+  attention: look
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: <nom de l'icone de l'activité>
+
+      title: <Titre de l'activité - FR>
+      subtitle: <Sous titre de l'activité - FR>
+
+      short_description: |
+        <Courte description de l'activité - FR>
+
+      description: |
+        <Description de l'activité - FR>
+
+      instructions: |
+        - <Instruction étape 1 - FR>
+        - <Instruction étape 2 - FR>
+
+  - locale: en_US
+    details:
+      icon: <nom de l'icone de l'activité>
+
+      title: <Titre de l'activité - EN>
+      subtitle: <Sous titre de l'activité - EN>
+
+      short_description: |
+        <Courte description de l'activité - EN>
+
+      description: |
+        <Description de l'activité - EN>
+
+      instructions: |
+        - <Instruction étape 1 - EN>
+        - <Instruction étape 2 - EN>
+
+payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardNumbers1One
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+                is_right_answer: true
+              - value: number_2
+              - value: number_3
+              - value: number_4
+              - value: number_5
+              - value: number_6
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardNumbers2Two
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+              - value: number_2
+                is_right_answer: true
+              - value: number_3
+              - value: number_4
+              - value: number_5
+              - value: number_6
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardNumbers3Three
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+              - value: number_2
+              - value: number_3
+                is_right_answer: true
+              - value: number_4
+              - value: number_5
+              - value: number_6
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardNumbers4Four
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+              - value: number_2
+              - value: number_3
+              - value: number_4
+                is_right_answer: true
+              - value: number_5
+              - value: number_6
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardNumbers5Five
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+              - value: number_2
+              - value: number_3
+              - value: number_4
+              - value: number_5
+                is_right_answer: true
+              - value: number_6
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardNumbers6Six
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+              - value: number_2
+              - value: number_3
+              - value: number_4
+              - value: number_5
+              - value: number_6
+                is_right_answer: true
