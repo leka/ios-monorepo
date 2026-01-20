@@ -99,6 +99,7 @@ let project = Project.app(
         .external(name: "MarkdownUI"),
         .external(name: "Version"),
         .external(name: "Yams"),
+        .external(name: "YouTubePlayerKit"),
     ],
     scripts: [
         crashlyticsRunScript,
