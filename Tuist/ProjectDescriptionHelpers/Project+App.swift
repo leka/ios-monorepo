@@ -47,7 +47,8 @@ public extension Project {
         launchArguments: [LaunchArgument] = [],
         options: Options = .options(),
         dependencies: [TargetDependency] = [],
-        scripts: [TargetScript] = [], // New `scripts` parameter
+        testDependencies: [TargetDependency] = [],
+        scripts: [TargetScript] = [],
         schemes: [Scheme] = []
     ) -> Project {
         let mainTarget = Target.target(
@@ -81,7 +82,7 @@ public extension Project {
             infoPlist: .extendingDefault(with: InfoPlist.extendingBase(version: version, with: infoPlist)),
             buildableFolders: ["Tests"],
             scripts: TargetScript.linters(),
-            dependencies: [.target(name: "\(name)")] + dependencies
+            dependencies: [.target(name: "\(name)")] + testDependencies
         )
 
         return Project(

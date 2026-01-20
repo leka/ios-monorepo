@@ -13,6 +13,8 @@ let project = Project.module(
         ModuleExample(
             name: "ContentKitExample",
             dependencies: [
+                .project(target: "LogKit", path: Path("../../Modules/LogKit")),
+
                 .external(name: "MarkdownUI"),
             ]
         ),

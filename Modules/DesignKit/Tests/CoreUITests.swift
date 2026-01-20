@@ -5,6 +5,8 @@
 import Foundation
 import XCTest
 
+@testable import DesignKit
+
 final class DesignKitTests: XCTestCase {
     func test_example() {
         XCTAssertEqual("DesignKit", "DesignKit")
