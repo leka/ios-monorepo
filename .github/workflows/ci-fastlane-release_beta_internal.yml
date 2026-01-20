@@ -45,7 +45,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           lfs: true
@@ -62,11 +62,11 @@ jobs:
       - name: Set up mise
         uses: jdx/mise-action@v3
         with:
-          version: 2025.10.7
+          version: 2026.1.5
           install: true
           cache: true
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gems-${{ runner.name }}-${{ hashFiles('**/Gemfile.lock') }}
@@ -81,7 +81,7 @@ jobs:
 
       - name: Config Xcode
         run: |
-          xcodes select 26.0.1
+          xcodes select 26.2
 
       - name: tuist install
         run: |
@@ -118,16 +118,17 @@ jobs:
       - name: Post to a Slack channel
         id: slack
         if: ${{ env.CHANGELOG_FOR_SLACK != '' }}
-        uses: slackapi/slack-github-action@v1.25.0
+        uses: slackapi/slack-github-action@v2.1.1
         with:
-          channel-id: "C3SHVTYNP,C041YEWNVJS"
-          slack-message: ${{ env.CHANGELOG_FOR_SLACK }}
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            channel: C041YEWNVJS
+            text: ${{ env.CHANGELOG_FOR_SLACK }}
 
       - name: remove label
         if: always() && github.event_name == 'pull_request' && contains(github.event.label.name, 'fastlane:beta')
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |

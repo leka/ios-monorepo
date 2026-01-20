@@ -33,7 +33,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 1
           lfs: false
@@ -41,7 +41,7 @@ jobs:
       - name: Set up mise
         uses: jdx/mise-action@v3
         with:
-          version: 2025.10.7
+          version: 2026.1.5
           install: true
           cache: true
 
