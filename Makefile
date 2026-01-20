@@ -28,7 +28,7 @@ config:
 	@TUIST_TURN_OFF_LINTERS=$(TURN_OFF_LINTERS) 												\
 	 TUIST_GENERATE_EXAMPLE_TARGETS=$(GENERATE_EXAMPLE_TARGETS) 								\
 	 TUIST_GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG=$(GENERATE_MODULES_AS_FRAMEWORKS_FOR_DEBUG) \
-	 tuist generate --no-binary-cache
+	 tuist generate
 
 config_testflight:
 	@echo "Generating project..."
@@ -38,7 +38,7 @@ config_testflight:
 	 TUIST_DEVELOPER_MODE=TRUE 																	\
 	 TUIST_TESTFLIGHT_BUILD=TRUE 																\
 	 TUIST_PRODUCTION_BUILD=FALSE 																\
-	 tuist generate --no-binary-cache
+	 tuist generate
 
 config_release:
 	@echo "Generating project..."
@@ -48,7 +48,7 @@ config_release:
 	 TUIST_DEVELOPER_MODE=FALSE																	\
 	 TUIST_TESTFLIGHT_BUILD=FALSE 																\
 	 TUIST_PRODUCTION_BUILD=TRUE 																\
-	 tuist generate --no-binary-cache
+	 tuist generate
 
 build:
 	@echo "Building project..."

@@ -364,7 +364,7 @@ platform :ios do
         )
 
         # Generate project without opening Xcode and without binary cache for clean builds
-        system('tuist', 'generate', '--no-open', '--no-binary-cache', app.to_s)
+        system('tuist', 'generate', '--no-open', '--cache-profile', 'none', app.to_s)
       end
 
       begin
@@ -523,7 +523,7 @@ platform :ios do
         app_bundle_id: app_bundle_id
       )
 
-      system('tuist', 'generate', '--no-open', '--no-binary-cache', app.to_s)
+      system('tuist', 'generate', '--no-open', '--cache-profile', 'none', app.to_s)
     end
 
     begin
