@@ -1,0 +1,189 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 2.0.0
+
+uuid: 64C2CDF7DAA240CEB195F1BBE13941E3
+name: magic_card_color_recognition_screen
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2026-02-02T17:46:31.538843"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+  - discrimination
+
+tags:
+  - colors
+
+interaction:
+  medium: tablet_robot
+  input: magic_card
+  attention: look
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: magic_card_color_recognition_screen
+
+      title: Cartes magiques - Reconnaissance des couleurs (Écran)
+      subtitle: Cartes Bleu, Rouge, Orange, Jaune, Vert
+
+      short_description: |
+        Retrouver la couleur affichée sur l'écran de Leka avec la bonne carte.
+
+      description: |
+        Leka affiche une couleur sur son écran. La personne accompagnée doit choisir la carte magique
+        correspondant à cette couleur. Cette activité développe la reconnaissance visuelle
+        des couleurs.
+
+      instructions: |
+        - Regarder la couleur affichée sur l'écran de Leka.
+        - Apporter la carte de la même couleur sur le front de Leka.
+
+  - locale: en_US
+    details:
+      icon: magic_card_color_recognition_screen
+
+      title: Magic Cards - Screen Color Recognition
+      subtitle: Blue, Red, Orange, Yellow, Green Cards
+
+      short_description: |
+        Find the color displayed on Leka's screen with the correct card.
+
+      description: |
+        Leka displays a color on its screen. The care receiver must choose the magic card
+        corresponding to this color. This activity develops visual color recognition.
+
+      instructions: |
+        - Look at the color displayed on Leka's screen.
+        - Bring the card with the same color on Leka's forehead.
+payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardColorsBluePaint
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: color_green
+              - value: color_red
+              - value: color_orange
+              - value: color_yellow
+              - value: color_blue
+                is_right_answer: true
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardColorsRedPaint
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: color_green
+              - value: color_red
+                is_right_answer: true
+              - value: color_orange
+              - value: color_yellow
+              - value: color_blue
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardColorsOrangePaint
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: color_green
+              - value: color_red
+              - value: color_orange
+                is_right_answer: true
+              - value: color_yellow
+              - value: color_blue
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardColorsYellowPaint
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: color_green
+              - value: color_red
+              - value: color_orange
+              - value: color_yellow
+                is_right_answer: true
+              - value: color_blue
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardColorsGreenPaint
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: color_green
+                is_right_answer: true
+              - value: color_red
+              - value: color_orange
+              - value: color_yellow
+              - value: color_blue

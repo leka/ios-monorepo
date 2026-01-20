@@ -538,6 +538,20 @@
                             "type": "string"
                         }
                     }
+                },
+                "spots": {
+                    "properties": {
+                        "value": {
+                            "type": "float64"
+                        }
+                    }
+                },
+                "flash": {
+                    "properties": {
+                        "value": {
+                            "type": "float64"
+                        }
+                    }
                 }
             }
         },

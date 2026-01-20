@@ -1,0 +1,283 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 2.0.0
+
+uuid: 3A1F64691EC0478FB5FB52546F28963D
+name: magic_card_food_recognition
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2026-02-02T17:46:31.502229"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+  - discrimination
+
+tags:
+  - food
+  - fruits
+  - vegetables
+
+interaction:
+  medium: tablet_robot
+  input: magic_card
+  attention: look
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: magic_card_food_recognition
+
+      title: Cartes Magiques - Reconnaissance des Aliments
+      subtitle: Cartes Fruits et Légumes
+
+      short_description: |
+        Reconnaître les aliments affichés et choisir la carte magique correspondante.
+
+      description: |
+        Leka présente des fruits et des légumes. La personne accompagnée observe l'aliment affiché
+        et apporte la carte magique associée. Cette activité développe la reconnaissance
+        visuelle des aliments.
+
+      instructions: |
+        - Observer l'aliment affiché par Leka.
+        - Apporter la carte magique correspondante sur le front de Leka.
+
+  - locale: en_US
+    details:
+      icon: magic_card_food_recognition
+
+      title: Magic Cards - Food Recognition
+      subtitle: Fruits and Vegetables Cards
+
+      short_description: |
+        Recognize the displayed foods and choose the corresponding magic card.
+
+      description: |
+        Leka presents fruits and vegetables. The care receiver observes the displayed food
+        and brings the corresponding magic card. This activity develops visual recognition
+        of foods.
+
+      instructions: |
+        - Look at the food displayed by Leka.
+        - Bring the corresponding magic card on Leka's forehead.
+
+payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardVegetablePotatoYellow
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: vegetable_potato_yellow
+                is_right_answer: true
+              - value: vegetable_salad_green
+              - value: vegetable_mushroom_gray
+              - value: fruit_strawberry_red
+              - value: fruit_cherry_pink
+              - value: fruit_apple_green
+              - value: fruit_banana_yellow
+              - value: fruit_grapes_black
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardVegetableSaladGreen
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: vegetable_potato_yellow
+              - value: vegetable_salad_green
+                is_right_answer: true
+              - value: vegetable_mushroom_gray
+              - value: fruit_strawberry_red
+              - value: fruit_cherry_pink
+              - value: fruit_apple_green
+              - value: fruit_banana_yellow
+              - value: fruit_grapes_black
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardVegetableMushroomGrey
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: vegetable_potato_yellow
+              - value: vegetable_salad_green
+              - value: vegetable_mushroom_gray
+                is_right_answer: true
+              - value: fruit_strawberry_red
+              - value: fruit_cherry_pink
+              - value: fruit_apple_green
+              - value: fruit_banana_yellow
+              - value: fruit_grapes_black
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardFruitStrawberryRed
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: vegetable_potato_yellow
+              - value: vegetable_salad_green
+              - value: vegetable_mushroom_gray
+              - value: fruit_strawberry_red
+                is_right_answer: true
+              - value: fruit_cherry_pink
+              - value: fruit_apple_green
+              - value: fruit_banana_yellow
+              - value: fruit_grapes_black
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardFruitCherryPink
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: vegetable_potato_yellow
+              - value: vegetable_salad_green
+              - value: vegetable_mushroom_gray
+              - value: fruit_strawberry_red
+              - value: fruit_cherry_pink
+                is_right_answer: true
+              - value: fruit_apple_green
+              - value: fruit_banana_yellow
+              - value: fruit_grapes_black
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardFruitAppleGreen
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: vegetable_potato_yellow
+              - value: vegetable_salad_green
+              - value: vegetable_mushroom_gray
+              - value: fruit_strawberry_red
+              - value: fruit_cherry_pink
+              - value: fruit_apple_green
+                is_right_answer: true
+              - value: fruit_banana_yellow
+              - value: fruit_grapes_black
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardFruitBananaYellow
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: vegetable_potato_yellow
+              - value: vegetable_salad_green
+              - value: vegetable_mushroom_gray
+              - value: fruit_strawberry_red
+              - value: fruit_cherry_pink
+              - value: fruit_apple_green
+              - value: fruit_banana_yellow
+                is_right_answer: true
+              - value: fruit_grapes_black
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardFruitGrapesBlack
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: vegetable_potato_yellow
+              - value: vegetable_salad_green
+              - value: vegetable_mushroom_gray
+              - value: fruit_strawberry_red
+              - value: fruit_cherry_pink
+              - value: fruit_apple_green
+              - value: fruit_banana_yellow
+              - value: fruit_grapes_black
+                is_right_answer: true
