@@ -13,6 +13,8 @@ let project = Project.module(
         ModuleExample(
             name: "ContentKitExample",
             dependencies: [
+                .project(target: "LogKit", path: Path("../../Modules/LogKit")),
+
                 .external(name: "MarkdownUI"),
             ]
         ),
@@ -27,6 +29,7 @@ let project = Project.module(
         .project(target: "UtilsKit", path: Path("../../Modules/UtilsKit")),
 
         .external(name: "AudioKit"),
+        .external(name: "DeviceKit"),
         .external(name: "Fit"),
         .external(name: "Lottie"),
         .external(name: "MarkdownUI"),

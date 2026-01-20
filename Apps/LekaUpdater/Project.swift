@@ -51,5 +51,8 @@ let project = Project.app(
         .project(target: "RobotKit", path: Path("../../Modules/RobotKit")),
 
         .external(name: "Version"),
+    ],
+    testDependencies: [
+        .external(name: "Version"),
     ]
 )

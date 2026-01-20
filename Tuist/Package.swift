@@ -49,7 +49,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/airbnb/lottie-ios",
-            exact: "4.5.2"
+            exact: "4.6.0"
         ),
         .package(
             url: "https://github.com/gonzalezreal/swift-markdown-ui",
@@ -69,7 +69,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/apple/swift-log",
-            exact: "1.6.4"
+            exact: "1.9.1"
         ),
         .package(
             url: "https://github.com/mxcl/Version",
@@ -77,7 +77,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/firebase/firebase-ios-sdk",
-            exact: "12.4.0"
+            exact: "12.8.0"
         ),
         .package(
             url: "https://github.com/OlehKorchytskyi/Fit",
@@ -93,7 +93,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/SvenTiigi/YouTubePlayerKit",
-            exact: "2.0.3"
+            exact: "2.0.5"
         ),
     ]
 )

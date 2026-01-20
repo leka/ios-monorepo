@@ -10,13 +10,13 @@ on:
 
 jobs:
   cancel-workflows:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     permissions:
       actions: write
       pull-requests: read
     steps:
       - name: Cancel Running Workflows Based on Event
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const { owner, repo } = context.repo;

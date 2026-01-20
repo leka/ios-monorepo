@@ -5,6 +5,8 @@
 import Foundation
 import XCTest
 
+@testable import AccountKit
+
 final class AccountKit_Tests: XCTestCase {
     func test_twoPlusTwo_isFour() {
         XCTAssertEqual(2 + 2, 4)

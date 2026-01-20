@@ -25,7 +25,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 2
           lfs: true
@@ -39,7 +39,7 @@ jobs:
       - name: Set up mise
         uses: jdx/mise-action@v3
         with:
-          version: 2025.10.7
+          version: 2026.1.5
           install: true
           cache: true
 
@@ -56,7 +56,7 @@ jobs:
           pre-commit autoupdate
 
       - name: Cache pre-commit
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.cache/pre-commit
           key: pre-commit-${{ runner.os }}-${{ hashFiles('.pre-commit-config.yaml') }}
