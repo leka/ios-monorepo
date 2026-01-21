@@ -20,7 +20,8 @@ class NewSuperSimonViewViewModel {
 
     // MARK: Public
 
-    public var disableRobot: Bool = true
+    public var disableRobot: Bool = false
+    public var isPulsing: Bool = false
 
     // MARK: Internal
 
@@ -57,12 +58,15 @@ class NewSuperSimonViewViewModel {
                     case .showingColorSequence:
                         self.didTriggerAction = false
                         self.disableRobot = false
+                        self.isPulsing = true
                     case .playingColorSequence:
                         self.didTriggerAction = false
                         self.disableRobot = true
+                        self.isPulsing = false
                     case .waitingForUser:
                         self.didTriggerAction = true
                         self.disableRobot = false
+                        self.isPulsing = false
                 }
             }
             .store(in: &self.cancellables)
