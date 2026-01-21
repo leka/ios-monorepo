@@ -94,7 +94,8 @@ class NewSuperSimonCoordinator: ExerciseSharedDataProtocol {
     }
 
     func processUserSelection(choiceID: UUID) {
-        if let choice = self.currentColorSequence.first(where: { $0.id == choiceID }) {
+        if self.currentColorSequence[self.sequenceIndex].id == choiceID {
+            let choice = self.currentColorSequence[self.sequenceIndex]
             self.sequenceIndex += 1
 
             self.workItem?.cancel()
