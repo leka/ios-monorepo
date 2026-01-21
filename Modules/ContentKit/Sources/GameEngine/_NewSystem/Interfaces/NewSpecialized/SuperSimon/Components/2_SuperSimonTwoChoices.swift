@@ -6,12 +6,10 @@ import SwiftUI
 
 extension NewSuperSimonView {
     struct TwoChoicesView: View {
-        // MARK: Internal
-
         var viewModel: NewSuperSimonViewViewModel
 
         var body: some View {
-            HStack(spacing: self.kHorizontalSpacing) {
+            HStack {
                 ForEach(self.viewModel.choices) { choice in
                     Button {
                         self.viewModel.onTapped(choiceID: choice.id)
@@ -19,13 +17,10 @@ extension NewSuperSimonView {
                         choice.view
                     }
                     .disabled(choice.disabled)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             }
         }
-
-        // MARK: Private
-
-        private let kHorizontalSpacing: CGFloat = 150
     }
 }
 
