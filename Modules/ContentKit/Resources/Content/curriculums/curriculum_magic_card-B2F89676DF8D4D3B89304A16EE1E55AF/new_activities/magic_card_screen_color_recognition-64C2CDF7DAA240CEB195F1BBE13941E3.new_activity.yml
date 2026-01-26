@@ -16,13 +16,11 @@ authors:
   - leka
 
 skills:
-  - <Skill 1>
-  - <Skill 2>
-  - <Skill 3>
+  - recognition
+  - discrimination
 
 tags:
-  - <Tag 1>
-  - <Tag 2>
+  - colors
 
 interaction:
   medium: tablet_robot
@@ -39,37 +37,40 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: <nom de l'icone de l'activité>
+      icon: magic_cards_activities
 
-      title: <Titre de l'activité - FR>
-      subtitle: <Sous titre de l'activité - FR>
+      title: Couleurs à l'écran
+      subtitle: Reconnaissance des couleurs
 
       short_description: |
-        <Courte description de l'activité - FR>
+        Retrouver la couleur affichée sur l'écran de Leka avec la bonne carte.
 
       description: |
-        <Description de l'activité - FR>
+        Leka affiche une couleur sur son écran. Le participant doit choisir la carte magique
+        correspondant à cette couleur. Cette activité développe la reconnaissance visuelle
+        des couleurs.
 
       instructions: |
-        - <Instruction étape 1 - FR>
-        - <Instruction étape 2 - FR>
+        - Regarder la couleur affichée sur l'écran de Leka.
+        - Apporter la carte de la même couleur sur le front de Leka.
 
   - locale: en_US
     details:
-      icon: <nom de l'icone de l'activité>
+      icon: magic_cards_activities
 
-      title: <Titre de l'activité - EN>
-      subtitle: <Sous titre de l'activité - EN>
+      title: Screen colors
+      subtitle: Color recognition
 
       short_description: |
-        <Courte description de l'activité - EN>
+        Match the color shown on Leka's screen with the correct card.
 
       description: |
-        <Description de l'activité - EN>
+        Leka displays a color on its screen. The care receiver selects the magic card that
+        matches the color. This activity strengthens visual color recognition.
 
       instructions: |
-        - <Instruction étape 1 - EN>
-        - <Instruction étape 2 - EN>
+        - Look at the color shown on Leka's screen.
+        - Bring the matching color card to Leka's forehead.
 
 payload:
   options:

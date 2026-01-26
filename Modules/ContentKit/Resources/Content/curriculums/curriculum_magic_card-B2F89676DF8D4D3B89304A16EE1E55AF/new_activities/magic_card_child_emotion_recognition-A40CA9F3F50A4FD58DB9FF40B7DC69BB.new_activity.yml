@@ -16,13 +16,11 @@ authors:
   - leka
 
 skills:
-  - <Skill 1>
-  - <Skill 2>
-  - <Skill 3>
+  - emotion_recognition
+  - recognition
 
 tags:
-  - <Tag 1>
-  - <Tag 2>
+  - emotions
 
 interaction:
   medium: tablet_robot
@@ -39,37 +37,41 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: <nom de l'icone de l'activité>
+      icon: magic_cards_activities
 
-      title: <Titre de l'activité - FR>
-      subtitle: <Sous titre de l'activité - FR>
+      title: Émotions de l'enfant
+      subtitle: Reconnaissance des émotions
 
       short_description: |
-        <Courte description de l'activité - FR>
+        Associer l'émotion affichée par Leka à la carte de l'enfant correspondante.
 
       description: |
-        <Description de l'activité - FR>
+        Leka affiche une expression émotionnelle. Le participant doit identifier l'émotion
+        et apporter la carte magique représentant l'émotion d'un enfant. Cette activité
+        favorise la reconnaissance des émotions.
 
       instructions: |
-        - <Instruction étape 1 - FR>
-        - <Instruction étape 2 - FR>
+        - Observer l'expression affichée par Leka.
+        - Apporter la carte correspondant à l'émotion de l'enfant sur le front de Leka.
 
   - locale: en_US
     details:
-      icon: <nom de l'icone de l'activité>
+      icon: magic_cards_activities
 
-      title: <Titre de l'activité - EN>
-      subtitle: <Sous titre de l'activité - EN>
+      title: Child emotions
+      subtitle: Emotion recognition
 
       short_description: |
-        <Courte description de l'activité - EN>
+        Match the emotion shown by Leka with the child's emotion card.
 
       description: |
-        <Description de l'activité - EN>
+        Leka shows an emotional expression. The care receiver identifies the emotion and
+        brings the magic card that represents a child's emotion. This activity strengthens
+        emotion recognition.
 
       instructions: |
-        - <Instruction étape 1 - EN>
-        - <Instruction étape 2 - EN>
+        - Observe the expression shown by Leka.
+        - Bring the child's emotion card to Leka's forehead.
 
 payload:
   options:

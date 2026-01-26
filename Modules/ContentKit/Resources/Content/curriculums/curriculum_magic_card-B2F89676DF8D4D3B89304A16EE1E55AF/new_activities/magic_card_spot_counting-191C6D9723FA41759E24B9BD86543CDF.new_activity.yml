@@ -16,13 +16,11 @@ authors:
   - leka
 
 skills:
-  - <Skill 1>
-  - <Skill 2>
-  - <Skill 3>
+  - counting
+  - recognition
 
 tags:
-  - <Tag 1>
-  - <Tag 2>
+  - numbers
 
 interaction:
   medium: tablet_robot
@@ -39,37 +37,39 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: <nom de l'icone de l'activité>
+      icon: magic_cards_activities
 
-      title: <Titre de l'activité - FR>
-      subtitle: <Sous titre de l'activité - FR>
+      title: Compter les points
+      subtitle: Cartes 1 à 6
 
       short_description: |
-        <Courte description de l'activité - FR>
+        Compter les points affichés et choisir la carte magique correspondante.
 
       description: |
-        <Description de l'activité - FR>
+        Leka affiche des points sur son écran. Le participant compte les points
+        puis apporte la carte magique avec le bon nombre.
 
       instructions: |
-        - <Instruction étape 1 - FR>
-        - <Instruction étape 2 - FR>
+        - Compter les points affichés par Leka.
+        - Apporter la carte du nombre correspondant sur le front de Leka.
 
   - locale: en_US
     details:
-      icon: <nom de l'icone de l'activité>
+      icon: magic_cards_activities
 
-      title: <Titre de l'activité - EN>
-      subtitle: <Sous titre de l'activité - EN>
+      title: Count the dots
+      subtitle: Cards 1 to 6
 
       short_description: |
-        <Courte description de l'activité - EN>
+        Count the dots shown and choose the matching magic card.
 
       description: |
-        <Description de l'activité - EN>
+        Leka displays dots on its screen. The care receiver counts the dots
+        and brings the magic card with the correct number.
 
       instructions: |
-        - <Instruction étape 1 - EN>
-        - <Instruction étape 2 - EN>
+        - Count the dots shown by Leka.
+        - Bring the matching number card to Leka's forehead.
 
 payload:
   options:

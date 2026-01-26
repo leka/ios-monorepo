@@ -16,13 +16,11 @@ authors:
   - leka
 
 skills:
-  - <Skill 1>
-  - <Skill 2>
-  - <Skill 3>
+  - recognition
+  - discrimination
 
 tags:
-  - <Tag 1>
-  - <Tag 2>
+  - colors
 
 interaction:
   medium: tablet_robot
@@ -39,37 +37,40 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: <nom de l'icone de l'activité>
+      icon: magic_cards_activities
 
-      title: <Titre de l'activité - FR>
-      subtitle: <Sous titre de l'activité - FR>
+      title: Couleurs de la ceinture
+      subtitle: Reconnaissance des couleurs
 
       short_description: |
-        <Courte description de l'activité - FR>
+        Identifier la couleur affichée par Leka et choisir la carte correspondante.
 
       description: |
-        <Description de l'activité - FR>
+        Leka change la couleur de sa ceinture lumineuse. Le participant observe la couleur
+        et doit apporter la carte magique associée. Cette activité entraîne la reconnaissance
+        et la discrimination des couleurs.
 
       instructions: |
-        - <Instruction étape 1 - FR>
-        - <Instruction étape 2 - FR>
+        - Observer la couleur affichée par la ceinture de Leka.
+        - Apporter la carte de la même couleur sur le front de Leka.
 
   - locale: en_US
     details:
-      icon: <nom de l'icone de l'activité>
+      icon: magic_cards_activities
 
-      title: <Titre de l'activité - EN>
-      subtitle: <Sous titre de l'activité - EN>
+      title: Belt colors
+      subtitle: Color recognition
 
       short_description: |
-        <Courte description de l'activité - EN>
+        Identify the color shown by Leka and select the matching card.
 
       description: |
-        <Description de l'activité - EN>
+        Leka changes the color of its belt. The care receiver observes the color and brings
+        the corresponding magic card. This activity practices color recognition and discrimination.
 
       instructions: |
-        - <Instruction étape 1 - EN>
-        - <Instruction étape 2 - EN>
+        - Observe the color shown on Leka's belt.
+        - Bring the matching color card to Leka's forehead.
 
 payload:
   options:

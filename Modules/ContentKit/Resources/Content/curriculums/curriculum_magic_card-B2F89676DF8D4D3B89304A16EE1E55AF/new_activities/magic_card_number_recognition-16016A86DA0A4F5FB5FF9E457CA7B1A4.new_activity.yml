@@ -5,7 +5,7 @@
 version: 2.0.0
 
 uuid: 16016A86DA0A4F5FB5FF9E457CA7B1A4
-name: <Titre>
+name: magic_card_number_recognition
 
 created_at: "2024-06-17T17:38:12.804177"
 last_edited_at: "2026-01-19T22:41:15.645198"
@@ -16,13 +16,11 @@ authors:
   - leka
 
 skills:
-  - <Skill 1>
-  - <Skill 2>
-  - <Skill 3>
+  - recognition
+  - counting
 
 tags:
-  - <Tag 1>
-  - <Tag 2>
+  - numbers
 
 interaction:
   medium: tablet_robot
@@ -39,37 +37,39 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: <nom de l'icone de l'activité>
+      icon: magic_cards_activities
 
-      title: <Titre de l'activité - FR>
-      subtitle: <Sous titre de l'activité - FR>
+      title: Reconnaissance des nombres
+      subtitle: Cartes 1 à 6
 
       short_description: |
-        <Courte description de l'activité - FR>
+        Une activité pour reconnaître les nombres grâce aux cartes magiques.
 
       description: |
-        <Description de l'activité - FR>
+        Leka affiche un nombre et le participant doit identifier la carte magique correspondante.
+        Cette activité renforce la reconnaissance des nombres et l'association visuelle.
 
       instructions: |
-        - <Instruction étape 1 - FR>
-        - <Instruction étape 2 - FR>
+        - Observer le nombre affiché par Leka.
+        - Apporter la carte correspondante sur le front de Leka.
 
   - locale: en_US
     details:
-      icon: <nom de l'icone de l'activité>
+      icon: magic_cards_activities
 
-      title: <Titre de l'activité - EN>
-      subtitle: <Sous titre de l'activité - EN>
+      title: Number recognition
+      subtitle: Cards 1 to 6
 
       short_description: |
-        <Courte description de l'activité - EN>
+        An activity to recognize numbers using magic cards.
 
       description: |
-        <Description de l'activité - EN>
+        Leka displays a number and the care receiver selects the matching magic card.
+        This activity supports number recognition and visual association.
 
       instructions: |
-        - <Instruction étape 1 - EN>
-        - <Instruction étape 2 - EN>
+        - Observe the number displayed by Leka.
+        - Bring the matching card to Leka's forehead.
 
 payload:
   options:

@@ -15,12 +15,15 @@ authors:
 
 skills:
   - recognition
-  - sensory_integration
+  - counting
+  - emotion_recognition
 
 tags:
   - colors
   - numbers
   - emotions
+  - geometric_shapes
+  - food
 
 locales:
   - en_US
@@ -29,25 +32,31 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: letter_sounds_1
-      title: Sons des lettres 1
-      subtitle: A E I O U M
+      icon: magic_cards_activities
+      title: Cartes magiques
+      subtitle: Couleurs, formes, nombres et émotions
       abstract: |
-        Un parcours progressif pour apprendre à reconnaître les lettres de l’alphabet A E I O U M à travers des activités interactives.
+        Un parcours autour des cartes magiques pour reconnaître des couleurs, des formes, des nombres et des émotions.
 
       description: |
-        Ce parcours propose une série d’activités conçues pour aider le participant à associer le son des lettres à leur forme écrite. À l’aide d’instructions audio et d’illustrations visuelles, le participant est invité à écouter une lettre, puis à la retrouver sur l’écran. Une étape clé dans l’apprentissage de la lecture et de l’écriture.
+        Ce parcours propose une série d’activités interactives avec Leka et les cartes magiques.
+        Le participant observe ce que Leka affiche (couleurs, formes, nombres, émotions, aliments)
+        puis apporte la carte correspondante sur le front de Leka. Les activités renforcent la
+        reconnaissance visuelle, le comptage et l’identification des émotions.
 
   - locale: en_US
     details:
-      icon: letter_sounds_1
-      title: Letter Sounds 1
-      subtitle: A E I O U M
+      icon: magic_cards_activities
+      title: Magic cards
+      subtitle: Colors, shapes, numbers, and emotions
       abstract: |
-        A progressive curriculum to learn to recognize letters A E I O U M through engaging interactive activities.
+        A curriculum using magic cards to recognize colors, shapes, numbers, and emotions.
 
       description: |
-        This curriculum offers a set of activities designed to help the care receiver match the sound of each letter with its written form. With audio instructions and visual choices, participants are prompted to listen to a letter and identify it on the screen — a foundational skill for reading and writing.
+        This curriculum offers interactive activities with Leka and magic cards. The care receiver
+        observes what Leka shows (colors, shapes, numbers, emotions, foods) and brings the
+        matching card to Leka's forehead. The activities build visual recognition, counting,
+        and emotion identification skills.
 
 activities:
   - magic_card_number_recognition-16016A86DA0A4F5FB5FF9E457CA7B1A4

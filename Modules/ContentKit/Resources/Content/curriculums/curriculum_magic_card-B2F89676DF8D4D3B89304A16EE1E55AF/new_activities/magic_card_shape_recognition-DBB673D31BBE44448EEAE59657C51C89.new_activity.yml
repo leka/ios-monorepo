@@ -16,13 +16,11 @@ authors:
   - leka
 
 skills:
-  - <Skill 1>
-  - <Skill 2>
-  - <Skill 3>
+  - recognition
+  - discrimination
 
 tags:
-  - <Tag 1>
-  - <Tag 2>
+  - geometric_shapes
 
 interaction:
   medium: tablet_robot
@@ -39,37 +37,40 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: <nom de l'icone de l'activité>
+      icon: magic_cards_activities
 
-      title: <Titre de l'activité - FR>
-      subtitle: <Sous titre de l'activité - FR>
+      title: Reconnaissance des formes
+      subtitle: Carré, cercle, triangle, étoile
 
       short_description: |
-        <Courte description de l'activité - FR>
+        Associer la forme affichée par Leka à la bonne carte magique.
 
       description: |
-        <Description de l'activité - FR>
+        Leka affiche une forme géométrique. Le participant doit identifier la forme et
+        présenter la carte correspondante. L'activité renforce la reconnaissance et la
+        discrimination des formes.
 
       instructions: |
-        - <Instruction étape 1 - FR>
-        - <Instruction étape 2 - FR>
+        - Observer la forme affichée par Leka.
+        - Apporter la carte de la même forme sur le front de Leka.
 
   - locale: en_US
     details:
-      icon: <nom de l'icone de l'activité>
+      icon: magic_cards_activities
 
-      title: <Titre de l'activité - EN>
-      subtitle: <Sous titre de l'activité - EN>
+      title: Shape recognition
+      subtitle: Square, circle, triangle, star
 
       short_description: |
-        <Courte description de l'activité - EN>
+        Match the shape shown by Leka with the correct magic card.
 
       description: |
-        <Description de l'activité - EN>
+        Leka displays a geometric shape. The care receiver identifies the shape and presents
+        the matching card. This activity strengthens shape recognition and discrimination.
 
       instructions: |
-        - <Instruction étape 1 - EN>
-        - <Instruction étape 2 - EN>
+        - Observe the shape shown by Leka.
+        - Bring the matching shape card to Leka's forehead.
 
 payload:
   options:
