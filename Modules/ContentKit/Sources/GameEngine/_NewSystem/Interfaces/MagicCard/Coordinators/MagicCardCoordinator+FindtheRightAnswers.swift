@@ -11,8 +11,13 @@ import SwiftUI
 public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [MagicCardCoordinatorFindTheRightAnswersChoiceModel], action: NewExerciseAction? = nil) {
-        self.rawChoices = choices
+    public init(choices: [MagicCardCoordinatorFindTheRightAnswersChoiceModel],
+                action: NewExerciseAction? = nil,
+                options: NewExerciseOptions? = nil)
+    {
+        let options = options ?? NewExerciseOptions()
+
+        self.rawChoices = options.shuffleChoices ? choices.shuffled() : choices
 
         self.gameplay = NewGameplayFindTheRightAnswers(
             choices: choices
@@ -28,8 +33,11 @@ public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinat
         }
     }
 
-    public convenience init(model: MagicCardCoordinatorFindTheRightAnswersModel, action: NewExerciseAction? = nil) {
-        self.init(choices: model.choices, action: action)
+    public convenience init(model: MagicCardCoordinatorFindTheRightAnswersModel,
+                            action: NewExerciseAction? = nil,
+                            options: NewExerciseOptions? = nil)
+    {
+        self.init(choices: model.choices, action: action, options: options)
     }
 
     // MARK: Public
