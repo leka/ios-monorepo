@@ -24,6 +24,8 @@ import RobotKit
             .init(view: MagicCardCoordinatorFindTheRightAnswers.ChoiceView(card: MagicCard(name: "number_4"), size: 240, state: .wrong)),
             .init(view: MagicCardCoordinatorFindTheRightAnswers.ChoiceView(card: MagicCard(name: "number_5"), size: 240, state: .idle)),
             .init(view: MagicCardCoordinatorFindTheRightAnswers.ChoiceView(card: MagicCard(name: "number_6"), size: 240, state: .idle)),
+            .init(view: MagicCardCoordinatorFindTheRightAnswers.ChoiceView(card: MagicCard(name: "number_7"), size: 240, state: .idle)),
+            .init(view: MagicCardCoordinatorFindTheRightAnswers.ChoiceView(card: MagicCard(name: "number_8"), size: 240, state: .idle)),
         ]
 
         // MARK: Internal

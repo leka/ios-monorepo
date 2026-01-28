@@ -85,6 +85,18 @@ public struct MagicCardView: View {
                                 .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
                                 .allowsHitTesting(self.viewModel.didTriggerAction)
 
+                        case .sevenChoices:
+                            SevenChoicesView(viewModel: self.viewModel)
+                                .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                                .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                                .allowsHitTesting(self.viewModel.didTriggerAction)
+
+                        case .eightChoices:
+                            EightChoicesView(viewModel: self.viewModel)
+                                .colorMultiply(self.viewModel.didTriggerAction ? .white : .gray.opacity(0.4))
+                                .animation(.easeOut(duration: 0.3), value: self.viewModel.didTriggerAction)
+                                .allowsHitTesting(self.viewModel.didTriggerAction)
+
                         default:
                             ProgressView()
                     }
@@ -107,6 +119,8 @@ public struct MagicCardView: View {
         case fourChoices
         case fiveChoices
         case sixChoices
+        case sevenChoices
+        case eightChoices
     }
 
     // MARK: Private
