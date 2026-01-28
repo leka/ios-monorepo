@@ -47,6 +47,7 @@ public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinat
     public var didComplete: PassthroughSubject<ExerciseCompletionData?, Never> = .init()
 
     public func enableMagicCardDetection() {
+        self.robot.magicCard.send(.none)
         self.robot.magicCard
             .receive(on: DispatchQueue.main)
             .sink { [weak self] card in
