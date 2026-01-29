@@ -180,9 +180,9 @@ payload:
             choices:
               - value: 🧣
                 type: emoji
+                is_right_answer: true
               - value: 🏖️
                 type: emoji
-                is_right_answer: true
 
         - instructions:
             - locale: en_US
