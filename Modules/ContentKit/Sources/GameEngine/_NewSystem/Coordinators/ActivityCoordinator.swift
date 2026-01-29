@@ -12,16 +12,25 @@ public class ActivityCoordinator {
     // MARK: Lifecycle
 
     public init(payload: ActivityPayload) {
-        guard let firstExercise = payload.exerciseGroups.first?.group.first else {
+        guard payload.exerciseGroups.first?.group.first != nil else {
             logGEK.error("Failed to get first exercise from ActivityPayload: \(payload)")
             fatalError("Failed to get first exercise from ActivityPayload")
         }
 
         self.payload = payload
-        self.groups = payload.exerciseGroups
+        let shuffleOptions = payload.options
+        var exerciseGroups = payload.exerciseGroups
 
+        if shuffleOptions.shuffleExercises {
+            exerciseGroups = payload.exerciseGroups.map {
+                ExerciseGroup(group: $0.group.shuffled())
+            }
+        }
+
+        self.groups = shuffleOptions.shuffleGroups ? exerciseGroups.shuffled() : exerciseGroups
         self.groupSizeEnumeration = self.groups.map(\.group.count)
 
+        let firstExercise = self.groups[0].group[0]
         self.currentExercise = firstExercise
         self.currentExerciseCoordinator = CurrentExerciseCoordinator(exercise: firstExercise)
 
