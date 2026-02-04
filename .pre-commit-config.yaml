@@ -222,3 +222,13 @@ repos:
         files: .*\.story\.yml
         types: [yaml]
         pass_filenames: false
+
+      - id: update_lfs_assets_id
+        name: Update .lfs-assets-id for CI LFS caching
+        description: |
+          Regenerates .lfs-assets-id when LFS-tracked files change.
+          This file is used as a cache key for LFS objects in CI workflows.
+        entry: bash -c 'git lfs ls-files -l | cut -d" " -f1 | sort > .lfs-assets-id && git add .lfs-assets-id'
+        language: system
+        files: \.(png|jpg|jpeg|gif|svg|mp3|wav|mid|mp4|pdf|bin)$
+        pass_filenames: false
