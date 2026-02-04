@@ -233,6 +233,17 @@ repos:
         files: \.(png|jpg|jpeg|gif|svg|mp3|wav|mid|mp4|pdf|bin)$
         pass_filenames: true
 
+      - id: optimize_png
+        name: Optimize PNG images (resize to 400x400)
+        description: |
+          Resizes PNG images to 400x400 if larger.
+          Skips non-square images and images smaller than target.
+          Use --compress flag manually for additional compression.
+        entry: Tools/Hooks/optimize-png.rb
+        language: ruby
+        files: \.png$
+        pass_filenames: true
+
       - id: update_lfs_assets_id
         name: Update .lfs-assets-id for CI LFS caching
         description: |
