@@ -23,9 +23,9 @@ def main() -> int:
     if failed_files:
         print("The following binary files have the executable bit set:")
         for f in failed_files:
-            print(f"  - {f}")
-        print("\nTo fix, run:")
-        print(f"  chmod -x {' '.join(failed_files)}")
+            mode = os.stat(f).st_mode
+            os.chmod(f, mode & ~0o111)
+            print(f"  - {f} (fixed)")
         return 1
 
     return 0
