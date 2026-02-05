@@ -4,7 +4,7 @@
 ###############################################
 # Optimize PNG images: resize + lossless optimize
 #
-# 1. Resizes images: <=800px → 400x400, >800px → 800x800
+# 1. Resizes images: <800px → 400x400, >=800px → 800x800
 # 2. Lossless optimization with oxipng (strip metadata)
 # 3. Optionally lossy compression with pngquant (--lossy)
 #
@@ -27,7 +27,7 @@ require "fileutils"
 # Configuration
 TARGET_SIZE_SMALL = 400
 TARGET_SIZE_LARGE = 800
-TARGET_SIZE_THRESHOLD = 800 # dimensions > threshold → resize to LARGE, otherwise SMALL
+TARGET_SIZE_THRESHOLD = 800 # dimensions >= threshold → resize to LARGE, otherwise SMALL
 CROP_TOLERANCE = 10 # if within this many pixels of target, crop instead of resize
 ASPECT_RATIO_TOLERANCE = 0.05 # 5% tolerance (e.g., 401x400 is OK)
 OXIPNG_LEVEL = 2 # optimization level (0-6, default 2)
@@ -145,12 +145,12 @@ end
 
 def target_size_for(width, height)
   max_dim = [width, height].max
-  max_dim > TARGET_SIZE_THRESHOLD ? TARGET_SIZE_LARGE : TARGET_SIZE_SMALL
+  max_dim >= TARGET_SIZE_THRESHOLD ? TARGET_SIZE_LARGE : TARGET_SIZE_SMALL
 end
 
 # Print header
 puts "🚀 PNG Optimization Script"
-puts "   Target sizes: #{TARGET_SIZE_SMALL}x#{TARGET_SIZE_SMALL} (<=#{TARGET_SIZE_THRESHOLD}px) / #{TARGET_SIZE_LARGE}x#{TARGET_SIZE_LARGE} (>#{TARGET_SIZE_THRESHOLD}px)"
+puts "   Target sizes: #{TARGET_SIZE_SMALL}x#{TARGET_SIZE_SMALL} (<#{TARGET_SIZE_THRESHOLD}px) / #{TARGET_SIZE_LARGE}x#{TARGET_SIZE_LARGE} (>=#{TARGET_SIZE_THRESHOLD}px)"
 puts "   Aspect ratio tolerance: #{ASPECT_RATIO_TOLERANCE} (#{(ASPECT_RATIO_TOLERANCE * 100).round}%)" if options[:verbose]
 puts "   Mode: DRY RUN (no files will be modified)" if options[:dry_run]
 puts "   Optimization: oxipng (lossless, level #{OXIPNG_LEVEL}, strip metadata)"
