@@ -2,16 +2,17 @@
 # frozen_string_literal: true
 
 ###############################################
-# Optimize PNG images: resize (+ optional compress)
+# Optimize PNG images: resize + lossless optimize
 #
 # 1. Resizes images to TARGET_SIZE (default 400x400)
-# 2. Optionally compresses with pngquant (--compress)
+# 2. Lossless optimization with oxipng (strip metadata)
+# 3. Optionally lossy compression with pngquant (--lossy)
 #
 # Usage:
 #   ./optimize-png.rb <directory>           # Process all PNGs in directory
 #   ./optimize-png.rb <file1> <file2> ...   # Process specific files
 #   ./optimize-png.rb --dry-run <path>
-#   ./optimize-png.rb --compress <path>
+#   ./optimize-png.rb --lossy <path>
 #   ./optimize-png.rb --verbose <path>
 #   ./optimize-png.rb --warnings <path>
 #   ./optimize-png.rb --force <path>
@@ -25,7 +26,8 @@ require "fileutils"
 # Configuration
 TARGET_SIZE = 400
 ASPECT_RATIO_TOLERANCE = 0.05 # 5% tolerance (e.g., 401x400 is OK)
-QUALITY = "85-100"
+OXIPNG_LEVEL = 2 # optimization level (0-6, default 2)
+PNGQUANT_QUALITY = "85-100"
 
 # Parse command line options
 options = {
@@ -33,7 +35,7 @@ options = {
   verbose: false,
   warnings: false,
   force: false,
-  compress: false,
+  lossy: false,
 }
 
 parser = OptionParser.new do |opts|
@@ -57,8 +59,8 @@ parser = OptionParser.new do |opts|
     options[:warnings] = true
   end
 
-  opts.on("-c", "--compress", "Also compress with pngquant after resize") do
-    options[:compress] = true
+  opts.on("-l", "--lossy", "Also apply lossy compression with pngquant") do
+    options[:lossy] = true
   end
 
   opts.on("-h", "--help", "Show this help") do
@@ -80,7 +82,12 @@ unless system("which sips > /dev/null 2>&1")
   exit 1
 end
 
-if options[:compress] && !system("which pngquant > /dev/null 2>&1")
+unless system("which oxipng > /dev/null 2>&1")
+  puts "Error: oxipng not found. Install with: brew install oxipng"
+  exit 1
+end
+
+if options[:lossy] && !system("which pngquant > /dev/null 2>&1")
   puts "Error: pngquant not found. Install with: brew install pngquant"
   exit 1
 end
@@ -105,7 +112,11 @@ def resize_image(path, size)
   system("sips --resampleHeightWidth #{size} #{size} \"#{path}\" > /dev/null 2>&1")
 end
 
-def compress_image(path, quality)
+def optimize_image(path, level)
+  system("oxipng -o #{level} --strip safe -q \"#{path}\"")
+end
+
+def lossy_compress_image(path, quality)
   system("pngquant --quality=#{quality} --speed 1 --ext .png --force \"#{path}\" 2>/dev/null")
 end
 
@@ -119,7 +130,8 @@ puts "🚀 PNG Optimization Script"
 puts "   Target size: #{TARGET_SIZE}x#{TARGET_SIZE}"
 puts "   Aspect ratio tolerance: #{ASPECT_RATIO_TOLERANCE} (#{(ASPECT_RATIO_TOLERANCE * 100).round}%)" if options[:verbose]
 puts "   Mode: DRY RUN (no files will be modified)" if options[:dry_run]
-puts options[:compress] ? "   Compression: pngquant (quality #{QUALITY})" : "   Compression: OFF (use --compress to enable)"
+puts "   Optimization: oxipng (lossless, level #{OXIPNG_LEVEL}, strip metadata)"
+puts "   Lossy compression: pngquant (quality #{PNGQUANT_QUALITY})" if options[:lossy]
 puts "   Force non-square: YES" if options[:force]
 puts
 
@@ -174,9 +186,10 @@ files.each do |path|
     puts "✓  Already #{TARGET_SIZE}x#{TARGET_SIZE}: #{filename}" if options[:verbose]
     stats[:already_correct] += 1
 
-    # Compress if enabled
-    if options[:compress] && !options[:dry_run]
-      compress_image(path, QUALITY)
+    # Optimize even if already correct size
+    unless options[:dry_run]
+      optimize_image(path, OXIPNG_LEVEL)
+      lossy_compress_image(path, PNGQUANT_QUALITY) if options[:lossy]
     end
 
     stats[:total_final_kb] += file_size_kb(path)
@@ -221,18 +234,24 @@ files.each do |path|
     if resize_image(path, TARGET_SIZE)
       after_resize_kb = file_size_kb(path)
 
-      # Compress with pngquant if enabled
-      compress_image(path, QUALITY) if options[:compress]
+      # Lossless optimization
+      optimize_image(path, OXIPNG_LEVEL)
+      after_optimize_kb = file_size_kb(path)
+
+      # Lossy compression if enabled
+      if options[:lossy]
+        lossy_compress_image(path, PNGQUANT_QUALITY)
+      end
 
       final_kb = file_size_kb(path)
       stats[:total_final_kb] += final_kb
       saved = original_kb - final_kb
 
       puts "   → Resized to #{TARGET_SIZE}x#{TARGET_SIZE}"
-      if options[:compress]
-        puts "   → After resize: #{after_resize_kb} KB, after compress: #{final_kb} KB (saved #{saved} KB)"
+      if options[:lossy]
+        puts "   → Resize: #{after_resize_kb} KB → optimize: #{after_optimize_kb} KB → lossy: #{final_kb} KB (saved #{saved} KB)"
       else
-        puts "   → Final: #{final_kb} KB (saved #{saved} KB)"
+        puts "   → Resize: #{after_resize_kb} KB → optimize: #{final_kb} KB (saved #{saved} KB)"
       end
       stats[:resized] += 1
     else
