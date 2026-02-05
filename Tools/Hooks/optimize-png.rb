@@ -85,17 +85,12 @@ if ARGV.empty?
 end
 
 # Check dependencies
-unless system("which sips > /dev/null 2>&1")
-  puts "Error: sips not found (should be built into macOS)"
+unless system("which magick > /dev/null 2>&1")
+  puts "Error: magick not found. Install with: brew install imagemagick"
   exit 1
 end
 
 unless options[:list_non_square]
-  unless system("which magick > /dev/null 2>&1")
-    puts "Error: magick not found. Install with: brew install imagemagick"
-    exit 1
-  end
-
   unless system("which oxipng > /dev/null 2>&1")
     puts "Error: oxipng not found. Install with: brew install oxipng"
     exit 1
@@ -113,10 +108,11 @@ is_directory_mode = ARGV.length == 1 && Dir.exist?(ARGV[0])
 
 # Helper methods
 def get_dimensions(path)
-  output = `sips -g pixelWidth -g pixelHeight "#{path}" 2>/dev/null`
-  width = output[/pixelWidth:\s*(\d+)/, 1]&.to_i
-  height = output[/pixelHeight:\s*(\d+)/, 1]&.to_i
-  [width, height]
+  output = `magick identify -format "%w %h" "#{path}" 2>/dev/null`
+  parts = output.strip.split
+  return [nil, nil] if parts.length < 2
+
+  [parts[0].to_i, parts[1].to_i]
 end
 
 def file_size_kb(path)
