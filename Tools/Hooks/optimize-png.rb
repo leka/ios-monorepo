@@ -91,6 +91,11 @@ unless system("which sips > /dev/null 2>&1")
 end
 
 unless options[:list_non_square]
+  unless system("which magick > /dev/null 2>&1")
+    puts "Error: magick not found. Install with: brew install imagemagick"
+    exit 1
+  end
+
   unless system("which oxipng > /dev/null 2>&1")
     puts "Error: oxipng not found. Install with: brew install oxipng"
     exit 1
@@ -119,11 +124,11 @@ def file_size_kb(path)
 end
 
 def resize_image(path, size)
-  system("sips --resampleHeightWidth #{size} #{size} \"#{path}\" > /dev/null 2>&1")
+  system("magick \"#{path}\" -resize #{size}x#{size} \"#{path}\"")
 end
 
 def crop_image(path, size)
-  system("sips --cropToHeightWidth #{size} #{size} \"#{path}\" > /dev/null 2>&1")
+  system("magick \"#{path}\" -gravity center -crop #{size}x#{size}+0+0 +repage \"#{path}\"")
 end
 
 def should_crop?(width, height, target)
