@@ -16,6 +16,7 @@
 #   ./optimize-png.rb --verbose <path>
 #   ./optimize-png.rb --warnings <path>
 #   ./optimize-png.rb --force <path>
+#   ./optimize-png.rb --list-non-square <path>
 #
 # Images with non-square aspect ratios are skipped by default.
 ###############################################
@@ -63,6 +64,10 @@ parser = OptionParser.new do |opts|
     options[:lossy] = true
   end
 
+  opts.on("--list-non-square", "List images that are not 1:1 (or close) and exit") do
+    options[:list_non_square] = true
+  end
+
   opts.on("-h", "--help", "Show this help") do
     puts opts
     exit
@@ -82,14 +87,16 @@ unless system("which sips > /dev/null 2>&1")
   exit 1
 end
 
-unless system("which oxipng > /dev/null 2>&1")
-  puts "Error: oxipng not found. Install with: brew install oxipng"
-  exit 1
-end
+unless options[:list_non_square]
+  unless system("which oxipng > /dev/null 2>&1")
+    puts "Error: oxipng not found. Install with: brew install oxipng"
+    exit 1
+  end
 
-if options[:lossy] && !system("which pngquant > /dev/null 2>&1")
-  puts "Error: pngquant not found. Install with: brew install pngquant"
-  exit 1
+  if options[:lossy] && !system("which pngquant > /dev/null 2>&1")
+    puts "Error: pngquant not found. Install with: brew install pngquant"
+    exit 1
+  end
 end
 
 # Determine if input is a directory or file list
@@ -154,6 +161,32 @@ end
 
 puts "📦 Found #{files.length} PNG files"
 puts
+
+# --list-non-square mode: report and exit
+if options[:list_non_square]
+  non_square = []
+
+  files.each do |path|
+    width, height = get_dimensions(path)
+    next if width.nil? || height.nil?
+    next if is_nearly_square?(width, height, ASPECT_RATIO_TOLERANCE)
+
+    ratio = [width, height].max.to_f / [width, height].min
+    non_square << { path: path, width: width, height: height, ratio: ratio }
+  end
+
+  if non_square.empty?
+    puts "✅ All #{files.length} images have a 1:1 (or close) aspect ratio"
+  else
+    puts "⚠️  Found #{non_square.length} non-square image(s) (tolerance: #{(ASPECT_RATIO_TOLERANCE * 100).round}%):"
+    puts
+    non_square.each do |img|
+      puts "   #{img[:width]}x#{img[:height]} (ratio=#{img[:ratio].round(2)}) #{img[:path]}"
+    end
+  end
+
+  exit non_square.empty? ? 0 : 1
+end
 
 # Counters
 stats = {
