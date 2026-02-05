@@ -38,6 +38,8 @@ content:
         type: activity
       - value: super_simon-C6EABAC161CD44C290B32202DFDCDAF6
         type: curriculum
+      - value: curriculum_magic_card-B2F89676DF8D4D3B89304A16EE1E55AF
+        type: curriculum
 
   - component: vertical_activity_grid
     l10n:
@@ -59,4 +61,36 @@ content:
       - value: order_by_size_animals_squirrel-8D855D878B8F49E38F8EFCCBBF0B5E29
         type: activity
       - value: categorization_sort_through_categories_of_2_images-1B6F2B9A59A64317884FD3F6C446262C
+        type: activity
+
+  - component: vertical_activity_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Activités pour s'entraîner à la préhension
+          subtitle:
+          description: Les contenus cartes magiques permettent de travailler la préhension d'un objet et son positionnement sur un endroit précis.
+      - locale: en_US
+        details:
+          title: Activities to practice drag and drop on the tablet
+          subtitle:
+          description: Magic card content helps practice grasping objects and placing them in specific location.
+    items:
+      - value: magic_card_number_recognition-16016A86DA0A4F5FB5FF9E457CA7B1A4
+        type: activity
+      - value: magic_card_belt_color_recognition-D3E24B95730848329B122769B077E65C
+        type: activity
+      - value: magic_card_screen_color_recognition-64C2CDF7DAA240CEB195F1BBE13941E3
+        type: activity
+      - value: magic_card_leka_emotion_recognition-6BFDE930EBA7462AAC828D09843D7747
+        type: activity
+      - value: magic_card_child_emotion_recognition-A40CA9F3F50A4FD58DB9FF40B7DC69BB
+        type: activity
+      - value: magic_card_food_recognition-3A1F64691EC0478FB5FB52546F28963D
+        type: activity
+      - value: magic_card_shape_recognition-DBB673D31BBE44448EEAE59657C51C89
+        type: activity
+      - value: magic_card_flash_counting-F49E8F55AA7D4DA3A1216194C211236D
+        type: activity
+      - value: magic_card_spot_counting-191C6D9723FA41759E24B9BD86543CDF
         type: activity

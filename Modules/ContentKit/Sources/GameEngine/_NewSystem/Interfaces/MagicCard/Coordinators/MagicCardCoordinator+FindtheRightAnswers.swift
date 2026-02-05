@@ -11,8 +11,13 @@ import SwiftUI
 public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinatorProtocol {
     // MARK: Lifecycle
 
-    public init(choices: [MagicCardCoordinatorFindTheRightAnswersChoiceModel], action: NewExerciseAction? = nil) {
-        self.rawChoices = choices
+    public init(choices: [MagicCardCoordinatorFindTheRightAnswersChoiceModel],
+                action: NewExerciseAction? = nil,
+                options: NewExerciseOptions? = nil)
+    {
+        let options = options ?? NewExerciseOptions()
+
+        self.rawChoices = options.shuffleChoices ? choices.shuffled() : choices
 
         self.gameplay = NewGameplayFindTheRightAnswers(
             choices: choices
@@ -28,8 +33,11 @@ public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinat
         }
     }
 
-    public convenience init(model: MagicCardCoordinatorFindTheRightAnswersModel, action: NewExerciseAction? = nil) {
-        self.init(choices: model.choices, action: action)
+    public convenience init(model: MagicCardCoordinatorFindTheRightAnswersModel,
+                            action: NewExerciseAction? = nil,
+                            options: NewExerciseOptions? = nil)
+    {
+        self.init(choices: model.choices, action: action, options: options)
     }
 
     // MARK: Public
@@ -39,6 +47,7 @@ public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinat
     public var didComplete: PassthroughSubject<ExerciseCompletionData?, Never> = .init()
 
     public func enableMagicCardDetection() {
+        self.robot.magicCard.send(.none)
         self.robot.magicCard
             .receive(on: DispatchQueue.main)
             .sink { [weak self] card in
@@ -161,6 +170,8 @@ extension MagicCardCoordinatorFindTheRightAnswers: ExerciseEvaluationStrategy {
                     4: [1: 2, 2: 2, 3: 3, 4: 4],
                     5: [1: 2, 2: 3, 3: 3, 4: 4, 5: 5],
                     6: [1: 3, 2: 3, 3: 4, 4: 4, 5: 5, 6: 6],
+                    7: [1: 3, 2: 3, 3: 4, 4: 4, 5: 5, 6: 6, 7: 6],
+                    8: [1: 3, 2: 3, 3: 4, 4: 4, 5: 5, 6: 6, 7: 6, 8: 6],
                 ]
         }
     }

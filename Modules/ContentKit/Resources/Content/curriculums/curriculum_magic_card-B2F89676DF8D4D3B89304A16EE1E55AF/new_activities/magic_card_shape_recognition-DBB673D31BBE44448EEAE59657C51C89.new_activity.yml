@@ -1,0 +1,166 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 2.0.0
+
+uuid: DBB673D31BBE44448EEAE59657C51C89
+name: magic_card_shape_recognition
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2026-02-02T17:46:31.489413"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - recognition
+  - discrimination
+
+tags:
+  - geometric_shapes
+
+interaction:
+  medium: tablet_robot
+  input: magic_card
+  attention: look
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: magic_card_shape_recognition
+
+      title: Cartes magiques- Reconnaissance des formes
+      subtitle: Cartes Triangle, Carré, Cercle, Étoile
+
+      short_description: |
+        Associer la forme affichée par Leka à la bonne carte magique.
+
+      description: |
+        Leka affiche une forme géométrique. Le participant doit identifier la forme et
+        présenter la carte correspondante. L'activité renforce la reconnaissance et la
+        discrimination des formes.
+
+      instructions: |
+        - Observer la forme affichée par Leka.
+        - Apporter la carte de la même forme sur le front de Leka.
+
+
+  - locale: en_US
+    details:
+      icon: magic_card_shape_recognition
+
+      title: Magic Cards - Shape Recognition
+      subtitle: Triangle, Square, Circle, Star Cards
+
+      short_description: |
+        Associate the shape displayed by Leka with the correct magic card.
+
+      description: |
+        Leka displays a geometric shape. The participant must identify the shape and
+        present the corresponding card. The activity reinforces shape recognition and
+        discrimination.
+
+      instructions: |
+        - Observe the shape displayed by Leka.
+        - Bring the card with the same shape on Leka's forehead.
+
+payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardShapeTrianglePlainLine
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: shape_square
+              - value: shape_circle
+              - value: shape_triangle
+                is_right_answer: true
+              - value: shape_star
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardShapeSquarePlainLine
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: shape_square
+                is_right_answer: true
+              - value: shape_circle
+              - value: shape_triangle
+              - value: shape_star
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardShapeCirclePlainLine
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: shape_square
+              - value: shape_circle
+                is_right_answer: true
+              - value: shape_triangle
+              - value: shape_star
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: magicCardShapeStarPlainLine
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: shape_square
+              - value: shape_circle
+              - value: shape_triangle
+              - value: shape_star
+                is_right_answer: true

@@ -32,6 +32,8 @@ content:
           subtitle:
           description: Our most relevant picks, just for you.
     items:
+      - value: curriculum_magic_card-B2F89676DF8D4D3B89304A16EE1E55AF
+        type: curriculum
       - value: color_mediator-2CE6B5E98AFD45E0B2CD87727DB6D5C2
         type: activity
       - value: curriculum_recognition_family_members-AD1A9E2D874C47AEB3445D80E34DC702

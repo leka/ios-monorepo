@@ -219,7 +219,7 @@ def find_missing_activities(data):
     search_path = Path(CONTENTKIT_DIRECTORY)
 
     for activity in activity_list:
-        activity_filenmae = activity + ".activity.yml"
+        activity_filenmae = activity + ".new_activity.yml"
         matching_files = list(search_path.rglob(activity_filenmae))
         if not matching_files:
             missing_activities.append(activity)

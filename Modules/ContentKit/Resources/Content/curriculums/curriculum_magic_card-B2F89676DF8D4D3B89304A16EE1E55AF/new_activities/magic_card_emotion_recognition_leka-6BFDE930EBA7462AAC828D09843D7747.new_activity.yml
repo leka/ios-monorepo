@@ -1,0 +1,191 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 2.0.0
+
+uuid: 6BFDE930EBA7462AAC828D09843D7747
+name: magic_card_emotion_recognition_leka
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2026-02-02T17:46:31.550476"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - emotion_recognition
+  - recognition
+
+tags:
+  - emotions
+
+interaction:
+  medium: tablet_robot
+  input: magic_card
+  attention: look
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: magic_card_emotion_recognition_leka
+
+      title: Cartes Magiques - Reconnaissance des Émotions de Leka
+      subtitle: Cartes Émotions Leka
+
+      short_description: |
+        Identifier l'émotion de Leka et présenter la carte correspondante.
+
+      description: |
+        Leka affiche une émotion. La personne accompagnée identifie l'émotion
+        et apporte la carte magique représentant l'émotion de Leka. Cette activité
+        aide à reconnaître les émotions.
+
+      instructions: |
+        - Observer l'expression affichée par Leka.
+        - Apporter la carte de l'émotion de Leka sur le front de Leka.
+
+  - locale: en_US
+    details:
+      icon: magic_card_emotion_recognition_leka
+
+      title: Magic Cards - Emotion Recognition Leka
+      subtitle: Leka Emotion Cards
+
+      short_description: |
+        Identify Leka's emotion and present the corresponding card.
+
+      description: |
+        Leka displays an emotion. The care receiver identifies the emotion
+        and presents the magic card representing Leka's emotion. This activity
+        helps to recognize emotions.
+
+      instructions: |
+        - Observe the expression displayed by Leka.
+        - Bring the card of Leka's emotion on Leka's forehead.
+
+payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: robotFaceSadWithTears
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: emotion_sadness_leka
+                is_right_answer: true
+              - value: emotion_disgust_leka
+              - value: emotion_anger_leka
+              - value: emotion_joy_leka
+              - value: emotion_fear_leka
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: robotFaceDisgusted
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: emotion_sadness_leka
+              - value: emotion_disgust_leka
+                is_right_answer: true
+              - value: emotion_anger_leka
+              - value: emotion_joy_leka
+              - value: emotion_fear_leka
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: robotFaceAngry
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: emotion_sadness_leka
+              - value: emotion_disgust_leka
+              - value: emotion_anger_leka
+                is_right_answer: true
+              - value: emotion_joy_leka
+              - value: emotion_fear_leka
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: robotFaceHappy
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: emotion_sadness_leka
+              - value: emotion_disgust_leka
+              - value: emotion_anger_leka
+              - value: emotion_joy_leka
+                is_right_answer: true
+              - value: emotion_fear_leka
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: image
+              value: robotFaceAfraid
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: emotion_sadness_leka
+              - value: emotion_disgust_leka
+              - value: emotion_anger_leka
+              - value: emotion_joy_leka
+              - value: emotion_fear_leka
+                is_right_answer: true

@@ -1,0 +1,216 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 2.0.0
+
+uuid: 191C6D9723FA41759E24B9BD86543CDF
+name: magic_card_spot_counting
+
+created_at: "2024-06-17T17:38:12.804177"
+last_edited_at: "2026-02-02T17:46:31.494181"
+
+status: published
+
+authors:
+  - leka
+
+skills:
+  - counting
+  - recognition
+
+tags:
+  - numbers
+
+interaction:
+  medium: tablet_robot
+  input: magic_card
+  attention: look
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: magic_card_spot_counting
+
+      title: Cartes magiques - Comptage des points
+      subtitle: Cartes 1 à 6
+
+      short_description: |
+        Compter les points et choisir la carte magique correspondante.
+
+      description: |
+        Leka affiche des points lumineux autour de sa ceinture. Le participant compte les points
+        puis apporte la carte magique avec le bon nombre.
+
+      instructions: |
+        - Compter les points affichés tout autour de la ceinture de Leka.
+        - Apporter la carte du nombre correspondant sur le front de Leka.
+
+  - locale: en_US
+    details:
+      icon: magic_card_spot_counting
+
+      title: Magic Cards - Spot Counting
+      subtitle: 1 to 6 Cards
+
+      short_description: |
+        Count the spots and choose the corresponding magic card.
+
+      description: |
+        Leka displays glowing spots around its belt. The participant counts the spots
+        and then brings the magic card with the correct number.
+
+      instructions: |
+        - Count the spots displayed all around Leka's belt.
+        - Bring the card with the corresponding number on Leka's forehead.
+payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: spots
+              value: 1
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+                is_right_answer: true
+              - value: number_2
+              - value: number_3
+              - value: number_4
+              - value: number_5
+              - value: number_6
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: spots
+              value: 2
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+              - value: number_2
+                is_right_answer: true
+              - value: number_3
+              - value: number_4
+              - value: number_5
+              - value: number_6
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: spots
+              value: 3
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+              - value: number_2
+              - value: number_3
+                is_right_answer: true
+              - value: number_4
+              - value: number_5
+              - value: number_6
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: spots
+              value: 4
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+              - value: number_2
+              - value: number_3
+              - value: number_4
+                is_right_answer: true
+              - value: number_5
+              - value: number_6
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: spots
+              value: 5
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+              - value: number_2
+              - value: number_3
+              - value: number_4
+              - value: number_5
+                is_right_answer: true
+              - value: number_6
+        - instructions:
+            - locale: fr_FR
+              value: "Apporte la bonne carte sur le front de Leka"
+            - locale: en_US
+              value: "Bring the correct card on Leka's forehead"
+          interface: magicCards
+          gameplay: findTheRightAnswers
+          action:
+            type: robot
+            value:
+              type: spots
+              value: 6
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: number_1
+              - value: number_2
+              - value: number_3
+              - value: number_4
+              - value: number_5
+              - value: number_6
+                is_right_answer: true

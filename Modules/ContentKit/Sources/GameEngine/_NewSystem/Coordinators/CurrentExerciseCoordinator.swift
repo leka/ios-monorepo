@@ -268,7 +268,8 @@ public class CurrentExerciseCoordinator {
                                     let model = MagicCardCoordinatorFindTheRightAnswersModel(data: payload)
                                     let coordinator = MagicCardCoordinatorFindTheRightAnswers(
                                         model: model,
-                                        action: exercise.action
+                                        action: exercise.action,
+                                        options: self.exercise.options
                                     )
                                     let viewModel = MagicCardViewViewModel(coordinator: coordinator)
 

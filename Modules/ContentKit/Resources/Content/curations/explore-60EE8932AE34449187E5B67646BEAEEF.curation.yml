@@ -34,6 +34,8 @@ content:
     items:
       - value: robot_content-A56B4DD2C5CE4D44BEFA09BF66FBB734
         type: curation
+      - value: magic_card_content-E6AEC63DF38F467E9C9974931017E47A
+        type: curation
       - value: sensory_processing-5BB0578E7F54453687311F4858849A30
         type: curation
       - value: in_group-9D0EBC777B7843FFA19D08916793F06B
