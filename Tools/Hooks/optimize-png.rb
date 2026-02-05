@@ -28,6 +28,7 @@ require "fileutils"
 TARGET_SIZE_SMALL = 400
 TARGET_SIZE_LARGE = 800
 TARGET_SIZE_THRESHOLD = 800 # dimensions > threshold → resize to LARGE, otherwise SMALL
+CROP_TOLERANCE = 10 # if within this many pixels of target, crop instead of resize
 ASPECT_RATIO_TOLERANCE = 0.05 # 5% tolerance (e.g., 401x400 is OK)
 OXIPNG_LEVEL = 2 # optimization level (0-6, default 2)
 PNGQUANT_QUALITY = "85-100"
@@ -119,6 +120,14 @@ end
 
 def resize_image(path, size)
   system("sips --resampleHeightWidth #{size} #{size} \"#{path}\" > /dev/null 2>&1")
+end
+
+def crop_image(path, size)
+  system("sips --cropToHeightWidth #{size} #{size} \"#{path}\" > /dev/null 2>&1")
+end
+
+def should_crop?(width, height, target)
+  (width - target).abs <= CROP_TOLERANCE && (height - target).abs <= CROP_TOLERANCE
 end
 
 def optimize_image(path, level)
@@ -265,15 +274,20 @@ files.each do |path|
     end
   end
 
-  # Resize the image
-  puts "🔧 Resizing: #{filename}"
+  # Determine if we should crop or resize
+  use_crop = should_crop?(width, height, target)
+  action = use_crop ? "Cropping" : "Resizing"
+
+  puts "🔧 #{action}: #{filename}"
   puts "   Original: #{width}x#{height} (#{original_kb} KB)"
 
   if options[:dry_run]
-    puts "   → Would resize to #{target}x#{target}"
+    puts "   → Would #{use_crop ? "crop" : "resize"} to #{target}x#{target}"
     stats[:total_final_kb] += original_kb
   else
-    if resize_image(path, target)
+    success = use_crop ? crop_image(path, target) : resize_image(path, target)
+
+    if success
       after_resize_kb = file_size_kb(path)
 
       # Lossless optimization
@@ -289,15 +303,15 @@ files.each do |path|
       stats[:total_final_kb] += final_kb
       saved = original_kb - final_kb
 
-      puts "   → Resized to #{target}x#{target}"
+      puts "   → #{use_crop ? "Cropped" : "Resized"} to #{target}x#{target}"
       if options[:lossy]
-        puts "   → Resize: #{after_resize_kb} KB → optimize: #{after_optimize_kb} KB → lossy: #{final_kb} KB (saved #{saved} KB)"
+        puts "   → #{action}: #{after_resize_kb} KB → optimize: #{after_optimize_kb} KB → lossy: #{final_kb} KB (saved #{saved} KB)"
       else
-        puts "   → Resize: #{after_resize_kb} KB → optimize: #{final_kb} KB (saved #{saved} KB)"
+        puts "   → #{action}: #{after_resize_kb} KB → optimize: #{final_kb} KB (saved #{saved} KB)"
       end
       stats[:resized] += 1
     else
-      puts "   → ❌ Failed to resize"
+      puts "   → ❌ Failed to #{use_crop ? "crop" : "resize"}"
       stats[:failed] += 1
       stats[:total_final_kb] += original_kb
     end
