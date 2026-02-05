@@ -4,7 +4,7 @@
 ###############################################
 # Optimize PNG images: resize + lossless optimize
 #
-# 1. Resizes images: <=600px → 400x400, >600px → 800x800
+# 1. Resizes images: <=800px → 400x400, >800px → 800x800
 # 2. Lossless optimization with oxipng (strip metadata)
 # 3. Optionally lossy compression with pngquant (--lossy)
 #
@@ -27,7 +27,7 @@ require "fileutils"
 # Configuration
 TARGET_SIZE_SMALL = 400
 TARGET_SIZE_LARGE = 800
-TARGET_SIZE_THRESHOLD = 600 # dimensions > threshold → resize to LARGE, otherwise SMALL
+TARGET_SIZE_THRESHOLD = 800 # dimensions > threshold → resize to LARGE, otherwise SMALL
 ASPECT_RATIO_TOLERANCE = 0.05 # 5% tolerance (e.g., 401x400 is OK)
 OXIPNG_LEVEL = 2 # optimization level (0-6, default 2)
 PNGQUANT_QUALITY = "85-100"
