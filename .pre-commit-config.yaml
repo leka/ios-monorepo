@@ -234,11 +234,11 @@ repos:
         pass_filenames: true
 
       - id: optimize_png
-        name: Optimize PNG images (resize to 400x400)
+        name: Optimize PNG images (crop/resize to 400x400 or 800x800)
         description: |
-          Resizes PNG images to 400x400 if larger.
+          Crops or resizes PNG images to 400x400 (<800px) or 800x800 (>=800px).
           Skips non-square images and images smaller than target.
-          Use --compress flag manually for additional compression.
+          Use --lossy flag manually for additional compression.
         entry: Tools/Hooks/optimize-png.rb
         language: ruby
         files: \.png$
