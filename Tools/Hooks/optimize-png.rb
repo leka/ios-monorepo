@@ -4,7 +4,7 @@
 ###############################################
 # Optimize PNG images: resize + lossless optimize
 #
-# 1. Resizes images to TARGET_SIZE (default 400x400)
+# 1. Resizes images: <=600px → 400x400, >600px → 800x800
 # 2. Lossless optimization with oxipng (strip metadata)
 # 3. Optionally lossy compression with pngquant (--lossy)
 #
@@ -25,7 +25,9 @@ require "optparse"
 require "fileutils"
 
 # Configuration
-TARGET_SIZE = 400
+TARGET_SIZE_SMALL = 400
+TARGET_SIZE_LARGE = 800
+TARGET_SIZE_THRESHOLD = 600 # dimensions > threshold → resize to LARGE, otherwise SMALL
 ASPECT_RATIO_TOLERANCE = 0.05 # 5% tolerance (e.g., 401x400 is OK)
 OXIPNG_LEVEL = 2 # optimization level (0-6, default 2)
 PNGQUANT_QUALITY = "85-100"
@@ -132,9 +134,14 @@ def is_nearly_square?(width, height, tolerance)
   (ratio - 1).abs <= tolerance
 end
 
+def target_size_for(width, height)
+  max_dim = [width, height].max
+  max_dim > TARGET_SIZE_THRESHOLD ? TARGET_SIZE_LARGE : TARGET_SIZE_SMALL
+end
+
 # Print header
 puts "🚀 PNG Optimization Script"
-puts "   Target size: #{TARGET_SIZE}x#{TARGET_SIZE}"
+puts "   Target sizes: #{TARGET_SIZE_SMALL}x#{TARGET_SIZE_SMALL} (<=#{TARGET_SIZE_THRESHOLD}px) / #{TARGET_SIZE_LARGE}x#{TARGET_SIZE_LARGE} (>#{TARGET_SIZE_THRESHOLD}px)"
 puts "   Aspect ratio tolerance: #{ASPECT_RATIO_TOLERANCE} (#{(ASPECT_RATIO_TOLERANCE * 100).round}%)" if options[:verbose]
 puts "   Mode: DRY RUN (no files will be modified)" if options[:dry_run]
 puts "   Optimization: oxipng (lossless, level #{OXIPNG_LEVEL}, strip metadata)"
@@ -214,9 +221,11 @@ files.each do |path|
   original_kb = file_size_kb(path)
   stats[:total_original_kb] += original_kb
 
+  target = target_size_for(width, height)
+
   # Check if already correct size
-  if width == TARGET_SIZE && height == TARGET_SIZE
-    puts "✓  Already #{TARGET_SIZE}x#{TARGET_SIZE}: #{filename}" if options[:verbose]
+  if width == target && height == target
+    puts "✓  Already #{target}x#{target}: #{filename}" if options[:verbose]
     stats[:already_correct] += 1
 
     # Optimize even if already correct size
@@ -230,7 +239,7 @@ files.each do |path|
   end
 
   # Check if smaller than target (don't upscale)
-  if width < TARGET_SIZE && height < TARGET_SIZE
+  if width < target && height < target
     puts "⏭️  Smaller than target (#{width}x#{height}): #{filename}" if options[:verbose]
     stats[:skipped_smaller] += 1
     stats[:total_final_kb] += original_kb
@@ -261,10 +270,10 @@ files.each do |path|
   puts "   Original: #{width}x#{height} (#{original_kb} KB)"
 
   if options[:dry_run]
-    puts "   → Would resize to #{TARGET_SIZE}x#{TARGET_SIZE}"
+    puts "   → Would resize to #{target}x#{target}"
     stats[:total_final_kb] += original_kb
   else
-    if resize_image(path, TARGET_SIZE)
+    if resize_image(path, target)
       after_resize_kb = file_size_kb(path)
 
       # Lossless optimization
@@ -280,7 +289,7 @@ files.each do |path|
       stats[:total_final_kb] += final_kb
       saved = original_kb - final_kb
 
-      puts "   → Resized to #{TARGET_SIZE}x#{TARGET_SIZE}"
+      puts "   → Resized to #{target}x#{target}"
       if options[:lossy]
         puts "   → Resize: #{after_resize_kb} KB → optimize: #{after_optimize_kb} KB → lossy: #{final_kb} KB (saved #{saved} KB)"
       else
@@ -302,7 +311,7 @@ puts "━━━━━━━━━━━━━━━━━━━━━━━━�
 puts "📊 Summary:"
 puts "   Resized:              #{stats[:resized]}"
 puts "   Forced (non-square):  #{stats[:forced_non_square]}" if stats[:forced_non_square] > 0
-puts "   Already #{TARGET_SIZE}x#{TARGET_SIZE}: #{stats[:already_correct]}" if options[:verbose] || stats[:already_correct] > 0
+puts "   Already correct size: #{stats[:already_correct]}" if options[:verbose] || stats[:already_correct] > 0
 puts "   Skipped (non-square): #{stats[:skipped_non_square]}" if options[:verbose] || stats[:skipped_non_square] > 0
 puts "   Skipped (too small):  #{stats[:skipped_smaller]}" if options[:verbose] || stats[:skipped_smaller] > 0
 puts "   Failed:               #{stats[:failed]}" if stats[:failed] > 0
