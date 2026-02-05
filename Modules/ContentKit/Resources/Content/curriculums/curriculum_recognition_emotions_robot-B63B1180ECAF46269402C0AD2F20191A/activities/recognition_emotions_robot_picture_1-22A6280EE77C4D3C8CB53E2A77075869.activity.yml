@@ -159,7 +159,7 @@ exercises_payload:
             type: robot
             value:
               type: image
-              value: robotFaceSad
+              value: robotFaceSadWithTears
           payload:
             shuffle_choices: true
             choices:
