@@ -4,7 +4,7 @@
 ###############################################
 # Optimize PNG images: resize + lossless optimize
 #
-# 1. Resizes images: <800px → 400x400, >=800px → 800x800
+# 1. Resizes images: <800px → 400x400, >=800px → 800x800 (*.icon.png always → 400x400)
 # 2. Lossless optimization with oxipng (strip metadata)
 # 3. Optionally lossy compression with pngquant (--lossy)
 #
@@ -144,14 +144,20 @@ def is_nearly_square?(width, height, tolerance)
   (ratio - 1).abs <= tolerance
 end
 
-def target_size_for(width, height)
+def icon_file?(path)
+  File.basename(path).end_with?(".icon.png")
+end
+
+def target_size_for(width, height, path = nil)
+  return TARGET_SIZE_SMALL if path && icon_file?(path)
+
   max_dim = [width, height].max
   max_dim >= TARGET_SIZE_THRESHOLD ? TARGET_SIZE_LARGE : TARGET_SIZE_SMALL
 end
 
 # Print header
 puts "🚀 PNG Optimization Script"
-puts "   Target sizes: #{TARGET_SIZE_SMALL}x#{TARGET_SIZE_SMALL} (<#{TARGET_SIZE_THRESHOLD}px) / #{TARGET_SIZE_LARGE}x#{TARGET_SIZE_LARGE} (>=#{TARGET_SIZE_THRESHOLD}px)"
+puts "   Target sizes: #{TARGET_SIZE_SMALL}x#{TARGET_SIZE_SMALL} (<#{TARGET_SIZE_THRESHOLD}px) / #{TARGET_SIZE_LARGE}x#{TARGET_SIZE_LARGE} (>=#{TARGET_SIZE_THRESHOLD}px) / *.icon.png always #{TARGET_SIZE_SMALL}x#{TARGET_SIZE_SMALL}"
 puts "   Aspect ratio tolerance: #{ASPECT_RATIO_TOLERANCE} (#{(ASPECT_RATIO_TOLERANCE * 100).round}%)" if options[:verbose]
 puts "   Mode: DRY RUN (no files will be modified)" if options[:dry_run]
 puts "   Optimization: oxipng (lossless, level #{OXIPNG_LEVEL}, strip metadata)"
@@ -231,7 +237,7 @@ files.each do |path|
   original_kb = file_size_kb(path)
   stats[:total_original_kb] += original_kb
 
-  target = target_size_for(width, height)
+  target = target_size_for(width, height, path)
 
   # Check if already correct size
   if width == target && height == target
