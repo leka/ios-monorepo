@@ -170,11 +170,11 @@ if is_directory_mode
   search_dir = ARGV[0]
   puts "🔍 Searching in: #{search_dir}"
   puts
-  files = Dir.glob(File.join(search_dir, "**", "*.png")).sort
+  files = Dir.glob(File.join(search_dir, "**", "*.png")).reject { |f| f.include?(".xcassets/") }.sort
 else
   puts "🔍 Processing #{input_paths.length} file(s)"
   puts
-  files = input_paths.select { |f| f.end_with?(".png") && File.exist?(f) }
+  files = input_paths.select { |f| f.end_with?(".png") && File.exist?(f) }.reject { |f| f.include?(".xcassets/") }
 end
 
 if files.empty?
