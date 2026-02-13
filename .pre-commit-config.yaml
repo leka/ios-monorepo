@@ -223,6 +223,27 @@ repos:
         types: [yaml]
         pass_filenames: false
 
+      - id: check_binary_not_executable
+        name: Check binary files are not executable
+        description: |
+          This hook checks that binary files (images, audio, video, etc.)
+          do not have the executable bit set.
+        entry: python3 Tools/Hooks/check_binary_not_executable.py
+        language: python
+        files: \.(png|jpg|jpeg|gif|svg|mp3|wav|mid|mp4|pdf|bin)$
+        pass_filenames: true
+
+      - id: optimize_png
+        name: Optimize PNG images (crop/resize to 400x400 or 800x800)
+        description: |
+          Crops or resizes PNG images to 400x400 (<800px) or 800x800 (>=800px).
+          Skips non-square images and images smaller than target.
+          Use --lossy flag manually for additional compression.
+        entry: Tools/Hooks/optimize-png.rb
+        language: ruby
+        files: \.png$
+        pass_filenames: true
+
       - id: update_lfs_assets_id
         name: Update .lfs-assets-id for CI LFS caching
         description: |

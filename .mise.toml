@@ -1,4 +1,6 @@
 [tools]
+imagemagick = { version = "7.1.2-13", os = ["linux"] }
+oxipng = "10.1.0"
 ruby = "4.0.1"
 swiftformat = "0.58.7"
 swiftlint = "0.63.1"
