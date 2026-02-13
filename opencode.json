@@ -1,0 +1,22 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "formatter": {
+        "swiftformat": {
+            "command": [
+                "swiftformat",
+                "--config",
+                ".swiftformat",
+                "$FILE"
+            ],
+            "extensions": [
+                ".swift"
+            ]
+        }
+    },
+    "model": "anthropic/claude-sonnet-4-5",
+    "permission": {
+        "bash": "ask",
+        "edit": "ask",
+        "write": "ask"
+    }
+}
