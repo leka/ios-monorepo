@@ -32,9 +32,11 @@ public struct CurationItem: View {
             VStack {
                 if let icon = UIImage(named: "\(self.icon).skill.icon.png", in: .module, with: nil) {
                     Image(uiImage: icon)
+                        .renderingMode(.template)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 50, height: 50)
+                        .foregroundStyle(.white)
                 } else {
                     Image(systemName: self.icon)
                         .resizable()

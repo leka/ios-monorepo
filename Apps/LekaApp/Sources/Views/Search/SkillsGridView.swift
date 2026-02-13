@@ -36,9 +36,11 @@ public struct SkillsGridView: View {
 
                                 if let icon = skill.iconImage {
                                     Image(uiImage: icon)
+                                        .renderingMode(.template)
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: 50)
+                                        .foregroundStyle(.white)
                                 }
 
                                 Text(skill.name)
