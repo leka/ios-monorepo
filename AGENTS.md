@@ -154,3 +154,10 @@ bundle exec fastlane release target:LekaApp
 
 - Minimum iOS version is 17.4.
 - Destinations include iPad and Mac (Catalyst via iPad design).
+
+## Content System
+
+The educational content system is documented in detail in the hierarchical AGENTS.md file:
+- `Modules/ContentKit/Resources/Content/AGENTS.md` - Full content schema reference (activities, curriculums, stories, curations, definitions)
+
+This file is auto-loaded by oh-my-opencode when working on content files. It is also referenced in `opencode.json` instructions for global access.

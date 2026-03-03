@@ -13,6 +13,9 @@
             ]
         }
     },
+    "instructions": [
+        "Modules/ContentKit/Resources/Content/AGENTS.md"
+    ],
     "model": "anthropic/claude-sonnet-4-5",
     "permission": {
         "bash": "ask",
