@@ -86,7 +86,7 @@ Additionally, these name-mismatched references resolve by UUID but use inconsist
 ### Orphaned Activities
 
 > 298 published activities not directly referenced in any curation.
-> Full list in evidence file `.sisyphus/evidence/task-15-naming-orphans.md`.
+> See the `.sisyphus/evidence/` directory in the repo root for raw backing data.
 > Summary by topic group below.
 
 | Topic Group | Orphaned Count | Example |

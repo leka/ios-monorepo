@@ -206,7 +206,6 @@ The following pre-commit hooks and schemas were added or fixed during this QA cy
 
 | Report | Location | Contents |
 |--------|----------|----------|
-| Wave 1 — Structural | `qa-reports/wave-1-structural.md` | Full hook output, all structural findings with detail |
-| Wave 2 — Text Quality | `qa-reports/wave-2-text-quality.md` | All 89 text quality findings across 516 files |
-| Wave 3 — Integration | `qa-reports/wave-3-integration.md` | Directory naming audit + orphaned content detection |
-| Wave 1 existing validators | `qa-reports/wave-1-existing-validators.md` | Pre-existing hook baseline before QA cycle |
+| Wave 1 — Structural | `structural.md` | Full hook output, all structural findings with detail |
+| Wave 2 — Text Quality | `text-quality.md` | All 89 text quality findings across 516 files |
+| Wave 3 — Integration | `integration.md` | Directory naming audit + orphaned content detection |
