@@ -59,7 +59,7 @@
     },
     "definitions": {
         "$author": {
-            "enum": ["leka", "hanna_and_nagib"]
+            "enum": ["leka", "aurore_kiesler", "julie_tuil", "hanna_and_nagib"]
         },
         "$medium": {
             "enum": ["robot", "tablet", "magic_cards", "tablet_robot"]

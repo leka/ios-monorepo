@@ -60,7 +60,7 @@
             "enum": ["draft", "published", "template"]
         },
         "$author": {
-            "enum": ["leka", "aurore_kiesler", "julie_tuil"]
+            "enum": ["leka", "aurore_kiesler", "julie_tuil", "hanna_and_nagib"]
         },
         "$skill": {
             "type": "string"

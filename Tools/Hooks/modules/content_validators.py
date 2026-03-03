@@ -29,6 +29,9 @@ from modules.content import (
     is_uuid_valid,
     find_missing_skills,
     find_missing_tags,
+    find_missing_locales,
+    find_exercises_missing_locales,
+    find_actions_missing_locales,
     find_missing_icons,
     find_string_values_starting_with_newline,
     find_empty_string_values,
@@ -145,6 +148,31 @@ class ContentValidator(BaseYamlValidator):
             self.logger.error(f"\n❌ The following icons do not exist in {filename}")
             for icon in missing_icons:
                 self.logger.error(f"   - {icon}")
+
+        locale_completeness = find_missing_locales(content)
+        if locale_completeness["missing"]:
+            file_is_valid = False
+            self.logger.error(f"\n❌ CRITICAL Missing locales in l10n entries in {filename}")
+            for locale in locale_completeness["missing"]:
+                self.logger.error(f"   - {locale}")
+
+        if locale_completeness["extra"]:
+            file_is_valid = False
+            self.logger.error(f"\n❌ CRITICAL Extra locales in l10n entries in {filename}")
+            for locale in locale_completeness["extra"]:
+                self.logger.error(f"   - {locale}")
+
+        if exercises_missing_locales := find_exercises_missing_locales(content):
+            file_is_valid = False
+            self.logger.error(f"\n❌ CRITICAL Missing exercise instruction locales in {filename}")
+            for path, locale in exercises_missing_locales:
+                self.logger.error(f"   - {path}: {locale}")
+
+        if actions_missing_locales := find_actions_missing_locales(content):
+            file_is_valid = False
+            self.logger.error(f"\n❌ CRITICAL Missing action speech locales in {filename}")
+            for path, locale in actions_missing_locales:
+                self.logger.error(f"   - {path}: {locale}")
 
         # String validation
         if strings_with_newline := find_string_values_starting_with_newline(content):

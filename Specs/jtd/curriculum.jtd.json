@@ -48,7 +48,7 @@
     },
     "definitions": {
         "$author": {
-            "enum": ["leka", "aurore_kiesler", "julie_tuil"]
+            "enum": ["leka", "aurore_kiesler", "julie_tuil", "hanna_and_nagib"]
         },
         "$hmi": {
             "enum": ["robot", "tablet", "magic_cards", "tablet_robot"]
