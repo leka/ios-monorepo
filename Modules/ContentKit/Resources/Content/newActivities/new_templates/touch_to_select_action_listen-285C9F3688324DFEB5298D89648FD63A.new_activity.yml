@@ -8,7 +8,7 @@ uuid: 285C9F3688324DFEB5298D89648FD63A
 name: touch_to_select_action_listen
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-06-19T16:39:36.696279"
+last_edited_at: "2026-03-05T11:46:58.409131"
 
 status: template
 
@@ -75,7 +75,7 @@ payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Ecoute et suis les instructions
+              value: Écoute et suis les instructions
             - locale: en_US
               value: Listen and follow instructions
           interface: touchToSelect
@@ -107,7 +107,7 @@ payload:
 
         - instructions:
             - locale: fr_FR
-              value: Ecoute et choisis tous les bons éléments
+              value: Écoute et choisis tous les bons éléments
             - locale: en_US
               value: Listen and choose all the right items
           interface: touchToSelect

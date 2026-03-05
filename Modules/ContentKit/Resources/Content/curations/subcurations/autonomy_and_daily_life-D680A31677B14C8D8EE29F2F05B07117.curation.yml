@@ -23,7 +23,7 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Activités autours des objets du quotidien
+          title: Activités autour des objets du quotidien
           subtitle:
           description:
       - locale: en_US
@@ -53,7 +53,7 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Activités autours des routines
+          title: Activités autour des routines
           subtitle:
           description:
       - locale: en_US
@@ -75,7 +75,7 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Parcours autours du corps et des besoins
+          title: Parcours autour du corps et des besoins
           subtitle:
           description:
       - locale: en_US

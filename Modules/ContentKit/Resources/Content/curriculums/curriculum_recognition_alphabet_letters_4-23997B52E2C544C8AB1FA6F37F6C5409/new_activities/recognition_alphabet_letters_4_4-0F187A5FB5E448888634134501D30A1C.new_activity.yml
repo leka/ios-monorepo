@@ -8,7 +8,7 @@ uuid: 0F187A5FB5E448888634134501D30A1C
 name: recognition_alphabet_letters_4_4
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2025-05-28T10:38:03.332364"
+last_edited_at: "2026-03-05T11:46:58.507438"
 status: published
 
 authors:
@@ -40,7 +40,7 @@ l10n:
       icon: recognition_alphabet_letters_4
 
       title: Les lettres de l'alphabet
-      subtitle: G J F H Y  - 4 images
+      subtitle: G J F H Y - 4 images
 
       short_description: |
         Regarde l'image de gauche. Trouve la lettre correspondante à droite.
@@ -58,7 +58,7 @@ l10n:
       icon: recognition_alphabet_letters_4
 
       title: Alphabet Letters
-      subtitle: G J F H Y  - 4 images
+      subtitle: G J F H Y - 4 images
 
       short_description: |
         Look at the image on the left. Find the matching letter on the right.

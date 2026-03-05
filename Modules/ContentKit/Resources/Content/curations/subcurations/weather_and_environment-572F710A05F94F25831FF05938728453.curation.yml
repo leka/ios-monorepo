@@ -23,7 +23,7 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Activités autours de la météo
+          title: Activités autour de la météo
           subtitle:
           description:
       - locale: en_US
@@ -41,7 +41,7 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Activités autours des températures
+          title: Activités autour des températures
           subtitle:
           description:
       - locale: en_US
@@ -57,7 +57,7 @@ content:
     l10n:
       - locale: fr_FR
         details:
-          title: Activités autours du jour et de la nuit
+          title: Activités autour du jour et de la nuit
           subtitle:
           description:
       - locale: en_US
