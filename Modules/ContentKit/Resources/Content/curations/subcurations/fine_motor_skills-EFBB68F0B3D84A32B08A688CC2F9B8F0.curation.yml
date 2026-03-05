@@ -78,13 +78,13 @@ content:
     items:
       - value: magic_card_number_recognition-16016A86DA0A4F5FB5FF9E457CA7B1A4
         type: activity
-      - value: magic_card_belt_color_recognition-D3E24B95730848329B122769B077E65C
+      - value: magic_card_color_recognition_belt-D3E24B95730848329B122769B077E65C
         type: activity
-      - value: magic_card_screen_color_recognition-64C2CDF7DAA240CEB195F1BBE13941E3
+      - value: magic_card_color_recognition_screen-64C2CDF7DAA240CEB195F1BBE13941E3
         type: activity
-      - value: magic_card_leka_emotion_recognition-6BFDE930EBA7462AAC828D09843D7747
+      - value: magic_card_emotion_recognition_leka-6BFDE930EBA7462AAC828D09843D7747
         type: activity
-      - value: magic_card_child_emotion_recognition-A40CA9F3F50A4FD58DB9FF40B7DC69BB
+      - value: magic_card_emotion_recognition_child-A40CA9F3F50A4FD58DB9FF40B7DC69BB
         type: activity
       - value: magic_card_food_recognition-3A1F64691EC0478FB5FB52546F28963D
         type: activity

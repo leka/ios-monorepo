@@ -146,6 +146,17 @@ repos:
         types: [yaml]
         pass_filenames: true
 
+      - id: check_yaml_content_new_activities_unique_uuid
+        name: Check new_activity.yml files for unique uuid
+        description: |
+          This hook checks new_activity.yml files for unique uuid
+        entry: python3 Tools/Hooks/check_yaml_content_new_activities_unique_uuid.py
+        language: python
+        files: .*\.new_activity\.yml
+        types: [yaml]
+        pass_filenames: false
+        always_run: true
+
       # - id: check_yaml_content_activities
       #   name: Check activity.yml files
       #   description: |
@@ -201,6 +212,19 @@ repos:
         types: [yaml]
         pass_filenames: false
 
+      - id: check_yaml_content_curations
+        name: Check curation.yml files
+        description: |
+          This hook checks curation.yml files for:
+            - uuid and filename consistency
+            - jtd schema validation
+            - curation item reference integrity
+        entry: python3 Tools/Hooks/check_yaml_content_curations.py
+        language: python
+        additional_dependencies: ["ruamel.yaml"]
+        files: .*\.curation\.yml
+        types: [yaml]
+
       - id: check_yaml_content_stories
         name: Check story.yml files
         description: |
@@ -222,6 +246,18 @@ repos:
         files: .*\.story\.yml
         types: [yaml]
         pass_filenames: false
+
+      - id: check_yaml_content_cross_type_unique_uuid
+        name: Check content files for cross-type UUID collisions
+        description: |
+          This hook checks all content types (activities, curriculums, stories, curations)
+          for UUID collisions across different content types
+        entry: python3 Tools/Hooks/check_yaml_content_cross_type_unique_uuid.py
+        language: python
+        files: .*\.(new_activity|curriculum|story|curation)\.yml
+        types: [yaml]
+        pass_filenames: false
+        always_run: true
 
       - id: check_binary_not_executable
         name: Check binary files are not executable

@@ -8,7 +8,7 @@ uuid: B4D3D7825AB945C7AC9629AFBA2C4C2F
 name: recognition_alphabet_letters_3_2
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2025-05-28T10:38:03.325987"
+last_edited_at: "2026-03-05T11:46:58.266311"
 status: published
 
 authors:
@@ -40,7 +40,7 @@ l10n:
       icon: recognition_alphabet_letters_3
 
       title: Les lettres de l'alphabet
-      subtitle: D P B C V  - 2 images
+      subtitle: D P B C V - 2 images
 
       short_description: |
         Regarde l'image de gauche. Trouve la lettre correspondante à droite.
@@ -58,7 +58,7 @@ l10n:
       icon: recognition_alphabet_letters_3
 
       title: Alphabet Letters
-      subtitle: D P B C V  - 2 images
+      subtitle: D P B C V - 2 images
 
       short_description: |
         Look at the image on the left. Find the matching letter on the right.

@@ -1,0 +1,98 @@
+{
+    "properties": {
+        "uuid": {
+            "type": "string"
+        },
+        "icon": {
+            "type": "string"
+        },
+        "color": {
+            "type": "uint32"
+        },
+        "l10n": {
+            "elements": {
+                "ref": "$l10n"
+            }
+        },
+        "content": {
+            "elements": {
+                "ref": "$content_section"
+            }
+        }
+    },
+    "definitions": {
+        "$locale": {
+            "enum": ["en_US", "fr_FR"]
+        },
+        "$l10n": {
+            "properties": {
+                "locale": {
+                    "ref": "$locale"
+                },
+                "details": {
+                    "ref": "$l10n/details"
+                }
+            }
+        },
+        "$l10n/details": {
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "nullable": true
+                }
+            },
+            "optionalProperties": {
+                "subtitle": {
+                    "type": "string",
+                    "nullable": true
+                },
+                "description": {
+                    "type": "string",
+                    "nullable": true
+                }
+            }
+        },
+        "$component": {
+            "enum": [
+                "carousel",
+                "horizontal_curriculum_grid",
+                "horizontal_activity_grid",
+                "horizontal_curriculum_list",
+                "horizontal_activity_list",
+                "horizontal_curation_list",
+                "vertical_curriculum_grid",
+                "vertical_activity_grid",
+                "vertical_curation_grid"
+            ]
+        },
+        "$content_section": {
+            "properties": {
+                "component": {
+                    "ref": "$component"
+                },
+                "items": {
+                    "elements": {
+                        "ref": "$item"
+                    }
+                }
+            },
+            "optionalProperties": {
+                "l10n": {
+                    "elements": {
+                        "ref": "$l10n"
+                    }
+                }
+            }
+        },
+        "$item": {
+            "properties": {
+                "value": {
+                    "type": "string"
+                },
+                "type": {
+                    "enum": ["curriculum", "activity", "curation", "story"]
+                }
+            }
+        }
+    }
+}

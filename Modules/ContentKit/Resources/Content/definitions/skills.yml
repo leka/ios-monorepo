@@ -348,7 +348,7 @@ list:
                 sha: aec6
                 l10n:
                   - locale: en_US
-                    name: Written comprehension (reading)
+                    name: Written expression (writing)
                     description: >
                       Writing words to express oneself.
                   - locale: fr_FR

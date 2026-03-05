@@ -8,7 +8,7 @@ uuid: 0123456789ABCDEF0123456789ABCDEF # {{💡TO_DEFINE}}
 name: activity_template # {{💡TO_DEFINE}}
 
 created_at: "2024-02-28T14:49:32.973012"
-last_edited_at: "2025-10-14T15:21:36.797682"
+last_edited_at: "2026-03-05T11:46:58.567730"
 
 status: template
 
@@ -101,7 +101,7 @@ payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touch le rond jaune
+              value: Touche le rond jaune
             - locale: en_US
               value: Touch the yellow circle
           interface: touchToSelect
@@ -123,7 +123,7 @@ payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Touch la pastèque
+              value: Touche la pastèque
             - locale: en_US
               value: Touch the watermelon
           interface: touchToSelect
@@ -144,7 +144,7 @@ payload:
 
         - instructions:
             - locale: fr_FR
-              value: Touch le carré
+              value: Touche le carré
             - locale: en_US
               value: Touch the square
           interface: touchToSelect

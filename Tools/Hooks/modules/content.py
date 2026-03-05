@@ -125,6 +125,99 @@ def find_missing_tags(tags):
     return missing_tags
 
 
+def find_missing_locales(content):
+    """Check if locales and l10n locale entries match"""
+    declared_locales = content.get("locales", [])
+    l10n_entries = content.get("l10n", [])
+
+    l10n_locales = []
+    for l10n_entry in l10n_entries:
+        if isinstance(l10n_entry, dict) and "locale" in l10n_entry:
+            l10n_locales.append(l10n_entry["locale"])
+
+    missing_locales = []
+    for locale in declared_locales:
+        if locale not in l10n_locales:
+            missing_locales.append(locale)
+
+    extra_locales = []
+    for locale in l10n_locales:
+        if locale not in declared_locales:
+            extra_locales.append(locale)
+
+    return {"missing": missing_locales, "extra": extra_locales}
+
+
+def find_exercises_missing_locales(content):
+    """Find missing locales in exercise instructions arrays"""
+    declared_locales = content.get("locales", [])
+    missing_locales = []
+
+    def recursive_search(data, path=None):
+        if path is None:
+            path = []
+
+        if isinstance(data, dict):
+            for key, value in data.items():
+                current_path = path + [key]
+                if key == "instructions" and isinstance(value, list):
+                    instruction_locales = []
+                    for instruction in value:
+                        if isinstance(instruction, dict) and "locale" in instruction:
+                            instruction_locales.append(instruction["locale"])
+
+                    for locale in declared_locales:
+                        if locale not in instruction_locales:
+                            missing_locales.append(("/".join(map(str, current_path)), locale))
+
+                recursive_search(value, current_path)
+
+        elif isinstance(data, list):
+            for index, item in enumerate(data):
+                recursive_search(item, path + [index])
+
+    recursive_search(content)
+    return missing_locales
+
+
+def find_actions_missing_locales(content):
+    """Find missing locales in iPad speech action utterance arrays"""
+    declared_locales = content.get("locales", [])
+    missing_locales = []
+
+    def recursive_search(data, path=None):
+        if path is None:
+            path = []
+
+        if isinstance(data, dict):
+            if (
+                data.get("type") == "ipad"
+                and isinstance(data.get("value"), dict)
+                and data["value"].get("type") == "speech"
+                and isinstance(data["value"].get("value"), list)
+            ):
+                speech_entries = data["value"]["value"]
+                speech_locales = []
+                for speech_entry in speech_entries:
+                    if isinstance(speech_entry, dict) and "locale" in speech_entry:
+                        speech_locales.append(speech_entry["locale"])
+
+                speech_path = "/".join(map(str, path + ["value", "value"]))
+                for locale in declared_locales:
+                    if locale not in speech_locales:
+                        missing_locales.append((speech_path, locale))
+
+            for key, value in data.items():
+                recursive_search(value, path + [key])
+
+        elif isinstance(data, list):
+            for index, item in enumerate(data):
+                recursive_search(item, path + [index])
+
+    recursive_search(content)
+    return missing_locales
+
+
 def find_icon(icon):
     """Find the icon file"""
     start_path = Path(CONTENTKIT_DIRECTORY)
@@ -153,10 +246,12 @@ def find_missing_icons(data: str, of_type: str):
     for icon in icons:
         if of_type == "activity" or of_type == "new_activity":
             icon_name = icon + ".activity"
-        if of_type == "curriculum":
+        elif of_type == "curriculum":
             icon_name = icon + ".curriculum"
-        if of_type == "story":
+        elif of_type == "story":
             icon_name = icon + ".story"
+        else:
+            continue
         if find_icon(icon_name) is None:
             missing_icons.append(icon)
 
@@ -228,7 +323,7 @@ def find_missing_activities(data):
 
 
 def find_missing_exercise_assets(
-    data: Union[Dict, List], assets_directory: str = CONTENTKIT_DIRECTORY
+    data: Union[Dict[str, Any], List[Any]], assets_directory: str = CONTENTKIT_DIRECTORY
 ) -> List[Dict[str, Any]]:
     """
     Recursively searches through a nested data structure of lists and dictionaries
@@ -361,23 +456,36 @@ def find_unreferenced_activities(data: Dict[str, Any], curriculum_file_path: str
 
     # Get the curriculum directory path
     curriculum_dir = Path(curriculum_file_path).parent
-    activities_dir = curriculum_dir / "activities"
 
-    # If activities directory doesn't exist, no unreferenced activities
-    if not activities_dir.exists():
-        return []
-
-    # Find all .activity.yml files in the activities directory
-    activity_files = list(activities_dir.glob("*.activity.yml"))
-
-    # Extract activity names from filenames (format: name-UUID.activity.yml -> name-UUID)
     found_activity_names = []
-    for activity_file in activity_files:
-        filename = activity_file.name
-        if filename.endswith(".activity.yml"):
-            # Remove .activity.yml extension to get the full activity name
-            activity_name = filename.replace(".activity.yml", "")
-            found_activity_names.append(activity_name)
+
+    # Check v1 activities directory (deprecated but may still exist during migration)
+    activities_dir = curriculum_dir / "activities"
+    if activities_dir.exists():
+        # Find all .activity.yml files in the activities directory
+        activity_files = list(activities_dir.glob("*.activity.yml"))
+
+        # Extract activity names from filenames (format: name-UUID.activity.yml -> name-UUID)
+        for activity_file in activity_files:
+            filename = activity_file.name
+            if filename.endswith(".activity.yml"):
+                # Remove .activity.yml extension to get the full activity name
+                activity_name = filename.replace(".activity.yml", "")
+                found_activity_names.append(activity_name)
+
+    # Check v2 activities directory (new format)
+    new_activities_dir = curriculum_dir / "new_activities"
+    if new_activities_dir.exists():
+        # Find all .new_activity.yml files in the new_activities directory
+        activity_files = list(new_activities_dir.glob("*.new_activity.yml"))
+
+        # Extract activity names from filenames (format: name-UUID.new_activity.yml -> name-UUID)
+        for activity_file in activity_files:
+            filename = activity_file.name
+            if filename.endswith(".new_activity.yml"):
+                # Remove .new_activity.yml extension to get the full activity name
+                activity_name = filename.replace(".new_activity.yml", "")
+                found_activity_names.append(activity_name)
 
     # Find activities that exist in directory but are not referenced in curriculum
     unreferenced_activities = []
