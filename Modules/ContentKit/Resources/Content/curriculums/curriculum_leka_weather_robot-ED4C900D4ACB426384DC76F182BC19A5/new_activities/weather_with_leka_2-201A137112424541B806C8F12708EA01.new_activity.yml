@@ -5,10 +5,13 @@
 version: 2.0.0
 uuid: 201A137112424541B806C8F12708EA01
 created_at: "2025-02-19T14:27:22.101000"
-last_edited_at: "2026-01-29T17:50:09.955653"
+last_edited_at: "2026-03-12T11:05:42.163016"
 name: weather_with_leka_2
 status: published
-
+launch_requirements:
+  robot:
+    connection: true
+    minimum_firmware: "2.0"
 authors:
   - leka
 

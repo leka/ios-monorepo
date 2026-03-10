@@ -8,9 +8,12 @@ uuid: B39DDA35800849F7A40F651E411D30CD
 name: super_simon_4_colors
 
 created_at: "2024-03-04T18:07:12.518998"
-last_edited_at: "2024-07-12T12:48:14.936637"
+last_edited_at: "2026-03-12T11:05:42.053824"
 status: published
-
+launch_requirements:
+  robot:
+    connection: true
+    minimum_firmware: "1.2"
 authors:
   - leka
 

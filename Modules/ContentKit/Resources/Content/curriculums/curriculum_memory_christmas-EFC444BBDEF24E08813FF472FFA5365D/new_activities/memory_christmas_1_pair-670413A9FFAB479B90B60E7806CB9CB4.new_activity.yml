@@ -8,10 +8,13 @@ uuid: 670413A9FFAB479B90B60E7806CB9CB4
 name: memory_christmas_1_pair
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-12-03T10:38:25.159050"
+last_edited_at: "2026-03-12T11:05:42.053824"
 
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

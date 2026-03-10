@@ -8,9 +8,12 @@ uuid: 7DBFAB2704EF4C0086BEC36BE0BC295E
 name: recognition_emotions_drawings_4_oscar
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2025-07-30T19:04:50.023752"
+last_edited_at: "2026-03-12T11:05:42.480893"
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

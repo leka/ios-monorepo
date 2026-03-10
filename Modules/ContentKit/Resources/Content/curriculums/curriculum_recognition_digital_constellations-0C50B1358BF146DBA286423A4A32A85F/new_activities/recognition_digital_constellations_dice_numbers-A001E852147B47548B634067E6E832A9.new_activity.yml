@@ -8,9 +8,12 @@ uuid: A001E852147B47548B634067E6E832A9
 name: recognition_digital_constellations_dice_numbers
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-09-27T15:25:22.747324"
+last_edited_at: "2026-03-12T11:05:42.055131"
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

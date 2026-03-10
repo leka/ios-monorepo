@@ -8,9 +8,12 @@ uuid: F0F6C98DA212464387B00DDD298D882A
 name: recognition_emotions_drawings_4_all_characters
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2025-07-30T19:04:49.198186"
+last_edited_at: "2026-03-12T11:05:42.338316"
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

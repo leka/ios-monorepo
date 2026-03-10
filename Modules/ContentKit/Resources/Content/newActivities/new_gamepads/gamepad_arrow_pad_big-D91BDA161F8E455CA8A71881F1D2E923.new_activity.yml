@@ -8,9 +8,12 @@ uuid: D91BDA161F8E455CA8A71881F1D2E923
 name: gamepad_arrow_pad_big
 
 created_at: "2024-03-04T18:07:12.518998"
-last_edited_at: "2024-09-27T00:29:50.410579"
+last_edited_at: "2026-03-12T11:05:42.286724"
 status: published
-
+launch_requirements:
+  robot:
+    connection: true
+    minimum_firmware: "1.2"
 authors:
   - leka
 

@@ -8,9 +8,12 @@ uuid: 6A2E053D6A1D49DB8636421A50458B6F
 name: recognition_emotions_drawings_4_hugo_louna_moussa_oscar_zoe
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2025-07-30T19:04:50.023752"
+last_edited_at: "2026-03-12T11:05:42.334308"
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

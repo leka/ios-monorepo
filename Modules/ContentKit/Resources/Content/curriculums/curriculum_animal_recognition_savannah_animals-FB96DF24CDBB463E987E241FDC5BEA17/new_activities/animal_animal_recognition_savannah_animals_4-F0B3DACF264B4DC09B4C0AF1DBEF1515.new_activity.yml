@@ -8,10 +8,13 @@ uuid: F0B3DACF264B4DC09B4C0AF1DBEF1515
 name: animal_animal_recognition_savannah_animals_4
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-09-09T15:43:45.830601"
+last_edited_at: "2026-03-12T11:05:42.472344"
 
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

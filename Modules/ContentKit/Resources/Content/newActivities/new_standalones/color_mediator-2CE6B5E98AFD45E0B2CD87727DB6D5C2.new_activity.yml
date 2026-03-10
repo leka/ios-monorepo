@@ -7,9 +7,12 @@ uuid: 2CE6B5E98AFD45E0B2CD87727DB6D5C2
 name: color_mediator
 
 created_at: "2024-03-01T14:00:38.160396"
-last_edited_at: "2025-02-25T17:24:54.289606"
+last_edited_at: "2026-03-12T11:05:42.508240"
 status: published
-
+launch_requirements:
+  robot:
+    connection: true
+    minimum_firmware: "1.2"
 authors:
   - leka
 

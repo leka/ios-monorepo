@@ -8,9 +8,12 @@ uuid: 26E096665BE041E8BB10003D3FE08BF2
 name: recognition_emotions_generalization_4_images_3_types
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2025-07-30T19:04:48.803589"
+last_edited_at: "2026-03-12T11:05:42.256217"
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

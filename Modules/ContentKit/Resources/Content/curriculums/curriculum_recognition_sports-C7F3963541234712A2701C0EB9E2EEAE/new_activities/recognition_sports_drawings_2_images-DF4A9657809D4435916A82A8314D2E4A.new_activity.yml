@@ -8,9 +8,12 @@ uuid: DF4A9657809D4435916A82A8314D2E4A
 name: recognition_sports_drawings_2_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-09-27T15:25:22.769603"
+last_edited_at: "2026-03-12T11:05:42.350176"
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

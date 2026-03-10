@@ -8,9 +8,12 @@ uuid: 18DA1F9028CF447E819507B0A6562F2E
 name: recognition_weather_and_time_hot_and_cold
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2025-02-18T10:08:51.543929"
+last_edited_at: "2026-03-12T11:05:42.388210"
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 
@@ -42,7 +45,7 @@ l10n:
       icon: recognition_weather_and_temperatures_3
 
       title: Les températures chaudes et froides
-      subtitle:
+      subtitle: null
 
       short_description: |
         Observe l'image à gauche. Fait-il chaud ou froid ?
@@ -60,7 +63,7 @@ l10n:
       icon: recognition_weather_and_temperatures_3
 
       title: Hot and cold temperatures
-      subtitle:
+      subtitle: null
 
       short_description: |
         Look at the image on the left. Is it hot or cold?

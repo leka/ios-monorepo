@@ -8,9 +8,12 @@ uuid: 57A753B7CB794183AD2CD8D3CA4909A5
 name: recognition_body_parts_6
 
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-09-27T13:03:45.369041"
+last_edited_at: "2026-03-12T11:05:42.407929"
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

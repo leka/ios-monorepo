@@ -8,9 +8,12 @@ uuid: A9F2CF9ADC744E02BE09B953E06DCAF8
 name: recognition_sounds_emotions_pictures_2_ladislas_lucie
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2025-07-30T19:04:50.024001"
+last_edited_at: "2026-03-12T11:05:42.508240"
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

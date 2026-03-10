@@ -8,9 +8,12 @@ uuid: E742B4AF67204DA68C08ADEC6126648E
 name: color_bingo_3
 
 created_at: "2024-03-04T18:07:12.518998"
-last_edited_at: "2024-07-12T12:48:14.948500"
+last_edited_at: "2026-03-12T11:05:42.396196"
 status: published
-
+launch_requirements:
+  robot:
+    connection: true
+    minimum_firmware: "1.2"
 authors:
   - leka
 

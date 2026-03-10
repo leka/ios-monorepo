@@ -8,9 +8,12 @@ uuid: 89CEA9FE20624659B1307B633641BC90
 name: discover_leka
 
 created_at: "2024-03-01T14:00:38.160396"
-last_edited_at: "2024-07-12T12:48:14.933551"
+last_edited_at: "2026-03-12T11:05:42.088330"
 status: published
-
+launch_requirements:
+  robot:
+    connection: true
+    minimum_firmware: "1.2"
 authors:
   - leka
 
@@ -84,8 +87,8 @@ payload:
   exercise_groups:
     - group:
         - instructions:
-              - locale: fr_FR
-                value: Observe Leka
-              - locale: en_US
-                value: Observe Leka
+            - locale: fr_FR
+              value: Observe Leka
+            - locale: en_US
+              value: Observe Leka
           interface: pairing

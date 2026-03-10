@@ -8,10 +8,13 @@ uuid: B71AC551EB514C32819C5ECCAED89D2A
 name: drag_and_drop_into_zones_vanilla
 
 created_at: "2024-06-17T17:38:12.804199"
-last_edited_at: "2024-06-19T16:39:36.696276"
+last_edited_at: "2026-03-12T11:05:42.388210"
 
 status: template
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

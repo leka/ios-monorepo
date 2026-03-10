@@ -8,9 +8,12 @@ uuid: 12C97237234C47CE93286EDBCBC14DB4
 name: recognition_alphabet_letters_4_2
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2025-05-28T10:38:03.325987"
+last_edited_at: "2026-03-12T11:05:42.426652"
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 
