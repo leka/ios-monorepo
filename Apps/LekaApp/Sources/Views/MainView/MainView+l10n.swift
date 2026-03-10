@@ -103,6 +103,60 @@ extension l10n {
                 comment: "OK button text for alerts"
             )
         }
+
+        enum ActivityStartAlert {
+            enum RequiresRobotConnection {
+                static let title = LocalizedString(
+                    "lekaapp.main_view.activity_start_alert.requires_robot_connection.title",
+                    value: "Robot connection required",
+                    comment: "Title of the alert displayed when an activity requires robot connection"
+                )
+
+                static let message = LocalizedString(
+                    "lekaapp.main_view.activity_start_alert.requires_robot_connection.message",
+                    value: "This activity uses robot actions. Do you want to connect your robot before starting?",
+                    comment: "Message of the alert displayed when an activity requires robot connection"
+                )
+
+                static let connectButton = LocalizedString(
+                    "lekaapp.main_view.activity_start_alert.requires_robot_connection.connect_button",
+                    value: "Connect robot",
+                    comment: "Button to open robot connection screen"
+                )
+
+                static let continueButton = LocalizedString(
+                    "lekaapp.main_view.activity_start_alert.requires_robot_connection.continue_button",
+                    value: "Continue anyway",
+                    comment: "Button to continue activity without robot connection"
+                )
+            }
+
+            enum RequiresMinimumFirmwareVersion {
+                static let title = LocalizedString(
+                    "lekaapp.main_view.activity_start_alert.requires_minimum_firmware_version.title",
+                    value: "Minimum firmware required",
+                    comment: "Title of the alert displayed when robot firmware is below minimum"
+                )
+
+                static let message = LocalizedString(
+                    "lekaapp.main_view.activity_start_alert.requires_minimum_firmware_version.message",
+                    value: "This activity requires a newer firmware version. Update your robot to enjoy it! Do you want to continue anyway?",
+                    comment: "Message of the alert displayed when robot firmware is below minimum"
+                )
+
+                static let continueButton = LocalizedString(
+                    "lekaapp.main_view.activity_start_alert.requires_minimum_firmware_version.continue_button",
+                    value: "Continue anyway",
+                    comment: "Button to continue activity with unsupported firmware"
+                )
+
+                static let cancelButton = LocalizedString(
+                    "lekaapp.main_view.activity_start_alert.requires_minimum_firmware_version.cancel_button",
+                    value: "Cancel",
+                    comment: "Button to cancel activity launch with unsupported firmware"
+                )
+            }
+        }
     }
 }
 
