@@ -21,6 +21,24 @@ public struct Activity: Identifiable {
 
     // MARK: Public
 
+    public struct LaunchRequirements: Decodable {
+        public struct Robot: Decodable {
+            // MARK: Public
+
+            public let minimumFirmware: String
+            public let connection: Bool
+
+            // MARK: Internal
+
+            enum CodingKeys: String, CodingKey {
+                case minimumFirmware = "minimum_firmware"
+                case connection
+            }
+        }
+
+        public let robot: Robot
+    }
+
     public let uuid: String
     public let name: String
     public let createdAt: Date
@@ -30,6 +48,7 @@ public struct Activity: Identifiable {
     public let authors: [Author]
     public let skills: [Skill]
     public let interaction: Interaction
+    public let launchRequirements: LaunchRequirements
     public let types: [ActivityType]
     public let tags: [Tag]
 

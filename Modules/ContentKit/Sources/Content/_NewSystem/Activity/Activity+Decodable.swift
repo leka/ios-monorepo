@@ -17,6 +17,7 @@ extension Activity: Decodable {
         case authors
         case skills
         case interaction
+        case launchRequirements = "launch_requirements"
         case types
         case tags
         case locales
@@ -39,6 +40,7 @@ extension Activity: Decodable {
         let skillsIDs = try container.decode([String].self, forKey: .skills)
         self.skills = skillsIDs.compactMap { Skills.skill(id: $0) }
         self.interaction = try container.decode(Interaction.self, forKey: .interaction)
+        self.launchRequirements = try container.decode(LaunchRequirements.self, forKey: .launchRequirements)
         let typeIDs = try container.decode([String].self, forKey: .types)
         self.types = typeIDs.compactMap { ActivityTypes.type(id: $0) }
         let tagsIDs = try container.decode([String].self, forKey: .tags)
