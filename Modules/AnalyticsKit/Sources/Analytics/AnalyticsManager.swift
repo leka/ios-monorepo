@@ -25,6 +25,7 @@ public class AnalyticsManager {
         case activityLaunch
         case activityStart
         case activityEnd
+        case activityStartAlertShown
 
         case appUpdateAlertResponse
         case osUpdateAlertResponse
@@ -76,6 +77,8 @@ public class AnalyticsManager {
                     "activity_start"
                 case .activityEnd:
                     "activity_end"
+                case .activityStartAlertShown:
+                    "activity_start_alert_shown"
 
                 case .appUpdateAlertResponse:
                     "app_update_alert_response"

@@ -10,6 +10,11 @@ public extension AnalyticsManager {
         case listButton = "list_button"
     }
 
+    enum ActivityStartAlertType: String {
+        case requiresRobotConnection = "requires_robot_connection"
+        case requiresMinimumFirmwareVersion = "requires_minimum_firmware_version"
+    }
+
     static func logEventActivityLaunch(
         id: String,
         name: String,
@@ -22,6 +27,22 @@ public extension AnalyticsManager {
         ].merging(parameters) { _, new in new }
 
         logEvent(.activityLaunch, parameters: params)
+    }
+
+    static func logEventActivityStartAlertShown(
+        id: String,
+        name: String,
+        alertType: ActivityStartAlertType,
+        origin: ActivityLaunchOrigin,
+        parameters: [String: Any] = [:]
+    ) {
+        let params: [String: Any] = [
+            "lk_activity_id": "\(name)-\(id)",
+            "lk_activity_start_alert_type": alertType.rawValue,
+            "lk_activity_launch_origin": origin.rawValue,
+        ].merging(parameters) { _, new in new }
+
+        logEvent(.activityStartAlertShown, parameters: params)
     }
 }
 
