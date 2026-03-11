@@ -23,14 +23,14 @@ public struct QuickStartButton: View {
             switch self.item.contentType {
                 case .activity:
                     guard let activity = Activity(id: self.item.id) else { return }
-                    self.navigation.onStartActivity(activity)
+                    self.navigation.onQuickStartActivity(activity)
                 case .story:
                     guard let story = Story(id: self.item.id) else { return }
                     self.navigation.onStartStory(story)
+                    AnalyticsManager.logEventActivityLaunch(id: self.item.id, name: self.item.name, origin: .listButton)
                 default:
                     break
             }
-            AnalyticsManager.logEventActivityLaunch(id: self.item.id, name: self.item.name, origin: .listButton)
         } label: {
             HStack(spacing: 6) {
                 Image(systemName: "play.fill")
