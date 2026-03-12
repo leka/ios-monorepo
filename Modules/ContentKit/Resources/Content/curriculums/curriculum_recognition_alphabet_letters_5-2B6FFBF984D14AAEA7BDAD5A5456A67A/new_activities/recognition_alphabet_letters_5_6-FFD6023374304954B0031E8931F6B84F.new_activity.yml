@@ -8,9 +8,12 @@ uuid: FFD6023374304954B0031E8931F6B84F
 name: recognition_alphabet_letters_5_6
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2025-05-28T10:38:03.334561"
+last_edited_at: "2026-03-12T11:05:42.134811"
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

@@ -18,6 +18,9 @@
         "status": {
             "ref": "$status"
         },
+        "launch_requirements": {
+            "ref": "$launch_requirements"
+        },
         "authors": {
             "elements": {
                 "ref": "$author"
@@ -98,6 +101,23 @@
                         "look",
                         "mixed"
                     ]
+                }
+            }
+        },
+        "$launch_requirements": {
+            "properties": {
+                "robot": {
+                    "ref": "$launch_requirements/robot"
+                }
+            }
+        },
+        "$launch_requirements/robot": {
+            "properties": {
+                "minimum_firmware": {
+                    "enum": ["1.2", "2.0"]
+                },
+                "connection": {
+                    "type": "boolean"
                 }
             }
         },

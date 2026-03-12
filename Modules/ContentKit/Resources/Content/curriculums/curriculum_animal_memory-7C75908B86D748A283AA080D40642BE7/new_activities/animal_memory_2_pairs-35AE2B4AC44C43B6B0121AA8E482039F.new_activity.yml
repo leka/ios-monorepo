@@ -8,10 +8,13 @@ uuid: 35AE2B4AC44C43B6B0121AA8E482039F
 name: animal_memory_2_pairs
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-10-23T10:11:48.975255"
+last_edited_at: "2026-03-12T11:05:42.040988"
 
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

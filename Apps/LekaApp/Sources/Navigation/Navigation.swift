@@ -6,7 +6,9 @@ import AccountKit
 import AnalyticsKit
 import Combine
 import ContentKit
+import RobotKit
 import SwiftUI
+import Version
 
 // MARK: - FullScreenCoverContent
 
@@ -35,6 +37,24 @@ enum SheetContent: Hashable, Identifiable {
     var id: Self { self }
 }
 
+// MARK: - ActivityStartAlert
+
+enum ActivityStartAlert: Hashable, Identifiable {
+    case requiresRobotConnection(activity: Activity)
+    case requiresMinimumFirmwareVersion(activity: Activity)
+
+    // MARK: Internal
+
+    var id: String {
+        switch self {
+            case let .requiresRobotConnection(activity):
+                "requiresRobotConnection-\(activity.id)"
+            case let .requiresMinimumFirmwareVersion(activity):
+                "requiresMinimumFirmwareVersion-\(activity.id)"
+        }
+    }
+}
+
 // MARK: - Navigation
 
 @Observable
@@ -48,12 +68,35 @@ class Navigation {
     // MARK: Public
 
     public func onStartActivity(_ activity: Activity) {
-        if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.demoMode {
-            self.sheetContent = .carereceiverPicker(activity: activity, story: nil)
-        } else {
-            self.currentActivity = activity
-            self.fullScreenCoverContent = .activityView(carereceivers: [])
-        }
+        self.activityLaunchOrigin = .detailsViewButton
+        self.handleActivityStart(activity)
+    }
+
+    public func onQuickStartActivity(_ activity: Activity) {
+        self.activityLaunchOrigin = .listButton
+        self.handleActivityStart(activity)
+    }
+
+    public func onContinueActivityStartAfterAlert() {
+        guard let pendingActivity = self.pendingActivity else { return }
+
+        self.pendingActivity = nil
+        self.activityStartAlert = nil
+
+        self.startActivity(pendingActivity)
+    }
+
+    public func onConnectRobotForActivityStartAlert() {
+        self.pendingActivity = nil
+        self.activityStartAlert = nil
+        self.activityLaunchOrigin = nil
+        self.sheetContent = .robotConnection
+    }
+
+    public func onCancelActivityStartAfterAlert() {
+        self.pendingActivity = nil
+        self.activityStartAlert = nil
+        self.activityLaunchOrigin = nil
     }
 
     public func onStartStory(_ story: Story) {
@@ -120,6 +163,7 @@ class Navigation {
     // TODO: (@ladislas) No 'private(set)' because used as modal trigger
     var sheetContent: SheetContent?
     var fullScreenCoverContent: FullScreenCoverContent?
+    var activityStartAlert: ActivityStartAlert?
     var navigateToAccountCreationProcess: Bool = false
 
     private(set) var currentStory: Story?
@@ -190,11 +234,28 @@ class Navigation {
     private var cancellables: Set<AnyCancellable> = []
     private var isProgrammaticNavigation: Bool = false
     private var disableUICompletly: Bool = false
+    private var pendingActivity: Activity?
+    private var activityLaunchOrigin: AnalyticsManager.ActivityLaunchOrigin?
 
     private var pushPopNoAnimationTransaction: Transaction {
         var transaction = Transaction(animation: nil)
         transaction.disablesAnimations = true
         return transaction
+    }
+
+    private func startActivity(_ activity: Activity) {
+        if let origin = self.activityLaunchOrigin {
+            AnalyticsManager.logEventActivityLaunch(id: activity.id, name: activity.name, origin: origin)
+        }
+
+        if self.authManagerViewModel.userAuthenticationState == .loggedIn, !self.demoMode {
+            self.sheetContent = .carereceiverPicker(activity: activity, story: nil)
+        } else {
+            self.currentActivity = activity
+            self.fullScreenCoverContent = .activityView(carereceivers: [])
+        }
+
+        self.activityLaunchOrigin = nil
     }
 
     private func subscribeAuthentificationStateUpdates() {
@@ -209,5 +270,61 @@ class Navigation {
                 }
             }
             .store(in: &self.cancellables)
+    }
+
+    private func shouldShowRequiresRobotConnectionAlert(for activity: Activity) -> Bool {
+        activity.launchRequirements.robot.connection && !Robot.shared.isConnected.value
+    }
+
+    private func shouldShowRequiresMinimumFirmwareAlert(for activity: Activity) -> Bool {
+        guard Robot.shared.isConnected.value else {
+            return false
+        }
+
+        guard let currentVersion = Robot.shared.osVersion.value else {
+            return false
+        }
+
+        guard let minimumVersion = Version(tolerant: activity.launchRequirements.robot.minimumFirmware) else {
+            return false
+        }
+
+        return currentVersion < minimumVersion
+    }
+
+    private func handleActivityStart(_ activity: Activity) {
+        if self.shouldShowRequiresRobotConnectionAlert(for: activity) {
+            self.pendingActivity = activity
+            self.activityStartAlert = .requiresRobotConnection(activity: activity)
+
+            if let origin = self.activityLaunchOrigin {
+                AnalyticsManager.logEventActivityStartAlertShown(
+                    id: activity.id,
+                    name: activity.name,
+                    alertType: .requiresRobotConnection,
+                    origin: origin
+                )
+            }
+
+            return
+        }
+
+        if self.shouldShowRequiresMinimumFirmwareAlert(for: activity) {
+            self.pendingActivity = activity
+            self.activityStartAlert = .requiresMinimumFirmwareVersion(activity: activity)
+
+            if let origin = self.activityLaunchOrigin {
+                AnalyticsManager.logEventActivityStartAlertShown(
+                    id: activity.id,
+                    name: activity.name,
+                    alertType: .requiresMinimumFirmwareVersion,
+                    origin: origin
+                )
+            }
+
+            return
+        }
+
+        self.startActivity(activity)
     }
 }

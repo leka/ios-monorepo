@@ -8,9 +8,12 @@ uuid: A486DB1DAA344DCDA614952F0C174CDA
 name: recognition_sounds_emotions_pictures_4_ladislas
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2025-07-30T19:04:49.838376"
+last_edited_at: "2026-03-12T11:05:42.300497"
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

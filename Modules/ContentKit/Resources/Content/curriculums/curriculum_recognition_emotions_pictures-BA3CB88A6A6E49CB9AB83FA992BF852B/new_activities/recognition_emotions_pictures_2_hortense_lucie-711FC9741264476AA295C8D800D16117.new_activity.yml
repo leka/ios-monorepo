@@ -8,9 +8,12 @@ uuid: 711FC9741264476AA295C8D800D16117
 name: recognition_emotions_pictures_2_hortense_lucie
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2025-07-30T19:04:49.683955"
+last_edited_at: "2026-03-12T11:05:42.134107"
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

@@ -8,10 +8,13 @@ uuid: 191C6D9723FA41759E24B9BD86543CDF
 name: magic_card_spot_counting
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2026-02-02T17:46:31.494181"
+last_edited_at: "2026-03-12T11:05:42.423490"
 
 status: published
-
+launch_requirements:
+  robot:
+    connection: true
+    minimum_firmware: "1.2"
 authors:
   - leka
 

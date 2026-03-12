@@ -8,9 +8,12 @@ uuid: 098E1E5293E9483C98EC96EE746C02F8
 name: recognition_emotions_pictures_2_hugo_yann
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2025-07-30T19:04:49.938590"
+last_edited_at: "2026-03-12T11:05:42.447801"
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

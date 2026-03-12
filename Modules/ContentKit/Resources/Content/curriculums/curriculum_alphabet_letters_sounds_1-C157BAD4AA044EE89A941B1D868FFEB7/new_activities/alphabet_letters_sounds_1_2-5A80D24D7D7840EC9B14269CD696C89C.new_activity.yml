@@ -8,10 +8,13 @@ uuid: 5A80D24D7D7840EC9B14269CD696C89C
 name: alphabet_letters_sounds_1_2
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2025-06-18T13:21:33.949029"
+last_edited_at: "2026-03-12T11:05:42.388210"
 
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

@@ -8,9 +8,12 @@ uuid: 7710D57FB7214D4F90246463F20773D1
 name: recognition_weather_and_time_day_night
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2025-06-27T13:27:43.691661"
+last_edited_at: "2026-03-12T11:05:42.416828"
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 
@@ -40,7 +43,7 @@ l10n:
       icon: recognition_weather_and_temperatures_2
 
       title: Le jour et la nuit
-      subtitle:
+      subtitle: null
 
       short_description: |
         Regarde l'image de gauche. Est-ce le jour ou la nuit ?
@@ -58,7 +61,7 @@ l10n:
       icon: recognition_weather_and_temperatures_2
 
       title: Day and night
-      subtitle:
+      subtitle: null
 
       short_description: |
         Look at the image on the left. Is it day or night?

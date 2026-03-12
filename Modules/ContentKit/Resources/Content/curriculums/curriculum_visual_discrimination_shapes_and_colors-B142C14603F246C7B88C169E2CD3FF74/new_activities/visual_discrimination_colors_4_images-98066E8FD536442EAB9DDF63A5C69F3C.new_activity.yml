@@ -8,9 +8,12 @@ uuid: 98066E8FD536442EAB9DDF63A5C69F3C
 name: visual_discrimination_colors_4_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-09-27T15:25:22.743770"
+last_edited_at: "2026-03-12T11:05:42.455435"
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

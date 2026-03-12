@@ -8,9 +8,12 @@ uuid: DBA6170077AB4DBABEB05E03932BDC84
 name: gamepad_color_pad
 
 created_at: "2024-03-04T18:07:12.519606"
-last_edited_at: "2024-09-27T00:29:50.410579"
+last_edited_at: "2026-03-12T11:05:42.480893"
 status: published
-
+launch_requirements:
+  robot:
+    connection: true
+    minimum_firmware: "1.2"
 authors:
   - leka
 
@@ -77,8 +80,8 @@ payload:
   exercise_groups:
     - group:
         - instructions:
-              - locale: fr_FR
-                value: Change la couleur de Leka en appuyant sur les boutons de couleur
-              - locale: en_US
-                value: Change Leka's color by pressing the color buttons
+            - locale: fr_FR
+              value: Change la couleur de Leka en appuyant sur les boutons de couleur
+            - locale: en_US
+              value: Change Leka's color by pressing the color buttons
           interface: gamepadColorPad

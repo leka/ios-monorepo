@@ -8,10 +8,13 @@ uuid: 55885C9A9EC94AC9A6955E2A8322BEAB
 name: recognition_winter_holidays_2
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2024-09-14T18:03:03.298097"
+last_edited_at: "2026-03-12T11:05:42.413339"
 
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

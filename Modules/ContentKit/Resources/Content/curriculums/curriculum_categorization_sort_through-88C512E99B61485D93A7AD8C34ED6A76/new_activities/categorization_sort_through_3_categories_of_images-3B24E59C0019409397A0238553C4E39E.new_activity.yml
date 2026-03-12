@@ -8,9 +8,12 @@ uuid: 3B24E59C0019409397A0238553C4E39E
 name: categorization_sort_through_3_categories_of_images
 
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-09-27T15:25:22.769603"
+last_edited_at: "2026-03-12T11:05:42.256217"
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 
@@ -43,7 +46,7 @@ l10n:
       icon: categorization_sort_through
 
       title: Trier par catégorie de 2 images
-      subtitle:
+      subtitle: null
 
       short_description: |
         Mets ensemble les images d'une même catégorie
@@ -61,7 +64,7 @@ l10n:
       icon: categorization_sort_through
 
       title: Sort by category of 2 images
-      subtitle:
+      subtitle: null
 
       short_description: |
         Put the images that are similar in the basket

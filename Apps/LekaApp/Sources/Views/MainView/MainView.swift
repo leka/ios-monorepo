@@ -158,6 +158,49 @@ struct MainView: View {
             .alert(isPresented: self.$sharedLibraryManagerViewModel.showRemoveAlert) {
                 self.createRemovalAlert()
             }
+            .alert(item: self.$navigation.activityStartAlert) { alert in
+                switch alert {
+                    case .requiresRobotConnection:
+                        Alert(
+                            title: Text(l10n.MainView.ActivityStartAlert.RequiresRobotConnection.title),
+                            message: Text(
+                                l10n.MainView.ActivityStartAlert.RequiresRobotConnection.message
+                            ),
+                            primaryButton: .default(
+                                Text(l10n.MainView.ActivityStartAlert.RequiresRobotConnection.connectButton),
+                                action: {
+                                    self.navigation.onConnectRobotForActivityStartAlert()
+                                }
+                            ),
+                            secondaryButton: .default(
+                                Text(l10n.MainView.ActivityStartAlert.RequiresRobotConnection.continueButton),
+                                action: {
+                                    self.navigation.onContinueActivityStartAfterAlert()
+                                }
+                            )
+                        )
+
+                    case .requiresMinimumFirmwareVersion:
+                        Alert(
+                            title: Text(l10n.MainView.ActivityStartAlert.RequiresMinimumFirmwareVersion.title),
+                            message: Text(
+                                l10n.MainView.ActivityStartAlert.RequiresMinimumFirmwareVersion.message
+                            ),
+                            primaryButton: .default(
+                                Text(l10n.MainView.ActivityStartAlert.RequiresMinimumFirmwareVersion.continueButton),
+                                action: {
+                                    self.navigation.onContinueActivityStartAfterAlert()
+                                }
+                            ),
+                            secondaryButton: .cancel(
+                                Text(l10n.MainView.ActivityStartAlert.RequiresMinimumFirmwareVersion.cancelButton),
+                                action: {
+                                    self.navigation.onCancelActivityStartAfterAlert()
+                                }
+                            )
+                        )
+                }
+            }
         } detail: {
             NavigationStack(path: self.$navigation.path) {
                 switch self.navigation.selectedCategory {

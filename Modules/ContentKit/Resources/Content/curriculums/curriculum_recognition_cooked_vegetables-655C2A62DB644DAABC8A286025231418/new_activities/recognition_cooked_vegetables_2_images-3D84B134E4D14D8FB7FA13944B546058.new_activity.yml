@@ -8,9 +8,12 @@ uuid: 3D84B134E4D14D8FB7FA13944B546058
 name: recognition_cooked_vegetables_2_images
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-09-27T15:25:22.769603"
+last_edited_at: "2026-03-12T11:05:42.296805"
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

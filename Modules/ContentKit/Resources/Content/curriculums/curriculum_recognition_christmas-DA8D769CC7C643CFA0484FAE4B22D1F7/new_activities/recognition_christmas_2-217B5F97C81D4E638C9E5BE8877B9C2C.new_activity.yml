@@ -8,10 +8,13 @@ uuid: 217B5F97C81D4E638C9E5BE8877B9C2C
 name: recognition_christmas_2
 
 created_at: "2024-07-31T17:38:12.804177"
-last_edited_at: "2024-11-28T09:38:25.356794"
+last_edited_at: "2026-03-12T11:05:42.396196"
 
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

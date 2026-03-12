@@ -8,9 +8,12 @@ uuid: 52A21A68D36342CB95CF0AE709523471
 name: recognition_sounds_emotions_pictures_4_hortense_lucie
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2025-07-30T19:04:50.031155"
+last_edited_at: "2026-03-12T11:05:42.188517"
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

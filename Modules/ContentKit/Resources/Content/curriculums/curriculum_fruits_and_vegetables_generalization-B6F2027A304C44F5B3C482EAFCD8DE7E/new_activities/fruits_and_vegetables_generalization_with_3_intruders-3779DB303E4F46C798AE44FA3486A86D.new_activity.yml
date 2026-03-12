@@ -7,9 +7,12 @@ version: 2.0.0
 uuid: 3779DB303E4F46C798AE44FA3486A86D
 name: fruits_and_vegetables_generalization_with_3_intruders
 created_at: "2024-03-08T11:49:37.123541"
-last_edited_at: "2024-09-17T17:46:36.485479"
+last_edited_at: "2026-03-12T11:05:42.423490"
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

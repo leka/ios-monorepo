@@ -8,9 +8,12 @@ uuid: 3163D0023FF145FB98A63E1F9151F53E
 name: recognition_alphabet_letters_3_4
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2025-05-28T10:38:03.332364"
+last_edited_at: "2026-03-12T11:05:42.163016"
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

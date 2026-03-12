@@ -50,6 +50,11 @@ public extension Activity {
       medium: tablet
       input: touch_to_select
 
+    launch_requirements:
+      robot:
+        minimum_firmware: "1.2"
+        connection: false
+
     types:
       - one_on_one
       - group

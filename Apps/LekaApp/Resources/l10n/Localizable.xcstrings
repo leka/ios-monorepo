@@ -1872,6 +1872,150 @@
                 }
             }
         },
+        "lekaapp.main_view.activity_start_alert.requires_minimum_firmware_version.cancel_button": {
+            "comment": "Button to cancel activity launch with unsupported firmware",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Cancel"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Annuler"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.activity_start_alert.requires_minimum_firmware_version.continue_button": {
+            "comment": "Button to continue activity with unsupported firmware",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Continue anyway"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Continuer quand m\u00eame"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.activity_start_alert.requires_minimum_firmware_version.message": {
+            "comment": "Message of the alert displayed when robot firmware is below minimum",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "This activity requires a newer firmware version. Update your robot to enjoy it! Do you want to continue anyway?"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Cette activit\u00e9 n\u00e9cessite une version plus r\u00e9cente du robot. Mettez \u00e0 jour votre robot pour en profiter. Voulez-vous continuer quand m\u00eame ?"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.activity_start_alert.requires_minimum_firmware_version.title": {
+            "comment": "Title of the alert displayed when robot firmware is below minimum",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Minimum firmware required"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Version minimum"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.activity_start_alert.requires_robot_connection.connect_button": {
+            "comment": "Button to open robot connection screen",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Connect robot"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Se connecter"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.activity_start_alert.requires_robot_connection.continue_button": {
+            "comment": "Button to continue activity without robot connection",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Continue anyway"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Continuer quand m\u00eame"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.activity_start_alert.requires_robot_connection.message": {
+            "comment": "Message of the alert displayed when an activity requires robot connection",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "This activity uses robot actions. Do you want to connect your robot before starting?"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Cette activit\u00e9 n\u00e9cessite le robot pour \u00eatre r\u00e9alis\u00e9e. Voulez-vous vous connecter \u00e0 votre robot avec de commencer ?"
+                    }
+                }
+            }
+        },
+        "lekaapp.main_view.activity_start_alert.requires_robot_connection.title": {
+            "comment": "Title of the alert displayed when an activity requires robot connection",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Robot connection required"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Connection \u00e0 un robot requise"
+                    }
+                }
+            }
+        },
         "lekaapp.main_view.app_update_alert.action": {
             "comment": "The action button of the alert to inform the user that an update is available",
             "localizations": {

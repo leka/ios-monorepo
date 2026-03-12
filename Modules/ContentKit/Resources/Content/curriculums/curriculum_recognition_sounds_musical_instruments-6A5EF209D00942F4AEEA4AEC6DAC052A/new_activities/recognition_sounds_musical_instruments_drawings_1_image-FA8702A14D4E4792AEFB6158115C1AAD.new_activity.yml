@@ -8,9 +8,12 @@ uuid: FA8702A14D4E4792AEFB6158115C1AAD
 name: recognition_sounds_musical_instruments_drawings_1_image
 
 created_at: "2024-03-04T18:07:12.519229"
-last_edited_at: "2024-09-27T15:25:22.727234"
+last_edited_at: "2026-03-12T11:05:42.400106"
 status: published
-
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
 authors:
   - leka
 

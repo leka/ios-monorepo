@@ -18,6 +18,10 @@ let kTestActivityMock: String =
     last_edited_at: "2024-09-10T23:15:58.558407"
 
     status: template
+    launch_requirements:
+      robot:
+        minimum_firmware: "1.2"
+        connection: false
 
     authors:
       - leka
@@ -27,8 +31,9 @@ let kTestActivityMock: String =
     tags:
       - template
 
-    hmi:
-      - tablet
+    interaction:
+      medium: tablet
+      input: touch_to_select
 
     types:
       - one_on_one
@@ -70,8 +75,24 @@ let kTestActivityMock: String =
           instructions: |
             Lorem ipsum
 
-    exercises_payload:
-      key: "placeholder value for testing"
+    payload:
+      options:
+        shuffle_exercises: false
+        shuffle_groups: false
+      exercise_groups:
+        - group:
+            - instructions:
+                - locale: en_US
+                  value: Test instruction
+              interface: touchToSelect
+              gameplay: findTheRightAnswers
+              payload:
+                choices:
+                  - value: 🍉
+                    type: emoji
+                    is_right_answer: true
+                  - value: 🍌
+                    type: emoji
     """
 
 // MARK: - ActivityDecode
