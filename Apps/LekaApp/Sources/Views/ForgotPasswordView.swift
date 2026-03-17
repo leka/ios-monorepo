@@ -24,6 +24,12 @@ struct ForgotPasswordView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 30) {
             VStack(spacing: 40) {
+                Image(systemName: "exclamationmark.lock")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 50, height: 50)
+                    .foregroundColor(.blue)
+
                 Text(l10n.ForgotPasswordView.title)
                     .font(.title)
 

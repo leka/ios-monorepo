@@ -45,14 +45,6 @@ public class AuthManagerViewModel {
         self.userAction = action
     }
 
-    public func setUserEmailIsVerified(_ value: Bool) {
-        self.userEmailIsVerified = value
-    }
-
-    public func setReAuthenticationSucceeded(_ value: Bool) {
-        self.reAuthenticationSucceeded = value
-    }
-
     public func resetErrorMessage() {
         self.showErrorAlert = false
         self.showErrorMessage = false
@@ -137,5 +129,6 @@ public class AuthManagerViewModel {
         self.userAction = .none
         self.userEmailIsVerified = false
         self.reAuthenticationSucceeded = false
+        self.resetPasswordSucceeded = false
     }
 }

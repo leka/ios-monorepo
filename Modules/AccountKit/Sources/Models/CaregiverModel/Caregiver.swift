@@ -24,6 +24,7 @@ public struct Caregiver: AccountDocument, Hashable {
     public var professions: [String]
     public var colorScheme: ColorScheme
     public var colorTheme: ColorTheme
+    public var isAdmin: Bool? = false
 
     // MARK: Internal
 
@@ -40,5 +41,6 @@ public struct Caregiver: AccountDocument, Hashable {
         case professions
         case colorScheme = "color_scheme"
         case colorTheme = "color_theme"
+        case isAdmin = "is_admin"
     }
 }

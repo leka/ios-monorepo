@@ -16,6 +16,12 @@ extension l10n {
                     comment: "Change credentials button label"
                 )
 
+                static let changeEmailButtonLabel = LocalizedString(
+                    "lekaapp.settings_view.credentials.change_email.button_label",
+                    value: "Change Email Address",
+                    comment: "Button label to trigger email change"
+                )
+
                 static let alertTitle = LocalizedString(
                     "lekaapp.settings_view.credentials_section.change_credentials.alert_title",
                     value: "Are you sure you want to change your password?",

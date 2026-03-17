@@ -30,6 +30,7 @@ public class AuthManager {
         case userIsSigningOut
         case userIsReAuthenticating
         case userIsResettingPassword
+        case userIsChangingEmail
         case userIsDeletingAccount
     }
 
@@ -40,6 +41,8 @@ public class AuthManager {
         case didDeleteAccount
         case didDetectLoggedInState(uid: String)
         case didDetectLoggedOutState
+        case didRequestPasswordReset
+        case didRequestEmailChange
     }
 
     public static let shared = AuthManager()
@@ -52,6 +55,10 @@ public class AuthManager {
 
     public var authenticationStatePublisher: AnyPublisher<AuthenticationState, Never> {
         self.authenticationState.eraseToAnyPublisher()
+    }
+
+    public var sendEmailUpdatePublisher: AnyPublisher<Bool, Never> {
+        self.sendEmailUpdate.eraseToAnyPublisher()
     }
 
     public func signUp(email: String, password: String) {
@@ -149,6 +156,31 @@ public class AuthManager {
             } else {
                 log.info("Password reset email sent successfully.")
                 self?.passwordResetEmail.send(true)
+                self?.analyticsEvent.send(.didRequestPasswordReset)
+            }
+        }
+    }
+
+    public func sendEmailVerificationBeforeUpdatingEmail(to newEmail: String) {
+        guard let user = self.auth.currentUser else {
+            let errorMessage = "No authenticated user found for email update."
+            log.error("\(errorMessage)")
+            self.authenticationError.send(AuthenticationError.custom(message: errorMessage))
+            return
+        }
+
+        self.loadingStatePublisher.send(true)
+
+        user.sendEmailVerification(beforeUpdatingEmail: newEmail) { [weak self] error in
+            self?.loadingStatePublisher.send(false)
+            if let error {
+                self?.sendEmailUpdate.send(false)
+                self?.authenticationError.send(error)
+                log.error("Failed to send verification email before updating email: \(error.localizedDescription)")
+            } else {
+                self?.sendEmailUpdate.send(true)
+                self?.analyticsEvent.send(.didRequestEmailChange)
+                log.info("Verification email sent to \(newEmail). Email will update once verified.")
             }
         }
     }
@@ -196,6 +228,7 @@ public class AuthManager {
     private let emailVerificationState = PassthroughSubject<Bool, Never>()
     private let reAuthenticationState = PassthroughSubject<Bool, Never>()
     private let passwordResetEmail = PassthroughSubject<Bool, Never>()
+    private let sendEmailUpdate = PassthroughSubject<Bool, Never>()
     private let auth = Auth.auth()
     private var cancellables = Set<AnyCancellable>()
 
@@ -209,7 +242,32 @@ public class AuthManager {
 
         log.info("🔗️ User is logged in.")
         self.authenticationState.send(.loggedIn)
-        self.emailVerificationState.send(user.isEmailVerified)
-        self.analyticsEvent.send(.didDetectLoggedInState(uid: user.uid))
+
+        user.reload { [weak self] error in
+            guard let self else { return }
+
+            if let nsError = error as NSError? {
+                if nsError.code == AuthErrorCode.userTokenExpired.rawValue ||
+                    nsError.code == AuthErrorCode.userNotFound.rawValue
+                {
+                    log.warning("⚠️ User session is no longer valid. Forcing logout.")
+                    self.signOut()
+                    return
+                } else {
+                    log.error("Error reloading user: \(nsError.localizedDescription)")
+                    self.authenticationError.send(nsError)
+                    return
+                }
+            }
+
+            guard let refreshedUser = self.auth.currentUser else {
+                log.warning("⚠️ User session was invalidated silently. Forcing logout.")
+                self.signOut()
+                return
+            }
+
+            self.emailVerificationState.send(refreshedUser.isEmailVerified)
+            self.analyticsEvent.send(.didDetectLoggedInState(uid: refreshedUser.uid))
+        }
     }
 }
