@@ -78,6 +78,7 @@ public extension CategoryCuration {
 
         public enum ComponentType: String, Codable {
             case carousel
+            case featuredCuration = "featured_curation"
             case horizontalCurriculumGrid = "horizontal_curriculum_grid"
             case horizontalActivityGrid = "horizontal_activity_grid"
             case horizontalCurriculumContentGrid = "horizontal_curriculum_content_grid"

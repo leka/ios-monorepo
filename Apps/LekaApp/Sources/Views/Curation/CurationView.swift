@@ -65,7 +65,9 @@ struct CurationView: View {
                 ForEach(self.curation.sections) { section in
                     Section {
                         VStack(alignment: .leading, spacing: 5) {
-                            if section.details.title != "" {
+                            if section.componentType != .featuredCuration,
+                               section.details.title != ""
+                            {
                                 VStack(alignment: .leading) {
                                     HStack {
                                         Text(section.details.title)

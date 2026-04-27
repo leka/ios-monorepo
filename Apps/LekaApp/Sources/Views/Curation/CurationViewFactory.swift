@@ -14,6 +14,8 @@ public struct CurationViewFactory: View {
         switch self.section.componentType {
             case .carousel:
                 CarouselView(items: self.section.items)
+            case .featuredCuration:
+                FeaturedCurationView(section: self.section)
             case .horizontalCurriculumGrid:
                 HorizontalCurriculumGrid(items: self.section.items)
             case .horizontalActivityGrid:

@@ -14,7 +14,8 @@ public struct CurationSeeMoreFactory: View {
     public var body: some View {
         ScrollView(showsIndicators: false) {
             switch self.section.componentType {
-                case .carousel:
+                case .carousel,
+                     .featuredCuration:
                     Text("None")
                 case .horizontalCurriculumGrid,
                      .horizontalCurriculumList,
