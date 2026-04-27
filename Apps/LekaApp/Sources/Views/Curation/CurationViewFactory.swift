@@ -18,6 +18,8 @@ public struct CurationViewFactory: View {
                 HorizontalCurriculumGrid(items: self.section.items)
             case .horizontalActivityGrid:
                 HorizontalActivityGrid(items: self.section.items)
+            case .horizontalCurriculumContentGrid:
+                HorizontalCurriculumContentGrid(items: self.section.items)
             case .horizontalCurriculumList:
                 HorizontalCurriculumList(items: self.section.items)
             case .horizontalActivityList:
