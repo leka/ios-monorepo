@@ -5,6 +5,7 @@
 public enum NewExerciseGameplay: String, Decodable {
     case associateCategories
     case findTheRightAnswers
+    case findTheRightNumber
     case findTheRightOrder
     case openPlay
 }

@@ -437,6 +437,7 @@
             "enum": [
                 "associateCategories",
                 "findTheRightAnswers",
+                "findTheRightNumber",
                 "findTheRightOrder",
                 "openPlay"
             ]

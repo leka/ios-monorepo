@@ -8,7 +8,7 @@ uuid: 26652AC123BD4E1182D7105AB31FF396
 name: counting_robot_fruits
 
 created_at: "2024-06-17T17:38:12.804177"
-last_edited_at: "2026-03-12T11:05:42.087336"
+last_edited_at: "2026-04-27T18:33:36.928651"
 
 status: published
 launch_requirements:
@@ -50,14 +50,14 @@ l10n:
         Une activité ludique pour apprendre à compter avec le robot Leka.
 
       description: |
-        Cette activité aide la personne accompagnée à développer ses compétences en comptage. Le robot affiche un chiffre sur son écran, et la personne accompagnée doit toucher le même nombre d’éléments demandés sur la tablette.
+        Cette activité aide la personne accompagnée à développer ses compétences en comptage. Le robot affiche un chiffre sur son écran, et la personne accompagnée doit toucher exactement ce nombre d’éléments sur la tablette.
 
-        L’activité suit une structure de gauche à droite, ligne par ligne, pour renforcer l’organisation spatiale et éviter les erreurs de comptage. Le comptage avec le doigt est encouragé pour favoriser la coordination œil-main et ancrer la compréhension des quantités.
+        Tous les éléments affichés sont des réponses possibles : seule la quantité sélectionnée compte. L’objectif est de sélectionner ni moins ni plus que le nombre demandé, en comptant chaque élément touché.
 
       instructions: |
         - Demandez à la personne accompagnée d’observer le chiffre affiché par le robot.
-        - Expliquez qu’elle doit toucher sur la tablette le même nombre d’éléments.
-        - Dites-lui de commencer par la gauche et d’avancer vers la droite, ligne par ligne.
+        - Expliquez qu’elle doit toucher exactement ce nombre d’éléments sur la tablette, ni plus ni moins.
+        - Rappelez-lui que tous les éléments affichés peuvent être choisis.
         - Encouragez-la à compter à voix haute en touchant chaque élément.
 
   - locale: en_US
@@ -71,14 +71,14 @@ l10n:
         A fun activity to learn counting with the Leka robot.
 
       description: |
-        This activity helps the care receiver develop counting skills. The robot displays a number on its screen, and the care receiver must tap the same number of requested items on the tablet.
+        This activity helps the care receiver develop counting skills. The robot displays a number on its screen, and the care receiver must tap exactly that many items on the tablet.
 
-        The activity follows a left-to-right, line-by-line structure to reinforce spatial organization and prevent counting mistakes. Counting with the finger is encouraged to improve hand-eye coordination and strengthen quantity understanding.
+        All displayed items are valid choices: only the selected quantity matters. The goal is to select no fewer and no more than the requested number while counting each tapped item.
 
       instructions: |
         - Ask the care receiver to observe the number displayed by the robot.
-        - Explain that they need to tap the same number of items.
-        - Tell them to start from the left and move to the right, line by line.
+        - Explain that they need to tap exactly that many items on the tablet, no more and no fewer.
+        - Remind them that all displayed items can be chosen.
         - Encourage them to count out loud while tapping each item.
 
 payload:
@@ -90,12 +90,12 @@ payload:
     - group:
         - instructions:
             - locale: fr_FR
-              value: Regarde le chiffre sur Leka. Compte et touche, de gauche à droite et ligne par ligne, le même nombre d'éléments.
+              value: Regarde le chiffre sur Leka. Compte et touche exactement ce nombre d'éléments, ni plus ni moins.
             - locale: en_US
-              value: Look at the number on Leka. Count and touch, from left to right and line by line, the same number of elements.
+              value: Look at the number on Leka. Count and tap exactly that many items, no more and no fewer.
 
           interface: touchToSelect
-          gameplay: findTheRightAnswers
+          gameplay: findTheRightNumber
           action:
             type: robot
             value:
@@ -103,6 +103,10 @@ payload:
               value: magicCardNumbers1One
           options:
             shuffle_choices: false
+            validation:
+              type: manual
+              minimumToSelect: 1
+              maximumToSelect: 1
           payload:
             choices:
               - value: curriculum_counting_robot_photo_fruit_apple
@@ -110,22 +114,27 @@ payload:
                 is_right_answer: true
               - value: curriculum_counting_robot_photo_fruit_apple
                 type: image
+                is_right_answer: true
               - value: curriculum_counting_robot_photo_fruit_apple
                 type: image
+                is_right_answer: true
               - value: curriculum_counting_robot_photo_fruit_apple
                 type: image
+                is_right_answer: true
               - value: curriculum_counting_robot_photo_fruit_apple
                 type: image
+                is_right_answer: true
               - value: curriculum_counting_robot_photo_fruit_apple
                 type: image
+                is_right_answer: true
 
         - instructions:
             - locale: fr_FR
-              value: Regarde le chiffre sur Leka. Compte et touche, de gauche à droite et ligne par ligne, le même nombre d'éléments.
+              value: Regarde le chiffre sur Leka. Compte et touche exactement ce nombre d'éléments, ni plus ni moins.
             - locale: en_US
-              value: Look at the number on Leka. Count and touch, from left to right and line by line, the same number of elements.
+              value: Look at the number on Leka. Count and tap exactly that many items, no more and no fewer.
           interface: touchToSelect
-          gameplay: findTheRightAnswers
+          gameplay: findTheRightNumber
           action:
             type: robot
             value:
@@ -133,6 +142,10 @@ payload:
               value: magicCardNumbers2Two
           options:
             shuffle_choices: false
+            validation:
+              type: manual
+              minimumToSelect: 2
+              maximumToSelect: 2
           payload:
             choices:
               - value: curriculum_counting_robot_photo_fruit_banana
@@ -143,20 +156,24 @@ payload:
                 is_right_answer: true
               - value: curriculum_counting_robot_photo_fruit_banana
                 type: image
+                is_right_answer: true
               - value: curriculum_counting_robot_photo_fruit_banana
                 type: image
+                is_right_answer: true
               - value: curriculum_counting_robot_photo_fruit_banana
                 type: image
+                is_right_answer: true
               - value: curriculum_counting_robot_photo_fruit_banana
                 type: image
+                is_right_answer: true
 
         - instructions:
             - locale: fr_FR
-              value: Regarde le chiffre sur Leka. Compte et touche, de gauche à droite et ligne par ligne, le même nombre d'éléments.
+              value: Regarde le chiffre sur Leka. Compte et touche exactement ce nombre d'éléments, ni plus ni moins.
             - locale: en_US
-              value: Look at the number on Leka. Count and touch, from left to right and line by line, the same number of elements.
+              value: Look at the number on Leka. Count and tap exactly that many items, no more and no fewer.
           interface: touchToSelect
-          gameplay: findTheRightAnswers
+          gameplay: findTheRightNumber
           action:
             type: robot
             value:
@@ -164,6 +181,10 @@ payload:
               value: magicCardNumbers3Three
           options:
             shuffle_choices: false
+            validation:
+              type: manual
+              minimumToSelect: 3
+              maximumToSelect: 3
           payload:
             choices:
               - value: curriculum_counting_robot_photo_fruit_lemon
@@ -177,18 +198,21 @@ payload:
                 is_right_answer: true
               - value: curriculum_counting_robot_photo_fruit_lemon
                 type: image
+                is_right_answer: true
               - value: curriculum_counting_robot_photo_fruit_lemon
                 type: image
+                is_right_answer: true
               - value: curriculum_counting_robot_photo_fruit_lemon
                 type: image
+                is_right_answer: true
 
         - instructions:
             - locale: fr_FR
-              value: Regarde le chiffre sur Leka. Compte et touche, de gauche à droite et ligne par ligne, le même nombre d'éléments.
+              value: Regarde le chiffre sur Leka. Compte et touche exactement ce nombre d'éléments, ni plus ni moins.
             - locale: en_US
-              value: Look at the number on Leka. Count and touch, from left to right and line by line, the same number of elements.
+              value: Look at the number on Leka. Count and tap exactly that many items, no more and no fewer.
           interface: touchToSelect
-          gameplay: findTheRightAnswers
+          gameplay: findTheRightNumber
           action:
             type: robot
             value:
@@ -196,6 +220,10 @@ payload:
               value: magicCardNumbers4Four
           options:
             shuffle_choices: false
+            validation:
+              type: manual
+              minimumToSelect: 4
+              maximumToSelect: 4
           payload:
             choices:
               - value: curriculum_counting_robot_photo_fruit_orange
@@ -212,16 +240,18 @@ payload:
                 is_right_answer: true
               - value: curriculum_counting_robot_photo_fruit_orange
                 type: image
+                is_right_answer: true
               - value: curriculum_counting_robot_photo_fruit_orange
                 type: image
+                is_right_answer: true
 
         - instructions:
             - locale: fr_FR
-              value: Regarde le chiffre sur Leka. Compte et touche, de gauche à droite et ligne par ligne, le même nombre d'éléments.
+              value: Regarde le chiffre sur Leka. Compte et touche exactement ce nombre d'éléments, ni plus ni moins.
             - locale: en_US
-              value: Look at the number on Leka. Count and touch, from left to right and line by line, the same number of elements.
+              value: Look at the number on Leka. Count and tap exactly that many items, no more and no fewer.
           interface: touchToSelect
-          gameplay: findTheRightAnswers
+          gameplay: findTheRightNumber
           action:
             type: robot
             value:
@@ -229,6 +259,10 @@ payload:
               value: magicCardNumbers5Five
           options:
             shuffle_choices: false
+            validation:
+              type: manual
+              minimumToSelect: 5
+              maximumToSelect: 5
           payload:
             choices:
               - value: curriculum_counting_robot_photo_fruit_pear
@@ -248,14 +282,15 @@ payload:
                 is_right_answer: true
               - value: curriculum_counting_robot_photo_fruit_pear
                 type: image
+                is_right_answer: true
 
         - instructions:
             - locale: fr_FR
-              value: Regarde le chiffre sur Leka. Compte et touche, de gauche à droite et ligne par ligne, le même nombre d'éléments.
+              value: Regarde le chiffre sur Leka. Compte et touche exactement ce nombre d'éléments, ni plus ni moins.
             - locale: en_US
-              value: Look at the number on Leka. Count and touch, from left to right and line by line, the same number of elements.
+              value: Look at the number on Leka. Count and tap exactly that many items, no more and no fewer.
           interface: touchToSelect
-          gameplay: findTheRightAnswers
+          gameplay: findTheRightNumber
           action:
             type: robot
             value:
@@ -263,6 +298,10 @@ payload:
               value: magicCardNumbers6Six
           options:
             shuffle_choices: false
+            validation:
+              type: manual
+              minimumToSelect: 6
+              maximumToSelect: 6
           payload:
             choices:
               - value: curriculum_counting_robot_photo_fruit_strawberry
