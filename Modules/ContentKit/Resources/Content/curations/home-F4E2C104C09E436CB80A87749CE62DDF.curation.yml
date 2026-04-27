@@ -19,6 +19,22 @@ l10n:
       description:
 
 content:
+  - component: featured_curation
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Les activités font peau neuve !
+          subtitle: Découvrir les nouveautés
+          description: Découvrez des interfaces améliorées, de meilleurs retours pendant le jeu et de nouvelles activités Cartes magiques avec Leka.
+      - locale: en_US
+        details:
+          title: New activities are here!
+          subtitle: Discover what’s new
+          description: Discover refreshed interfaces, improved feedback during play, and new Magic Cards activities to explore with Leka.
+    items:
+      - value: new_activity_experience-8C9912C8656F4C65AF52CB94EF143037
+        type: curation
+
   - component: carousel
     l10n:
       - locale: fr_FR
@@ -34,57 +50,17 @@ content:
     items:
       - value: curriculum_magic_card-B2F89676DF8D4D3B89304A16EE1E55AF
         type: curriculum
-      - value: color_mediator-2CE6B5E98AFD45E0B2CD87727DB6D5C2
-        type: activity
-      - value: curriculum_recognition_family_members-AD1A9E2D874C47AEB3445D80E34DC702
+      - value: curriculum_openplay_feelings-2196E84ADF24439AA51CAB93000C95F3
         type: curriculum
-      - value: curriculum_recognition_garden_items-A1006027902E44C0B38BC3D3BAEDD4F6
-        type: curriculum
-      - value: curriculum_sort_objects_by_location-CC406024F40C4834A66BB7C8F0E8C0AD
-        type: curriculum
-      - value: curriculum_recognition_seaside_holidays-B1BA5597BC594082AECE293AD25CFA89
-        type: curriculum
-      - value: curriculum_animal_memory-7C75908B86D748A283AA080D40642BE7
-        type: curriculum
-      - value: sequencing_daily_life_toilets-8D126A04F37D4E8BA498EE4758E071AC
-        type: activity
-
-  - component: horizontal_curriculum_list
-    l10n:
-      - locale: fr_FR
-        details:
-          title: Nouveautés
-          subtitle:
-          description: Les derniers ajouts à découvrir.
-      - locale: en_US
-        details:
-          title: New Arrivals
-          subtitle:
-          description: The latest to explore.
-    items:
       - value: curriculum_shape_recognition-785607C27B1449A1B12F10302A754486
         type: curriculum
+      - value: curriculum_openplay_preferences_animal-E4E20B090D3C4D898C139513D85E9B45
+        type: curriculum
+      - value: curriculum_openplay_preferences_food-0AD93266F427408CA13C61C4B8F68E3C
+        type: curriculum
+      - value: curriculum_openplay_preferences_sports-F72441F55BAA48A78E359A4EFCC6E007
+        type: curriculum
       - value: curriculum_visual_discrimination_shapes_and_colors-B142C14603F246C7B88C169E2CD3FF74
-        type: curriculum
-      - value: curriculum_recognition_alphabet_letters_1-27A711E56A4140C4A69FCAF0E4CD5410
-        type: curriculum
-      - value: curriculum_alphabet_letters_sounds_1-C157BAD4AA044EE89A941B1D868FFEB7
-        type: curriculum
-      - value: curriculum_alphabetical_order-F9A2F6E76AE449999B1F76AA7E2D2978
-        type: curriculum
-      - value: curriculum_ordering_steps_to_bake_a_cake-1F908FA3349B476DA1EE4CDC60B5B632
-        type: curriculum
-      - value: curriculum_ordering_the_steps_of_a_session_with_leka-211497313FDB4094990330D2387D1CA3
-        type: curriculum
-      - value: curriculum_recognition_cooked_fruits-C0D2DAE8152F4CAE863EAEBF815354BA
-        type: curriculum
-      - value: curriculum_recognition_cooked_vegetables-655C2A62DB644DAABC8A286025231418
-        type: curriculum
-      - value: curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
-        type: curriculum
-      - value: curriculum_leka_weather_robot-ED4C900D4ACB426384DC76F182BC19A5
-        type: curriculum
-      - value: curriculum_ordering_of_life_stages-ADC51847C6FA4C58BA5210D02C030477
         type: curriculum
 
   - component: horizontal_curriculum_grid
