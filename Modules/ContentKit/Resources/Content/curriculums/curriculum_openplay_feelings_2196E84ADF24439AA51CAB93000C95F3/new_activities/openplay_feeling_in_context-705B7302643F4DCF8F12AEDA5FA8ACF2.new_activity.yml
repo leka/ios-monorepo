@@ -8,7 +8,7 @@ uuid: 705B7302643F4DCF8F12AEDA5FA8ACF2
 name: openplay_feeling_in_context
 
 created_at: "2026-04-27T10:00:00.000000"
-last_edited_at: "2026-06-10T11:42:16.269331"
+last_edited_at: "2026-06-10T15:38:12.043617"
 status: published
 launch_requirements:
   robot:
@@ -61,7 +61,7 @@ l10n:
     details:
       icon: template_touch_to_select
 
-      title: My feelings in context
+      title: My Feelings in Context
       subtitle: null
 
       short_description: |

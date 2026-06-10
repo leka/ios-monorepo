@@ -8,7 +8,7 @@ name: curriculum_openplay_feelings
 status: published
 
 created_at: "2026-04-27T10:00:00.000000"
-last_edited_at: "2026-06-10T11:42:19.344933"
+last_edited_at: "2026-06-10T15:38:19.124595"
 authors:
   - leka
 
@@ -49,7 +49,7 @@ l10n:
       subtitle: Open activities
 
       abstract: |
-        An OpenPlay curriculum that helps the participant express their current emotion or emotions in a given context.
+        An OpenPlay curriculum that helps the participant express how they feel now or in a given context.
 
       description: |
         This curriculum offers activities with no right or wrong answer. The participant is invited to share their feelings.
