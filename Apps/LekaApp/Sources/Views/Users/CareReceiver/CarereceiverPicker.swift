@@ -165,10 +165,6 @@ extension l10n {
                                            value: "Who do you do this activity with?",
                                            comment: "Carereceiver picker title")
 
-        static let selectButtonLabel = LocalizedString("lekaapp.carereceiver_picker.select_button_label",
-                                                       value: "Select",
-                                                       comment: "Carereceiver picker select button label")
-
         static let skipButtonLabel = LocalizedString("lekaapp.carereceiver_picker.skip_button_label",
                                                      value: "Continue without profile",
                                                      comment: "Carereceiver picker continue without profile button label")

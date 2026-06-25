@@ -117,16 +117,6 @@ struct CurationView: View {
     private let kDividerPadding: CGFloat = 100
 }
 
-// MARK: - l10n.CurationView
-
-extension l10n {
-    enum CurationView {
-        static let seeAllLabel = LocalizedString("lekaapp.curation_view.see_all_label",
-                                                 value: "See all",
-                                                 comment: "CurationView's 'See all' button label")
-    }
-}
-
 #Preview {
     CurationView(curation: ContentKit.allCurations.first!.value)
 }

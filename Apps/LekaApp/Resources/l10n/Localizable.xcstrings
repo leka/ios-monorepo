@@ -668,23 +668,6 @@
                 }
             }
         },
-        "lekaapp.caregiver_creation.close_button_label": {
-            "comment": "Caregiver creation close button label",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Close"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Fermer"
-                    }
-                }
-            }
-        },
         "lekaapp.caregiver_creation.create_profile_button_label": {
             "comment": "Caregiver creation create profile button label",
             "localizations": {
@@ -1195,23 +1178,6 @@
                 }
             }
         },
-        "lekaapp.carereceiver_picker.select_button_label": {
-            "comment": "Carereceiver picker select button label",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Select"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "S\u00e9lectionner"
-                    }
-                }
-            }
-        },
         "lekaapp.carereceiver_picker.skip_button_label": {
             "comment": "Carereceiver picker continue without profile button label",
             "localizations": {
@@ -1259,40 +1225,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Parcourir les comp\u00e9tences"
-                    }
-                }
-            }
-        },
-        "lekaapp.connection_view.alert_message": {
-            "comment": "Forgot Password alert message",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "For security reasons, changes to your email or password need to be handled by our support team.\nPlease contact us at\nsupport@leka.io\nand we'll be happy to assist you with updating your account information."
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Pour des raisons de s\u00e9curit\u00e9, les modifications de l'e-mail ou du mot de passe doivent \u00eatre trait\u00e9es par notre \u00e9quipe support.\nVeuillez nous contacter \u00e0\nsupport@leka.io\net nous serons heureux de vous aider \u00e0 mettre \u00e0 jour les informations de votre compte."
-                    }
-                }
-            }
-        },
-        "lekaapp.connection_view.alert_title": {
-            "comment": "Forgot Password alert title",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Forgot Password?"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Mot de passe oubli\u00e9 ?"
                     }
                 }
             }
@@ -1433,24 +1365,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Retirer des Favoris"
-                    }
-                }
-            }
-        },
-        "lekaapp.curation_view.see_all_label": {
-            "comment": "CurationView's 'See all' button label",
-            "extractionState": "extracted_with_value",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "new",
-                        "value": "See all"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Voir plus"
                     }
                 }
             }
@@ -2330,23 +2244,6 @@
                 }
             }
         },
-        "lekaapp.main_view.sidebar.category_label.curriculums": {
-            "comment": "The title of the category 'Curriculums'",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Curriculums"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Parcours"
-                    }
-                }
-            }
-        },
         "lekaapp.main_view.sidebar.category_label.educational_games": {
             "comment": "The title of the category 'Educational Games'",
             "localizations": {
@@ -2429,23 +2326,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Nouveaut\u00e9s"
-                    }
-                }
-            }
-        },
-        "lekaapp.main_view.sidebar.category_label.none": {
-            "comment": "The title of the category 'none'",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Select a category"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "S\u00e9lectionnez une cat\u00e9gorie"
                     }
                 }
             }
@@ -2625,23 +2505,6 @@
                 }
             }
         },
-        "lekaapp.main_view.sidebar.navigation_title": {
-            "comment": "The title of the sidebar",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Leka App"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Leka App"
-                    }
-                }
-            }
-        },
         "lekaapp.main_view.sidebar.section.content": {
             "comment": "The title of the section 'Content'",
             "localizations": {
@@ -2775,23 +2638,6 @@
                     "stringUnit": {
                         "state": "translated",
                         "value": "Fermer"
-                    }
-                }
-            }
-        },
-        "lekaapp.profession_picker.other_label": {
-            "comment": "Profession picker other profession label",
-            "localizations": {
-                "en": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Other (specify)"
-                    }
-                },
-                "fr": {
-                    "stringUnit": {
-                        "state": "translated",
-                        "value": "Autre (pr\u00e9ciser)"
                     }
                 }
             }

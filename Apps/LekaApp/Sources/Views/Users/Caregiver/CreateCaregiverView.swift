@@ -228,8 +228,6 @@ extension l10n {
         static let professionLabel = LocalizedString("lekaapp.caregiver_creation.profession_label", value: "Profession(s)", comment: "Caregiver creation profession label above profession selection button")
 
         static let createProfileButtonLabel = LocalizedString("lekaapp.caregiver_creation.create_profile_button_label", value: "Create profile", comment: "Caregiver creation create profile button label")
-
-        static let closeButtonLabel = LocalizedString("lekaapp.caregiver_creation.close_button_label", value: "Close", comment: "Caregiver creation close button label")
     }
 }
 
