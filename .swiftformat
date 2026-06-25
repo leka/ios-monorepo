@@ -5,6 +5,10 @@
 --disable all
 --swiftversion 5.9
 
+# Excludes
+
+--exclude Modules/ContentKit/Sources/Content/OldSystem
+
 # Enabled rules
 
 --enable acronyms
