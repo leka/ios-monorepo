@@ -80,6 +80,7 @@ public extension CategoryCuration {
             case carousel
             case horizontalCurriculumGrid = "horizontal_curriculum_grid"
             case horizontalActivityGrid = "horizontal_activity_grid"
+            case horizontalCurriculumContentGrid = "horizontal_curriculum_content_grid"
             case horizontalCurriculumList = "horizontal_curriculum_list"
             case horizontalActivityList = "horizontal_activity_list"
             case horizontalCurationList = "horizontal_curation_list"
