@@ -55,6 +55,57 @@ final class CoordinatorGameplayModelDecode: XCTestCase {
         XCTAssertEqual(model.choices.count, 6)
     }
 
+    func test_FindTheRightNumber() throws {
+        let kExercise =
+            """
+            instructions:
+              - locale: fr_FR
+                value: Touche le bon nombre d'emojis
+              - locale: en_US
+                value: Tap the right number of emojis
+            interface: touchToSelect
+            gameplay: findTheRightNumber
+            action:
+              type: robot
+              value:
+                type: image
+                value: magicCardNumbers3Three
+            options:
+              shuffle_choices: true
+              validation:
+                type: manual
+                minimumToSelect: 3
+                maximumToSelect: 3
+            payload:
+              choices:
+                - value: 🍉
+                  type: emoji
+                  is_right_answer: true
+                - value: 🍉
+                  type: emoji
+                  is_right_answer: true
+                - value: 🍉
+                  type: emoji
+                  is_right_answer: true
+                - value: 🍉
+                  type: emoji
+                - value: 🐢
+                  type: emoji
+                - value: 🐢
+                  type: emoji
+            """
+
+        let exercise = Exercise(yaml: kExercise)!
+
+        XCTAssertEqual(exercise.gameplay, .findTheRightNumber)
+        XCTAssertEqual(exercise.options?.validation, .manualWithSelectionLimit(minimumToSelect: 3, maximumToSelect: 3))
+
+        let model = try JSONDecoder().decode(CoordinatorFindTheRightAnswersModel.self, from: exercise.payload!)
+
+        XCTAssertEqual(model.choices.count, 6)
+        XCTAssertEqual(model.choices.filter(\.isRightAnswer).count, 3)
+    }
+
     func test_AssociateCategories() throws {
         let kExercise =
             """

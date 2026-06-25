@@ -5,6 +5,8 @@
 import Combine
 import SwiftUI
 
+private typealias TTSFindTheRightGameplayCoordinator = TTSGameplayCoordinatorProtocol & ExerciseCompletionObservable & ExerciseEvaluationStrategy
+
 // MARK: - CurrentExerciseCoordinator
 
 public class CurrentExerciseCoordinator {
@@ -49,13 +51,22 @@ public class CurrentExerciseCoordinator {
                                         }
                                         .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-                                case .findTheRightAnswers:
+                                case .findTheRightAnswers,
+                                     .findTheRightNumber:
                                     let model = CoordinatorFindTheRightAnswersModel(data: payload)
-                                    let coordinator = TTSCoordinatorFindTheRightAnswers(
-                                        model: model,
-                                        action: exercise.action,
-                                        options: self.exercise.options
-                                    )
+                                    let coordinator: TTSFindTheRightGameplayCoordinator = if gameplay == .findTheRightNumber {
+                                        TTSCoordinatorFindTheRightNumber(
+                                            model: model,
+                                            action: self.exercise.action,
+                                            options: self.exercise.options
+                                        )
+                                    } else {
+                                        TTSCoordinatorFindTheRightAnswers(
+                                            model: model,
+                                            action: self.exercise.action,
+                                            options: self.exercise.options
+                                        )
+                                    }
                                     let viewModel = TTSViewViewModel(coordinator: coordinator)
 
                                     TTSView(viewModel: viewModel)
