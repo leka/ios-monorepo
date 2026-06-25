@@ -1,0 +1,141 @@
+amends "package://github.com/jdx/hk/releases/download/v1.48.0/hk@1.48.0#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v1.48.0/hk@1.48.0#/Builtins.pkl"
+
+hooks {
+    ["pre-commit"] {
+        fix = true
+        fail_on_fix = true
+        stash = "git"
+        steps {
+            ["check-added-large-files"] = Builtins.check_added_large_files
+            ["check-case-conflict"] = Builtins.check_case_conflict
+            ["check-executables-have-shebangs"] = Builtins.check_executables_have_shebangs
+            ["check-merge-conflict"] = Builtins.check_merge_conflict
+            ["check-shebang-scripts-are-executable"] {
+                types = List("text")
+                check = "bash -c 'for file in \"$@\"; do if head -c 2 \"$file\" | grep -q \"^#!\" && [ ! -x \"$file\" ]; then echo \"$file: shebang script is not executable\"; exit 1; fi; done' -- {{files}}"
+            }
+            ["check-symlinks"] = Builtins.check_symlinks
+            ["detect-private-key"] = Builtins.detect_private_key
+            ["end-of-file-fixer"] = (Builtins.newlines) {
+                exclude = Regex(#"(.*\.json$|.*\.xcstrings$|.*\.xcassets/.*|.*\.svg$)"#)
+            }
+            ["forbid-submodules"] {
+                check = "test -z \"$(git submodule status --recursive)\""
+            }
+            ["mixed-line-ending"] = Builtins.mixed_line_ending
+            ["no-commit-to-branch"] = (Builtins.no_commit_to_branch) {
+                check = "hk util no-commit-to-branch --branch main --branch develop"
+            }
+            ["trailing-whitespace"] = Builtins.trailing_whitespace
+            ["check-yaml"] {
+                glob = List("**/*.yml", "**/*.yaml")
+                exclude = "**/exercise_templates.yml"
+                batch = true
+                check = "uv run python Tools/Hooks/check_yaml.py {{files}}"
+            }
+            ["check-json"] {
+                glob = List("**/*.json", "**/*.xcstrings")
+                exclude = "**/*.xcassets/**/*.json"
+                batch = true
+                check = "uv run python Tools/Hooks/check_json.py {{files}}"
+            }
+            ["pretty-format-json"] {
+                glob = List("**/*.json", "**/*.xcstrings")
+                exclude = Regex(#"(\.vscode/settings\.json|\.jtd\.json$|.*\.xcassets/.*|.*\.colorset/.*|\.animation\.lottie\.json$)"#)
+                batch = true
+                fix = "uv run python Tools/Hooks/pretty_format_json.py {{files}}"
+            }
+            ["swiftlint"] {
+                types = List("swift")
+                batch = true
+                check = "swiftlint --quiet --use-alternative-excluding {{files}}"
+            }
+            ["swiftformat"] {
+                types = List("swift")
+                batch = true
+                check = "swiftformat --lint {{files}}"
+                fix = "swiftformat {{files}}"
+            }
+            ["check_xcstrings"] {
+                glob = "**/*.xcstrings"
+                batch = true
+                fix = "uv run python Tools/Hooks/check_xcstrings.py {{files}}"
+            }
+            ["check_yaml_definitions_avatars"] {
+                glob = "**/avatars.yml"
+                batch = true
+                fix = "uv run python Tools/Hooks/check_yaml_definitions_avatars.py {{files}}"
+            }
+            ["check_yaml_definitions_professions"] {
+                glob = "**/professions.yml"
+                batch = true
+                fix = "uv run python Tools/Hooks/check_yaml_definitions_professions.py {{files}}"
+            }
+            ["check_yaml_definitions_authors"] {
+                glob = "**/authors.yml"
+                batch = true
+                fix = "uv run python Tools/Hooks/check_yaml_definitions_authors.py {{files}}"
+            }
+            ["check_yaml_definitions_skills"] {
+                glob = "**/skills.yml"
+                batch = true
+                fix = "uv run python Tools/Hooks/check_yaml_definitions_skills.py {{files}}"
+            }
+            ["check_yaml_definitions_robot_assets"] {
+                glob = "**/robot_assets.yml"
+                batch = true
+                fix = "uv run python Tools/Hooks/check_yaml_definitions_robot_assets.py {{files}}"
+            }
+            ["check_yaml_definitions_tags"] {
+                glob = "**/tags.yml"
+                batch = true
+                fix = "uv run python Tools/Hooks/check_yaml_definitions_tags.py {{files}}"
+            }
+            ["check_yaml_content_new_activities"] {
+                glob = "**/*.new_activity.yml"
+                batch = true
+                fix = "uv run python Tools/Hooks/check_yaml_content_new_activities.py {{files}}"
+            }
+            ["check_yaml_content_activities_unique_uuid"] {
+                glob = "**/*.activity.yml"
+                fix = "uv run python Tools/Hooks/check_yaml_content_activities_unique_uuid.py"
+            }
+            ["check_yaml_content_activities_assets"] {
+                fix = "uv run python Tools/Hooks/check_yaml_content_activities_assets.py"
+            }
+            ["check_yaml_content_curriculums"] {
+                glob = "**/*.curriculum.yml"
+                batch = true
+                fix = "uv run python Tools/Hooks/check_yaml_content_curriculums.py {{files}}"
+            }
+            ["check_yaml_content_curriculums_unique_uuid"] {
+                glob = "**/*.curriculum.yml"
+                fix = "uv run python Tools/Hooks/check_yaml_content_curriculums_unique_uuid.py"
+            }
+            ["check_yaml_content_stories"] {
+                glob = "**/*.story.yml"
+                batch = true
+                fix = "uv run python Tools/Hooks/check_yaml_content_stories.py {{files}}"
+            }
+            ["check_yaml_content_stories_unique_uuid"] {
+                glob = "**/*.story.yml"
+                fix = "uv run python Tools/Hooks/check_yaml_content_stories_unique_uuid.py"
+            }
+            ["check_binary_not_executable"] {
+                glob = Regex(#".*\.(png|jpg|jpeg|gif|svg|mp3|wav|mid|mp4|pdf|bin)$"#)
+                batch = true
+                fix = "uv run python Tools/Hooks/check_binary_not_executable.py {{files}}"
+            }
+            ["optimize_png"] {
+                glob = "**/*.png"
+                batch = true
+                fix = "Tools/Hooks/optimize-png.rb {{files}}"
+            }
+            ["update_lfs_assets_id"] {
+                glob = Regex(#".*\.(png|jpg|jpeg|gif|svg|mp3|wav|mid|mp4|pdf|bin)$"#)
+                fix = "bash -c 'git lfs ls-files -l | cut -d\" \" -f1 | sort > .lfs-assets-id && git add .lfs-assets-id'"
+            }
+        }
+    }
+}
