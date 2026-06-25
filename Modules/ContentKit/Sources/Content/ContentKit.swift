@@ -13,11 +13,7 @@ let logCK = LogKit.createLoggerFor(module: "ContentKit")
 public enum ContentKit {
     // MARK: Public
 
-    public static var allActivities: [String: OldActivity] = ContentKit.listAllActivities() ?? [:]
-    public static let allPublishedActivities: [String: OldActivity] = ContentKit.listAllPublishedActivities() ?? [:]
-    public static let allDraftActivities: [String: OldActivity] = ContentKit.listAllDraftActivities() ?? [:]
-    public static let allTemplateActivities: [String: OldActivity] = ContentKit.listAllTemplateActivities() ?? [:]
-    public static let allNewActivities: [String: Activity] = ContentKit.listAllNewActivities() ?? [:]
+    public static var allNewActivities: [String: Activity] = ContentKit.listAllNewActivities() ?? [:]
     public static let allPublishedNewActivities: [String: Activity] = ContentKit.listAllPublishedNewActivities() ?? [:]
     public static let allCurriculums: [String: Curriculum] = ContentKit.listCurriculums() ?? [:]
     public static let allPublishedCurriculums: [String: Curriculum] = ContentKit.listAllPublishedCurriculums() ?? [:]
@@ -91,7 +87,7 @@ public enum ContentKit {
                 let curriculum = try YAMLDecoder().decode(Curriculum.self, from: data)
 
                 for activity in curriculum.activities {
-                    self.allActivities[activity]?.curriculums.append(curriculum.id)
+                    self.allNewActivities[activity]?.curriculums.append(curriculum.id)
                 }
                 curriculums[curriculum.id] = curriculum
             } catch {
@@ -100,31 +96,6 @@ public enum ContentKit {
         }
 
         return curriculums
-    }
-
-    private static func listAllActivities() -> [String: OldActivity]? {
-        let bundle = Bundle.module
-        let files = bundle.paths(forResourcesOfType: "activity.yml", inDirectory: nil)
-
-        var activities: [String: OldActivity] = [:]
-
-        for file in files {
-            let data = try? String(contentsOfFile: file, encoding: .utf8)
-
-            guard let data else {
-                logCK.error("Error reading file: \(file)")
-                continue
-            }
-
-            do {
-                let activity = try YAMLDecoder().decode(OldActivity.self, from: data)
-                activities[activity.uuid] = activity
-            } catch {
-                logCK.error("Error decoding file: \(file) with error:\n\(error)")
-            }
-        }
-
-        return activities
     }
 
     private static func listAllNewActivities() -> [String: Activity]? {
@@ -152,20 +123,8 @@ public enum ContentKit {
         return activities
     }
 
-    private static func listAllPublishedActivities() -> [String: OldActivity]? {
-        self.allActivities.filter { $0.value.status == .published }
-    }
-
     private static func listAllPublishedNewActivities() -> [String: Activity]? {
         self.allNewActivities.filter { $0.value.status == .published }
-    }
-
-    private static func listAllDraftActivities() -> [String: OldActivity]? {
-        self.allActivities.filter { $0.value.status == .draft }
-    }
-
-    private static func listAllTemplateActivities() -> [String: OldActivity]? {
-        self.allActivities.filter { $0.value.status == .template }
     }
 
     private static func listAllPublishedCurriculums() -> [String: Curriculum]? {
