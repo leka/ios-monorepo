@@ -85,7 +85,7 @@ class NewSuperSimonCoordinator: ExerciseSharedDataProtocol {
 
     var didComplete: PassthroughSubject<ExerciseCompletionData?, Never> = .init()
 
-    var gameState: CurrentValueSubject<SuperSimonGameState, Never> = .init(.showingColorSequence)
+    var gameState: CurrentValueSubject<NewSuperSimonGameState, Never> = .init(.showingColorSequence)
 
     func generateColorSequence() {
         for _ in 1...self.sequenceLength {
