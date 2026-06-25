@@ -54,7 +54,6 @@ jobs:
         run: |
           npm install -g ajv-cli
           pre-commit install
-          pre-commit autoupdate
 
       - name: Cache pre-commit
         uses: actions/cache@v5
