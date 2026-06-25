@@ -1,0 +1,63 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 2196E84ADF24439AA51CAB93000C95F3
+name: curriculum_openplay_feelings
+
+status: published
+
+created_at: "2026-04-27T10:00:00.000000"
+last_edited_at: "2026-06-10T15:38:19.124595"
+authors:
+  - leka
+
+skills:
+  - communication
+  - emotion_recognition
+  - self_awareness
+
+tags:
+  - emotions
+
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: emotion_recognition_pictograms
+
+      title: Mes émotions
+      subtitle: Activités libres
+
+      abstract: |
+        Un parcours libre pour aider le participant à exprimer son émotion actuelle, ou ses émotions dans un contexte donné.
+
+      description: |
+        Ce parcours propose des activités sans bonne ou mauvaise réponse. Le participant est invité à partager ses émotions.
+
+        Les activités sont conçues comme supports d’échange avec l’accompagnant, qui valide les choix avec le participant et encourage la communication.
+
+  - locale: en_US
+    details:
+      icon: emotion_recognition_pictograms
+
+      title: My Feelings
+      subtitle: Open activities
+
+      abstract: |
+        An OpenPlay curriculum that helps the participant express how they feel now or in a given context.
+
+      description: |
+        This curriculum offers activities with no right or wrong answer. The participant is invited to share their feelings.
+
+        The activities are designed as discussion supports with the caregiver, who validates the choices with the participant and encourages communication.
+
+activities:
+  - openplay_feeling_in_context-705B7302643F4DCF8F12AEDA5FA8ACF2
+  - openplay_feeling_today_drawings-4A7E8B05D85144E08F49012A292EB8D5
+  - openplay_feeling_today_pictograms-0A58EA4D310041EC891694ECD22D6B19
+  - openplay_feeling_today_pictures-9761022EAF6C4964BCF1B3D4638E3659

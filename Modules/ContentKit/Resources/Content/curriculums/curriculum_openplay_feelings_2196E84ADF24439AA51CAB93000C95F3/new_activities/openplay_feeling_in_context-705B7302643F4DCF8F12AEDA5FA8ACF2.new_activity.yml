@@ -1,0 +1,293 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 2.0.0
+
+uuid: 705B7302643F4DCF8F12AEDA5FA8ACF2
+name: openplay_feeling_in_context
+
+created_at: "2026-04-27T10:00:00.000000"
+last_edited_at: "2026-06-10T15:38:12.043617"
+status: published
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
+authors:
+  - leka
+
+skills:
+  - communication
+  - communication/non_verbal_communication
+  - emotion_recognition
+
+tags:
+  - emotions
+
+
+interaction:
+  medium: tablet
+  input: touch_to_select
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: template_touch_to_select
+
+      title: Mes émotions dans un contexte
+      subtitle: null
+
+      short_description: |
+        Sélectionner son ou ses émotions dans un contexte donné.
+
+      description: |
+        Cette activité pose un contexte et propose de sélectionner l'émotion que le participant ressentirait dans ce contexte.
+
+      instructions: |
+        - Identifiez le contexte présenté à l'écran.
+        - Nommez les émotions visibles à l’écran.
+        - Invitez le participant à toucher l’émotion ou les émotions qui correspondent le mieux à ce qu’il ressentirait dans ce contexte.
+        - Accueillez la réponse sans jugement et proposez de la commenter si le participant le souhaite.
+
+  - locale: en_US
+    details:
+      icon: template_touch_to_select
+
+      title: My Feelings in Context
+      subtitle: null
+
+      short_description: |
+        Select one or more feelings in a given context.
+
+      description: |
+        This activity presents a context and asks the participant to select the feeling they would experience in that context.
+
+      instructions: |
+        - Identify the context presented on the screen.
+        - Name the feelings visible on the screen.
+        - Invite the participant to tap the feeling or feelings that best match how they would feel in this context.
+        - Accept the answer without judgment and offer to discuss it if the participant wants.
+
+payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Touche le ou les émotions qui correspondent à ce que tu ressentirais dans ce contexte
+            - locale: en_US
+              value: Tap the feeling or feelings that match how you would feel in this context
+          interface: touchToSelect
+          gameplay: openPlay
+          action:
+            type: ipad
+            value:
+              type: image
+              value: openplay_feelings_context_hugo_painting
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: emotion_drawing_child_joy_hugo
+                type: image
+              - value: emotion_drawing_child_sad_hugo
+                type: image
+              - value: emotion_drawing_child_angry_hugo
+                type: image
+              - value: emotion_drawing_child_fear_hugo
+                type: image
+              - value: emotion_drawing_child_disgust_hugo
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Touche le ou les émotions qui correspondent à ce que tu ressentirais dans ce contexte
+            - locale: en_US
+              value: Tap the feeling or feelings that match how you would feel in this context
+          interface: touchToSelect
+          gameplay: openPlay
+          action:
+            type: ipad
+            value:
+              type: image
+              value: openplay_feelings_context_hugo_swimming_pool
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: emotion_drawing_child_joy_hugo
+                type: image
+              - value: emotion_drawing_child_sad_hugo
+                type: image
+              - value: emotion_drawing_child_angry_hugo
+                type: image
+              - value: emotion_drawing_child_fear_hugo
+                type: image
+              - value: emotion_drawing_child_disgust_hugo
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Touche le ou les émotions qui correspondent à ce que tu ressentirais dans ce contexte
+            - locale: en_US
+              value: Tap the feeling or feelings that match how you would feel in this context
+          interface: touchToSelect
+          gameplay: openPlay
+          action:
+            type: ipad
+            value:
+              type: image
+              value: openplay_feelings_context_louna_beach
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: emotion_drawing_child_joy_louna
+                type: image
+              - value: emotion_drawing_child_sad_louna
+                type: image
+              - value: emotion_drawing_child_angry_louna
+                type: image
+              - value: emotion_drawing_child_fear_louna
+                type: image
+              - value: emotion_drawing_child_disgust_louna
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Touche le ou les émotions qui correspondent à ce que tu ressentirais dans ce contexte
+            - locale: en_US
+              value: Tap the feeling or feelings that match how you would feel in this context
+          interface: touchToSelect
+          gameplay: openPlay
+          action:
+            type: ipad
+            value:
+              type: image
+              value: openplay_feelings_context_louna_park_cycling
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: emotion_drawing_child_joy_louna
+                type: image
+              - value: emotion_drawing_child_sad_louna
+                type: image
+              - value: emotion_drawing_child_angry_louna
+                type: image
+              - value: emotion_drawing_child_fear_louna
+                type: image
+              - value: emotion_drawing_child_disgust_louna
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Touche le ou les émotions qui correspondent à ce que tu ressentirais dans ce contexte
+            - locale: en_US
+              value: Tap the feeling or feelings that match how you would feel in this context
+          interface: touchToSelect
+          gameplay: openPlay
+          action:
+            type: ipad
+            value:
+              type: image
+              value: openplay_feelings_context_moussa_cooking
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: emotion_drawing_child_joy_moussa
+                type: image
+              - value: emotion_drawing_child_sad_moussa
+                type: image
+              - value: emotion_drawing_child_angry_moussa
+                type: image
+              - value: emotion_drawing_child_fear_moussa
+                type: image
+              - value: emotion_drawing_child_disgust_moussa
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Touche le ou les émotions qui correspondent à ce que tu ressentirais dans ce contexte
+            - locale: en_US
+              value: Tap the feeling or feelings that match how you would feel in this context
+          interface: touchToSelect
+          gameplay: openPlay
+          action:
+            type: ipad
+            value:
+              type: image
+              value: openplay_feelings_context_moussa_eating
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: emotion_drawing_child_joy_moussa
+                type: image
+              - value: emotion_drawing_child_sad_moussa
+                type: image
+              - value: emotion_drawing_child_angry_moussa
+                type: image
+              - value: emotion_drawing_child_fear_moussa
+                type: image
+              - value: emotion_drawing_child_disgust_moussa
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Touche le ou les émotions qui correspondent à ce que tu ressentirais dans ce contexte
+            - locale: en_US
+              value: Tap the feeling or feelings that match how you would feel in this context
+          interface: touchToSelect
+          gameplay: openPlay
+          action:
+            type: ipad
+            value:
+              type: image
+              value: openplay_feelings_context_oscar_ice-cream_seller
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: emotion_drawing_child_joy_oscar
+                type: image
+              - value: emotion_drawing_child_sad_oscar
+                type: image
+              - value: emotion_drawing_child_angry_oscar
+                type: image
+              - value: emotion_drawing_child_fear_oscar
+                type: image
+              - value: emotion_drawing_child_disgust_oscar
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Touche le ou les émotions qui correspondent à ce que tu ressentirais dans ce contexte
+            - locale: en_US
+              value: Tap the feeling or feelings that match how you would feel in this context
+          interface: touchToSelect
+          gameplay: openPlay
+          action:
+            type: ipad
+            value:
+              type: image
+              value: openplay_feelings_context_oscar_playground
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: emotion_drawing_child_joy_oscar
+                type: image
+              - value: emotion_drawing_child_sad_oscar
+                type: image
+              - value: emotion_drawing_child_angry_oscar
+                type: image
+              - value: emotion_drawing_child_fear_oscar
+                type: image
+              - value: emotion_drawing_child_disgust_oscar
+                type: image

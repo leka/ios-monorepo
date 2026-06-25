@@ -1,0 +1,203 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+version: 2.0.0
+
+uuid: 2D5EA89D1085C5B187518EBAA7EB81C4
+name: openplay_order_preferences_sports_athletes
+
+created_at: "2026-04-27T10:00:00.000000"
+last_edited_at: "2026-06-10T15:38:12.239832"
+status: published
+launch_requirements:
+  robot:
+    connection: false
+    minimum_firmware: "1.2"
+authors:
+  - leka
+
+skills:
+  - communication
+  - communication/verbal_communication/expressive_language
+
+tags:
+  - sports
+  - thumbs_up
+  - thumbs_down
+
+
+interaction:
+  medium: tablet
+  input: drag_and_drop
+
+types:
+  - one_on_one
+
+locales:
+  - en_US
+  - fr_FR
+
+l10n:
+  - locale: fr_FR
+    details:
+      icon: template_drag_and_drop_in_order
+
+      title: Classer mes sports préférés
+      subtitle: Athlètes
+
+      short_description: |
+        Classer les sports du préféré au moins préféré.
+
+      description: |
+        Cette activité aide le participant à exprimer ses préférences en ordonnant les propositions selon ses goûts.
+
+      instructions: |
+        - Présentez chaque proposition visible à l'écran.
+        - Invitez le participant à placer en premier ce qu’il préfère, puis à continuer jusqu’à ce qu’il aime le moins.
+        - Validez l’ordre avec le participant et utilisez-le comme support d’échange.
+
+  - locale: en_US
+    details:
+      icon: template_drag_and_drop_in_order
+
+      title: Rank My Favorite Sports
+      subtitle: Athletes
+
+      short_description: |
+        Rank the sports from favorite to least favorite.
+
+      description: |
+        This activity helps the participant express preferences by ordering options according to their tastes.
+
+      instructions: |
+        - Present each option visible on screen.
+        - Invite the participant to place their favorite first, then continue to the one they like least.
+        - Confirm the order with the participant and use it to support discussion.
+
+payload:
+  options:
+    shuffle_exercises: true
+    shuffle_groups: false
+
+  exercise_groups:
+    - group:
+        - instructions:
+            - locale: fr_FR
+              value: Classe du préféré au moins préféré
+            - locale: en_US
+              value: Rank from favorite to least favorite
+          interface: dragAndDropOneToOne
+          gameplay: openPlay
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: sport_preferences_basketball_player_man
+                type: image
+              - value: sport_preferences_basketball_player_woman
+                type: image
+              - value: sport_preferences_cycling_player_woman
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Classe du préféré au moins préféré
+            - locale: en_US
+              value: Rank from favorite to least favorite
+          interface: dragAndDropOneToOne
+          gameplay: openPlay
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: sport_preferences_dance_player_man
+                type: image
+              - value: sport_preferences_dance_player_woman
+                type: image
+              - value: sport_preferences_football_player_man
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Classe du préféré au moins préféré
+            - locale: en_US
+              value: Rank from favorite to least favorite
+          interface: dragAndDropOneToOne
+          gameplay: openPlay
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: sport_preferences_football_player_woman
+                type: image
+              - value: sport_preferences_judo_player_man
+                type: image
+              - value: sport_preferences_judo_player_woman
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Classe du préféré au moins préféré
+            - locale: en_US
+              value: Rank from favorite to least favorite
+          interface: dragAndDropOneToOne
+          gameplay: openPlay
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: sport_preferences_riding_player_man
+                type: image
+              - value: sport_preferences_riding_player_woman
+                type: image
+              - value: sport_preferences_rugby_player_man
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Classe du préféré au moins préféré
+            - locale: en_US
+              value: Rank from favorite to least favorite
+          interface: dragAndDropOneToOne
+          gameplay: openPlay
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: sport_preferences_rugby_player_woman
+                type: image
+              - value: sport_preferences_swimming_player_man
+                type: image
+              - value: sport_preferences_swimming_player_woman
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Classe du préféré au moins préféré
+            - locale: en_US
+              value: Rank from favorite to least favorite
+          interface: dragAndDropOneToOne
+          gameplay: openPlay
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: sport_preferences_table_tennis_player_man
+                type: image
+              - value: sport_preferences_table_tennis_player_woman
+                type: image
+              - value: sport_preferences_tennis_player_man
+                type: image
+        - instructions:
+            - locale: fr_FR
+              value: Classe du préféré au moins préféré
+            - locale: en_US
+              value: Rank from favorite to least favorite
+          interface: dragAndDropOneToOne
+          gameplay: openPlay
+          options:
+            shuffle_choices: true
+          payload:
+            choices:
+              - value: sport_preferences_tennis_player_woman
+                type: image
+              - value: sport_preferences_volleyball_player_man
+                type: image
+              - value: sport_preferences_volleyball_player_woman
+                type: image
