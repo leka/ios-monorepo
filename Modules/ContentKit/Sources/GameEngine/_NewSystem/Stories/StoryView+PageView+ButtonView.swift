@@ -90,7 +90,11 @@ public extension StoryView.PageView {
                                 self.launchActivityButton(id: id)
                                     .fullScreenCover(isPresented: self.$launchActivity, content: {
                                         NavigationStack {
-                                            OldActivityView(activity: ContentKit.allActivities[id]!)
+                                            if let activity = Activity(id: id) {
+                                                ActivityView(activity: activity, coordinator: ActivityCoordinator(payload: activity.payload))
+                                            } else {
+                                                Text("Activity not recognized")
+                                            }
                                         }
                                     })
                             default:

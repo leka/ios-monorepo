@@ -78,7 +78,7 @@ struct LekaApp: App {
                     LoadingView()
                         .onAppear {
                             DispatchQueue.global().async {
-                                _ = ContentKit.allActivities
+                                _ = ContentKit.allNewActivities
                                 _ = ContentKit.allCurriculums
                                 _ = ContentKit.allStories
                                 _ = ContentKit.allCurations

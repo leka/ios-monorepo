@@ -8,7 +8,7 @@ import SwiftUI
 // MARK: - AllTemplateActivitiesView
 
 struct AllTemplateActivitiesView: View {
-    let activities: [CurationItemModel] = ContentKit.allTemplateActivities.values.sorted {
+    let activities: [CurationItemModel] = ContentKit.allNewActivities.values.filter { $0.status == .template }.sorted {
         $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
     }.map { CurationItemModel(id: $0.id, name: $0.name, contentType: .activity) }
 

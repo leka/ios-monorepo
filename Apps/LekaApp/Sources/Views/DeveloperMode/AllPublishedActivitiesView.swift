@@ -8,7 +8,7 @@ import SwiftUI
 // MARK: - AllPublishedActivitiesView
 
 struct AllPublishedActivitiesView: View {
-    let activities: [CurationItemModel] = ContentKit.allPublishedActivities.values.sorted {
+    let activities: [CurationItemModel] = ContentKit.allPublishedNewActivities.values.sorted {
         $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
     }.map { CurationItemModel(id: $0.id, name: $0.name, contentType: .activity) }
 
