@@ -7,27 +7,45 @@ hooks {
         fail_on_fix = true
         stash = "git"
         steps {
-            ["check-added-large-files"] = Builtins.check_added_large_files
-            ["check-case-conflict"] = Builtins.check_case_conflict
-            ["check-executables-have-shebangs"] = Builtins.check_executables_have_shebangs
-            ["check-merge-conflict"] = Builtins.check_merge_conflict
+            ["check-added-large-files"] = (Builtins.check_added_large_files) {
+                batch = true
+            }
+            ["check-case-conflict"] {
+                check = "git ls-files | awk '{ key = tolower($0); if (seen[key] && seen[key] != $0) { print seen[key] \" conflicts with \" $0; exit 1 } seen[key] = $0 }'"
+            }
+            ["check-executables-have-shebangs"] = (Builtins.check_executables_have_shebangs) {
+                batch = true
+            }
+            ["check-merge-conflict"] = (Builtins.check_merge_conflict) {
+                batch = true
+            }
             ["check-shebang-scripts-are-executable"] {
                 types = List("text")
+                batch = true
                 check = "bash -c 'for file in \"$@\"; do if head -c 2 \"$file\" | grep -q \"^#!\" && [ ! -x \"$file\" ]; then echo \"$file: shebang script is not executable\"; exit 1; fi; done' -- {{files}}"
             }
-            ["check-symlinks"] = Builtins.check_symlinks
-            ["detect-private-key"] = Builtins.detect_private_key
+            ["check-symlinks"] = (Builtins.check_symlinks) {
+                batch = true
+            }
+            ["detect-private-key"] = (Builtins.detect_private_key) {
+                batch = true
+            }
             ["end-of-file-fixer"] = (Builtins.newlines) {
+                batch = true
                 exclude = Regex(#"(.*\.json$|.*\.xcstrings$|.*\.xcassets/.*|.*\.svg$)"#)
             }
             ["forbid-submodules"] {
                 check = "test -z \"$(git submodule status --recursive)\""
             }
-            ["mixed-line-ending"] = Builtins.mixed_line_ending
+            ["mixed-line-ending"] = (Builtins.mixed_line_ending) {
+                batch = true
+            }
             ["no-commit-to-branch"] = (Builtins.no_commit_to_branch) {
                 check = "hk util no-commit-to-branch --branch main --branch develop"
             }
-            ["trailing-whitespace"] = Builtins.trailing_whitespace
+            ["trailing-whitespace"] = (Builtins.trailing_whitespace) {
+                batch = true
+            }
             ["check-yaml"] {
                 glob = List("**/*.yml", "**/*.yaml")
                 exclude = "**/exercise_templates.yml"
