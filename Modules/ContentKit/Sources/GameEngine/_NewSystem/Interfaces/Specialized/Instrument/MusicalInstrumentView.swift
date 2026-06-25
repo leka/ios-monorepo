@@ -16,22 +16,6 @@ struct MusicalInstrumentView: View {
         _midiPlayer = StateObject(wrappedValue: MIDIPlayer(instrument: instrument))
     }
 
-    init(exercise: OldExercise, data _: ExerciseSharedData? = nil) {
-        guard let payload = exercise.payload as? MusicalInstrument.Payload else {
-            fatalError("Exercise payload is not .instrument")
-        }
-
-        guard let instrument = MIDIInstrument(rawValue: payload.instrument),
-              let scale = MIDIScale(rawValue: payload.scale)
-        else {
-            fatalError("Instrument or scale not found")
-        }
-
-        self.instrument = instrument
-        self.scale = scale
-        _midiPlayer = StateObject(wrappedValue: MIDIPlayer(instrument: instrument))
-    }
-
     init(model: MusicalInstrumentModel) {
         self.instrument = model.instrument
         self.scale = model.scale
