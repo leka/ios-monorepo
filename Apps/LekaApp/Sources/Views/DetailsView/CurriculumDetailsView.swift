@@ -31,8 +31,7 @@ public struct CurriculumDetailsView: View {
                         self.curriculum.activities.compactMap {
                             guard let activity = Activity(id: $0) else { return nil }
                             return CurationItemModel(id: activity.id, name: activity.name, contentType: .activity)
-                        }
-                    )
+                        })
                 }
             }
         }

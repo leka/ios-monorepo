@@ -10,9 +10,9 @@ extension ColorPad {
         // MARK: Internal
 
         let selectedEar: Robot.Lights
-        let robot = Robot.shared
-
         @Binding var padState: PadState
+
+        let robot = Robot.shared
 
         var body: some View {
             Circle()

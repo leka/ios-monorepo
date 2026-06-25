@@ -11,15 +11,6 @@ public extension ColorMediatorView {
     struct ColorSelector: View {
         // MARK: Public
 
-        @Environment(\.dismiss) var dismiss
-
-        private let colors: [Robot.Color] = [.red, .blue, .green, .yellow, .orange, .pink]
-        private let buttonSize: CGFloat = 140
-
-        @State var selectedColors: [Robot.Color]
-        var styleManager: StyleManager = .shared
-        var onSelected: ([Robot.Color]) -> Void
-
         public var body: some View {
             NavigationStack {
                 VStack(spacing: 20) {
@@ -65,6 +56,20 @@ public extension ColorMediatorView {
             }
         }
 
+        // MARK: Internal
+
+        @Environment(\.dismiss) var dismiss
+
+        @State var selectedColors: [Robot.Color]
+
+        var styleManager: StyleManager = .shared
+        var onSelected: ([Robot.Color]) -> Void
+
+        // MARK: Private
+
+        private let colors: [Robot.Color] = [.red, .blue, .green, .yellow, .orange, .pink]
+        private let buttonSize: CGFloat = 140
+
         private func colorButton(for color: Robot.Color) -> some View {
             let isSelected = self.selectedColors.contains(where: { $0.screen == color.screen })
             let index = self.selectedColors.firstIndex(where: { $0.screen == color.screen })
@@ -84,14 +89,6 @@ public extension ColorMediatorView {
             }
         }
 
-        private func toggleSelection(of color: Robot.Color) {
-            if let index = selectedColors.firstIndex(where: { $0.screen == color.screen }) {
-                self.selectedColors.remove(at: index)
-            } else {
-                self.selectedColors.append(color)
-            }
-        }
-
         private func badge(for index: Int) -> some View {
             Text("\(index + 1)")
                 .font(.title3)
@@ -100,6 +97,14 @@ public extension ColorMediatorView {
                 .background(Circle().fill(self.styleManager.accentColor!))
                 .frame(width: self.buttonSize * 0.3, height: self.buttonSize * 0.3)
                 .offset(x: 10, y: 0)
+        }
+
+        private func toggleSelection(of color: Robot.Color) {
+            if let index = selectedColors.firstIndex(where: { $0.screen == color.screen }) {
+                self.selectedColors.remove(at: index)
+            } else {
+                self.selectedColors.append(color)
+            }
         }
     }
 }

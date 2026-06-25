@@ -8,10 +8,9 @@ import SwiftUI
 
 extension AvatarPicker {
     struct AvatarCellLabel: View {
-        // MARK: Internal
-
         var styleManager: StyleManager = .shared
         let image: UIImage
+
         @Binding var isSelected: Bool
 
         var body: some View {

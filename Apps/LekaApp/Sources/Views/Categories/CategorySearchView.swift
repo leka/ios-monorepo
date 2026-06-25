@@ -12,27 +12,6 @@ import UtilsKit
 struct CategorySearchView: View {
     // MARK: Internal
 
-    var body: some View {
-        Group {
-            if self.query.isEmpty {
-                ScrollView(showsIndicators: false) {
-                    SkillsGridView(skills: self.skills)
-                }
-                .navigationTitle(String(l10n.CategorySearchView.browseSkillstitle.characters))
-                .font(.title.bold())
-            } else {
-                ScrollView(showsIndicators: false) {
-                    SearchGridView(
-                        skills: self.searchSkillsResults,
-                        activities: self.searchActivityResults,
-                        curriculums: self.searchCurriculumResults
-                    )
-                }
-            }
-        }
-        .searchable(text: self.$query)
-    }
-
     var searchActivityResults: [Activity] {
         var scoredActivities: [(activity: Activity, score: Int)] = []
         for activity in self.activities {
@@ -99,7 +78,30 @@ struct CategorySearchView: View {
         return scoredCurriculumFiltered.map(\.curriculum)
     }
 
+    var body: some View {
+        Group {
+            if self.query.isEmpty {
+                ScrollView(showsIndicators: false) {
+                    SkillsGridView(skills: self.skills)
+                }
+                .navigationTitle(String(l10n.CategorySearchView.browseSkillstitle.characters))
+                .font(.title.bold())
+            } else {
+                ScrollView(showsIndicators: false) {
+                    SearchGridView(
+                        skills: self.searchSkillsResults,
+                        activities: self.searchActivityResults,
+                        curriculums: self.searchCurriculumResults
+                    )
+                }
+            }
+        }
+        .searchable(text: self.$query)
+    }
+
     // MARK: Private
+
+    @State private var query = ""
 
     private let kTitleWeight = 10
     private let kSubtitleWeight = 3
@@ -108,8 +110,6 @@ struct CategorySearchView: View {
     private let activities: [Activity] = Array(ContentKit.allPublishedNewActivities.values)
     private let curriculums: [Curriculum] = Array(ContentKit.allPublishedCurriculums.values)
     private let skills: [Skill] = Skills.primarySkillsList
-
-    @State private var query = ""
 }
 
 // MARK: - l10n.CategorySearchView

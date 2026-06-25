@@ -26,6 +26,7 @@ extension ColorPad {
         // MARK: Internal
 
         var mode: Gamepad.DisplayMode
+
         @Binding var displayMode: Gamepad.DisplayMode
         @Binding var padState: PadState
 

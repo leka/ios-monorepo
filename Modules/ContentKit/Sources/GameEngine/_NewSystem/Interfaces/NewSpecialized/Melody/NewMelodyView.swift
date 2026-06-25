@@ -65,11 +65,14 @@ public struct NewMelodyView: View {
         }
     }
 
+    // MARK: Internal
+
+    @State var viewModel: NewMelodyViewViewModel
+
     // MARK: Private
 
     @State private var isKeyboardFull: Bool = false
     @State private var isMusicSelectorPresented: Bool = true
-    @State var viewModel: NewMelodyViewViewModel
 }
 
 // MARK: - l10n.NewMelodyView

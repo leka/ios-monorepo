@@ -23,7 +23,8 @@ public struct SuperSimonView: View {
         }
 
         _viewModel = StateObject(
-            wrappedValue: SuperSimonViewViewModel(level: payload.level, shared: data))
+            wrappedValue: SuperSimonViewViewModel(level: payload.level, shared: data)
+        )
     }
 
     public init(model: SuperSimonModel) {

@@ -23,14 +23,8 @@ extension Bundle {
 struct MainView: View {
     // MARK: Internal
 
-    @State private var isContentSectionExpanded: Bool = true
-    @State private var isSharedLibrarySectionExpanded: Bool = true
-    @State private var isUserSectionExpanded: Bool = true
-    @State private var isResourcesSectionExpanded: Bool = true
-    @State private var isDeveloperSectionExpanded: Bool = true
-    @State private var isDemoSectionExpanded: Bool = true
-
     @Bindable var navigation: Navigation = .shared
+
     var authManagerViewModel: AuthManagerViewModel = .shared
 
     var body: some View {
@@ -455,6 +449,13 @@ struct MainView: View {
     }
 
     // MARK: Private
+
+    @State private var isContentSectionExpanded: Bool = true
+    @State private var isSharedLibrarySectionExpanded: Bool = true
+    @State private var isUserSectionExpanded: Bool = true
+    @State private var isResourcesSectionExpanded: Bool = true
+    @State private var isDeveloperSectionExpanded: Bool = true
+    @State private var isDemoSectionExpanded: Bool = true
 
     @Environment(\.scenePhase) private var scenePhase
 

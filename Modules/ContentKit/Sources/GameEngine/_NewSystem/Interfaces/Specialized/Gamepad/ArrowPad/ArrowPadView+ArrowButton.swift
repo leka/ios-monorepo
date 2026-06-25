@@ -9,6 +9,8 @@ import SwiftUI
 
 extension ArrowPadView {
     struct ArrowButton: View {
+        // MARK: Internal
+
         enum Arrow {
             case up
             case clockwise
@@ -44,8 +46,6 @@ extension ArrowPadView {
             }
         }
 
-        @State private var isPressed = false
-
         let arrow: Arrow
         let size: CGFloat
         let onChanged: () -> Void
@@ -75,6 +75,10 @@ extension ArrowPadView {
                         }
                 )
         }
+
+        // MARK: Private
+
+        @State private var isPressed = false
     }
 }
 

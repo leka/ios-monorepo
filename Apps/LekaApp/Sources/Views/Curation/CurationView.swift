@@ -83,8 +83,8 @@ struct CurationView: View {
                                         if section.items.count > 8 {
                                             NavigationLink(destination:
                                                 CurationSeeMoreFactory(section: section)
-                                                    .navigationTitle(section.details.title)
-                                            ) {
+                                                    .navigationTitle(section.details.title))
+                                            {
                                                 Text(l10n.SearchGridView.seeAllLabel)
                                             }
                                         }

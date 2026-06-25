@@ -15,6 +15,8 @@ struct EditCarereceiverView: View {
     @Environment(\.dismiss) var dismiss
     @Binding var modifiedCarereceiver: Carereceiver
 
+    var carereceiverManager: CarereceiverManager = .shared
+
     var body: some View {
         VStack(spacing: 40) {
             Form {
@@ -69,7 +71,6 @@ struct EditCarereceiverView: View {
     // MARK: Private
 
     @State private var isAvatarPickerPresented: Bool = false
-    var carereceiverManager: CarereceiverManager = .shared
 
     @FocusState private var focused: Bool
 

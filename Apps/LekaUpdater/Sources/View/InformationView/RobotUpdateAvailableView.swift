@@ -10,7 +10,7 @@ import SwiftUI
 // MARK: - RobotUpdateAvailableView
 
 struct RobotUpdateAvailableView: View {
-    @State private var requirementsViewModel = RequirementsViewModel()
+    // MARK: Internal
 
     @Binding var isUpdateStatusViewPresented: Bool
 
@@ -36,6 +36,10 @@ struct RobotUpdateAvailableView: View {
             }
         }
     }
+
+    // MARK: Private
+
+    @State private var requirementsViewModel = RequirementsViewModel()
 }
 
 // MARK: - RobotUpdateAvailableView_Previews

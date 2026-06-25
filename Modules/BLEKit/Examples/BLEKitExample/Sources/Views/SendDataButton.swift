@@ -35,7 +35,8 @@ struct SendDataButton: View {
             Text(
                 (self.robotListViewModel.connectedRobotPeripheral == nil)
                     ? "Select a robot"
-                    : "Send data to \(self.robotListViewModel.connectedRobotPeripheral?.peripheral.name ?? "nil")")
+                    : "Send data to \(self.robotListViewModel.connectedRobotPeripheral?.peripheral.name ?? "nil")"
+            )
             Image(systemName: "paperplane.circle.fill")
                 .font(.title)
                 .foregroundColor(.teal)

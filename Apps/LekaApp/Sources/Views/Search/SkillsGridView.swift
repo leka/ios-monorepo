@@ -28,8 +28,8 @@ public struct SkillsGridView: View {
                 }
                 if !filteredActivities.isEmpty {
                     NavigationLink(destination:
-                        SubskillsGridView(subskills: subskills)
-                    ) {
+                        SubskillsGridView(subskills: subskills))
+                    {
                         GroupBox {
                             VStack {
                                 Spacer()

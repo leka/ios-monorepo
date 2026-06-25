@@ -17,7 +17,8 @@ public extension MelodyView {
             self._viewModel = StateObject(
                 wrappedValue: ViewModel(
                     midiPlayer: MIDIPlayer(instrument: instrument), selectedSong: selectedSong, shared: data
-                ))
+                )
+            )
             self.keyboard = keyboard
             self.scale = selectedSong.song.scale
         }
@@ -78,7 +79,8 @@ public extension MelodyView {
             }
             .onDisappear {
                 self.viewModel.setMIDIRecording(
-                    midiRecording: MidiRecordingPlayer.Song(song: ""))
+                    midiRecording: MidiRecordingPlayer.Song(song: "")
+                )
                 self.viewModel.midiPlayer.stop()
             }
         }

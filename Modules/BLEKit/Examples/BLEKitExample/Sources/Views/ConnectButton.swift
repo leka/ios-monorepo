@@ -36,7 +36,8 @@ struct ConnectButton: View {
                 ? 0.5 : 1.0
         )
         .disabled(
-            self.robotListViewModel.connectedRobotPeripheral == nil && self.robotListViewModel.selectedRobotDiscovery == nil)
+            self.robotListViewModel.connectedRobotPeripheral == nil && self.robotListViewModel.selectedRobotDiscovery == nil
+        )
     }
 
     // MARK: Private

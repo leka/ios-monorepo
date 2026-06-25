@@ -9,7 +9,7 @@ import SwiftUI
 // MARK: - UpdateStatusView
 
 struct UpdateStatusView: View {
-    @State private var viewModel = UpdateStatusViewModel()
+    // MARK: Internal
 
     @Binding var isConnectionViewPresented: Bool
     @Binding var isUpdateStatusViewPresented: Bool
@@ -97,6 +97,10 @@ struct UpdateStatusView: View {
             }
         }
     }
+
+    // MARK: Private
+
+    @State private var viewModel = UpdateStatusViewModel()
 }
 
 #Preview {

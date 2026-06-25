@@ -42,10 +42,9 @@ public struct SearchGridView: View {
                         ScrollView(showsIndicators: true) {
                             VerticalActivityGrid(items: self.activities)
                                 .navigationTitle(String(l10n.SearchGridView.activitiesTitle.characters))
+                        }) {
+                            Text(l10n.SearchGridView.seeAllLabel)
                         }
-                    ) {
-                        Text(l10n.SearchGridView.seeAllLabel)
-                    }
                 }
                 .padding(.horizontal)
 
@@ -61,10 +60,9 @@ public struct SearchGridView: View {
                         ScrollView(showsIndicators: true) {
                             VerticalCurriculumGrid(items: self.curriculums)
                                 .navigationTitle(String(l10n.SearchGridView.curriculumsTitle.characters))
+                        }) {
+                            Text(l10n.SearchGridView.seeAllLabel)
                         }
-                    ) {
-                        Text(l10n.SearchGridView.seeAllLabel)
-                    }
                 }
                 .padding(.horizontal)
 

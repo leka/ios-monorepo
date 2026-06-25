@@ -16,8 +16,8 @@ public struct CarouselView: View {
             LazyHStack(spacing: 15) {
                 ForEach(self.items.prefix(8)) { item in
                     NavigationLink(destination:
-                        AnyView(self.navigation.curationDestination(item))
-                    ) {
+                        AnyView(self.navigation.curationDestination(item)))
+                    {
                         CarouselItem(item)
                     }
                     .simultaneousGesture(TapGesture().onEnded {

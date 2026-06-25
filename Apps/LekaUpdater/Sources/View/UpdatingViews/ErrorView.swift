@@ -33,27 +33,33 @@ struct ErrorContentView: View {
             case .failedToLoadFile:
                 self.errorDescription = String(l10n.update.error.failedToLoadFileDescription.characters)
                 self.errorInstructions = String(
-                    l10n.update.error.failedToLoadFileInstructions.characters)
+                    l10n.update.error.failedToLoadFileInstructions.characters
+                )
                 self.errorButtonLabel = String(l10n.update.error.checkUpdateButtonLabel.characters)
 
             case .robotNotUpToDate:
                 self.errorDescription = String(l10n.update.error.robotNotUpToDateDescription.characters)
                 self.errorInstructions = String(
-                    l10n.update.error.robotNotUpToDateInstructions.characters)
+                    l10n.update.error.robotNotUpToDateInstructions.characters
+                )
                 self.errorButtonLabel = String(l10n.update.error.backToConnectionButtonLabel.characters)
 
             case .updateProcessNotAvailable:
                 self.errorDescription = String(
-                    l10n.update.error.updateProcessNotAvailableDescription.characters)
+                    l10n.update.error.updateProcessNotAvailableDescription.characters
+                )
                 self.errorInstructions = String(
-                    l10n.update.error.updateProcessNotAvailableInstructions.characters)
+                    l10n.update.error.updateProcessNotAvailableInstructions.characters
+                )
                 self.errorButtonLabel = String(l10n.update.error.closeButtonLabel.characters)
 
             case .robotUnexpectedDisconnection:
                 self.errorDescription = String(
-                    l10n.update.error.robotUnexpectedDisconnectionDescription.characters)
+                    l10n.update.error.robotUnexpectedDisconnectionDescription.characters
+                )
                 self.errorInstructions = String(
-                    l10n.update.error.robotUnexpectedDisconnectionInstructions.characters)
+                    l10n.update.error.robotUnexpectedDisconnectionInstructions.characters
+                )
                 self.errorButtonLabel = String(l10n.update.error.closeButtonLabel.characters)
 
             default:

@@ -16,8 +16,8 @@ public struct HorizontalCurriculumGrid: View {
             LazyHGrid(rows: self.rows, spacing: 20) {
                 ForEach(Array(self.items.prefix(15).enumerated()), id: \.offset) { index, item in
                     NavigationLink(destination:
-                        AnyView(self.navigation.curationDestination(item))
-                    ) {
+                        AnyView(self.navigation.curationDestination(item)))
+                    {
                         VStack {
                             CurriculumGridItem(item)
                             let isNotLast = (index + 1) % self.numberOfRows != 0

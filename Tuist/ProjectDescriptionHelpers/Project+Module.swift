@@ -63,8 +63,7 @@ public extension Project {
                     settings:
                     .settings(base:
                         .extendingBase(with: settings)
-                            .merging(SettingsDictionary.manualCodeSigning)
-                    )
+                            .merging(SettingsDictionary.manualCodeSigning))
                 )
             }
         } else {

@@ -11,16 +11,9 @@ import SwiftUI
 // MARK: - SettingsView
 
 struct SettingsView: View {
-    @Environment(\.openURL) private var openURL
+    // MARK: Internal
+
     @Environment(\.dismiss) var dismiss
-
-    @State private var showConfirmCredentialsChange: Bool = false
-    @State private var showConfirmDisconnection: Bool = false
-    @State private var showConfirmDeleteAccount: Bool = false
-    @State private var showReAuthenticate: Bool = false
-    @State private var isCaregiverpickerPresented: Bool = false
-
-    @Bindable private var authManagerViewModel: AuthManagerViewModel = .shared
 
     var body: some View {
         Form {
@@ -239,22 +232,26 @@ struct SettingsView: View {
         }
     }
 
+    // MARK: Private
+
+    @Environment(\.openURL) private var openURL
+
+    @State private var showConfirmCredentialsChange: Bool = false
+    @State private var showConfirmDisconnection: Bool = false
+    @State private var showConfirmDeleteAccount: Bool = false
+    @State private var showReAuthenticate: Bool = false
+    @State private var isCaregiverpickerPresented: Bool = false
+
+    @Bindable private var authManagerViewModel: AuthManagerViewModel = .shared
+
+    @Bindable private var navigation = Navigation.shared
+
     private let authManager = AuthManager.shared
     private let caregiverManager: CaregiverManager = .shared
     private let carereceiverManager: CarereceiverManager = .shared
     private var sharedLibraryManager: SharedLibraryManager = .shared
     private let persistentDataManager: PersistentDataManager = .shared
     private var styleManager: StyleManager = .shared
-
-    @Bindable private var navigation = Navigation.shared
-
-    private func reset() {
-        self.caregiverManager.resetData()
-        self.carereceiverManager.resetData()
-        self.sharedLibraryManager.resetData()
-        self.styleManager.setAccentColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
-        self.styleManager.setColorScheme(.light)
-    }
 
     private var errorAlertTitle: String {
         switch self.authManagerViewModel.userAction {
@@ -276,6 +273,14 @@ struct SettingsView: View {
             default:
                 String(l10n.SettingsView.AccountSection.LogOut.errorAlertMessage.characters)
         }
+    }
+
+    private func reset() {
+        self.caregiverManager.resetData()
+        self.carereceiverManager.resetData()
+        self.sharedLibraryManager.resetData()
+        self.styleManager.setAccentColor(DesignKitAsset.Colors.lekaDarkBlue.swiftUIColor)
+        self.styleManager.setColorScheme(.light)
     }
 }
 
