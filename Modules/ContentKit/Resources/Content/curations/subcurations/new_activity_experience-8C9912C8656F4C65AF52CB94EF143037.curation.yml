@@ -1,0 +1,156 @@
+# Leka - iOS Monorepo
+# Copyright APF France handicap
+# SPDX-License-Identifier: Apache-2.0
+
+uuid: 8C9912C8656F4C65AF52CB94EF143037
+icon: sparkles
+color: 0x7856FF
+
+l10n:
+  - locale: fr_FR
+    details:
+      title: Nouvelle expérience des activités
+      subtitle:
+      description: Des interfaces plus claires, un jeu plus fluide et de nouvelles façons d’interagir avec Leka.
+  - locale: en_US
+    details:
+      title: New activity experience
+      subtitle:
+      description: Cleaner interfaces, smoother play, and new ways to interact with Leka.
+
+content:
+  - component: horizontal_curriculum_content_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: "Nouvelle interaction : Cartes magiques"
+          subtitle:
+          description: Découvrez les activités Cartes magiques avec Leka.
+      - locale: en_US
+        details:
+          title: "New interaction: Magic Cards"
+          subtitle:
+          description: Discover Magic Cards activities with Leka.
+    items:
+      - value: curriculum_magic_card-B2F89676DF8D4D3B89304A16EE1E55AF
+        type: curriculum
+
+  - component: horizontal_activity_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Jeux éducatifs améliorés
+          subtitle:
+          description: Les activités autonomes mises à jour pour la nouvelle expérience.
+      - locale: en_US
+        details:
+          title: Refreshed educational games
+          subtitle:
+          description: Standalone activities updated for the new experience.
+    items:
+      - value: dance_freeze-6E2F7D56726C419EA534C614F777D934
+        type: activity
+      - value: hide_and_seek-4BFA2AC3390E49248DD022E27008F118
+        type: activity
+      - value: melody-CB995F829411449AB32E6B8A688E3DDB
+        type: activity
+      - value: color_music_pad-8439D1EE7DD846ACB048145089F34C33
+        type: activity
+      - value: xylophone_pentatonic-7C1DDED6C6D44913B9A7D4EB4AEE8F6B
+        type: activity
+      - value: xylophone_heptatonic-65193102AE2947439ABB82D5891EDDBA
+        type: activity
+      - value: color_mediator-2CE6B5E98AFD45E0B2CD87727DB6D5C2
+        type: activity
+      - value: discover_leka-89CEA9FE20624659B1307B633641BC90
+        type: activity
+      - value: super_simon_2_colors-3E4B57F536824F1087A2E512223EF7E0
+        type: activity
+      - value: super_simon_4_colors-B39DDA35800849F7A40F651E411D30CD
+        type: activity
+      - value: super_simon_6_colors-9EFAAC01288F41C0ACACCA5094FAD8E7
+        type: activity
+
+  - component: horizontal_curriculum_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Activités améliorées
+          subtitle:
+          description: Des contenus connus, mis à jour pour une expérience plus fluide.
+      - locale: en_US
+        details:
+          title: Refreshed activities
+          subtitle:
+          description: Familiar content updated for a smoother experience.
+    items:
+      - value: curriculum_animal_memory-7C75908B86D748A283AA080D40642BE7
+        type: curriculum
+      - value: color_bingo-69760D1DA61849E3926E3A939BBEF0CE
+        type: curriculum
+      - value: curriculum_alphabetical_order-F9A2F6E76AE449999B1F76AA7E2D2978
+        type: curriculum
+      - value: curriculum_ordering_steps_to_bake_a_cake-1F908FA3349B476DA1EE4CDC60B5B632
+        type: curriculum
+      - value: curriculum_ordering_the_steps_of_a_session_with_leka-211497313FDB4094990330D2387D1CA3
+        type: curriculum
+      - value: curriculum_leka_weather_robot-ED4C900D4ACB426384DC76F182BC19A5
+        type: curriculum
+      - value: curriculum_recognition_emotions_robot-B63B1180ECAF46269402C0AD2F20191A
+        type: curriculum
+      - value: super_simon-C6EABAC161CD44C290B32202DFDCDAF6
+        type: curriculum
+
+  - component: horizontal_curriculum_list
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Nouveaux parcours pour parler de soi
+          subtitle:
+          description: Des parcours sans bonne ou mauvaise réponse pour aider à exprimer ses goûts, ses envies et ses ressentis.
+      - locale: en_US
+        details:
+          title: New curriculums to talk about oneself
+          subtitle:
+          description: Curriculums without right or wrong answers to help express one's tastes, desires, and feelings.
+    items:
+      - value: curriculum_openplay_feelings-2196E84ADF24439AA51CAB93000C95F3
+        type: curriculum
+      - value: curriculum_openplay_preferences_animal-E4E20B090D3C4D898C139513D85E9B45
+        type: curriculum
+      - value: curriculum_openplay_preferences_food-0AD93266F427408CA13C61C4B8F68E3C
+        type: curriculum
+      - value: curriculum_openplay_preferences_sports-F72441F55BAA48A78E359A4EFCC6E007
+        type: curriculum
+
+  - component: horizontal_curriculum_content_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title: Nouveaux parcours sur les formes
+          subtitle:
+          description: De tout nouveaux parcours pour apprendre les formes.
+      - locale: en_US
+        details:
+          title: New curriculums on shapes
+          subtitle:
+          description: Brand new curriculums to learn shapes.
+    items:
+      - value: curriculum_shape_recognition-785607C27B1449A1B12F10302A754486
+        type: curriculum
+
+  - component: horizontal_curriculum_content_grid
+    l10n:
+      - locale: fr_FR
+        details:
+          title:
+          subtitle:
+          description:
+      - locale: en_US
+        details:
+          title:
+          subtitle:
+          description:
+    items:
+      - value: curriculum_visual_discrimination_shapes_and_colors-B142C14603F246C7B88C169E2CD3FF74
+        type: curriculum
