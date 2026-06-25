@@ -1,6 +1,8 @@
 amends "package://github.com/jdx/hk/releases/download/v1.48.0/hk@1.48.0#/Config.pkl"
 import "package://github.com/jdx/hk/releases/download/v1.48.0/hk@1.48.0#/Builtins.pkl"
 
+fail_fast = false
+
 hooks {
     ["pre-commit"] {
         fix = true
@@ -40,8 +42,8 @@ hooks {
             ["mixed-line-ending"] = (Builtins.mixed_line_ending) {
                 batch = true
             }
-            ["no-commit-to-branch"] = (Builtins.no_commit_to_branch) {
-                check = "hk util no-commit-to-branch --branch main --branch develop"
+            ["no-commit-to-branch"] {
+                check = "branch=$(git branch --show-current); test -z \"$branch\" || { test \"$branch\" != main && test \"$branch\" != develop; }"
             }
             ["trailing-whitespace"] = (Builtins.trailing_whitespace) {
                 batch = true
