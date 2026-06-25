@@ -91,11 +91,11 @@ struct CarereceiverList: View {
 
     // MARK: Private
 
-    private let columns = Array(repeating: GridItem(), count: 4)
-    private var styleManager: StyleManager = .shared
-
     @State private var carereceiverManagerViewModel = CarereceiverManagerViewModel()
     @State private var isCarereceiverCreationPresented: Bool = false
+
+    private let columns = Array(repeating: GridItem(), count: 4)
+    private var styleManager: StyleManager = .shared
 }
 
 // MARK: - l10n.CarereceiverList

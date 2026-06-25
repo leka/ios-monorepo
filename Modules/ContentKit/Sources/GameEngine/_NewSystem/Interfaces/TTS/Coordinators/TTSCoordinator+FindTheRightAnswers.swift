@@ -18,7 +18,8 @@ public class TTSCoordinatorFindTheRightAnswers: TTSGameplayCoordinatorProtocol, 
         self.gameplay = NewGameplayFindTheRightAnswers(
             choices: self.rawChoices
                 .map { .init(id: $0.id, isRightAnswer: $0.isRightAnswer)
-                })
+                }
+        )
 
         self.uiModel.value.action = action
         self.uiModel.value.choices = self.rawChoices.map { choice in

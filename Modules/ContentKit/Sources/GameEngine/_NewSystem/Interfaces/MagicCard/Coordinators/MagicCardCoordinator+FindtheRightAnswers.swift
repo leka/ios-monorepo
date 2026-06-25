@@ -22,7 +22,8 @@ public class MagicCardCoordinatorFindTheRightAnswers: MagicCardGameplayCoordinat
         self.gameplay = NewGameplayFindTheRightAnswers(
             choices: choices
                 .map { .init(id: $0.id, isRightAnswer: $0.isRightAnswer)
-                })
+                }
+        )
 
         self.uiModel.value.action = action
         self.uiModel.value.choices = self.rawChoices.map { choice in

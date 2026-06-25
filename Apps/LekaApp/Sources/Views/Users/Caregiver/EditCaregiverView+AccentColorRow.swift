@@ -16,6 +16,7 @@ extension EditCaregiverView {
         // MARK: Internal
 
         var styleManager: StyleManager = .shared
+
         @Binding var caregiver: Caregiver
 
         var body: some View {
@@ -33,6 +34,8 @@ extension EditCaregiverView {
                 }
             }
         }
+
+        // MARK: Private
 
         // MARK: - ColorCircleView
 

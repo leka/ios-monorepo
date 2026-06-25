@@ -35,9 +35,9 @@ extension ColorPad {
         // MARK: Internal
 
         var section: Robot.Lights
-        let robot = Robot.shared
-
         @Binding var padState: PadState
+
+        let robot = Robot.shared
 
         var body: some View {
             LedZoneShape(section: self.section)

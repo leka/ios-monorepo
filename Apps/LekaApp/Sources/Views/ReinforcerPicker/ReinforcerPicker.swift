@@ -14,6 +14,7 @@ struct ReinforcerPicker: View {
     // MARK: Internal
 
     var styleManager = StyleManager.shared
+
     @Binding var carereceiver: Carereceiver
 
     var body: some View {

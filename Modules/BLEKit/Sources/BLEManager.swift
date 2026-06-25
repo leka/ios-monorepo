@@ -30,7 +30,8 @@ public class BLEManager {
     #else
         public static var shared: BLEManager = .init(
             centralManager: .live(
-                ManagerCreationOptions(showPowerAlert: true, restoreIdentifier: "io.leka.module.BLEKit.Manager.live"))
+                ManagerCreationOptions(showPowerAlert: true, restoreIdentifier: "io.leka.module.BLEKit.Manager.live")
+            )
         )
     #endif
 
@@ -71,7 +72,8 @@ public class BLEManager {
             .compactMap { peripheralDiscoveries in
                 peripheralDiscoveries.compactMap { peripheralDiscovery -> RobotDiscoveryModel? in
                     guard let robotAdvertisingData = RobotAdvertisingData(
-                        advertisementData: peripheralDiscovery.advertisementData),
+                        advertisementData: peripheralDiscovery.advertisementData
+                    ),
                         let rssi = peripheralDiscovery.rssi
                     else {
                         return nil

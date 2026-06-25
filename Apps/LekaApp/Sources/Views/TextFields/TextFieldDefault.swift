@@ -11,6 +11,7 @@ struct TextFieldDefault: View {
     // MARK: Internal
 
     let label: String
+
     @Binding var entry: String
 
     var body: some View {

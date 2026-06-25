@@ -8,7 +8,7 @@ import SwiftUI
 // MARK: - RobotRollBackAvailableView
 
 struct RobotRollBackAvailableView: View {
-    @State private var requirementsViewModel = RequirementsViewModel()
+    // MARK: Internal
 
     @Binding var isUpdateStatusViewPresented: Bool
 
@@ -31,6 +31,10 @@ struct RobotRollBackAvailableView: View {
             }
         }
     }
+
+    // MARK: Private
+
+    @State private var requirementsViewModel = RequirementsViewModel()
 }
 
 // MARK: - RobotRollBackAvailableView_Previews

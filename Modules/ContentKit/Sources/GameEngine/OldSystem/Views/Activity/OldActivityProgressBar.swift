@@ -56,9 +56,9 @@ struct OldActivityProgressBar: View {
 
     // MARK: Private
 
-    private let height: CGFloat = 30
-
     @State private var currentColor: Color = .white
+
+    private let height: CGFloat = 30
 
     private func completionLevelToColor(level: ExerciseState.CompletionLevel?) -> Color {
         switch level {

@@ -20,8 +20,8 @@ struct VerticalActivityList: View {
                 ForEach(Array(self.items.enumerated()), id: \.offset) { index, item in
                     GridRow {
                         NavigationLink(destination:
-                            AnyView(self.navigation.curationDestination(item))
-                        ) {
+                            AnyView(self.navigation.curationDestination(item)))
+                        {
                             ActivityListItem(item, number: index)
                         }
                         .buttonStyle(.plain)

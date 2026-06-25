@@ -11,9 +11,8 @@ import SwiftUI
 
 extension EditCaregiverView {
     struct AppearanceRow: View {
-        // MARK: Internal
-
         var styleManager: StyleManager = .shared
+
         @Binding var caregiver: Caregiver
 
         var body: some View {

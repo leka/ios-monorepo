@@ -28,7 +28,8 @@ public struct DragAndDropIntoZonesView: View {
         }
 
         _viewModel = StateObject(
-            wrappedValue: ViewModel(choices: payload.choices, shuffle: payload.shuffleChoices, shared: data))
+            wrappedValue: ViewModel(choices: payload.choices, shuffle: payload.shuffleChoices, shared: data)
+        )
 
         self.dropZoneA = payload.dropZoneA
         self.dropZoneB = payload.dropZoneB

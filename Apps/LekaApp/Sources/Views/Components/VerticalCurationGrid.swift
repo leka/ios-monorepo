@@ -15,8 +15,8 @@ public struct VerticalCurationGrid: View {
         LazyVGrid(columns: self.columns, spacing: 10) {
             ForEach(self.items) { item in
                 NavigationLink(destination:
-                    AnyView(self.navigation.curationDestination(item))
-                ) {
+                    AnyView(self.navigation.curationDestination(item)))
+                {
                     CurationItem(item)
                 }
                 .simultaneousGesture(TapGesture().onEnded {

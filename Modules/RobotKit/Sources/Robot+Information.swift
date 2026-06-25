@@ -61,7 +61,9 @@ extension Robot {
                     self.osVersion.send(
                         Version(
                             String(decoding: data, as: UTF8.self)
-                                .replacingOccurrences(of: "\0", with: "")))
+                                .replacingOccurrences(of: "\0", with: "")
+                        )
+                    )
                     log.trace("🤖 osVersion: \(self.osVersion.value)")
                 }
             }
@@ -78,7 +80,8 @@ extension Robot {
                 if let data {
                     self.serialNumber.send(
                         String(decoding: data, as: UTF8.self)
-                            .replacingOccurrences(of: "\0", with: ""))
+                            .replacingOccurrences(of: "\0", with: "")
+                    )
                     log.trace("🤖 serialNumber: \(self.serialNumber.value)")
                 }
             }

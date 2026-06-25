@@ -20,7 +20,8 @@ public struct MemoryView: View {
         _viewModel = StateObject(
             wrappedValue: MemoryViewViewModel(
                 choices: payload.choices, shared: data, shuffleChoices: payload.shuffleChoices
-            ))
+            )
+        )
     }
 
     // MARK: Public

@@ -19,8 +19,8 @@ struct VerticalActivityTable: View {
         Table(self.items) {
             TableColumn(String(l10n.VerticalActivityTable.titleColumnLabel.characters)) { item in
                 NavigationLink(destination:
-                    AnyView(self.navigation.curationDestination(item))
-                ) {
+                    AnyView(self.navigation.curationDestination(item)))
+                {
                     ActivityTableItem(item)
                 }
                 .buttonStyle(.plain)

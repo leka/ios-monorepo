@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ColorPad: View {
     let displayMode: Gamepad.DisplayMode
+
     @Binding var padState: PadState
 
     var body: some View {

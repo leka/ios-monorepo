@@ -40,11 +40,12 @@ extension Gamepad {
 
         // MARK: Private
 
+        @State private var selectedColor: Robot.Color?
+        @State private var reinforcerTriggered: Bool = false
+
         private let colors: [Robot.Color] = [.white, .red, .blue, .green, .yellow, .purple, .orange, .pink]
         private let columns = Array(repeating: GridItem(), count: 4)
         private let kHorizontalSpacing: CGFloat = 20
-        @State private var selectedColor: Robot.Color?
-        @State private var reinforcerTriggered: Bool = false
     }
 }
 

@@ -29,7 +29,8 @@ public struct RobotThenTouchToSelectView: View {
         }
 
         _viewModel = StateObject(
-            wrappedValue: TouchToSelectViewViewModel(choices: payload.choices, shuffle: payload.shuffleChoices, shared: data))
+            wrappedValue: TouchToSelectViewViewModel(choices: payload.choices, shuffle: payload.shuffleChoices, shared: data)
+        )
 
         self.actionType = actionType
 

@@ -88,6 +88,23 @@ public struct ColorMediatorView: View {
 
     // MARK: Internal
 
+    @State var timer: Timer?
+
+    // MARK: Private
+
+    @State private var isColorSelectorPresented: Bool = false
+    @State private var selectedColors: [Robot.Color] = []
+    @State private var shuffledSelectedColors: [Robot.Color] = []
+    @State private var currentColor: Robot.Color = .white
+    @State private var currentColorIndex: Int = 0
+    @State private var remainingTime: Int = 5
+
+    @State private var isShuffleModeActivated: Bool = false
+    @State private var isPlaying: Bool = false
+
+    private let backgroundColor: Color = .init(light: UIColor.white, dark: UIColor.systemGray5)
+    private let colorMediatorFrame: CGFloat = Device.current.getDeviceSize() == .small ? 250 : 300
+
     private var colorSelectorButton: some View {
         VStack {
             Button {
@@ -152,22 +169,6 @@ public struct ColorMediatorView: View {
         self.currentColorIndex = 0
         self.currentColor = .white
     }
-
-    // MARK: Private
-
-    @State private var isColorSelectorPresented: Bool = false
-    @State private var selectedColors: [Robot.Color] = []
-    @State private var shuffledSelectedColors: [Robot.Color] = []
-    @State private var currentColor: Robot.Color = .white
-    @State private var currentColorIndex: Int = 0
-    @State private var remainingTime: Int = 5
-
-    @State private var isShuffleModeActivated: Bool = false
-    @State private var isPlaying: Bool = false
-    @State var timer: Timer?
-
-    private let backgroundColor: Color = .init(light: UIColor.white, dark: UIColor.systemGray5)
-    private let colorMediatorFrame: CGFloat = Device.current.getDeviceSize() == .small ? 250 : 300
 }
 
 #Preview {

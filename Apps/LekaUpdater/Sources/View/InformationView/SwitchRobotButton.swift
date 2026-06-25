@@ -12,6 +12,7 @@ import SwiftUI
 
 struct SwitchRobotButton: View {
     let isRobotConnected: Bool
+
     @Binding var isConnectionViewPresented: Bool
 
     var body: some View {
