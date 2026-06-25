@@ -42,8 +42,9 @@ hooks {
             ["mixed-line-ending"] = (Builtins.mixed_line_ending) {
                 batch = true
             }
-            ["no-commit-to-branch"] {
-                check = "branch=$(git branch --show-current); test -z \"$branch\" || { test \"$branch\" != main && test \"$branch\" != develop; }"
+            ["no-commit-to-branch"] = (Builtins.no_commit_to_branch) {
+                step_condition = "exec('if [ \"${CI:-}\" = true ]; then echo false; else echo true; fi') == 'true\n'"
+                check = "hk util no-commit-to-branch --branch main --branch develop"
             }
             ["trailing-whitespace"] = (Builtins.trailing_whitespace) {
                 batch = true
