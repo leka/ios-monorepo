@@ -60,7 +60,7 @@ hooks {
             ["check_xcstrings"] {
                 glob = "**/*.xcstrings"
                 batch = true
-                fix = "uv run python Tools/Hooks/check_xcstrings.py {{files}}"
+                check = "uv run python Tools/Hooks/check_xcstrings.py {{files}}"
             }
             ["check_yaml_definitions_avatars"] {
                 glob = "**/avatars.yml"

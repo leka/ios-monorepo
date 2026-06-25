@@ -30,7 +30,7 @@ def order_top_keys(data: object) -> object:
 
 def format_file(path: Path) -> bool:
     data = json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=OrderedDict)
-    formatted = json.dumps(order_top_keys(data), ensure_ascii=False, indent=4) + "\n"
+    formatted = json.dumps(order_top_keys(data), ensure_ascii=True, indent=4) + "\n"
     original = path.read_text(encoding="utf-8")
 
     if formatted != original:
