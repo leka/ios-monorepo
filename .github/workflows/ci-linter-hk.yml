@@ -48,7 +48,7 @@ jobs:
       - name: Run hk hooks --all-files
         if: matrix.files == 'all_files'
         run: |
-          hk run pre-commit --all
+          hk run pre-commit --all --profile all-files
 
       - name: Run hk hooks --changed-files
         if: matrix.files == 'changed_files'

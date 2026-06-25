@@ -11,43 +11,56 @@ hooks {
         steps {
             ["check-added-large-files"] = (Builtins.check_added_large_files) {
                 batch = true
+                profiles = List("!all-files")
             }
             ["check-case-conflict"] {
                 check = "git ls-files | awk '{ key = tolower($0); if (seen[key] && seen[key] != $0) { print seen[key] \" conflicts with \" $0; exit 1 } seen[key] = $0 }'"
             }
             ["check-executables-have-shebangs"] = (Builtins.check_executables_have_shebangs) {
+                types = List("executable")
                 batch = true
             }
             ["check-merge-conflict"] = (Builtins.check_merge_conflict) {
+                types = List("text")
                 batch = true
+                exclude = Regex(#".*\.(png|jpg|jpeg|gif|webp|svg|lottie|pdf|mp3|mp4|mov|wav)$"#)
             }
             ["check-shebang-scripts-are-executable"] {
                 types = List("text")
                 batch = true
+                exclude = Regex(#".*\.(png|jpg|jpeg|gif|webp|svg|lottie|pdf|mp3|mp4|mov|wav)$"#)
                 check = "bash -c 'for file in \"$@\"; do if head -c 2 \"$file\" | grep -q \"^#!\" && [ ! -x \"$file\" ]; then echo \"$file: shebang script is not executable\"; exit 1; fi; done' -- {{files}}"
             }
             ["check-symlinks"] = (Builtins.check_symlinks) {
+                types = List("symlink")
                 batch = true
             }
             ["detect-private-key"] = (Builtins.detect_private_key) {
+                types = List("text")
                 batch = true
+                exclude = Regex(#".*\.(png|jpg|jpeg|gif|webp|svg|lottie|pdf|mp3|mp4|mov|wav)$"#)
             }
             ["end-of-file-fixer"] = (Builtins.newlines) {
+                types = List("text")
                 batch = true
-                exclude = Regex(#"(.*\.json$|.*\.xcstrings$|.*\.xcassets/.*|.*\.svg$)"#)
+                exclude = Regex(#"(.*\.json$|.*\.xcstrings$|.*\.xcassets/.*|.*\.(png|jpg|jpeg|gif|webp|svg|lottie|pdf|mp3|mp4|mov|wav)$)"#)
             }
             ["forbid-submodules"] {
                 check = "test -z \"$(git submodule status --recursive)\""
             }
             ["mixed-line-ending"] = (Builtins.mixed_line_ending) {
+                types = List("text")
                 batch = true
+                exclude = Regex(#".*\.(png|jpg|jpeg|gif|webp|svg|lottie|pdf|mp3|mp4|mov|wav)$"#)
             }
             ["no-commit-to-branch"] = (Builtins.no_commit_to_branch) {
                 step_condition = "exec('if [ \"${CI:-}\" = true ]; then echo false; else echo true; fi') == 'true\n'"
                 check = "hk util no-commit-to-branch --branch main --branch develop"
             }
             ["trailing-whitespace"] = (Builtins.trailing_whitespace) {
+                types = List("text")
                 batch = true
+                exclude = Regex(#".*\.(png|jpg|jpeg|gif|webp|svg|lottie|pdf|mp3|mp4|mov|wav)$"#)
             }
             ["check-yaml"] {
                 glob = List("**/*.yml", "**/*.yaml")
