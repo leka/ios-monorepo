@@ -37,7 +37,7 @@ struct FavoriteActivitiesView: View {
                 guard self.viewModel.isActivityFavoritedByCurrentCaregiver(
                     activityID: savedActivity.id,
                     caregiverID: currentCaregiverID
-                ), let activity = ContentKit.allPublishedActivities[savedActivity.id] else {
+                ), let activity = ContentKit.allPublishedNewActivities[savedActivity.id] else {
                     return nil
                 }
                 return CurationItemModel(id: activity.id, name: activity.name, contentType: .activity)

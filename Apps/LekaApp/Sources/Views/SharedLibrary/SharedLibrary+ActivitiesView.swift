@@ -29,7 +29,7 @@ struct SharedLibraryActivitiesView: View {
 
     private var items: [CurationItemModel] {
         self.viewModel.activities.compactMap { savedActivity in
-            ContentKit.allPublishedActivities[savedActivity.id]
+            ContentKit.allPublishedNewActivities[savedActivity.id]
         }
         .sorted {
             $0.details.title.compare($1.details.title, locale: NSLocale.current) == .orderedAscending
