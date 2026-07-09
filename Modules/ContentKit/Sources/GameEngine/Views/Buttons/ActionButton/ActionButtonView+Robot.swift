@@ -60,9 +60,7 @@ extension ActionButtonView {
                 .opacity(self.robotWasTapped ? 0.3 : 1.0)
                 .buttonStyle(Style(progress: 0.0))
                 .scaleEffect(self.robotWasTapped ? 0.95 : 1.0, anchor: .center)
-                .scaleEffect(self.isPulsing ? 1.1 : 1.0, anchor: .center)
                 .animation(.spring(response: 0.3, dampingFraction: 0.45), value: self.robotWasTapped)
-                .animation(self.isPulsing ? .easeInOut(duration: 1).repeatForever(autoreverses: true).speed(1.2) : .easeInOut(duration: 1), value: self.isPulsing)
                 .shadow(
                     color: self.styleManager.accentColor!.opacity(0.2),
                     radius: self.robotWasTapped ? 6 : 3, x: 0, y: 3

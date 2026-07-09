@@ -47,11 +47,6 @@ struct NewSuperSimonView: View {
                         .opacity(self.viewModel.disableRobot ? 0.3 : 1.0)
                         .buttonStyle(ActionButtonStyle(progress: 0.0))
                         .scaleEffect(self.viewModel.disableRobot ? 0.95 : 1.0, anchor: .center)
-                        .scaleEffect(self.viewModel.isPulsing ? 1.1 : 1.0, anchor: .center)
-                        .animation(self.viewModel.isPulsing ?
-                            .easeInOut(duration: 1).repeatForever(autoreverses: true).speed(1.2) :
-                            .easeInOut(duration: 1),
-                            value: self.viewModel.isPulsing)
                         .animation(.spring(response: 0.3, dampingFraction: 0.45), value: self.viewModel.disableRobot)
                         .shadow(
                             color: .accentColor.opacity(0.2),
