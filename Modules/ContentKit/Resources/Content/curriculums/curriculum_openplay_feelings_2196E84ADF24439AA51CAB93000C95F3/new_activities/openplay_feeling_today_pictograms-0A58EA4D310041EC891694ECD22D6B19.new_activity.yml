@@ -8,7 +8,7 @@ uuid: 0A58EA4D310041EC891694ECD22D6B19
 name: openplay_feeling_today_pictograms
 
 created_at: "2026-04-27T10:00:00.000000"
-last_edited_at: "2026-06-10T11:42:16.173603"
+last_edited_at: "2026-07-15T14:53:21.020963"
 status: published
 launch_requirements:
   robot:
@@ -40,7 +40,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: template_touch_to_select
+      icon: openplay_feeling_today_pictograms
 
       title: Dire comment je me sens
       subtitle: Leka
@@ -58,7 +58,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: template_touch_to_select
+      icon: openplay_feeling_today_pictograms
 
       title: Share How I Feel
       subtitle: Leka
