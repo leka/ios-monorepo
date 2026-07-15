@@ -38,15 +38,11 @@ extension ActionButtonView {
                 .disabled(self.isPlaying)
                 .buttonStyle(Style(progress: self.isPlaying ? self.audioManagerViewModel.progress.percentage : 0))
                 .scaleEffect(self.isPlaying ? 1.0 : 0.8, anchor: .center)
-                .scaleEffect(self.isPulsing ? 1.1 : 1.0, anchor: .center)
                 .shadow(
                     color: self.styleManager.accentColor!.opacity(0.2),
                     radius: self.isPlaying ? 6 : 3, x: 0, y: 3
                 )
                 .animation(.spring(response: 0.3, dampingFraction: 0.45), value: self.isPlaying)
-                .animation(self.isPulsing ?
-                    .easeInOut(duration: 1).repeatForever(autoreverses: true).speed(1.2) :
-                    .easeInOut(duration: 1), value: self.isPulsing)
                 .onDisappear {
                     self.audioManager.stop()
                 }

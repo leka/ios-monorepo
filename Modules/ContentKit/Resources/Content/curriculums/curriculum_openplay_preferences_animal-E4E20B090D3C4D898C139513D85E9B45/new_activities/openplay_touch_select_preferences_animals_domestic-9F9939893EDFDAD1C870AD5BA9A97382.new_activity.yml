@@ -8,7 +8,7 @@ uuid: 9F9939893EDFDAD1C870AD5BA9A97382
 name: openplay_touch_select_preferences_animals_domestic
 
 created_at: "2026-04-27T10:00:00.000000"
-last_edited_at: "2026-06-10T15:38:12.088493"
+last_edited_at: "2026-07-15T14:53:20.952164"
 status: published
 launch_requirements:
   robot:
@@ -41,7 +41,7 @@ locales:
 l10n:
   - locale: fr_FR
     details:
-      icon: template_touch_to_select
+      icon: openplay_touch_select_preferences_animals_domestic
 
       title: Choisir mes animaux préférés
       subtitle: Domestiques
@@ -59,7 +59,7 @@ l10n:
 
   - locale: en_US
     details:
-      icon: template_touch_to_select
+      icon: openplay_touch_select_preferences_animals_domestic
 
       title: Choose My Favorite Animals
       subtitle: Domestic

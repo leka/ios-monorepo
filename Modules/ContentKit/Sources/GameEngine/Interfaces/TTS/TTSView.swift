@@ -22,26 +22,11 @@ public struct TTSView: View {
         ZStack(alignment: .bottomTrailing) {
             HStack(spacing: 0) {
                 if let action = self.viewModel.action {
-                    Button {
-                        // nothing to do
+                    ActionButtonColumn(action: action) {
+                        withAnimation {
+                            self.viewModel.didTriggerAction = true
+                        }
                     }
-                    label: {
-                        ActionButtonView(action: action)
-                            .padding(20)
-                    }
-                    .simultaneousGesture(
-                        TapGesture()
-                            .onEnded { _ in
-                                withAnimation {
-                                    self.viewModel.didTriggerAction = true
-                                }
-                            }
-                    )
-
-                    Divider()
-                        .opacity(0.4)
-                        .frame(maxHeight: 500)
-                        .padding(.vertical, 20)
                 }
 
                 Group {
