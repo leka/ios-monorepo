@@ -17,14 +17,14 @@ struct CategorySearchView: View {
         for activity in self.activities {
             var totalScore = 0
 
-            let titleResult = fuzzyMatch(input: activity.details.title, pattern: self.query)
+            let titleResult = fuzzyMatch(input: activity.details.title, pattern: self.debouncedQuery)
             totalScore += titleResult.score * self.kTitleWeight
 
-            let subtitleResult = fuzzyMatch(input: activity.details.subtitle ?? "", pattern: self.query)
+            let subtitleResult = fuzzyMatch(input: activity.details.subtitle ?? "", pattern: self.debouncedQuery)
             totalScore += subtitleResult.score * self.kSubtitleWeight
 
             for tag in activity.tags {
-                let tagResult = fuzzyMatch(input: tag.name, pattern: self.query)
+                let tagResult = fuzzyMatch(input: tag.name, pattern: self.debouncedQuery)
                 totalScore += tagResult.score * self.kTagWeight
             }
             scoredActivities.append((activity: activity, score: totalScore))
@@ -41,7 +41,7 @@ struct CategorySearchView: View {
         for skill in self.skills {
             var totalScore = 0
 
-            let titleResult = fuzzyMatch(input: skill.name, pattern: self.query)
+            let titleResult = fuzzyMatch(input: skill.name, pattern: self.debouncedQuery)
             totalScore += titleResult.score * self.kTitleWeight
 
             scoredSkill.append((skill: skill, score: totalScore))
@@ -58,14 +58,14 @@ struct CategorySearchView: View {
         for curriculum in self.curriculums {
             var totalScore = 0
 
-            let titleResult = fuzzyMatch(input: curriculum.details.title, pattern: self.query)
+            let titleResult = fuzzyMatch(input: curriculum.details.title, pattern: self.debouncedQuery)
             totalScore += titleResult.score * self.kTitleWeight
 
-            let subtitleResult = fuzzyMatch(input: curriculum.details.subtitle ?? "", pattern: self.query)
+            let subtitleResult = fuzzyMatch(input: curriculum.details.subtitle ?? "", pattern: self.debouncedQuery)
             totalScore += subtitleResult.score * self.kSubtitleWeight
 
             for tag in curriculum.tags {
-                let tagResult = fuzzyMatch(input: tag.name, pattern: self.query)
+                let tagResult = fuzzyMatch(input: tag.name, pattern: self.debouncedQuery)
                 totalScore += tagResult.score * self.kTagWeight
             }
 
@@ -97,11 +97,26 @@ struct CategorySearchView: View {
             }
         }
         .searchable(text: self.$query)
+        .task(id: self.query) {
+            guard !self.query.isEmpty else {
+                self.debouncedQuery = ""
+                return
+            }
+
+            try? await Task.sleep(for: .milliseconds(300))
+
+            guard !Task.isCancelled else {
+                return
+            }
+
+            self.debouncedQuery = self.query
+        }
     }
 
     // MARK: Private
 
     @State private var query = ""
+    @State private var debouncedQuery = ""
 
     private let kTitleWeight = 10
     private let kSubtitleWeight = 3
