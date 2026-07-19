@@ -19,10 +19,15 @@ struct VerticalActivityList: View {
             Grid(alignment: .center, horizontalSpacing: 10, verticalSpacing: 24) {
                 ForEach(Array(self.items.enumerated()), id: \.offset) { index, item in
                     GridRow {
+                        Text("\(index + 1)")
+                            .font(.headline)
+                            .foregroundStyle(Color.secondary)
+                            .gridColumnAlignment(.trailing)
+
                         NavigationLink(destination:
                             AnyView(self.navigation.curationDestination(item)))
                         {
-                            ActivityListItem(item, number: index)
+                            ActivityListItem(item)
                         }
                         .buttonStyle(.plain)
                         .frame(maxWidth: .infinity, maxHeight: 120)

@@ -11,8 +11,7 @@ import UtilsKit
 public struct ActivityListItem: View {
     // MARK: Lifecycle
 
-    public init?(_ content: CurationItemModel, number: Int? = nil) {
-        self.number = number
+    public init?(_ content: CurationItemModel) {
         switch content.contentType {
             case .activity:
                 guard let activity = Activity(id: content.id) else {
@@ -45,13 +44,6 @@ public struct ActivityListItem: View {
     public var body: some View {
         HStack(spacing: 0) {
             FavoriteListIcon(self.curationItem)
-
-            if let number = self.number {
-                Text("\(number + 1)")
-                    .font(.headline)
-                    .foregroundStyle(Color.secondary)
-                    .padding(.trailing)
-            }
 
             Image(uiImage: self.icon)
                 .resizable()
@@ -86,7 +78,6 @@ public struct ActivityListItem: View {
     // MARK: Private
 
     private var curationItem: CurationItemModel
-    private let number: Int?
     private var icon: UIImage
     private var shape: any Shape
     private let kIconSize: CGFloat = 50
