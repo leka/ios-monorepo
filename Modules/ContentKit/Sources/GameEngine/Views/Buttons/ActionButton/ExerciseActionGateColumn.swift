@@ -4,9 +4,9 @@
 
 import SwiftUI
 
-// MARK: - StableActionColumn
+// MARK: - ExerciseActionGateColumn
 
-struct StableActionColumn<Content: View>: View {
+struct ExerciseActionGateColumn<Content: View>: View {
     // MARK: Lifecycle
 
     init(onTap: (() -> Void)? = nil, @ViewBuilder content: @escaping () -> Content) {
@@ -72,7 +72,7 @@ struct ActionButtonColumn: View {
     // MARK: Internal
 
     var body: some View {
-        StableActionColumn(onTap: self.onActionTriggered) {
+        ExerciseActionGateColumn(onTap: self.onActionTriggered) {
             ActionButtonView(action: self.action)
         }
     }
