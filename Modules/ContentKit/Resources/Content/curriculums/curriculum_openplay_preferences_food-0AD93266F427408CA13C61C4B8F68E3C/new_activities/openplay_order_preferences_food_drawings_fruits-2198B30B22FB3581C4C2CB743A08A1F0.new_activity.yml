@@ -8,7 +8,7 @@ uuid: 2198B30B22FB3581C4C2CB743A08A1F0
 name: openplay_order_preferences_food_drawings_fruits
 
 created_at: "2026-04-27T10:00:00.000000"
-last_edited_at: "2026-07-15T14:53:20.831096"
+last_edited_at: "2026-07-19T11:28:03.877002"
 status: published
 launch_requirements:
   robot:
@@ -43,8 +43,8 @@ l10n:
     details:
       icon: openplay_order_preferences_food_drawings_fruits
 
-      title: Classer mes aliments préférés
-      subtitle: Dessins - Fruits
+      title: Classer mes fruits préférés
+      subtitle: En dessin
 
       short_description: |
         Classer les aliments du préféré au moins préféré.
@@ -61,8 +61,8 @@ l10n:
     details:
       icon: openplay_order_preferences_food_drawings_fruits
 
-      title: Rank My Favorite Foods
-      subtitle: Drawings - Fruits
+      title: Rank My Favorite Fruits
+      subtitle: Drawings
 
       short_description: |
         Rank the foods from favorite to least favorite.
