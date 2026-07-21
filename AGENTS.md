@@ -56,11 +56,12 @@ Modules/<ModuleName>/
 
 ```bash
 # Initial setup
-brew upgrade && brew install ruby node mise pre-commit gh git-lfs
+brew upgrade && brew install ruby node mise gh git-lfs
 git lfs install
 mise install
 bundle install
-pre-commit install
+hk install --mise
+npm install --global ajv-cli
 
 # Sync certificates (required for code signing)
 bundle exec fastlane sync_certificates

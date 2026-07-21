@@ -20,12 +20,12 @@ git clone https://github.com/leka/ios-monorepo && cd ios-monorepo
 
 
 # install needed tools
-brew upgrade && brew install ruby node mise pre-commit gh git-lfs
+brew upgrade && brew install ruby node mise gh git-lfs
 git lfs install
 mise install
 bundle install
-pre-commit install
-npm install --global git-json-merge
+hk install --mise
+npm install --global ajv-cli git-json-merge
 git config merge.json.driver \"git-json-merge %A %O %B\"
 git config merge.json.name \"custom merge driver for json files\"
 

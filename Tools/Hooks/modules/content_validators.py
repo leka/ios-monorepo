@@ -14,7 +14,6 @@ Handles common patterns in content validation including:
 # Copyright APF France handicap
 # SPDX-License-Identifier: Apache-2.0
 
-from multiprocessing import Pool, cpu_count
 from typing import List, Dict, Any
 
 from modules.base_yaml_validator import BaseYamlValidator
@@ -180,7 +179,7 @@ class ContentValidator(BaseYamlValidator):
 
     def validate_file(self, filename: str) -> bool:
         """
-        Validate a single file (used by multiprocessing).
+        Validate a single file.
 
         Args:
             filename: Path to the YAML file to validate
@@ -189,39 +188,3 @@ class ContentValidator(BaseYamlValidator):
             bool: True if file is valid, False otherwise
         """
         return self.validate_content_item(filename)
-
-    def run(self) -> int:
-        """
-        Run validation with multiprocessing for performance.
-
-        Returns:
-            int: 0 if all files valid, 1 if any validation errors
-        """
-        from modules.utils import get_files
-
-        files: List[str] = get_files()
-
-        if not files:
-            self.logger.info(f"\n✅ No {self.validator_name} files to check!")
-            return 0
-
-        # Filter files if needed
-        files_to_process = [f for f in files if self.should_process_file(f)]
-
-        if not files_to_process:
-            self.logger.info(f"\n✅ No {self.validator_name} files to check!")
-            return 0
-
-        workers = max(1, cpu_count() - 1)
-        self.logger.info(f"\nChecking {len(files_to_process)} files using {workers} workers...")
-
-        with Pool(processes=workers) as pool:
-            results = pool.map(self.validate_content_item, files_to_process)
-
-        has_errors = not all(results)
-
-        if has_errors:
-            return 1
-
-        self.logger.info(f"\n✅ All checked {self.validator_name} files are valid!")
-        return 0
