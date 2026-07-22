@@ -151,6 +151,7 @@ public class BLEManager {
     private func subscribeToDidDisconnect() {
         self.centralManager.didDisconnectPeripheral
             .sink { _ in
+                self.connectedRobotPeripheral = nil
                 self.didDisconnect.send()
             }
             .store(in: &self.cancellables)
